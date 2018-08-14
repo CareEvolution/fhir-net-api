@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "FamilyMemberHistory", IsResource=true)]
     [DataContract]
-    public partial class FamilyMemberHistory : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class FamilyMemberHistory : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.FamilyMemberHistory; } }
@@ -68,33 +68,33 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("code", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
             
             /// <summary>
             /// deceased | permanent disability | etc.
             /// </summary>
             [FhirElement("outcome", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Outcome
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Outcome
             {
                 get { return _Outcome; }
                 set { _Outcome = value; OnPropertyChanged("Outcome"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Outcome;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Outcome;
             
             /// <summary>
             /// When condition first manifested
             /// </summary>
             [FhirElement("onset", Order=60, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Age),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.FhirString))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Age),typeof(Hl7.Fhir.Model.DSTU2.Range),typeof(Hl7.Fhir.Model.DSTU2.Period),typeof(Hl7.Fhir.Model.FhirString))]
             [DataMember]
             public Hl7.Fhir.Model.Element Onset
             {
@@ -109,13 +109,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("note", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Annotation Note
+            public Hl7.Fhir.Model.DSTU2.Annotation Note
             {
                 get { return _Note; }
                 set { _Note = value; OnPropertyChanged("Note"); }
             }
             
-            private Hl7.Fhir.Model.Annotation _Note;
+            private Hl7.Fhir.Model.DSTU2.Annotation _Note;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -124,10 +124,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                    if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
+                    if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Outcome.DeepCopy();
                     if(Onset != null) dest.Onset = (Hl7.Fhir.Model.Element)Onset.DeepCopy();
-                    if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
+                    if(Note != null) dest.Note = (Hl7.Fhir.Model.DSTU2.Annotation)Note.DeepCopy();
                     return dest;
                 }
                 else
@@ -234,13 +234,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// When history was captured/updated
@@ -256,7 +256,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -335,13 +335,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Relationship
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Relationship
         {
             get { return _Relationship; }
             set { _Relationship = value; OnPropertyChanged("Relationship"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Relationship;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Relationship;
         
         /// <summary>
         /// male | female | other | unknown
@@ -381,7 +381,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("born", Order=160, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirString))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Period),typeof(Hl7.Fhir.Model.DSTU2.Date),typeof(Hl7.Fhir.Model.FhirString))]
         [DataMember]
         public Hl7.Fhir.Model.Element Born
         {
@@ -396,7 +396,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("age", Order=170, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Age),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.FhirString))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Age),typeof(Hl7.Fhir.Model.DSTU2.Range),typeof(Hl7.Fhir.Model.FhirString))]
         [DataMember]
         public Hl7.Fhir.Model.Element Age
         {
@@ -411,7 +411,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("deceased", Order=180, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.DSTU2.Age),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirString))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.DSTU2.Age),typeof(Hl7.Fhir.Model.DSTU2.Range),typeof(Hl7.Fhir.Model.DSTU2.Date),typeof(Hl7.Fhir.Model.FhirString))]
         [DataMember]
         public Hl7.Fhir.Model.Element Deceased
         {
@@ -426,13 +426,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("note", Order=190)]
         [DataMember]
-        public Hl7.Fhir.Model.Annotation Note
+        public Hl7.Fhir.Model.DSTU2.Annotation Note
         {
             get { return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private Hl7.Fhir.Model.Annotation _Note;
+        private Hl7.Fhir.Model.DSTU2.Annotation _Note;
         
         /// <summary>
         /// Condition that the related person had
@@ -474,15 +474,15 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.FamilyHistoryStatus>)StatusElement.DeepCopy();
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
-                if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.CodeableConcept)Relationship.DeepCopy();
+                if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Relationship.DeepCopy();
                 if(GenderElement != null) dest.GenderElement = (Code<Hl7.Fhir.Model.AdministrativeGender>)GenderElement.DeepCopy();
                 if(Born != null) dest.Born = (Hl7.Fhir.Model.Element)Born.DeepCopy();
                 if(Age != null) dest.Age = (Hl7.Fhir.Model.Element)Age.DeepCopy();
                 if(Deceased != null) dest.Deceased = (Hl7.Fhir.Model.Element)Deceased.DeepCopy();
-                if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
+                if(Note != null) dest.Note = (Hl7.Fhir.Model.DSTU2.Annotation)Note.DeepCopy();
                 if(Condition != null) dest.Condition = new List<ConditionComponent>(Condition.DeepCopy());
                 return dest;
             }

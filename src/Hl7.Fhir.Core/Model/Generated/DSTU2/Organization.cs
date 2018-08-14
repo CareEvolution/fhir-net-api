@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Organization", IsResource=true)]
     [DataContract]
-    public partial class Organization : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Organization : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Organization; } }
@@ -67,13 +67,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("purpose", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Purpose
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Purpose
             {
                 get { return _Purpose; }
                 set { _Purpose = value; OnPropertyChanged("Purpose"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Purpose;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Purpose;
             
             /// <summary>
             /// A name associated with the contact
@@ -107,13 +107,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("address", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Address Address
+            public Hl7.Fhir.Model.DSTU2.Address Address
             {
                 get { return _Address; }
                 set { _Address = value; OnPropertyChanged("Address"); }
             }
             
-            private Hl7.Fhir.Model.Address _Address;
+            private Hl7.Fhir.Model.DSTU2.Address _Address;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -122,10 +122,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Purpose != null) dest.Purpose = (Hl7.Fhir.Model.CodeableConcept)Purpose.DeepCopy();
+                    if(Purpose != null) dest.Purpose = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Purpose.DeepCopy();
                     if(Name != null) dest.Name = (Hl7.Fhir.Model.DSTU2.HumanName)Name.DeepCopy();
                     if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.DSTU2.ContactPoint>(Telecom.DeepCopy());
-                    if(Address != null) dest.Address = (Hl7.Fhir.Model.Address)Address.DeepCopy();
+                    if(Address != null) dest.Address = (Hl7.Fhir.Model.DSTU2.Address)Address.DeepCopy();
                     return dest;
                 }
                 else
@@ -250,13 +250,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// Name used for the organization
@@ -311,13 +311,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("address", Order=140)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Address> Address
+        public List<Hl7.Fhir.Model.DSTU2.Address> Address
         {
-            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.Address>(); return _Address; }
+            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.DSTU2.Address>(); return _Address; }
             set { _Address = value; OnPropertyChanged("Address"); }
         }
         
-        private List<Hl7.Fhir.Model.Address> _Address;
+        private List<Hl7.Fhir.Model.DSTU2.Address> _Address;
         
         /// <summary>
         /// The organization of which this organization forms a part
@@ -394,10 +394,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(ActiveElement != null) dest.ActiveElement = (Hl7.Fhir.Model.FhirBoolean)ActiveElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                 if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.DSTU2.ContactPoint>(Telecom.DeepCopy());
-                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.Address>(Address.DeepCopy());
+                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.DSTU2.Address>(Address.DeepCopy());
                 if(PartOf != null) dest.PartOf = (Hl7.Fhir.Model.DSTU2.ResourceReference)PartOf.DeepCopy();
                 if(Contact != null) dest.Contact = new List<ContactComponent>(Contact.DeepCopy());
                 return dest;

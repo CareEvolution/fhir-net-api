@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "PaymentNotice", IsResource=true)]
     [DataContract]
-    public partial class PaymentNotice : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class PaymentNotice : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.PaymentNotice; } }
@@ -76,13 +76,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("ruleset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Ruleset
+        public Hl7.Fhir.Model.DSTU2.Coding Ruleset
         {
             get { return _Ruleset; }
             set { _Ruleset = value; OnPropertyChanged("Ruleset"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Ruleset;
+        private Hl7.Fhir.Model.DSTU2.Coding _Ruleset;
         
         /// <summary>
         /// Original version
@@ -90,13 +90,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("originalRuleset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding OriginalRuleset
+        public Hl7.Fhir.Model.DSTU2.Coding OriginalRuleset
         {
             get { return _OriginalRuleset; }
             set { _OriginalRuleset = value; OnPropertyChanged("OriginalRuleset"); }
         }
         
-        private Hl7.Fhir.Model.Coding _OriginalRuleset;
+        private Hl7.Fhir.Model.DSTU2.Coding _OriginalRuleset;
         
         /// <summary>
         /// Creation date
@@ -104,13 +104,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("created", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Creation date
@@ -126,7 +126,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -211,13 +211,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding PaymentStatus
+        public Hl7.Fhir.Model.DSTU2.Coding PaymentStatus
         {
             get { return _PaymentStatus; }
             set { _PaymentStatus = value; OnPropertyChanged("PaymentStatus"); }
         }
         
-        private Hl7.Fhir.Model.Coding _PaymentStatus;
+        private Hl7.Fhir.Model.DSTU2.Coding _PaymentStatus;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -228,15 +228,15 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(Ruleset != null) dest.Ruleset = (Hl7.Fhir.Model.Coding)Ruleset.DeepCopy();
-                if(OriginalRuleset != null) dest.OriginalRuleset = (Hl7.Fhir.Model.Coding)OriginalRuleset.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(Ruleset != null) dest.Ruleset = (Hl7.Fhir.Model.DSTU2.Coding)Ruleset.DeepCopy();
+                if(OriginalRuleset != null) dest.OriginalRuleset = (Hl7.Fhir.Model.DSTU2.Coding)OriginalRuleset.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)CreatedElement.DeepCopy();
                 if(Target != null) dest.Target = (Hl7.Fhir.Model.DSTU2.ResourceReference)Target.DeepCopy();
                 if(Provider != null) dest.Provider = (Hl7.Fhir.Model.DSTU2.ResourceReference)Provider.DeepCopy();
                 if(Organization != null) dest.Organization = (Hl7.Fhir.Model.DSTU2.ResourceReference)Organization.DeepCopy();
                 if(Request != null) dest.Request = (Hl7.Fhir.Model.DSTU2.ResourceReference)Request.DeepCopy();
                 if(Response != null) dest.Response = (Hl7.Fhir.Model.DSTU2.ResourceReference)Response.DeepCopy();
-                if(PaymentStatus != null) dest.PaymentStatus = (Hl7.Fhir.Model.Coding)PaymentStatus.DeepCopy();
+                if(PaymentStatus != null) dest.PaymentStatus = (Hl7.Fhir.Model.DSTU2.Coding)PaymentStatus.DeepCopy();
                 return dest;
             }
             else

@@ -44,7 +44,7 @@ namespace Hl7.Fhir.Model.DSTU2
 {
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Account", IsResource=true)]
     [DataContract]
-    public partial class Account : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Account : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Account; } }
@@ -106,13 +106,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// active | inactive
@@ -120,13 +120,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("status", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Code StatusElement
+        public Hl7.Fhir.Model.DSTU2.Code StatusElement
         {
             get { return _StatusElement; }
             set { _StatusElement = value; OnPropertyChanged("StatusElement"); }
         }
         
-        private Hl7.Fhir.Model.Code _StatusElement;
+        private Hl7.Fhir.Model.DSTU2.Code _StatusElement;
         
         /// <summary>
         /// active | inactive
@@ -142,7 +142,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     StatusElement = null;
                 else
-                    StatusElement = new Hl7.Fhir.Model.Code(value);
+                    StatusElement = new Hl7.Fhir.Model.DSTU2.Code(value);
                 OnPropertyChanged("Status");
             }
         }
@@ -153,13 +153,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("activePeriod", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period ActivePeriod
+        public Hl7.Fhir.Model.DSTU2.Period ActivePeriod
         {
             get { return _ActivePeriod; }
             set { _ActivePeriod = value; OnPropertyChanged("ActivePeriod"); }
         }
         
-        private Hl7.Fhir.Model.Period _ActivePeriod;
+        private Hl7.Fhir.Model.DSTU2.Period _ActivePeriod;
         
         /// <summary>
         /// Base currency in which balance is tracked
@@ -167,13 +167,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("currency", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Currency
+        public Hl7.Fhir.Model.DSTU2.Coding Currency
         {
             get { return _Currency; }
             set { _Currency = value; OnPropertyChanged("Currency"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Currency;
+        private Hl7.Fhir.Model.DSTU2.Coding _Currency;
         
         /// <summary>
         /// How much is in account?
@@ -195,13 +195,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("coveragePeriod", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period CoveragePeriod
+        public Hl7.Fhir.Model.DSTU2.Period CoveragePeriod
         {
             get { return _CoveragePeriod; }
             set { _CoveragePeriod = value; OnPropertyChanged("CoveragePeriod"); }
         }
         
-        private Hl7.Fhir.Model.Period _CoveragePeriod;
+        private Hl7.Fhir.Model.DSTU2.Period _CoveragePeriod;
         
         /// <summary>
         /// What is account tied to?
@@ -276,12 +276,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(StatusElement != null) dest.StatusElement = (Hl7.Fhir.Model.Code)StatusElement.DeepCopy();
-                if(ActivePeriod != null) dest.ActivePeriod = (Hl7.Fhir.Model.Period)ActivePeriod.DeepCopy();
-                if(Currency != null) dest.Currency = (Hl7.Fhir.Model.Coding)Currency.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
+                if(StatusElement != null) dest.StatusElement = (Hl7.Fhir.Model.DSTU2.Code)StatusElement.DeepCopy();
+                if(ActivePeriod != null) dest.ActivePeriod = (Hl7.Fhir.Model.DSTU2.Period)ActivePeriod.DeepCopy();
+                if(Currency != null) dest.Currency = (Hl7.Fhir.Model.DSTU2.Coding)Currency.DeepCopy();
                 if(Balance != null) dest.Balance = (Hl7.Fhir.Model.DSTU2.Money)Balance.DeepCopy();
-                if(CoveragePeriod != null) dest.CoveragePeriod = (Hl7.Fhir.Model.Period)CoveragePeriod.DeepCopy();
+                if(CoveragePeriod != null) dest.CoveragePeriod = (Hl7.Fhir.Model.DSTU2.Period)CoveragePeriod.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subject.DeepCopy();
                 if(Owner != null) dest.Owner = (Hl7.Fhir.Model.DSTU2.ResourceReference)Owner.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();

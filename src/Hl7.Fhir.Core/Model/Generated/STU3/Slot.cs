@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Slot", IsResource=true)]
     [DataContract]
-    public partial class Slot : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Slot : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Slot; } }
@@ -76,13 +76,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("serviceCategory", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept ServiceCategory
+        public Hl7.Fhir.Model.STU3.CodeableConcept ServiceCategory
         {
             get { return _ServiceCategory; }
             set { _ServiceCategory = value; OnPropertyChanged("ServiceCategory"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _ServiceCategory;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _ServiceCategory;
         
         /// <summary>
         /// The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource
@@ -91,13 +91,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ServiceType
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ServiceType
         {
-            get { if(_ServiceType==null) _ServiceType = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ServiceType; }
+            get { if(_ServiceType==null) _ServiceType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ServiceType; }
             set { _ServiceType = value; OnPropertyChanged("ServiceType"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ServiceType;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ServiceType;
         
         /// <summary>
         /// The specialty of a practitioner that would be required to perform the service requested in this appointment
@@ -106,13 +106,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Specialty
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Specialty
         {
-            get { if(_Specialty==null) _Specialty = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Specialty; }
+            get { if(_Specialty==null) _Specialty = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Specialty; }
             set { _Specialty = value; OnPropertyChanged("Specialty"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Specialty;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Specialty;
         
         /// <summary>
         /// The style of appointment or patient that may be booked in the slot (not service type)
@@ -120,13 +120,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("appointmentType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept AppointmentType
+        public Hl7.Fhir.Model.STU3.CodeableConcept AppointmentType
         {
             get { return _AppointmentType; }
             set { _AppointmentType = value; OnPropertyChanged("AppointmentType"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _AppointmentType;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _AppointmentType;
         
         /// <summary>
         /// The schedule resource that this slot defines an interval of status information
@@ -319,10 +319,10 @@ namespace Hl7.Fhir.Model.STU3
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
-                if(ServiceCategory != null) dest.ServiceCategory = (Hl7.Fhir.Model.CodeableConcept)ServiceCategory.DeepCopy();
-                if(ServiceType != null) dest.ServiceType = new List<Hl7.Fhir.Model.CodeableConcept>(ServiceType.DeepCopy());
-                if(Specialty != null) dest.Specialty = new List<Hl7.Fhir.Model.CodeableConcept>(Specialty.DeepCopy());
-                if(AppointmentType != null) dest.AppointmentType = (Hl7.Fhir.Model.CodeableConcept)AppointmentType.DeepCopy();
+                if(ServiceCategory != null) dest.ServiceCategory = (Hl7.Fhir.Model.STU3.CodeableConcept)ServiceCategory.DeepCopy();
+                if(ServiceType != null) dest.ServiceType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ServiceType.DeepCopy());
+                if(Specialty != null) dest.Specialty = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Specialty.DeepCopy());
+                if(AppointmentType != null) dest.AppointmentType = (Hl7.Fhir.Model.STU3.CodeableConcept)AppointmentType.DeepCopy();
                 if(Schedule != null) dest.Schedule = (Hl7.Fhir.Model.STU3.ResourceReference)Schedule.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.SlotStatus>)StatusElement.DeepCopy();
                 if(StartElement != null) dest.StartElement = (Hl7.Fhir.Model.Instant)StartElement.DeepCopy();

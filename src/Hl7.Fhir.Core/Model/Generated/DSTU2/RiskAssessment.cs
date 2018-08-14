@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "RiskAssessment", IsResource=true)]
     [DataContract]
-    public partial class RiskAssessment : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class RiskAssessment : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.RiskAssessment; } }
@@ -68,20 +68,20 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("outcome", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Outcome
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Outcome
             {
                 get { return _Outcome; }
                 set { _Outcome = value; OnPropertyChanged("Outcome"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Outcome;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Outcome;
             
             /// <summary>
             /// Likelihood of specified outcome
             /// </summary>
             [FhirElement("probability", Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.CodeableConcept))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.FhirDecimal),typeof(Hl7.Fhir.Model.DSTU2.Range),typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept))]
             [DataMember]
             public Hl7.Fhir.Model.Element Probability
             {
@@ -96,13 +96,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("relativeRisk", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal RelativeRiskElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal RelativeRiskElement
             {
                 get { return _RelativeRiskElement; }
                 set { _RelativeRiskElement = value; OnPropertyChanged("RelativeRiskElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _RelativeRiskElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _RelativeRiskElement;
             
             /// <summary>
             /// Relative likelihood
@@ -118,7 +118,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         RelativeRiskElement = null;
                     else
-                        RelativeRiskElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        RelativeRiskElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("RelativeRisk");
                 }
             }
@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("when", Order=70, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Range))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Period),typeof(Hl7.Fhir.Model.DSTU2.Range))]
             [DataMember]
             public Hl7.Fhir.Model.Element When
             {
@@ -177,9 +177,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
+                    if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Outcome.DeepCopy();
                     if(Probability != null) dest.Probability = (Hl7.Fhir.Model.Element)Probability.DeepCopy();
-                    if(RelativeRiskElement != null) dest.RelativeRiskElement = (Hl7.Fhir.Model.FhirDecimal)RelativeRiskElement.DeepCopy();
+                    if(RelativeRiskElement != null) dest.RelativeRiskElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)RelativeRiskElement.DeepCopy();
                     if(When != null) dest.When = (Hl7.Fhir.Model.Element)When.DeepCopy();
                     if(RationaleElement != null) dest.RationaleElement = (Hl7.Fhir.Model.FhirString)RationaleElement.DeepCopy();
                     return dest;
@@ -277,13 +277,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// When was assessment made?
@@ -299,7 +299,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -369,13 +369,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("method", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Method
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Method
         {
             get { return _Method; }
             set { _Method = value; OnPropertyChanged("Method"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Method;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Method;
         
         /// <summary>
         /// Information used in assessment
@@ -472,12 +472,12 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subject.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                 if(Condition != null) dest.Condition = (Hl7.Fhir.Model.DSTU2.ResourceReference)Condition.DeepCopy();
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();
                 if(Performer != null) dest.Performer = (Hl7.Fhir.Model.DSTU2.ResourceReference)Performer.DeepCopy();
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
-                if(Method != null) dest.Method = (Hl7.Fhir.Model.CodeableConcept)Method.DeepCopy();
+                if(Method != null) dest.Method = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Method.DeepCopy();
                 if(Basis != null) dest.Basis = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Basis.DeepCopy());
                 if(Prediction != null) dest.Prediction = new List<PredictionComponent>(Prediction.DeepCopy());
                 if(MitigationElement != null) dest.MitigationElement = (Hl7.Fhir.Model.FhirString)MitigationElement.DeepCopy();

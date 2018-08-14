@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Communication", IsResource=true)]
     [DataContract]
-    public partial class Communication : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Communication : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Communication; } }
@@ -67,7 +67,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("content", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.DSTU2.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Content
@@ -165,13 +165,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("category", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Category
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Category
         {
             get { return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Category;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Category;
         
         /// <summary>
         /// Message sender
@@ -226,13 +226,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Medium
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Medium
         {
-            get { if(_Medium==null) _Medium = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Medium; }
+            get { if(_Medium==null) _Medium = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Medium; }
             set { _Medium = value; OnPropertyChanged("Medium"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Medium;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Medium;
         
         /// <summary>
         /// in-progress | completed | suspended | rejected | failed
@@ -288,13 +288,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("sent", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime SentElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime SentElement
         {
             get { return _SentElement; }
             set { _SentElement = value; OnPropertyChanged("SentElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _SentElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _SentElement;
         
         /// <summary>
         /// When sent
@@ -310,7 +310,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     SentElement = null;
                 else
-                    SentElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    SentElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Sent");
             }
         }
@@ -321,13 +321,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("received", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime ReceivedElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime ReceivedElement
         {
             get { return _ReceivedElement; }
             set { _ReceivedElement = value; OnPropertyChanged("ReceivedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _ReceivedElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _ReceivedElement;
         
         /// <summary>
         /// When received
@@ -343,7 +343,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     ReceivedElement = null;
                 else
-                    ReceivedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    ReceivedElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Received");
             }
         }
@@ -355,13 +355,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Reason
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Reason
         {
-            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Reason; }
+            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Reason; }
             set { _Reason = value; OnPropertyChanged("Reason"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Reason;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Reason;
         
         /// <summary>
         /// Focus of message
@@ -402,16 +402,16 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(Category != null) dest.Category = (Hl7.Fhir.Model.CodeableConcept)Category.DeepCopy();
+                if(Category != null) dest.Category = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Category.DeepCopy();
                 if(Sender != null) dest.Sender = (Hl7.Fhir.Model.DSTU2.ResourceReference)Sender.DeepCopy();
                 if(Recipient != null) dest.Recipient = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Recipient.DeepCopy());
                 if(Payload != null) dest.Payload = new List<PayloadComponent>(Payload.DeepCopy());
-                if(Medium != null) dest.Medium = new List<Hl7.Fhir.Model.CodeableConcept>(Medium.DeepCopy());
+                if(Medium != null) dest.Medium = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Medium.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.CommunicationStatus>)StatusElement.DeepCopy();
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();
-                if(SentElement != null) dest.SentElement = (Hl7.Fhir.Model.FhirDateTime)SentElement.DeepCopy();
-                if(ReceivedElement != null) dest.ReceivedElement = (Hl7.Fhir.Model.FhirDateTime)ReceivedElement.DeepCopy();
-                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.CodeableConcept>(Reason.DeepCopy());
+                if(SentElement != null) dest.SentElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)SentElement.DeepCopy();
+                if(ReceivedElement != null) dest.ReceivedElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)ReceivedElement.DeepCopy();
+                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Reason.DeepCopy());
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subject.DeepCopy();
                 if(RequestDetail != null) dest.RequestDetail = (Hl7.Fhir.Model.DSTU2.ResourceReference)RequestDetail.DeepCopy();
                 return dest;

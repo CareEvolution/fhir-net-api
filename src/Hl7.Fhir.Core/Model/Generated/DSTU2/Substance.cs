@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Substance", IsResource=true)]
     [DataContract]
-    public partial class Substance : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Substance : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Substance; } }
@@ -82,13 +82,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("expiry", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime ExpiryElement
+            public Hl7.Fhir.Model.DSTU2.FhirDateTime ExpiryElement
             {
                 get { return _ExpiryElement; }
                 set { _ExpiryElement = value; OnPropertyChanged("ExpiryElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _ExpiryElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDateTime _ExpiryElement;
             
             /// <summary>
             /// When no longer valid to use
@@ -104,7 +104,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         ExpiryElement = null;
                     else
-                        ExpiryElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        ExpiryElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                     OnPropertyChanged("Expiry");
                 }
             }
@@ -115,13 +115,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -131,8 +131,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
-                    if(ExpiryElement != null) dest.ExpiryElement = (Hl7.Fhir.Model.FhirDateTime)ExpiryElement.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(ExpiryElement != null) dest.ExpiryElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)ExpiryElement.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     return dest;
                 }
                 else
@@ -212,13 +212,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Ratio Quantity
+            public Hl7.Fhir.Model.DSTU2.Ratio Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.Ratio _Quantity;
+            private Hl7.Fhir.Model.DSTU2.Ratio _Quantity;
             
             /// <summary>
             /// A component of the substance
@@ -243,7 +243,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.Ratio)Quantity.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.Ratio)Quantity.DeepCopy();
                     if(Substance != null) dest.Substance = (Hl7.Fhir.Model.DSTU2.ResourceReference)Substance.DeepCopy();
                     return dest;
                 }
@@ -329,13 +329,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Category
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Category
         {
-            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Category; }
+            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Category;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Category;
         
         /// <summary>
         /// What substance this is
@@ -344,13 +344,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
         
         /// <summary>
         /// Textual description of the substance, comments
@@ -424,8 +424,8 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.CodeableConcept>(Category.DeepCopy());
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Category.DeepCopy());
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(Instance != null) dest.Instance = new List<InstanceComponent>(Instance.DeepCopy());
                 if(Ingredient != null) dest.Ingredient = new List<IngredientComponent>(Ingredient.DeepCopy());

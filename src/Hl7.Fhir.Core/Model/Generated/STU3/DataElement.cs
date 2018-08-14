@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "DataElement", IsResource=true)]
     [DataContract]
-    public partial class DataElement : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DataElement : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DataElement; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("identity", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Id IdentityElement
+            public Hl7.Fhir.Model.STU3.Id IdentityElement
             {
                 get { return _IdentityElement; }
                 set { _IdentityElement = value; OnPropertyChanged("IdentityElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _IdentityElement;
+            private Hl7.Fhir.Model.STU3.Id _IdentityElement;
             
             /// <summary>
             /// Internal id when this mapping is used
@@ -90,7 +90,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         IdentityElement = null;
                     else
-                        IdentityElement = new Hl7.Fhir.Model.Id(value);
+                        IdentityElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Identity");
                 }
             }
@@ -198,7 +198,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(IdentityElement != null) dest.IdentityElement = (Hl7.Fhir.Model.Id)IdentityElement.DeepCopy();
+                    if(IdentityElement != null) dest.IdentityElement = (Hl7.Fhir.Model.STU3.Id)IdentityElement.DeepCopy();
                     if(UriElement != null) dest.UriElement = (Hl7.Fhir.Model.FhirUri)UriElement.DeepCopy();
                     if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                     if(CommentElement != null) dest.CommentElement = (Hl7.Fhir.Model.FhirString)CommentElement.DeepCopy();
@@ -426,13 +426,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date this was last changed
@@ -448,7 +448,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -589,13 +589,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Jurisdiction
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Jurisdiction
         {
-            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Jurisdiction; }
+            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Jurisdiction; }
             set { _Jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Jurisdiction;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Jurisdiction;
         
         /// <summary>
         /// Use and/or publishing restrictions
@@ -740,13 +740,13 @@ namespace Hl7.Fhir.Model.STU3
                 if(VersionElement != null) dest.VersionElement = (Hl7.Fhir.Model.FhirString)VersionElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.PublicationStatus>)StatusElement.DeepCopy();
                 if(ExperimentalElement != null) dest.ExperimentalElement = (Hl7.Fhir.Model.FhirBoolean)ExperimentalElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                 if(TitleElement != null) dest.TitleElement = (Hl7.Fhir.Model.FhirString)TitleElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(UseContext.DeepCopy());
-                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
+                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(CopyrightElement != null) dest.CopyrightElement = (Hl7.Fhir.Model.Markdown)CopyrightElement.DeepCopy();
                 if(StringencyElement != null) dest.StringencyElement = (Code<Hl7.Fhir.Model.DataElementStringency>)StringencyElement.DeepCopy();
                 if(Mapping != null) dest.Mapping = new List<MappingComponent>(Mapping.DeepCopy());

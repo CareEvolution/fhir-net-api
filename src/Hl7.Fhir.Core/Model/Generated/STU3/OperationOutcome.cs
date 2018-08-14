@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "OperationOutcome", IsResource=true)]
     [DataContract]
-    public partial class OperationOutcome : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class OperationOutcome : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.OperationOutcome; } }
@@ -136,13 +136,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("details", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Details
+            public Hl7.Fhir.Model.STU3.CodeableConcept Details
             {
                 get { return _Details; }
                 set { _Details = value; OnPropertyChanged("Details"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Details;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Details;
             
             /// <summary>
             /// Additional diagnostic information about the issue
@@ -254,7 +254,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(SeverityElement != null) dest.SeverityElement = (Code<Hl7.Fhir.Model.IssueSeverity>)SeverityElement.DeepCopy();
                     if(CodeElement != null) dest.CodeElement = (Code<Hl7.Fhir.Model.IssueType>)CodeElement.DeepCopy();
-                    if(Details != null) dest.Details = (Hl7.Fhir.Model.CodeableConcept)Details.DeepCopy();
+                    if(Details != null) dest.Details = (Hl7.Fhir.Model.STU3.CodeableConcept)Details.DeepCopy();
                     if(DiagnosticsElement != null) dest.DiagnosticsElement = (Hl7.Fhir.Model.FhirString)DiagnosticsElement.DeepCopy();
                     if(LocationElement != null) dest.LocationElement = new List<Hl7.Fhir.Model.FhirString>(LocationElement.DeepCopy());
                     if(ExpressionElement != null) dest.ExpressionElement = new List<Hl7.Fhir.Model.FhirString>(ExpressionElement.DeepCopy());

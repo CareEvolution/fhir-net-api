@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "ImmunizationRecommendation", IsResource=true)]
     [DataContract]
-    public partial class ImmunizationRecommendation : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ImmunizationRecommendation : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ImmunizationRecommendation; } }
@@ -69,13 +69,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime DateElement
+            public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
             {
                 get { return _DateElement; }
                 set { _DateElement = value; OnPropertyChanged("DateElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _DateElement;
+            private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
             
             /// <summary>
             /// Date recommendation created
@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         DateElement = null;
                     else
-                        DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                     OnPropertyChanged("Date");
                 }
             }
@@ -102,13 +102,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("vaccineCode", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept VaccineCode
+            public Hl7.Fhir.Model.STU3.CodeableConcept VaccineCode
             {
                 get { return _VaccineCode; }
                 set { _VaccineCode = value; OnPropertyChanged("VaccineCode"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _VaccineCode;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _VaccineCode;
             
             /// <summary>
             /// Disease to be immunized against
@@ -116,13 +116,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("targetDisease", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept TargetDisease
+            public Hl7.Fhir.Model.STU3.CodeableConcept TargetDisease
             {
                 get { return _TargetDisease; }
                 set { _TargetDisease = value; OnPropertyChanged("TargetDisease"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _TargetDisease;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _TargetDisease;
             
             /// <summary>
             /// Recommended dose number
@@ -130,13 +130,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("doseNumber", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt DoseNumberElement
+            public Hl7.Fhir.Model.STU3.PositiveInt DoseNumberElement
             {
                 get { return _DoseNumberElement; }
                 set { _DoseNumberElement = value; OnPropertyChanged("DoseNumberElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _DoseNumberElement;
+            private Hl7.Fhir.Model.STU3.PositiveInt _DoseNumberElement;
             
             /// <summary>
             /// Recommended dose number
@@ -152,7 +152,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         DoseNumberElement = null;
                     else
-                        DoseNumberElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        DoseNumberElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                     OnPropertyChanged("DoseNumber");
                 }
             }
@@ -164,13 +164,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept ForecastStatus
+            public Hl7.Fhir.Model.STU3.CodeableConcept ForecastStatus
             {
                 get { return _ForecastStatus; }
                 set { _ForecastStatus = value; OnPropertyChanged("ForecastStatus"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _ForecastStatus;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _ForecastStatus;
             
             /// <summary>
             /// Dates governing proposed immunization
@@ -238,11 +238,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
-                    if(VaccineCode != null) dest.VaccineCode = (Hl7.Fhir.Model.CodeableConcept)VaccineCode.DeepCopy();
-                    if(TargetDisease != null) dest.TargetDisease = (Hl7.Fhir.Model.CodeableConcept)TargetDisease.DeepCopy();
-                    if(DoseNumberElement != null) dest.DoseNumberElement = (Hl7.Fhir.Model.PositiveInt)DoseNumberElement.DeepCopy();
-                    if(ForecastStatus != null) dest.ForecastStatus = (Hl7.Fhir.Model.CodeableConcept)ForecastStatus.DeepCopy();
+                    if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
+                    if(VaccineCode != null) dest.VaccineCode = (Hl7.Fhir.Model.STU3.CodeableConcept)VaccineCode.DeepCopy();
+                    if(TargetDisease != null) dest.TargetDisease = (Hl7.Fhir.Model.STU3.CodeableConcept)TargetDisease.DeepCopy();
+                    if(DoseNumberElement != null) dest.DoseNumberElement = (Hl7.Fhir.Model.STU3.PositiveInt)DoseNumberElement.DeepCopy();
+                    if(ForecastStatus != null) dest.ForecastStatus = (Hl7.Fhir.Model.STU3.CodeableConcept)ForecastStatus.DeepCopy();
                     if(DateCriterion != null) dest.DateCriterion = new List<DateCriterionComponent>(DateCriterion.DeepCopy());
                     if(Protocol != null) dest.Protocol = (ProtocolComponent)Protocol.DeepCopy();
                     if(SupportingImmunization != null) dest.SupportingImmunization = new List<Hl7.Fhir.Model.STU3.ResourceReference>(SupportingImmunization.DeepCopy());
@@ -350,13 +350,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("code", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.STU3.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
             
             /// <summary>
             /// Recommended date
@@ -364,13 +364,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("value", Order=50)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime ValueElement
+            public Hl7.Fhir.Model.STU3.FhirDateTime ValueElement
             {
                 get { return _ValueElement; }
                 set { _ValueElement = value; OnPropertyChanged("ValueElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _ValueElement;
+            private Hl7.Fhir.Model.STU3.FhirDateTime _ValueElement;
             
             /// <summary>
             /// Recommended date
@@ -386,7 +386,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ValueElement = null;
                     else
-                        ValueElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        ValueElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                     OnPropertyChanged("Value");
                 }
             }
@@ -398,8 +398,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                    if(ValueElement != null) dest.ValueElement = (Hl7.Fhir.Model.FhirDateTime)ValueElement.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
+                    if(ValueElement != null) dest.ValueElement = (Hl7.Fhir.Model.STU3.FhirDateTime)ValueElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -474,13 +474,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("doseSequence", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt DoseSequenceElement
+            public Hl7.Fhir.Model.STU3.PositiveInt DoseSequenceElement
             {
                 get { return _DoseSequenceElement; }
                 set { _DoseSequenceElement = value; OnPropertyChanged("DoseSequenceElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _DoseSequenceElement;
+            private Hl7.Fhir.Model.STU3.PositiveInt _DoseSequenceElement;
             
             /// <summary>
             /// Dose number within sequence
@@ -496,7 +496,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         DoseSequenceElement = null;
                     else
-                        DoseSequenceElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        DoseSequenceElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                     OnPropertyChanged("DoseSequence");
                 }
             }
@@ -587,7 +587,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(DoseSequenceElement != null) dest.DoseSequenceElement = (Hl7.Fhir.Model.PositiveInt)DoseSequenceElement.DeepCopy();
+                    if(DoseSequenceElement != null) dest.DoseSequenceElement = (Hl7.Fhir.Model.STU3.PositiveInt)DoseSequenceElement.DeepCopy();
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                     if(Authority != null) dest.Authority = (Hl7.Fhir.Model.STU3.ResourceReference)Authority.DeepCopy();
                     if(SeriesElement != null) dest.SeriesElement = (Hl7.Fhir.Model.FhirString)SeriesElement.DeepCopy();

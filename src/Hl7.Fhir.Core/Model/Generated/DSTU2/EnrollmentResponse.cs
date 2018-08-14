@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "EnrollmentResponse", IsResource=true)]
     [DataContract]
-    public partial class EnrollmentResponse : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class EnrollmentResponse : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.EnrollmentResponse; } }
@@ -157,13 +157,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("ruleset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Ruleset
+        public Hl7.Fhir.Model.DSTU2.Coding Ruleset
         {
             get { return _Ruleset; }
             set { _Ruleset = value; OnPropertyChanged("Ruleset"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Ruleset;
+        private Hl7.Fhir.Model.DSTU2.Coding _Ruleset;
         
         /// <summary>
         /// Original version
@@ -171,13 +171,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("originalRuleset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding OriginalRuleset
+        public Hl7.Fhir.Model.DSTU2.Coding OriginalRuleset
         {
             get { return _OriginalRuleset; }
             set { _OriginalRuleset = value; OnPropertyChanged("OriginalRuleset"); }
         }
         
-        private Hl7.Fhir.Model.Coding _OriginalRuleset;
+        private Hl7.Fhir.Model.DSTU2.Coding _OriginalRuleset;
         
         /// <summary>
         /// Creation date
@@ -185,13 +185,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("created", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Creation date
@@ -207,7 +207,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -269,9 +269,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Request != null) dest.Request = (Hl7.Fhir.Model.DSTU2.ResourceReference)Request.DeepCopy();
                 if(OutcomeElement != null) dest.OutcomeElement = (Code<Hl7.Fhir.Model.DSTU2.RemittanceOutcome>)OutcomeElement.DeepCopy();
                 if(DispositionElement != null) dest.DispositionElement = (Hl7.Fhir.Model.FhirString)DispositionElement.DeepCopy();
-                if(Ruleset != null) dest.Ruleset = (Hl7.Fhir.Model.Coding)Ruleset.DeepCopy();
-                if(OriginalRuleset != null) dest.OriginalRuleset = (Hl7.Fhir.Model.Coding)OriginalRuleset.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(Ruleset != null) dest.Ruleset = (Hl7.Fhir.Model.DSTU2.Coding)Ruleset.DeepCopy();
+                if(OriginalRuleset != null) dest.OriginalRuleset = (Hl7.Fhir.Model.DSTU2.Coding)OriginalRuleset.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)CreatedElement.DeepCopy();
                 if(Organization != null) dest.Organization = (Hl7.Fhir.Model.DSTU2.ResourceReference)Organization.DeepCopy();
                 if(RequestProvider != null) dest.RequestProvider = (Hl7.Fhir.Model.DSTU2.ResourceReference)RequestProvider.DeepCopy();
                 if(RequestOrganization != null) dest.RequestOrganization = (Hl7.Fhir.Model.DSTU2.ResourceReference)RequestOrganization.DeepCopy();

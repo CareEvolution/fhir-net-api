@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Endpoint", IsResource=true)]
     [DataContract]
-    public partial class Endpoint : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Endpoint : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Endpoint; } }
@@ -111,13 +111,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding ConnectionType
+        public Hl7.Fhir.Model.STU3.Coding ConnectionType
         {
             get { return _ConnectionType; }
             set { _ConnectionType = value; OnPropertyChanged("ConnectionType"); }
         }
         
-        private Hl7.Fhir.Model.Coding _ConnectionType;
+        private Hl7.Fhir.Model.STU3.Coding _ConnectionType;
         
         /// <summary>
         /// A name that this endpoint can be identified by
@@ -187,13 +187,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
         
         /// <summary>
         /// The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)
@@ -202,13 +202,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> PayloadType
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> PayloadType
         {
-            get { if(_PayloadType==null) _PayloadType = new List<Hl7.Fhir.Model.CodeableConcept>(); return _PayloadType; }
+            get { if(_PayloadType==null) _PayloadType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _PayloadType; }
             set { _PayloadType = value; OnPropertyChanged("PayloadType"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _PayloadType;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _PayloadType;
         
         /// <summary>
         /// Mimetype to send. If not specified, the content could be anything (including no payload, if the connectionType defined this)
@@ -217,13 +217,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Code> PayloadMimeTypeElement
+        public List<Hl7.Fhir.Model.STU3.Code> PayloadMimeTypeElement
         {
-            get { if(_PayloadMimeTypeElement==null) _PayloadMimeTypeElement = new List<Hl7.Fhir.Model.Code>(); return _PayloadMimeTypeElement; }
+            get { if(_PayloadMimeTypeElement==null) _PayloadMimeTypeElement = new List<Hl7.Fhir.Model.STU3.Code>(); return _PayloadMimeTypeElement; }
             set { _PayloadMimeTypeElement = value; OnPropertyChanged("PayloadMimeTypeElement"); }
         }
         
-        private List<Hl7.Fhir.Model.Code> _PayloadMimeTypeElement;
+        private List<Hl7.Fhir.Model.STU3.Code> _PayloadMimeTypeElement;
         
         /// <summary>
         /// Mimetype to send. If not specified, the content could be anything (including no payload, if the connectionType defined this)
@@ -239,7 +239,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     PayloadMimeTypeElement = null;
                 else
-                    PayloadMimeTypeElement = new List<Hl7.Fhir.Model.Code>(value.Select(elem=>new Hl7.Fhir.Model.Code(elem)));
+                    PayloadMimeTypeElement = new List<Hl7.Fhir.Model.STU3.Code>(value.Select(elem=>new Hl7.Fhir.Model.STU3.Code(elem)));
                 OnPropertyChanged("PayloadMimeType");
             }
         }
@@ -321,13 +321,13 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.EndpointStatus>)StatusElement.DeepCopy();
-                if(ConnectionType != null) dest.ConnectionType = (Hl7.Fhir.Model.Coding)ConnectionType.DeepCopy();
+                if(ConnectionType != null) dest.ConnectionType = (Hl7.Fhir.Model.STU3.Coding)ConnectionType.DeepCopy();
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                 if(ManagingOrganization != null) dest.ManagingOrganization = (Hl7.Fhir.Model.STU3.ResourceReference)ManagingOrganization.DeepCopy();
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactPoint>(Contact.DeepCopy());
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
-                if(PayloadType != null) dest.PayloadType = new List<Hl7.Fhir.Model.CodeableConcept>(PayloadType.DeepCopy());
-                if(PayloadMimeTypeElement != null) dest.PayloadMimeTypeElement = new List<Hl7.Fhir.Model.Code>(PayloadMimeTypeElement.DeepCopy());
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
+                if(PayloadType != null) dest.PayloadType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(PayloadType.DeepCopy());
+                if(PayloadMimeTypeElement != null) dest.PayloadMimeTypeElement = new List<Hl7.Fhir.Model.STU3.Code>(PayloadMimeTypeElement.DeepCopy());
                 if(AddressElement != null) dest.AddressElement = (Hl7.Fhir.Model.FhirUri)AddressElement.DeepCopy();
                 if(HeaderElement != null) dest.HeaderElement = new List<Hl7.Fhir.Model.FhirString>(HeaderElement.DeepCopy());
                 return dest;

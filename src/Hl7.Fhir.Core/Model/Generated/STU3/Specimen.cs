@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Specimen", IsResource=true)]
     [DataContract]
-    public partial class Specimen : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Specimen : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Specimen; } }
@@ -82,7 +82,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("collected", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
             [DataMember]
             public Hl7.Fhir.Model.Element Collected
             {
@@ -97,39 +97,39 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("quantity", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.STU3.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.STU3.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Technique used to perform collection
             /// </summary>
             [FhirElement("method", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Method
+            public Hl7.Fhir.Model.STU3.CodeableConcept Method
             {
                 get { return _Method; }
                 set { _Method = value; OnPropertyChanged("Method"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Method;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Method;
             
             /// <summary>
             /// Anatomical collection site
             /// </summary>
             [FhirElement("bodySite", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept BodySite
+            public Hl7.Fhir.Model.STU3.CodeableConcept BodySite
             {
                 get { return _BodySite; }
                 set { _BodySite = value; OnPropertyChanged("BodySite"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _BodySite;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _BodySite;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -140,9 +140,9 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(Collector != null) dest.Collector = (Hl7.Fhir.Model.STU3.ResourceReference)Collector.DeepCopy();
                     if(Collected != null) dest.Collected = (Hl7.Fhir.Model.Element)Collected.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
-                    if(Method != null) dest.Method = (Hl7.Fhir.Model.CodeableConcept)Method.DeepCopy();
-                    if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.CodeableConcept)BodySite.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.STU3.SimpleQuantity)Quantity.DeepCopy();
+                    if(Method != null) dest.Method = (Hl7.Fhir.Model.STU3.CodeableConcept)Method.DeepCopy();
+                    if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.STU3.CodeableConcept)BodySite.DeepCopy();
                     return dest;
                 }
                 else
@@ -261,13 +261,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("procedure", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Procedure
+            public Hl7.Fhir.Model.STU3.CodeableConcept Procedure
             {
                 get { return _Procedure; }
                 set { _Procedure = value; OnPropertyChanged("Procedure"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Procedure;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Procedure;
             
             /// <summary>
             /// Material used in the processing step
@@ -290,7 +290,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("time", Order=70, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
             [DataMember]
             public Hl7.Fhir.Model.Element Time
             {
@@ -308,7 +308,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                    if(Procedure != null) dest.Procedure = (Hl7.Fhir.Model.CodeableConcept)Procedure.DeepCopy();
+                    if(Procedure != null) dest.Procedure = (Hl7.Fhir.Model.STU3.CodeableConcept)Procedure.DeepCopy();
                     if(Additive != null) dest.Additive = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Additive.DeepCopy());
                     if(Time != null) dest.Time = (Hl7.Fhir.Model.Element)Time.DeepCopy();
                     return dest;
@@ -440,46 +440,46 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("type", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Type
+            public Hl7.Fhir.Model.STU3.CodeableConcept Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Type;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
             
             /// <summary>
             /// Container volume or size
             /// </summary>
             [FhirElement("capacity", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Capacity
+            public Hl7.Fhir.Model.STU3.SimpleQuantity Capacity
             {
                 get { return _Capacity; }
                 set { _Capacity = value; OnPropertyChanged("Capacity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Capacity;
+            private Hl7.Fhir.Model.STU3.SimpleQuantity _Capacity;
             
             /// <summary>
             /// Quantity of specimen within container
             /// </summary>
             [FhirElement("specimenQuantity", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity SpecimenQuantity
+            public Hl7.Fhir.Model.STU3.SimpleQuantity SpecimenQuantity
             {
                 get { return _SpecimenQuantity; }
                 set { _SpecimenQuantity = value; OnPropertyChanged("SpecimenQuantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _SpecimenQuantity;
+            private Hl7.Fhir.Model.STU3.SimpleQuantity _SpecimenQuantity;
             
             /// <summary>
             /// Additive associated with container
             /// </summary>
             [FhirElement("additive", Order=90, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Additive
             {
@@ -498,9 +498,9 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                    if(Capacity != null) dest.Capacity = (Hl7.Fhir.Model.SimpleQuantity)Capacity.DeepCopy();
-                    if(SpecimenQuantity != null) dest.SpecimenQuantity = (Hl7.Fhir.Model.SimpleQuantity)SpecimenQuantity.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
+                    if(Capacity != null) dest.Capacity = (Hl7.Fhir.Model.STU3.SimpleQuantity)Capacity.DeepCopy();
+                    if(SpecimenQuantity != null) dest.SpecimenQuantity = (Hl7.Fhir.Model.STU3.SimpleQuantity)SpecimenQuantity.DeepCopy();
                     if(Additive != null) dest.Additive = (Hl7.Fhir.Model.Element)Additive.DeepCopy();
                     return dest;
                 }
@@ -648,13 +648,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// Where the specimen came from. This may be from the patient(s) or from the environment or a device
@@ -678,13 +678,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("receivedTime", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime ReceivedTimeElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime ReceivedTimeElement
         {
             get { return _ReceivedTimeElement; }
             set { _ReceivedTimeElement = value; OnPropertyChanged("ReceivedTimeElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _ReceivedTimeElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _ReceivedTimeElement;
         
         /// <summary>
         /// The time when specimen was received for processing
@@ -700,7 +700,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     ReceivedTimeElement = null;
                 else
-                    ReceivedTimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    ReceivedTimeElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("ReceivedTime");
             }
         }
@@ -784,13 +784,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=200)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -803,15 +803,15 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(AccessionIdentifier != null) dest.AccessionIdentifier = (Hl7.Fhir.Model.STU3.Identifier)AccessionIdentifier.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.SpecimenStatus>)StatusElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
-                if(ReceivedTimeElement != null) dest.ReceivedTimeElement = (Hl7.Fhir.Model.FhirDateTime)ReceivedTimeElement.DeepCopy();
+                if(ReceivedTimeElement != null) dest.ReceivedTimeElement = (Hl7.Fhir.Model.STU3.FhirDateTime)ReceivedTimeElement.DeepCopy();
                 if(Parent != null) dest.Parent = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Parent.DeepCopy());
                 if(Request != null) dest.Request = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Request.DeepCopy());
                 if(Collection != null) dest.Collection = (CollectionComponent)Collection.DeepCopy();
                 if(Processing != null) dest.Processing = new List<ProcessingComponent>(Processing.DeepCopy());
                 if(Container != null) dest.Container = new List<ContainerComponent>(Container.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 return dest;
             }
             else

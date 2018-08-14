@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "DiagnosticReport", IsResource=true)]
     [DataContract]
-    public partial class DiagnosticReport : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DiagnosticReport : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DiagnosticReport; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("role", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Role
+            public Hl7.Fhir.Model.STU3.CodeableConcept Role
             {
                 get { return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Role;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Role;
             
             /// <summary>
             /// Practitioner or Organization  participant
@@ -99,7 +99,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Role != null) dest.Role = (Hl7.Fhir.Model.CodeableConcept)Role.DeepCopy();
+                    if(Role != null) dest.Role = (Hl7.Fhir.Model.STU3.CodeableConcept)Role.DeepCopy();
                     if(Actor != null) dest.Actor = (Hl7.Fhir.Model.STU3.ResourceReference)Actor.DeepCopy();
                     return dest;
                 }
@@ -360,13 +360,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("category", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Category
+        public Hl7.Fhir.Model.STU3.CodeableConcept Category
         {
             get { return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Category;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Category;
         
         /// <summary>
         /// Name/Code for this diagnostic report
@@ -375,13 +375,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.STU3.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
         
         /// <summary>
         /// The subject of the report - usually, but not always, the patient
@@ -418,7 +418,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("effective", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
         [DataMember]
         public Hl7.Fhir.Model.Element Effective
         {
@@ -577,13 +577,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("codedDiagnosis", Order=240)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> CodedDiagnosis
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> CodedDiagnosis
         {
-            get { if(_CodedDiagnosis==null) _CodedDiagnosis = new List<Hl7.Fhir.Model.CodeableConcept>(); return _CodedDiagnosis; }
+            get { if(_CodedDiagnosis==null) _CodedDiagnosis = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _CodedDiagnosis; }
             set { _CodedDiagnosis = value; OnPropertyChanged("CodedDiagnosis"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _CodedDiagnosis;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _CodedDiagnosis;
         
         /// <summary>
         /// Entire report as issued
@@ -591,13 +591,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("presentedForm", Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Attachment> PresentedForm
+        public List<Hl7.Fhir.Model.STU3.Attachment> PresentedForm
         {
-            get { if(_PresentedForm==null) _PresentedForm = new List<Hl7.Fhir.Model.Attachment>(); return _PresentedForm; }
+            get { if(_PresentedForm==null) _PresentedForm = new List<Hl7.Fhir.Model.STU3.Attachment>(); return _PresentedForm; }
             set { _PresentedForm = value; OnPropertyChanged("PresentedForm"); }
         }
         
-        private List<Hl7.Fhir.Model.Attachment> _PresentedForm;
+        private List<Hl7.Fhir.Model.STU3.Attachment> _PresentedForm;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -610,8 +610,8 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(BasedOn != null) dest.BasedOn = new List<Hl7.Fhir.Model.STU3.ResourceReference>(BasedOn.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.DiagnosticReportStatus>)StatusElement.DeepCopy();
-                if(Category != null) dest.Category = (Hl7.Fhir.Model.CodeableConcept)Category.DeepCopy();
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                if(Category != null) dest.Category = (Hl7.Fhir.Model.STU3.CodeableConcept)Category.DeepCopy();
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
                 if(Effective != null) dest.Effective = (Hl7.Fhir.Model.Element)Effective.DeepCopy();
@@ -622,8 +622,8 @@ namespace Hl7.Fhir.Model.STU3
                 if(ImagingStudy != null) dest.ImagingStudy = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ImagingStudy.DeepCopy());
                 if(Image != null) dest.Image = new List<ImageComponent>(Image.DeepCopy());
                 if(ConclusionElement != null) dest.ConclusionElement = (Hl7.Fhir.Model.FhirString)ConclusionElement.DeepCopy();
-                if(CodedDiagnosis != null) dest.CodedDiagnosis = new List<Hl7.Fhir.Model.CodeableConcept>(CodedDiagnosis.DeepCopy());
-                if(PresentedForm != null) dest.PresentedForm = new List<Hl7.Fhir.Model.Attachment>(PresentedForm.DeepCopy());
+                if(CodedDiagnosis != null) dest.CodedDiagnosis = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(CodedDiagnosis.DeepCopy());
+                if(PresentedForm != null) dest.PresentedForm = new List<Hl7.Fhir.Model.STU3.Attachment>(PresentedForm.DeepCopy());
                 return dest;
             }
             else

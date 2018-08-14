@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "ProcedureRequest", IsResource=true)]
     [DataContract]
-    public partial class ProcedureRequest : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ProcedureRequest : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ProcedureRequest; } }
@@ -93,13 +93,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
         
         /// <summary>
         /// What part of body to perform on
@@ -108,20 +108,20 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> BodySite
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> BodySite
         {
-            get { if(_BodySite==null) _BodySite = new List<Hl7.Fhir.Model.CodeableConcept>(); return _BodySite; }
+            get { if(_BodySite==null) _BodySite = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _BodySite; }
             set { _BodySite = value; OnPropertyChanged("BodySite"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _BodySite;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _BodySite;
         
         /// <summary>
         /// Why procedure should occur
         /// </summary>
         [FhirElement("reason", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Reason
         {
@@ -136,7 +136,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("scheduled", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.DSTU2.Timing))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.FhirDateTime),typeof(Hl7.Fhir.Model.DSTU2.Period),typeof(Hl7.Fhir.Model.DSTU2.Timing))]
         [DataMember]
         public Hl7.Fhir.Model.Element Scheduled
         {
@@ -216,20 +216,20 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Notes
+        public List<Hl7.Fhir.Model.DSTU2.Annotation> Notes
         {
-            get { if(_Notes==null) _Notes = new List<Hl7.Fhir.Model.Annotation>(); return _Notes; }
+            get { if(_Notes==null) _Notes = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Notes; }
             set { _Notes = value; OnPropertyChanged("Notes"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Notes;
+        private List<Hl7.Fhir.Model.DSTU2.Annotation> _Notes;
         
         /// <summary>
         /// Preconditions for procedure
         /// </summary>
         [FhirElement("asNeeded", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.CodeableConcept))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept))]
         [DataMember]
         public Hl7.Fhir.Model.Element AsNeeded
         {
@@ -245,13 +245,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("orderedOn", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=200)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime OrderedOnElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime OrderedOnElement
         {
             get { return _OrderedOnElement; }
             set { _OrderedOnElement = value; OnPropertyChanged("OrderedOnElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _OrderedOnElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _OrderedOnElement;
         
         /// <summary>
         /// When request was created
@@ -267,7 +267,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     OrderedOnElement = null;
                 else
-                    OrderedOnElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    OrderedOnElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("OrderedOn");
             }
         }
@@ -330,16 +330,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subject.DeepCopy();
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                if(BodySite != null) dest.BodySite = new List<Hl7.Fhir.Model.CodeableConcept>(BodySite.DeepCopy());
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
+                if(BodySite != null) dest.BodySite = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(BodySite.DeepCopy());
                 if(Reason != null) dest.Reason = (Hl7.Fhir.Model.Element)Reason.DeepCopy();
                 if(Scheduled != null) dest.Scheduled = (Hl7.Fhir.Model.Element)Scheduled.DeepCopy();
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();
                 if(Performer != null) dest.Performer = (Hl7.Fhir.Model.DSTU2.ResourceReference)Performer.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestStatus>)StatusElement.DeepCopy();
-                if(Notes != null) dest.Notes = new List<Hl7.Fhir.Model.Annotation>(Notes.DeepCopy());
+                if(Notes != null) dest.Notes = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Notes.DeepCopy());
                 if(AsNeeded != null) dest.AsNeeded = (Hl7.Fhir.Model.Element)AsNeeded.DeepCopy();
-                if(OrderedOnElement != null) dest.OrderedOnElement = (Hl7.Fhir.Model.FhirDateTime)OrderedOnElement.DeepCopy();
+                if(OrderedOnElement != null) dest.OrderedOnElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)OrderedOnElement.DeepCopy();
                 if(Orderer != null) dest.Orderer = (Hl7.Fhir.Model.DSTU2.ResourceReference)Orderer.DeepCopy();
                 if(PriorityElement != null) dest.PriorityElement = (Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestPriority>)PriorityElement.DeepCopy();
                 return dest;

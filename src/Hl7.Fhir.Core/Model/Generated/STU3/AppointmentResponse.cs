@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "AppointmentResponse", IsResource=true)]
     [DataContract]
-    public partial class AppointmentResponse : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class AppointmentResponse : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.AppointmentResponse; } }
@@ -157,13 +157,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ParticipantType
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ParticipantType
         {
-            get { if(_ParticipantType==null) _ParticipantType = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ParticipantType; }
+            get { if(_ParticipantType==null) _ParticipantType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ParticipantType; }
             set { _ParticipantType = value; OnPropertyChanged("ParticipantType"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ParticipantType;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ParticipantType;
         
         /// <summary>
         /// Person, Location/HealthcareService or Device
@@ -274,7 +274,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(Appointment != null) dest.Appointment = (Hl7.Fhir.Model.STU3.ResourceReference)Appointment.DeepCopy();
                 if(StartElement != null) dest.StartElement = (Hl7.Fhir.Model.Instant)StartElement.DeepCopy();
                 if(EndElement != null) dest.EndElement = (Hl7.Fhir.Model.Instant)EndElement.DeepCopy();
-                if(ParticipantType != null) dest.ParticipantType = new List<Hl7.Fhir.Model.CodeableConcept>(ParticipantType.DeepCopy());
+                if(ParticipantType != null) dest.ParticipantType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ParticipantType.DeepCopy());
                 if(Actor != null) dest.Actor = (Hl7.Fhir.Model.STU3.ResourceReference)Actor.DeepCopy();
                 if(ParticipantStatusElement != null) dest.ParticipantStatusElement = (Code<Hl7.Fhir.Model.ParticipationStatus>)ParticipantStatusElement.DeepCopy();
                 if(CommentElement != null) dest.CommentElement = (Hl7.Fhir.Model.FhirString)CommentElement.DeepCopy();

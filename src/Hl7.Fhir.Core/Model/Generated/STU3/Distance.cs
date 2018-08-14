@@ -45,10 +45,12 @@ namespace Hl7.Fhir.Model.STU3
     /// <summary>
     /// A length - a value with a unit that is a physical distance
     /// </summary>
-    [FhirType(Hl7.Fhir.Model.Version.STU3, "Distance")]
+    [FhirType(Hl7.Fhir.Model.Version.STU3, "Distance", IsResource=true)]
     [DataContract]
-    public partial class Distance : Hl7.Fhir.Model.Quantity, System.ComponentModel.INotifyPropertyChanged
+    public partial class Distance : Hl7.Fhir.Model.STU3.Quantity, System.ComponentModel.INotifyPropertyChanged
     {
+        [NotMapped]
+        public override ResourceType ResourceType { get { return ResourceType.Distance; } }
         [NotMapped]
         public override string TypeName { get { return "Distance"; } }
     
@@ -63,7 +65,12 @@ namespace Hl7.Fhir.Model.STU3
             Xpath = "(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org')"
         };
     
-        // TODO: Add code to enforce the above constraints
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+    
+            InvariantConstraints.Add(Distance_DIS_1);
+        }
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {

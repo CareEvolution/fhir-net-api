@@ -60,20 +60,20 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Code
+        public Hl7.Fhir.Model.STU3.Coding Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Code;
+        private Hl7.Fhir.Model.STU3.Coding _Code;
         
         /// <summary>
         /// Value that defines the context
         /// </summary>
         [FhirElement("value", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.Quantity),typeof(Hl7.Fhir.Model.STU3.Range))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element Value
@@ -92,7 +92,7 @@ namespace Hl7.Fhir.Model.STU3
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.Coding)Code.DeepCopy();
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.Coding)Code.DeepCopy();
                 if(Value != null) dest.Value = (Hl7.Fhir.Model.Element)Value.DeepCopy();
                 return dest;
             }

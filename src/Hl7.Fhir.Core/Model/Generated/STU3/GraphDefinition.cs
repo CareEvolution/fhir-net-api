@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "GraphDefinition", IsResource=true)]
     [DataContract]
-    public partial class GraphDefinition : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class GraphDefinition : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.GraphDefinition; } }
@@ -132,13 +132,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("min", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer MinElement
+            public Hl7.Fhir.Model.STU3.Integer MinElement
             {
                 get { return _MinElement; }
                 set { _MinElement = value; OnPropertyChanged("MinElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _MinElement;
+            private Hl7.Fhir.Model.STU3.Integer _MinElement;
             
             /// <summary>
             /// Minimum occurrences for this link
@@ -154,7 +154,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         MinElement = null;
                     else
-                        MinElement = new Hl7.Fhir.Model.Integer(value);
+                        MinElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("Min");
                 }
             }
@@ -246,7 +246,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(PathElement != null) dest.PathElement = (Hl7.Fhir.Model.FhirString)PathElement.DeepCopy();
                     if(SliceNameElement != null) dest.SliceNameElement = (Hl7.Fhir.Model.FhirString)SliceNameElement.DeepCopy();
-                    if(MinElement != null) dest.MinElement = (Hl7.Fhir.Model.Integer)MinElement.DeepCopy();
+                    if(MinElement != null) dest.MinElement = (Hl7.Fhir.Model.STU3.Integer)MinElement.DeepCopy();
                     if(MaxElement != null) dest.MaxElement = (Hl7.Fhir.Model.FhirString)MaxElement.DeepCopy();
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                     if(Target != null) dest.Target = new List<TargetComponent>(Target.DeepCopy());
@@ -900,13 +900,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date this was last changed
@@ -922,7 +922,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -1029,13 +1029,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Jurisdiction
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Jurisdiction
         {
-            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Jurisdiction; }
+            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Jurisdiction; }
             set { _Jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Jurisdiction;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Jurisdiction;
         
         /// <summary>
         /// Why this graph definition is defined
@@ -1161,12 +1161,12 @@ namespace Hl7.Fhir.Model.STU3
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.PublicationStatus>)StatusElement.DeepCopy();
                 if(ExperimentalElement != null) dest.ExperimentalElement = (Hl7.Fhir.Model.FhirBoolean)ExperimentalElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(UseContext.DeepCopy());
-                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
+                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
                 if(StartElement != null) dest.StartElement = (Code<Hl7.Fhir.Model.ResourceType>)StartElement.DeepCopy();
                 if(ProfileElement != null) dest.ProfileElement = (Hl7.Fhir.Model.FhirUri)ProfileElement.DeepCopy();

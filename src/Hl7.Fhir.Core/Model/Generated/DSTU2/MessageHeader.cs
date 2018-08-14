@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "MessageHeader", IsResource=true)]
     [DataContract]
-    public partial class MessageHeader : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class MessageHeader : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.MessageHeader; } }
@@ -69,13 +69,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Id IdentifierElement
+            public Hl7.Fhir.Model.DSTU2.Id IdentifierElement
             {
                 get { return _IdentifierElement; }
                 set { _IdentifierElement = value; OnPropertyChanged("IdentifierElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _IdentifierElement;
+            private Hl7.Fhir.Model.DSTU2.Id _IdentifierElement;
             
             /// <summary>
             /// Id of original message
@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         IdentifierElement = null;
                     else
-                        IdentifierElement = new Hl7.Fhir.Model.Id(value);
+                        IdentifierElement = new Hl7.Fhir.Model.DSTU2.Id(value);
                     OnPropertyChanged("Identifier");
                 }
             }
@@ -152,7 +152,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(IdentifierElement != null) dest.IdentifierElement = (Hl7.Fhir.Model.Id)IdentifierElement.DeepCopy();
+                    if(IdentifierElement != null) dest.IdentifierElement = (Hl7.Fhir.Model.DSTU2.Id)IdentifierElement.DeepCopy();
                     if(CodeElement != null) dest.CodeElement = (Code<Hl7.Fhir.Model.ResponseType>)CodeElement.DeepCopy();
                     if(Details != null) dest.Details = (Hl7.Fhir.Model.DSTU2.ResourceReference)Details.DeepCopy();
                     return dest;
@@ -667,13 +667,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Event
+        public Hl7.Fhir.Model.DSTU2.Coding Event
         {
             get { return _Event; }
             set { _Event = value; OnPropertyChanged("Event"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Event;
+        private Hl7.Fhir.Model.DSTU2.Coding _Event;
         
         /// <summary>
         /// If this is a reply to prior message
@@ -785,13 +785,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("reason", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Reason
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Reason
         {
             get { return _Reason; }
             set { _Reason = value; OnPropertyChanged("Reason"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Reason;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Reason;
         
         /// <summary>
         /// The actual content of the message
@@ -817,7 +817,7 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(TimestampElement != null) dest.TimestampElement = (Hl7.Fhir.Model.Instant)TimestampElement.DeepCopy();
-                if(Event != null) dest.Event = (Hl7.Fhir.Model.Coding)Event.DeepCopy();
+                if(Event != null) dest.Event = (Hl7.Fhir.Model.DSTU2.Coding)Event.DeepCopy();
                 if(Response != null) dest.Response = (ResponseComponent)Response.DeepCopy();
                 if(Source != null) dest.Source = (MessageSourceComponent)Source.DeepCopy();
                 if(Destination != null) dest.Destination = new List<MessageDestinationComponent>(Destination.DeepCopy());
@@ -825,7 +825,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Author != null) dest.Author = (Hl7.Fhir.Model.DSTU2.ResourceReference)Author.DeepCopy();
                 if(Receiver != null) dest.Receiver = (Hl7.Fhir.Model.DSTU2.ResourceReference)Receiver.DeepCopy();
                 if(Responsible != null) dest.Responsible = (Hl7.Fhir.Model.DSTU2.ResourceReference)Responsible.DeepCopy();
-                if(Reason != null) dest.Reason = (Hl7.Fhir.Model.CodeableConcept)Reason.DeepCopy();
+                if(Reason != null) dest.Reason = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Reason.DeepCopy();
                 if(Data != null) dest.Data = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Data.DeepCopy());
                 return dest;
             }

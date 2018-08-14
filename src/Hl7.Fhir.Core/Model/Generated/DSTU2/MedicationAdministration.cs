@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "MedicationAdministration", IsResource=true)]
     [DataContract]
-    public partial class MedicationAdministration : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class MedicationAdministration : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.MedicationAdministration; } }
@@ -100,7 +100,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("site", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Site
             {
@@ -116,13 +116,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("route", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Route
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Route
             {
                 get { return _Route; }
                 set { _Route = value; OnPropertyChanged("Route"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Route;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Route;
             
             /// <summary>
             /// How drug was administered
@@ -130,13 +130,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("method", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Method
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Method
             {
                 get { return _Method; }
                 set { _Method = value; OnPropertyChanged("Method"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Method;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Method;
             
             /// <summary>
             /// Amount administered in one dose
@@ -144,20 +144,20 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Dose quantity per unit of time
             /// </summary>
             [FhirElement("rate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.Range))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Ratio),typeof(Hl7.Fhir.Model.DSTU2.Range))]
             [DataMember]
             public Hl7.Fhir.Model.Element Rate
             {
@@ -176,9 +176,9 @@ namespace Hl7.Fhir.Model.DSTU2
                     base.CopyTo(dest);
                     if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
                     if(Site != null) dest.Site = (Hl7.Fhir.Model.Element)Site.DeepCopy();
-                    if(Route != null) dest.Route = (Hl7.Fhir.Model.CodeableConcept)Route.DeepCopy();
-                    if(Method != null) dest.Method = (Hl7.Fhir.Model.CodeableConcept)Method.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(Route != null) dest.Route = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Route.DeepCopy();
+                    if(Method != null) dest.Method = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Method.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     if(Rate != null) dest.Rate = (Hl7.Fhir.Model.Element)Rate.DeepCopy();
                     return dest;
                 }
@@ -408,13 +408,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonNotGiven
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> ReasonNotGiven
         {
-            get { if(_ReasonNotGiven==null) _ReasonNotGiven = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonNotGiven; }
+            get { if(_ReasonNotGiven==null) _ReasonNotGiven = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _ReasonNotGiven; }
             set { _ReasonNotGiven = value; OnPropertyChanged("ReasonNotGiven"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonNotGiven;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _ReasonNotGiven;
         
         /// <summary>
         /// Reason administration performed
@@ -423,20 +423,20 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonGiven
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> ReasonGiven
         {
-            get { if(_ReasonGiven==null) _ReasonGiven = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonGiven; }
+            get { if(_ReasonGiven==null) _ReasonGiven = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _ReasonGiven; }
             set { _ReasonGiven = value; OnPropertyChanged("ReasonGiven"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonGiven;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _ReasonGiven;
         
         /// <summary>
         /// Start and end time of administration
         /// </summary>
         [FhirElement("effectiveTime", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.FhirDateTime),typeof(Hl7.Fhir.Model.DSTU2.Period))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element EffectiveTime
@@ -452,7 +452,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("medication", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element Medication
@@ -577,8 +577,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();
                 if(Prescription != null) dest.Prescription = (Hl7.Fhir.Model.DSTU2.ResourceReference)Prescription.DeepCopy();
                 if(WasNotGivenElement != null) dest.WasNotGivenElement = (Hl7.Fhir.Model.FhirBoolean)WasNotGivenElement.DeepCopy();
-                if(ReasonNotGiven != null) dest.ReasonNotGiven = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonNotGiven.DeepCopy());
-                if(ReasonGiven != null) dest.ReasonGiven = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonGiven.DeepCopy());
+                if(ReasonNotGiven != null) dest.ReasonNotGiven = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(ReasonNotGiven.DeepCopy());
+                if(ReasonGiven != null) dest.ReasonGiven = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(ReasonGiven.DeepCopy());
                 if(EffectiveTime != null) dest.EffectiveTime = (Hl7.Fhir.Model.Element)EffectiveTime.DeepCopy();
                 if(Medication != null) dest.Medication = (Hl7.Fhir.Model.Element)Medication.DeepCopy();
                 if(Device != null) dest.Device = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Device.DeepCopy());

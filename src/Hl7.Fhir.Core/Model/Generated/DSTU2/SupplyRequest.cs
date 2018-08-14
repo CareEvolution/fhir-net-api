@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "SupplyRequest", IsResource=true)]
     [DataContract]
-    public partial class SupplyRequest : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class SupplyRequest : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.SupplyRequest; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
             
             /// <summary>
             /// Formal fulfillment schedule
@@ -97,7 +97,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
                     if(Schedule != null) dest.Schedule = (Hl7.Fhir.Model.DSTU2.Timing)Schedule.DeepCopy();
                     return dest;
                 }
@@ -197,13 +197,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// When the request was made
@@ -219,7 +219,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -277,13 +277,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("kind", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Kind
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Kind
         {
             get { return _Kind; }
             set { _Kind = value; OnPropertyChanged("Kind"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Kind;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Kind;
         
         /// <summary>
         /// Medication, Substance, or Device requested to be supplied
@@ -321,7 +321,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("reason", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Reason
         {
@@ -355,10 +355,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
                 if(Source != null) dest.Source = (Hl7.Fhir.Model.DSTU2.ResourceReference)Source.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.SupplyRequestStatus>)StatusElement.DeepCopy();
-                if(Kind != null) dest.Kind = (Hl7.Fhir.Model.CodeableConcept)Kind.DeepCopy();
+                if(Kind != null) dest.Kind = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Kind.DeepCopy();
                 if(OrderedItem != null) dest.OrderedItem = (Hl7.Fhir.Model.DSTU2.ResourceReference)OrderedItem.DeepCopy();
                 if(Supplier != null) dest.Supplier = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Supplier.DeepCopy());
                 if(Reason != null) dest.Reason = (Hl7.Fhir.Model.Element)Reason.DeepCopy();

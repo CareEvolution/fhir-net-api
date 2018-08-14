@@ -116,13 +116,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Code> ValueCodeElement
+            public List<Hl7.Fhir.Model.STU3.Code> ValueCodeElement
             {
-                get { if(_ValueCodeElement==null) _ValueCodeElement = new List<Hl7.Fhir.Model.Code>(); return _ValueCodeElement; }
+                get { if(_ValueCodeElement==null) _ValueCodeElement = new List<Hl7.Fhir.Model.STU3.Code>(); return _ValueCodeElement; }
                 set { _ValueCodeElement = value; OnPropertyChanged("ValueCodeElement"); }
             }
             
-            private List<Hl7.Fhir.Model.Code> _ValueCodeElement;
+            private List<Hl7.Fhir.Model.STU3.Code> _ValueCodeElement;
             
             /// <summary>
             /// What code is expected
@@ -138,7 +138,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ValueCodeElement = null;
                     else
-                        ValueCodeElement = new List<Hl7.Fhir.Model.Code>(value.Select(elem=>new Hl7.Fhir.Model.Code(elem)));
+                        ValueCodeElement = new List<Hl7.Fhir.Model.STU3.Code>(value.Select(elem=>new Hl7.Fhir.Model.STU3.Code(elem)));
                     OnPropertyChanged("ValueCode");
                 }
             }
@@ -150,13 +150,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> ValueCoding
+            public List<Hl7.Fhir.Model.STU3.Coding> ValueCoding
             {
-                get { if(_ValueCoding==null) _ValueCoding = new List<Hl7.Fhir.Model.Coding>(); return _ValueCoding; }
+                get { if(_ValueCoding==null) _ValueCoding = new List<Hl7.Fhir.Model.STU3.Coding>(); return _ValueCoding; }
                 set { _ValueCoding = value; OnPropertyChanged("ValueCoding"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _ValueCoding;
+            private List<Hl7.Fhir.Model.STU3.Coding> _ValueCoding;
             
             /// <summary>
             /// What CodeableConcept is expected
@@ -165,13 +165,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> ValueCodeableConcept
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> ValueCodeableConcept
             {
-                get { if(_ValueCodeableConcept==null) _ValueCodeableConcept = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ValueCodeableConcept; }
+                get { if(_ValueCodeableConcept==null) _ValueCodeableConcept = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ValueCodeableConcept; }
                 set { _ValueCodeableConcept = value; OnPropertyChanged("ValueCodeableConcept"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _ValueCodeableConcept;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ValueCodeableConcept;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -182,9 +182,9 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(PathElement != null) dest.PathElement = (Hl7.Fhir.Model.FhirString)PathElement.DeepCopy();
                     if(ValueSet != null) dest.ValueSet = (Hl7.Fhir.Model.Element)ValueSet.DeepCopy();
-                    if(ValueCodeElement != null) dest.ValueCodeElement = new List<Hl7.Fhir.Model.Code>(ValueCodeElement.DeepCopy());
-                    if(ValueCoding != null) dest.ValueCoding = new List<Hl7.Fhir.Model.Coding>(ValueCoding.DeepCopy());
-                    if(ValueCodeableConcept != null) dest.ValueCodeableConcept = new List<Hl7.Fhir.Model.CodeableConcept>(ValueCodeableConcept.DeepCopy());
+                    if(ValueCodeElement != null) dest.ValueCodeElement = new List<Hl7.Fhir.Model.STU3.Code>(ValueCodeElement.DeepCopy());
+                    if(ValueCoding != null) dest.ValueCoding = new List<Hl7.Fhir.Model.STU3.Coding>(ValueCoding.DeepCopy());
+                    if(ValueCodeableConcept != null) dest.ValueCodeableConcept = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ValueCodeableConcept.DeepCopy());
                     return dest;
                 }
                 else
@@ -305,7 +305,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("value", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.STU3.Duration))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period),typeof(Hl7.Fhir.Model.STU3.Duration))]
             [DataMember]
             public Hl7.Fhir.Model.Element Value
             {

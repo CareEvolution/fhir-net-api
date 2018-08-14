@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Claim", IsResource=true)]
     [DataContract]
-    public partial class Claim : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Claim : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Claim; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Type
+            public Hl7.Fhir.Model.DSTU2.Coding Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Type;
+            private Hl7.Fhir.Model.DSTU2.Coding _Type;
             
             /// <summary>
             /// Provider who is the payee
@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.Coding)Type.DeepCopy();
                     if(Provider != null) dest.Provider = (Hl7.Fhir.Model.DSTU2.ResourceReference)Provider.DeepCopy();
                     if(Organization != null) dest.Organization = (Hl7.Fhir.Model.DSTU2.ResourceReference)Organization.DeepCopy();
                     if(Person != null) dest.Person = (Hl7.Fhir.Model.DSTU2.ResourceReference)Person.DeepCopy();
@@ -216,13 +216,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt SequenceElement
+            public Hl7.Fhir.Model.DSTU2.PositiveInt SequenceElement
             {
                 get { return _SequenceElement; }
                 set { _SequenceElement = value; OnPropertyChanged("SequenceElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _SequenceElement;
+            private Hl7.Fhir.Model.DSTU2.PositiveInt _SequenceElement;
             
             /// <summary>
             /// Sequence of diagnosis
@@ -238,7 +238,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SequenceElement = null;
                     else
-                        SequenceElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        SequenceElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                     OnPropertyChanged("Sequence");
                 }
             }
@@ -250,13 +250,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Diagnosis
+            public Hl7.Fhir.Model.DSTU2.Coding Diagnosis
             {
                 get { return _Diagnosis; }
                 set { _Diagnosis = value; OnPropertyChanged("Diagnosis"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Diagnosis;
+            private Hl7.Fhir.Model.DSTU2.Coding _Diagnosis;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -265,8 +265,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.PositiveInt)SequenceElement.DeepCopy();
-                    if(Diagnosis != null) dest.Diagnosis = (Hl7.Fhir.Model.Coding)Diagnosis.DeepCopy();
+                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)SequenceElement.DeepCopy();
+                    if(Diagnosis != null) dest.Diagnosis = (Hl7.Fhir.Model.DSTU2.Coding)Diagnosis.DeepCopy();
                     return dest;
                 }
                 else
@@ -343,13 +343,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt SequenceElement
+            public Hl7.Fhir.Model.DSTU2.PositiveInt SequenceElement
             {
                 get { return _SequenceElement; }
                 set { _SequenceElement = value; OnPropertyChanged("SequenceElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _SequenceElement;
+            private Hl7.Fhir.Model.DSTU2.PositiveInt _SequenceElement;
             
             /// <summary>
             /// Service instance identifier
@@ -365,7 +365,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SequenceElement = null;
                     else
-                        SequenceElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        SequenceElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                     OnPropertyChanged("Sequence");
                 }
             }
@@ -460,13 +460,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Relationship
+            public Hl7.Fhir.Model.DSTU2.Coding Relationship
             {
                 get { return _Relationship; }
                 set { _Relationship = value; OnPropertyChanged("Relationship"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Relationship;
+            private Hl7.Fhir.Model.DSTU2.Coding _Relationship;
             
             /// <summary>
             /// Pre-Authorization/Determination Reference
@@ -523,13 +523,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("originalRuleset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding OriginalRuleset
+            public Hl7.Fhir.Model.DSTU2.Coding OriginalRuleset
             {
                 get { return _OriginalRuleset; }
                 set { _OriginalRuleset = value; OnPropertyChanged("OriginalRuleset"); }
             }
             
-            private Hl7.Fhir.Model.Coding _OriginalRuleset;
+            private Hl7.Fhir.Model.DSTU2.Coding _OriginalRuleset;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -538,14 +538,14 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.PositiveInt)SequenceElement.DeepCopy();
+                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)SequenceElement.DeepCopy();
                     if(FocalElement != null) dest.FocalElement = (Hl7.Fhir.Model.FhirBoolean)FocalElement.DeepCopy();
                     if(Coverage != null) dest.Coverage = (Hl7.Fhir.Model.DSTU2.ResourceReference)Coverage.DeepCopy();
                     if(BusinessArrangementElement != null) dest.BusinessArrangementElement = (Hl7.Fhir.Model.FhirString)BusinessArrangementElement.DeepCopy();
-                    if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.Coding)Relationship.DeepCopy();
+                    if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.DSTU2.Coding)Relationship.DeepCopy();
                     if(PreAuthRefElement != null) dest.PreAuthRefElement = new List<Hl7.Fhir.Model.FhirString>(PreAuthRefElement.DeepCopy());
                     if(ClaimResponse != null) dest.ClaimResponse = (Hl7.Fhir.Model.DSTU2.ResourceReference)ClaimResponse.DeepCopy();
-                    if(OriginalRuleset != null) dest.OriginalRuleset = (Hl7.Fhir.Model.Coding)OriginalRuleset.DeepCopy();
+                    if(OriginalRuleset != null) dest.OriginalRuleset = (Hl7.Fhir.Model.DSTU2.Coding)OriginalRuleset.DeepCopy();
                     return dest;
                 }
                 else
@@ -646,13 +646,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt SequenceElement
+            public Hl7.Fhir.Model.DSTU2.PositiveInt SequenceElement
             {
                 get { return _SequenceElement; }
                 set { _SequenceElement = value; OnPropertyChanged("SequenceElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _SequenceElement;
+            private Hl7.Fhir.Model.DSTU2.PositiveInt _SequenceElement;
             
             /// <summary>
             /// Service instance
@@ -668,7 +668,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SequenceElement = null;
                     else
-                        SequenceElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        SequenceElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                     OnPropertyChanged("Sequence");
                 }
             }
@@ -680,13 +680,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Type
+            public Hl7.Fhir.Model.DSTU2.Coding Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Type;
+            private Hl7.Fhir.Model.DSTU2.Coding _Type;
             
             /// <summary>
             /// Responsible practitioner
@@ -710,13 +710,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.PositiveInt> DiagnosisLinkIdElement
+            public List<Hl7.Fhir.Model.DSTU2.PositiveInt> DiagnosisLinkIdElement
             {
-                get { if(_DiagnosisLinkIdElement==null) _DiagnosisLinkIdElement = new List<Hl7.Fhir.Model.PositiveInt>(); return _DiagnosisLinkIdElement; }
+                get { if(_DiagnosisLinkIdElement==null) _DiagnosisLinkIdElement = new List<Hl7.Fhir.Model.DSTU2.PositiveInt>(); return _DiagnosisLinkIdElement; }
                 set { _DiagnosisLinkIdElement = value; OnPropertyChanged("DiagnosisLinkIdElement"); }
             }
             
-            private List<Hl7.Fhir.Model.PositiveInt> _DiagnosisLinkIdElement;
+            private List<Hl7.Fhir.Model.DSTU2.PositiveInt> _DiagnosisLinkIdElement;
             
             /// <summary>
             /// Diagnosis Link
@@ -732,7 +732,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         DiagnosisLinkIdElement = null;
                     else
-                        DiagnosisLinkIdElement = new List<Hl7.Fhir.Model.PositiveInt>(value.Select(elem=>new Hl7.Fhir.Model.PositiveInt(elem)));
+                        DiagnosisLinkIdElement = new List<Hl7.Fhir.Model.DSTU2.PositiveInt>(value.Select(elem=>new Hl7.Fhir.Model.DSTU2.PositiveInt(elem)));
                     OnPropertyChanged("DiagnosisLinkId");
                 }
             }
@@ -744,13 +744,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Service
+            public Hl7.Fhir.Model.DSTU2.Coding Service
             {
                 get { return _Service; }
                 set { _Service = value; OnPropertyChanged("Service"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Service;
+            private Hl7.Fhir.Model.DSTU2.Coding _Service;
             
             /// <summary>
             /// Date of Service
@@ -758,13 +758,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("serviceDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Date ServiceDateElement
+            public Hl7.Fhir.Model.DSTU2.Date ServiceDateElement
             {
                 get { return _ServiceDateElement; }
                 set { _ServiceDateElement = value; OnPropertyChanged("ServiceDateElement"); }
             }
             
-            private Hl7.Fhir.Model.Date _ServiceDateElement;
+            private Hl7.Fhir.Model.DSTU2.Date _ServiceDateElement;
             
             /// <summary>
             /// Date of Service
@@ -780,7 +780,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         ServiceDateElement = null;
                     else
-                        ServiceDateElement = new Hl7.Fhir.Model.Date(value);
+                        ServiceDateElement = new Hl7.Fhir.Model.DSTU2.Date(value);
                     OnPropertyChanged("ServiceDate");
                 }
             }
@@ -791,13 +791,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Fee, charge or cost per point
@@ -819,13 +819,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("factor", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal FactorElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal FactorElement
             {
                 get { return _FactorElement; }
                 set { _FactorElement = value; OnPropertyChanged("FactorElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _FactorElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _FactorElement;
             
             /// <summary>
             /// Price scaling factor
@@ -841,7 +841,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         FactorElement = null;
                     else
-                        FactorElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        FactorElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Factor");
                 }
             }
@@ -852,13 +852,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("points", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PointsElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PointsElement
             {
                 get { return _PointsElement; }
                 set { _PointsElement = value; OnPropertyChanged("PointsElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PointsElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PointsElement;
             
             /// <summary>
             /// Difficulty scaling factor
@@ -874,7 +874,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PointsElement = null;
                     else
-                        PointsElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PointsElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Points");
                 }
             }
@@ -899,13 +899,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("udi", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Udi
+            public Hl7.Fhir.Model.DSTU2.Coding Udi
             {
                 get { return _Udi; }
                 set { _Udi = value; OnPropertyChanged("Udi"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Udi;
+            private Hl7.Fhir.Model.DSTU2.Coding _Udi;
             
             /// <summary>
             /// Service Location
@@ -913,13 +913,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("bodySite", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding BodySite
+            public Hl7.Fhir.Model.DSTU2.Coding BodySite
             {
                 get { return _BodySite; }
                 set { _BodySite = value; OnPropertyChanged("BodySite"); }
             }
             
-            private Hl7.Fhir.Model.Coding _BodySite;
+            private Hl7.Fhir.Model.DSTU2.Coding _BodySite;
             
             /// <summary>
             /// Service Sub-location
@@ -928,13 +928,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> SubSite
+            public List<Hl7.Fhir.Model.DSTU2.Coding> SubSite
             {
-                get { if(_SubSite==null) _SubSite = new List<Hl7.Fhir.Model.Coding>(); return _SubSite; }
+                get { if(_SubSite==null) _SubSite = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _SubSite; }
                 set { _SubSite = value; OnPropertyChanged("SubSite"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _SubSite;
+            private List<Hl7.Fhir.Model.DSTU2.Coding> _SubSite;
             
             /// <summary>
             /// Service/Product billing modifiers
@@ -943,13 +943,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Modifier
+            public List<Hl7.Fhir.Model.DSTU2.Coding> Modifier
             {
-                get { if(_Modifier==null) _Modifier = new List<Hl7.Fhir.Model.Coding>(); return _Modifier; }
+                get { if(_Modifier==null) _Modifier = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Modifier; }
                 set { _Modifier = value; OnPropertyChanged("Modifier"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Modifier;
+            private List<Hl7.Fhir.Model.DSTU2.Coding> _Modifier;
             
             /// <summary>
             /// Additional items
@@ -987,21 +987,21 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.PositiveInt)SequenceElement.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
+                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)SequenceElement.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.Coding)Type.DeepCopy();
                     if(Provider != null) dest.Provider = (Hl7.Fhir.Model.DSTU2.ResourceReference)Provider.DeepCopy();
-                    if(DiagnosisLinkIdElement != null) dest.DiagnosisLinkIdElement = new List<Hl7.Fhir.Model.PositiveInt>(DiagnosisLinkIdElement.DeepCopy());
-                    if(Service != null) dest.Service = (Hl7.Fhir.Model.Coding)Service.DeepCopy();
-                    if(ServiceDateElement != null) dest.ServiceDateElement = (Hl7.Fhir.Model.Date)ServiceDateElement.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(DiagnosisLinkIdElement != null) dest.DiagnosisLinkIdElement = new List<Hl7.Fhir.Model.DSTU2.PositiveInt>(DiagnosisLinkIdElement.DeepCopy());
+                    if(Service != null) dest.Service = (Hl7.Fhir.Model.DSTU2.Coding)Service.DeepCopy();
+                    if(ServiceDateElement != null) dest.ServiceDateElement = (Hl7.Fhir.Model.DSTU2.Date)ServiceDateElement.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     if(UnitPrice != null) dest.UnitPrice = (Hl7.Fhir.Model.DSTU2.Money)UnitPrice.DeepCopy();
-                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.FhirDecimal)FactorElement.DeepCopy();
-                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.FhirDecimal)PointsElement.DeepCopy();
+                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)FactorElement.DeepCopy();
+                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PointsElement.DeepCopy();
                     if(Net != null) dest.Net = (Hl7.Fhir.Model.DSTU2.Money)Net.DeepCopy();
-                    if(Udi != null) dest.Udi = (Hl7.Fhir.Model.Coding)Udi.DeepCopy();
-                    if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.Coding)BodySite.DeepCopy();
-                    if(SubSite != null) dest.SubSite = new List<Hl7.Fhir.Model.Coding>(SubSite.DeepCopy());
-                    if(Modifier != null) dest.Modifier = new List<Hl7.Fhir.Model.Coding>(Modifier.DeepCopy());
+                    if(Udi != null) dest.Udi = (Hl7.Fhir.Model.DSTU2.Coding)Udi.DeepCopy();
+                    if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.DSTU2.Coding)BodySite.DeepCopy();
+                    if(SubSite != null) dest.SubSite = new List<Hl7.Fhir.Model.DSTU2.Coding>(SubSite.DeepCopy());
+                    if(Modifier != null) dest.Modifier = new List<Hl7.Fhir.Model.DSTU2.Coding>(Modifier.DeepCopy());
                     if(Detail != null) dest.Detail = new List<DetailComponent>(Detail.DeepCopy());
                     if(Prosthesis != null) dest.Prosthesis = (ProsthesisComponent)Prosthesis.DeepCopy();
                     return dest;
@@ -1140,13 +1140,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt SequenceElement
+            public Hl7.Fhir.Model.DSTU2.PositiveInt SequenceElement
             {
                 get { return _SequenceElement; }
                 set { _SequenceElement = value; OnPropertyChanged("SequenceElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _SequenceElement;
+            private Hl7.Fhir.Model.DSTU2.PositiveInt _SequenceElement;
             
             /// <summary>
             /// Service instance
@@ -1162,7 +1162,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SequenceElement = null;
                     else
-                        SequenceElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        SequenceElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                     OnPropertyChanged("Sequence");
                 }
             }
@@ -1174,13 +1174,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Type
+            public Hl7.Fhir.Model.DSTU2.Coding Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Type;
+            private Hl7.Fhir.Model.DSTU2.Coding _Type;
             
             /// <summary>
             /// Additional item codes
@@ -1189,13 +1189,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Service
+            public Hl7.Fhir.Model.DSTU2.Coding Service
             {
                 get { return _Service; }
                 set { _Service = value; OnPropertyChanged("Service"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Service;
+            private Hl7.Fhir.Model.DSTU2.Coding _Service;
             
             /// <summary>
             /// Count of Products or Services
@@ -1203,13 +1203,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Fee, charge or cost per point
@@ -1231,13 +1231,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("factor", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal FactorElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal FactorElement
             {
                 get { return _FactorElement; }
                 set { _FactorElement = value; OnPropertyChanged("FactorElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _FactorElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _FactorElement;
             
             /// <summary>
             /// Price scaling factor
@@ -1253,7 +1253,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         FactorElement = null;
                     else
-                        FactorElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        FactorElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Factor");
                 }
             }
@@ -1264,13 +1264,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("points", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PointsElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PointsElement
             {
                 get { return _PointsElement; }
                 set { _PointsElement = value; OnPropertyChanged("PointsElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PointsElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PointsElement;
             
             /// <summary>
             /// Difficulty scaling factor
@@ -1286,7 +1286,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PointsElement = null;
                     else
-                        PointsElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PointsElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Points");
                 }
             }
@@ -1311,13 +1311,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("udi", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Udi
+            public Hl7.Fhir.Model.DSTU2.Coding Udi
             {
                 get { return _Udi; }
                 set { _Udi = value; OnPropertyChanged("Udi"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Udi;
+            private Hl7.Fhir.Model.DSTU2.Coding _Udi;
             
             /// <summary>
             /// Additional items
@@ -1341,15 +1341,15 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.PositiveInt)SequenceElement.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
-                    if(Service != null) dest.Service = (Hl7.Fhir.Model.Coding)Service.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)SequenceElement.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.Coding)Type.DeepCopy();
+                    if(Service != null) dest.Service = (Hl7.Fhir.Model.DSTU2.Coding)Service.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     if(UnitPrice != null) dest.UnitPrice = (Hl7.Fhir.Model.DSTU2.Money)UnitPrice.DeepCopy();
-                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.FhirDecimal)FactorElement.DeepCopy();
-                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.FhirDecimal)PointsElement.DeepCopy();
+                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)FactorElement.DeepCopy();
+                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PointsElement.DeepCopy();
                     if(Net != null) dest.Net = (Hl7.Fhir.Model.DSTU2.Money)Net.DeepCopy();
-                    if(Udi != null) dest.Udi = (Hl7.Fhir.Model.Coding)Udi.DeepCopy();
+                    if(Udi != null) dest.Udi = (Hl7.Fhir.Model.DSTU2.Coding)Udi.DeepCopy();
                     if(SubDetail != null) dest.SubDetail = new List<SubDetailComponent>(SubDetail.DeepCopy());
                     return dest;
                 }
@@ -1459,13 +1459,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt SequenceElement
+            public Hl7.Fhir.Model.DSTU2.PositiveInt SequenceElement
             {
                 get { return _SequenceElement; }
                 set { _SequenceElement = value; OnPropertyChanged("SequenceElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _SequenceElement;
+            private Hl7.Fhir.Model.DSTU2.PositiveInt _SequenceElement;
             
             /// <summary>
             /// Service instance
@@ -1481,7 +1481,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SequenceElement = null;
                     else
-                        SequenceElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        SequenceElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                     OnPropertyChanged("Sequence");
                 }
             }
@@ -1493,13 +1493,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Type
+            public Hl7.Fhir.Model.DSTU2.Coding Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Type;
+            private Hl7.Fhir.Model.DSTU2.Coding _Type;
             
             /// <summary>
             /// Additional item codes
@@ -1508,13 +1508,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Service
+            public Hl7.Fhir.Model.DSTU2.Coding Service
             {
                 get { return _Service; }
                 set { _Service = value; OnPropertyChanged("Service"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Service;
+            private Hl7.Fhir.Model.DSTU2.Coding _Service;
             
             /// <summary>
             /// Count of Products or Services
@@ -1522,13 +1522,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Fee, charge or cost per point
@@ -1550,13 +1550,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("factor", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal FactorElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal FactorElement
             {
                 get { return _FactorElement; }
                 set { _FactorElement = value; OnPropertyChanged("FactorElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _FactorElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _FactorElement;
             
             /// <summary>
             /// Price scaling factor
@@ -1572,7 +1572,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         FactorElement = null;
                     else
-                        FactorElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        FactorElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Factor");
                 }
             }
@@ -1583,13 +1583,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("points", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PointsElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PointsElement
             {
                 get { return _PointsElement; }
                 set { _PointsElement = value; OnPropertyChanged("PointsElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PointsElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PointsElement;
             
             /// <summary>
             /// Difficulty scaling factor
@@ -1605,7 +1605,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PointsElement = null;
                     else
-                        PointsElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PointsElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Points");
                 }
             }
@@ -1630,13 +1630,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("udi", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Udi
+            public Hl7.Fhir.Model.DSTU2.Coding Udi
             {
                 get { return _Udi; }
                 set { _Udi = value; OnPropertyChanged("Udi"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Udi;
+            private Hl7.Fhir.Model.DSTU2.Coding _Udi;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1645,15 +1645,15 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.PositiveInt)SequenceElement.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
-                    if(Service != null) dest.Service = (Hl7.Fhir.Model.Coding)Service.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)SequenceElement.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.Coding)Type.DeepCopy();
+                    if(Service != null) dest.Service = (Hl7.Fhir.Model.DSTU2.Coding)Service.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     if(UnitPrice != null) dest.UnitPrice = (Hl7.Fhir.Model.DSTU2.Money)UnitPrice.DeepCopy();
-                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.FhirDecimal)FactorElement.DeepCopy();
-                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.FhirDecimal)PointsElement.DeepCopy();
+                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)FactorElement.DeepCopy();
+                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PointsElement.DeepCopy();
                     if(Net != null) dest.Net = (Hl7.Fhir.Model.DSTU2.Money)Net.DeepCopy();
-                    if(Udi != null) dest.Udi = (Hl7.Fhir.Model.Coding)Udi.DeepCopy();
+                    if(Udi != null) dest.Udi = (Hl7.Fhir.Model.DSTU2.Coding)Udi.DeepCopy();
                     return dest;
                 }
                 else
@@ -1790,13 +1790,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("priorDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Date PriorDateElement
+            public Hl7.Fhir.Model.DSTU2.Date PriorDateElement
             {
                 get { return _PriorDateElement; }
                 set { _PriorDateElement = value; OnPropertyChanged("PriorDateElement"); }
             }
             
-            private Hl7.Fhir.Model.Date _PriorDateElement;
+            private Hl7.Fhir.Model.DSTU2.Date _PriorDateElement;
             
             /// <summary>
             /// Initial service Date
@@ -1812,7 +1812,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PriorDateElement = null;
                     else
-                        PriorDateElement = new Hl7.Fhir.Model.Date(value);
+                        PriorDateElement = new Hl7.Fhir.Model.DSTU2.Date(value);
                     OnPropertyChanged("PriorDate");
                 }
             }
@@ -1823,13 +1823,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("priorMaterial", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding PriorMaterial
+            public Hl7.Fhir.Model.DSTU2.Coding PriorMaterial
             {
                 get { return _PriorMaterial; }
                 set { _PriorMaterial = value; OnPropertyChanged("PriorMaterial"); }
             }
             
-            private Hl7.Fhir.Model.Coding _PriorMaterial;
+            private Hl7.Fhir.Model.DSTU2.Coding _PriorMaterial;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1839,8 +1839,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(InitialElement != null) dest.InitialElement = (Hl7.Fhir.Model.FhirBoolean)InitialElement.DeepCopy();
-                    if(PriorDateElement != null) dest.PriorDateElement = (Hl7.Fhir.Model.Date)PriorDateElement.DeepCopy();
-                    if(PriorMaterial != null) dest.PriorMaterial = (Hl7.Fhir.Model.Coding)PriorMaterial.DeepCopy();
+                    if(PriorDateElement != null) dest.PriorDateElement = (Hl7.Fhir.Model.DSTU2.Date)PriorDateElement.DeepCopy();
+                    if(PriorMaterial != null) dest.PriorMaterial = (Hl7.Fhir.Model.DSTU2.Coding)PriorMaterial.DeepCopy();
                     return dest;
                 }
                 else
@@ -1921,13 +1921,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Tooth
+            public Hl7.Fhir.Model.DSTU2.Coding Tooth
             {
                 get { return _Tooth; }
                 set { _Tooth = value; OnPropertyChanged("Tooth"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Tooth;
+            private Hl7.Fhir.Model.DSTU2.Coding _Tooth;
             
             /// <summary>
             /// Reason for missing
@@ -1935,13 +1935,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("reason", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Reason
+            public Hl7.Fhir.Model.DSTU2.Coding Reason
             {
                 get { return _Reason; }
                 set { _Reason = value; OnPropertyChanged("Reason"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Reason;
+            private Hl7.Fhir.Model.DSTU2.Coding _Reason;
             
             /// <summary>
             /// Date of Extraction
@@ -1949,13 +1949,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("extractionDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Date ExtractionDateElement
+            public Hl7.Fhir.Model.DSTU2.Date ExtractionDateElement
             {
                 get { return _ExtractionDateElement; }
                 set { _ExtractionDateElement = value; OnPropertyChanged("ExtractionDateElement"); }
             }
             
-            private Hl7.Fhir.Model.Date _ExtractionDateElement;
+            private Hl7.Fhir.Model.DSTU2.Date _ExtractionDateElement;
             
             /// <summary>
             /// Date of Extraction
@@ -1971,7 +1971,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         ExtractionDateElement = null;
                     else
-                        ExtractionDateElement = new Hl7.Fhir.Model.Date(value);
+                        ExtractionDateElement = new Hl7.Fhir.Model.DSTU2.Date(value);
                     OnPropertyChanged("ExtractionDate");
                 }
             }
@@ -1983,9 +1983,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Tooth != null) dest.Tooth = (Hl7.Fhir.Model.Coding)Tooth.DeepCopy();
-                    if(Reason != null) dest.Reason = (Hl7.Fhir.Model.Coding)Reason.DeepCopy();
-                    if(ExtractionDateElement != null) dest.ExtractionDateElement = (Hl7.Fhir.Model.Date)ExtractionDateElement.DeepCopy();
+                    if(Tooth != null) dest.Tooth = (Hl7.Fhir.Model.DSTU2.Coding)Tooth.DeepCopy();
+                    if(Reason != null) dest.Reason = (Hl7.Fhir.Model.DSTU2.Coding)Reason.DeepCopy();
+                    if(ExtractionDateElement != null) dest.ExtractionDateElement = (Hl7.Fhir.Model.DSTU2.Date)ExtractionDateElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -2107,13 +2107,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("ruleset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Ruleset
+        public Hl7.Fhir.Model.DSTU2.Coding Ruleset
         {
             get { return _Ruleset; }
             set { _Ruleset = value; OnPropertyChanged("Ruleset"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Ruleset;
+        private Hl7.Fhir.Model.DSTU2.Coding _Ruleset;
         
         /// <summary>
         /// Original specification followed
@@ -2121,13 +2121,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("originalRuleset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding OriginalRuleset
+        public Hl7.Fhir.Model.DSTU2.Coding OriginalRuleset
         {
             get { return _OriginalRuleset; }
             set { _OriginalRuleset = value; OnPropertyChanged("OriginalRuleset"); }
         }
         
-        private Hl7.Fhir.Model.Coding _OriginalRuleset;
+        private Hl7.Fhir.Model.DSTU2.Coding _OriginalRuleset;
         
         /// <summary>
         /// Creation date
@@ -2135,13 +2135,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("created", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Creation date
@@ -2157,7 +2157,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -2246,13 +2246,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("priority", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Priority
+        public Hl7.Fhir.Model.DSTU2.Coding Priority
         {
             get { return _Priority; }
             set { _Priority = value; OnPropertyChanged("Priority"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Priority;
+        private Hl7.Fhir.Model.DSTU2.Coding _Priority;
         
         /// <summary>
         /// Funds requested to be reserved
@@ -2260,13 +2260,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("fundsReserve", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding FundsReserve
+        public Hl7.Fhir.Model.DSTU2.Coding FundsReserve
         {
             get { return _FundsReserve; }
             set { _FundsReserve = value; OnPropertyChanged("FundsReserve"); }
         }
         
-        private Hl7.Fhir.Model.Coding _FundsReserve;
+        private Hl7.Fhir.Model.DSTU2.Coding _FundsReserve;
         
         /// <summary>
         /// Author
@@ -2379,13 +2379,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Condition
+        public List<Hl7.Fhir.Model.DSTU2.Coding> Condition
         {
-            get { if(_Condition==null) _Condition = new List<Hl7.Fhir.Model.Coding>(); return _Condition; }
+            get { if(_Condition==null) _Condition = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Condition; }
             set { _Condition = value; OnPropertyChanged("Condition"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _Condition;
+        private List<Hl7.Fhir.Model.DSTU2.Coding> _Condition;
         
         /// <summary>
         /// The subject of the Products and Services
@@ -2425,13 +2425,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Exception
+        public List<Hl7.Fhir.Model.DSTU2.Coding> Exception
         {
-            get { if(_Exception==null) _Exception = new List<Hl7.Fhir.Model.Coding>(); return _Exception; }
+            get { if(_Exception==null) _Exception = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Exception; }
             set { _Exception = value; OnPropertyChanged("Exception"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _Exception;
+        private List<Hl7.Fhir.Model.DSTU2.Coding> _Exception;
         
         /// <summary>
         /// Name of School
@@ -2472,13 +2472,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("accident", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=320)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Date AccidentElement
+        public Hl7.Fhir.Model.DSTU2.Date AccidentElement
         {
             get { return _AccidentElement; }
             set { _AccidentElement = value; OnPropertyChanged("AccidentElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _AccidentElement;
+        private Hl7.Fhir.Model.DSTU2.Date _AccidentElement;
         
         /// <summary>
         /// Accident Date
@@ -2494,7 +2494,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     AccidentElement = null;
                 else
-                    AccidentElement = new Hl7.Fhir.Model.Date(value);
+                    AccidentElement = new Hl7.Fhir.Model.DSTU2.Date(value);
                 OnPropertyChanged("Accident");
             }
         }
@@ -2505,13 +2505,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("accidentType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=330)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding AccidentType
+        public Hl7.Fhir.Model.DSTU2.Coding AccidentType
         {
             get { return _AccidentType; }
             set { _AccidentType = value; OnPropertyChanged("AccidentType"); }
         }
         
-        private Hl7.Fhir.Model.Coding _AccidentType;
+        private Hl7.Fhir.Model.DSTU2.Coding _AccidentType;
         
         /// <summary>
         /// Intervention and exception code (Pharma)
@@ -2520,13 +2520,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> InterventionException
+        public List<Hl7.Fhir.Model.DSTU2.Coding> InterventionException
         {
-            get { if(_InterventionException==null) _InterventionException = new List<Hl7.Fhir.Model.Coding>(); return _InterventionException; }
+            get { if(_InterventionException==null) _InterventionException = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _InterventionException; }
             set { _InterventionException = value; OnPropertyChanged("InterventionException"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _InterventionException;
+        private List<Hl7.Fhir.Model.DSTU2.Coding> _InterventionException;
         
         /// <summary>
         /// Goods and Services
@@ -2550,13 +2550,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> AdditionalMaterials
+        public List<Hl7.Fhir.Model.DSTU2.Coding> AdditionalMaterials
         {
-            get { if(_AdditionalMaterials==null) _AdditionalMaterials = new List<Hl7.Fhir.Model.Coding>(); return _AdditionalMaterials; }
+            get { if(_AdditionalMaterials==null) _AdditionalMaterials = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _AdditionalMaterials; }
             set { _AdditionalMaterials = value; OnPropertyChanged("AdditionalMaterials"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _AdditionalMaterials;
+        private List<Hl7.Fhir.Model.DSTU2.Coding> _AdditionalMaterials;
         
         /// <summary>
         /// Only if type = oral
@@ -2583,15 +2583,15 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.DSTU2.ClaimType>)TypeElement.DeepCopy();
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(Ruleset != null) dest.Ruleset = (Hl7.Fhir.Model.Coding)Ruleset.DeepCopy();
-                if(OriginalRuleset != null) dest.OriginalRuleset = (Hl7.Fhir.Model.Coding)OriginalRuleset.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(Ruleset != null) dest.Ruleset = (Hl7.Fhir.Model.DSTU2.Coding)Ruleset.DeepCopy();
+                if(OriginalRuleset != null) dest.OriginalRuleset = (Hl7.Fhir.Model.DSTU2.Coding)OriginalRuleset.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)CreatedElement.DeepCopy();
                 if(Target != null) dest.Target = (Hl7.Fhir.Model.DSTU2.ResourceReference)Target.DeepCopy();
                 if(Provider != null) dest.Provider = (Hl7.Fhir.Model.DSTU2.ResourceReference)Provider.DeepCopy();
                 if(Organization != null) dest.Organization = (Hl7.Fhir.Model.DSTU2.ResourceReference)Organization.DeepCopy();
                 if(UseElement != null) dest.UseElement = (Code<Hl7.Fhir.Model.Use>)UseElement.DeepCopy();
-                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.Coding)Priority.DeepCopy();
-                if(FundsReserve != null) dest.FundsReserve = (Hl7.Fhir.Model.Coding)FundsReserve.DeepCopy();
+                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.DSTU2.Coding)Priority.DeepCopy();
+                if(FundsReserve != null) dest.FundsReserve = (Hl7.Fhir.Model.DSTU2.Coding)FundsReserve.DeepCopy();
                 if(Enterer != null) dest.Enterer = (Hl7.Fhir.Model.DSTU2.ResourceReference)Enterer.DeepCopy();
                 if(Facility != null) dest.Facility = (Hl7.Fhir.Model.DSTU2.ResourceReference)Facility.DeepCopy();
                 if(Prescription != null) dest.Prescription = (Hl7.Fhir.Model.DSTU2.ResourceReference)Prescription.DeepCopy();
@@ -2599,16 +2599,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Payee != null) dest.Payee = (PayeeComponent)Payee.DeepCopy();
                 if(Referral != null) dest.Referral = (Hl7.Fhir.Model.DSTU2.ResourceReference)Referral.DeepCopy();
                 if(Diagnosis != null) dest.Diagnosis = new List<DiagnosisComponent>(Diagnosis.DeepCopy());
-                if(Condition != null) dest.Condition = new List<Hl7.Fhir.Model.Coding>(Condition.DeepCopy());
+                if(Condition != null) dest.Condition = new List<Hl7.Fhir.Model.DSTU2.Coding>(Condition.DeepCopy());
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
                 if(Coverage != null) dest.Coverage = new List<CoverageComponent>(Coverage.DeepCopy());
-                if(Exception != null) dest.Exception = new List<Hl7.Fhir.Model.Coding>(Exception.DeepCopy());
+                if(Exception != null) dest.Exception = new List<Hl7.Fhir.Model.DSTU2.Coding>(Exception.DeepCopy());
                 if(SchoolElement != null) dest.SchoolElement = (Hl7.Fhir.Model.FhirString)SchoolElement.DeepCopy();
-                if(AccidentElement != null) dest.AccidentElement = (Hl7.Fhir.Model.Date)AccidentElement.DeepCopy();
-                if(AccidentType != null) dest.AccidentType = (Hl7.Fhir.Model.Coding)AccidentType.DeepCopy();
-                if(InterventionException != null) dest.InterventionException = new List<Hl7.Fhir.Model.Coding>(InterventionException.DeepCopy());
+                if(AccidentElement != null) dest.AccidentElement = (Hl7.Fhir.Model.DSTU2.Date)AccidentElement.DeepCopy();
+                if(AccidentType != null) dest.AccidentType = (Hl7.Fhir.Model.DSTU2.Coding)AccidentType.DeepCopy();
+                if(InterventionException != null) dest.InterventionException = new List<Hl7.Fhir.Model.DSTU2.Coding>(InterventionException.DeepCopy());
                 if(Item != null) dest.Item = new List<ItemsComponent>(Item.DeepCopy());
-                if(AdditionalMaterials != null) dest.AdditionalMaterials = new List<Hl7.Fhir.Model.Coding>(AdditionalMaterials.DeepCopy());
+                if(AdditionalMaterials != null) dest.AdditionalMaterials = new List<Hl7.Fhir.Model.DSTU2.Coding>(AdditionalMaterials.DeepCopy());
                 if(MissingTeeth != null) dest.MissingTeeth = new List<MissingTeethComponent>(MissingTeeth.DeepCopy());
                 return dest;
             }

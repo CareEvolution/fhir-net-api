@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "ProcessResponse", IsResource=true)]
     [DataContract]
-    public partial class ProcessResponse : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ProcessResponse : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ProcessResponse; } }
@@ -67,13 +67,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("type", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Type
+            public Hl7.Fhir.Model.STU3.CodeableConcept Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Type;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
             
             /// <summary>
             /// Comment on the processing
@@ -114,7 +114,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
                     if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
                     return dest;
                 }
@@ -230,13 +230,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("created", Order=110)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Creation date
@@ -252,7 +252,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -290,13 +290,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("outcome", Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Outcome
+        public Hl7.Fhir.Model.STU3.CodeableConcept Outcome
         {
             get { return _Outcome; }
             set { _Outcome = value; OnPropertyChanged("Outcome"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Outcome;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Outcome;
         
         /// <summary>
         /// Disposition Message
@@ -365,13 +365,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("form", Order=180)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Form
+        public Hl7.Fhir.Model.STU3.CodeableConcept Form
         {
             get { return _Form; }
             set { _Form = value; OnPropertyChanged("Form"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Form;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Form;
         
         /// <summary>
         /// Processing comments or additional requirements
@@ -393,13 +393,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("error", Order=200)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Error
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Error
         {
-            get { if(_Error==null) _Error = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Error; }
+            get { if(_Error==null) _Error = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Error; }
             set { _Error = value; OnPropertyChanged("Error"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Error;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Error;
         
         /// <summary>
         /// Request for additional information
@@ -427,16 +427,16 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.FinancialResourceStatusCodes>)StatusElement.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)CreatedElement.DeepCopy();
                 if(Organization != null) dest.Organization = (Hl7.Fhir.Model.STU3.ResourceReference)Organization.DeepCopy();
                 if(Request != null) dest.Request = (Hl7.Fhir.Model.STU3.ResourceReference)Request.DeepCopy();
-                if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
+                if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.STU3.CodeableConcept)Outcome.DeepCopy();
                 if(DispositionElement != null) dest.DispositionElement = (Hl7.Fhir.Model.FhirString)DispositionElement.DeepCopy();
                 if(RequestProvider != null) dest.RequestProvider = (Hl7.Fhir.Model.STU3.ResourceReference)RequestProvider.DeepCopy();
                 if(RequestOrganization != null) dest.RequestOrganization = (Hl7.Fhir.Model.STU3.ResourceReference)RequestOrganization.DeepCopy();
-                if(Form != null) dest.Form = (Hl7.Fhir.Model.CodeableConcept)Form.DeepCopy();
+                if(Form != null) dest.Form = (Hl7.Fhir.Model.STU3.CodeableConcept)Form.DeepCopy();
                 if(ProcessNote != null) dest.ProcessNote = new List<ProcessNoteComponent>(ProcessNote.DeepCopy());
-                if(Error != null) dest.Error = new List<Hl7.Fhir.Model.CodeableConcept>(Error.DeepCopy());
+                if(Error != null) dest.Error = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Error.DeepCopy());
                 if(CommunicationRequest != null) dest.CommunicationRequest = new List<Hl7.Fhir.Model.STU3.ResourceReference>(CommunicationRequest.DeepCopy());
                 return dest;
             }

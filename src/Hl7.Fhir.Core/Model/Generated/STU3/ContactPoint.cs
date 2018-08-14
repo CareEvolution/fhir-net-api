@@ -158,13 +158,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("rank", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt RankElement
+        public Hl7.Fhir.Model.STU3.PositiveInt RankElement
         {
             get { return _RankElement; }
             set { _RankElement = value; OnPropertyChanged("RankElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _RankElement;
+        private Hl7.Fhir.Model.STU3.PositiveInt _RankElement;
         
         /// <summary>
         /// Specify preferred order of use (1 = highest)
@@ -180,7 +180,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     RankElement = null;
                 else
-                    RankElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    RankElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                 OnPropertyChanged("Rank");
             }
         }
@@ -191,13 +191,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
     
     
         public static ElementDefinitionConstraint ContactPoint_CPT_2 = new ElementDefinitionConstraint
@@ -221,8 +221,8 @@ namespace Hl7.Fhir.Model.STU3
                 if(SystemElement != null) dest.SystemElement = (Code<Hl7.Fhir.Model.STU3.ContactPointSystem>)SystemElement.DeepCopy();
                 if(ValueElement != null) dest.ValueElement = (Hl7.Fhir.Model.FhirString)ValueElement.DeepCopy();
                 if(UseElement != null) dest.UseElement = (Code<Hl7.Fhir.Model.ContactPointUse>)UseElement.DeepCopy();
-                if(RankElement != null) dest.RankElement = (Hl7.Fhir.Model.PositiveInt)RankElement.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                if(RankElement != null) dest.RankElement = (Hl7.Fhir.Model.STU3.PositiveInt)RankElement.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                 return dest;
             }
             else

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "ExpansionProfile", IsResource=true)]
     [DataContract]
-    public partial class ExpansionProfile : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ExpansionProfile : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ExpansionProfile; } }
@@ -592,13 +592,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("language", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Code LanguageElement
+            public Hl7.Fhir.Model.STU3.Code LanguageElement
             {
                 get { return _LanguageElement; }
                 set { _LanguageElement = value; OnPropertyChanged("LanguageElement"); }
             }
             
-            private Hl7.Fhir.Model.Code _LanguageElement;
+            private Hl7.Fhir.Model.STU3.Code _LanguageElement;
             
             /// <summary>
             /// Human language of the designation to be included
@@ -614,7 +614,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         LanguageElement = null;
                     else
-                        LanguageElement = new Hl7.Fhir.Model.Code(value);
+                        LanguageElement = new Hl7.Fhir.Model.STU3.Code(value);
                     OnPropertyChanged("Language");
                 }
             }
@@ -625,13 +625,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("use", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Use
+            public Hl7.Fhir.Model.STU3.Coding Use
             {
                 get { return _Use; }
                 set { _Use = value; OnPropertyChanged("Use"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Use;
+            private Hl7.Fhir.Model.STU3.Coding _Use;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -640,8 +640,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(LanguageElement != null) dest.LanguageElement = (Hl7.Fhir.Model.Code)LanguageElement.DeepCopy();
-                    if(Use != null) dest.Use = (Hl7.Fhir.Model.Coding)Use.DeepCopy();
+                    if(LanguageElement != null) dest.LanguageElement = (Hl7.Fhir.Model.STU3.Code)LanguageElement.DeepCopy();
+                    if(Use != null) dest.Use = (Hl7.Fhir.Model.STU3.Coding)Use.DeepCopy();
                     return dest;
                 }
                 else
@@ -805,13 +805,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("language", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Code LanguageElement
+            public Hl7.Fhir.Model.STU3.Code LanguageElement
             {
                 get { return _LanguageElement; }
                 set { _LanguageElement = value; OnPropertyChanged("LanguageElement"); }
             }
             
-            private Hl7.Fhir.Model.Code _LanguageElement;
+            private Hl7.Fhir.Model.STU3.Code _LanguageElement;
             
             /// <summary>
             /// Human language of the designation to be excluded
@@ -827,7 +827,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         LanguageElement = null;
                     else
-                        LanguageElement = new Hl7.Fhir.Model.Code(value);
+                        LanguageElement = new Hl7.Fhir.Model.STU3.Code(value);
                     OnPropertyChanged("Language");
                 }
             }
@@ -838,13 +838,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("use", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Use
+            public Hl7.Fhir.Model.STU3.Coding Use
             {
                 get { return _Use; }
                 set { _Use = value; OnPropertyChanged("Use"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Use;
+            private Hl7.Fhir.Model.STU3.Coding _Use;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -853,8 +853,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(LanguageElement != null) dest.LanguageElement = (Hl7.Fhir.Model.Code)LanguageElement.DeepCopy();
-                    if(Use != null) dest.Use = (Hl7.Fhir.Model.Coding)Use.DeepCopy();
+                    if(LanguageElement != null) dest.LanguageElement = (Hl7.Fhir.Model.STU3.Code)LanguageElement.DeepCopy();
+                    if(Use != null) dest.Use = (Hl7.Fhir.Model.STU3.Coding)Use.DeepCopy();
                     return dest;
                 }
                 else
@@ -1103,13 +1103,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date this was last changed
@@ -1125,7 +1125,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -1232,13 +1232,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Jurisdiction
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Jurisdiction
         {
-            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Jurisdiction; }
+            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Jurisdiction; }
             set { _Jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Jurisdiction;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Jurisdiction;
         
         /// <summary>
         /// Fix use of a code system to a particular version
@@ -1487,13 +1487,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("displayLanguage", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=300)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Code DisplayLanguageElement
+        public Hl7.Fhir.Model.STU3.Code DisplayLanguageElement
         {
             get { return _DisplayLanguageElement; }
             set { _DisplayLanguageElement = value; OnPropertyChanged("DisplayLanguageElement"); }
         }
         
-        private Hl7.Fhir.Model.Code _DisplayLanguageElement;
+        private Hl7.Fhir.Model.STU3.Code _DisplayLanguageElement;
         
         /// <summary>
         /// Specify the language for the display element of codes in the value set expansion
@@ -1509,7 +1509,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DisplayLanguageElement = null;
                 else
-                    DisplayLanguageElement = new Hl7.Fhir.Model.Code(value);
+                    DisplayLanguageElement = new Hl7.Fhir.Model.STU3.Code(value);
                 OnPropertyChanged("DisplayLanguage");
             }
         }
@@ -1587,12 +1587,12 @@ namespace Hl7.Fhir.Model.STU3
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.PublicationStatus>)StatusElement.DeepCopy();
                 if(ExperimentalElement != null) dest.ExperimentalElement = (Hl7.Fhir.Model.FhirBoolean)ExperimentalElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(UseContext.DeepCopy());
-                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
+                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(FixedVersion != null) dest.FixedVersion = new List<FixedVersionComponent>(FixedVersion.DeepCopy());
                 if(ExcludedSystem != null) dest.ExcludedSystem = (ExcludedSystemComponent)ExcludedSystem.DeepCopy();
                 if(IncludeDesignationsElement != null) dest.IncludeDesignationsElement = (Hl7.Fhir.Model.FhirBoolean)IncludeDesignationsElement.DeepCopy();
@@ -1602,7 +1602,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(ExcludeNestedElement != null) dest.ExcludeNestedElement = (Hl7.Fhir.Model.FhirBoolean)ExcludeNestedElement.DeepCopy();
                 if(ExcludeNotForUIElement != null) dest.ExcludeNotForUIElement = (Hl7.Fhir.Model.FhirBoolean)ExcludeNotForUIElement.DeepCopy();
                 if(ExcludePostCoordinatedElement != null) dest.ExcludePostCoordinatedElement = (Hl7.Fhir.Model.FhirBoolean)ExcludePostCoordinatedElement.DeepCopy();
-                if(DisplayLanguageElement != null) dest.DisplayLanguageElement = (Hl7.Fhir.Model.Code)DisplayLanguageElement.DeepCopy();
+                if(DisplayLanguageElement != null) dest.DisplayLanguageElement = (Hl7.Fhir.Model.STU3.Code)DisplayLanguageElement.DeepCopy();
                 if(LimitedExpansionElement != null) dest.LimitedExpansionElement = (Hl7.Fhir.Model.FhirBoolean)LimitedExpansionElement.DeepCopy();
                 return dest;
             }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Medication", IsResource=true)]
     [DataContract]
-    public partial class Medication : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Medication : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Medication; } }
@@ -67,7 +67,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("item", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Item
@@ -115,13 +115,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("amount", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Ratio Amount
+            public Hl7.Fhir.Model.STU3.Ratio Amount
             {
                 get { return _Amount; }
                 set { _Amount = value; OnPropertyChanged("Amount"); }
             }
             
-            private Hl7.Fhir.Model.Ratio _Amount;
+            private Hl7.Fhir.Model.STU3.Ratio _Amount;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -132,7 +132,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(Item != null) dest.Item = (Hl7.Fhir.Model.Element)Item.DeepCopy();
                     if(IsActiveElement != null) dest.IsActiveElement = (Hl7.Fhir.Model.FhirBoolean)IsActiveElement.DeepCopy();
-                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.Ratio)Amount.DeepCopy();
+                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.STU3.Ratio)Amount.DeepCopy();
                     return dest;
                 }
                 else
@@ -211,13 +211,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("container", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Container
+            public Hl7.Fhir.Model.STU3.CodeableConcept Container
             {
                 get { return _Container; }
                 set { _Container = value; OnPropertyChanged("Container"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Container;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Container;
             
             /// <summary>
             /// What is  in the package
@@ -254,7 +254,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Container != null) dest.Container = (Hl7.Fhir.Model.CodeableConcept)Container.DeepCopy();
+                    if(Container != null) dest.Container = (Hl7.Fhir.Model.STU3.CodeableConcept)Container.DeepCopy();
                     if(Content != null) dest.Content = new List<ContentComponent>(Content.DeepCopy());
                     if(Batch != null) dest.Batch = new List<BatchComponent>(Batch.DeepCopy());
                     return dest;
@@ -335,7 +335,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("item", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Item
@@ -351,13 +351,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("amount", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Amount
+            public Hl7.Fhir.Model.STU3.SimpleQuantity Amount
             {
                 get { return _Amount; }
                 set { _Amount = value; OnPropertyChanged("Amount"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Amount;
+            private Hl7.Fhir.Model.STU3.SimpleQuantity _Amount;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -367,7 +367,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(Item != null) dest.Item = (Hl7.Fhir.Model.Element)Item.DeepCopy();
-                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.SimpleQuantity)Amount.DeepCopy();
+                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.STU3.SimpleQuantity)Amount.DeepCopy();
                     return dest;
                 }
                 else
@@ -474,13 +474,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("expirationDate", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime ExpirationDateElement
+            public Hl7.Fhir.Model.STU3.FhirDateTime ExpirationDateElement
             {
                 get { return _ExpirationDateElement; }
                 set { _ExpirationDateElement = value; OnPropertyChanged("ExpirationDateElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _ExpirationDateElement;
+            private Hl7.Fhir.Model.STU3.FhirDateTime _ExpirationDateElement;
             
             /// <summary>
             /// When batch will expire
@@ -496,7 +496,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ExpirationDateElement = null;
                     else
-                        ExpirationDateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        ExpirationDateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                     OnPropertyChanged("ExpirationDate");
                 }
             }
@@ -509,7 +509,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(LotNumberElement != null) dest.LotNumberElement = (Hl7.Fhir.Model.FhirString)LotNumberElement.DeepCopy();
-                    if(ExpirationDateElement != null) dest.ExpirationDateElement = (Hl7.Fhir.Model.FhirDateTime)ExpirationDateElement.DeepCopy();
+                    if(ExpirationDateElement != null) dest.ExpirationDateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)ExpirationDateElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -578,13 +578,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.STU3.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
         
         /// <summary>
         /// active | inactive | entered-in-error
@@ -705,13 +705,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("form", Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Form
+        public Hl7.Fhir.Model.STU3.CodeableConcept Form
         {
             get { return _Form; }
             set { _Form = value; OnPropertyChanged("Form"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Form;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Form;
         
         /// <summary>
         /// Active or inactive ingredient
@@ -746,13 +746,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("image", Order=170)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Attachment> Image
+        public List<Hl7.Fhir.Model.STU3.Attachment> Image
         {
-            get { if(_Image==null) _Image = new List<Hl7.Fhir.Model.Attachment>(); return _Image; }
+            get { if(_Image==null) _Image = new List<Hl7.Fhir.Model.STU3.Attachment>(); return _Image; }
             set { _Image = value; OnPropertyChanged("Image"); }
         }
         
-        private List<Hl7.Fhir.Model.Attachment> _Image;
+        private List<Hl7.Fhir.Model.STU3.Attachment> _Image;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -762,15 +762,15 @@ namespace Hl7.Fhir.Model.STU3
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.MedicationStatus>)StatusElement.DeepCopy();
                 if(IsBrandElement != null) dest.IsBrandElement = (Hl7.Fhir.Model.FhirBoolean)IsBrandElement.DeepCopy();
                 if(IsOverTheCounterElement != null) dest.IsOverTheCounterElement = (Hl7.Fhir.Model.FhirBoolean)IsOverTheCounterElement.DeepCopy();
                 if(Manufacturer != null) dest.Manufacturer = (Hl7.Fhir.Model.STU3.ResourceReference)Manufacturer.DeepCopy();
-                if(Form != null) dest.Form = (Hl7.Fhir.Model.CodeableConcept)Form.DeepCopy();
+                if(Form != null) dest.Form = (Hl7.Fhir.Model.STU3.CodeableConcept)Form.DeepCopy();
                 if(Ingredient != null) dest.Ingredient = new List<IngredientComponent>(Ingredient.DeepCopy());
                 if(Package != null) dest.Package = (PackageComponent)Package.DeepCopy();
-                if(Image != null) dest.Image = new List<Hl7.Fhir.Model.Attachment>(Image.DeepCopy());
+                if(Image != null) dest.Image = new List<Hl7.Fhir.Model.STU3.Attachment>(Image.DeepCopy());
                 return dest;
             }
             else

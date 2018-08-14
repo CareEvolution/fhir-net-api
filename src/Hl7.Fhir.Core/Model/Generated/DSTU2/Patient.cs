@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Patient", IsResource=true)]
     [DataContract]
-    public partial class Patient : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Patient : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Patient; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("relationship", Order=40)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Relationship
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Relationship
             {
-                get { if(_Relationship==null) _Relationship = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Relationship; }
+                get { if(_Relationship==null) _Relationship = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Relationship; }
                 set { _Relationship = value; OnPropertyChanged("Relationship"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Relationship;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Relationship;
             
             /// <summary>
             /// A name associated with the contact person
@@ -108,13 +108,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("address", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Address Address
+            public Hl7.Fhir.Model.DSTU2.Address Address
             {
                 get { return _Address; }
                 set { _Address = value; OnPropertyChanged("Address"); }
             }
             
-            private Hl7.Fhir.Model.Address _Address;
+            private Hl7.Fhir.Model.DSTU2.Address _Address;
             
             /// <summary>
             /// male | female | other | unknown
@@ -168,13 +168,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("period", Order=100)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.DSTU2.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.DSTU2.Period _Period;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -183,13 +183,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Relationship != null) dest.Relationship = new List<Hl7.Fhir.Model.CodeableConcept>(Relationship.DeepCopy());
+                    if(Relationship != null) dest.Relationship = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Relationship.DeepCopy());
                     if(Name != null) dest.Name = (Hl7.Fhir.Model.DSTU2.HumanName)Name.DeepCopy();
                     if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.DSTU2.ContactPoint>(Telecom.DeepCopy());
-                    if(Address != null) dest.Address = (Hl7.Fhir.Model.Address)Address.DeepCopy();
+                    if(Address != null) dest.Address = (Hl7.Fhir.Model.DSTU2.Address)Address.DeepCopy();
                     if(GenderElement != null) dest.GenderElement = (Code<Hl7.Fhir.Model.AdministrativeGender>)GenderElement.DeepCopy();
                     if(Organization != null) dest.Organization = (Hl7.Fhir.Model.DSTU2.ResourceReference)Organization.DeepCopy();
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.DSTU2.Period)Period.DeepCopy();
                     return dest;
                 }
                 else
@@ -286,13 +286,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Species
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Species
             {
                 get { return _Species; }
                 set { _Species = value; OnPropertyChanged("Species"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Species;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Species;
             
             /// <summary>
             /// E.g. Poodle, Angus
@@ -300,13 +300,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("breed", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Breed
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Breed
             {
                 get { return _Breed; }
                 set { _Breed = value; OnPropertyChanged("Breed"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Breed;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Breed;
             
             /// <summary>
             /// E.g. Neutered, Intact
@@ -314,13 +314,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("genderStatus", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept GenderStatus
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept GenderStatus
             {
                 get { return _GenderStatus; }
                 set { _GenderStatus = value; OnPropertyChanged("GenderStatus"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _GenderStatus;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _GenderStatus;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -329,9 +329,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Species != null) dest.Species = (Hl7.Fhir.Model.CodeableConcept)Species.DeepCopy();
-                    if(Breed != null) dest.Breed = (Hl7.Fhir.Model.CodeableConcept)Breed.DeepCopy();
-                    if(GenderStatus != null) dest.GenderStatus = (Hl7.Fhir.Model.CodeableConcept)GenderStatus.DeepCopy();
+                    if(Species != null) dest.Species = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Species.DeepCopy();
+                    if(Breed != null) dest.Breed = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Breed.DeepCopy();
+                    if(GenderStatus != null) dest.GenderStatus = (Hl7.Fhir.Model.DSTU2.CodeableConcept)GenderStatus.DeepCopy();
                     return dest;
                 }
                 else
@@ -411,13 +411,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("language", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Language
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Language
             {
                 get { return _Language; }
                 set { _Language = value; OnPropertyChanged("Language"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Language;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Language;
             
             /// <summary>
             /// Language preference indicator
@@ -458,7 +458,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Language != null) dest.Language = (Hl7.Fhir.Model.CodeableConcept)Language.DeepCopy();
+                    if(Language != null) dest.Language = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Language.DeepCopy();
                     if(PreferredElement != null) dest.PreferredElement = (Hl7.Fhir.Model.FhirBoolean)PreferredElement.DeepCopy();
                     return dest;
                 }
@@ -766,13 +766,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("birthDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Date BirthDateElement
+        public Hl7.Fhir.Model.DSTU2.Date BirthDateElement
         {
             get { return _BirthDateElement; }
             set { _BirthDateElement = value; OnPropertyChanged("BirthDateElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _BirthDateElement;
+        private Hl7.Fhir.Model.DSTU2.Date _BirthDateElement;
         
         /// <summary>
         /// The date of birth for the individual
@@ -788,7 +788,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     BirthDateElement = null;
                 else
-                    BirthDateElement = new Hl7.Fhir.Model.Date(value);
+                    BirthDateElement = new Hl7.Fhir.Model.DSTU2.Date(value);
                 OnPropertyChanged("BirthDate");
             }
         }
@@ -798,7 +798,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("deceased", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.FhirDateTime))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.DSTU2.FhirDateTime))]
         [DataMember]
         public Hl7.Fhir.Model.Element Deceased
         {
@@ -815,33 +815,33 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Address> Address
+        public List<Hl7.Fhir.Model.DSTU2.Address> Address
         {
-            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.Address>(); return _Address; }
+            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.DSTU2.Address>(); return _Address; }
             set { _Address = value; OnPropertyChanged("Address"); }
         }
         
-        private List<Hl7.Fhir.Model.Address> _Address;
+        private List<Hl7.Fhir.Model.DSTU2.Address> _Address;
         
         /// <summary>
         /// Marital (civil) status of a patient
         /// </summary>
         [FhirElement("maritalStatus", Order=170)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept MaritalStatus
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept MaritalStatus
         {
             get { return _MaritalStatus; }
             set { _MaritalStatus = value; OnPropertyChanged("MaritalStatus"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _MaritalStatus;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _MaritalStatus;
         
         /// <summary>
         /// Whether patient is part of a multiple birth
         /// </summary>
         [FhirElement("multipleBirth", Order=180, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.DSTU2.Integer))]
         [DataMember]
         public Hl7.Fhir.Model.Element MultipleBirth
         {
@@ -857,13 +857,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("photo", Order=190)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Attachment> Photo
+        public List<Hl7.Fhir.Model.DSTU2.Attachment> Photo
         {
-            get { if(_Photo==null) _Photo = new List<Hl7.Fhir.Model.Attachment>(); return _Photo; }
+            get { if(_Photo==null) _Photo = new List<Hl7.Fhir.Model.DSTU2.Attachment>(); return _Photo; }
             set { _Photo = value; OnPropertyChanged("Photo"); }
         }
         
-        private List<Hl7.Fhir.Model.Attachment> _Photo;
+        private List<Hl7.Fhir.Model.DSTU2.Attachment> _Photo;
         
         /// <summary>
         /// A contact party (e.g. guardian, partner, friend) for the patient
@@ -981,12 +981,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Name != null) dest.Name = new List<Hl7.Fhir.Model.DSTU2.HumanName>(Name.DeepCopy());
                 if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.DSTU2.ContactPoint>(Telecom.DeepCopy());
                 if(GenderElement != null) dest.GenderElement = (Code<Hl7.Fhir.Model.AdministrativeGender>)GenderElement.DeepCopy();
-                if(BirthDateElement != null) dest.BirthDateElement = (Hl7.Fhir.Model.Date)BirthDateElement.DeepCopy();
+                if(BirthDateElement != null) dest.BirthDateElement = (Hl7.Fhir.Model.DSTU2.Date)BirthDateElement.DeepCopy();
                 if(Deceased != null) dest.Deceased = (Hl7.Fhir.Model.Element)Deceased.DeepCopy();
-                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.Address>(Address.DeepCopy());
-                if(MaritalStatus != null) dest.MaritalStatus = (Hl7.Fhir.Model.CodeableConcept)MaritalStatus.DeepCopy();
+                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.DSTU2.Address>(Address.DeepCopy());
+                if(MaritalStatus != null) dest.MaritalStatus = (Hl7.Fhir.Model.DSTU2.CodeableConcept)MaritalStatus.DeepCopy();
                 if(MultipleBirth != null) dest.MultipleBirth = (Hl7.Fhir.Model.Element)MultipleBirth.DeepCopy();
-                if(Photo != null) dest.Photo = new List<Hl7.Fhir.Model.Attachment>(Photo.DeepCopy());
+                if(Photo != null) dest.Photo = new List<Hl7.Fhir.Model.DSTU2.Attachment>(Photo.DeepCopy());
                 if(Contact != null) dest.Contact = new List<ContactComponent>(Contact.DeepCopy());
                 if(Animal != null) dest.Animal = (AnimalComponent)Animal.DeepCopy();
                 if(Communication != null) dest.Communication = new List<CommunicationComponent>(Communication.DeepCopy());

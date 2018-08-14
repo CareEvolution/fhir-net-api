@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "ReferralRequest", IsResource=true)]
     [DataContract]
-    public partial class ReferralRequest : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ReferralRequest : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ReferralRequest; } }
@@ -109,13 +109,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date of creation/activation
@@ -131,7 +131,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -142,26 +142,26 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// The clinical specialty (discipline) that the referral is requested for
         /// </summary>
         [FhirElement("specialty", Order=130)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Specialty
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Specialty
         {
             get { return _Specialty; }
             set { _Specialty = value; OnPropertyChanged("Specialty"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Specialty;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Specialty;
         
         /// <summary>
         /// Urgency of referral / transfer of care request
@@ -169,13 +169,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("priority", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Priority
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Priority
         {
             get { return _Priority; }
             set { _Priority = value; OnPropertyChanged("Priority"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Priority;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Priority;
         
         /// <summary>
         /// Patient referred to care or transfer
@@ -244,13 +244,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("dateSent", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateSentElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateSentElement
         {
             get { return _DateSentElement; }
             set { _DateSentElement = value; OnPropertyChanged("DateSentElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateSentElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateSentElement;
         
         /// <summary>
         /// Date referral/transfer of care request is sent
@@ -266,7 +266,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateSentElement = null;
                 else
-                    DateSentElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateSentElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("DateSent");
             }
         }
@@ -277,13 +277,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("reason", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=200)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Reason
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Reason
         {
             get { return _Reason; }
             set { _Reason = value; OnPropertyChanged("Reason"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Reason;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Reason;
         
         /// <summary>
         /// A textual description of the referral
@@ -324,13 +324,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ServiceRequested
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> ServiceRequested
         {
-            get { if(_ServiceRequested==null) _ServiceRequested = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ServiceRequested; }
+            get { if(_ServiceRequested==null) _ServiceRequested = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _ServiceRequested; }
             set { _ServiceRequested = value; OnPropertyChanged("ServiceRequested"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ServiceRequested;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _ServiceRequested;
         
         /// <summary>
         /// Additonal information to support referral or transfer of care request
@@ -353,13 +353,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("fulfillmentTime", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=240)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period FulfillmentTime
+        public Hl7.Fhir.Model.DSTU2.Period FulfillmentTime
         {
             get { return _FulfillmentTime; }
             set { _FulfillmentTime = value; OnPropertyChanged("FulfillmentTime"); }
         }
         
-        private Hl7.Fhir.Model.Period _FulfillmentTime;
+        private Hl7.Fhir.Model.DSTU2.Period _FulfillmentTime;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -371,20 +371,20 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.ReferralStatus>)StatusElement.DeepCopy();
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(Specialty != null) dest.Specialty = (Hl7.Fhir.Model.CodeableConcept)Specialty.DeepCopy();
-                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.CodeableConcept)Priority.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
+                if(Specialty != null) dest.Specialty = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Specialty.DeepCopy();
+                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Priority.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
                 if(Requester != null) dest.Requester = (Hl7.Fhir.Model.DSTU2.ResourceReference)Requester.DeepCopy();
                 if(Recipient != null) dest.Recipient = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Recipient.DeepCopy());
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();
-                if(DateSentElement != null) dest.DateSentElement = (Hl7.Fhir.Model.FhirDateTime)DateSentElement.DeepCopy();
-                if(Reason != null) dest.Reason = (Hl7.Fhir.Model.CodeableConcept)Reason.DeepCopy();
+                if(DateSentElement != null) dest.DateSentElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateSentElement.DeepCopy();
+                if(Reason != null) dest.Reason = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Reason.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                if(ServiceRequested != null) dest.ServiceRequested = new List<Hl7.Fhir.Model.CodeableConcept>(ServiceRequested.DeepCopy());
+                if(ServiceRequested != null) dest.ServiceRequested = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(ServiceRequested.DeepCopy());
                 if(SupportingInformation != null) dest.SupportingInformation = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(SupportingInformation.DeepCopy());
-                if(FulfillmentTime != null) dest.FulfillmentTime = (Hl7.Fhir.Model.Period)FulfillmentTime.DeepCopy();
+                if(FulfillmentTime != null) dest.FulfillmentTime = (Hl7.Fhir.Model.DSTU2.Period)FulfillmentTime.DeepCopy();
                 return dest;
             }
             else

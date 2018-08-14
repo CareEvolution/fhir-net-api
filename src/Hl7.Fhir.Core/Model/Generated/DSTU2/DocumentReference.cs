@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "DocumentReference", IsResource=true)]
     [DataContract]
-    public partial class DocumentReference : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DocumentReference : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DocumentReference; } }
@@ -197,13 +197,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Attachment Attachment
+            public Hl7.Fhir.Model.DSTU2.Attachment Attachment
             {
                 get { return _Attachment; }
                 set { _Attachment = value; OnPropertyChanged("Attachment"); }
             }
             
-            private Hl7.Fhir.Model.Attachment _Attachment;
+            private Hl7.Fhir.Model.DSTU2.Attachment _Attachment;
             
             /// <summary>
             /// Format/content rules for the document
@@ -212,13 +212,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Format
+            public List<Hl7.Fhir.Model.DSTU2.Coding> Format
             {
-                get { if(_Format==null) _Format = new List<Hl7.Fhir.Model.Coding>(); return _Format; }
+                get { if(_Format==null) _Format = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Format; }
                 set { _Format = value; OnPropertyChanged("Format"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Format;
+            private List<Hl7.Fhir.Model.DSTU2.Coding> _Format;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -227,8 +227,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Attachment != null) dest.Attachment = (Hl7.Fhir.Model.Attachment)Attachment.DeepCopy();
-                    if(Format != null) dest.Format = new List<Hl7.Fhir.Model.Coding>(Format.DeepCopy());
+                    if(Attachment != null) dest.Attachment = (Hl7.Fhir.Model.DSTU2.Attachment)Attachment.DeepCopy();
+                    if(Format != null) dest.Format = new List<Hl7.Fhir.Model.DSTU2.Coding>(Format.DeepCopy());
                     return dest;
                 }
                 else
@@ -320,13 +320,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Event
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Event
             {
-                get { if(_Event==null) _Event = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Event; }
+                get { if(_Event==null) _Event = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Event; }
                 set { _Event = value; OnPropertyChanged("Event"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Event;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Event;
             
             /// <summary>
             /// Time of service that is being documented
@@ -334,13 +334,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.DSTU2.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.DSTU2.Period _Period;
             
             /// <summary>
             /// Kind of facility where patient was seen
@@ -348,13 +348,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("facilityType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept FacilityType
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept FacilityType
             {
                 get { return _FacilityType; }
                 set { _FacilityType = value; OnPropertyChanged("FacilityType"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _FacilityType;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _FacilityType;
             
             /// <summary>
             /// Additional details about where the content was created (e.g. clinical specialty)
@@ -362,13 +362,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("practiceSetting", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept PracticeSetting
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept PracticeSetting
             {
                 get { return _PracticeSetting; }
                 set { _PracticeSetting = value; OnPropertyChanged("PracticeSetting"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _PracticeSetting;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _PracticeSetting;
             
             /// <summary>
             /// Patient demographics from source
@@ -408,10 +408,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();
-                    if(Event != null) dest.Event = new List<Hl7.Fhir.Model.CodeableConcept>(Event.DeepCopy());
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
-                    if(FacilityType != null) dest.FacilityType = (Hl7.Fhir.Model.CodeableConcept)FacilityType.DeepCopy();
-                    if(PracticeSetting != null) dest.PracticeSetting = (Hl7.Fhir.Model.CodeableConcept)PracticeSetting.DeepCopy();
+                    if(Event != null) dest.Event = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Event.DeepCopy());
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.DSTU2.Period)Period.DeepCopy();
+                    if(FacilityType != null) dest.FacilityType = (Hl7.Fhir.Model.DSTU2.CodeableConcept)FacilityType.DeepCopy();
+                    if(PracticeSetting != null) dest.PracticeSetting = (Hl7.Fhir.Model.DSTU2.CodeableConcept)PracticeSetting.DeepCopy();
                     if(SourcePatientInfo != null) dest.SourcePatientInfo = (Hl7.Fhir.Model.DSTU2.ResourceReference)SourcePatientInfo.DeepCopy();
                     if(Related != null) dest.Related = new List<RelatedComponent>(Related.DeepCopy());
                     return dest;
@@ -653,13 +653,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// Categorization of document
@@ -667,13 +667,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("class", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Class
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Class
         {
             get { return _Class; }
             set { _Class = value; OnPropertyChanged("Class"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Class;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Class;
         
         /// <summary>
         /// Who and/or what authored the document
@@ -727,13 +727,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("created", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Document creation time
@@ -749,7 +749,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -828,13 +828,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("docStatus", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=200)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept DocStatus
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept DocStatus
         {
             get { return _DocStatus; }
             set { _DocStatus = value; OnPropertyChanged("DocStatus"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _DocStatus;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _DocStatus;
         
         /// <summary>
         /// Relationships to other documents
@@ -891,13 +891,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> SecurityLabel
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> SecurityLabel
         {
-            get { if(_SecurityLabel==null) _SecurityLabel = new List<Hl7.Fhir.Model.CodeableConcept>(); return _SecurityLabel; }
+            get { if(_SecurityLabel==null) _SecurityLabel = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _SecurityLabel; }
             set { _SecurityLabel = value; OnPropertyChanged("SecurityLabel"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _SecurityLabel;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _SecurityLabel;
         
         /// <summary>
         /// Document referenced
@@ -939,18 +939,18 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(MasterIdentifier != null) dest.MasterIdentifier = (Hl7.Fhir.Model.DSTU2.Identifier)MasterIdentifier.DeepCopy();
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subject.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(Class != null) dest.Class = (Hl7.Fhir.Model.CodeableConcept)Class.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
+                if(Class != null) dest.Class = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Class.DeepCopy();
                 if(Author != null) dest.Author = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Author.DeepCopy());
                 if(Custodian != null) dest.Custodian = (Hl7.Fhir.Model.DSTU2.ResourceReference)Custodian.DeepCopy();
                 if(Authenticator != null) dest.Authenticator = (Hl7.Fhir.Model.DSTU2.ResourceReference)Authenticator.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)CreatedElement.DeepCopy();
                 if(IndexedElement != null) dest.IndexedElement = (Hl7.Fhir.Model.Instant)IndexedElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DocumentReferenceStatus>)StatusElement.DeepCopy();
-                if(DocStatus != null) dest.DocStatus = (Hl7.Fhir.Model.CodeableConcept)DocStatus.DeepCopy();
+                if(DocStatus != null) dest.DocStatus = (Hl7.Fhir.Model.DSTU2.CodeableConcept)DocStatus.DeepCopy();
                 if(RelatesTo != null) dest.RelatesTo = new List<RelatesToComponent>(RelatesTo.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                if(SecurityLabel != null) dest.SecurityLabel = new List<Hl7.Fhir.Model.CodeableConcept>(SecurityLabel.DeepCopy());
+                if(SecurityLabel != null) dest.SecurityLabel = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(SecurityLabel.DeepCopy());
                 if(Content != null) dest.Content = new List<ContentComponent>(Content.DeepCopy());
                 if(Context != null) dest.Context = (ContextComponent)Context.DeepCopy();
                 return dest;

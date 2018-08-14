@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Provenance", IsResource=true)]
     [DataContract]
-    public partial class Provenance : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Provenance : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Provenance; } }
@@ -69,13 +69,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Role
+            public Hl7.Fhir.Model.DSTU2.Coding Role
             {
                 get { return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Role;
+            private Hl7.Fhir.Model.DSTU2.Coding _Role;
             
             /// <summary>
             /// Individual, device or organization playing role
@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Role != null) dest.Role = (Hl7.Fhir.Model.Coding)Role.DeepCopy();
+                    if(Role != null) dest.Role = (Hl7.Fhir.Model.DSTU2.Coding)Role.DeepCopy();
                     if(Actor != null) dest.Actor = (Hl7.Fhir.Model.DSTU2.ResourceReference)Actor.DeepCopy();
                     if(UserId != null) dest.UserId = (Hl7.Fhir.Model.DSTU2.Identifier)UserId.DeepCopy();
                     if(RelatedAgent != null) dest.RelatedAgent = new List<RelatedAgentComponent>(RelatedAgent.DeepCopy());
@@ -216,13 +216,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Type
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Type;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
             
             /// <summary>
             /// Reference to other agent in this resource by identifier
@@ -265,7 +265,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
                     if(TargetElement != null) dest.TargetElement = (Hl7.Fhir.Model.FhirUri)TargetElement.DeepCopy();
                     return dest;
                 }
@@ -377,13 +377,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Type
+            public Hl7.Fhir.Model.DSTU2.Coding Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Type;
+            private Hl7.Fhir.Model.DSTU2.Coding _Type;
             
             /// <summary>
             /// Identity of entity
@@ -474,7 +474,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(RoleElement != null) dest.RoleElement = (Code<Hl7.Fhir.Model.DSTU2.ProvenanceEntityRole>)RoleElement.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.Coding)Type.DeepCopy();
                     if(ReferenceElement != null) dest.ReferenceElement = (Hl7.Fhir.Model.FhirUri)ReferenceElement.DeepCopy();
                     if(DisplayElement != null) dest.DisplayElement = (Hl7.Fhir.Model.FhirString)DisplayElement.DeepCopy();
                     if(Agent != null) dest.Agent = (AgentComponent)Agent.DeepCopy();
@@ -573,13 +573,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.DSTU2.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.DSTU2.Period _Period;
         
         /// <summary>
         /// When the activity was recorded / updated
@@ -622,13 +622,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Reason
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Reason
         {
-            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Reason; }
+            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Reason; }
             set { _Reason = value; OnPropertyChanged("Reason"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Reason;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Reason;
         
         /// <summary>
         /// Activity that occurred
@@ -636,13 +636,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("activity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Activity
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Activity
         {
             get { return _Activity; }
             set { _Activity = value; OnPropertyChanged("Activity"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Activity;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Activity;
         
         /// <summary>
         /// Where the activity occurred, if relevant
@@ -747,10 +747,10 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Target != null) dest.Target = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Target.DeepCopy());
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.DSTU2.Period)Period.DeepCopy();
                 if(RecordedElement != null) dest.RecordedElement = (Hl7.Fhir.Model.Instant)RecordedElement.DeepCopy();
-                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.CodeableConcept>(Reason.DeepCopy());
-                if(Activity != null) dest.Activity = (Hl7.Fhir.Model.CodeableConcept)Activity.DeepCopy();
+                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Reason.DeepCopy());
+                if(Activity != null) dest.Activity = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Activity.DeepCopy();
                 if(Location != null) dest.Location = (Hl7.Fhir.Model.DSTU2.ResourceReference)Location.DeepCopy();
                 if(PolicyElement != null) dest.PolicyElement = new List<Hl7.Fhir.Model.FhirUri>(PolicyElement.DeepCopy());
                 if(Agent != null) dest.Agent = new List<AgentComponent>(Agent.DeepCopy());

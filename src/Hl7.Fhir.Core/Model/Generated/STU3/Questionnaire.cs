@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Questionnaire", IsResource=true)]
     [DataContract]
-    public partial class Questionnaire : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Questionnaire : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Questionnaire; } }
@@ -134,13 +134,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Code
+            public List<Hl7.Fhir.Model.STU3.Coding> Code
             {
-                get { if(_Code==null) _Code = new List<Hl7.Fhir.Model.Coding>(); return _Code; }
+                get { if(_Code==null) _Code = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Code;
+            private List<Hl7.Fhir.Model.STU3.Coding> _Code;
             
             /// <summary>
             /// E.g. "1(a)", "2.5.3"
@@ -356,13 +356,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("maxLength", Order=140)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer MaxLengthElement
+            public Hl7.Fhir.Model.STU3.Integer MaxLengthElement
             {
                 get { return _MaxLengthElement; }
                 set { _MaxLengthElement = value; OnPropertyChanged("MaxLengthElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _MaxLengthElement;
+            private Hl7.Fhir.Model.STU3.Integer _MaxLengthElement;
             
             /// <summary>
             /// No more than this many characters
@@ -378,7 +378,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         MaxLengthElement = null;
                     else
-                        MaxLengthElement = new Hl7.Fhir.Model.Integer(value);
+                        MaxLengthElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("MaxLength");
                 }
             }
@@ -417,7 +417,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("initial", Order=170, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.STU3.FhirDecimal),typeof(Hl7.Fhir.Model.STU3.Integer),typeof(Hl7.Fhir.Model.STU3.Date),typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.STU3.Attachment),typeof(Hl7.Fhir.Model.STU3.Coding),typeof(Hl7.Fhir.Model.STU3.Quantity),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Initial
             {
@@ -450,7 +450,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(LinkIdElement != null) dest.LinkIdElement = (Hl7.Fhir.Model.FhirString)LinkIdElement.DeepCopy();
                     if(DefinitionElement != null) dest.DefinitionElement = (Hl7.Fhir.Model.FhirUri)DefinitionElement.DeepCopy();
-                    if(Code != null) dest.Code = new List<Hl7.Fhir.Model.Coding>(Code.DeepCopy());
+                    if(Code != null) dest.Code = new List<Hl7.Fhir.Model.STU3.Coding>(Code.DeepCopy());
                     if(PrefixElement != null) dest.PrefixElement = (Hl7.Fhir.Model.FhirString)PrefixElement.DeepCopy();
                     if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
                     if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.STU3.QuestionnaireItemType>)TypeElement.DeepCopy();
@@ -458,7 +458,7 @@ namespace Hl7.Fhir.Model.STU3
                     if(RequiredElement != null) dest.RequiredElement = (Hl7.Fhir.Model.FhirBoolean)RequiredElement.DeepCopy();
                     if(RepeatsElement != null) dest.RepeatsElement = (Hl7.Fhir.Model.FhirBoolean)RepeatsElement.DeepCopy();
                     if(ReadOnlyElement != null) dest.ReadOnlyElement = (Hl7.Fhir.Model.FhirBoolean)ReadOnlyElement.DeepCopy();
-                    if(MaxLengthElement != null) dest.MaxLengthElement = (Hl7.Fhir.Model.Integer)MaxLengthElement.DeepCopy();
+                    if(MaxLengthElement != null) dest.MaxLengthElement = (Hl7.Fhir.Model.STU3.Integer)MaxLengthElement.DeepCopy();
                     if(Options != null) dest.Options = (Hl7.Fhir.Model.STU3.ResourceReference)Options.DeepCopy();
                     if(Option != null) dest.Option = new List<OptionComponent>(Option.DeepCopy());
                     if(Initial != null) dest.Initial = (Hl7.Fhir.Model.Element)Initial.DeepCopy();
@@ -654,7 +654,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("answer", Order=60, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.STU3.FhirDecimal),typeof(Hl7.Fhir.Model.STU3.Integer),typeof(Hl7.Fhir.Model.STU3.Date),typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.STU3.Attachment),typeof(Hl7.Fhir.Model.STU3.Coding),typeof(Hl7.Fhir.Model.STU3.Quantity),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Answer
             {
@@ -752,7 +752,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("value", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.Coding))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Integer),typeof(Hl7.Fhir.Model.STU3.Date),typeof(Hl7.Fhir.Model.STU3.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.STU3.Coding))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Value
@@ -1049,13 +1049,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date this was last changed
@@ -1071,7 +1071,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -1178,13 +1178,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("approvalDate", Order=200)]
         [DataMember]
-        public Hl7.Fhir.Model.Date ApprovalDateElement
+        public Hl7.Fhir.Model.STU3.Date ApprovalDateElement
         {
             get { return _ApprovalDateElement; }
             set { _ApprovalDateElement = value; OnPropertyChanged("ApprovalDateElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _ApprovalDateElement;
+        private Hl7.Fhir.Model.STU3.Date _ApprovalDateElement;
         
         /// <summary>
         /// When the questionnaire was approved by publisher
@@ -1200,7 +1200,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     ApprovalDateElement = null;
                 else
-                    ApprovalDateElement = new Hl7.Fhir.Model.Date(value);
+                    ApprovalDateElement = new Hl7.Fhir.Model.STU3.Date(value);
                 OnPropertyChanged("ApprovalDate");
             }
         }
@@ -1210,13 +1210,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("lastReviewDate", Order=210)]
         [DataMember]
-        public Hl7.Fhir.Model.Date LastReviewDateElement
+        public Hl7.Fhir.Model.STU3.Date LastReviewDateElement
         {
             get { return _LastReviewDateElement; }
             set { _LastReviewDateElement = value; OnPropertyChanged("LastReviewDateElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _LastReviewDateElement;
+        private Hl7.Fhir.Model.STU3.Date _LastReviewDateElement;
         
         /// <summary>
         /// When the questionnaire was last reviewed
@@ -1232,7 +1232,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     LastReviewDateElement = null;
                 else
-                    LastReviewDateElement = new Hl7.Fhir.Model.Date(value);
+                    LastReviewDateElement = new Hl7.Fhir.Model.STU3.Date(value);
                 OnPropertyChanged("LastReviewDate");
             }
         }
@@ -1243,13 +1243,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("effectivePeriod", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=220)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period EffectivePeriod
+        public Hl7.Fhir.Model.STU3.Period EffectivePeriod
         {
             get { return _EffectivePeriod; }
             set { _EffectivePeriod = value; OnPropertyChanged("EffectivePeriod"); }
         }
         
-        private Hl7.Fhir.Model.Period _EffectivePeriod;
+        private Hl7.Fhir.Model.STU3.Period _EffectivePeriod;
         
         /// <summary>
         /// Context the content is intended to support
@@ -1273,13 +1273,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Jurisdiction
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Jurisdiction
         {
-            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Jurisdiction; }
+            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Jurisdiction; }
             set { _Jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Jurisdiction;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Jurisdiction;
         
         /// <summary>
         /// Contact details for the publisher
@@ -1335,13 +1335,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Code
+        public List<Hl7.Fhir.Model.STU3.Coding> Code
         {
-            get { if(_Code==null) _Code = new List<Hl7.Fhir.Model.Coding>(); return _Code; }
+            get { if(_Code==null) _Code = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _Code;
+        private List<Hl7.Fhir.Model.STU3.Coding> _Code;
         
         /// <summary>
         /// Resource that can be subject of QuestionnaireResponse
@@ -1512,18 +1512,18 @@ namespace Hl7.Fhir.Model.STU3
                 if(TitleElement != null) dest.TitleElement = (Hl7.Fhir.Model.FhirString)TitleElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.PublicationStatus>)StatusElement.DeepCopy();
                 if(ExperimentalElement != null) dest.ExperimentalElement = (Hl7.Fhir.Model.FhirBoolean)ExperimentalElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
-                if(ApprovalDateElement != null) dest.ApprovalDateElement = (Hl7.Fhir.Model.Date)ApprovalDateElement.DeepCopy();
-                if(LastReviewDateElement != null) dest.LastReviewDateElement = (Hl7.Fhir.Model.Date)LastReviewDateElement.DeepCopy();
-                if(EffectivePeriod != null) dest.EffectivePeriod = (Hl7.Fhir.Model.Period)EffectivePeriod.DeepCopy();
+                if(ApprovalDateElement != null) dest.ApprovalDateElement = (Hl7.Fhir.Model.STU3.Date)ApprovalDateElement.DeepCopy();
+                if(LastReviewDateElement != null) dest.LastReviewDateElement = (Hl7.Fhir.Model.STU3.Date)LastReviewDateElement.DeepCopy();
+                if(EffectivePeriod != null) dest.EffectivePeriod = (Hl7.Fhir.Model.STU3.Period)EffectivePeriod.DeepCopy();
                 if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(UseContext.DeepCopy());
-                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
+                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(CopyrightElement != null) dest.CopyrightElement = (Hl7.Fhir.Model.Markdown)CopyrightElement.DeepCopy();
-                if(Code != null) dest.Code = new List<Hl7.Fhir.Model.Coding>(Code.DeepCopy());
+                if(Code != null) dest.Code = new List<Hl7.Fhir.Model.STU3.Coding>(Code.DeepCopy());
                 if(SubjectTypeElement != null) dest.SubjectTypeElement = new List<Code<Hl7.Fhir.Model.ResourceType>>(SubjectTypeElement.DeepCopy());
                 if(Item != null) dest.Item = new List<ItemComponent>(Item.DeepCopy());
                 return dest;

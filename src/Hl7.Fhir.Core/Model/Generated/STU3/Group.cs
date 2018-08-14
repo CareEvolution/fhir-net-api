@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Group", IsResource=true)]
     [DataContract]
-    public partial class Group : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Group : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Group; } }
@@ -68,20 +68,20 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("code", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.STU3.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
             
             /// <summary>
             /// Value held by characteristic
             /// </summary>
             [FhirElement("value", Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.STU3.Quantity),typeof(Hl7.Fhir.Model.STU3.Range))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Value
@@ -130,13 +130,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("period", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.STU3.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.STU3.Period _Period;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -145,10 +145,10 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
                     if(Value != null) dest.Value = (Hl7.Fhir.Model.Element)Value.DeepCopy();
                     if(ExcludeElement != null) dest.ExcludeElement = (Hl7.Fhir.Model.FhirBoolean)ExcludeElement.DeepCopy();
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                     return dest;
                 }
                 else
@@ -247,13 +247,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("period", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.STU3.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.STU3.Period _Period;
             
             /// <summary>
             /// If member is no longer in group
@@ -295,7 +295,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(Entity != null) dest.Entity = (Hl7.Fhir.Model.STU3.ResourceReference)Entity.DeepCopy();
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                     if(InactiveElement != null) dest.InactiveElement = (Hl7.Fhir.Model.FhirBoolean)InactiveElement.DeepCopy();
                     return dest;
                 }
@@ -485,13 +485,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.STU3.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
         
         /// <summary>
         /// Label for Group
@@ -532,13 +532,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.UnsignedInt QuantityElement
+        public Hl7.Fhir.Model.STU3.UnsignedInt QuantityElement
         {
             get { return _QuantityElement; }
             set { _QuantityElement = value; OnPropertyChanged("QuantityElement"); }
         }
         
-        private Hl7.Fhir.Model.UnsignedInt _QuantityElement;
+        private Hl7.Fhir.Model.STU3.UnsignedInt _QuantityElement;
         
         /// <summary>
         /// Number of members
@@ -554,7 +554,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     QuantityElement = null;
                 else
-                    QuantityElement = new Hl7.Fhir.Model.UnsignedInt(value);
+                    QuantityElement = new Hl7.Fhir.Model.STU3.UnsignedInt(value);
                 OnPropertyChanged("Quantity");
             }
         }
@@ -615,9 +615,9 @@ namespace Hl7.Fhir.Model.STU3
                 if(ActiveElement != null) dest.ActiveElement = (Hl7.Fhir.Model.FhirBoolean)ActiveElement.DeepCopy();
                 if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.GroupType>)TypeElement.DeepCopy();
                 if(ActualElement != null) dest.ActualElement = (Hl7.Fhir.Model.FhirBoolean)ActualElement.DeepCopy();
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
-                if(QuantityElement != null) dest.QuantityElement = (Hl7.Fhir.Model.UnsignedInt)QuantityElement.DeepCopy();
+                if(QuantityElement != null) dest.QuantityElement = (Hl7.Fhir.Model.STU3.UnsignedInt)QuantityElement.DeepCopy();
                 if(Characteristic != null) dest.Characteristic = new List<CharacteristicComponent>(Characteristic.DeepCopy());
                 if(Member != null) dest.Member = new List<MemberComponent>(Member.DeepCopy());
                 return dest;

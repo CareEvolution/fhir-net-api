@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "BodySite", IsResource=true)]
     [DataContract]
-    public partial class BodySite : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class BodySite : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.BodySite; } }
@@ -92,13 +92,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
         
         /// <summary>
         /// Modification to location code
@@ -106,13 +106,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("modifier", Order=120)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Modifier
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Modifier
         {
-            get { if(_Modifier==null) _Modifier = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Modifier; }
+            get { if(_Modifier==null) _Modifier = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Modifier; }
             set { _Modifier = value; OnPropertyChanged("Modifier"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Modifier;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Modifier;
         
         /// <summary>
         /// The Description of anatomical location
@@ -153,13 +153,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("image", Order=140)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Attachment> Image
+        public List<Hl7.Fhir.Model.DSTU2.Attachment> Image
         {
-            get { if(_Image==null) _Image = new List<Hl7.Fhir.Model.Attachment>(); return _Image; }
+            get { if(_Image==null) _Image = new List<Hl7.Fhir.Model.DSTU2.Attachment>(); return _Image; }
             set { _Image = value; OnPropertyChanged("Image"); }
         }
         
-        private List<Hl7.Fhir.Model.Attachment> _Image;
+        private List<Hl7.Fhir.Model.DSTU2.Attachment> _Image;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -171,10 +171,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                if(Modifier != null) dest.Modifier = new List<Hl7.Fhir.Model.CodeableConcept>(Modifier.DeepCopy());
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
+                if(Modifier != null) dest.Modifier = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Modifier.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                if(Image != null) dest.Image = new List<Hl7.Fhir.Model.Attachment>(Image.DeepCopy());
+                if(Image != null) dest.Image = new List<Hl7.Fhir.Model.DSTU2.Attachment>(Image.DeepCopy());
                 return dest;
             }
             else

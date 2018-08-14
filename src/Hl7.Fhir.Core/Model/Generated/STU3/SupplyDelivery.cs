@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "SupplyDelivery", IsResource=true)]
     [DataContract]
-    public partial class SupplyDelivery : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class SupplyDelivery : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.SupplyDelivery; } }
@@ -67,20 +67,20 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("quantity", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.STU3.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.STU3.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Medication, Substance, or Device supplied
             /// </summary>
             [FhirElement("item", Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Item
             {
@@ -97,7 +97,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.STU3.SimpleQuantity)Quantity.DeepCopy();
                     if(Item != null) dest.Item = (Hl7.Fhir.Model.Element)Item.DeepCopy();
                     return dest;
                 }
@@ -259,13 +259,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("type", Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// The item that is delivered or supplied
@@ -285,7 +285,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("occurrence", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.STU3.Timing))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period),typeof(Hl7.Fhir.Model.STU3.Timing))]
         [DataMember]
         public Hl7.Fhir.Model.Element Occurrence
         {
@@ -354,7 +354,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(PartOf != null) dest.PartOf = new List<Hl7.Fhir.Model.STU3.ResourceReference>(PartOf.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.SupplyDeliveryStatus>)StatusElement.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.STU3.ResourceReference)Patient.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
                 if(SuppliedItem != null) dest.SuppliedItem = (SuppliedItemComponent)SuppliedItem.DeepCopy();
                 if(Occurrence != null) dest.Occurrence = (Hl7.Fhir.Model.Element)Occurrence.DeepCopy();
                 if(Supplier != null) dest.Supplier = (Hl7.Fhir.Model.STU3.ResourceReference)Supplier.DeepCopy();

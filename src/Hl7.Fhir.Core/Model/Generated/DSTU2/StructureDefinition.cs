@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "StructureDefinition", IsResource=true)]
     [DataContract]
-    public partial class StructureDefinition : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class StructureDefinition : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.StructureDefinition; } }
@@ -194,13 +194,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("identity", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Id IdentityElement
+            public Hl7.Fhir.Model.DSTU2.Id IdentityElement
             {
                 get { return _IdentityElement; }
                 set { _IdentityElement = value; OnPropertyChanged("IdentityElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _IdentityElement;
+            private Hl7.Fhir.Model.DSTU2.Id _IdentityElement;
             
             /// <summary>
             /// Internal id when this mapping is used
@@ -216,7 +216,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         IdentityElement = null;
                     else
-                        IdentityElement = new Hl7.Fhir.Model.Id(value);
+                        IdentityElement = new Hl7.Fhir.Model.DSTU2.Id(value);
                     OnPropertyChanged("Identity");
                 }
             }
@@ -324,7 +324,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(IdentityElement != null) dest.IdentityElement = (Hl7.Fhir.Model.Id)IdentityElement.DeepCopy();
+                    if(IdentityElement != null) dest.IdentityElement = (Hl7.Fhir.Model.DSTU2.Id)IdentityElement.DeepCopy();
                     if(UriElement != null) dest.UriElement = (Hl7.Fhir.Model.FhirUri)UriElement.DeepCopy();
                     if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                     if(CommentsElement != null) dest.CommentsElement = (Hl7.Fhir.Model.FhirString)CommentsElement.DeepCopy();
@@ -842,13 +842,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date for this version of the StructureDefinition
@@ -864,7 +864,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -909,13 +909,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> UseContext
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> UseContext
         {
-            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.CodeableConcept>(); return _UseContext; }
+            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _UseContext; }
             set { _UseContext = value; OnPropertyChanged("UseContext"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _UseContext;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _UseContext;
         
         /// <summary>
         /// Scope and Usage this structure definition is for
@@ -988,13 +988,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Code
+        public List<Hl7.Fhir.Model.DSTU2.Coding> Code
         {
-            get { if(_Code==null) _Code = new List<Hl7.Fhir.Model.Coding>(); return _Code; }
+            get { if(_Code==null) _Code = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _Code;
+        private List<Hl7.Fhir.Model.DSTU2.Coding> _Code;
         
         /// <summary>
         /// FHIR Version this StructureDefinition targets
@@ -1002,13 +1002,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("fhirVersion", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=240)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Id FhirVersionElement
+        public Hl7.Fhir.Model.DSTU2.Id FhirVersionElement
         {
             get { return _FhirVersionElement; }
             set { _FhirVersionElement = value; OnPropertyChanged("FhirVersionElement"); }
         }
         
-        private Hl7.Fhir.Model.Id _FhirVersionElement;
+        private Hl7.Fhir.Model.DSTU2.Id _FhirVersionElement;
         
         /// <summary>
         /// FHIR Version this StructureDefinition targets
@@ -1024,7 +1024,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     FhirVersionElement = null;
                 else
-                    FhirVersionElement = new Hl7.Fhir.Model.Id(value);
+                    FhirVersionElement = new Hl7.Fhir.Model.DSTU2.Id(value);
                 OnPropertyChanged("FhirVersion");
             }
         }
@@ -1413,13 +1413,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(ExperimentalElement != null) dest.ExperimentalElement = (Hl7.Fhir.Model.FhirBoolean)ExperimentalElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<ContactComponent>(Contact.DeepCopy());
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.CodeableConcept>(UseContext.DeepCopy());
+                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(UseContext.DeepCopy());
                 if(RequirementsElement != null) dest.RequirementsElement = (Hl7.Fhir.Model.FhirString)RequirementsElement.DeepCopy();
                 if(CopyrightElement != null) dest.CopyrightElement = (Hl7.Fhir.Model.FhirString)CopyrightElement.DeepCopy();
-                if(Code != null) dest.Code = new List<Hl7.Fhir.Model.Coding>(Code.DeepCopy());
-                if(FhirVersionElement != null) dest.FhirVersionElement = (Hl7.Fhir.Model.Id)FhirVersionElement.DeepCopy();
+                if(Code != null) dest.Code = new List<Hl7.Fhir.Model.DSTU2.Coding>(Code.DeepCopy());
+                if(FhirVersionElement != null) dest.FhirVersionElement = (Hl7.Fhir.Model.DSTU2.Id)FhirVersionElement.DeepCopy();
                 if(Mapping != null) dest.Mapping = new List<MappingComponent>(Mapping.DeepCopy());
                 if(KindElement != null) dest.KindElement = (Code<Hl7.Fhir.Model.DSTU2.StructureDefinitionKind>)KindElement.DeepCopy();
                 if(ConstrainedTypeElement != null) dest.ConstrainedTypeElement = (Code<Hl7.Fhir.Model.DSTU2.FHIRDefinedType>)ConstrainedTypeElement.DeepCopy();

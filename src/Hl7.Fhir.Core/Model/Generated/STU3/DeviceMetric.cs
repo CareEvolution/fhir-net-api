@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "DeviceMetric", IsResource=true)]
     [DataContract]
-    public partial class DeviceMetric : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DeviceMetric : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DeviceMetric; } }
@@ -259,13 +259,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// Unit of Measure for the Metric
@@ -273,13 +273,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("unit", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Unit
+        public Hl7.Fhir.Model.STU3.CodeableConcept Unit
         {
             get { return _Unit; }
             set { _Unit = value; OnPropertyChanged("Unit"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Unit;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Unit;
         
         /// <summary>
         /// Describes the link to the source Device
@@ -449,8 +449,8 @@ namespace Hl7.Fhir.Model.STU3
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(Unit != null) dest.Unit = (Hl7.Fhir.Model.CodeableConcept)Unit.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
+                if(Unit != null) dest.Unit = (Hl7.Fhir.Model.STU3.CodeableConcept)Unit.DeepCopy();
                 if(Source != null) dest.Source = (Hl7.Fhir.Model.STU3.ResourceReference)Source.DeepCopy();
                 if(Parent != null) dest.Parent = (Hl7.Fhir.Model.STU3.ResourceReference)Parent.DeepCopy();
                 if(OperationalStatusElement != null) dest.OperationalStatusElement = (Code<Hl7.Fhir.Model.STU3.DeviceMetricOperationalStatus>)OperationalStatusElement.DeepCopy();

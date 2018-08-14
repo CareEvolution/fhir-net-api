@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "ResearchStudy", IsResource=true)]
     [DataContract]
-    public partial class ResearchStudy : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ResearchStudy : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ResearchStudy; } }
@@ -100,13 +100,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("code", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.STU3.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
             
             /// <summary>
             /// Short explanation of study path
@@ -148,7 +148,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                     return dest;
                 }
@@ -337,13 +337,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Category
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Category
         {
-            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Category; }
+            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Category;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Category;
         
         /// <summary>
         /// Drugs, devices, conditions, etc. under study
@@ -352,13 +352,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Focus
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Focus
         {
-            get { if(_Focus==null) _Focus = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Focus; }
+            get { if(_Focus==null) _Focus = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Focus; }
             set { _Focus = value; OnPropertyChanged("Focus"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Focus;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Focus;
         
         /// <summary>
         /// Contact details for the study
@@ -396,13 +396,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Keyword
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Keyword
         {
-            get { if(_Keyword==null) _Keyword = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Keyword; }
+            get { if(_Keyword==null) _Keyword = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Keyword; }
             set { _Keyword = value; OnPropertyChanged("Keyword"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Keyword;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Keyword;
         
         /// <summary>
         /// Geographic region(s) for study
@@ -411,13 +411,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Jurisdiction
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Jurisdiction
         {
-            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Jurisdiction; }
+            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Jurisdiction; }
             set { _Jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Jurisdiction;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Jurisdiction;
         
         /// <summary>
         /// What this is study doing
@@ -473,13 +473,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=220)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
         
         /// <summary>
         /// Organization responsible for the study
@@ -533,13 +533,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("reasonStopped", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=260)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept ReasonStopped
+        public Hl7.Fhir.Model.STU3.CodeableConcept ReasonStopped
         {
             get { return _ReasonStopped; }
             set { _ReasonStopped = value; OnPropertyChanged("ReasonStopped"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _ReasonStopped;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _ReasonStopped;
         
         /// <summary>
         /// Comments made about the event
@@ -547,13 +547,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=270)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Defined path through the study for a subject
@@ -582,20 +582,20 @@ namespace Hl7.Fhir.Model.STU3
                 if(Protocol != null) dest.Protocol = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Protocol.DeepCopy());
                 if(PartOf != null) dest.PartOf = new List<Hl7.Fhir.Model.STU3.ResourceReference>(PartOf.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.ResearchStudyStatus>)StatusElement.DeepCopy();
-                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.CodeableConcept>(Category.DeepCopy());
-                if(Focus != null) dest.Focus = new List<Hl7.Fhir.Model.CodeableConcept>(Focus.DeepCopy());
+                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Category.DeepCopy());
+                if(Focus != null) dest.Focus = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Focus.DeepCopy());
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(RelatedArtifact != null) dest.RelatedArtifact = new List<Hl7.Fhir.Model.STU3.RelatedArtifact>(RelatedArtifact.DeepCopy());
-                if(Keyword != null) dest.Keyword = new List<Hl7.Fhir.Model.CodeableConcept>(Keyword.DeepCopy());
-                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
+                if(Keyword != null) dest.Keyword = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Keyword.DeepCopy());
+                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(Enrollment != null) dest.Enrollment = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Enrollment.DeepCopy());
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                 if(Sponsor != null) dest.Sponsor = (Hl7.Fhir.Model.STU3.ResourceReference)Sponsor.DeepCopy();
                 if(PrincipalInvestigator != null) dest.PrincipalInvestigator = (Hl7.Fhir.Model.STU3.ResourceReference)PrincipalInvestigator.DeepCopy();
                 if(Site != null) dest.Site = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Site.DeepCopy());
-                if(ReasonStopped != null) dest.ReasonStopped = (Hl7.Fhir.Model.CodeableConcept)ReasonStopped.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(ReasonStopped != null) dest.ReasonStopped = (Hl7.Fhir.Model.STU3.CodeableConcept)ReasonStopped.DeepCopy();
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Arm != null) dest.Arm = new List<ArmComponent>(Arm.DeepCopy());
                 return dest;
             }

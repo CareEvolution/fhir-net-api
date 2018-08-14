@@ -59,13 +59,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("name", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=30)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Code NameElement
+        public Hl7.Fhir.Model.STU3.Code NameElement
         {
             get { return _NameElement; }
             set { _NameElement = value; OnPropertyChanged("NameElement"); }
         }
         
-        private Hl7.Fhir.Model.Code _NameElement;
+        private Hl7.Fhir.Model.STU3.Code _NameElement;
         
         /// <summary>
         /// Name used to access the parameter value
@@ -81,7 +81,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     NameElement = null;
                 else
-                    NameElement = new Hl7.Fhir.Model.Code(value);
+                    NameElement = new Hl7.Fhir.Model.STU3.Code(value);
                 OnPropertyChanged("Name");
             }
         }
@@ -126,13 +126,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("min", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Integer MinElement
+        public Hl7.Fhir.Model.STU3.Integer MinElement
         {
             get { return _MinElement; }
             set { _MinElement = value; OnPropertyChanged("MinElement"); }
         }
         
-        private Hl7.Fhir.Model.Integer _MinElement;
+        private Hl7.Fhir.Model.STU3.Integer _MinElement;
         
         /// <summary>
         /// Minimum cardinality
@@ -148,7 +148,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     MinElement = null;
                 else
-                    MinElement = new Hl7.Fhir.Model.Integer(value);
+                    MinElement = new Hl7.Fhir.Model.STU3.Integer(value);
                 OnPropertyChanged("Min");
             }
         }
@@ -276,9 +276,9 @@ namespace Hl7.Fhir.Model.STU3
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.Code)NameElement.DeepCopy();
+                if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.STU3.Code)NameElement.DeepCopy();
                 if(UseElement != null) dest.UseElement = (Code<Hl7.Fhir.Model.OperationParameterUse>)UseElement.DeepCopy();
-                if(MinElement != null) dest.MinElement = (Hl7.Fhir.Model.Integer)MinElement.DeepCopy();
+                if(MinElement != null) dest.MinElement = (Hl7.Fhir.Model.STU3.Integer)MinElement.DeepCopy();
                 if(MaxElement != null) dest.MaxElement = (Hl7.Fhir.Model.FhirString)MaxElement.DeepCopy();
                 if(DocumentationElement != null) dest.DocumentationElement = (Hl7.Fhir.Model.FhirString)DocumentationElement.DeepCopy();
                 if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>)TypeElement.DeepCopy();

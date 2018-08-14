@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "DetectedIssue", IsResource=true)]
     [DataContract]
-    public partial class DetectedIssue : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DetectedIssue : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DetectedIssue; } }
@@ -68,26 +68,26 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("action", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Action
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Action
             {
                 get { return _Action; }
                 set { _Action = value; OnPropertyChanged("Action"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Action;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Action;
             
             /// <summary>
             /// Date committed
             /// </summary>
             [FhirElement("date", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime DateElement
+            public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
             {
                 get { return _DateElement; }
                 set { _DateElement = value; OnPropertyChanged("DateElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _DateElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
             
             /// <summary>
             /// Date committed
@@ -103,7 +103,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         DateElement = null;
                     else
-                        DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                     OnPropertyChanged("Date");
                 }
             }
@@ -130,8 +130,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Action != null) dest.Action = (Hl7.Fhir.Model.CodeableConcept)Action.DeepCopy();
-                    if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                    if(Action != null) dest.Action = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Action.DeepCopy();
+                    if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                     if(Author != null) dest.Author = (Hl7.Fhir.Model.DSTU2.ResourceReference)Author.DeepCopy();
                     return dest;
                 }
@@ -220,13 +220,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("category", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Category
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Category
         {
             get { return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Category;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Category;
         
         /// <summary>
         /// high | moderate | low
@@ -314,13 +314,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// When identified
@@ -336,7 +336,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -425,11 +425,11 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
-                if(Category != null) dest.Category = (Hl7.Fhir.Model.CodeableConcept)Category.DeepCopy();
+                if(Category != null) dest.Category = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Category.DeepCopy();
                 if(SeverityElement != null) dest.SeverityElement = (Code<Hl7.Fhir.Model.DetectedIssueSeverity>)SeverityElement.DeepCopy();
                 if(Implicated != null) dest.Implicated = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Implicated.DeepCopy());
                 if(DetailElement != null) dest.DetailElement = (Hl7.Fhir.Model.FhirString)DetailElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                 if(Author != null) dest.Author = (Hl7.Fhir.Model.DSTU2.ResourceReference)Author.DeepCopy();
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
                 if(ReferenceElement != null) dest.ReferenceElement = (Hl7.Fhir.Model.FhirUri)ReferenceElement.DeepCopy();

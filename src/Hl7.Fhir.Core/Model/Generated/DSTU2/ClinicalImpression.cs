@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "ClinicalImpression", IsResource=true)]
     [DataContract]
-    public partial class ClinicalImpression : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ClinicalImpression : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ClinicalImpression; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("code", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
             
             /// <summary>
             /// Record of a specific investigation
@@ -99,7 +99,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
                     if(Item != null) dest.Item = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Item.DeepCopy());
                     return dest;
                 }
@@ -176,13 +176,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("item", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Item
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Item
             {
                 get { return _Item; }
                 set { _Item = value; OnPropertyChanged("Item"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Item;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Item;
             
             /// <summary>
             /// Which investigations support finding
@@ -223,7 +223,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Item != null) dest.Item = (Hl7.Fhir.Model.CodeableConcept)Item.DeepCopy();
+                    if(Item != null) dest.Item = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Item.DeepCopy();
                     if(CauseElement != null) dest.CauseElement = (Hl7.Fhir.Model.FhirString)CauseElement.DeepCopy();
                     return dest;
                 }
@@ -300,13 +300,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("item", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Item
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Item
             {
                 get { return _Item; }
                 set { _Item = value; OnPropertyChanged("Item"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Item;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Item;
             
             /// <summary>
             /// Grounds for elimination
@@ -347,7 +347,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Item != null) dest.Item = (Hl7.Fhir.Model.CodeableConcept)Item.DeepCopy();
+                    if(Item != null) dest.Item = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Item.DeepCopy();
                     if(ReasonElement != null) dest.ReasonElement = (Hl7.Fhir.Model.FhirString)ReasonElement.DeepCopy();
                     return dest;
                 }
@@ -482,13 +482,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// When the assessment occurred
@@ -504,7 +504,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -578,7 +578,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("trigger", Order=160, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Trigger
         {
@@ -686,13 +686,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("resolved", Order=210)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Resolved
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Resolved
         {
-            get { if(_Resolved==null) _Resolved = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Resolved; }
+            get { if(_Resolved==null) _Resolved = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Resolved; }
             set { _Resolved = value; OnPropertyChanged("Resolved"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Resolved;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Resolved;
         
         /// <summary>
         /// Diagnosis considered not possible
@@ -783,7 +783,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
                 if(Assessor != null) dest.Assessor = (Hl7.Fhir.Model.DSTU2.ResourceReference)Assessor.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.ClinicalImpressionStatus>)StatusElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(Previous != null) dest.Previous = (Hl7.Fhir.Model.DSTU2.ResourceReference)Previous.DeepCopy();
                 if(Problem != null) dest.Problem = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Problem.DeepCopy());
@@ -792,7 +792,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(ProtocolElement != null) dest.ProtocolElement = (Hl7.Fhir.Model.FhirUri)ProtocolElement.DeepCopy();
                 if(SummaryElement != null) dest.SummaryElement = (Hl7.Fhir.Model.FhirString)SummaryElement.DeepCopy();
                 if(Finding != null) dest.Finding = new List<FindingComponent>(Finding.DeepCopy());
-                if(Resolved != null) dest.Resolved = new List<Hl7.Fhir.Model.CodeableConcept>(Resolved.DeepCopy());
+                if(Resolved != null) dest.Resolved = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Resolved.DeepCopy());
                 if(RuledOut != null) dest.RuledOut = new List<RuledOutComponent>(RuledOut.DeepCopy());
                 if(PrognosisElement != null) dest.PrognosisElement = (Hl7.Fhir.Model.FhirString)PrognosisElement.DeepCopy();
                 if(Plan != null) dest.Plan = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Plan.DeepCopy());

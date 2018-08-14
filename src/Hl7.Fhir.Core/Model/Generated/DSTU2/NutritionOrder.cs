@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "NutritionOrder", IsResource=true)]
     [DataContract]
-    public partial class NutritionOrder : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class NutritionOrder : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.NutritionOrder; } }
@@ -69,13 +69,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Type
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Type
             {
-                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Type; }
+                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Type;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Type;
             
             /// <summary>
             /// Scheduled frequency of diet
@@ -125,13 +125,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("fluidConsistencyType", Order=80)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> FluidConsistencyType
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> FluidConsistencyType
             {
-                get { if(_FluidConsistencyType==null) _FluidConsistencyType = new List<Hl7.Fhir.Model.CodeableConcept>(); return _FluidConsistencyType; }
+                get { if(_FluidConsistencyType==null) _FluidConsistencyType = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _FluidConsistencyType; }
                 set { _FluidConsistencyType = value; OnPropertyChanged("FluidConsistencyType"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _FluidConsistencyType;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _FluidConsistencyType;
             
             /// <summary>
             /// Instructions or additional information about the oral diet
@@ -173,11 +173,11 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.CodeableConcept>(Type.DeepCopy());
+                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Type.DeepCopy());
                     if(Schedule != null) dest.Schedule = new List<Hl7.Fhir.Model.DSTU2.Timing>(Schedule.DeepCopy());
                     if(Nutrient != null) dest.Nutrient = new List<NutrientComponent>(Nutrient.DeepCopy());
                     if(Texture != null) dest.Texture = new List<TextureComponent>(Texture.DeepCopy());
-                    if(FluidConsistencyType != null) dest.FluidConsistencyType = new List<Hl7.Fhir.Model.CodeableConcept>(FluidConsistencyType.DeepCopy());
+                    if(FluidConsistencyType != null) dest.FluidConsistencyType = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(FluidConsistencyType.DeepCopy());
                     if(InstructionElement != null) dest.InstructionElement = (Hl7.Fhir.Model.FhirString)InstructionElement.DeepCopy();
                     return dest;
                 }
@@ -269,26 +269,26 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("modifier", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Modifier
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Modifier
             {
                 get { return _Modifier; }
                 set { _Modifier = value; OnPropertyChanged("Modifier"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Modifier;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Modifier;
             
             /// <summary>
             /// Quantity of the specified nutrient
             /// </summary>
             [FhirElement("amount", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Amount
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Amount
             {
                 get { return _Amount; }
                 set { _Amount = value; OnPropertyChanged("Amount"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Amount;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Amount;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -297,8 +297,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Modifier != null) dest.Modifier = (Hl7.Fhir.Model.CodeableConcept)Modifier.DeepCopy();
-                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.SimpleQuantity)Amount.DeepCopy();
+                    if(Modifier != null) dest.Modifier = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Modifier.DeepCopy();
+                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Amount.DeepCopy();
                     return dest;
                 }
                 else
@@ -373,26 +373,26 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("modifier", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Modifier
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Modifier
             {
                 get { return _Modifier; }
                 set { _Modifier = value; OnPropertyChanged("Modifier"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Modifier;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Modifier;
             
             /// <summary>
             /// Concepts that are used to identify an entity that is ingested for nutritional purposes
             /// </summary>
             [FhirElement("foodType", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept FoodType
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept FoodType
             {
                 get { return _FoodType; }
                 set { _FoodType = value; OnPropertyChanged("FoodType"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _FoodType;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _FoodType;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -401,8 +401,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Modifier != null) dest.Modifier = (Hl7.Fhir.Model.CodeableConcept)Modifier.DeepCopy();
-                    if(FoodType != null) dest.FoodType = (Hl7.Fhir.Model.CodeableConcept)FoodType.DeepCopy();
+                    if(Modifier != null) dest.Modifier = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Modifier.DeepCopy();
+                    if(FoodType != null) dest.FoodType = (Hl7.Fhir.Model.DSTU2.CodeableConcept)FoodType.DeepCopy();
                     return dest;
                 }
                 else
@@ -478,13 +478,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Type
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Type;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
             
             /// <summary>
             /// Product or brand name of the nutritional supplement
@@ -537,13 +537,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("quantity", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Instructions or additional information about the oral supplement
@@ -585,10 +585,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
                     if(ProductNameElement != null) dest.ProductNameElement = (Hl7.Fhir.Model.FhirString)ProductNameElement.DeepCopy();
                     if(Schedule != null) dest.Schedule = new List<Hl7.Fhir.Model.DSTU2.Timing>(Schedule.DeepCopy());
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     if(InstructionElement != null) dest.InstructionElement = (Hl7.Fhir.Model.FhirString)InstructionElement.DeepCopy();
                     return dest;
                 }
@@ -677,13 +677,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("baseFormulaType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept BaseFormulaType
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept BaseFormulaType
             {
                 get { return _BaseFormulaType; }
                 set { _BaseFormulaType = value; OnPropertyChanged("BaseFormulaType"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _BaseFormulaType;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _BaseFormulaType;
             
             /// <summary>
             /// Product or brand name of the enteral or infant formula
@@ -722,13 +722,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("additiveType", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept AdditiveType
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept AdditiveType
             {
                 get { return _AdditiveType; }
                 set { _AdditiveType = value; OnPropertyChanged("AdditiveType"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _AdditiveType;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _AdditiveType;
             
             /// <summary>
             /// Product or brand name of the modular additive
@@ -767,26 +767,26 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("caloricDensity", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity CaloricDensity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity CaloricDensity
             {
                 get { return _CaloricDensity; }
                 set { _CaloricDensity = value; OnPropertyChanged("CaloricDensity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _CaloricDensity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _CaloricDensity;
             
             /// <summary>
             /// How the formula should enter the patient's gastrointestinal tract
             /// </summary>
             [FhirElement("routeofAdministration", Order=90)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept RouteofAdministration
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept RouteofAdministration
             {
                 get { return _RouteofAdministration; }
                 set { _RouteofAdministration = value; OnPropertyChanged("RouteofAdministration"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _RouteofAdministration;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _RouteofAdministration;
             
             /// <summary>
             /// Formula feeding instruction as structured data
@@ -807,13 +807,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("maxVolumeToDeliver", Order=110)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity MaxVolumeToDeliver
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity MaxVolumeToDeliver
             {
                 get { return _MaxVolumeToDeliver; }
                 set { _MaxVolumeToDeliver = value; OnPropertyChanged("MaxVolumeToDeliver"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _MaxVolumeToDeliver;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _MaxVolumeToDeliver;
             
             /// <summary>
             /// Formula feeding instructions expressed as text
@@ -855,14 +855,14 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(BaseFormulaType != null) dest.BaseFormulaType = (Hl7.Fhir.Model.CodeableConcept)BaseFormulaType.DeepCopy();
+                    if(BaseFormulaType != null) dest.BaseFormulaType = (Hl7.Fhir.Model.DSTU2.CodeableConcept)BaseFormulaType.DeepCopy();
                     if(BaseFormulaProductNameElement != null) dest.BaseFormulaProductNameElement = (Hl7.Fhir.Model.FhirString)BaseFormulaProductNameElement.DeepCopy();
-                    if(AdditiveType != null) dest.AdditiveType = (Hl7.Fhir.Model.CodeableConcept)AdditiveType.DeepCopy();
+                    if(AdditiveType != null) dest.AdditiveType = (Hl7.Fhir.Model.DSTU2.CodeableConcept)AdditiveType.DeepCopy();
                     if(AdditiveProductNameElement != null) dest.AdditiveProductNameElement = (Hl7.Fhir.Model.FhirString)AdditiveProductNameElement.DeepCopy();
-                    if(CaloricDensity != null) dest.CaloricDensity = (Hl7.Fhir.Model.SimpleQuantity)CaloricDensity.DeepCopy();
-                    if(RouteofAdministration != null) dest.RouteofAdministration = (Hl7.Fhir.Model.CodeableConcept)RouteofAdministration.DeepCopy();
+                    if(CaloricDensity != null) dest.CaloricDensity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)CaloricDensity.DeepCopy();
+                    if(RouteofAdministration != null) dest.RouteofAdministration = (Hl7.Fhir.Model.DSTU2.CodeableConcept)RouteofAdministration.DeepCopy();
                     if(Administration != null) dest.Administration = new List<AdministrationComponent>(Administration.DeepCopy());
-                    if(MaxVolumeToDeliver != null) dest.MaxVolumeToDeliver = (Hl7.Fhir.Model.SimpleQuantity)MaxVolumeToDeliver.DeepCopy();
+                    if(MaxVolumeToDeliver != null) dest.MaxVolumeToDeliver = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)MaxVolumeToDeliver.DeepCopy();
                     if(AdministrationInstructionElement != null) dest.AdministrationInstructionElement = (Hl7.Fhir.Model.FhirString)AdministrationInstructionElement.DeepCopy();
                     return dest;
                 }
@@ -979,20 +979,20 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("quantity", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Speed with which the formula is provided per period of time
             /// </summary>
             [FhirElement("rate", Order=60, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.SimpleQuantity),typeof(Hl7.Fhir.Model.Ratio))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.SimpleQuantity),typeof(Hl7.Fhir.Model.DSTU2.Ratio))]
             [DataMember]
             public Hl7.Fhir.Model.Element Rate
             {
@@ -1010,7 +1010,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Schedule != null) dest.Schedule = (Hl7.Fhir.Model.DSTU2.Timing)Schedule.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     if(Rate != null) dest.Rate = (Hl7.Fhir.Model.Element)Rate.DeepCopy();
                     return dest;
                 }
@@ -1145,13 +1145,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateTimeElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateTimeElement
         {
             get { return _DateTimeElement; }
             set { _DateTimeElement = value; OnPropertyChanged("DateTimeElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateTimeElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateTimeElement;
         
         /// <summary>
         /// Date and time the nutrition order was requested
@@ -1167,7 +1167,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateTimeElement = null;
                 else
-                    DateTimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateTimeElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("DateTime");
             }
         }
@@ -1227,13 +1227,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("foodPreferenceModifier", Order=160)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> FoodPreferenceModifier
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> FoodPreferenceModifier
         {
-            get { if(_FoodPreferenceModifier==null) _FoodPreferenceModifier = new List<Hl7.Fhir.Model.CodeableConcept>(); return _FoodPreferenceModifier; }
+            get { if(_FoodPreferenceModifier==null) _FoodPreferenceModifier = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _FoodPreferenceModifier; }
             set { _FoodPreferenceModifier = value; OnPropertyChanged("FoodPreferenceModifier"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _FoodPreferenceModifier;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _FoodPreferenceModifier;
         
         /// <summary>
         /// Order-specific modifier about the type of food that should not be given
@@ -1241,13 +1241,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("excludeFoodModifier", Order=170)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ExcludeFoodModifier
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> ExcludeFoodModifier
         {
-            get { if(_ExcludeFoodModifier==null) _ExcludeFoodModifier = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ExcludeFoodModifier; }
+            get { if(_ExcludeFoodModifier==null) _ExcludeFoodModifier = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _ExcludeFoodModifier; }
             set { _ExcludeFoodModifier = value; OnPropertyChanged("ExcludeFoodModifier"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ExcludeFoodModifier;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _ExcludeFoodModifier;
         
         /// <summary>
         /// Oral diet components
@@ -1317,11 +1317,11 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Orderer != null) dest.Orderer = (Hl7.Fhir.Model.DSTU2.ResourceReference)Orderer.DeepCopy();
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();
-                if(DateTimeElement != null) dest.DateTimeElement = (Hl7.Fhir.Model.FhirDateTime)DateTimeElement.DeepCopy();
+                if(DateTimeElement != null) dest.DateTimeElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateTimeElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.NutritionOrderStatus>)StatusElement.DeepCopy();
                 if(AllergyIntolerance != null) dest.AllergyIntolerance = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(AllergyIntolerance.DeepCopy());
-                if(FoodPreferenceModifier != null) dest.FoodPreferenceModifier = new List<Hl7.Fhir.Model.CodeableConcept>(FoodPreferenceModifier.DeepCopy());
-                if(ExcludeFoodModifier != null) dest.ExcludeFoodModifier = new List<Hl7.Fhir.Model.CodeableConcept>(ExcludeFoodModifier.DeepCopy());
+                if(FoodPreferenceModifier != null) dest.FoodPreferenceModifier = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(FoodPreferenceModifier.DeepCopy());
+                if(ExcludeFoodModifier != null) dest.ExcludeFoodModifier = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(ExcludeFoodModifier.DeepCopy());
                 if(OralDiet != null) dest.OralDiet = (OralDietComponent)OralDiet.DeepCopy();
                 if(Supplement != null) dest.Supplement = new List<SupplementComponent>(Supplement.DeepCopy());
                 if(EnteralFormula != null) dest.EnteralFormula = (EnteralFormulaComponent)EnteralFormula.DeepCopy();

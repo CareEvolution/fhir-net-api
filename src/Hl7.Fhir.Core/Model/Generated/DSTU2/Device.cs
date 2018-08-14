@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Device", IsResource=true)]
     [DataContract]
-    public partial class Device : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Device : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Device; } }
@@ -75,13 +75,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", Order=100)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// Device notes and comments
@@ -89,13 +89,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("note", Order=110)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.DSTU2.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.DSTU2.Annotation> _Note;
         
         /// <summary>
         /// available | not-available | entered-in-error
@@ -231,13 +231,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("manufactureDate", Order=160)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime ManufactureDateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime ManufactureDateElement
         {
             get { return _ManufactureDateElement; }
             set { _ManufactureDateElement = value; OnPropertyChanged("ManufactureDateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _ManufactureDateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _ManufactureDateElement;
         
         /// <summary>
         /// Manufacture date
@@ -253,7 +253,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     ManufactureDateElement = null;
                 else
-                    ManufactureDateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    ManufactureDateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("ManufactureDate");
             }
         }
@@ -263,13 +263,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("expiry", Order=170)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime ExpiryElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime ExpiryElement
         {
             get { return _ExpiryElement; }
             set { _ExpiryElement = value; OnPropertyChanged("ExpiryElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _ExpiryElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _ExpiryElement;
         
         /// <summary>
         /// Date and time of expiry of this device (if applicable)
@@ -285,7 +285,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     ExpiryElement = null;
                 else
-                    ExpiryElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    ExpiryElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Expiry");
             }
         }
@@ -454,14 +454,14 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Note.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.DeviceStatus>)StatusElement.DeepCopy();
                 if(ManufacturerElement != null) dest.ManufacturerElement = (Hl7.Fhir.Model.FhirString)ManufacturerElement.DeepCopy();
                 if(ModelElement != null) dest.ModelElement = (Hl7.Fhir.Model.FhirString)ModelElement.DeepCopy();
                 if(VersionElement != null) dest.VersionElement = (Hl7.Fhir.Model.FhirString)VersionElement.DeepCopy();
-                if(ManufactureDateElement != null) dest.ManufactureDateElement = (Hl7.Fhir.Model.FhirDateTime)ManufactureDateElement.DeepCopy();
-                if(ExpiryElement != null) dest.ExpiryElement = (Hl7.Fhir.Model.FhirDateTime)ExpiryElement.DeepCopy();
+                if(ManufactureDateElement != null) dest.ManufactureDateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)ManufactureDateElement.DeepCopy();
+                if(ExpiryElement != null) dest.ExpiryElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)ExpiryElement.DeepCopy();
                 if(UdiElement != null) dest.UdiElement = (Hl7.Fhir.Model.FhirString)UdiElement.DeepCopy();
                 if(LotNumberElement != null) dest.LotNumberElement = (Hl7.Fhir.Model.FhirString)LotNumberElement.DeepCopy();
                 if(Owner != null) dest.Owner = (Hl7.Fhir.Model.DSTU2.ResourceReference)Owner.DeepCopy();

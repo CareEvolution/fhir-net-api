@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "MeasureReport", IsResource=true)]
     [DataContract]
-    public partial class MeasureReport : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class MeasureReport : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.MeasureReport; } }
@@ -96,13 +96,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("measureScore", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal MeasureScoreElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal MeasureScoreElement
             {
                 get { return _MeasureScoreElement; }
                 set { _MeasureScoreElement = value; OnPropertyChanged("MeasureScoreElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _MeasureScoreElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _MeasureScoreElement;
             
             /// <summary>
             /// What score this group achieved
@@ -118,7 +118,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         MeasureScoreElement = null;
                     else
-                        MeasureScoreElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        MeasureScoreElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("MeasureScore");
                 }
             }
@@ -146,7 +146,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
                     if(Population != null) dest.Population = new List<PopulationComponent>(Population.DeepCopy());
-                    if(MeasureScoreElement != null) dest.MeasureScoreElement = (Hl7.Fhir.Model.FhirDecimal)MeasureScoreElement.DeepCopy();
+                    if(MeasureScoreElement != null) dest.MeasureScoreElement = (Hl7.Fhir.Model.STU3.FhirDecimal)MeasureScoreElement.DeepCopy();
                     if(Stratifier != null) dest.Stratifier = new List<StratifierComponent>(Stratifier.DeepCopy());
                     return dest;
                 }
@@ -245,26 +245,26 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.STU3.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
             
             /// <summary>
             /// Size of the population
             /// </summary>
             [FhirElement("count", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer CountElement
+            public Hl7.Fhir.Model.STU3.Integer CountElement
             {
                 get { return _CountElement; }
                 set { _CountElement = value; OnPropertyChanged("CountElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _CountElement;
+            private Hl7.Fhir.Model.STU3.Integer _CountElement;
             
             /// <summary>
             /// Size of the population
@@ -280,7 +280,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         CountElement = null;
                     else
-                        CountElement = new Hl7.Fhir.Model.Integer(value);
+                        CountElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("Count");
                 }
             }
@@ -308,8 +308,8 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                    if(CountElement != null) dest.CountElement = (Hl7.Fhir.Model.Integer)CountElement.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
+                    if(CountElement != null) dest.CountElement = (Hl7.Fhir.Model.STU3.Integer)CountElement.DeepCopy();
                     if(Patients != null) dest.Patients = (Hl7.Fhir.Model.STU3.ResourceReference)Patients.DeepCopy();
                     return dest;
                 }
@@ -546,13 +546,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("measureScore", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal MeasureScoreElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal MeasureScoreElement
             {
                 get { return _MeasureScoreElement; }
                 set { _MeasureScoreElement = value; OnPropertyChanged("MeasureScoreElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _MeasureScoreElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _MeasureScoreElement;
             
             /// <summary>
             /// What score this stratum achieved
@@ -568,7 +568,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         MeasureScoreElement = null;
                     else
-                        MeasureScoreElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        MeasureScoreElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("MeasureScore");
                 }
             }
@@ -582,7 +582,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(ValueElement != null) dest.ValueElement = (Hl7.Fhir.Model.FhirString)ValueElement.DeepCopy();
                     if(Population != null) dest.Population = new List<StratifierGroupPopulationComponent>(Population.DeepCopy());
-                    if(MeasureScoreElement != null) dest.MeasureScoreElement = (Hl7.Fhir.Model.FhirDecimal)MeasureScoreElement.DeepCopy();
+                    if(MeasureScoreElement != null) dest.MeasureScoreElement = (Hl7.Fhir.Model.STU3.FhirDecimal)MeasureScoreElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -676,26 +676,26 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.STU3.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
             
             /// <summary>
             /// Size of the population
             /// </summary>
             [FhirElement("count", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer CountElement
+            public Hl7.Fhir.Model.STU3.Integer CountElement
             {
                 get { return _CountElement; }
                 set { _CountElement = value; OnPropertyChanged("CountElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _CountElement;
+            private Hl7.Fhir.Model.STU3.Integer _CountElement;
             
             /// <summary>
             /// Size of the population
@@ -711,7 +711,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         CountElement = null;
                     else
-                        CountElement = new Hl7.Fhir.Model.Integer(value);
+                        CountElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("Count");
                 }
             }
@@ -739,8 +739,8 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                    if(CountElement != null) dest.CountElement = (Hl7.Fhir.Model.Integer)CountElement.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
+                    if(CountElement != null) dest.CountElement = (Hl7.Fhir.Model.STU3.Integer)CountElement.DeepCopy();
                     if(Patients != null) dest.Patients = (Hl7.Fhir.Model.STU3.ResourceReference)Patients.DeepCopy();
                     return dest;
                 }
@@ -931,13 +931,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// When the report was generated
@@ -953,7 +953,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -980,13 +980,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
         
         /// <summary>
         /// Measure results for each group
@@ -1030,9 +1030,9 @@ namespace Hl7.Fhir.Model.STU3
                 if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.STU3.MeasureReportType>)TypeElement.DeepCopy();
                 if(Measure != null) dest.Measure = (Hl7.Fhir.Model.STU3.ResourceReference)Measure.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.STU3.ResourceReference)Patient.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(ReportingOrganization != null) dest.ReportingOrganization = (Hl7.Fhir.Model.STU3.ResourceReference)ReportingOrganization.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                 if(Group != null) dest.Group = new List<GroupComponent>(Group.DeepCopy());
                 if(EvaluatedResources != null) dest.EvaluatedResources = (Hl7.Fhir.Model.STU3.ResourceReference)EvaluatedResources.DeepCopy();
                 return dest;

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Goal", IsResource=true)]
     [DataContract]
-    public partial class Goal : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Goal : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Goal; } }
@@ -67,7 +67,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("result", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Result
             {
@@ -177,7 +177,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("start", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.CodeableConcept))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Date),typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept))]
         [DataMember]
         public Hl7.Fhir.Model.Element Start
         {
@@ -192,7 +192,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("target", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.DSTU2.Duration))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Date),typeof(Hl7.Fhir.Model.DSTU2.Duration))]
         [DataMember]
         public Hl7.Fhir.Model.Element Target
         {
@@ -209,13 +209,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Category
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Category
         {
-            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Category; }
+            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Category;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Category;
         
         /// <summary>
         /// What's the desired outcome?
@@ -291,13 +291,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("statusDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Date StatusDateElement
+        public Hl7.Fhir.Model.DSTU2.Date StatusDateElement
         {
             get { return _StatusDateElement; }
             set { _StatusDateElement = value; OnPropertyChanged("StatusDateElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _StatusDateElement;
+        private Hl7.Fhir.Model.DSTU2.Date _StatusDateElement;
         
         /// <summary>
         /// When goal status took effect
@@ -313,7 +313,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     StatusDateElement = null;
                 else
-                    StatusDateElement = new Hl7.Fhir.Model.Date(value);
+                    StatusDateElement = new Hl7.Fhir.Model.DSTU2.Date(value);
                 OnPropertyChanged("StatusDate");
             }
         }
@@ -323,13 +323,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("statusReason", Order=170)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept StatusReason
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept StatusReason
         {
             get { return _StatusReason; }
             set { _StatusReason = value; OnPropertyChanged("StatusReason"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _StatusReason;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _StatusReason;
         
         /// <summary>
         /// Who's responsible for creating Goal?
@@ -352,13 +352,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("priority", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Priority
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Priority
         {
             get { return _Priority; }
             set { _Priority = value; OnPropertyChanged("Priority"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Priority;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Priority;
         
         /// <summary>
         /// Issues addressed by this goal
@@ -382,13 +382,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("note", Order=210)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.DSTU2.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.DSTU2.Annotation> _Note;
         
         /// <summary>
         /// What was end result of goal?
@@ -416,15 +416,15 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subject.DeepCopy();
                 if(Start != null) dest.Start = (Hl7.Fhir.Model.Element)Start.DeepCopy();
                 if(Target != null) dest.Target = (Hl7.Fhir.Model.Element)Target.DeepCopy();
-                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.CodeableConcept>(Category.DeepCopy());
+                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Category.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.GoalStatus>)StatusElement.DeepCopy();
-                if(StatusDateElement != null) dest.StatusDateElement = (Hl7.Fhir.Model.Date)StatusDateElement.DeepCopy();
-                if(StatusReason != null) dest.StatusReason = (Hl7.Fhir.Model.CodeableConcept)StatusReason.DeepCopy();
+                if(StatusDateElement != null) dest.StatusDateElement = (Hl7.Fhir.Model.DSTU2.Date)StatusDateElement.DeepCopy();
+                if(StatusReason != null) dest.StatusReason = (Hl7.Fhir.Model.DSTU2.CodeableConcept)StatusReason.DeepCopy();
                 if(Author != null) dest.Author = (Hl7.Fhir.Model.DSTU2.ResourceReference)Author.DeepCopy();
-                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.CodeableConcept)Priority.DeepCopy();
+                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Priority.DeepCopy();
                 if(Addresses != null) dest.Addresses = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Addresses.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Note.DeepCopy());
                 if(Outcome != null) dest.Outcome = new List<OutcomeComponent>(Outcome.DeepCopy());
                 return dest;
             }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "VisionPrescription", IsResource=true)]
     [DataContract]
-    public partial class VisionPrescription : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class VisionPrescription : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.VisionPrescription; } }
@@ -69,13 +69,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Product
+            public Hl7.Fhir.Model.DSTU2.Coding Product
             {
                 get { return _Product; }
                 set { _Product = value; OnPropertyChanged("Product"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Product;
+            private Hl7.Fhir.Model.DSTU2.Coding _Product;
             
             /// <summary>
             /// right | left
@@ -116,13 +116,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("sphere", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal SphereElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal SphereElement
             {
                 get { return _SphereElement; }
                 set { _SphereElement = value; OnPropertyChanged("SphereElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _SphereElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _SphereElement;
             
             /// <summary>
             /// Lens sphere
@@ -138,7 +138,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SphereElement = null;
                     else
-                        SphereElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        SphereElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Sphere");
                 }
             }
@@ -149,13 +149,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("cylinder", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal CylinderElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal CylinderElement
             {
                 get { return _CylinderElement; }
                 set { _CylinderElement = value; OnPropertyChanged("CylinderElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _CylinderElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _CylinderElement;
             
             /// <summary>
             /// Lens cylinder
@@ -171,7 +171,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         CylinderElement = null;
                     else
-                        CylinderElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        CylinderElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Cylinder");
                 }
             }
@@ -182,13 +182,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("axis", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer AxisElement
+            public Hl7.Fhir.Model.DSTU2.Integer AxisElement
             {
                 get { return _AxisElement; }
                 set { _AxisElement = value; OnPropertyChanged("AxisElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _AxisElement;
+            private Hl7.Fhir.Model.DSTU2.Integer _AxisElement;
             
             /// <summary>
             /// Lens axis
@@ -204,7 +204,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         AxisElement = null;
                     else
-                        AxisElement = new Hl7.Fhir.Model.Integer(value);
+                        AxisElement = new Hl7.Fhir.Model.DSTU2.Integer(value);
                     OnPropertyChanged("Axis");
                 }
             }
@@ -215,13 +215,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("prism", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PrismElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PrismElement
             {
                 get { return _PrismElement; }
                 set { _PrismElement = value; OnPropertyChanged("PrismElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PrismElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PrismElement;
             
             /// <summary>
             /// Lens prism
@@ -237,7 +237,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PrismElement = null;
                     else
-                        PrismElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PrismElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Prism");
                 }
             }
@@ -281,13 +281,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("add", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal AddElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal AddElement
             {
                 get { return _AddElement; }
                 set { _AddElement = value; OnPropertyChanged("AddElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _AddElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _AddElement;
             
             /// <summary>
             /// Lens add
@@ -303,7 +303,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         AddElement = null;
                     else
-                        AddElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        AddElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Add");
                 }
             }
@@ -314,13 +314,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("power", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PowerElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PowerElement
             {
                 get { return _PowerElement; }
                 set { _PowerElement = value; OnPropertyChanged("PowerElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PowerElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PowerElement;
             
             /// <summary>
             /// Contact lens power
@@ -336,7 +336,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PowerElement = null;
                     else
-                        PowerElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PowerElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Power");
                 }
             }
@@ -347,13 +347,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("backCurve", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal BackCurveElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal BackCurveElement
             {
                 get { return _BackCurveElement; }
                 set { _BackCurveElement = value; OnPropertyChanged("BackCurveElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _BackCurveElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _BackCurveElement;
             
             /// <summary>
             /// Contact lens back curvature
@@ -369,7 +369,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         BackCurveElement = null;
                     else
-                        BackCurveElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        BackCurveElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("BackCurve");
                 }
             }
@@ -380,13 +380,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("diameter", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal DiameterElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal DiameterElement
             {
                 get { return _DiameterElement; }
                 set { _DiameterElement = value; OnPropertyChanged("DiameterElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _DiameterElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _DiameterElement;
             
             /// <summary>
             /// Contact lens diameter
@@ -402,7 +402,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         DiameterElement = null;
                     else
-                        DiameterElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        DiameterElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Diameter");
                 }
             }
@@ -413,13 +413,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("duration", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Duration
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Duration
             {
                 get { return _Duration; }
                 set { _Duration = value; OnPropertyChanged("Duration"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Duration;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Duration;
             
             /// <summary>
             /// Lens add
@@ -527,18 +527,18 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Product != null) dest.Product = (Hl7.Fhir.Model.Coding)Product.DeepCopy();
+                    if(Product != null) dest.Product = (Hl7.Fhir.Model.DSTU2.Coding)Product.DeepCopy();
                     if(EyeElement != null) dest.EyeElement = (Code<Hl7.Fhir.Model.VisionEyes>)EyeElement.DeepCopy();
-                    if(SphereElement != null) dest.SphereElement = (Hl7.Fhir.Model.FhirDecimal)SphereElement.DeepCopy();
-                    if(CylinderElement != null) dest.CylinderElement = (Hl7.Fhir.Model.FhirDecimal)CylinderElement.DeepCopy();
-                    if(AxisElement != null) dest.AxisElement = (Hl7.Fhir.Model.Integer)AxisElement.DeepCopy();
-                    if(PrismElement != null) dest.PrismElement = (Hl7.Fhir.Model.FhirDecimal)PrismElement.DeepCopy();
+                    if(SphereElement != null) dest.SphereElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)SphereElement.DeepCopy();
+                    if(CylinderElement != null) dest.CylinderElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)CylinderElement.DeepCopy();
+                    if(AxisElement != null) dest.AxisElement = (Hl7.Fhir.Model.DSTU2.Integer)AxisElement.DeepCopy();
+                    if(PrismElement != null) dest.PrismElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PrismElement.DeepCopy();
                     if(BaseElement != null) dest.BaseElement = (Code<Hl7.Fhir.Model.VisionBase>)BaseElement.DeepCopy();
-                    if(AddElement != null) dest.AddElement = (Hl7.Fhir.Model.FhirDecimal)AddElement.DeepCopy();
-                    if(PowerElement != null) dest.PowerElement = (Hl7.Fhir.Model.FhirDecimal)PowerElement.DeepCopy();
-                    if(BackCurveElement != null) dest.BackCurveElement = (Hl7.Fhir.Model.FhirDecimal)BackCurveElement.DeepCopy();
-                    if(DiameterElement != null) dest.DiameterElement = (Hl7.Fhir.Model.FhirDecimal)DiameterElement.DeepCopy();
-                    if(Duration != null) dest.Duration = (Hl7.Fhir.Model.SimpleQuantity)Duration.DeepCopy();
+                    if(AddElement != null) dest.AddElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)AddElement.DeepCopy();
+                    if(PowerElement != null) dest.PowerElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PowerElement.DeepCopy();
+                    if(BackCurveElement != null) dest.BackCurveElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)BackCurveElement.DeepCopy();
+                    if(DiameterElement != null) dest.DiameterElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)DiameterElement.DeepCopy();
+                    if(Duration != null) dest.Duration = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Duration.DeepCopy();
                     if(ColorElement != null) dest.ColorElement = (Hl7.Fhir.Model.FhirString)ColorElement.DeepCopy();
                     if(BrandElement != null) dest.BrandElement = (Hl7.Fhir.Model.FhirString)BrandElement.DeepCopy();
                     if(NotesElement != null) dest.NotesElement = (Hl7.Fhir.Model.FhirString)NotesElement.DeepCopy();
@@ -677,13 +677,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("dateWritten", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateWrittenElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateWrittenElement
         {
             get { return _DateWrittenElement; }
             set { _DateWrittenElement = value; OnPropertyChanged("DateWrittenElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateWrittenElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateWrittenElement;
         
         /// <summary>
         /// When prescription was authorized
@@ -699,7 +699,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateWrittenElement = null;
                 else
-                    DateWrittenElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateWrittenElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("DateWritten");
             }
         }
@@ -754,7 +754,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("reason", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Reason
         {
@@ -788,7 +788,7 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(DateWrittenElement != null) dest.DateWrittenElement = (Hl7.Fhir.Model.FhirDateTime)DateWrittenElement.DeepCopy();
+                if(DateWrittenElement != null) dest.DateWrittenElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateWrittenElement.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
                 if(Prescriber != null) dest.Prescriber = (Hl7.Fhir.Model.DSTU2.ResourceReference)Prescriber.DeepCopy();
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();

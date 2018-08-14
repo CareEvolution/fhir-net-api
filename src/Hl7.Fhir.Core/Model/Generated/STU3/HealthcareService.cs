@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "HealthcareService", IsResource=true)]
     [DataContract]
-    public partial class HealthcareService : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class HealthcareService : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.HealthcareService; } }
@@ -132,13 +132,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("availableStartTime", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Time AvailableStartTimeElement
+            public Hl7.Fhir.Model.STU3.Time AvailableStartTimeElement
             {
                 get { return _AvailableStartTimeElement; }
                 set { _AvailableStartTimeElement = value; OnPropertyChanged("AvailableStartTimeElement"); }
             }
             
-            private Hl7.Fhir.Model.Time _AvailableStartTimeElement;
+            private Hl7.Fhir.Model.STU3.Time _AvailableStartTimeElement;
             
             /// <summary>
             /// Opening time of day (ignored if allDay = true)
@@ -154,7 +154,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         AvailableStartTimeElement = null;
                     else
-                        AvailableStartTimeElement = new Hl7.Fhir.Model.Time(value);
+                        AvailableStartTimeElement = new Hl7.Fhir.Model.STU3.Time(value);
                     OnPropertyChanged("AvailableStartTime");
                 }
             }
@@ -164,13 +164,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("availableEndTime", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Time AvailableEndTimeElement
+            public Hl7.Fhir.Model.STU3.Time AvailableEndTimeElement
             {
                 get { return _AvailableEndTimeElement; }
                 set { _AvailableEndTimeElement = value; OnPropertyChanged("AvailableEndTimeElement"); }
             }
             
-            private Hl7.Fhir.Model.Time _AvailableEndTimeElement;
+            private Hl7.Fhir.Model.STU3.Time _AvailableEndTimeElement;
             
             /// <summary>
             /// Closing time of day (ignored if allDay = true)
@@ -186,7 +186,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         AvailableEndTimeElement = null;
                     else
-                        AvailableEndTimeElement = new Hl7.Fhir.Model.Time(value);
+                        AvailableEndTimeElement = new Hl7.Fhir.Model.STU3.Time(value);
                     OnPropertyChanged("AvailableEndTime");
                 }
             }
@@ -200,8 +200,8 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(DaysOfWeekElement != null) dest.DaysOfWeekElement = new List<Code<Hl7.Fhir.Model.DaysOfWeek>>(DaysOfWeekElement.DeepCopy());
                     if(AllDayElement != null) dest.AllDayElement = (Hl7.Fhir.Model.FhirBoolean)AllDayElement.DeepCopy();
-                    if(AvailableStartTimeElement != null) dest.AvailableStartTimeElement = (Hl7.Fhir.Model.Time)AvailableStartTimeElement.DeepCopy();
-                    if(AvailableEndTimeElement != null) dest.AvailableEndTimeElement = (Hl7.Fhir.Model.Time)AvailableEndTimeElement.DeepCopy();
+                    if(AvailableStartTimeElement != null) dest.AvailableStartTimeElement = (Hl7.Fhir.Model.STU3.Time)AvailableStartTimeElement.DeepCopy();
+                    if(AvailableEndTimeElement != null) dest.AvailableEndTimeElement = (Hl7.Fhir.Model.STU3.Time)AvailableEndTimeElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -317,13 +317,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("during", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.Period During
+            public Hl7.Fhir.Model.STU3.Period During
             {
                 get { return _During; }
                 set { _During = value; OnPropertyChanged("During"); }
             }
             
-            private Hl7.Fhir.Model.Period _During;
+            private Hl7.Fhir.Model.STU3.Period _During;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -333,7 +333,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                    if(During != null) dest.During = (Hl7.Fhir.Model.Period)During.DeepCopy();
+                    if(During != null) dest.During = (Hl7.Fhir.Model.STU3.Period)During.DeepCopy();
                     return dest;
                 }
                 else
@@ -465,13 +465,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("category", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Category
+        public Hl7.Fhir.Model.STU3.CodeableConcept Category
         {
             get { return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Category;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Category;
         
         /// <summary>
         /// Type of service that may be delivered or performed
@@ -480,13 +480,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Type
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Type
         {
-            get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Type; }
+            get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Type;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Type;
         
         /// <summary>
         /// Specialties handled by the HealthcareService
@@ -495,13 +495,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Specialty
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Specialty
         {
-            get { if(_Specialty==null) _Specialty = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Specialty; }
+            get { if(_Specialty==null) _Specialty = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Specialty; }
             set { _Specialty = value; OnPropertyChanged("Specialty"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Specialty;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Specialty;
         
         /// <summary>
         /// Location(s) where service may be provided
@@ -623,13 +623,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("photo", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Attachment Photo
+        public Hl7.Fhir.Model.STU3.Attachment Photo
         {
             get { return _Photo; }
             set { _Photo = value; OnPropertyChanged("Photo"); }
         }
         
-        private Hl7.Fhir.Model.Attachment _Photo;
+        private Hl7.Fhir.Model.STU3.Attachment _Photo;
         
         /// <summary>
         /// Contacts related to the healthcare service
@@ -667,26 +667,26 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("serviceProvisionCode", Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ServiceProvisionCode
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ServiceProvisionCode
         {
-            get { if(_ServiceProvisionCode==null) _ServiceProvisionCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ServiceProvisionCode; }
+            get { if(_ServiceProvisionCode==null) _ServiceProvisionCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ServiceProvisionCode; }
             set { _ServiceProvisionCode = value; OnPropertyChanged("ServiceProvisionCode"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ServiceProvisionCode;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ServiceProvisionCode;
         
         /// <summary>
         /// Specific eligibility requirements required to use the service
         /// </summary>
         [FhirElement("eligibility", Order=230)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Eligibility
+        public Hl7.Fhir.Model.STU3.CodeableConcept Eligibility
         {
             get { return _Eligibility; }
             set { _Eligibility = value; OnPropertyChanged("Eligibility"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Eligibility;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Eligibility;
         
         /// <summary>
         /// Describes the eligibility conditions for the service
@@ -759,13 +759,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("characteristic", Order=260)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Characteristic
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Characteristic
         {
-            get { if(_Characteristic==null) _Characteristic = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Characteristic; }
+            get { if(_Characteristic==null) _Characteristic = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Characteristic; }
             set { _Characteristic = value; OnPropertyChanged("Characteristic"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Characteristic;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Characteristic;
         
         /// <summary>
         /// Ways that the service accepts referrals
@@ -773,13 +773,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("referralMethod", Order=270)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReferralMethod
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReferralMethod
         {
-            get { if(_ReferralMethod==null) _ReferralMethod = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReferralMethod; }
+            get { if(_ReferralMethod==null) _ReferralMethod = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReferralMethod; }
             set { _ReferralMethod = value; OnPropertyChanged("ReferralMethod"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReferralMethod;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReferralMethod;
         
         /// <summary>
         /// If an appointment is required for access to this service
@@ -900,22 +900,22 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(ActiveElement != null) dest.ActiveElement = (Hl7.Fhir.Model.FhirBoolean)ActiveElement.DeepCopy();
                 if(ProvidedBy != null) dest.ProvidedBy = (Hl7.Fhir.Model.STU3.ResourceReference)ProvidedBy.DeepCopy();
-                if(Category != null) dest.Category = (Hl7.Fhir.Model.CodeableConcept)Category.DeepCopy();
-                if(Type != null) dest.Type = new List<Hl7.Fhir.Model.CodeableConcept>(Type.DeepCopy());
-                if(Specialty != null) dest.Specialty = new List<Hl7.Fhir.Model.CodeableConcept>(Specialty.DeepCopy());
+                if(Category != null) dest.Category = (Hl7.Fhir.Model.STU3.CodeableConcept)Category.DeepCopy();
+                if(Type != null) dest.Type = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Type.DeepCopy());
+                if(Specialty != null) dest.Specialty = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Specialty.DeepCopy());
                 if(Location != null) dest.Location = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Location.DeepCopy());
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                 if(CommentElement != null) dest.CommentElement = (Hl7.Fhir.Model.FhirString)CommentElement.DeepCopy();
                 if(ExtraDetailsElement != null) dest.ExtraDetailsElement = (Hl7.Fhir.Model.FhirString)ExtraDetailsElement.DeepCopy();
-                if(Photo != null) dest.Photo = (Hl7.Fhir.Model.Attachment)Photo.DeepCopy();
+                if(Photo != null) dest.Photo = (Hl7.Fhir.Model.STU3.Attachment)Photo.DeepCopy();
                 if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.STU3.ContactPoint>(Telecom.DeepCopy());
                 if(CoverageArea != null) dest.CoverageArea = new List<Hl7.Fhir.Model.STU3.ResourceReference>(CoverageArea.DeepCopy());
-                if(ServiceProvisionCode != null) dest.ServiceProvisionCode = new List<Hl7.Fhir.Model.CodeableConcept>(ServiceProvisionCode.DeepCopy());
-                if(Eligibility != null) dest.Eligibility = (Hl7.Fhir.Model.CodeableConcept)Eligibility.DeepCopy();
+                if(ServiceProvisionCode != null) dest.ServiceProvisionCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ServiceProvisionCode.DeepCopy());
+                if(Eligibility != null) dest.Eligibility = (Hl7.Fhir.Model.STU3.CodeableConcept)Eligibility.DeepCopy();
                 if(EligibilityNoteElement != null) dest.EligibilityNoteElement = (Hl7.Fhir.Model.FhirString)EligibilityNoteElement.DeepCopy();
                 if(ProgramNameElement != null) dest.ProgramNameElement = new List<Hl7.Fhir.Model.FhirString>(ProgramNameElement.DeepCopy());
-                if(Characteristic != null) dest.Characteristic = new List<Hl7.Fhir.Model.CodeableConcept>(Characteristic.DeepCopy());
-                if(ReferralMethod != null) dest.ReferralMethod = new List<Hl7.Fhir.Model.CodeableConcept>(ReferralMethod.DeepCopy());
+                if(Characteristic != null) dest.Characteristic = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Characteristic.DeepCopy());
+                if(ReferralMethod != null) dest.ReferralMethod = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReferralMethod.DeepCopy());
                 if(AppointmentRequiredElement != null) dest.AppointmentRequiredElement = (Hl7.Fhir.Model.FhirBoolean)AppointmentRequiredElement.DeepCopy();
                 if(AvailableTime != null) dest.AvailableTime = new List<AvailableTimeComponent>(AvailableTime.DeepCopy());
                 if(NotAvailable != null) dest.NotAvailable = new List<NotAvailableComponent>(NotAvailable.DeepCopy());

@@ -59,13 +59,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("sequence", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=30)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Integer SequenceElement
+        public Hl7.Fhir.Model.STU3.Integer SequenceElement
         {
             get { return _SequenceElement; }
             set { _SequenceElement = value; OnPropertyChanged("SequenceElement"); }
         }
         
-        private Hl7.Fhir.Model.Integer _SequenceElement;
+        private Hl7.Fhir.Model.STU3.Integer _SequenceElement;
         
         /// <summary>
         /// The order of the dosage instructions
@@ -81,7 +81,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     SequenceElement = null;
                 else
-                    SequenceElement = new Hl7.Fhir.Model.Integer(value);
+                    SequenceElement = new Hl7.Fhir.Model.STU3.Integer(value);
                 OnPropertyChanged("Sequence");
             }
         }
@@ -126,13 +126,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> AdditionalInstruction
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> AdditionalInstruction
         {
-            get { if(_AdditionalInstruction==null) _AdditionalInstruction = new List<Hl7.Fhir.Model.CodeableConcept>(); return _AdditionalInstruction; }
+            get { if(_AdditionalInstruction==null) _AdditionalInstruction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _AdditionalInstruction; }
             set { _AdditionalInstruction = value; OnPropertyChanged("AdditionalInstruction"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _AdditionalInstruction;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _AdditionalInstruction;
         
         /// <summary>
         /// Patient or consumer oriented instructions
@@ -186,7 +186,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("asNeeded", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.CodeableConcept))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.STU3.CodeableConcept))]
         [DataMember]
         public Hl7.Fhir.Model.Element AsNeeded
         {
@@ -202,13 +202,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("site", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Site
+        public Hl7.Fhir.Model.STU3.CodeableConcept Site
         {
             get { return _Site; }
             set { _Site = value; OnPropertyChanged("Site"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Site;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Site;
         
         /// <summary>
         /// How drug should enter body
@@ -216,13 +216,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("route", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Route
+        public Hl7.Fhir.Model.STU3.CodeableConcept Route
         {
             get { return _Route; }
             set { _Route = value; OnPropertyChanged("Route"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Route;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Route;
         
         /// <summary>
         /// Technique for administering medication
@@ -230,20 +230,20 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("method", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Method
+        public Hl7.Fhir.Model.STU3.CodeableConcept Method
         {
             get { return _Method; }
             set { _Method = value; OnPropertyChanged("Method"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Method;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Method;
         
         /// <summary>
         /// Amount of medication per dose
         /// </summary>
         [FhirElement("dose", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.SimpleQuantity))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Range),typeof(Hl7.Fhir.Model.STU3.SimpleQuantity))]
         [DataMember]
         public Hl7.Fhir.Model.Element Dose
         {
@@ -259,13 +259,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("maxDosePerPeriod", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Ratio MaxDosePerPeriod
+        public Hl7.Fhir.Model.STU3.Ratio MaxDosePerPeriod
         {
             get { return _MaxDosePerPeriod; }
             set { _MaxDosePerPeriod = value; OnPropertyChanged("MaxDosePerPeriod"); }
         }
         
-        private Hl7.Fhir.Model.Ratio _MaxDosePerPeriod;
+        private Hl7.Fhir.Model.STU3.Ratio _MaxDosePerPeriod;
         
         /// <summary>
         /// Upper limit on medication per administration
@@ -273,13 +273,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("maxDosePerAdministration", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.SimpleQuantity MaxDosePerAdministration
+        public Hl7.Fhir.Model.STU3.SimpleQuantity MaxDosePerAdministration
         {
             get { return _MaxDosePerAdministration; }
             set { _MaxDosePerAdministration = value; OnPropertyChanged("MaxDosePerAdministration"); }
         }
         
-        private Hl7.Fhir.Model.SimpleQuantity _MaxDosePerAdministration;
+        private Hl7.Fhir.Model.STU3.SimpleQuantity _MaxDosePerAdministration;
         
         /// <summary>
         /// Upper limit on medication per lifetime of the patient
@@ -287,20 +287,20 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("maxDosePerLifetime", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.SimpleQuantity MaxDosePerLifetime
+        public Hl7.Fhir.Model.STU3.SimpleQuantity MaxDosePerLifetime
         {
             get { return _MaxDosePerLifetime; }
             set { _MaxDosePerLifetime = value; OnPropertyChanged("MaxDosePerLifetime"); }
         }
         
-        private Hl7.Fhir.Model.SimpleQuantity _MaxDosePerLifetime;
+        private Hl7.Fhir.Model.STU3.SimpleQuantity _MaxDosePerLifetime;
         
         /// <summary>
         /// Amount of medication per unit of time
         /// </summary>
         [FhirElement("rate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.SimpleQuantity))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Ratio),typeof(Hl7.Fhir.Model.STU3.Range),typeof(Hl7.Fhir.Model.STU3.SimpleQuantity))]
         [DataMember]
         public Hl7.Fhir.Model.Element Rate
         {
@@ -318,19 +318,19 @@ namespace Hl7.Fhir.Model.STU3
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.Integer)SequenceElement.DeepCopy();
+                if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.STU3.Integer)SequenceElement.DeepCopy();
                 if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
-                if(AdditionalInstruction != null) dest.AdditionalInstruction = new List<Hl7.Fhir.Model.CodeableConcept>(AdditionalInstruction.DeepCopy());
+                if(AdditionalInstruction != null) dest.AdditionalInstruction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(AdditionalInstruction.DeepCopy());
                 if(PatientInstructionElement != null) dest.PatientInstructionElement = (Hl7.Fhir.Model.FhirString)PatientInstructionElement.DeepCopy();
                 if(Timing != null) dest.Timing = (Hl7.Fhir.Model.STU3.Timing)Timing.DeepCopy();
                 if(AsNeeded != null) dest.AsNeeded = (Hl7.Fhir.Model.Element)AsNeeded.DeepCopy();
-                if(Site != null) dest.Site = (Hl7.Fhir.Model.CodeableConcept)Site.DeepCopy();
-                if(Route != null) dest.Route = (Hl7.Fhir.Model.CodeableConcept)Route.DeepCopy();
-                if(Method != null) dest.Method = (Hl7.Fhir.Model.CodeableConcept)Method.DeepCopy();
+                if(Site != null) dest.Site = (Hl7.Fhir.Model.STU3.CodeableConcept)Site.DeepCopy();
+                if(Route != null) dest.Route = (Hl7.Fhir.Model.STU3.CodeableConcept)Route.DeepCopy();
+                if(Method != null) dest.Method = (Hl7.Fhir.Model.STU3.CodeableConcept)Method.DeepCopy();
                 if(Dose != null) dest.Dose = (Hl7.Fhir.Model.Element)Dose.DeepCopy();
-                if(MaxDosePerPeriod != null) dest.MaxDosePerPeriod = (Hl7.Fhir.Model.Ratio)MaxDosePerPeriod.DeepCopy();
-                if(MaxDosePerAdministration != null) dest.MaxDosePerAdministration = (Hl7.Fhir.Model.SimpleQuantity)MaxDosePerAdministration.DeepCopy();
-                if(MaxDosePerLifetime != null) dest.MaxDosePerLifetime = (Hl7.Fhir.Model.SimpleQuantity)MaxDosePerLifetime.DeepCopy();
+                if(MaxDosePerPeriod != null) dest.MaxDosePerPeriod = (Hl7.Fhir.Model.STU3.Ratio)MaxDosePerPeriod.DeepCopy();
+                if(MaxDosePerAdministration != null) dest.MaxDosePerAdministration = (Hl7.Fhir.Model.STU3.SimpleQuantity)MaxDosePerAdministration.DeepCopy();
+                if(MaxDosePerLifetime != null) dest.MaxDosePerLifetime = (Hl7.Fhir.Model.STU3.SimpleQuantity)MaxDosePerLifetime.DeepCopy();
                 if(Rate != null) dest.Rate = (Hl7.Fhir.Model.Element)Rate.DeepCopy();
                 return dest;
             }

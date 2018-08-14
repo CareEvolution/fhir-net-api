@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "EnrollmentResponse", IsResource=true)]
     [DataContract]
-    public partial class EnrollmentResponse : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class EnrollmentResponse : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.EnrollmentResponse; } }
@@ -122,13 +122,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("outcome", Order=120)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Outcome
+        public Hl7.Fhir.Model.STU3.CodeableConcept Outcome
         {
             get { return _Outcome; }
             set { _Outcome = value; OnPropertyChanged("Outcome"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Outcome;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Outcome;
         
         /// <summary>
         /// Disposition Message
@@ -167,13 +167,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("created", Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Creation date
@@ -189,7 +189,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -250,9 +250,9 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.FinancialResourceStatusCodes>)StatusElement.DeepCopy();
                 if(Request != null) dest.Request = (Hl7.Fhir.Model.STU3.ResourceReference)Request.DeepCopy();
-                if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
+                if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.STU3.CodeableConcept)Outcome.DeepCopy();
                 if(DispositionElement != null) dest.DispositionElement = (Hl7.Fhir.Model.FhirString)DispositionElement.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)CreatedElement.DeepCopy();
                 if(Organization != null) dest.Organization = (Hl7.Fhir.Model.STU3.ResourceReference)Organization.DeepCopy();
                 if(RequestProvider != null) dest.RequestProvider = (Hl7.Fhir.Model.STU3.ResourceReference)RequestProvider.DeepCopy();
                 if(RequestOrganization != null) dest.RequestOrganization = (Hl7.Fhir.Model.STU3.ResourceReference)RequestOrganization.DeepCopy();

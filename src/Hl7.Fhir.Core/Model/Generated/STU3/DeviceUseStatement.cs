@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "DeviceUseStatement", IsResource=true)]
     [DataContract]
-    public partial class DeviceUseStatement : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DeviceUseStatement : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DeviceUseStatement; } }
@@ -124,20 +124,20 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("whenUsed", Order=120)]
         [DataMember]
-        public Hl7.Fhir.Model.Period WhenUsed
+        public Hl7.Fhir.Model.STU3.Period WhenUsed
         {
             get { return _WhenUsed; }
             set { _WhenUsed = value; OnPropertyChanged("WhenUsed"); }
         }
         
-        private Hl7.Fhir.Model.Period _WhenUsed;
+        private Hl7.Fhir.Model.STU3.Period _WhenUsed;
         
         /// <summary>
         /// How often  the device was used
         /// </summary>
         [FhirElement("timing", Order=130, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Timing),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.FhirDateTime))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Timing),typeof(Hl7.Fhir.Model.STU3.Period),typeof(Hl7.Fhir.Model.STU3.FhirDateTime))]
         [DataMember]
         public Hl7.Fhir.Model.Element Timing
         {
@@ -152,13 +152,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("recordedOn", Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime RecordedOnElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime RecordedOnElement
         {
             get { return _RecordedOnElement; }
             set { _RecordedOnElement = value; OnPropertyChanged("RecordedOnElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _RecordedOnElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _RecordedOnElement;
         
         /// <summary>
         /// When statement was recorded
@@ -174,7 +174,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     RecordedOnElement = null;
                 else
-                    RecordedOnElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    RecordedOnElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("RecordedOn");
             }
         }
@@ -216,26 +216,26 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("indication", Order=170)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Indication
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Indication
         {
-            get { if(_Indication==null) _Indication = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Indication; }
+            get { if(_Indication==null) _Indication = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Indication; }
             set { _Indication = value; OnPropertyChanged("Indication"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Indication;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Indication;
         
         /// <summary>
         /// Target body site
         /// </summary>
         [FhirElement("bodySite", Order=180)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept BodySite
+        public Hl7.Fhir.Model.STU3.CodeableConcept BodySite
         {
             get { return _BodySite; }
             set { _BodySite = value; OnPropertyChanged("BodySite"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _BodySite;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _BodySite;
         
         /// <summary>
         /// Addition details (comments, instructions)
@@ -243,13 +243,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=190)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -262,14 +262,14 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.DeviceUseStatementStatus>)StatusElement.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
-                if(WhenUsed != null) dest.WhenUsed = (Hl7.Fhir.Model.Period)WhenUsed.DeepCopy();
+                if(WhenUsed != null) dest.WhenUsed = (Hl7.Fhir.Model.STU3.Period)WhenUsed.DeepCopy();
                 if(Timing != null) dest.Timing = (Hl7.Fhir.Model.Element)Timing.DeepCopy();
-                if(RecordedOnElement != null) dest.RecordedOnElement = (Hl7.Fhir.Model.FhirDateTime)RecordedOnElement.DeepCopy();
+                if(RecordedOnElement != null) dest.RecordedOnElement = (Hl7.Fhir.Model.STU3.FhirDateTime)RecordedOnElement.DeepCopy();
                 if(Source != null) dest.Source = (Hl7.Fhir.Model.STU3.ResourceReference)Source.DeepCopy();
                 if(Device != null) dest.Device = (Hl7.Fhir.Model.STU3.ResourceReference)Device.DeepCopy();
-                if(Indication != null) dest.Indication = new List<Hl7.Fhir.Model.CodeableConcept>(Indication.DeepCopy());
-                if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.CodeableConcept)BodySite.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Indication != null) dest.Indication = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Indication.DeepCopy());
+                if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.STU3.CodeableConcept)BodySite.DeepCopy();
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 return dest;
             }
             else

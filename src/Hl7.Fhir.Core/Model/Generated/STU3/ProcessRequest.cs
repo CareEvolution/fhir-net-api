@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "ProcessRequest", IsResource=true)]
     [DataContract]
-    public partial class ProcessRequest : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ProcessRequest : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ProcessRequest; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("sequenceLinkId", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer SequenceLinkIdElement
+            public Hl7.Fhir.Model.STU3.Integer SequenceLinkIdElement
             {
                 get { return _SequenceLinkIdElement; }
                 set { _SequenceLinkIdElement = value; OnPropertyChanged("SequenceLinkIdElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _SequenceLinkIdElement;
+            private Hl7.Fhir.Model.STU3.Integer _SequenceLinkIdElement;
             
             /// <summary>
             /// Service instance
@@ -90,7 +90,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         SequenceLinkIdElement = null;
                     else
-                        SequenceLinkIdElement = new Hl7.Fhir.Model.Integer(value);
+                        SequenceLinkIdElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("SequenceLinkId");
                 }
             }
@@ -102,7 +102,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(SequenceLinkIdElement != null) dest.SequenceLinkIdElement = (Hl7.Fhir.Model.Integer)SequenceLinkIdElement.DeepCopy();
+                    if(SequenceLinkIdElement != null) dest.SequenceLinkIdElement = (Hl7.Fhir.Model.STU3.Integer)SequenceLinkIdElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -260,13 +260,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("created", Order=130)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Creation date
@@ -282,7 +282,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -492,13 +492,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("period", Order=230)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -512,7 +512,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.FinancialResourceStatusCodes>)StatusElement.DeepCopy();
                 if(ActionElement != null) dest.ActionElement = (Code<Hl7.Fhir.Model.ActionList>)ActionElement.DeepCopy();
                 if(Target != null) dest.Target = (Hl7.Fhir.Model.STU3.ResourceReference)Target.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)CreatedElement.DeepCopy();
                 if(Provider != null) dest.Provider = (Hl7.Fhir.Model.STU3.ResourceReference)Provider.DeepCopy();
                 if(Organization != null) dest.Organization = (Hl7.Fhir.Model.STU3.ResourceReference)Organization.DeepCopy();
                 if(Request != null) dest.Request = (Hl7.Fhir.Model.STU3.ResourceReference)Request.DeepCopy();
@@ -522,7 +522,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(Item != null) dest.Item = new List<ItemsComponent>(Item.DeepCopy());
                 if(IncludeElement != null) dest.IncludeElement = new List<Hl7.Fhir.Model.FhirString>(IncludeElement.DeepCopy());
                 if(ExcludeElement != null) dest.ExcludeElement = new List<Hl7.Fhir.Model.FhirString>(ExcludeElement.DeepCopy());
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                 return dest;
             }
             else

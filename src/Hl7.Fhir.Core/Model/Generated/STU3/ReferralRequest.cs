@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "ReferralRequest", IsResource=true)]
     [DataContract]
-    public partial class ReferralRequest : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ReferralRequest : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ReferralRequest; } }
@@ -315,13 +315,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// Urgency of referral / transfer of care request
@@ -363,13 +363,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ServiceRequested
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ServiceRequested
         {
-            get { if(_ServiceRequested==null) _ServiceRequested = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ServiceRequested; }
+            get { if(_ServiceRequested==null) _ServiceRequested = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ServiceRequested; }
             set { _ServiceRequested = value; OnPropertyChanged("ServiceRequested"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ServiceRequested;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ServiceRequested;
         
         /// <summary>
         /// Patient referred to care or transfer
@@ -407,7 +407,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("occurrence", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=210, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
         [DataMember]
         public Hl7.Fhir.Model.Element Occurrence
         {
@@ -423,13 +423,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("authoredOn", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=220)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime AuthoredOnElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime AuthoredOnElement
         {
             get { return _AuthoredOnElement; }
             set { _AuthoredOnElement = value; OnPropertyChanged("AuthoredOnElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _AuthoredOnElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _AuthoredOnElement;
         
         /// <summary>
         /// Date of creation/activation
@@ -445,7 +445,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     AuthoredOnElement = null;
                 else
-                    AuthoredOnElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    AuthoredOnElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("AuthoredOn");
             }
         }
@@ -469,13 +469,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("specialty", Order=240)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Specialty
+        public Hl7.Fhir.Model.STU3.CodeableConcept Specialty
         {
             get { return _Specialty; }
             set { _Specialty = value; OnPropertyChanged("Specialty"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Specialty;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Specialty;
         
         /// <summary>
         /// Receiver of referral / transfer of care request
@@ -500,13 +500,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonCode
         {
-            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonCode; }
+            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonCode; }
             set { _ReasonCode = value; OnPropertyChanged("ReasonCode"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonCode;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonCode;
         
         /// <summary>
         /// Why is service needed?
@@ -576,13 +576,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=300)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Key events in history of request
@@ -631,21 +631,21 @@ namespace Hl7.Fhir.Model.STU3
                 if(GroupIdentifier != null) dest.GroupIdentifier = (Hl7.Fhir.Model.STU3.Identifier)GroupIdentifier.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.RequestStatus>)StatusElement.DeepCopy();
                 if(IntentElement != null) dest.IntentElement = (Code<Hl7.Fhir.Model.STU3.RequestIntent>)IntentElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
                 if(PriorityElement != null) dest.PriorityElement = (Code<Hl7.Fhir.Model.STU3.RequestPriority>)PriorityElement.DeepCopy();
-                if(ServiceRequested != null) dest.ServiceRequested = new List<Hl7.Fhir.Model.CodeableConcept>(ServiceRequested.DeepCopy());
+                if(ServiceRequested != null) dest.ServiceRequested = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ServiceRequested.DeepCopy());
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
                 if(Occurrence != null) dest.Occurrence = (Hl7.Fhir.Model.Element)Occurrence.DeepCopy();
-                if(AuthoredOnElement != null) dest.AuthoredOnElement = (Hl7.Fhir.Model.FhirDateTime)AuthoredOnElement.DeepCopy();
+                if(AuthoredOnElement != null) dest.AuthoredOnElement = (Hl7.Fhir.Model.STU3.FhirDateTime)AuthoredOnElement.DeepCopy();
                 if(Requester != null) dest.Requester = (RequesterComponent)Requester.DeepCopy();
-                if(Specialty != null) dest.Specialty = (Hl7.Fhir.Model.CodeableConcept)Specialty.DeepCopy();
+                if(Specialty != null) dest.Specialty = (Hl7.Fhir.Model.STU3.CodeableConcept)Specialty.DeepCopy();
                 if(Recipient != null) dest.Recipient = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Recipient.DeepCopy());
-                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
+                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonCode.DeepCopy());
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ReasonReference.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(SupportingInfo != null) dest.SupportingInfo = new List<Hl7.Fhir.Model.STU3.ResourceReference>(SupportingInfo.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(RelevantHistory != null) dest.RelevantHistory = new List<Hl7.Fhir.Model.STU3.ResourceReference>(RelevantHistory.DeepCopy());
                 return dest;
             }

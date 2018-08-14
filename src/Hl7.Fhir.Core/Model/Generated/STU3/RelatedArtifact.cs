@@ -192,13 +192,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("document", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Attachment Document
+        public Hl7.Fhir.Model.STU3.Attachment Document
         {
             get { return _Document; }
             set { _Document = value; OnPropertyChanged("Document"); }
         }
         
-        private Hl7.Fhir.Model.Attachment _Document;
+        private Hl7.Fhir.Model.STU3.Attachment _Document;
         
         /// <summary>
         /// What resource is being referenced
@@ -226,7 +226,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(DisplayElement != null) dest.DisplayElement = (Hl7.Fhir.Model.FhirString)DisplayElement.DeepCopy();
                 if(CitationElement != null) dest.CitationElement = (Hl7.Fhir.Model.FhirString)CitationElement.DeepCopy();
                 if(UrlElement != null) dest.UrlElement = (Hl7.Fhir.Model.FhirUri)UrlElement.DeepCopy();
-                if(Document != null) dest.Document = (Hl7.Fhir.Model.Attachment)Document.DeepCopy();
+                if(Document != null) dest.Document = (Hl7.Fhir.Model.STU3.Attachment)Document.DeepCopy();
                 if(Resource != null) dest.Resource = (Hl7.Fhir.Model.STU3.ResourceReference)Resource.DeepCopy();
                 return dest;
             }

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "MedicationDispense", IsResource=true)]
     [DataContract]
-    public partial class MedicationDispense : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class MedicationDispense : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.MedicationDispense; } }
@@ -209,13 +209,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("type", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Type
+            public Hl7.Fhir.Model.STU3.CodeableConcept Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Type;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
             
             /// <summary>
             /// Why was substitution made
@@ -223,13 +223,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("reason", Order=60)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Reason
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> Reason
             {
-                get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Reason; }
+                get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Reason; }
                 set { _Reason = value; OnPropertyChanged("Reason"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Reason;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Reason;
             
             /// <summary>
             /// Who is responsible for the substitution
@@ -255,8 +255,8 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(WasSubstitutedElement != null) dest.WasSubstitutedElement = (Hl7.Fhir.Model.FhirBoolean)WasSubstitutedElement.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                    if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.CodeableConcept>(Reason.DeepCopy());
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
+                    if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Reason.DeepCopy());
                     if(ResponsibleParty != null) dest.ResponsibleParty = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ResponsibleParty.DeepCopy());
                     return dest;
                 }
@@ -396,20 +396,20 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("category", Order=120)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Category
+        public Hl7.Fhir.Model.STU3.CodeableConcept Category
         {
             get { return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Category;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Category;
         
         /// <summary>
         /// What medication was supplied
         /// </summary>
         [FhirElement("medication", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element Medication
@@ -499,39 +499,39 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("type", Order=190)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// Amount dispensed
         /// </summary>
         [FhirElement("quantity", Order=200)]
         [DataMember]
-        public Hl7.Fhir.Model.SimpleQuantity Quantity
+        public Hl7.Fhir.Model.STU3.SimpleQuantity Quantity
         {
             get { return _Quantity; }
             set { _Quantity = value; OnPropertyChanged("Quantity"); }
         }
         
-        private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+        private Hl7.Fhir.Model.STU3.SimpleQuantity _Quantity;
         
         /// <summary>
         /// Amount of medication expressed as a timing amount
         /// </summary>
         [FhirElement("daysSupply", Order=210)]
         [DataMember]
-        public Hl7.Fhir.Model.SimpleQuantity DaysSupply
+        public Hl7.Fhir.Model.STU3.SimpleQuantity DaysSupply
         {
             get { return _DaysSupply; }
             set { _DaysSupply = value; OnPropertyChanged("DaysSupply"); }
         }
         
-        private Hl7.Fhir.Model.SimpleQuantity _DaysSupply;
+        private Hl7.Fhir.Model.STU3.SimpleQuantity _DaysSupply;
         
         /// <summary>
         /// When product was packaged and reviewed
@@ -539,13 +539,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("whenPrepared", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=220)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime WhenPreparedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime WhenPreparedElement
         {
             get { return _WhenPreparedElement; }
             set { _WhenPreparedElement = value; OnPropertyChanged("WhenPreparedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _WhenPreparedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _WhenPreparedElement;
         
         /// <summary>
         /// When product was packaged and reviewed
@@ -561,7 +561,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     WhenPreparedElement = null;
                 else
-                    WhenPreparedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    WhenPreparedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("WhenPrepared");
             }
         }
@@ -571,13 +571,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("whenHandedOver", Order=230)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime WhenHandedOverElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime WhenHandedOverElement
         {
             get { return _WhenHandedOverElement; }
             set { _WhenHandedOverElement = value; OnPropertyChanged("WhenHandedOverElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _WhenHandedOverElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _WhenHandedOverElement;
         
         /// <summary>
         /// When product was given out
@@ -593,7 +593,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     WhenHandedOverElement = null;
                 else
-                    WhenHandedOverElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    WhenHandedOverElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("WhenHandedOver");
             }
         }
@@ -635,13 +635,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=260)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// How the medication is to be used by the patient or administered by the caregiver
@@ -723,7 +723,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("notDoneReason", Order=310, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element NotDoneReason
         {
@@ -776,21 +776,21 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(PartOf != null) dest.PartOf = new List<Hl7.Fhir.Model.STU3.ResourceReference>(PartOf.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.MedicationDispenseStatus>)StatusElement.DeepCopy();
-                if(Category != null) dest.Category = (Hl7.Fhir.Model.CodeableConcept)Category.DeepCopy();
+                if(Category != null) dest.Category = (Hl7.Fhir.Model.STU3.CodeableConcept)Category.DeepCopy();
                 if(Medication != null) dest.Medication = (Hl7.Fhir.Model.Element)Medication.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
                 if(SupportingInformation != null) dest.SupportingInformation = new List<Hl7.Fhir.Model.STU3.ResourceReference>(SupportingInformation.DeepCopy());
                 if(Performer != null) dest.Performer = new List<PerformerComponent>(Performer.DeepCopy());
                 if(AuthorizingPrescription != null) dest.AuthorizingPrescription = new List<Hl7.Fhir.Model.STU3.ResourceReference>(AuthorizingPrescription.DeepCopy());
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
-                if(DaysSupply != null) dest.DaysSupply = (Hl7.Fhir.Model.SimpleQuantity)DaysSupply.DeepCopy();
-                if(WhenPreparedElement != null) dest.WhenPreparedElement = (Hl7.Fhir.Model.FhirDateTime)WhenPreparedElement.DeepCopy();
-                if(WhenHandedOverElement != null) dest.WhenHandedOverElement = (Hl7.Fhir.Model.FhirDateTime)WhenHandedOverElement.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
+                if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.STU3.SimpleQuantity)Quantity.DeepCopy();
+                if(DaysSupply != null) dest.DaysSupply = (Hl7.Fhir.Model.STU3.SimpleQuantity)DaysSupply.DeepCopy();
+                if(WhenPreparedElement != null) dest.WhenPreparedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)WhenPreparedElement.DeepCopy();
+                if(WhenHandedOverElement != null) dest.WhenHandedOverElement = (Hl7.Fhir.Model.STU3.FhirDateTime)WhenHandedOverElement.DeepCopy();
                 if(Destination != null) dest.Destination = (Hl7.Fhir.Model.STU3.ResourceReference)Destination.DeepCopy();
                 if(Receiver != null) dest.Receiver = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Receiver.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(DosageInstruction != null) dest.DosageInstruction = new List<Hl7.Fhir.Model.STU3.Dosage>(DosageInstruction.DeepCopy());
                 if(Substitution != null) dest.Substitution = (SubstitutionComponent)Substitution.DeepCopy();
                 if(DetectedIssue != null) dest.DetectedIssue = new List<Hl7.Fhir.Model.STU3.ResourceReference>(DetectedIssue.DeepCopy());

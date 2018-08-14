@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "MedicationStatement", IsResource=true)]
     [DataContract]
-    public partial class MedicationStatement : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class MedicationStatement : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.MedicationStatement; } }
@@ -157,20 +157,20 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("category", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Category
+        public Hl7.Fhir.Model.STU3.CodeableConcept Category
         {
             get { return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Category;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Category;
         
         /// <summary>
         /// What medication was taken
         /// </summary>
         [FhirElement("medication", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element Medication
@@ -186,7 +186,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("effective", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
         [DataMember]
         public Hl7.Fhir.Model.Element Effective
         {
@@ -202,13 +202,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("dateAsserted", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateAssertedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateAssertedElement
         {
             get { return _DateAssertedElement; }
             set { _DateAssertedElement = value; OnPropertyChanged("DateAssertedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateAssertedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateAssertedElement;
         
         /// <summary>
         /// When the statement was asserted?
@@ -224,7 +224,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateAssertedElement = null;
                 else
-                    DateAssertedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateAssertedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("DateAsserted");
             }
         }
@@ -314,13 +314,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("reasonNotTaken", Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonNotTaken
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonNotTaken
         {
-            get { if(_ReasonNotTaken==null) _ReasonNotTaken = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonNotTaken; }
+            get { if(_ReasonNotTaken==null) _ReasonNotTaken = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonNotTaken; }
             set { _ReasonNotTaken = value; OnPropertyChanged("ReasonNotTaken"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonNotTaken;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonNotTaken;
         
         /// <summary>
         /// Reason for why the medication is being/was taken
@@ -328,13 +328,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("reasonCode", Order=230)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonCode
         {
-            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonCode; }
+            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonCode; }
             set { _ReasonCode = value; OnPropertyChanged("ReasonCode"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonCode;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonCode;
         
         /// <summary>
         /// Condition or observation that supports why the medication is being/was taken
@@ -358,13 +358,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Details of how medication is/was taken or should be taken
@@ -409,18 +409,18 @@ namespace Hl7.Fhir.Model.STU3
                 if(PartOf != null) dest.PartOf = new List<Hl7.Fhir.Model.STU3.ResourceReference>(PartOf.DeepCopy());
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.MedicationStatementStatus>)StatusElement.DeepCopy();
-                if(Category != null) dest.Category = (Hl7.Fhir.Model.CodeableConcept)Category.DeepCopy();
+                if(Category != null) dest.Category = (Hl7.Fhir.Model.STU3.CodeableConcept)Category.DeepCopy();
                 if(Medication != null) dest.Medication = (Hl7.Fhir.Model.Element)Medication.DeepCopy();
                 if(Effective != null) dest.Effective = (Hl7.Fhir.Model.Element)Effective.DeepCopy();
-                if(DateAssertedElement != null) dest.DateAssertedElement = (Hl7.Fhir.Model.FhirDateTime)DateAssertedElement.DeepCopy();
+                if(DateAssertedElement != null) dest.DateAssertedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateAssertedElement.DeepCopy();
                 if(InformationSource != null) dest.InformationSource = (Hl7.Fhir.Model.STU3.ResourceReference)InformationSource.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(DerivedFrom != null) dest.DerivedFrom = new List<Hl7.Fhir.Model.STU3.ResourceReference>(DerivedFrom.DeepCopy());
                 if(TakenElement != null) dest.TakenElement = (Code<Hl7.Fhir.Model.STU3.MedicationStatementTaken>)TakenElement.DeepCopy();
-                if(ReasonNotTaken != null) dest.ReasonNotTaken = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonNotTaken.DeepCopy());
-                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
+                if(ReasonNotTaken != null) dest.ReasonNotTaken = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonNotTaken.DeepCopy());
+                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonCode.DeepCopy());
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ReasonReference.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Dosage != null) dest.Dosage = new List<Hl7.Fhir.Model.STU3.Dosage>(Dosage.DeepCopy());
                 return dest;
             }

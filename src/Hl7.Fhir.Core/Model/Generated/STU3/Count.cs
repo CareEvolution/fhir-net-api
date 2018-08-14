@@ -45,10 +45,12 @@ namespace Hl7.Fhir.Model.STU3
     /// <summary>
     /// A measured or measurable amount
     /// </summary>
-    [FhirType(Hl7.Fhir.Model.Version.STU3, "Count")]
+    [FhirType(Hl7.Fhir.Model.Version.STU3, "Count", IsResource=true)]
     [DataContract]
-    public partial class Count : Hl7.Fhir.Model.Quantity, System.ComponentModel.INotifyPropertyChanged
+    public partial class Count : Hl7.Fhir.Model.STU3.Quantity, System.ComponentModel.INotifyPropertyChanged
     {
+        [NotMapped]
+        public override ResourceType ResourceType { get { return ResourceType.Count; } }
         [NotMapped]
         public override string TypeName { get { return "Count"; } }
     
@@ -63,7 +65,12 @@ namespace Hl7.Fhir.Model.STU3
             Xpath = "(f:code or not(f:value)) and (not(exists(f:system)) or (f:system/@value='http://unitsofmeasure.org' and f:code/@value='1')) and not(contains(f:value/@value, '.'))"
         };
     
-        // TODO: Add code to enforce the above constraints
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+    
+            InvariantConstraints.Add(Count_CNT_3);
+        }
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {

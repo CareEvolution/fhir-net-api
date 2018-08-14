@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "SupplyDelivery", IsResource=true)]
     [DataContract]
-    public partial class SupplyDelivery : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class SupplyDelivery : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.SupplyDelivery; } }
@@ -123,13 +123,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// Amount dispensed
@@ -137,13 +137,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.SimpleQuantity Quantity
+        public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
         {
             get { return _Quantity; }
             set { _Quantity = value; OnPropertyChanged("Quantity"); }
         }
         
-        private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+        private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
         
         /// <summary>
         /// Medication, Substance, or Device supplied
@@ -181,13 +181,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("whenPrepared", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period WhenPrepared
+        public Hl7.Fhir.Model.DSTU2.Period WhenPrepared
         {
             get { return _WhenPrepared; }
             set { _WhenPrepared = value; OnPropertyChanged("WhenPrepared"); }
         }
         
-        private Hl7.Fhir.Model.Period _WhenPrepared;
+        private Hl7.Fhir.Model.DSTU2.Period _WhenPrepared;
         
         /// <summary>
         /// Handover time
@@ -195,13 +195,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("time", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime TimeElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime TimeElement
         {
             get { return _TimeElement; }
             set { _TimeElement = value; OnPropertyChanged("TimeElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _TimeElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _TimeElement;
         
         /// <summary>
         /// Handover time
@@ -217,7 +217,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     TimeElement = null;
                 else
-                    TimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    TimeElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Time");
             }
         }
@@ -264,12 +264,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.SupplyDeliveryStatus>)StatusElement.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
+                if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                 if(SuppliedItem != null) dest.SuppliedItem = (Hl7.Fhir.Model.DSTU2.ResourceReference)SuppliedItem.DeepCopy();
                 if(Supplier != null) dest.Supplier = (Hl7.Fhir.Model.DSTU2.ResourceReference)Supplier.DeepCopy();
-                if(WhenPrepared != null) dest.WhenPrepared = (Hl7.Fhir.Model.Period)WhenPrepared.DeepCopy();
-                if(TimeElement != null) dest.TimeElement = (Hl7.Fhir.Model.FhirDateTime)TimeElement.DeepCopy();
+                if(WhenPrepared != null) dest.WhenPrepared = (Hl7.Fhir.Model.DSTU2.Period)WhenPrepared.DeepCopy();
+                if(TimeElement != null) dest.TimeElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)TimeElement.DeepCopy();
                 if(Destination != null) dest.Destination = (Hl7.Fhir.Model.DSTU2.ResourceReference)Destination.DeepCopy();
                 if(Receiver != null) dest.Receiver = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Receiver.DeepCopy());
                 return dest;

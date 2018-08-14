@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "CapabilityStatement", IsResource=true)]
     [DataContract]
-    public partial class CapabilityStatement : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class CapabilityStatement : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.CapabilityStatement; } }
@@ -135,13 +135,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("releaseDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime ReleaseDateElement
+            public Hl7.Fhir.Model.STU3.FhirDateTime ReleaseDateElement
             {
                 get { return _ReleaseDateElement; }
                 set { _ReleaseDateElement = value; OnPropertyChanged("ReleaseDateElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _ReleaseDateElement;
+            private Hl7.Fhir.Model.STU3.FhirDateTime _ReleaseDateElement;
             
             /// <summary>
             /// Date this version released
@@ -157,7 +157,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ReleaseDateElement = null;
                     else
-                        ReleaseDateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        ReleaseDateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                     OnPropertyChanged("ReleaseDate");
                 }
             }
@@ -171,7 +171,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                     if(VersionElement != null) dest.VersionElement = (Hl7.Fhir.Model.FhirString)VersionElement.DeepCopy();
-                    if(ReleaseDateElement != null) dest.ReleaseDateElement = (Hl7.Fhir.Model.FhirDateTime)ReleaseDateElement.DeepCopy();
+                    if(ReleaseDateElement != null) dest.ReleaseDateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)ReleaseDateElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -709,13 +709,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Service
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> Service
             {
-                get { if(_Service==null) _Service = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Service; }
+                get { if(_Service==null) _Service = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Service; }
                 set { _Service = value; OnPropertyChanged("Service"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Service;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Service;
             
             /// <summary>
             /// General description of how security works
@@ -771,7 +771,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(CorsElement != null) dest.CorsElement = (Hl7.Fhir.Model.FhirBoolean)CorsElement.DeepCopy();
-                    if(Service != null) dest.Service = new List<Hl7.Fhir.Model.CodeableConcept>(Service.DeepCopy());
+                    if(Service != null) dest.Service = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Service.DeepCopy());
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                     if(Certificate != null) dest.Certificate = new List<CertificateComponent>(Certificate.DeepCopy());
                     return dest;
@@ -856,13 +856,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("type", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.Code TypeElement
+            public Hl7.Fhir.Model.STU3.Code TypeElement
             {
                 get { return _TypeElement; }
                 set { _TypeElement = value; OnPropertyChanged("TypeElement"); }
             }
             
-            private Hl7.Fhir.Model.Code _TypeElement;
+            private Hl7.Fhir.Model.STU3.Code _TypeElement;
             
             /// <summary>
             /// Mime type for certificates
@@ -878,7 +878,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         TypeElement = null;
                     else
-                        TypeElement = new Hl7.Fhir.Model.Code(value);
+                        TypeElement = new Hl7.Fhir.Model.STU3.Code(value);
                     OnPropertyChanged("Type");
                 }
             }
@@ -922,7 +922,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(TypeElement != null) dest.TypeElement = (Hl7.Fhir.Model.Code)TypeElement.DeepCopy();
+                    if(TypeElement != null) dest.TypeElement = (Hl7.Fhir.Model.STU3.Code)TypeElement.DeepCopy();
                     if(BlobElement != null) dest.BlobElement = (Hl7.Fhir.Model.Base64Binary)BlobElement.DeepCopy();
                     return dest;
                 }
@@ -2218,13 +2218,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("reliableCache", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.UnsignedInt ReliableCacheElement
+            public Hl7.Fhir.Model.STU3.UnsignedInt ReliableCacheElement
             {
                 get { return _ReliableCacheElement; }
                 set { _ReliableCacheElement = value; OnPropertyChanged("ReliableCacheElement"); }
             }
             
-            private Hl7.Fhir.Model.UnsignedInt _ReliableCacheElement;
+            private Hl7.Fhir.Model.STU3.UnsignedInt _ReliableCacheElement;
             
             /// <summary>
             /// Reliable Message Cache Length (min)
@@ -2240,7 +2240,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ReliableCacheElement = null;
                     else
-                        ReliableCacheElement = new Hl7.Fhir.Model.UnsignedInt(value);
+                        ReliableCacheElement = new Hl7.Fhir.Model.STU3.UnsignedInt(value);
                     OnPropertyChanged("ReliableCache");
                 }
             }
@@ -2315,7 +2315,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(Endpoint != null) dest.Endpoint = new List<EndpointComponent>(Endpoint.DeepCopy());
-                    if(ReliableCacheElement != null) dest.ReliableCacheElement = (Hl7.Fhir.Model.UnsignedInt)ReliableCacheElement.DeepCopy();
+                    if(ReliableCacheElement != null) dest.ReliableCacheElement = (Hl7.Fhir.Model.STU3.UnsignedInt)ReliableCacheElement.DeepCopy();
                     if(DocumentationElement != null) dest.DocumentationElement = (Hl7.Fhir.Model.FhirString)DocumentationElement.DeepCopy();
                     if(SupportedMessage != null) dest.SupportedMessage = new List<SupportedMessageComponent>(SupportedMessage.DeepCopy());
                     if(Event != null) dest.Event = new List<EventComponent>(Event.DeepCopy());
@@ -2406,13 +2406,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("protocol", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Protocol
+            public Hl7.Fhir.Model.STU3.Coding Protocol
             {
                 get { return _Protocol; }
                 set { _Protocol = value; OnPropertyChanged("Protocol"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Protocol;
+            private Hl7.Fhir.Model.STU3.Coding _Protocol;
             
             /// <summary>
             /// Network address or identifier of the end-point
@@ -2454,7 +2454,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Protocol != null) dest.Protocol = (Hl7.Fhir.Model.Coding)Protocol.DeepCopy();
+                    if(Protocol != null) dest.Protocol = (Hl7.Fhir.Model.STU3.Coding)Protocol.DeepCopy();
                     if(AddressElement != null) dest.AddressElement = (Hl7.Fhir.Model.FhirUri)AddressElement.DeepCopy();
                     return dest;
                 }
@@ -2660,13 +2660,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Code
+            public Hl7.Fhir.Model.STU3.Coding Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Code;
+            private Hl7.Fhir.Model.STU3.Coding _Code;
             
             /// <summary>
             /// Consequence | Currency | Notification
@@ -2837,7 +2837,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.Coding)Code.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.Coding)Code.DeepCopy();
                     if(CategoryElement != null) dest.CategoryElement = (Code<Hl7.Fhir.Model.MessageSignificanceCategory>)CategoryElement.DeepCopy();
                     if(ModeElement != null) dest.ModeElement = (Code<Hl7.Fhir.Model.STU3.EventCapabilityMode>)ModeElement.DeepCopy();
                     if(FocusElement != null) dest.FocusElement = (Code<Hl7.Fhir.Model.ResourceType>)FocusElement.DeepCopy();
@@ -3296,13 +3296,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date this was last changed
@@ -3318,7 +3318,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -3425,13 +3425,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Jurisdiction
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Jurisdiction
         {
-            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Jurisdiction; }
+            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Jurisdiction; }
             set { _Jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Jurisdiction;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Jurisdiction;
         
         /// <summary>
         /// Why this capability statement is defined
@@ -3600,13 +3600,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Id FhirVersionElement
+        public Hl7.Fhir.Model.STU3.Id FhirVersionElement
         {
             get { return _FhirVersionElement; }
             set { _FhirVersionElement = value; OnPropertyChanged("FhirVersionElement"); }
         }
         
-        private Hl7.Fhir.Model.Id _FhirVersionElement;
+        private Hl7.Fhir.Model.STU3.Id _FhirVersionElement;
         
         /// <summary>
         /// FHIR Version the system uses
@@ -3622,7 +3622,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     FhirVersionElement = null;
                 else
-                    FhirVersionElement = new Hl7.Fhir.Model.Id(value);
+                    FhirVersionElement = new Hl7.Fhir.Model.STU3.Id(value);
                 OnPropertyChanged("FhirVersion");
             }
         }
@@ -3668,13 +3668,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Code> FormatElement
+        public List<Hl7.Fhir.Model.STU3.Code> FormatElement
         {
-            get { if(_FormatElement==null) _FormatElement = new List<Hl7.Fhir.Model.Code>(); return _FormatElement; }
+            get { if(_FormatElement==null) _FormatElement = new List<Hl7.Fhir.Model.STU3.Code>(); return _FormatElement; }
             set { _FormatElement = value; OnPropertyChanged("FormatElement"); }
         }
         
-        private List<Hl7.Fhir.Model.Code> _FormatElement;
+        private List<Hl7.Fhir.Model.STU3.Code> _FormatElement;
         
         /// <summary>
         /// formats supported (xml | json | ttl | mime type)
@@ -3690,7 +3690,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     FormatElement = null;
                 else
-                    FormatElement = new List<Hl7.Fhir.Model.Code>(value.Select(elem=>new Hl7.Fhir.Model.Code(elem)));
+                    FormatElement = new List<Hl7.Fhir.Model.STU3.Code>(value.Select(elem=>new Hl7.Fhir.Model.STU3.Code(elem)));
                 OnPropertyChanged("Format");
             }
         }
@@ -3702,13 +3702,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Code> PatchFormatElement
+        public List<Hl7.Fhir.Model.STU3.Code> PatchFormatElement
         {
-            get { if(_PatchFormatElement==null) _PatchFormatElement = new List<Hl7.Fhir.Model.Code>(); return _PatchFormatElement; }
+            get { if(_PatchFormatElement==null) _PatchFormatElement = new List<Hl7.Fhir.Model.STU3.Code>(); return _PatchFormatElement; }
             set { _PatchFormatElement = value; OnPropertyChanged("PatchFormatElement"); }
         }
         
-        private List<Hl7.Fhir.Model.Code> _PatchFormatElement;
+        private List<Hl7.Fhir.Model.STU3.Code> _PatchFormatElement;
         
         /// <summary>
         /// Patch formats supported
@@ -3724,7 +3724,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     PatchFormatElement = null;
                 else
-                    PatchFormatElement = new List<Hl7.Fhir.Model.Code>(value.Select(elem=>new Hl7.Fhir.Model.Code(elem)));
+                    PatchFormatElement = new List<Hl7.Fhir.Model.STU3.Code>(value.Select(elem=>new Hl7.Fhir.Model.STU3.Code(elem)));
                 OnPropertyChanged("PatchFormat");
             }
         }
@@ -3944,22 +3944,22 @@ namespace Hl7.Fhir.Model.STU3
                 if(TitleElement != null) dest.TitleElement = (Hl7.Fhir.Model.FhirString)TitleElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.PublicationStatus>)StatusElement.DeepCopy();
                 if(ExperimentalElement != null) dest.ExperimentalElement = (Hl7.Fhir.Model.FhirBoolean)ExperimentalElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(UseContext.DeepCopy());
-                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
+                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
                 if(CopyrightElement != null) dest.CopyrightElement = (Hl7.Fhir.Model.Markdown)CopyrightElement.DeepCopy();
                 if(KindElement != null) dest.KindElement = (Code<Hl7.Fhir.Model.STU3.CapabilityStatementKind>)KindElement.DeepCopy();
                 if(InstantiatesElement != null) dest.InstantiatesElement = new List<Hl7.Fhir.Model.FhirUri>(InstantiatesElement.DeepCopy());
                 if(Software != null) dest.Software = (SoftwareComponent)Software.DeepCopy();
                 if(Implementation != null) dest.Implementation = (ImplementationComponent)Implementation.DeepCopy();
-                if(FhirVersionElement != null) dest.FhirVersionElement = (Hl7.Fhir.Model.Id)FhirVersionElement.DeepCopy();
+                if(FhirVersionElement != null) dest.FhirVersionElement = (Hl7.Fhir.Model.STU3.Id)FhirVersionElement.DeepCopy();
                 if(AcceptUnknownElement != null) dest.AcceptUnknownElement = (Code<Hl7.Fhir.Model.UnknownContentCode>)AcceptUnknownElement.DeepCopy();
-                if(FormatElement != null) dest.FormatElement = new List<Hl7.Fhir.Model.Code>(FormatElement.DeepCopy());
-                if(PatchFormatElement != null) dest.PatchFormatElement = new List<Hl7.Fhir.Model.Code>(PatchFormatElement.DeepCopy());
+                if(FormatElement != null) dest.FormatElement = new List<Hl7.Fhir.Model.STU3.Code>(FormatElement.DeepCopy());
+                if(PatchFormatElement != null) dest.PatchFormatElement = new List<Hl7.Fhir.Model.STU3.Code>(PatchFormatElement.DeepCopy());
                 if(ImplementationGuideElement != null) dest.ImplementationGuideElement = new List<Hl7.Fhir.Model.FhirUri>(ImplementationGuideElement.DeepCopy());
                 if(Profile != null) dest.Profile = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Profile.DeepCopy());
                 if(Rest != null) dest.Rest = new List<RestComponent>(Rest.DeepCopy());

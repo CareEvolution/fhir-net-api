@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "StructureMap", IsResource=true)]
     [DataContract]
-    public partial class StructureMap : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class StructureMap : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.StructureMap; } }
@@ -290,13 +290,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Id NameElement
+            public Hl7.Fhir.Model.STU3.Id NameElement
             {
                 get { return _NameElement; }
                 set { _NameElement = value; OnPropertyChanged("NameElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _NameElement;
+            private Hl7.Fhir.Model.STU3.Id _NameElement;
             
             /// <summary>
             /// Human-readable label
@@ -312,7 +312,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         NameElement = null;
                     else
-                        NameElement = new Hl7.Fhir.Model.Id(value);
+                        NameElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Name");
                 }
             }
@@ -323,13 +323,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("extends", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Id ExtendsElement
+            public Hl7.Fhir.Model.STU3.Id ExtendsElement
             {
                 get { return _ExtendsElement; }
                 set { _ExtendsElement = value; OnPropertyChanged("ExtendsElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _ExtendsElement;
+            private Hl7.Fhir.Model.STU3.Id _ExtendsElement;
             
             /// <summary>
             /// Another group that this group adds rules to
@@ -345,7 +345,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ExtendsElement = null;
                     else
-                        ExtendsElement = new Hl7.Fhir.Model.Id(value);
+                        ExtendsElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Extends");
                 }
             }
@@ -454,8 +454,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.Id)NameElement.DeepCopy();
-                    if(ExtendsElement != null) dest.ExtendsElement = (Hl7.Fhir.Model.Id)ExtendsElement.DeepCopy();
+                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.STU3.Id)NameElement.DeepCopy();
+                    if(ExtendsElement != null) dest.ExtendsElement = (Hl7.Fhir.Model.STU3.Id)ExtendsElement.DeepCopy();
                     if(TypeModeElement != null) dest.TypeModeElement = (Code<Hl7.Fhir.Model.STU3.StructureMapGroupTypeMode>)TypeModeElement.DeepCopy();
                     if(DocumentationElement != null) dest.DocumentationElement = (Hl7.Fhir.Model.FhirString)DocumentationElement.DeepCopy();
                     if(Input != null) dest.Input = new List<InputComponent>(Input.DeepCopy());
@@ -552,13 +552,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Id NameElement
+            public Hl7.Fhir.Model.STU3.Id NameElement
             {
                 get { return _NameElement; }
                 set { _NameElement = value; OnPropertyChanged("NameElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _NameElement;
+            private Hl7.Fhir.Model.STU3.Id _NameElement;
             
             /// <summary>
             /// Name for this instance of data
@@ -574,7 +574,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         NameElement = null;
                     else
-                        NameElement = new Hl7.Fhir.Model.Id(value);
+                        NameElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Name");
                 }
             }
@@ -685,7 +685,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.Id)NameElement.DeepCopy();
+                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.STU3.Id)NameElement.DeepCopy();
                     if(TypeElement != null) dest.TypeElement = (Hl7.Fhir.Model.FhirString)TypeElement.DeepCopy();
                     if(ModeElement != null) dest.ModeElement = (Code<Hl7.Fhir.Model.STU3.StructureMapInputMode>)ModeElement.DeepCopy();
                     if(DocumentationElement != null) dest.DocumentationElement = (Hl7.Fhir.Model.FhirString)DocumentationElement.DeepCopy();
@@ -773,13 +773,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Id NameElement
+            public Hl7.Fhir.Model.STU3.Id NameElement
             {
                 get { return _NameElement; }
                 set { _NameElement = value; OnPropertyChanged("NameElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _NameElement;
+            private Hl7.Fhir.Model.STU3.Id _NameElement;
             
             /// <summary>
             /// Name of the rule for internal references
@@ -795,7 +795,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         NameElement = null;
                     else
-                        NameElement = new Hl7.Fhir.Model.Id(value);
+                        NameElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Name");
                 }
             }
@@ -899,7 +899,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.Id)NameElement.DeepCopy();
+                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.STU3.Id)NameElement.DeepCopy();
                     if(Source != null) dest.Source = new List<SourceComponent>(Source.DeepCopy());
                     if(Target != null) dest.Target = new List<TargetComponent>(Target.DeepCopy());
                     if(Rule != null) dest.Rule = new List<RuleComponent>(Rule.DeepCopy());
@@ -997,13 +997,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Id ContextElement
+            public Hl7.Fhir.Model.STU3.Id ContextElement
             {
                 get { return _ContextElement; }
                 set { _ContextElement = value; OnPropertyChanged("ContextElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _ContextElement;
+            private Hl7.Fhir.Model.STU3.Id _ContextElement;
             
             /// <summary>
             /// Type or variable this rule applies to
@@ -1019,7 +1019,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ContextElement = null;
                     else
-                        ContextElement = new Hl7.Fhir.Model.Id(value);
+                        ContextElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Context");
                 }
             }
@@ -1030,13 +1030,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("min", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer MinElement
+            public Hl7.Fhir.Model.STU3.Integer MinElement
             {
                 get { return _MinElement; }
                 set { _MinElement = value; OnPropertyChanged("MinElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _MinElement;
+            private Hl7.Fhir.Model.STU3.Integer _MinElement;
             
             /// <summary>
             /// Specified minimum cardinality
@@ -1052,7 +1052,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         MinElement = null;
                     else
-                        MinElement = new Hl7.Fhir.Model.Integer(value);
+                        MinElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("Min");
                 }
             }
@@ -1128,7 +1128,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("defaultValue", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.STU3.Age),typeof(Hl7.Fhir.Model.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.STU3.ContactPoint),typeof(Hl7.Fhir.Model.STU3.Count),typeof(Hl7.Fhir.Model.STU3.Distance),typeof(Hl7.Fhir.Model.STU3.Duration),typeof(Hl7.Fhir.Model.STU3.HumanName),typeof(Hl7.Fhir.Model.STU3.Identifier),typeof(Hl7.Fhir.Model.STU3.Money),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.STU3.ResourceReference),typeof(Hl7.Fhir.Model.SampledData),typeof(Hl7.Fhir.Model.STU3.Signature),typeof(Hl7.Fhir.Model.STU3.Timing),typeof(Hl7.Fhir.Model.Meta))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.STU3.Code),typeof(Hl7.Fhir.Model.STU3.Date),typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.FhirDecimal),typeof(Hl7.Fhir.Model.STU3.Id),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.STU3.Integer),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.STU3.Oid),typeof(Hl7.Fhir.Model.STU3.PositiveInt),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.STU3.Time),typeof(Hl7.Fhir.Model.STU3.UnsignedInt),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.STU3.Address),typeof(Hl7.Fhir.Model.STU3.Age),typeof(Hl7.Fhir.Model.STU3.Annotation),typeof(Hl7.Fhir.Model.STU3.Attachment),typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.Coding),typeof(Hl7.Fhir.Model.STU3.ContactPoint),typeof(Hl7.Fhir.Model.STU3.Count),typeof(Hl7.Fhir.Model.STU3.Distance),typeof(Hl7.Fhir.Model.STU3.Duration),typeof(Hl7.Fhir.Model.STU3.HumanName),typeof(Hl7.Fhir.Model.STU3.Identifier),typeof(Hl7.Fhir.Model.STU3.Money),typeof(Hl7.Fhir.Model.STU3.Period),typeof(Hl7.Fhir.Model.STU3.Quantity),typeof(Hl7.Fhir.Model.STU3.Range),typeof(Hl7.Fhir.Model.STU3.Ratio),typeof(Hl7.Fhir.Model.STU3.ResourceReference),typeof(Hl7.Fhir.Model.STU3.SampledData),typeof(Hl7.Fhir.Model.STU3.Signature),typeof(Hl7.Fhir.Model.STU3.Timing),typeof(Hl7.Fhir.Model.STU3.Meta))]
             [DataMember]
             public Hl7.Fhir.Model.Element DefaultValue
             {
@@ -1210,13 +1210,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("variable", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Id VariableElement
+            public Hl7.Fhir.Model.STU3.Id VariableElement
             {
                 get { return _VariableElement; }
                 set { _VariableElement = value; OnPropertyChanged("VariableElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _VariableElement;
+            private Hl7.Fhir.Model.STU3.Id _VariableElement;
             
             /// <summary>
             /// Named context for field, if a field is specified
@@ -1232,7 +1232,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         VariableElement = null;
                     else
-                        VariableElement = new Hl7.Fhir.Model.Id(value);
+                        VariableElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Variable");
                 }
             }
@@ -1310,14 +1310,14 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(ContextElement != null) dest.ContextElement = (Hl7.Fhir.Model.Id)ContextElement.DeepCopy();
-                    if(MinElement != null) dest.MinElement = (Hl7.Fhir.Model.Integer)MinElement.DeepCopy();
+                    if(ContextElement != null) dest.ContextElement = (Hl7.Fhir.Model.STU3.Id)ContextElement.DeepCopy();
+                    if(MinElement != null) dest.MinElement = (Hl7.Fhir.Model.STU3.Integer)MinElement.DeepCopy();
                     if(MaxElement != null) dest.MaxElement = (Hl7.Fhir.Model.FhirString)MaxElement.DeepCopy();
                     if(TypeElement != null) dest.TypeElement = (Hl7.Fhir.Model.FhirString)TypeElement.DeepCopy();
                     if(DefaultValue != null) dest.DefaultValue = (Hl7.Fhir.Model.Element)DefaultValue.DeepCopy();
                     if(ElementElement != null) dest.ElementElement = (Hl7.Fhir.Model.FhirString)ElementElement.DeepCopy();
                     if(ListModeElement != null) dest.ListModeElement = (Code<Hl7.Fhir.Model.STU3.StructureMapSourceListMode>)ListModeElement.DeepCopy();
-                    if(VariableElement != null) dest.VariableElement = (Hl7.Fhir.Model.Id)VariableElement.DeepCopy();
+                    if(VariableElement != null) dest.VariableElement = (Hl7.Fhir.Model.STU3.Id)VariableElement.DeepCopy();
                     if(ConditionElement != null) dest.ConditionElement = (Hl7.Fhir.Model.FhirString)ConditionElement.DeepCopy();
                     if(CheckElement != null) dest.CheckElement = (Hl7.Fhir.Model.FhirString)CheckElement.DeepCopy();
                     return dest;
@@ -1427,13 +1427,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("context", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Id ContextElement
+            public Hl7.Fhir.Model.STU3.Id ContextElement
             {
                 get { return _ContextElement; }
                 set { _ContextElement = value; OnPropertyChanged("ContextElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _ContextElement;
+            private Hl7.Fhir.Model.STU3.Id _ContextElement;
             
             /// <summary>
             /// Type or variable this rule applies to
@@ -1449,7 +1449,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ContextElement = null;
                     else
-                        ContextElement = new Hl7.Fhir.Model.Id(value);
+                        ContextElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Context");
                 }
             }
@@ -1526,13 +1526,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("variable", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Id VariableElement
+            public Hl7.Fhir.Model.STU3.Id VariableElement
             {
                 get { return _VariableElement; }
                 set { _VariableElement = value; OnPropertyChanged("VariableElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _VariableElement;
+            private Hl7.Fhir.Model.STU3.Id _VariableElement;
             
             /// <summary>
             /// Named context for field, if desired, and a field is specified
@@ -1548,7 +1548,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         VariableElement = null;
                     else
-                        VariableElement = new Hl7.Fhir.Model.Id(value);
+                        VariableElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Variable");
                 }
             }
@@ -1593,13 +1593,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("listRuleId", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Id ListRuleIdElement
+            public Hl7.Fhir.Model.STU3.Id ListRuleIdElement
             {
                 get { return _ListRuleIdElement; }
                 set { _ListRuleIdElement = value; OnPropertyChanged("ListRuleIdElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _ListRuleIdElement;
+            private Hl7.Fhir.Model.STU3.Id _ListRuleIdElement;
             
             /// <summary>
             /// Internal rule reference for shared list items
@@ -1615,7 +1615,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ListRuleIdElement = null;
                     else
-                        ListRuleIdElement = new Hl7.Fhir.Model.Id(value);
+                        ListRuleIdElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("ListRuleId");
                 }
             }
@@ -1675,12 +1675,12 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(ContextElement != null) dest.ContextElement = (Hl7.Fhir.Model.Id)ContextElement.DeepCopy();
+                    if(ContextElement != null) dest.ContextElement = (Hl7.Fhir.Model.STU3.Id)ContextElement.DeepCopy();
                     if(ContextTypeElement != null) dest.ContextTypeElement = (Code<Hl7.Fhir.Model.STU3.StructureMapContextType>)ContextTypeElement.DeepCopy();
                     if(ElementElement != null) dest.ElementElement = (Hl7.Fhir.Model.FhirString)ElementElement.DeepCopy();
-                    if(VariableElement != null) dest.VariableElement = (Hl7.Fhir.Model.Id)VariableElement.DeepCopy();
+                    if(VariableElement != null) dest.VariableElement = (Hl7.Fhir.Model.STU3.Id)VariableElement.DeepCopy();
                     if(ListModeElement != null) dest.ListModeElement = new List<Code<Hl7.Fhir.Model.STU3.StructureMapTargetListMode>>(ListModeElement.DeepCopy());
-                    if(ListRuleIdElement != null) dest.ListRuleIdElement = (Hl7.Fhir.Model.Id)ListRuleIdElement.DeepCopy();
+                    if(ListRuleIdElement != null) dest.ListRuleIdElement = (Hl7.Fhir.Model.STU3.Id)ListRuleIdElement.DeepCopy();
                     if(TransformElement != null) dest.TransformElement = (Code<Hl7.Fhir.Model.STU3.StructureMapTransform>)TransformElement.DeepCopy();
                     if(Parameter != null) dest.Parameter = new List<ParameterComponent>(Parameter.DeepCopy());
                     return dest;
@@ -1781,7 +1781,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("value", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Id),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.STU3.Integer),typeof(Hl7.Fhir.Model.STU3.FhirDecimal))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Value
@@ -1872,13 +1872,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Id NameElement
+            public Hl7.Fhir.Model.STU3.Id NameElement
             {
                 get { return _NameElement; }
                 set { _NameElement = value; OnPropertyChanged("NameElement"); }
             }
             
-            private Hl7.Fhir.Model.Id _NameElement;
+            private Hl7.Fhir.Model.STU3.Id _NameElement;
             
             /// <summary>
             /// Name of a rule or group to apply
@@ -1894,7 +1894,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         NameElement = null;
                     else
-                        NameElement = new Hl7.Fhir.Model.Id(value);
+                        NameElement = new Hl7.Fhir.Model.STU3.Id(value);
                     OnPropertyChanged("Name");
                 }
             }
@@ -1940,7 +1940,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.Id)NameElement.DeepCopy();
+                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.STU3.Id)NameElement.DeepCopy();
                     if(VariableElement != null) dest.VariableElement = new List<Hl7.Fhir.Model.FhirString>(VariableElement.DeepCopy());
                     return dest;
                 }
@@ -2226,13 +2226,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date this was last changed
@@ -2248,7 +2248,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -2355,13 +2355,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Jurisdiction
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Jurisdiction
         {
-            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Jurisdiction; }
+            get { if(_Jurisdiction==null) _Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Jurisdiction; }
             set { _Jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Jurisdiction;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Jurisdiction;
         
         /// <summary>
         /// Why this structure map is defined
@@ -2532,12 +2532,12 @@ namespace Hl7.Fhir.Model.STU3
                 if(TitleElement != null) dest.TitleElement = (Hl7.Fhir.Model.FhirString)TitleElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.PublicationStatus>)StatusElement.DeepCopy();
                 if(ExperimentalElement != null) dest.ExperimentalElement = (Hl7.Fhir.Model.FhirBoolean)ExperimentalElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(UseContext.DeepCopy());
-                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
+                if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
                 if(CopyrightElement != null) dest.CopyrightElement = (Hl7.Fhir.Model.Markdown)CopyrightElement.DeepCopy();
                 if(Structure != null) dest.Structure = new List<StructureComponent>(Structure.DeepCopy());

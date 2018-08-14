@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Coverage", IsResource=true)]
     [DataContract]
-    public partial class Coverage : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Coverage : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Coverage; } }
@@ -633,13 +633,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// Owner of the policy
@@ -724,13 +724,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("relationship", Order=160)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Relationship
+        public Hl7.Fhir.Model.STU3.CodeableConcept Relationship
         {
             get { return _Relationship; }
             set { _Relationship = value; OnPropertyChanged("Relationship"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Relationship;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Relationship;
         
         /// <summary>
         /// Coverage start and end dates
@@ -738,13 +738,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
         
         /// <summary>
         /// Identifier for the plan or agreement issuer
@@ -847,13 +847,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("order", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=220)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt OrderElement
+        public Hl7.Fhir.Model.STU3.PositiveInt OrderElement
         {
             get { return _OrderElement; }
             set { _OrderElement = value; OnPropertyChanged("OrderElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _OrderElement;
+        private Hl7.Fhir.Model.STU3.PositiveInt _OrderElement;
         
         /// <summary>
         /// Relative order of the coverage
@@ -869,7 +869,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     OrderElement = null;
                 else
-                    OrderElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    OrderElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                 OnPropertyChanged("Order");
             }
         }
@@ -933,18 +933,18 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.FinancialResourceStatusCodes>)StatusElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
                 if(PolicyHolder != null) dest.PolicyHolder = (Hl7.Fhir.Model.STU3.ResourceReference)PolicyHolder.DeepCopy();
                 if(Subscriber != null) dest.Subscriber = (Hl7.Fhir.Model.STU3.ResourceReference)Subscriber.DeepCopy();
                 if(SubscriberIdElement != null) dest.SubscriberIdElement = (Hl7.Fhir.Model.FhirString)SubscriberIdElement.DeepCopy();
                 if(Beneficiary != null) dest.Beneficiary = (Hl7.Fhir.Model.STU3.ResourceReference)Beneficiary.DeepCopy();
-                if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.CodeableConcept)Relationship.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.STU3.CodeableConcept)Relationship.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                 if(Payor != null) dest.Payor = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Payor.DeepCopy());
                 if(Grouping != null) dest.Grouping = (GroupComponent)Grouping.DeepCopy();
                 if(DependentElement != null) dest.DependentElement = (Hl7.Fhir.Model.FhirString)DependentElement.DeepCopy();
                 if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.FhirString)SequenceElement.DeepCopy();
-                if(OrderElement != null) dest.OrderElement = (Hl7.Fhir.Model.PositiveInt)OrderElement.DeepCopy();
+                if(OrderElement != null) dest.OrderElement = (Hl7.Fhir.Model.STU3.PositiveInt)OrderElement.DeepCopy();
                 if(NetworkElement != null) dest.NetworkElement = (Hl7.Fhir.Model.FhirString)NetworkElement.DeepCopy();
                 if(Contract != null) dest.Contract = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Contract.DeepCopy());
                 return dest;

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "PaymentNotice", IsResource=true)]
     [DataContract]
-    public partial class PaymentNotice : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class PaymentNotice : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.PaymentNotice; } }
@@ -133,13 +133,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("statusDate", Order=130)]
         [DataMember]
-        public Hl7.Fhir.Model.Date StatusDateElement
+        public Hl7.Fhir.Model.STU3.Date StatusDateElement
         {
             get { return _StatusDateElement; }
             set { _StatusDateElement = value; OnPropertyChanged("StatusDateElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _StatusDateElement;
+        private Hl7.Fhir.Model.STU3.Date _StatusDateElement;
         
         /// <summary>
         /// Payment or clearing date
@@ -155,7 +155,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     StatusDateElement = null;
                 else
-                    StatusDateElement = new Hl7.Fhir.Model.Date(value);
+                    StatusDateElement = new Hl7.Fhir.Model.STU3.Date(value);
                 OnPropertyChanged("StatusDate");
             }
         }
@@ -165,13 +165,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("created", Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Creation date
@@ -187,7 +187,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -242,13 +242,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("paymentStatus", Order=180)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept PaymentStatus
+        public Hl7.Fhir.Model.STU3.CodeableConcept PaymentStatus
         {
             get { return _PaymentStatus; }
             set { _PaymentStatus = value; OnPropertyChanged("PaymentStatus"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _PaymentStatus;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _PaymentStatus;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -262,12 +262,12 @@ namespace Hl7.Fhir.Model.STU3
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.FinancialResourceStatusCodes>)StatusElement.DeepCopy();
                 if(Request != null) dest.Request = (Hl7.Fhir.Model.STU3.ResourceReference)Request.DeepCopy();
                 if(Response != null) dest.Response = (Hl7.Fhir.Model.STU3.ResourceReference)Response.DeepCopy();
-                if(StatusDateElement != null) dest.StatusDateElement = (Hl7.Fhir.Model.Date)StatusDateElement.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(StatusDateElement != null) dest.StatusDateElement = (Hl7.Fhir.Model.STU3.Date)StatusDateElement.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)CreatedElement.DeepCopy();
                 if(Target != null) dest.Target = (Hl7.Fhir.Model.STU3.ResourceReference)Target.DeepCopy();
                 if(Provider != null) dest.Provider = (Hl7.Fhir.Model.STU3.ResourceReference)Provider.DeepCopy();
                 if(Organization != null) dest.Organization = (Hl7.Fhir.Model.STU3.ResourceReference)Organization.DeepCopy();
-                if(PaymentStatus != null) dest.PaymentStatus = (Hl7.Fhir.Model.CodeableConcept)PaymentStatus.DeepCopy();
+                if(PaymentStatus != null) dest.PaymentStatus = (Hl7.Fhir.Model.STU3.CodeableConcept)PaymentStatus.DeepCopy();
                 return dest;
             }
             else

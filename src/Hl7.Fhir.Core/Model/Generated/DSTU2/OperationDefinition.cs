@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "OperationDefinition", IsResource=true)]
     [DataContract]
-    public partial class OperationDefinition : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class OperationDefinition : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.OperationDefinition; } }
@@ -194,13 +194,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("name", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Code NameElement
+            public Hl7.Fhir.Model.DSTU2.Code NameElement
             {
                 get { return _NameElement; }
                 set { _NameElement = value; OnPropertyChanged("NameElement"); }
             }
             
-            private Hl7.Fhir.Model.Code _NameElement;
+            private Hl7.Fhir.Model.DSTU2.Code _NameElement;
             
             /// <summary>
             /// Name in Parameters.parameter.name or in URL
@@ -216,7 +216,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         NameElement = null;
                     else
-                        NameElement = new Hl7.Fhir.Model.Code(value);
+                        NameElement = new Hl7.Fhir.Model.DSTU2.Code(value);
                     OnPropertyChanged("Name");
                 }
             }
@@ -260,13 +260,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("min", Order=60)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer MinElement
+            public Hl7.Fhir.Model.DSTU2.Integer MinElement
             {
                 get { return _MinElement; }
                 set { _MinElement = value; OnPropertyChanged("MinElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _MinElement;
+            private Hl7.Fhir.Model.DSTU2.Integer _MinElement;
             
             /// <summary>
             /// Minimum Cardinality
@@ -282,7 +282,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         MinElement = null;
                     else
-                        MinElement = new Hl7.Fhir.Model.Integer(value);
+                        MinElement = new Hl7.Fhir.Model.DSTU2.Integer(value);
                     OnPropertyChanged("Min");
                 }
             }
@@ -357,13 +357,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("type", Order=90)]
             [DataMember]
-            public Hl7.Fhir.Model.Code TypeElement
+            public Hl7.Fhir.Model.DSTU2.Code TypeElement
             {
                 get { return _TypeElement; }
                 set { _TypeElement = value; OnPropertyChanged("TypeElement"); }
             }
             
-            private Hl7.Fhir.Model.Code _TypeElement;
+            private Hl7.Fhir.Model.DSTU2.Code _TypeElement;
             
             /// <summary>
             /// What type this parameter has
@@ -379,7 +379,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         TypeElement = null;
                     else
-                        TypeElement = new Hl7.Fhir.Model.Code(value);
+                        TypeElement = new Hl7.Fhir.Model.DSTU2.Code(value);
                     OnPropertyChanged("Type");
                 }
             }
@@ -433,12 +433,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.Code)NameElement.DeepCopy();
+                    if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.DSTU2.Code)NameElement.DeepCopy();
                     if(UseElement != null) dest.UseElement = (Code<Hl7.Fhir.Model.OperationParameterUse>)UseElement.DeepCopy();
-                    if(MinElement != null) dest.MinElement = (Hl7.Fhir.Model.Integer)MinElement.DeepCopy();
+                    if(MinElement != null) dest.MinElement = (Hl7.Fhir.Model.DSTU2.Integer)MinElement.DeepCopy();
                     if(MaxElement != null) dest.MaxElement = (Hl7.Fhir.Model.FhirString)MaxElement.DeepCopy();
                     if(DocumentationElement != null) dest.DocumentationElement = (Hl7.Fhir.Model.FhirString)DocumentationElement.DeepCopy();
-                    if(TypeElement != null) dest.TypeElement = (Hl7.Fhir.Model.Code)TypeElement.DeepCopy();
+                    if(TypeElement != null) dest.TypeElement = (Hl7.Fhir.Model.DSTU2.Code)TypeElement.DeepCopy();
                     if(Profile != null) dest.Profile = (Hl7.Fhir.Model.DSTU2.ResourceReference)Profile.DeepCopy();
                     if(Binding != null) dest.Binding = (BindingComponent)Binding.DeepCopy();
                     if(Part != null) dest.Part = new List<ParameterComponent>(Part.DeepCopy());
@@ -907,13 +907,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("date", Order=170)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date for this version of the operation definition
@@ -929,7 +929,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -1036,13 +1036,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("code", Order=210)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Code CodeElement
+        public Hl7.Fhir.Model.DSTU2.Code CodeElement
         {
             get { return _CodeElement; }
             set { _CodeElement = value; OnPropertyChanged("CodeElement"); }
         }
         
-        private Hl7.Fhir.Model.Code _CodeElement;
+        private Hl7.Fhir.Model.DSTU2.Code _CodeElement;
         
         /// <summary>
         /// Name used to invoke the operation
@@ -1058,7 +1058,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     CodeElement = null;
                 else
-                    CodeElement = new Hl7.Fhir.Model.Code(value);
+                    CodeElement = new Hl7.Fhir.Model.DSTU2.Code(value);
                 OnPropertyChanged("Code");
             }
         }
@@ -1255,11 +1255,11 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(ExperimentalElement != null) dest.ExperimentalElement = (Hl7.Fhir.Model.FhirBoolean)ExperimentalElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<ContactComponent>(Contact.DeepCopy());
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(RequirementsElement != null) dest.RequirementsElement = (Hl7.Fhir.Model.FhirString)RequirementsElement.DeepCopy();
                 if(IdempotentElement != null) dest.IdempotentElement = (Hl7.Fhir.Model.FhirBoolean)IdempotentElement.DeepCopy();
-                if(CodeElement != null) dest.CodeElement = (Hl7.Fhir.Model.Code)CodeElement.DeepCopy();
+                if(CodeElement != null) dest.CodeElement = (Hl7.Fhir.Model.DSTU2.Code)CodeElement.DeepCopy();
                 if(NotesElement != null) dest.NotesElement = (Hl7.Fhir.Model.FhirString)NotesElement.DeepCopy();
                 if(Base != null) dest.Base = (Hl7.Fhir.Model.DSTU2.ResourceReference)Base.DeepCopy();
                 if(SystemElement != null) dest.SystemElement = (Hl7.Fhir.Model.FhirBoolean)SystemElement.DeepCopy();

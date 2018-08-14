@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "MedicationAdministration", IsResource=true)]
     [DataContract]
-    public partial class MedicationAdministration : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class MedicationAdministration : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.MedicationAdministration; } }
@@ -208,59 +208,59 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("site", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Site
+            public Hl7.Fhir.Model.STU3.CodeableConcept Site
             {
                 get { return _Site; }
                 set { _Site = value; OnPropertyChanged("Site"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Site;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Site;
             
             /// <summary>
             /// Path of substance into body
             /// </summary>
             [FhirElement("route", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Route
+            public Hl7.Fhir.Model.STU3.CodeableConcept Route
             {
                 get { return _Route; }
                 set { _Route = value; OnPropertyChanged("Route"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Route;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Route;
             
             /// <summary>
             /// How drug was administered
             /// </summary>
             [FhirElement("method", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Method
+            public Hl7.Fhir.Model.STU3.CodeableConcept Method
             {
                 get { return _Method; }
                 set { _Method = value; OnPropertyChanged("Method"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Method;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Method;
             
             /// <summary>
             /// Amount of medication per dose
             /// </summary>
             [FhirElement("dose", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Dose
+            public Hl7.Fhir.Model.STU3.SimpleQuantity Dose
             {
                 get { return _Dose; }
                 set { _Dose = value; OnPropertyChanged("Dose"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Dose;
+            private Hl7.Fhir.Model.STU3.SimpleQuantity _Dose;
             
             /// <summary>
             /// Dose quantity per unit of time
             /// </summary>
             [FhirElement("rate", Order=90, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.SimpleQuantity))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Ratio),typeof(Hl7.Fhir.Model.STU3.SimpleQuantity))]
             [DataMember]
             public Hl7.Fhir.Model.Element Rate
             {
@@ -278,10 +278,10 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
-                    if(Site != null) dest.Site = (Hl7.Fhir.Model.CodeableConcept)Site.DeepCopy();
-                    if(Route != null) dest.Route = (Hl7.Fhir.Model.CodeableConcept)Route.DeepCopy();
-                    if(Method != null) dest.Method = (Hl7.Fhir.Model.CodeableConcept)Method.DeepCopy();
-                    if(Dose != null) dest.Dose = (Hl7.Fhir.Model.SimpleQuantity)Dose.DeepCopy();
+                    if(Site != null) dest.Site = (Hl7.Fhir.Model.STU3.CodeableConcept)Site.DeepCopy();
+                    if(Route != null) dest.Route = (Hl7.Fhir.Model.STU3.CodeableConcept)Route.DeepCopy();
+                    if(Method != null) dest.Method = (Hl7.Fhir.Model.STU3.CodeableConcept)Method.DeepCopy();
+                    if(Dose != null) dest.Dose = (Hl7.Fhir.Model.STU3.SimpleQuantity)Dose.DeepCopy();
                     if(Rate != null) dest.Rate = (Hl7.Fhir.Model.Element)Rate.DeepCopy();
                     return dest;
                 }
@@ -446,20 +446,20 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("category", Order=130)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Category
+        public Hl7.Fhir.Model.STU3.CodeableConcept Category
         {
             get { return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Category;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Category;
         
         /// <summary>
         /// What was administered
         /// </summary>
         [FhirElement("medication", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element Medication
@@ -520,7 +520,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("effective", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element Effective
@@ -585,13 +585,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("reasonNotGiven", Order=210)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonNotGiven
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonNotGiven
         {
-            get { if(_ReasonNotGiven==null) _ReasonNotGiven = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonNotGiven; }
+            get { if(_ReasonNotGiven==null) _ReasonNotGiven = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonNotGiven; }
             set { _ReasonNotGiven = value; OnPropertyChanged("ReasonNotGiven"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonNotGiven;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonNotGiven;
         
         /// <summary>
         /// Reason administration performed
@@ -599,13 +599,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("reasonCode", Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonCode
         {
-            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonCode; }
+            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonCode; }
             set { _ReasonCode = value; OnPropertyChanged("ReasonCode"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonCode;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonCode;
         
         /// <summary>
         /// Condition or Observation that supports why the medication was administered
@@ -660,13 +660,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=260)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Details of how medication was taken
@@ -745,7 +745,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(Definition != null) dest.Definition = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Definition.DeepCopy());
                 if(PartOf != null) dest.PartOf = new List<Hl7.Fhir.Model.STU3.ResourceReference>(PartOf.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.MedicationAdministrationStatus>)StatusElement.DeepCopy();
-                if(Category != null) dest.Category = (Hl7.Fhir.Model.CodeableConcept)Category.DeepCopy();
+                if(Category != null) dest.Category = (Hl7.Fhir.Model.STU3.CodeableConcept)Category.DeepCopy();
                 if(Medication != null) dest.Medication = (Hl7.Fhir.Model.Element)Medication.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
@@ -753,12 +753,12 @@ namespace Hl7.Fhir.Model.STU3
                 if(Effective != null) dest.Effective = (Hl7.Fhir.Model.Element)Effective.DeepCopy();
                 if(Performer != null) dest.Performer = new List<PerformerComponent>(Performer.DeepCopy());
                 if(NotGivenElement != null) dest.NotGivenElement = (Hl7.Fhir.Model.FhirBoolean)NotGivenElement.DeepCopy();
-                if(ReasonNotGiven != null) dest.ReasonNotGiven = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonNotGiven.DeepCopy());
-                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
+                if(ReasonNotGiven != null) dest.ReasonNotGiven = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonNotGiven.DeepCopy());
+                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonCode.DeepCopy());
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ReasonReference.DeepCopy());
                 if(Prescription != null) dest.Prescription = (Hl7.Fhir.Model.STU3.ResourceReference)Prescription.DeepCopy();
                 if(Device != null) dest.Device = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Device.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Dosage != null) dest.Dosage = (DosageComponent)Dosage.DeepCopy();
                 if(EventHistory != null) dest.EventHistory = new List<Hl7.Fhir.Model.STU3.ResourceReference>(EventHistory.DeepCopy());
                 return dest;

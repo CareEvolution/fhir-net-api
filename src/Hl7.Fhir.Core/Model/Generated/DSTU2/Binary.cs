@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Binary", IsResource=true)]
     [DataContract]
-    public partial class Binary : Hl7.Fhir.Model.Resource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Binary : Hl7.Fhir.Model.DSTU2.Resource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Binary; } }
@@ -58,17 +58,17 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// MimeType of the binary content
         /// </summary>
-        [FhirElement("contentType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
+        [FhirElement("contentType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Code ContentTypeElement
+        public Hl7.Fhir.Model.DSTU2.Code ContentTypeElement
         {
             get { return _ContentTypeElement; }
             set { _ContentTypeElement = value; OnPropertyChanged("ContentTypeElement"); }
         }
         
-        private Hl7.Fhir.Model.Code _ContentTypeElement;
+        private Hl7.Fhir.Model.DSTU2.Code _ContentTypeElement;
         
         /// <summary>
         /// MimeType of the binary content
@@ -84,7 +84,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     ContentTypeElement = null;
                 else
-                    ContentTypeElement = new Hl7.Fhir.Model.Code(value);
+                    ContentTypeElement = new Hl7.Fhir.Model.DSTU2.Code(value);
                 OnPropertyChanged("ContentType");
             }
         }
@@ -92,7 +92,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The actual content
         /// </summary>
-        [FhirElement("content", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
+        [FhirElement("content", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -131,7 +131,7 @@ namespace Hl7.Fhir.Model.DSTU2
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(ContentTypeElement != null) dest.ContentTypeElement = (Hl7.Fhir.Model.Code)ContentTypeElement.DeepCopy();
+                if(ContentTypeElement != null) dest.ContentTypeElement = (Hl7.Fhir.Model.DSTU2.Code)ContentTypeElement.DeepCopy();
                 if(ContentElement != null) dest.ContentElement = (Hl7.Fhir.Model.Base64Binary)ContentElement.DeepCopy();
                 return dest;
             }

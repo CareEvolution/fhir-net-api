@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Sequence", IsResource=true)]
     [DataContract]
-    public partial class Sequence : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Sequence : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Sequence; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("chromosome", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Chromosome
+            public Hl7.Fhir.Model.STU3.CodeableConcept Chromosome
             {
                 get { return _Chromosome; }
                 set { _Chromosome = value; OnPropertyChanged("Chromosome"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Chromosome;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Chromosome;
             
             /// <summary>
             /// The Genome Build used for reference, following GRCh build versions e.g. 'GRCh 37'
@@ -115,13 +115,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("referenceSeqId", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept ReferenceSeqId
+            public Hl7.Fhir.Model.STU3.CodeableConcept ReferenceSeqId
             {
                 get { return _ReferenceSeqId; }
                 set { _ReferenceSeqId = value; OnPropertyChanged("ReferenceSeqId"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _ReferenceSeqId;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _ReferenceSeqId;
             
             /// <summary>
             /// A Pointer to another Sequence entity as reference sequence
@@ -177,13 +177,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("strand", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer StrandElement
+            public Hl7.Fhir.Model.STU3.Integer StrandElement
             {
                 get { return _StrandElement; }
                 set { _StrandElement = value; OnPropertyChanged("StrandElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _StrandElement;
+            private Hl7.Fhir.Model.STU3.Integer _StrandElement;
             
             /// <summary>
             /// Directionality of DNA ( +1/-1)
@@ -199,7 +199,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         StrandElement = null;
                     else
-                        StrandElement = new Hl7.Fhir.Model.Integer(value);
+                        StrandElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("Strand");
                 }
             }
@@ -211,13 +211,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer WindowStartElement
+            public Hl7.Fhir.Model.STU3.Integer WindowStartElement
             {
                 get { return _WindowStartElement; }
                 set { _WindowStartElement = value; OnPropertyChanged("WindowStartElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _WindowStartElement;
+            private Hl7.Fhir.Model.STU3.Integer _WindowStartElement;
             
             /// <summary>
             /// Start position of the window on the  reference sequence
@@ -233,7 +233,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         WindowStartElement = null;
                     else
-                        WindowStartElement = new Hl7.Fhir.Model.Integer(value);
+                        WindowStartElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("WindowStart");
                 }
             }
@@ -245,13 +245,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer WindowEndElement
+            public Hl7.Fhir.Model.STU3.Integer WindowEndElement
             {
                 get { return _WindowEndElement; }
                 set { _WindowEndElement = value; OnPropertyChanged("WindowEndElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _WindowEndElement;
+            private Hl7.Fhir.Model.STU3.Integer _WindowEndElement;
             
             /// <summary>
             /// End position of the window on the reference sequence
@@ -267,7 +267,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         WindowEndElement = null;
                     else
-                        WindowEndElement = new Hl7.Fhir.Model.Integer(value);
+                        WindowEndElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("WindowEnd");
                 }
             }
@@ -279,14 +279,14 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Chromosome != null) dest.Chromosome = (Hl7.Fhir.Model.CodeableConcept)Chromosome.DeepCopy();
+                    if(Chromosome != null) dest.Chromosome = (Hl7.Fhir.Model.STU3.CodeableConcept)Chromosome.DeepCopy();
                     if(GenomeBuildElement != null) dest.GenomeBuildElement = (Hl7.Fhir.Model.FhirString)GenomeBuildElement.DeepCopy();
-                    if(ReferenceSeqId != null) dest.ReferenceSeqId = (Hl7.Fhir.Model.CodeableConcept)ReferenceSeqId.DeepCopy();
+                    if(ReferenceSeqId != null) dest.ReferenceSeqId = (Hl7.Fhir.Model.STU3.CodeableConcept)ReferenceSeqId.DeepCopy();
                     if(ReferenceSeqPointer != null) dest.ReferenceSeqPointer = (Hl7.Fhir.Model.STU3.ResourceReference)ReferenceSeqPointer.DeepCopy();
                     if(ReferenceSeqStringElement != null) dest.ReferenceSeqStringElement = (Hl7.Fhir.Model.FhirString)ReferenceSeqStringElement.DeepCopy();
-                    if(StrandElement != null) dest.StrandElement = (Hl7.Fhir.Model.Integer)StrandElement.DeepCopy();
-                    if(WindowStartElement != null) dest.WindowStartElement = (Hl7.Fhir.Model.Integer)WindowStartElement.DeepCopy();
-                    if(WindowEndElement != null) dest.WindowEndElement = (Hl7.Fhir.Model.Integer)WindowEndElement.DeepCopy();
+                    if(StrandElement != null) dest.StrandElement = (Hl7.Fhir.Model.STU3.Integer)StrandElement.DeepCopy();
+                    if(WindowStartElement != null) dest.WindowStartElement = (Hl7.Fhir.Model.STU3.Integer)WindowStartElement.DeepCopy();
+                    if(WindowEndElement != null) dest.WindowEndElement = (Hl7.Fhir.Model.STU3.Integer)WindowEndElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -386,13 +386,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("start", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer StartElement
+            public Hl7.Fhir.Model.STU3.Integer StartElement
             {
                 get { return _StartElement; }
                 set { _StartElement = value; OnPropertyChanged("StartElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _StartElement;
+            private Hl7.Fhir.Model.STU3.Integer _StartElement;
             
             /// <summary>
             /// Start position of the variant on the  reference sequence
@@ -408,7 +408,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         StartElement = null;
                     else
-                        StartElement = new Hl7.Fhir.Model.Integer(value);
+                        StartElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("Start");
                 }
             }
@@ -419,13 +419,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("end", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer EndElement
+            public Hl7.Fhir.Model.STU3.Integer EndElement
             {
                 get { return _EndElement; }
                 set { _EndElement = value; OnPropertyChanged("EndElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _EndElement;
+            private Hl7.Fhir.Model.STU3.Integer _EndElement;
             
             /// <summary>
             /// End position of the variant on the reference sequence
@@ -441,7 +441,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         EndElement = null;
                     else
-                        EndElement = new Hl7.Fhir.Model.Integer(value);
+                        EndElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("End");
                 }
             }
@@ -567,8 +567,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(StartElement != null) dest.StartElement = (Hl7.Fhir.Model.Integer)StartElement.DeepCopy();
-                    if(EndElement != null) dest.EndElement = (Hl7.Fhir.Model.Integer)EndElement.DeepCopy();
+                    if(StartElement != null) dest.StartElement = (Hl7.Fhir.Model.STU3.Integer)StartElement.DeepCopy();
+                    if(EndElement != null) dest.EndElement = (Hl7.Fhir.Model.STU3.Integer)EndElement.DeepCopy();
                     if(ObservedAlleleElement != null) dest.ObservedAlleleElement = (Hl7.Fhir.Model.FhirString)ObservedAlleleElement.DeepCopy();
                     if(ReferenceAlleleElement != null) dest.ReferenceAlleleElement = (Hl7.Fhir.Model.FhirString)ReferenceAlleleElement.DeepCopy();
                     if(CigarElement != null) dest.CigarElement = (Hl7.Fhir.Model.FhirString)CigarElement.DeepCopy();
@@ -698,13 +698,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("standardSequence", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept StandardSequence
+            public Hl7.Fhir.Model.STU3.CodeableConcept StandardSequence
             {
                 get { return _StandardSequence; }
                 set { _StandardSequence = value; OnPropertyChanged("StandardSequence"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _StandardSequence;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _StandardSequence;
             
             /// <summary>
             /// Start position of the sequence
@@ -712,13 +712,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("start", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer StartElement
+            public Hl7.Fhir.Model.STU3.Integer StartElement
             {
                 get { return _StartElement; }
                 set { _StartElement = value; OnPropertyChanged("StartElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _StartElement;
+            private Hl7.Fhir.Model.STU3.Integer _StartElement;
             
             /// <summary>
             /// Start position of the sequence
@@ -734,7 +734,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         StartElement = null;
                     else
-                        StartElement = new Hl7.Fhir.Model.Integer(value);
+                        StartElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("Start");
                 }
             }
@@ -745,13 +745,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("end", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer EndElement
+            public Hl7.Fhir.Model.STU3.Integer EndElement
             {
                 get { return _EndElement; }
                 set { _EndElement = value; OnPropertyChanged("EndElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _EndElement;
+            private Hl7.Fhir.Model.STU3.Integer _EndElement;
             
             /// <summary>
             /// End position of the sequence
@@ -767,7 +767,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         EndElement = null;
                     else
-                        EndElement = new Hl7.Fhir.Model.Integer(value);
+                        EndElement = new Hl7.Fhir.Model.STU3.Integer(value);
                     OnPropertyChanged("End");
                 }
             }
@@ -778,13 +778,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("score", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Quantity Score
+            public Hl7.Fhir.Model.STU3.Quantity Score
             {
                 get { return _Score; }
                 set { _Score = value; OnPropertyChanged("Score"); }
             }
             
-            private Hl7.Fhir.Model.Quantity _Score;
+            private Hl7.Fhir.Model.STU3.Quantity _Score;
             
             /// <summary>
             /// Method to get quality
@@ -792,13 +792,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("method", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Method
+            public Hl7.Fhir.Model.STU3.CodeableConcept Method
             {
                 get { return _Method; }
                 set { _Method = value; OnPropertyChanged("Method"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Method;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Method;
             
             /// <summary>
             /// True positives from the perspective of the truth data
@@ -806,13 +806,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("truthTP", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal TruthTPElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal TruthTPElement
             {
                 get { return _TruthTPElement; }
                 set { _TruthTPElement = value; OnPropertyChanged("TruthTPElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _TruthTPElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _TruthTPElement;
             
             /// <summary>
             /// True positives from the perspective of the truth data
@@ -828,7 +828,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         TruthTPElement = null;
                     else
-                        TruthTPElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        TruthTPElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("TruthTP");
                 }
             }
@@ -839,13 +839,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("queryTP", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal QueryTPElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal QueryTPElement
             {
                 get { return _QueryTPElement; }
                 set { _QueryTPElement = value; OnPropertyChanged("QueryTPElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _QueryTPElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _QueryTPElement;
             
             /// <summary>
             /// True positives from the perspective of the query data
@@ -861,7 +861,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         QueryTPElement = null;
                     else
-                        QueryTPElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        QueryTPElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("QueryTP");
                 }
             }
@@ -872,13 +872,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("truthFN", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal TruthFNElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal TruthFNElement
             {
                 get { return _TruthFNElement; }
                 set { _TruthFNElement = value; OnPropertyChanged("TruthFNElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _TruthFNElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _TruthFNElement;
             
             /// <summary>
             /// False negatives
@@ -894,7 +894,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         TruthFNElement = null;
                     else
-                        TruthFNElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        TruthFNElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("TruthFN");
                 }
             }
@@ -905,13 +905,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("queryFP", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal QueryFPElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal QueryFPElement
             {
                 get { return _QueryFPElement; }
                 set { _QueryFPElement = value; OnPropertyChanged("QueryFPElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _QueryFPElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _QueryFPElement;
             
             /// <summary>
             /// False positives
@@ -927,7 +927,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         QueryFPElement = null;
                     else
-                        QueryFPElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        QueryFPElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("QueryFP");
                 }
             }
@@ -938,13 +938,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("gtFP", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal GtFPElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal GtFPElement
             {
                 get { return _GtFPElement; }
                 set { _GtFPElement = value; OnPropertyChanged("GtFPElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _GtFPElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _GtFPElement;
             
             /// <summary>
             /// False positives where the non-REF alleles in the Truth and Query Call Sets match
@@ -960,7 +960,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         GtFPElement = null;
                     else
-                        GtFPElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        GtFPElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("GtFP");
                 }
             }
@@ -971,13 +971,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("precision", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PrecisionElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal PrecisionElement
             {
                 get { return _PrecisionElement; }
                 set { _PrecisionElement = value; OnPropertyChanged("PrecisionElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PrecisionElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _PrecisionElement;
             
             /// <summary>
             /// Precision of comparison
@@ -993,7 +993,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         PrecisionElement = null;
                     else
-                        PrecisionElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PrecisionElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("Precision");
                 }
             }
@@ -1004,13 +1004,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("recall", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal RecallElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal RecallElement
             {
                 get { return _RecallElement; }
                 set { _RecallElement = value; OnPropertyChanged("RecallElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _RecallElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _RecallElement;
             
             /// <summary>
             /// Recall of comparison
@@ -1026,7 +1026,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         RecallElement = null;
                     else
-                        RecallElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        RecallElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("Recall");
                 }
             }
@@ -1037,13 +1037,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("fScore", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal FScoreElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal FScoreElement
             {
                 get { return _FScoreElement; }
                 set { _FScoreElement = value; OnPropertyChanged("FScoreElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _FScoreElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _FScoreElement;
             
             /// <summary>
             /// F-score
@@ -1059,7 +1059,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         FScoreElement = null;
                     else
-                        FScoreElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        FScoreElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("FScore");
                 }
             }
@@ -1072,19 +1072,19 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.STU3.qualityType>)TypeElement.DeepCopy();
-                    if(StandardSequence != null) dest.StandardSequence = (Hl7.Fhir.Model.CodeableConcept)StandardSequence.DeepCopy();
-                    if(StartElement != null) dest.StartElement = (Hl7.Fhir.Model.Integer)StartElement.DeepCopy();
-                    if(EndElement != null) dest.EndElement = (Hl7.Fhir.Model.Integer)EndElement.DeepCopy();
-                    if(Score != null) dest.Score = (Hl7.Fhir.Model.Quantity)Score.DeepCopy();
-                    if(Method != null) dest.Method = (Hl7.Fhir.Model.CodeableConcept)Method.DeepCopy();
-                    if(TruthTPElement != null) dest.TruthTPElement = (Hl7.Fhir.Model.FhirDecimal)TruthTPElement.DeepCopy();
-                    if(QueryTPElement != null) dest.QueryTPElement = (Hl7.Fhir.Model.FhirDecimal)QueryTPElement.DeepCopy();
-                    if(TruthFNElement != null) dest.TruthFNElement = (Hl7.Fhir.Model.FhirDecimal)TruthFNElement.DeepCopy();
-                    if(QueryFPElement != null) dest.QueryFPElement = (Hl7.Fhir.Model.FhirDecimal)QueryFPElement.DeepCopy();
-                    if(GtFPElement != null) dest.GtFPElement = (Hl7.Fhir.Model.FhirDecimal)GtFPElement.DeepCopy();
-                    if(PrecisionElement != null) dest.PrecisionElement = (Hl7.Fhir.Model.FhirDecimal)PrecisionElement.DeepCopy();
-                    if(RecallElement != null) dest.RecallElement = (Hl7.Fhir.Model.FhirDecimal)RecallElement.DeepCopy();
-                    if(FScoreElement != null) dest.FScoreElement = (Hl7.Fhir.Model.FhirDecimal)FScoreElement.DeepCopy();
+                    if(StandardSequence != null) dest.StandardSequence = (Hl7.Fhir.Model.STU3.CodeableConcept)StandardSequence.DeepCopy();
+                    if(StartElement != null) dest.StartElement = (Hl7.Fhir.Model.STU3.Integer)StartElement.DeepCopy();
+                    if(EndElement != null) dest.EndElement = (Hl7.Fhir.Model.STU3.Integer)EndElement.DeepCopy();
+                    if(Score != null) dest.Score = (Hl7.Fhir.Model.STU3.Quantity)Score.DeepCopy();
+                    if(Method != null) dest.Method = (Hl7.Fhir.Model.STU3.CodeableConcept)Method.DeepCopy();
+                    if(TruthTPElement != null) dest.TruthTPElement = (Hl7.Fhir.Model.STU3.FhirDecimal)TruthTPElement.DeepCopy();
+                    if(QueryTPElement != null) dest.QueryTPElement = (Hl7.Fhir.Model.STU3.FhirDecimal)QueryTPElement.DeepCopy();
+                    if(TruthFNElement != null) dest.TruthFNElement = (Hl7.Fhir.Model.STU3.FhirDecimal)TruthFNElement.DeepCopy();
+                    if(QueryFPElement != null) dest.QueryFPElement = (Hl7.Fhir.Model.STU3.FhirDecimal)QueryFPElement.DeepCopy();
+                    if(GtFPElement != null) dest.GtFPElement = (Hl7.Fhir.Model.STU3.FhirDecimal)GtFPElement.DeepCopy();
+                    if(PrecisionElement != null) dest.PrecisionElement = (Hl7.Fhir.Model.STU3.FhirDecimal)PrecisionElement.DeepCopy();
+                    if(RecallElement != null) dest.RecallElement = (Hl7.Fhir.Model.STU3.FhirDecimal)RecallElement.DeepCopy();
+                    if(FScoreElement != null) dest.FScoreElement = (Hl7.Fhir.Model.STU3.FhirDecimal)FScoreElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -1513,13 +1513,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Code TypeElement
+        public Hl7.Fhir.Model.STU3.Code TypeElement
         {
             get { return _TypeElement; }
             set { _TypeElement = value; OnPropertyChanged("TypeElement"); }
         }
         
-        private Hl7.Fhir.Model.Code _TypeElement;
+        private Hl7.Fhir.Model.STU3.Code _TypeElement;
         
         /// <summary>
         /// aa | dna | rna
@@ -1535,7 +1535,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     TypeElement = null;
                 else
-                    TypeElement = new Hl7.Fhir.Model.Code(value);
+                    TypeElement = new Hl7.Fhir.Model.STU3.Code(value);
                 OnPropertyChanged("Type");
             }
         }
@@ -1547,13 +1547,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Integer CoordinateSystemElement
+        public Hl7.Fhir.Model.STU3.Integer CoordinateSystemElement
         {
             get { return _CoordinateSystemElement; }
             set { _CoordinateSystemElement = value; OnPropertyChanged("CoordinateSystemElement"); }
         }
         
-        private Hl7.Fhir.Model.Integer _CoordinateSystemElement;
+        private Hl7.Fhir.Model.STU3.Integer _CoordinateSystemElement;
         
         /// <summary>
         /// Base number of coordinate system (0 for 0-based numbering or coordinates, inclusive start, exclusive end, 1 for 1-based numbering, inclusive start, inclusive end)
@@ -1569,7 +1569,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     CoordinateSystemElement = null;
                 else
-                    CoordinateSystemElement = new Hl7.Fhir.Model.Integer(value);
+                    CoordinateSystemElement = new Hl7.Fhir.Model.STU3.Integer(value);
                 OnPropertyChanged("CoordinateSystem");
             }
         }
@@ -1640,13 +1640,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("quantity", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Quantity Quantity
+        public Hl7.Fhir.Model.STU3.Quantity Quantity
         {
             get { return _Quantity; }
             set { _Quantity = value; OnPropertyChanged("Quantity"); }
         }
         
-        private Hl7.Fhir.Model.Quantity _Quantity;
+        private Hl7.Fhir.Model.STU3.Quantity _Quantity;
         
         /// <summary>
         /// A sequence used as reference
@@ -1731,13 +1731,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("readCoverage", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=210)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Integer ReadCoverageElement
+        public Hl7.Fhir.Model.STU3.Integer ReadCoverageElement
         {
             get { return _ReadCoverageElement; }
             set { _ReadCoverageElement = value; OnPropertyChanged("ReadCoverageElement"); }
         }
         
-        private Hl7.Fhir.Model.Integer _ReadCoverageElement;
+        private Hl7.Fhir.Model.STU3.Integer _ReadCoverageElement;
         
         /// <summary>
         /// Average number of reads representing a given nucleotide in the reconstructed sequence
@@ -1753,7 +1753,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     ReadCoverageElement = null;
                 else
-                    ReadCoverageElement = new Hl7.Fhir.Model.Integer(value);
+                    ReadCoverageElement = new Hl7.Fhir.Model.STU3.Integer(value);
                 OnPropertyChanged("ReadCoverage");
             }
         }
@@ -1844,18 +1844,18 @@ namespace Hl7.Fhir.Model.STU3
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
-                if(TypeElement != null) dest.TypeElement = (Hl7.Fhir.Model.Code)TypeElement.DeepCopy();
-                if(CoordinateSystemElement != null) dest.CoordinateSystemElement = (Hl7.Fhir.Model.Integer)CoordinateSystemElement.DeepCopy();
+                if(TypeElement != null) dest.TypeElement = (Hl7.Fhir.Model.STU3.Code)TypeElement.DeepCopy();
+                if(CoordinateSystemElement != null) dest.CoordinateSystemElement = (Hl7.Fhir.Model.STU3.Integer)CoordinateSystemElement.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.STU3.ResourceReference)Patient.DeepCopy();
                 if(Specimen != null) dest.Specimen = (Hl7.Fhir.Model.STU3.ResourceReference)Specimen.DeepCopy();
                 if(Device != null) dest.Device = (Hl7.Fhir.Model.STU3.ResourceReference)Device.DeepCopy();
                 if(Performer != null) dest.Performer = (Hl7.Fhir.Model.STU3.ResourceReference)Performer.DeepCopy();
-                if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.Quantity)Quantity.DeepCopy();
+                if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.STU3.Quantity)Quantity.DeepCopy();
                 if(ReferenceSeq != null) dest.ReferenceSeq = (ReferenceSeqComponent)ReferenceSeq.DeepCopy();
                 if(Variant != null) dest.Variant = new List<VariantComponent>(Variant.DeepCopy());
                 if(ObservedSeqElement != null) dest.ObservedSeqElement = (Hl7.Fhir.Model.FhirString)ObservedSeqElement.DeepCopy();
                 if(Quality != null) dest.Quality = new List<QualityComponent>(Quality.DeepCopy());
-                if(ReadCoverageElement != null) dest.ReadCoverageElement = (Hl7.Fhir.Model.Integer)ReadCoverageElement.DeepCopy();
+                if(ReadCoverageElement != null) dest.ReadCoverageElement = (Hl7.Fhir.Model.STU3.Integer)ReadCoverageElement.DeepCopy();
                 if(Repository != null) dest.Repository = new List<RepositoryComponent>(Repository.DeepCopy());
                 if(Pointer != null) dest.Pointer = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Pointer.DeepCopy());
                 return dest;

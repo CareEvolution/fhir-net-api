@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "DeviceRequest", IsResource=true)]
     [DataContract]
-    public partial class DeviceRequest : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DeviceRequest : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DeviceRequest; } }
@@ -279,13 +279,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Intent
+        public Hl7.Fhir.Model.STU3.CodeableConcept Intent
         {
             get { return _Intent; }
             set { _Intent = value; OnPropertyChanged("Intent"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Intent;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Intent;
         
         /// <summary>
         /// Indicates how quickly the {{title}} should be addressed with respect to other requests
@@ -325,7 +325,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.ResourceReference),typeof(Hl7.Fhir.Model.CodeableConcept))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.ResourceReference),typeof(Hl7.Fhir.Model.STU3.CodeableConcept))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element Code
@@ -372,7 +372,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("occurrence", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=200, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.STU3.Timing))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period),typeof(Hl7.Fhir.Model.STU3.Timing))]
         [DataMember]
         public Hl7.Fhir.Model.Element Occurrence
         {
@@ -388,13 +388,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("authoredOn", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=210)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime AuthoredOnElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime AuthoredOnElement
         {
             get { return _AuthoredOnElement; }
             set { _AuthoredOnElement = value; OnPropertyChanged("AuthoredOnElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _AuthoredOnElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _AuthoredOnElement;
         
         /// <summary>
         /// When recorded
@@ -410,7 +410,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     AuthoredOnElement = null;
                 else
-                    AuthoredOnElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    AuthoredOnElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("AuthoredOn");
             }
         }
@@ -435,13 +435,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("performerType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=230)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept PerformerType
+        public Hl7.Fhir.Model.STU3.CodeableConcept PerformerType
         {
             get { return _PerformerType; }
             set { _PerformerType = value; OnPropertyChanged("PerformerType"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _PerformerType;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _PerformerType;
         
         /// <summary>
         /// Requested Filler
@@ -465,13 +465,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonCode
         {
-            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonCode; }
+            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonCode; }
             set { _ReasonCode = value; OnPropertyChanged("ReasonCode"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonCode;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonCode;
         
         /// <summary>
         /// Linked Reason for request
@@ -508,13 +508,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=280)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Request provenance
@@ -546,20 +546,20 @@ namespace Hl7.Fhir.Model.STU3
                 if(PriorRequest != null) dest.PriorRequest = new List<Hl7.Fhir.Model.STU3.ResourceReference>(PriorRequest.DeepCopy());
                 if(GroupIdentifier != null) dest.GroupIdentifier = (Hl7.Fhir.Model.STU3.Identifier)GroupIdentifier.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.RequestStatus>)StatusElement.DeepCopy();
-                if(Intent != null) dest.Intent = (Hl7.Fhir.Model.CodeableConcept)Intent.DeepCopy();
+                if(Intent != null) dest.Intent = (Hl7.Fhir.Model.STU3.CodeableConcept)Intent.DeepCopy();
                 if(PriorityElement != null) dest.PriorityElement = (Code<Hl7.Fhir.Model.STU3.RequestPriority>)PriorityElement.DeepCopy();
                 if(Code != null) dest.Code = (Hl7.Fhir.Model.Element)Code.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
                 if(Occurrence != null) dest.Occurrence = (Hl7.Fhir.Model.Element)Occurrence.DeepCopy();
-                if(AuthoredOnElement != null) dest.AuthoredOnElement = (Hl7.Fhir.Model.FhirDateTime)AuthoredOnElement.DeepCopy();
+                if(AuthoredOnElement != null) dest.AuthoredOnElement = (Hl7.Fhir.Model.STU3.FhirDateTime)AuthoredOnElement.DeepCopy();
                 if(Requester != null) dest.Requester = (RequesterComponent)Requester.DeepCopy();
-                if(PerformerType != null) dest.PerformerType = (Hl7.Fhir.Model.CodeableConcept)PerformerType.DeepCopy();
+                if(PerformerType != null) dest.PerformerType = (Hl7.Fhir.Model.STU3.CodeableConcept)PerformerType.DeepCopy();
                 if(Performer != null) dest.Performer = (Hl7.Fhir.Model.STU3.ResourceReference)Performer.DeepCopy();
-                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
+                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonCode.DeepCopy());
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ReasonReference.DeepCopy());
                 if(SupportingInfo != null) dest.SupportingInfo = new List<Hl7.Fhir.Model.STU3.ResourceReference>(SupportingInfo.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(RelevantHistory != null) dest.RelevantHistory = new List<Hl7.Fhir.Model.STU3.ResourceReference>(RelevantHistory.DeepCopy());
                 return dest;
             }

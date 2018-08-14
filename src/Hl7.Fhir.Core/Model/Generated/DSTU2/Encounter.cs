@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Encounter", IsResource=true)]
     [DataContract]
-    public partial class Encounter : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Encounter : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Encounter; } }
@@ -101,13 +101,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("period", Order=50)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.DSTU2.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.DSTU2.Period _Period;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -117,7 +117,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.EncounterState>)StatusElement.DeepCopy();
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.DSTU2.Period)Period.DeepCopy();
                     return dest;
                 }
                 else
@@ -194,26 +194,26 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Type
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Type
             {
-                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Type; }
+                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Type;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Type;
             
             /// <summary>
             /// Period of time during the encounter participant was present
             /// </summary>
             [FhirElement("period", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.DSTU2.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.DSTU2.Period _Period;
             
             /// <summary>
             /// Persons involved in the encounter other than the patient
@@ -237,8 +237,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.CodeableConcept>(Type.DeepCopy());
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Type.DeepCopy());
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.DSTU2.Period)Period.DeepCopy();
                     if(Individual != null) dest.Individual = (Hl7.Fhir.Model.DSTU2.ResourceReference)Individual.DeepCopy();
                     return dest;
                 }
@@ -346,13 +346,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("admitSource", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept AdmitSource
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept AdmitSource
             {
                 get { return _AdmitSource; }
                 set { _AdmitSource = value; OnPropertyChanged("AdmitSource"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _AdmitSource;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _AdmitSource;
             
             /// <summary>
             /// The admitting diagnosis as reported by admitting practitioner
@@ -375,13 +375,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("reAdmission", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept ReAdmission
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept ReAdmission
             {
                 get { return _ReAdmission; }
                 set { _ReAdmission = value; OnPropertyChanged("ReAdmission"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _ReAdmission;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _ReAdmission;
             
             /// <summary>
             /// Diet preferences reported by the patient
@@ -389,13 +389,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("dietPreference", Order=90)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> DietPreference
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> DietPreference
             {
-                get { if(_DietPreference==null) _DietPreference = new List<Hl7.Fhir.Model.CodeableConcept>(); return _DietPreference; }
+                get { if(_DietPreference==null) _DietPreference = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _DietPreference; }
                 set { _DietPreference = value; OnPropertyChanged("DietPreference"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _DietPreference;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _DietPreference;
             
             /// <summary>
             /// Special courtesies (VIP, board member)
@@ -403,13 +403,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("specialCourtesy", Order=100)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> SpecialCourtesy
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> SpecialCourtesy
             {
-                get { if(_SpecialCourtesy==null) _SpecialCourtesy = new List<Hl7.Fhir.Model.CodeableConcept>(); return _SpecialCourtesy; }
+                get { if(_SpecialCourtesy==null) _SpecialCourtesy = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _SpecialCourtesy; }
                 set { _SpecialCourtesy = value; OnPropertyChanged("SpecialCourtesy"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _SpecialCourtesy;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _SpecialCourtesy;
             
             /// <summary>
             /// Wheelchair, translator, stretcher, etc.
@@ -417,13 +417,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("specialArrangement", Order=110)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> SpecialArrangement
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> SpecialArrangement
             {
-                get { if(_SpecialArrangement==null) _SpecialArrangement = new List<Hl7.Fhir.Model.CodeableConcept>(); return _SpecialArrangement; }
+                get { if(_SpecialArrangement==null) _SpecialArrangement = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _SpecialArrangement; }
                 set { _SpecialArrangement = value; OnPropertyChanged("SpecialArrangement"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _SpecialArrangement;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _SpecialArrangement;
             
             /// <summary>
             /// Location to which the patient is discharged
@@ -445,13 +445,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("dischargeDisposition", Order=130)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept DischargeDisposition
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept DischargeDisposition
             {
                 get { return _DischargeDisposition; }
                 set { _DischargeDisposition = value; OnPropertyChanged("DischargeDisposition"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _DischargeDisposition;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _DischargeDisposition;
             
             /// <summary>
             /// The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete
@@ -478,14 +478,14 @@ namespace Hl7.Fhir.Model.DSTU2
                     base.CopyTo(dest);
                     if(PreAdmissionIdentifier != null) dest.PreAdmissionIdentifier = (Hl7.Fhir.Model.DSTU2.Identifier)PreAdmissionIdentifier.DeepCopy();
                     if(Origin != null) dest.Origin = (Hl7.Fhir.Model.DSTU2.ResourceReference)Origin.DeepCopy();
-                    if(AdmitSource != null) dest.AdmitSource = (Hl7.Fhir.Model.CodeableConcept)AdmitSource.DeepCopy();
+                    if(AdmitSource != null) dest.AdmitSource = (Hl7.Fhir.Model.DSTU2.CodeableConcept)AdmitSource.DeepCopy();
                     if(AdmittingDiagnosis != null) dest.AdmittingDiagnosis = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(AdmittingDiagnosis.DeepCopy());
-                    if(ReAdmission != null) dest.ReAdmission = (Hl7.Fhir.Model.CodeableConcept)ReAdmission.DeepCopy();
-                    if(DietPreference != null) dest.DietPreference = new List<Hl7.Fhir.Model.CodeableConcept>(DietPreference.DeepCopy());
-                    if(SpecialCourtesy != null) dest.SpecialCourtesy = new List<Hl7.Fhir.Model.CodeableConcept>(SpecialCourtesy.DeepCopy());
-                    if(SpecialArrangement != null) dest.SpecialArrangement = new List<Hl7.Fhir.Model.CodeableConcept>(SpecialArrangement.DeepCopy());
+                    if(ReAdmission != null) dest.ReAdmission = (Hl7.Fhir.Model.DSTU2.CodeableConcept)ReAdmission.DeepCopy();
+                    if(DietPreference != null) dest.DietPreference = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(DietPreference.DeepCopy());
+                    if(SpecialCourtesy != null) dest.SpecialCourtesy = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(SpecialCourtesy.DeepCopy());
+                    if(SpecialArrangement != null) dest.SpecialArrangement = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(SpecialArrangement.DeepCopy());
                     if(Destination != null) dest.Destination = (Hl7.Fhir.Model.DSTU2.ResourceReference)Destination.DeepCopy();
-                    if(DischargeDisposition != null) dest.DischargeDisposition = (Hl7.Fhir.Model.CodeableConcept)DischargeDisposition.DeepCopy();
+                    if(DischargeDisposition != null) dest.DischargeDisposition = (Hl7.Fhir.Model.DSTU2.CodeableConcept)DischargeDisposition.DeepCopy();
                     if(DischargeDiagnosis != null) dest.DischargeDiagnosis = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(DischargeDiagnosis.DeepCopy());
                     return dest;
                 }
@@ -645,13 +645,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("period", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.DSTU2.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.DSTU2.Period _Period;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -662,7 +662,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     base.CopyTo(dest);
                     if(Location != null) dest.Location = (Hl7.Fhir.Model.DSTU2.ResourceReference)Location.DeepCopy();
                     if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.EncounterLocationStatus>)StatusElement.DeepCopy();
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.DSTU2.Period)Period.DeepCopy();
                     return dest;
                 }
                 else
@@ -832,26 +832,26 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Type
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Type
         {
-            get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Type; }
+            get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Type;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Type;
         
         /// <summary>
         /// Indicates the urgency of the encounter
         /// </summary>
         [FhirElement("priority", Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Priority
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Priority
         {
             get { return _Priority; }
             set { _Priority = value; OnPropertyChanged("Priority"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Priority;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Priority;
         
         /// <summary>
         /// The patient present at the encounter
@@ -935,13 +935,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("period", Order=200)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.DSTU2.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.DSTU2.Period _Period;
         
         /// <summary>
         /// Quantity of time the encounter lasted (less time absent)
@@ -963,13 +963,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Reason
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Reason
         {
-            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Reason; }
+            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Reason; }
             set { _Reason = value; OnPropertyChanged("Reason"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Reason;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Reason;
         
         /// <summary>
         /// Reason the encounter takes place (resource)
@@ -1056,16 +1056,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.EncounterState>)StatusElement.DeepCopy();
                 if(StatusHistory != null) dest.StatusHistory = new List<StatusHistoryComponent>(StatusHistory.DeepCopy());
                 if(ClassElement != null) dest.ClassElement = (Code<Hl7.Fhir.Model.DSTU2.EncounterClass>)ClassElement.DeepCopy();
-                if(Type != null) dest.Type = new List<Hl7.Fhir.Model.CodeableConcept>(Type.DeepCopy());
-                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.CodeableConcept)Priority.DeepCopy();
+                if(Type != null) dest.Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Type.DeepCopy());
+                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Priority.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
                 if(EpisodeOfCare != null) dest.EpisodeOfCare = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(EpisodeOfCare.DeepCopy());
                 if(IncomingReferral != null) dest.IncomingReferral = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(IncomingReferral.DeepCopy());
                 if(Participant != null) dest.Participant = new List<ParticipantComponent>(Participant.DeepCopy());
                 if(Appointment != null) dest.Appointment = (Hl7.Fhir.Model.DSTU2.ResourceReference)Appointment.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.DSTU2.Period)Period.DeepCopy();
                 if(Length != null) dest.Length = (Hl7.Fhir.Model.DSTU2.Duration)Length.DeepCopy();
-                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.CodeableConcept>(Reason.DeepCopy());
+                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Reason.DeepCopy());
                 if(Indication != null) dest.Indication = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Indication.DeepCopy());
                 if(Hospitalization != null) dest.Hospitalization = (HospitalizationComponent)Hospitalization.DeepCopy();
                 if(Location != null) dest.Location = new List<LocationComponent>(Location.DeepCopy());

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Media", IsResource=true)]
     [DataContract]
-    public partial class Media : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Media : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Media; } }
@@ -95,13 +95,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("subtype", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Subtype
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Subtype
         {
             get { return _Subtype; }
             set { _Subtype = value; OnPropertyChanged("Subtype"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Subtype;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Subtype;
         
         /// <summary>
         /// Identifier(s) for the image
@@ -154,13 +154,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("view", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept View
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept View
         {
             get { return _View; }
             set { _View = value; OnPropertyChanged("View"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _View;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _View;
         
         /// <summary>
         /// Name of the device/manufacturer
@@ -201,13 +201,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("height", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt HeightElement
+        public Hl7.Fhir.Model.DSTU2.PositiveInt HeightElement
         {
             get { return _HeightElement; }
             set { _HeightElement = value; OnPropertyChanged("HeightElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _HeightElement;
+        private Hl7.Fhir.Model.DSTU2.PositiveInt _HeightElement;
         
         /// <summary>
         /// Height of the image in pixels (photo/video)
@@ -223,7 +223,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     HeightElement = null;
                 else
-                    HeightElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    HeightElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                 OnPropertyChanged("Height");
             }
         }
@@ -234,13 +234,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("width", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt WidthElement
+        public Hl7.Fhir.Model.DSTU2.PositiveInt WidthElement
         {
             get { return _WidthElement; }
             set { _WidthElement = value; OnPropertyChanged("WidthElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _WidthElement;
+        private Hl7.Fhir.Model.DSTU2.PositiveInt _WidthElement;
         
         /// <summary>
         /// Width of the image in pixels (photo/video)
@@ -256,7 +256,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     WidthElement = null;
                 else
-                    WidthElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    WidthElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                 OnPropertyChanged("Width");
             }
         }
@@ -267,13 +267,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("frames", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt FramesElement
+        public Hl7.Fhir.Model.DSTU2.PositiveInt FramesElement
         {
             get { return _FramesElement; }
             set { _FramesElement = value; OnPropertyChanged("FramesElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _FramesElement;
+        private Hl7.Fhir.Model.DSTU2.PositiveInt _FramesElement;
         
         /// <summary>
         /// Number of frames if &gt; 1 (photo)
@@ -289,7 +289,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     FramesElement = null;
                 else
-                    FramesElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    FramesElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                 OnPropertyChanged("Frames");
             }
         }
@@ -300,13 +300,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("duration", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.UnsignedInt DurationElement
+        public Hl7.Fhir.Model.DSTU2.UnsignedInt DurationElement
         {
             get { return _DurationElement; }
             set { _DurationElement = value; OnPropertyChanged("DurationElement"); }
         }
         
-        private Hl7.Fhir.Model.UnsignedInt _DurationElement;
+        private Hl7.Fhir.Model.DSTU2.UnsignedInt _DurationElement;
         
         /// <summary>
         /// Length in seconds (audio / video)
@@ -322,7 +322,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DurationElement = null;
                 else
-                    DurationElement = new Hl7.Fhir.Model.UnsignedInt(value);
+                    DurationElement = new Hl7.Fhir.Model.DSTU2.UnsignedInt(value);
                 OnPropertyChanged("Duration");
             }
         }
@@ -333,13 +333,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("content", Order=200)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Attachment Content
+        public Hl7.Fhir.Model.DSTU2.Attachment Content
         {
             get { return _Content; }
             set { _Content = value; OnPropertyChanged("Content"); }
         }
         
-        private Hl7.Fhir.Model.Attachment _Content;
+        private Hl7.Fhir.Model.DSTU2.Attachment _Content;
     
     
         public static ElementDefinitionConstraint Media_MDA_1 = new ElementDefinitionConstraint
@@ -396,17 +396,17 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.DigitalMediaType>)TypeElement.DeepCopy();
-                if(Subtype != null) dest.Subtype = (Hl7.Fhir.Model.CodeableConcept)Subtype.DeepCopy();
+                if(Subtype != null) dest.Subtype = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Subtype.DeepCopy();
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subject.DeepCopy();
                 if(Operator != null) dest.Operator = (Hl7.Fhir.Model.DSTU2.ResourceReference)Operator.DeepCopy();
-                if(View != null) dest.View = (Hl7.Fhir.Model.CodeableConcept)View.DeepCopy();
+                if(View != null) dest.View = (Hl7.Fhir.Model.DSTU2.CodeableConcept)View.DeepCopy();
                 if(DeviceNameElement != null) dest.DeviceNameElement = (Hl7.Fhir.Model.FhirString)DeviceNameElement.DeepCopy();
-                if(HeightElement != null) dest.HeightElement = (Hl7.Fhir.Model.PositiveInt)HeightElement.DeepCopy();
-                if(WidthElement != null) dest.WidthElement = (Hl7.Fhir.Model.PositiveInt)WidthElement.DeepCopy();
-                if(FramesElement != null) dest.FramesElement = (Hl7.Fhir.Model.PositiveInt)FramesElement.DeepCopy();
-                if(DurationElement != null) dest.DurationElement = (Hl7.Fhir.Model.UnsignedInt)DurationElement.DeepCopy();
-                if(Content != null) dest.Content = (Hl7.Fhir.Model.Attachment)Content.DeepCopy();
+                if(HeightElement != null) dest.HeightElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)HeightElement.DeepCopy();
+                if(WidthElement != null) dest.WidthElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)WidthElement.DeepCopy();
+                if(FramesElement != null) dest.FramesElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)FramesElement.DeepCopy();
+                if(DurationElement != null) dest.DurationElement = (Hl7.Fhir.Model.DSTU2.UnsignedInt)DurationElement.DeepCopy();
+                if(Content != null) dest.Content = (Hl7.Fhir.Model.DSTU2.Attachment)Content.DeepCopy();
                 return dest;
             }
             else

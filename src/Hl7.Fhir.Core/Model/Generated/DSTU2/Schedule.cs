@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Schedule", IsResource=true)]
     [DataContract]
-    public partial class Schedule : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Schedule : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Schedule; } }
@@ -76,13 +76,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", Order=100)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Type
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Type
         {
-            get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Type; }
+            get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Type;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Type;
         
         /// <summary>
         /// The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson
@@ -106,13 +106,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("planningHorizon", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period PlanningHorizon
+        public Hl7.Fhir.Model.DSTU2.Period PlanningHorizon
         {
             get { return _PlanningHorizon; }
             set { _PlanningHorizon = value; OnPropertyChanged("PlanningHorizon"); }
         }
         
-        private Hl7.Fhir.Model.Period _PlanningHorizon;
+        private Hl7.Fhir.Model.DSTU2.Period _PlanningHorizon;
         
         /// <summary>
         /// Comments on the availability to describe any extended information. Such as custom constraints on the slot(s) that may be associated
@@ -155,9 +155,9 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(Type != null) dest.Type = new List<Hl7.Fhir.Model.CodeableConcept>(Type.DeepCopy());
+                if(Type != null) dest.Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Type.DeepCopy());
                 if(Actor != null) dest.Actor = (Hl7.Fhir.Model.DSTU2.ResourceReference)Actor.DeepCopy();
-                if(PlanningHorizon != null) dest.PlanningHorizon = (Hl7.Fhir.Model.Period)PlanningHorizon.DeepCopy();
+                if(PlanningHorizon != null) dest.PlanningHorizon = (Hl7.Fhir.Model.DSTU2.Period)PlanningHorizon.DeepCopy();
                 if(CommentElement != null) dest.CommentElement = (Hl7.Fhir.Model.FhirString)CommentElement.DeepCopy();
                 return dest;
             }

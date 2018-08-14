@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "TestReport", IsResource=true)]
     [DataContract]
-    public partial class TestReport : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class TestReport : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.TestReport; } }
@@ -1363,13 +1363,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("score", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDecimal ScoreElement
+        public Hl7.Fhir.Model.STU3.FhirDecimal ScoreElement
         {
             get { return _ScoreElement; }
             set { _ScoreElement = value; OnPropertyChanged("ScoreElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDecimal _ScoreElement;
+        private Hl7.Fhir.Model.STU3.FhirDecimal _ScoreElement;
         
         /// <summary>
         /// The final score (percentage of tests passed) resulting from the execution of the TestScript
@@ -1385,7 +1385,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     ScoreElement = null;
                 else
-                    ScoreElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                    ScoreElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                 OnPropertyChanged("Score");
             }
         }
@@ -1429,13 +1429,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("issued", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime IssuedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime IssuedElement
         {
             get { return _IssuedElement; }
             set { _IssuedElement = value; OnPropertyChanged("IssuedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _IssuedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _IssuedElement;
         
         /// <summary>
         /// When the TestScript was executed and this TestReport was generated
@@ -1451,7 +1451,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     IssuedElement = null;
                 else
-                    IssuedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    IssuedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Issued");
             }
         }
@@ -1549,9 +1549,9 @@ namespace Hl7.Fhir.Model.STU3
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.TestReportStatus>)StatusElement.DeepCopy();
                 if(TestScript != null) dest.TestScript = (Hl7.Fhir.Model.STU3.ResourceReference)TestScript.DeepCopy();
                 if(ResultElement != null) dest.ResultElement = (Code<Hl7.Fhir.Model.STU3.TestReportResult>)ResultElement.DeepCopy();
-                if(ScoreElement != null) dest.ScoreElement = (Hl7.Fhir.Model.FhirDecimal)ScoreElement.DeepCopy();
+                if(ScoreElement != null) dest.ScoreElement = (Hl7.Fhir.Model.STU3.FhirDecimal)ScoreElement.DeepCopy();
                 if(TesterElement != null) dest.TesterElement = (Hl7.Fhir.Model.FhirString)TesterElement.DeepCopy();
-                if(IssuedElement != null) dest.IssuedElement = (Hl7.Fhir.Model.FhirDateTime)IssuedElement.DeepCopy();
+                if(IssuedElement != null) dest.IssuedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)IssuedElement.DeepCopy();
                 if(Participant != null) dest.Participant = new List<ParticipantComponent>(Participant.DeepCopy());
                 if(Setup != null) dest.Setup = (SetupComponent)Setup.DeepCopy();
                 if(Test != null) dest.Test = new List<TestComponent>(Test.DeepCopy());

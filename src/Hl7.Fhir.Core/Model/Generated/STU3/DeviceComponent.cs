@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "DeviceComponent", IsResource=true)]
     [DataContract]
-    public partial class DeviceComponent : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DeviceComponent : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DeviceComponent; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("specType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept SpecType
+            public Hl7.Fhir.Model.STU3.CodeableConcept SpecType
             {
                 get { return _SpecType; }
                 set { _SpecType = value; OnPropertyChanged("SpecType"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _SpecType;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _SpecType;
             
             /// <summary>
             /// Internal component unique identification
@@ -130,7 +130,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(SpecType != null) dest.SpecType = (Hl7.Fhir.Model.CodeableConcept)SpecType.DeepCopy();
+                    if(SpecType != null) dest.SpecType = (Hl7.Fhir.Model.STU3.CodeableConcept)SpecType.DeepCopy();
                     if(ComponentId != null) dest.ComponentId = (Hl7.Fhir.Model.STU3.Identifier)ComponentId.DeepCopy();
                     if(ProductionSpecElement != null) dest.ProductionSpecElement = (Hl7.Fhir.Model.FhirString)ProductionSpecElement.DeepCopy();
                     return dest;
@@ -221,13 +221,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// Recent system change timestamp
@@ -299,13 +299,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> OperationalStatus
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> OperationalStatus
         {
-            get { if(_OperationalStatus==null) _OperationalStatus = new List<Hl7.Fhir.Model.CodeableConcept>(); return _OperationalStatus; }
+            get { if(_OperationalStatus==null) _OperationalStatus = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _OperationalStatus; }
             set { _OperationalStatus = value; OnPropertyChanged("OperationalStatus"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _OperationalStatus;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _OperationalStatus;
         
         /// <summary>
         /// Current supported parameter group
@@ -313,13 +313,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("parameterGroup", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept ParameterGroup
+        public Hl7.Fhir.Model.STU3.CodeableConcept ParameterGroup
         {
             get { return _ParameterGroup; }
             set { _ParameterGroup = value; OnPropertyChanged("ParameterGroup"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _ParameterGroup;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _ParameterGroup;
         
         /// <summary>
         /// other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+
@@ -375,13 +375,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("languageCode", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept LanguageCode
+        public Hl7.Fhir.Model.STU3.CodeableConcept LanguageCode
         {
             get { return _LanguageCode; }
             set { _LanguageCode = value; OnPropertyChanged("LanguageCode"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _LanguageCode;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _LanguageCode;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -392,15 +392,15 @@ namespace Hl7.Fhir.Model.STU3
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
                 if(LastSystemChangeElement != null) dest.LastSystemChangeElement = (Hl7.Fhir.Model.Instant)LastSystemChangeElement.DeepCopy();
                 if(Source != null) dest.Source = (Hl7.Fhir.Model.STU3.ResourceReference)Source.DeepCopy();
                 if(Parent != null) dest.Parent = (Hl7.Fhir.Model.STU3.ResourceReference)Parent.DeepCopy();
-                if(OperationalStatus != null) dest.OperationalStatus = new List<Hl7.Fhir.Model.CodeableConcept>(OperationalStatus.DeepCopy());
-                if(ParameterGroup != null) dest.ParameterGroup = (Hl7.Fhir.Model.CodeableConcept)ParameterGroup.DeepCopy();
+                if(OperationalStatus != null) dest.OperationalStatus = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(OperationalStatus.DeepCopy());
+                if(ParameterGroup != null) dest.ParameterGroup = (Hl7.Fhir.Model.STU3.CodeableConcept)ParameterGroup.DeepCopy();
                 if(MeasurementPrincipleElement != null) dest.MeasurementPrincipleElement = (Code<Hl7.Fhir.Model.STU3.MeasmntPrinciple>)MeasurementPrincipleElement.DeepCopy();
                 if(ProductionSpecification != null) dest.ProductionSpecification = new List<ProductionSpecificationComponent>(ProductionSpecification.DeepCopy());
-                if(LanguageCode != null) dest.LanguageCode = (Hl7.Fhir.Model.CodeableConcept)LanguageCode.DeepCopy();
+                if(LanguageCode != null) dest.LanguageCode = (Hl7.Fhir.Model.STU3.CodeableConcept)LanguageCode.DeepCopy();
                 return dest;
             }
             else

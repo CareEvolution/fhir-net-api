@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Questionnaire", IsResource=true)]
     [DataContract]
-    public partial class Questionnaire : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Questionnaire : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Questionnaire; } }
@@ -134,13 +134,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Concept
+            public List<Hl7.Fhir.Model.DSTU2.Coding> Concept
             {
-                get { if(_Concept==null) _Concept = new List<Hl7.Fhir.Model.Coding>(); return _Concept; }
+                get { if(_Concept==null) _Concept = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Concept; }
                 set { _Concept = value; OnPropertyChanged("Concept"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Concept;
+            private List<Hl7.Fhir.Model.DSTU2.Coding> _Concept;
             
             /// <summary>
             /// Additional text for the group
@@ -275,7 +275,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     base.CopyTo(dest);
                     if(LinkIdElement != null) dest.LinkIdElement = (Hl7.Fhir.Model.FhirString)LinkIdElement.DeepCopy();
                     if(TitleElement != null) dest.TitleElement = (Hl7.Fhir.Model.FhirString)TitleElement.DeepCopy();
-                    if(Concept != null) dest.Concept = new List<Hl7.Fhir.Model.Coding>(Concept.DeepCopy());
+                    if(Concept != null) dest.Concept = new List<Hl7.Fhir.Model.DSTU2.Coding>(Concept.DeepCopy());
                     if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
                     if(RequiredElement != null) dest.RequiredElement = (Hl7.Fhir.Model.FhirBoolean)RequiredElement.DeepCopy();
                     if(RepeatsElement != null) dest.RepeatsElement = (Hl7.Fhir.Model.FhirBoolean)RepeatsElement.DeepCopy();
@@ -412,13 +412,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("concept", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Concept
+            public List<Hl7.Fhir.Model.DSTU2.Coding> Concept
             {
-                get { if(_Concept==null) _Concept = new List<Hl7.Fhir.Model.Coding>(); return _Concept; }
+                get { if(_Concept==null) _Concept = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Concept; }
                 set { _Concept = value; OnPropertyChanged("Concept"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Concept;
+            private List<Hl7.Fhir.Model.DSTU2.Coding> _Concept;
             
             /// <summary>
             /// Text of the question as it is shown to the user
@@ -569,13 +569,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("option", Order=110)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Option
+            public List<Hl7.Fhir.Model.DSTU2.Coding> Option
             {
-                get { if(_Option==null) _Option = new List<Hl7.Fhir.Model.Coding>(); return _Option; }
+                get { if(_Option==null) _Option = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Option; }
                 set { _Option = value; OnPropertyChanged("Option"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Option;
+            private List<Hl7.Fhir.Model.DSTU2.Coding> _Option;
             
             /// <summary>
             /// Nested questionnaire group
@@ -599,13 +599,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(LinkIdElement != null) dest.LinkIdElement = (Hl7.Fhir.Model.FhirString)LinkIdElement.DeepCopy();
-                    if(Concept != null) dest.Concept = new List<Hl7.Fhir.Model.Coding>(Concept.DeepCopy());
+                    if(Concept != null) dest.Concept = new List<Hl7.Fhir.Model.DSTU2.Coding>(Concept.DeepCopy());
                     if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
                     if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.DSTU2.AnswerFormat>)TypeElement.DeepCopy();
                     if(RequiredElement != null) dest.RequiredElement = (Hl7.Fhir.Model.FhirBoolean)RequiredElement.DeepCopy();
                     if(RepeatsElement != null) dest.RepeatsElement = (Hl7.Fhir.Model.FhirBoolean)RepeatsElement.DeepCopy();
                     if(Options != null) dest.Options = (Hl7.Fhir.Model.DSTU2.ResourceReference)Options.DeepCopy();
-                    if(Option != null) dest.Option = new List<Hl7.Fhir.Model.Coding>(Option.DeepCopy());
+                    if(Option != null) dest.Option = new List<Hl7.Fhir.Model.DSTU2.Coding>(Option.DeepCopy());
                     if(Group != null) dest.Group = new List<GroupComponent>(Group.DeepCopy());
                     return dest;
                 }
@@ -785,13 +785,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateElement;
         
         /// <summary>
         /// Date this version was authored
@@ -807,7 +807,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -966,7 +966,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(VersionElement != null) dest.VersionElement = (Hl7.Fhir.Model.FhirString)VersionElement.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.QuestionnaireStatus>)StatusElement.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateElement.DeepCopy();
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.DSTU2.ContactPoint>(Telecom.DeepCopy());
                 if(SubjectTypeElement != null) dest.SubjectTypeElement = new List<Code<Hl7.Fhir.Model.ResourceType>>(SubjectTypeElement.DeepCopy());

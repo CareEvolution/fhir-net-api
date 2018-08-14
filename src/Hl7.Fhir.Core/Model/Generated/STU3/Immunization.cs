@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Immunization", IsResource=true)]
     [DataContract]
-    public partial class Immunization : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Immunization : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Immunization; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("role", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Role
+            public Hl7.Fhir.Model.STU3.CodeableConcept Role
             {
                 get { return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Role;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Role;
             
             /// <summary>
             /// Individual who was performing
@@ -99,7 +99,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Role != null) dest.Role = (Hl7.Fhir.Model.CodeableConcept)Role.DeepCopy();
+                    if(Role != null) dest.Role = (Hl7.Fhir.Model.STU3.CodeableConcept)Role.DeepCopy();
                     if(Actor != null) dest.Actor = (Hl7.Fhir.Model.STU3.ResourceReference)Actor.DeepCopy();
                     return dest;
                 }
@@ -176,13 +176,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("reason", Order=40)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Reason
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> Reason
             {
-                get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Reason; }
+                get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Reason; }
                 set { _Reason = value; OnPropertyChanged("Reason"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Reason;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Reason;
             
             /// <summary>
             /// Why immunization did not occur
@@ -190,13 +190,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("reasonNotGiven", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> ReasonNotGiven
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonNotGiven
             {
-                get { if(_ReasonNotGiven==null) _ReasonNotGiven = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonNotGiven; }
+                get { if(_ReasonNotGiven==null) _ReasonNotGiven = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonNotGiven; }
                 set { _ReasonNotGiven = value; OnPropertyChanged("ReasonNotGiven"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _ReasonNotGiven;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonNotGiven;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -205,8 +205,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.CodeableConcept>(Reason.DeepCopy());
-                    if(ReasonNotGiven != null) dest.ReasonNotGiven = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonNotGiven.DeepCopy());
+                    if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Reason.DeepCopy());
+                    if(ReasonNotGiven != null) dest.ReasonNotGiven = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonNotGiven.DeepCopy());
                     return dest;
                 }
                 else
@@ -281,13 +281,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("date", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime DateElement
+            public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
             {
                 get { return _DateElement; }
                 set { _DateElement = value; OnPropertyChanged("DateElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _DateElement;
+            private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
             
             /// <summary>
             /// When reaction started
@@ -303,7 +303,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         DateElement = null;
                     else
-                        DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                     OnPropertyChanged("Date");
                 }
             }
@@ -362,7 +362,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                    if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                     if(Detail != null) dest.Detail = (Hl7.Fhir.Model.STU3.ResourceReference)Detail.DeepCopy();
                     if(ReportedElement != null) dest.ReportedElement = (Hl7.Fhir.Model.FhirBoolean)ReportedElement.DeepCopy();
                     return dest;
@@ -443,13 +443,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("doseSequence", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt DoseSequenceElement
+            public Hl7.Fhir.Model.STU3.PositiveInt DoseSequenceElement
             {
                 get { return _DoseSequenceElement; }
                 set { _DoseSequenceElement = value; OnPropertyChanged("DoseSequenceElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _DoseSequenceElement;
+            private Hl7.Fhir.Model.STU3.PositiveInt _DoseSequenceElement;
             
             /// <summary>
             /// Dose number within series
@@ -465,7 +465,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         DoseSequenceElement = null;
                     else
-                        DoseSequenceElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        DoseSequenceElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                     OnPropertyChanged("DoseSequence");
                 }
             }
@@ -554,13 +554,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("seriesDoses", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt SeriesDosesElement
+            public Hl7.Fhir.Model.STU3.PositiveInt SeriesDosesElement
             {
                 get { return _SeriesDosesElement; }
                 set { _SeriesDosesElement = value; OnPropertyChanged("SeriesDosesElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _SeriesDosesElement;
+            private Hl7.Fhir.Model.STU3.PositiveInt _SeriesDosesElement;
             
             /// <summary>
             /// Recommended number of doses for immunity
@@ -576,7 +576,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         SeriesDosesElement = null;
                     else
-                        SeriesDosesElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        SeriesDosesElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                     OnPropertyChanged("SeriesDoses");
                 }
             }
@@ -587,13 +587,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("targetDisease", Order=90)]
             [Cardinality(Min=1,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> TargetDisease
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> TargetDisease
             {
-                get { if(_TargetDisease==null) _TargetDisease = new List<Hl7.Fhir.Model.CodeableConcept>(); return _TargetDisease; }
+                get { if(_TargetDisease==null) _TargetDisease = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _TargetDisease; }
                 set { _TargetDisease = value; OnPropertyChanged("TargetDisease"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _TargetDisease;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _TargetDisease;
             
             /// <summary>
             /// Indicates if dose counts towards immunity
@@ -601,26 +601,26 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("doseStatus", Order=100)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept DoseStatus
+            public Hl7.Fhir.Model.STU3.CodeableConcept DoseStatus
             {
                 get { return _DoseStatus; }
                 set { _DoseStatus = value; OnPropertyChanged("DoseStatus"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _DoseStatus;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _DoseStatus;
             
             /// <summary>
             /// Why dose does (not) count
             /// </summary>
             [FhirElement("doseStatusReason", Order=110)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept DoseStatusReason
+            public Hl7.Fhir.Model.STU3.CodeableConcept DoseStatusReason
             {
                 get { return _DoseStatusReason; }
                 set { _DoseStatusReason = value; OnPropertyChanged("DoseStatusReason"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _DoseStatusReason;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _DoseStatusReason;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -629,14 +629,14 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(DoseSequenceElement != null) dest.DoseSequenceElement = (Hl7.Fhir.Model.PositiveInt)DoseSequenceElement.DeepCopy();
+                    if(DoseSequenceElement != null) dest.DoseSequenceElement = (Hl7.Fhir.Model.STU3.PositiveInt)DoseSequenceElement.DeepCopy();
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                     if(Authority != null) dest.Authority = (Hl7.Fhir.Model.STU3.ResourceReference)Authority.DeepCopy();
                     if(SeriesElement != null) dest.SeriesElement = (Hl7.Fhir.Model.FhirString)SeriesElement.DeepCopy();
-                    if(SeriesDosesElement != null) dest.SeriesDosesElement = (Hl7.Fhir.Model.PositiveInt)SeriesDosesElement.DeepCopy();
-                    if(TargetDisease != null) dest.TargetDisease = new List<Hl7.Fhir.Model.CodeableConcept>(TargetDisease.DeepCopy());
-                    if(DoseStatus != null) dest.DoseStatus = (Hl7.Fhir.Model.CodeableConcept)DoseStatus.DeepCopy();
-                    if(DoseStatusReason != null) dest.DoseStatusReason = (Hl7.Fhir.Model.CodeableConcept)DoseStatusReason.DeepCopy();
+                    if(SeriesDosesElement != null) dest.SeriesDosesElement = (Hl7.Fhir.Model.STU3.PositiveInt)SeriesDosesElement.DeepCopy();
+                    if(TargetDisease != null) dest.TargetDisease = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(TargetDisease.DeepCopy());
+                    if(DoseStatus != null) dest.DoseStatus = (Hl7.Fhir.Model.STU3.CodeableConcept)DoseStatus.DeepCopy();
+                    if(DoseStatusReason != null) dest.DoseStatusReason = (Hl7.Fhir.Model.STU3.CodeableConcept)DoseStatusReason.DeepCopy();
                     return dest;
                 }
                 else
@@ -811,13 +811,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("vaccineCode", Order=120)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept VaccineCode
+        public Hl7.Fhir.Model.STU3.CodeableConcept VaccineCode
         {
             get { return _VaccineCode; }
             set { _VaccineCode = value; OnPropertyChanged("VaccineCode"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _VaccineCode;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _VaccineCode;
         
         /// <summary>
         /// Who was immunized
@@ -855,13 +855,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("date", Order=150)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// Vaccination administration date
@@ -877,7 +877,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -920,13 +920,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("reportOrigin", Order=170)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept ReportOrigin
+        public Hl7.Fhir.Model.STU3.CodeableConcept ReportOrigin
         {
             get { return _ReportOrigin; }
             set { _ReportOrigin = value; OnPropertyChanged("ReportOrigin"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _ReportOrigin;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _ReportOrigin;
         
         /// <summary>
         /// Where vaccination occurred
@@ -995,13 +995,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("expirationDate", Order=210)]
         [DataMember]
-        public Hl7.Fhir.Model.Date ExpirationDateElement
+        public Hl7.Fhir.Model.STU3.Date ExpirationDateElement
         {
             get { return _ExpirationDateElement; }
             set { _ExpirationDateElement = value; OnPropertyChanged("ExpirationDateElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _ExpirationDateElement;
+        private Hl7.Fhir.Model.STU3.Date _ExpirationDateElement;
         
         /// <summary>
         /// Vaccine expiration date
@@ -1017,7 +1017,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     ExpirationDateElement = null;
                 else
-                    ExpirationDateElement = new Hl7.Fhir.Model.Date(value);
+                    ExpirationDateElement = new Hl7.Fhir.Model.STU3.Date(value);
                 OnPropertyChanged("ExpirationDate");
             }
         }
@@ -1027,39 +1027,39 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("site", Order=220)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Site
+        public Hl7.Fhir.Model.STU3.CodeableConcept Site
         {
             get { return _Site; }
             set { _Site = value; OnPropertyChanged("Site"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Site;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Site;
         
         /// <summary>
         /// How vaccine entered body
         /// </summary>
         [FhirElement("route", Order=230)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Route
+        public Hl7.Fhir.Model.STU3.CodeableConcept Route
         {
             get { return _Route; }
             set { _Route = value; OnPropertyChanged("Route"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Route;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Route;
         
         /// <summary>
         /// Amount of vaccine administered
         /// </summary>
         [FhirElement("doseQuantity", Order=240)]
         [DataMember]
-        public Hl7.Fhir.Model.SimpleQuantity DoseQuantity
+        public Hl7.Fhir.Model.STU3.SimpleQuantity DoseQuantity
         {
             get { return _DoseQuantity; }
             set { _DoseQuantity = value; OnPropertyChanged("DoseQuantity"); }
         }
         
-        private Hl7.Fhir.Model.SimpleQuantity _DoseQuantity;
+        private Hl7.Fhir.Model.STU3.SimpleQuantity _DoseQuantity;
         
         /// <summary>
         /// Who performed event
@@ -1083,13 +1083,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Administration/non-administration reasons
@@ -1169,21 +1169,21 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.ImmunizationStatusCodes>)StatusElement.DeepCopy();
                 if(NotGivenElement != null) dest.NotGivenElement = (Hl7.Fhir.Model.FhirBoolean)NotGivenElement.DeepCopy();
-                if(VaccineCode != null) dest.VaccineCode = (Hl7.Fhir.Model.CodeableConcept)VaccineCode.DeepCopy();
+                if(VaccineCode != null) dest.VaccineCode = (Hl7.Fhir.Model.STU3.CodeableConcept)VaccineCode.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.STU3.ResourceReference)Patient.DeepCopy();
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.STU3.ResourceReference)Encounter.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(PrimarySourceElement != null) dest.PrimarySourceElement = (Hl7.Fhir.Model.FhirBoolean)PrimarySourceElement.DeepCopy();
-                if(ReportOrigin != null) dest.ReportOrigin = (Hl7.Fhir.Model.CodeableConcept)ReportOrigin.DeepCopy();
+                if(ReportOrigin != null) dest.ReportOrigin = (Hl7.Fhir.Model.STU3.CodeableConcept)ReportOrigin.DeepCopy();
                 if(Location != null) dest.Location = (Hl7.Fhir.Model.STU3.ResourceReference)Location.DeepCopy();
                 if(Manufacturer != null) dest.Manufacturer = (Hl7.Fhir.Model.STU3.ResourceReference)Manufacturer.DeepCopy();
                 if(LotNumberElement != null) dest.LotNumberElement = (Hl7.Fhir.Model.FhirString)LotNumberElement.DeepCopy();
-                if(ExpirationDateElement != null) dest.ExpirationDateElement = (Hl7.Fhir.Model.Date)ExpirationDateElement.DeepCopy();
-                if(Site != null) dest.Site = (Hl7.Fhir.Model.CodeableConcept)Site.DeepCopy();
-                if(Route != null) dest.Route = (Hl7.Fhir.Model.CodeableConcept)Route.DeepCopy();
-                if(DoseQuantity != null) dest.DoseQuantity = (Hl7.Fhir.Model.SimpleQuantity)DoseQuantity.DeepCopy();
+                if(ExpirationDateElement != null) dest.ExpirationDateElement = (Hl7.Fhir.Model.STU3.Date)ExpirationDateElement.DeepCopy();
+                if(Site != null) dest.Site = (Hl7.Fhir.Model.STU3.CodeableConcept)Site.DeepCopy();
+                if(Route != null) dest.Route = (Hl7.Fhir.Model.STU3.CodeableConcept)Route.DeepCopy();
+                if(DoseQuantity != null) dest.DoseQuantity = (Hl7.Fhir.Model.STU3.SimpleQuantity)DoseQuantity.DeepCopy();
                 if(Practitioner != null) dest.Practitioner = new List<PractitionerComponent>(Practitioner.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Explanation != null) dest.Explanation = (ExplanationComponent)Explanation.DeepCopy();
                 if(Reaction != null) dest.Reaction = new List<ReactionComponent>(Reaction.DeepCopy());
                 if(VaccinationProtocol != null) dest.VaccinationProtocol = new List<VaccinationProtocolComponent>(VaccinationProtocol.DeepCopy());

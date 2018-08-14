@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Procedure", IsResource=true)]
     [DataContract]
-    public partial class Procedure : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Procedure : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Procedure; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("role", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Role
+            public Hl7.Fhir.Model.STU3.CodeableConcept Role
             {
                 get { return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Role;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Role;
             
             /// <summary>
             /// The reference to the practitioner
@@ -114,7 +114,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Role != null) dest.Role = (Hl7.Fhir.Model.CodeableConcept)Role.DeepCopy();
+                    if(Role != null) dest.Role = (Hl7.Fhir.Model.STU3.CodeableConcept)Role.DeepCopy();
                     if(Actor != null) dest.Actor = (Hl7.Fhir.Model.STU3.ResourceReference)Actor.DeepCopy();
                     if(OnBehalfOf != null) dest.OnBehalfOf = (Hl7.Fhir.Model.STU3.ResourceReference)OnBehalfOf.DeepCopy();
                     return dest;
@@ -195,13 +195,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("action", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Action
+            public Hl7.Fhir.Model.STU3.CodeableConcept Action
             {
                 get { return _Action; }
                 set { _Action = value; OnPropertyChanged("Action"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Action;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Action;
             
             /// <summary>
             /// Device that was changed
@@ -226,7 +226,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Action != null) dest.Action = (Hl7.Fhir.Model.CodeableConcept)Action.DeepCopy();
+                    if(Action != null) dest.Action = (Hl7.Fhir.Model.STU3.CodeableConcept)Action.DeepCopy();
                     if(Manipulated != null) dest.Manipulated = (Hl7.Fhir.Model.STU3.ResourceReference)Manipulated.DeepCopy();
                     return dest;
                 }
@@ -426,13 +426,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("notDoneReason", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept NotDoneReason
+        public Hl7.Fhir.Model.STU3.CodeableConcept NotDoneReason
         {
             get { return _NotDoneReason; }
             set { _NotDoneReason = value; OnPropertyChanged("NotDoneReason"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _NotDoneReason;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _NotDoneReason;
         
         /// <summary>
         /// Classification of the procedure
@@ -440,13 +440,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("category", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Category
+        public Hl7.Fhir.Model.STU3.CodeableConcept Category
         {
             get { return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Category;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Category;
         
         /// <summary>
         /// Identification of the procedure
@@ -454,13 +454,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.STU3.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
         
         /// <summary>
         /// Who the procedure was performed on
@@ -498,7 +498,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("performed", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=200, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
         [DataMember]
         public Hl7.Fhir.Model.Element Performed
         {
@@ -545,13 +545,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonCode
         {
-            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonCode; }
+            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonCode; }
             set { _ReasonCode = value; OnPropertyChanged("ReasonCode"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonCode;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonCode;
         
         /// <summary>
         /// Condition that is the reason the procedure performed
@@ -576,13 +576,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> BodySite
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> BodySite
         {
-            get { if(_BodySite==null) _BodySite = new List<Hl7.Fhir.Model.CodeableConcept>(); return _BodySite; }
+            get { if(_BodySite==null) _BodySite = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _BodySite; }
             set { _BodySite = value; OnPropertyChanged("BodySite"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _BodySite;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _BodySite;
         
         /// <summary>
         /// The result of procedure
@@ -590,13 +590,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("outcome", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=260)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Outcome
+        public Hl7.Fhir.Model.STU3.CodeableConcept Outcome
         {
             get { return _Outcome; }
             set { _Outcome = value; OnPropertyChanged("Outcome"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Outcome;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Outcome;
         
         /// <summary>
         /// Any report resulting from the procedure
@@ -620,13 +620,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("complication", Order=280)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Complication
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Complication
         {
-            get { if(_Complication==null) _Complication = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Complication; }
+            get { if(_Complication==null) _Complication = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Complication; }
             set { _Complication = value; OnPropertyChanged("Complication"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Complication;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Complication;
         
         /// <summary>
         /// A condition that is a result of the procedure
@@ -650,13 +650,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("followUp", Order=300)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> FollowUp
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> FollowUp
         {
-            get { if(_FollowUp==null) _FollowUp = new List<Hl7.Fhir.Model.CodeableConcept>(); return _FollowUp; }
+            get { if(_FollowUp==null) _FollowUp = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _FollowUp; }
             set { _FollowUp = value; OnPropertyChanged("FollowUp"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _FollowUp;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _FollowUp;
         
         /// <summary>
         /// Additional information about the procedure
@@ -664,13 +664,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=310)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Device changed in procedure
@@ -708,13 +708,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("usedCode", Order=340)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> UsedCode
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> UsedCode
         {
-            get { if(_UsedCode==null) _UsedCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _UsedCode; }
+            get { if(_UsedCode==null) _UsedCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _UsedCode; }
             set { _UsedCode = value; OnPropertyChanged("UsedCode"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _UsedCode;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _UsedCode;
     
     
         public static ElementDefinitionConstraint Procedure_PRO_1 = new ElementDefinitionConstraint
@@ -746,26 +746,26 @@ namespace Hl7.Fhir.Model.STU3
                 if(PartOf != null) dest.PartOf = new List<Hl7.Fhir.Model.STU3.ResourceReference>(PartOf.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.EventStatus>)StatusElement.DeepCopy();
                 if(NotDoneElement != null) dest.NotDoneElement = (Hl7.Fhir.Model.FhirBoolean)NotDoneElement.DeepCopy();
-                if(NotDoneReason != null) dest.NotDoneReason = (Hl7.Fhir.Model.CodeableConcept)NotDoneReason.DeepCopy();
-                if(Category != null) dest.Category = (Hl7.Fhir.Model.CodeableConcept)Category.DeepCopy();
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                if(NotDoneReason != null) dest.NotDoneReason = (Hl7.Fhir.Model.STU3.CodeableConcept)NotDoneReason.DeepCopy();
+                if(Category != null) dest.Category = (Hl7.Fhir.Model.STU3.CodeableConcept)Category.DeepCopy();
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
                 if(Performed != null) dest.Performed = (Hl7.Fhir.Model.Element)Performed.DeepCopy();
                 if(Performer != null) dest.Performer = new List<PerformerComponent>(Performer.DeepCopy());
                 if(Location != null) dest.Location = (Hl7.Fhir.Model.STU3.ResourceReference)Location.DeepCopy();
-                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
+                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonCode.DeepCopy());
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ReasonReference.DeepCopy());
-                if(BodySite != null) dest.BodySite = new List<Hl7.Fhir.Model.CodeableConcept>(BodySite.DeepCopy());
-                if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
+                if(BodySite != null) dest.BodySite = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(BodySite.DeepCopy());
+                if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.STU3.CodeableConcept)Outcome.DeepCopy();
                 if(Report != null) dest.Report = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Report.DeepCopy());
-                if(Complication != null) dest.Complication = new List<Hl7.Fhir.Model.CodeableConcept>(Complication.DeepCopy());
+                if(Complication != null) dest.Complication = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Complication.DeepCopy());
                 if(ComplicationDetail != null) dest.ComplicationDetail = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ComplicationDetail.DeepCopy());
-                if(FollowUp != null) dest.FollowUp = new List<Hl7.Fhir.Model.CodeableConcept>(FollowUp.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(FollowUp != null) dest.FollowUp = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(FollowUp.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(FocalDevice != null) dest.FocalDevice = new List<FocalDeviceComponent>(FocalDevice.DeepCopy());
                 if(UsedReference != null) dest.UsedReference = new List<Hl7.Fhir.Model.STU3.ResourceReference>(UsedReference.DeepCopy());
-                if(UsedCode != null) dest.UsedCode = new List<Hl7.Fhir.Model.CodeableConcept>(UsedCode.DeepCopy());
+                if(UsedCode != null) dest.UsedCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(UsedCode.DeepCopy());
                 return dest;
             }
             else

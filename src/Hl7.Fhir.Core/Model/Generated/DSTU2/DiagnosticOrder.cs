@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "DiagnosticOrder", IsResource=true)]
     [DataContract]
-    public partial class DiagnosticOrder : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class DiagnosticOrder : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.DiagnosticOrder; } }
@@ -102,13 +102,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("description", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Description
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Description
             {
                 get { return _Description; }
                 set { _Description = value; OnPropertyChanged("Description"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Description;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Description;
             
             /// <summary>
             /// The date at which the event happened
@@ -117,13 +117,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime DateTimeElement
+            public Hl7.Fhir.Model.DSTU2.FhirDateTime DateTimeElement
             {
                 get { return _DateTimeElement; }
                 set { _DateTimeElement = value; OnPropertyChanged("DateTimeElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _DateTimeElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDateTime _DateTimeElement;
             
             /// <summary>
             /// The date at which the event happened
@@ -139,7 +139,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         DateTimeElement = null;
                     else
-                        DateTimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        DateTimeElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                     OnPropertyChanged("DateTime");
                 }
             }
@@ -167,8 +167,8 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>)StatusElement.DeepCopy();
-                    if(Description != null) dest.Description = (Hl7.Fhir.Model.CodeableConcept)Description.DeepCopy();
-                    if(DateTimeElement != null) dest.DateTimeElement = (Hl7.Fhir.Model.FhirDateTime)DateTimeElement.DeepCopy();
+                    if(Description != null) dest.Description = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Description.DeepCopy();
+                    if(DateTimeElement != null) dest.DateTimeElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)DateTimeElement.DeepCopy();
                     if(Actor != null) dest.Actor = (Hl7.Fhir.Model.DSTU2.ResourceReference)Actor.DeepCopy();
                     return dest;
                 }
@@ -254,13 +254,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
             
             /// <summary>
             /// If this item relates to specific specimens
@@ -283,13 +283,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("bodySite", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept BodySite
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept BodySite
             {
                 get { return _BodySite; }
                 set { _BodySite = value; OnPropertyChanged("BodySite"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _BodySite;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _BodySite;
             
             /// <summary>
             /// proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed
@@ -346,9 +346,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
                     if(Specimen != null) dest.Specimen = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Specimen.DeepCopy());
-                    if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.CodeableConcept)BodySite.DeepCopy();
+                    if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.DSTU2.CodeableConcept)BodySite.DeepCopy();
                     if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>)StatusElement.DeepCopy();
                     if(Event != null) dest.Event = new List<EventComponent>(Event.DeepCopy());
                     return dest;
@@ -492,13 +492,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("reason", Order=130)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Reason
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Reason
         {
-            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Reason; }
+            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Reason; }
             set { _Reason = value; OnPropertyChanged("Reason"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Reason;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Reason;
         
         /// <summary>
         /// Additional clinical information
@@ -632,13 +632,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("note", Order=200)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.DSTU2.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.DSTU2.Annotation> _Note;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -652,14 +652,14 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Orderer != null) dest.Orderer = (Hl7.Fhir.Model.DSTU2.ResourceReference)Orderer.DeepCopy();
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Encounter.DeepCopy();
-                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.CodeableConcept>(Reason.DeepCopy());
+                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Reason.DeepCopy());
                 if(SupportingInformation != null) dest.SupportingInformation = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(SupportingInformation.DeepCopy());
                 if(Specimen != null) dest.Specimen = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Specimen.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>)StatusElement.DeepCopy();
                 if(PriorityElement != null) dest.PriorityElement = (Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderPriority>)PriorityElement.DeepCopy();
                 if(Event != null) dest.Event = new List<EventComponent>(Event.DeepCopy());
                 if(Item != null) dest.Item = new List<ItemComponent>(Item.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Note.DeepCopy());
                 return dest;
             }
             else

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Medication", IsResource=true)]
     [DataContract]
-    public partial class Medication : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Medication : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Medication; } }
@@ -67,13 +67,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("form", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Form
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Form
             {
                 get { return _Form; }
                 set { _Form = value; OnPropertyChanged("Form"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Form;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Form;
             
             /// <summary>
             /// Active or inactive ingredient
@@ -107,7 +107,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Form != null) dest.Form = (Hl7.Fhir.Model.CodeableConcept)Form.DeepCopy();
+                    if(Form != null) dest.Form = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Form.DeepCopy();
                     if(Ingredient != null) dest.Ingredient = new List<IngredientComponent>(Ingredient.DeepCopy());
                     if(Batch != null) dest.Batch = new List<BatchComponent>(Batch.DeepCopy());
                     return dest;
@@ -204,13 +204,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("amount", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.Ratio Amount
+            public Hl7.Fhir.Model.DSTU2.Ratio Amount
             {
                 get { return _Amount; }
                 set { _Amount = value; OnPropertyChanged("Amount"); }
             }
             
-            private Hl7.Fhir.Model.Ratio _Amount;
+            private Hl7.Fhir.Model.DSTU2.Ratio _Amount;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -220,7 +220,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Item != null) dest.Item = (Hl7.Fhir.Model.DSTU2.ResourceReference)Item.DeepCopy();
-                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.Ratio)Amount.DeepCopy();
+                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.DSTU2.Ratio)Amount.DeepCopy();
                     return dest;
                 }
                 else
@@ -318,13 +318,13 @@ namespace Hl7.Fhir.Model.DSTU2
             
             [FhirElement("expirationDate", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime ExpirationDateElement
+            public Hl7.Fhir.Model.DSTU2.FhirDateTime ExpirationDateElement
             {
                 get { return _ExpirationDateElement; }
                 set { _ExpirationDateElement = value; OnPropertyChanged("ExpirationDateElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _ExpirationDateElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDateTime _ExpirationDateElement;
             
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -337,7 +337,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         ExpirationDateElement = null;
                     else
-                        ExpirationDateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        ExpirationDateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                     OnPropertyChanged("ExpirationDate");
                 }
             }
@@ -350,7 +350,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(LotNumberElement != null) dest.LotNumberElement = (Hl7.Fhir.Model.FhirString)LotNumberElement.DeepCopy();
-                    if(ExpirationDateElement != null) dest.ExpirationDateElement = (Hl7.Fhir.Model.FhirDateTime)ExpirationDateElement.DeepCopy();
+                    if(ExpirationDateElement != null) dest.ExpirationDateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)ExpirationDateElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -425,13 +425,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("container", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Container
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Container
             {
                 get { return _Container; }
                 set { _Container = value; OnPropertyChanged("Container"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Container;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Container;
             
             /// <summary>
             /// What is  in the package
@@ -454,7 +454,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Container != null) dest.Container = (Hl7.Fhir.Model.CodeableConcept)Container.DeepCopy();
+                    if(Container != null) dest.Container = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Container.DeepCopy();
                     if(Content != null) dest.Content = new List<ContentComponent>(Content.DeepCopy());
                     return dest;
                 }
@@ -546,13 +546,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("amount", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Amount
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Amount
             {
                 get { return _Amount; }
                 set { _Amount = value; OnPropertyChanged("Amount"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Amount;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Amount;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -562,7 +562,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Item != null) dest.Item = (Hl7.Fhir.Model.DSTU2.ResourceReference)Item.DeepCopy();
-                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.SimpleQuantity)Amount.DeepCopy();
+                    if(Amount != null) dest.Amount = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Amount.DeepCopy();
                     return dest;
                 }
                 else
@@ -631,13 +631,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
         
         /// <summary>
         /// True if a brand
@@ -721,7 +721,7 @@ namespace Hl7.Fhir.Model.DSTU2
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
                 if(IsBrandElement != null) dest.IsBrandElement = (Hl7.Fhir.Model.FhirBoolean)IsBrandElement.DeepCopy();
                 if(Manufacturer != null) dest.Manufacturer = (Hl7.Fhir.Model.DSTU2.ResourceReference)Manufacturer.DeepCopy();
                 if(Product != null) dest.Product = (ProductComponent)Product.DeepCopy();

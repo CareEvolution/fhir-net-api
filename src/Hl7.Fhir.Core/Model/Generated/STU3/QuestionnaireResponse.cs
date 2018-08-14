@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "QuestionnaireResponse", IsResource=true)]
     [DataContract]
-    public partial class QuestionnaireResponse : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class QuestionnaireResponse : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.QuestionnaireResponse; } }
@@ -303,7 +303,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("value", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.STU3.FhirDecimal),typeof(Hl7.Fhir.Model.STU3.Integer),typeof(Hl7.Fhir.Model.STU3.Date),typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Time),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.STU3.Attachment),typeof(Hl7.Fhir.Model.STU3.Coding),typeof(Hl7.Fhir.Model.STU3.Quantity),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Value
             {
@@ -528,13 +528,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("authored", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime AuthoredElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime AuthoredElement
         {
             get { return _AuthoredElement; }
             set { _AuthoredElement = value; OnPropertyChanged("AuthoredElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _AuthoredElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _AuthoredElement;
         
         /// <summary>
         /// Date the answers were gathered
@@ -550,7 +550,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     AuthoredElement = null;
                 else
-                    AuthoredElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    AuthoredElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Authored");
             }
         }
@@ -630,7 +630,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.QuestionnaireResponseStatus>)StatusElement.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
-                if(AuthoredElement != null) dest.AuthoredElement = (Hl7.Fhir.Model.FhirDateTime)AuthoredElement.DeepCopy();
+                if(AuthoredElement != null) dest.AuthoredElement = (Hl7.Fhir.Model.STU3.FhirDateTime)AuthoredElement.DeepCopy();
                 if(Author != null) dest.Author = (Hl7.Fhir.Model.STU3.ResourceReference)Author.DeepCopy();
                 if(Source != null) dest.Source = (Hl7.Fhir.Model.STU3.ResourceReference)Source.DeepCopy();
                 if(Item != null) dest.Item = new List<ItemComponent>(Item.DeepCopy());

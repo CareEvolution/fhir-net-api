@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Coverage", IsResource=true)]
     [DataContract]
-    public partial class Coverage : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Coverage : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Coverage; } }
@@ -89,13 +89,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.DSTU2.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.DSTU2.Period _Period;
         
         /// <summary>
         /// Type of coverage
@@ -103,13 +103,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Type
+        public Hl7.Fhir.Model.DSTU2.Coding Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Type;
+        private Hl7.Fhir.Model.DSTU2.Coding _Type;
         
         /// <summary>
         /// Subscriber ID
@@ -245,13 +245,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("dependent", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=180)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt DependentElement
+        public Hl7.Fhir.Model.DSTU2.PositiveInt DependentElement
         {
             get { return _DependentElement; }
             set { _DependentElement = value; OnPropertyChanged("DependentElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _DependentElement;
+        private Hl7.Fhir.Model.DSTU2.PositiveInt _DependentElement;
         
         /// <summary>
         /// The dependent number
@@ -267,7 +267,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     DependentElement = null;
                 else
-                    DependentElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    DependentElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                 OnPropertyChanged("Dependent");
             }
         }
@@ -278,13 +278,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("sequence", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt SequenceElement
+        public Hl7.Fhir.Model.DSTU2.PositiveInt SequenceElement
         {
             get { return _SequenceElement; }
             set { _SequenceElement = value; OnPropertyChanged("SequenceElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _SequenceElement;
+        private Hl7.Fhir.Model.DSTU2.PositiveInt _SequenceElement;
         
         /// <summary>
         /// The plan instance or sequence counter
@@ -300,7 +300,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     SequenceElement = null;
                 else
-                    SequenceElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    SequenceElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                 OnPropertyChanged("Sequence");
             }
         }
@@ -360,15 +360,15 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Issuer != null) dest.Issuer = (Hl7.Fhir.Model.DSTU2.ResourceReference)Issuer.DeepCopy();
                 if(Bin != null) dest.Bin = (Hl7.Fhir.Model.DSTU2.Identifier)Bin.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.DSTU2.Period)Period.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.Coding)Type.DeepCopy();
                 if(SubscriberId != null) dest.SubscriberId = (Hl7.Fhir.Model.DSTU2.Identifier)SubscriberId.DeepCopy();
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(GroupElement != null) dest.GroupElement = (Hl7.Fhir.Model.FhirString)GroupElement.DeepCopy();
                 if(PlanElement != null) dest.PlanElement = (Hl7.Fhir.Model.FhirString)PlanElement.DeepCopy();
                 if(SubPlanElement != null) dest.SubPlanElement = (Hl7.Fhir.Model.FhirString)SubPlanElement.DeepCopy();
-                if(DependentElement != null) dest.DependentElement = (Hl7.Fhir.Model.PositiveInt)DependentElement.DeepCopy();
-                if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.PositiveInt)SequenceElement.DeepCopy();
+                if(DependentElement != null) dest.DependentElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)DependentElement.DeepCopy();
+                if(SequenceElement != null) dest.SequenceElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)SequenceElement.DeepCopy();
                 if(Subscriber != null) dest.Subscriber = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subscriber.DeepCopy();
                 if(Network != null) dest.Network = (Hl7.Fhir.Model.DSTU2.Identifier)Network.DeepCopy();
                 if(Contract != null) dest.Contract = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Contract.DeepCopy());

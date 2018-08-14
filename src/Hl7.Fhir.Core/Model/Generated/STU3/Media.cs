@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Media", IsResource=true)]
     [DataContract]
-    public partial class Media : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Media : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Media; } }
@@ -126,13 +126,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("subtype", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Subtype
+        public Hl7.Fhir.Model.STU3.CodeableConcept Subtype
         {
             get { return _Subtype; }
             set { _Subtype = value; OnPropertyChanged("Subtype"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Subtype;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Subtype;
         
         /// <summary>
         /// Imaging view, e.g. Lateral or Antero-posterior
@@ -140,13 +140,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("view", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept View
+        public Hl7.Fhir.Model.STU3.CodeableConcept View
         {
             get { return _View; }
             set { _View = value; OnPropertyChanged("View"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _View;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _View;
         
         /// <summary>
         /// Who/What this Media is a record of
@@ -183,7 +183,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("occurrence", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
         [DataMember]
         public Hl7.Fhir.Model.Element Occurrence
         {
@@ -215,13 +215,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ReasonCode
         {
-            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonCode; }
+            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ReasonCode; }
             set { _ReasonCode = value; OnPropertyChanged("ReasonCode"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonCode;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ReasonCode;
         
         /// <summary>
         /// Body part in media
@@ -229,13 +229,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("bodySite", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept BodySite
+        public Hl7.Fhir.Model.STU3.CodeableConcept BodySite
         {
             get { return _BodySite; }
             set { _BodySite = value; OnPropertyChanged("BodySite"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _BodySite;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _BodySite;
         
         /// <summary>
         /// Observing Device
@@ -258,13 +258,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("height", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=210)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt HeightElement
+        public Hl7.Fhir.Model.STU3.PositiveInt HeightElement
         {
             get { return _HeightElement; }
             set { _HeightElement = value; OnPropertyChanged("HeightElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _HeightElement;
+        private Hl7.Fhir.Model.STU3.PositiveInt _HeightElement;
         
         /// <summary>
         /// Height of the image in pixels (photo/video)
@@ -280,7 +280,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     HeightElement = null;
                 else
-                    HeightElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    HeightElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                 OnPropertyChanged("Height");
             }
         }
@@ -291,13 +291,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("width", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=220)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt WidthElement
+        public Hl7.Fhir.Model.STU3.PositiveInt WidthElement
         {
             get { return _WidthElement; }
             set { _WidthElement = value; OnPropertyChanged("WidthElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _WidthElement;
+        private Hl7.Fhir.Model.STU3.PositiveInt _WidthElement;
         
         /// <summary>
         /// Width of the image in pixels (photo/video)
@@ -313,7 +313,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     WidthElement = null;
                 else
-                    WidthElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    WidthElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                 OnPropertyChanged("Width");
             }
         }
@@ -324,13 +324,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("frames", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=230)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt FramesElement
+        public Hl7.Fhir.Model.STU3.PositiveInt FramesElement
         {
             get { return _FramesElement; }
             set { _FramesElement = value; OnPropertyChanged("FramesElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _FramesElement;
+        private Hl7.Fhir.Model.STU3.PositiveInt _FramesElement;
         
         /// <summary>
         /// Number of frames if &gt; 1 (photo)
@@ -346,7 +346,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     FramesElement = null;
                 else
-                    FramesElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    FramesElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                 OnPropertyChanged("Frames");
             }
         }
@@ -357,13 +357,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("duration", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=240)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.UnsignedInt DurationElement
+        public Hl7.Fhir.Model.STU3.UnsignedInt DurationElement
         {
             get { return _DurationElement; }
             set { _DurationElement = value; OnPropertyChanged("DurationElement"); }
         }
         
-        private Hl7.Fhir.Model.UnsignedInt _DurationElement;
+        private Hl7.Fhir.Model.STU3.UnsignedInt _DurationElement;
         
         /// <summary>
         /// Length in seconds (audio / video)
@@ -379,7 +379,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DurationElement = null;
                 else
-                    DurationElement = new Hl7.Fhir.Model.UnsignedInt(value);
+                    DurationElement = new Hl7.Fhir.Model.STU3.UnsignedInt(value);
                 OnPropertyChanged("Duration");
             }
         }
@@ -390,13 +390,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("content", Order=250)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Attachment Content
+        public Hl7.Fhir.Model.STU3.Attachment Content
         {
             get { return _Content; }
             set { _Content = value; OnPropertyChanged("Content"); }
         }
         
-        private Hl7.Fhir.Model.Attachment _Content;
+        private Hl7.Fhir.Model.STU3.Attachment _Content;
         
         /// <summary>
         /// Comments made about the media
@@ -404,13 +404,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=260)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
     
     
         public static ElementDefinitionConstraint Media_MDA_1 = new ElementDefinitionConstraint
@@ -469,21 +469,21 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(BasedOn != null) dest.BasedOn = new List<Hl7.Fhir.Model.STU3.ResourceReference>(BasedOn.DeepCopy());
                 if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.DigitalMediaType>)TypeElement.DeepCopy();
-                if(Subtype != null) dest.Subtype = (Hl7.Fhir.Model.CodeableConcept)Subtype.DeepCopy();
-                if(View != null) dest.View = (Hl7.Fhir.Model.CodeableConcept)View.DeepCopy();
+                if(Subtype != null) dest.Subtype = (Hl7.Fhir.Model.STU3.CodeableConcept)Subtype.DeepCopy();
+                if(View != null) dest.View = (Hl7.Fhir.Model.STU3.CodeableConcept)View.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
                 if(Occurrence != null) dest.Occurrence = (Hl7.Fhir.Model.Element)Occurrence.DeepCopy();
                 if(Operator != null) dest.Operator = (Hl7.Fhir.Model.STU3.ResourceReference)Operator.DeepCopy();
-                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
-                if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.CodeableConcept)BodySite.DeepCopy();
+                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ReasonCode.DeepCopy());
+                if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.STU3.CodeableConcept)BodySite.DeepCopy();
                 if(Device != null) dest.Device = (Hl7.Fhir.Model.STU3.ResourceReference)Device.DeepCopy();
-                if(HeightElement != null) dest.HeightElement = (Hl7.Fhir.Model.PositiveInt)HeightElement.DeepCopy();
-                if(WidthElement != null) dest.WidthElement = (Hl7.Fhir.Model.PositiveInt)WidthElement.DeepCopy();
-                if(FramesElement != null) dest.FramesElement = (Hl7.Fhir.Model.PositiveInt)FramesElement.DeepCopy();
-                if(DurationElement != null) dest.DurationElement = (Hl7.Fhir.Model.UnsignedInt)DurationElement.DeepCopy();
-                if(Content != null) dest.Content = (Hl7.Fhir.Model.Attachment)Content.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(HeightElement != null) dest.HeightElement = (Hl7.Fhir.Model.STU3.PositiveInt)HeightElement.DeepCopy();
+                if(WidthElement != null) dest.WidthElement = (Hl7.Fhir.Model.STU3.PositiveInt)WidthElement.DeepCopy();
+                if(FramesElement != null) dest.FramesElement = (Hl7.Fhir.Model.STU3.PositiveInt)FramesElement.DeepCopy();
+                if(DurationElement != null) dest.DurationElement = (Hl7.Fhir.Model.STU3.UnsignedInt)DurationElement.DeepCopy();
+                if(Content != null) dest.Content = (Hl7.Fhir.Model.STU3.Attachment)Content.DeepCopy();
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 return dest;
             }
             else

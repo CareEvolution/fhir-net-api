@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "AllergyIntolerance", IsResource=true)]
     [DataContract]
-    public partial class AllergyIntolerance : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class AllergyIntolerance : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.AllergyIntolerance; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("substance", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Substance
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Substance
             {
                 get { return _Substance; }
                 set { _Substance = value; OnPropertyChanged("Substance"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Substance;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Substance;
             
             /// <summary>
             /// unlikely | likely | confirmed - clinical certainty about the specific substance
@@ -116,13 +116,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Manifestation
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Manifestation
             {
-                get { if(_Manifestation==null) _Manifestation = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Manifestation; }
+                get { if(_Manifestation==null) _Manifestation = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Manifestation; }
                 set { _Manifestation = value; OnPropertyChanged("Manifestation"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Manifestation;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Manifestation;
             
             /// <summary>
             /// Description of the event as a whole
@@ -162,13 +162,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("onset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime OnsetElement
+            public Hl7.Fhir.Model.DSTU2.FhirDateTime OnsetElement
             {
                 get { return _OnsetElement; }
                 set { _OnsetElement = value; OnPropertyChanged("OnsetElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _OnsetElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDateTime _OnsetElement;
             
             /// <summary>
             /// Date(/time) when manifestations showed
@@ -184,7 +184,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         OnsetElement = null;
                     else
-                        OnsetElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        OnsetElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                     OnPropertyChanged("Onset");
                 }
             }
@@ -228,26 +228,26 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("exposureRoute", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept ExposureRoute
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept ExposureRoute
             {
                 get { return _ExposureRoute; }
                 set { _ExposureRoute = value; OnPropertyChanged("ExposureRoute"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _ExposureRoute;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _ExposureRoute;
             
             /// <summary>
             /// Text about event not captured in other fields
             /// </summary>
             [FhirElement("note", Order=110)]
             [DataMember]
-            public Hl7.Fhir.Model.Annotation Note
+            public Hl7.Fhir.Model.DSTU2.Annotation Note
             {
                 get { return _Note; }
                 set { _Note = value; OnPropertyChanged("Note"); }
             }
             
-            private Hl7.Fhir.Model.Annotation _Note;
+            private Hl7.Fhir.Model.DSTU2.Annotation _Note;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -256,14 +256,14 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Substance != null) dest.Substance = (Hl7.Fhir.Model.CodeableConcept)Substance.DeepCopy();
+                    if(Substance != null) dest.Substance = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Substance.DeepCopy();
                     if(CertaintyElement != null) dest.CertaintyElement = (Code<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCertainty>)CertaintyElement.DeepCopy();
-                    if(Manifestation != null) dest.Manifestation = new List<Hl7.Fhir.Model.CodeableConcept>(Manifestation.DeepCopy());
+                    if(Manifestation != null) dest.Manifestation = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Manifestation.DeepCopy());
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                    if(OnsetElement != null) dest.OnsetElement = (Hl7.Fhir.Model.FhirDateTime)OnsetElement.DeepCopy();
+                    if(OnsetElement != null) dest.OnsetElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)OnsetElement.DeepCopy();
                     if(SeverityElement != null) dest.SeverityElement = (Code<Hl7.Fhir.Model.AllergyIntoleranceSeverity>)SeverityElement.DeepCopy();
-                    if(ExposureRoute != null) dest.ExposureRoute = (Hl7.Fhir.Model.CodeableConcept)ExposureRoute.DeepCopy();
-                    if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
+                    if(ExposureRoute != null) dest.ExposureRoute = (Hl7.Fhir.Model.DSTU2.CodeableConcept)ExposureRoute.DeepCopy();
+                    if(Note != null) dest.Note = (Hl7.Fhir.Model.DSTU2.Annotation)Note.DeepCopy();
                     return dest;
                 }
                 else
@@ -371,13 +371,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("onset", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime OnsetElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime OnsetElement
         {
             get { return _OnsetElement; }
             set { _OnsetElement = value; OnPropertyChanged("OnsetElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _OnsetElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _OnsetElement;
         
         /// <summary>
         /// Date(/time) when manifestations showed
@@ -393,7 +393,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     OnsetElement = null;
                 else
-                    OnsetElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    OnsetElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Onset");
             }
         }
@@ -404,13 +404,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("recordedDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime RecordedDateElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime RecordedDateElement
         {
             get { return _RecordedDateElement; }
             set { _RecordedDateElement = value; OnPropertyChanged("RecordedDateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _RecordedDateElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _RecordedDateElement;
         
         /// <summary>
         /// When recorded
@@ -426,7 +426,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     RecordedDateElement = null;
                 else
-                    RecordedDateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    RecordedDateElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("RecordedDate");
             }
         }
@@ -484,13 +484,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Substance
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Substance
         {
             get { return _Substance; }
             set { _Substance = value; OnPropertyChanged("Substance"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Substance;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Substance;
         
         /// <summary>
         /// active | unconfirmed | confirmed | inactive | resolved | refuted | entered-in-error
@@ -630,13 +630,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("lastOccurence", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=200)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime LastOccurenceElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime LastOccurenceElement
         {
             get { return _LastOccurenceElement; }
             set { _LastOccurenceElement = value; OnPropertyChanged("LastOccurenceElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _LastOccurenceElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _LastOccurenceElement;
         
         /// <summary>
         /// Date(/time) of last known occurrence of a reaction
@@ -652,7 +652,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     LastOccurenceElement = null;
                 else
-                    LastOccurenceElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    LastOccurenceElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("LastOccurence");
             }
         }
@@ -662,13 +662,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("note", Order=210)]
         [DataMember]
-        public Hl7.Fhir.Model.Annotation Note
+        public Hl7.Fhir.Model.DSTU2.Annotation Note
         {
             get { return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private Hl7.Fhir.Model.Annotation _Note;
+        private Hl7.Fhir.Model.DSTU2.Annotation _Note;
         
         /// <summary>
         /// Adverse Reaction Events linked to exposure to substance
@@ -693,18 +693,18 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
-                if(OnsetElement != null) dest.OnsetElement = (Hl7.Fhir.Model.FhirDateTime)OnsetElement.DeepCopy();
-                if(RecordedDateElement != null) dest.RecordedDateElement = (Hl7.Fhir.Model.FhirDateTime)RecordedDateElement.DeepCopy();
+                if(OnsetElement != null) dest.OnsetElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)OnsetElement.DeepCopy();
+                if(RecordedDateElement != null) dest.RecordedDateElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)RecordedDateElement.DeepCopy();
                 if(Recorder != null) dest.Recorder = (Hl7.Fhir.Model.DSTU2.ResourceReference)Recorder.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.DSTU2.ResourceReference)Patient.DeepCopy();
                 if(Reporter != null) dest.Reporter = (Hl7.Fhir.Model.DSTU2.ResourceReference)Reporter.DeepCopy();
-                if(Substance != null) dest.Substance = (Hl7.Fhir.Model.CodeableConcept)Substance.DeepCopy();
+                if(Substance != null) dest.Substance = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Substance.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceStatus>)StatusElement.DeepCopy();
                 if(CriticalityElement != null) dest.CriticalityElement = (Code<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCriticality>)CriticalityElement.DeepCopy();
                 if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.AllergyIntoleranceType>)TypeElement.DeepCopy();
                 if(CategoryElement != null) dest.CategoryElement = (Code<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCategory>)CategoryElement.DeepCopy();
-                if(LastOccurenceElement != null) dest.LastOccurenceElement = (Hl7.Fhir.Model.FhirDateTime)LastOccurenceElement.DeepCopy();
-                if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
+                if(LastOccurenceElement != null) dest.LastOccurenceElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)LastOccurenceElement.DeepCopy();
+                if(Note != null) dest.Note = (Hl7.Fhir.Model.DSTU2.Annotation)Note.DeepCopy();
                 if(Reaction != null) dest.Reaction = new List<ReactionComponent>(Reaction.DeepCopy());
                 return dest;
             }

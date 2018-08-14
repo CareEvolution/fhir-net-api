@@ -60,13 +60,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Type
+        public List<Hl7.Fhir.Model.STU3.Coding> Type
         {
-            get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.Coding>(); return _Type; }
+            get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _Type;
+        private List<Hl7.Fhir.Model.STU3.Coding> _Type;
         
         /// <summary>
         /// When the signature was created
@@ -139,13 +139,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("contentType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Code ContentTypeElement
+        public Hl7.Fhir.Model.STU3.Code ContentTypeElement
         {
             get { return _ContentTypeElement; }
             set { _ContentTypeElement = value; OnPropertyChanged("ContentTypeElement"); }
         }
         
-        private Hl7.Fhir.Model.Code _ContentTypeElement;
+        private Hl7.Fhir.Model.STU3.Code _ContentTypeElement;
         
         /// <summary>
         /// The technical format of the signature
@@ -161,7 +161,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     ContentTypeElement = null;
                 else
-                    ContentTypeElement = new Hl7.Fhir.Model.Code(value);
+                    ContentTypeElement = new Hl7.Fhir.Model.STU3.Code(value);
                 OnPropertyChanged("ContentType");
             }
         }
@@ -206,11 +206,11 @@ namespace Hl7.Fhir.Model.STU3
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Type != null) dest.Type = new List<Hl7.Fhir.Model.Coding>(Type.DeepCopy());
+                if(Type != null) dest.Type = new List<Hl7.Fhir.Model.STU3.Coding>(Type.DeepCopy());
                 if(WhenElement != null) dest.WhenElement = (Hl7.Fhir.Model.Instant)WhenElement.DeepCopy();
                 if(Who != null) dest.Who = (Hl7.Fhir.Model.Element)Who.DeepCopy();
                 if(OnBehalfOf != null) dest.OnBehalfOf = (Hl7.Fhir.Model.Element)OnBehalfOf.DeepCopy();
-                if(ContentTypeElement != null) dest.ContentTypeElement = (Hl7.Fhir.Model.Code)ContentTypeElement.DeepCopy();
+                if(ContentTypeElement != null) dest.ContentTypeElement = (Hl7.Fhir.Model.STU3.Code)ContentTypeElement.DeepCopy();
                 if(BlobElement != null) dest.BlobElement = (Hl7.Fhir.Model.Base64Binary)BlobElement.DeepCopy();
                 return dest;
             }

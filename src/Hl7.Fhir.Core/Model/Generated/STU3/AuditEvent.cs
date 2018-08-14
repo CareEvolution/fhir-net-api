@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "AuditEvent", IsResource=true)]
     [DataContract]
-    public partial class AuditEvent : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class AuditEvent : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.AuditEvent; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("role", Order=40)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Role
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> Role
             {
-                get { if(_Role==null) _Role = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Role; }
+                get { if(_Role==null) _Role = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Role;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Role;
             
             /// <summary>
             /// Direct reference to resource
@@ -255,13 +255,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("media", Order=120)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Media
+            public Hl7.Fhir.Model.STU3.Coding Media
             {
                 get { return _Media; }
                 set { _Media = value; OnPropertyChanged("Media"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Media;
+            private Hl7.Fhir.Model.STU3.Coding _Media;
             
             /// <summary>
             /// Logical network location for application activity
@@ -282,13 +282,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("purposeOfUse", Order=140)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> PurposeOfUse
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> PurposeOfUse
             {
-                get { if(_PurposeOfUse==null) _PurposeOfUse = new List<Hl7.Fhir.Model.CodeableConcept>(); return _PurposeOfUse; }
+                get { if(_PurposeOfUse==null) _PurposeOfUse = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _PurposeOfUse; }
                 set { _PurposeOfUse = value; OnPropertyChanged("PurposeOfUse"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _PurposeOfUse;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _PurposeOfUse;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -297,7 +297,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Role != null) dest.Role = new List<Hl7.Fhir.Model.CodeableConcept>(Role.DeepCopy());
+                    if(Role != null) dest.Role = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Role.DeepCopy());
                     if(Reference != null) dest.Reference = (Hl7.Fhir.Model.STU3.ResourceReference)Reference.DeepCopy();
                     if(UserId != null) dest.UserId = (Hl7.Fhir.Model.STU3.Identifier)UserId.DeepCopy();
                     if(AltIdElement != null) dest.AltIdElement = (Hl7.Fhir.Model.FhirString)AltIdElement.DeepCopy();
@@ -305,9 +305,9 @@ namespace Hl7.Fhir.Model.STU3
                     if(RequestorElement != null) dest.RequestorElement = (Hl7.Fhir.Model.FhirBoolean)RequestorElement.DeepCopy();
                     if(Location != null) dest.Location = (Hl7.Fhir.Model.STU3.ResourceReference)Location.DeepCopy();
                     if(PolicyElement != null) dest.PolicyElement = new List<Hl7.Fhir.Model.FhirUri>(PolicyElement.DeepCopy());
-                    if(Media != null) dest.Media = (Hl7.Fhir.Model.Coding)Media.DeepCopy();
+                    if(Media != null) dest.Media = (Hl7.Fhir.Model.STU3.Coding)Media.DeepCopy();
                     if(Network != null) dest.Network = (NetworkComponent)Network.DeepCopy();
-                    if(PurposeOfUse != null) dest.PurposeOfUse = new List<Hl7.Fhir.Model.CodeableConcept>(PurposeOfUse.DeepCopy());
+                    if(PurposeOfUse != null) dest.PurposeOfUse = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(PurposeOfUse.DeepCopy());
                     return dest;
                 }
                 else
@@ -608,13 +608,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("type", Order=60)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Type
+            public List<Hl7.Fhir.Model.STU3.Coding> Type
             {
-                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.Coding>(); return _Type; }
+                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Type;
+            private List<Hl7.Fhir.Model.STU3.Coding> _Type;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -625,7 +625,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(SiteElement != null) dest.SiteElement = (Hl7.Fhir.Model.FhirString)SiteElement.DeepCopy();
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
-                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.Coding>(Type.DeepCopy());
+                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.STU3.Coding>(Type.DeepCopy());
                     return dest;
                 }
                 else
@@ -732,39 +732,39 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("type", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Type
+            public Hl7.Fhir.Model.STU3.Coding Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Type;
+            private Hl7.Fhir.Model.STU3.Coding _Type;
             
             /// <summary>
             /// What role the entity played
             /// </summary>
             [FhirElement("role", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Role
+            public Hl7.Fhir.Model.STU3.Coding Role
             {
                 get { return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Role;
+            private Hl7.Fhir.Model.STU3.Coding _Role;
             
             /// <summary>
             /// Life-cycle stage for the entity
             /// </summary>
             [FhirElement("lifecycle", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Lifecycle
+            public Hl7.Fhir.Model.STU3.Coding Lifecycle
             {
                 get { return _Lifecycle; }
                 set { _Lifecycle = value; OnPropertyChanged("Lifecycle"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Lifecycle;
+            private Hl7.Fhir.Model.STU3.Coding _Lifecycle;
             
             /// <summary>
             /// Security labels on the entity
@@ -772,13 +772,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("securityLabel", Order=90)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> SecurityLabel
+            public List<Hl7.Fhir.Model.STU3.Coding> SecurityLabel
             {
-                get { if(_SecurityLabel==null) _SecurityLabel = new List<Hl7.Fhir.Model.Coding>(); return _SecurityLabel; }
+                get { if(_SecurityLabel==null) _SecurityLabel = new List<Hl7.Fhir.Model.STU3.Coding>(); return _SecurityLabel; }
                 set { _SecurityLabel = value; OnPropertyChanged("SecurityLabel"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _SecurityLabel;
+            private List<Hl7.Fhir.Model.STU3.Coding> _SecurityLabel;
             
             /// <summary>
             /// Descriptor for entity
@@ -901,10 +901,10 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
                     if(Reference != null) dest.Reference = (Hl7.Fhir.Model.STU3.ResourceReference)Reference.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
-                    if(Role != null) dest.Role = (Hl7.Fhir.Model.Coding)Role.DeepCopy();
-                    if(Lifecycle != null) dest.Lifecycle = (Hl7.Fhir.Model.Coding)Lifecycle.DeepCopy();
-                    if(SecurityLabel != null) dest.SecurityLabel = new List<Hl7.Fhir.Model.Coding>(SecurityLabel.DeepCopy());
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.Coding)Type.DeepCopy();
+                    if(Role != null) dest.Role = (Hl7.Fhir.Model.STU3.Coding)Role.DeepCopy();
+                    if(Lifecycle != null) dest.Lifecycle = (Hl7.Fhir.Model.STU3.Coding)Lifecycle.DeepCopy();
+                    if(SecurityLabel != null) dest.SecurityLabel = new List<Hl7.Fhir.Model.STU3.Coding>(SecurityLabel.DeepCopy());
                     if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                     if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                     if(QueryElement != null) dest.QueryElement = (Hl7.Fhir.Model.Base64Binary)QueryElement.DeepCopy();
@@ -1154,13 +1154,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Coding Type
+        public Hl7.Fhir.Model.STU3.Coding Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.Coding _Type;
+        private Hl7.Fhir.Model.STU3.Coding _Type;
         
         /// <summary>
         /// More specific type/id for the event
@@ -1169,13 +1169,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Subtype
+        public List<Hl7.Fhir.Model.STU3.Coding> Subtype
         {
-            get { if(_Subtype==null) _Subtype = new List<Hl7.Fhir.Model.Coding>(); return _Subtype; }
+            get { if(_Subtype==null) _Subtype = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Subtype; }
             set { _Subtype = value; OnPropertyChanged("Subtype"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _Subtype;
+        private List<Hl7.Fhir.Model.STU3.Coding> _Subtype;
         
         /// <summary>
         /// Type of action performed during the event
@@ -1317,13 +1317,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> PurposeOfEvent
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> PurposeOfEvent
         {
-            get { if(_PurposeOfEvent==null) _PurposeOfEvent = new List<Hl7.Fhir.Model.CodeableConcept>(); return _PurposeOfEvent; }
+            get { if(_PurposeOfEvent==null) _PurposeOfEvent = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _PurposeOfEvent; }
             set { _PurposeOfEvent = value; OnPropertyChanged("PurposeOfEvent"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _PurposeOfEvent;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _PurposeOfEvent;
         
         /// <summary>
         /// Actor involved in the event
@@ -1391,13 +1391,13 @@ namespace Hl7.Fhir.Model.STU3
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
-                if(Subtype != null) dest.Subtype = new List<Hl7.Fhir.Model.Coding>(Subtype.DeepCopy());
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.Coding)Type.DeepCopy();
+                if(Subtype != null) dest.Subtype = new List<Hl7.Fhir.Model.STU3.Coding>(Subtype.DeepCopy());
                 if(ActionElement != null) dest.ActionElement = (Code<Hl7.Fhir.Model.AuditEventAction>)ActionElement.DeepCopy();
                 if(RecordedElement != null) dest.RecordedElement = (Hl7.Fhir.Model.Instant)RecordedElement.DeepCopy();
                 if(OutcomeElement != null) dest.OutcomeElement = (Code<Hl7.Fhir.Model.AuditEventOutcome>)OutcomeElement.DeepCopy();
                 if(OutcomeDescElement != null) dest.OutcomeDescElement = (Hl7.Fhir.Model.FhirString)OutcomeDescElement.DeepCopy();
-                if(PurposeOfEvent != null) dest.PurposeOfEvent = new List<Hl7.Fhir.Model.CodeableConcept>(PurposeOfEvent.DeepCopy());
+                if(PurposeOfEvent != null) dest.PurposeOfEvent = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(PurposeOfEvent.DeepCopy());
                 if(Agent != null) dest.Agent = new List<AgentComponent>(Agent.DeepCopy());
                 if(Source != null) dest.Source = (SourceComponent)Source.DeepCopy();
                 if(Entity != null) dest.Entity = new List<EntityComponent>(Entity.DeepCopy());

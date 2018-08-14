@@ -65,7 +65,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("bounds", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Duration),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Duration),typeof(Hl7.Fhir.Model.DSTU2.Range),typeof(Hl7.Fhir.Model.DSTU2.Period))]
             [DataMember]
             public Hl7.Fhir.Model.Element Bounds
             {
@@ -81,13 +81,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("count", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer CountElement
+            public Hl7.Fhir.Model.DSTU2.Integer CountElement
             {
                 get { return _CountElement; }
                 set { _CountElement = value; OnPropertyChanged("CountElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _CountElement;
+            private Hl7.Fhir.Model.DSTU2.Integer _CountElement;
             
             /// <summary>
             /// Number of times to repeat
@@ -103,7 +103,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         CountElement = null;
                     else
-                        CountElement = new Hl7.Fhir.Model.Integer(value);
+                        CountElement = new Hl7.Fhir.Model.DSTU2.Integer(value);
                     OnPropertyChanged("Count");
                 }
             }
@@ -114,13 +114,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("duration", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal DurationElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal DurationElement
             {
                 get { return _DurationElement; }
                 set { _DurationElement = value; OnPropertyChanged("DurationElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _DurationElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _DurationElement;
             
             /// <summary>
             /// How long when it happens
@@ -136,7 +136,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         DurationElement = null;
                     else
-                        DurationElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        DurationElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Duration");
                 }
             }
@@ -147,13 +147,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("durationMax", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal DurationMaxElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal DurationMaxElement
             {
                 get { return _DurationMaxElement; }
                 set { _DurationMaxElement = value; OnPropertyChanged("DurationMaxElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _DurationMaxElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _DurationMaxElement;
             
             /// <summary>
             /// How long when it happens (Max)
@@ -169,7 +169,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         DurationMaxElement = null;
                     else
-                        DurationMaxElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        DurationMaxElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("DurationMax");
                 }
             }
@@ -213,13 +213,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("frequency", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer FrequencyElement
+            public Hl7.Fhir.Model.DSTU2.Integer FrequencyElement
             {
                 get { return _FrequencyElement; }
                 set { _FrequencyElement = value; OnPropertyChanged("FrequencyElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _FrequencyElement;
+            private Hl7.Fhir.Model.DSTU2.Integer _FrequencyElement;
             
             /// <summary>
             /// Event occurs frequency times per period
@@ -235,7 +235,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         FrequencyElement = null;
                     else
-                        FrequencyElement = new Hl7.Fhir.Model.Integer(value);
+                        FrequencyElement = new Hl7.Fhir.Model.DSTU2.Integer(value);
                     OnPropertyChanged("Frequency");
                 }
             }
@@ -246,13 +246,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("frequencyMax", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer FrequencyMaxElement
+            public Hl7.Fhir.Model.DSTU2.Integer FrequencyMaxElement
             {
                 get { return _FrequencyMaxElement; }
                 set { _FrequencyMaxElement = value; OnPropertyChanged("FrequencyMaxElement"); }
             }
             
-            private Hl7.Fhir.Model.Integer _FrequencyMaxElement;
+            private Hl7.Fhir.Model.DSTU2.Integer _FrequencyMaxElement;
             
             /// <summary>
             /// Event occurs up to frequencyMax times per period
@@ -268,7 +268,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         FrequencyMaxElement = null;
                     else
-                        FrequencyMaxElement = new Hl7.Fhir.Model.Integer(value);
+                        FrequencyMaxElement = new Hl7.Fhir.Model.DSTU2.Integer(value);
                     OnPropertyChanged("FrequencyMax");
                 }
             }
@@ -279,13 +279,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PeriodElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PeriodElement
             {
                 get { return _PeriodElement; }
                 set { _PeriodElement = value; OnPropertyChanged("PeriodElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PeriodElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PeriodElement;
             
             /// <summary>
             /// Event occurs frequency times per period
@@ -301,7 +301,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PeriodElement = null;
                     else
-                        PeriodElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PeriodElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Period");
                 }
             }
@@ -312,13 +312,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("periodMax", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PeriodMaxElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PeriodMaxElement
             {
                 get { return _PeriodMaxElement; }
                 set { _PeriodMaxElement = value; OnPropertyChanged("PeriodMaxElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PeriodMaxElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PeriodMaxElement;
             
             /// <summary>
             /// Upper limit of period (3-4 hours)
@@ -334,7 +334,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PeriodMaxElement = null;
                     else
-                        PeriodMaxElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PeriodMaxElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("PeriodMax");
                 }
             }
@@ -413,14 +413,14 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Bounds != null) dest.Bounds = (Hl7.Fhir.Model.Element)Bounds.DeepCopy();
-                    if(CountElement != null) dest.CountElement = (Hl7.Fhir.Model.Integer)CountElement.DeepCopy();
-                    if(DurationElement != null) dest.DurationElement = (Hl7.Fhir.Model.FhirDecimal)DurationElement.DeepCopy();
-                    if(DurationMaxElement != null) dest.DurationMaxElement = (Hl7.Fhir.Model.FhirDecimal)DurationMaxElement.DeepCopy();
+                    if(CountElement != null) dest.CountElement = (Hl7.Fhir.Model.DSTU2.Integer)CountElement.DeepCopy();
+                    if(DurationElement != null) dest.DurationElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)DurationElement.DeepCopy();
+                    if(DurationMaxElement != null) dest.DurationMaxElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)DurationMaxElement.DeepCopy();
                     if(DurationUnitsElement != null) dest.DurationUnitsElement = (Code<Hl7.Fhir.Model.UnitsOfTime>)DurationUnitsElement.DeepCopy();
-                    if(FrequencyElement != null) dest.FrequencyElement = (Hl7.Fhir.Model.Integer)FrequencyElement.DeepCopy();
-                    if(FrequencyMaxElement != null) dest.FrequencyMaxElement = (Hl7.Fhir.Model.Integer)FrequencyMaxElement.DeepCopy();
-                    if(PeriodElement != null) dest.PeriodElement = (Hl7.Fhir.Model.FhirDecimal)PeriodElement.DeepCopy();
-                    if(PeriodMaxElement != null) dest.PeriodMaxElement = (Hl7.Fhir.Model.FhirDecimal)PeriodMaxElement.DeepCopy();
+                    if(FrequencyElement != null) dest.FrequencyElement = (Hl7.Fhir.Model.DSTU2.Integer)FrequencyElement.DeepCopy();
+                    if(FrequencyMaxElement != null) dest.FrequencyMaxElement = (Hl7.Fhir.Model.DSTU2.Integer)FrequencyMaxElement.DeepCopy();
+                    if(PeriodElement != null) dest.PeriodElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PeriodElement.DeepCopy();
+                    if(PeriodMaxElement != null) dest.PeriodMaxElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PeriodMaxElement.DeepCopy();
                     if(PeriodUnitsElement != null) dest.PeriodUnitsElement = (Code<Hl7.Fhir.Model.UnitsOfTime>)PeriodUnitsElement.DeepCopy();
                     if(WhenElement != null) dest.WhenElement = (Code<Hl7.Fhir.Model.DSTU2.EventTiming>)WhenElement.DeepCopy();
                     return dest;
@@ -528,13 +528,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.FhirDateTime> EventElement
+        public List<Hl7.Fhir.Model.DSTU2.FhirDateTime> EventElement
         {
-            get { if(_EventElement==null) _EventElement = new List<Hl7.Fhir.Model.FhirDateTime>(); return _EventElement; }
+            get { if(_EventElement==null) _EventElement = new List<Hl7.Fhir.Model.DSTU2.FhirDateTime>(); return _EventElement; }
             set { _EventElement = value; OnPropertyChanged("EventElement"); }
         }
         
-        private List<Hl7.Fhir.Model.FhirDateTime> _EventElement;
+        private List<Hl7.Fhir.Model.DSTU2.FhirDateTime> _EventElement;
         
         /// <summary>
         /// When the event occurs
@@ -550,7 +550,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     EventElement = null;
                 else
-                    EventElement = new List<Hl7.Fhir.Model.FhirDateTime>(value.Select(elem=>new Hl7.Fhir.Model.FhirDateTime(elem)));
+                    EventElement = new List<Hl7.Fhir.Model.DSTU2.FhirDateTime>(value.Select(elem=>new Hl7.Fhir.Model.DSTU2.FhirDateTime(elem)));
                 OnPropertyChanged("Event");
             }
         }
@@ -575,13 +575,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("code", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Code;
     
     
         public static ElementDefinitionConstraint Timing_TIM_5 = new ElementDefinitionConstraint
@@ -656,9 +656,9 @@ namespace Hl7.Fhir.Model.DSTU2
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(EventElement != null) dest.EventElement = new List<Hl7.Fhir.Model.FhirDateTime>(EventElement.DeepCopy());
+                if(EventElement != null) dest.EventElement = new List<Hl7.Fhir.Model.DSTU2.FhirDateTime>(EventElement.DeepCopy());
                 if(Repeat != null) dest.Repeat = (RepeatComponent)Repeat.DeepCopy();
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Code.DeepCopy();
                 return dest;
             }
             else

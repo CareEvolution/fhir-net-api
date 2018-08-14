@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Location", IsResource=true)]
     [DataContract]
-    public partial class Location : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Location : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Location; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("longitude", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal LongitudeElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal LongitudeElement
             {
                 get { return _LongitudeElement; }
                 set { _LongitudeElement = value; OnPropertyChanged("LongitudeElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _LongitudeElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _LongitudeElement;
             
             /// <summary>
             /// Longitude with WGS84 datum
@@ -90,7 +90,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         LongitudeElement = null;
                     else
-                        LongitudeElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        LongitudeElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Longitude");
                 }
             }
@@ -101,13 +101,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("latitude", Order=50)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal LatitudeElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal LatitudeElement
             {
                 get { return _LatitudeElement; }
                 set { _LatitudeElement = value; OnPropertyChanged("LatitudeElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _LatitudeElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _LatitudeElement;
             
             /// <summary>
             /// Latitude with WGS84 datum
@@ -123,7 +123,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         LatitudeElement = null;
                     else
-                        LatitudeElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        LatitudeElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Latitude");
                 }
             }
@@ -133,13 +133,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("altitude", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal AltitudeElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal AltitudeElement
             {
                 get { return _AltitudeElement; }
                 set { _AltitudeElement = value; OnPropertyChanged("AltitudeElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _AltitudeElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _AltitudeElement;
             
             /// <summary>
             /// Altitude with WGS84 datum
@@ -155,7 +155,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         AltitudeElement = null;
                     else
-                        AltitudeElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        AltitudeElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Altitude");
                 }
             }
@@ -167,9 +167,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(LongitudeElement != null) dest.LongitudeElement = (Hl7.Fhir.Model.FhirDecimal)LongitudeElement.DeepCopy();
-                    if(LatitudeElement != null) dest.LatitudeElement = (Hl7.Fhir.Model.FhirDecimal)LatitudeElement.DeepCopy();
-                    if(AltitudeElement != null) dest.AltitudeElement = (Hl7.Fhir.Model.FhirDecimal)AltitudeElement.DeepCopy();
+                    if(LongitudeElement != null) dest.LongitudeElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)LongitudeElement.DeepCopy();
+                    if(LatitudeElement != null) dest.LatitudeElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)LatitudeElement.DeepCopy();
+                    if(AltitudeElement != null) dest.AltitudeElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)AltitudeElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -389,13 +389,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// Contact details of the location
@@ -416,13 +416,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("address", Order=160)]
         [DataMember]
-        public Hl7.Fhir.Model.Address Address
+        public Hl7.Fhir.Model.DSTU2.Address Address
         {
             get { return _Address; }
             set { _Address = value; OnPropertyChanged("Address"); }
         }
         
-        private Hl7.Fhir.Model.Address _Address;
+        private Hl7.Fhir.Model.DSTU2.Address _Address;
         
         /// <summary>
         /// Physical form of the location
@@ -430,13 +430,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("physicalType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept PhysicalType
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept PhysicalType
         {
             get { return _PhysicalType; }
             set { _PhysicalType = value; OnPropertyChanged("PhysicalType"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _PhysicalType;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _PhysicalType;
         
         /// <summary>
         /// The absolute geographic location
@@ -494,10 +494,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(ModeElement != null) dest.ModeElement = (Code<Hl7.Fhir.Model.LocationMode>)ModeElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
                 if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.DSTU2.ContactPoint>(Telecom.DeepCopy());
-                if(Address != null) dest.Address = (Hl7.Fhir.Model.Address)Address.DeepCopy();
-                if(PhysicalType != null) dest.PhysicalType = (Hl7.Fhir.Model.CodeableConcept)PhysicalType.DeepCopy();
+                if(Address != null) dest.Address = (Hl7.Fhir.Model.DSTU2.Address)Address.DeepCopy();
+                if(PhysicalType != null) dest.PhysicalType = (Hl7.Fhir.Model.DSTU2.CodeableConcept)PhysicalType.DeepCopy();
                 if(Position != null) dest.Position = (PositionComponent)Position.DeepCopy();
                 if(ManagingOrganization != null) dest.ManagingOrganization = (Hl7.Fhir.Model.DSTU2.ResourceReference)ManagingOrganization.DeepCopy();
                 if(PartOf != null) dest.PartOf = (Hl7.Fhir.Model.DSTU2.ResourceReference)PartOf.DeepCopy();

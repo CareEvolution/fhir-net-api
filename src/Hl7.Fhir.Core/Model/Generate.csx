@@ -173,7 +173,7 @@ using Hl7.Fhir.Utility;
 
 */
 #pragma warning disable 1591 // suppress XML summary warnings";
-        foreach (var line in header.Split('\r')) yield return line.Replace("\n", string.Empty);
+        foreach (var line in header.Split('\n')) yield return line.Replace("\r", string.Empty);
         var fhirVersions = string.Join(", ", versions.Select(v => "v" + v.FhirVersion));
         var dotVersion = string.Empty;
         if (versions.Count() == 1)
@@ -661,7 +661,7 @@ public class ValueSet
     {
         public bool Equals(ValueSetValue x, ValueSetValue y)
         {
-            return x.Code == x.Code;
+            return x.Code == y.Code;
         }
 
         public int GetHashCode(ValueSetValue obj)
@@ -854,6 +854,13 @@ public class ResourceDetails
     /// </summary>
     public bool IsSame(ResourceDetails other)
     {
+        // if(Name == other.Name)
+        // {
+        //     Console.WriteLine(Name);
+        //     if(Name == "Element") return true;
+        //     if(Name == "Resource") return true;
+        // }
+        // return false;
         return other != null &&
             Name == other.Name &&
             AbstractType == other.AbstractType &&
@@ -2861,6 +2868,11 @@ valueSetsByEnumNameByVersion[string.Empty].Add(
 var resourcesByNameByVersion = ResourceDetails.LoadAll(loadedVersions, valueSetsByEnumNameByVersion);
 
 var generatedDirectory = Path.Combine(rootDirectory, "Generated");
+if(Directory.Exists(generatedDirectory))
+{
+    Directory.Delete(generatedDirectory, true);
+}
+Directory.CreateDirectory(generatedDirectory);
 foreach (var loadedVersion in loadedVersions)
 {
     Directory.CreateDirectory(Path.Combine(generatedDirectory,loadedVersion.Version));

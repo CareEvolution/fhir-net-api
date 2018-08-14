@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Bundle", IsResource=true)]
     [DataContract]
-    public partial class Bundle : Hl7.Fhir.Model.Resource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Bundle : Hl7.Fhir.Model.STU3.Resource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Bundle; } }
@@ -259,17 +259,17 @@ namespace Hl7.Fhir.Model.STU3
             /// <summary>
             /// A resource in the bundle
             /// </summary>
-            [FhirElement("resource", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60, Choice=ChoiceType.ResourceChoice)]
+            [FhirElement("resource", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Resource))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Resource))]
             [DataMember]
-            public Hl7.Fhir.Model.Resource Resource
+            public Hl7.Fhir.Model.STU3.Resource Resource
             {
                 get { return _Resource; }
                 set { _Resource = value; OnPropertyChanged("Resource"); }
             }
             
-            private Hl7.Fhir.Model.Resource _Resource;
+            private Hl7.Fhir.Model.STU3.Resource _Resource;
             
             /// <summary>
             /// Search related information
@@ -322,7 +322,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(Link != null) dest.Link = new List<LinkComponent>(Link.DeepCopy());
                     if(FullUrlElement != null) dest.FullUrlElement = (Hl7.Fhir.Model.FhirUri)FullUrlElement.DeepCopy();
-                    if(Resource != null) dest.Resource = (Hl7.Fhir.Model.Resource)Resource.DeepCopy();
+                    if(Resource != null) dest.Resource = (Hl7.Fhir.Model.STU3.Resource)Resource.DeepCopy();
                     if(Search != null) dest.Search = (SearchComponent)Search.DeepCopy();
                     if(Request != null) dest.Request = (RequestComponent)Request.DeepCopy();
                     if(Response != null) dest.Response = (ResponseComponent)Response.DeepCopy();
@@ -450,13 +450,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("score", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal ScoreElement
+            public Hl7.Fhir.Model.STU3.FhirDecimal ScoreElement
             {
                 get { return _ScoreElement; }
                 set { _ScoreElement = value; OnPropertyChanged("ScoreElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _ScoreElement;
+            private Hl7.Fhir.Model.STU3.FhirDecimal _ScoreElement;
             
             /// <summary>
             /// Search ranking (between 0 and 1)
@@ -472,7 +472,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         ScoreElement = null;
                     else
-                        ScoreElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        ScoreElement = new Hl7.Fhir.Model.STU3.FhirDecimal(value);
                     OnPropertyChanged("Score");
                 }
             }
@@ -485,7 +485,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(ModeElement != null) dest.ModeElement = (Code<Hl7.Fhir.Model.SearchEntryMode>)ModeElement.DeepCopy();
-                    if(ScoreElement != null) dest.ScoreElement = (Hl7.Fhir.Model.FhirDecimal)ScoreElement.DeepCopy();
+                    if(ScoreElement != null) dest.ScoreElement = (Hl7.Fhir.Model.STU3.FhirDecimal)ScoreElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -989,17 +989,17 @@ namespace Hl7.Fhir.Model.STU3
             /// <summary>
             /// OperationOutcome with hints and warnings (for batch/transaction)
             /// </summary>
-            [FhirElement("outcome", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80, Choice=ChoiceType.ResourceChoice)]
+            [FhirElement("outcome", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Resource))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Resource))]
             [DataMember]
-            public Hl7.Fhir.Model.Resource Outcome
+            public Hl7.Fhir.Model.STU3.Resource Outcome
             {
                 get { return _Outcome; }
                 set { _Outcome = value; OnPropertyChanged("Outcome"); }
             }
             
-            private Hl7.Fhir.Model.Resource _Outcome;
+            private Hl7.Fhir.Model.STU3.Resource _Outcome;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1012,7 +1012,7 @@ namespace Hl7.Fhir.Model.STU3
                     if(LocationElement != null) dest.LocationElement = (Hl7.Fhir.Model.FhirUri)LocationElement.DeepCopy();
                     if(EtagElement != null) dest.EtagElement = (Hl7.Fhir.Model.FhirString)EtagElement.DeepCopy();
                     if(LastModifiedElement != null) dest.LastModifiedElement = (Hl7.Fhir.Model.Instant)LastModifiedElement.DeepCopy();
-                    if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.Resource)Outcome.DeepCopy();
+                    if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.STU3.Resource)Outcome.DeepCopy();
                     return dest;
                 }
                 else
@@ -1090,7 +1090,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// Persistent identifier for the bundle
         /// </summary>
-        [FhirElement("identifier", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
+        [FhirElement("identifier", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
         [CLSCompliant(false)]
         [DataMember]
         public Hl7.Fhir.Model.STU3.Identifier Identifier
@@ -1104,7 +1104,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
         /// </summary>
-        [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
+        [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -1138,16 +1138,16 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// If search, the total number of matches
         /// </summary>
-        [FhirElement("total", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=70)]
+        [FhirElement("total", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.UnsignedInt TotalElement
+        public Hl7.Fhir.Model.STU3.UnsignedInt TotalElement
         {
             get { return _TotalElement; }
             set { _TotalElement = value; OnPropertyChanged("TotalElement"); }
         }
         
-        private Hl7.Fhir.Model.UnsignedInt _TotalElement;
+        private Hl7.Fhir.Model.STU3.UnsignedInt _TotalElement;
         
         /// <summary>
         /// If search, the total number of matches
@@ -1163,7 +1163,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     TotalElement = null;
                 else
-                    TotalElement = new Hl7.Fhir.Model.UnsignedInt(value);
+                    TotalElement = new Hl7.Fhir.Model.STU3.UnsignedInt(value);
                 OnPropertyChanged("Total");
             }
         }
@@ -1171,7 +1171,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// Links related to this Bundle
         /// </summary>
-        [FhirElement("link", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80)]
+        [FhirElement("link", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -1186,7 +1186,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// Entry in the bundle - will have a resource, or information
         /// </summary>
-        [FhirElement("entry", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
+        [FhirElement("entry", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -1201,7 +1201,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// Digital Signature
         /// </summary>
-        [FhirElement("signature", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
+        [FhirElement("signature", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
         public Hl7.Fhir.Model.STU3.Signature Signature
@@ -1308,7 +1308,7 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
                 if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.BundleType>)TypeElement.DeepCopy();
-                if(TotalElement != null) dest.TotalElement = (Hl7.Fhir.Model.UnsignedInt)TotalElement.DeepCopy();
+                if(TotalElement != null) dest.TotalElement = (Hl7.Fhir.Model.STU3.UnsignedInt)TotalElement.DeepCopy();
                 if(Link != null) dest.Link = new List<LinkComponent>(Link.DeepCopy());
                 if(Entry != null) dest.Entry = new List<EntryComponent>(Entry.DeepCopy());
                 if(Signature != null) dest.Signature = (Hl7.Fhir.Model.STU3.Signature)Signature.DeepCopy();

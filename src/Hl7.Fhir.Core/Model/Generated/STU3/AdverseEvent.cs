@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "AdverseEvent", IsResource=true)]
     [DataContract]
-    public partial class AdverseEvent : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class AdverseEvent : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.AdverseEvent; } }
@@ -117,13 +117,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("causalityAssessment", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept CausalityAssessment
+            public Hl7.Fhir.Model.STU3.CodeableConcept CausalityAssessment
             {
                 get { return _CausalityAssessment; }
                 set { _CausalityAssessment = value; OnPropertyChanged("CausalityAssessment"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _CausalityAssessment;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _CausalityAssessment;
             
             /// <summary>
             /// AdverseEvent.suspectEntity.causalityProductRelatedness
@@ -164,13 +164,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("causalityMethod", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=80)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept CausalityMethod
+            public Hl7.Fhir.Model.STU3.CodeableConcept CausalityMethod
             {
                 get { return _CausalityMethod; }
                 set { _CausalityMethod = value; OnPropertyChanged("CausalityMethod"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _CausalityMethod;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _CausalityMethod;
             
             /// <summary>
             /// AdverseEvent.suspectEntity.causalityAuthor
@@ -193,13 +193,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("causalityResult", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept CausalityResult
+            public Hl7.Fhir.Model.STU3.CodeableConcept CausalityResult
             {
                 get { return _CausalityResult; }
                 set { _CausalityResult = value; OnPropertyChanged("CausalityResult"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _CausalityResult;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _CausalityResult;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -210,11 +210,11 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(Instance != null) dest.Instance = (Hl7.Fhir.Model.STU3.ResourceReference)Instance.DeepCopy();
                     if(CausalityElement != null) dest.CausalityElement = (Code<Hl7.Fhir.Model.STU3.AdverseEventCausality>)CausalityElement.DeepCopy();
-                    if(CausalityAssessment != null) dest.CausalityAssessment = (Hl7.Fhir.Model.CodeableConcept)CausalityAssessment.DeepCopy();
+                    if(CausalityAssessment != null) dest.CausalityAssessment = (Hl7.Fhir.Model.STU3.CodeableConcept)CausalityAssessment.DeepCopy();
                     if(CausalityProductRelatednessElement != null) dest.CausalityProductRelatednessElement = (Hl7.Fhir.Model.FhirString)CausalityProductRelatednessElement.DeepCopy();
-                    if(CausalityMethod != null) dest.CausalityMethod = (Hl7.Fhir.Model.CodeableConcept)CausalityMethod.DeepCopy();
+                    if(CausalityMethod != null) dest.CausalityMethod = (Hl7.Fhir.Model.STU3.CodeableConcept)CausalityMethod.DeepCopy();
                     if(CausalityAuthor != null) dest.CausalityAuthor = (Hl7.Fhir.Model.STU3.ResourceReference)CausalityAuthor.DeepCopy();
-                    if(CausalityResult != null) dest.CausalityResult = (Hl7.Fhir.Model.CodeableConcept)CausalityResult.DeepCopy();
+                    if(CausalityResult != null) dest.CausalityResult = (Hl7.Fhir.Model.STU3.CodeableConcept)CausalityResult.DeepCopy();
                     return dest;
                 }
                 else
@@ -352,13 +352,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// Subject or group impacted by event
@@ -381,13 +381,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("date", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateElement
         {
             get { return _DateElement; }
             set { _DateElement = value; OnPropertyChanged("DateElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateElement;
         
         /// <summary>
         /// When the event occurred
@@ -403,7 +403,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateElement = null;
                 else
-                    DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
@@ -445,13 +445,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("seriousness", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Seriousness
+        public Hl7.Fhir.Model.STU3.CodeableConcept Seriousness
         {
             get { return _Seriousness; }
             set { _Seriousness = value; OnPropertyChanged("Seriousness"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Seriousness;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Seriousness;
         
         /// <summary>
         /// resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown
@@ -459,13 +459,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("outcome", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=170)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Outcome
+        public Hl7.Fhir.Model.STU3.CodeableConcept Outcome
         {
             get { return _Outcome; }
             set { _Outcome = value; OnPropertyChanged("Outcome"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Outcome;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Outcome;
         
         /// <summary>
         /// Who recorded the adverse event
@@ -603,13 +603,13 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
                 if(CategoryElement != null) dest.CategoryElement = (Code<Hl7.Fhir.Model.STU3.AdverseEventCategory>)CategoryElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
+                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateElement.DeepCopy();
                 if(Reaction != null) dest.Reaction = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Reaction.DeepCopy());
                 if(Location != null) dest.Location = (Hl7.Fhir.Model.STU3.ResourceReference)Location.DeepCopy();
-                if(Seriousness != null) dest.Seriousness = (Hl7.Fhir.Model.CodeableConcept)Seriousness.DeepCopy();
-                if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
+                if(Seriousness != null) dest.Seriousness = (Hl7.Fhir.Model.STU3.CodeableConcept)Seriousness.DeepCopy();
+                if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.STU3.CodeableConcept)Outcome.DeepCopy();
                 if(Recorder != null) dest.Recorder = (Hl7.Fhir.Model.STU3.ResourceReference)Recorder.DeepCopy();
                 if(EventParticipant != null) dest.EventParticipant = (Hl7.Fhir.Model.STU3.ResourceReference)EventParticipant.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();

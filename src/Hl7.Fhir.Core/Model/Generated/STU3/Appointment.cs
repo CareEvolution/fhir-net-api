@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Appointment", IsResource=true)]
     [DataContract]
-    public partial class Appointment : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Appointment : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Appointment; } }
@@ -69,13 +69,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Type
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> Type
             {
-                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Type; }
+                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Type;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Type;
             
             /// <summary>
             /// Person, Location/HealthcareService or Device
@@ -165,7 +165,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.CodeableConcept>(Type.DeepCopy());
+                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Type.DeepCopy());
                     if(Actor != null) dest.Actor = (Hl7.Fhir.Model.STU3.ResourceReference)Actor.DeepCopy();
                     if(RequiredElement != null) dest.RequiredElement = (Code<Hl7.Fhir.Model.ParticipantRequired>)RequiredElement.DeepCopy();
                     if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.ParticipationStatus>)StatusElement.DeepCopy();
@@ -294,13 +294,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("serviceCategory", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept ServiceCategory
+        public Hl7.Fhir.Model.STU3.CodeableConcept ServiceCategory
         {
             get { return _ServiceCategory; }
             set { _ServiceCategory = value; OnPropertyChanged("ServiceCategory"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _ServiceCategory;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _ServiceCategory;
         
         /// <summary>
         /// The specific service that is to be performed during this appointment
@@ -309,13 +309,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ServiceType
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ServiceType
         {
-            get { if(_ServiceType==null) _ServiceType = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ServiceType; }
+            get { if(_ServiceType==null) _ServiceType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ServiceType; }
             set { _ServiceType = value; OnPropertyChanged("ServiceType"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ServiceType;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ServiceType;
         
         /// <summary>
         /// The specialty of a practitioner that would be required to perform the service requested in this appointment
@@ -324,13 +324,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Specialty
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Specialty
         {
-            get { if(_Specialty==null) _Specialty = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Specialty; }
+            get { if(_Specialty==null) _Specialty = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Specialty; }
             set { _Specialty = value; OnPropertyChanged("Specialty"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Specialty;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Specialty;
         
         /// <summary>
         /// The style of appointment or patient that has been booked in the slot (not service type)
@@ -338,13 +338,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("appointmentType", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept AppointmentType
+        public Hl7.Fhir.Model.STU3.CodeableConcept AppointmentType
         {
             get { return _AppointmentType; }
             set { _AppointmentType = value; OnPropertyChanged("AppointmentType"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _AppointmentType;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _AppointmentType;
         
         /// <summary>
         /// Reason this appointment is scheduled
@@ -353,13 +353,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Reason
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Reason
         {
-            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Reason; }
+            get { if(_Reason==null) _Reason = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Reason; }
             set { _Reason = value; OnPropertyChanged("Reason"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Reason;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Reason;
         
         /// <summary>
         /// Reason the appointment is to takes place (resource)
@@ -382,13 +382,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("priority", Order=170)]
         [DataMember]
-        public Hl7.Fhir.Model.UnsignedInt PriorityElement
+        public Hl7.Fhir.Model.STU3.UnsignedInt PriorityElement
         {
             get { return _PriorityElement; }
             set { _PriorityElement = value; OnPropertyChanged("PriorityElement"); }
         }
         
-        private Hl7.Fhir.Model.UnsignedInt _PriorityElement;
+        private Hl7.Fhir.Model.STU3.UnsignedInt _PriorityElement;
         
         /// <summary>
         /// Used to make informed decisions if needing to re-prioritize
@@ -404,7 +404,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     PriorityElement = null;
                 else
-                    PriorityElement = new Hl7.Fhir.Model.UnsignedInt(value);
+                    PriorityElement = new Hl7.Fhir.Model.STU3.UnsignedInt(value);
                 OnPropertyChanged("Priority");
             }
         }
@@ -526,13 +526,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("minutesDuration", Order=220)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt MinutesDurationElement
+        public Hl7.Fhir.Model.STU3.PositiveInt MinutesDurationElement
         {
             get { return _MinutesDurationElement; }
             set { _MinutesDurationElement = value; OnPropertyChanged("MinutesDurationElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _MinutesDurationElement;
+        private Hl7.Fhir.Model.STU3.PositiveInt _MinutesDurationElement;
         
         /// <summary>
         /// Can be less than start/end (e.g. estimate)
@@ -548,7 +548,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     MinutesDurationElement = null;
                 else
-                    MinutesDurationElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    MinutesDurationElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                 OnPropertyChanged("MinutesDuration");
             }
         }
@@ -574,13 +574,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("created", Order=240)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// The date that this appointment was initially created
@@ -596,7 +596,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -669,13 +669,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("requestedPeriod", Order=280)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Period> RequestedPeriod
+        public List<Hl7.Fhir.Model.STU3.Period> RequestedPeriod
         {
-            get { if(_RequestedPeriod==null) _RequestedPeriod = new List<Hl7.Fhir.Model.Period>(); return _RequestedPeriod; }
+            get { if(_RequestedPeriod==null) _RequestedPeriod = new List<Hl7.Fhir.Model.STU3.Period>(); return _RequestedPeriod; }
             set { _RequestedPeriod = value; OnPropertyChanged("RequestedPeriod"); }
         }
         
-        private List<Hl7.Fhir.Model.Period> _RequestedPeriod;
+        private List<Hl7.Fhir.Model.STU3.Period> _RequestedPeriod;
     
     
         public static ElementDefinitionConstraint Appointment_APP_3 = new ElementDefinitionConstraint
@@ -723,24 +723,24 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.AppointmentStatus>)StatusElement.DeepCopy();
-                if(ServiceCategory != null) dest.ServiceCategory = (Hl7.Fhir.Model.CodeableConcept)ServiceCategory.DeepCopy();
-                if(ServiceType != null) dest.ServiceType = new List<Hl7.Fhir.Model.CodeableConcept>(ServiceType.DeepCopy());
-                if(Specialty != null) dest.Specialty = new List<Hl7.Fhir.Model.CodeableConcept>(Specialty.DeepCopy());
-                if(AppointmentType != null) dest.AppointmentType = (Hl7.Fhir.Model.CodeableConcept)AppointmentType.DeepCopy();
-                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.CodeableConcept>(Reason.DeepCopy());
+                if(ServiceCategory != null) dest.ServiceCategory = (Hl7.Fhir.Model.STU3.CodeableConcept)ServiceCategory.DeepCopy();
+                if(ServiceType != null) dest.ServiceType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ServiceType.DeepCopy());
+                if(Specialty != null) dest.Specialty = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Specialty.DeepCopy());
+                if(AppointmentType != null) dest.AppointmentType = (Hl7.Fhir.Model.STU3.CodeableConcept)AppointmentType.DeepCopy();
+                if(Reason != null) dest.Reason = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Reason.DeepCopy());
                 if(Indication != null) dest.Indication = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Indication.DeepCopy());
-                if(PriorityElement != null) dest.PriorityElement = (Hl7.Fhir.Model.UnsignedInt)PriorityElement.DeepCopy();
+                if(PriorityElement != null) dest.PriorityElement = (Hl7.Fhir.Model.STU3.UnsignedInt)PriorityElement.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(SupportingInformation != null) dest.SupportingInformation = new List<Hl7.Fhir.Model.STU3.ResourceReference>(SupportingInformation.DeepCopy());
                 if(StartElement != null) dest.StartElement = (Hl7.Fhir.Model.Instant)StartElement.DeepCopy();
                 if(EndElement != null) dest.EndElement = (Hl7.Fhir.Model.Instant)EndElement.DeepCopy();
-                if(MinutesDurationElement != null) dest.MinutesDurationElement = (Hl7.Fhir.Model.PositiveInt)MinutesDurationElement.DeepCopy();
+                if(MinutesDurationElement != null) dest.MinutesDurationElement = (Hl7.Fhir.Model.STU3.PositiveInt)MinutesDurationElement.DeepCopy();
                 if(Slot != null) dest.Slot = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Slot.DeepCopy());
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)CreatedElement.DeepCopy();
                 if(CommentElement != null) dest.CommentElement = (Hl7.Fhir.Model.FhirString)CommentElement.DeepCopy();
                 if(IncomingReferral != null) dest.IncomingReferral = new List<Hl7.Fhir.Model.STU3.ResourceReference>(IncomingReferral.DeepCopy());
                 if(Participant != null) dest.Participant = new List<ParticipantComponent>(Participant.DeepCopy());
-                if(RequestedPeriod != null) dest.RequestedPeriod = new List<Hl7.Fhir.Model.Period>(RequestedPeriod.DeepCopy());
+                if(RequestedPeriod != null) dest.RequestedPeriod = new List<Hl7.Fhir.Model.STU3.Period>(RequestedPeriod.DeepCopy());
                 return dest;
             }
             else

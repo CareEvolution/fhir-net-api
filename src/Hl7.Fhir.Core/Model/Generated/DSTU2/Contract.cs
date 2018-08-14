@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Contract", IsResource=true)]
     [DataContract]
-    public partial class Contract : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Contract : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Contract; } }
@@ -84,13 +84,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("role", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Role
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Role
             {
-                get { if(_Role==null) _Role = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Role; }
+                get { if(_Role==null) _Role = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Role;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Role;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -100,7 +100,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Entity != null) dest.Entity = (Hl7.Fhir.Model.DSTU2.ResourceReference)Entity.DeepCopy();
-                    if(Role != null) dest.Role = new List<Hl7.Fhir.Model.CodeableConcept>(Role.DeepCopy());
+                    if(Role != null) dest.Role = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Role.DeepCopy());
                     return dest;
                 }
                 else
@@ -175,7 +175,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("entity", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Entity
             {
@@ -203,13 +203,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("effectiveTime", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime EffectiveTimeElement
+            public Hl7.Fhir.Model.DSTU2.FhirDateTime EffectiveTimeElement
             {
                 get { return _EffectiveTimeElement; }
                 set { _EffectiveTimeElement = value; OnPropertyChanged("EffectiveTimeElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _EffectiveTimeElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDateTime _EffectiveTimeElement;
             
             /// <summary>
             /// Contract Valued Item Effective Tiem
@@ -225,7 +225,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         EffectiveTimeElement = null;
                     else
-                        EffectiveTimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        EffectiveTimeElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                     OnPropertyChanged("EffectiveTime");
                 }
             }
@@ -235,13 +235,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("quantity", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Contract Valued Item fee, charge, or cost
@@ -261,13 +261,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("factor", Order=90)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal FactorElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal FactorElement
             {
                 get { return _FactorElement; }
                 set { _FactorElement = value; OnPropertyChanged("FactorElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _FactorElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _FactorElement;
             
             /// <summary>
             /// Contract Valued Item Price Scaling Factor
@@ -283,7 +283,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         FactorElement = null;
                     else
-                        FactorElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        FactorElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Factor");
                 }
             }
@@ -293,13 +293,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("points", Order=100)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PointsElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PointsElement
             {
                 get { return _PointsElement; }
                 set { _PointsElement = value; OnPropertyChanged("PointsElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PointsElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PointsElement;
             
             /// <summary>
             /// Contract Valued Item Difficulty Scaling Factor
@@ -315,7 +315,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PointsElement = null;
                     else
-                        PointsElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PointsElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Points");
                 }
             }
@@ -342,11 +342,11 @@ namespace Hl7.Fhir.Model.DSTU2
                     base.CopyTo(dest);
                     if(Entity != null) dest.Entity = (Hl7.Fhir.Model.Element)Entity.DeepCopy();
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
-                    if(EffectiveTimeElement != null) dest.EffectiveTimeElement = (Hl7.Fhir.Model.FhirDateTime)EffectiveTimeElement.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(EffectiveTimeElement != null) dest.EffectiveTimeElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)EffectiveTimeElement.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     if(UnitPrice != null) dest.UnitPrice = (Hl7.Fhir.Model.DSTU2.Money)UnitPrice.DeepCopy();
-                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.FhirDecimal)FactorElement.DeepCopy();
-                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.FhirDecimal)PointsElement.DeepCopy();
+                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)FactorElement.DeepCopy();
+                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PointsElement.DeepCopy();
                     if(Net != null) dest.Net = (Hl7.Fhir.Model.DSTU2.Money)Net.DeepCopy();
                     return dest;
                 }
@@ -447,13 +447,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("type", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Coding Type
+            public Hl7.Fhir.Model.DSTU2.Coding Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.Coding _Type;
+            private Hl7.Fhir.Model.DSTU2.Coding _Type;
             
             /// <summary>
             /// Contract Signatory Party
@@ -511,7 +511,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.Coding)Type.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.Coding)Type.DeepCopy();
                     if(Party != null) dest.Party = (Hl7.Fhir.Model.DSTU2.ResourceReference)Party.DeepCopy();
                     if(SignatureElement != null) dest.SignatureElement = (Hl7.Fhir.Model.FhirString)SignatureElement.DeepCopy();
                     return dest;
@@ -607,13 +607,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("issued", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime IssuedElement
+            public Hl7.Fhir.Model.DSTU2.FhirDateTime IssuedElement
             {
                 get { return _IssuedElement; }
                 set { _IssuedElement = value; OnPropertyChanged("IssuedElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _IssuedElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDateTime _IssuedElement;
             
             /// <summary>
             /// Contract Term Issue Date Time
@@ -629,7 +629,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         IssuedElement = null;
                     else
-                        IssuedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        IssuedElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                     OnPropertyChanged("Issued");
                 }
             }
@@ -640,39 +640,39 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("applies", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=60)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Applies
+            public Hl7.Fhir.Model.DSTU2.Period Applies
             {
                 get { return _Applies; }
                 set { _Applies = value; OnPropertyChanged("Applies"); }
             }
             
-            private Hl7.Fhir.Model.Period _Applies;
+            private Hl7.Fhir.Model.DSTU2.Period _Applies;
             
             /// <summary>
             /// Contract Term Type
             /// </summary>
             [FhirElement("type", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Type
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Type;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
             
             /// <summary>
             /// Contract Term Subtype
             /// </summary>
             [FhirElement("subType", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept SubType
+            public Hl7.Fhir.Model.DSTU2.CodeableConcept SubType
             {
                 get { return _SubType; }
                 set { _SubType = value; OnPropertyChanged("SubType"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _SubType;
+            private Hl7.Fhir.Model.DSTU2.CodeableConcept _SubType;
             
             /// <summary>
             /// Subject of this Contract Term
@@ -693,13 +693,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("action", Order=100)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Action
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Action
             {
-                get { if(_Action==null) _Action = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Action; }
+                get { if(_Action==null) _Action = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Action; }
                 set { _Action = value; OnPropertyChanged("Action"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Action;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Action;
             
             /// <summary>
             /// Contract Term Action Reason
@@ -707,13 +707,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("actionReason", Order=110)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> ActionReason
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> ActionReason
             {
-                get { if(_ActionReason==null) _ActionReason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ActionReason; }
+                get { if(_ActionReason==null) _ActionReason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _ActionReason; }
                 set { _ActionReason = value; OnPropertyChanged("ActionReason"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _ActionReason;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _ActionReason;
             
             /// <summary>
             /// Contract Term Actor List
@@ -797,13 +797,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
-                    if(IssuedElement != null) dest.IssuedElement = (Hl7.Fhir.Model.FhirDateTime)IssuedElement.DeepCopy();
-                    if(Applies != null) dest.Applies = (Hl7.Fhir.Model.Period)Applies.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                    if(SubType != null) dest.SubType = (Hl7.Fhir.Model.CodeableConcept)SubType.DeepCopy();
+                    if(IssuedElement != null) dest.IssuedElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)IssuedElement.DeepCopy();
+                    if(Applies != null) dest.Applies = (Hl7.Fhir.Model.DSTU2.Period)Applies.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
+                    if(SubType != null) dest.SubType = (Hl7.Fhir.Model.DSTU2.CodeableConcept)SubType.DeepCopy();
                     if(Subject != null) dest.Subject = (Hl7.Fhir.Model.DSTU2.ResourceReference)Subject.DeepCopy();
-                    if(Action != null) dest.Action = new List<Hl7.Fhir.Model.CodeableConcept>(Action.DeepCopy());
-                    if(ActionReason != null) dest.ActionReason = new List<Hl7.Fhir.Model.CodeableConcept>(ActionReason.DeepCopy());
+                    if(Action != null) dest.Action = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Action.DeepCopy());
+                    if(ActionReason != null) dest.ActionReason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(ActionReason.DeepCopy());
                     if(Actor != null) dest.Actor = new List<TermActorComponent>(Actor.DeepCopy());
                     if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
                     if(ValuedItem != null) dest.ValuedItem = new List<TermValuedItemComponent>(ValuedItem.DeepCopy());
@@ -939,13 +939,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("role", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Role
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Role
             {
-                get { if(_Role==null) _Role = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Role; }
+                get { if(_Role==null) _Role = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Role;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Role;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -955,7 +955,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(Entity != null) dest.Entity = (Hl7.Fhir.Model.DSTU2.ResourceReference)Entity.DeepCopy();
-                    if(Role != null) dest.Role = new List<Hl7.Fhir.Model.CodeableConcept>(Role.DeepCopy());
+                    if(Role != null) dest.Role = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Role.DeepCopy());
                     return dest;
                 }
                 else
@@ -1030,7 +1030,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("entity", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.CodeableConcept),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Entity
             {
@@ -1058,13 +1058,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("effectiveTime", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime EffectiveTimeElement
+            public Hl7.Fhir.Model.DSTU2.FhirDateTime EffectiveTimeElement
             {
                 get { return _EffectiveTimeElement; }
                 set { _EffectiveTimeElement = value; OnPropertyChanged("EffectiveTimeElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDateTime _EffectiveTimeElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDateTime _EffectiveTimeElement;
             
             /// <summary>
             /// Contract Term Valued Item Effective Tiem
@@ -1080,7 +1080,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         EffectiveTimeElement = null;
                     else
-                        EffectiveTimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        EffectiveTimeElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                     OnPropertyChanged("EffectiveTime");
                 }
             }
@@ -1090,13 +1090,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("quantity", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Quantity
+            public Hl7.Fhir.Model.DSTU2.SimpleQuantity Quantity
             {
                 get { return _Quantity; }
                 set { _Quantity = value; OnPropertyChanged("Quantity"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Quantity;
+            private Hl7.Fhir.Model.DSTU2.SimpleQuantity _Quantity;
             
             /// <summary>
             /// Contract Term Valued Item fee, charge, or cost
@@ -1116,13 +1116,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("factor", Order=90)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal FactorElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal FactorElement
             {
                 get { return _FactorElement; }
                 set { _FactorElement = value; OnPropertyChanged("FactorElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _FactorElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _FactorElement;
             
             /// <summary>
             /// Contract Term Valued Item Price Scaling Factor
@@ -1138,7 +1138,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         FactorElement = null;
                     else
-                        FactorElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        FactorElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Factor");
                 }
             }
@@ -1148,13 +1148,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("points", Order=100)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal PointsElement
+            public Hl7.Fhir.Model.DSTU2.FhirDecimal PointsElement
             {
                 get { return _PointsElement; }
                 set { _PointsElement = value; OnPropertyChanged("PointsElement"); }
             }
             
-            private Hl7.Fhir.Model.FhirDecimal _PointsElement;
+            private Hl7.Fhir.Model.DSTU2.FhirDecimal _PointsElement;
             
             /// <summary>
             /// Contract Term Valued Item Difficulty Scaling Factor
@@ -1170,7 +1170,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PointsElement = null;
                     else
-                        PointsElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        PointsElement = new Hl7.Fhir.Model.DSTU2.FhirDecimal(value);
                     OnPropertyChanged("Points");
                 }
             }
@@ -1197,11 +1197,11 @@ namespace Hl7.Fhir.Model.DSTU2
                     base.CopyTo(dest);
                     if(Entity != null) dest.Entity = (Hl7.Fhir.Model.Element)Entity.DeepCopy();
                     if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
-                    if(EffectiveTimeElement != null) dest.EffectiveTimeElement = (Hl7.Fhir.Model.FhirDateTime)EffectiveTimeElement.DeepCopy();
-                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.SimpleQuantity)Quantity.DeepCopy();
+                    if(EffectiveTimeElement != null) dest.EffectiveTimeElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)EffectiveTimeElement.DeepCopy();
+                    if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.DSTU2.SimpleQuantity)Quantity.DeepCopy();
                     if(UnitPrice != null) dest.UnitPrice = (Hl7.Fhir.Model.DSTU2.Money)UnitPrice.DeepCopy();
-                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.FhirDecimal)FactorElement.DeepCopy();
-                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.FhirDecimal)PointsElement.DeepCopy();
+                    if(FactorElement != null) dest.FactorElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)FactorElement.DeepCopy();
+                    if(PointsElement != null) dest.PointsElement = (Hl7.Fhir.Model.DSTU2.FhirDecimal)PointsElement.DeepCopy();
                     if(Net != null) dest.Net = (Hl7.Fhir.Model.DSTU2.Money)Net.DeepCopy();
                     return dest;
                 }
@@ -1301,7 +1301,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Content
@@ -1390,7 +1390,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Content
@@ -1479,7 +1479,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Hl7.Fhir.Model.Element Content
@@ -1576,13 +1576,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("issued", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=100)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime IssuedElement
+        public Hl7.Fhir.Model.DSTU2.FhirDateTime IssuedElement
         {
             get { return _IssuedElement; }
             set { _IssuedElement = value; OnPropertyChanged("IssuedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _IssuedElement;
+        private Hl7.Fhir.Model.DSTU2.FhirDateTime _IssuedElement;
         
         /// <summary>
         /// When this Contract was issued
@@ -1598,7 +1598,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     IssuedElement = null;
                 else
-                    IssuedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    IssuedElement = new Hl7.Fhir.Model.DSTU2.FhirDateTime(value);
                 OnPropertyChanged("Issued");
             }
         }
@@ -1609,13 +1609,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("applies", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Applies
+        public Hl7.Fhir.Model.DSTU2.Period Applies
         {
             get { return _Applies; }
             set { _Applies = value; OnPropertyChanged("Applies"); }
         }
         
-        private Hl7.Fhir.Model.Period _Applies;
+        private Hl7.Fhir.Model.DSTU2.Period _Applies;
         
         /// <summary>
         /// Subject of this Contract
@@ -1670,13 +1670,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// Contract Subtype
@@ -1685,13 +1685,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> SubType
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> SubType
         {
-            get { if(_SubType==null) _SubType = new List<Hl7.Fhir.Model.CodeableConcept>(); return _SubType; }
+            get { if(_SubType==null) _SubType = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _SubType; }
             set { _SubType = value; OnPropertyChanged("SubType"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _SubType;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _SubType;
         
         /// <summary>
         /// Contract Action
@@ -1699,13 +1699,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("action", Order=170)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Action
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Action
         {
-            get { if(_Action==null) _Action = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Action; }
+            get { if(_Action==null) _Action = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Action; }
             set { _Action = value; OnPropertyChanged("Action"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Action;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Action;
         
         /// <summary>
         /// Contract Action Reason
@@ -1713,13 +1713,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("actionReason", Order=180)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ActionReason
+        public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> ActionReason
         {
-            get { if(_ActionReason==null) _ActionReason = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ActionReason; }
+            get { if(_ActionReason==null) _ActionReason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _ActionReason; }
             set { _ActionReason = value; OnPropertyChanged("ActionReason"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ActionReason;
+        private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _ActionReason;
         
         /// <summary>
         /// Contract Actor
@@ -1782,7 +1782,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("binding", Order=230, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.DSTU2.Attachment),typeof(Hl7.Fhir.Model.DSTU2.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Binding
         {
@@ -1843,15 +1843,15 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.DSTU2.Identifier)Identifier.DeepCopy();
-                if(IssuedElement != null) dest.IssuedElement = (Hl7.Fhir.Model.FhirDateTime)IssuedElement.DeepCopy();
-                if(Applies != null) dest.Applies = (Hl7.Fhir.Model.Period)Applies.DeepCopy();
+                if(IssuedElement != null) dest.IssuedElement = (Hl7.Fhir.Model.DSTU2.FhirDateTime)IssuedElement.DeepCopy();
+                if(Applies != null) dest.Applies = (Hl7.Fhir.Model.DSTU2.Period)Applies.DeepCopy();
                 if(Subject != null) dest.Subject = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Subject.DeepCopy());
                 if(Authority != null) dest.Authority = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Authority.DeepCopy());
                 if(Domain != null) dest.Domain = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Domain.DeepCopy());
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(SubType != null) dest.SubType = new List<Hl7.Fhir.Model.CodeableConcept>(SubType.DeepCopy());
-                if(Action != null) dest.Action = new List<Hl7.Fhir.Model.CodeableConcept>(Action.DeepCopy());
-                if(ActionReason != null) dest.ActionReason = new List<Hl7.Fhir.Model.CodeableConcept>(ActionReason.DeepCopy());
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
+                if(SubType != null) dest.SubType = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(SubType.DeepCopy());
+                if(Action != null) dest.Action = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Action.DeepCopy());
+                if(ActionReason != null) dest.ActionReason = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(ActionReason.DeepCopy());
                 if(Actor != null) dest.Actor = new List<ActorComponent>(Actor.DeepCopy());
                 if(ValuedItem != null) dest.ValuedItem = new List<ValuedItemComponent>(ValuedItem.DeepCopy());
                 if(Signer != null) dest.Signer = new List<SignatoryComponent>(Signer.DeepCopy());

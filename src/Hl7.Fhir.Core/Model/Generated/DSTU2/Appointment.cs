@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Appointment", IsResource=true)]
     [DataContract]
-    public partial class Appointment : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Appointment : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Appointment; } }
@@ -69,13 +69,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Type
+            public List<Hl7.Fhir.Model.DSTU2.CodeableConcept> Type
             {
-                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Type; }
+                get { if(_Type==null) _Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(); return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Type;
+            private List<Hl7.Fhir.Model.DSTU2.CodeableConcept> _Type;
             
             /// <summary>
             /// Person, Location/HealthcareService or Device
@@ -165,7 +165,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.CodeableConcept>(Type.DeepCopy());
+                    if(Type != null) dest.Type = new List<Hl7.Fhir.Model.DSTU2.CodeableConcept>(Type.DeepCopy());
                     if(Actor != null) dest.Actor = (Hl7.Fhir.Model.DSTU2.ResourceReference)Actor.DeepCopy();
                     if(RequiredElement != null) dest.RequiredElement = (Code<Hl7.Fhir.Model.ParticipantRequired>)RequiredElement.DeepCopy();
                     if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.ParticipationStatus>)StatusElement.DeepCopy();
@@ -294,13 +294,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Type;
         
         /// <summary>
         /// Reason this appointment is scheduled
@@ -308,26 +308,26 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("reason", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Reason
+        public Hl7.Fhir.Model.DSTU2.CodeableConcept Reason
         {
             get { return _Reason; }
             set { _Reason = value; OnPropertyChanged("Reason"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Reason;
+        private Hl7.Fhir.Model.DSTU2.CodeableConcept _Reason;
         
         /// <summary>
         /// Used to make informed decisions if needing to re-prioritize
         /// </summary>
         [FhirElement("priority", Order=130)]
         [DataMember]
-        public Hl7.Fhir.Model.UnsignedInt PriorityElement
+        public Hl7.Fhir.Model.DSTU2.UnsignedInt PriorityElement
         {
             get { return _PriorityElement; }
             set { _PriorityElement = value; OnPropertyChanged("PriorityElement"); }
         }
         
-        private Hl7.Fhir.Model.UnsignedInt _PriorityElement;
+        private Hl7.Fhir.Model.DSTU2.UnsignedInt _PriorityElement;
         
         /// <summary>
         /// Used to make informed decisions if needing to re-prioritize
@@ -343,7 +343,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     PriorityElement = null;
                 else
-                    PriorityElement = new Hl7.Fhir.Model.UnsignedInt(value);
+                    PriorityElement = new Hl7.Fhir.Model.DSTU2.UnsignedInt(value);
                 OnPropertyChanged("Priority");
             }
         }
@@ -451,13 +451,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("minutesDuration", Order=170)]
         [DataMember]
-        public Hl7.Fhir.Model.PositiveInt MinutesDurationElement
+        public Hl7.Fhir.Model.DSTU2.PositiveInt MinutesDurationElement
         {
             get { return _MinutesDurationElement; }
             set { _MinutesDurationElement = value; OnPropertyChanged("MinutesDurationElement"); }
         }
         
-        private Hl7.Fhir.Model.PositiveInt _MinutesDurationElement;
+        private Hl7.Fhir.Model.DSTU2.PositiveInt _MinutesDurationElement;
         
         /// <summary>
         /// Can be less than start/end (e.g. estimate)
@@ -473,7 +473,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     MinutesDurationElement = null;
                 else
-                    MinutesDurationElement = new Hl7.Fhir.Model.PositiveInt(value);
+                    MinutesDurationElement = new Hl7.Fhir.Model.DSTU2.PositiveInt(value);
                 OnPropertyChanged("MinutesDuration");
             }
         }
@@ -586,13 +586,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.DSTU2.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.AppointmentStatus>)StatusElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(Reason != null) dest.Reason = (Hl7.Fhir.Model.CodeableConcept)Reason.DeepCopy();
-                if(PriorityElement != null) dest.PriorityElement = (Hl7.Fhir.Model.UnsignedInt)PriorityElement.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Type.DeepCopy();
+                if(Reason != null) dest.Reason = (Hl7.Fhir.Model.DSTU2.CodeableConcept)Reason.DeepCopy();
+                if(PriorityElement != null) dest.PriorityElement = (Hl7.Fhir.Model.DSTU2.UnsignedInt)PriorityElement.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(StartElement != null) dest.StartElement = (Hl7.Fhir.Model.Instant)StartElement.DeepCopy();
                 if(EndElement != null) dest.EndElement = (Hl7.Fhir.Model.Instant)EndElement.DeepCopy();
-                if(MinutesDurationElement != null) dest.MinutesDurationElement = (Hl7.Fhir.Model.PositiveInt)MinutesDurationElement.DeepCopy();
+                if(MinutesDurationElement != null) dest.MinutesDurationElement = (Hl7.Fhir.Model.DSTU2.PositiveInt)MinutesDurationElement.DeepCopy();
                 if(Slot != null) dest.Slot = new List<Hl7.Fhir.Model.DSTU2.ResourceReference>(Slot.DeepCopy());
                 if(CommentElement != null) dest.CommentElement = (Hl7.Fhir.Model.FhirString)CommentElement.DeepCopy();
                 if(Participant != null) dest.Participant = new List<ParticipantComponent>(Participant.DeepCopy());

@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Subscription", IsResource=true)]
     [DataContract]
-    public partial class Subscription : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Subscription : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Subscription; } }
@@ -482,13 +482,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Tag
+        public List<Hl7.Fhir.Model.DSTU2.Coding> Tag
         {
-            get { if(_Tag==null) _Tag = new List<Hl7.Fhir.Model.Coding>(); return _Tag; }
+            get { if(_Tag==null) _Tag = new List<Hl7.Fhir.Model.DSTU2.Coding>(); return _Tag; }
             set { _Tag = value; OnPropertyChanged("Tag"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _Tag;
+        private List<Hl7.Fhir.Model.DSTU2.Coding> _Tag;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -505,7 +505,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(ErrorElement != null) dest.ErrorElement = (Hl7.Fhir.Model.FhirString)ErrorElement.DeepCopy();
                 if(Channel != null) dest.Channel = (ChannelComponent)Channel.DeepCopy();
                 if(EndElement != null) dest.EndElement = (Hl7.Fhir.Model.Instant)EndElement.DeepCopy();
-                if(Tag != null) dest.Tag = new List<Hl7.Fhir.Model.Coding>(Tag.DeepCopy());
+                if(Tag != null) dest.Tag = new List<Hl7.Fhir.Model.DSTU2.Coding>(Tag.DeepCopy());
                 return dest;
             }
             else

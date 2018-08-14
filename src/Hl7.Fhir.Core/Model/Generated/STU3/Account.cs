@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Account", IsResource=true)]
     [DataContract]
-    public partial class Account : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Account : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Account; } }
@@ -84,13 +84,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("priority", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.PositiveInt PriorityElement
+            public Hl7.Fhir.Model.STU3.PositiveInt PriorityElement
             {
                 get { return _PriorityElement; }
                 set { _PriorityElement = value; OnPropertyChanged("PriorityElement"); }
             }
             
-            private Hl7.Fhir.Model.PositiveInt _PriorityElement;
+            private Hl7.Fhir.Model.STU3.PositiveInt _PriorityElement;
             
             /// <summary>
             /// The priority of the coverage in the context of this account
@@ -106,7 +106,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         PriorityElement = null;
                     else
-                        PriorityElement = new Hl7.Fhir.Model.PositiveInt(value);
+                        PriorityElement = new Hl7.Fhir.Model.STU3.PositiveInt(value);
                     OnPropertyChanged("Priority");
                 }
             }
@@ -119,7 +119,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(Coverage != null) dest.Coverage = (Hl7.Fhir.Model.STU3.ResourceReference)Coverage.DeepCopy();
-                    if(PriorityElement != null) dest.PriorityElement = (Hl7.Fhir.Model.PositiveInt)PriorityElement.DeepCopy();
+                    if(PriorityElement != null) dest.PriorityElement = (Hl7.Fhir.Model.STU3.PositiveInt)PriorityElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -242,13 +242,13 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("period", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.STU3.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.STU3.Period _Period;
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -259,7 +259,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if(Party != null) dest.Party = (Hl7.Fhir.Model.STU3.ResourceReference)Party.DeepCopy();
                     if(OnHoldElement != null) dest.OnHoldElement = (Hl7.Fhir.Model.FhirBoolean)OnHoldElement.DeepCopy();
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                     return dest;
                 }
                 else
@@ -380,13 +380,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("type", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public Hl7.Fhir.Model.STU3.CodeableConcept Type
         {
             get { return _Type; }
             set { _Type = value; OnPropertyChanged("Type"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Type;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
         
         /// <summary>
         /// Human-readable label
@@ -442,13 +442,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
         
         /// <summary>
         /// Time window that transactions may be posted to this account
@@ -456,13 +456,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("active", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Active
+        public Hl7.Fhir.Model.STU3.Period Active
         {
             get { return _Active; }
             set { _Active = value; OnPropertyChanged("Active"); }
         }
         
-        private Hl7.Fhir.Model.Period _Active;
+        private Hl7.Fhir.Model.STU3.Period _Active;
         
         /// <summary>
         /// How much is in account?
@@ -564,11 +564,11 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.AccountStatus>)StatusElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
+                if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
                 if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
-                if(Active != null) dest.Active = (Hl7.Fhir.Model.Period)Active.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
+                if(Active != null) dest.Active = (Hl7.Fhir.Model.STU3.Period)Active.DeepCopy();
                 if(Balance != null) dest.Balance = (Hl7.Fhir.Model.STU3.Money)Balance.DeepCopy();
                 if(Coverage != null) dest.Coverage = new List<CoverageComponent>(Coverage.DeepCopy());
                 if(Owner != null) dest.Owner = (Hl7.Fhir.Model.STU3.ResourceReference)Owner.DeepCopy();

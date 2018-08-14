@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Consent", IsResource=true)]
     [DataContract]
-    public partial class Consent : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Consent : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Consent; } }
@@ -68,13 +68,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("role", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Role
+            public Hl7.Fhir.Model.STU3.CodeableConcept Role
             {
                 get { return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Role;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Role;
             
             /// <summary>
             /// Resource for the actor (or group, by role)
@@ -99,7 +99,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Role != null) dest.Role = (Hl7.Fhir.Model.CodeableConcept)Role.DeepCopy();
+                    if(Role != null) dest.Role = (Hl7.Fhir.Model.STU3.CodeableConcept)Role.DeepCopy();
                     if(Reference != null) dest.Reference = (Hl7.Fhir.Model.STU3.ResourceReference)Reference.DeepCopy();
                     return dest;
                 }
@@ -479,13 +479,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Period Period
+            public Hl7.Fhir.Model.STU3.Period Period
             {
                 get { return _Period; }
                 set { _Period = value; OnPropertyChanged("Period"); }
             }
             
-            private Hl7.Fhir.Model.Period _Period;
+            private Hl7.Fhir.Model.STU3.Period _Period;
             
             /// <summary>
             /// Who|what controlled by this exception (or group, by role)
@@ -509,13 +509,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Action
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> Action
             {
-                get { if(_Action==null) _Action = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Action; }
+                get { if(_Action==null) _Action = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Action; }
                 set { _Action = value; OnPropertyChanged("Action"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _Action;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Action;
             
             /// <summary>
             /// Security Labels that define affected resources
@@ -524,13 +524,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> SecurityLabel
+            public List<Hl7.Fhir.Model.STU3.Coding> SecurityLabel
             {
-                get { if(_SecurityLabel==null) _SecurityLabel = new List<Hl7.Fhir.Model.Coding>(); return _SecurityLabel; }
+                get { if(_SecurityLabel==null) _SecurityLabel = new List<Hl7.Fhir.Model.STU3.Coding>(); return _SecurityLabel; }
                 set { _SecurityLabel = value; OnPropertyChanged("SecurityLabel"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _SecurityLabel;
+            private List<Hl7.Fhir.Model.STU3.Coding> _SecurityLabel;
             
             /// <summary>
             /// Context of activities covered by this exception
@@ -539,13 +539,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Purpose
+            public List<Hl7.Fhir.Model.STU3.Coding> Purpose
             {
-                get { if(_Purpose==null) _Purpose = new List<Hl7.Fhir.Model.Coding>(); return _Purpose; }
+                get { if(_Purpose==null) _Purpose = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Purpose; }
                 set { _Purpose = value; OnPropertyChanged("Purpose"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Purpose;
+            private List<Hl7.Fhir.Model.STU3.Coding> _Purpose;
             
             /// <summary>
             /// e.g. Resource Type, Profile, or CDA etc
@@ -554,13 +554,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Class
+            public List<Hl7.Fhir.Model.STU3.Coding> Class
             {
-                get { if(_Class==null) _Class = new List<Hl7.Fhir.Model.Coding>(); return _Class; }
+                get { if(_Class==null) _Class = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Class; }
                 set { _Class = value; OnPropertyChanged("Class"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Class;
+            private List<Hl7.Fhir.Model.STU3.Coding> _Class;
             
             /// <summary>
             /// e.g. LOINC or SNOMED CT code, etc in the content
@@ -569,13 +569,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Coding> Code
+            public List<Hl7.Fhir.Model.STU3.Coding> Code
             {
-                get { if(_Code==null) _Code = new List<Hl7.Fhir.Model.Coding>(); return _Code; }
+                get { if(_Code==null) _Code = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private List<Hl7.Fhir.Model.Coding> _Code;
+            private List<Hl7.Fhir.Model.STU3.Coding> _Code;
             
             /// <summary>
             /// Timeframe for data controlled by this exception
@@ -583,13 +583,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("dataPeriod", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
             [CLSCompliant(false)]
             [DataMember]
-            public Hl7.Fhir.Model.Period DataPeriod
+            public Hl7.Fhir.Model.STU3.Period DataPeriod
             {
                 get { return _DataPeriod; }
                 set { _DataPeriod = value; OnPropertyChanged("DataPeriod"); }
             }
             
-            private Hl7.Fhir.Model.Period _DataPeriod;
+            private Hl7.Fhir.Model.STU3.Period _DataPeriod;
             
             /// <summary>
             /// Data controlled by this exception
@@ -614,14 +614,14 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.STU3.ConsentExceptType>)TypeElement.DeepCopy();
-                    if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                    if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                     if(Actor != null) dest.Actor = new List<ExceptActorComponent>(Actor.DeepCopy());
-                    if(Action != null) dest.Action = new List<Hl7.Fhir.Model.CodeableConcept>(Action.DeepCopy());
-                    if(SecurityLabel != null) dest.SecurityLabel = new List<Hl7.Fhir.Model.Coding>(SecurityLabel.DeepCopy());
-                    if(Purpose != null) dest.Purpose = new List<Hl7.Fhir.Model.Coding>(Purpose.DeepCopy());
-                    if(Class != null) dest.Class = new List<Hl7.Fhir.Model.Coding>(Class.DeepCopy());
-                    if(Code != null) dest.Code = new List<Hl7.Fhir.Model.Coding>(Code.DeepCopy());
-                    if(DataPeriod != null) dest.DataPeriod = (Hl7.Fhir.Model.Period)DataPeriod.DeepCopy();
+                    if(Action != null) dest.Action = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Action.DeepCopy());
+                    if(SecurityLabel != null) dest.SecurityLabel = new List<Hl7.Fhir.Model.STU3.Coding>(SecurityLabel.DeepCopy());
+                    if(Purpose != null) dest.Purpose = new List<Hl7.Fhir.Model.STU3.Coding>(Purpose.DeepCopy());
+                    if(Class != null) dest.Class = new List<Hl7.Fhir.Model.STU3.Coding>(Class.DeepCopy());
+                    if(Code != null) dest.Code = new List<Hl7.Fhir.Model.STU3.Coding>(Code.DeepCopy());
+                    if(DataPeriod != null) dest.DataPeriod = (Hl7.Fhir.Model.STU3.Period)DataPeriod.DeepCopy();
                     if(Data != null) dest.Data = new List<ExceptDataComponent>(Data.DeepCopy());
                     return dest;
                 }
@@ -730,13 +730,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("role", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Role
+            public Hl7.Fhir.Model.STU3.CodeableConcept Role
             {
                 get { return _Role; }
                 set { _Role = value; OnPropertyChanged("Role"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Role;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Role;
             
             /// <summary>
             /// Resource for the actor (or group, by role)
@@ -761,7 +761,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Role != null) dest.Role = (Hl7.Fhir.Model.CodeableConcept)Role.DeepCopy();
+                    if(Role != null) dest.Role = (Hl7.Fhir.Model.STU3.CodeableConcept)Role.DeepCopy();
                     if(Reference != null) dest.Reference = (Hl7.Fhir.Model.STU3.ResourceReference)Reference.DeepCopy();
                     return dest;
                 }
@@ -1007,13 +1007,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Category
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Category
         {
-            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Category; }
+            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Category;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Category;
         
         /// <summary>
         /// Who the consent applies to
@@ -1037,13 +1037,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("period", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
         
         /// <summary>
         /// When this Consent was created or indexed
@@ -1051,13 +1051,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("dateTime", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=140)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateTimeElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime DateTimeElement
         {
             get { return _DateTimeElement; }
             set { _DateTimeElement = value; OnPropertyChanged("DateTimeElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _DateTimeElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _DateTimeElement;
         
         /// <summary>
         /// When this Consent was created or indexed
@@ -1073,7 +1073,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     DateTimeElement = null;
                 else
-                    DateTimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateTimeElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("DateTime");
             }
         }
@@ -1116,13 +1116,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Action
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Action
         {
-            get { if(_Action==null) _Action = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Action; }
+            get { if(_Action==null) _Action = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Action; }
             set { _Action = value; OnPropertyChanged("Action"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Action;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Action;
         
         /// <summary>
         /// Custodian of the consent
@@ -1145,7 +1145,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("source", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.STU3.Identifier),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Attachment),typeof(Hl7.Fhir.Model.STU3.Identifier),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Source
         {
@@ -1209,13 +1209,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> SecurityLabel
+        public List<Hl7.Fhir.Model.STU3.Coding> SecurityLabel
         {
-            get { if(_SecurityLabel==null) _SecurityLabel = new List<Hl7.Fhir.Model.Coding>(); return _SecurityLabel; }
+            get { if(_SecurityLabel==null) _SecurityLabel = new List<Hl7.Fhir.Model.STU3.Coding>(); return _SecurityLabel; }
             set { _SecurityLabel = value; OnPropertyChanged("SecurityLabel"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _SecurityLabel;
+        private List<Hl7.Fhir.Model.STU3.Coding> _SecurityLabel;
         
         /// <summary>
         /// Context of activities for which the agreement is made
@@ -1224,13 +1224,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Purpose
+        public List<Hl7.Fhir.Model.STU3.Coding> Purpose
         {
-            get { if(_Purpose==null) _Purpose = new List<Hl7.Fhir.Model.Coding>(); return _Purpose; }
+            get { if(_Purpose==null) _Purpose = new List<Hl7.Fhir.Model.STU3.Coding>(); return _Purpose; }
             set { _Purpose = value; OnPropertyChanged("Purpose"); }
         }
         
-        private List<Hl7.Fhir.Model.Coding> _Purpose;
+        private List<Hl7.Fhir.Model.STU3.Coding> _Purpose;
         
         /// <summary>
         /// Timeframe for data controlled by this consent
@@ -1238,13 +1238,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("dataPeriod", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=240)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period DataPeriod
+        public Hl7.Fhir.Model.STU3.Period DataPeriod
         {
             get { return _DataPeriod; }
             set { _DataPeriod = value; OnPropertyChanged("DataPeriod"); }
         }
         
-        private Hl7.Fhir.Model.Period _DataPeriod;
+        private Hl7.Fhir.Model.STU3.Period _DataPeriod;
         
         /// <summary>
         /// Data controlled by this consent
@@ -1302,20 +1302,20 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.ConsentState>)StatusElement.DeepCopy();
-                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.CodeableConcept>(Category.DeepCopy());
+                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Category.DeepCopy());
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.STU3.ResourceReference)Patient.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
-                if(DateTimeElement != null) dest.DateTimeElement = (Hl7.Fhir.Model.FhirDateTime)DateTimeElement.DeepCopy();
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
+                if(DateTimeElement != null) dest.DateTimeElement = (Hl7.Fhir.Model.STU3.FhirDateTime)DateTimeElement.DeepCopy();
                 if(ConsentingParty != null) dest.ConsentingParty = new List<Hl7.Fhir.Model.STU3.ResourceReference>(ConsentingParty.DeepCopy());
                 if(Actor != null) dest.Actor = new List<ActorComponent>(Actor.DeepCopy());
-                if(Action != null) dest.Action = new List<Hl7.Fhir.Model.CodeableConcept>(Action.DeepCopy());
+                if(Action != null) dest.Action = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Action.DeepCopy());
                 if(Organization != null) dest.Organization = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Organization.DeepCopy());
                 if(Source != null) dest.Source = (Hl7.Fhir.Model.Element)Source.DeepCopy();
                 if(Policy != null) dest.Policy = new List<PolicyComponent>(Policy.DeepCopy());
                 if(PolicyRuleElement != null) dest.PolicyRuleElement = (Hl7.Fhir.Model.FhirUri)PolicyRuleElement.DeepCopy();
-                if(SecurityLabel != null) dest.SecurityLabel = new List<Hl7.Fhir.Model.Coding>(SecurityLabel.DeepCopy());
-                if(Purpose != null) dest.Purpose = new List<Hl7.Fhir.Model.Coding>(Purpose.DeepCopy());
-                if(DataPeriod != null) dest.DataPeriod = (Hl7.Fhir.Model.Period)DataPeriod.DeepCopy();
+                if(SecurityLabel != null) dest.SecurityLabel = new List<Hl7.Fhir.Model.STU3.Coding>(SecurityLabel.DeepCopy());
+                if(Purpose != null) dest.Purpose = new List<Hl7.Fhir.Model.STU3.Coding>(Purpose.DeepCopy());
+                if(DataPeriod != null) dest.DataPeriod = (Hl7.Fhir.Model.STU3.Period)DataPeriod.DeepCopy();
                 if(Data != null) dest.Data = new List<DataComponent>(Data.DeepCopy());
                 if(Except != null) dest.Except = new List<ExceptComponent>(Except.DeepCopy());
                 return dest;

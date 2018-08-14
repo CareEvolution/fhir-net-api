@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Schedule", IsResource=true)]
     [DataContract]
-    public partial class Schedule : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Schedule : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Schedule; } }
@@ -109,13 +109,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("serviceCategory", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept ServiceCategory
+        public Hl7.Fhir.Model.STU3.CodeableConcept ServiceCategory
         {
             get { return _ServiceCategory; }
             set { _ServiceCategory = value; OnPropertyChanged("ServiceCategory"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _ServiceCategory;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _ServiceCategory;
         
         /// <summary>
         /// The specific service that is to be performed during this appointment
@@ -124,13 +124,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ServiceType
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> ServiceType
         {
-            get { if(_ServiceType==null) _ServiceType = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ServiceType; }
+            get { if(_ServiceType==null) _ServiceType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _ServiceType; }
             set { _ServiceType = value; OnPropertyChanged("ServiceType"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _ServiceType;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _ServiceType;
         
         /// <summary>
         /// The specialty of a practitioner that would be required to perform the service requested in this appointment
@@ -139,13 +139,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Specialty
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Specialty
         {
-            get { if(_Specialty==null) _Specialty = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Specialty; }
+            get { if(_Specialty==null) _Specialty = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Specialty; }
             set { _Specialty = value; OnPropertyChanged("Specialty"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Specialty;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Specialty;
         
         /// <summary>
         /// The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, PractitionerRole, Device, Patient or RelatedPerson
@@ -169,13 +169,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("planningHorizon", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=150)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Period PlanningHorizon
+        public Hl7.Fhir.Model.STU3.Period PlanningHorizon
         {
             get { return _PlanningHorizon; }
             set { _PlanningHorizon = value; OnPropertyChanged("PlanningHorizon"); }
         }
         
-        private Hl7.Fhir.Model.Period _PlanningHorizon;
+        private Hl7.Fhir.Model.STU3.Period _PlanningHorizon;
         
         /// <summary>
         /// Comments on the availability to describe any extended information. Such as custom constraints on the slots that may be associated
@@ -219,11 +219,11 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(ActiveElement != null) dest.ActiveElement = (Hl7.Fhir.Model.FhirBoolean)ActiveElement.DeepCopy();
-                if(ServiceCategory != null) dest.ServiceCategory = (Hl7.Fhir.Model.CodeableConcept)ServiceCategory.DeepCopy();
-                if(ServiceType != null) dest.ServiceType = new List<Hl7.Fhir.Model.CodeableConcept>(ServiceType.DeepCopy());
-                if(Specialty != null) dest.Specialty = new List<Hl7.Fhir.Model.CodeableConcept>(Specialty.DeepCopy());
+                if(ServiceCategory != null) dest.ServiceCategory = (Hl7.Fhir.Model.STU3.CodeableConcept)ServiceCategory.DeepCopy();
+                if(ServiceType != null) dest.ServiceType = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(ServiceType.DeepCopy());
+                if(Specialty != null) dest.Specialty = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Specialty.DeepCopy());
                 if(Actor != null) dest.Actor = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Actor.DeepCopy());
-                if(PlanningHorizon != null) dest.PlanningHorizon = (Hl7.Fhir.Model.Period)PlanningHorizon.DeepCopy();
+                if(PlanningHorizon != null) dest.PlanningHorizon = (Hl7.Fhir.Model.STU3.Period)PlanningHorizon.DeepCopy();
                 if(CommentElement != null) dest.CommentElement = (Hl7.Fhir.Model.FhirString)CommentElement.DeepCopy();
                 return dest;
             }

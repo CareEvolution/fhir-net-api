@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "EligibilityRequest", IsResource=true)]
     [DataContract]
-    public partial class EligibilityRequest : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class EligibilityRequest : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.EligibilityRequest; } }
@@ -107,13 +107,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("priority", Order=110)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Priority
+        public Hl7.Fhir.Model.STU3.CodeableConcept Priority
         {
             get { return _Priority; }
             set { _Priority = value; OnPropertyChanged("Priority"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Priority;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Priority;
         
         /// <summary>
         /// The subject of the Products and Services
@@ -135,7 +135,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("serviced", Order=130, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Date),typeof(Hl7.Fhir.Model.STU3.Period))]
         [DataMember]
         public Hl7.Fhir.Model.Element Serviced
         {
@@ -150,13 +150,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("created", Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime CreatedElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime CreatedElement
         {
             get { return _CreatedElement; }
             set { _CreatedElement = value; OnPropertyChanged("CreatedElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _CreatedElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _CreatedElement;
         
         /// <summary>
         /// Creation date
@@ -172,7 +172,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     CreatedElement = null;
                 else
-                    CreatedElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    CreatedElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("Created");
             }
         }
@@ -304,26 +304,26 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("benefitCategory", Order=220)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept BenefitCategory
+        public Hl7.Fhir.Model.STU3.CodeableConcept BenefitCategory
         {
             get { return _BenefitCategory; }
             set { _BenefitCategory = value; OnPropertyChanged("BenefitCategory"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _BenefitCategory;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _BenefitCategory;
         
         /// <summary>
         /// Detailed services covered within the type
         /// </summary>
         [FhirElement("benefitSubCategory", Order=230)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept BenefitSubCategory
+        public Hl7.Fhir.Model.STU3.CodeableConcept BenefitSubCategory
         {
             get { return _BenefitSubCategory; }
             set { _BenefitSubCategory = value; OnPropertyChanged("BenefitSubCategory"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _BenefitSubCategory;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _BenefitSubCategory;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -335,10 +335,10 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.FinancialResourceStatusCodes>)StatusElement.DeepCopy();
-                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.CodeableConcept)Priority.DeepCopy();
+                if(Priority != null) dest.Priority = (Hl7.Fhir.Model.STU3.CodeableConcept)Priority.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.STU3.ResourceReference)Patient.DeepCopy();
                 if(Serviced != null) dest.Serviced = (Hl7.Fhir.Model.Element)Serviced.DeepCopy();
-                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.FhirDateTime)CreatedElement.DeepCopy();
+                if(CreatedElement != null) dest.CreatedElement = (Hl7.Fhir.Model.STU3.FhirDateTime)CreatedElement.DeepCopy();
                 if(Enterer != null) dest.Enterer = (Hl7.Fhir.Model.STU3.ResourceReference)Enterer.DeepCopy();
                 if(Provider != null) dest.Provider = (Hl7.Fhir.Model.STU3.ResourceReference)Provider.DeepCopy();
                 if(Organization != null) dest.Organization = (Hl7.Fhir.Model.STU3.ResourceReference)Organization.DeepCopy();
@@ -346,8 +346,8 @@ namespace Hl7.Fhir.Model.STU3
                 if(Facility != null) dest.Facility = (Hl7.Fhir.Model.STU3.ResourceReference)Facility.DeepCopy();
                 if(Coverage != null) dest.Coverage = (Hl7.Fhir.Model.STU3.ResourceReference)Coverage.DeepCopy();
                 if(BusinessArrangementElement != null) dest.BusinessArrangementElement = (Hl7.Fhir.Model.FhirString)BusinessArrangementElement.DeepCopy();
-                if(BenefitCategory != null) dest.BenefitCategory = (Hl7.Fhir.Model.CodeableConcept)BenefitCategory.DeepCopy();
-                if(BenefitSubCategory != null) dest.BenefitSubCategory = (Hl7.Fhir.Model.CodeableConcept)BenefitSubCategory.DeepCopy();
+                if(BenefitCategory != null) dest.BenefitCategory = (Hl7.Fhir.Model.STU3.CodeableConcept)BenefitCategory.DeepCopy();
+                if(BenefitSubCategory != null) dest.BenefitSubCategory = (Hl7.Fhir.Model.STU3.CodeableConcept)BenefitSubCategory.DeepCopy();
                 return dest;
             }
             else

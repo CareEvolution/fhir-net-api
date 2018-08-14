@@ -45,10 +45,12 @@ namespace Hl7.Fhir.Model.STU3
     /// <summary>
     /// An amount of economic utility in some recognized currency
     /// </summary>
-    [FhirType(Hl7.Fhir.Model.Version.STU3, "Money")]
+    [FhirType(Hl7.Fhir.Model.Version.STU3, "Money", IsResource=true)]
     [DataContract]
-    public partial class Money : Hl7.Fhir.Model.Quantity, System.ComponentModel.INotifyPropertyChanged
+    public partial class Money : Hl7.Fhir.Model.STU3.Quantity, System.ComponentModel.INotifyPropertyChanged
     {
+        [NotMapped]
+        public override ResourceType ResourceType { get { return ResourceType.Money; } }
         [NotMapped]
         public override string TypeName { get { return "Money"; } }
     
@@ -63,7 +65,12 @@ namespace Hl7.Fhir.Model.STU3
             Xpath = "(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:iso:std:iso:4217')"
         };
     
-        // TODO: Add code to enforce the above constraints
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+    
+            InvariantConstraints.Add(Money_MNY_1);
+        }
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {

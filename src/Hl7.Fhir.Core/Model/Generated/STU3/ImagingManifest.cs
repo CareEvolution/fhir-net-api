@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "ImagingManifest", IsResource=true)]
     [DataContract]
-    public partial class ImagingManifest : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class ImagingManifest : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.ImagingManifest; } }
@@ -69,13 +69,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Oid UidElement
+            public Hl7.Fhir.Model.STU3.Oid UidElement
             {
                 get { return _UidElement; }
                 set { _UidElement = value; OnPropertyChanged("UidElement"); }
             }
             
-            private Hl7.Fhir.Model.Oid _UidElement;
+            private Hl7.Fhir.Model.STU3.Oid _UidElement;
             
             /// <summary>
             /// Study instance UID
@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         UidElement = null;
                     else
-                        UidElement = new Hl7.Fhir.Model.Oid(value);
+                        UidElement = new Hl7.Fhir.Model.STU3.Oid(value);
                     OnPropertyChanged("Uid");
                 }
             }
@@ -149,7 +149,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(UidElement != null) dest.UidElement = (Hl7.Fhir.Model.Oid)UidElement.DeepCopy();
+                    if(UidElement != null) dest.UidElement = (Hl7.Fhir.Model.STU3.Oid)UidElement.DeepCopy();
                     if(ImagingStudy != null) dest.ImagingStudy = (Hl7.Fhir.Model.STU3.ResourceReference)ImagingStudy.DeepCopy();
                     if(Endpoint != null) dest.Endpoint = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Endpoint.DeepCopy());
                     if(Series != null) dest.Series = new List<SeriesComponent>(Series.DeepCopy());
@@ -237,13 +237,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Oid UidElement
+            public Hl7.Fhir.Model.STU3.Oid UidElement
             {
                 get { return _UidElement; }
                 set { _UidElement = value; OnPropertyChanged("UidElement"); }
             }
             
-            private Hl7.Fhir.Model.Oid _UidElement;
+            private Hl7.Fhir.Model.STU3.Oid _UidElement;
             
             /// <summary>
             /// Series instance UID
@@ -259,7 +259,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         UidElement = null;
                     else
-                        UidElement = new Hl7.Fhir.Model.Oid(value);
+                        UidElement = new Hl7.Fhir.Model.STU3.Oid(value);
                     OnPropertyChanged("Uid");
                 }
             }
@@ -302,7 +302,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(UidElement != null) dest.UidElement = (Hl7.Fhir.Model.Oid)UidElement.DeepCopy();
+                    if(UidElement != null) dest.UidElement = (Hl7.Fhir.Model.STU3.Oid)UidElement.DeepCopy();
                     if(Endpoint != null) dest.Endpoint = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Endpoint.DeepCopy());
                     if(Instance != null) dest.Instance = new List<InstanceComponent>(Instance.DeepCopy());
                     return dest;
@@ -385,13 +385,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Oid SopClassElement
+            public Hl7.Fhir.Model.STU3.Oid SopClassElement
             {
                 get { return _SopClassElement; }
                 set { _SopClassElement = value; OnPropertyChanged("SopClassElement"); }
             }
             
-            private Hl7.Fhir.Model.Oid _SopClassElement;
+            private Hl7.Fhir.Model.STU3.Oid _SopClassElement;
             
             /// <summary>
             /// SOP class UID of instance
@@ -407,7 +407,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         SopClassElement = null;
                     else
-                        SopClassElement = new Hl7.Fhir.Model.Oid(value);
+                        SopClassElement = new Hl7.Fhir.Model.STU3.Oid(value);
                     OnPropertyChanged("SopClass");
                 }
             }
@@ -419,13 +419,13 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Oid UidElement
+            public Hl7.Fhir.Model.STU3.Oid UidElement
             {
                 get { return _UidElement; }
                 set { _UidElement = value; OnPropertyChanged("UidElement"); }
             }
             
-            private Hl7.Fhir.Model.Oid _UidElement;
+            private Hl7.Fhir.Model.STU3.Oid _UidElement;
             
             /// <summary>
             /// Selected instance UID
@@ -441,7 +441,7 @@ namespace Hl7.Fhir.Model.STU3
                     if (value == null)
                         UidElement = null;
                     else
-                        UidElement = new Hl7.Fhir.Model.Oid(value);
+                        UidElement = new Hl7.Fhir.Model.STU3.Oid(value);
                     OnPropertyChanged("Uid");
                 }
             }
@@ -453,8 +453,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(SopClassElement != null) dest.SopClassElement = (Hl7.Fhir.Model.Oid)SopClassElement.DeepCopy();
-                    if(UidElement != null) dest.UidElement = (Hl7.Fhir.Model.Oid)UidElement.DeepCopy();
+                    if(SopClassElement != null) dest.SopClassElement = (Hl7.Fhir.Model.STU3.Oid)SopClassElement.DeepCopy();
+                    if(UidElement != null) dest.UidElement = (Hl7.Fhir.Model.STU3.Oid)UidElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -553,13 +553,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("authoringTime", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=110)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime AuthoringTimeElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime AuthoringTimeElement
         {
             get { return _AuthoringTimeElement; }
             set { _AuthoringTimeElement = value; OnPropertyChanged("AuthoringTimeElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _AuthoringTimeElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _AuthoringTimeElement;
         
         /// <summary>
         /// Time when the selection of instances was made
@@ -575,7 +575,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     AuthoringTimeElement = null;
                 else
-                    AuthoringTimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    AuthoringTimeElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("AuthoringTime");
             }
         }
@@ -653,7 +653,7 @@ namespace Hl7.Fhir.Model.STU3
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.STU3.ResourceReference)Patient.DeepCopy();
-                if(AuthoringTimeElement != null) dest.AuthoringTimeElement = (Hl7.Fhir.Model.FhirDateTime)AuthoringTimeElement.DeepCopy();
+                if(AuthoringTimeElement != null) dest.AuthoringTimeElement = (Hl7.Fhir.Model.STU3.FhirDateTime)AuthoringTimeElement.DeepCopy();
                 if(Author != null) dest.Author = (Hl7.Fhir.Model.STU3.ResourceReference)Author.DeepCopy();
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
                 if(Study != null) dest.Study = new List<StudyComponent>(Study.DeepCopy());

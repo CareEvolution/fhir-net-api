@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Person", IsResource=true)]
     [DataContract]
-    public partial class Person : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Person : Hl7.Fhir.Model.DSTU2.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Person; } }
@@ -264,13 +264,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("birthDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=130)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Date BirthDateElement
+        public Hl7.Fhir.Model.DSTU2.Date BirthDateElement
         {
             get { return _BirthDateElement; }
             set { _BirthDateElement = value; OnPropertyChanged("BirthDateElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _BirthDateElement;
+        private Hl7.Fhir.Model.DSTU2.Date _BirthDateElement;
         
         /// <summary>
         /// The date on which the person was born
@@ -286,7 +286,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     BirthDateElement = null;
                 else
-                    BirthDateElement = new Hl7.Fhir.Model.Date(value);
+                    BirthDateElement = new Hl7.Fhir.Model.DSTU2.Date(value);
                 OnPropertyChanged("BirthDate");
             }
         }
@@ -297,26 +297,26 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("address", Order=140)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Address> Address
+        public List<Hl7.Fhir.Model.DSTU2.Address> Address
         {
-            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.Address>(); return _Address; }
+            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.DSTU2.Address>(); return _Address; }
             set { _Address = value; OnPropertyChanged("Address"); }
         }
         
-        private List<Hl7.Fhir.Model.Address> _Address;
+        private List<Hl7.Fhir.Model.DSTU2.Address> _Address;
         
         /// <summary>
         /// Image of the person
         /// </summary>
         [FhirElement("photo", Order=150)]
         [DataMember]
-        public Hl7.Fhir.Model.Attachment Photo
+        public Hl7.Fhir.Model.DSTU2.Attachment Photo
         {
             get { return _Photo; }
             set { _Photo = value; OnPropertyChanged("Photo"); }
         }
         
-        private Hl7.Fhir.Model.Attachment _Photo;
+        private Hl7.Fhir.Model.DSTU2.Attachment _Photo;
         
         /// <summary>
         /// The organization that is the custodian of the person record
@@ -392,9 +392,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Name != null) dest.Name = new List<Hl7.Fhir.Model.DSTU2.HumanName>(Name.DeepCopy());
                 if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.DSTU2.ContactPoint>(Telecom.DeepCopy());
                 if(GenderElement != null) dest.GenderElement = (Code<Hl7.Fhir.Model.AdministrativeGender>)GenderElement.DeepCopy();
-                if(BirthDateElement != null) dest.BirthDateElement = (Hl7.Fhir.Model.Date)BirthDateElement.DeepCopy();
-                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.Address>(Address.DeepCopy());
-                if(Photo != null) dest.Photo = (Hl7.Fhir.Model.Attachment)Photo.DeepCopy();
+                if(BirthDateElement != null) dest.BirthDateElement = (Hl7.Fhir.Model.DSTU2.Date)BirthDateElement.DeepCopy();
+                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.DSTU2.Address>(Address.DeepCopy());
+                if(Photo != null) dest.Photo = (Hl7.Fhir.Model.DSTU2.Attachment)Photo.DeepCopy();
                 if(ManagingOrganization != null) dest.ManagingOrganization = (Hl7.Fhir.Model.DSTU2.ResourceReference)ManagingOrganization.DeepCopy();
                 if(ActiveElement != null) dest.ActiveElement = (Hl7.Fhir.Model.FhirBoolean)ActiveElement.DeepCopy();
                 if(Link != null) dest.Link = new List<LinkComponent>(Link.DeepCopy());

@@ -38,7 +38,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v1.0.2, v3.0.1
+// Generated for FHIR v1.0.2, v3.3.0, v3.0.1
 //
 namespace Hl7.Fhir.Model
 {
@@ -1847,7 +1847,6 @@ namespace Hl7.Fhir.Model
         Planned,
         /// <summary>
         /// The patient is currently at this location, or was between the period specified.<br/>
-        /// <br/>
         /// A system may update these records when the patient leaves the location to either reserved, or completed
         /// (system: http://hl7.org/fhir/encounter-location-status)
         /// </summary>
@@ -1861,7 +1860,6 @@ namespace Hl7.Fhir.Model
         Reserved,
         /// <summary>
         /// The patient was at this location during the period specified.<br/>
-        /// <br/>
         /// Not to be used when the patient is currently at the location
         /// (system: http://hl7.org/fhir/encounter-location-status)
         /// </summary>
@@ -2906,7 +2904,6 @@ namespace Hl7.Fhir.Model
 
     /// <summary>
     /// The type of direction to use for assertion.<br/>
-    /// <br/>
     /// The direction to use for assertions.
     /// (url: http://hl7.org/fhir/ValueSet/assert-direction-codes)
     /// </summary>
@@ -2929,7 +2926,6 @@ namespace Hl7.Fhir.Model
 
     /// <summary>
     /// The type of response code to use for assertion.<br/>
-    /// <br/>
     /// The response code to expect in the response.
     /// (url: http://hl7.org/fhir/ValueSet/assert-response-code-types)
     /// </summary>
@@ -3255,7 +3251,6 @@ namespace Hl7.Fhir.Model
 
     /// <summary>
     /// The use of an address<br/>
-    /// <br/>
     /// The use of an address (home / work / etc.).
     /// (url: http://hl7.org/fhir/ValueSet/address-use)
     /// </summary>
@@ -3290,7 +3285,6 @@ namespace Hl7.Fhir.Model
 
     /// <summary>
     /// The type of an address (physical / postal)<br/>
-    /// <br/>
     /// The type of an address (physical / postal).
     /// (url: http://hl7.org/fhir/ValueSet/address-type)
     /// </summary>
@@ -3450,6 +3444,7 @@ namespace Hl7.Fhir.Model
     public enum Version
     {
         DSTU2,
+        R4,
         STU3,
         All,
     }

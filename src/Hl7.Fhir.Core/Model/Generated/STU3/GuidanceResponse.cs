@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "GuidanceResponse", IsResource=true)]
     [DataContract]
-    public partial class GuidanceResponse : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class GuidanceResponse : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.GuidanceResponse; } }
@@ -61,13 +61,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("requestId", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=90)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Id RequestIdElement
+        public Hl7.Fhir.Model.STU3.Id RequestIdElement
         {
             get { return _RequestIdElement; }
             set { _RequestIdElement = value; OnPropertyChanged("RequestIdElement"); }
         }
         
-        private Hl7.Fhir.Model.Id _RequestIdElement;
+        private Hl7.Fhir.Model.STU3.Id _RequestIdElement;
         
         /// <summary>
         /// The id of the request associated with this response, if any
@@ -83,7 +83,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     RequestIdElement = null;
                 else
-                    RequestIdElement = new Hl7.Fhir.Model.Id(value);
+                    RequestIdElement = new Hl7.Fhir.Model.STU3.Id(value);
                 OnPropertyChanged("RequestId");
             }
         }
@@ -187,13 +187,13 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("occurrenceDateTime", Order=150)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime OccurrenceDateTimeElement
+        public Hl7.Fhir.Model.STU3.FhirDateTime OccurrenceDateTimeElement
         {
             get { return _OccurrenceDateTimeElement; }
             set { _OccurrenceDateTimeElement = value; OnPropertyChanged("OccurrenceDateTimeElement"); }
         }
         
-        private Hl7.Fhir.Model.FhirDateTime _OccurrenceDateTimeElement;
+        private Hl7.Fhir.Model.STU3.FhirDateTime _OccurrenceDateTimeElement;
         
         /// <summary>
         /// When the guidance response was processed
@@ -209,7 +209,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     OccurrenceDateTimeElement = null;
                 else
-                    OccurrenceDateTimeElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    OccurrenceDateTimeElement = new Hl7.Fhir.Model.STU3.FhirDateTime(value);
                 OnPropertyChanged("OccurrenceDateTime");
             }
         }
@@ -234,7 +234,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("reason", Order=170, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.STU3.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Reason
         {
@@ -250,13 +250,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=180)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Messages resulting from the evaluation of the artifact or artifacts
@@ -326,16 +326,16 @@ namespace Hl7.Fhir.Model.STU3
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(RequestIdElement != null) dest.RequestIdElement = (Hl7.Fhir.Model.Id)RequestIdElement.DeepCopy();
+                if(RequestIdElement != null) dest.RequestIdElement = (Hl7.Fhir.Model.STU3.Id)RequestIdElement.DeepCopy();
                 if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.STU3.Identifier)Identifier.DeepCopy();
                 if(Module != null) dest.Module = (Hl7.Fhir.Model.STU3.ResourceReference)Module.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.GuidanceResponseStatus>)StatusElement.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
-                if(OccurrenceDateTimeElement != null) dest.OccurrenceDateTimeElement = (Hl7.Fhir.Model.FhirDateTime)OccurrenceDateTimeElement.DeepCopy();
+                if(OccurrenceDateTimeElement != null) dest.OccurrenceDateTimeElement = (Hl7.Fhir.Model.STU3.FhirDateTime)OccurrenceDateTimeElement.DeepCopy();
                 if(Performer != null) dest.Performer = (Hl7.Fhir.Model.STU3.ResourceReference)Performer.DeepCopy();
                 if(Reason != null) dest.Reason = (Hl7.Fhir.Model.Element)Reason.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(EvaluationMessage != null) dest.EvaluationMessage = new List<Hl7.Fhir.Model.STU3.ResourceReference>(EvaluationMessage.DeepCopy());
                 if(OutputParameters != null) dest.OutputParameters = (Hl7.Fhir.Model.STU3.ResourceReference)OutputParameters.DeepCopy();
                 if(Result != null) dest.Result = (Hl7.Fhir.Model.STU3.ResourceReference)Result.DeepCopy();

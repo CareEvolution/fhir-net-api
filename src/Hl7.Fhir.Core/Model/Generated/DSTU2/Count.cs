@@ -42,10 +42,12 @@ using Hl7.Fhir.Utility;
 //
 namespace Hl7.Fhir.Model.DSTU2
 {
-    [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Quantity")]
+    [FhirType(Hl7.Fhir.Model.Version.DSTU2, "Quantity", IsResource=true)]
     [DataContract]
-    public partial class Count : Hl7.Fhir.Model.Quantity, System.ComponentModel.INotifyPropertyChanged
+    public partial class Count : Hl7.Fhir.Model.DSTU2.Quantity, System.ComponentModel.INotifyPropertyChanged
     {
+        [NotMapped]
+        public override ResourceType ResourceType { get { return ResourceType.Count; } }
         [NotMapped]
         public override string TypeName { get { return "Count"; } }
     
@@ -60,7 +62,12 @@ namespace Hl7.Fhir.Model.DSTU2
             Xpath = "(f:code or not(f:value)) and (not(exists(f:system)) or (f:system/@value='http://unitsofmeasure.org' and f:code/@value='1')) and not(contains(f:value/@value, '.'))"
         };
     
-        // TODO: Add code to enforce the above constraints
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+    
+            InvariantConstraints.Add(Count_CNT_1);
+        }
     
         public override IDeepCopyable DeepCopy()
         {

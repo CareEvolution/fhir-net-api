@@ -45,10 +45,12 @@ namespace Hl7.Fhir.Model.STU3
     /// <summary>
     /// A duration of time during which an organism (or a process) has existed
     /// </summary>
-    [FhirType(Hl7.Fhir.Model.Version.STU3, "Age")]
+    [FhirType(Hl7.Fhir.Model.Version.STU3, "Age", IsResource=true)]
     [DataContract]
-    public partial class Age : Hl7.Fhir.Model.Quantity, System.ComponentModel.INotifyPropertyChanged
+    public partial class Age : Hl7.Fhir.Model.STU3.Quantity, System.ComponentModel.INotifyPropertyChanged
     {
+        [NotMapped]
+        public override ResourceType ResourceType { get { return ResourceType.Age; } }
         [NotMapped]
         public override string TypeName { get { return "Age"; } }
     
@@ -63,7 +65,12 @@ namespace Hl7.Fhir.Model.STU3
             Xpath = "(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org') and (not(f:value/@value) or f:value/@value >=0)"
         };
     
-        // TODO: Add code to enforce the above constraints
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+    
+            InvariantConstraints.Add(Age_AGE_1);
+        }
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {

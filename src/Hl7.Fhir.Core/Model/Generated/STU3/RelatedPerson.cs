@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "RelatedPerson", IsResource=true)]
     [DataContract]
-    public partial class RelatedPerson : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class RelatedPerson : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.RelatedPerson; } }
@@ -125,13 +125,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("relationship", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=120)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Relationship
+        public Hl7.Fhir.Model.STU3.CodeableConcept Relationship
         {
             get { return _Relationship; }
             set { _Relationship = value; OnPropertyChanged("Relationship"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Relationship;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Relationship;
         
         /// <summary>
         /// A name associated with the person
@@ -202,13 +202,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("birthDate", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160)]
         [CLSCompliant(false)]
         [DataMember]
-        public Hl7.Fhir.Model.Date BirthDateElement
+        public Hl7.Fhir.Model.STU3.Date BirthDateElement
         {
             get { return _BirthDateElement; }
             set { _BirthDateElement = value; OnPropertyChanged("BirthDateElement"); }
         }
         
-        private Hl7.Fhir.Model.Date _BirthDateElement;
+        private Hl7.Fhir.Model.STU3.Date _BirthDateElement;
         
         /// <summary>
         /// The date on which the related person was born
@@ -224,7 +224,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (value == null)
                     BirthDateElement = null;
                 else
-                    BirthDateElement = new Hl7.Fhir.Model.Date(value);
+                    BirthDateElement = new Hl7.Fhir.Model.STU3.Date(value);
                 OnPropertyChanged("BirthDate");
             }
         }
@@ -236,13 +236,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Address> Address
+        public List<Hl7.Fhir.Model.STU3.Address> Address
         {
-            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.Address>(); return _Address; }
+            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.STU3.Address>(); return _Address; }
             set { _Address = value; OnPropertyChanged("Address"); }
         }
         
-        private List<Hl7.Fhir.Model.Address> _Address;
+        private List<Hl7.Fhir.Model.STU3.Address> _Address;
         
         /// <summary>
         /// Image of the person
@@ -250,26 +250,26 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("photo", Order=180)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Attachment> Photo
+        public List<Hl7.Fhir.Model.STU3.Attachment> Photo
         {
-            get { if(_Photo==null) _Photo = new List<Hl7.Fhir.Model.Attachment>(); return _Photo; }
+            get { if(_Photo==null) _Photo = new List<Hl7.Fhir.Model.STU3.Attachment>(); return _Photo; }
             set { _Photo = value; OnPropertyChanged("Photo"); }
         }
         
-        private List<Hl7.Fhir.Model.Attachment> _Photo;
+        private List<Hl7.Fhir.Model.STU3.Attachment> _Photo;
         
         /// <summary>
         /// Period of time that this relationship is considered valid
         /// </summary>
         [FhirElement("period", Order=190)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Hl7.Fhir.Model.STU3.Period Period
         {
             get { return _Period; }
             set { _Period = value; OnPropertyChanged("Period"); }
         }
         
-        private Hl7.Fhir.Model.Period _Period;
+        private Hl7.Fhir.Model.STU3.Period _Period;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -282,14 +282,14 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(ActiveElement != null) dest.ActiveElement = (Hl7.Fhir.Model.FhirBoolean)ActiveElement.DeepCopy();
                 if(Patient != null) dest.Patient = (Hl7.Fhir.Model.STU3.ResourceReference)Patient.DeepCopy();
-                if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.CodeableConcept)Relationship.DeepCopy();
+                if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.STU3.CodeableConcept)Relationship.DeepCopy();
                 if(Name != null) dest.Name = new List<Hl7.Fhir.Model.STU3.HumanName>(Name.DeepCopy());
                 if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.STU3.ContactPoint>(Telecom.DeepCopy());
                 if(GenderElement != null) dest.GenderElement = (Code<Hl7.Fhir.Model.AdministrativeGender>)GenderElement.DeepCopy();
-                if(BirthDateElement != null) dest.BirthDateElement = (Hl7.Fhir.Model.Date)BirthDateElement.DeepCopy();
-                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.Address>(Address.DeepCopy());
-                if(Photo != null) dest.Photo = new List<Hl7.Fhir.Model.Attachment>(Photo.DeepCopy());
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
+                if(BirthDateElement != null) dest.BirthDateElement = (Hl7.Fhir.Model.STU3.Date)BirthDateElement.DeepCopy();
+                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.STU3.Address>(Address.DeepCopy());
+                if(Photo != null) dest.Photo = new List<Hl7.Fhir.Model.STU3.Attachment>(Photo.DeepCopy());
+                if(Period != null) dest.Period = (Hl7.Fhir.Model.STU3.Period)Period.DeepCopy();
                 return dest;
             }
             else

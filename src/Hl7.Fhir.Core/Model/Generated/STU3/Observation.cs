@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model.STU3
     /// </summary>
     [FhirType(Hl7.Fhir.Model.Version.STU3, "Observation", IsResource=true)]
     [DataContract]
-    public partial class Observation : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Observation : Hl7.Fhir.Model.STU3.DomainResource, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Observation; } }
@@ -67,39 +67,39 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("low", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity Low
+            public Hl7.Fhir.Model.STU3.SimpleQuantity Low
             {
                 get { return _Low; }
                 set { _Low = value; OnPropertyChanged("Low"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _Low;
+            private Hl7.Fhir.Model.STU3.SimpleQuantity _Low;
             
             /// <summary>
             /// High Range, if relevant
             /// </summary>
             [FhirElement("high", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.SimpleQuantity High
+            public Hl7.Fhir.Model.STU3.SimpleQuantity High
             {
                 get { return _High; }
                 set { _High = value; OnPropertyChanged("High"); }
             }
             
-            private Hl7.Fhir.Model.SimpleQuantity _High;
+            private Hl7.Fhir.Model.STU3.SimpleQuantity _High;
             
             /// <summary>
             /// Reference range qualifier
             /// </summary>
             [FhirElement("type", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Type
+            public Hl7.Fhir.Model.STU3.CodeableConcept Type
             {
                 get { return _Type; }
                 set { _Type = value; OnPropertyChanged("Type"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Type;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Type;
             
             /// <summary>
             /// Reference range population
@@ -107,26 +107,26 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("appliesTo", Order=70)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> AppliesTo
+            public List<Hl7.Fhir.Model.STU3.CodeableConcept> AppliesTo
             {
-                get { if(_AppliesTo==null) _AppliesTo = new List<Hl7.Fhir.Model.CodeableConcept>(); return _AppliesTo; }
+                get { if(_AppliesTo==null) _AppliesTo = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _AppliesTo; }
                 set { _AppliesTo = value; OnPropertyChanged("AppliesTo"); }
             }
             
-            private List<Hl7.Fhir.Model.CodeableConcept> _AppliesTo;
+            private List<Hl7.Fhir.Model.STU3.CodeableConcept> _AppliesTo;
             
             /// <summary>
             /// Applicable age range, if relevant
             /// </summary>
             [FhirElement("age", Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.Range Age
+            public Hl7.Fhir.Model.STU3.Range Age
             {
                 get { return _Age; }
                 set { _Age = value; OnPropertyChanged("Age"); }
             }
             
-            private Hl7.Fhir.Model.Range _Age;
+            private Hl7.Fhir.Model.STU3.Range _Age;
             
             /// <summary>
             /// Text based reference range in an observation
@@ -167,11 +167,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Low != null) dest.Low = (Hl7.Fhir.Model.SimpleQuantity)Low.DeepCopy();
-                    if(High != null) dest.High = (Hl7.Fhir.Model.SimpleQuantity)High.DeepCopy();
-                    if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                    if(AppliesTo != null) dest.AppliesTo = new List<Hl7.Fhir.Model.CodeableConcept>(AppliesTo.DeepCopy());
-                    if(Age != null) dest.Age = (Hl7.Fhir.Model.Range)Age.DeepCopy();
+                    if(Low != null) dest.Low = (Hl7.Fhir.Model.STU3.SimpleQuantity)Low.DeepCopy();
+                    if(High != null) dest.High = (Hl7.Fhir.Model.STU3.SimpleQuantity)High.DeepCopy();
+                    if(Type != null) dest.Type = (Hl7.Fhir.Model.STU3.CodeableConcept)Type.DeepCopy();
+                    if(AppliesTo != null) dest.AppliesTo = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(AppliesTo.DeepCopy());
+                    if(Age != null) dest.Age = (Hl7.Fhir.Model.STU3.Range)Age.DeepCopy();
                     if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
                     return dest;
                 }
@@ -391,20 +391,20 @@ namespace Hl7.Fhir.Model.STU3
             [CLSCompliant(false)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public Hl7.Fhir.Model.STU3.CodeableConcept Code
             {
                 get { return _Code; }
                 set { _Code = value; OnPropertyChanged("Code"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Code;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
             
             /// <summary>
             /// Actual component result
             /// </summary>
             [FhirElement("value", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.SampledData),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Quantity),typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.STU3.Range),typeof(Hl7.Fhir.Model.STU3.Ratio),typeof(Hl7.Fhir.Model.STU3.SampledData),typeof(Hl7.Fhir.Model.STU3.Attachment),typeof(Hl7.Fhir.Model.STU3.Time),typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
             [DataMember]
             public Hl7.Fhir.Model.Element Value
             {
@@ -419,26 +419,26 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("dataAbsentReason", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept DataAbsentReason
+            public Hl7.Fhir.Model.STU3.CodeableConcept DataAbsentReason
             {
                 get { return _DataAbsentReason; }
                 set { _DataAbsentReason = value; OnPropertyChanged("DataAbsentReason"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _DataAbsentReason;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _DataAbsentReason;
             
             /// <summary>
             /// High, low, normal, etc.
             /// </summary>
             [FhirElement("interpretation", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Interpretation
+            public Hl7.Fhir.Model.STU3.CodeableConcept Interpretation
             {
                 get { return _Interpretation; }
                 set { _Interpretation = value; OnPropertyChanged("Interpretation"); }
             }
             
-            private Hl7.Fhir.Model.CodeableConcept _Interpretation;
+            private Hl7.Fhir.Model.STU3.CodeableConcept _Interpretation;
             
             /// <summary>
             /// Provides guide for interpretation of component result
@@ -461,10 +461,10 @@ namespace Hl7.Fhir.Model.STU3
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                    if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
                     if(Value != null) dest.Value = (Hl7.Fhir.Model.Element)Value.DeepCopy();
-                    if(DataAbsentReason != null) dest.DataAbsentReason = (Hl7.Fhir.Model.CodeableConcept)DataAbsentReason.DeepCopy();
-                    if(Interpretation != null) dest.Interpretation = (Hl7.Fhir.Model.CodeableConcept)Interpretation.DeepCopy();
+                    if(DataAbsentReason != null) dest.DataAbsentReason = (Hl7.Fhir.Model.STU3.CodeableConcept)DataAbsentReason.DeepCopy();
+                    if(Interpretation != null) dest.Interpretation = (Hl7.Fhir.Model.STU3.CodeableConcept)Interpretation.DeepCopy();
                     if(ReferenceRange != null) dest.ReferenceRange = new List<ReferenceRangeComponent>(ReferenceRange.DeepCopy());
                     return dest;
                 }
@@ -611,13 +611,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("category", Order=120)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> Category
+        public List<Hl7.Fhir.Model.STU3.CodeableConcept> Category
         {
-            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Category; }
+            get { if(_Category==null) _Category = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(); return _Category; }
             set { _Category = value; OnPropertyChanged("Category"); }
         }
         
-        private List<Hl7.Fhir.Model.CodeableConcept> _Category;
+        private List<Hl7.Fhir.Model.STU3.CodeableConcept> _Category;
         
         /// <summary>
         /// Type of observation (code / type)
@@ -626,13 +626,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Code
+        public Hl7.Fhir.Model.STU3.CodeableConcept Code
         {
             get { return _Code; }
             set { _Code = value; OnPropertyChanged("Code"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Code;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Code;
         
         /// <summary>
         /// Who and/or what this is about
@@ -669,7 +669,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("effective", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=160, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
         [DataMember]
         public Hl7.Fhir.Model.Element Effective
         {
@@ -733,7 +733,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("value", InSummary=new[]{Hl7.Fhir.Model.Version.All}, Order=190, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.SampledData),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Period))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.STU3.Quantity),typeof(Hl7.Fhir.Model.STU3.CodeableConcept),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.STU3.Range),typeof(Hl7.Fhir.Model.STU3.Ratio),typeof(Hl7.Fhir.Model.STU3.SampledData),typeof(Hl7.Fhir.Model.STU3.Attachment),typeof(Hl7.Fhir.Model.STU3.Time),typeof(Hl7.Fhir.Model.STU3.FhirDateTime),typeof(Hl7.Fhir.Model.STU3.Period))]
         [DataMember]
         public Hl7.Fhir.Model.Element Value
         {
@@ -748,26 +748,26 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("dataAbsentReason", Order=200)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept DataAbsentReason
+        public Hl7.Fhir.Model.STU3.CodeableConcept DataAbsentReason
         {
             get { return _DataAbsentReason; }
             set { _DataAbsentReason = value; OnPropertyChanged("DataAbsentReason"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _DataAbsentReason;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _DataAbsentReason;
         
         /// <summary>
         /// High, low, normal, etc.
         /// </summary>
         [FhirElement("interpretation", Order=210)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Interpretation
+        public Hl7.Fhir.Model.STU3.CodeableConcept Interpretation
         {
             get { return _Interpretation; }
             set { _Interpretation = value; OnPropertyChanged("Interpretation"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Interpretation;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Interpretation;
         
         /// <summary>
         /// Comments about result
@@ -806,26 +806,26 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("bodySite", Order=230)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept BodySite
+        public Hl7.Fhir.Model.STU3.CodeableConcept BodySite
         {
             get { return _BodySite; }
             set { _BodySite = value; OnPropertyChanged("BodySite"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _BodySite;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _BodySite;
         
         /// <summary>
         /// How it was done
         /// </summary>
         [FhirElement("method", Order=240)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Method
+        public Hl7.Fhir.Model.STU3.CodeableConcept Method
         {
             get { return _Method; }
             set { _Method = value; OnPropertyChanged("Method"); }
         }
         
-        private Hl7.Fhir.Model.CodeableConcept _Method;
+        private Hl7.Fhir.Model.STU3.CodeableConcept _Method;
         
         /// <summary>
         /// Specimen used for this observation
@@ -948,19 +948,19 @@ namespace Hl7.Fhir.Model.STU3
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.STU3.Identifier>(Identifier.DeepCopy());
                 if(BasedOn != null) dest.BasedOn = new List<Hl7.Fhir.Model.STU3.ResourceReference>(BasedOn.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.STU3.ObservationStatus>)StatusElement.DeepCopy();
-                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.CodeableConcept>(Category.DeepCopy());
-                if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
+                if(Category != null) dest.Category = new List<Hl7.Fhir.Model.STU3.CodeableConcept>(Category.DeepCopy());
+                if(Code != null) dest.Code = (Hl7.Fhir.Model.STU3.CodeableConcept)Code.DeepCopy();
                 if(Subject != null) dest.Subject = (Hl7.Fhir.Model.STU3.ResourceReference)Subject.DeepCopy();
                 if(Context != null) dest.Context = (Hl7.Fhir.Model.STU3.ResourceReference)Context.DeepCopy();
                 if(Effective != null) dest.Effective = (Hl7.Fhir.Model.Element)Effective.DeepCopy();
                 if(IssuedElement != null) dest.IssuedElement = (Hl7.Fhir.Model.Instant)IssuedElement.DeepCopy();
                 if(Performer != null) dest.Performer = new List<Hl7.Fhir.Model.STU3.ResourceReference>(Performer.DeepCopy());
                 if(Value != null) dest.Value = (Hl7.Fhir.Model.Element)Value.DeepCopy();
-                if(DataAbsentReason != null) dest.DataAbsentReason = (Hl7.Fhir.Model.CodeableConcept)DataAbsentReason.DeepCopy();
-                if(Interpretation != null) dest.Interpretation = (Hl7.Fhir.Model.CodeableConcept)Interpretation.DeepCopy();
+                if(DataAbsentReason != null) dest.DataAbsentReason = (Hl7.Fhir.Model.STU3.CodeableConcept)DataAbsentReason.DeepCopy();
+                if(Interpretation != null) dest.Interpretation = (Hl7.Fhir.Model.STU3.CodeableConcept)Interpretation.DeepCopy();
                 if(CommentElement != null) dest.CommentElement = (Hl7.Fhir.Model.FhirString)CommentElement.DeepCopy();
-                if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.CodeableConcept)BodySite.DeepCopy();
-                if(Method != null) dest.Method = (Hl7.Fhir.Model.CodeableConcept)Method.DeepCopy();
+                if(BodySite != null) dest.BodySite = (Hl7.Fhir.Model.STU3.CodeableConcept)BodySite.DeepCopy();
+                if(Method != null) dest.Method = (Hl7.Fhir.Model.STU3.CodeableConcept)Method.DeepCopy();
                 if(Specimen != null) dest.Specimen = (Hl7.Fhir.Model.STU3.ResourceReference)Specimen.DeepCopy();
                 if(Device != null) dest.Device = (Hl7.Fhir.Model.STU3.ResourceReference)Device.DeepCopy();
                 if(ReferenceRange != null) dest.ReferenceRange = new List<ReferenceRangeComponent>(ReferenceRange.DeepCopy());
