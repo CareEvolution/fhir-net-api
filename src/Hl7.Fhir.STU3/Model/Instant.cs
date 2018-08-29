@@ -31,7 +31,7 @@
 using System;
 using Hl7.FhirPath;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public partial class Instant : INullableValue<DateTimeOffset>
     {

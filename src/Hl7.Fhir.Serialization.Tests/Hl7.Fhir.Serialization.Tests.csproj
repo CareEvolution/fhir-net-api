@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hl7.Fhir.Core\Hl7.Fhir.Core.csproj" />
+    <ProjectReference Include="..\Hl7.Fhir.STU3\Hl7.Fhir.STU3.csproj" />
     <ProjectReference Include="..\Hl7.Fhir.Specification\Hl7.Fhir.Specification.csproj" />
     <ProjectReference Include="..\Hl7.Fhir.Support\Hl7.Fhir.Support.csproj" />
   </ItemGroup>
@@ -50,10 +50,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\Hl7.Fhir.Core.Tests\TestData\examples-json.zip" Link="TestData\examples-json.zip">
+    <None Include="..\Hl7.Fhir.STU3.Tests\TestData\examples-json.zip" Link="TestData\examples-json.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\Hl7.Fhir.Core.Tests\TestData\examples.zip" Link="TestData\examples.zip">
+    <None Include="..\Hl7.Fhir.STU3.Tests\TestData\examples.zip" Link="TestData\examples.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

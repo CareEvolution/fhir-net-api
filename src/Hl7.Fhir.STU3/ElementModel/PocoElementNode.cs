@@ -9,12 +9,13 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification.STU3;
 using Hl7.Fhir.Specification;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.STU3
 {
     internal class PocoElementNode : ITypedElement, IAnnotated, IExceptionSource, IShortPathGenerator
     {
@@ -116,21 +117,21 @@ namespace Hl7.Fhir.ElementModel
                     {
                         case string s:
                             return s;
-                        case Hl7.Fhir.Model.Instant ins:
+                        case Instant ins:
                             return ins.ToPartialDateTime();
-                        case Hl7.Fhir.Model.Time time:
+                        case Time time:
                             return time.ToTime();
-                        case Hl7.Fhir.Model.Date dt:
+                        case Date dt:
                             return dt.ToPartialDateTime();
                         case FhirDateTime fdt:
                             return fdt.ToPartialDateTime();
-                        case Hl7.Fhir.Model.Integer fint:
+                        case Integer fint:
                             return (long)fint.Value;
-                        case Hl7.Fhir.Model.PositiveInt pint:
+                        case PositiveInt pint:
                             return (long)pint.Value;
-                        case Hl7.Fhir.Model.UnsignedInt unsint:
+                        case UnsignedInt unsint:
                             return (long)unsint.Value;
-                        case Hl7.Fhir.Model.Base64Binary b64:
+                        case Base64Binary b64:
                             return b64.Value != null ? PrimitiveTypeConverter.ConvertTo<string>(b64.Value) : null;
                         case Primitive prim:
                             return prim.ObjectValue;

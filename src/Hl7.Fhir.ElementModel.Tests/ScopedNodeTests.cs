@@ -1,5 +1,8 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.ElementModel.STU3;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.STU3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

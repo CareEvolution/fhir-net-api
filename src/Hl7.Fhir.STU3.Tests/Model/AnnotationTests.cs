@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Rest.STU3;
 
 namespace Hl7.Fhir.Tests.Model
 {

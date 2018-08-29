@@ -10,9 +10,12 @@
 #define REUSE_SNAPSHOT_GENERATOR
 
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.STU3;
 using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.FhirPath.STU3;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.STU3;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Specification.Source;
@@ -439,14 +442,14 @@ namespace Hl7.Fhir.Validation
 
         internal OperationOutcome.IssueComponent Trace(OperationOutcome outcome, string message, Issue issue, string location)
         {
-            return Settings.Trace || issue.Severity != OperationOutcome.IssueSeverity.Information
+            return Settings.Trace || issue.Severity != IssueSeverity.Information
                 ? outcome.AddIssue(message, issue, location)
                 : null;
         }
 
         internal OperationOutcome.IssueComponent Trace(OperationOutcome outcome, string message, Issue issue, ITypedElement location)
         {
-            return Settings.Trace || issue.Severity != OperationOutcome.IssueSeverity.Information
+            return Settings.Trace || issue.Severity != IssueSeverity.Information
                 ? Trace(outcome, message, issue, location.Location)
                 : null;
         }
@@ -556,12 +559,12 @@ namespace Hl7.Fhir.Validation
             return t == typeof(FhirDateTime) ||
                    t == typeof(Date) ||
                    t == typeof(Instant) ||
-                   t == typeof(Model.Time) ||
+                   t == typeof(Time) ||
                    t == typeof(FhirDecimal) ||
                    t == typeof(Integer) ||
                    t == typeof(PositiveInt) ||
                    t == typeof(UnsignedInt) ||
-                   t == typeof(Model.Quantity) ||
+                   t == typeof(Quantity) ||
                    t == typeof(FhirString);
         }
 

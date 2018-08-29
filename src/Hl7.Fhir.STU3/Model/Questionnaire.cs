@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Diagnostics;
 using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using System.Text;
 //
 // Generated on Wed, Dec 24, 2014 16:02+0100 for FHIR v0.4.0
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public partial class Questionnaire
     {

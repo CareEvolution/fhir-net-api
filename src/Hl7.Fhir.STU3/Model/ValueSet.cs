@@ -13,10 +13,11 @@ using System.Linq;
 using System.Text;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Utility;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
-    public partial class ValueSet : Hl7.Fhir.Model.DomainResource
+    public partial class ValueSet : DomainResource
     {
         [Obsolete("This property was renamed in DSTU2 to CodeSystem, and in DSTU3 out of the class entirely to the CodeSystem resource", true)]
         public string Define { get; set; }

@@ -17,7 +17,7 @@ using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Hl7.Fhir.Support;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using System.IO.Compression;
 using Hl7.Fhir.Validation;
@@ -26,6 +26,9 @@ using Hl7.Fhir.FhirPath;
 using Hl7.FhirPath;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.STU3;
+using Hl7.Fhir.Serialization.STU3;
+using Hl7.Fhir.FhirPath.STU3;
 
 namespace HealthConnex.Fhir.Server.Tests
 {
@@ -154,7 +157,7 @@ namespace HealthConnex.Fhir.Server.Tests
                             exampleSearchValues[key]++;
                             // System.Diagnostics.Trace.WriteLine(string.Format("{0}: {1}", xpath.Value, t2.AsStringRepresentation()));
                         }
-                        else if (t2.Value is Hl7.FhirPath.ConstantValue)
+                        else if (t2.Value is ConstantValue)
                         {
                             //     Debug.Write(index.Resource + "." + index.Name + ": ");
                             //     Debug.WriteLine((t2.Value as Hl7.FluentPath.ConstantValue).Value);

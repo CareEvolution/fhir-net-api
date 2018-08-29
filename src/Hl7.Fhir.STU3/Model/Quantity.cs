@@ -33,11 +33,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public partial class Quantity
     {

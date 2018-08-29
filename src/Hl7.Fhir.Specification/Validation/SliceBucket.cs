@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Support;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace Hl7.Fhir.Validation
             // definition walker, which would walk across references if necessary.
             foreach (var d in discriminator)
             {
-                if (d.Type != ElementDefinition.DiscriminatorType.Value)
+                if (d.Type != DiscriminatorType.Value)
                     throw Error.NotImplemented($"Slicing with a discriminator of type '{d.Type}' is not yet supported by this validator.");
             }
 

@@ -6,17 +6,11 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public static class ElementDefinitionExtensions
     {
@@ -48,7 +42,7 @@ namespace Hl7.Fhir.Model
             return ed;
         }
 
-        public static ElementDefinition OfReference(this ElementDefinition ed, string targetProfile, IEnumerable<ElementDefinition.AggregationMode> aggregation = null, string profile=null)
+        public static ElementDefinition OfReference(this ElementDefinition ed, string targetProfile, IEnumerable<AggregationMode> aggregation = null, string profile=null)
         {
             ed.Type.Clear();
             ed.OrReference(targetProfile, aggregation, profile);
@@ -68,13 +62,13 @@ namespace Hl7.Fhir.Model
             return ed;
         }
 
-        public static ElementDefinition OrReference(this ElementDefinition ed, string targetProfile, IEnumerable<ElementDefinition.AggregationMode> aggregation = null, string profile = null)
+        public static ElementDefinition OrReference(this ElementDefinition ed, string targetProfile, IEnumerable<AggregationMode> aggregation = null, string profile = null)
         {
             var newType = new ElementDefinition.TypeRefComponent { Code = FHIRAllTypes.Reference.GetLiteral() };
 
             if (targetProfile != null) newType.TargetProfile = targetProfile;
             if (profile != null) newType.Profile = profile;
-            if (aggregation != null) newType.Aggregation = aggregation.Cast<ElementDefinition.AggregationMode?>();
+            if (aggregation != null) newType.Aggregation = aggregation.Cast<AggregationMode?>();
 
             ed.Type.Add(newType);
 

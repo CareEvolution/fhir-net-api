@@ -35,11 +35,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.STU3
 {
     /// <summary>
     /// Contains criteria that can be passed to a search operation or conditional update/delete/create

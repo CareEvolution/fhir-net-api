@@ -13,10 +13,12 @@ using System.Xml;
 using System.Collections.Generic;
 using Hl7.Fhir.Validation;
 using System.ComponentModel.DataAnnotations;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using System.IO;
+using Hl7.Fhir.Validation.STU3;
+using Hl7.Fhir.Serialization.STU3;
 
 namespace Hl7.Fhir.Tests.Validation
 {

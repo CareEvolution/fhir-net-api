@@ -8,10 +8,10 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Support;
 
-namespace Hl7.Fhir.Validation
+namespace Hl7.Fhir.Validation.STU3
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public class NarrativeXhtmlPatternAttribute : ValidationAttribute

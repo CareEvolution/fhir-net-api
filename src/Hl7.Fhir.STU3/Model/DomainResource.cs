@@ -27,15 +27,12 @@
   
 */
 
-using Hl7.Fhir.Validation;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using Hl7.Fhir.Support;
+using Hl7.Fhir.Validation.STU3;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}}")]
     [InvokeIValidatableObject]

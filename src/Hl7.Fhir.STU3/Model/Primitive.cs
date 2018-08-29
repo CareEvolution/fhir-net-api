@@ -9,8 +9,9 @@ using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Validation;
 using Hl7.Fhir.Utility;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
 #if NET45
     [Serializable]

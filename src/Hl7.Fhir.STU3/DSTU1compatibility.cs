@@ -1,13 +1,14 @@
 ﻿using Hl7.Fhir.Introspection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     #region << DSTU2 Compatability >>
     public partial class StructureDefinition
@@ -27,16 +28,11 @@ namespace Hl7.Fhir.Model
                 if (value == null)
                     TypeElement = null;
                 else
-                    TypeElement = new Hl7.Fhir.Model.Code(value);
+                    TypeElement = new Code(value);
                 OnPropertyChanged("Type");
             }
         }
 
-    }
-
-    [Obsolete("The FHIRDefinedType enumeration was renamed, please change to FHIRAllTypes", true)]
-    public enum FHIRDefinedType
-    {
     }
 
     public partial class StructureDefinition
@@ -61,6 +57,7 @@ namespace Hl7.Fhir.Model
         [NotMapped]
         [Obsolete("NameReference was renamed to ContentReference", true)]
         public string NameReference { get; set; }
+
     }
     #endregion
 

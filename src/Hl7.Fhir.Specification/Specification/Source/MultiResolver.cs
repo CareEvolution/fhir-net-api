@@ -8,7 +8,7 @@
 
 using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System.Linq;
 using Hl7.Fhir.Utility;
 using System.Diagnostics;

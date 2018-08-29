@@ -14,7 +14,7 @@
 using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Support;
 using System.Diagnostics;
 using System.IO;
@@ -467,7 +467,7 @@ namespace Hl7.Fhir.Specification.Tests
             var elem = matches[0];
             if (_settings.GenerateElementIds && elementId != null)
             {
-                Assert.AreEqual(elementId, elem.ElementId, $"Invalid elementId in {label} component. Expected = '{elementId}', actual = '{elem.ElementId}'.");
+                Assert.AreEqual(elementId, elem.Id, $"Invalid elementId in {label} component. Expected = '{elementId}', actual = '{elem.Id}'.");
             }
         }
 
@@ -679,9 +679,9 @@ namespace Hl7.Fhir.Specification.Tests
             );
             verifier = new ElementVerifier(sd, _settings);
             verifier.VerifyElement("Patient.identifier", null, "Patient.identifier");
-            verifier.AssertSlicing("system", ElementDefinition.SlicingRules.Open, null);
+            verifier.AssertSlicing("system", SlicingRules.Open, null);
             verifier.VerifyElement("Patient.identifier", "mrn", "Patient.identifier:mrn");
-            verifier.AssertSlicing("use", ElementDefinition.SlicingRules.Open, null);
+            verifier.AssertSlicing("use", SlicingRules.Open, null);
             verifier.VerifyElement("Patient.identifier.extension", null, "Patient.identifier:mrn.extension");
             verifier.VerifyElement("Patient.identifier.extension", "issuingSite", "Patient.identifier:mrn.extension:issuingSite");
             verifier.VerifyElement("Patient.identifier.use", null, "Patient.identifier:mrn.use");
@@ -726,7 +726,7 @@ namespace Hl7.Fhir.Specification.Tests
             // However this is not necessary, as there are no child constraints on the extension
 
             // [WMR 20161216] TODO: Merge slicing entry
-            verifier.AssertSlicing("type.value[x]", ElementDefinition.SlicingRules.Open, null);
+            verifier.AssertSlicing("type.value[x]", SlicingRules.Open, null);
 
             // [WMR 20161208] TODO...
 
@@ -737,7 +737,7 @@ namespace Hl7.Fhir.Specification.Tests
             verifier.VerifyElement("Patient.extension.extension", null, "Patient.extension:researchAuth/grandfatheredResAuth.extension");
             // [WMR 20170412] Slicing component is inherited from Extension.extension core element definition
             // STU3: Defined as { type = "value", path = "url", ordered = null }
-            verifier.AssertSlicing("url", ElementDefinition.SlicingRules.Open, null);
+            verifier.AssertSlicing("url", SlicingRules.Open, null);
 
             // The reslice "researchAuth/grandfatheredResAuth" has a child element constraint on "type.value[x]"
             // Therefore the complex extension is fully expanded (child extensions: type, flag, date)
@@ -753,9 +753,9 @@ namespace Hl7.Fhir.Specification.Tests
 
             // Slices inherited from base profile with url http://example.com/fhir/SD/patient-identifier-subslice
             verifier.VerifyElement("Patient.identifier", null, "Patient.identifier");
-            verifier.AssertSlicing("system", ElementDefinition.SlicingRules.Open, null);
+            verifier.AssertSlicing("system", SlicingRules.Open, null);
             verifier.VerifyElement("Patient.identifier", "mrn", "Patient.identifier:mrn");
-            verifier.AssertSlicing("use", ElementDefinition.SlicingRules.Open, null);
+            verifier.AssertSlicing("use", SlicingRules.Open, null);
             verifier.VerifyElement("Patient.identifier.extension", null, "Patient.identifier:mrn.extension");
             verifier.VerifyElement("Patient.identifier.extension", null, "Patient.identifier:mrn.extension:issuingSite");
             verifier.VerifyElement("Patient.identifier.use", null, "Patient.identifier:mrn.use");

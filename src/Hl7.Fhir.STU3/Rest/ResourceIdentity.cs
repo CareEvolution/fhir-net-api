@@ -16,9 +16,9 @@ using Hl7.Fhir.Utility;
 #if DOTNETFW
 using System.Runtime.Serialization;
 #endif
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.STU3
 {
     /// <summary>
     /// ResourceIdentity represents a Resource's Uri and can be used to construct such uri's or retrieve parts of the uri. 

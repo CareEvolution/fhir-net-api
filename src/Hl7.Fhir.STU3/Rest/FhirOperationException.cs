@@ -10,10 +10,10 @@ using System;
 using System.Runtime.Serialization;
 using System.Security;
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System.Net;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.STU3
 {
     /// <summary>
     /// Represents HL7 FHIR errors that occur during application execution.

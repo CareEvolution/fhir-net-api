@@ -1,7 +1,7 @@
 ﻿// [WMR 20170412] For debugging purposes
 #if DEBUG
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -10,11 +10,13 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Rest.STU3;
+using Hl7.Fhir.Serialization.STU3;
 
 namespace Hl7.Fhir.Specification.Terminology
 {

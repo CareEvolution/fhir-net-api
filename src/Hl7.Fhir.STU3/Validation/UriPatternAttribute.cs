@@ -12,9 +12,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 
-namespace Hl7.Fhir.Validation
+namespace Hl7.Fhir.Validation.STU3
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public class UriPatternAttribute : ValidationAttribute

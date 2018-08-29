@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.STU3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

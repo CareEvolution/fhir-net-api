@@ -1,11 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Rest;
 using System.Diagnostics;
 using System.Xml;
+using Hl7.Fhir.Rest.STU3;
+using Hl7.Fhir.Support.STU3;
 
 namespace FHIR.Server.Tests
 {
@@ -18,7 +20,7 @@ namespace FHIR.Server.Tests
             var pat = new Patient();
             pat.Name = new System.Collections.Generic.List<HumanName>();
             pat.Name.Add(new HumanName().WithGiven("Brian").AndFamily("Postlethwaite"));
-            pat.Name[0].Use = HumanName.NameUse.Usual;
+            pat.Name[0].Use = NameUse.Usual;
             pat.Name[0].Prefix = new string[] { "Mr" };
             DateTime nativeBirthTime = new DateTime(2016, 6, 16, 15, 23, 0);
             pat.BirthDate = nativeBirthTime.ToFhirDate();
@@ -54,8 +56,8 @@ namespace FHIR.Server.Tests
             });
 
             // Telecom
-            pat.Telecom.Add(new ContactPoint(ContactPoint.ContactPointSystem.Email,
-                ContactPoint.ContactPointUse.Home, "555 123456"));
+            pat.Telecom.Add(new ContactPoint(ContactPointSystem.Email,
+                ContactPointUse.Home, "555 123456"));
             pat.Telecom[0].Period = new Period() { Start = "2015", End = "2017" };
         }
 
@@ -138,7 +140,7 @@ namespace FHIR.Server.Tests
                 {
                     Expression = expression,
                     Key = key,
-                    Severity = severity == "Error" ? ElementDefinition.ConstraintSeverity.Error : ElementDefinition.ConstraintSeverity.Warning,
+                    Severity = severity == "Error" ? ConstraintSeverity.Error : ConstraintSeverity.Warning,
                     Human = human,
                     Xpath = xpath
                 };

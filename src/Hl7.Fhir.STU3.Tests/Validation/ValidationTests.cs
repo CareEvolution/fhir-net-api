@@ -11,10 +11,11 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System.Xml.Linq;
 using System.ComponentModel.DataAnnotations;
 using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.STU3;
 
 namespace Hl7.Fhir.Tests.Validation
 {
@@ -43,7 +44,7 @@ namespace Hl7.Fhir.Tests.Validation
         public void IdIsNowAString()
         {
             HumanName hn = HumanName.ForFamily("Kramer");
-            hn.ElementId = "This/may:contain.all$kinds%of@characters_now";
+            hn.Id = "This/may:contain.all$kinds%of@characters_now";
 
             DotNetAttributeValidation.Validate(hn);
         }
@@ -121,10 +122,10 @@ namespace Hl7.Fhir.Tests.Validation
             oo.Issue.Add(issue);
             validateErrorOrFail(oo,true);
 
-            issue.Severity = OperationOutcome.IssueSeverity.Information;
+            issue.Severity = IssueSeverity.Information;
             validateErrorOrFail(oo, true);
 
-            issue.Code = OperationOutcome.IssueType.Forbidden;
+            issue.Code = IssueType.Forbidden;
 
             DotNetAttributeValidation.Validate(oo, true);
         }
@@ -182,7 +183,7 @@ namespace Hl7.Fhir.Tests.Validation
             validateErrorOrFail(enc, membername: "StatusElement");
             validateErrorOrFail(enc,true);  // recursive checking shouldn't matter
 
-            enc.Status = Encounter.EncounterStatus.Planned;
+            enc.Status = EncounterStatus.Planned;
 
             // Now, it should work
             DotNetAttributeValidation.Validate(enc);
@@ -207,7 +208,7 @@ namespace Hl7.Fhir.Tests.Validation
         {
             var p = new Patient();
 
-            p.Text = new Narrative() { Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should be valid</p></div>", Status = Narrative.NarrativeStatus.Generated  };
+            p.Text = new Narrative() { Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should be valid</p></div>", Status = NarrativeStatus.Generated  };
             DotNetAttributeValidation.Validate(p,true);
 
             p.Text.Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should not be valid<p></div>";

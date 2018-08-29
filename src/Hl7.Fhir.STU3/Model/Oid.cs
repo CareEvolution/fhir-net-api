@@ -36,18 +36,18 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public partial class Oid : IStringValue
     {
         public static bool IsValidValue(string value)
         {
-            return Regex.IsMatch(value, "^" + Oid.PATTERN + "$", RegexOptions.Singleline);
+            return Regex.IsMatch(value, "^" + PATTERN + "$", RegexOptions.Singleline);
         }
 
         public FhirUri AsUri()
         {
-            return new Model.FhirUri(Value);
+            return new FhirUri(Value);
         }
     }
 }

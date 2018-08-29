@@ -7,19 +7,11 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
+using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Utility;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.STU3
 {
     internal class ResourceReader
     {

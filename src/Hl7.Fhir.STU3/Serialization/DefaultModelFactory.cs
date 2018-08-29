@@ -13,10 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.STU3
 {
     public class DefaultModelFactory : IModelClassFactory
     {

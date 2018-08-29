@@ -11,11 +11,12 @@ using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
     [DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")]

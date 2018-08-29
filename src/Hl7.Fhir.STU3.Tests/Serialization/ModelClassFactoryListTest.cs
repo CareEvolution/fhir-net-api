@@ -9,7 +9,8 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
+using Hl7.Fhir.Serialization.STU3;
 
 namespace Hl7.Fhir.Tests.Serialization
 {

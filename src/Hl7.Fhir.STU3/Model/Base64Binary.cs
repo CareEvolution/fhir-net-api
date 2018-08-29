@@ -33,10 +33,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public partial class Base64Binary : IValue<byte[]>
     {

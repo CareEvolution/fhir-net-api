@@ -1,5 +1,5 @@
 ﻿using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Tests;
@@ -12,6 +12,9 @@ using Hl7.FhirPath;
 using Hl7.Fhir.Model.Primitives;
 using Hl7.FhirPath.Expressions;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.STU3;
+using Hl7.Fhir.Serialization.STU3;
+using Hl7.Fhir.FhirPath.STU3;
 
 namespace Hl7.Fhir
 {

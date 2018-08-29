@@ -9,7 +9,7 @@
 using Hl7.Fhir.Utility;
 using System;
 
-namespace Hl7.Fhir.Support
+namespace Hl7.Fhir.Support.STU3
 {
     // [WMR 20160721] NEW
 

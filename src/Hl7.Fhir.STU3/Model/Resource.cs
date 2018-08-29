@@ -27,22 +27,25 @@
   
 */
 
-using Hl7.Fhir.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Rest;
-using Hl7.FhirPath;
+using System.ComponentModel.DataAnnotations.Schema;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.STU3;
+using Hl7.Fhir.FhirPath.STU3;
+using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Rest.STU3;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.Validation.STU3;
+using Hl7.FhirPath;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
+    [FhirType("Resource", IsResource = true)]
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}}")]
     [InvokeIValidatableObject]
-    public abstract partial class Resource
+    public abstract partial class Resource : Base
     {
         /// <summary>
         /// This is the base URL of the FHIR server that this resource is hosted on
@@ -98,8 +101,8 @@ namespace Hl7.Fhir.Model
                 {
                     result.Issue.Add(new OperationOutcome.IssueComponent()
                     {
-                        Code = OperationOutcome.IssueType.Invariant,
-                        Severity = OperationOutcome.IssueSeverity.Warning,
+                        Code = IssueType.Invariant,
+                        Severity = IssueSeverity.Warning,
                         Details = new CodeableConcept(null, invariantRule.Key, "Unable to validate without a FhirPath expression"),
                         Diagnostics = expression
                     });
@@ -107,15 +110,15 @@ namespace Hl7.Fhir.Model
                 }
 
                 // Ensure the FHIR extensions are registered
-                Hl7.Fhir.FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
+                ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
 
                 if (model.Predicate(expression, new EvaluationContext(model)))
                     return true;
 
                 result.Issue.Add(new OperationOutcome.IssueComponent()
                 {
-                    Code = OperationOutcome.IssueType.Invariant,
-                    Severity = OperationOutcome.IssueSeverity.Error,
+                    Code = IssueType.Invariant,
+                    Severity = IssueSeverity.Error,
                     Details = new CodeableConcept(null, invariantRule.Key, invariantRule.Human),
                     Diagnostics = expression
                 });
@@ -125,8 +128,8 @@ namespace Hl7.Fhir.Model
             {
                 result.Issue.Add(new OperationOutcome.IssueComponent()
                 {
-                    Code = OperationOutcome.IssueType.Invariant,
-                    Severity = OperationOutcome.IssueSeverity.Fatal,
+                    Code = IssueType.Invariant,
+                    Severity = IssueSeverity.Fatal,
                     Details = new CodeableConcept(null, invariantRule.Key, "FATAL: Unable to process the invariant rule: " + invariantRule.Key + " " + expression),
                     Diagnostics = String.Format("FhirPath: {0}\r\nError: {1}", expression, ex.Message)
                 });
@@ -145,7 +148,7 @@ namespace Hl7.Fhir.Model
         {
             if (Id == null) return null;
 
-            var result = Hl7.Fhir.Rest.ResourceIdentity.Build(TypeName, Id, VersionId);
+            var result = Rest.STU3.ResourceIdentity.Build(TypeName, Id, VersionId);
 
             if (!string.IsNullOrEmpty(baseUrl))
                 return result.WithBase(baseUrl);
@@ -203,8 +206,8 @@ namespace Hl7.Fhir.Model
             ValidateInvariants(context, results);
             foreach (var item in results.Issue)
             {
-                if (item.Severity == OperationOutcome.IssueSeverity.Error
-                    || item.Severity == OperationOutcome.IssueSeverity.Fatal)
+                if (item.Severity == IssueSeverity.Error
+                    || item.Severity == IssueSeverity.Fatal)
                     result.Add(new ValidationResult(item.Details.Coding[0].Code + ": " + item.Details.Text));
             }
         }

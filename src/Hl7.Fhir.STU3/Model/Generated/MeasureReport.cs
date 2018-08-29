@@ -1,242 +1,191 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
-  
-   * Redistributions of source code must retain the above copyright notice, this 
+
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
-  
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
+
 
 */
 
-#pragma warning disable 1591 // suppress XML summary warnings 
+#pragma warning disable 1591 // suppress XML summary warnings
 
 //
 // Generated for FHIR v3.0.1
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     /// <summary>
     /// Results of a measure evaluation
     /// </summary>
     [FhirType("MeasureReport", IsResource=true)]
     [DataContract]
-    public partial class MeasureReport : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class MeasureReport : DomainResource
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.MeasureReport; } }
         [NotMapped]
         public override string TypeName { get { return "MeasureReport"; } }
-        
-        /// <summary>
-        /// The status of the measure report
-        /// (url: http://hl7.org/fhir/ValueSet/measure-report-status)
-        /// </summary>
-        [FhirEnumeration("MeasureReportStatus")]
-        public enum MeasureReportStatus
-        {
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/measure-report-status)
-            /// </summary>
-            [EnumLiteral("complete", "http://hl7.org/fhir/measure-report-status"), Description("Complete")]
-            Complete,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/measure-report-status)
-            /// </summary>
-            [EnumLiteral("pending", "http://hl7.org/fhir/measure-report-status"), Description("Pending")]
-            Pending,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/measure-report-status)
-            /// </summary>
-            [EnumLiteral("error", "http://hl7.org/fhir/measure-report-status"), Description("Error")]
-            Error,
-        }
 
-        /// <summary>
-        /// The type of the measure report
-        /// (url: http://hl7.org/fhir/ValueSet/measure-report-type)
-        /// </summary>
-        [FhirEnumeration("MeasureReportType")]
-        public enum MeasureReportType
-        {
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/measure-report-type)
-            /// </summary>
-            [EnumLiteral("individual", "http://hl7.org/fhir/measure-report-type"), Description("Individual")]
-            Individual,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/measure-report-type)
-            /// </summary>
-            [EnumLiteral("patient-list", "http://hl7.org/fhir/measure-report-type"), Description("Patient List")]
-            PatientList,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/measure-report-type)
-            /// </summary>
-            [EnumLiteral("summary", "http://hl7.org/fhir/measure-report-type"), Description("Summary")]
-            Summary,
-        }
 
         [FhirType("GroupComponent")]
         [DataContract]
-        public partial class GroupComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class GroupComponent : BackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GroupComponent"; } }
-            
+
             /// <summary>
             /// What group of the measure
             /// </summary>
             [FhirElement("identifier", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.Identifier Identifier
+            public Identifier Identifier
             {
-                get { return _Identifier; }
-                set { _Identifier = value; OnPropertyChanged("Identifier"); }
+                get { return _identifier; }
+                set { _identifier = value; OnPropertyChanged("Identifier"); }
             }
-            
-            private Hl7.Fhir.Model.Identifier _Identifier;
-            
+
+            private Identifier _identifier;
+
             /// <summary>
             /// The populations in the group
             /// </summary>
             [FhirElement("population", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.MeasureReport.PopulationComponent> Population
+            public List<PopulationComponent> Population
             {
-                get { if(_Population==null) _Population = new List<Hl7.Fhir.Model.MeasureReport.PopulationComponent>(); return _Population; }
-                set { _Population = value; OnPropertyChanged("Population"); }
+                get { if (_population==null) _population = new List<PopulationComponent>(); return _population; }
+                set { _population = value; OnPropertyChanged("Population"); }
             }
-            
-            private List<Hl7.Fhir.Model.MeasureReport.PopulationComponent> _Population;
-            
+
+            private List<PopulationComponent> _population;
+
             /// <summary>
             /// What score this group achieved
             /// </summary>
             [FhirElement("measureScore", InSummary=true, Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal MeasureScoreElement
+            public FhirDecimal MeasureScoreElement
             {
-                get { return _MeasureScoreElement; }
-                set { _MeasureScoreElement = value; OnPropertyChanged("MeasureScoreElement"); }
+                get { return _measureScoreElement; }
+                set { _measureScoreElement = value; OnPropertyChanged("MeasureScoreElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirDecimal _MeasureScoreElement;
-            
+
+            private FhirDecimal _measureScoreElement;
+
             /// <summary>
             /// What score this group achieved
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public decimal? MeasureScore
             {
                 get { return MeasureScoreElement != null ? MeasureScoreElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        MeasureScoreElement = null; 
+                    if (value == null)
+                        MeasureScoreElement = null;
                     else
-                        MeasureScoreElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        MeasureScoreElement = new FhirDecimal(value);
                     OnPropertyChanged("MeasureScore");
                 }
             }
-            
+
             /// <summary>
             /// Stratification results
             /// </summary>
             [FhirElement("stratifier", Order=70)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.MeasureReport.StratifierComponent> Stratifier
+            public List<StratifierComponent> Stratifier
             {
-                get { if(_Stratifier==null) _Stratifier = new List<Hl7.Fhir.Model.MeasureReport.StratifierComponent>(); return _Stratifier; }
-                set { _Stratifier = value; OnPropertyChanged("Stratifier"); }
+                get { if (_stratifier==null) _stratifier = new List<StratifierComponent>(); return _stratifier; }
+                set { _stratifier = value; OnPropertyChanged("Stratifier"); }
             }
-            
-            private List<Hl7.Fhir.Model.MeasureReport.StratifierComponent> _Stratifier;
-            
+
+            private List<StratifierComponent> _stratifier;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as GroupComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.Identifier)Identifier.DeepCopy();
-                    if(Population != null) dest.Population = new List<Hl7.Fhir.Model.MeasureReport.PopulationComponent>(Population.DeepCopy());
-                    if(MeasureScoreElement != null) dest.MeasureScoreElement = (Hl7.Fhir.Model.FhirDecimal)MeasureScoreElement.DeepCopy();
-                    if(Stratifier != null) dest.Stratifier = new List<Hl7.Fhir.Model.MeasureReport.StratifierComponent>(Stratifier.DeepCopy());
+                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
+                    if (Population != null) dest.Population = new List<PopulationComponent>(Population.DeepCopy());
+                    if (MeasureScoreElement != null) dest.MeasureScoreElement = (FhirDecimal)MeasureScoreElement.DeepCopy();
+                    if (Stratifier != null) dest.Stratifier = new List<StratifierComponent>(Stratifier.DeepCopy());
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new GroupComponent());
+                 return CopyTo(new GroupComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as GroupComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-                if( !DeepComparable.Matches(Population, otherT.Population)) return false;
-                if( !DeepComparable.Matches(MeasureScoreElement, otherT.MeasureScoreElement)) return false;
-                if( !DeepComparable.Matches(Stratifier, otherT.Stratifier)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+                if ( !DeepComparable.Matches(Population, otherT.Population)) return false;
+                if (!DeepComparable.Matches(MeasureScoreElement, otherT.MeasureScoreElement)) return false;
+                if ( !DeepComparable.Matches(Stratifier, otherT.Stratifier)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as GroupComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-                if( !DeepComparable.IsExactly(Population, otherT.Population)) return false;
-                if( !DeepComparable.IsExactly(MeasureScoreElement, otherT.MeasureScoreElement)) return false;
-                if( !DeepComparable.IsExactly(Stratifier, otherT.Stratifier)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+                if (!DeepComparable.IsExactly(Population, otherT.Population)) return false;
+                if (!DeepComparable.IsExactly(MeasureScoreElement, otherT.MeasureScoreElement)) return false;
+                if (!DeepComparable.IsExactly(Stratifier, otherT.Stratifier)) return false;
+
                 return true;
             }
 
@@ -267,137 +216,136 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         [FhirType("PopulationComponent")]
         [DataContract]
-        public partial class PopulationComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class PopulationComponent : BackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PopulationComponent"; } }
-            
+
             /// <summary>
             /// Population identifier as defined in the measure
             /// </summary>
             [FhirElement("identifier", InSummary=true, Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.Identifier Identifier
+            public Identifier Identifier
             {
-                get { return _Identifier; }
-                set { _Identifier = value; OnPropertyChanged("Identifier"); }
+                get { return _identifier; }
+                set { _identifier = value; OnPropertyChanged("Identifier"); }
             }
-            
-            private Hl7.Fhir.Model.Identifier _Identifier;
-            
+
+            private Identifier _identifier;
+
             /// <summary>
             /// initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-score
             /// </summary>
             [FhirElement("code", InSummary=true, Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public CodeableConcept Code
             {
-                get { return _Code; }
-                set { _Code = value; OnPropertyChanged("Code"); }
+                get { return _code; }
+                set { _code = value; OnPropertyChanged("Code"); }
             }
-            
-            private Hl7.Fhir.Model.CodeableConcept _Code;
-            
+
+            private CodeableConcept _code;
+
             /// <summary>
             /// Size of the population
             /// </summary>
             [FhirElement("count", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer CountElement
+            public Integer CountElement
             {
-                get { return _CountElement; }
-                set { _CountElement = value; OnPropertyChanged("CountElement"); }
+                get { return _countElement; }
+                set { _countElement = value; OnPropertyChanged("CountElement"); }
             }
-            
-            private Hl7.Fhir.Model.Integer _CountElement;
-            
+
+            private Integer _countElement;
+
             /// <summary>
             /// Size of the population
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public int? Count
             {
                 get { return CountElement != null ? CountElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        CountElement = null; 
+                    if (value == null)
+                        CountElement = null;
                     else
-                        CountElement = new Hl7.Fhir.Model.Integer(value);
+                        CountElement = new Integer(value);
                     OnPropertyChanged("Count");
                 }
             }
-            
+
             /// <summary>
             /// For patient-list reports, the patients in this population
             /// </summary>
             [FhirElement("patients", Order=70)]
-            [CLSCompliant(false)]
-			[References("List")]
+            [References("List")]
             [DataMember]
-            public Hl7.Fhir.Model.ResourceReference Patients
+            public ResourceReference Patients
             {
-                get { return _Patients; }
-                set { _Patients = value; OnPropertyChanged("Patients"); }
+                get { return _patients; }
+                set { _patients = value; OnPropertyChanged("Patients"); }
             }
-            
-            private Hl7.Fhir.Model.ResourceReference _Patients;
-            
+
+            private ResourceReference _patients;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as PopulationComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.Identifier)Identifier.DeepCopy();
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                    if(CountElement != null) dest.CountElement = (Hl7.Fhir.Model.Integer)CountElement.DeepCopy();
-                    if(Patients != null) dest.Patients = (Hl7.Fhir.Model.ResourceReference)Patients.DeepCopy();
+                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
+                    if (Code != null) dest.Code = (CodeableConcept)Code.DeepCopy();
+                    if (CountElement != null) dest.CountElement = (Integer)CountElement.DeepCopy();
+                    if (Patients != null) dest.Patients = (ResourceReference)Patients.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new PopulationComponent());
+                 return CopyTo(new PopulationComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as PopulationComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-                if( !DeepComparable.Matches(Code, otherT.Code)) return false;
-                if( !DeepComparable.Matches(CountElement, otherT.CountElement)) return false;
-                if( !DeepComparable.Matches(Patients, otherT.Patients)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+                if (!DeepComparable.Matches(Code, otherT.Code)) return false;
+                if (!DeepComparable.Matches(CountElement, otherT.CountElement)) return false;
+                if (!DeepComparable.Matches(Patients, otherT.Patients)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as PopulationComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-                if( !DeepComparable.IsExactly(Code, otherT.Code)) return false;
-                if( !DeepComparable.IsExactly(CountElement, otherT.CountElement)) return false;
-                if( !DeepComparable.IsExactly(Patients, otherT.Patients)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+                if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
+                if (!DeepComparable.IsExactly(CountElement, otherT.CountElement)) return false;
+                if (!DeepComparable.IsExactly(Patients, otherT.Patients)) return false;
+
                 return true;
             }
 
@@ -428,85 +376,85 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         [FhirType("StratifierComponent")]
         [DataContract]
-        public partial class StratifierComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class StratifierComponent : BackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StratifierComponent"; } }
-            
+
             /// <summary>
             /// What stratifier of the group
             /// </summary>
             [FhirElement("identifier", Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.Identifier Identifier
+            public Identifier Identifier
             {
-                get { return _Identifier; }
-                set { _Identifier = value; OnPropertyChanged("Identifier"); }
+                get { return _identifier; }
+                set { _identifier = value; OnPropertyChanged("Identifier"); }
             }
-            
-            private Hl7.Fhir.Model.Identifier _Identifier;
-            
+
+            private Identifier _identifier;
+
             /// <summary>
             /// Stratum results, one for each unique value in the stratifier
             /// </summary>
             [FhirElement("stratum", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.MeasureReport.StratifierGroupComponent> Stratum
+            public List<StratifierGroupComponent> Stratum
             {
-                get { if(_Stratum==null) _Stratum = new List<Hl7.Fhir.Model.MeasureReport.StratifierGroupComponent>(); return _Stratum; }
-                set { _Stratum = value; OnPropertyChanged("Stratum"); }
+                get { if (_stratum==null) _stratum = new List<StratifierGroupComponent>(); return _stratum; }
+                set { _stratum = value; OnPropertyChanged("Stratum"); }
             }
-            
-            private List<Hl7.Fhir.Model.MeasureReport.StratifierGroupComponent> _Stratum;
-            
+
+            private List<StratifierGroupComponent> _stratum;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as StratifierComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.Identifier)Identifier.DeepCopy();
-                    if(Stratum != null) dest.Stratum = new List<Hl7.Fhir.Model.MeasureReport.StratifierGroupComponent>(Stratum.DeepCopy());
+                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
+                    if (Stratum != null) dest.Stratum = new List<StratifierGroupComponent>(Stratum.DeepCopy());
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new StratifierComponent());
+                 return CopyTo(new StratifierComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as StratifierComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-                if( !DeepComparable.Matches(Stratum, otherT.Stratum)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+                if ( !DeepComparable.Matches(Stratum, otherT.Stratum)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as StratifierComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-                if( !DeepComparable.IsExactly(Stratum, otherT.Stratum)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+                if (!DeepComparable.IsExactly(Stratum, otherT.Stratum)) return false;
+
                 return true;
             }
 
@@ -533,140 +481,140 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         [FhirType("StratifierGroupComponent")]
         [DataContract]
-        public partial class StratifierGroupComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class StratifierGroupComponent : BackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StratifierGroupComponent"; } }
-            
+
             /// <summary>
             /// The stratum value, e.g. male
             /// </summary>
             [FhirElement("value", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirString ValueElement
+            public FhirString ValueElement
             {
-                get { return _ValueElement; }
-                set { _ValueElement = value; OnPropertyChanged("ValueElement"); }
+                get { return _valueElement; }
+                set { _valueElement = value; OnPropertyChanged("ValueElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirString _ValueElement;
-            
+
+            private FhirString _valueElement;
+
             /// <summary>
             /// The stratum value, e.g. male
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Value
             {
                 get { return ValueElement != null ? ValueElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        ValueElement = null; 
+                        ValueElement = null;
                     else
-                        ValueElement = new Hl7.Fhir.Model.FhirString(value);
+                        ValueElement = new FhirString(value);
                     OnPropertyChanged("Value");
                 }
             }
-            
+
             /// <summary>
             /// Population results in this stratum
             /// </summary>
             [FhirElement("population", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.MeasureReport.StratifierGroupPopulationComponent> Population
+            public List<StratifierGroupPopulationComponent> Population
             {
-                get { if(_Population==null) _Population = new List<Hl7.Fhir.Model.MeasureReport.StratifierGroupPopulationComponent>(); return _Population; }
-                set { _Population = value; OnPropertyChanged("Population"); }
+                get { if (_population==null) _population = new List<StratifierGroupPopulationComponent>(); return _population; }
+                set { _population = value; OnPropertyChanged("Population"); }
             }
-            
-            private List<Hl7.Fhir.Model.MeasureReport.StratifierGroupPopulationComponent> _Population;
-            
+
+            private List<StratifierGroupPopulationComponent> _population;
+
             /// <summary>
             /// What score this stratum achieved
             /// </summary>
             [FhirElement("measureScore", InSummary=true, Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal MeasureScoreElement
+            public FhirDecimal MeasureScoreElement
             {
-                get { return _MeasureScoreElement; }
-                set { _MeasureScoreElement = value; OnPropertyChanged("MeasureScoreElement"); }
+                get { return _measureScoreElement; }
+                set { _measureScoreElement = value; OnPropertyChanged("MeasureScoreElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirDecimal _MeasureScoreElement;
-            
+
+            private FhirDecimal _measureScoreElement;
+
             /// <summary>
             /// What score this stratum achieved
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public decimal? MeasureScore
             {
                 get { return MeasureScoreElement != null ? MeasureScoreElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        MeasureScoreElement = null; 
+                    if (value == null)
+                        MeasureScoreElement = null;
                     else
-                        MeasureScoreElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        MeasureScoreElement = new FhirDecimal(value);
                     OnPropertyChanged("MeasureScore");
                 }
             }
-            
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as StratifierGroupComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(ValueElement != null) dest.ValueElement = (Hl7.Fhir.Model.FhirString)ValueElement.DeepCopy();
-                    if(Population != null) dest.Population = new List<Hl7.Fhir.Model.MeasureReport.StratifierGroupPopulationComponent>(Population.DeepCopy());
-                    if(MeasureScoreElement != null) dest.MeasureScoreElement = (Hl7.Fhir.Model.FhirDecimal)MeasureScoreElement.DeepCopy();
+                    if (ValueElement != null) dest.ValueElement = (FhirString)ValueElement.DeepCopy();
+                    if (Population != null) dest.Population = new List<StratifierGroupPopulationComponent>(Population.DeepCopy());
+                    if (MeasureScoreElement != null) dest.MeasureScoreElement = (FhirDecimal)MeasureScoreElement.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new StratifierGroupComponent());
+                 return CopyTo(new StratifierGroupComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as StratifierGroupComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(ValueElement, otherT.ValueElement)) return false;
-                if( !DeepComparable.Matches(Population, otherT.Population)) return false;
-                if( !DeepComparable.Matches(MeasureScoreElement, otherT.MeasureScoreElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(ValueElement, otherT.ValueElement)) return false;
+                if ( !DeepComparable.Matches(Population, otherT.Population)) return false;
+                if (!DeepComparable.Matches(MeasureScoreElement, otherT.MeasureScoreElement)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as StratifierGroupComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(ValueElement, otherT.ValueElement)) return false;
-                if( !DeepComparable.IsExactly(Population, otherT.Population)) return false;
-                if( !DeepComparable.IsExactly(MeasureScoreElement, otherT.MeasureScoreElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(ValueElement, otherT.ValueElement)) return false;
+                if (!DeepComparable.IsExactly(Population, otherT.Population)) return false;
+                if (!DeepComparable.IsExactly(MeasureScoreElement, otherT.MeasureScoreElement)) return false;
+
                 return true;
             }
 
@@ -695,137 +643,136 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         [FhirType("StratifierGroupPopulationComponent")]
         [DataContract]
-        public partial class StratifierGroupPopulationComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class StratifierGroupPopulationComponent : BackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StratifierGroupPopulationComponent"; } }
-            
+
             /// <summary>
             /// Population identifier as defined in the measure
             /// </summary>
             [FhirElement("identifier", InSummary=true, Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.Identifier Identifier
+            public Identifier Identifier
             {
-                get { return _Identifier; }
-                set { _Identifier = value; OnPropertyChanged("Identifier"); }
+                get { return _identifier; }
+                set { _identifier = value; OnPropertyChanged("Identifier"); }
             }
-            
-            private Hl7.Fhir.Model.Identifier _Identifier;
-            
+
+            private Identifier _identifier;
+
             /// <summary>
             /// initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-score
             /// </summary>
             [FhirElement("code", InSummary=true, Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public CodeableConcept Code
             {
-                get { return _Code; }
-                set { _Code = value; OnPropertyChanged("Code"); }
+                get { return _code; }
+                set { _code = value; OnPropertyChanged("Code"); }
             }
-            
-            private Hl7.Fhir.Model.CodeableConcept _Code;
-            
+
+            private CodeableConcept _code;
+
             /// <summary>
             /// Size of the population
             /// </summary>
             [FhirElement("count", Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.Integer CountElement
+            public Integer CountElement
             {
-                get { return _CountElement; }
-                set { _CountElement = value; OnPropertyChanged("CountElement"); }
+                get { return _countElement; }
+                set { _countElement = value; OnPropertyChanged("CountElement"); }
             }
-            
-            private Hl7.Fhir.Model.Integer _CountElement;
-            
+
+            private Integer _countElement;
+
             /// <summary>
             /// Size of the population
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public int? Count
             {
                 get { return CountElement != null ? CountElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        CountElement = null; 
+                    if (value == null)
+                        CountElement = null;
                     else
-                        CountElement = new Hl7.Fhir.Model.Integer(value);
+                        CountElement = new Integer(value);
                     OnPropertyChanged("Count");
                 }
             }
-            
+
             /// <summary>
             /// For patient-list reports, the patients in this population
             /// </summary>
             [FhirElement("patients", Order=70)]
-            [CLSCompliant(false)]
-			[References("List")]
+            [References("List")]
             [DataMember]
-            public Hl7.Fhir.Model.ResourceReference Patients
+            public ResourceReference Patients
             {
-                get { return _Patients; }
-                set { _Patients = value; OnPropertyChanged("Patients"); }
+                get { return _patients; }
+                set { _patients = value; OnPropertyChanged("Patients"); }
             }
-            
-            private Hl7.Fhir.Model.ResourceReference _Patients;
-            
+
+            private ResourceReference _patients;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as StratifierGroupPopulationComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.Identifier)Identifier.DeepCopy();
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                    if(CountElement != null) dest.CountElement = (Hl7.Fhir.Model.Integer)CountElement.DeepCopy();
-                    if(Patients != null) dest.Patients = (Hl7.Fhir.Model.ResourceReference)Patients.DeepCopy();
+                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
+                    if (Code != null) dest.Code = (CodeableConcept)Code.DeepCopy();
+                    if (CountElement != null) dest.CountElement = (Integer)CountElement.DeepCopy();
+                    if (Patients != null) dest.Patients = (ResourceReference)Patients.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new StratifierGroupPopulationComponent());
+                 return CopyTo(new StratifierGroupPopulationComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as StratifierGroupPopulationComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-                if( !DeepComparable.Matches(Code, otherT.Code)) return false;
-                if( !DeepComparable.Matches(CountElement, otherT.CountElement)) return false;
-                if( !DeepComparable.Matches(Patients, otherT.Patients)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+                if (!DeepComparable.Matches(Code, otherT.Code)) return false;
+                if (!DeepComparable.Matches(CountElement, otherT.CountElement)) return false;
+                if (!DeepComparable.Matches(Patients, otherT.Patients)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as StratifierGroupPopulationComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-                if( !DeepComparable.IsExactly(Code, otherT.Code)) return false;
-                if( !DeepComparable.IsExactly(CountElement, otherT.CountElement)) return false;
-                if( !DeepComparable.IsExactly(Patients, otherT.Patients)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+                if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
+                if (!DeepComparable.IsExactly(CountElement, otherT.CountElement)) return false;
+                if (!DeepComparable.IsExactly(Patients, otherT.Patients)) return false;
+
                 return true;
             }
 
@@ -856,282 +803,272 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         /// <summary>
         /// Additional identifier for the Report
         /// </summary>
         [FhirElement("identifier", InSummary=true, Order=90)]
         [DataMember]
-        public Hl7.Fhir.Model.Identifier Identifier
+        public Identifier Identifier
         {
-            get { return _Identifier; }
-            set { _Identifier = value; OnPropertyChanged("Identifier"); }
+            get { return _identifier; }
+            set { _identifier = value; OnPropertyChanged("Identifier"); }
         }
-        
-        private Hl7.Fhir.Model.Identifier _Identifier;
-        
+
+        private Identifier _identifier;
+
         /// <summary>
         /// complete | pending | error
         /// </summary>
         [FhirElement("status", InSummary=true, Order=100)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.MeasureReport.MeasureReportStatus> StatusElement
+        public Code<MeasureReportStatus> StatusElement
         {
-            get { return _StatusElement; }
-            set { _StatusElement = value; OnPropertyChanged("StatusElement"); }
+            get { return _statusElement; }
+            set { _statusElement = value; OnPropertyChanged("StatusElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.MeasureReport.MeasureReportStatus> _StatusElement;
-        
+
+        private Code<MeasureReportStatus> _statusElement;
+
         /// <summary>
         /// complete | pending | error
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.MeasureReport.MeasureReportStatus? Status
+        [IgnoreDataMember]
+        public MeasureReportStatus? Status
         {
             get { return StatusElement != null ? StatusElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  StatusElement = null; 
+                if (value == null)
+                    StatusElement = null;
                 else
-                  StatusElement = new Code<Hl7.Fhir.Model.MeasureReport.MeasureReportStatus>(value);
+                    StatusElement = new Code<MeasureReportStatus>(value);
                 OnPropertyChanged("Status");
             }
         }
-        
+
         /// <summary>
         /// individual | patient-list | summary
         /// </summary>
         [FhirElement("type", InSummary=true, Order=110)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.MeasureReport.MeasureReportType> TypeElement
+        public Code<MeasureReportType> TypeElement
         {
-            get { return _TypeElement; }
-            set { _TypeElement = value; OnPropertyChanged("TypeElement"); }
+            get { return _typeElement; }
+            set { _typeElement = value; OnPropertyChanged("TypeElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.MeasureReport.MeasureReportType> _TypeElement;
-        
+
+        private Code<MeasureReportType> _typeElement;
+
         /// <summary>
         /// individual | patient-list | summary
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.MeasureReport.MeasureReportType? Type
+        [IgnoreDataMember]
+        public MeasureReportType? Type
         {
             get { return TypeElement != null ? TypeElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  TypeElement = null; 
+                if (value == null)
+                    TypeElement = null;
                 else
-                  TypeElement = new Code<Hl7.Fhir.Model.MeasureReport.MeasureReportType>(value);
+                    TypeElement = new Code<MeasureReportType>(value);
                 OnPropertyChanged("Type");
             }
         }
-        
+
         /// <summary>
         /// What measure was evaluated
         /// </summary>
         [FhirElement("measure", InSummary=true, Order=120)]
-        [CLSCompliant(false)]
-		[References("Measure")]
+        [References("Measure")]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference Measure
+        public ResourceReference Measure
         {
-            get { return _Measure; }
-            set { _Measure = value; OnPropertyChanged("Measure"); }
+            get { return _measure; }
+            set { _measure = value; OnPropertyChanged("Measure"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _Measure;
-        
+
+        private ResourceReference _measure;
+
         /// <summary>
         /// What patient the report is for
         /// </summary>
         [FhirElement("patient", InSummary=true, Order=130)]
-        [CLSCompliant(false)]
-		[References("Patient")]
+        [References("Patient")]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference Patient
+        public ResourceReference Patient
         {
-            get { return _Patient; }
-            set { _Patient = value; OnPropertyChanged("Patient"); }
+            get { return _patient; }
+            set { _patient = value; OnPropertyChanged("Patient"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _Patient;
-        
+
+        private ResourceReference _patient;
+
         /// <summary>
         /// When the report was generated
         /// </summary>
         [FhirElement("date", InSummary=true, Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public FhirDateTime DateElement
         {
-            get { return _DateElement; }
-            set { _DateElement = value; OnPropertyChanged("DateElement"); }
+            get { return _dateElement; }
+            set { _dateElement = value; OnPropertyChanged("DateElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
-        
+
+        private FhirDateTime _dateElement;
+
         /// <summary>
         /// When the report was generated
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Date
         {
             get { return DateElement != null ? DateElement.Value : null; }
             set
             {
                 if (value == null)
-                  DateElement = null; 
+                    DateElement = null;
                 else
-                  DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
-        
+
         /// <summary>
         /// Who is reporting the data
         /// </summary>
         [FhirElement("reportingOrganization", InSummary=true, Order=150)]
-        [CLSCompliant(false)]
-		[References("Organization")]
+        [References("Organization")]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference ReportingOrganization
+        public ResourceReference ReportingOrganization
         {
-            get { return _ReportingOrganization; }
-            set { _ReportingOrganization = value; OnPropertyChanged("ReportingOrganization"); }
+            get { return _reportingOrganization; }
+            set { _reportingOrganization = value; OnPropertyChanged("ReportingOrganization"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _ReportingOrganization;
-        
+
+        private ResourceReference _reportingOrganization;
+
         /// <summary>
         /// What period the report covers
         /// </summary>
         [FhirElement("period", InSummary=true, Order=160)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Period Period
         {
-            get { return _Period; }
-            set { _Period = value; OnPropertyChanged("Period"); }
+            get { return _period; }
+            set { _period = value; OnPropertyChanged("Period"); }
         }
-        
-        private Hl7.Fhir.Model.Period _Period;
-        
+
+        private Period _period;
+
         /// <summary>
         /// Measure results for each group
         /// </summary>
         [FhirElement("group", Order=170)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.MeasureReport.GroupComponent> Group
+        public List<GroupComponent> Group
         {
-            get { if(_Group==null) _Group = new List<Hl7.Fhir.Model.MeasureReport.GroupComponent>(); return _Group; }
-            set { _Group = value; OnPropertyChanged("Group"); }
+            get { if (_group==null) _group = new List<GroupComponent>(); return _group; }
+            set { _group = value; OnPropertyChanged("Group"); }
         }
-        
-        private List<Hl7.Fhir.Model.MeasureReport.GroupComponent> _Group;
-        
+
+        private List<GroupComponent> _group;
+
         /// <summary>
         /// What data was evaluated to produce the measure score
         /// </summary>
         [FhirElement("evaluatedResources", Order=180)]
-        [CLSCompliant(false)]
-		[References("Bundle")]
+        [References("Bundle")]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference EvaluatedResources
+        public ResourceReference EvaluatedResources
         {
-            get { return _EvaluatedResources; }
-            set { _EvaluatedResources = value; OnPropertyChanged("EvaluatedResources"); }
+            get { return _evaluatedResources; }
+            set { _evaluatedResources = value; OnPropertyChanged("EvaluatedResources"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _EvaluatedResources;
-        
 
-        public override void AddDefaultConstraints()
-        {
-            base.AddDefaultConstraints();
+        private ResourceReference _evaluatedResources;
 
-        }
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as MeasureReport;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Identifier != null) dest.Identifier = (Hl7.Fhir.Model.Identifier)Identifier.DeepCopy();
-                if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.MeasureReport.MeasureReportStatus>)StatusElement.DeepCopy();
-                if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.MeasureReport.MeasureReportType>)TypeElement.DeepCopy();
-                if(Measure != null) dest.Measure = (Hl7.Fhir.Model.ResourceReference)Measure.DeepCopy();
-                if(Patient != null) dest.Patient = (Hl7.Fhir.Model.ResourceReference)Patient.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
-                if(ReportingOrganization != null) dest.ReportingOrganization = (Hl7.Fhir.Model.ResourceReference)ReportingOrganization.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
-                if(Group != null) dest.Group = new List<Hl7.Fhir.Model.MeasureReport.GroupComponent>(Group.DeepCopy());
-                if(EvaluatedResources != null) dest.EvaluatedResources = (Hl7.Fhir.Model.ResourceReference)EvaluatedResources.DeepCopy();
+                if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
+                if (StatusElement != null) dest.StatusElement = (Code<MeasureReportStatus>)StatusElement.DeepCopy();
+                if (TypeElement != null) dest.TypeElement = (Code<MeasureReportType>)TypeElement.DeepCopy();
+                if (Measure != null) dest.Measure = (ResourceReference)Measure.DeepCopy();
+                if (Patient != null) dest.Patient = (ResourceReference)Patient.DeepCopy();
+                if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
+                if (ReportingOrganization != null) dest.ReportingOrganization = (ResourceReference)ReportingOrganization.DeepCopy();
+                if (Period != null) dest.Period = (Period)Period.DeepCopy();
+                if (Group != null) dest.Group = new List<GroupComponent>(Group.DeepCopy());
+                if (EvaluatedResources != null) dest.EvaluatedResources = (ResourceReference)EvaluatedResources.DeepCopy();
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new MeasureReport());
+             return CopyTo(new MeasureReport());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as MeasureReport;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-            if( !DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
-            if( !DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
-            if( !DeepComparable.Matches(Measure, otherT.Measure)) return false;
-            if( !DeepComparable.Matches(Patient, otherT.Patient)) return false;
-            if( !DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
-            if( !DeepComparable.Matches(ReportingOrganization, otherT.ReportingOrganization)) return false;
-            if( !DeepComparable.Matches(Period, otherT.Period)) return false;
-            if( !DeepComparable.Matches(Group, otherT.Group)) return false;
-            if( !DeepComparable.Matches(EvaluatedResources, otherT.EvaluatedResources)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
+            if (!DeepComparable.Matches(Measure, otherT.Measure)) return false;
+            if (!DeepComparable.Matches(Patient, otherT.Patient)) return false;
+            if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
+            if (!DeepComparable.Matches(ReportingOrganization, otherT.ReportingOrganization)) return false;
+            if (!DeepComparable.Matches(Period, otherT.Period)) return false;
+            if ( !DeepComparable.Matches(Group, otherT.Group)) return false;
+            if (!DeepComparable.Matches(EvaluatedResources, otherT.EvaluatedResources)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as MeasureReport;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-            if( !DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
-            if( !DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
-            if( !DeepComparable.IsExactly(Measure, otherT.Measure)) return false;
-            if( !DeepComparable.IsExactly(Patient, otherT.Patient)) return false;
-            if( !DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
-            if( !DeepComparable.IsExactly(ReportingOrganization, otherT.ReportingOrganization)) return false;
-            if( !DeepComparable.IsExactly(Period, otherT.Period)) return false;
-            if( !DeepComparable.IsExactly(Group, otherT.Group)) return false;
-            if( !DeepComparable.IsExactly(EvaluatedResources, otherT.EvaluatedResources)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
+            if (!DeepComparable.IsExactly(Measure, otherT.Measure)) return false;
+            if (!DeepComparable.IsExactly(Patient, otherT.Patient)) return false;
+            if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
+            if (!DeepComparable.IsExactly(ReportingOrganization, otherT.ReportingOrganization)) return false;
+            if (!DeepComparable.IsExactly(Period, otherT.Period)) return false;
+            if (!DeepComparable.IsExactly(Group, otherT.Group)) return false;
+            if (!DeepComparable.IsExactly(EvaluatedResources, otherT.EvaluatedResources)) return false;
+
             return true;
         }
 
@@ -1141,16 +1078,16 @@ namespace Hl7.Fhir.Model
             get
             {
                 foreach (var item in base.Children) yield return item;
-				if (Identifier != null) yield return Identifier;
-				if (StatusElement != null) yield return StatusElement;
-				if (TypeElement != null) yield return TypeElement;
-				if (Measure != null) yield return Measure;
-				if (Patient != null) yield return Patient;
-				if (DateElement != null) yield return DateElement;
-				if (ReportingOrganization != null) yield return ReportingOrganization;
-				if (Period != null) yield return Period;
-				foreach (var elem in Group) { if (elem != null) yield return elem; }
-				if (EvaluatedResources != null) yield return EvaluatedResources;
+                if (Identifier != null) yield return Identifier;
+                if (StatusElement != null) yield return StatusElement;
+                if (TypeElement != null) yield return TypeElement;
+                if (Measure != null) yield return Measure;
+                if (Patient != null) yield return Patient;
+                if (DateElement != null) yield return DateElement;
+                if (ReportingOrganization != null) yield return ReportingOrganization;
+                if (Period != null) yield return Period;
+                foreach (var elem in Group) { if (elem != null) yield return elem; }
+                if (EvaluatedResources != null) yield return EvaluatedResources;
             }
         }
 
@@ -1174,5 +1111,5 @@ namespace Hl7.Fhir.Model
         }
 
     }
-    
+
 }

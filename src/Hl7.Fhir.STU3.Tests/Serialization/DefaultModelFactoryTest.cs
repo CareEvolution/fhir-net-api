@@ -9,11 +9,13 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System.Collections;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Serialization.STU3;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -57,8 +59,8 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(collection is List<int?>);
 
             // Test handling of closed generics
-            Assert.IsTrue(factory.CanCreate(typeof(Code<Address.AddressUse>)));
-            Assert.IsNotNull(factory.Create(typeof(Code<Address.AddressUse>)));
+            Assert.IsTrue(factory.CanCreate(typeof(Code<AddressUse>)));
+            Assert.IsNotNull(factory.Create(typeof(Code<AddressUse>)));
         }
 
         [TestMethod]

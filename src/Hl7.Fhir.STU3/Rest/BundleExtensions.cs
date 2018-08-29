@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.STU3
 {
     public static class BundleExtensions
     {
@@ -24,7 +24,7 @@ namespace Hl7.Fhir.Rest
         {
             if (bundle == null) throw Error.ArgumentNull(nameof(bundle));
 
-            if (bundle.Type != Bundle.BundleType.Searchset)
+            if (bundle.Type != BundleType.Searchset)
                 throw Error.Argument("Refresh is only applicable to bundles of type 'searchset'");
 
             // Clone old bundle, without the entries (so, just the header)

@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ using System.Text.RegularExpressions;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Validation
+namespace Hl7.Fhir.Validation.STU3
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public class CardinalityAttribute : ValidationAttribute

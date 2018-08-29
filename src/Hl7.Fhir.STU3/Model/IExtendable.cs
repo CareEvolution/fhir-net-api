@@ -34,8 +34,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hl7.Fhir.Support;
+using Hl7.Fhir.Support.STU3;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public interface IExtendable
     {

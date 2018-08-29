@@ -9,7 +9,7 @@
 using Hl7.Fhir.Rest;
 using System;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.STU3
 {
     public static class ScopedNavigatorExtensions
     {

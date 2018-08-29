@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Utility;
 using System;
 using System.Collections;
@@ -17,9 +17,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Reflection;
 
-namespace Hl7.Fhir.Validation
+namespace Hl7.Fhir.Validation.STU3
 {
-    [CLSCompliant(false)]
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public class AllowedTypesAttribute : ValidationAttribute
     {

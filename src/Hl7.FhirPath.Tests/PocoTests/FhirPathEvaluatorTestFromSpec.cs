@@ -8,80 +8,79 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using boolean = System.Boolean;
-using DecimalType = Hl7.Fhir.Model.FhirDecimal; // System.Decimal;
-using UriType = Hl7.Fhir.Model.FhirUri;
-using Hl7.Fhir.Serialization;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
-using Model = Hl7.Fhir.Model;
+using Hl7.Fhir.ElementModel.STU3;
+using Hl7.Fhir.Model.STU3;
+using Hl7.Fhir.Serialization.STU3;
 using Hl7.FhirPath.Functions;
 using Xunit;
-using Xunit.Sdk;
 using Xunit.Abstractions;
-using Hl7.Fhir.FhirPath;
+using Xunit.Sdk;
+using boolean = System.Boolean;
+using Model = Hl7.Fhir.Model;
 
 namespace Hl7.FhirPath.Tests
 {
     static class ConverterExtensions
     {
-        public static void setValue(this Model.Quantity me, double? value)
+        public static void setValue(this Quantity me, double? value)
         {
             if (value.HasValue)
                 me.Value = (decimal)value.Value;
             else
                 me.Value = null;
         }
-        public static void setUnit(this Model.Quantity me, string value)
+        public static void setUnit(this Quantity me, string value)
         {
             me.Unit = value;
         }
-        public static void setCode(this Model.Quantity me, string value)
+        public static void setCode(this Quantity me, string value)
         {
             me.Code = value;
         }
-        public static void setSystem(this Model.Quantity me, string value)
+        public static void setSystem(this Quantity me, string value)
         {
             me.System = value;
         }
-        public static void setValueSet(this Model.ElementDefinition.ElementDefinitionBindingComponent me, Model.Element value)
+        public static void setValueSet(this ElementDefinition.ElementDefinitionBindingComponent me, Element value)
         {
             me.ValueSet = value;
         }
-        public static Model.Element getValueSet(this Model.ElementDefinition.ElementDefinitionBindingComponent me)
+        public static Element getValueSet(this ElementDefinition.ElementDefinitionBindingComponent me)
         {
             return me.ValueSet;
         }
 
-        public static Model.Range setLow(this Model.Range me, Model.SimpleQuantity value)
+        public static Range setLow(this Range me, SimpleQuantity value)
         {
             me.Low = value;
             return me;
         }
-        public static Model.Range setHigh(this Model.Range me, Model.SimpleQuantity value)
+        public static Range setHigh(this Range me, SimpleQuantity value)
         {
             me.High = value;
             return me;
         }
 
-        public static Model.RiskAssessment.PredictionComponent addPrediction(this Model.RiskAssessment me)
+        public static RiskAssessment.PredictionComponent addPrediction(this RiskAssessment me)
         {
-            var item = new Model.RiskAssessment.PredictionComponent();
+            var item = new RiskAssessment.PredictionComponent();
             me.Prediction.Add(item);
             return item;
         }
-        public static List<Model.RiskAssessment.PredictionComponent> getPrediction(this Model.RiskAssessment me)
+        public static List<RiskAssessment.PredictionComponent> getPrediction(this RiskAssessment me)
         {
             return me.Prediction;
         }
 
-        public static Model.Element getProbability(this Model.RiskAssessment.PredictionComponent me)
+        public static Element getProbability(this RiskAssessment.PredictionComponent me)
         {
             return me.Probability;
         }
-        public static Model.RiskAssessment.PredictionComponent setProbability(this Model.RiskAssessment.PredictionComponent me, Model.Element value)
+        public static RiskAssessment.PredictionComponent setProbability(this RiskAssessment.PredictionComponent me, Element value)
         {
             me.Probability = value;
             return me;
@@ -98,7 +97,7 @@ namespace Hl7.FhirPath.Tests
             this.output = output;
         }
 
-        private void test(Model.Resource resource, String expression, IEnumerable<XElement> expected)
+        private void test(Resource resource, String expression, IEnumerable<XElement> expected)
         {
             var tpXml = new FhirXmlSerializer().SerializeToString(resource);
             var npoco = resource.ToElementNavigator();
@@ -125,7 +124,7 @@ namespace Hl7.FhirPath.Tests
         }
 
         // @SuppressWarnings("deprecation")
-        private void testBoolean(Model.Resource resource, Model.Base focus, String focusType, String expression, boolean value)
+        private void testBoolean(Resource resource, Base focus, String focusType, String expression, boolean value)
         {
             var input = focus.ToElementNavigator();
             var container = resource?.ToElementNavigator();
@@ -139,7 +138,7 @@ namespace Hl7.FhirPath.Tests
             Semantics
         }
 
-        private void testInvalid(Model.Resource resource, ErrorType type, String expression)
+        private void testInvalid(Resource resource, ErrorType type, String expression)
         {
             try
             {
@@ -161,7 +160,7 @@ namespace Hl7.FhirPath.Tests
             }
         }
 
-        Dictionary<string, Model.DomainResource> _cache = new Dictionary<string, Model.DomainResource>();
+        Dictionary<string, DomainResource> _cache = new Dictionary<string, DomainResource>();
 
         int numFailed = 0;
         int totalTests = 0;
@@ -205,12 +204,12 @@ namespace Hl7.FhirPath.Tests
                 if (mode != null && mode.Value == "strict") continue; // don't do 'strict' tests yet
 
                 // Now perform this unit test
-                Model.DomainResource resource = null;
+                DomainResource resource = null;
                 string basepath = Path.Combine(TestData.GetTestDataBasePath(), @"fhirpath\input");
 
                 if (!_cache.ContainsKey(inputfile))
                 {                    
-                    _cache.Add(inputfile, (Model.DomainResource)(new FhirXmlParser().Parse<Model.DomainResource>(
+                    _cache.Add(inputfile, (DomainResource)(new FhirXmlParser().Parse<DomainResource>(
                         File.ReadAllText(Path.Combine(basepath, inputfile)))));
                 }
                 resource = _cache[inputfile];
@@ -248,7 +247,7 @@ namespace Hl7.FhirPath.Tests
             }
         }
 
-        private void runTestItem(XElement testLine, Model.DomainResource resource)
+        private void runTestItem(XElement testLine, DomainResource resource)
         {
             var expression = testLine.Element("expression");
             var output = testLine.Elements("output");
@@ -278,31 +277,31 @@ namespace Hl7.FhirPath.Tests
         [Fact, Trait("Area", "FhirPathFromSpec")]
         public void testTyping()
         {
-            Model.ElementDefinition ed = new Model.ElementDefinition();
-            ed.Binding = new Model.ElementDefinition.ElementDefinitionBindingComponent();
-            ed.Binding.setValueSet(new UriType("http://test.org"));
+            ElementDefinition ed = new ElementDefinition();
+            ed.Binding = new ElementDefinition.ElementDefinitionBindingComponent();
+            ed.Binding.setValueSet(new FhirUri("http://test.org"));
             testBoolean(null, ed.Binding.getValueSet(), "ElementDefinition.binding.valueSetUri", "startsWith('http:') or startsWith('https') or startsWith('urn:')", true);
         }
 
         [Fact, Trait("Area", "FhirPathFromSpec")]
         public void testDecimalRA()
         {
-            Model.RiskAssessment r = new Model.RiskAssessment();
-            Model.SimpleQuantity sq = new Model.SimpleQuantity();
+            RiskAssessment r = new RiskAssessment();
+            SimpleQuantity sq = new SimpleQuantity();
             sq.setValue(0.2);
             sq.setUnit("%");
             sq.setCode("%");
             sq.setSystem("http://unitsofmeasure.org");
-            Model.SimpleQuantity sq1 = new Model.SimpleQuantity();
+            SimpleQuantity sq1 = new SimpleQuantity();
             sq1.setValue(0.4);
             sq1.setUnit("%");
             sq1.setCode("%");
             sq1.setSystem("http://unitsofmeasure.org");
-            r.addPrediction().setProbability(new Model.Range().setLow(sq).setHigh(sq1));
+            r.addPrediction().setProbability(new Range().setLow(sq).setHigh(sq1));
             testBoolean(r, r.getPrediction()[0].getProbability(), "RiskAssessment.prediction.probabilityRange",
                 "(low.empty() or ((low.code = '%') and (low.system = %ucum))) and (high.empty() or ((high.code = '%') and (high.system = %ucum)))", true);
             testBoolean(r, r.getPrediction()[0], "RiskAssessment.prediction", "probability is decimal implies probability.as(decimal) <= 100", true);
-            r.getPrediction()[0].setProbability(new DecimalType(80));
+            r.getPrediction()[0].setProbability(new FhirDecimal(80));
             testBoolean(r, r.getPrediction()[0], "RiskAssessment.prediction", "probability.as(decimal) <= 100", true);
         }
 
@@ -325,15 +324,15 @@ namespace Hl7.FhirPath.Tests
             // obsolete:
             // Bundle b = (Bundle)FhirParser.ParseResourceFromXml(File.ReadAllText("TestData\\extension-definitions.xml"));
             var parser = new FhirXmlParser();
-            Model.Bundle b = parser.Parse<Model.Bundle>(TestData.ReadTextFile("extension-definitions.xml"));
+            Bundle b = parser.Parse<Bundle>(TestData.ReadTextFile("extension-definitions.xml"));
 
-            foreach (Model.Bundle.EntryComponent be in b.Entry)
+            foreach (Bundle.EntryComponent be in b.Entry)
             {
-                testStructureDefinition((Model.StructureDefinition)be.Resource);
+                testStructureDefinition((StructureDefinition)be.Resource);
             }
         }
 
-        private void testStructureDefinition(Model.StructureDefinition sd)
+        private void testStructureDefinition(StructureDefinition sd)
         {
             testBoolean(sd, sd, "StructureDefinition", "snapshot.element.tail().all(path.startsWith(%resource.snapshot.element.first().path&'.')) and differential.element.tail().all(path.startsWith(%resource.differential.element.first().path&'.'))", true);
         }

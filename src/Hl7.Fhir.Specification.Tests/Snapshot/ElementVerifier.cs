@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Specification.Tests
                     }
                     if (_settings.GenerateElementIds && elementId != null)
                     {
-                        Assert.AreEqual(elementId, element.ElementId, $"Invalid elementId. Expected = '{elementId}', actual = '{element.ElementId}'.");
+                        Assert.AreEqual(elementId, element.Id, $"Invalid elementId. Expected = '{elementId}', actual = '{element.Id}'.");
                     }
                     if (fixedValue != null)
                     {
@@ -71,24 +71,24 @@ namespace Hl7.Fhir.Specification.Tests
         }
 
         [DebuggerStepThrough]
-        public void AssertSlicing(string discriminatorPath, ElementDefinition.SlicingRules? rules, bool? ordered)
+        public void AssertSlicing(string discriminatorPath, SlicingRules? rules, bool? ordered)
         {
-            AssertSlicing(ElementDefinition.DiscriminatorType.Value, discriminatorPath, rules, ordered);
+            AssertSlicing(DiscriminatorType.Value, discriminatorPath, rules, ordered);
         }
 
         [DebuggerStepThrough]
-        public void AssertSlicing(ElementDefinition.DiscriminatorType discriminatorType, string discriminatorPath, ElementDefinition.SlicingRules? rules, bool? ordered)
+        public void AssertSlicing(DiscriminatorType discriminatorType, string discriminatorPath, SlicingRules? rules, bool? ordered)
         {
             AssertSlicing(new ElementDefinition.DiscriminatorComponent() { Path = discriminatorPath, Type = discriminatorType }, rules, ordered);
         }
 
         [DebuggerStepThrough]
-        public void AssertSlicing(ElementDefinition.DiscriminatorComponent discriminator, ElementDefinition.SlicingRules? rules, bool? ordered)
+        public void AssertSlicing(ElementDefinition.DiscriminatorComponent discriminator, SlicingRules? rules, bool? ordered)
         {
             AssertSlicing(new ElementDefinition.DiscriminatorComponent[] { discriminator }, rules, ordered);
         }
 
-        public void AssertSlicing(IEnumerable<ElementDefinition.DiscriminatorComponent> discriminator, ElementDefinition.SlicingRules? rules, bool? ordered)
+        public void AssertSlicing(IEnumerable<ElementDefinition.DiscriminatorComponent> discriminator, SlicingRules? rules, bool? ordered)
         {
             var slicing = CurrentElement.Slicing;
             Assert.IsNotNull(slicing);

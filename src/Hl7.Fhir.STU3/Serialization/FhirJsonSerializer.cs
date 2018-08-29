@@ -6,13 +6,12 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
+using Hl7.Fhir.Model.STU3;
+using Hl7.Fhir.Rest.STU3;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.STU3
 {
     public class FhirJsonSerializer : BaseFhirSerializer
     {

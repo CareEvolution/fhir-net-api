@@ -1,6 +1,6 @@
 ﻿using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Terminology;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System.Linq;
 using Xunit;
 using Hl7.Fhir.Support;

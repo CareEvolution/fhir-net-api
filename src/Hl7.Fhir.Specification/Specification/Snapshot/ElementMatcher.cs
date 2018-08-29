@@ -39,7 +39,7 @@ using System.Linq;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Support;
 using System.Diagnostics;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Snapshot
@@ -523,7 +523,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                 return;
             }
 
-            else if (discriminators.Count == 1 && discriminators[0].Type == ElementDefinition.DiscriminatorType.Type)
+            else if (discriminators.Count == 1 && discriminators[0].Type == DiscriminatorType.Type)
             {
                 // Discriminator = @type => match on ElementDefinition.Type[0].Code
                 matchSliceByTypeCode(snapNav, diffNav, match);
@@ -644,10 +644,10 @@ namespace Hl7.Fhir.Specification.Snapshot
         static readonly string UrlDiscriminator = "url";
 
         /// <summary>Determines if the specified value equals the special predefined discriminator for slicing on element type profile.</summary>
-        static bool isProfileDiscriminator(ElementDefinition.DiscriminatorComponent discriminator) => discriminator?.Type == ElementDefinition.DiscriminatorType.Profile;
+        static bool isProfileDiscriminator(ElementDefinition.DiscriminatorComponent discriminator) => discriminator?.Type == DiscriminatorType.Profile;
 
         /// <summary>Determines if the specified value equals the special predefined discriminator for slicing on element type.</summary>
-        static bool isTypeDiscriminator(ElementDefinition.DiscriminatorComponent discriminator) => discriminator?.Type == ElementDefinition.DiscriminatorType.Type;
+        static bool isTypeDiscriminator(ElementDefinition.DiscriminatorComponent discriminator) => discriminator?.Type == DiscriminatorType.Type;
 
         //EK: Commented out since this combination is not valid/has never been valid?  In any case we did not consider it
         //when composing the new DiscriminatorType valueset.

@@ -30,6 +30,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,11 +38,12 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
 
     /// <summary>
@@ -52,7 +54,7 @@ namespace Hl7.Fhir.Model
     /// reflectable metadata for the xhtml type, and as a home for XHTML validation.
     /// </remarks>
     [FhirType("xhtml")]
-    public class XHtml : Hl7.Fhir.Model.Primitive<string>, System.ComponentModel.INotifyPropertyChanged
+    public class XHtml : Primitive<string>, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override string TypeName { get { return "xhtml"; } }

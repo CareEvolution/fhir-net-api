@@ -1,5 +1,5 @@
 ﻿using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Tests;
@@ -14,6 +14,10 @@ using Hl7.FhirPath;
 using Hl7.Fhir.Introspection;
 using System.IO;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.ElementModel.STU3;
+using Hl7.Fhir.FhirPath.STU3;
+using Hl7.Fhir.Serialization.STU3;
+using Hl7.Fhir.Specification.STU3;
 
 namespace Hl7.Fhir
 {
@@ -42,11 +46,11 @@ namespace Hl7.Fhir
 
             Patient p = new Patient();
             p.Active = true;
-            p.ActiveElement.ElementId = "314";
+            p.ActiveElement.Id = "314";
             p.ActiveElement.AddExtension("http://something.org", new FhirBoolean(false));
             p.ActiveElement.AddExtension("http://something.org", new Integer(314));
             p.Telecom = new List<ContactPoint>();
-            p.Telecom.Add(new ContactPoint(ContactPoint.ContactPointSystem.Phone, null, "555-phone"));
+            p.Telecom.Add(new ContactPoint(ContactPointSystem.Phone, null, "555-phone"));
             p.Telecom[0].Rank = 1;
 
             foreach (var item in p.Select("descendants().shortpathname()"))
@@ -123,7 +127,7 @@ namespace Hl7.Fhir
             Patient p = new Patient();
 
             p.Active = true;
-            p.ActiveElement.ElementId = "314";
+            p.ActiveElement.Id = "314";
             p.ActiveElement.AddExtension("http://something.org", new FhirBoolean(false));
             p.ActiveElement.AddExtension("http://something.org", new Integer(314));
 
@@ -139,7 +143,7 @@ namespace Hl7.Fhir
         public void PocoHasValueTest()
         {
             // Ensure the FHIR extensions are registered
-            FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
+            ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
 
             Patient p = new Patient();
 

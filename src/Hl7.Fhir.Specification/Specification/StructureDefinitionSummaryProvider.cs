@@ -7,8 +7,9 @@
  */
 
 using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Source;
@@ -89,7 +90,7 @@ namespace Hl7.Fhir.Specification
 
         public bool IsAbstract => _nav.StructureDefinition.Abstract ?? false;
 
-        public bool IsResource => _nav.StructureDefinition.Kind == StructureDefinition.StructureDefinitionKind.Resource;
+        public bool IsResource => _nav.StructureDefinition.Kind == StructureDefinitionKind.Resource;
 
         public IEnumerable<IElementDefinitionSummary> GetElements()
         {
@@ -197,7 +198,7 @@ namespace Hl7.Fhir.Specification
 
                 switch (_definition.Representation.First())
                 {
-                    case ElementDefinition.PropertyRepresentation.XmlAttr:
+                    case PropertyRepresentation.XmlAttr:
                         return XmlRepresentation.XmlAttr;
                     default:
                         return XmlRepresentation.XmlElement;

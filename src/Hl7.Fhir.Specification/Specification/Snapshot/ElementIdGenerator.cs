@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Utility;
 using System;
@@ -276,7 +276,7 @@ namespace Hl7.Fhir.Specification.Snapshot
 
             foreach (var elem in elements)
             {
-                elem.ElementId = null;
+                elem.Id = null;
             }
         }
 
@@ -298,7 +298,7 @@ namespace Hl7.Fhir.Specification.Snapshot
 
         static void clear(ElementDefinitionNavigator nav)
         {
-            nav.Current.ElementId = null;
+            nav.Current.Id = null;
             clearChildren(nav);
         }
 
@@ -343,10 +343,10 @@ namespace Hl7.Fhir.Specification.Snapshot
             var id = GenerateId(elemDef, parentElemId);
 
             // Don't replace existing IDs, unless force = true
-            if (force || elemDef.ElementId == null)
+            if (force || elemDef.Id == null)
             {
                 // Debug.WriteLine($"[{nameof(ElementIdGenerator)}.{nameof(generate)}] Path: {elemDef.Path}:{elemDef.SliceName} Id: {elemDef.ElementId} => {id}");
-                elemDef.ElementId = id;
+                elemDef.Id = id;
             }
 
             // Always return the generated ID value, as prefix for child element IDs

@@ -8,7 +8,8 @@
 
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.FhirPath.STU3;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
@@ -52,7 +53,7 @@ namespace Hl7.Fhir.Validation
                 if (!success)
                 {
                     var text = "Instance failed constraint " + constraintElement.ConstraintDescription();
-                    var issue = constraintElement.Severity == ElementDefinition.ConstraintSeverity.Error ?
+                    var issue = constraintElement.Severity == ConstraintSeverity.Error ?
                         Issue.CONTENT_ELEMENT_FAILS_ERROR_CONSTRAINT : Issue.CONTENT_ELEMENT_FAILS_WARNING_CONSTRAINT;
 
                     v.Trace(outcome, text, issue, instance);

@@ -7,13 +7,13 @@
  */
 
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hl7.Fhir.Model.STU3;
+using Hl7.Fhir.Serialization.STU3;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.STU3
 {
     public static class PocoBuilderExtensions
     {
@@ -39,12 +39,12 @@ namespace Hl7.Fhir.ElementModel
 
 
         [Obsolete("Use ParseQuantity(this ITypedElement instance) instead")]
-        public static Model.Quantity ParseQuantity(this IElementNavigator instance)
+        public static Quantity ParseQuantity(this IElementNavigator instance)
         {
             return ParseQuantity(instance.ToTypedElement());
         }
 
-        public static Model.Quantity ParseQuantity(this ITypedElement instance)
+        public static Quantity ParseQuantity(this ITypedElement instance)
         {
             var newQuantity = new Quantity
             {
@@ -56,7 +56,7 @@ namespace Hl7.Fhir.ElementModel
 
             var comp = instance.Children("comparator").GetString();
             if(comp != null)
-                newQuantity.ComparatorElement = new Code<Quantity.QuantityComparator> { ObjectValue = comp };
+                newQuantity.ComparatorElement = new Code<QuantityComparator> { ObjectValue = comp };
 
             return newQuantity;
         }

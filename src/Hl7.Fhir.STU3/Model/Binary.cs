@@ -1,9 +1,6 @@
-using System;
+using Hl7.Fhir.Validation.STU3;
 using System.Collections.Generic;
-using Hl7.Fhir.Validation;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.Serialization;
 
 /*
   Copyright (c) 2011-2012, HL7, Inc
@@ -35,7 +32,7 @@ using System.Runtime.Serialization;
 
 */
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     /// <summary>
     /// Resource for capturing binary data

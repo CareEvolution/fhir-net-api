@@ -1,5 +1,6 @@
 ﻿using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.STU3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Linq;

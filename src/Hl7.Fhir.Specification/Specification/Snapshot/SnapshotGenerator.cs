@@ -37,7 +37,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Source;
 using System.Diagnostics;
@@ -733,7 +733,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                 {
                     // Always generate new id's for child elements
                     // Also generate id for current element if not specified by diff
-                    ElementIdGenerator.Update(snap, true, !string.IsNullOrEmpty(diff.Current.ElementId));
+                    ElementIdGenerator.Update(snap, true, !string.IsNullOrEmpty(diff.Current.Id));
                 }
             }
 #else
@@ -1088,8 +1088,8 @@ namespace Hl7.Fhir.Specification.Snapshot
             if (IsEqualPath(elem.Base?.Path, DomainResource_Extension_Path))
             {
                 elem.ShortElement?.RemoveConstrainedByDiffAnnotation();
-                elem.CommentElement?.RemoveConstrainedByDiffAnnotation();
-                elem.DefinitionElement?.RemoveConstrainedByDiffAnnotation();
+                elem.Comment?.RemoveConstrainedByDiffAnnotation();
+                elem.Definition?.RemoveConstrainedByDiffAnnotation();
             }
         }
 
@@ -1575,12 +1575,12 @@ namespace Hl7.Fhir.Specification.Snapshot
                 {
                     new ElementDefinition.DiscriminatorComponent
                     {
-                        Type = ElementDefinition.DiscriminatorType.Value,
+                        Type = DiscriminatorType.Value,
                         Path = "url"
                     }
                 },
                 Ordered = false,
-                Rules = ElementDefinition.SlicingRules.Open
+                Rules = SlicingRules.Open
             };
             return elem;
         }

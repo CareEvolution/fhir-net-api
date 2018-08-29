@@ -4,7 +4,7 @@ using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace Hl7.Fhir.Utility
+namespace Hl7.Fhir.Utility.STU3
 {
     public static class PropertyInfoExtensions
     {

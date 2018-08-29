@@ -6,19 +6,8 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+using Hl7.Fhir.Rest.STU3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Xml;
-using System.Net;
-using System.IO;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
-using System.Threading.Tasks;
 
 namespace Hl7.Fhir.Tests.Rest
 {

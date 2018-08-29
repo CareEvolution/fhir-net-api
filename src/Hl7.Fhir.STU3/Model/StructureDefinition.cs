@@ -33,8 +33,10 @@ using System.ComponentModel;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Validation;
 using System.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     // [WMR 20160803] Add common base interfaces
     public interface IElementList : IModifierExtendable, INotifyPropertyChanged, IValidatableObject, IDeepCopyable, IDeepComparable

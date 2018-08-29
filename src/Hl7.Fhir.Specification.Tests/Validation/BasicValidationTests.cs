@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Source;
@@ -17,6 +17,9 @@ using Hl7.Fhir.Validation;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Hl7.Fhir.Specification.STU3;
+using Hl7.Fhir.Serialization.STU3;
+using Hl7.Fhir.Rest.STU3;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -712,7 +715,7 @@ namespace Hl7.Fhir.Specification.Tests
             var sd = "http://validationtest.org/fhir/StructureDefinition/BundleWithConstrainedContained";
             Bundle b = new Bundle
             {
-                Type = Bundle.BundleType.Message
+                Type = BundleType.Message
             };
             b.Entry.Add(new Bundle.EntryComponent
             {

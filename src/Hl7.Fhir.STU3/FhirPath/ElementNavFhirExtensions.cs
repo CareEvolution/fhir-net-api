@@ -6,17 +6,16 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Utility;
-using Hl7.FhirPath;
-using Hl7.FhirPath.Expressions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.STU3;
+using Hl7.Fhir.Model.STU3;
+using Hl7.FhirPath;
+using Hl7.FhirPath.Expressions;
 
-namespace Hl7.Fhir.FhirPath
+namespace Hl7.Fhir.FhirPath.STU3
 {
     public class FhirEvaluationContext : EvaluationContext
     {

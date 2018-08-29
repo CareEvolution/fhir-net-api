@@ -14,7 +14,7 @@ using System.Text;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public partial class CodeSystem
     {

@@ -37,7 +37,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
     public partial class FhirDateTime : IStringValue

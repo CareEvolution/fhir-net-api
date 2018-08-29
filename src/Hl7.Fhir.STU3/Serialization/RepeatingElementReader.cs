@@ -6,12 +6,12 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Utility;
 using System.Collections;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.STU3
 {
     internal class RepeatingElementReader
     {

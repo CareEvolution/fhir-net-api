@@ -36,7 +36,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public partial class ConceptMap
     {

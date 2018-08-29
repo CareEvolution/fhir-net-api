@@ -28,14 +28,10 @@
 
 */
 using System;
-using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     /// <summary>
     /// Details of a Technology mediated contact point (phone, fax, email, etc)
@@ -51,17 +47,17 @@ namespace Hl7.Fhir.Model
             {
                 string result = null;
 
-                if (this._SystemElement != null && this._SystemElement.Value != null && this._SystemElement.Value.HasValue)
-                    result = this._SystemElement.Value.ToString();
+                if (this._systemElement != null && this._systemElement.Value != null && this._systemElement.Value.HasValue)
+                    result = this._systemElement.Value.ToString();
                 else
                     result = "(null)";
 
-                if (this._UseElement != null && this._UseElement.Value != null && this._UseElement.Value.HasValue)
-                    result += String.Format(" ({0})", this._UseElement.Value.ToString());
+                if (this._useElement != null && this._useElement.Value != null && this._useElement.Value.HasValue)
+                    result += String.Format(" ({0})", this._useElement.Value.ToString());
                 result += ": ";
 
-                if (this._ValueElement != null && this._ValueElement.Value != null)
-                    result += String.Format("\"{0}\"", this._ValueElement.Value);
+                if (this._valueElement != null && this._valueElement.Value != null)
+                    result += String.Format("\"{0}\"", this._valueElement.Value);
                 else
                     result += "(null)";
 

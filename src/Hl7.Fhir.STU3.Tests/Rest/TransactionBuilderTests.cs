@@ -10,11 +10,11 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Rest;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-using static Hl7.Fhir.Model.Observation;
+using Hl7.Fhir.Rest.STU3;
 
 namespace Hl7.Fhir.Test
 {
@@ -34,16 +34,16 @@ namespace Hl7.Fhir.Test
 
             Assert.AreEqual(4, b.Entry.Count);
 
-            Assert.AreEqual(Bundle.HTTPVerb.POST, b.Entry[0].Request.Method);
+            Assert.AreEqual(HTTPVerb.POST, b.Entry[0].Request.Method);
             Assert.AreEqual(p, b.Entry[0].Resource);
 
-            Assert.AreEqual(Bundle.HTTPVerb.GET, b.Entry[1].Request.Method);
+            Assert.AreEqual(HTTPVerb.GET, b.Entry[1].Request.Method);
             Assert.AreEqual("Patient/7/_history", b.Entry[1].Request.Url);
 
-            Assert.AreEqual(Bundle.HTTPVerb.DELETE, b.Entry[2].Request.Method);
+            Assert.AreEqual(HTTPVerb.DELETE, b.Entry[2].Request.Method);
             Assert.AreEqual("Patient/8", b.Entry[2].Request.Url);
 
-            Assert.AreEqual(Bundle.HTTPVerb.GET, b.Entry[3].Request.Method);
+            Assert.AreEqual(HTTPVerb.GET, b.Entry[3].Request.Method);
             Assert.AreEqual("Patient/9", b.Entry[3].Request.Url);
             Assert.AreEqual("W/\"bla\"", b.Entry[3].Request.IfNoneMatch);
         }
@@ -230,7 +230,7 @@ namespace Hl7.Fhir.Test
                 .Create(observation)
                 .Get("Patient/1");
             var bundle = transaction.ToBundle();
-            bundle.Type = Bundle.BundleType.Transaction;
+            bundle.Type = BundleType.Transaction;
 
             Assert.AreEqual(2, bundle.Entry.Count);
             Assert.IsFalse(bundle.Entry[0].Request.Url.StartsWith(endpoint), "Entries in the transaction bundle cannot contain absolute url.");

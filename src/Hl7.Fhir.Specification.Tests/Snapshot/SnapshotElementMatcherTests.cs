@@ -7,7 +7,7 @@
  */
 
 using System;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Specification.Snapshot;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Specification.Source;
@@ -15,7 +15,7 @@ using Hl7.Fhir.Specification.Navigation;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Hl7.Fhir.Introspection;
-using static Hl7.Fhir.Model.ElementDefinition.DiscriminatorComponent;
+using static Hl7.Fhir.Model.STU3.ElementDefinition.DiscriminatorComponent;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Tests
@@ -212,7 +212,7 @@ namespace Hl7.Fhir.Specification.Tests
                             Slicing = new ElementDefinition.SlicingComponent()
                             {
                                 Discriminator = ForValueSlice("url").ToList(),
-                                Rules = ElementDefinition.SlicingRules.Closed
+                                Rules = SlicingRules.Closed
                             }
                         },
                         new ElementDefinition("Patient.extension")

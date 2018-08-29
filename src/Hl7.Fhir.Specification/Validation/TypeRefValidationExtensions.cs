@@ -7,9 +7,11 @@
  */
 
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.STU3;
 using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.STU3;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using System;
@@ -121,7 +123,7 @@ namespace Hl7.Fhir.Validation
             
             // Try to resolve the reference *within* the current instance (Bundle, resource with contained resources) first
             var referencedResource = validator.resolveReference(instance, reference,
-                out ElementDefinition.AggregationMode? encounteredKind, outcome);
+                out AggregationMode? encounteredKind, outcome);
 
             // Validate the kind of aggregation.
             // If no aggregation is given, all kinds of aggregation are allowed, otherwise only allow
@@ -131,11 +133,11 @@ namespace Hl7.Fhir.Validation
                 validator.Trace(outcome, $"Encountered a reference ({reference}) of kind '{encounteredKind}' which is not allowed", Issue.CONTENT_REFERENCE_OF_INVALID_KIND, instance);
 
             // Bail out if we are asked to follow an *external reference* when this is disabled in the settings
-            if (validator.Settings.ResolveExteralReferences == false && encounteredKind == ElementDefinition.AggregationMode.Referenced)
+            if (validator.Settings.ResolveExteralReferences == false && encounteredKind == AggregationMode.Referenced)
                 return outcome;
 
             // If we failed to find a referenced resource within the current instance, try to resolve it using an external method
-            if (referencedResource == null && encounteredKind == ElementDefinition.AggregationMode.Referenced)
+            if (referencedResource == null && encounteredKind == AggregationMode.Referenced)
             {
                 try
                 {
@@ -158,7 +160,7 @@ namespace Hl7.Fhir.Validation
                 // In both cases, the outcome is included in the result.
                 OperationOutcome childResult;
 
-                if (encounteredKind != ElementDefinition.AggregationMode.Referenced)
+                if (encounteredKind != AggregationMode.Referenced)
                 {
                     childResult = validator.Validate(referencedResource, typeRef.TargetProfile, statedProfiles: null, statedCanonicals: null);
                 }
@@ -181,7 +183,7 @@ namespace Hl7.Fhir.Validation
             return outcome;
         }
 
-        private static ITypedElement resolveReference(this Validator validator, ScopedNode instance, string reference, out ElementDefinition.AggregationMode? referenceKind, OperationOutcome outcome)
+        private static ITypedElement resolveReference(this Validator validator, ScopedNode instance, string reference, out AggregationMode? referenceKind, OperationOutcome outcome)
         {
             var identity = new ResourceIdentity(reference);
 
@@ -199,16 +201,16 @@ namespace Hl7.Fhir.Validation
 
             if (identity.Form == ResourceIdentityForm.Local)
             {
-                referenceKind = ElementDefinition.AggregationMode.Contained;
+                referenceKind = AggregationMode.Contained;
                 if(result == null)
                     validator.Trace(outcome, $"Contained reference ({reference}) is not resolvable", Issue.CONTENT_CONTAINED_REFERENCE_NOT_RESOLVABLE, instance);
             }
             else
             {
                 if (result != null)
-                    referenceKind = ElementDefinition.AggregationMode.Bundled;
+                    referenceKind = AggregationMode.Bundled;
                 else
-                    referenceKind = ElementDefinition.AggregationMode.Referenced;
+                    referenceKind = AggregationMode.Referenced;
             }
 
             return result;

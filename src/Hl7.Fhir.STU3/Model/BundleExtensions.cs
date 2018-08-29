@@ -6,16 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.STU3;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     public static class BundleExtensions
     {
@@ -27,7 +24,7 @@ namespace Hl7.Fhir.Model
             return newEntry;
         }
 
-        public static Bundle.EntryComponent AddSearchEntry(this Bundle b, Resource r, string fullUrl, Bundle.SearchEntryMode searchEntryMode)
+        public static Bundle.EntryComponent AddSearchEntry(this Bundle b, Resource r, string fullUrl, SearchEntryMode searchEntryMode)
         {
             var newEntry = new Bundle.EntryComponent
             {
@@ -40,7 +37,7 @@ namespace Hl7.Fhir.Model
             return newEntry;
         }
 
-        public static Bundle.EntryComponent AddSearchEntry(this Bundle b, Resource r, string fullUrl, Bundle.SearchEntryMode searchEntryMode, decimal searchScore)
+        public static Bundle.EntryComponent AddSearchEntry(this Bundle b, Resource r, string fullUrl, SearchEntryMode searchEntryMode, decimal searchScore)
         {
             var newEntry = new Bundle.EntryComponent
             {
@@ -63,7 +60,7 @@ namespace Hl7.Fhir.Model
         {
             if (entry.Request != null)
             {
-                return entry.Request.Method == Bundle.HTTPVerb.DELETE;
+                return entry.Request.Method == HTTPVerb.DELETE;
             }
 
             return false;

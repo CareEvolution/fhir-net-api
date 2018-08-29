@@ -1,22 +1,22 @@
-﻿using Hl7.Fhir.Introspection;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{ToString()}}")]
     public partial class OperationOutcome
     {
         [Obsolete("You should now pass in the IssueType. This now defaults to IssueType.Processing")]
-        public static OperationOutcome ForMessage(string message, OperationOutcome.IssueSeverity severity = IssueSeverity.Error)
+        public static OperationOutcome ForMessage(string message, IssueSeverity severity = IssueSeverity.Error)
         {
             return ForMessage(message, IssueType.Processing, severity);
         }
 
-        public static OperationOutcome ForMessage(string message, OperationOutcome.IssueType code, OperationOutcome.IssueSeverity severity = IssueSeverity.Error)
+        public static OperationOutcome ForMessage(string message, IssueType code, IssueSeverity severity = IssueSeverity.Error)
         {
             return new OperationOutcome() {
                       Issue = new List<OperationOutcome.IssueComponent>()
@@ -26,11 +26,11 @@ namespace Hl7.Fhir.Model
         }
 
         [Obsolete("You should now pass in the IssueType. This now defaults to IssueType.Processing")]
-        public static OperationOutcome ForException(Exception e, OperationOutcome.IssueSeverity severity = IssueSeverity.Error)
+        public static OperationOutcome ForException(Exception e, IssueSeverity severity = IssueSeverity.Error)
         {
             return ForException(e, IssueType.Processing, severity);
         }
-        public static OperationOutcome ForException(Exception e, OperationOutcome.IssueType type, OperationOutcome.IssueSeverity severity = IssueSeverity.Error)
+        public static OperationOutcome ForException(Exception e, IssueType type, IssueSeverity severity = IssueSeverity.Error)
         {
             var result = OperationOutcome.ForMessage(e.Message, type, severity);
             var ie = e.InnerException;
@@ -119,7 +119,7 @@ namespace Hl7.Fhir.Model
             {
                 get
                 {
-                    return String.Format("Code=\"{0}\" {1}", this.Code, _Details.DebuggerDisplay("Details."));
+                    return String.Format("Code=\"{0}\" {1}", this.Code, _details.DebuggerDisplay("Details."));
                 }
             }
 

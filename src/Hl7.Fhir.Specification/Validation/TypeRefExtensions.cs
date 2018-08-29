@@ -8,7 +8,7 @@
 
 using System.Linq;
 using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Support;
 using System.Collections.Generic;
 using Hl7.Fhir.Utility;
@@ -17,7 +17,7 @@ namespace Hl7.Fhir.Validation
 {
     internal static class TypeRefExtensions
     {
-        public static string ReadableName(this StructureDefinition sd) => sd.Derivation == StructureDefinition.TypeDerivationRule.Constraint ? sd.Url : sd.Id;
+        public static string ReadableName(this StructureDefinition sd) => sd.Derivation == TypeDerivationRule.Constraint ? sd.Url : sd.Id;
 
         public static string GetDeclaredProfiles(this ElementDefinition.TypeRefComponent typeRef)
         {

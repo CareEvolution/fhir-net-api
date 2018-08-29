@@ -1,4 +1,5 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.STU3;
+using Hl7.Fhir.Serialization.STU3;
 using Hl7.Fhir.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -32,8 +33,8 @@ namespace Hl7.Fhir.Tests
 
         private void ValidateFolder(string basePath, string path, StringBuilder issues)
         {
-            var xmlParser = new Fhir.Serialization.FhirXmlParser();
-            var jsonParser = new Fhir.Serialization.FhirJsonParser();
+            var xmlParser = new FhirXmlParser();
+            var jsonParser = new FhirJsonParser();
             Console.WriteLine($"Validating test files in {path.Replace(basePath, "")}");
             foreach (var item in Directory.EnumerateFiles(path))
             {

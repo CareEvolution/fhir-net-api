@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Support;
 
 namespace Hl7.Fhir.Validation
@@ -22,7 +22,7 @@ namespace Hl7.Fhir.Validation
 
             foreach (var issue in result.Issue)
                 if(!issue.Success) 
-                    issue.Severity = OperationOutcome.IssueSeverity.Information;
+                    issue.Severity = IssueSeverity.Information;
         }
 
         public static void Flatten(this OperationOutcome outcome)
