@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("EntryComponent")]
         [DataContract]
-        public partial class EntryComponent : BackboneElement
+        public partial class EntryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EntryComponent"; } }

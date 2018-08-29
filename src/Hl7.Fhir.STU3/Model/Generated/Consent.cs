@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ActorComponent")]
         [DataContract]
-        public partial class ActorComponent : BackboneElement
+        public partial class ActorComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActorComponent"; } }
@@ -167,7 +167,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PolicyComponent")]
         [DataContract]
-        public partial class PolicyComponent : BackboneElement
+        public partial class PolicyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PolicyComponent"; } }
@@ -309,7 +309,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DataComponent")]
         [DataContract]
-        public partial class DataComponent : BackboneElement
+        public partial class DataComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DataComponent"; } }
@@ -434,7 +434,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ExceptComponent")]
         [DataContract]
-        public partial class ExceptComponent : BackboneElement
+        public partial class ExceptComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ExceptComponent"; } }
@@ -709,7 +709,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ExceptActorComponent")]
         [DataContract]
-        public partial class ExceptActorComponent : BackboneElement
+        public partial class ExceptActorComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ExceptActorComponent"; } }
@@ -816,7 +816,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ExceptDataComponent")]
         [DataContract]
-        public partial class ExceptDataComponent : BackboneElement
+        public partial class ExceptDataComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ExceptDataComponent"; } }

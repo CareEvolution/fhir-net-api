@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("IngredientComponent")]
         [DataContract]
-        public partial class IngredientComponent : BackboneElement
+        public partial class IngredientComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "IngredientComponent"; } }
@@ -203,7 +203,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PackageComponent")]
         [DataContract]
-        public partial class PackageComponent : BackboneElement
+        public partial class PackageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PackageComponent"; } }
@@ -327,7 +327,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ContentComponent")]
         [DataContract]
-        public partial class ContentComponent : BackboneElement
+        public partial class ContentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContentComponent"; } }
@@ -433,7 +433,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("BatchComponent")]
         [DataContract]
-        public partial class BatchComponent : BackboneElement
+        public partial class BatchComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "BatchComponent"; } }

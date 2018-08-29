@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AgentComponent")]
         [DataContract]
-        public partial class AgentComponent : BackboneElement
+        public partial class AgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AgentComponent"; } }
@@ -167,7 +167,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SignatoryComponent")]
         [DataContract]
-        public partial class SignatoryComponent : BackboneElement
+        public partial class SignatoryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SignatoryComponent"; } }
@@ -293,7 +293,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ValuedItemComponent")]
         [DataContract]
-        public partial class ValuedItemComponent : BackboneElement
+        public partial class ValuedItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ValuedItemComponent"; } }
@@ -563,7 +563,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TermComponent")]
         [DataContract]
-        public partial class TermComponent : BackboneElement
+        public partial class TermComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TermComponent"; } }
@@ -910,7 +910,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TermAgentComponent")]
         [DataContract]
-        public partial class TermAgentComponent : BackboneElement
+        public partial class TermAgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TermAgentComponent"; } }
@@ -1017,7 +1017,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TermValuedItemComponent")]
         [DataContract]
-        public partial class TermValuedItemComponent : BackboneElement
+        public partial class TermValuedItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TermValuedItemComponent"; } }
@@ -1287,7 +1287,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("FriendlyLanguageComponent")]
         [DataContract]
-        public partial class FriendlyLanguageComponent : BackboneElement
+        public partial class FriendlyLanguageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FriendlyLanguageComponent"; } }
@@ -1375,7 +1375,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("LegalLanguageComponent")]
         [DataContract]
-        public partial class LegalLanguageComponent : BackboneElement
+        public partial class LegalLanguageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LegalLanguageComponent"; } }
@@ -1463,7 +1463,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ComputableLanguageComponent")]
         [DataContract]
-        public partial class ComputableLanguageComponent : BackboneElement
+        public partial class ComputableLanguageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ComputableLanguageComponent"; } }

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("OralDietComponent")]
         [DataContract]
-        public partial class OralDietComponent : BackboneElement
+        public partial class OralDietComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OralDietComponent"; } }
@@ -260,7 +260,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("NutrientComponent")]
         [DataContract]
-        public partial class NutrientComponent : BackboneElement
+        public partial class NutrientComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NutrientComponent"; } }
@@ -364,7 +364,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TextureComponent")]
         [DataContract]
-        public partial class TextureComponent : BackboneElement
+        public partial class TextureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TextureComponent"; } }
@@ -468,7 +468,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SupplementComponent")]
         [DataContract]
-        public partial class SupplementComponent : BackboneElement
+        public partial class SupplementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SupplementComponent"; } }
@@ -665,7 +665,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("EnteralFormulaComponent")]
         [DataContract]
-        public partial class EnteralFormulaComponent : BackboneElement
+        public partial class EnteralFormulaComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EnteralFormulaComponent"; } }
@@ -953,7 +953,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AdministrationComponent")]
         [DataContract]
-        public partial class AdministrationComponent : BackboneElement
+        public partial class AdministrationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AdministrationComponent"; } }

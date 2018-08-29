@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PractitionerComponent")]
         [DataContract]
-        public partial class PractitionerComponent : BackboneElement
+        public partial class PractitionerComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PractitionerComponent"; } }
@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ExplanationComponent")]
         [DataContract]
-        public partial class ExplanationComponent : BackboneElement
+        public partial class ExplanationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ExplanationComponent"; } }
@@ -272,7 +272,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ReactionComponent")]
         [DataContract]
-        public partial class ReactionComponent : BackboneElement
+        public partial class ReactionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ReactionComponent"; } }
@@ -433,7 +433,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("VaccinationProtocolComponent")]
         [DataContract]
-        public partial class VaccinationProtocolComponent : BackboneElement
+        public partial class VaccinationProtocolComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "VaccinationProtocolComponent"; } }

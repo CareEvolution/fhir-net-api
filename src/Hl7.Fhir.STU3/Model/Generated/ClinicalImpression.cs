@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("InvestigationComponent")]
         [DataContract]
-        public partial class InvestigationComponent : BackboneElement
+        public partial class InvestigationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InvestigationComponent"; } }
@@ -167,7 +167,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("FindingComponent")]
         [DataContract]
-        public partial class FindingComponent : BackboneElement
+        public partial class FindingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FindingComponent"; } }

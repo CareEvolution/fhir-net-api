@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("StatusHistoryComponent")]
         [DataContract]
-        public partial class StatusHistoryComponent : BackboneElement
+        public partial class StatusHistoryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StatusHistoryComponent"; } }
@@ -185,7 +185,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DiagnosisComponent")]
         [DataContract]
-        public partial class DiagnosisComponent : BackboneElement
+        public partial class DiagnosisComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DiagnosisComponent"; } }

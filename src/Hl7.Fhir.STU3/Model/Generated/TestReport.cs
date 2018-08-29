@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ParticipantComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class ParticipantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParticipantComponent"; } }
@@ -241,7 +241,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SetupComponent")]
         [DataContract]
-        public partial class SetupComponent : BackboneElement
+        public partial class SetupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SetupComponent"; } }
@@ -328,7 +328,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SetupActionComponent")]
         [DataContract]
-        public partial class SetupActionComponent : BackboneElement
+        public partial class SetupActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SetupActionComponent"; } }
@@ -432,7 +432,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("OperationComponent")]
         [DataContract]
-        public partial class OperationComponent : BackboneElement
+        public partial class OperationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OperationComponent"; } }
@@ -593,7 +593,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AssertComponent")]
         [DataContract]
-        public partial class AssertComponent : BackboneElement
+        public partial class AssertComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AssertComponent"; } }
@@ -754,7 +754,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TestComponent")]
         [DataContract]
-        public partial class TestComponent : BackboneElement
+        public partial class TestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TestComponent"; } }
@@ -915,7 +915,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TestActionComponent")]
         [DataContract]
-        public partial class TestActionComponent : BackboneElement
+        public partial class TestActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TestActionComponent"; } }
@@ -1019,7 +1019,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TeardownComponent")]
         [DataContract]
-        public partial class TeardownComponent : BackboneElement
+        public partial class TeardownComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TeardownComponent"; } }
@@ -1106,7 +1106,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TeardownActionComponent")]
         [DataContract]
-        public partial class TeardownActionComponent : BackboneElement
+        public partial class TeardownActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TeardownActionComponent"; } }

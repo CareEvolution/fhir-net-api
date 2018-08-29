@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("UniqueIdComponent")]
         [DataContract]
-        public partial class UniqueIdComponent : BackboneElement
+        public partial class UniqueIdComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "UniqueIdComponent"; } }

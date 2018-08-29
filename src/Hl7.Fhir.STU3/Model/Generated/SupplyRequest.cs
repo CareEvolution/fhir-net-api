@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("OrderedItemComponent")]
         [DataContract]
-        public partial class OrderedItemComponent : BackboneElement
+        public partial class OrderedItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OrderedItemComponent"; } }
@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RequesterComponent")]
         [DataContract]
-        public partial class RequesterComponent : BackboneElement
+        public partial class RequesterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RequesterComponent"; } }

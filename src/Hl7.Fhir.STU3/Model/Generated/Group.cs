@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("CharacteristicComponent")]
         [DataContract]
-        public partial class CharacteristicComponent : BackboneElement
+        public partial class CharacteristicComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CharacteristicComponent"; } }
@@ -223,7 +223,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("MemberComponent")]
         [DataContract]
-        public partial class MemberComponent : BackboneElement
+        public partial class MemberComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MemberComponent"; } }

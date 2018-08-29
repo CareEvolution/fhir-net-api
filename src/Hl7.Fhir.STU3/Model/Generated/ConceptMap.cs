@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("GroupComponent")]
         [DataContract]
-        public partial class GroupComponent : BackboneElement
+        public partial class GroupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GroupComponent"; } }
@@ -313,7 +313,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SourceElementComponent")]
         [DataContract]
-        public partial class SourceElementComponent : BackboneElement
+        public partial class SourceElementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SourceElementComponent"; } }
@@ -474,7 +474,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TargetElementComponent")]
         [DataContract]
-        public partial class TargetElementComponent : BackboneElement
+        public partial class TargetElementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TargetElementComponent"; } }
@@ -728,7 +728,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("OtherElementComponent")]
         [DataContract]
-        public partial class OtherElementComponent : BackboneElement
+        public partial class OtherElementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OtherElementComponent"; } }
@@ -946,7 +946,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("UnmappedComponent")]
         [DataContract]
-        public partial class UnmappedComponent : BackboneElement
+        public partial class UnmappedComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "UnmappedComponent"; } }

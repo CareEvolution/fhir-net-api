@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("CoverageComponent")]
         [DataContract]
-        public partial class CoverageComponent : BackboneElement
+        public partial class CoverageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CoverageComponent"; } }
@@ -185,7 +185,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("GuarantorComponent")]
         [DataContract]
-        public partial class GuarantorComponent : BackboneElement
+        public partial class GuarantorComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GuarantorComponent"; } }

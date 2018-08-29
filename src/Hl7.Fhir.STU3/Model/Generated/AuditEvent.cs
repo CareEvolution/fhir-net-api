@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AgentComponent")]
         [DataContract]
-        public partial class AgentComponent : BackboneElement
+        public partial class AgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AgentComponent"; } }
@@ -408,7 +408,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("NetworkComponent")]
         [DataContract]
-        public partial class NetworkComponent : BackboneElement
+        public partial class NetworkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NetworkComponent"; } }
@@ -550,7 +550,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SourceComponent")]
         [DataContract]
-        public partial class SourceComponent : BackboneElement
+        public partial class SourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SourceComponent"; } }
@@ -693,7 +693,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("EntityComponent")]
         [DataContract]
-        public partial class EntityComponent : BackboneElement
+        public partial class EntityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EntityComponent"; } }
@@ -1000,7 +1000,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DetailComponent")]
         [DataContract]
-        public partial class DetailComponent : BackboneElement
+        public partial class DetailComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DetailComponent"; } }

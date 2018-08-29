@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ItemComponent")]
         [DataContract]
-        public partial class ItemComponent : BackboneElement
+        public partial class ItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ItemComponent"; } }
@@ -577,7 +577,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("EnableWhenComponent")]
         [DataContract]
-        public partial class EnableWhenComponent : BackboneElement
+        public partial class EnableWhenComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EnableWhenComponent"; } }
@@ -739,7 +739,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("OptionComponent")]
         [DataContract]
-        public partial class OptionComponent : BackboneElement
+        public partial class OptionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OptionComponent"; } }

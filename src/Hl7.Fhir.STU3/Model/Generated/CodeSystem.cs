@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("FilterComponent")]
         [DataContract]
-        public partial class FilterComponent : BackboneElement
+        public partial class FilterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FilterComponent"; } }
@@ -279,7 +279,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PropertyComponent")]
         [DataContract]
-        public partial class PropertyComponent : BackboneElement
+        public partial class PropertyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PropertyComponent"; } }
@@ -497,7 +497,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ConceptDefinitionComponent")]
         [DataContract]
-        public partial class ConceptDefinitionComponent : BackboneElement
+        public partial class ConceptDefinitionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConceptDefinitionComponent"; } }
@@ -734,7 +734,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DesignationComponent")]
         [DataContract]
-        public partial class DesignationComponent : BackboneElement
+        public partial class DesignationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DesignationComponent"; } }
@@ -895,7 +895,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ConceptPropertyComponent")]
         [DataContract]
-        public partial class ConceptPropertyComponent : BackboneElement
+        public partial class ConceptPropertyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConceptPropertyComponent"; } }

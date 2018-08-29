@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("MitigationComponent")]
         [DataContract]
-        public partial class MitigationComponent : BackboneElement
+        public partial class MitigationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MitigationComponent"; } }

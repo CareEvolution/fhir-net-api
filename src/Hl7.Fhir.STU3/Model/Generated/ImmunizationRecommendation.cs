@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RecommendationComponent")]
         [DataContract]
-        public partial class RecommendationComponent : BackboneElement
+        public partial class RecommendationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RecommendationComponent"; } }
@@ -335,7 +335,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DateCriterionComponent")]
         [DataContract]
-        public partial class DateCriterionComponent : BackboneElement
+        public partial class DateCriterionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DateCriterionComponent"; } }
@@ -460,7 +460,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ProtocolComponent")]
         [DataContract]
-        public partial class ProtocolComponent : BackboneElement
+        public partial class ProtocolComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProtocolComponent"; } }

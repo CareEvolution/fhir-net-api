@@ -1198,6 +1198,11 @@ public class ResourceDetails
                 resourceName = "Code";
                 primitiveTypeName = "string";
             }
+            else if (resourceName == "xhtml")
+            {
+                resourceName = "XHtml";
+                primitiveTypeName = "string";
+            }
             else if (resourceName == "base64Binary")
             {
                 resourceName = "Base64Binary";
@@ -1467,7 +1472,7 @@ public class ComponentDetails
     {
         yield return $"[FhirType(\"{ Name }\")]";
         yield return $"[DataContract]";
-        yield return $"public partial class { Name } : { BaseType }";
+        yield return $"public partial class { Name } : { BaseType }, IBackboneElement";
         yield return $"{{";
         yield return $"    [NotMapped]";
         yield return $"    public override string TypeName {{ get {{ return \"{ Name }\"; }} }}";
@@ -1736,12 +1741,12 @@ public class PropertyDetails
         if(PropType == "string" && Name == "Div")
         {
             // for Narrative.Div
-            serialization = ", XmlSerialization=XmlRepresentation.XHtml";
+            serialization = ", XmlSerialization=XmlRepresentation.XHtml,TypeRedirect = typeof(XHtml)";
         } 
         else if (PropType == "FhirString" && FhirName == "id")
         {
             // for Element.id
-            serialization = ",  XmlSerialization=XmlRepresentation.XmlAttr";
+            serialization = ",  XmlSerialization=XmlRepresentation.XmlAttr,TypeRedirect = typeof(Id)";
             InSummaryVersions.Add(string.Empty);
         }
         yield return $"[FhirElement(\"{FhirName}\"{serialization}{InSummaryAttribute()}, Order={nPropNum}{choice})]";
@@ -1840,11 +1845,6 @@ public class PropertyDetails
 
     public IEnumerable<string> RenderAsChildWithName()
     {
-        // Exclude special properties encoded as Xml attributes (Element.Id) - not derived from Base
-        //if (IsXmlAttribute) yield break;
-
-        if (PropType == "string") yield break;
-
         if (IsMultiCard())
         {
             yield return $"foreach (var elem in {Name}) {{ if (elem != null) yield return new ElementValue(\"{FhirName}\", elem); }}";
@@ -2501,7 +2501,7 @@ public class AllVersionsModelInfo : ModelInfoBase
             .ToList();
         _typesNameAndType = resourcesByName
             .Values
-            .Where(r => !r.IsResource() && r.Name != "Xhtml")
+            .Where(r => !r.IsResource())
             .Select(r => Tuple.Create(r.FhirName, r.Name))
             .Distinct()
             .OrderBy(nameAndType => nameAndType.Item1)
@@ -2552,7 +2552,7 @@ public class ModelInfo : ModelInfoBase
             .ToList();
         _version = version;
         _typesNameAndType = resources
-            .Where(r => !r.IsResource() && r.Name != "Xhtml")
+            .Where(r => !r.IsResource())
             .Select(r => Tuple.Create(r.FhirName, r.Name))
             .OrderBy(nameAndType => nameAndType.Item1)
             .ToList();

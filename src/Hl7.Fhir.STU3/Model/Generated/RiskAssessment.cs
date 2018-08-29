@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PredictionComponent")]
         [DataContract]
-        public partial class PredictionComponent : BackboneElement
+        public partial class PredictionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PredictionComponent"; } }

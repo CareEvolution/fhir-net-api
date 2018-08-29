@@ -9,7 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Hl7.Fhir.Model.STU3;
+//using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;

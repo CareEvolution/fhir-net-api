@@ -92,7 +92,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// Limited xhtml content
         /// </summary>
-        [FhirElement("div", XmlSerialization=XmlRepresentation.XHtml, Order=40)]
+        [FhirElement("div", XmlSerialization=XmlRepresentation.XHtml,TypeRedirect = typeof(XHtml), Order=40)]
         [NarrativeXhtmlPattern]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -186,6 +186,7 @@ namespace Hl7.Fhir.Model.STU3
             {
                 foreach (var item in base.NamedChildren) yield return item;
                 if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Div != null) yield return new ElementValue("div", Div);
             }
         }
 

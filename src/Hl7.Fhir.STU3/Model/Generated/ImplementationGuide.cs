@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DependencyComponent")]
         [DataContract]
-        public partial class DependencyComponent : BackboneElement
+        public partial class DependencyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DependencyComponent"; } }
@@ -204,7 +204,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PackageComponent")]
         [DataContract]
-        public partial class PackageComponent : BackboneElement
+        public partial class PackageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PackageComponent"; } }
@@ -366,7 +366,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ResourceComponent")]
         [DataContract]
-        public partial class ResourceComponent : BackboneElement
+        public partial class ResourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ResourceComponent"; } }
@@ -622,7 +622,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("GlobalComponent")]
         [DataContract]
-        public partial class GlobalComponent : BackboneElement
+        public partial class GlobalComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GlobalComponent"; } }
@@ -748,7 +748,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PageComponent")]
         [DataContract]
-        public partial class PageComponent : BackboneElement
+        public partial class PageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PageComponent"; } }

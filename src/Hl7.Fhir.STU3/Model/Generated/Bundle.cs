@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("LinkComponent")]
         [DataContract]
-        public partial class LinkComponent : BackboneElement
+        public partial class LinkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LinkComponent"; } }
@@ -204,7 +204,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("EntryComponent")]
         [DataContract]
-        public partial class EntryComponent : BackboneElement
+        public partial class EntryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EntryComponent"; } }
@@ -401,7 +401,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SearchComponent")]
         [DataContract]
-        public partial class SearchComponent : BackboneElement
+        public partial class SearchComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SearchComponent"; } }
@@ -543,7 +543,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RequestComponent")]
         [DataContract]
-        public partial class RequestComponent : BackboneElement
+        public partial class RequestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RequestComponent"; } }
@@ -835,7 +835,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ResponseComponent")]
         [DataContract]
-        public partial class ResponseComponent : BackboneElement
+        public partial class ResponseComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ResponseComponent"; } }

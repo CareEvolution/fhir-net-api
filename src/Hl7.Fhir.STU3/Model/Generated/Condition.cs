@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("StageComponent")]
         [DataContract]
-        public partial class StageComponent : BackboneElement
+        public partial class StageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StageComponent"; } }
@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("EvidenceComponent")]
         [DataContract]
-        public partial class EvidenceComponent : BackboneElement
+        public partial class EvidenceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EvidenceComponent"; } }

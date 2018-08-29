@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PositionComponent")]
         [DataContract]
-        public partial class PositionComponent : BackboneElement
+        public partial class PositionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PositionComponent"; } }

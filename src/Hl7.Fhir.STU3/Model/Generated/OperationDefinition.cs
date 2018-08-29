@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ParameterComponent")]
         [DataContract]
-        public partial class ParameterComponent : BackboneElement
+        public partial class ParameterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParameterComponent"; } }
@@ -447,7 +447,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("BindingComponent")]
         [DataContract]
-        public partial class BindingComponent : BackboneElement
+        public partial class BindingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "BindingComponent"; } }
@@ -573,7 +573,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("OverloadComponent")]
         [DataContract]
-        public partial class OverloadComponent : BackboneElement
+        public partial class OverloadComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OverloadComponent"; } }

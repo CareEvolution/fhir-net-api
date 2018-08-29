@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RelatedClaimComponent")]
         [DataContract]
-        public partial class RelatedClaimComponent : BackboneElement
+        public partial class RelatedClaimComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatedClaimComponent"; } }
@@ -183,7 +183,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PayeeComponent")]
         [DataContract]
-        public partial class PayeeComponent : BackboneElement
+        public partial class PayeeComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PayeeComponent"; } }
@@ -307,7 +307,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("CareTeamComponent")]
         [DataContract]
-        public partial class CareTeamComponent : BackboneElement
+        public partial class CareTeamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CareTeamComponent"; } }
@@ -506,7 +506,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SpecialConditionComponent")]
         [DataContract]
-        public partial class SpecialConditionComponent : BackboneElement
+        public partial class SpecialConditionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SpecialConditionComponent"; } }
@@ -705,7 +705,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DiagnosisComponent")]
         [DataContract]
-        public partial class DiagnosisComponent : BackboneElement
+        public partial class DiagnosisComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DiagnosisComponent"; } }
@@ -868,7 +868,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ProcedureComponent")]
         [DataContract]
-        public partial class ProcedureComponent : BackboneElement
+        public partial class ProcedureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProcedureComponent"; } }
@@ -1031,7 +1031,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("InsuranceComponent")]
         [DataContract]
-        public partial class InsuranceComponent : BackboneElement
+        public partial class InsuranceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InsuranceComponent"; } }
@@ -1289,7 +1289,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AccidentComponent")]
         [DataContract]
-        public partial class AccidentComponent : BackboneElement
+        public partial class AccidentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AccidentComponent"; } }
@@ -1436,7 +1436,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ItemComponent")]
         [DataContract]
-        public partial class ItemComponent : BackboneElement
+        public partial class ItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ItemComponent"; } }
@@ -2011,7 +2011,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DetailComponent")]
         [DataContract]
-        public partial class DetailComponent : BackboneElement
+        public partial class DetailComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DetailComponent"; } }
@@ -2339,7 +2339,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SubDetailComponent")]
         [DataContract]
-        public partial class SubDetailComponent : BackboneElement
+        public partial class SubDetailComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SubDetailComponent"; } }

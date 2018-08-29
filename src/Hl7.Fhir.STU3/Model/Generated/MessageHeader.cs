@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("MessageDestinationComponent")]
         [DataContract]
-        public partial class MessageDestinationComponent : BackboneElement
+        public partial class MessageDestinationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MessageDestinationComponent"; } }
@@ -222,7 +222,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("MessageSourceComponent")]
         [DataContract]
-        public partial class MessageSourceComponent : BackboneElement
+        public partial class MessageSourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MessageSourceComponent"; } }
@@ -457,7 +457,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ResponseComponent")]
         [DataContract]
-        public partial class ResponseComponent : BackboneElement
+        public partial class ResponseComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ResponseComponent"; } }

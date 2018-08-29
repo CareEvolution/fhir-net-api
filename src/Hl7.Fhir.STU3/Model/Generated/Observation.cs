@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ReferenceRangeComponent")]
         [DataContract]
-        public partial class ReferenceRangeComponent : BackboneElement
+        public partial class ReferenceRangeComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ReferenceRangeComponent"; } }
@@ -256,7 +256,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RelatedComponent")]
         [DataContract]
-        public partial class RelatedComponent : BackboneElement
+        public partial class RelatedComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatedComponent"; } }
@@ -381,7 +381,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ComponentComponent")]
         [DataContract]
-        public partial class ComponentComponent : BackboneElement
+        public partial class ComponentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ComponentComponent"; } }

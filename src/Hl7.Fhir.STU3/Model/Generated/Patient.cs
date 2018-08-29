@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ContactComponent")]
         [DataContract]
-        public partial class ContactComponent : BackboneElement
+        public partial class ContactComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContactComponent"; } }
@@ -276,7 +276,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AnimalComponent")]
         [DataContract]
-        public partial class AnimalComponent : BackboneElement
+        public partial class AnimalComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AnimalComponent"; } }
@@ -399,7 +399,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("CommunicationComponent")]
         [DataContract]
-        public partial class CommunicationComponent : BackboneElement
+        public partial class CommunicationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CommunicationComponent"; } }
@@ -523,7 +523,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("LinkComponent")]
         [DataContract]
-        public partial class LinkComponent : BackboneElement
+        public partial class LinkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LinkComponent"; } }

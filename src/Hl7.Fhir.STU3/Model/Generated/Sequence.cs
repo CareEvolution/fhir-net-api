@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ReferenceSeqComponent")]
         [DataContract]
-        public partial class ReferenceSeqComponent : BackboneElement
+        public partial class ReferenceSeqComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ReferenceSeqComponent"; } }
@@ -370,7 +370,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("VariantComponent")]
         [DataContract]
-        public partial class VariantComponent : BackboneElement
+        public partial class VariantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "VariantComponent"; } }
@@ -642,7 +642,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("QualityComponent")]
         [DataContract]
-        public partial class QualityComponent : BackboneElement
+        public partial class QualityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "QualityComponent"; } }
@@ -1172,7 +1172,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RepositoryComponent")]
         [DataContract]
-        public partial class RepositoryComponent : BackboneElement
+        public partial class RepositoryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RepositoryComponent"; } }

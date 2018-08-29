@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("OriginComponent")]
         [DataContract]
-        public partial class OriginComponent : BackboneElement
+        public partial class OriginComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OriginComponent"; } }
@@ -185,7 +185,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DestinationComponent")]
         [DataContract]
-        public partial class DestinationComponent : BackboneElement
+        public partial class DestinationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DestinationComponent"; } }
@@ -310,7 +310,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("MetadataComponent")]
         [DataContract]
-        public partial class MetadataComponent : BackboneElement
+        public partial class MetadataComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MetadataComponent"; } }
@@ -416,7 +416,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("LinkComponent")]
         [DataContract]
-        public partial class LinkComponent : BackboneElement
+        public partial class LinkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LinkComponent"; } }
@@ -559,7 +559,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("CapabilityComponent")]
         [DataContract]
-        public partial class CapabilityComponent : BackboneElement
+        public partial class CapabilityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CapabilityComponent"; } }
@@ -871,7 +871,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("FixtureComponent")]
         [DataContract]
-        public partial class FixtureComponent : BackboneElement
+        public partial class FixtureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FixtureComponent"; } }
@@ -1031,7 +1031,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("VariableComponent")]
         [DataContract]
-        public partial class VariableComponent : BackboneElement
+        public partial class VariableComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "VariableComponent"; } }
@@ -1396,7 +1396,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RuleComponent")]
         [DataContract]
-        public partial class RuleComponent : BackboneElement
+        public partial class RuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RuleComponent"; } }
@@ -1502,7 +1502,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RuleParamComponent")]
         [DataContract]
-        public partial class RuleParamComponent : BackboneElement
+        public partial class RuleParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RuleParamComponent"; } }
@@ -1645,7 +1645,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RulesetComponent")]
         [DataContract]
-        public partial class RulesetComponent : BackboneElement
+        public partial class RulesetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RulesetComponent"; } }
@@ -1751,7 +1751,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RulesetRuleComponent")]
         [DataContract]
-        public partial class RulesetRuleComponent : BackboneElement
+        public partial class RulesetRuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RulesetRuleComponent"; } }
@@ -1876,7 +1876,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RulesetRuleParamComponent")]
         [DataContract]
-        public partial class RulesetRuleParamComponent : BackboneElement
+        public partial class RulesetRuleParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RulesetRuleParamComponent"; } }
@@ -2019,7 +2019,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SetupComponent")]
         [DataContract]
-        public partial class SetupComponent : BackboneElement
+        public partial class SetupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SetupComponent"; } }
@@ -2106,7 +2106,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SetupActionComponent")]
         [DataContract]
-        public partial class SetupActionComponent : BackboneElement
+        public partial class SetupActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SetupActionComponent"; } }
@@ -2210,7 +2210,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("OperationComponent")]
         [DataContract]
-        public partial class OperationComponent : BackboneElement
+        public partial class OperationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OperationComponent"; } }
@@ -2833,7 +2833,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RequestHeaderComponent")]
         [DataContract]
-        public partial class RequestHeaderComponent : BackboneElement
+        public partial class RequestHeaderComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RequestHeaderComponent"; } }
@@ -2977,7 +2977,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AssertComponent")]
         [DataContract]
-        public partial class AssertComponent : BackboneElement
+        public partial class AssertComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AssertComponent"; } }
@@ -3895,7 +3895,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ActionAssertRuleComponent")]
         [DataContract]
-        public partial class ActionAssertRuleComponent : BackboneElement
+        public partial class ActionAssertRuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionAssertRuleComponent"; } }
@@ -4020,7 +4020,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ActionAssertRuleParamComponent")]
         [DataContract]
-        public partial class ActionAssertRuleParamComponent : BackboneElement
+        public partial class ActionAssertRuleParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionAssertRuleParamComponent"; } }
@@ -4164,7 +4164,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ActionAssertRulesetComponent")]
         [DataContract]
-        public partial class ActionAssertRulesetComponent : BackboneElement
+        public partial class ActionAssertRulesetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionAssertRulesetComponent"; } }
@@ -4289,7 +4289,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ActionAssertRulesetRuleComponent")]
         [DataContract]
-        public partial class ActionAssertRulesetRuleComponent : BackboneElement
+        public partial class ActionAssertRulesetRuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionAssertRulesetRuleComponent"; } }
@@ -4414,7 +4414,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ParamComponent")]
         [DataContract]
-        public partial class ParamComponent : BackboneElement
+        public partial class ParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParamComponent"; } }
@@ -4558,7 +4558,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TestComponent")]
         [DataContract]
-        public partial class TestComponent : BackboneElement
+        public partial class TestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TestComponent"; } }
@@ -4719,7 +4719,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TestActionComponent")]
         [DataContract]
-        public partial class TestActionComponent : BackboneElement
+        public partial class TestActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TestActionComponent"; } }
@@ -4823,7 +4823,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TeardownComponent")]
         [DataContract]
-        public partial class TeardownComponent : BackboneElement
+        public partial class TeardownComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TeardownComponent"; } }
@@ -4910,7 +4910,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TeardownActionComponent")]
         [DataContract]
-        public partial class TeardownActionComponent : BackboneElement
+        public partial class TeardownActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TeardownActionComponent"; } }

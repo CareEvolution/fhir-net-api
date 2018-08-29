@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("IssueComponent")]
         [DataContract]
-        public partial class IssueComponent : BackboneElement
+        public partial class IssueComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "IssueComponent"; } }

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("FocusComponent")]
         [DataContract]
-        public partial class FocusComponent : BackboneElement
+        public partial class FocusComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FocusComponent"; } }
@@ -259,7 +259,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AllowedResponseComponent")]
         [DataContract]
-        public partial class AllowedResponseComponent : BackboneElement
+        public partial class AllowedResponseComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AllowedResponseComponent"; } }

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("StatusHistoryComponent")]
         [DataContract]
-        public partial class StatusHistoryComponent : BackboneElement
+        public partial class StatusHistoryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StatusHistoryComponent"; } }
@@ -185,7 +185,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ClassHistoryComponent")]
         [DataContract]
-        public partial class ClassHistoryComponent : BackboneElement
+        public partial class ClassHistoryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ClassHistoryComponent"; } }
@@ -291,7 +291,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ParticipantComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class ParticipantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParticipantComponent"; } }
@@ -415,7 +415,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DiagnosisComponent")]
         [DataContract]
-        public partial class DiagnosisComponent : BackboneElement
+        public partial class DiagnosisComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DiagnosisComponent"; } }
@@ -558,7 +558,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("HospitalizationComponent")]
         [DataContract]
-        public partial class HospitalizationComponent : BackboneElement
+        public partial class HospitalizationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "HospitalizationComponent"; } }
@@ -793,7 +793,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("LocationComponent")]
         [DataContract]
-        public partial class LocationComponent : BackboneElement
+        public partial class LocationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LocationComponent"; } }

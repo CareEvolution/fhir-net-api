@@ -28,19 +28,7 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Schema;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Introspection.STU3;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Model.STU3
@@ -53,29 +41,8 @@ namespace Hl7.Fhir.Model.STU3
     /// Note that this type is not actually used in the POCO model - it is just here to provide
     /// reflectable metadata for the xhtml type, and as a home for XHTML validation.
     /// </remarks>
-    [FhirType("xhtml")]
-    public class XHtml : Primitive<string>, System.ComponentModel.INotifyPropertyChanged
+    public partial class XHtml
     {
-        [NotMapped]
-        public override string TypeName { get { return "xhtml"; } }
-
-        public XHtml(string value)
-        {
-            Value = value;
-        }
-
-        public XHtml() : this((string)null) { }
-
-        /// <summary>
-        /// Primitive value of the element
-        /// </summary>
-        [FhirElement("value", IsPrimitiveValue = true, XmlSerialization = XmlRepresentation.XmlAttr, InSummary = true, Order = 30)]
-        public string Value
-        {
-            get { return (string)ObjectValue; }
-            set { ObjectValue = value; OnPropertyChanged("Value"); }
-        }
-
 #if NET_XSD_SCHEMA
         public static bool IsValidValue(string value) => !SerializationUtil.RunFhirXhtmlSchemaValidation(value).Any();
 #else

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AvailableTimeComponent")]
         [DataContract]
-        public partial class AvailableTimeComponent : BackboneElement
+        public partial class AvailableTimeComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AvailableTimeComponent"; } }
@@ -277,7 +277,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("NotAvailableComponent")]
         [DataContract]
-        public partial class NotAvailableComponent : BackboneElement
+        public partial class NotAvailableComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NotAvailableComponent"; } }

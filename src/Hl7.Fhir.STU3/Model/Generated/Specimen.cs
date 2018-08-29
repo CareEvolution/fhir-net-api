@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("CollectionComponent")]
         [DataContract]
-        public partial class CollectionComponent : BackboneElement
+        public partial class CollectionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CollectionComponent"; } }
@@ -220,7 +220,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ProcessingComponent")]
         [DataContract]
-        public partial class ProcessingComponent : BackboneElement
+        public partial class ProcessingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProcessingComponent"; } }
@@ -382,7 +382,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ContainerComponent")]
         [DataContract]
-        public partial class ContainerComponent : BackboneElement
+        public partial class ContainerComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContainerComponent"; } }

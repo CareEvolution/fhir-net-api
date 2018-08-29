@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RepeatComponent")]
         [DataContract]
-        public partial class RepeatComponent : Element
+        public partial class RepeatComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RepeatComponent"; } }

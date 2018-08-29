@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SlicingComponent")]
         [DataContract]
-        public partial class SlicingComponent : Element
+        public partial class SlicingComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SlicingComponent"; } }
@@ -257,7 +257,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DiscriminatorComponent")]
         [DataContract]
-        public partial class DiscriminatorComponent : Element
+        public partial class DiscriminatorComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DiscriminatorComponent"; } }
@@ -401,7 +401,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("BaseComponent")]
         [DataContract]
-        public partial class BaseComponent : Element
+        public partial class BaseComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "BaseComponent"; } }
@@ -583,7 +583,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TypeRefComponent")]
         [DataContract]
-        public partial class TypeRefComponent : Element
+        public partial class TypeRefComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TypeRefComponent"; } }
@@ -838,7 +838,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ExampleComponent")]
         [DataContract]
-        public partial class ExampleComponent : Element
+        public partial class ExampleComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ExampleComponent"; } }
@@ -964,7 +964,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ConstraintComponent")]
         [DataContract]
-        public partial class ConstraintComponent : Element
+        public partial class ConstraintComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConstraintComponent"; } }
@@ -1295,7 +1295,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ElementDefinitionBindingComponent")]
         [DataContract]
-        public partial class ElementDefinitionBindingComponent : Element
+        public partial class ElementDefinitionBindingComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ElementDefinitionBindingComponent"; } }
@@ -1457,7 +1457,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("MappingComponent")]
         [DataContract]
-        public partial class MappingComponent : Element
+        public partial class MappingComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MappingComponent"; } }

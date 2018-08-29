@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ProcessNoteComponent")]
         [DataContract]
-        public partial class ProcessNoteComponent : BackboneElement
+        public partial class ProcessNoteComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProcessNoteComponent"; } }

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("FixedVersionComponent")]
         [DataContract]
-        public partial class FixedVersionComponent : BackboneElement
+        public partial class FixedVersionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FixedVersionComponent"; } }
@@ -242,7 +242,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ExcludedSystemComponent")]
         [DataContract]
-        public partial class ExcludedSystemComponent : BackboneElement
+        public partial class ExcludedSystemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ExcludedSystemComponent"; } }
@@ -385,7 +385,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DesignationComponent")]
         [DataContract]
-        public partial class DesignationComponent : BackboneElement
+        public partial class DesignationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DesignationComponent"; } }
@@ -489,7 +489,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DesignationIncludeComponent")]
         [DataContract]
-        public partial class DesignationIncludeComponent : BackboneElement
+        public partial class DesignationIncludeComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DesignationIncludeComponent"; } }
@@ -576,7 +576,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DesignationIncludeDesignationComponent")]
         [DataContract]
-        public partial class DesignationIncludeDesignationComponent : BackboneElement
+        public partial class DesignationIncludeDesignationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DesignationIncludeDesignationComponent"; } }
@@ -699,7 +699,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DesignationExcludeComponent")]
         [DataContract]
-        public partial class DesignationExcludeComponent : BackboneElement
+        public partial class DesignationExcludeComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DesignationExcludeComponent"; } }
@@ -786,7 +786,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DesignationExcludeDesignationComponent")]
         [DataContract]
-        public partial class DesignationExcludeDesignationComponent : BackboneElement
+        public partial class DesignationExcludeDesignationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DesignationExcludeDesignationComponent"; } }

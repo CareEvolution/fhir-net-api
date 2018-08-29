@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PerformerComponent")]
         [DataContract]
-        public partial class PerformerComponent : BackboneElement
+        public partial class PerformerComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PerformerComponent"; } }
@@ -185,7 +185,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("FocalDeviceComponent")]
         [DataContract]
-        public partial class FocalDeviceComponent : BackboneElement
+        public partial class FocalDeviceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FocalDeviceComponent"; } }

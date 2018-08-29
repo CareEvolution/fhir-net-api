@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("CodeFilterComponent")]
         [DataContract]
-        public partial class CodeFilterComponent : Element
+        public partial class CodeFilterComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CodeFilterComponent"; } }
@@ -259,7 +259,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DateFilterComponent")]
         [DataContract]
-        public partial class DateFilterComponent : Element
+        public partial class DateFilterComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DateFilterComponent"; } }

@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// xml:id (or equivalent in JSON)
         /// </summary>
-        [FhirElement("id",  XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=10)]
+        [FhirElement("id",  XmlSerialization=XmlRepresentation.XmlAttr,TypeRedirect = typeof(Id), InSummary=true, Order=10)]
         [DataMember]
         public FhirString IdElement
         {
@@ -166,6 +166,7 @@ namespace Hl7.Fhir.Model.STU3
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
+                if (IdElement != null) yield return new ElementValue("id", IdElement);
                 foreach (var elem in Extension) { if (elem != null) yield return new ElementValue("extension", elem); }
             }
         }

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ProductionSpecificationComponent")]
         [DataContract]
-        public partial class ProductionSpecificationComponent : BackboneElement
+        public partial class ProductionSpecificationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProductionSpecificationComponent"; } }

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("GroupComponent")]
         [DataContract]
-        public partial class GroupComponent : BackboneElement
+        public partial class GroupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GroupComponent"; } }
@@ -259,7 +259,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("PopulationComponent")]
         [DataContract]
-        public partial class PopulationComponent : BackboneElement
+        public partial class PopulationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PopulationComponent"; } }
@@ -475,7 +475,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("StratifierComponent")]
         [DataContract]
-        public partial class StratifierComponent : BackboneElement
+        public partial class StratifierComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StratifierComponent"; } }
@@ -635,7 +635,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SupplementalDataComponent")]
         [DataContract]
-        public partial class SupplementalDataComponent : BackboneElement
+        public partial class SupplementalDataComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SupplementalDataComponent"; } }

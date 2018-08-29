@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("GoalComponent")]
         [DataContract]
-        public partial class GoalComponent : BackboneElement
+        public partial class GoalComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GoalComponent"; } }
@@ -258,7 +258,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("TargetComponent")]
         [DataContract]
-        public partial class TargetComponent : BackboneElement
+        public partial class TargetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TargetComponent"; } }
@@ -381,7 +381,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ActionComponent")]
         [DataContract]
-        public partial class ActionComponent : BackboneElement
+        public partial class ActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionComponent"; } }
@@ -1104,7 +1104,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ConditionComponent")]
         [DataContract]
-        public partial class ConditionComponent : BackboneElement
+        public partial class ConditionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConditionComponent"; } }
@@ -1321,7 +1321,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RelatedActionComponent")]
         [DataContract]
-        public partial class RelatedActionComponent : BackboneElement
+        public partial class RelatedActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatedActionComponent"; } }
@@ -1484,7 +1484,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ParticipantComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class ParticipantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParticipantComponent"; } }
@@ -1608,7 +1608,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DynamicValueComponent")]
         [DataContract]
-        public partial class DynamicValueComponent : BackboneElement
+        public partial class DynamicValueComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DynamicValueComponent"; } }

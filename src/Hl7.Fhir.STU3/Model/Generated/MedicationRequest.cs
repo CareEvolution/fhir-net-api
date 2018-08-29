@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RequesterComponent")]
         [DataContract]
-        public partial class RequesterComponent : BackboneElement
+        public partial class RequesterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RequesterComponent"; } }
@@ -167,7 +167,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DispenseRequestComponent")]
         [DataContract]
-        public partial class DispenseRequestComponent : BackboneElement
+        public partial class DispenseRequestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DispenseRequestComponent"; } }
@@ -345,7 +345,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SubstitutionComponent")]
         [DataContract]
-        public partial class SubstitutionComponent : BackboneElement
+        public partial class SubstitutionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SubstitutionComponent"; } }

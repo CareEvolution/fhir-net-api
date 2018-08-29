@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("CalibrationComponent")]
         [DataContract]
-        public partial class CalibrationComponent : BackboneElement
+        public partial class CalibrationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CalibrationComponent"; } }

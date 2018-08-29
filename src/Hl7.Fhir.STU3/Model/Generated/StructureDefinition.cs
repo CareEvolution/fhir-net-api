@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("MappingComponent")]
         [DataContract]
-        public partial class MappingComponent : BackboneElement
+        public partial class MappingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MappingComponent"; } }
@@ -277,7 +277,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SnapshotComponent")]
         [DataContract]
-        public partial class SnapshotComponent : BackboneElement
+        public partial class SnapshotComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SnapshotComponent"; } }
@@ -364,7 +364,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("DifferentialComponent")]
         [DataContract]
-        public partial class DifferentialComponent : BackboneElement
+        public partial class DifferentialComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DifferentialComponent"; } }

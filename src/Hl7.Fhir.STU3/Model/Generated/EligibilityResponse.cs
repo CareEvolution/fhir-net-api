@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("InsuranceComponent")]
         [DataContract]
-        public partial class InsuranceComponent : BackboneElement
+        public partial class InsuranceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InsuranceComponent"; } }
@@ -185,7 +185,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("BenefitsComponent")]
         [DataContract]
-        public partial class BenefitsComponent : BackboneElement
+        public partial class BenefitsComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "BenefitsComponent"; } }
@@ -474,7 +474,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("BenefitComponent")]
         [DataContract]
-        public partial class BenefitComponent : BackboneElement
+        public partial class BenefitComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "BenefitComponent"; } }
@@ -599,7 +599,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ErrorsComponent")]
         [DataContract]
-        public partial class ErrorsComponent : BackboneElement
+        public partial class ErrorsComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ErrorsComponent"; } }

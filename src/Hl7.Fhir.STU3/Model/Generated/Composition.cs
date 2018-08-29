@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("AttesterComponent")]
         [DataContract]
-        public partial class AttesterComponent : BackboneElement
+        public partial class AttesterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AttesterComponent"; } }
@@ -222,7 +222,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RelatesToComponent")]
         [DataContract]
-        public partial class RelatesToComponent : BackboneElement
+        public partial class RelatesToComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatesToComponent"; } }
@@ -348,7 +348,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("EventComponent")]
         [DataContract]
-        public partial class EventComponent : BackboneElement
+        public partial class EventComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EventComponent"; } }
@@ -472,7 +472,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("SectionComponent")]
         [DataContract]
-        public partial class SectionComponent : BackboneElement
+        public partial class SectionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SectionComponent"; } }

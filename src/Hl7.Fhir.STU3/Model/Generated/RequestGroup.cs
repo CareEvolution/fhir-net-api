@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ActionComponent")]
         [DataContract]
-        public partial class ActionComponent : BackboneElement
+        public partial class ActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionComponent"; } }
@@ -631,7 +631,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("ConditionComponent")]
         [DataContract]
-        public partial class ConditionComponent : BackboneElement
+        public partial class ConditionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConditionComponent"; } }
@@ -848,7 +848,7 @@ namespace Hl7.Fhir.Model.STU3
 
         [FhirType("RelatedActionComponent")]
         [DataContract]
-        public partial class RelatedActionComponent : BackboneElement
+        public partial class RelatedActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatedActionComponent"; } }
