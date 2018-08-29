@@ -30,20 +30,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Hl7.Fhir.Model;
-using System.IO;
-
-using Hl7.Fhir.Validation;
 using System.ComponentModel.DataAnnotations;
-using Hl7.Fhir.Introspection;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
+using System.Linq;
+using Hl7.Fhir.Validation.R4;
 
-namespace Hl7.Fhir.Model
-{    
+namespace Hl7.Fhir.Model.R4
+{
     [InvokeIValidatableObject]
-    public partial class Bundle : Hl7.Fhir.Validation.IValidatableObject
+    public partial class Bundle : IValidatableObject
     {
         [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
         public partial class EntryComponent

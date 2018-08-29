@@ -35,7 +35,7 @@ using System.Text;
 using Hl7.Fhir.Model;
 
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     [System.Diagnostics.DebuggerDisplay(@"\{ Value={ValueElement.Value} System={System}}")]
     public partial class Identifier

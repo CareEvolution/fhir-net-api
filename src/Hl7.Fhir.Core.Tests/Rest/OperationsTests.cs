@@ -6,15 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hl7.Fhir.Rest;
-using TestClient = Hl7.Fhir.Rest.Http.FhirClient;
+using Hl7.Fhir.Rest.R4;
+using TestClient = Hl7.Fhir.Rest.Http.R4.FhirClient;
 
 namespace Hl7.Fhir.Tests.Rest
 {
@@ -270,7 +270,7 @@ namespace Hl7.Fhir.Tests.Rest
             catch(FhirOperationException fe)
             {
                 Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, fe.Status);
-                Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == OperationOutcome.IssueSeverity.Error).Any());
+                Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == IssueSeverity.Error).Any());
             }
         }
 
@@ -291,7 +291,7 @@ namespace Hl7.Fhir.Tests.Rest
                 catch (FhirOperationException fe)
                 {
                     Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, fe.Status);
-                    Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == OperationOutcome.IssueSeverity.Error).Any());
+                    Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == IssueSeverity.Error).Any());
                 }
             }
         }

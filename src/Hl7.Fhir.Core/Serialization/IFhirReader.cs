@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     [Obsolete("Use IElementNavigator interface in the Hl7.Fhir.Support assembly instead, and pass it to a Parse() overload which accepts IElementNavigator")]
     public interface IFhirReader : IPositionInfo

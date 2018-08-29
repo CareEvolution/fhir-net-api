@@ -7,9 +7,9 @@
  */
 
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ using System.Net;
 using System.Threading.Tasks;
 
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     // [Obsolete]
     public partial class FhirClient : BaseFhirClient

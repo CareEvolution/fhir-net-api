@@ -9,23 +9,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.IO;
 using System.Xml;
-using System.Xml.Linq;
-using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 using System.IO.Compression;
-using Hl7.Fhir.Validation;
-using System.ComponentModel.DataAnnotations;
-using Hl7.Fhir.FhirPath;
 using Hl7.FhirPath;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.FhirPath.R4;
 
 namespace HealthConnex.Fhir.Server.Tests
 {

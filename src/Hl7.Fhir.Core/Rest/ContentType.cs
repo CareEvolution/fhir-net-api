@@ -14,7 +14,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     /// <summary>
     /// The supported formats for Fhir Resources

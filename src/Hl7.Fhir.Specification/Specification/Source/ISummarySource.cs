@@ -6,7 +6,7 @@
  * available at https://github.com/ewoutkramer/fhir-net-api/blob/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using System.Collections.Generic;
 
 namespace Hl7.Fhir.Specification.Source

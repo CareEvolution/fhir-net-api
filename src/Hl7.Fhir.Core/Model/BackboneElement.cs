@@ -35,7 +35,7 @@ using System.Runtime.Serialization;
 
 */
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     public abstract partial class BackboneElement : IModifierExtendable
     {

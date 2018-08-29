@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     // [WMR 20160615]
     // Motivation: we want to enable polymorphism against subclasses of Primitive<T>, especially the Value property

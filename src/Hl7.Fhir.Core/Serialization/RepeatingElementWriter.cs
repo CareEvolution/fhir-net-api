@@ -6,12 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Utility;
 using System.Collections;
 
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     internal class RepeatingElementWriter
     {
@@ -27,7 +28,7 @@ namespace Hl7.Fhir.Serialization
             Settings = settings;
         }
 
-        public void Serialize(PropertyMapping prop, object instance, Rest.SummaryType summary, ComplexTypeWriter.SerializationMode mode)
+        public void Serialize(PropertyMapping prop, object instance, SummaryType summary, ComplexTypeWriter.SerializationMode mode)
         {
             if (prop == null) throw Error.ArgumentNull(nameof(prop));
 

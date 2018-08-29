@@ -7,20 +7,15 @@
  */
 
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
 
 
-namespace Hl7.Fhir.Rest.Http
+namespace Hl7.Fhir.Rest.Http.R4
 {
     public partial class FhirClient : BaseFhirClient
     {
@@ -88,14 +83,14 @@ namespace Hl7.Fhir.Rest.Http
         /// <summary>
         /// Returns the HttpRequestMessage as it was last constructed to execute a call on the FhirClient
         /// </summary>
-        new public HttpRequestMessage LastRequest { get { return (Requester as Http.Requester)?.LastRequest; } }
+        new public HttpRequestMessage LastRequest { get { return (Requester as Requester)?.LastRequest; } }
 
         /// <summary>
         /// Returns the HttpResponseMessage as it was last received during a call on the FhirClient
         /// </summary>
         /// <remarks>Note that the FhirClient will have read the body data from the HttpResponseMessage, so this is
         /// no longer available. Use LastBody, LastBodyAsText and LastBodyAsResource to get access to the received body (if any)</remarks>
-        new public HttpResponseMessage LastResponse { get { return (Requester as Http.Requester)?.LastResponse; } }
+        new public HttpResponseMessage LastResponse { get { return (Requester as Requester)?.LastResponse; } }
 
         //[Obsolete]
         public override event EventHandler<AfterResponseEventArgs> OnAfterResponse = (args, e) => throw new NotImplementedException();

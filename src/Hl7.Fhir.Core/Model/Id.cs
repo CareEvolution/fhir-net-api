@@ -30,20 +30,16 @@
 
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     [System.Diagnostics.DebuggerDisplay(@"\{Value={Value}}")]
     public partial class Id : IStringValue
     {
         public static bool IsValidValue(string value)
         {
-            return Regex.IsMatch(value, "^" + Hl7.Fhir.Model.Id.PATTERN + "$", RegexOptions.Singleline);
+            return Regex.IsMatch(value, "^" + PATTERN + "$", RegexOptions.Singleline);
         }
     }
 }

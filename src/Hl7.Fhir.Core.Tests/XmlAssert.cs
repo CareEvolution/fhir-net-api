@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Utility;
 
@@ -39,8 +39,11 @@ namespace Hl7.Fhir.Tests
             //        expected.Name.ToString(), actual.Name.ToString(), context));
 
             if (expected.Attributes().Count() != actual.Attributes().Count())
+            {
                 throw new AssertFailedException(
                     String.Format("Number of attributes are not the same in element '{0}'", context));
+            }
+                
 
             foreach (XAttribute attr in expected.Attributes())
             {

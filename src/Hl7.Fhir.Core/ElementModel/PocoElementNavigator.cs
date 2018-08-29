@@ -9,10 +9,12 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Serialization.R4;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.R4
 {
     public class PocoElementNavigator
     {
@@ -123,21 +125,21 @@ namespace Hl7.Fhir.ElementModel
                 {
                     switch (Current.Value)
                     {
-                        case Hl7.Fhir.Model.Instant ins:
+                        case Instant ins:
                             return ins.ToPartialDateTime();
-                        case Hl7.Fhir.Model.Time time:
+                        case Time time:
                             return time.ToTime();
-                        case Hl7.Fhir.Model.Date dt:
+                        case Date dt:
                             return dt.ToPartialDateTime();
                         case FhirDateTime fdt:
                             return fdt.ToPartialDateTime();
-                        case Hl7.Fhir.Model.Integer fint:
+                        case Integer fint:
                             return (long)fint.Value;
-                        case Hl7.Fhir.Model.PositiveInt pint:
+                        case PositiveInt pint:
                             return (long)pint.Value;
-                        case Hl7.Fhir.Model.UnsignedInt unsint:
+                        case UnsignedInt unsint:
                             return (long)unsint.Value;
-                        case Hl7.Fhir.Model.Base64Binary b64:
+                        case Base64Binary b64:
                             return b64.Value != null ? PrimitiveTypeConverter.ConvertTo<string>(b64.Value) : null;
                         case Primitive prim:
                             return prim.ObjectValue;
@@ -187,9 +189,9 @@ namespace Hl7.Fhir.ElementModel
 
         private object lockObject = new object();
 
-        static Hl7.Fhir.Introspection.ClassMapping GetMappingForType(Type elementType)
+        static ClassMapping GetMappingForType(Type elementType)
         {
-            var inspector = Serialization.BaseFhirParser.Inspector;
+            var inspector = BaseFhirParser.Inspector;
             return inspector.ImportType(elementType);
         }
 

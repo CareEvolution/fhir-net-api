@@ -1,5 +1,5 @@
-﻿using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+﻿using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     public abstract partial class BaseFhirClient : IDisposable, IFhirClient
     {
@@ -396,7 +396,7 @@ namespace Hl7.Fhir.Rest
             var id = verifyResourceIdentity(location, needId: true, needVid: false);
             var tx = new TransactionBuilder(Endpoint).Delete(id.ResourceType, id.Id).ToBundle();
 
-            await executeAsync<Model.Resource>(tx, new[] { HttpStatusCode.OK, HttpStatusCode.NoContent }).ConfigureAwait(false);
+            await executeAsync<Resource>(tx, new[] { HttpStatusCode.OK, HttpStatusCode.NoContent }).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a resource at the given endpoint.
@@ -963,11 +963,11 @@ namespace Hl7.Fhir.Rest
         }
 
         // Original
-        private TResource execute<TResource>(Bundle tx, HttpStatusCode expect) where TResource : Model.Resource
+        private TResource execute<TResource>(Bundle tx, HttpStatusCode expect) where TResource : Resource
         {
             return executeAsync<TResource>(tx, new[] { expect }).WaitResult();
         }
-        public Task<TResource> executeAsync<TResource>(Model.Bundle tx, HttpStatusCode expect) where TResource : Model.Resource
+        public Task<TResource> executeAsync<TResource>(Bundle tx, HttpStatusCode expect) where TResource : Resource
         {
             return executeAsync<TResource>(tx, new[] { expect });
         }
@@ -1025,7 +1025,7 @@ namespace Hl7.Fhir.Rest
         private bool isPostOrPut(Bundle.EntryComponent interaction)
         {
             var method = interaction.Request.Method;
-            return method == Bundle.HTTPVerb.POST || method == Bundle.HTTPVerb.PUT;
+            return method == HTTPVerb.POST || method == HTTPVerb.PUT;
         }
 
 

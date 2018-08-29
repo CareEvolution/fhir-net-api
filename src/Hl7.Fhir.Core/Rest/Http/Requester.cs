@@ -6,8 +6,10 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.Http.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Utility;
 using System;
 using System.Net;
@@ -15,7 +17,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest.Http
+namespace Hl7.Fhir.Rest.Http.R4
 {
    internal class Requester : IRequester, IDisposable
     {
@@ -49,13 +51,13 @@ namespace Hl7.Fhir.Rest.Http
             BaseUrl = baseUrl;
             Client = new HttpClient(messageHandler);
 
-            Client.DefaultRequestHeaders.Add("User-Agent", ".NET FhirClient for FHIR " + Model.ModelInfo.Version);
+            Client.DefaultRequestHeaders.Add("User-Agent", ".NET FhirClient for FHIR " + ModelInfo.Version);
             UseFormatParameter = false;
             PreferredFormat = ResourceFormat.Xml;
             Client.Timeout = new TimeSpan(0, 0, 100);       // Default timeout is 100 seconds            
-            PreferredReturn = Rest.Prefer.ReturnRepresentation;
+            PreferredReturn = Prefer.ReturnRepresentation;
             PreferredParameterHandling = null;
-            ParserSettings = Hl7.Fhir.Serialization.ParserSettings.Default;
+            ParserSettings = ParserSettings.Default;
         }
 
 
@@ -124,7 +126,7 @@ namespace Hl7.Fhir.Rest.Http
                             errorResult.Response = new Bundle.ResponseComponent();
                             errorResult.Response.Status = ((int)response.StatusCode).ToString();
 
-                            OperationOutcome operationOutcome = OperationOutcome.ForException(bte, OperationOutcome.IssueType.Invalid);
+                            OperationOutcome operationOutcome = OperationOutcome.ForException(bte, IssueType.Invalid);
 
                             errorResult.Resource = operationOutcome;
                             LastResult = errorResult;

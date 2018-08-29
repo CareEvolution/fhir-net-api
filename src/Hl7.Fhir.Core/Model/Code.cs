@@ -30,18 +30,13 @@
 
 
 using System;
-using System.Reflection;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-
-using Hl7.Fhir.Introspection;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Support;
+using System.Text.RegularExpressions;
+using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
 #if NET45
     [Serializable]

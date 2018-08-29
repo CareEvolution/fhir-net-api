@@ -6,8 +6,8 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using System;
@@ -15,7 +15,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     internal class Requester : IRequester
     {
@@ -48,9 +48,9 @@ namespace Hl7.Fhir.Rest
             UseFormatParameter = false;
             PreferredFormat = ResourceFormat.Xml;
             Timeout = 100 * 1000;       // Default timeout is 100 seconds            
-            PreferredReturn = Rest.Prefer.ReturnRepresentation;
+            PreferredReturn = Prefer.ReturnRepresentation;
             PreferredParameterHandling = null;
-            ParserSettings = Hl7.Fhir.Serialization.ParserSettings.Default;
+            ParserSettings = ParserSettings.Default;
         }
 
 
@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Rest
                         errorResult.Response = new Bundle.ResponseComponent();
                         errorResult.Response.Status = ((int)webResponse.StatusCode).ToString();
 
-                        OperationOutcome operationOutcome = OperationOutcome.ForException(bte, OperationOutcome.IssueType.Invalid);
+                        OperationOutcome operationOutcome = OperationOutcome.ForException(bte, IssueType.Invalid);
 
                         errorResult.Resource = operationOutcome;
                         LastResult = errorResult;

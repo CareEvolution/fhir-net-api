@@ -6,19 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Serialization.R4;
 
-namespace Hl7.Fhir.Rest.Http
+namespace Hl7.Fhir.Rest.Http.R4
 {
     internal static class HttpToEntryExtensions
     {
@@ -55,9 +51,9 @@ namespace Hl7.Fhir.Rest.Http
             {
                 result.Response.SetBody(body);
 
-                if (Rest.HttpToEntryExtensions.IsBinaryResponse(result.Response.Location, contentType.MediaType.ToString()))
+                if (Rest.R4.HttpToEntryExtensions.IsBinaryResponse(result.Response.Location, contentType.MediaType.ToString()))
                 {
-                    result.Resource = Rest.HttpToEntryExtensions.MakeBinaryResource(body, contentType.ToString());
+                    result.Resource = Rest.R4.HttpToEntryExtensions.MakeBinaryResource(body, contentType.ToString());
                     if (result.Response.Location != null)
                     {
                         var ri = new ResourceIdentity(result.Response.Location);
@@ -69,8 +65,8 @@ namespace Hl7.Fhir.Rest.Http
                 }
                 else
                 {
-                    var bodyText = Rest.HttpToEntryExtensions.DecodeBody(body, charEncoding);
-                    var resource = Rest.HttpToEntryExtensions.ParseResource(bodyText, contentType.MediaType.ToString(), parserSettings, throwOnFormatException);
+                    var bodyText = Rest.R4.HttpToEntryExtensions.DecodeBody(body, charEncoding);
+                    var resource = Rest.R4.HttpToEntryExtensions.ParseResource(bodyText, contentType.MediaType.ToString(), parserSettings, throwOnFormatException);
                     result.Resource = resource;
 
                     if (result.Response.Location != null)

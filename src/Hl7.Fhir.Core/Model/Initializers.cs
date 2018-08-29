@@ -31,11 +31,12 @@
 using Hl7.Fhir.Introspection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     public partial class HumanName
     {
@@ -105,9 +106,9 @@ namespace Hl7.Fhir.Model
             if (!String.IsNullOrEmpty(Text))
                 return String.Format("{0}Text=\"{1}\"", prefix, Text);
             StringBuilder sb = new StringBuilder();
-            if (_Coding != null)
+            if (_coding != null)
             {
-                foreach (var item in _Coding)
+                foreach (var item in _coding)
                 {
                     sb.Append("  ");
                     sb.Append(item.DebuggerDisplay);

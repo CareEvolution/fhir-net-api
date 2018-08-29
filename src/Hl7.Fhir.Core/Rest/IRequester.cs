@@ -1,13 +1,9 @@
-﻿using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     public interface IRequester
     {

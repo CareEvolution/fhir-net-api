@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
 using Newtonsoft.Json;
 using System.IO;
 using System.Xml.Linq;

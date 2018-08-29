@@ -14,9 +14,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Xml;
 using System.Net;
 using System.IO;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Serialization.R4;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Support;
 using System.Threading.Tasks;
 

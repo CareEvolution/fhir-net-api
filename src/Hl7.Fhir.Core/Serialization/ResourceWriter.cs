@@ -6,19 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
+using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     public class ResourceWriter
     {
@@ -34,7 +28,7 @@ namespace Hl7.Fhir.Serialization
             Settings = settings;
         }
 
-        public void Serialize(Resource instance, Rest.SummaryType summary, bool contained = false)
+        public void Serialize(Resource instance, SummaryType summary, bool contained = false)
         {
             if (instance == null) throw Error.ArgumentNull(nameof(instance));
 
@@ -47,7 +41,7 @@ namespace Hl7.Fhir.Serialization
             var complexSerializer = new ComplexTypeWriter(_writer, Settings);
             Coding subsettedTag = null;
             bool createdMetaElement = false;
-            if (summary != Rest.SummaryType.False && instance is Resource && !(instance is Bundle))
+            if (summary != SummaryType.False && instance is Resource && !(instance is Bundle))
             {
                 var resource = instance as Resource;
 

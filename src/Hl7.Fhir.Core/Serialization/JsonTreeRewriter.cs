@@ -15,7 +15,7 @@ using System.Linq;
 using System.Text;
 using Hl7.Fhir.Model;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     internal static class JsonTreeRewriter
     {

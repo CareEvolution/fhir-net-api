@@ -6,19 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Support;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Model.R4;
 #if DOTNETFW
 using System.Runtime.Serialization;
 #endif
-using Hl7.Fhir.Model;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     /// <summary>
     /// ResourceIdentity represents a Resource's Uri and can be used to construct such uri's or retrieve parts of the uri. 

@@ -9,8 +9,8 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Support;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Model.R4;
 using System.Linq;
 
 namespace Hl7.Fhir.Test

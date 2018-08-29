@@ -1,112 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
-  
-   * Redistributions of source code must retain the above copyright notice, this 
+
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
-  
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
+
 
 */
+
+#pragma warning disable 1591 // suppress XML summary warnings
 
 //
 // Generated for FHIR v3.3.0
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     /// <summary>
     /// Related artifacts for a knowledge resource
     /// </summary>
     [FhirType("RelatedArtifact")]
     [DataContract]
-    public partial class RelatedArtifact : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class RelatedArtifact : Element
     {
         [NotMapped]
         public override string TypeName { get { return "RelatedArtifact"; } }
-        
-        /// <summary>
-        /// The type of relationship to the related artifact
-        /// (url: http://hl7.org/fhir/ValueSet/related-artifact-type)
-        /// </summary>
-        [FhirEnumeration("RelatedArtifactType")]
-        public enum RelatedArtifactType
-        {
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/related-artifact-type)
-            /// </summary>
-            [EnumLiteral("documentation", "http://hl7.org/fhir/related-artifact-type"), Description("Documentation")]
-            Documentation,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/related-artifact-type)
-            /// </summary>
-            [EnumLiteral("justification", "http://hl7.org/fhir/related-artifact-type"), Description("Justification")]
-            Justification,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/related-artifact-type)
-            /// </summary>
-            [EnumLiteral("citation", "http://hl7.org/fhir/related-artifact-type"), Description("Citation")]
-            Citation,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/related-artifact-type)
-            /// </summary>
-            [EnumLiteral("predecessor", "http://hl7.org/fhir/related-artifact-type"), Description("Predecessor")]
-            Predecessor,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/related-artifact-type)
-            /// </summary>
-            [EnumLiteral("successor", "http://hl7.org/fhir/related-artifact-type"), Description("Successor")]
-            Successor,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/related-artifact-type)
-            /// </summary>
-            [EnumLiteral("derived-from", "http://hl7.org/fhir/related-artifact-type"), Description("Derived From")]
-            DerivedFrom,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/related-artifact-type)
-            /// </summary>
-            [EnumLiteral("depends-on", "http://hl7.org/fhir/related-artifact-type"), Description("Depends On")]
-            DependsOn,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/related-artifact-type)
-            /// </summary>
-            [EnumLiteral("composed-of", "http://hl7.org/fhir/related-artifact-type"), Description("Composed Of")]
-            ComposedOf,
-        }
+
 
         /// <summary>
         /// documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of
@@ -114,228 +61,228 @@ namespace Hl7.Fhir.Model
         [FhirElement("type", InSummary=true, Order=30)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType> TypeElement
+        public Code<RelatedArtifactType> TypeElement
         {
-            get { return _TypeElement; }
-            set { _TypeElement = value; OnPropertyChanged("TypeElement"); }
+            get { return _typeElement; }
+            set { _typeElement = value; OnPropertyChanged("TypeElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType> _TypeElement;
-        
+
+        private Code<RelatedArtifactType> _typeElement;
+
         /// <summary>
         /// documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType? Type
+        [IgnoreDataMember]
+        public RelatedArtifactType? Type
         {
             get { return TypeElement != null ? TypeElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  TypeElement = null; 
+                if (value == null)
+                    TypeElement = null;
                 else
-                  TypeElement = new Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType>(value);
+                    TypeElement = new Code<RelatedArtifactType>(value);
                 OnPropertyChanged("Type");
             }
         }
-        
+
         /// <summary>
         /// Brief description of the related artifact
         /// </summary>
         [FhirElement("display", InSummary=true, Order=40)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirString DisplayElement
+        public FhirString DisplayElement
         {
-            get { return _DisplayElement; }
-            set { _DisplayElement = value; OnPropertyChanged("DisplayElement"); }
+            get { return _displayElement; }
+            set { _displayElement = value; OnPropertyChanged("DisplayElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirString _DisplayElement;
-        
+
+        private FhirString _displayElement;
+
         /// <summary>
         /// Brief description of the related artifact
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Display
         {
             get { return DisplayElement != null ? DisplayElement.Value : null; }
             set
             {
                 if (value == null)
-                  DisplayElement = null; 
+                    DisplayElement = null;
                 else
-                  DisplayElement = new Hl7.Fhir.Model.FhirString(value);
+                    DisplayElement = new FhirString(value);
                 OnPropertyChanged("Display");
             }
         }
-        
+
         /// <summary>
         /// Bibliographic citation for the artifact
         /// </summary>
         [FhirElement("citation", InSummary=true, Order=50)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirString CitationElement
+        public FhirString CitationElement
         {
-            get { return _CitationElement; }
-            set { _CitationElement = value; OnPropertyChanged("CitationElement"); }
+            get { return _citationElement; }
+            set { _citationElement = value; OnPropertyChanged("CitationElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirString _CitationElement;
-        
+
+        private FhirString _citationElement;
+
         /// <summary>
         /// Bibliographic citation for the artifact
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Citation
         {
             get { return CitationElement != null ? CitationElement.Value : null; }
             set
             {
                 if (value == null)
-                  CitationElement = null; 
+                    CitationElement = null;
                 else
-                  CitationElement = new Hl7.Fhir.Model.FhirString(value);
+                    CitationElement = new FhirString(value);
                 OnPropertyChanged("Citation");
             }
         }
-        
+
         /// <summary>
         /// Where the artifact can be accessed
         /// </summary>
         [FhirElement("url", InSummary=true, Order=60)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirUrl UrlElement
+        public FhirUrl UrlElement
         {
-            get { return _UrlElement; }
-            set { _UrlElement = value; OnPropertyChanged("UrlElement"); }
+            get { return _urlElement; }
+            set { _urlElement = value; OnPropertyChanged("UrlElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirUrl _UrlElement;
-        
+
+        private FhirUrl _urlElement;
+
         /// <summary>
         /// Where the artifact can be accessed
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Url
         {
             get { return UrlElement != null ? UrlElement.Value : null; }
             set
             {
                 if (value == null)
-                  UrlElement = null; 
+                    UrlElement = null;
                 else
-                  UrlElement = new Hl7.Fhir.Model.FhirUrl(value);
+                    UrlElement = new FhirUrl(value);
                 OnPropertyChanged("Url");
             }
         }
-        
+
         /// <summary>
         /// What document is being referenced
         /// </summary>
         [FhirElement("document", InSummary=true, Order=70)]
         [DataMember]
-        public Hl7.Fhir.Model.Attachment Document
+        public Attachment Document
         {
-            get { return _Document; }
-            set { _Document = value; OnPropertyChanged("Document"); }
+            get { return _document; }
+            set { _document = value; OnPropertyChanged("Document"); }
         }
-        
-        private Hl7.Fhir.Model.Attachment _Document;
-        
+
+        private Attachment _document;
+
         /// <summary>
         /// What resource is being referenced
         /// </summary>
         [FhirElement("resource", InSummary=true, Order=80)]
         [DataMember]
-        public Hl7.Fhir.Model.Canonical ResourceElement
+        public Canonical ResourceElement
         {
-            get { return _ResourceElement; }
-            set { _ResourceElement = value; OnPropertyChanged("ResourceElement"); }
+            get { return _resourceElement; }
+            set { _resourceElement = value; OnPropertyChanged("ResourceElement"); }
         }
-        
-        private Hl7.Fhir.Model.Canonical _ResourceElement;
-        
+
+        private Canonical _resourceElement;
+
         /// <summary>
         /// What resource is being referenced
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Resource
         {
             get { return ResourceElement != null ? ResourceElement.Value : null; }
             set
             {
                 if (value == null)
-                  ResourceElement = null; 
+                    ResourceElement = null;
                 else
-                  ResourceElement = new Hl7.Fhir.Model.Canonical(value);
+                    ResourceElement = new Canonical(value);
                 OnPropertyChanged("Resource");
             }
         }
-        
+
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as RelatedArtifact;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.RelatedArtifact.RelatedArtifactType>)TypeElement.DeepCopy();
-                if(DisplayElement != null) dest.DisplayElement = (Hl7.Fhir.Model.FhirString)DisplayElement.DeepCopy();
-                if(CitationElement != null) dest.CitationElement = (Hl7.Fhir.Model.FhirString)CitationElement.DeepCopy();
-                if(UrlElement != null) dest.UrlElement = (Hl7.Fhir.Model.FhirUrl)UrlElement.DeepCopy();
-                if(Document != null) dest.Document = (Hl7.Fhir.Model.Attachment)Document.DeepCopy();
-                if(ResourceElement != null) dest.ResourceElement = (Hl7.Fhir.Model.Canonical)ResourceElement.DeepCopy();
+                if (TypeElement != null) dest.TypeElement = (Code<RelatedArtifactType>)TypeElement.DeepCopy();
+                if (DisplayElement != null) dest.DisplayElement = (FhirString)DisplayElement.DeepCopy();
+                if (CitationElement != null) dest.CitationElement = (FhirString)CitationElement.DeepCopy();
+                if (UrlElement != null) dest.UrlElement = (FhirUrl)UrlElement.DeepCopy();
+                if (Document != null) dest.Document = (Attachment)Document.DeepCopy();
+                if (ResourceElement != null) dest.ResourceElement = (Canonical)ResourceElement.DeepCopy();
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new RelatedArtifact());
+             return CopyTo(new RelatedArtifact());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as RelatedArtifact;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
-            if( !DeepComparable.Matches(DisplayElement, otherT.DisplayElement)) return false;
-            if( !DeepComparable.Matches(CitationElement, otherT.CitationElement)) return false;
-            if( !DeepComparable.Matches(UrlElement, otherT.UrlElement)) return false;
-            if( !DeepComparable.Matches(Document, otherT.Document)) return false;
-            if( !DeepComparable.Matches(ResourceElement, otherT.ResourceElement)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
+            if (!DeepComparable.Matches(DisplayElement, otherT.DisplayElement)) return false;
+            if (!DeepComparable.Matches(CitationElement, otherT.CitationElement)) return false;
+            if (!DeepComparable.Matches(UrlElement, otherT.UrlElement)) return false;
+            if (!DeepComparable.Matches(Document, otherT.Document)) return false;
+            if (!DeepComparable.Matches(ResourceElement, otherT.ResourceElement)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as RelatedArtifact;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
-            if( !DeepComparable.IsExactly(DisplayElement, otherT.DisplayElement)) return false;
-            if( !DeepComparable.IsExactly(CitationElement, otherT.CitationElement)) return false;
-            if( !DeepComparable.IsExactly(UrlElement, otherT.UrlElement)) return false;
-            if( !DeepComparable.IsExactly(Document, otherT.Document)) return false;
-            if( !DeepComparable.IsExactly(ResourceElement, otherT.ResourceElement)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
+            if (!DeepComparable.IsExactly(DisplayElement, otherT.DisplayElement)) return false;
+            if (!DeepComparable.IsExactly(CitationElement, otherT.CitationElement)) return false;
+            if (!DeepComparable.IsExactly(UrlElement, otherT.UrlElement)) return false;
+            if (!DeepComparable.IsExactly(Document, otherT.Document)) return false;
+            if (!DeepComparable.IsExactly(ResourceElement, otherT.ResourceElement)) return false;
+
             return true;
         }
 
@@ -355,22 +302,20 @@ namespace Hl7.Fhir.Model
         }
 
         [NotMapped]
-        internal override IEnumerable<ElementValue> NamedChildren 
-        { 
-            get 
-            { 
-                foreach (var item in base.NamedChildren) yield return item; 
+        internal override IEnumerable<ElementValue> NamedChildren
+        {
+            get
+            {
+                foreach (var item in base.NamedChildren) yield return item;
                 if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
                 if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
                 if (CitationElement != null) yield return new ElementValue("citation", false, CitationElement);
                 if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
                 if (Document != null) yield return new ElementValue("document", false, Document);
                 if (ResourceElement != null) yield return new ElementValue("resource", false, ResourceElement);
- 
-            } 
-        } 
-    
-    
+            }
+        }
+
     }
-    
+
 }

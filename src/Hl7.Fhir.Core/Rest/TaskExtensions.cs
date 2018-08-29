@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     public static class TaskExtensions
     {

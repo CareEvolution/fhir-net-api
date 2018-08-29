@@ -7,16 +7,12 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Hl7.Fhir.Introspection.R4;
 using Newtonsoft.Json;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
 using Newtonsoft.Json.Linq;
-using Hl7.Fhir.Introspection;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     internal class JsonDomFhirWriter : IFhirWriter
     {

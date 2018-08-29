@@ -6,14 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Linq;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest.Http
+namespace Hl7.Fhir.Rest.Http.R4
 {
     internal static class EntryToHttpExtensions
     {
@@ -24,18 +25,18 @@ namespace Hl7.Fhir.Rest.Http
 
             var interaction = entry.Request;
 
-            if (entry.Resource != null && !(interaction.Method == Bundle.HTTPVerb.POST || interaction.Method == Bundle.HTTPVerb.PUT))
+            if (entry.Resource != null && !(interaction.Method == HTTPVerb.POST || interaction.Method == HTTPVerb.PUT))
                 throw Error.InvalidOperation("Cannot have a body on an Http " + interaction.Method.ToString());
 
             var location = new RestUrl(interaction.Url);
 
             if (useFormatParameter)
-                location.AddParam(HttpUtil.RESTPARAM_FORMAT, Hl7.Fhir.Rest.ContentType.BuildFormatParam(format));
+                location.AddParam(HttpUtil.RESTPARAM_FORMAT, ContentType.BuildFormatParam(format));
 
             var request = new HttpRequestMessage(getMethod(interaction.Method), location.Uri);
 
             if (!useFormatParameter)
-                request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse(Hl7.Fhir.Rest.ContentType.BuildContentType(format, forBundle: false)));
+                request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse(ContentType.BuildContentType(format, forBundle: false)));
 
             if (interaction.IfMatch != null) request.Headers.Add("If-Match", interaction.IfMatch);
             if (interaction.IfNoneMatch != null) request.Headers.Add("If-None-Match", interaction.IfNoneMatch);
@@ -58,19 +59,19 @@ namespace Hl7.Fhir.Rest.Http
         /// <summary>
         /// Converts bundle http verb to corresponding <see cref="HttpMethod"/>.
         /// </summary>
-        /// <param name="verb"><see cref="Bundle.HTTPVerb"/> specified by input bundle.</param>
+        /// <param name="verb"><see cref="HTTPVerb"/> specified by input bundle.</param>
         /// <returns><see cref="HttpMethod"/> corresponding to verb specified in input bundle.</returns>
-        private static HttpMethod getMethod(Bundle.HTTPVerb? verb)
+        private static HttpMethod getMethod(HTTPVerb? verb)
         {
             switch(verb)
             {
-                case Bundle.HTTPVerb.GET:
+                case HTTPVerb.GET:
                     return HttpMethod.Get;
-                case Bundle.HTTPVerb.POST:
+                case HTTPVerb.POST:
                     return HttpMethod.Post;
-                case Bundle.HTTPVerb.PUT:
+                case HTTPVerb.PUT:
                     return HttpMethod.Put;
-                case Bundle.HTTPVerb.DELETE:
+                case HTTPVerb.DELETE:
                     return HttpMethod.Delete;
             }
             throw new HttpRequestException($"Valid HttpVerb could not be found for verb type: [{verb}]");
@@ -94,13 +95,13 @@ namespace Hl7.Fhir.Rest.Http
             else
             {
                 body = format == ResourceFormat.Xml ?
-                    new FhirXmlSerializer().SerializeToBytes(data, summary: Fhir.Rest.SummaryType.False) :
-                    new FhirJsonSerializer().SerializeToBytes(data, summary: Fhir.Rest.SummaryType.False);
+                    new FhirXmlSerializer().SerializeToBytes(data, summary: SummaryType.False) :
+                    new FhirJsonSerializer().SerializeToBytes(data, summary: SummaryType.False);
 
                 // This is done by the caller after the OnBeforeRequest is called so that other properties
                 // can be set before the content is committed
                 // request.WriteBody(CompressRequestBody, body);
-                contentType = Hl7.Fhir.Rest.ContentType.BuildContentType(format, forBundle: false);
+                contentType = ContentType.BuildContentType(format, forBundle: false);
             }
 
             request.Content = new ByteArrayContent(body);

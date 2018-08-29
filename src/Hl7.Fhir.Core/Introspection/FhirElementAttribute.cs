@@ -29,14 +29,14 @@
 */
 
 using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.R4;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 
-namespace Hl7.Fhir.Introspection
+namespace Hl7.Fhir.Introspection.R4
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public sealed class FhirElementAttribute : ValidationAttribute

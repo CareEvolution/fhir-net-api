@@ -28,14 +28,10 @@
 
 */
 
-using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.R4;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 
-namespace Hl7.Fhir.Introspection
+namespace Hl7.Fhir.Introspection.R4
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     public sealed class FhirTypeAttribute : InvokeIValidatableObjectAttribute

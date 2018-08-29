@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestClient = Hl7.Fhir.Rest.Http.FhirClient;
+using TestClient = Hl7.Fhir.Rest.Http.R4.FhirClient;
 
 namespace Hl7.Fhir.Core.AsyncTests
 {
@@ -17,7 +17,7 @@ namespace Hl7.Fhir.Core.AsyncTests
         [TestCategory("IntegrationTest")]
         public async System.Threading.Tasks.Task Read_UsingResourceIdentity_ResultReturnedWebClient()
         {
-            var client = new FhirClient(_endpoint)
+            var client = new TestClient(_endpoint)
             {
                 PreferredFormat = ResourceFormat.Json,
                 PreferredReturn = Prefer.ReturnRepresentation
@@ -35,7 +35,7 @@ namespace Hl7.Fhir.Core.AsyncTests
         [TestCategory("IntegrationTest")]
         public async System.Threading.Tasks.Task Read_UsingResourceIdentity_ResultReturnedHttpClient()
         {
-            using (var client = new TestClient(_endpoint)
+            using (var client = new FhirClient(_endpoint)
             {
                 PreferredFormat = ResourceFormat.Json,
                 PreferredReturn = Prefer.ReturnRepresentation

@@ -7,13 +7,13 @@
  */
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization.R4;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
-   
+
     [TestClass]
 	public class ClassFactoryListTest
     {

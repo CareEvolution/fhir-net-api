@@ -8,7 +8,8 @@
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Tests.Serialization
@@ -63,7 +64,7 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestMethod]
         public void TestEnumToString()
         {
-            var x = Quantity.QuantityComparator.LessOrEqual;
+            var x = QuantityComparator.LessOrEqual;
 
             Assert.AreEqual("<=", PrimitiveTypeConverter.ConvertTo<string>(x));
         }

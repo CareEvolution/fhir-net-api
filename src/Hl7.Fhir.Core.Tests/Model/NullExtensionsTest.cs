@@ -1,10 +1,10 @@
-﻿using Hl7.Fhir.Support;
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Xml;
+﻿using System;
 using System.Collections.Generic;
+using System.Xml;
+using Hl7.Fhir.Support.R4;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     [TestClass]
     public class NullExtensionsTest

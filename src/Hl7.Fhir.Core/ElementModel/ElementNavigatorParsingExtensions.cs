@@ -1,10 +1,10 @@
 ﻿using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.R4
 {
     /// <summary>
     /// A class to do basic parsing of POCO classes from an IElementNavigator.  Can be replaced by the real
@@ -12,7 +12,7 @@ namespace Hl7.Fhir.ElementModel
     /// </summary>
     public static class ElementNavigatorParsingExtensions
     {
-        public static Model.Quantity ParseQuantity(this IElementNavigator instance)
+        public static Quantity ParseQuantity(this IElementNavigator instance)
         {
             var newQuantity = new Quantity();
 
@@ -20,7 +20,7 @@ namespace Hl7.Fhir.ElementModel
 
             var comp = instance.Children("comparator").GetString();
             if(comp != null)
-                newQuantity.ComparatorElement = new Code<Quantity.QuantityComparator> { ObjectValue = comp };
+                newQuantity.ComparatorElement = new Code<QuantityComparator> { ObjectValue = comp };
 
             newQuantity.Unit = instance.Children("unit").GetString();
             newQuantity.System = instance.Children("system").GetString();

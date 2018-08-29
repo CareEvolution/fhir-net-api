@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     /// <summary>
     /// Represents a list of FHIR search parameters, which is based on a list of (key,value) tuples,

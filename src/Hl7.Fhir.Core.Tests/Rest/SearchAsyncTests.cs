@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
 using Task = System.Threading.Tasks.Task;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestClient = Hl7.Fhir.Rest.Http.FhirClient;
+using TestClient = Hl7.Fhir.Rest.Http.R4.FhirClient;
 
 namespace Hl7.Fhir.Core.AsyncTests
 {

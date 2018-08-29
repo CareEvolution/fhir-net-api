@@ -6,16 +6,16 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections;
 using System.Linq;
-using System.Reflection;
+using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Utility;
 
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     internal class ComplexTypeWriter
     {
@@ -42,7 +42,7 @@ namespace Hl7.Fhir.Serialization
         }
 
 
-        internal void Serialize(Base instance, Rest.SummaryType summary, SerializationMode mode = SerializationMode.AllMembers, string root=null)
+        internal void Serialize(Base instance, SummaryType summary, SerializationMode mode = SerializationMode.AllMembers, string root=null)
         {
             if (instance == null) throw Error.ArgumentNull(nameof(instance));
 
@@ -59,7 +59,7 @@ namespace Hl7.Fhir.Serialization
             _writer.WriteEndProperty();
         }
 
-        internal void Serialize(ClassMapping mapping, object instance, Rest.SummaryType summary, SerializationMode mode = SerializationMode.AllMembers)
+        internal void Serialize(ClassMapping mapping, object instance, SummaryType summary, SerializationMode mode = SerializationMode.AllMembers)
         {
             if (mapping == null) throw Error.ArgumentNull(nameof(mapping));
 
@@ -80,11 +80,11 @@ namespace Hl7.Fhir.Serialization
                 return (inst is Meta) || (inst is Narrative) || (inst is Id);
             }
 
-            if (summary == Rest.SummaryType.True)
+            if (summary == SummaryType.True)
             {
                 propertiesToWrite = propertiesToWrite.Where(property => property.InSummary);
             }
-            else if (summary == Rest.SummaryType.Text)
+            else if (summary == SummaryType.Text)
             {
                 bool isSummaryProperty(PropertyMapping propMapping)
                 {
@@ -97,11 +97,11 @@ namespace Hl7.Fhir.Serialization
                     || property.IsMandatoryElement
                     || isMetaTextOrIdElementInstance(instance));
             }
-            else if (summary == Rest.SummaryType.Data)
+            else if (summary == SummaryType.Data)
             {
                 propertiesToWrite = propertiesToWrite.Where(property => property.Name.ToLower() != "text");
             }
-            else if (summary == Rest.SummaryType.Count)
+            else if (summary == SummaryType.Count)
             {
                 propertiesToWrite = propertiesToWrite.Where(property =>
                    summaryCountProperties.Contains(property.Name.ToLower())
@@ -110,8 +110,8 @@ namespace Hl7.Fhir.Serialization
 
             foreach (var property in propertiesToWrite)
             {
-                if (isMetaTextOrIdElementInstance(instance) && summary == Rest.SummaryType.Text)
-                    writeProperty(instance, Rest.SummaryType.False, property, mode);
+                if (isMetaTextOrIdElementInstance(instance) && summary == SummaryType.Text)
+                    writeProperty(instance, SummaryType.False, property, mode);
                 else
                     writeProperty(instance, summary, property, mode);
             }
@@ -123,7 +123,7 @@ namespace Hl7.Fhir.Serialization
             _writer.WriteEndComplexContent();
         }
 
-        private void writeProperty(object instance, Rest.SummaryType summaryType, PropertyMapping property, SerializationMode mode)
+        private void writeProperty(object instance, SummaryType summaryType, PropertyMapping property, SerializationMode mode)
         {
             if (Settings.CustomSerializer != null)
             {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Support
+namespace Hl7.Fhir.Support.R4
 {
     /// <summary>
     /// The exception that is throw when the artifact resolver encounters conflicting conformance resources with identical canonical urls.

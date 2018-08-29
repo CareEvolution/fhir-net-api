@@ -7,7 +7,7 @@
  */
 
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Utility;
 using System;
 

@@ -28,12 +28,7 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Hl7.Fhir.Introspection
+namespace Hl7.Fhir.Introspection.R4
 {
     public enum ChoiceType
     {

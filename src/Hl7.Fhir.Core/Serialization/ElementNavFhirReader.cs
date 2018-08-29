@@ -6,15 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Utility;
-using Hl7.Fhir.ElementModel;
 using System.Xml.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Utility;
+using Newtonsoft.Json.Linq;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     /// <summary>
     /// This class wraps an IElementNavigator to implement IFhirReader. This is a temporary solution to use IElementNavigator

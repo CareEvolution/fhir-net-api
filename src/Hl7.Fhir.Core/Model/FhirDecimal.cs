@@ -36,7 +36,7 @@ using System.Xml;
 using Hl7.Fhir.Model;
 
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
     public partial class FhirDecimal : INullableValue<decimal>

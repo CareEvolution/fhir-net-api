@@ -12,15 +12,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Serialization.R4;
+using Hl7.Fhir.Model.R4;
 using System.IO;
 using System.Threading.Tasks;
 using Hl7.Fhir.Utility;
-using static Hl7.Fhir.Model.Bundle;
+using static Hl7.Fhir.Model.R4.Bundle;
 using System.Drawing;
-using TestClient = Hl7.Fhir.Rest.Http.FhirClient;
+using TestClient = Hl7.Fhir.Rest.Http.R4.FhirClient;
 
 namespace Hl7.Fhir.Tests.Rest
 {
@@ -48,7 +48,7 @@ namespace Hl7.Fhir.Tests.Rest
             System.Diagnostics.Trace.WriteLine("Testing against fhir server: " + testEndpoint);
         }
 
-        public static void DebugDumpBundle(Hl7.Fhir.Model.Bundle b)
+        public static void DebugDumpBundle(Bundle b)
         {
             System.Diagnostics.Trace.WriteLine(String.Format("--------------------------------------------\r\nBundle Type: {0} ({1} total items, {2} included)", b.Type.ToString(), b.Total, (b.Entry != null ? b.Entry.Count.ToString() : "-")));
 
@@ -60,12 +60,12 @@ namespace Hl7.Fhir.Tests.Rest
                         System.Diagnostics.Trace.WriteLine(String.Format("        {0}: {1}", item.Request.Method.ToString(), item.Request.Url));
                     if (item.Response != null && item.Response.Status != null)
                         System.Diagnostics.Trace.WriteLine(String.Format("        {0}", item.Response.Status));
-                    if (item.Resource != null && item.Resource is Hl7.Fhir.Model.DomainResource)
+                    if (item.Resource != null && item.Resource is DomainResource)
                     {
                         if (item.Resource.Meta != null && item.Resource.Meta.LastUpdated.HasValue)
                             System.Diagnostics.Trace.WriteLine(String.Format("            Last Updated:{0}, [{1}]", item.Resource.Meta.LastUpdated.Value, item.Resource.Meta.LastUpdated.Value.ToString("HH:mm:ss.FFFF")));
-                        Hl7.Fhir.Rest.ResourceIdentity ri = new Hl7.Fhir.Rest.ResourceIdentity(item.FullUrl);
-                        System.Diagnostics.Trace.WriteLine(String.Format("            {0}", (item.Resource as Hl7.Fhir.Model.DomainResource).ResourceIdentity(ri.BaseUri).OriginalString));
+                        ResourceIdentity ri = new ResourceIdentity(item.FullUrl);
+                        System.Diagnostics.Trace.WriteLine(String.Format("            {0}", (item.Resource as DomainResource).ResourceIdentity(ri.BaseUri).OriginalString));
                     }
                 }
             }
@@ -83,7 +83,7 @@ namespace Hl7.Fhir.Tests.Rest
             Assert.IsNotNull(entry);
             Assert.IsNotNull(entry.FhirVersion);
             // Assert.AreEqual("Spark.Service", c.Software.Name); // This is only for ewout's server
-            Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
+            Assert.AreEqual(RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
             Assert.AreEqual("200", client.LastResult.Status);
 
             entry = client.CapabilityStatement(SummaryType.True);
@@ -91,7 +91,7 @@ namespace Hl7.Fhir.Tests.Rest
             Assert.IsNull(entry.Text); // DSTU2 has this property as not include as part of the summary (that would be with SummaryType.Text)
             Assert.IsNotNull(entry);
             Assert.IsNotNull(entry.FhirVersion);
-            Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
+            Assert.AreEqual(RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
             Assert.AreEqual("200", client.LastResult.Status);
 
             Assert.IsNotNull(entry.Rest[0].Resource, "The resource property should be in the summary");
@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Tests.Rest
                 Assert.IsNotNull(entry);
                 Assert.IsNotNull(entry.FhirVersion);
                 // Assert.AreEqual("Spark.Service", c.Software.Name); // This is only for ewout's server
-                Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
+                Assert.AreEqual(RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
                 Assert.AreEqual("200", client.LastResult.Status);
 
                 entry = client.CapabilityStatement(SummaryType.True);
@@ -121,7 +121,7 @@ namespace Hl7.Fhir.Tests.Rest
                 Assert.IsNull(entry.Text); // DSTU2 has this property as not include as part of the summary (that would be with SummaryType.Text)
                 Assert.IsNotNull(entry);
                 Assert.IsNotNull(entry.FhirVersion);
-                Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
+                Assert.AreEqual(RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
                 Assert.AreEqual("200", client.LastResult.Status);
 
                 Assert.IsNotNull(entry.Rest[0].Resource, "The resource property should be in the summary");
@@ -323,7 +323,7 @@ namespace Hl7.Fhir.Tests.Rest
         }
 #endif
 
-        public static void Compression_OnBeforeWebRequestGZip(object sender, Fhir.Rest.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeWebRequestGZip(object sender, BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -333,7 +333,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        public static void Compression_OnBeforeWebRequestDeflate(object sender, Fhir.Rest.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeWebRequestDeflate(object sender, BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -343,7 +343,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        public static void Compression_OnBeforeWebRequestZipOrDeflate(object sender, Fhir.Rest.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeWebRequestZipOrDeflate(object sender, BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -353,7 +353,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        public static void Compression_OnBeforeHttpRequestGZip(object sender, Core.Rest.Http.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeHttpRequestGZip(object sender, Core.Rest.Http.R4.BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -363,7 +363,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        public static void Compression_OnBeforeHttpRequestDeflate(object sender, Core.Rest.Http.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeHttpRequestDeflate(object sender, Core.Rest.Http.R4.BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -373,7 +373,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        public static void Compression_OnBeforeHttpRequestZipOrDeflate(object sender, Core.Rest.Http.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeHttpRequestZipOrDeflate(object sender, Core.Rest.Http.R4.BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -441,7 +441,7 @@ namespace Hl7.Fhir.Tests.Rest
             TestCategory("IntegrationTest")]
         public void SearchHttpClient()
         {
-            using (var handler = new Core.Rest.Http.HttpClientEventHandler())
+            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
             using (TestClient client = new TestClient(testEndpoint, messageHandler: handler))
             {
                 Bundle result;
@@ -490,7 +490,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        private void Client_OnAfterWebResponse(object sender, Fhir.Rest.AfterResponseEventArgs e)
+        private void Client_OnAfterWebResponse(object sender, AfterResponseEventArgs e)
         {
             // Test that the response was compressed
             Assert.AreEqual("gzip", e.RawResponse.Headers[HttpResponseHeader.ContentEncoding]);
@@ -842,7 +842,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         public void CreateEditDeleteHttpClient()
         {
-            using (var handler = new Core.Rest.Http.HttpClientEventHandler())
+            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
             using (TestClient client = new TestClient(testEndpoint, messageHandler: handler))
             {
 
@@ -1454,8 +1454,8 @@ namespace Hl7.Fhir.Tests.Rest
                 Name = "Furore",
                 Identifier = new List<Identifier> { new Identifier("http://hl7.org/test/1", "3141") },
                 Telecom = new List<ContactPoint> {
-                    new ContactPoint { System = ContactPoint.ContactPointSystem.Phone, Value = "+31-20-3467171", Use = ContactPoint.ContactPointUse.Work },
-                    new ContactPoint { System = ContactPoint.ContactPointSystem.Fax, Value = "+31-20-3467172" }
+                    new ContactPoint { System = ContactPointSystem.Phone, Value = "+31-20-3467171", Use = ContactPointUse.Work },
+                    new ContactPoint { System = ContactPointSystem.Fax, Value = "+31-20-3467172" }
                 }
             };
 
@@ -1475,8 +1475,8 @@ namespace Hl7.Fhir.Tests.Rest
                 Name = "Furore",
                 Identifier = new List<Identifier> { new Identifier("http://hl7.org/test/1", "3141") },
                 Telecom = new List<ContactPoint> {
-                    new ContactPoint { System = ContactPoint.ContactPointSystem.Phone, Value = "+31-20-3467171", Use = ContactPoint.ContactPointUse.Work },
-                    new ContactPoint { System = ContactPoint.ContactPointSystem.Fax, Value = "+31-20-3467172" }
+                    new ContactPoint { System = ContactPointSystem.Phone, Value = "+31-20-3467171", Use = ContactPointUse.Work },
+                    new ContactPoint { System = ContactPointSystem.Fax, Value = "+31-20-3467172" }
                 }
             };
 
@@ -1535,7 +1535,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         public void CallsCallbacksHttpClient()
         {
-            using (var handler = new Core.Rest.Http.HttpClientEventHandler())
+            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
             using (TestClient client = new TestClient(testEndpoint, messageHandler: handler))
             {
                 client.ParserSettings.AllowUnrecognizedEnums = true;
@@ -1599,7 +1599,7 @@ namespace Hl7.Fhir.Tests.Rest
         {
             var client = new FhirClient(testEndpoint);
             var minimal = false;
-            client.OnBeforeRequest += (object s, Fhir.Rest.BeforeRequestEventArgs e) => e.RawRequest.Headers["Prefer"] = minimal ? "return=minimal" : "return=representation";
+            client.OnBeforeRequest += (object s, BeforeRequestEventArgs e) => e.RawRequest.Headers["Prefer"] = minimal ? "return=minimal" : "return=representation";
 
             var result = client.Read<Patient>("Patient/glossy");
             Assert.IsNotNull(result);
@@ -1625,7 +1625,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         public void RequestFullResourceHttpClient()
         {
-            using (var handler = new Core.Rest.Http.HttpClientEventHandler())
+            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
             using (var client = new TestClient(testEndpoint, messageHandler: handler))
             {
 
@@ -1647,7 +1647,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        void client_OnBeforeRequest(object sender, Fhir.Rest.BeforeRequestEventArgs e)
+        void client_OnBeforeRequest(object sender, BeforeRequestEventArgs e)
         {
             throw new NotImplementedException();
         }
@@ -1751,7 +1751,7 @@ namespace Hl7.Fhir.Tests.Rest
 
                 Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                Assert.IsTrue(operationOutcome.Issue[0].Severity == IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
 
                 string message = operationOutcome.Issue[0].Diagnostics;
                 if (!message.Contains("a valid FHIR xml/json body type was expected") && !message.Contains("not recognized as either xml or json"))
@@ -1795,7 +1795,7 @@ namespace Hl7.Fhir.Tests.Rest
 
                     Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                    Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                    Assert.IsTrue(operationOutcome.Issue[0].Severity == IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
 
                     string message = operationOutcome.Issue[0].Diagnostics;
                     if (!message.Contains("a valid FHIR xml/json body type was expected") && !message.Contains("not recognized as either xml or json"))
@@ -1839,7 +1839,7 @@ namespace Hl7.Fhir.Tests.Rest
 
                 Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                Assert.IsTrue(operationOutcome.Issue[0].Severity == IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
             }
             catch (Exception e)
             {
@@ -1878,7 +1878,7 @@ namespace Hl7.Fhir.Tests.Rest
 
                     Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                    Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                    Assert.IsTrue(operationOutcome.Issue[0].Severity == IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
                 }
                 catch (Exception e)
                 {
@@ -1951,7 +1951,7 @@ namespace Hl7.Fhir.Tests.Rest
         public void TestAuthenticationOnBeforeWebClient()
         {
             FhirClient validationFhirClient = new FhirClient("https://sqlonfhir.azurewebsites.net/fhir");
-            validationFhirClient.OnBeforeRequest += (object sender, Fhir.Rest.BeforeRequestEventArgs e) =>
+            validationFhirClient.OnBeforeRequest += (object sender, BeforeRequestEventArgs e) =>
             {
                 e.RawRequest.Headers["Authorization"] = "Bearer bad-bearer";
             };

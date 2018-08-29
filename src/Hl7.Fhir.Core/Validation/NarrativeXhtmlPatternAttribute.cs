@@ -8,9 +8,9 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
-using Hl7.Fhir.Support;
+using Hl7.Fhir.Support.R4;
 
-namespace Hl7.Fhir.Validation
+namespace Hl7.Fhir.Validation.R4
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public class NarrativeXhtmlPatternAttribute : ValidationAttribute

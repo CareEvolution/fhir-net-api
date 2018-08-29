@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Core.Rest.Http
+namespace Hl7.Fhir.Core.Rest.Http.R4
 {
     public class HttpClientEventHandler : HttpClientHandler
     {

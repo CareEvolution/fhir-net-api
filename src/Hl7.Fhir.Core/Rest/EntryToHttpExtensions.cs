@@ -6,16 +6,17 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 using System;
 using System.Net;
 using System.Reflection;
 using Hl7.Fhir.Utility;
 using System.Collections.Generic;
 using System.Net.Http;
+using Hl7.Fhir.Serialization;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     internal static class EntryToHttpExtensions
     {
@@ -27,20 +28,20 @@ namespace Hl7.Fhir.Rest
             var interaction = entry.Request;
             body = null;
 
-            if (entry.Resource != null && !(interaction.Method == Bundle.HTTPVerb.POST || interaction.Method == Bundle.HTTPVerb.PUT))
+            if (entry.Resource != null && !(interaction.Method == HTTPVerb.POST || interaction.Method == HTTPVerb.PUT))
                 throw Error.InvalidOperation("Cannot have a body on an Http " + interaction.Method.ToString());
 
             var location = new RestUrl(interaction.Url);
 
             if (useFormatParameter)
-                location.AddParam(HttpUtil.RESTPARAM_FORMAT, Hl7.Fhir.Rest.ContentType.BuildFormatParam(format));
+                location.AddParam(HttpUtil.RESTPARAM_FORMAT, ContentType.BuildFormatParam(format));
 
             var request = (HttpWebRequest)HttpWebRequest.Create(location.Uri);
             request.Method = interaction.Method.ToString();
-            setAgent(request, ".NET FhirClient for FHIR " + Model.ModelInfo.Version);
+            setAgent(request, ".NET FhirClient for FHIR " + ModelInfo.Version);
 
             if (!useFormatParameter)
-                request.Accept = Hl7.Fhir.Rest.ContentType.BuildContentType(format, forBundle: false);
+                request.Accept = ContentType.BuildContentType(format, forBundle: false);
 
             if (interaction.IfMatch != null) request.Headers["If-Match"] = interaction.IfMatch;
             if (interaction.IfNoneMatch != null) request.Headers["If-None-Match"] = interaction.IfNoneMatch;
@@ -61,7 +62,7 @@ namespace Hl7.Fhir.Rest
             if (entry.Resource != null)
             {
                 bool searchUsingPost =
-                    interaction.Method == Bundle.HTTPVerb.POST
+                    interaction.Method == HTTPVerb.POST
                     && (entry.HasAnnotation<TransactionBuilder.InteractionType>()
                     && entry.Annotation<TransactionBuilder.InteractionType>() == TransactionBuilder.InteractionType.Search)
                     && entry.Resource is Parameters;
@@ -151,13 +152,13 @@ namespace Hl7.Fhir.Rest
             else
             {
                 body = format == ResourceFormat.Xml ?
-                    new FhirXmlSerializer().SerializeToBytes(data, summary: Fhir.Rest.SummaryType.False) :
-                    new FhirJsonSerializer().SerializeToBytes(data, summary: Fhir.Rest.SummaryType.False);
+                    new FhirXmlSerializer().SerializeToBytes(data, summary: SummaryType.False) :
+                    new FhirJsonSerializer().SerializeToBytes(data, summary: SummaryType.False);
 
                 // This is done by the caller after the OnBeforeRequest is called so that other properties
                 // can be set before the content is committed
                 // request.WriteBody(CompressRequestBody, body);
-                request.ContentType = Hl7.Fhir.Rest.ContentType.BuildContentType(format, forBundle: false);
+                request.ContentType = ContentType.BuildContentType(format, forBundle: false);
             }
         }
 

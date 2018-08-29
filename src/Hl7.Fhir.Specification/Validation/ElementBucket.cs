@@ -6,10 +6,10 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Support;
-using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.R4;
 
 namespace Hl7.Fhir.Validation
 {

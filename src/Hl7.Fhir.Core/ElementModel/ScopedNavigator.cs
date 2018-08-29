@@ -7,12 +7,12 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.R4
 {
     public class ScopedNavigator : IElementNavigator
     {

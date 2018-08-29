@@ -11,7 +11,7 @@ using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     public class RestUrl
     {

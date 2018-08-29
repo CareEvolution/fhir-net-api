@@ -1,203 +1,171 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
-  
-   * Redistributions of source code must retain the above copyright notice, this 
+
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
-  
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
+
 
 */
 
-#pragma warning disable 1591 // suppress XML summary warnings 
+#pragma warning disable 1591 // suppress XML summary warnings
 
 //
 // Generated for FHIR v3.3.0
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     /// <summary>
     /// Information about patient's relatives, relevant for patient
     /// </summary>
     [FhirType("FamilyMemberHistory", IsResource=true)]
     [DataContract]
-    public partial class FamilyMemberHistory : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class FamilyMemberHistory : DomainResource
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.FamilyMemberHistory; } }
         [NotMapped]
         public override string TypeName { get { return "FamilyMemberHistory"; } }
-        
-        /// <summary>
-        /// A code that identifies the status of the family history record.
-        /// (url: http://hl7.org/fhir/ValueSet/history-status)
-        /// </summary>
-        [FhirEnumeration("FamilyHistoryStatus")]
-        public enum FamilyHistoryStatus
-        {
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/history-status)
-            /// </summary>
-            [EnumLiteral("partial", "http://hl7.org/fhir/history-status"), Description("Partial")]
-            Partial,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/history-status)
-            /// </summary>
-            [EnumLiteral("completed", "http://hl7.org/fhir/history-status"), Description("Completed")]
-            Completed,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/history-status)
-            /// </summary>
-            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/history-status"), Description("Entered in error")]
-            EnteredInError,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/history-status)
-            /// </summary>
-            [EnumLiteral("health-unknown", "http://hl7.org/fhir/history-status"), Description("Health unknown")]
-            HealthUnknown,
-        }
+
 
         [FhirType("ConditionComponent")]
         [DataContract]
-        public partial class ConditionComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged
+        public partial class ConditionComponent : BackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConditionComponent"; } }
-            
+
             /// <summary>
             /// Condition suffered by relation
             /// </summary>
             [FhirElement("code", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Code
+            public CodeableConcept Code
             {
-                get { return _Code; }
-                set { _Code = value; OnPropertyChanged("Code"); }
+                get { return _code; }
+                set { _code = value; OnPropertyChanged("Code"); }
             }
-            
-            private Hl7.Fhir.Model.CodeableConcept _Code;
-            
+
+            private CodeableConcept _code;
+
             /// <summary>
             /// deceased | permanent disability | etc.
             /// </summary>
             [FhirElement("outcome", Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Outcome
+            public CodeableConcept Outcome
             {
-                get { return _Outcome; }
-                set { _Outcome = value; OnPropertyChanged("Outcome"); }
+                get { return _outcome; }
+                set { _outcome = value; OnPropertyChanged("Outcome"); }
             }
-            
-            private Hl7.Fhir.Model.CodeableConcept _Outcome;
-            
+
+            private CodeableConcept _outcome;
+
             /// <summary>
             /// When condition first manifested
             /// </summary>
             [FhirElement("onset", Order=60, Choice=ChoiceType.DatatypeChoice)]
-            [CLSCompliant(false)]
-			[AllowedTypes(typeof(Age),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.FhirString))]
+            [AllowedTypes(typeof(Age),typeof(Range),typeof(Period),typeof(FhirString))]
             [DataMember]
-            public Hl7.Fhir.Model.Element Onset
+            public Element Onset
             {
-                get { return _Onset; }
-                set { _Onset = value; OnPropertyChanged("Onset"); }
+                get { return _onset; }
+                set { _onset = value; OnPropertyChanged("Onset"); }
             }
-            
-            private Hl7.Fhir.Model.Element _Onset;
-            
+
+            private Element _onset;
+
             /// <summary>
             /// Extra information about condition
             /// </summary>
             [FhirElement("note", Order=70)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Annotation> Note
+            public List<Annotation> Note
             {
-                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
-                set { _Note = value; OnPropertyChanged("Note"); }
+                get { if (_note==null) _note = new List<Annotation>(); return _note; }
+                set { _note = value; OnPropertyChanged("Note"); }
             }
-            
-            private List<Hl7.Fhir.Model.Annotation> _Note;
-            
+
+            private List<Annotation> _note;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as ConditionComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
-                    if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
-                    if(Onset != null) dest.Onset = (Hl7.Fhir.Model.Element)Onset.DeepCopy();
-                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                    if (Code != null) dest.Code = (CodeableConcept)Code.DeepCopy();
+                    if (Outcome != null) dest.Outcome = (CodeableConcept)Outcome.DeepCopy();
+                    if (Onset != null) dest.Onset = (Element)Onset.DeepCopy();
+                    if (Note != null) dest.Note = new List<Annotation>(Note.DeepCopy());
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new ConditionComponent());
+                 return CopyTo(new ConditionComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as ConditionComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(Code, otherT.Code)) return false;
-                if( !DeepComparable.Matches(Outcome, otherT.Outcome)) return false;
-                if( !DeepComparable.Matches(Onset, otherT.Onset)) return false;
-                if( !DeepComparable.Matches(Note, otherT.Note)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(Code, otherT.Code)) return false;
+                if (!DeepComparable.Matches(Outcome, otherT.Outcome)) return false;
+                if (!DeepComparable.Matches(Onset, otherT.Onset)) return false;
+                if ( !DeepComparable.Matches(Note, otherT.Note)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as ConditionComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(Code, otherT.Code)) return false;
-                if( !DeepComparable.IsExactly(Outcome, otherT.Outcome)) return false;
-                if( !DeepComparable.IsExactly(Onset, otherT.Onset)) return false;
-                if( !DeepComparable.IsExactly(Note, otherT.Note)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
+                if (!DeepComparable.IsExactly(Outcome, otherT.Outcome)) return false;
+                if (!DeepComparable.IsExactly(Onset, otherT.Onset)) return false;
+                if (!DeepComparable.IsExactly(Note, otherT.Note)) return false;
+
                 return true;
             }
 
@@ -228,379 +196,374 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         /// <summary>
         /// External Id(s) for this record
         /// </summary>
         [FhirElement("identifier", InSummary=true, Order=90)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Identifier> Identifier
+        public List<Identifier> Identifier
         {
-            get { if(_Identifier==null) _Identifier = new List<Hl7.Fhir.Model.Identifier>(); return _Identifier; }
-            set { _Identifier = value; OnPropertyChanged("Identifier"); }
+            get { if (_identifier==null) _identifier = new List<Identifier>(); return _identifier; }
+            set { _identifier = value; OnPropertyChanged("Identifier"); }
         }
-        
-        private List<Hl7.Fhir.Model.Identifier> _Identifier;
-        
+
+        private List<Identifier> _identifier;
+
         /// <summary>
         /// Instantiates protocol or definition
         /// </summary>
         [FhirElement("instantiates", InSummary=true, Order=100)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.FhirUri> InstantiatesElement
+        public List<FhirUri> InstantiatesElement
         {
-            get { if(_InstantiatesElement==null) _InstantiatesElement = new List<Hl7.Fhir.Model.FhirUri>(); return _InstantiatesElement; }
-            set { _InstantiatesElement = value; OnPropertyChanged("InstantiatesElement"); }
+            get { if (_instantiatesElement==null) _instantiatesElement = new List<FhirUri>(); return _instantiatesElement; }
+            set { _instantiatesElement = value; OnPropertyChanged("InstantiatesElement"); }
         }
-        
-        private List<Hl7.Fhir.Model.FhirUri> _InstantiatesElement;
-        
+
+        private List<FhirUri> _instantiatesElement;
+
         /// <summary>
         /// Instantiates protocol or definition
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public IEnumerable<string> Instantiates
         {
             get { return InstantiatesElement != null ? InstantiatesElement.Select(elem => elem.Value) : null; }
             set
             {
                 if (value == null)
-                  InstantiatesElement = null; 
+                    InstantiatesElement = null;
                 else
-                  InstantiatesElement = new List<Hl7.Fhir.Model.FhirUri>(value.Select(elem=>new Hl7.Fhir.Model.FhirUri(elem)));
+                    InstantiatesElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
                 OnPropertyChanged("Instantiates");
             }
         }
-        
+
         /// <summary>
         /// partial | completed | entered-in-error | health-unknown
         /// </summary>
         [FhirElement("status", InSummary=true, Order=110)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.FamilyMemberHistory.FamilyHistoryStatus> StatusElement
+        public Code<FamilyHistoryStatus> StatusElement
         {
-            get { return _StatusElement; }
-            set { _StatusElement = value; OnPropertyChanged("StatusElement"); }
+            get { return _statusElement; }
+            set { _statusElement = value; OnPropertyChanged("StatusElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.FamilyMemberHistory.FamilyHistoryStatus> _StatusElement;
-        
+
+        private Code<FamilyHistoryStatus> _statusElement;
+
         /// <summary>
         /// partial | completed | entered-in-error | health-unknown
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.FamilyMemberHistory.FamilyHistoryStatus? Status
+        [IgnoreDataMember]
+        public FamilyHistoryStatus? Status
         {
             get { return StatusElement != null ? StatusElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  StatusElement = null; 
+                if (value == null)
+                    StatusElement = null;
                 else
-                  StatusElement = new Code<Hl7.Fhir.Model.FamilyMemberHistory.FamilyHistoryStatus>(value);
+                    StatusElement = new Code<FamilyHistoryStatus>(value);
                 OnPropertyChanged("Status");
             }
         }
-        
+
         /// <summary>
         /// subject-unknown | withheld | unable-to-obtain | deferred
         /// </summary>
         [FhirElement("dataAbsentReason", InSummary=true, Order=120)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept DataAbsentReason
+        public CodeableConcept DataAbsentReason
         {
-            get { return _DataAbsentReason; }
-            set { _DataAbsentReason = value; OnPropertyChanged("DataAbsentReason"); }
+            get { return _dataAbsentReason; }
+            set { _dataAbsentReason = value; OnPropertyChanged("DataAbsentReason"); }
         }
-        
-        private Hl7.Fhir.Model.CodeableConcept _DataAbsentReason;
-        
+
+        private CodeableConcept _dataAbsentReason;
+
         /// <summary>
         /// Patient history is about
         /// </summary>
         [FhirElement("patient", InSummary=true, Order=130)]
-        [CLSCompliant(false)]
-		[References("Patient")]
+        [References("Patient")]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference Patient
+        public ResourceReference Patient
         {
-            get { return _Patient; }
-            set { _Patient = value; OnPropertyChanged("Patient"); }
+            get { return _patient; }
+            set { _patient = value; OnPropertyChanged("Patient"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _Patient;
-        
+
+        private ResourceReference _patient;
+
         /// <summary>
         /// When history was recorded or last updated
         /// </summary>
         [FhirElement("date", InSummary=true, Order=140)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime DateElement
+        public FhirDateTime DateElement
         {
-            get { return _DateElement; }
-            set { _DateElement = value; OnPropertyChanged("DateElement"); }
+            get { return _dateElement; }
+            set { _dateElement = value; OnPropertyChanged("DateElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirDateTime _DateElement;
-        
+
+        private FhirDateTime _dateElement;
+
         /// <summary>
         /// When history was recorded or last updated
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Date
         {
             get { return DateElement != null ? DateElement.Value : null; }
             set
             {
                 if (value == null)
-                  DateElement = null; 
+                    DateElement = null;
                 else
-                  DateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    DateElement = new FhirDateTime(value);
                 OnPropertyChanged("Date");
             }
         }
-        
+
         /// <summary>
         /// The family member described
         /// </summary>
         [FhirElement("name", InSummary=true, Order=150)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirString NameElement
+        public FhirString NameElement
         {
-            get { return _NameElement; }
-            set { _NameElement = value; OnPropertyChanged("NameElement"); }
+            get { return _nameElement; }
+            set { _nameElement = value; OnPropertyChanged("NameElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirString _NameElement;
-        
+
+        private FhirString _nameElement;
+
         /// <summary>
         /// The family member described
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Name
         {
             get { return NameElement != null ? NameElement.Value : null; }
             set
             {
                 if (value == null)
-                  NameElement = null; 
+                    NameElement = null;
                 else
-                  NameElement = new Hl7.Fhir.Model.FhirString(value);
+                    NameElement = new FhirString(value);
                 OnPropertyChanged("Name");
             }
         }
-        
+
         /// <summary>
         /// Relationship to the subject
         /// </summary>
         [FhirElement("relationship", InSummary=true, Order=160)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Relationship
+        public CodeableConcept Relationship
         {
-            get { return _Relationship; }
-            set { _Relationship = value; OnPropertyChanged("Relationship"); }
+            get { return _relationship; }
+            set { _relationship = value; OnPropertyChanged("Relationship"); }
         }
-        
-        private Hl7.Fhir.Model.CodeableConcept _Relationship;
-        
+
+        private CodeableConcept _relationship;
+
         /// <summary>
         /// male | female | other | unknown
         /// </summary>
         [FhirElement("gender", InSummary=true, Order=170)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.AdministrativeGender> GenderElement
+        public Code<AdministrativeGender> GenderElement
         {
-            get { return _GenderElement; }
-            set { _GenderElement = value; OnPropertyChanged("GenderElement"); }
+            get { return _genderElement; }
+            set { _genderElement = value; OnPropertyChanged("GenderElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.AdministrativeGender> _GenderElement;
-        
+
+        private Code<AdministrativeGender> _genderElement;
+
         /// <summary>
         /// male | female | other | unknown
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.AdministrativeGender? Gender
+        [IgnoreDataMember]
+        public AdministrativeGender? Gender
         {
             get { return GenderElement != null ? GenderElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  GenderElement = null; 
+                if (value == null)
+                    GenderElement = null;
                 else
-                  GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender>(value);
+                    GenderElement = new Code<AdministrativeGender>(value);
                 OnPropertyChanged("Gender");
             }
         }
-        
+
         /// <summary>
         /// (approximate) date of birth
         /// </summary>
         [FhirElement("born", Order=180, Choice=ChoiceType.DatatypeChoice)]
-        [CLSCompliant(false)]
-		[AllowedTypes(typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirString))]
+        [AllowedTypes(typeof(Period),typeof(Date),typeof(FhirString))]
         [DataMember]
-        public Hl7.Fhir.Model.Element Born
+        public Element Born
         {
-            get { return _Born; }
-            set { _Born = value; OnPropertyChanged("Born"); }
+            get { return _born; }
+            set { _born = value; OnPropertyChanged("Born"); }
         }
-        
-        private Hl7.Fhir.Model.Element _Born;
-        
+
+        private Element _born;
+
         /// <summary>
         /// (approximate) age
         /// </summary>
         [FhirElement("age", InSummary=true, Order=190, Choice=ChoiceType.DatatypeChoice)]
-        [CLSCompliant(false)]
-		[AllowedTypes(typeof(Age),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.FhirString))]
+        [AllowedTypes(typeof(Age),typeof(Range),typeof(FhirString))]
         [DataMember]
-        public Hl7.Fhir.Model.Element Age
+        public Element Age
         {
-            get { return _Age; }
-            set { _Age = value; OnPropertyChanged("Age"); }
+            get { return _age; }
+            set { _age = value; OnPropertyChanged("Age"); }
         }
-        
-        private Hl7.Fhir.Model.Element _Age;
-        
+
+        private Element _age;
+
         /// <summary>
         /// Age is estimated?
         /// </summary>
         [FhirElement("estimatedAge", InSummary=true, Order=200)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirBoolean EstimatedAgeElement
+        public FhirBoolean EstimatedAgeElement
         {
-            get { return _EstimatedAgeElement; }
-            set { _EstimatedAgeElement = value; OnPropertyChanged("EstimatedAgeElement"); }
+            get { return _estimatedAgeElement; }
+            set { _estimatedAgeElement = value; OnPropertyChanged("EstimatedAgeElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirBoolean _EstimatedAgeElement;
-        
+
+        private FhirBoolean _estimatedAgeElement;
+
         /// <summary>
         /// Age is estimated?
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public bool? EstimatedAge
         {
             get { return EstimatedAgeElement != null ? EstimatedAgeElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  EstimatedAgeElement = null; 
+                if (value == null)
+                    EstimatedAgeElement = null;
                 else
-                  EstimatedAgeElement = new Hl7.Fhir.Model.FhirBoolean(value);
+                    EstimatedAgeElement = new FhirBoolean(value);
                 OnPropertyChanged("EstimatedAge");
             }
         }
-        
+
         /// <summary>
         /// Dead? How old/when?
         /// </summary>
         [FhirElement("deceased", InSummary=true, Order=210, Choice=ChoiceType.DatatypeChoice)]
-        [CLSCompliant(false)]
-		[AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Age),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirString))]
+        [AllowedTypes(typeof(FhirBoolean),typeof(Age),typeof(Range),typeof(Date),typeof(FhirString))]
         [DataMember]
-        public Hl7.Fhir.Model.Element Deceased
+        public Element Deceased
         {
-            get { return _Deceased; }
-            set { _Deceased = value; OnPropertyChanged("Deceased"); }
+            get { return _deceased; }
+            set { _deceased = value; OnPropertyChanged("Deceased"); }
         }
-        
-        private Hl7.Fhir.Model.Element _Deceased;
-        
+
+        private Element _deceased;
+
         /// <summary>
         /// Why was family member history performed?
         /// </summary>
         [FhirElement("reasonCode", InSummary=true, Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.CodeableConcept> ReasonCode
+        public List<CodeableConcept> ReasonCode
         {
-            get { if(_ReasonCode==null) _ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(); return _ReasonCode; }
-            set { _ReasonCode = value; OnPropertyChanged("ReasonCode"); }
+            get { if (_reasonCode==null) _reasonCode = new List<CodeableConcept>(); return _reasonCode; }
+            set { _reasonCode = value; OnPropertyChanged("ReasonCode"); }
         }
-        
-        private List<Hl7.Fhir.Model.CodeableConcept> _ReasonCode;
-        
+
+        private List<CodeableConcept> _reasonCode;
+
         /// <summary>
         /// Why was family member history performed?
         /// </summary>
         [FhirElement("reasonReference", InSummary=true, Order=230)]
-        [CLSCompliant(false)]
-		[References("Condition","Observation","AllergyIntolerance","QuestionnaireResponse","DiagnosticReport","DocumentReference")]
+        [References("Condition","Observation","AllergyIntolerance","QuestionnaireResponse","DiagnosticReport","DocumentReference")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.ResourceReference> ReasonReference
+        public List<ResourceReference> ReasonReference
         {
-            get { if(_ReasonReference==null) _ReasonReference = new List<Hl7.Fhir.Model.ResourceReference>(); return _ReasonReference; }
-            set { _ReasonReference = value; OnPropertyChanged("ReasonReference"); }
+            get { if (_reasonReference==null) _reasonReference = new List<ResourceReference>(); return _reasonReference; }
+            set { _reasonReference = value; OnPropertyChanged("ReasonReference"); }
         }
-        
-        private List<Hl7.Fhir.Model.ResourceReference> _ReasonReference;
-        
+
+        private List<ResourceReference> _reasonReference;
+
         /// <summary>
         /// General note about related person
         /// </summary>
         [FhirElement("note", Order=240)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
-            set { _Note = value; OnPropertyChanged("Note"); }
+            get { if (_note==null) _note = new List<Annotation>(); return _note; }
+            set { _note = value; OnPropertyChanged("Note"); }
         }
-        
-        private List<Hl7.Fhir.Model.Annotation> _Note;
-        
+
+        private List<Annotation> _note;
+
         /// <summary>
         /// Condition that the related person had
         /// </summary>
         [FhirElement("condition", Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.FamilyMemberHistory.ConditionComponent> Condition
+        public List<ConditionComponent> Condition
         {
-            get { if(_Condition==null) _Condition = new List<Hl7.Fhir.Model.FamilyMemberHistory.ConditionComponent>(); return _Condition; }
-            set { _Condition = value; OnPropertyChanged("Condition"); }
+            get { if (_condition==null) _condition = new List<ConditionComponent>(); return _condition; }
+            set { _condition = value; OnPropertyChanged("Condition"); }
         }
-        
-        private List<Hl7.Fhir.Model.FamilyMemberHistory.ConditionComponent> _Condition;
-        
 
-        public static ElementDefinition.ConstraintComponent FamilyMemberHistory_FHS_2 = new ElementDefinition.ConstraintComponent()
+        private List<ConditionComponent> _condition;
+
+
+        public static ElementDefinition.ConstraintComponent FamilyMemberHistory_FHS_2 = new ElementDefinition.ConstraintComponent
         {
             Expression = "age.exists() or estimatedAge.empty()",
             Key = "fhs-2",
-            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Severity = ConstraintSeverity.Warning,
             Human = "Can only have estimatedAge if age[x] is present",
             Xpath = "exists(*[starts-with(local-name(.), 'age')]) or not(exists(f:estimatedAge))"
         };
 
-        public static ElementDefinition.ConstraintComponent FamilyMemberHistory_FHS_1 = new ElementDefinition.ConstraintComponent()
+        public static ElementDefinition.ConstraintComponent FamilyMemberHistory_FHS_1 = new ElementDefinition.ConstraintComponent
         {
             Expression = "age.empty() or born.empty()",
             Key = "fhs-1",
-            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Severity = ConstraintSeverity.Warning,
             Human = "Can have age[x] or born[x], but not both",
             Xpath = "not (*[starts-with(local-name(.), 'age')] and *[starts-with(local-name(.), 'birth')])"
         };
@@ -616,89 +579,89 @@ namespace Hl7.Fhir.Model
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as FamilyMemberHistory;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.Identifier>(Identifier.DeepCopy());
-                if(InstantiatesElement != null) dest.InstantiatesElement = new List<Hl7.Fhir.Model.FhirUri>(InstantiatesElement.DeepCopy());
-                if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.FamilyMemberHistory.FamilyHistoryStatus>)StatusElement.DeepCopy();
-                if(DataAbsentReason != null) dest.DataAbsentReason = (Hl7.Fhir.Model.CodeableConcept)DataAbsentReason.DeepCopy();
-                if(Patient != null) dest.Patient = (Hl7.Fhir.Model.ResourceReference)Patient.DeepCopy();
-                if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
-                if(NameElement != null) dest.NameElement = (Hl7.Fhir.Model.FhirString)NameElement.DeepCopy();
-                if(Relationship != null) dest.Relationship = (Hl7.Fhir.Model.CodeableConcept)Relationship.DeepCopy();
-                if(GenderElement != null) dest.GenderElement = (Code<Hl7.Fhir.Model.AdministrativeGender>)GenderElement.DeepCopy();
-                if(Born != null) dest.Born = (Hl7.Fhir.Model.Element)Born.DeepCopy();
-                if(Age != null) dest.Age = (Hl7.Fhir.Model.Element)Age.DeepCopy();
-                if(EstimatedAgeElement != null) dest.EstimatedAgeElement = (Hl7.Fhir.Model.FhirBoolean)EstimatedAgeElement.DeepCopy();
-                if(Deceased != null) dest.Deceased = (Hl7.Fhir.Model.Element)Deceased.DeepCopy();
-                if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
-                if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.ResourceReference>(ReasonReference.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
-                if(Condition != null) dest.Condition = new List<Hl7.Fhir.Model.FamilyMemberHistory.ConditionComponent>(Condition.DeepCopy());
+                if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
+                if (InstantiatesElement != null) dest.InstantiatesElement = new List<FhirUri>(InstantiatesElement.DeepCopy());
+                if (StatusElement != null) dest.StatusElement = (Code<FamilyHistoryStatus>)StatusElement.DeepCopy();
+                if (DataAbsentReason != null) dest.DataAbsentReason = (CodeableConcept)DataAbsentReason.DeepCopy();
+                if (Patient != null) dest.Patient = (ResourceReference)Patient.DeepCopy();
+                if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
+                if (NameElement != null) dest.NameElement = (FhirString)NameElement.DeepCopy();
+                if (Relationship != null) dest.Relationship = (CodeableConcept)Relationship.DeepCopy();
+                if (GenderElement != null) dest.GenderElement = (Code<AdministrativeGender>)GenderElement.DeepCopy();
+                if (Born != null) dest.Born = (Element)Born.DeepCopy();
+                if (Age != null) dest.Age = (Element)Age.DeepCopy();
+                if (EstimatedAgeElement != null) dest.EstimatedAgeElement = (FhirBoolean)EstimatedAgeElement.DeepCopy();
+                if (Deceased != null) dest.Deceased = (Element)Deceased.DeepCopy();
+                if (ReasonCode != null) dest.ReasonCode = new List<CodeableConcept>(ReasonCode.DeepCopy());
+                if (ReasonReference != null) dest.ReasonReference = new List<ResourceReference>(ReasonReference.DeepCopy());
+                if (Note != null) dest.Note = new List<Annotation>(Note.DeepCopy());
+                if (Condition != null) dest.Condition = new List<ConditionComponent>(Condition.DeepCopy());
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new FamilyMemberHistory());
+             return CopyTo(new FamilyMemberHistory());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as FamilyMemberHistory;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-            if( !DeepComparable.Matches(InstantiatesElement, otherT.InstantiatesElement)) return false;
-            if( !DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
-            if( !DeepComparable.Matches(DataAbsentReason, otherT.DataAbsentReason)) return false;
-            if( !DeepComparable.Matches(Patient, otherT.Patient)) return false;
-            if( !DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
-            if( !DeepComparable.Matches(NameElement, otherT.NameElement)) return false;
-            if( !DeepComparable.Matches(Relationship, otherT.Relationship)) return false;
-            if( !DeepComparable.Matches(GenderElement, otherT.GenderElement)) return false;
-            if( !DeepComparable.Matches(Born, otherT.Born)) return false;
-            if( !DeepComparable.Matches(Age, otherT.Age)) return false;
-            if( !DeepComparable.Matches(EstimatedAgeElement, otherT.EstimatedAgeElement)) return false;
-            if( !DeepComparable.Matches(Deceased, otherT.Deceased)) return false;
-            if( !DeepComparable.Matches(ReasonCode, otherT.ReasonCode)) return false;
-            if( !DeepComparable.Matches(ReasonReference, otherT.ReasonReference)) return false;
-            if( !DeepComparable.Matches(Note, otherT.Note)) return false;
-            if( !DeepComparable.Matches(Condition, otherT.Condition)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+            if ( !DeepComparable.Matches(InstantiatesElement, otherT.InstantiatesElement)) return false;
+            if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.Matches(DataAbsentReason, otherT.DataAbsentReason)) return false;
+            if (!DeepComparable.Matches(Patient, otherT.Patient)) return false;
+            if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
+            if (!DeepComparable.Matches(NameElement, otherT.NameElement)) return false;
+            if (!DeepComparable.Matches(Relationship, otherT.Relationship)) return false;
+            if (!DeepComparable.Matches(GenderElement, otherT.GenderElement)) return false;
+            if (!DeepComparable.Matches(Born, otherT.Born)) return false;
+            if (!DeepComparable.Matches(Age, otherT.Age)) return false;
+            if (!DeepComparable.Matches(EstimatedAgeElement, otherT.EstimatedAgeElement)) return false;
+            if (!DeepComparable.Matches(Deceased, otherT.Deceased)) return false;
+            if ( !DeepComparable.Matches(ReasonCode, otherT.ReasonCode)) return false;
+            if ( !DeepComparable.Matches(ReasonReference, otherT.ReasonReference)) return false;
+            if ( !DeepComparable.Matches(Note, otherT.Note)) return false;
+            if ( !DeepComparable.Matches(Condition, otherT.Condition)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as FamilyMemberHistory;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-            if( !DeepComparable.IsExactly(InstantiatesElement, otherT.InstantiatesElement)) return false;
-            if( !DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
-            if( !DeepComparable.IsExactly(DataAbsentReason, otherT.DataAbsentReason)) return false;
-            if( !DeepComparable.IsExactly(Patient, otherT.Patient)) return false;
-            if( !DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
-            if( !DeepComparable.IsExactly(NameElement, otherT.NameElement)) return false;
-            if( !DeepComparable.IsExactly(Relationship, otherT.Relationship)) return false;
-            if( !DeepComparable.IsExactly(GenderElement, otherT.GenderElement)) return false;
-            if( !DeepComparable.IsExactly(Born, otherT.Born)) return false;
-            if( !DeepComparable.IsExactly(Age, otherT.Age)) return false;
-            if( !DeepComparable.IsExactly(EstimatedAgeElement, otherT.EstimatedAgeElement)) return false;
-            if( !DeepComparable.IsExactly(Deceased, otherT.Deceased)) return false;
-            if( !DeepComparable.IsExactly(ReasonCode, otherT.ReasonCode)) return false;
-            if( !DeepComparable.IsExactly(ReasonReference, otherT.ReasonReference)) return false;
-            if( !DeepComparable.IsExactly(Note, otherT.Note)) return false;
-            if( !DeepComparable.IsExactly(Condition, otherT.Condition)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.IsExactly(InstantiatesElement, otherT.InstantiatesElement)) return false;
+            if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.IsExactly(DataAbsentReason, otherT.DataAbsentReason)) return false;
+            if (!DeepComparable.IsExactly(Patient, otherT.Patient)) return false;
+            if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
+            if (!DeepComparable.IsExactly(NameElement, otherT.NameElement)) return false;
+            if (!DeepComparable.IsExactly(Relationship, otherT.Relationship)) return false;
+            if (!DeepComparable.IsExactly(GenderElement, otherT.GenderElement)) return false;
+            if (!DeepComparable.IsExactly(Born, otherT.Born)) return false;
+            if (!DeepComparable.IsExactly(Age, otherT.Age)) return false;
+            if (!DeepComparable.IsExactly(EstimatedAgeElement, otherT.EstimatedAgeElement)) return false;
+            if (!DeepComparable.IsExactly(Deceased, otherT.Deceased)) return false;
+            if (!DeepComparable.IsExactly(ReasonCode, otherT.ReasonCode)) return false;
+            if (!DeepComparable.IsExactly(ReasonReference, otherT.ReasonReference)) return false;
+            if (!DeepComparable.IsExactly(Note, otherT.Note)) return false;
+            if (!DeepComparable.IsExactly(Condition, otherT.Condition)) return false;
+
             return true;
         }
 
@@ -708,23 +671,23 @@ namespace Hl7.Fhir.Model
             get
             {
                 foreach (var item in base.Children) yield return item;
-				foreach (var elem in Identifier) { if (elem != null) yield return elem; }
-				foreach (var elem in InstantiatesElement) { if (elem != null) yield return elem; }
-				if (StatusElement != null) yield return StatusElement;
-				if (DataAbsentReason != null) yield return DataAbsentReason;
-				if (Patient != null) yield return Patient;
-				if (DateElement != null) yield return DateElement;
-				if (NameElement != null) yield return NameElement;
-				if (Relationship != null) yield return Relationship;
-				if (GenderElement != null) yield return GenderElement;
-				if (Born != null) yield return Born;
-				if (Age != null) yield return Age;
-				if (EstimatedAgeElement != null) yield return EstimatedAgeElement;
-				if (Deceased != null) yield return Deceased;
-				foreach (var elem in ReasonCode) { if (elem != null) yield return elem; }
-				foreach (var elem in ReasonReference) { if (elem != null) yield return elem; }
-				foreach (var elem in Note) { if (elem != null) yield return elem; }
-				foreach (var elem in Condition) { if (elem != null) yield return elem; }
+                foreach (var elem in Identifier) { if (elem != null) yield return elem; }
+                foreach (var elem in InstantiatesElement) { if (elem != null) yield return elem; }
+                if (StatusElement != null) yield return StatusElement;
+                if (DataAbsentReason != null) yield return DataAbsentReason;
+                if (Patient != null) yield return Patient;
+                if (DateElement != null) yield return DateElement;
+                if (NameElement != null) yield return NameElement;
+                if (Relationship != null) yield return Relationship;
+                if (GenderElement != null) yield return GenderElement;
+                if (Born != null) yield return Born;
+                if (Age != null) yield return Age;
+                if (EstimatedAgeElement != null) yield return EstimatedAgeElement;
+                if (Deceased != null) yield return Deceased;
+                foreach (var elem in ReasonCode) { if (elem != null) yield return elem; }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return elem; }
+                foreach (var elem in Note) { if (elem != null) yield return elem; }
+                foreach (var elem in Condition) { if (elem != null) yield return elem; }
             }
         }
 
@@ -755,5 +718,5 @@ namespace Hl7.Fhir.Model
         }
 
     }
-    
+
 }

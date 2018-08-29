@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Text;
 
@@ -37,13 +32,10 @@ using System.Text;
 
 */
 
-//
-// Generated on Wed, Dec 24, 2014 16:02+0100 for FHIR v0.4.0
-//
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
-    public partial class Coding : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class Coding : Element, System.ComponentModel.INotifyPropertyChanged
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         [NotMapped]

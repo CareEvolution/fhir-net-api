@@ -6,12 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Utility;
 using System.Collections;
+using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     internal class DispatchingWriter
     {
@@ -27,7 +28,7 @@ namespace Hl7.Fhir.Serialization
             Settings = settings;
         }
 
-        internal void Serialize(PropertyMapping prop, object instance, Rest.SummaryType summary, ComplexTypeWriter.SerializationMode mode)
+        internal void Serialize(PropertyMapping prop, object instance, SummaryType summary, ComplexTypeWriter.SerializationMode mode)
         {
             if (prop == null) throw Error.ArgumentNull(nameof(prop));
 
@@ -53,7 +54,7 @@ namespace Hl7.Fhir.Serialization
                 write(prop, instance, summary, mode);
         }
 
-        private void write(PropertyMapping property, object instance, Rest.SummaryType summary, ComplexTypeWriter.SerializationMode mode)
+        private void write(PropertyMapping property, object instance, SummaryType summary, ComplexTypeWriter.SerializationMode mode)
         {
             // If this is a primitive type, no classmappings and reflection is involved,
             // just serialize the primitive to the writer
@@ -75,8 +76,8 @@ namespace Hl7.Fhir.Serialization
 
             ClassMapping mapping = _inspector.ImportType(instance.GetType());
 
-            summary = summary == Rest.SummaryType.Text && property.IsMandatoryElement && mapping.HasPrimitiveValueMember
-                ? Rest.SummaryType.False
+            summary = summary == SummaryType.Text && property.IsMandatoryElement && mapping.HasPrimitiveValueMember
+                ? SummaryType.False
                 : summary;
 
             if (mode == ComplexTypeWriter.SerializationMode.AllMembers || mode == ComplexTypeWriter.SerializationMode.NonValueElements)

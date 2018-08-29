@@ -42,8 +42,9 @@ using System.Text.RegularExpressions;
 using Hl7.Fhir.Support;
 using System.Diagnostics;
 using Hl7.Fhir.Utility;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     /// <summary>
     /// This is the Parameters partial class that adds all the specific functionality of a Parameters to the model

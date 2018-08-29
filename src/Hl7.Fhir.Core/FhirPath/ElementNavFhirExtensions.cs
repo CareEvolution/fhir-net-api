@@ -7,7 +7,8 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath;
 using Hl7.FhirPath.Expressions;
@@ -16,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.FhirPath
+namespace Hl7.Fhir.FhirPath.R4
 {
     public class FhirEvaluationContext : EvaluationContext
     {
@@ -64,13 +65,13 @@ namespace Hl7.Fhir.FhirPath
 
         public static SymbolTable AddFhirExtensions(this SymbolTable t)
         {
-            t.Add("hasValue", (ElementModel.IElementNavigator f) => f.HasValue(), doNullProp: false);
-            t.Add("resolve", (ElementModel.IElementNavigator f, EvaluationContext ctx) => resolver(f,ctx), doNullProp: false);
-            t.Add("htmlchecks", (ElementModel.IElementNavigator f) => f.HtmlChecks(), doNullProp: false);
+            t.Add("hasValue", (IElementNavigator f) => f.HasValue(), doNullProp: false);
+            t.Add("resolve", (IElementNavigator f, EvaluationContext ctx) => resolver(f,ctx), doNullProp: false);
+            t.Add("htmlchecks", (IElementNavigator f) => f.HtmlChecks(), doNullProp: false);
 
             return t;
 
-            IElementNavigator resolver(ElementModel.IElementNavigator f, EvaluationContext ctx)
+            IElementNavigator resolver(IElementNavigator f, EvaluationContext ctx)
             {
                 if(ctx is FhirEvaluationContext fctx)
                     return f.Resolve(fctx.Resolver);
@@ -84,7 +85,7 @@ namespace Hl7.Fhir.FhirPath
         /// </summary>
         /// <param name="focus"></param>
         /// <returns></returns>
-        public static bool HasValue(this ElementModel.IElementNavigator focus)
+        public static bool HasValue(this IElementNavigator focus)
         {
             if (focus == null)
                 return false;
@@ -98,7 +99,7 @@ namespace Hl7.Fhir.FhirPath
         /// </summary>
         /// <param name="focus"></param>
         /// <returns></returns>
-        public static bool HtmlChecks(this ElementModel.IElementNavigator focus)
+        public static bool HtmlChecks(this IElementNavigator focus)
         {
             if (focus == null)
                 return false;
@@ -111,7 +112,7 @@ namespace Hl7.Fhir.FhirPath
         }
 
 
-        public static IEnumerable<Base> ToFhirValues(this IEnumerable<ElementModel.IElementNavigator> results)
+        public static IEnumerable<Base> ToFhirValues(this IEnumerable<IElementNavigator> results)
         {
             return results.Select(r =>
             {

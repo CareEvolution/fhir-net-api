@@ -9,11 +9,11 @@
 // #define FIX_SLICENAMES_ON_SPECIALIZATIONS
 
 using System;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Support;
 using System.Linq;
 using Hl7.Fhir.Specification.Navigation;
-using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.Utility;
 using System.Diagnostics;
 using System.Collections.Generic;

@@ -8,9 +8,9 @@
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
 using System.IO;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using System.Diagnostics;
 using System.Collections.Generic;
 

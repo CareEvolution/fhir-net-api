@@ -8,7 +8,7 @@
 
 using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 
 namespace Hl7.Fhir.Specification.Source
 {

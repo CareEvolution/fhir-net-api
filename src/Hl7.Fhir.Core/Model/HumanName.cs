@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Diagnostics;
+using System.ComponentModel.DataAnnotations.Schema;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using System.Diagnostics;
 //
 // Generated on Wed, Dec 24, 2014 16:02+0100 for FHIR v0.4.0
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
     public partial class HumanName
@@ -51,33 +52,33 @@ namespace Hl7.Fhir.Model
         {
             get
             {
-                if (this._TextElement != null && !String.IsNullOrEmpty(this._TextElement.Value))
-                    return this._TextElement.Value;
+                if (this._textElement != null && !String.IsNullOrEmpty(this._textElement.Value))
+                    return this._textElement.Value;
 
                 StringBuilder sb = new StringBuilder();
-                if (this._GivenElement != null)
+                if (this._givenElement != null)
                 {
-                    foreach (var item in this._GivenElement)
+                    foreach (var item in this._givenElement)
                     {
                         if (sb.Length > 0)
                             sb.Append(" ");
                         sb.Append(item);
                     }
                 }
-                if (this._FamilyElement != null && !string.IsNullOrEmpty(this._FamilyElement.Value))
+                if (this._familyElement != null && !string.IsNullOrEmpty(this._familyElement.Value))
                 {
                     if (sb.Length > 0)
                         sb.Append(" ");
-                    sb.Append(this._FamilyElement.Value);
+                    sb.Append(this._familyElement.Value);
                 }
-                if (this._PrefixElement != null)
+                if (this._prefixElement != null)
                 {
-                    foreach (var item in this._PrefixElement)
+                    foreach (var item in this._prefixElement)
                         sb.AppendFormat(", {0}", item.Value);
                 }
-                if (this._UseElement != null && this._UseElement.Value.HasValue)
+                if (this._useElement != null && this._useElement.Value.HasValue)
                 {
-                    sb.AppendFormat(" ({0})", this._UseElement.Value.Value);
+                    sb.AppendFormat(" ({0})", this._useElement.Value.Value);
                 }
 
                 return sb.ToString();
@@ -86,24 +87,24 @@ namespace Hl7.Fhir.Model
 
         public override string ToString()
         {
-            if (this._TextElement != null && !String.IsNullOrEmpty(this._TextElement.Value))
-                return this._TextElement.Value;
+            if (this._textElement != null && !String.IsNullOrEmpty(this._textElement.Value))
+                return this._textElement.Value;
 
             StringBuilder sb = new StringBuilder();
-            if (this._GivenElement != null)
+            if (this._givenElement != null)
             {
-                foreach (var item in this._GivenElement)
+                foreach (var item in this._givenElement)
                 {
                     if (sb.Length > 0)
                         sb.Append(" ");
                     sb.Append(item);
                 }
             }
-            if (this._FamilyElement != null && !string.IsNullOrEmpty(this._FamilyElement.Value))
+            if (this._familyElement != null && !string.IsNullOrEmpty(this._familyElement.Value))
             {
                 if (sb.Length > 0)
                     sb.Append(" ");
-                sb.Append(this._FamilyElement.Value);
+                sb.Append(this._familyElement.Value);
             }
             return sb.ToString();
         }

@@ -29,23 +29,24 @@
 
 
 
-using Hl7.Fhir.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using Hl7.Fhir.Introspection;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Validation.R4;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.R4
 {
 #if NET45
     [Serializable]
 #endif
     [InvokeIValidatableObject]
     [System.Runtime.Serialization.DataContract]
-    public abstract class Base : Hl7.Fhir.Validation.IValidatableObject, IDeepCopyable, IDeepComparable, IAnnotated, IAnnotatable
+    public abstract class Base : IValidatableObject, IDeepCopyable, IDeepComparable, IAnnotated, IAnnotatable
     {
         public abstract bool IsExactly(IDeepComparable other);
         public abstract bool Matches(IDeepComparable pattern);
@@ -124,13 +125,13 @@ namespace Hl7.Fhir.Model
         /// </summary>
         [FhirElement("fhir_comments", InSummary = false, Order = 5)]
         [Cardinality(Min = 0, Max = -1)]
-        public List<Hl7.Fhir.Model.FhirString> FhirCommentsElement
+        public List<FhirString> FhirCommentsElement
         {
-            get { if (_FhirCommentsElement == null) _FhirCommentsElement = new List<Hl7.Fhir.Model.FhirString>(); return _FhirCommentsElement; }
-            set { _FhirCommentsElement = value; OnPropertyChanged("FhirCommentsElement"); }
+            get { if (_fhirCommentsElement == null) _fhirCommentsElement = new List<FhirString>(); return _fhirCommentsElement; }
+            set { _fhirCommentsElement = value; OnPropertyChanged("FhirCommentsElement"); }
         }
 
-        private List<Hl7.Fhir.Model.FhirString> _FhirCommentsElement;
+        private List<FhirString> _fhirCommentsElement;
 
         /// <summary>
         /// A Comment recorded against this element in the FHIR Resource
@@ -146,7 +147,7 @@ namespace Hl7.Fhir.Model
                 if (value == null)
                     FhirCommentsElement = null;
                 else
-                    FhirCommentsElement = new List<Hl7.Fhir.Model.FhirString>(value.Select(elem => new Hl7.Fhir.Model.FhirString(elem)));
+                    FhirCommentsElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                 OnPropertyChanged("FhirComments");
             }
         }

@@ -7,12 +7,12 @@
  */
 
 using System;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using System.Net;
 using System.Threading.Tasks;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.R4
 {
     public abstract partial class BaseFhirClient
     {
