@@ -8,12 +8,12 @@
   <Import Project="..\fhir-net-api.targets" />
 
   <PropertyGroup>
-    <AssemblyName>Hl7.Fhir.Core.Tests</AssemblyName>
+    <AssemblyName>Hl7.Fhir.STU3.Tests</AssemblyName>
     <ContainsTests>true</ContainsTests>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hl7.Fhir.Core\Hl7.Fhir.Core.csproj" />
+    <ProjectReference Include="..\Hl7.Fhir.STU3\Hl7.Fhir.STU3.csproj" />
     <ProjectReference Include="..\Hl7.Fhir.Support\Hl7.Fhir.Support.csproj" />
   </ItemGroup>
 
