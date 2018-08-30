@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,112 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "MedicationRequest"; } }
 
+        /// <summary>
+        /// A coded concept specifying the state of the prescribing event. Describes the lifecycle of the prescription
+        /// (url: http://hl7.org/fhir/ValueSet/medication-request-status)
+        /// </summary>
+        [FhirEnumeration("MedicationRequestStatus")]
+        public enum MedicationRequestStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/medication-request-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/medication-request-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/medication-request-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/medication-request-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-request-status"), Description("Entered In Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/medication-request-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/medication-request-status"), Description("Draft")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/medication-request-status"), Description("Unknown")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// The kind of medication order
+        /// (url: http://hl7.org/fhir/ValueSet/medication-request-intent)
+        /// </summary>
+        [FhirEnumeration("MedicationRequestIntent")]
+        public enum MedicationRequestIntent
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("proposal", "http://hl7.org/fhir/medication-request-intent"), Description("Proposal")]
+            Proposal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("plan", "http://hl7.org/fhir/medication-request-intent"), Description("Plan")]
+            Plan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("order", "http://hl7.org/fhir/medication-request-intent"), Description("Order")]
+            Order,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("original-order", "http://hl7.org/fhir/medication-request-intent"), Description("Original Order")]
+            OriginalOrder,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("instance-order", "http://hl7.org/fhir/medication-request-intent"), Description("Instance Order")]
+            InstanceOrder,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("option", "http://hl7.org/fhir/medication-request-intent"), Description("Option")]
+            Option,
+        }
+
 
         [FhirType("DispenseRequestComponent")]
         [DataContract]
-        public partial class DispenseRequestComponent : BackboneElement
+        public partial class DispenseRequestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DispenseRequestComponent"; } }
@@ -223,11 +326,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ValidityPeriod != null) yield return new ElementValue("validityPeriod", false, ValidityPeriod);
-                    if (NumberOfRepeatsAllowedElement != null) yield return new ElementValue("numberOfRepeatsAllowed", false, NumberOfRepeatsAllowedElement);
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    if (ExpectedSupplyDuration != null) yield return new ElementValue("expectedSupplyDuration", false, ExpectedSupplyDuration);
-                    if (Performer != null) yield return new ElementValue("performer", false, Performer);
+                    if (ValidityPeriod != null) yield return new ElementValue("validityPeriod", ValidityPeriod);
+                    if (NumberOfRepeatsAllowedElement != null) yield return new ElementValue("numberOfRepeatsAllowed", NumberOfRepeatsAllowedElement);
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    if (ExpectedSupplyDuration != null) yield return new ElementValue("expectedSupplyDuration", ExpectedSupplyDuration);
+                    if (Performer != null) yield return new ElementValue("performer", Performer);
                 }
             }
 
@@ -237,7 +340,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SubstitutionComponent")]
         [DataContract]
-        public partial class SubstitutionComponent : BackboneElement
+        public partial class SubstitutionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SubstitutionComponent"; } }
@@ -350,8 +453,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (AllowedElement != null) yield return new ElementValue("allowed", false, AllowedElement);
-                    if (Reason != null) yield return new ElementValue("reason", false, Reason);
+                    if (AllowedElement != null) yield return new ElementValue("allowed", AllowedElement);
+                    if (Reason != null) yield return new ElementValue("reason", Reason);
                 }
             }
 
@@ -1012,34 +1115,34 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (IntentElement != null) yield return new ElementValue("intent", false, IntentElement);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (PriorityElement != null) yield return new ElementValue("priority", false, PriorityElement);
-                if (Medication != null) yield return new ElementValue("medication", false, Medication);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", true, elem); }
-                if (AuthoredOnElement != null) yield return new ElementValue("authoredOn", false, AuthoredOnElement);
-                if (Requester != null) yield return new ElementValue("requester", false, Requester);
-                if (Performer != null) yield return new ElementValue("performer", false, Performer);
-                if (PerformerType != null) yield return new ElementValue("performerType", false, PerformerType);
-                if (Recorder != null) yield return new ElementValue("recorder", false, Recorder);
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", true, elem); }
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                if (GroupIdentifier != null) yield return new ElementValue("groupIdentifier", false, GroupIdentifier);
-                if (StatusReason != null) yield return new ElementValue("statusReason", false, StatusReason);
-                foreach (var elem in Insurance) { if (elem != null) yield return new ElementValue("insurance", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in DosageInstruction) { if (elem != null) yield return new ElementValue("dosageInstruction", true, elem); }
-                if (DispenseRequest != null) yield return new ElementValue("dispenseRequest", false, DispenseRequest);
-                if (Substitution != null) yield return new ElementValue("substitution", false, Substitution);
-                if (PriorPrescription != null) yield return new ElementValue("priorPrescription", false, PriorPrescription);
-                foreach (var elem in DetectedIssue) { if (elem != null) yield return new ElementValue("detectedIssue", true, elem); }
-                foreach (var elem in EventHistory) { if (elem != null) yield return new ElementValue("eventHistory", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (IntentElement != null) yield return new ElementValue("intent", IntentElement);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
+                if (Medication != null) yield return new ElementValue("medication", Medication);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", elem); }
+                if (AuthoredOnElement != null) yield return new ElementValue("authoredOn", AuthoredOnElement);
+                if (Requester != null) yield return new ElementValue("requester", Requester);
+                if (Performer != null) yield return new ElementValue("performer", Performer);
+                if (PerformerType != null) yield return new ElementValue("performerType", PerformerType);
+                if (Recorder != null) yield return new ElementValue("recorder", Recorder);
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", elem); }
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                if (GroupIdentifier != null) yield return new ElementValue("groupIdentifier", GroupIdentifier);
+                if (StatusReason != null) yield return new ElementValue("statusReason", StatusReason);
+                foreach (var elem in Insurance) { if (elem != null) yield return new ElementValue("insurance", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in DosageInstruction) { if (elem != null) yield return new ElementValue("dosageInstruction", elem); }
+                if (DispenseRequest != null) yield return new ElementValue("dispenseRequest", DispenseRequest);
+                if (Substitution != null) yield return new ElementValue("substitution", Substitution);
+                if (PriorPrescription != null) yield return new ElementValue("priorPrescription", PriorPrescription);
+                foreach (var elem in DetectedIssue) { if (elem != null) yield return new ElementValue("detectedIssue", elem); }
+                foreach (var elem in EventHistory) { if (elem != null) yield return new ElementValue("eventHistory", elem); }
             }
         }
 

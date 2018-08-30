@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -261,6 +262,7 @@ namespace Hl7.Fhir.Model.R4
                 { "url", typeof(FhirUrl) },
                 { "UsageContext", typeof(UsageContext) },
                 { "uuid", typeof(Uuid) },
+                { "xhtml", typeof(XHtml) },
 
                 { "Account", typeof(Account) },
                 { "ActivityDefinition", typeof(ActivityDefinition) },
@@ -467,6 +469,7 @@ namespace Hl7.Fhir.Model.R4
                 { typeof(FhirUrl), "url" },
                 { typeof(UsageContext), "UsageContext" },
                 { typeof(Uuid), "uuid" },
+                { typeof(XHtml), "xhtml" },
 
                 { typeof(Account), "Account" },
                 { typeof(ActivityDefinition), "ActivityDefinition" },

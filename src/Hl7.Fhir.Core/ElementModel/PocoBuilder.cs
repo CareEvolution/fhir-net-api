@@ -8,11 +8,12 @@
 
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Utility;
 using System;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     public class PocoBuilder : IExceptionSource
     {

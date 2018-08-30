@@ -29,6 +29,8 @@
 */
 
 
+using System;
+
 namespace Hl7.Fhir.Introspection.R4
 {
     /// <summary>

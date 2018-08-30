@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -291,14 +292,14 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ActiveElement != null) yield return new ElementValue("active", false, ActiveElement);
-                foreach (var elem in ServiceCategory) { if (elem != null) yield return new ElementValue("serviceCategory", true, elem); }
-                foreach (var elem in ServiceType) { if (elem != null) yield return new ElementValue("serviceType", true, elem); }
-                foreach (var elem in Specialty) { if (elem != null) yield return new ElementValue("specialty", true, elem); }
-                foreach (var elem in Actor) { if (elem != null) yield return new ElementValue("actor", true, elem); }
-                if (PlanningHorizon != null) yield return new ElementValue("planningHorizon", false, PlanningHorizon);
-                if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ActiveElement != null) yield return new ElementValue("active", ActiveElement);
+                foreach (var elem in ServiceCategory) { if (elem != null) yield return new ElementValue("serviceCategory", elem); }
+                foreach (var elem in ServiceType) { if (elem != null) yield return new ElementValue("serviceType", elem); }
+                foreach (var elem in Specialty) { if (elem != null) yield return new ElementValue("specialty", elem); }
+                foreach (var elem in Actor) { if (elem != null) yield return new ElementValue("actor", elem); }
+                if (PlanningHorizon != null) yield return new ElementValue("planningHorizon", PlanningHorizon);
+                if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
             }
         }
 

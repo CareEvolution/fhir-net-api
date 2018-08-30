@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,37 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ClinicalImpression"; } }
 
+        /// <summary>
+        /// The workflow state of a clinical impression.
+        /// (url: http://hl7.org/fhir/ValueSet/clinical-impression-status)
+        /// </summary>
+        [FhirEnumeration("ClinicalImpressionStatus")]
+        public enum ClinicalImpressionStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/clinical-impression-status"), Description("In progress")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/clinical-impression-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/clinical-impression-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
+
 
         [FhirType("InvestigationComponent")]
         [DataContract]
-        public partial class InvestigationComponent : BackboneElement
+        public partial class InvestigationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InvestigationComponent"; } }
@@ -155,8 +183,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
                 }
             }
 
@@ -166,7 +194,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("FindingComponent")]
         [DataContract]
-        public partial class FindingComponent : BackboneElement
+        public partial class FindingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FindingComponent"; } }
@@ -296,9 +324,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ItemCodeableConcept != null) yield return new ElementValue("itemCodeableConcept", false, ItemCodeableConcept);
-                    if (ItemReference != null) yield return new ElementValue("itemReference", false, ItemReference);
-                    if (BasisElement != null) yield return new ElementValue("basis", false, BasisElement);
+                    if (ItemCodeableConcept != null) yield return new ElementValue("itemCodeableConcept", ItemCodeableConcept);
+                    if (ItemReference != null) yield return new ElementValue("itemReference", ItemReference);
+                    if (BasisElement != null) yield return new ElementValue("basis", BasisElement);
                 }
             }
 
@@ -797,25 +825,25 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Effective != null) yield return new ElementValue("effective", false, Effective);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (Assessor != null) yield return new ElementValue("assessor", false, Assessor);
-                if (Previous != null) yield return new ElementValue("previous", false, Previous);
-                foreach (var elem in Problem) { if (elem != null) yield return new ElementValue("problem", true, elem); }
-                foreach (var elem in Investigation) { if (elem != null) yield return new ElementValue("investigation", true, elem); }
-                foreach (var elem in ProtocolElement) { if (elem != null) yield return new ElementValue("protocol", true, elem); }
-                if (SummaryElement != null) yield return new ElementValue("summary", false, SummaryElement);
-                foreach (var elem in Finding) { if (elem != null) yield return new ElementValue("finding", true, elem); }
-                foreach (var elem in PrognosisCodeableConcept) { if (elem != null) yield return new ElementValue("prognosisCodeableConcept", true, elem); }
-                foreach (var elem in PrognosisReference) { if (elem != null) yield return new ElementValue("prognosisReference", true, elem); }
-                foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Effective != null) yield return new ElementValue("effective", Effective);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (Assessor != null) yield return new ElementValue("assessor", Assessor);
+                if (Previous != null) yield return new ElementValue("previous", Previous);
+                foreach (var elem in Problem) { if (elem != null) yield return new ElementValue("problem", elem); }
+                foreach (var elem in Investigation) { if (elem != null) yield return new ElementValue("investigation", elem); }
+                foreach (var elem in ProtocolElement) { if (elem != null) yield return new ElementValue("protocol", elem); }
+                if (SummaryElement != null) yield return new ElementValue("summary", SummaryElement);
+                foreach (var elem in Finding) { if (elem != null) yield return new ElementValue("finding", elem); }
+                foreach (var elem in PrognosisCodeableConcept) { if (elem != null) yield return new ElementValue("prognosisCodeableConcept", elem); }
+                foreach (var elem in PrognosisReference) { if (elem != null) yield return new ElementValue("prognosisReference", elem); }
+                foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }
 

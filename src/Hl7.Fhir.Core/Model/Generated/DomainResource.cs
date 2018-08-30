@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -117,7 +118,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "contained.contained.empty()",
             Key = "dom-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the resource is contained in another resource, it SHALL NOT contain nested Resources",
             Xpath = "not(parent::f:contained and f:contained)"
         };
@@ -126,7 +127,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "contained.text.empty()",
             Key = "dom-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the resource is contained in another resource, it SHALL NOT contain any narrative",
             Xpath = "not(parent::f:contained and f:text)"
         };
@@ -135,7 +136,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()",
             Key = "dom-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated",
             Xpath = "not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))"
         };
@@ -144,7 +145,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "contained.all(('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists())",
             Key = "dom-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource",
             Xpath = "not(exists(for $contained in f:contained return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))"
         };
@@ -221,10 +222,10 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Text != null) yield return new ElementValue("text", false, Text);
-                foreach (var elem in Contained) { if (elem != null) yield return new ElementValue("contained", true, elem); }
-                foreach (var elem in Extension) { if (elem != null) yield return new ElementValue("extension", true, elem); }
-                foreach (var elem in ModifierExtension) { if (elem != null) yield return new ElementValue("modifierExtension", true, elem); }
+                if (Text != null) yield return new ElementValue("text", Text);
+                foreach (var elem in Contained) { if (elem != null) yield return new ElementValue("contained", elem); }
+                foreach (var elem in Extension) { if (elem != null) yield return new ElementValue("extension", elem); }
+                foreach (var elem in ModifierExtension) { if (elem != null) yield return new ElementValue("modifierExtension", elem); }
             }
         }
 

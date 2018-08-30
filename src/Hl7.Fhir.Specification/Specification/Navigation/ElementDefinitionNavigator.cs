@@ -286,7 +286,7 @@ namespace Hl7.Fhir.Specification.Navigation
             {
                 if (nameReference.StartsWith("#"))
                 {
-                    if (Elements[pos].ElementId == nameReference.TrimStart('#'))
+                    if (Elements[pos].Id == nameReference.TrimStart('#'))
                     {
                         OrdinalPosition = pos;
                         return true;

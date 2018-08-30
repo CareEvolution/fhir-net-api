@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,70 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "NamingSystem"; } }
 
+        /// <summary>
+        /// Identifies the purpose of the naming system.
+        /// (url: http://hl7.org/fhir/ValueSet/namingsystem-type)
+        /// </summary>
+        [FhirEnumeration("NamingSystemType")]
+        public enum NamingSystemType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-type)
+            /// </summary>
+            [EnumLiteral("codesystem", "http://hl7.org/fhir/namingsystem-type"), Description("Code System")]
+            Codesystem,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-type)
+            /// </summary>
+            [EnumLiteral("identifier", "http://hl7.org/fhir/namingsystem-type"), Description("Identifier")]
+            Identifier,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-type)
+            /// </summary>
+            [EnumLiteral("root", "http://hl7.org/fhir/namingsystem-type"), Description("Root")]
+            Root,
+        }
+
+        /// <summary>
+        /// Identifies the style of unique identifier used to identify a namespace.
+        /// (url: http://hl7.org/fhir/ValueSet/namingsystem-identifier-type)
+        /// </summary>
+        [FhirEnumeration("NamingSystemIdentifierType")]
+        public enum NamingSystemIdentifierType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-identifier-type)
+            /// </summary>
+            [EnumLiteral("oid", "http://hl7.org/fhir/namingsystem-identifier-type"), Description("OID")]
+            Oid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-identifier-type)
+            /// </summary>
+            [EnumLiteral("uuid", "http://hl7.org/fhir/namingsystem-identifier-type"), Description("UUID")]
+            Uuid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-identifier-type)
+            /// </summary>
+            [EnumLiteral("uri", "http://hl7.org/fhir/namingsystem-identifier-type"), Description("URI")]
+            Uri,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-identifier-type)
+            /// </summary>
+            [EnumLiteral("other", "http://hl7.org/fhir/namingsystem-identifier-type"), Description("Other")]
+            Other,
+        }
+
 
         [FhirType("UniqueIdComponent")]
         [DataContract]
-        public partial class UniqueIdComponent : BackboneElement
+        public partial class UniqueIdComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "UniqueIdComponent"; } }
@@ -281,11 +342,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
-                    if (PreferredElement != null) yield return new ElementValue("preferred", false, PreferredElement);
-                    if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
+                    if (PreferredElement != null) yield return new ElementValue("preferred", PreferredElement);
+                    if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                    if (Period != null) yield return new ElementValue("period", Period);
                 }
             }
 
@@ -608,7 +669,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "kind != 'root' or uniqueId.all(type != 'uuid')",
             Key = "nsd-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Root systems cannot have uuid identifiers",
             Xpath = "not(f:kind/@value='root' and f:uniqueId/f:type/@value='uuid')"
         };
@@ -617,7 +678,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "uniqueId.where(preferred = true).select(type).isDistinct()",
             Key = "nsd-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can't have more than one preferred identifier for a type",
             Xpath = "not(exists(for $type in distinct-values(f:uniqueId/f:type/@value) return if (count(f:uniqueId[f:type/@value=$type and f:preferred/@value=true()])>1) then $type else ()))"
         };
@@ -735,19 +796,19 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (KindElement != null) yield return new ElementValue("kind", false, KindElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (ResponsibleElement != null) yield return new ElementValue("responsible", false, ResponsibleElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (UsageElement != null) yield return new ElementValue("usage", false, UsageElement);
-                foreach (var elem in UniqueId) { if (elem != null) yield return new ElementValue("uniqueId", true, elem); }
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (KindElement != null) yield return new ElementValue("kind", KindElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (ResponsibleElement != null) yield return new ElementValue("responsible", ResponsibleElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (UsageElement != null) yield return new ElementValue("usage", UsageElement);
+                foreach (var elem in UniqueId) { if (elem != null) yield return new ElementValue("uniqueId", elem); }
             }
         }
 

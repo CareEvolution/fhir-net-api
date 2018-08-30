@@ -6,13 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Utility;
 using System;
 using System.Linq;
+using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.R4
 {
     public static class ScopedNodeExtensions
     {

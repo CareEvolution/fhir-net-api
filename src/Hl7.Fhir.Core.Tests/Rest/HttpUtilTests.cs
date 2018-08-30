@@ -1,4 +1,5 @@
 ﻿using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

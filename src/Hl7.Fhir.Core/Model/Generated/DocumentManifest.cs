@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AgentComponent")]
         [DataContract]
-        public partial class AgentComponent : BackboneElement
+        public partial class AgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AgentComponent"; } }
@@ -154,8 +155,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Who != null) yield return new ElementValue("who", false, Who);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Who != null) yield return new ElementValue("who", Who);
                 }
             }
 
@@ -165,7 +166,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RelatedComponent")]
         [DataContract]
-        public partial class RelatedComponent : BackboneElement
+        public partial class RelatedComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatedComponent"; } }
@@ -258,8 +259,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Ref != null) yield return new ElementValue("ref", false, Ref);
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (Ref != null) yield return new ElementValue("ref", Ref);
                 }
             }
 
@@ -609,18 +610,18 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (MasterIdentifier != null) yield return new ElementValue("masterIdentifier", false, MasterIdentifier);
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", true, elem); }
-                foreach (var elem in Recipient) { if (elem != null) yield return new ElementValue("recipient", true, elem); }
-                if (SourceElement != null) yield return new ElementValue("source", false, SourceElement);
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                foreach (var elem in Content) { if (elem != null) yield return new ElementValue("content", true, elem); }
-                foreach (var elem in Related) { if (elem != null) yield return new ElementValue("related", true, elem); }
+                if (MasterIdentifier != null) yield return new ElementValue("masterIdentifier", MasterIdentifier);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", elem); }
+                foreach (var elem in Recipient) { if (elem != null) yield return new ElementValue("recipient", elem); }
+                if (SourceElement != null) yield return new ElementValue("source", SourceElement);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                foreach (var elem in Content) { if (elem != null) yield return new ElementValue("content", elem); }
+                foreach (var elem in Related) { if (elem != null) yield return new ElementValue("related", elem); }
             }
         }
 

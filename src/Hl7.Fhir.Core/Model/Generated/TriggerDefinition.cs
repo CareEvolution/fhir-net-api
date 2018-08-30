@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -54,10 +55,88 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "TriggerDefinition"; } }
 
+        /// <summary>
+        /// The type of trigger
+        /// (url: http://hl7.org/fhir/ValueSet/trigger-type)
+        /// </summary>
+        [FhirEnumeration("TriggerType")]
+        public enum TriggerType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("named-event", "http://hl7.org/fhir/trigger-type"), Description("Named Event")]
+            NamedEvent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("periodic", "http://hl7.org/fhir/trigger-type"), Description("Periodic")]
+            Periodic,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("data-changed", "http://hl7.org/fhir/trigger-type"), Description("Data Changed")]
+            DataChanged,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("data-added", "http://hl7.org/fhir/trigger-type"), Description("Data Added")]
+            DataAdded,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("data-modified", "http://hl7.org/fhir/trigger-type"), Description("Data Updated")]
+            DataModified,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("data-removed", "http://hl7.org/fhir/trigger-type"), Description("Data Removed")]
+            DataRemoved,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("data-accessed", "http://hl7.org/fhir/trigger-type"), Description("Data Accessed")]
+            DataAccessed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("data-access-ended", "http://hl7.org/fhir/trigger-type"), Description("Data Access Ended")]
+            DataAccessEnded,
+        }
+
+        /// <summary>
+        /// The media type of the expression language
+        /// (url: http://hl7.org/fhir/ValueSet/expression-language)
+        /// </summary>
+        [FhirEnumeration("ExpressionLanguage")]
+        public enum ExpressionLanguage
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/expression-language)
+            /// </summary>
+            [EnumLiteral("text/cql", "http://hl7.org/fhir/expression-language"), Description("CQL")]
+            TextCql,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/expression-language)
+            /// </summary>
+            [EnumLiteral("text/fhirpath", "http://hl7.org/fhir/expression-language"), Description("FHIRPath")]
+            TextFhirpath,
+        }
+
 
         [FhirType("ConditionComponent")]
         [DataContract]
-        public partial class ConditionComponent : Element
+        public partial class ConditionComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConditionComponent"; } }
@@ -226,9 +305,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (LanguageElement != null) yield return new ElementValue("language", false, LanguageElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (LanguageElement != null) yield return new ElementValue("language", LanguageElement);
+                    if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
                 }
             }
 
@@ -346,7 +425,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "condition.exists() implies data.exists()",
             Key = "trd-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A condition only if there is a data requirement",
             Xpath = "not(exists(f:condition)) or exists(f:data)"
         };
@@ -355,7 +434,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "data.empty() or timing.empty()",
             Key = "trd-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either timing, or a data requirement, but not both",
             Xpath = "not(exists(f:data)) or not(exists(*[starts-with(local-name(.), 'timing')]))"
         };
@@ -435,11 +514,11 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (Timing != null) yield return new ElementValue("timing", false, Timing);
-                if (Data != null) yield return new ElementValue("data", false, Data);
-                if (Condition != null) yield return new ElementValue("condition", false, Condition);
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (Timing != null) yield return new ElementValue("timing", Timing);
+                if (Data != null) yield return new ElementValue("data", Data);
+                if (Condition != null) yield return new ElementValue("condition", Condition);
             }
         }
 

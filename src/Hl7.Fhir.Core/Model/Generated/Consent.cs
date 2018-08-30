@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,64 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Consent"; } }
 
+        /// <summary>
+        /// How a rule statement is applied, such as adding additional consent or removing consent
+        /// (url: http://hl7.org/fhir/ValueSet/consent-provision-type)
+        /// </summary>
+        [FhirEnumeration("ConsentProvisionType")]
+        public enum ConsentProvisionType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-provision-type)
+            /// </summary>
+            [EnumLiteral("deny", "http://hl7.org/fhir/consent-provision-type"), Description("Opt Out")]
+            Deny,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-provision-type)
+            /// </summary>
+            [EnumLiteral("permit", "http://hl7.org/fhir/consent-provision-type"), Description("Opt In")]
+            Permit,
+        }
+
+        /// <summary>
+        /// How a resource reference is interpreted when testing consent restrictions
+        /// (url: http://hl7.org/fhir/ValueSet/consent-data-meaning)
+        /// </summary>
+        [FhirEnumeration("ConsentDataMeaning")]
+        public enum ConsentDataMeaning
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-data-meaning)
+            /// </summary>
+            [EnumLiteral("instance", "http://hl7.org/fhir/consent-data-meaning"), Description("Instance")]
+            Instance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-data-meaning)
+            /// </summary>
+            [EnumLiteral("related", "http://hl7.org/fhir/consent-data-meaning"), Description("Related")]
+            Related,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-data-meaning)
+            /// </summary>
+            [EnumLiteral("dependents", "http://hl7.org/fhir/consent-data-meaning"), Description("Dependents")]
+            Dependents,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-data-meaning)
+            /// </summary>
+            [EnumLiteral("authoredby", "http://hl7.org/fhir/consent-data-meaning"), Description("AuthoredBy")]
+            Authoredby,
+        }
+
 
         [FhirType("PolicyComponent")]
         [DataContract]
-        public partial class PolicyComponent : BackboneElement
+        public partial class PolicyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PolicyComponent"; } }
@@ -190,8 +245,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (AuthorityElement != null) yield return new ElementValue("authority", false, AuthorityElement);
-                    if (UriElement != null) yield return new ElementValue("uri", false, UriElement);
+                    if (AuthorityElement != null) yield return new ElementValue("authority", AuthorityElement);
+                    if (UriElement != null) yield return new ElementValue("uri", UriElement);
                 }
             }
 
@@ -201,7 +256,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("VerificationComponent")]
         [DataContract]
-        public partial class VerificationComponent : BackboneElement
+        public partial class VerificationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "VerificationComponent"; } }
@@ -351,9 +406,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (VerifiedElement != null) yield return new ElementValue("verified", false, VerifiedElement);
-                    if (VerifiedWith != null) yield return new ElementValue("verifiedWith", false, VerifiedWith);
-                    if (VerificationDateElement != null) yield return new ElementValue("verificationDate", false, VerificationDateElement);
+                    if (VerifiedElement != null) yield return new ElementValue("verified", VerifiedElement);
+                    if (VerifiedWith != null) yield return new ElementValue("verifiedWith", VerifiedWith);
+                    if (VerificationDateElement != null) yield return new ElementValue("verificationDate", VerificationDateElement);
                 }
             }
 
@@ -363,7 +418,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("provisionComponent")]
         [DataContract]
-        public partial class provisionComponent : BackboneElement
+        public partial class provisionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "provisionComponent"; } }
@@ -636,17 +691,17 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
-                    foreach (var elem in Actor) { if (elem != null) yield return new ElementValue("actor", true, elem); }
-                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
-                    foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", true, elem); }
-                    foreach (var elem in Purpose) { if (elem != null) yield return new ElementValue("purpose", true, elem); }
-                    foreach (var elem in Class) { if (elem != null) yield return new ElementValue("class", true, elem); }
-                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", true, elem); }
-                    if (DataPeriod != null) yield return new ElementValue("dataPeriod", false, DataPeriod);
-                    foreach (var elem in Data) { if (elem != null) yield return new ElementValue("data", true, elem); }
-                    foreach (var elem in Provision) { if (elem != null) yield return new ElementValue("provision", true, elem); }
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (Period != null) yield return new ElementValue("period", Period);
+                    foreach (var elem in Actor) { if (elem != null) yield return new ElementValue("actor", elem); }
+                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
+                    foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", elem); }
+                    foreach (var elem in Purpose) { if (elem != null) yield return new ElementValue("purpose", elem); }
+                    foreach (var elem in Class) { if (elem != null) yield return new ElementValue("class", elem); }
+                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
+                    if (DataPeriod != null) yield return new ElementValue("dataPeriod", DataPeriod);
+                    foreach (var elem in Data) { if (elem != null) yield return new ElementValue("data", elem); }
+                    foreach (var elem in Provision) { if (elem != null) yield return new ElementValue("provision", elem); }
                 }
             }
 
@@ -656,7 +711,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("provisionActorComponent")]
         [DataContract]
-        public partial class provisionActorComponent : BackboneElement
+        public partial class provisionActorComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "provisionActorComponent"; } }
@@ -752,8 +807,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
+                    if (Role != null) yield return new ElementValue("role", Role);
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
                 }
             }
 
@@ -763,7 +818,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("provisionDataComponent")]
         [DataContract]
-        public partial class provisionDataComponent : BackboneElement
+        public partial class provisionDataComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "provisionDataComponent"; } }
@@ -877,8 +932,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (MeaningElement != null) yield return new ElementValue("meaning", false, MeaningElement);
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
+                    if (MeaningElement != null) yield return new ElementValue("meaning", MeaningElement);
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
                 }
             }
 
@@ -1110,7 +1165,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "patient.exists() or scope.coding.where(system='something' and code='adr').exists().not()",
             Key = "ppc-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "IF Scope=adr, there must be a patient",
             Xpath = "exists(f:patient) or not(exists(f:scope/f:coding[f:system/@value='something' and f:code/@value='adr')))"
         };
@@ -1119,7 +1174,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "patient.exists() or scope.coding.where(system='something' and code='treatment').exists().not()",
             Key = "ppc-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "IF Scope=treatment, there must be a patient",
             Xpath = "exists(f:patient) or not(exists(f:scope/f:coding[f:system/@value='something' and f:code/@value='treatment')))"
         };
@@ -1128,7 +1183,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "patient.exists() or scope.coding.where(system='something' and code='patient-privacy').exists().not()",
             Key = "ppc-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "IF Scope=privacy, there must be a patient",
             Xpath = "exists(f:patient) or not(exists(f:scope/f:coding[f:system/@value='something' and f:code/@value='patient-privacy')))"
         };
@@ -1137,7 +1192,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "patient.exists() or scope.coding.where(system='something' and code='research').exists().not()",
             Key = "ppc-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "IF Scope=research, there must be a patient",
             Xpath = "exists(f:patient) or not(exists(f:scope/f:coding[f:system/@value='something' and f:code/@value='research')))"
         };
@@ -1146,7 +1201,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "policy.exists() or policyRule.exists()",
             Key = "ppc-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either a Policy or PolicyRule",
             Xpath = "exists(f:policy) or exists(f:policyRule)"
         };
@@ -1267,19 +1322,19 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Scope != null) yield return new ElementValue("scope", false, Scope);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                if (DateTimeElement != null) yield return new ElementValue("dateTime", false, DateTimeElement);
-                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", true, elem); }
-                foreach (var elem in Organization) { if (elem != null) yield return new ElementValue("organization", true, elem); }
-                if (Source != null) yield return new ElementValue("source", false, Source);
-                foreach (var elem in Policy) { if (elem != null) yield return new ElementValue("policy", true, elem); }
-                if (PolicyRule != null) yield return new ElementValue("policyRule", false, PolicyRule);
-                foreach (var elem in Verification) { if (elem != null) yield return new ElementValue("verification", true, elem); }
-                if (Provision != null) yield return new ElementValue("provision", false, Provision);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Scope != null) yield return new ElementValue("scope", Scope);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                if (DateTimeElement != null) yield return new ElementValue("dateTime", DateTimeElement);
+                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", elem); }
+                foreach (var elem in Organization) { if (elem != null) yield return new ElementValue("organization", elem); }
+                if (Source != null) yield return new ElementValue("source", Source);
+                foreach (var elem in Policy) { if (elem != null) yield return new ElementValue("policy", elem); }
+                if (PolicyRule != null) yield return new ElementValue("policyRule", PolicyRule);
+                foreach (var elem in Verification) { if (elem != null) yield return new ElementValue("verification", elem); }
+                if (Provision != null) yield return new ElementValue("provision", Provision);
             }
         }
 

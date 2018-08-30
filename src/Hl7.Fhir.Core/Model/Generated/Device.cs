@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,88 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Device"; } }
 
+        /// <summary>
+        /// Codes to identify how UDI data was entered
+        /// (url: http://hl7.org/fhir/ValueSet/udi-entry-type)
+        /// </summary>
+        [FhirEnumeration("UDIEntryType")]
+        public enum UDIEntryType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("barcode", "http://hl7.org/fhir/udi-entry-type"), Description("Barcode")]
+            Barcode,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("rfid", "http://hl7.org/fhir/udi-entry-type"), Description("RFID")]
+            Rfid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("manual", "http://hl7.org/fhir/udi-entry-type"), Description("Manual")]
+            Manual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("card", "http://hl7.org/fhir/udi-entry-type"), Description("Card")]
+            Card,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("self-reported", "http://hl7.org/fhir/udi-entry-type"), Description("Self Reported")]
+            SelfReported,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/udi-entry-type"), Description("Unknown")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// The availability status of the device.
+        /// (url: http://hl7.org/fhir/ValueSet/device-status)
+        /// </summary>
+        [FhirEnumeration("FHIRDeviceStatus")]
+        public enum FHIRDeviceStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/device-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/device-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/device-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/device-status"), Description("Unknown")]
+            Unknown,
+        }
+
 
         [FhirType("UdiComponent")]
         [DataContract]
-        public partial class UdiComponent : BackboneElement
+        public partial class UdiComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "UdiComponent"; } }
@@ -370,13 +449,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DeviceIdentifierElement != null) yield return new ElementValue("deviceIdentifier", false, DeviceIdentifierElement);
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (JurisdictionElement != null) yield return new ElementValue("jurisdiction", false, JurisdictionElement);
-                    if (CarrierHRFElement != null) yield return new ElementValue("carrierHRF", false, CarrierHRFElement);
-                    if (CarrierAIDCElement != null) yield return new ElementValue("carrierAIDC", false, CarrierAIDCElement);
-                    if (IssuerElement != null) yield return new ElementValue("issuer", false, IssuerElement);
-                    if (EntryTypeElement != null) yield return new ElementValue("entryType", false, EntryTypeElement);
+                    if (DeviceIdentifierElement != null) yield return new ElementValue("deviceIdentifier", DeviceIdentifierElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (JurisdictionElement != null) yield return new ElementValue("jurisdiction", JurisdictionElement);
+                    if (CarrierHRFElement != null) yield return new ElementValue("carrierHRF", CarrierHRFElement);
+                    if (CarrierAIDCElement != null) yield return new ElementValue("carrierAIDC", CarrierAIDCElement);
+                    if (IssuerElement != null) yield return new ElementValue("issuer", IssuerElement);
+                    if (EntryTypeElement != null) yield return new ElementValue("entryType", EntryTypeElement);
                 }
             }
 
@@ -886,23 +965,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (Udi != null) yield return new ElementValue("udi", false, Udi);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (LotNumberElement != null) yield return new ElementValue("lotNumber", false, LotNumberElement);
-                if (ManufacturerElement != null) yield return new ElementValue("manufacturer", false, ManufacturerElement);
-                if (ManufactureDateElement != null) yield return new ElementValue("manufactureDate", false, ManufactureDateElement);
-                if (ExpirationDateElement != null) yield return new ElementValue("expirationDate", false, ExpirationDateElement);
-                if (ModelElement != null) yield return new ElementValue("model", false, ModelElement);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                if (Owner != null) yield return new ElementValue("owner", false, Owner);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Location != null) yield return new ElementValue("location", false, Location);
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in Safety) { if (elem != null) yield return new ElementValue("safety", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (Udi != null) yield return new ElementValue("udi", Udi);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (LotNumberElement != null) yield return new ElementValue("lotNumber", LotNumberElement);
+                if (ManufacturerElement != null) yield return new ElementValue("manufacturer", ManufacturerElement);
+                if (ManufactureDateElement != null) yield return new ElementValue("manufactureDate", ManufactureDateElement);
+                if (ExpirationDateElement != null) yield return new ElementValue("expirationDate", ExpirationDateElement);
+                if (ModelElement != null) yield return new ElementValue("model", ModelElement);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                if (Owner != null) yield return new ElementValue("owner", Owner);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Location != null) yield return new ElementValue("location", Location);
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in Safety) { if (elem != null) yield return new ElementValue("safety", elem); }
             }
         }
 

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,70 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "MessageDefinition"; } }
 
+        /// <summary>
+        /// The impact of the content of a message.
+        /// (url: http://hl7.org/fhir/ValueSet/message-significance-category)
+        /// </summary>
+        [FhirEnumeration("MessageSignificanceCategory")]
+        public enum MessageSignificanceCategory
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/message-significance-category)
+            /// </summary>
+            [EnumLiteral("consequence", "http://hl7.org/fhir/message-significance-category"), Description("Consequence")]
+            Consequence,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/message-significance-category)
+            /// </summary>
+            [EnumLiteral("currency", "http://hl7.org/fhir/message-significance-category"), Description("Currency")]
+            Currency,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/message-significance-category)
+            /// </summary>
+            [EnumLiteral("notification", "http://hl7.org/fhir/message-significance-category"), Description("Notification")]
+            Notification,
+        }
+
+        /// <summary>
+        /// HL7-defined table of codes which identify conditions under which acknowledgments are required to be returned in response to a message.
+        /// (url: http://hl7.org/fhir/ValueSet/messageheader-response-request)
+        /// </summary>
+        [FhirEnumeration("messageheader_response_request")]
+        public enum messageheader_response_request
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/messageheader-response-request)
+            /// </summary>
+            [EnumLiteral("always", "http://hl7.org/fhir/messageheader-response-request"), Description("Always")]
+            Always,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/messageheader-response-request)
+            /// </summary>
+            [EnumLiteral("on-error", "http://hl7.org/fhir/messageheader-response-request"), Description("Error/reject conditions only")]
+            OnError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/messageheader-response-request)
+            /// </summary>
+            [EnumLiteral("never", "http://hl7.org/fhir/messageheader-response-request"), Description("Never")]
+            Never,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/messageheader-response-request)
+            /// </summary>
+            [EnumLiteral("on-success", "http://hl7.org/fhir/messageheader-response-request"), Description("Successful completion only")]
+            OnSuccess,
+        }
+
 
         [FhirType("FocusComponent")]
         [DataContract]
-        public partial class FocusComponent : BackboneElement
+        public partial class FocusComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FocusComponent"; } }
@@ -264,10 +325,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (ProfileElement != null) yield return new ElementValue("profile", false, ProfileElement);
-                    if (MinElement != null) yield return new ElementValue("min", false, MinElement);
-                    if (MaxElement != null) yield return new ElementValue("max", false, MaxElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
+                    if (MinElement != null) yield return new ElementValue("min", MinElement);
+                    if (MaxElement != null) yield return new ElementValue("max", MaxElement);
                 }
             }
 
@@ -277,7 +338,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AllowedResponseComponent")]
         [DataContract]
-        public partial class AllowedResponseComponent : BackboneElement
+        public partial class AllowedResponseComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AllowedResponseComponent"; } }
@@ -390,8 +451,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (MessageElement != null) yield return new ElementValue("message", false, MessageElement);
-                    if (Situation != null) yield return new ElementValue("situation", false, Situation);
+                    if (MessageElement != null) yield return new ElementValue("message", MessageElement);
+                    if (Situation != null) yield return new ElementValue("situation", Situation);
                 }
             }
 
@@ -961,7 +1022,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "focus.all(max='*' or (max.toInteger() > 0))",
             Key = "md-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Max must be postive int or *",
             Xpath = "f:max/@value='*' or number(f:max/@value) > 0"
         };
@@ -1118,29 +1179,29 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                foreach (var elem in ReplacesElement) { if (elem != null) yield return new ElementValue("replaces", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                if (BaseElement != null) yield return new ElementValue("base", false, BaseElement);
-                foreach (var elem in ParentElement) { if (elem != null) yield return new ElementValue("parent", true, elem); }
-                if (Event != null) yield return new ElementValue("event", false, Event);
-                if (CategoryElement != null) yield return new ElementValue("category", false, CategoryElement);
-                foreach (var elem in Focus) { if (elem != null) yield return new ElementValue("focus", true, elem); }
-                if (ResponseRequiredElement != null) yield return new ElementValue("responseRequired", false, ResponseRequiredElement);
-                foreach (var elem in AllowedResponse) { if (elem != null) yield return new ElementValue("allowedResponse", true, elem); }
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                foreach (var elem in ReplacesElement) { if (elem != null) yield return new ElementValue("replaces", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (BaseElement != null) yield return new ElementValue("base", BaseElement);
+                foreach (var elem in ParentElement) { if (elem != null) yield return new ElementValue("parent", elem); }
+                if (Event != null) yield return new ElementValue("event", Event);
+                if (CategoryElement != null) yield return new ElementValue("category", CategoryElement);
+                foreach (var elem in Focus) { if (elem != null) yield return new ElementValue("focus", elem); }
+                if (ResponseRequiredElement != null) yield return new ElementValue("responseRequired", ResponseRequiredElement);
+                foreach (var elem in AllowedResponse) { if (elem != null) yield return new ElementValue("allowedResponse", elem); }
             }
         }
 

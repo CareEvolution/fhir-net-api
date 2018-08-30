@@ -6,14 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Utility;
-using System;
 using System.Xml;
 using System.Xml.Linq;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     public class FhirXmlSerializer : BaseFhirSerializer
     {

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -54,10 +55,190 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ElementDefinition"; } }
 
+        /// <summary>
+        /// How a property is represented when serialized.
+        /// (url: http://hl7.org/fhir/ValueSet/property-representation)
+        /// </summary>
+        [FhirEnumeration("PropertyRepresentation")]
+        public enum PropertyRepresentation
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("xmlAttr", "http://hl7.org/fhir/property-representation"), Description("XML Attribute")]
+            XmlAttr,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("xmlText", "http://hl7.org/fhir/property-representation"), Description("XML Text")]
+            XmlText,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("typeAttr", "http://hl7.org/fhir/property-representation"), Description("Type Attribute")]
+            TypeAttr,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("cdaText", "http://hl7.org/fhir/property-representation"), Description("CDA Text Format")]
+            CdaText,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("xhtml", "http://hl7.org/fhir/property-representation"), Description("XHTML")]
+            Xhtml,
+        }
+
+        /// <summary>
+        /// How an element value is interpreted when discrimination is evaluated
+        /// (url: http://hl7.org/fhir/ValueSet/discriminator-type)
+        /// </summary>
+        [FhirEnumeration("DiscriminatorType")]
+        public enum DiscriminatorType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("value", "http://hl7.org/fhir/discriminator-type"), Description("Value")]
+            Value,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("exists", "http://hl7.org/fhir/discriminator-type"), Description("Exists")]
+            Exists,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("pattern", "http://hl7.org/fhir/discriminator-type"), Description("Pattern")]
+            Pattern,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("type", "http://hl7.org/fhir/discriminator-type"), Description("Type")]
+            Type,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("profile", "http://hl7.org/fhir/discriminator-type"), Description("Profile")]
+            Profile,
+        }
+
+        /// <summary>
+        /// How slices are interpreted when evaluating an instance.
+        /// (url: http://hl7.org/fhir/ValueSet/resource-slicing-rules)
+        /// </summary>
+        [FhirEnumeration("SlicingRules")]
+        public enum SlicingRules
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-slicing-rules)
+            /// </summary>
+            [EnumLiteral("closed", "http://hl7.org/fhir/resource-slicing-rules"), Description("Closed")]
+            Closed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-slicing-rules)
+            /// </summary>
+            [EnumLiteral("open", "http://hl7.org/fhir/resource-slicing-rules"), Description("Open")]
+            Open,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-slicing-rules)
+            /// </summary>
+            [EnumLiteral("openAtEnd", "http://hl7.org/fhir/resource-slicing-rules"), Description("Open at End")]
+            OpenAtEnd,
+        }
+
+        /// <summary>
+        /// How resource references can be aggregated.
+        /// (url: http://hl7.org/fhir/ValueSet/resource-aggregation-mode)
+        /// </summary>
+        [FhirEnumeration("AggregationMode")]
+        public enum AggregationMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-aggregation-mode)
+            /// </summary>
+            [EnumLiteral("contained", "http://hl7.org/fhir/resource-aggregation-mode"), Description("Contained")]
+            Contained,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-aggregation-mode)
+            /// </summary>
+            [EnumLiteral("referenced", "http://hl7.org/fhir/resource-aggregation-mode"), Description("Referenced")]
+            Referenced,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-aggregation-mode)
+            /// </summary>
+            [EnumLiteral("bundled", "http://hl7.org/fhir/resource-aggregation-mode"), Description("Bundled")]
+            Bundled,
+        }
+
+        /// <summary>
+        /// Whether a reference needs to be version specific or version independent, or whether either can be used
+        /// (url: http://hl7.org/fhir/ValueSet/reference-version-rules)
+        /// </summary>
+        [FhirEnumeration("ReferenceVersionRules")]
+        public enum ReferenceVersionRules
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-version-rules)
+            /// </summary>
+            [EnumLiteral("either", "http://hl7.org/fhir/reference-version-rules"), Description("Either Specific or independent")]
+            Either,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-version-rules)
+            /// </summary>
+            [EnumLiteral("independent", "http://hl7.org/fhir/reference-version-rules"), Description("Version independent")]
+            Independent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-version-rules)
+            /// </summary>
+            [EnumLiteral("specific", "http://hl7.org/fhir/reference-version-rules"), Description("Version Specific")]
+            Specific,
+        }
+
+        /// <summary>
+        /// SHALL applications comply with this constraint?
+        /// (url: http://hl7.org/fhir/ValueSet/constraint-severity)
+        /// </summary>
+        [FhirEnumeration("ConstraintSeverity")]
+        public enum ConstraintSeverity
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/constraint-severity)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/constraint-severity"), Description("Error")]
+            Error,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/constraint-severity)
+            /// </summary>
+            [EnumLiteral("warning", "http://hl7.org/fhir/constraint-severity"), Description("Warning")]
+            Warning,
+        }
+
 
         [FhirType("SlicingComponent")]
         [DataContract]
-        public partial class SlicingComponent : Element
+        public partial class SlicingComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SlicingComponent"; } }
@@ -243,10 +424,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Discriminator) { if (elem != null) yield return new ElementValue("discriminator", true, elem); }
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (OrderedElement != null) yield return new ElementValue("ordered", false, OrderedElement);
-                    if (RulesElement != null) yield return new ElementValue("rules", false, RulesElement);
+                    foreach (var elem in Discriminator) { if (elem != null) yield return new ElementValue("discriminator", elem); }
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (OrderedElement != null) yield return new ElementValue("ordered", OrderedElement);
+                    if (RulesElement != null) yield return new ElementValue("rules", RulesElement);
                 }
             }
 
@@ -256,7 +437,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DiscriminatorComponent")]
         [DataContract]
-        public partial class DiscriminatorComponent : Element
+        public partial class DiscriminatorComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DiscriminatorComponent"; } }
@@ -389,8 +570,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (PathElement != null) yield return new ElementValue("path", false, PathElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (PathElement != null) yield return new ElementValue("path", PathElement);
                 }
             }
 
@@ -400,7 +581,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("BaseComponent")]
         [DataContract]
-        public partial class BaseComponent : Element
+        public partial class BaseComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "BaseComponent"; } }
@@ -570,9 +751,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (PathElement != null) yield return new ElementValue("path", false, PathElement);
-                    if (MinElement != null) yield return new ElementValue("min", false, MinElement);
-                    if (MaxElement != null) yield return new ElementValue("max", false, MaxElement);
+                    if (PathElement != null) yield return new ElementValue("path", PathElement);
+                    if (MinElement != null) yield return new ElementValue("min", MinElement);
+                    if (MaxElement != null) yield return new ElementValue("max", MaxElement);
                 }
             }
 
@@ -582,7 +763,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TypeRefComponent")]
         [DataContract]
-        public partial class TypeRefComponent : Element
+        public partial class TypeRefComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TypeRefComponent"; } }
@@ -825,11 +1006,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    foreach (var elem in ProfileElement) { if (elem != null) yield return new ElementValue("profile", true, elem); }
-                    foreach (var elem in TargetProfileElement) { if (elem != null) yield return new ElementValue("targetProfile", true, elem); }
-                    foreach (var elem in AggregationElement) { if (elem != null) yield return new ElementValue("aggregation", true, elem); }
-                    if (VersioningElement != null) yield return new ElementValue("versioning", false, VersioningElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    foreach (var elem in ProfileElement) { if (elem != null) yield return new ElementValue("profile", elem); }
+                    foreach (var elem in TargetProfileElement) { if (elem != null) yield return new ElementValue("targetProfile", elem); }
+                    foreach (var elem in AggregationElement) { if (elem != null) yield return new ElementValue("aggregation", elem); }
+                    if (VersioningElement != null) yield return new ElementValue("versioning", VersioningElement);
                 }
             }
 
@@ -839,7 +1020,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ExampleComponent")]
         [DataContract]
-        public partial class ExampleComponent : Element
+        public partial class ExampleComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ExampleComponent"; } }
@@ -954,8 +1135,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (LabelElement != null) yield return new ElementValue("label", false, LabelElement);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (LabelElement != null) yield return new ElementValue("label", LabelElement);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -965,7 +1146,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ConstraintComponent")]
         [DataContract]
-        public partial class ConstraintComponent : Element
+        public partial class ConstraintComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConstraintComponent"; } }
@@ -1280,13 +1461,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (KeyElement != null) yield return new ElementValue("key", false, KeyElement);
-                    if (RequirementsElement != null) yield return new ElementValue("requirements", false, RequirementsElement);
-                    if (SeverityElement != null) yield return new ElementValue("severity", false, SeverityElement);
-                    if (HumanElement != null) yield return new ElementValue("human", false, HumanElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
-                    if (XpathElement != null) yield return new ElementValue("xpath", false, XpathElement);
-                    if (SourceElement != null) yield return new ElementValue("source", false, SourceElement);
+                    if (KeyElement != null) yield return new ElementValue("key", KeyElement);
+                    if (RequirementsElement != null) yield return new ElementValue("requirements", RequirementsElement);
+                    if (SeverityElement != null) yield return new ElementValue("severity", SeverityElement);
+                    if (HumanElement != null) yield return new ElementValue("human", HumanElement);
+                    if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
+                    if (XpathElement != null) yield return new ElementValue("xpath", XpathElement);
+                    if (SourceElement != null) yield return new ElementValue("source", SourceElement);
                 }
             }
 
@@ -1296,7 +1477,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ElementDefinitionBindingComponent")]
         [DataContract]
-        public partial class ElementDefinitionBindingComponent : Element
+        public partial class ElementDefinitionBindingComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ElementDefinitionBindingComponent"; } }
@@ -1446,9 +1627,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (StrengthElement != null) yield return new ElementValue("strength", false, StrengthElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (ValueSet != null) yield return new ElementValue("valueSet", false, ValueSet);
+                    if (StrengthElement != null) yield return new ElementValue("strength", StrengthElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (ValueSet != null) yield return new ElementValue("valueSet", ValueSet);
                 }
             }
 
@@ -1458,7 +1639,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("MappingComponent")]
         [DataContract]
-        public partial class MappingComponent : Element
+        public partial class MappingComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MappingComponent"; } }
@@ -1663,10 +1844,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (IdentityElement != null) yield return new ElementValue("identity", false, IdentityElement);
-                    if (LanguageElement != null) yield return new ElementValue("language", false, LanguageElement);
-                    if (MapElement != null) yield return new ElementValue("map", false, MapElement);
-                    if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
+                    if (IdentityElement != null) yield return new ElementValue("identity", IdentityElement);
+                    if (LanguageElement != null) yield return new ElementValue("language", LanguageElement);
+                    if (MapElement != null) yield return new ElementValue("map", MapElement);
+                    if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
                 }
             }
 
@@ -2426,7 +2607,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "min.empty() or max.empty() or (max = '*') or iif(max != '*', min <= max.toInteger())",
             Key = "eld-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Min <= Max",
             Xpath = "not(exists(f:min)) or not(exists(f:max)) or (not(f:max/@value) and not(f:min/@value)) or (f:max/@value = '*') or (number(f:max/@value) >= f:min/@value)"
         };
@@ -2435,7 +2616,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "contentReference.empty() or (type.empty() and defaultValue.empty() and fixed.empty() and pattern.empty() and example.empty() and minValue.empty() and maxValue.empty() and maxLength.empty() and binding.empty())",
             Key = "eld-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "if the element definition has a contentReference, it cannot have type, defaultValue, fixed, pattern, example, minValue, maxValue, maxLength, or binding",
             Xpath = "not(exists(f:contentReference) and (exists(f:type) or exists(f:*[starts-with(local-name(.), 'value')]) or exists(f:*[starts-with(local-name(.), 'defaultValue')])  or exists(f:*[starts-with(local-name(.), 'fixed')]) or exists(f:*[starts-with(local-name(.), 'pattern')]) or exists(f:*[starts-with(local-name(.), 'example')]) or exists(f:*[starts-with(local-name(.), 'f:minValue')]) or exists(f:*[starts-with(local-name(.), 'f:maxValue')]) or exists(f:maxLength) or exists(f:binding)))"
         };
@@ -2444,7 +2625,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "pattern.empty() or (type.count() <= 1)",
             Key = "eld-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Pattern may only be specified if there is one type",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'pattern')])) or (count(f:type)<=1)"
         };
@@ -2453,7 +2634,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "fixed.empty() or (type.count()  <= 1)",
             Key = "eld-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Fixed value may only be specified if there is one type",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'fixed')])) or (count(f:type)<=1)"
         };
@@ -2462,7 +2643,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "binding.empty() or type.code.empty() or type.select((code = 'code') or (code = 'Coding') or (code='CodeableConcept') or (code = 'Quantity') or (code = 'string') or (code = 'uri')).exists()",
             Key = "eld-11",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Binding can only be present for coded elements, string, and uri",
             Xpath = "not(exists(f:binding)) or (count(f:type/f:code) = 0) or  f:type/f:code/@value=('code','Coding','CodeableConcept','Quantity','string', 'uri')"
         };
@@ -2471,7 +2652,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "pattern.empty() or fixed.empty()",
             Key = "eld-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Pattern and value are mutually exclusive",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'pattern')])) or not(exists(f:*[starts-with(local-name(.), 'fixed')]))"
         };
@@ -2480,7 +2661,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "constraint.select(key).isDistinct()",
             Key = "eld-14",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Constraints must be unique by key",
             Xpath = "count(f:constraint) = count(distinct-values(f:constraint/f:key/@value))"
         };
@@ -2489,7 +2670,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "type.select(code).isDistinct()",
             Key = "eld-13",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Types must be unique by code",
             Xpath = "not(exists(for $type in f:type return $type/preceding-sibling::f:type[f:code/@value=$type/f:code/@value))"
         };
@@ -2498,7 +2679,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "sliceName.empty() or sliceName.matches('^[a-zA-Z0-9\\\\/\\\\-_\\\\[\\\\]\\\\@]+$')",
             Key = "eld-16",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "sliceName must be composed of proper tokens separated by \"/\"",
             Xpath = "not(exists(f:sliceName/@value)) or matches(f:sliceName/@value, '^[a-zA-Z0-9\\/\\-_\\[\\]\\@]+$')"
         };
@@ -2507,7 +2688,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "defaultValue.empty() or meaningWhenMissing.empty()",
             Key = "eld-15",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "default value and meaningWhenMissing are mutually exclusive",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'fixed')])) or not(exists(f:meaningWhenMissing))"
         };
@@ -2516,7 +2697,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "isModifier implies isModifierReason.exists()",
             Key = "eld-18",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have a modifier reason if isModifier = true",
             Xpath = "not(f:isModifier/@value = 'true') or exists(f:isModifierReason)"
         };
@@ -2525,7 +2706,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "slicing.all(discriminator.exists() or description.exists())",
             Key = "eld-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there are no discriminators, there must be a definition",
             Xpath = "(f:discriminator) or (f:description)"
         };
@@ -2534,7 +2715,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "max.all(empty() or ($this = '*') or (toInteger() >= 0))",
             Key = "eld-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Max SHALL be a number or \"*\"",
             Xpath = "@value='*' or (normalize-space(@value)!='' and normalize-space(translate(@value, '0123456789',''))='')"
         };
@@ -2543,7 +2724,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "type.all(aggregation.empty() or (code = 'Reference'))",
             Key = "eld-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Aggregation may only be specified if one of the allowed types for the element is a reference",
             Xpath = "not(exists(f:aggregation)) or exists(f:code[@value = 'Reference'])"
         };
@@ -2552,7 +2733,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "type.all(code='Reference' or targetProfile.empty())",
             Key = "eld-17",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "targetProfie is only allowed if the type is reference",
             Xpath = "not(exists(f:targetProfile)) or (f:code/@value = 'Reference')"
         };
@@ -2561,7 +2742,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "binding.all((valueSet is uri).not() or (valueSet as uri).startsWith('http:') or (valueSet as uri).startsWith('https') or (valueSet as uri).startsWith('urn:'))",
             Key = "eld-12",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "ValueSet as a URI SHALL start with http:// or https:// or urn:",
             Xpath = "not(exists(f:valueSetUri)) or (starts-with(string(f:valueSetUri/@value), 'http:') or starts-with(string(f:valueSetUri/@value), 'https:') or starts-with(string(f:valueSetUri/@value), 'urn:'))"
         };
@@ -2753,39 +2934,39 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (PathElement != null) yield return new ElementValue("path", false, PathElement);
-                foreach (var elem in RepresentationElement) { if (elem != null) yield return new ElementValue("representation", true, elem); }
-                if (SliceNameElement != null) yield return new ElementValue("sliceName", false, SliceNameElement);
-                if (LabelElement != null) yield return new ElementValue("label", false, LabelElement);
-                foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", true, elem); }
-                if (Slicing != null) yield return new ElementValue("slicing", false, Slicing);
-                if (ShortElement != null) yield return new ElementValue("short", false, ShortElement);
-                if (Definition != null) yield return new ElementValue("definition", false, Definition);
-                if (Comment != null) yield return new ElementValue("comment", false, Comment);
-                if (Requirements != null) yield return new ElementValue("requirements", false, Requirements);
-                foreach (var elem in AliasElement) { if (elem != null) yield return new ElementValue("alias", true, elem); }
-                if (MinElement != null) yield return new ElementValue("min", false, MinElement);
-                if (MaxElement != null) yield return new ElementValue("max", false, MaxElement);
-                if (Base != null) yield return new ElementValue("base", false, Base);
-                if (ContentReferenceElement != null) yield return new ElementValue("contentReference", false, ContentReferenceElement);
-                foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
-                if (DefaultValue != null) yield return new ElementValue("defaultValue", false, DefaultValue);
-                if (MeaningWhenMissing != null) yield return new ElementValue("meaningWhenMissing", false, MeaningWhenMissing);
-                if (OrderMeaningElement != null) yield return new ElementValue("orderMeaning", false, OrderMeaningElement);
-                if (Fixed != null) yield return new ElementValue("fixed", false, Fixed);
-                if (Pattern != null) yield return new ElementValue("pattern", false, Pattern);
-                foreach (var elem in Example) { if (elem != null) yield return new ElementValue("example", true, elem); }
-                if (MinValue != null) yield return new ElementValue("minValue", false, MinValue);
-                if (MaxValue != null) yield return new ElementValue("maxValue", false, MaxValue);
-                if (MaxLengthElement != null) yield return new ElementValue("maxLength", false, MaxLengthElement);
-                foreach (var elem in ConditionElement) { if (elem != null) yield return new ElementValue("condition", true, elem); }
-                foreach (var elem in Constraint) { if (elem != null) yield return new ElementValue("constraint", true, elem); }
-                if (MustSupportElement != null) yield return new ElementValue("mustSupport", false, MustSupportElement);
-                if (IsModifierElement != null) yield return new ElementValue("isModifier", false, IsModifierElement);
-                if (IsModifierReasonElement != null) yield return new ElementValue("isModifierReason", false, IsModifierReasonElement);
-                if (IsSummaryElement != null) yield return new ElementValue("isSummary", false, IsSummaryElement);
-                if (Binding != null) yield return new ElementValue("binding", false, Binding);
-                foreach (var elem in Mapping) { if (elem != null) yield return new ElementValue("mapping", true, elem); }
+                if (PathElement != null) yield return new ElementValue("path", PathElement);
+                foreach (var elem in RepresentationElement) { if (elem != null) yield return new ElementValue("representation", elem); }
+                if (SliceNameElement != null) yield return new ElementValue("sliceName", SliceNameElement);
+                if (LabelElement != null) yield return new ElementValue("label", LabelElement);
+                foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
+                if (Slicing != null) yield return new ElementValue("slicing", Slicing);
+                if (ShortElement != null) yield return new ElementValue("short", ShortElement);
+                if (Definition != null) yield return new ElementValue("definition", Definition);
+                if (Comment != null) yield return new ElementValue("comment", Comment);
+                if (Requirements != null) yield return new ElementValue("requirements", Requirements);
+                foreach (var elem in AliasElement) { if (elem != null) yield return new ElementValue("alias", elem); }
+                if (MinElement != null) yield return new ElementValue("min", MinElement);
+                if (MaxElement != null) yield return new ElementValue("max", MaxElement);
+                if (Base != null) yield return new ElementValue("base", Base);
+                if (ContentReferenceElement != null) yield return new ElementValue("contentReference", ContentReferenceElement);
+                foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
+                if (DefaultValue != null) yield return new ElementValue("defaultValue", DefaultValue);
+                if (MeaningWhenMissing != null) yield return new ElementValue("meaningWhenMissing", MeaningWhenMissing);
+                if (OrderMeaningElement != null) yield return new ElementValue("orderMeaning", OrderMeaningElement);
+                if (Fixed != null) yield return new ElementValue("fixed", Fixed);
+                if (Pattern != null) yield return new ElementValue("pattern", Pattern);
+                foreach (var elem in Example) { if (elem != null) yield return new ElementValue("example", elem); }
+                if (MinValue != null) yield return new ElementValue("minValue", MinValue);
+                if (MaxValue != null) yield return new ElementValue("maxValue", MaxValue);
+                if (MaxLengthElement != null) yield return new ElementValue("maxLength", MaxLengthElement);
+                foreach (var elem in ConditionElement) { if (elem != null) yield return new ElementValue("condition", elem); }
+                foreach (var elem in Constraint) { if (elem != null) yield return new ElementValue("constraint", elem); }
+                if (MustSupportElement != null) yield return new ElementValue("mustSupport", MustSupportElement);
+                if (IsModifierElement != null) yield return new ElementValue("isModifier", IsModifierElement);
+                if (IsModifierReasonElement != null) yield return new ElementValue("isModifierReason", IsModifierReasonElement);
+                if (IsSummaryElement != null) yield return new ElementValue("isSummary", IsSummaryElement);
+                if (Binding != null) yield return new ElementValue("binding", Binding);
+                foreach (var elem in Mapping) { if (elem != null) yield return new ElementValue("mapping", elem); }
             }
         }
 

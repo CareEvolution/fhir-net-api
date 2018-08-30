@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,133 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "CodeSystem"; } }
 
+        /// <summary>
+        /// The meaning of the hierarchy of concepts in a code system
+        /// (url: http://hl7.org/fhir/ValueSet/codesystem-hierarchy-meaning)
+        /// </summary>
+        [FhirEnumeration("CodeSystemHierarchyMeaning")]
+        public enum CodeSystemHierarchyMeaning
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-hierarchy-meaning)
+            /// </summary>
+            [EnumLiteral("grouped-by", "http://hl7.org/fhir/codesystem-hierarchy-meaning"), Description("Grouped By")]
+            GroupedBy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-hierarchy-meaning)
+            /// </summary>
+            [EnumLiteral("is-a", "http://hl7.org/fhir/codesystem-hierarchy-meaning"), Description("Is-A")]
+            IsA,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-hierarchy-meaning)
+            /// </summary>
+            [EnumLiteral("part-of", "http://hl7.org/fhir/codesystem-hierarchy-meaning"), Description("Part Of")]
+            PartOf,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-hierarchy-meaning)
+            /// </summary>
+            [EnumLiteral("classified-with", "http://hl7.org/fhir/codesystem-hierarchy-meaning"), Description("Classified With")]
+            ClassifiedWith,
+        }
+
+        /// <summary>
+        /// How much of the content of the code system - the concepts and codes it defines - are represented in a code system resource
+        /// (url: http://hl7.org/fhir/ValueSet/codesystem-content-mode)
+        /// </summary>
+        [FhirEnumeration("CodeSystemContentMode")]
+        public enum CodeSystemContentMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-content-mode)
+            /// </summary>
+            [EnumLiteral("not-present", "http://hl7.org/fhir/codesystem-content-mode"), Description("Not Present")]
+            NotPresent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-content-mode)
+            /// </summary>
+            [EnumLiteral("example", "http://hl7.org/fhir/codesystem-content-mode"), Description("Example")]
+            Example,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-content-mode)
+            /// </summary>
+            [EnumLiteral("fragment", "http://hl7.org/fhir/codesystem-content-mode"), Description("Fragment")]
+            Fragment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-content-mode)
+            /// </summary>
+            [EnumLiteral("complete", "http://hl7.org/fhir/codesystem-content-mode"), Description("Complete")]
+            Complete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/codesystem-content-mode)
+            /// </summary>
+            [EnumLiteral("supplement", "http://hl7.org/fhir/codesystem-content-mode"), Description("Supplement")]
+            Supplement,
+        }
+
+        /// <summary>
+        /// The type of a property value
+        /// (url: http://hl7.org/fhir/ValueSet/concept-property-type)
+        /// </summary>
+        [FhirEnumeration("PropertyType")]
+        public enum PropertyType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-property-type)
+            /// </summary>
+            [EnumLiteral("code", "http://hl7.org/fhir/concept-property-type"), Description("code (internal reference)")]
+            Code,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-property-type)
+            /// </summary>
+            [EnumLiteral("Coding", "http://hl7.org/fhir/concept-property-type"), Description("Coding (external reference)")]
+            Coding,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-property-type)
+            /// </summary>
+            [EnumLiteral("string", "http://hl7.org/fhir/concept-property-type"), Description("string")]
+            String,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-property-type)
+            /// </summary>
+            [EnumLiteral("integer", "http://hl7.org/fhir/concept-property-type"), Description("integer")]
+            Integer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-property-type)
+            /// </summary>
+            [EnumLiteral("boolean", "http://hl7.org/fhir/concept-property-type"), Description("boolean")]
+            Boolean,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-property-type)
+            /// </summary>
+            [EnumLiteral("dateTime", "http://hl7.org/fhir/concept-property-type"), Description("dateTime")]
+            DateTime,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-property-type)
+            /// </summary>
+            [EnumLiteral("decimal", "http://hl7.org/fhir/concept-property-type"), Description("decimal")]
+            Decimal,
+        }
+
 
         [FhirType("FilterComponent")]
         [DataContract]
-        public partial class FilterComponent : BackboneElement
+        public partial class FilterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FilterComponent"; } }
@@ -265,10 +389,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    foreach (var elem in OperatorElement) { if (elem != null) yield return new ElementValue("operator", true, elem); }
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    foreach (var elem in OperatorElement) { if (elem != null) yield return new ElementValue("operator", elem); }
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 }
             }
 
@@ -278,7 +402,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PropertyComponent")]
         [DataContract]
-        public partial class PropertyComponent : BackboneElement
+        public partial class PropertyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PropertyComponent"; } }
@@ -483,10 +607,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (UriElement != null) yield return new ElementValue("uri", false, UriElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (UriElement != null) yield return new ElementValue("uri", UriElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
                 }
             }
 
@@ -496,7 +620,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ConceptDefinitionComponent")]
         [DataContract]
-        public partial class ConceptDefinitionComponent : BackboneElement
+        public partial class ConceptDefinitionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConceptDefinitionComponent"; } }
@@ -718,12 +842,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
-                    if (DefinitionElement != null) yield return new ElementValue("definition", false, DefinitionElement);
-                    foreach (var elem in Designation) { if (elem != null) yield return new ElementValue("designation", true, elem); }
-                    foreach (var elem in Property) { if (elem != null) yield return new ElementValue("property", true, elem); }
-                    foreach (var elem in Concept) { if (elem != null) yield return new ElementValue("concept", true, elem); }
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
+                    if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
+                    foreach (var elem in Designation) { if (elem != null) yield return new ElementValue("designation", elem); }
+                    foreach (var elem in Property) { if (elem != null) yield return new ElementValue("property", elem); }
+                    foreach (var elem in Concept) { if (elem != null) yield return new ElementValue("concept", elem); }
                 }
             }
 
@@ -733,7 +857,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DesignationComponent")]
         [DataContract]
-        public partial class DesignationComponent : BackboneElement
+        public partial class DesignationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DesignationComponent"; } }
@@ -882,9 +1006,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (LanguageElement != null) yield return new ElementValue("language", false, LanguageElement);
-                    if (Use != null) yield return new ElementValue("use", false, Use);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
+                    if (LanguageElement != null) yield return new ElementValue("language", LanguageElement);
+                    if (Use != null) yield return new ElementValue("use", Use);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 }
             }
 
@@ -894,7 +1018,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ConceptPropertyComponent")]
         [DataContract]
-        public partial class ConceptPropertyComponent : BackboneElement
+        public partial class ConceptPropertyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConceptPropertyComponent"; } }
@@ -1009,8 +1133,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -1673,7 +1797,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "(concept.code | descendants().concept.code).isDistinct()",
             Key = "csd-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Within a code system definition, all the codes SHALL be unique",
             Xpath = "count(distinct-values(descendant::f:concept/f:code/@value))=count(descendant::f:concept)"
         };
@@ -1842,32 +1966,32 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                if (CaseSensitiveElement != null) yield return new ElementValue("caseSensitive", false, CaseSensitiveElement);
-                if (ValueSetElement != null) yield return new ElementValue("valueSet", false, ValueSetElement);
-                if (HierarchyMeaningElement != null) yield return new ElementValue("hierarchyMeaning", false, HierarchyMeaningElement);
-                if (CompositionalElement != null) yield return new ElementValue("compositional", false, CompositionalElement);
-                if (VersionNeededElement != null) yield return new ElementValue("versionNeeded", false, VersionNeededElement);
-                if (ContentElement != null) yield return new ElementValue("content", false, ContentElement);
-                if (SupplementsElement != null) yield return new ElementValue("supplements", false, SupplementsElement);
-                if (CountElement != null) yield return new ElementValue("count", false, CountElement);
-                foreach (var elem in Filter) { if (elem != null) yield return new ElementValue("filter", true, elem); }
-                foreach (var elem in Property) { if (elem != null) yield return new ElementValue("property", true, elem); }
-                foreach (var elem in Concept) { if (elem != null) yield return new ElementValue("concept", true, elem); }
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (CaseSensitiveElement != null) yield return new ElementValue("caseSensitive", CaseSensitiveElement);
+                if (ValueSetElement != null) yield return new ElementValue("valueSet", ValueSetElement);
+                if (HierarchyMeaningElement != null) yield return new ElementValue("hierarchyMeaning", HierarchyMeaningElement);
+                if (CompositionalElement != null) yield return new ElementValue("compositional", CompositionalElement);
+                if (VersionNeededElement != null) yield return new ElementValue("versionNeeded", VersionNeededElement);
+                if (ContentElement != null) yield return new ElementValue("content", ContentElement);
+                if (SupplementsElement != null) yield return new ElementValue("supplements", SupplementsElement);
+                if (CountElement != null) yield return new ElementValue("count", CountElement);
+                foreach (var elem in Filter) { if (elem != null) yield return new ElementValue("filter", elem); }
+                foreach (var elem in Property) { if (elem != null) yield return new ElementValue("property", elem); }
+                foreach (var elem in Concept) { if (elem != null) yield return new ElementValue("concept", elem); }
             }
         }
 

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -53,6 +54,63 @@ namespace Hl7.Fhir.Model.R4
     {
         [NotMapped]
         public override string TypeName { get { return "RelatedArtifact"; } }
+
+        /// <summary>
+        /// The type of relationship to the related artifact
+        /// (url: http://hl7.org/fhir/ValueSet/related-artifact-type)
+        /// </summary>
+        [FhirEnumeration("RelatedArtifactType")]
+        public enum RelatedArtifactType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("documentation", "http://hl7.org/fhir/related-artifact-type"), Description("Documentation")]
+            Documentation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("justification", "http://hl7.org/fhir/related-artifact-type"), Description("Justification")]
+            Justification,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("citation", "http://hl7.org/fhir/related-artifact-type"), Description("Citation")]
+            Citation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("predecessor", "http://hl7.org/fhir/related-artifact-type"), Description("Predecessor")]
+            Predecessor,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("successor", "http://hl7.org/fhir/related-artifact-type"), Description("Successor")]
+            Successor,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("derived-from", "http://hl7.org/fhir/related-artifact-type"), Description("Derived From")]
+            DerivedFrom,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("depends-on", "http://hl7.org/fhir/related-artifact-type"), Description("Depends On")]
+            DependsOn,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("composed-of", "http://hl7.org/fhir/related-artifact-type"), Description("Composed Of")]
+            ComposedOf,
+        }
 
 
         /// <summary>
@@ -307,12 +365,12 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
-                if (CitationElement != null) yield return new ElementValue("citation", false, CitationElement);
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (Document != null) yield return new ElementValue("document", false, Document);
-                if (ResourceElement != null) yield return new ElementValue("resource", false, ResourceElement);
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
+                if (CitationElement != null) yield return new ElementValue("citation", CitationElement);
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (Document != null) yield return new ElementValue("document", Document);
+                if (ResourceElement != null) yield return new ElementValue("resource", ResourceElement);
             }
         }
 

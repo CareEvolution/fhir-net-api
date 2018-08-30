@@ -8,8 +8,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
+using Hl7.Fhir.Model.R4;
 
 namespace Hl7.Fhir.Validation.R4
 {

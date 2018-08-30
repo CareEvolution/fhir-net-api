@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,91 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Task"; } }
 
+        /// <summary>
+        /// The current status of the task.
+        /// (url: http://hl7.org/fhir/ValueSet/task-status)
+        /// </summary>
+        [FhirEnumeration("TaskStatus")]
+        public enum TaskStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/task-status"), Description("Draft")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("requested", "http://hl7.org/fhir/task-status"), Description("Requested")]
+            Requested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("received", "http://hl7.org/fhir/task-status"), Description("Received")]
+            Received,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("accepted", "http://hl7.org/fhir/task-status"), Description("Accepted")]
+            Accepted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("rejected", "http://hl7.org/fhir/task-status"), Description("Rejected")]
+            Rejected,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("ready", "http://hl7.org/fhir/task-status"), Description("Ready")]
+            Ready,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/task-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/task-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/task-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("failed", "http://hl7.org/fhir/task-status"), Description("Failed")]
+            Failed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/task-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/task-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
+
 
         [FhirType("RestrictionComponent")]
         [DataContract]
-        public partial class RestrictionComponent : BackboneElement
+        public partial class RestrictionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RestrictionComponent"; } }
@@ -190,9 +272,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (RepetitionsElement != null) yield return new ElementValue("repetitions", false, RepetitionsElement);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
-                    foreach (var elem in Recipient) { if (elem != null) yield return new ElementValue("recipient", true, elem); }
+                    if (RepetitionsElement != null) yield return new ElementValue("repetitions", RepetitionsElement);
+                    if (Period != null) yield return new ElementValue("period", Period);
+                    foreach (var elem in Recipient) { if (elem != null) yield return new ElementValue("recipient", elem); }
                 }
             }
 
@@ -202,7 +284,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ParameterComponent")]
         [DataContract]
-        public partial class ParameterComponent : BackboneElement
+        public partial class ParameterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParameterComponent"; } }
@@ -298,8 +380,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -309,7 +391,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OutputComponent")]
         [DataContract]
-        public partial class OutputComponent : BackboneElement
+        public partial class OutputComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OutputComponent"; } }
@@ -405,8 +487,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -913,7 +995,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "lastModified.exists().not() or authoredOn.exists().not() or lastModified >= authoredOn",
             Key = "inv-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Last modified date must be greater than or equal to authored-on date.",
             Xpath = "not(exists(f:lastModified/@value)) or not(exists(f:authoredOn/@value)) or f:lastModified/@value >= f:authoredOn/@value"
         };
@@ -1090,34 +1172,34 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (Instantiates != null) yield return new ElementValue("instantiates", false, Instantiates);
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                if (GroupIdentifier != null) yield return new ElementValue("groupIdentifier", false, GroupIdentifier);
-                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (StatusReason != null) yield return new ElementValue("statusReason", false, StatusReason);
-                if (BusinessStatus != null) yield return new ElementValue("businessStatus", false, BusinessStatus);
-                if (IntentElement != null) yield return new ElementValue("intent", false, IntentElement);
-                if (PriorityElement != null) yield return new ElementValue("priority", false, PriorityElement);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                if (Focus != null) yield return new ElementValue("focus", false, Focus);
-                if (For != null) yield return new ElementValue("for", false, For);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (ExecutionPeriod != null) yield return new ElementValue("executionPeriod", false, ExecutionPeriod);
-                if (AuthoredOnElement != null) yield return new ElementValue("authoredOn", false, AuthoredOnElement);
-                if (LastModifiedElement != null) yield return new ElementValue("lastModified", false, LastModifiedElement);
-                if (Requester != null) yield return new ElementValue("requester", false, Requester);
-                foreach (var elem in PerformerType) { if (elem != null) yield return new ElementValue("performerType", true, elem); }
-                if (Owner != null) yield return new ElementValue("owner", false, Owner);
-                if (ReasonCode != null) yield return new ElementValue("reasonCode", false, ReasonCode);
-                if (ReasonReference != null) yield return new ElementValue("reasonReference", false, ReasonReference);
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in RelevantHistory) { if (elem != null) yield return new ElementValue("relevantHistory", true, elem); }
-                if (Restriction != null) yield return new ElementValue("restriction", false, Restriction);
-                foreach (var elem in Input) { if (elem != null) yield return new ElementValue("input", true, elem); }
-                foreach (var elem in Output) { if (elem != null) yield return new ElementValue("output", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (Instantiates != null) yield return new ElementValue("instantiates", Instantiates);
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                if (GroupIdentifier != null) yield return new ElementValue("groupIdentifier", GroupIdentifier);
+                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (StatusReason != null) yield return new ElementValue("statusReason", StatusReason);
+                if (BusinessStatus != null) yield return new ElementValue("businessStatus", BusinessStatus);
+                if (IntentElement != null) yield return new ElementValue("intent", IntentElement);
+                if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                if (Focus != null) yield return new ElementValue("focus", Focus);
+                if (For != null) yield return new ElementValue("for", For);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (ExecutionPeriod != null) yield return new ElementValue("executionPeriod", ExecutionPeriod);
+                if (AuthoredOnElement != null) yield return new ElementValue("authoredOn", AuthoredOnElement);
+                if (LastModifiedElement != null) yield return new ElementValue("lastModified", LastModifiedElement);
+                if (Requester != null) yield return new ElementValue("requester", Requester);
+                foreach (var elem in PerformerType) { if (elem != null) yield return new ElementValue("performerType", elem); }
+                if (Owner != null) yield return new ElementValue("owner", Owner);
+                if (ReasonCode != null) yield return new ElementValue("reasonCode", ReasonCode);
+                if (ReasonReference != null) yield return new ElementValue("reasonReference", ReasonReference);
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in RelevantHistory) { if (elem != null) yield return new ElementValue("relevantHistory", elem); }
+                if (Restriction != null) yield return new ElementValue("restriction", Restriction);
+                foreach (var elem in Input) { if (elem != null) yield return new ElementValue("input", elem); }
+                foreach (var elem in Output) { if (elem != null) yield return new ElementValue("output", elem); }
             }
         }
 

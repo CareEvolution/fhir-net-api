@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.ElementModel;
 
 namespace Hl7.Fhir.Validation
 {

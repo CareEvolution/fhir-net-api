@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,91 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "StructureDefinition"; } }
 
+        /// <summary>
+        /// Defines the type of structure that a definition is describing.
+        /// (url: http://hl7.org/fhir/ValueSet/structure-definition-kind)
+        /// </summary>
+        [FhirEnumeration("StructureDefinitionKind")]
+        public enum StructureDefinitionKind
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/structure-definition-kind)
+            /// </summary>
+            [EnumLiteral("primitive-type", "http://hl7.org/fhir/structure-definition-kind"), Description("Primitive Data Type")]
+            PrimitiveType,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/structure-definition-kind)
+            /// </summary>
+            [EnumLiteral("complex-type", "http://hl7.org/fhir/structure-definition-kind"), Description("Complex Data Type")]
+            ComplexType,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/structure-definition-kind)
+            /// </summary>
+            [EnumLiteral("resource", "http://hl7.org/fhir/structure-definition-kind"), Description("Resource")]
+            Resource,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/structure-definition-kind)
+            /// </summary>
+            [EnumLiteral("logical", "http://hl7.org/fhir/structure-definition-kind"), Description("Logical Model")]
+            Logical,
+        }
+
+        /// <summary>
+        /// How an extension context is interpreted.
+        /// (url: http://hl7.org/fhir/ValueSet/extension-context-type)
+        /// </summary>
+        [FhirEnumeration("ExtensionContextType")]
+        public enum ExtensionContextType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/extension-context-type)
+            /// </summary>
+            [EnumLiteral("fhirpath", "http://hl7.org/fhir/extension-context-type"), Description("FHIRPath")]
+            Fhirpath,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/extension-context-type)
+            /// </summary>
+            [EnumLiteral("element", "http://hl7.org/fhir/extension-context-type"), Description("Element ID")]
+            Element,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/extension-context-type)
+            /// </summary>
+            [EnumLiteral("extension", "http://hl7.org/fhir/extension-context-type"), Description("Extension URL")]
+            Extension,
+        }
+
+        /// <summary>
+        /// How a type relates to its baseDefinition.
+        /// (url: http://hl7.org/fhir/ValueSet/type-derivation-rule)
+        /// </summary>
+        [FhirEnumeration("TypeDerivationRule")]
+        public enum TypeDerivationRule
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/type-derivation-rule)
+            /// </summary>
+            [EnumLiteral("specialization", "http://hl7.org/fhir/type-derivation-rule"), Description("Specialization")]
+            Specialization,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/type-derivation-rule)
+            /// </summary>
+            [EnumLiteral("constraint", "http://hl7.org/fhir/type-derivation-rule"), Description("Constraint")]
+            Constraint,
+        }
+
 
         [FhirType("MappingComponent")]
         [DataContract]
-        public partial class MappingComponent : BackboneElement
+        public partial class MappingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MappingComponent"; } }
@@ -263,10 +345,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (IdentityElement != null) yield return new ElementValue("identity", false, IdentityElement);
-                    if (UriElement != null) yield return new ElementValue("uri", false, UriElement);
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
+                    if (IdentityElement != null) yield return new ElementValue("identity", IdentityElement);
+                    if (UriElement != null) yield return new ElementValue("uri", UriElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
                 }
             }
 
@@ -276,7 +358,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ContextComponent")]
         [DataContract]
-        public partial class ContextComponent : BackboneElement
+        public partial class ContextComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContextComponent"; } }
@@ -409,8 +491,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
                 }
             }
 
@@ -420,7 +502,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SnapshotComponent")]
         [DataContract]
-        public partial class SnapshotComponent : BackboneElement
+        public partial class SnapshotComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SnapshotComponent"; } }
@@ -497,7 +579,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Element) { if (elem != null) yield return new ElementValue("element", true, elem); }
+                    foreach (var elem in Element) { if (elem != null) yield return new ElementValue("element", elem); }
                 }
             }
 
@@ -507,7 +589,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DifferentialComponent")]
         [DataContract]
-        public partial class DifferentialComponent : BackboneElement
+        public partial class DifferentialComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DifferentialComponent"; } }
@@ -584,7 +666,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Element) { if (elem != null) yield return new ElementValue("element", true, elem); }
+                    foreach (var elem in Element) { if (elem != null) yield return new ElementValue("element", elem); }
                 }
             }
 
@@ -1247,7 +1329,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "children().element.where(path.contains('.').not()).label.empty() and children().element.where(path.contains('.').not()).code.empty() and children().element.where(path.contains('.').not()).requirements.empty()",
             Key = "sdf-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "In any snapshot or differential, no label, code or requirements on an element without a \".\" in the path (e.g. the first element)",
             Xpath = "not(exists(f:snapshot/f:element[not(contains(f:path/@value, '.')) and (f:label or f:code or f:requirements)])) and not(exists(f:differential/f:element[not(contains(f:path/@value, '.')) and (f:label or f:code or f:requirements)]))"
         };
@@ -1256,7 +1338,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "kind = 'logical' or (differential.element.type.code.all(hasValue() implies matches('^[a-zA-Z0-9]+$')) and snapshot.element.type.code.all(hasValue() implies matches('^[a-zA-Z0-9]+$')))",
             Key = "sdf-19",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Custom types can only be used in logical models",
             Xpath = "f:kind/@value = 'logical' or count(f:differential/f:element/f:type/f:code[@value and not(matches(string(@value), '^[a-zA-Z0-9]+$'))]|f:snapshot/f:element/f:type/f:code[@value and not(matches(string(@value), '^[a-zA-Z0-9]+$'))]) =0"
         };
@@ -1265,7 +1347,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "snapshot.element.all(id) and snapshot.element.id.trace('ids').isDistinct()",
             Key = "sdf-16",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "All element definitions must have unique ids (snapshot)",
             Xpath = "count(f:snapshot/f:element)=count(f:snapshot/f:element/@id) and (count(f:snapshot/f:element)=count(distinct-values(f:snapshot/f:element/@id)))"
         };
@@ -1274,7 +1356,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "contextInvariant.exists() implies type = 'Extension'",
             Key = "sdf-18",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Context Invariants can only be used for extensions",
             Xpath = "not(exists(f:contextInvariant)) or (f:type/@value = 'Extension')"
         };
@@ -1283,7 +1365,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "differential.element.all(id) and differential.element.id.trace('ids').isDistinct()",
             Key = "sdf-17",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "All element definitions must have unique ids (diff)",
             Xpath = "count(f:differential/f:element)=count(f:differential/f:element/@id) and (count(f:differential/f:element)=count(distinct-values(f:differential/f:element/@id)))"
         };
@@ -1292,7 +1374,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "snapshot.exists() implies (snapshot.element.base.exists() = baseDefinition.exists())",
             Key = "sdf-12",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "element.base cannot appear if there is no base on the structure definition",
             Xpath = "f:baseDefinition or not(exists(f:snapshot/f:element/f:base) or exists(f:differential/f:element/f:base))"
         };
@@ -1301,7 +1383,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "kind != 'logical' implies snapshot.empty() or snapshot.element.first().path = type",
             Key = "sdf-11",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there's a type, its content must match the path name in the first element of a snapshot",
             Xpath = "(f:kind/@value = 'logical') or not(exists(f:snapshot)) or (f:type/@value = f:snapshot/f:element[1]/f:path/@value)"
         };
@@ -1310,7 +1392,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "snapshot.element.all(id.exists()) and differential.element.all(id.exists())",
             Key = "sdf-14",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "All element definitions must have an id",
             Xpath = "count(*/f:element)=count(*/f:element/@id)"
         };
@@ -1319,7 +1401,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "derivation = 'constraint' or snapshot.element.select(path).isDistinct()",
             Key = "sdf-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Element paths must be unique unless the structure is a constraint",
             Xpath = "(f:derivation/@value = 'constraint') or (count(f:snapshot/f:element) = count(distinct-values(f:snapshot/f:element/f:path/@value)))"
         };
@@ -1328,7 +1410,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "(snapshot.element.defaultValue.exists() or differential.element.defaultValue.exists()) implies ((kind = 'logical') and (derivation = 'specialization'))",
             Key = "sdf-21",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Default values can only be specified on logical models",
             Xpath = "(not(exists(f:snapshot/f:element/*[starts-with(local-name(), 'defaultValue')])) and not(exists(f:differential/f:element/*[starts-with(local-name(), 'defaultValue')]))) or ((f:kind/@value = 'logical') and (f:derivation/@value = 'specialization'))"
         };
@@ -1337,7 +1419,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "(derivation = 'constraint') or (kind = 'logical') or (url = 'http://hl7.org/fhir/StructureDefinition/'+id)",
             Key = "sdf-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the structure describes a base Resource or Type, the URL has to start with \"http://hl7.org/fhir/StructureDefinition/\" and the tail must match the id",
             Xpath = "(f:derivation/@value = 'constraint') or (f:kind/@value = 'logical') or (f:url/@value=concat('http://hl7.org/fhir/StructureDefinition/', f:id/@value))"
         };
@@ -1346,7 +1428,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "snapshot.exists() or differential.exists()",
             Key = "sdf-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A structure must have either a differential, or a snapshot (or both)",
             Xpath = "exists(f:snapshot) or exists(f:differential)"
         };
@@ -1355,7 +1437,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "type != 'Extension' or derivation = 'specialization' or (context.exists())",
             Key = "sdf-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the structure defines an extension then the structure must have context information",
             Xpath = "not(f:type/@value = 'extension') or (f:derivation/@value = 'specialization') or (exists(f:context))"
         };
@@ -1364,7 +1446,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "abstract = true or baseDefinition.exists()",
             Key = "sdf-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the structure is not abstract, then there SHALL be a baseDefinition",
             Xpath = "(f:abstract/@value=true()) or exists(f:baseDefinition)"
         };
@@ -1373,7 +1455,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "mapping.all(name.exists() or uri.exists())",
             Key = "sdf-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have at least a name or a uri (or both)",
             Xpath = "exists(f:uri) or exists(f:name)"
         };
@@ -1382,7 +1464,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "snapshot.all(element.first().type.empty())",
             Key = "sdf-15",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The first element in a snapshot has no type",
             Xpath = "not(f:element[1]/f:type)"
         };
@@ -1391,7 +1473,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "snapshot.all(element.first().path = %resource.type and element.tail().all(path.startsWith(%resource.type&'.')) and element.all(base.exists()))",
             Key = "sdf-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "In any snapshot, all the elements must be in the specified type, and must have a base definition",
             Xpath = "f:element[1]/f:path/@value=parent::f:StructureDefinition/f:type/@value and count(f:element[position()!=1])=count(f:element[position()!=1][starts-with(f:path/@value, concat(ancestor::f:StructureDefinition/f:type/@value, '.'))])"
         };
@@ -1400,7 +1482,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "snapshot.all(element.all(definition.exists() and min.exists() and max.exists()))",
             Key = "sdf-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Each element definition in a snapshot must have a formal definition and cardinalities",
             Xpath = "count(f:element) = count(f:element[exists(f:definition) and exists(f:min) and exists(f:max)])"
         };
@@ -1409,7 +1491,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "snapshot.element.all(binding.empty() or binding.valueSet.exists() or binding.description.exists())",
             Key = "sdf-10",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "provide either a binding reference or a description (or both)",
             Xpath = "not(exists(f:binding)) or (exists(f:binding/f:valueSetUri) or exists(f:binding/f:valueSetReference)) or exists(f:binding/f:description)"
         };
@@ -1418,7 +1500,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "differential.all(element.first().path.contains('.').not() implies element.first().type.empty())",
             Key = "sdf-15a",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the first element in a differential has no \".\" in the path, it has no type",
             Xpath = "not(f:element[1][not(contains(f:path/@value, '.'))]/f:type)"
         };
@@ -1427,7 +1509,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "differential.all(element.where(path.contains('.').not()).slicing.empty())",
             Key = "sdf-20",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "No slicing on the root element",
             Xpath = "not(f:element[1]/f:slicing)"
         };
@@ -1436,7 +1518,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "differential.all(element.first().path.startsWith(%resource.type) and element.tail().all(path.startsWith(%resource.type&'.')))",
             Key = "sdf-8a",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "In any differential, all the elements must be in the specified type",
             Xpath = "count(f:element)=count(f:element[f:path/@value=ancestor::f:StructureDefinition/f:type/@value or starts-with(f:path/@value, concat(ancestor::f:StructureDefinition/f:type/@value, '.'))])"
         };
@@ -1630,33 +1712,33 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                foreach (var elem in Keyword) { if (elem != null) yield return new ElementValue("keyword", true, elem); }
-                if (FhirVersionElement != null) yield return new ElementValue("fhirVersion", false, FhirVersionElement);
-                foreach (var elem in Mapping) { if (elem != null) yield return new ElementValue("mapping", true, elem); }
-                if (KindElement != null) yield return new ElementValue("kind", false, KindElement);
-                if (AbstractElement != null) yield return new ElementValue("abstract", false, AbstractElement);
-                foreach (var elem in Context) { if (elem != null) yield return new ElementValue("context", true, elem); }
-                foreach (var elem in ContextInvariantElement) { if (elem != null) yield return new ElementValue("contextInvariant", true, elem); }
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (BaseDefinitionElement != null) yield return new ElementValue("baseDefinition", false, BaseDefinitionElement);
-                if (DerivationElement != null) yield return new ElementValue("derivation", false, DerivationElement);
-                if (Snapshot != null) yield return new ElementValue("snapshot", false, Snapshot);
-                if (Differential != null) yield return new ElementValue("differential", false, Differential);
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                foreach (var elem in Keyword) { if (elem != null) yield return new ElementValue("keyword", elem); }
+                if (FhirVersionElement != null) yield return new ElementValue("fhirVersion", FhirVersionElement);
+                foreach (var elem in Mapping) { if (elem != null) yield return new ElementValue("mapping", elem); }
+                if (KindElement != null) yield return new ElementValue("kind", KindElement);
+                if (AbstractElement != null) yield return new ElementValue("abstract", AbstractElement);
+                foreach (var elem in Context) { if (elem != null) yield return new ElementValue("context", elem); }
+                foreach (var elem in ContextInvariantElement) { if (elem != null) yield return new ElementValue("contextInvariant", elem); }
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (BaseDefinitionElement != null) yield return new ElementValue("baseDefinition", BaseDefinitionElement);
+                if (DerivationElement != null) yield return new ElementValue("derivation", DerivationElement);
+                if (Snapshot != null) yield return new ElementValue("snapshot", Snapshot);
+                if (Differential != null) yield return new ElementValue("differential", Differential);
             }
         }
 

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,142 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Contract"; } }
 
+        /// <summary>
+        /// This value set contract specific codes for status.
+        /// (url: http://hl7.org/fhir/ValueSet/contract-status)
+        /// </summary>
+        [FhirEnumeration("ContractResourceStatusCodes")]
+        public enum ContractResourceStatusCodes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("amended", "http://hl7.org/fhir/contract-status"), Description("Amended")]
+            Amended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("appended", "http://hl7.org/fhir/contract-status"), Description("Appended")]
+            Appended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/contract-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("disputed", "http://hl7.org/fhir/contract-status"), Description("Disputed")]
+            Disputed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/contract-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("executable", "http://hl7.org/fhir/contract-status"), Description("Executable")]
+            Executable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("executed", "http://hl7.org/fhir/contract-status"), Description("Executed")]
+            Executed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("negotiable", "http://hl7.org/fhir/contract-status"), Description("Negotiable")]
+            Negotiable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("offered", "http://hl7.org/fhir/contract-status"), Description("Offered")]
+            Offered,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("policy", "http://hl7.org/fhir/contract-status"), Description("Policy")]
+            Policy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("rejected", "http://hl7.org/fhir/contract-status"), Description("Rejected")]
+            Rejected,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("renewed", "http://hl7.org/fhir/contract-status"), Description("Renewed")]
+            Renewed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("revoked", "http://hl7.org/fhir/contract-status"), Description("Revoked")]
+            Revoked,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("resolved", "http://hl7.org/fhir/contract-status"), Description("Resolved")]
+            Resolved,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("terminated", "http://hl7.org/fhir/contract-status"), Description("Terminated")]
+            Terminated,
+        }
+
+        /// <summary>
+        /// How a resource reference is interpreted when evaluating contract offers
+        /// (url: http://hl7.org/fhir/ValueSet/contract-data-meaning)
+        /// </summary>
+        [FhirEnumeration("ContractDataMeaning")]
+        public enum ContractDataMeaning
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-data-meaning)
+            /// </summary>
+            [EnumLiteral("instance", "http://hl7.org/fhir/contract-data-meaning"), Description("Instance")]
+            Instance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-data-meaning)
+            /// </summary>
+            [EnumLiteral("related", "http://hl7.org/fhir/contract-data-meaning"), Description("Related")]
+            Related,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-data-meaning)
+            /// </summary>
+            [EnumLiteral("dependents", "http://hl7.org/fhir/contract-data-meaning"), Description("Dependents")]
+            Dependents,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-data-meaning)
+            /// </summary>
+            [EnumLiteral("authoredby", "http://hl7.org/fhir/contract-data-meaning"), Description("AuthoredBy")]
+            Authoredby,
+        }
+
 
         [FhirType("TermComponent")]
         [DataContract]
-        public partial class TermComponent : BackboneElement
+        public partial class TermComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TermComponent"; } }
@@ -330,17 +463,17 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (IssuedElement != null) yield return new ElementValue("issued", false, IssuedElement);
-                    if (Applies != null) yield return new ElementValue("applies", false, Applies);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (SubType != null) yield return new ElementValue("subType", false, SubType);
-                    if (Offer != null) yield return new ElementValue("offer", false, Offer);
-                    foreach (var elem in Asset) { if (elem != null) yield return new ElementValue("asset", true, elem); }
-                    foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", true, elem); }
-                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
-                    foreach (var elem in ActionReason) { if (elem != null) yield return new ElementValue("actionReason", true, elem); }
-                    foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", true, elem); }
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (IssuedElement != null) yield return new ElementValue("issued", IssuedElement);
+                    if (Applies != null) yield return new ElementValue("applies", Applies);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (SubType != null) yield return new ElementValue("subType", SubType);
+                    if (Offer != null) yield return new ElementValue("offer", Offer);
+                    foreach (var elem in Asset) { if (elem != null) yield return new ElementValue("asset", elem); }
+                    foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", elem); }
+                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
+                    foreach (var elem in ActionReason) { if (elem != null) yield return new ElementValue("actionReason", elem); }
+                    foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", elem); }
                 }
             }
 
@@ -350,7 +483,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ContractOfferComponent")]
         [DataContract]
-        public partial class ContractOfferComponent : BackboneElement
+        public partial class ContractOfferComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContractOfferComponent"; } }
@@ -532,11 +665,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Topic != null) yield return new ElementValue("topic", false, Topic);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Decision != null) yield return new ElementValue("decision", false, Decision);
-                    if (TextElement != null) yield return new ElementValue("text", false, TextElement);
-                    if (LinkIdElement != null) yield return new ElementValue("linkId", false, LinkIdElement);
+                    if (Topic != null) yield return new ElementValue("topic", Topic);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Decision != null) yield return new ElementValue("decision", Decision);
+                    if (TextElement != null) yield return new ElementValue("text", TextElement);
+                    if (LinkIdElement != null) yield return new ElementValue("linkId", LinkIdElement);
                 }
             }
 
@@ -546,7 +679,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ContractAssetComponent")]
         [DataContract]
-        public partial class ContractAssetComponent : BackboneElement
+        public partial class ContractAssetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContractAssetComponent"; } }
@@ -727,13 +860,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Class != null) yield return new ElementValue("class", false, Class);
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
-                    if (DataPeriod != null) yield return new ElementValue("dataPeriod", false, DataPeriod);
-                    foreach (var elem in Data) { if (elem != null) yield return new ElementValue("data", true, elem); }
-                    foreach (var elem in ValuedItem) { if (elem != null) yield return new ElementValue("valuedItem", true, elem); }
-                    foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", true, elem); }
+                    if (Class != null) yield return new ElementValue("class", Class);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Period != null) yield return new ElementValue("period", Period);
+                    if (DataPeriod != null) yield return new ElementValue("dataPeriod", DataPeriod);
+                    foreach (var elem in Data) { if (elem != null) yield return new ElementValue("data", elem); }
+                    foreach (var elem in ValuedItem) { if (elem != null) yield return new ElementValue("valuedItem", elem); }
+                    foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", elem); }
                 }
             }
 
@@ -743,7 +876,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AssetDataComponent")]
         [DataContract]
-        public partial class AssetDataComponent : BackboneElement
+        public partial class AssetDataComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AssetDataComponent"; } }
@@ -855,8 +988,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (MeaningElement != null) yield return new ElementValue("meaning", false, MeaningElement);
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
+                    if (MeaningElement != null) yield return new ElementValue("meaning", MeaningElement);
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
                 }
             }
 
@@ -866,7 +999,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ValuedItemComponent")]
         [DataContract]
-        public partial class ValuedItemComponent : BackboneElement
+        public partial class ValuedItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ValuedItemComponent"; } }
@@ -1119,14 +1252,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Entity != null) yield return new ElementValue("entity", false, Entity);
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (EffectiveTimeElement != null) yield return new ElementValue("effectiveTime", false, EffectiveTimeElement);
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    if (UnitPrice != null) yield return new ElementValue("unitPrice", false, UnitPrice);
-                    if (FactorElement != null) yield return new ElementValue("factor", false, FactorElement);
-                    if (PointsElement != null) yield return new ElementValue("points", false, PointsElement);
-                    if (Net != null) yield return new ElementValue("net", false, Net);
+                    if (Entity != null) yield return new ElementValue("entity", Entity);
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (EffectiveTimeElement != null) yield return new ElementValue("effectiveTime", EffectiveTimeElement);
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    if (UnitPrice != null) yield return new ElementValue("unitPrice", UnitPrice);
+                    if (FactorElement != null) yield return new ElementValue("factor", FactorElement);
+                    if (PointsElement != null) yield return new ElementValue("points", PointsElement);
+                    if (Net != null) yield return new ElementValue("net", Net);
                 }
             }
 
@@ -1136,7 +1269,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AgentComponent")]
         [DataContract]
-        public partial class AgentComponent : BackboneElement
+        public partial class AgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AgentComponent"; } }
@@ -1232,8 +1365,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Actor != null) yield return new ElementValue("actor", false, Actor);
-                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", true, elem); }
+                    if (Actor != null) yield return new ElementValue("actor", Actor);
+                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", elem); }
                 }
             }
 
@@ -1243,7 +1376,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SignatoryComponent")]
         [DataContract]
-        public partial class SignatoryComponent : BackboneElement
+        public partial class SignatoryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SignatoryComponent"; } }
@@ -1357,9 +1490,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Party != null) yield return new ElementValue("party", false, Party);
-                    foreach (var elem in Signature) { if (elem != null) yield return new ElementValue("signature", true, elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Party != null) yield return new ElementValue("party", Party);
+                    foreach (var elem in Signature) { if (elem != null) yield return new ElementValue("signature", elem); }
                 }
             }
 
@@ -1369,7 +1502,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("FriendlyLanguageComponent")]
         [DataContract]
-        public partial class FriendlyLanguageComponent : BackboneElement
+        public partial class FriendlyLanguageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FriendlyLanguageComponent"; } }
@@ -1447,7 +1580,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Content != null) yield return new ElementValue("content", false, Content);
+                    if (Content != null) yield return new ElementValue("content", Content);
                 }
             }
 
@@ -1457,7 +1590,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("LegalLanguageComponent")]
         [DataContract]
-        public partial class LegalLanguageComponent : BackboneElement
+        public partial class LegalLanguageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LegalLanguageComponent"; } }
@@ -1535,7 +1668,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Content != null) yield return new ElementValue("content", false, Content);
+                    if (Content != null) yield return new ElementValue("content", Content);
                 }
             }
 
@@ -1545,7 +1678,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ComputableLanguageComponent")]
         [DataContract]
-        public partial class ComputableLanguageComponent : BackboneElement
+        public partial class ComputableLanguageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ComputableLanguageComponent"; } }
@@ -1623,7 +1756,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Content != null) yield return new ElementValue("content", false, Content);
+                    if (Content != null) yield return new ElementValue("content", Content);
                 }
             }
 
@@ -2007,22 +2140,22 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ContentDerivative != null) yield return new ElementValue("contentDerivative", false, ContentDerivative);
-                if (IssuedElement != null) yield return new ElementValue("issued", false, IssuedElement);
-                if (Applies != null) yield return new ElementValue("applies", false, Applies);
-                foreach (var elem in Subject) { if (elem != null) yield return new ElementValue("subject", true, elem); }
-                foreach (var elem in Authority) { if (elem != null) yield return new ElementValue("authority", true, elem); }
-                foreach (var elem in Domain) { if (elem != null) yield return new ElementValue("domain", true, elem); }
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                foreach (var elem in SubType) { if (elem != null) yield return new ElementValue("subType", true, elem); }
-                foreach (var elem in Term) { if (elem != null) yield return new ElementValue("term", true, elem); }
-                foreach (var elem in Signer) { if (elem != null) yield return new ElementValue("signer", true, elem); }
-                foreach (var elem in Friendly) { if (elem != null) yield return new ElementValue("friendly", true, elem); }
-                foreach (var elem in Legal) { if (elem != null) yield return new ElementValue("legal", true, elem); }
-                if (Rule != null) yield return new ElementValue("rule", false, Rule);
-                if (LegallyBinding != null) yield return new ElementValue("legallyBinding", false, LegallyBinding);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ContentDerivative != null) yield return new ElementValue("contentDerivative", ContentDerivative);
+                if (IssuedElement != null) yield return new ElementValue("issued", IssuedElement);
+                if (Applies != null) yield return new ElementValue("applies", Applies);
+                foreach (var elem in Subject) { if (elem != null) yield return new ElementValue("subject", elem); }
+                foreach (var elem in Authority) { if (elem != null) yield return new ElementValue("authority", elem); }
+                foreach (var elem in Domain) { if (elem != null) yield return new ElementValue("domain", elem); }
+                if (Type != null) yield return new ElementValue("type", Type);
+                foreach (var elem in SubType) { if (elem != null) yield return new ElementValue("subType", elem); }
+                foreach (var elem in Term) { if (elem != null) yield return new ElementValue("term", elem); }
+                foreach (var elem in Signer) { if (elem != null) yield return new ElementValue("signer", elem); }
+                foreach (var elem in Friendly) { if (elem != null) yield return new ElementValue("friendly", elem); }
+                foreach (var elem in Legal) { if (elem != null) yield return new ElementValue("legal", elem); }
+                if (Rule != null) yield return new ElementValue("rule", Rule);
+                if (LegallyBinding != null) yield return new ElementValue("legallyBinding", LegallyBinding);
             }
         }
 

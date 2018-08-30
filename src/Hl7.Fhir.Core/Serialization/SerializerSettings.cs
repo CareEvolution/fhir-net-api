@@ -7,7 +7,7 @@
  */
 
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     public class SerializerSettings
     {

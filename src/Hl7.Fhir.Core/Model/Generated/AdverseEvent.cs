@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,31 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "AdverseEvent"; } }
 
+        /// <summary>
+        /// Overall nature of the event, e.g. real or potential
+        /// (url: http://hl7.org/fhir/ValueSet/adverse-event-actuality)
+        /// </summary>
+        [FhirEnumeration("AdverseEventActuality")]
+        public enum AdverseEventActuality
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/adverse-event-actuality)
+            /// </summary>
+            [EnumLiteral("actual", "http://hl7.org/fhir/adverse-event-actuality"), Description("Adverse Event")]
+            Actual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/adverse-event-actuality)
+            /// </summary>
+            [EnumLiteral("potential", "http://hl7.org/fhir/adverse-event-actuality"), Description("Potential Adverse Event")]
+            Potential,
+        }
+
 
         [FhirType("SuspectEntityComponent")]
         [DataContract]
-        public partial class SuspectEntityComponent : BackboneElement
+        public partial class SuspectEntityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SuspectEntityComponent"; } }
@@ -155,8 +177,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Instance != null) yield return new ElementValue("instance", false, Instance);
-                    foreach (var elem in Causality) { if (elem != null) yield return new ElementValue("causality", true, elem); }
+                    if (Instance != null) yield return new ElementValue("instance", Instance);
+                    foreach (var elem in Causality) { if (elem != null) yield return new ElementValue("causality", elem); }
                 }
             }
 
@@ -166,7 +188,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("CausalityComponent")]
         [DataContract]
-        public partial class CausalityComponent : BackboneElement
+        public partial class CausalityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CausalityComponent"; } }
@@ -313,10 +335,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Assessment != null) yield return new ElementValue("assessment", false, Assessment);
-                    if (ProductRelatednessElement != null) yield return new ElementValue("productRelatedness", false, ProductRelatednessElement);
-                    if (Author != null) yield return new ElementValue("author", false, Author);
-                    if (Method != null) yield return new ElementValue("method", false, Method);
+                    if (Assessment != null) yield return new ElementValue("assessment", Assessment);
+                    if (ProductRelatednessElement != null) yield return new ElementValue("productRelatedness", ProductRelatednessElement);
+                    if (Author != null) yield return new ElementValue("author", Author);
+                    if (Method != null) yield return new ElementValue("method", Method);
                 }
             }
 
@@ -740,24 +762,24 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (ActualityElement != null) yield return new ElementValue("actuality", false, ActualityElement);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (Event != null) yield return new ElementValue("event", false, Event);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                foreach (var elem in ResultingCondition) { if (elem != null) yield return new ElementValue("resultingCondition", true, elem); }
-                if (Location != null) yield return new ElementValue("location", false, Location);
-                if (Seriousness != null) yield return new ElementValue("seriousness", false, Seriousness);
-                if (Severity != null) yield return new ElementValue("severity", false, Severity);
-                if (Outcome != null) yield return new ElementValue("outcome", false, Outcome);
-                if (Recorder != null) yield return new ElementValue("recorder", false, Recorder);
-                foreach (var elem in Contributor) { if (elem != null) yield return new ElementValue("contributor", true, elem); }
-                foreach (var elem in SuspectEntity) { if (elem != null) yield return new ElementValue("suspectEntity", true, elem); }
-                foreach (var elem in SubjectMedicalHistory) { if (elem != null) yield return new ElementValue("subjectMedicalHistory", true, elem); }
-                foreach (var elem in ReferenceDocument) { if (elem != null) yield return new ElementValue("referenceDocument", true, elem); }
-                foreach (var elem in Study) { if (elem != null) yield return new ElementValue("study", true, elem); }
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (ActualityElement != null) yield return new ElementValue("actuality", ActualityElement);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (Event != null) yield return new ElementValue("event", Event);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                foreach (var elem in ResultingCondition) { if (elem != null) yield return new ElementValue("resultingCondition", elem); }
+                if (Location != null) yield return new ElementValue("location", Location);
+                if (Seriousness != null) yield return new ElementValue("seriousness", Seriousness);
+                if (Severity != null) yield return new ElementValue("severity", Severity);
+                if (Outcome != null) yield return new ElementValue("outcome", Outcome);
+                if (Recorder != null) yield return new ElementValue("recorder", Recorder);
+                foreach (var elem in Contributor) { if (elem != null) yield return new ElementValue("contributor", elem); }
+                foreach (var elem in SuspectEntity) { if (elem != null) yield return new ElementValue("suspectEntity", elem); }
+                foreach (var elem in SubjectMedicalHistory) { if (elem != null) yield return new ElementValue("subjectMedicalHistory", elem); }
+                foreach (var elem in ReferenceDocument) { if (elem != null) yield return new ElementValue("referenceDocument", elem); }
+                foreach (var elem in Study) { if (elem != null) yield return new ElementValue("study", elem); }
             }
         }
 

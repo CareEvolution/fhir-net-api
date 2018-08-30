@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RelatedEntryComponent")]
         [DataContract]
-        public partial class RelatedEntryComponent : BackboneElement
+        public partial class RelatedEntryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatedEntryComponent"; } }
@@ -155,8 +156,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Relationtype != null) yield return new ElementValue("relationtype", false, Relationtype);
-                    if (Item != null) yield return new ElementValue("item", false, Item);
+                    if (Relationtype != null) yield return new ElementValue("relationtype", Relationtype);
+                    if (Item != null) yield return new ElementValue("item", Item);
                 }
             }
 
@@ -449,18 +450,18 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (ReferencedItem != null) yield return new ElementValue("referencedItem", false, ReferencedItem);
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                foreach (var elem in AdditionalIdentifier) { if (elem != null) yield return new ElementValue("additionalIdentifier", true, elem); }
-                foreach (var elem in Classification) { if (elem != null) yield return new ElementValue("classification", true, elem); }
-                if (Status != null) yield return new ElementValue("status", false, Status);
-                if (ValidityPeriod != null) yield return new ElementValue("validityPeriod", false, ValidityPeriod);
-                if (LastUpdatedElement != null) yield return new ElementValue("lastUpdated", false, LastUpdatedElement);
-                foreach (var elem in AdditionalCharacteristic) { if (elem != null) yield return new ElementValue("additionalCharacteristic", true, elem); }
-                foreach (var elem in AdditionalClassification) { if (elem != null) yield return new ElementValue("additionalClassification", true, elem); }
-                foreach (var elem in RelatedEntry) { if (elem != null) yield return new ElementValue("relatedEntry", true, elem); }
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (ReferencedItem != null) yield return new ElementValue("referencedItem", ReferencedItem);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                foreach (var elem in AdditionalIdentifier) { if (elem != null) yield return new ElementValue("additionalIdentifier", elem); }
+                foreach (var elem in Classification) { if (elem != null) yield return new ElementValue("classification", elem); }
+                if (Status != null) yield return new ElementValue("status", Status);
+                if (ValidityPeriod != null) yield return new ElementValue("validityPeriod", ValidityPeriod);
+                if (LastUpdatedElement != null) yield return new ElementValue("lastUpdated", LastUpdatedElement);
+                foreach (var elem in AdditionalCharacteristic) { if (elem != null) yield return new ElementValue("additionalCharacteristic", elem); }
+                foreach (var elem in AdditionalClassification) { if (elem != null) yield return new ElementValue("additionalClassification", elem); }
+                foreach (var elem in RelatedEntry) { if (elem != null) yield return new ElementValue("relatedEntry", elem); }
             }
         }
 

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,79 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "DiagnosticReport"; } }
 
+        /// <summary>
+        /// The status of the diagnostic report.
+        /// (url: http://hl7.org/fhir/ValueSet/diagnostic-report-status)
+        /// </summary>
+        [FhirEnumeration("DiagnosticReportStatus")]
+        public enum DiagnosticReportStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("registered", "http://hl7.org/fhir/diagnostic-report-status"), Description("Registered")]
+            Registered,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("partial", "http://hl7.org/fhir/diagnostic-report-status"), Description("Partial")]
+            Partial,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("preliminary", "http://hl7.org/fhir/diagnostic-report-status"), Description("Preliminary")]
+            Preliminary,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("final", "http://hl7.org/fhir/diagnostic-report-status"), Description("Final")]
+            Final,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("amended", "http://hl7.org/fhir/diagnostic-report-status"), Description("Amended")]
+            Amended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("corrected", "http://hl7.org/fhir/diagnostic-report-status"), Description("Corrected")]
+            Corrected,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("appended", "http://hl7.org/fhir/diagnostic-report-status"), Description("Appended")]
+            Appended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/diagnostic-report-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/diagnostic-report-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/diagnostic-report-status"), Description("Unknown")]
+            Unknown,
+        }
+
 
         [FhirType("MediaComponent")]
         [DataContract]
-        public partial class MediaComponent : BackboneElement
+        public partial class MediaComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MediaComponent"; } }
@@ -173,8 +243,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
-                    if (Link != null) yield return new ElementValue("link", false, Link);
+                    if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                    if (Link != null) yield return new ElementValue("link", Link);
                 }
             }
 
@@ -620,24 +690,24 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Category != null) yield return new ElementValue("category", false, Category);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Effective != null) yield return new ElementValue("effective", false, Effective);
-                if (IssuedElement != null) yield return new ElementValue("issued", false, IssuedElement);
-                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", true, elem); }
-                foreach (var elem in ResultsInterpreter) { if (elem != null) yield return new ElementValue("resultsInterpreter", true, elem); }
-                foreach (var elem in Specimen) { if (elem != null) yield return new ElementValue("specimen", true, elem); }
-                foreach (var elem in Result) { if (elem != null) yield return new ElementValue("result", true, elem); }
-                foreach (var elem in ImagingStudy) { if (elem != null) yield return new ElementValue("imagingStudy", true, elem); }
-                foreach (var elem in Media) { if (elem != null) yield return new ElementValue("media", true, elem); }
-                if (ConclusionElement != null) yield return new ElementValue("conclusion", false, ConclusionElement);
-                foreach (var elem in CodedDiagnosis) { if (elem != null) yield return new ElementValue("codedDiagnosis", true, elem); }
-                foreach (var elem in PresentedForm) { if (elem != null) yield return new ElementValue("presentedForm", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Category != null) yield return new ElementValue("category", Category);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Effective != null) yield return new ElementValue("effective", Effective);
+                if (IssuedElement != null) yield return new ElementValue("issued", IssuedElement);
+                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", elem); }
+                foreach (var elem in ResultsInterpreter) { if (elem != null) yield return new ElementValue("resultsInterpreter", elem); }
+                foreach (var elem in Specimen) { if (elem != null) yield return new ElementValue("specimen", elem); }
+                foreach (var elem in Result) { if (elem != null) yield return new ElementValue("result", elem); }
+                foreach (var elem in ImagingStudy) { if (elem != null) yield return new ElementValue("imagingStudy", elem); }
+                foreach (var elem in Media) { if (elem != null) yield return new ElementValue("media", elem); }
+                if (ConclusionElement != null) yield return new ElementValue("conclusion", ConclusionElement);
+                foreach (var elem in CodedDiagnosis) { if (elem != null) yield return new ElementValue("codedDiagnosis", elem); }
+                foreach (var elem in PresentedForm) { if (elem != null) yield return new ElementValue("presentedForm", elem); }
             }
         }
 

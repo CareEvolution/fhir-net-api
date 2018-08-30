@@ -6,14 +6,16 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
 using System;
 using System.Reflection;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.R4
 {
     public class BaseFhirParser
     {

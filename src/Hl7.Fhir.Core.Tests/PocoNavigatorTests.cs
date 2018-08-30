@@ -16,6 +16,7 @@ using System.IO;
 using Hl7.Fhir.FhirPath.R4;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.Specification;
 
 namespace Hl7.Fhir
 {
@@ -48,7 +49,7 @@ namespace Hl7.Fhir
             p.ActiveElement.AddExtension("http://something.org", new FhirBoolean(false));
             p.ActiveElement.AddExtension("http://something.org", new Integer(314));
             p.Telecom = new List<ContactPoint>();
-            p.Telecom.Add(new ContactPoint(ContactPointSystem.Phone, null, "555-phone"));
+            p.Telecom.Add(new ContactPoint(ContactPoint.ContactPointSystem.Phone, null, "555-phone"));
             p.Telecom[0].Rank = 1;
 
             foreach (var item in p.Select("descendants().shortpathname()"))

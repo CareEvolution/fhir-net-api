@@ -19,7 +19,7 @@ namespace Hl7.Fhir.Rest.R4
         {
             if (bundle == null) throw Error.ArgumentNull(nameof(bundle));
 
-            if (bundle.Type != BundleType.Searchset)
+            if (bundle.Type != Bundle.BundleType.Searchset)
                 throw Error.Argument("Refresh is only applicable to bundles of type 'searchset'");
 
             // Clone old bundle, without the entries (so, just the header)

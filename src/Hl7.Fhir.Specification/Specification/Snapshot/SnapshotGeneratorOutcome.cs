@@ -17,6 +17,7 @@ using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.Utility;
 using System.Diagnostics;
 using System.Collections.Generic;
+using Hl7.Fhir.ElementModel;
 
 #pragma warning disable 1591 // suppress XML summary warnings
 

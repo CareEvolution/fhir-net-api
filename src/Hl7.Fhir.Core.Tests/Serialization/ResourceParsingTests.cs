@@ -13,6 +13,7 @@ using System.IO;
 using Hl7.Fhir.Model.R4;
 using System.Diagnostics;
 using System.Collections.Generic;
+using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Tests.Serialization
 {

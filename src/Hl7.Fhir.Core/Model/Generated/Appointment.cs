@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,100 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Appointment"; } }
 
+        /// <summary>
+        /// The free/busy status of an appointment.
+        /// (url: http://hl7.org/fhir/ValueSet/appointmentstatus)
+        /// </summary>
+        [FhirEnumeration("AppointmentStatus")]
+        public enum AppointmentStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/appointmentstatus"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("pending", "http://hl7.org/fhir/appointmentstatus"), Description("Pending")]
+            Pending,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("booked", "http://hl7.org/fhir/appointmentstatus"), Description("Booked")]
+            Booked,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("arrived", "http://hl7.org/fhir/appointmentstatus"), Description("Arrived")]
+            Arrived,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("fulfilled", "http://hl7.org/fhir/appointmentstatus"), Description("Fulfilled")]
+            Fulfilled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/appointmentstatus"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("noshow", "http://hl7.org/fhir/appointmentstatus"), Description("No Show")]
+            Noshow,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/appointmentstatus"), Description("Entered in error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("checked-in", "http://hl7.org/fhir/appointmentstatus"), Description("Checked In")]
+            CheckedIn,
+        }
+
+        /// <summary>
+        /// Is the Participant required to attend the appointment.
+        /// (url: http://hl7.org/fhir/ValueSet/participantrequired)
+        /// </summary>
+        [FhirEnumeration("ParticipantRequired")]
+        public enum ParticipantRequired
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/participantrequired)
+            /// </summary>
+            [EnumLiteral("required", "http://hl7.org/fhir/participantrequired"), Description("Required")]
+            Required,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/participantrequired)
+            /// </summary>
+            [EnumLiteral("optional", "http://hl7.org/fhir/participantrequired"), Description("Optional")]
+            Optional,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/participantrequired)
+            /// </summary>
+            [EnumLiteral("information-only", "http://hl7.org/fhir/participantrequired"), Description("Information Only")]
+            InformationOnly,
+        }
+
 
         [FhirType("ParticipantComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class ParticipantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParticipantComponent"; } }
@@ -244,11 +335,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
-                    if (Actor != null) yield return new ElementValue("actor", false, Actor);
-                    if (RequiredElement != null) yield return new ElementValue("required", false, RequiredElement);
-                    if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
+                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
+                    if (Actor != null) yield return new ElementValue("actor", Actor);
+                    if (RequiredElement != null) yield return new ElementValue("required", RequiredElement);
+                    if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                    if (Period != null) yield return new ElementValue("period", Period);
                 }
             }
 
@@ -720,7 +811,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "(start.exists() and end.exists()) or (status in ('proposed' | 'cancelled'))",
             Key = "app-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Only proposed or cancelled appointments can be missing start/end dates",
             Xpath = "((exists(f:start) and exists(f:end)) or (f:status/@value='proposed') or (f:status/@value='cancelled'))"
         };
@@ -729,7 +820,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "start.empty() xor end.exists()",
             Key = "app-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either start and end are specified, or neither",
             Xpath = "((exists(f:start) and exists(f:end)) or (not(exists(f:start)) and not(exists(f:end))))"
         };
@@ -738,7 +829,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "participant.all(type.exists() or actor.exists())",
             Key = "app-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either the type or actor on the participant SHALL be specified",
             Xpath = "(exists(f:type) or exists(f:actor))"
         };
@@ -889,27 +980,27 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in ServiceCategory) { if (elem != null) yield return new ElementValue("serviceCategory", true, elem); }
-                foreach (var elem in ServiceType) { if (elem != null) yield return new ElementValue("serviceType", true, elem); }
-                foreach (var elem in Specialty) { if (elem != null) yield return new ElementValue("specialty", true, elem); }
-                if (AppointmentType != null) yield return new ElementValue("appointmentType", false, AppointmentType);
-                foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", true, elem); }
-                foreach (var elem in Indication) { if (elem != null) yield return new ElementValue("indication", true, elem); }
-                if (PriorityElement != null) yield return new ElementValue("priority", false, PriorityElement);
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", true, elem); }
-                if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                if (EndElement != null) yield return new ElementValue("end", false, EndElement);
-                if (MinutesDurationElement != null) yield return new ElementValue("minutesDuration", false, MinutesDurationElement);
-                foreach (var elem in Slot) { if (elem != null) yield return new ElementValue("slot", true, elem); }
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
-                if (PatientInstructionElement != null) yield return new ElementValue("patientInstruction", false, PatientInstructionElement);
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", true, elem); }
-                foreach (var elem in RequestedPeriod) { if (elem != null) yield return new ElementValue("requestedPeriod", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                foreach (var elem in ServiceCategory) { if (elem != null) yield return new ElementValue("serviceCategory", elem); }
+                foreach (var elem in ServiceType) { if (elem != null) yield return new ElementValue("serviceType", elem); }
+                foreach (var elem in Specialty) { if (elem != null) yield return new ElementValue("specialty", elem); }
+                if (AppointmentType != null) yield return new ElementValue("appointmentType", AppointmentType);
+                foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", elem); }
+                foreach (var elem in Indication) { if (elem != null) yield return new ElementValue("indication", elem); }
+                if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", elem); }
+                if (StartElement != null) yield return new ElementValue("start", StartElement);
+                if (EndElement != null) yield return new ElementValue("end", EndElement);
+                if (MinutesDurationElement != null) yield return new ElementValue("minutesDuration", MinutesDurationElement);
+                foreach (var elem in Slot) { if (elem != null) yield return new ElementValue("slot", elem); }
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                if (PatientInstructionElement != null) yield return new ElementValue("patientInstruction", PatientInstructionElement);
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", elem); }
+                foreach (var elem in RequestedPeriod) { if (elem != null) yield return new ElementValue("requestedPeriod", elem); }
             }
         }
 

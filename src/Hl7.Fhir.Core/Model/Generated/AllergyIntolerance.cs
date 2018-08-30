@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,178 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "AllergyIntolerance"; } }
 
+        /// <summary>
+        /// The clinical status of the allergy or intolerance.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-clinical-status)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceClinicalStatus")]
+        public enum AllergyIntoleranceClinicalStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-clinical-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/allergy-clinical-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-clinical-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/allergy-clinical-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-clinical-status)
+            /// </summary>
+            [EnumLiteral("resolved", "http://hl7.org/fhir/allergy-clinical-status"), Description("Resolved")]
+            Resolved,
+        }
+
+        /// <summary>
+        /// Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified substance.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-verification-status)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceVerificationStatus")]
+        public enum AllergyIntoleranceVerificationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-verification-status)
+            /// </summary>
+            [EnumLiteral("unconfirmed", "http://hl7.org/fhir/allergy-verification-status"), Description("Unconfirmed")]
+            Unconfirmed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-verification-status)
+            /// </summary>
+            [EnumLiteral("confirmed", "http://hl7.org/fhir/allergy-verification-status"), Description("Confirmed")]
+            Confirmed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-verification-status)
+            /// </summary>
+            [EnumLiteral("refuted", "http://hl7.org/fhir/allergy-verification-status"), Description("Refuted")]
+            Refuted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-verification-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/allergy-verification-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
+        /// <summary>
+        /// Identification of the underlying physiological mechanism for a Reaction Risk.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-intolerance-type)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceType")]
+        public enum AllergyIntoleranceType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-type)
+            /// </summary>
+            [EnumLiteral("allergy", "http://hl7.org/fhir/allergy-intolerance-type"), Description("Allergy")]
+            Allergy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-type)
+            /// </summary>
+            [EnumLiteral("intolerance", "http://hl7.org/fhir/allergy-intolerance-type"), Description("Intolerance")]
+            Intolerance,
+        }
+
+        /// <summary>
+        /// Category of an identified substance.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-intolerance-category)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceCategory")]
+        public enum AllergyIntoleranceCategory
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-category)
+            /// </summary>
+            [EnumLiteral("food", "http://hl7.org/fhir/allergy-intolerance-category"), Description("Food")]
+            Food,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-category)
+            /// </summary>
+            [EnumLiteral("medication", "http://hl7.org/fhir/allergy-intolerance-category"), Description("Medication")]
+            Medication,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-category)
+            /// </summary>
+            [EnumLiteral("environment", "http://hl7.org/fhir/allergy-intolerance-category"), Description("Environment")]
+            Environment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-category)
+            /// </summary>
+            [EnumLiteral("biologic", "http://hl7.org/fhir/allergy-intolerance-category"), Description("Biologic")]
+            Biologic,
+        }
+
+        /// <summary>
+        /// Estimate of the potential clinical harm, or seriousness, of a reaction to an identified substance.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceCriticality")]
+        public enum AllergyIntoleranceCriticality
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-criticality)
+            /// </summary>
+            [EnumLiteral("low", "http://hl7.org/fhir/allergy-intolerance-criticality"), Description("Low Risk")]
+            Low,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-criticality)
+            /// </summary>
+            [EnumLiteral("high", "http://hl7.org/fhir/allergy-intolerance-criticality"), Description("High Risk")]
+            High,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-criticality)
+            /// </summary>
+            [EnumLiteral("unable-to-assess", "http://hl7.org/fhir/allergy-intolerance-criticality"), Description("Unable to Assess Risk")]
+            UnableToAssess,
+        }
+
+        /// <summary>
+        /// Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations.
+        /// (url: http://hl7.org/fhir/ValueSet/reaction-event-severity)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceSeverity")]
+        public enum AllergyIntoleranceSeverity
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reaction-event-severity)
+            /// </summary>
+            [EnumLiteral("mild", "http://hl7.org/fhir/reaction-event-severity"), Description("Mild")]
+            Mild,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reaction-event-severity)
+            /// </summary>
+            [EnumLiteral("moderate", "http://hl7.org/fhir/reaction-event-severity"), Description("Moderate")]
+            Moderate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reaction-event-severity)
+            /// </summary>
+            [EnumLiteral("severe", "http://hl7.org/fhir/reaction-event-severity"), Description("Severe")]
+            Severe,
+        }
+
 
         [FhirType("ReactionComponent")]
         [DataContract]
-        public partial class ReactionComponent : BackboneElement
+        public partial class ReactionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ReactionComponent"; } }
@@ -296,13 +465,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Substance != null) yield return new ElementValue("substance", false, Substance);
-                    foreach (var elem in Manifestation) { if (elem != null) yield return new ElementValue("manifestation", true, elem); }
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (OnsetElement != null) yield return new ElementValue("onset", false, OnsetElement);
-                    if (SeverityElement != null) yield return new ElementValue("severity", false, SeverityElement);
-                    if (ExposureRoute != null) yield return new ElementValue("exposureRoute", false, ExposureRoute);
-                    foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                    if (Substance != null) yield return new ElementValue("substance", Substance);
+                    foreach (var elem in Manifestation) { if (elem != null) yield return new ElementValue("manifestation", elem); }
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (OnsetElement != null) yield return new ElementValue("onset", OnsetElement);
+                    if (SeverityElement != null) yield return new ElementValue("severity", SeverityElement);
+                    if (ExposureRoute != null) yield return new ElementValue("exposureRoute", ExposureRoute);
+                    foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
                 }
             }
 
@@ -666,7 +835,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "verificationStatus='entered-in-error' or clinicalStatus.exists()",
             Key = "ait-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "AllergyIntolerance.clinicalStatus SHALL be present if verificationStatus is not entered-in-error.",
             Xpath = "f:verificationStatus/@value='entered-in-error' or exists(f:clinicalStatus)"
         };
@@ -675,7 +844,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "verificationStatus!='entered-in-error' or clinicalStatus.empty()",
             Key = "ait-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "AllergyIntolerance.clinicalStatus SHALL NOT be present if verification Status is entered-in-error",
             Xpath = "f:verificationStatus/@value!='entered-in-error' or not(exists(f:clinicalStatus))"
         };
@@ -805,22 +974,22 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ClinicalStatusElement != null) yield return new ElementValue("clinicalStatus", false, ClinicalStatusElement);
-                if (VerificationStatusElement != null) yield return new ElementValue("verificationStatus", false, VerificationStatusElement);
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                foreach (var elem in CategoryElement) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (CriticalityElement != null) yield return new ElementValue("criticality", false, CriticalityElement);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                if (Encounter != null) yield return new ElementValue("encounter", false, Encounter);
-                if (Onset != null) yield return new ElementValue("onset", false, Onset);
-                if (AssertedDateElement != null) yield return new ElementValue("assertedDate", false, AssertedDateElement);
-                if (Recorder != null) yield return new ElementValue("recorder", false, Recorder);
-                if (Asserter != null) yield return new ElementValue("asserter", false, Asserter);
-                if (LastOccurrenceElement != null) yield return new ElementValue("lastOccurrence", false, LastOccurrenceElement);
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in Reaction) { if (elem != null) yield return new ElementValue("reaction", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ClinicalStatusElement != null) yield return new ElementValue("clinicalStatus", ClinicalStatusElement);
+                if (VerificationStatusElement != null) yield return new ElementValue("verificationStatus", VerificationStatusElement);
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                foreach (var elem in CategoryElement) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (CriticalityElement != null) yield return new ElementValue("criticality", CriticalityElement);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                if (Encounter != null) yield return new ElementValue("encounter", Encounter);
+                if (Onset != null) yield return new ElementValue("onset", Onset);
+                if (AssertedDateElement != null) yield return new ElementValue("assertedDate", AssertedDateElement);
+                if (Recorder != null) yield return new ElementValue("recorder", Recorder);
+                if (Asserter != null) yield return new ElementValue("asserter", Asserter);
+                if (LastOccurrenceElement != null) yield return new ElementValue("lastOccurrence", LastOccurrenceElement);
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in Reaction) { if (elem != null) yield return new ElementValue("reaction", elem); }
             }
         }
 

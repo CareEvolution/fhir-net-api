@@ -16,6 +16,7 @@ using Hl7.Fhir.Specification.Summary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Hl7.Fhir.ElementModel;
 
 // Expose low-level interfaces from a separate child namespace, to prevent pollution
 namespace Hl7.Fhir.Specification.Source

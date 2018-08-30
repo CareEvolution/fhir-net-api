@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,208 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "CarePlan"; } }
 
+        /// <summary>
+        /// Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.
+        /// (url: http://hl7.org/fhir/ValueSet/care-plan-status)
+        /// </summary>
+        [FhirEnumeration("CarePlanStatus")]
+        public enum CarePlanStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/care-plan-status"), Description("Pending")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/care-plan-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/care-plan-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/care-plan-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/care-plan-status"), Description("Entered In Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/care-plan-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/care-plan-status"), Description("Unknown")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// Codes indicating the degree of authority/intentionality associated with a care plan
+        /// (url: http://hl7.org/fhir/ValueSet/care-plan-intent)
+        /// </summary>
+        [FhirEnumeration("CarePlanIntent")]
+        public enum CarePlanIntent
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-intent)
+            /// </summary>
+            [EnumLiteral("proposal", "http://hl7.org/fhir/care-plan-intent"), Description("Proposal")]
+            Proposal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-intent)
+            /// </summary>
+            [EnumLiteral("plan", "http://hl7.org/fhir/care-plan-intent"), Description("Plan")]
+            Plan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-intent)
+            /// </summary>
+            [EnumLiteral("order", "http://hl7.org/fhir/care-plan-intent"), Description("Order")]
+            Order,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-intent)
+            /// </summary>
+            [EnumLiteral("option", "http://hl7.org/fhir/care-plan-intent"), Description("Option")]
+            Option,
+        }
+
+        /// <summary>
+        /// Resource types defined as part of FHIR that can be represented as in-line definitions of a care plan activity.
+        /// (url: http://hl7.org/fhir/ValueSet/care-plan-activity-kind)
+        /// </summary>
+        [FhirEnumeration("CarePlanActivityKind")]
+        public enum CarePlanActivityKind
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Appointment", "http://hl7.org/fhir/resource-types"), Description("Appointment")]
+            Appointment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CommunicationRequest", "http://hl7.org/fhir/resource-types"), Description("CommunicationRequest")]
+            CommunicationRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DeviceRequest", "http://hl7.org/fhir/resource-types"), Description("DeviceRequest")]
+            DeviceRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicationRequest", "http://hl7.org/fhir/resource-types"), Description("MedicationRequest")]
+            MedicationRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("NutritionOrder", "http://hl7.org/fhir/resource-types"), Description("NutritionOrder")]
+            NutritionOrder,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Task", "http://hl7.org/fhir/resource-types"), Description("Task")]
+            Task,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ServiceRequest", "http://hl7.org/fhir/resource-types"), Description("ServiceRequest")]
+            ServiceRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("VisionPrescription", "http://hl7.org/fhir/resource-types"), Description("VisionPrescription")]
+            VisionPrescription,
+        }
+
+        /// <summary>
+        /// Indicates where the activity is at in its overall life cycle.
+        /// (url: http://hl7.org/fhir/ValueSet/care-plan-activity-status)
+        /// </summary>
+        [FhirEnumeration("CarePlanActivityStatus")]
+        public enum CarePlanActivityStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("not-started", "http://hl7.org/fhir/care-plan-activity-status"), Description("Not Started")]
+            NotStarted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("scheduled", "http://hl7.org/fhir/care-plan-activity-status"), Description("Scheduled")]
+            Scheduled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/care-plan-activity-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/care-plan-activity-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/care-plan-activity-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/care-plan-activity-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/care-plan-activity-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/care-plan-activity-status"), Description("Unknown")]
+            Unknown,
+        }
+
 
         [FhirType("ActivityComponent")]
         [DataContract]
-        public partial class ActivityComponent : BackboneElement
+        public partial class ActivityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActivityComponent"; } }
@@ -207,11 +406,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in OutcomeCodeableConcept) { if (elem != null) yield return new ElementValue("outcomeCodeableConcept", true, elem); }
-                    foreach (var elem in OutcomeReference) { if (elem != null) yield return new ElementValue("outcomeReference", true, elem); }
-                    foreach (var elem in Progress) { if (elem != null) yield return new ElementValue("progress", true, elem); }
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
-                    if (Detail != null) yield return new ElementValue("detail", false, Detail);
+                    foreach (var elem in OutcomeCodeableConcept) { if (elem != null) yield return new ElementValue("outcomeCodeableConcept", elem); }
+                    foreach (var elem in OutcomeReference) { if (elem != null) yield return new ElementValue("outcomeReference", elem); }
+                    foreach (var elem in Progress) { if (elem != null) yield return new ElementValue("progress", elem); }
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
+                    if (Detail != null) yield return new ElementValue("detail", Detail);
                 }
             }
 
@@ -221,7 +420,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DetailComponent")]
         [DataContract]
-        public partial class DetailComponent : BackboneElement
+        public partial class DetailComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DetailComponent"; } }
@@ -677,22 +876,22 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (KindElement != null) yield return new ElementValue("kind", false, KindElement);
-                    if (InstantiatesElement != null) yield return new ElementValue("instantiates", false, InstantiatesElement);
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                    foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                    foreach (var elem in Goal) { if (elem != null) yield return new ElementValue("goal", true, elem); }
-                    if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                    if (StatusReasonElement != null) yield return new ElementValue("statusReason", false, StatusReasonElement);
-                    if (DoNotPerformElement != null) yield return new ElementValue("doNotPerform", false, DoNotPerformElement);
-                    if (Scheduled != null) yield return new ElementValue("scheduled", false, Scheduled);
-                    if (Location != null) yield return new ElementValue("location", false, Location);
-                    foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", true, elem); }
-                    if (Product != null) yield return new ElementValue("product", false, Product);
-                    if (DailyAmount != null) yield return new ElementValue("dailyAmount", false, DailyAmount);
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
+                    if (KindElement != null) yield return new ElementValue("kind", KindElement);
+                    if (InstantiatesElement != null) yield return new ElementValue("instantiates", InstantiatesElement);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                    foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                    foreach (var elem in Goal) { if (elem != null) yield return new ElementValue("goal", elem); }
+                    if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                    if (StatusReasonElement != null) yield return new ElementValue("statusReason", StatusReasonElement);
+                    if (DoNotPerformElement != null) yield return new ElementValue("doNotPerform", DoNotPerformElement);
+                    if (Scheduled != null) yield return new ElementValue("scheduled", Scheduled);
+                    if (Location != null) yield return new ElementValue("location", Location);
+                    foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", elem); }
+                    if (Product != null) yield return new ElementValue("product", Product);
+                    if (DailyAmount != null) yield return new ElementValue("dailyAmount", DailyAmount);
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 }
             }
 
@@ -1085,7 +1284,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "activity.all(detail.empty() or reference.empty())",
             Key = "cpl-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Provide a reference or detail, not both",
             Xpath = "not(exists(f:detail)) or not(exists(f:reference))"
         };
@@ -1230,26 +1429,26 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", true, elem); }
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                foreach (var elem in Replaces) { if (elem != null) yield return new ElementValue("replaces", true, elem); }
-                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (IntentElement != null) yield return new ElementValue("intent", false, IntentElement);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Period != null) yield return new ElementValue("period", false, Period);
-                foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", true, elem); }
-                foreach (var elem in CareTeam) { if (elem != null) yield return new ElementValue("careTeam", true, elem); }
-                foreach (var elem in Addresses) { if (elem != null) yield return new ElementValue("addresses", true, elem); }
-                foreach (var elem in SupportingInfo) { if (elem != null) yield return new ElementValue("supportingInfo", true, elem); }
-                foreach (var elem in Goal) { if (elem != null) yield return new ElementValue("goal", true, elem); }
-                foreach (var elem in Activity) { if (elem != null) yield return new ElementValue("activity", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", elem); }
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                foreach (var elem in Replaces) { if (elem != null) yield return new ElementValue("replaces", elem); }
+                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (IntentElement != null) yield return new ElementValue("intent", IntentElement);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Period != null) yield return new ElementValue("period", Period);
+                foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", elem); }
+                foreach (var elem in CareTeam) { if (elem != null) yield return new ElementValue("careTeam", elem); }
+                foreach (var elem in Addresses) { if (elem != null) yield return new ElementValue("addresses", elem); }
+                foreach (var elem in SupportingInfo) { if (elem != null) yield return new ElementValue("supportingInfo", elem); }
+                foreach (var elem in Goal) { if (elem != null) yield return new ElementValue("goal", elem); }
+                foreach (var elem in Activity) { if (elem != null) yield return new ElementValue("activity", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }
 

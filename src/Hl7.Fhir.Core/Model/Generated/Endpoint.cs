@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -55,6 +56,51 @@ namespace Hl7.Fhir.Model.R4
         public override ResourceType ResourceType { get { return ResourceType.Endpoint; } }
         [NotMapped]
         public override string TypeName { get { return "Endpoint"; } }
+
+        /// <summary>
+        /// The status of the endpoint
+        /// (url: http://hl7.org/fhir/ValueSet/endpoint-status)
+        /// </summary>
+        [FhirEnumeration("EndpointStatus")]
+        public enum EndpointStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/endpoint-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/endpoint-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/endpoint-status"), Description("Error")]
+            Error,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("off", "http://hl7.org/fhir/endpoint-status"), Description("Off")]
+            Off,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/endpoint-status"), Description("Entered in error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("test", "http://hl7.org/fhir/endpoint-status"), Description("Test")]
+            Test,
+        }
 
 
         /// <summary>
@@ -402,17 +448,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ConnectionType != null) yield return new ElementValue("connectionType", false, ConnectionType);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (ManagingOrganization != null) yield return new ElementValue("managingOrganization", false, ManagingOrganization);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Period != null) yield return new ElementValue("period", false, Period);
-                foreach (var elem in PayloadType) { if (elem != null) yield return new ElementValue("payloadType", true, elem); }
-                foreach (var elem in PayloadMimeTypeElement) { if (elem != null) yield return new ElementValue("payloadMimeType", true, elem); }
-                if (AddressElement != null) yield return new ElementValue("address", false, AddressElement);
-                foreach (var elem in HeaderElement) { if (elem != null) yield return new ElementValue("header", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ConnectionType != null) yield return new ElementValue("connectionType", ConnectionType);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (ManagingOrganization != null) yield return new ElementValue("managingOrganization", ManagingOrganization);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Period != null) yield return new ElementValue("period", Period);
+                foreach (var elem in PayloadType) { if (elem != null) yield return new ElementValue("payloadType", elem); }
+                foreach (var elem in PayloadMimeTypeElement) { if (elem != null) yield return new ElementValue("payloadMimeType", elem); }
+                if (AddressElement != null) yield return new ElementValue("address", AddressElement);
+                foreach (var elem in HeaderElement) { if (elem != null) yield return new ElementValue("header", elem); }
             }
         }
 

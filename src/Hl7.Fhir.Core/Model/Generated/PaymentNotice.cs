@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -324,15 +325,15 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Request != null) yield return new ElementValue("request", false, Request);
-                if (Response != null) yield return new ElementValue("response", false, Response);
-                if (StatusDateElement != null) yield return new ElementValue("statusDate", false, StatusDateElement);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (Target != null) yield return new ElementValue("target", false, Target);
-                if (Provider != null) yield return new ElementValue("provider", false, Provider);
-                if (PaymentStatus != null) yield return new ElementValue("paymentStatus", false, PaymentStatus);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Request != null) yield return new ElementValue("request", Request);
+                if (Response != null) yield return new ElementValue("response", Response);
+                if (StatusDateElement != null) yield return new ElementValue("statusDate", StatusDateElement);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Target != null) yield return new ElementValue("target", Target);
+                if (Provider != null) yield return new ElementValue("provider", Provider);
+                if (PaymentStatus != null) yield return new ElementValue("paymentStatus", PaymentStatus);
             }
         }
 

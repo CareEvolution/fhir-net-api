@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("NameComponent")]
         [DataContract]
-        public partial class NameComponent : BackboneElement
+        public partial class NameComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NameComponent"; } }
@@ -191,9 +192,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (FullNameElement != null) yield return new ElementValue("fullName", false, FullNameElement);
-                    foreach (var elem in NamePart) { if (elem != null) yield return new ElementValue("namePart", true, elem); }
-                    foreach (var elem in CountryLanguage) { if (elem != null) yield return new ElementValue("countryLanguage", true, elem); }
+                    if (FullNameElement != null) yield return new ElementValue("fullName", FullNameElement);
+                    foreach (var elem in NamePart) { if (elem != null) yield return new ElementValue("namePart", elem); }
+                    foreach (var elem in CountryLanguage) { if (elem != null) yield return new ElementValue("countryLanguage", elem); }
                 }
             }
 
@@ -203,7 +204,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("NamePartComponent")]
         [DataContract]
-        public partial class NamePartComponent : BackboneElement
+        public partial class NamePartComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NamePartComponent"; } }
@@ -317,8 +318,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (PartElement != null) yield return new ElementValue("part", false, PartElement);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
+                    if (PartElement != null) yield return new ElementValue("part", PartElement);
+                    if (Type != null) yield return new ElementValue("type", Type);
                 }
             }
 
@@ -328,7 +329,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("CountryLanguageComponent")]
         [DataContract]
-        public partial class CountryLanguageComponent : BackboneElement
+        public partial class CountryLanguageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CountryLanguageComponent"; } }
@@ -440,9 +441,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Country != null) yield return new ElementValue("country", false, Country);
-                    if (Jurisdiction != null) yield return new ElementValue("jurisdiction", false, Jurisdiction);
-                    if (Language != null) yield return new ElementValue("language", false, Language);
+                    if (Country != null) yield return new ElementValue("country", Country);
+                    if (Jurisdiction != null) yield return new ElementValue("jurisdiction", Jurisdiction);
+                    if (Language != null) yield return new ElementValue("language", Language);
                 }
             }
 
@@ -452,7 +453,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ManufacturingBusinessOperationComponent")]
         [DataContract]
-        public partial class ManufacturingBusinessOperationComponent : BackboneElement
+        public partial class ManufacturingBusinessOperationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ManufacturingBusinessOperationComponent"; } }
@@ -635,12 +636,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (OperationType != null) yield return new ElementValue("operationType", false, OperationType);
-                    if (AuthorisationReferenceNumber != null) yield return new ElementValue("authorisationReferenceNumber", false, AuthorisationReferenceNumber);
-                    if (EffectiveDateElement != null) yield return new ElementValue("effectiveDate", false, EffectiveDateElement);
-                    if (ConfidentialityIndicator != null) yield return new ElementValue("confidentialityIndicator", false, ConfidentialityIndicator);
-                    foreach (var elem in Manufacturer) { if (elem != null) yield return new ElementValue("manufacturer", true, elem); }
-                    if (Regulator != null) yield return new ElementValue("regulator", false, Regulator);
+                    if (OperationType != null) yield return new ElementValue("operationType", OperationType);
+                    if (AuthorisationReferenceNumber != null) yield return new ElementValue("authorisationReferenceNumber", AuthorisationReferenceNumber);
+                    if (EffectiveDateElement != null) yield return new ElementValue("effectiveDate", EffectiveDateElement);
+                    if (ConfidentialityIndicator != null) yield return new ElementValue("confidentialityIndicator", ConfidentialityIndicator);
+                    foreach (var elem in Manufacturer) { if (elem != null) yield return new ElementValue("manufacturer", elem); }
+                    if (Regulator != null) yield return new ElementValue("regulator", Regulator);
                 }
             }
 
@@ -1027,23 +1028,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (CombinedPharmaceuticalDoseForm != null) yield return new ElementValue("combinedPharmaceuticalDoseForm", false, CombinedPharmaceuticalDoseForm);
-                if (AdditionalMonitoringIndicator != null) yield return new ElementValue("additionalMonitoringIndicator", false, AdditionalMonitoringIndicator);
-                foreach (var elem in SpecialMeasuresElement) { if (elem != null) yield return new ElementValue("specialMeasures", true, elem); }
-                if (PaediatricUseIndicator != null) yield return new ElementValue("paediatricUseIndicator", false, PaediatricUseIndicator);
-                if (OrphanDesignationStatus != null) yield return new ElementValue("orphanDesignationStatus", false, OrphanDesignationStatus);
-                foreach (var elem in ProductClassification) { if (elem != null) yield return new ElementValue("productClassification", true, elem); }
-                if (MarketingAuthorization != null) yield return new ElementValue("marketingAuthorization", false, MarketingAuthorization);
-                foreach (var elem in PackagedMedicinalProduct) { if (elem != null) yield return new ElementValue("packagedMedicinalProduct", true, elem); }
-                foreach (var elem in PharmaceuticalProduct) { if (elem != null) yield return new ElementValue("pharmaceuticalProduct", true, elem); }
-                foreach (var elem in ClinicalParticulars) { if (elem != null) yield return new ElementValue("clinicalParticulars", true, elem); }
-                foreach (var elem in AttachedDocument) { if (elem != null) yield return new ElementValue("attachedDocument", true, elem); }
-                foreach (var elem in MasterFile) { if (elem != null) yield return new ElementValue("masterFile", true, elem); }
-                foreach (var elem in Name) { if (elem != null) yield return new ElementValue("name", true, elem); }
-                foreach (var elem in CrossReference) { if (elem != null) yield return new ElementValue("crossReference", true, elem); }
-                foreach (var elem in ManufacturingBusinessOperation) { if (elem != null) yield return new ElementValue("manufacturingBusinessOperation", true, elem); }
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (CombinedPharmaceuticalDoseForm != null) yield return new ElementValue("combinedPharmaceuticalDoseForm", CombinedPharmaceuticalDoseForm);
+                if (AdditionalMonitoringIndicator != null) yield return new ElementValue("additionalMonitoringIndicator", AdditionalMonitoringIndicator);
+                foreach (var elem in SpecialMeasuresElement) { if (elem != null) yield return new ElementValue("specialMeasures", elem); }
+                if (PaediatricUseIndicator != null) yield return new ElementValue("paediatricUseIndicator", PaediatricUseIndicator);
+                if (OrphanDesignationStatus != null) yield return new ElementValue("orphanDesignationStatus", OrphanDesignationStatus);
+                foreach (var elem in ProductClassification) { if (elem != null) yield return new ElementValue("productClassification", elem); }
+                if (MarketingAuthorization != null) yield return new ElementValue("marketingAuthorization", MarketingAuthorization);
+                foreach (var elem in PackagedMedicinalProduct) { if (elem != null) yield return new ElementValue("packagedMedicinalProduct", elem); }
+                foreach (var elem in PharmaceuticalProduct) { if (elem != null) yield return new ElementValue("pharmaceuticalProduct", elem); }
+                foreach (var elem in ClinicalParticulars) { if (elem != null) yield return new ElementValue("clinicalParticulars", elem); }
+                foreach (var elem in AttachedDocument) { if (elem != null) yield return new ElementValue("attachedDocument", elem); }
+                foreach (var elem in MasterFile) { if (elem != null) yield return new ElementValue("masterFile", elem); }
+                foreach (var elem in Name) { if (elem != null) yield return new ElementValue("name", elem); }
+                foreach (var elem in CrossReference) { if (elem != null) yield return new ElementValue("crossReference", elem); }
+                foreach (var elem in ManufacturingBusinessOperation) { if (elem != null) yield return new ElementValue("manufacturingBusinessOperation", elem); }
             }
         }
 

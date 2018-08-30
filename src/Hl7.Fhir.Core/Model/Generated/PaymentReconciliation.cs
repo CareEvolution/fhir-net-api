@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DetailsComponent")]
         [DataContract]
-        public partial class DetailsComponent : BackboneElement
+        public partial class DetailsComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DetailsComponent"; } }
@@ -259,13 +260,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Request != null) yield return new ElementValue("request", false, Request);
-                    if (Response != null) yield return new ElementValue("response", false, Response);
-                    if (Submitter != null) yield return new ElementValue("submitter", false, Submitter);
-                    if (Payee != null) yield return new ElementValue("payee", false, Payee);
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                    if (Amount != null) yield return new ElementValue("amount", false, Amount);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Request != null) yield return new ElementValue("request", Request);
+                    if (Response != null) yield return new ElementValue("response", Response);
+                    if (Submitter != null) yield return new ElementValue("submitter", Submitter);
+                    if (Payee != null) yield return new ElementValue("payee", Payee);
+                    if (DateElement != null) yield return new ElementValue("date", DateElement);
+                    if (Amount != null) yield return new ElementValue("amount", Amount);
                 }
             }
 
@@ -275,7 +276,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("NotesComponent")]
         [DataContract]
-        public partial class NotesComponent : BackboneElement
+        public partial class NotesComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NotesComponent"; } }
@@ -406,8 +407,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (TextElement != null) yield return new ElementValue("text", false, TextElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (TextElement != null) yield return new ElementValue("text", TextElement);
                 }
             }
 
@@ -772,19 +773,19 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Period != null) yield return new ElementValue("period", false, Period);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                if (Request != null) yield return new ElementValue("request", false, Request);
-                if (OutcomeElement != null) yield return new ElementValue("outcome", false, OutcomeElement);
-                if (DispositionElement != null) yield return new ElementValue("disposition", false, DispositionElement);
-                if (RequestProvider != null) yield return new ElementValue("requestProvider", false, RequestProvider);
-                foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", true, elem); }
-                if (Form != null) yield return new ElementValue("form", false, Form);
-                if (Total != null) yield return new ElementValue("total", false, Total);
-                foreach (var elem in ProcessNote) { if (elem != null) yield return new ElementValue("processNote", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Period != null) yield return new ElementValue("period", Period);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Organization != null) yield return new ElementValue("organization", Organization);
+                if (Request != null) yield return new ElementValue("request", Request);
+                if (OutcomeElement != null) yield return new ElementValue("outcome", OutcomeElement);
+                if (DispositionElement != null) yield return new ElementValue("disposition", DispositionElement);
+                if (RequestProvider != null) yield return new ElementValue("requestProvider", RequestProvider);
+                foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
+                if (Form != null) yield return new ElementValue("form", Form);
+                if (Total != null) yield return new ElementValue("total", Total);
+                foreach (var elem in ProcessNote) { if (elem != null) yield return new ElementValue("processNote", elem); }
             }
         }
 

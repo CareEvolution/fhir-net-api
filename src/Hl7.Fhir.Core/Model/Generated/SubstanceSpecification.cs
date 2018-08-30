@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("MoietyComponent")]
         [DataContract]
-        public partial class MoietyComponent : BackboneElement
+        public partial class MoietyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MoietyComponent"; } }
@@ -294,13 +295,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (Stereochemistry != null) yield return new ElementValue("stereochemistry", false, Stereochemistry);
-                    if (OpticalActivity != null) yield return new ElementValue("opticalActivity", false, OpticalActivity);
-                    if (MolecularFormulaElement != null) yield return new ElementValue("molecularFormula", false, MolecularFormulaElement);
-                    if (AmountElement != null) yield return new ElementValue("amount", false, AmountElement);
+                    if (Role != null) yield return new ElementValue("role", Role);
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (Stereochemistry != null) yield return new ElementValue("stereochemistry", Stereochemistry);
+                    if (OpticalActivity != null) yield return new ElementValue("opticalActivity", OpticalActivity);
+                    if (MolecularFormulaElement != null) yield return new ElementValue("molecularFormula", MolecularFormulaElement);
+                    if (AmountElement != null) yield return new ElementValue("amount", AmountElement);
                 }
             }
 
@@ -310,7 +311,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PropertyComponent")]
         [DataContract]
-        public partial class PropertyComponent : BackboneElement
+        public partial class PropertyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PropertyComponent"; } }
@@ -528,12 +529,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Name != null) yield return new ElementValue("name", false, Name);
-                    if (ParametersElement != null) yield return new ElementValue("parameters", false, ParametersElement);
-                    if (SubstanceId != null) yield return new ElementValue("substanceId", false, SubstanceId);
-                    if (SubstanceNameElement != null) yield return new ElementValue("substanceName", false, SubstanceNameElement);
-                    if (AmountElement != null) yield return new ElementValue("amount", false, AmountElement);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Name != null) yield return new ElementValue("name", Name);
+                    if (ParametersElement != null) yield return new ElementValue("parameters", ParametersElement);
+                    if (SubstanceId != null) yield return new ElementValue("substanceId", SubstanceId);
+                    if (SubstanceNameElement != null) yield return new ElementValue("substanceName", SubstanceNameElement);
+                    if (AmountElement != null) yield return new ElementValue("amount", AmountElement);
                 }
             }
 
@@ -543,7 +544,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("StructureComponent")]
         [DataContract]
-        public partial class StructureComponent : BackboneElement
+        public partial class StructureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StructureComponent"; } }
@@ -780,14 +781,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Stereochemistry != null) yield return new ElementValue("stereochemistry", false, Stereochemistry);
-                    if (OpticalActivity != null) yield return new ElementValue("opticalActivity", false, OpticalActivity);
-                    if (MolecularFormulaElement != null) yield return new ElementValue("molecularFormula", false, MolecularFormulaElement);
-                    if (MolecularFormulaByMoietyElement != null) yield return new ElementValue("molecularFormulaByMoiety", false, MolecularFormulaByMoietyElement);
-                    foreach (var elem in Isotope) { if (elem != null) yield return new ElementValue("isotope", true, elem); }
-                    if (MolecularWeight != null) yield return new ElementValue("molecularWeight", false, MolecularWeight);
-                    foreach (var elem in ReferenceSource) { if (elem != null) yield return new ElementValue("referenceSource", true, elem); }
-                    foreach (var elem in StructuralRepresentation) { if (elem != null) yield return new ElementValue("structuralRepresentation", true, elem); }
+                    if (Stereochemistry != null) yield return new ElementValue("stereochemistry", Stereochemistry);
+                    if (OpticalActivity != null) yield return new ElementValue("opticalActivity", OpticalActivity);
+                    if (MolecularFormulaElement != null) yield return new ElementValue("molecularFormula", MolecularFormulaElement);
+                    if (MolecularFormulaByMoietyElement != null) yield return new ElementValue("molecularFormulaByMoiety", MolecularFormulaByMoietyElement);
+                    foreach (var elem in Isotope) { if (elem != null) yield return new ElementValue("isotope", elem); }
+                    if (MolecularWeight != null) yield return new ElementValue("molecularWeight", MolecularWeight);
+                    foreach (var elem in ReferenceSource) { if (elem != null) yield return new ElementValue("referenceSource", elem); }
+                    foreach (var elem in StructuralRepresentation) { if (elem != null) yield return new ElementValue("structuralRepresentation", elem); }
                 }
             }
 
@@ -797,7 +798,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("IsotopeComponent")]
         [DataContract]
-        public partial class IsotopeComponent : BackboneElement
+        public partial class IsotopeComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "IsotopeComponent"; } }
@@ -977,12 +978,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NuclideId != null) yield return new ElementValue("nuclideId", false, NuclideId);
-                    if (NuclideName != null) yield return new ElementValue("nuclideName", false, NuclideName);
-                    if (SubstitutionType != null) yield return new ElementValue("substitutionType", false, SubstitutionType);
-                    if (NuclideHalfLife != null) yield return new ElementValue("nuclideHalfLife", false, NuclideHalfLife);
-                    if (AmountElement != null) yield return new ElementValue("amount", false, AmountElement);
-                    if (MolecularWeight != null) yield return new ElementValue("molecularWeight", false, MolecularWeight);
+                    if (NuclideId != null) yield return new ElementValue("nuclideId", NuclideId);
+                    if (NuclideName != null) yield return new ElementValue("nuclideName", NuclideName);
+                    if (SubstitutionType != null) yield return new ElementValue("substitutionType", SubstitutionType);
+                    if (NuclideHalfLife != null) yield return new ElementValue("nuclideHalfLife", NuclideHalfLife);
+                    if (AmountElement != null) yield return new ElementValue("amount", AmountElement);
+                    if (MolecularWeight != null) yield return new ElementValue("molecularWeight", MolecularWeight);
                 }
             }
 
@@ -992,7 +993,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("MolecularWeightComponent")]
         [DataContract]
-        public partial class MolecularWeightComponent : BackboneElement
+        public partial class MolecularWeightComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MolecularWeightComponent"; } }
@@ -1121,9 +1122,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Method != null) yield return new ElementValue("method", false, Method);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (AmountElement != null) yield return new ElementValue("amount", false, AmountElement);
+                    if (Method != null) yield return new ElementValue("method", Method);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (AmountElement != null) yield return new ElementValue("amount", AmountElement);
                 }
             }
 
@@ -1133,7 +1134,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("StructuralRepresentationComponent")]
         [DataContract]
-        public partial class StructuralRepresentationComponent : BackboneElement
+        public partial class StructuralRepresentationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StructuralRepresentationComponent"; } }
@@ -1262,9 +1263,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (RepresentationElement != null) yield return new ElementValue("representation", false, RepresentationElement);
-                    if (Attachment != null) yield return new ElementValue("attachment", false, Attachment);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (RepresentationElement != null) yield return new ElementValue("representation", RepresentationElement);
+                    if (Attachment != null) yield return new ElementValue("attachment", Attachment);
                 }
             }
 
@@ -1274,7 +1275,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SubstanceCodeComponent")]
         [DataContract]
-        public partial class SubstanceCodeComponent : BackboneElement
+        public partial class SubstanceCodeComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SubstanceCodeComponent"; } }
@@ -1476,11 +1477,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Status != null) yield return new ElementValue("status", false, Status);
-                    if (StatusDateElement != null) yield return new ElementValue("statusDate", false, StatusDateElement);
-                    if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
-                    foreach (var elem in ReferenceSourceElement) { if (elem != null) yield return new ElementValue("referenceSource", true, elem); }
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Status != null) yield return new ElementValue("status", Status);
+                    if (StatusDateElement != null) yield return new ElementValue("statusDate", StatusDateElement);
+                    if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                    foreach (var elem in ReferenceSourceElement) { if (elem != null) yield return new ElementValue("referenceSource", elem); }
                 }
             }
 
@@ -1490,7 +1491,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SubstanceNameComponent")]
         [DataContract]
-        public partial class SubstanceNameComponent : BackboneElement
+        public partial class SubstanceNameComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SubstanceNameComponent"; } }
@@ -1711,13 +1712,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    foreach (var elem in Language) { if (elem != null) yield return new ElementValue("language", true, elem); }
-                    foreach (var elem in Domain) { if (elem != null) yield return new ElementValue("domain", true, elem); }
-                    foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                    foreach (var elem in OfficialName) { if (elem != null) yield return new ElementValue("officialName", true, elem); }
-                    foreach (var elem in ReferenceSourceElement) { if (elem != null) yield return new ElementValue("referenceSource", true, elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    foreach (var elem in Language) { if (elem != null) yield return new ElementValue("language", elem); }
+                    foreach (var elem in Domain) { if (elem != null) yield return new ElementValue("domain", elem); }
+                    foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                    foreach (var elem in OfficialName) { if (elem != null) yield return new ElementValue("officialName", elem); }
+                    foreach (var elem in ReferenceSourceElement) { if (elem != null) yield return new ElementValue("referenceSource", elem); }
                 }
             }
 
@@ -1727,7 +1728,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OfficialNameComponent")]
         [DataContract]
-        public partial class OfficialNameComponent : BackboneElement
+        public partial class OfficialNameComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OfficialNameComponent"; } }
@@ -1856,9 +1857,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Authority != null) yield return new ElementValue("authority", false, Authority);
-                    if (Status != null) yield return new ElementValue("status", false, Status);
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
+                    if (Authority != null) yield return new ElementValue("authority", Authority);
+                    if (Status != null) yield return new ElementValue("status", Status);
+                    if (DateElement != null) yield return new ElementValue("date", DateElement);
                 }
             }
 
@@ -2206,19 +2207,19 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
-                if (StoichiometricElement != null) yield return new ElementValue("stoichiometric", false, StoichiometricElement);
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                foreach (var elem in ReferenceSourceElement) { if (elem != null) yield return new ElementValue("referenceSource", true, elem); }
-                foreach (var elem in Moiety) { if (elem != null) yield return new ElementValue("moiety", true, elem); }
-                foreach (var elem in Property) { if (elem != null) yield return new ElementValue("property", true, elem); }
-                if (ReferenceInformation != null) yield return new ElementValue("referenceInformation", false, ReferenceInformation);
-                if (Structure != null) yield return new ElementValue("structure", false, Structure);
-                foreach (var elem in SubstanceCode) { if (elem != null) yield return new ElementValue("substanceCode", true, elem); }
-                foreach (var elem in SubstanceName) { if (elem != null) yield return new ElementValue("substanceName", true, elem); }
-                foreach (var elem in MolecularWeight) { if (elem != null) yield return new ElementValue("molecularWeight", true, elem); }
-                if (Polymer != null) yield return new ElementValue("polymer", false, Polymer);
+                if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                if (StoichiometricElement != null) yield return new ElementValue("stoichiometric", StoichiometricElement);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (Type != null) yield return new ElementValue("type", Type);
+                foreach (var elem in ReferenceSourceElement) { if (elem != null) yield return new ElementValue("referenceSource", elem); }
+                foreach (var elem in Moiety) { if (elem != null) yield return new ElementValue("moiety", elem); }
+                foreach (var elem in Property) { if (elem != null) yield return new ElementValue("property", elem); }
+                if (ReferenceInformation != null) yield return new ElementValue("referenceInformation", ReferenceInformation);
+                if (Structure != null) yield return new ElementValue("structure", Structure);
+                foreach (var elem in SubstanceCode) { if (elem != null) yield return new ElementValue("substanceCode", elem); }
+                foreach (var elem in SubstanceName) { if (elem != null) yield return new ElementValue("substanceName", elem); }
+                foreach (var elem in MolecularWeight) { if (elem != null) yield return new ElementValue("molecularWeight", elem); }
+                if (Polymer != null) yield return new ElementValue("polymer", Polymer);
             }
         }
 

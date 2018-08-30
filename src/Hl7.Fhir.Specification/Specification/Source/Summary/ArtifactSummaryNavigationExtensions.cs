@@ -8,6 +8,7 @@
 
 #if NET_FILESYSTEM
 
+using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.Serialization;
 using System;

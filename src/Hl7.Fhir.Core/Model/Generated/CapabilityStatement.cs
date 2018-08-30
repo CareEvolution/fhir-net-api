@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,322 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "CapabilityStatement"; } }
 
+        /// <summary>
+        /// How a capability statement is intended to be used.
+        /// (url: http://hl7.org/fhir/ValueSet/capability-statement-kind)
+        /// </summary>
+        [FhirEnumeration("CapabilityStatementKind")]
+        public enum CapabilityStatementKind
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/capability-statement-kind)
+            /// </summary>
+            [EnumLiteral("instance", "http://hl7.org/fhir/capability-statement-kind"), Description("Instance")]
+            Instance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/capability-statement-kind)
+            /// </summary>
+            [EnumLiteral("capability", "http://hl7.org/fhir/capability-statement-kind"), Description("Capability")]
+            Capability,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/capability-statement-kind)
+            /// </summary>
+            [EnumLiteral("requirements", "http://hl7.org/fhir/capability-statement-kind"), Description("Requirements")]
+            Requirements,
+        }
+
+        /// <summary>
+        /// The mode of a RESTful capability statement.
+        /// (url: http://hl7.org/fhir/ValueSet/restful-capability-mode)
+        /// </summary>
+        [FhirEnumeration("RestfulCapabilityMode")]
+        public enum RestfulCapabilityMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-capability-mode)
+            /// </summary>
+            [EnumLiteral("client", "http://hl7.org/fhir/restful-capability-mode"), Description("Client")]
+            Client,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-capability-mode)
+            /// </summary>
+            [EnumLiteral("server", "http://hl7.org/fhir/restful-capability-mode"), Description("Server")]
+            Server,
+        }
+
+        /// <summary>
+        /// Operations supported by REST at the type or instance level.
+        /// (url: http://hl7.org/fhir/ValueSet/type-restful-interaction)
+        /// </summary>
+        [FhirEnumeration("TypeRestfulInteraction")]
+        public enum TypeRestfulInteraction
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("read", "http://hl7.org/fhir/restful-interaction"), Description("read")]
+            Read,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("vread", "http://hl7.org/fhir/restful-interaction"), Description("vread")]
+            Vread,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("update", "http://hl7.org/fhir/restful-interaction"), Description("update")]
+            Update,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("patch", "http://hl7.org/fhir/restful-interaction"), Description("patch")]
+            Patch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("delete", "http://hl7.org/fhir/restful-interaction"), Description("delete")]
+            Delete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("history-instance", "http://hl7.org/fhir/restful-interaction"), Description("history-instance")]
+            HistoryInstance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("history-type", "http://hl7.org/fhir/restful-interaction"), Description("history-type")]
+            HistoryType,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("create", "http://hl7.org/fhir/restful-interaction"), Description("create")]
+            Create,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("search-type", "http://hl7.org/fhir/restful-interaction"), Description("search-type")]
+            SearchType,
+        }
+
+        /// <summary>
+        /// How the system supports versioning for a resource.
+        /// (url: http://hl7.org/fhir/ValueSet/versioning-policy)
+        /// </summary>
+        [FhirEnumeration("ResourceVersionPolicy")]
+        public enum ResourceVersionPolicy
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/versioning-policy)
+            /// </summary>
+            [EnumLiteral("no-version", "http://hl7.org/fhir/versioning-policy"), Description("No VersionId Support")]
+            NoVersion,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/versioning-policy)
+            /// </summary>
+            [EnumLiteral("versioned", "http://hl7.org/fhir/versioning-policy"), Description("Versioned")]
+            Versioned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/versioning-policy)
+            /// </summary>
+            [EnumLiteral("versioned-update", "http://hl7.org/fhir/versioning-policy"), Description("VersionId tracked fully")]
+            VersionedUpdate,
+        }
+
+        /// <summary>
+        /// A code that indicates how the server supports conditional read.
+        /// (url: http://hl7.org/fhir/ValueSet/conditional-read-status)
+        /// </summary>
+        [FhirEnumeration("ConditionalReadStatus")]
+        public enum ConditionalReadStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-read-status)
+            /// </summary>
+            [EnumLiteral("not-supported", "http://hl7.org/fhir/conditional-read-status"), Description("Not Supported")]
+            NotSupported,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-read-status)
+            /// </summary>
+            [EnumLiteral("modified-since", "http://hl7.org/fhir/conditional-read-status"), Description("If-Modified-Since")]
+            ModifiedSince,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-read-status)
+            /// </summary>
+            [EnumLiteral("not-match", "http://hl7.org/fhir/conditional-read-status"), Description("If-None-Match")]
+            NotMatch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-read-status)
+            /// </summary>
+            [EnumLiteral("full-support", "http://hl7.org/fhir/conditional-read-status"), Description("Full Support")]
+            FullSupport,
+        }
+
+        /// <summary>
+        /// A code that indicates how the server supports conditional delete.
+        /// (url: http://hl7.org/fhir/ValueSet/conditional-delete-status)
+        /// </summary>
+        [FhirEnumeration("ConditionalDeleteStatus")]
+        public enum ConditionalDeleteStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-delete-status)
+            /// </summary>
+            [EnumLiteral("not-supported", "http://hl7.org/fhir/conditional-delete-status"), Description("Not Supported")]
+            NotSupported,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-delete-status)
+            /// </summary>
+            [EnumLiteral("single", "http://hl7.org/fhir/conditional-delete-status"), Description("Single Deletes Supported")]
+            Single,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-delete-status)
+            /// </summary>
+            [EnumLiteral("multiple", "http://hl7.org/fhir/conditional-delete-status"), Description("Multiple Deletes Supported")]
+            Multiple,
+        }
+
+        /// <summary>
+        /// A set of flags that defines how references are supported.
+        /// (url: http://hl7.org/fhir/ValueSet/reference-handling-policy)
+        /// </summary>
+        [FhirEnumeration("ReferenceHandlingPolicy")]
+        public enum ReferenceHandlingPolicy
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("literal", "http://hl7.org/fhir/reference-handling-policy"), Description("Literal References")]
+            Literal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("logical", "http://hl7.org/fhir/reference-handling-policy"), Description("Logical References")]
+            Logical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("resolves", "http://hl7.org/fhir/reference-handling-policy"), Description("Resolves References")]
+            Resolves,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("enforced", "http://hl7.org/fhir/reference-handling-policy"), Description("Reference Integrity Enforced")]
+            Enforced,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("local", "http://hl7.org/fhir/reference-handling-policy"), Description("Local References Only")]
+            Local,
+        }
+
+        /// <summary>
+        /// Operations supported by REST at the system level.
+        /// (url: http://hl7.org/fhir/ValueSet/system-restful-interaction)
+        /// </summary>
+        [FhirEnumeration("SystemRestfulInteraction")]
+        public enum SystemRestfulInteraction
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("transaction", "http://hl7.org/fhir/restful-interaction"), Description("transaction")]
+            Transaction,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("batch", "http://hl7.org/fhir/restful-interaction"), Description("batch")]
+            Batch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("search-system", "http://hl7.org/fhir/restful-interaction"), Description("search-system")]
+            SearchSystem,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("history-system", "http://hl7.org/fhir/restful-interaction"), Description("history-system")]
+            HistorySystem,
+        }
+
+        /// <summary>
+        /// The mode of a message capability statement.
+        /// (url: http://hl7.org/fhir/ValueSet/event-capability-mode)
+        /// </summary>
+        [FhirEnumeration("EventCapabilityMode")]
+        public enum EventCapabilityMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-capability-mode)
+            /// </summary>
+            [EnumLiteral("sender", "http://hl7.org/fhir/event-capability-mode"), Description("Sender")]
+            Sender,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-capability-mode)
+            /// </summary>
+            [EnumLiteral("receiver", "http://hl7.org/fhir/event-capability-mode"), Description("Receiver")]
+            Receiver,
+        }
+
+        /// <summary>
+        /// Whether the application produces or consumes documents.
+        /// (url: http://hl7.org/fhir/ValueSet/document-mode)
+        /// </summary>
+        [FhirEnumeration("DocumentMode")]
+        public enum DocumentMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/document-mode)
+            /// </summary>
+            [EnumLiteral("producer", "http://hl7.org/fhir/document-mode"), Description("Producer")]
+            Producer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/document-mode)
+            /// </summary>
+            [EnumLiteral("consumer", "http://hl7.org/fhir/document-mode"), Description("Consumer")]
+            Consumer,
+        }
+
 
         [FhirType("SoftwareComponent")]
         [DataContract]
-        public partial class SoftwareComponent : BackboneElement
+        public partial class SoftwareComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SoftwareComponent"; } }
@@ -227,9 +540,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                    if (ReleaseDateElement != null) yield return new ElementValue("releaseDate", false, ReleaseDateElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                    if (ReleaseDateElement != null) yield return new ElementValue("releaseDate", ReleaseDateElement);
                 }
             }
 
@@ -239,7 +552,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ImplementationComponent")]
         [DataContract]
-        public partial class ImplementationComponent : BackboneElement
+        public partial class ImplementationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ImplementationComponent"; } }
@@ -371,8 +684,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (UrlElement != null) yield return new ElementValue("url", UrlElement);
                 }
             }
 
@@ -382,7 +695,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RestComponent")]
         [DataContract]
-        public partial class RestComponent : BackboneElement
+        public partial class RestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RestComponent"; } }
@@ -640,14 +953,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
-                    if (Security != null) yield return new ElementValue("security", false, Security);
-                    foreach (var elem in Resource) { if (elem != null) yield return new ElementValue("resource", true, elem); }
-                    foreach (var elem in Interaction) { if (elem != null) yield return new ElementValue("interaction", true, elem); }
-                    foreach (var elem in SearchParam) { if (elem != null) yield return new ElementValue("searchParam", true, elem); }
-                    foreach (var elem in Operation) { if (elem != null) yield return new ElementValue("operation", true, elem); }
-                    foreach (var elem in CompartmentElement) { if (elem != null) yield return new ElementValue("compartment", true, elem); }
+                    if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
+                    if (Security != null) yield return new ElementValue("security", Security);
+                    foreach (var elem in Resource) { if (elem != null) yield return new ElementValue("resource", elem); }
+                    foreach (var elem in Interaction) { if (elem != null) yield return new ElementValue("interaction", elem); }
+                    foreach (var elem in SearchParam) { if (elem != null) yield return new ElementValue("searchParam", elem); }
+                    foreach (var elem in Operation) { if (elem != null) yield return new ElementValue("operation", elem); }
+                    foreach (var elem in CompartmentElement) { if (elem != null) yield return new ElementValue("compartment", elem); }
                 }
             }
 
@@ -657,7 +970,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SecurityComponent")]
         [DataContract]
-        public partial class SecurityComponent : BackboneElement
+        public partial class SecurityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SecurityComponent"; } }
@@ -806,9 +1119,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CorsElement != null) yield return new ElementValue("cors", false, CorsElement);
-                    foreach (var elem in Service) { if (elem != null) yield return new ElementValue("service", true, elem); }
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
+                    if (CorsElement != null) yield return new ElementValue("cors", CorsElement);
+                    foreach (var elem in Service) { if (elem != null) yield return new ElementValue("service", elem); }
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 }
             }
 
@@ -818,7 +1131,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ResourceComponent")]
         [DataContract]
-        public partial class ResourceComponent : BackboneElement
+        public partial class ResourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ResourceComponent"; } }
@@ -1421,23 +1734,23 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (ProfileElement != null) yield return new ElementValue("profile", false, ProfileElement);
-                    foreach (var elem in SupportedProfileElement) { if (elem != null) yield return new ElementValue("supportedProfile", true, elem); }
-                    if (Documentation != null) yield return new ElementValue("documentation", false, Documentation);
-                    foreach (var elem in Interaction) { if (elem != null) yield return new ElementValue("interaction", true, elem); }
-                    if (VersioningElement != null) yield return new ElementValue("versioning", false, VersioningElement);
-                    if (ReadHistoryElement != null) yield return new ElementValue("readHistory", false, ReadHistoryElement);
-                    if (UpdateCreateElement != null) yield return new ElementValue("updateCreate", false, UpdateCreateElement);
-                    if (ConditionalCreateElement != null) yield return new ElementValue("conditionalCreate", false, ConditionalCreateElement);
-                    if (ConditionalReadElement != null) yield return new ElementValue("conditionalRead", false, ConditionalReadElement);
-                    if (ConditionalUpdateElement != null) yield return new ElementValue("conditionalUpdate", false, ConditionalUpdateElement);
-                    if (ConditionalDeleteElement != null) yield return new ElementValue("conditionalDelete", false, ConditionalDeleteElement);
-                    foreach (var elem in ReferencePolicyElement) { if (elem != null) yield return new ElementValue("referencePolicy", true, elem); }
-                    foreach (var elem in SearchIncludeElement) { if (elem != null) yield return new ElementValue("searchInclude", true, elem); }
-                    foreach (var elem in SearchRevIncludeElement) { if (elem != null) yield return new ElementValue("searchRevInclude", true, elem); }
-                    foreach (var elem in SearchParam) { if (elem != null) yield return new ElementValue("searchParam", true, elem); }
-                    foreach (var elem in Operation) { if (elem != null) yield return new ElementValue("operation", true, elem); }
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
+                    foreach (var elem in SupportedProfileElement) { if (elem != null) yield return new ElementValue("supportedProfile", elem); }
+                    if (Documentation != null) yield return new ElementValue("documentation", Documentation);
+                    foreach (var elem in Interaction) { if (elem != null) yield return new ElementValue("interaction", elem); }
+                    if (VersioningElement != null) yield return new ElementValue("versioning", VersioningElement);
+                    if (ReadHistoryElement != null) yield return new ElementValue("readHistory", ReadHistoryElement);
+                    if (UpdateCreateElement != null) yield return new ElementValue("updateCreate", UpdateCreateElement);
+                    if (ConditionalCreateElement != null) yield return new ElementValue("conditionalCreate", ConditionalCreateElement);
+                    if (ConditionalReadElement != null) yield return new ElementValue("conditionalRead", ConditionalReadElement);
+                    if (ConditionalUpdateElement != null) yield return new ElementValue("conditionalUpdate", ConditionalUpdateElement);
+                    if (ConditionalDeleteElement != null) yield return new ElementValue("conditionalDelete", ConditionalDeleteElement);
+                    foreach (var elem in ReferencePolicyElement) { if (elem != null) yield return new ElementValue("referencePolicy", elem); }
+                    foreach (var elem in SearchIncludeElement) { if (elem != null) yield return new ElementValue("searchInclude", elem); }
+                    foreach (var elem in SearchRevIncludeElement) { if (elem != null) yield return new ElementValue("searchRevInclude", elem); }
+                    foreach (var elem in SearchParam) { if (elem != null) yield return new ElementValue("searchParam", elem); }
+                    foreach (var elem in Operation) { if (elem != null) yield return new ElementValue("operation", elem); }
                 }
             }
 
@@ -1447,7 +1760,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ResourceInteractionComponent")]
         [DataContract]
-        public partial class ResourceInteractionComponent : BackboneElement
+        public partial class ResourceInteractionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ResourceInteractionComponent"; } }
@@ -1579,8 +1892,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
                 }
             }
 
@@ -1590,7 +1903,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SearchParamComponent")]
         [DataContract]
-        public partial class SearchParamComponent : BackboneElement
+        public partial class SearchParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SearchParamComponent"; } }
@@ -1795,10 +2108,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DefinitionElement != null) yield return new ElementValue("definition", false, DefinitionElement);
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
                 }
             }
 
@@ -1808,7 +2121,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OperationComponent")]
         [DataContract]
-        public partial class OperationComponent : BackboneElement
+        public partial class OperationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OperationComponent"; } }
@@ -1958,9 +2271,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DefinitionElement != null) yield return new ElementValue("definition", false, DefinitionElement);
-                    if (Documentation != null) yield return new ElementValue("documentation", false, Documentation);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
+                    if (Documentation != null) yield return new ElementValue("documentation", Documentation);
                 }
             }
 
@@ -1970,7 +2283,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SystemInteractionComponent")]
         [DataContract]
-        public partial class SystemInteractionComponent : BackboneElement
+        public partial class SystemInteractionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SystemInteractionComponent"; } }
@@ -2102,8 +2415,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
                 }
             }
 
@@ -2113,7 +2426,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("MessagingComponent")]
         [DataContract]
-        public partial class MessagingComponent : BackboneElement
+        public partial class MessagingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MessagingComponent"; } }
@@ -2280,10 +2593,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Endpoint) { if (elem != null) yield return new ElementValue("endpoint", true, elem); }
-                    if (ReliableCacheElement != null) yield return new ElementValue("reliableCache", false, ReliableCacheElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
-                    foreach (var elem in SupportedMessage) { if (elem != null) yield return new ElementValue("supportedMessage", true, elem); }
+                    foreach (var elem in Endpoint) { if (elem != null) yield return new ElementValue("endpoint", elem); }
+                    if (ReliableCacheElement != null) yield return new ElementValue("reliableCache", ReliableCacheElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
+                    foreach (var elem in SupportedMessage) { if (elem != null) yield return new ElementValue("supportedMessage", elem); }
                 }
             }
 
@@ -2293,7 +2606,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EndpointComponent")]
         [DataContract]
-        public partial class EndpointComponent : BackboneElement
+        public partial class EndpointComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EndpointComponent"; } }
@@ -2407,8 +2720,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Protocol != null) yield return new ElementValue("protocol", false, Protocol);
-                    if (AddressElement != null) yield return new ElementValue("address", false, AddressElement);
+                    if (Protocol != null) yield return new ElementValue("protocol", Protocol);
+                    if (AddressElement != null) yield return new ElementValue("address", AddressElement);
                 }
             }
 
@@ -2418,7 +2731,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SupportedMessageComponent")]
         [DataContract]
-        public partial class SupportedMessageComponent : BackboneElement
+        public partial class SupportedMessageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SupportedMessageComponent"; } }
@@ -2551,8 +2864,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                    if (DefinitionElement != null) yield return new ElementValue("definition", false, DefinitionElement);
+                    if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                    if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
                 }
             }
 
@@ -2562,7 +2875,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DocumentComponent")]
         [DataContract]
-        public partial class DocumentComponent : BackboneElement
+        public partial class DocumentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DocumentComponent"; } }
@@ -2731,9 +3044,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
-                    if (ProfileElement != null) yield return new ElementValue("profile", false, ProfileElement);
+                    if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
+                    if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
                 }
             }
 
@@ -3351,7 +3664,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "rest.select(mode).isDistinct()",
             Key = "cpb-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "There can only be one REST declaration per mode.",
             Xpath = "count(f:rest)=count(distinct-values(f:rest/f:mode/@value))"
         };
@@ -3360,7 +3673,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "document.select(profile&mode).isDistinct()",
             Key = "cpb-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The set of documents must be unique by the combination of profile and mode.",
             Xpath = "count(f:document[f:mode/@value='producer'])=count(distinct-values(f:document[f:mode/@value='producer']/f:profile/f:reference/@value)) and count(f:document[f:mode/@value='consumer'])=count(distinct-values(f:document[f:mode/@value='consumer']/f:profile/f:reference/@value))"
         };
@@ -3369,7 +3682,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "implementation.empty() or kind = 'instance'",
             Key = "cpb-15",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Capability Statements cannot have implementation elements unless kind is 'instance'",
             Xpath = "not(exists(f:implementation)) or (f:kind/@value = 'instance')"
         };
@@ -3378,7 +3691,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "messaging.endpoint.empty() or kind = 'instance'",
             Key = "cpb-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Messaging end-point is required (and is only permitted) when a statement is for an implementation.",
             Xpath = "not(exists(f:messaging/f:endpoint)) or f:kind/@value = 'instance'"
         };
@@ -3387,7 +3700,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "(software.empty() and implementation.empty()) or kind != 'requirements'",
             Key = "cpb-14",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Capability Statements of kind 'requirements' do not have software or implementation elements.",
             Xpath = "not(exists(f:software) or exists(f:implementation)) or (f:kind/@value != 'requirements')"
         };
@@ -3396,7 +3709,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "(description.count() + software.count() + implementation.count()) > 0",
             Key = "cpb-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A Capability Statement SHALL have at least one of description, software, or implementation element.",
             Xpath = "count(f:software | f:implementation | f:description) > 0"
         };
@@ -3405,7 +3718,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "rest.exists() or messaging.exists() or document.exists()",
             Key = "cpb-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A Capability Statement SHALL have at least one of REST, messaging or document element.",
             Xpath = "exists(f:rest) or exists(f:messaging) or exists(f:document)"
         };
@@ -3414,7 +3727,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "rest.all(resource.select(type).isDistinct())",
             Key = "cpb-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A given resource can only be described once per RESTful mode.",
             Xpath = "count(f:resource)=count(distinct-values(f:resource/f:type/@value))"
         };
@@ -3423,7 +3736,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "rest.resource.all(searchParam.select(name).isDistinct())",
             Key = "cpb-12",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Search parameter names must be unique in the context of a resource.",
             Xpath = "count(f:searchParam)=count(distinct-values(f:searchParam/f:name/@value))"
         };
@@ -3596,31 +3909,31 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                if (KindElement != null) yield return new ElementValue("kind", false, KindElement);
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", true, elem); }
-                if (Software != null) yield return new ElementValue("software", false, Software);
-                if (Implementation != null) yield return new ElementValue("implementation", false, Implementation);
-                if (FhirVersionElement != null) yield return new ElementValue("fhirVersion", false, FhirVersionElement);
-                foreach (var elem in FormatElement) { if (elem != null) yield return new ElementValue("format", true, elem); }
-                foreach (var elem in PatchFormatElement) { if (elem != null) yield return new ElementValue("patchFormat", true, elem); }
-                foreach (var elem in ImplementationGuideElement) { if (elem != null) yield return new ElementValue("implementationGuide", true, elem); }
-                foreach (var elem in Rest) { if (elem != null) yield return new ElementValue("rest", true, elem); }
-                foreach (var elem in Messaging) { if (elem != null) yield return new ElementValue("messaging", true, elem); }
-                foreach (var elem in Document) { if (elem != null) yield return new ElementValue("document", true, elem); }
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (KindElement != null) yield return new ElementValue("kind", KindElement);
+                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", elem); }
+                if (Software != null) yield return new ElementValue("software", Software);
+                if (Implementation != null) yield return new ElementValue("implementation", Implementation);
+                if (FhirVersionElement != null) yield return new ElementValue("fhirVersion", FhirVersionElement);
+                foreach (var elem in FormatElement) { if (elem != null) yield return new ElementValue("format", elem); }
+                foreach (var elem in PatchFormatElement) { if (elem != null) yield return new ElementValue("patchFormat", elem); }
+                foreach (var elem in ImplementationGuideElement) { if (elem != null) yield return new ElementValue("implementationGuide", elem); }
+                foreach (var elem in Rest) { if (elem != null) yield return new ElementValue("rest", elem); }
+                foreach (var elem in Messaging) { if (elem != null) yield return new ElementValue("messaging", elem); }
+                foreach (var elem in Document) { if (elem != null) yield return new ElementValue("document", elem); }
             }
         }
 

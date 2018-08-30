@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,49 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "CareTeam"; } }
 
+        /// <summary>
+        /// Indicates the status of the care team.
+        /// (url: http://hl7.org/fhir/ValueSet/care-team-status)
+        /// </summary>
+        [FhirEnumeration("CareTeamStatus")]
+        public enum CareTeamStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/care-team-status"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/care-team-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/care-team-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/care-team-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/care-team-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
 
         [FhirType("ParticipantComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class ParticipantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParticipantComponent"; } }
@@ -188,10 +228,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Member != null) yield return new ElementValue("member", false, Member);
-                    if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", false, OnBehalfOf);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
+                    if (Role != null) yield return new ElementValue("role", Role);
+                    if (Member != null) yield return new ElementValue("member", Member);
+                    if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", OnBehalfOf);
+                    if (Period != null) yield return new ElementValue("period", Period);
                 }
             }
 
@@ -423,7 +463,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "participant.all(onBehalfOf.exists() implies (member.resolve() is Practitioner))",
             Key = "ctm-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "CareTeam.participant.onBehalfOf can only be populated when CareTeam.participant.member is a Practitioner",
             Xpath = "starts-with(f:member/f:reference/@value, 'Practitioner/') or contains(f:member/f:reference/@value, '/Practitioner/') or not(exists(f:onBehalfOf))"
         };
@@ -540,19 +580,19 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Period != null) yield return new ElementValue("period", false, Period);
-                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", true, elem); }
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                foreach (var elem in ManagingOrganization) { if (elem != null) yield return new ElementValue("managingOrganization", true, elem); }
-                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Period != null) yield return new ElementValue("period", Period);
+                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", elem); }
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                foreach (var elem in ManagingOrganization) { if (elem != null) yield return new ElementValue("managingOrganization", elem); }
+                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }
 

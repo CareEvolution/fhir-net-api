@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -255,7 +256,7 @@ namespace Hl7.Fhir.Tests.Serialization
                 Text = new Narrative { Div = "A great blues player" },
                 Meta = new Meta { VersionId = "eric-clapton" },
 
-                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = NameUse.Official } },
+                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = HumanName.NameUse.Official } },
 
                 Active = true,
                 BirthDate = "2015-07-09",
@@ -268,25 +269,25 @@ namespace Hl7.Fhir.Tests.Serialization
                 Active = true,
                 Text = new Narrative { Div = "<div>Another great blues player</div>" },
                 Meta = new Meta { VersionId = "bb-king" },
-                Name = new List<HumanName> { new HumanName { Family = "King", Use = NameUse.Nickname } }
+                Name = new List<HumanName> { new HumanName { Family = "King", Use = HumanName.NameUse.Nickname } }
             };
 
             var bundle = new Bundle()
             {
                 Id = "my-bundle",
                 Total = 1803,
-                Type = BundleType.Searchset,
+                Type = Bundle.BundleType.Searchset,
                 Entry = new List<Bundle.EntryComponent> {
-                    new Bundle.EntryComponent { Resource = patientOne, FullUrl = "http://base/Patient/patient-one", Search = new Bundle.SearchComponent() { Mode = SearchEntryMode.Match } },
-                    new Bundle.EntryComponent { Resource = patientTwo, FullUrl = "http://base/Patient/patient-two", Search = new Bundle.SearchComponent() { Mode = SearchEntryMode.Match } }
+                    new Bundle.EntryComponent { Resource = patientOne, FullUrl = "http://base/Patient/patient-one", Search = new Bundle.SearchComponent() { Mode = Bundle.SearchEntryMode.Match } },
+                    new Bundle.EntryComponent { Resource = patientTwo, FullUrl = "http://base/Patient/patient-two", Search = new Bundle.SearchComponent() { Mode = Bundle.SearchEntryMode.Match } }
                 }
             };
 
-            var trueBundle = FhirJsonSerializer.SerializeToString(bundle, Fhir.Rest.SummaryType.True);
-            var dataBundle = FhirJsonSerializer.SerializeToString(bundle, Fhir.Rest.SummaryType.Data);
-            var textBundle = FhirJsonSerializer.SerializeToString(bundle, Fhir.Rest.SummaryType.Text);
-            var countBundle = FhirJsonSerializer.SerializeToString(bundle, Fhir.Rest.SummaryType.Count);
-            var falseBundle = FhirJsonSerializer.SerializeToString(bundle, Fhir.Rest.SummaryType.False);
+            var trueBundle = FhirJsonSerializer.SerializeToString(bundle, SummaryType.True);
+            var dataBundle = FhirJsonSerializer.SerializeToString(bundle, SummaryType.Data);
+            var textBundle = FhirJsonSerializer.SerializeToString(bundle, SummaryType.Text);
+            var countBundle = FhirJsonSerializer.SerializeToString(bundle, SummaryType.Count);
+            var falseBundle = FhirJsonSerializer.SerializeToString(bundle, SummaryType.False);
 
             var shouldBeSummaryTrue = TestDataHelper.ReadTestData("summary\\bundle-summary-true.json");
             var shouldBeSummaryData = TestDataHelper.ReadTestData("summary\\bundle-summary-data.json");
@@ -307,10 +308,10 @@ namespace Hl7.Fhir.Tests.Serialization
             var patientOne = new Patient
             {
                 Id = "patient-one",
-                Text = new Narrative { Div = "<div>A great blues player</div>", Status = NarrativeStatus.Additional },
+                Text = new Narrative { Div = "<div>A great blues player</div>", Status = Narrative.NarrativeStatus.Additional },
                 Meta = new Meta { VersionId = "eric-clapton" },
 
-                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = NameUse.Official } },
+                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = HumanName.NameUse.Official } },
 
                 Active = true,
                 BirthDate = "2015-07-09",
@@ -321,19 +322,19 @@ namespace Hl7.Fhir.Tests.Serialization
             {
                 Id = "patient-two",
                 Active = true,
-                Text = new Narrative { Div = "<div>Another great blues player</div>", Status = NarrativeStatus.Additional },
+                Text = new Narrative { Div = "<div>Another great blues player</div>", Status = Narrative.NarrativeStatus.Additional },
                 Meta = new Meta { VersionId = "bb-king" },
-                Name = new List<HumanName> { new HumanName { Family = "King", Use = NameUse.Nickname } }
+                Name = new List<HumanName> { new HumanName { Family = "King", Use = HumanName.NameUse.Nickname } }
             };
 
             var bundle = new Bundle()
             {
                 Id = "my-bundle",
                 Total = 1803,
-                Type = BundleType.Searchset,
+                Type = Bundle.BundleType.Searchset,
                 Entry = new List<Bundle.EntryComponent> {
-                    new Bundle.EntryComponent { Resource = patientOne, FullUrl = "http://base/Patient/patient-one", Search = new Bundle.SearchComponent() { Mode = SearchEntryMode.Match } },
-                    new Bundle.EntryComponent { Resource = patientTwo, FullUrl = "http://base/Patient/patient-two", Search = new Bundle.SearchComponent() { Mode = SearchEntryMode.Match } }
+                    new Bundle.EntryComponent { Resource = patientOne, FullUrl = "http://base/Patient/patient-one", Search = new Bundle.SearchComponent() { Mode = Bundle.SearchEntryMode.Match } },
+                    new Bundle.EntryComponent { Resource = patientTwo, FullUrl = "http://base/Patient/patient-two", Search = new Bundle.SearchComponent() { Mode = Bundle.SearchEntryMode.Match } }
                 }
             };
 
@@ -367,7 +368,7 @@ namespace Hl7.Fhir.Tests.Serialization
                 Text = new Narrative { Div = "A great blues player" },
                 Meta = new Meta { VersionId = "1234" },
 
-                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = NameUse.Official } },
+                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = HumanName.NameUse.Official } },
 
                 Active = true,
                 BirthDate = "2015-07-09",
@@ -406,10 +407,10 @@ namespace Hl7.Fhir.Tests.Serialization
             {
 
                 Id = "patient-one",
-                Text = new Narrative { Status = NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
+                Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
                 Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
 
-                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = NameUse.Official } },
+                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = HumanName.NameUse.Official } },
 
                 Active = true,
                 BirthDate = "2015-07-09",
@@ -717,7 +718,7 @@ namespace Hl7.Fhir.Tests.Serialization
         {
             var bundle = new CustomBundle()
             {
-                Type = BundleType.Collection,
+                Type = Bundle.BundleType.Collection,
                 Id = "MyBundle"
             };
 
@@ -737,10 +738,10 @@ namespace Hl7.Fhir.Tests.Serialization
             {
 
                 Id = "patient-one",
-                Text = new Narrative { Status = NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
+                Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
                 Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
 
-                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = NameUse.Official } },
+                Name = new List<HumanName> { new HumanName { Family = "Clapton", Use = HumanName.NameUse.Official } },
 
                 Active = true,
                 BirthDate = "2015-07-09",
@@ -767,9 +768,9 @@ namespace Hl7.Fhir.Tests.Serialization
             {
                 Id = "patient-one",
                 Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
-                Text = new Narrative { Status = NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
+                Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
                 Active = true,
-                Name = new List<HumanName> { new HumanName { Use = NameUse.Official, Family = "Clapton" } },
+                Name = new List<HumanName> { new HumanName { Use = HumanName.NameUse.Official, Family = "Clapton" } },
                 Gender = AdministrativeGender.Male,
                 BirthDate = "2015-07-09",
             };
@@ -845,11 +846,11 @@ namespace Hl7.Fhir.Tests.Serialization
             telecom.AddExtension("http://healthconnex.com.au/hcxd/Phone/IsMain", new FhirBoolean(true));
             patient.Telecom.Add(telecom);
 
-            var doc = FhirXmlSerializer.SerializeToString(patient, Fhir.Rest.SummaryType.True);
+            var doc = FhirXmlSerializer.SerializeToString(patient, SummaryType.True);
 
             Assert.IsFalse(doc.Contains("<extension"), "In the summary there must be no extension section.");
 
-            doc = FhirXmlSerializer.SerializeToString(patient, Fhir.Rest.SummaryType.False);
+            doc = FhirXmlSerializer.SerializeToString(patient, SummaryType.False);
             Assert.IsTrue(doc.Contains("<extension"), "Extension exists when Summary = false");
         }
 

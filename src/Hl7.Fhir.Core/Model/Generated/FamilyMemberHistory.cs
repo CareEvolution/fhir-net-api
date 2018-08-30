@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,43 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "FamilyMemberHistory"; } }
 
+        /// <summary>
+        /// A code that identifies the status of the family history record.
+        /// (url: http://hl7.org/fhir/ValueSet/history-status)
+        /// </summary>
+        [FhirEnumeration("FamilyHistoryStatus")]
+        public enum FamilyHistoryStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/history-status)
+            /// </summary>
+            [EnumLiteral("partial", "http://hl7.org/fhir/history-status"), Description("Partial")]
+            Partial,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/history-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/history-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/history-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/history-status"), Description("Entered in error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/history-status)
+            /// </summary>
+            [EnumLiteral("health-unknown", "http://hl7.org/fhir/history-status"), Description("Health unknown")]
+            HealthUnknown,
+        }
+
 
         [FhirType("ConditionComponent")]
         [DataContract]
-        public partial class ConditionComponent : BackboneElement
+        public partial class ConditionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ConditionComponent"; } }
@@ -189,10 +223,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Outcome != null) yield return new ElementValue("outcome", false, Outcome);
-                    if (Onset != null) yield return new ElementValue("onset", false, Onset);
-                    foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Outcome != null) yield return new ElementValue("outcome", Outcome);
+                    if (Onset != null) yield return new ElementValue("onset", Onset);
+                    foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
                 }
             }
 
@@ -554,7 +588,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "age.exists() or estimatedAge.empty()",
             Key = "fhs-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can only have estimatedAge if age[x] is present",
             Xpath = "exists(*[starts-with(local-name(.), 'age')]) or not(exists(f:estimatedAge))"
         };
@@ -563,7 +597,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "age.empty() or born.empty()",
             Key = "fhs-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can have age[x] or born[x], but not both",
             Xpath = "not (*[starts-with(local-name(.), 'age')] and *[starts-with(local-name(.), 'birth')])"
         };
@@ -697,23 +731,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (DataAbsentReason != null) yield return new ElementValue("dataAbsentReason", false, DataAbsentReason);
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (Relationship != null) yield return new ElementValue("relationship", false, Relationship);
-                if (GenderElement != null) yield return new ElementValue("gender", false, GenderElement);
-                if (Born != null) yield return new ElementValue("born", false, Born);
-                if (Age != null) yield return new ElementValue("age", false, Age);
-                if (EstimatedAgeElement != null) yield return new ElementValue("estimatedAge", false, EstimatedAgeElement);
-                if (Deceased != null) yield return new ElementValue("deceased", false, Deceased);
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in Condition) { if (elem != null) yield return new ElementValue("condition", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (DataAbsentReason != null) yield return new ElementValue("dataAbsentReason", DataAbsentReason);
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (Relationship != null) yield return new ElementValue("relationship", Relationship);
+                if (GenderElement != null) yield return new ElementValue("gender", GenderElement);
+                if (Born != null) yield return new ElementValue("born", Born);
+                if (Age != null) yield return new ElementValue("age", Age);
+                if (EstimatedAgeElement != null) yield return new ElementValue("estimatedAge", EstimatedAgeElement);
+                if (Deceased != null) yield return new ElementValue("deceased", Deceased);
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in Condition) { if (elem != null) yield return new ElementValue("condition", elem); }
             }
         }
 

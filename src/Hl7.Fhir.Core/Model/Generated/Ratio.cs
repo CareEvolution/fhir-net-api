@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -86,7 +87,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())",
             Key = "rat-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present",
             Xpath = "(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) > 0) or (count(f:extension) > 0))"
         };
@@ -154,8 +155,8 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Numerator != null) yield return new ElementValue("numerator", false, Numerator);
-                if (Denominator != null) yield return new ElementValue("denominator", false, Denominator);
+                if (Numerator != null) yield return new ElementValue("numerator", Numerator);
+                if (Denominator != null) yield return new ElementValue("denominator", Denominator);
             }
         }
 

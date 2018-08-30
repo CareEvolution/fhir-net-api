@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -54,10 +55,226 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Timing"; } }
 
+        /// <summary>
+        /// A unit of time (units from UCUM).
+        /// (url: http://hl7.org/fhir/ValueSet/units-of-time)
+        /// </summary>
+        [FhirEnumeration("UnitsOfTime")]
+        public enum UnitsOfTime
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://unitsofmeasure.org)
+            /// </summary>
+            [EnumLiteral("s", "http://unitsofmeasure.org"), Description("秒")]
+            S,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://unitsofmeasure.org)
+            /// </summary>
+            [EnumLiteral("min", "http://unitsofmeasure.org"), Description("分钟")]
+            Min,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://unitsofmeasure.org)
+            /// </summary>
+            [EnumLiteral("h", "http://unitsofmeasure.org"), Description("小时")]
+            H,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://unitsofmeasure.org)
+            /// </summary>
+            [EnumLiteral("d", "http://unitsofmeasure.org"), Description("天")]
+            D,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://unitsofmeasure.org)
+            /// </summary>
+            [EnumLiteral("wk", "http://unitsofmeasure.org"), Description("星期")]
+            Wk,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://unitsofmeasure.org)
+            /// </summary>
+            [EnumLiteral("mo", "http://unitsofmeasure.org"), Description("月")]
+            Mo,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://unitsofmeasure.org)
+            /// </summary>
+            [EnumLiteral("a", "http://unitsofmeasure.org"), Description("年")]
+            A,
+        }
+
+        /// <summary>
+        /// Real world event relating to the schedule.
+        /// (url: http://hl7.org/fhir/ValueSet/event-timing)
+        /// </summary>
+        [FhirEnumeration("EventTiming")]
+        public enum EventTiming
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("MORN", "http://hl7.org/fhir/event-timing"), Description("Morning")]
+            MORN,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("MORN.early", "http://hl7.org/fhir/event-timing"), Description("Early Morning")]
+            MORNEarly,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("MORN.late", "http://hl7.org/fhir/event-timing"), Description("Late Morning")]
+            MORNLate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("NOON", "http://hl7.org/fhir/event-timing"), Description("Noon")]
+            NOON,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("AFT", "http://hl7.org/fhir/event-timing"), Description("Afternoon")]
+            AFT,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("AFT.early", "http://hl7.org/fhir/event-timing"), Description("Early Afternoon")]
+            AFTEarly,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("AFT.late", "http://hl7.org/fhir/event-timing"), Description("Late Afternoon")]
+            AFTLate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("EVE", "http://hl7.org/fhir/event-timing"), Description("Evening")]
+            EVE,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("EVE.early", "http://hl7.org/fhir/event-timing"), Description("Early Evening")]
+            EVEEarly,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("EVE.late", "http://hl7.org/fhir/event-timing"), Description("Late Evening")]
+            EVELate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("NIGHT", "http://hl7.org/fhir/event-timing"), Description("Night")]
+            NIGHT,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-timing)
+            /// </summary>
+            [EnumLiteral("PHS", "http://hl7.org/fhir/event-timing"), Description("After Sleep")]
+            PHS,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("HS", "http://hl7.org/fhir/v3/TimingEvent"), Description("HS")]
+            HS,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("WAKE", "http://hl7.org/fhir/v3/TimingEvent"), Description("WAKE")]
+            WAKE,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("C", "http://hl7.org/fhir/v3/TimingEvent"), Description("C")]
+            C,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("CM", "http://hl7.org/fhir/v3/TimingEvent"), Description("CM")]
+            CM,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("CD", "http://hl7.org/fhir/v3/TimingEvent"), Description("CD")]
+            CD,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("CV", "http://hl7.org/fhir/v3/TimingEvent"), Description("CV")]
+            CV,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("AC", "http://hl7.org/fhir/v3/TimingEvent"), Description("AC")]
+            AC,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("ACM", "http://hl7.org/fhir/v3/TimingEvent"), Description("ACM")]
+            ACM,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("ACD", "http://hl7.org/fhir/v3/TimingEvent"), Description("ACD")]
+            ACD,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("ACV", "http://hl7.org/fhir/v3/TimingEvent"), Description("ACV")]
+            ACV,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("PC", "http://hl7.org/fhir/v3/TimingEvent"), Description("PC")]
+            PC,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("PCM", "http://hl7.org/fhir/v3/TimingEvent"), Description("PCM")]
+            PCM,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("PCD", "http://hl7.org/fhir/v3/TimingEvent"), Description("PCD")]
+            PCD,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/TimingEvent)
+            /// </summary>
+            [EnumLiteral("PCV", "http://hl7.org/fhir/v3/TimingEvent"), Description("PCV")]
+            PCV,
+        }
+
 
         [FhirType("RepeatComponent")]
         [DataContract]
-        public partial class RepeatComponent : Element
+        public partial class RepeatComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RepeatComponent"; } }
@@ -641,21 +858,21 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Bounds != null) yield return new ElementValue("bounds", false, Bounds);
-                    if (CountElement != null) yield return new ElementValue("count", false, CountElement);
-                    if (CountMaxElement != null) yield return new ElementValue("countMax", false, CountMaxElement);
-                    if (DurationElement != null) yield return new ElementValue("duration", false, DurationElement);
-                    if (DurationMaxElement != null) yield return new ElementValue("durationMax", false, DurationMaxElement);
-                    if (DurationUnitElement != null) yield return new ElementValue("durationUnit", false, DurationUnitElement);
-                    if (FrequencyElement != null) yield return new ElementValue("frequency", false, FrequencyElement);
-                    if (FrequencyMaxElement != null) yield return new ElementValue("frequencyMax", false, FrequencyMaxElement);
-                    if (PeriodElement != null) yield return new ElementValue("period", false, PeriodElement);
-                    if (PeriodMaxElement != null) yield return new ElementValue("periodMax", false, PeriodMaxElement);
-                    if (PeriodUnitElement != null) yield return new ElementValue("periodUnit", false, PeriodUnitElement);
-                    foreach (var elem in DayOfWeekElement) { if (elem != null) yield return new ElementValue("dayOfWeek", true, elem); }
-                    foreach (var elem in TimeOfDayElement) { if (elem != null) yield return new ElementValue("timeOfDay", true, elem); }
-                    foreach (var elem in WhenElement) { if (elem != null) yield return new ElementValue("when", true, elem); }
-                    if (OffsetElement != null) yield return new ElementValue("offset", false, OffsetElement);
+                    if (Bounds != null) yield return new ElementValue("bounds", Bounds);
+                    if (CountElement != null) yield return new ElementValue("count", CountElement);
+                    if (CountMaxElement != null) yield return new ElementValue("countMax", CountMaxElement);
+                    if (DurationElement != null) yield return new ElementValue("duration", DurationElement);
+                    if (DurationMaxElement != null) yield return new ElementValue("durationMax", DurationMaxElement);
+                    if (DurationUnitElement != null) yield return new ElementValue("durationUnit", DurationUnitElement);
+                    if (FrequencyElement != null) yield return new ElementValue("frequency", FrequencyElement);
+                    if (FrequencyMaxElement != null) yield return new ElementValue("frequencyMax", FrequencyMaxElement);
+                    if (PeriodElement != null) yield return new ElementValue("period", PeriodElement);
+                    if (PeriodMaxElement != null) yield return new ElementValue("periodMax", PeriodMaxElement);
+                    if (PeriodUnitElement != null) yield return new ElementValue("periodUnit", PeriodUnitElement);
+                    foreach (var elem in DayOfWeekElement) { if (elem != null) yield return new ElementValue("dayOfWeek", elem); }
+                    foreach (var elem in TimeOfDayElement) { if (elem != null) yield return new ElementValue("timeOfDay", elem); }
+                    foreach (var elem in WhenElement) { if (elem != null) yield return new ElementValue("when", elem); }
+                    if (OffsetElement != null) yield return new ElementValue("offset", OffsetElement);
                 }
             }
 
@@ -727,7 +944,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(offset.empty() or (when.exists() and ((when in ('C' | 'CM' | 'CD' | 'CV')).not())))",
             Key = "tim-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there's an offset, there must be a when (and not C, CM, CD, CV)",
             Xpath = "not(exists(f:offset)) or exists(f:when)"
         };
@@ -736,7 +953,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(period.exists() implies period >= 0)",
             Key = "tim-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "period SHALL be a non-negative value",
             Xpath = "f:period/@value >= 0 or not(f:period/@value)"
         };
@@ -745,7 +962,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(periodMax.empty() or period.exists())",
             Key = "tim-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there's a periodMax, there must be a period",
             Xpath = "not(exists(f:periodMax)) or exists(f:period)"
         };
@@ -754,7 +971,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(durationMax.empty() or duration.exists())",
             Key = "tim-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there's a durationMax, there must be a duration",
             Xpath = "not(exists(f:durationMax)) or exists(f:duration)"
         };
@@ -763,7 +980,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(countMax.empty() or count.exists())",
             Key = "tim-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there's a countMax, there must be a count",
             Xpath = "not(exists(f:countMax)) or exists(f:count)"
         };
@@ -772,7 +989,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(duration.empty() or durationUnit.exists())",
             Key = "tim-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "if there's a duration, there needs to be duration units",
             Xpath = "not(exists(f:duration)) or exists(f:durationUnit)"
         };
@@ -781,7 +998,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(timeOfDay.empty() or when.empty())",
             Key = "tim-10",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there's a timeOfDay, there cannot be be a when, or vice versa",
             Xpath = "not(exists(f:timeOfDay)) or not(exists(f:when))"
         };
@@ -790,7 +1007,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(period.empty() or periodUnit.exists())",
             Key = "tim-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "if there's a period, there needs to be period units",
             Xpath = "not(exists(f:period)) or exists(f:periodUnit)"
         };
@@ -799,7 +1016,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "repeat.all(duration.exists() implies duration >= 0)",
             Key = "tim-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "duration SHALL be a non-negative value",
             Xpath = "f:duration/@value >= 0 or not(f:duration/@value)"
         };
@@ -871,9 +1088,9 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in EventElement) { if (elem != null) yield return new ElementValue("event", true, elem); }
-                if (Repeat != null) yield return new ElementValue("repeat", false, Repeat);
-                if (Code != null) yield return new ElementValue("code", false, Code);
+                foreach (var elem in EventElement) { if (elem != null) yield return new ElementValue("event", elem); }
+                if (Repeat != null) yield return new ElementValue("repeat", Repeat);
+                if (Code != null) yield return new ElementValue("code", Code);
             }
         }
 

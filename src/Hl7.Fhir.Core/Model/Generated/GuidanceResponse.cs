@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -55,6 +56,51 @@ namespace Hl7.Fhir.Model.R4
         public override ResourceType ResourceType { get { return ResourceType.GuidanceResponse; } }
         [NotMapped]
         public override string TypeName { get { return "GuidanceResponse"; } }
+
+        /// <summary>
+        /// The status of a guidance response
+        /// (url: http://hl7.org/fhir/ValueSet/guidance-response-status)
+        /// </summary>
+        [FhirEnumeration("GuidanceResponseStatus")]
+        public enum GuidanceResponseStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("success", "http://hl7.org/fhir/guidance-response-status"), Description("Success")]
+            Success,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("data-requested", "http://hl7.org/fhir/guidance-response-status"), Description("Data Requested")]
+            DataRequested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("data-required", "http://hl7.org/fhir/guidance-response-status"), Description("Data Required")]
+            DataRequired,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/guidance-response-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("failure", "http://hl7.org/fhir/guidance-response-status"), Description("Failure")]
+            Failure,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/guidance-response-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
 
 
         /// <summary>
@@ -439,21 +485,21 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (RequestIdElement != null) yield return new ElementValue("requestId", false, RequestIdElement);
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (Module != null) yield return new ElementValue("module", false, Module);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (OccurrenceDateTimeElement != null) yield return new ElementValue("occurrenceDateTime", false, OccurrenceDateTimeElement);
-                if (Performer != null) yield return new ElementValue("performer", false, Performer);
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in EvaluationMessage) { if (elem != null) yield return new ElementValue("evaluationMessage", true, elem); }
-                if (OutputParameters != null) yield return new ElementValue("outputParameters", false, OutputParameters);
-                if (Result != null) yield return new ElementValue("result", false, Result);
-                foreach (var elem in DataRequirement) { if (elem != null) yield return new ElementValue("dataRequirement", true, elem); }
+                if (RequestIdElement != null) yield return new ElementValue("requestId", RequestIdElement);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (Module != null) yield return new ElementValue("module", Module);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (OccurrenceDateTimeElement != null) yield return new ElementValue("occurrenceDateTime", OccurrenceDateTimeElement);
+                if (Performer != null) yield return new ElementValue("performer", Performer);
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in EvaluationMessage) { if (elem != null) yield return new ElementValue("evaluationMessage", elem); }
+                if (OutputParameters != null) yield return new ElementValue("outputParameters", OutputParameters);
+                if (Result != null) yield return new ElementValue("result", Result);
+                foreach (var elem in DataRequirement) { if (elem != null) yield return new ElementValue("dataRequirement", elem); }
             }
         }
 

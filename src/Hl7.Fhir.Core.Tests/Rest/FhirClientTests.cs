@@ -21,6 +21,7 @@ using Hl7.Fhir.Utility;
 using static Hl7.Fhir.Model.R4.Bundle;
 using System.Drawing;
 using TestClient = Hl7.Fhir.Rest.Http.R4.FhirClient;
+using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Tests.Rest
 {
@@ -81,7 +82,7 @@ namespace Hl7.Fhir.Tests.Rest
             Assert.IsNotNull(entry);
             Assert.IsNotNull(entry.FhirVersion);
             // Assert.AreEqual("Spark.Service", c.Software.Name); // This is only for ewout's server
-            Assert.AreEqual(RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
+            Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
             Assert.AreEqual("200", client.LastResult.Status);
 
             entry = client.CapabilityStatement(SummaryType.True);
@@ -89,7 +90,7 @@ namespace Hl7.Fhir.Tests.Rest
             Assert.IsNull(entry.Text); // DSTU2 has this property as not include as part of the summary (that would be with SummaryType.Text)
             Assert.IsNotNull(entry);
             Assert.IsNotNull(entry.FhirVersion);
-            Assert.AreEqual(RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
+            Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
             Assert.AreEqual("200", client.LastResult.Status);
 
             Assert.IsNotNull(entry.Rest[0].Resource, "The resource property should be in the summary");
@@ -111,7 +112,7 @@ namespace Hl7.Fhir.Tests.Rest
                 Assert.IsNotNull(entry);
                 Assert.IsNotNull(entry.FhirVersion);
                 // Assert.AreEqual("Spark.Service", c.Software.Name); // This is only for ewout's server
-                Assert.AreEqual(RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
+                Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
                 Assert.AreEqual("200", client.LastResult.Status);
 
                 entry = client.CapabilityStatement(SummaryType.True);
@@ -119,7 +120,7 @@ namespace Hl7.Fhir.Tests.Rest
                 Assert.IsNull(entry.Text); // DSTU2 has this property as not include as part of the summary (that would be with SummaryType.Text)
                 Assert.IsNotNull(entry);
                 Assert.IsNotNull(entry.FhirVersion);
-                Assert.AreEqual(RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
+                Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
                 Assert.AreEqual("200", client.LastResult.Status);
 
                 Assert.IsNotNull(entry.Rest[0].Resource, "The resource property should be in the summary");
@@ -1452,8 +1453,8 @@ namespace Hl7.Fhir.Tests.Rest
                 Name = "Furore",
                 Identifier = new List<Identifier> { new Identifier("http://hl7.org/test/1", "3141") },
                 Telecom = new List<ContactPoint> {
-                    new ContactPoint { System = ContactPointSystem.Phone, Value = "+31-20-3467171", Use = ContactPointUse.Work },
-                    new ContactPoint { System = ContactPointSystem.Fax, Value = "+31-20-3467172" }
+                    new ContactPoint { System = ContactPoint.ContactPointSystem.Phone, Value = "+31-20-3467171", Use = ContactPoint.ContactPointUse.Work },
+                    new ContactPoint { System = ContactPoint.ContactPointSystem.Fax, Value = "+31-20-3467172" }
                 }
             };
 
@@ -1473,8 +1474,8 @@ namespace Hl7.Fhir.Tests.Rest
                 Name = "Furore",
                 Identifier = new List<Identifier> { new Identifier("http://hl7.org/test/1", "3141") },
                 Telecom = new List<ContactPoint> {
-                    new ContactPoint { System = ContactPointSystem.Phone, Value = "+31-20-3467171", Use = ContactPointUse.Work },
-                    new ContactPoint { System = ContactPointSystem.Fax, Value = "+31-20-3467172" }
+                    new ContactPoint { System = ContactPoint.ContactPointSystem.Phone, Value = "+31-20-3467171", Use = ContactPoint.ContactPointUse.Work },
+                    new ContactPoint { System = ContactPoint.ContactPointSystem.Fax, Value = "+31-20-3467172" }
                 }
             };
 
@@ -1749,7 +1750,7 @@ namespace Hl7.Fhir.Tests.Rest
 
                 Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                Assert.IsTrue(operationOutcome.Issue[0].Severity == IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
 
                 string message = operationOutcome.Issue[0].Diagnostics;
                 if (!message.Contains("a valid FHIR xml/json body type was expected") && !message.Contains("not recognized as either xml or json"))
@@ -1793,7 +1794,7 @@ namespace Hl7.Fhir.Tests.Rest
 
                     Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                    Assert.IsTrue(operationOutcome.Issue[0].Severity == IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                    Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
 
                     string message = operationOutcome.Issue[0].Diagnostics;
                     if (!message.Contains("a valid FHIR xml/json body type was expected") && !message.Contains("not recognized as either xml or json"))
@@ -1837,7 +1838,7 @@ namespace Hl7.Fhir.Tests.Rest
 
                 Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                Assert.IsTrue(operationOutcome.Issue[0].Severity == IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
             }
             catch (Exception e)
             {
@@ -1876,7 +1877,7 @@ namespace Hl7.Fhir.Tests.Rest
 
                     Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                    Assert.IsTrue(operationOutcome.Issue[0].Severity == IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                    Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
                 }
                 catch (Exception e)
                 {

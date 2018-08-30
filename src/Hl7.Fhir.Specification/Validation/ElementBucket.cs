@@ -10,6 +10,7 @@ using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.ElementModel;
 
 namespace Hl7.Fhir.Validation
 {

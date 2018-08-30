@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -273,13 +274,13 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (Insurer != null) yield return new ElementValue("insurer", false, Insurer);
-                if (Provider != null) yield return new ElementValue("provider", false, Provider);
-                if (Candidate != null) yield return new ElementValue("candidate", false, Candidate);
-                if (Coverage != null) yield return new ElementValue("coverage", false, Coverage);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Insurer != null) yield return new ElementValue("insurer", Insurer);
+                if (Provider != null) yield return new ElementValue("provider", Provider);
+                if (Candidate != null) yield return new ElementValue("candidate", Candidate);
+                if (Coverage != null) yield return new ElementValue("coverage", Coverage);
             }
         }
 

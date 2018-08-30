@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("QualificationComponent")]
         [DataContract]
-        public partial class QualificationComponent : BackboneElement
+        public partial class QualificationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "QualificationComponent"; } }
@@ -189,10 +190,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
-                    if (Issuer != null) yield return new ElementValue("issuer", false, Issuer);
+                    foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Period != null) yield return new ElementValue("period", Period);
+                    if (Issuer != null) yield return new ElementValue("issuer", Issuer);
                 }
             }
 
@@ -488,16 +489,16 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ActiveElement != null) yield return new ElementValue("active", false, ActiveElement);
-                foreach (var elem in Name) { if (elem != null) yield return new ElementValue("name", true, elem); }
-                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", true, elem); }
-                foreach (var elem in Address) { if (elem != null) yield return new ElementValue("address", true, elem); }
-                if (GenderElement != null) yield return new ElementValue("gender", false, GenderElement);
-                if (BirthDateElement != null) yield return new ElementValue("birthDate", false, BirthDateElement);
-                foreach (var elem in Photo) { if (elem != null) yield return new ElementValue("photo", true, elem); }
-                foreach (var elem in Qualification) { if (elem != null) yield return new ElementValue("qualification", true, elem); }
-                foreach (var elem in Communication) { if (elem != null) yield return new ElementValue("communication", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ActiveElement != null) yield return new ElementValue("active", ActiveElement);
+                foreach (var elem in Name) { if (elem != null) yield return new ElementValue("name", elem); }
+                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
+                foreach (var elem in Address) { if (elem != null) yield return new ElementValue("address", elem); }
+                if (GenderElement != null) yield return new ElementValue("gender", GenderElement);
+                if (BirthDateElement != null) yield return new ElementValue("birthDate", BirthDateElement);
+                foreach (var elem in Photo) { if (elem != null) yield return new ElementValue("photo", elem); }
+                foreach (var elem in Qualification) { if (elem != null) yield return new ElementValue("qualification", elem); }
+                foreach (var elem in Communication) { if (elem != null) yield return new ElementValue("communication", elem); }
             }
         }
 

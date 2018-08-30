@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,295 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "StructureMap"; } }
 
+        /// <summary>
+        /// How the referenced structure is used in this mapping
+        /// (url: http://hl7.org/fhir/ValueSet/map-model-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapModelMode")]
+        public enum StructureMapModelMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-model-mode)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/map-model-mode"), Description("Source Structure Definition")]
+            Source,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-model-mode)
+            /// </summary>
+            [EnumLiteral("queried", "http://hl7.org/fhir/map-model-mode"), Description("Queried Structure Definition")]
+            Queried,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-model-mode)
+            /// </summary>
+            [EnumLiteral("target", "http://hl7.org/fhir/map-model-mode"), Description("Target Structure Definition")]
+            Target,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-model-mode)
+            /// </summary>
+            [EnumLiteral("produced", "http://hl7.org/fhir/map-model-mode"), Description("Produced Structure Definition")]
+            Produced,
+        }
+
+        /// <summary>
+        /// If this is the default rule set to apply for the source type, or this combination of types
+        /// (url: http://hl7.org/fhir/ValueSet/map-group-type-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapGroupTypeMode")]
+        public enum StructureMapGroupTypeMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-group-type-mode)
+            /// </summary>
+            [EnumLiteral("none", "http://hl7.org/fhir/map-group-type-mode"), Description("Not a Default")]
+            None,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-group-type-mode)
+            /// </summary>
+            [EnumLiteral("types", "http://hl7.org/fhir/map-group-type-mode"), Description("Default for Type Combination")]
+            Types,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-group-type-mode)
+            /// </summary>
+            [EnumLiteral("type-and-types", "http://hl7.org/fhir/map-group-type-mode"), Description("Default for type + combination")]
+            TypeAndTypes,
+        }
+
+        /// <summary>
+        /// Mode for this instance of data
+        /// (url: http://hl7.org/fhir/ValueSet/map-input-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapInputMode")]
+        public enum StructureMapInputMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-input-mode)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/map-input-mode"), Description("Source Instance")]
+            Source,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-input-mode)
+            /// </summary>
+            [EnumLiteral("target", "http://hl7.org/fhir/map-input-mode"), Description("Target Instance")]
+            Target,
+        }
+
+        /// <summary>
+        /// If field is a list, how to manage the source
+        /// (url: http://hl7.org/fhir/ValueSet/map-source-list-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapSourceListMode")]
+        public enum StructureMapSourceListMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("first", "http://hl7.org/fhir/map-source-list-mode"), Description("First")]
+            First,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("not_first", "http://hl7.org/fhir/map-source-list-mode"), Description("All but the first")]
+            Not_first,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("last", "http://hl7.org/fhir/map-source-list-mode"), Description("Last")]
+            Last,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("not_last", "http://hl7.org/fhir/map-source-list-mode"), Description("All but the last")]
+            Not_last,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("only_one", "http://hl7.org/fhir/map-source-list-mode"), Description("Enforce only one")]
+            Only_one,
+        }
+
+        /// <summary>
+        /// How to interpret the context
+        /// (url: http://hl7.org/fhir/ValueSet/map-context-type)
+        /// </summary>
+        [FhirEnumeration("StructureMapContextType")]
+        public enum StructureMapContextType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-context-type)
+            /// </summary>
+            [EnumLiteral("type", "http://hl7.org/fhir/map-context-type"), Description("Type")]
+            Type,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-context-type)
+            /// </summary>
+            [EnumLiteral("variable", "http://hl7.org/fhir/map-context-type"), Description("Variable")]
+            Variable,
+        }
+
+        /// <summary>
+        /// If field is a list, how to manage the production
+        /// (url: http://hl7.org/fhir/ValueSet/map-target-list-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapTargetListMode")]
+        public enum StructureMapTargetListMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-target-list-mode)
+            /// </summary>
+            [EnumLiteral("first", "http://hl7.org/fhir/map-target-list-mode"), Description("First")]
+            First,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-target-list-mode)
+            /// </summary>
+            [EnumLiteral("share", "http://hl7.org/fhir/map-target-list-mode"), Description("Share")]
+            Share,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-target-list-mode)
+            /// </summary>
+            [EnumLiteral("last", "http://hl7.org/fhir/map-target-list-mode"), Description("Last")]
+            Last,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-target-list-mode)
+            /// </summary>
+            [EnumLiteral("collate", "http://hl7.org/fhir/map-target-list-mode"), Description("Collate")]
+            Collate,
+        }
+
+        /// <summary>
+        /// How data is copied/created
+        /// (url: http://hl7.org/fhir/ValueSet/map-transform)
+        /// </summary>
+        [FhirEnumeration("StructureMapTransform")]
+        public enum StructureMapTransform
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("create", "http://hl7.org/fhir/map-transform"), Description("create")]
+            Create,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("copy", "http://hl7.org/fhir/map-transform"), Description("copy")]
+            Copy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("truncate", "http://hl7.org/fhir/map-transform"), Description("truncate")]
+            Truncate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("escape", "http://hl7.org/fhir/map-transform"), Description("escape")]
+            Escape,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("cast", "http://hl7.org/fhir/map-transform"), Description("cast")]
+            Cast,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("append", "http://hl7.org/fhir/map-transform"), Description("append")]
+            Append,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("translate", "http://hl7.org/fhir/map-transform"), Description("translate")]
+            Translate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("reference", "http://hl7.org/fhir/map-transform"), Description("reference")]
+            Reference,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("dateOp", "http://hl7.org/fhir/map-transform"), Description("dateOp")]
+            DateOp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("uuid", "http://hl7.org/fhir/map-transform"), Description("uuid")]
+            Uuid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("pointer", "http://hl7.org/fhir/map-transform"), Description("pointer")]
+            Pointer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("evaluate", "http://hl7.org/fhir/map-transform"), Description("evaluate")]
+            Evaluate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("cc", "http://hl7.org/fhir/map-transform"), Description("cc")]
+            Cc,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("c", "http://hl7.org/fhir/map-transform"), Description("c")]
+            C,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("qty", "http://hl7.org/fhir/map-transform"), Description("qty")]
+            Qty,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("id", "http://hl7.org/fhir/map-transform"), Description("id")]
+            Id,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("cp", "http://hl7.org/fhir/map-transform"), Description("cp")]
+            Cp,
+        }
+
 
         [FhirType("StructureComponent")]
         [DataContract]
-        public partial class StructureComponent : BackboneElement
+        public partial class StructureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StructureComponent"; } }
@@ -264,10 +550,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                    if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                    if (AliasElement != null) yield return new ElementValue("alias", false, AliasElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
+                    if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                    if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                    if (AliasElement != null) yield return new ElementValue("alias", AliasElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
                 }
             }
 
@@ -277,7 +563,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("GroupComponent")]
         [DataContract]
-        public partial class GroupComponent : BackboneElement
+        public partial class GroupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GroupComponent"; } }
@@ -518,12 +804,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (ExtendsElement != null) yield return new ElementValue("extends", false, ExtendsElement);
-                    if (TypeModeElement != null) yield return new ElementValue("typeMode", false, TypeModeElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
-                    foreach (var elem in Input) { if (elem != null) yield return new ElementValue("input", true, elem); }
-                    foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", true, elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (ExtendsElement != null) yield return new ElementValue("extends", ExtendsElement);
+                    if (TypeModeElement != null) yield return new ElementValue("typeMode", TypeModeElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
+                    foreach (var elem in Input) { if (elem != null) yield return new ElementValue("input", elem); }
+                    foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", elem); }
                 }
             }
 
@@ -533,7 +819,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("InputComponent")]
         [DataContract]
-        public partial class InputComponent : BackboneElement
+        public partial class InputComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InputComponent"; } }
@@ -738,10 +1024,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
                 }
             }
 
@@ -751,7 +1037,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RuleComponent")]
         [DataContract]
-        public partial class RuleComponent : BackboneElement
+        public partial class RuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RuleComponent"; } }
@@ -955,12 +1241,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", true, elem); }
-                    foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", true, elem); }
-                    foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", true, elem); }
-                    foreach (var elem in Dependent) { if (elem != null) yield return new ElementValue("dependent", true, elem); }
-                    if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", elem); }
+                    foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", elem); }
+                    foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", elem); }
+                    foreach (var elem in Dependent) { if (elem != null) yield return new ElementValue("dependent", elem); }
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
                 }
             }
 
@@ -970,7 +1256,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SourceComponent")]
         [DataContract]
-        public partial class SourceComponent : BackboneElement
+        public partial class SourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SourceComponent"; } }
@@ -1372,16 +1658,16 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ContextElement != null) yield return new ElementValue("context", false, ContextElement);
-                    if (MinElement != null) yield return new ElementValue("min", false, MinElement);
-                    if (MaxElement != null) yield return new ElementValue("max", false, MaxElement);
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (DefaultValue != null) yield return new ElementValue("defaultValue", false, DefaultValue);
-                    if (ElementElement != null) yield return new ElementValue("element", false, ElementElement);
-                    if (ListModeElement != null) yield return new ElementValue("listMode", false, ListModeElement);
-                    if (VariableElement != null) yield return new ElementValue("variable", false, VariableElement);
-                    if (ConditionElement != null) yield return new ElementValue("condition", false, ConditionElement);
-                    if (CheckElement != null) yield return new ElementValue("check", false, CheckElement);
+                    if (ContextElement != null) yield return new ElementValue("context", ContextElement);
+                    if (MinElement != null) yield return new ElementValue("min", MinElement);
+                    if (MaxElement != null) yield return new ElementValue("max", MaxElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (DefaultValue != null) yield return new ElementValue("defaultValue", DefaultValue);
+                    if (ElementElement != null) yield return new ElementValue("element", ElementElement);
+                    if (ListModeElement != null) yield return new ElementValue("listMode", ListModeElement);
+                    if (VariableElement != null) yield return new ElementValue("variable", VariableElement);
+                    if (ConditionElement != null) yield return new ElementValue("condition", ConditionElement);
+                    if (CheckElement != null) yield return new ElementValue("check", CheckElement);
                 }
             }
 
@@ -1391,7 +1677,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TargetComponent")]
         [DataContract]
-        public partial class TargetComponent : BackboneElement
+        public partial class TargetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TargetComponent"; } }
@@ -1721,14 +2007,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ContextElement != null) yield return new ElementValue("context", false, ContextElement);
-                    if (ContextTypeElement != null) yield return new ElementValue("contextType", false, ContextTypeElement);
-                    if (ElementElement != null) yield return new ElementValue("element", false, ElementElement);
-                    if (VariableElement != null) yield return new ElementValue("variable", false, VariableElement);
-                    foreach (var elem in ListModeElement) { if (elem != null) yield return new ElementValue("listMode", true, elem); }
-                    if (ListRuleIdElement != null) yield return new ElementValue("listRuleId", false, ListRuleIdElement);
-                    if (TransformElement != null) yield return new ElementValue("transform", false, TransformElement);
-                    foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", true, elem); }
+                    if (ContextElement != null) yield return new ElementValue("context", ContextElement);
+                    if (ContextTypeElement != null) yield return new ElementValue("contextType", ContextTypeElement);
+                    if (ElementElement != null) yield return new ElementValue("element", ElementElement);
+                    if (VariableElement != null) yield return new ElementValue("variable", VariableElement);
+                    foreach (var elem in ListModeElement) { if (elem != null) yield return new ElementValue("listMode", elem); }
+                    if (ListRuleIdElement != null) yield return new ElementValue("listRuleId", ListRuleIdElement);
+                    if (TransformElement != null) yield return new ElementValue("transform", TransformElement);
+                    foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", elem); }
                 }
             }
 
@@ -1738,7 +2024,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ParameterComponent")]
         [DataContract]
-        public partial class ParameterComponent : BackboneElement
+        public partial class ParameterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParameterComponent"; } }
@@ -1816,7 +2102,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -1826,7 +2112,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DependentComponent")]
         [DataContract]
-        public partial class DependentComponent : BackboneElement
+        public partial class DependentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DependentComponent"; } }
@@ -1959,8 +2245,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    foreach (var elem in VariableElement) { if (elem != null) yield return new ElementValue("variable", true, elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    foreach (var elem in VariableElement) { if (elem != null) yield return new ElementValue("variable", elem); }
                 }
             }
 
@@ -2388,7 +2674,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "group.rule.target.all(context.exists() implies contextType.exists())",
             Key = "smp-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have a contextType if you have a context",
             Xpath = "not(f:context) or (f:contextType)"
         };
@@ -2397,7 +2683,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "group.rule.target.all(element.exists() implies context.exists())",
             Key = "smp-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can only have a element if you have a context",
             Xpath = "not(f:element) or (f:context)"
         };
@@ -2535,24 +2821,24 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                foreach (var elem in Structure) { if (elem != null) yield return new ElementValue("structure", true, elem); }
-                foreach (var elem in ImportElement) { if (elem != null) yield return new ElementValue("import", true, elem); }
-                foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", true, elem); }
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                foreach (var elem in Structure) { if (elem != null) yield return new ElementValue("structure", elem); }
+                foreach (var elem in ImportElement) { if (elem != null) yield return new ElementValue("import", elem); }
+                foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", elem); }
             }
         }
 

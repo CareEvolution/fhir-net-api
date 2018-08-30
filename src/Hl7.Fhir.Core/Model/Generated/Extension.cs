@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -107,7 +108,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "extension.exists() != value.exists()",
             Key = "ext-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have either extensions or value[x], not both",
             Xpath = "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
         };
@@ -174,7 +175,8 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Value != null) yield return new ElementValue("value", false, Value);
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (Value != null) yield return new ElementValue("value", Value);
             }
         }
 

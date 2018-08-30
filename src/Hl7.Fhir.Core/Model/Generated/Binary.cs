@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -202,9 +203,9 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (ContentTypeElement != null) yield return new ElementValue("contentType", false, ContentTypeElement);
-                if (SecurityContext != null) yield return new ElementValue("securityContext", false, SecurityContext);
-                if (ContentElement != null) yield return new ElementValue("content", false, ContentElement);
+                if (ContentTypeElement != null) yield return new ElementValue("contentType", ContentTypeElement);
+                if (SecurityContext != null) yield return new ElementValue("securityContext", SecurityContext);
+                if (ContentElement != null) yield return new ElementValue("content", ContentElement);
             }
         }
 

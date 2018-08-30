@@ -8,14 +8,14 @@
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using System.Diagnostics;
 using Hl7.Fhir.Specification.Source;
 using System.Net;
-using Hl7.Fhir.Support;
+using Hl7.Fhir.Support.R4;
 using System.Xml.Linq;
 using System.IO;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
 using System.Linq;
 using Hl7.Fhir.Utility;
 
@@ -84,7 +84,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.AreEqual("http://test.fhir.org/r3/StructureDefinition/Observation", artifact.GetOrigin());
         }
 
-        private class TestFhirClient : Rest.FhirClient
+        private class TestFhirClient : Rest.R4.FhirClient
         {
             private int _status = 0;
 

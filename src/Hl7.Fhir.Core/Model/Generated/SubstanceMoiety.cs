@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -266,13 +267,13 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Role != null) yield return new ElementValue("role", false, Role);
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (Stereochemistry != null) yield return new ElementValue("stereochemistry", false, Stereochemistry);
-                if (OpticalActivity != null) yield return new ElementValue("opticalActivity", false, OpticalActivity);
-                if (MolecularFormulaElement != null) yield return new ElementValue("molecularFormula", false, MolecularFormulaElement);
-                if (Amount != null) yield return new ElementValue("amount", false, Amount);
+                if (Role != null) yield return new ElementValue("role", Role);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (Stereochemistry != null) yield return new ElementValue("stereochemistry", Stereochemistry);
+                if (OpticalActivity != null) yield return new ElementValue("opticalActivity", OpticalActivity);
+                if (MolecularFormulaElement != null) yield return new ElementValue("molecularFormula", MolecularFormulaElement);
+                if (Amount != null) yield return new ElementValue("amount", Amount);
             }
         }
 

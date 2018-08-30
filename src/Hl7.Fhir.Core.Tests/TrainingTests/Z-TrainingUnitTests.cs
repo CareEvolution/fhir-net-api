@@ -19,7 +19,7 @@ namespace FHIR.Server.Tests
             var pat = new Patient();
             pat.Name = new System.Collections.Generic.List<HumanName>();
             pat.Name.Add(new HumanName().WithGiven("Brian").AndFamily("Postlethwaite"));
-            pat.Name[0].Use = NameUse.Usual;
+            pat.Name[0].Use = HumanName.NameUse.Usual;
             pat.Name[0].Prefix = new string[] { "Mr" };
             DateTime nativeBirthTime = new DateTime(2016, 6, 16, 15, 23, 0);
             pat.BirthDate = nativeBirthTime.ToFhirDate();
@@ -55,8 +55,8 @@ namespace FHIR.Server.Tests
             });
 
             // Telecom
-            pat.Telecom.Add(new ContactPoint(ContactPointSystem.Email,
-                ContactPointUse.Home, "555 123456"));
+            pat.Telecom.Add(new ContactPoint(ContactPoint.ContactPointSystem.Email,
+                ContactPoint.ContactPointUse.Home, "555 123456"));
             pat.Telecom[0].Period = new Period() { Start = "2015", End = "2017" };
         }
 
@@ -139,7 +139,7 @@ namespace FHIR.Server.Tests
                 {
                     Expression = expression,
                     Key = key,
-                    Severity = severity == "Error" ? ConstraintSeverity.Error : ConstraintSeverity.Warning,
+                    Severity = severity == "Error" ? ElementDefinition.ConstraintSeverity.Error : ElementDefinition.ConstraintSeverity.Warning,
                     Human = human,
                     Xpath = xpath
                 };

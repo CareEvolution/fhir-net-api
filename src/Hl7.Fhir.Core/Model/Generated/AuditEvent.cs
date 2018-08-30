@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,121 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "AuditEvent"; } }
 
+        /// <summary>
+        /// Indicator for type of action performed during the event that generated the event
+        /// (url: http://hl7.org/fhir/ValueSet/audit-event-action)
+        /// </summary>
+        [FhirEnumeration("AuditEventAction")]
+        public enum AuditEventAction
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("C", "http://hl7.org/fhir/audit-event-action"), Description("Create")]
+            C,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("R", "http://hl7.org/fhir/audit-event-action"), Description("Read/View/Print")]
+            R,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("U", "http://hl7.org/fhir/audit-event-action"), Description("Update")]
+            U,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("D", "http://hl7.org/fhir/audit-event-action"), Description("Delete")]
+            D,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("E", "http://hl7.org/fhir/audit-event-action"), Description("Execute")]
+            E,
+        }
+
+        /// <summary>
+        /// Indicates whether the event succeeded or failed
+        /// (url: http://hl7.org/fhir/ValueSet/audit-event-outcome)
+        /// </summary>
+        [FhirEnumeration("AuditEventOutcome")]
+        public enum AuditEventOutcome
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("0", "http://hl7.org/fhir/audit-event-outcome"), Description("Success")]
+            N0,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("4", "http://hl7.org/fhir/audit-event-outcome"), Description("Minor failure")]
+            N4,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("8", "http://hl7.org/fhir/audit-event-outcome"), Description("Serious failure")]
+            N8,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("12", "http://hl7.org/fhir/audit-event-outcome"), Description("Major failure")]
+            N12,
+        }
+
+        /// <summary>
+        /// The type of network access point of this agent in the audit event
+        /// (url: http://hl7.org/fhir/ValueSet/network-type)
+        /// </summary>
+        [FhirEnumeration("AuditEventAgentNetworkType")]
+        public enum AuditEventAgentNetworkType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("1", "http://hl7.org/fhir/network-type"), Description("Machine Name")]
+            N1,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("2", "http://hl7.org/fhir/network-type"), Description("IP Address")]
+            N2,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("3", "http://hl7.org/fhir/network-type"), Description("Telephone Number")]
+            N3,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("4", "http://hl7.org/fhir/network-type"), Description("Email address")]
+            N4,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("5", "http://hl7.org/fhir/network-type"), Description("URI")]
+            N5,
+        }
+
 
         [FhirType("AgentComponent")]
         [DataContract]
-        public partial class AgentComponent : BackboneElement
+        public partial class AgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AgentComponent"; } }
@@ -404,18 +516,18 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", true, elem); }
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
-                    if (UserId != null) yield return new ElementValue("userId", false, UserId);
-                    if (AltIdElement != null) yield return new ElementValue("altId", false, AltIdElement);
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (RequestorElement != null) yield return new ElementValue("requestor", false, RequestorElement);
-                    if (Location != null) yield return new ElementValue("location", false, Location);
-                    foreach (var elem in PolicyElement) { if (elem != null) yield return new ElementValue("policy", true, elem); }
-                    if (Media != null) yield return new ElementValue("media", false, Media);
-                    if (Network != null) yield return new ElementValue("network", false, Network);
-                    foreach (var elem in PurposeOfUse) { if (elem != null) yield return new ElementValue("purposeOfUse", true, elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", elem); }
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
+                    if (UserId != null) yield return new ElementValue("userId", UserId);
+                    if (AltIdElement != null) yield return new ElementValue("altId", AltIdElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (RequestorElement != null) yield return new ElementValue("requestor", RequestorElement);
+                    if (Location != null) yield return new ElementValue("location", Location);
+                    foreach (var elem in PolicyElement) { if (elem != null) yield return new ElementValue("policy", elem); }
+                    if (Media != null) yield return new ElementValue("media", Media);
+                    if (Network != null) yield return new ElementValue("network", Network);
+                    foreach (var elem in PurposeOfUse) { if (elem != null) yield return new ElementValue("purposeOfUse", elem); }
                 }
             }
 
@@ -425,7 +537,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("NetworkComponent")]
         [DataContract]
-        public partial class NetworkComponent : BackboneElement
+        public partial class NetworkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NetworkComponent"; } }
@@ -556,8 +668,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (AddressElement != null) yield return new ElementValue("address", false, AddressElement);
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
+                    if (AddressElement != null) yield return new ElementValue("address", AddressElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
                 }
             }
 
@@ -567,7 +679,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SourceComponent")]
         [DataContract]
-        public partial class SourceComponent : BackboneElement
+        public partial class SourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SourceComponent"; } }
@@ -698,9 +810,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SiteElement != null) yield return new ElementValue("site", false, SiteElement);
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
+                    if (SiteElement != null) yield return new ElementValue("site", SiteElement);
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
                 }
             }
 
@@ -710,7 +822,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EntityComponent")]
         [DataContract]
-        public partial class EntityComponent : BackboneElement
+        public partial class EntityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EntityComponent"; } }
@@ -998,16 +1110,16 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Lifecycle != null) yield return new ElementValue("lifecycle", false, Lifecycle);
-                    foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", true, elem); }
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (QueryElement != null) yield return new ElementValue("query", false, QueryElement);
-                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", true, elem); }
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Role != null) yield return new ElementValue("role", Role);
+                    if (Lifecycle != null) yield return new ElementValue("lifecycle", Lifecycle);
+                    foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (QueryElement != null) yield return new ElementValue("query", QueryElement);
+                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
                 }
             }
 
@@ -1017,7 +1129,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DetailComponent")]
         [DataContract]
-        public partial class DetailComponent : BackboneElement
+        public partial class DetailComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DetailComponent"; } }
@@ -1132,8 +1244,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -1372,7 +1484,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "entity.all(name.empty() or query.empty())",
             Key = "sev-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either a name or a query (NOT both)",
             Xpath = "not(exists(f:name)) or not(exists(f:query))"
         };
@@ -1481,17 +1593,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                foreach (var elem in Subtype) { if (elem != null) yield return new ElementValue("subtype", true, elem); }
-                if (ActionElement != null) yield return new ElementValue("action", false, ActionElement);
-                if (Period != null) yield return new ElementValue("period", false, Period);
-                if (RecordedElement != null) yield return new ElementValue("recorded", false, RecordedElement);
-                if (OutcomeElement != null) yield return new ElementValue("outcome", false, OutcomeElement);
-                if (OutcomeDescElement != null) yield return new ElementValue("outcomeDesc", false, OutcomeDescElement);
-                foreach (var elem in PurposeOfEvent) { if (elem != null) yield return new ElementValue("purposeOfEvent", true, elem); }
-                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", true, elem); }
-                if (Source != null) yield return new ElementValue("source", false, Source);
-                foreach (var elem in Entity) { if (elem != null) yield return new ElementValue("entity", true, elem); }
+                if (Type != null) yield return new ElementValue("type", Type);
+                foreach (var elem in Subtype) { if (elem != null) yield return new ElementValue("subtype", elem); }
+                if (ActionElement != null) yield return new ElementValue("action", ActionElement);
+                if (Period != null) yield return new ElementValue("period", Period);
+                if (RecordedElement != null) yield return new ElementValue("recorded", RecordedElement);
+                if (OutcomeElement != null) yield return new ElementValue("outcome", OutcomeElement);
+                if (OutcomeDescElement != null) yield return new ElementValue("outcomeDesc", OutcomeDescElement);
+                foreach (var elem in PurposeOfEvent) { if (elem != null) yield return new ElementValue("purposeOfEvent", elem); }
+                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", elem); }
+                if (Source != null) yield return new ElementValue("source", Source);
+                foreach (var elem in Entity) { if (elem != null) yield return new ElementValue("entity", elem); }
             }
         }
 

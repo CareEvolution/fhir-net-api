@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,61 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "SupplyRequest"; } }
 
+        /// <summary>
+        /// Status of the supply request
+        /// (url: http://hl7.org/fhir/ValueSet/supplyrequest-status)
+        /// </summary>
+        [FhirEnumeration("SupplyRequestStatus")]
+        public enum SupplyRequestStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplyrequest-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/supplyrequest-status"), Description("Draft")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplyrequest-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/supplyrequest-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplyrequest-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/supplyrequest-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplyrequest-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/supplyrequest-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplyrequest-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/supplyrequest-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplyrequest-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/supplyrequest-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplyrequest-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/supplyrequest-status"), Description("Unknown")]
+            Unknown,
+        }
+
 
         [FhirType("ParameterComponent")]
         [DataContract]
-        public partial class ParameterComponent : BackboneElement
+        public partial class ParameterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParameterComponent"; } }
@@ -153,8 +205,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -541,21 +593,21 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Category != null) yield return new ElementValue("category", false, Category);
-                if (PriorityElement != null) yield return new ElementValue("priority", false, PriorityElement);
-                if (Item != null) yield return new ElementValue("item", false, Item);
-                if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", true, elem); }
-                if (Occurrence != null) yield return new ElementValue("occurrence", false, Occurrence);
-                if (AuthoredOnElement != null) yield return new ElementValue("authoredOn", false, AuthoredOnElement);
-                if (Requester != null) yield return new ElementValue("requester", false, Requester);
-                foreach (var elem in Supplier) { if (elem != null) yield return new ElementValue("supplier", true, elem); }
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                if (DeliverFrom != null) yield return new ElementValue("deliverFrom", false, DeliverFrom);
-                if (DeliverTo != null) yield return new ElementValue("deliverTo", false, DeliverTo);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Category != null) yield return new ElementValue("category", Category);
+                if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
+                if (Item != null) yield return new ElementValue("item", Item);
+                if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", elem); }
+                if (Occurrence != null) yield return new ElementValue("occurrence", Occurrence);
+                if (AuthoredOnElement != null) yield return new ElementValue("authoredOn", AuthoredOnElement);
+                if (Requester != null) yield return new ElementValue("requester", Requester);
+                foreach (var elem in Supplier) { if (elem != null) yield return new ElementValue("supplier", elem); }
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                if (DeliverFrom != null) yield return new ElementValue("deliverFrom", DeliverFrom);
+                if (DeliverTo != null) yield return new ElementValue("deliverTo", DeliverTo);
             }
         }
 

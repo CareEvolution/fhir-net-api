@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,94 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Invoice"; } }
 
+        /// <summary>
+        /// Codes identifying the lifecycle stage of an Invoice
+        /// (url: http://hl7.org/fhir/ValueSet/invoice-status)
+        /// </summary>
+        [FhirEnumeration("InvoiceStatus")]
+        public enum InvoiceStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/invoice-status"), Description("draft")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-status)
+            /// </summary>
+            [EnumLiteral("issued", "http://hl7.org/fhir/invoice-status"), Description("issued")]
+            Issued,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-status)
+            /// </summary>
+            [EnumLiteral("balanced", "http://hl7.org/fhir/invoice-status"), Description("balanced")]
+            Balanced,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/invoice-status"), Description("cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/invoice-status"), Description("entered in error")]
+            EnteredInError,
+        }
+
+        /// <summary>
+        /// Codes indicating the details of what is/was done.  These will vary significantly based on the type of request resource and will often be example/preferred rather than extensible/required.
+        /// (url: http://hl7.org/fhir/ValueSet/invoice-priceComponentType)
+        /// </summary>
+        [FhirEnumeration("InvoicePriceComponentType")]
+        public enum InvoicePriceComponentType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-priceComponentType)
+            /// </summary>
+            [EnumLiteral("base", "http://hl7.org/fhir/invoice-priceComponentType"), Description("base price")]
+            Base,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-priceComponentType)
+            /// </summary>
+            [EnumLiteral("surcharge", "http://hl7.org/fhir/invoice-priceComponentType"), Description("surcharge")]
+            Surcharge,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-priceComponentType)
+            /// </summary>
+            [EnumLiteral("deduction", "http://hl7.org/fhir/invoice-priceComponentType"), Description("deduction")]
+            Deduction,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-priceComponentType)
+            /// </summary>
+            [EnumLiteral("discount", "http://hl7.org/fhir/invoice-priceComponentType"), Description("discount")]
+            Discount,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-priceComponentType)
+            /// </summary>
+            [EnumLiteral("tax", "http://hl7.org/fhir/invoice-priceComponentType"), Description("tax")]
+            Tax,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/invoice-priceComponentType)
+            /// </summary>
+            [EnumLiteral("informational", "http://hl7.org/fhir/invoice-priceComponentType"), Description("informational")]
+            Informational,
+        }
+
 
         [FhirType("ParticipantComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class ParticipantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParticipantComponent"; } }
@@ -154,8 +239,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Actor != null) yield return new ElementValue("actor", false, Actor);
+                    if (Role != null) yield return new ElementValue("role", Role);
+                    if (Actor != null) yield return new ElementValue("actor", Actor);
                 }
             }
 
@@ -165,7 +250,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("LineItemComponent")]
         [DataContract]
-        public partial class LineItemComponent : BackboneElement
+        public partial class LineItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LineItemComponent"; } }
@@ -297,9 +382,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    if (ChargeItem != null) yield return new ElementValue("chargeItem", false, ChargeItem);
-                    foreach (var elem in PriceComponent) { if (elem != null) yield return new ElementValue("priceComponent", true, elem); }
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    if (ChargeItem != null) yield return new ElementValue("chargeItem", ChargeItem);
+                    foreach (var elem in PriceComponent) { if (elem != null) yield return new ElementValue("priceComponent", elem); }
                 }
             }
 
@@ -309,7 +394,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PriceComponentComponent")]
         [DataContract]
-        public partial class PriceComponentComponent : BackboneElement
+        public partial class PriceComponentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PriceComponentComponent"; } }
@@ -475,10 +560,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Factor != null) yield return new ElementValue("factor", false, Factor);
-                    if (AmountElement != null) yield return new ElementValue("amount", false, AmountElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Factor != null) yield return new ElementValue("factor", Factor);
+                    if (AmountElement != null) yield return new ElementValue("amount", AmountElement);
                 }
             }
 
@@ -879,22 +964,22 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (CancelledReasonElement != null) yield return new ElementValue("cancelledReason", false, CancelledReasonElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Recipient != null) yield return new ElementValue("recipient", false, Recipient);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", true, elem); }
-                if (Issuer != null) yield return new ElementValue("issuer", false, Issuer);
-                if (Account != null) yield return new ElementValue("account", false, Account);
-                foreach (var elem in LineItem) { if (elem != null) yield return new ElementValue("lineItem", true, elem); }
-                foreach (var elem in TotalPriceComponent) { if (elem != null) yield return new ElementValue("totalPriceComponent", true, elem); }
-                if (TotalNet != null) yield return new ElementValue("totalNet", false, TotalNet);
-                if (TotalGross != null) yield return new ElementValue("totalGross", false, TotalGross);
-                if (PaymentTerms != null) yield return new ElementValue("paymentTerms", false, PaymentTerms);
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (CancelledReasonElement != null) yield return new ElementValue("cancelledReason", CancelledReasonElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Recipient != null) yield return new ElementValue("recipient", Recipient);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", elem); }
+                if (Issuer != null) yield return new ElementValue("issuer", Issuer);
+                if (Account != null) yield return new ElementValue("account", Account);
+                foreach (var elem in LineItem) { if (elem != null) yield return new ElementValue("lineItem", elem); }
+                foreach (var elem in TotalPriceComponent) { if (elem != null) yield return new ElementValue("totalPriceComponent", elem); }
+                if (TotalNet != null) yield return new ElementValue("totalNet", TotalNet);
+                if (TotalGross != null) yield return new ElementValue("totalGross", TotalGross);
+                if (PaymentTerms != null) yield return new ElementValue("paymentTerms", PaymentTerms);
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }
 

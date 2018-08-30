@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,118 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ImplementationGuide"; } }
 
+        /// <summary>
+        /// A code that indicates how the page is generated
+        /// (url: http://hl7.org/fhir/ValueSet/guide-page-generation)
+        /// </summary>
+        [FhirEnumeration("GuidePageGeneration")]
+        public enum GuidePageGeneration
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-page-generation)
+            /// </summary>
+            [EnumLiteral("html", "http://hl7.org/fhir/guide-page-generation"), Description("HTML")]
+            Html,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-page-generation)
+            /// </summary>
+            [EnumLiteral("markdown", "http://hl7.org/fhir/guide-page-generation"), Description("Markdown")]
+            Markdown,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-page-generation)
+            /// </summary>
+            [EnumLiteral("xml", "http://hl7.org/fhir/guide-page-generation"), Description("XML")]
+            Xml,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-page-generation)
+            /// </summary>
+            [EnumLiteral("generated", "http://hl7.org/fhir/guide-page-generation"), Description("Generated")]
+            Generated,
+        }
+
+        /// <summary>
+        /// Code of parameter that is input to the guide
+        /// (url: http://hl7.org/fhir/ValueSet/guide-parameter-code)
+        /// </summary>
+        [FhirEnumeration("GuideParameterCode")]
+        public enum GuideParameterCode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("apply-business-version", "http://hl7.org/fhir/guide-parameter-code"), Description("Apply Business Version")]
+            ApplyBusinessVersion,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("apply-jurisdiction", "http://hl7.org/fhir/guide-parameter-code"), Description("Apply Jurisdiction")]
+            ApplyJurisdiction,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("path-resource", "http://hl7.org/fhir/guide-parameter-code"), Description("Resource Path")]
+            PathResource,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("path-pages", "http://hl7.org/fhir/guide-parameter-code"), Description("Pages Path")]
+            PathPages,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("path-tx-cache", "http://hl7.org/fhir/guide-parameter-code"), Description("Terminology Cache Path")]
+            PathTxCache,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("expansion-profile", "http://hl7.org/fhir/guide-parameter-code"), Description("Expansion Profile")]
+            ExpansionProfile,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("rule-broken-links", "http://hl7.org/fhir/guide-parameter-code"), Description("Broken Links Rule")]
+            RuleBrokenLinks,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("generate-xml", "http://hl7.org/fhir/guide-parameter-code"), Description("Generate XML")]
+            GenerateXml,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("generate-json", "http://hl7.org/fhir/guide-parameter-code"), Description("Generate JSON")]
+            GenerateJson,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("generate-turtle", "http://hl7.org/fhir/guide-parameter-code"), Description("Generate Turtle")]
+            GenerateTurtle,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guide-parameter-code)
+            /// </summary>
+            [EnumLiteral("html-template", "http://hl7.org/fhir/guide-parameter-code"), Description("HTML Template")]
+            HtmlTemplate,
+        }
+
 
         [FhirType("DependsOnComponent")]
         [DataContract]
-        public partial class DependsOnComponent : BackboneElement
+        public partial class DependsOnComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DependsOnComponent"; } }
@@ -191,8 +300,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (UriElement != null) yield return new ElementValue("uri", false, UriElement);
-                    if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
+                    if (UriElement != null) yield return new ElementValue("uri", UriElement);
+                    if (VersionElement != null) yield return new ElementValue("version", VersionElement);
                 }
             }
 
@@ -202,7 +311,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("GlobalComponent")]
         [DataContract]
-        public partial class GlobalComponent : BackboneElement
+        public partial class GlobalComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GlobalComponent"; } }
@@ -335,8 +444,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (ProfileElement != null) yield return new ElementValue("profile", false, ProfileElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
                 }
             }
 
@@ -346,7 +455,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DefinitionComponent")]
         [DataContract]
-        public partial class DefinitionComponent : BackboneElement
+        public partial class DefinitionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DefinitionComponent"; } }
@@ -494,11 +603,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Package) { if (elem != null) yield return new ElementValue("package", true, elem); }
-                    foreach (var elem in Resource) { if (elem != null) yield return new ElementValue("resource", true, elem); }
-                    if (Page != null) yield return new ElementValue("page", false, Page);
-                    foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", true, elem); }
-                    foreach (var elem in Template) { if (elem != null) yield return new ElementValue("template", true, elem); }
+                    foreach (var elem in Package) { if (elem != null) yield return new ElementValue("package", elem); }
+                    foreach (var elem in Resource) { if (elem != null) yield return new ElementValue("resource", elem); }
+                    if (Page != null) yield return new ElementValue("page", Page);
+                    foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", elem); }
+                    foreach (var elem in Template) { if (elem != null) yield return new ElementValue("template", elem); }
                 }
             }
 
@@ -508,7 +617,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PackageComponent")]
         [DataContract]
-        public partial class PackageComponent : BackboneElement
+        public partial class PackageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PackageComponent"; } }
@@ -640,8 +749,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 }
             }
 
@@ -651,7 +760,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ResourceComponent")]
         [DataContract]
-        public partial class ResourceComponent : BackboneElement
+        public partial class ResourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ResourceComponent"; } }
@@ -854,11 +963,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (Example != null) yield return new ElementValue("example", false, Example);
-                    if (PackageElement != null) yield return new ElementValue("package", false, PackageElement);
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (Example != null) yield return new ElementValue("example", Example);
+                    if (PackageElement != null) yield return new ElementValue("package", PackageElement);
                 }
             }
 
@@ -868,7 +977,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PageComponent")]
         [DataContract]
-        public partial class PageComponent : BackboneElement
+        public partial class PageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PageComponent"; } }
@@ -1038,10 +1147,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Name != null) yield return new ElementValue("name", false, Name);
-                    if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                    if (GenerationElement != null) yield return new ElementValue("generation", false, GenerationElement);
-                    foreach (var elem in Page) { if (elem != null) yield return new ElementValue("page", true, elem); }
+                    if (Name != null) yield return new ElementValue("name", Name);
+                    if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                    if (GenerationElement != null) yield return new ElementValue("generation", GenerationElement);
+                    foreach (var elem in Page) { if (elem != null) yield return new ElementValue("page", elem); }
                 }
             }
 
@@ -1051,7 +1160,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ParameterComponent")]
         [DataContract]
-        public partial class ParameterComponent : BackboneElement
+        public partial class ParameterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParameterComponent"; } }
@@ -1184,8 +1293,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 }
             }
 
@@ -1195,7 +1304,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TemplateComponent")]
         [DataContract]
-        public partial class TemplateComponent : BackboneElement
+        public partial class TemplateComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TemplateComponent"; } }
@@ -1364,9 +1473,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (SourceElement != null) yield return new ElementValue("source", false, SourceElement);
-                    if (ScopeElement != null) yield return new ElementValue("scope", false, ScopeElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (SourceElement != null) yield return new ElementValue("source", SourceElement);
+                    if (ScopeElement != null) yield return new ElementValue("scope", ScopeElement);
                 }
             }
 
@@ -1376,7 +1485,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ManifestComponent")]
         [DataContract]
-        public partial class ManifestComponent : BackboneElement
+        public partial class ManifestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ManifestComponent"; } }
@@ -1581,11 +1690,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (RenderingElement != null) yield return new ElementValue("rendering", false, RenderingElement);
-                    foreach (var elem in Resource) { if (elem != null) yield return new ElementValue("resource", true, elem); }
-                    foreach (var elem in Page) { if (elem != null) yield return new ElementValue("page", true, elem); }
-                    foreach (var elem in ImageElement) { if (elem != null) yield return new ElementValue("image", true, elem); }
-                    foreach (var elem in OtherElement) { if (elem != null) yield return new ElementValue("other", true, elem); }
+                    if (RenderingElement != null) yield return new ElementValue("rendering", RenderingElement);
+                    foreach (var elem in Resource) { if (elem != null) yield return new ElementValue("resource", elem); }
+                    foreach (var elem in Page) { if (elem != null) yield return new ElementValue("page", elem); }
+                    foreach (var elem in ImageElement) { if (elem != null) yield return new ElementValue("image", elem); }
+                    foreach (var elem in OtherElement) { if (elem != null) yield return new ElementValue("other", elem); }
                 }
             }
 
@@ -1595,7 +1704,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ManifestResourceComponent")]
         [DataContract]
-        public partial class ManifestResourceComponent : BackboneElement
+        public partial class ManifestResourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ManifestResourceComponent"; } }
@@ -1726,9 +1835,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
-                    if (Example != null) yield return new ElementValue("example", false, Example);
-                    if (RelativePathElement != null) yield return new ElementValue("relativePath", false, RelativePathElement);
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
+                    if (Example != null) yield return new ElementValue("example", Example);
+                    if (RelativePathElement != null) yield return new ElementValue("relativePath", RelativePathElement);
                 }
             }
 
@@ -1738,7 +1847,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ManifestPageComponent")]
         [DataContract]
-        public partial class ManifestPageComponent : BackboneElement
+        public partial class ManifestPageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ManifestPageComponent"; } }
@@ -1907,9 +2016,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                    foreach (var elem in AnchorElement) { if (elem != null) yield return new ElementValue("anchor", true, elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                    foreach (var elem in AnchorElement) { if (elem != null) yield return new ElementValue("anchor", elem); }
                 }
             }
 
@@ -2420,23 +2529,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                if (FhirVersionElement != null) yield return new ElementValue("fhirVersion", false, FhirVersionElement);
-                foreach (var elem in DependsOn) { if (elem != null) yield return new ElementValue("dependsOn", true, elem); }
-                foreach (var elem in Global) { if (elem != null) yield return new ElementValue("global", true, elem); }
-                if (Definition != null) yield return new ElementValue("definition", false, Definition);
-                if (Manifest != null) yield return new ElementValue("manifest", false, Manifest);
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (FhirVersionElement != null) yield return new ElementValue("fhirVersion", FhirVersionElement);
+                foreach (var elem in DependsOn) { if (elem != null) yield return new ElementValue("dependsOn", elem); }
+                foreach (var elem in Global) { if (elem != null) yield return new ElementValue("global", elem); }
+                if (Definition != null) yield return new ElementValue("definition", Definition);
+                if (Manifest != null) yield return new ElementValue("manifest", Manifest);
             }
         }
 

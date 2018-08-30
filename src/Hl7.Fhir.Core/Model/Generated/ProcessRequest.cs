@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,43 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ProcessRequest"; } }
 
+        /// <summary>
+        /// List of allowable action which this resource can request.
+        /// (url: http://hl7.org/fhir/ValueSet/actionlist)
+        /// </summary>
+        [FhirEnumeration("ActionList")]
+        public enum ActionList
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/actionlist)
+            /// </summary>
+            [EnumLiteral("cancel", "http://hl7.org/fhir/actionlist"), Description("Cancel, Reverse or Nullify")]
+            Cancel,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/actionlist)
+            /// </summary>
+            [EnumLiteral("poll", "http://hl7.org/fhir/actionlist"), Description("Poll")]
+            Poll,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/actionlist)
+            /// </summary>
+            [EnumLiteral("reprocess", "http://hl7.org/fhir/actionlist"), Description("Re-Process")]
+            Reprocess,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/actionlist)
+            /// </summary>
+            [EnumLiteral("status", "http://hl7.org/fhir/actionlist"), Description("Status Check")]
+            Status,
+        }
+
 
         [FhirType("ItemsComponent")]
         [DataContract]
-        public partial class ItemsComponent : BackboneElement
+        public partial class ItemsComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ItemsComponent"; } }
@@ -155,7 +189,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceLinkIdElement != null) yield return new ElementValue("sequenceLinkId", false, SequenceLinkIdElement);
+                    if (SequenceLinkIdElement != null) yield return new ElementValue("sequenceLinkId", SequenceLinkIdElement);
                 }
             }
 
@@ -594,20 +628,20 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ActionElement != null) yield return new ElementValue("action", false, ActionElement);
-                if (Target != null) yield return new ElementValue("target", false, Target);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (Provider != null) yield return new ElementValue("provider", false, Provider);
-                if (Request != null) yield return new ElementValue("request", false, Request);
-                if (Response != null) yield return new ElementValue("response", false, Response);
-                if (NullifyElement != null) yield return new ElementValue("nullify", false, NullifyElement);
-                if (ReferenceElement != null) yield return new ElementValue("reference", false, ReferenceElement);
-                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
-                foreach (var elem in IncludeElement) { if (elem != null) yield return new ElementValue("include", true, elem); }
-                foreach (var elem in ExcludeElement) { if (elem != null) yield return new ElementValue("exclude", true, elem); }
-                if (Period != null) yield return new ElementValue("period", false, Period);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ActionElement != null) yield return new ElementValue("action", ActionElement);
+                if (Target != null) yield return new ElementValue("target", Target);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Provider != null) yield return new ElementValue("provider", Provider);
+                if (Request != null) yield return new ElementValue("request", Request);
+                if (Response != null) yield return new ElementValue("response", Response);
+                if (NullifyElement != null) yield return new ElementValue("nullify", NullifyElement);
+                if (ReferenceElement != null) yield return new ElementValue("reference", ReferenceElement);
+                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
+                foreach (var elem in IncludeElement) { if (elem != null) yield return new ElementValue("include", elem); }
+                foreach (var elem in ExcludeElement) { if (elem != null) yield return new ElementValue("exclude", elem); }
+                if (Period != null) yield return new ElementValue("period", Period);
             }
         }
 

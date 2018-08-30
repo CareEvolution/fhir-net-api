@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,64 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "MeasureReport"; } }
 
+        /// <summary>
+        /// The status of the measure report
+        /// (url: http://hl7.org/fhir/ValueSet/measure-report-status)
+        /// </summary>
+        [FhirEnumeration("MeasureReportStatus")]
+        public enum MeasureReportStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-status)
+            /// </summary>
+            [EnumLiteral("complete", "http://hl7.org/fhir/measure-report-status"), Description("Complete")]
+            Complete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-status)
+            /// </summary>
+            [EnumLiteral("pending", "http://hl7.org/fhir/measure-report-status"), Description("Pending")]
+            Pending,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-status)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/measure-report-status"), Description("Error")]
+            Error,
+        }
+
+        /// <summary>
+        /// The type of the measure report
+        /// (url: http://hl7.org/fhir/ValueSet/measure-report-type)
+        /// </summary>
+        [FhirEnumeration("MeasureReportType")]
+        public enum MeasureReportType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-type)
+            /// </summary>
+            [EnumLiteral("individual", "http://hl7.org/fhir/measure-report-type"), Description("Individual")]
+            Individual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-type)
+            /// </summary>
+            [EnumLiteral("subject-list", "http://hl7.org/fhir/measure-report-type"), Description("Subject List")]
+            SubjectList,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-type)
+            /// </summary>
+            [EnumLiteral("summary", "http://hl7.org/fhir/measure-report-type"), Description("Summary")]
+            Summary,
+        }
+
 
         [FhirType("GroupComponent")]
         [DataContract]
-        public partial class GroupComponent : BackboneElement
+        public partial class GroupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GroupComponent"; } }
@@ -188,10 +243,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", true, elem); }
-                    if (MeasureScore != null) yield return new ElementValue("measureScore", false, MeasureScore);
-                    foreach (var elem in Stratifier) { if (elem != null) yield return new ElementValue("stratifier", true, elem); }
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", elem); }
+                    if (MeasureScore != null) yield return new ElementValue("measureScore", MeasureScore);
+                    foreach (var elem in Stratifier) { if (elem != null) yield return new ElementValue("stratifier", elem); }
                 }
             }
 
@@ -201,7 +256,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PopulationComponent")]
         [DataContract]
-        public partial class PopulationComponent : BackboneElement
+        public partial class PopulationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PopulationComponent"; } }
@@ -331,9 +386,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (CountElement != null) yield return new ElementValue("count", false, CountElement);
-                    if (Subjects != null) yield return new ElementValue("subjects", false, Subjects);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (CountElement != null) yield return new ElementValue("count", CountElement);
+                    if (Subjects != null) yield return new ElementValue("subjects", Subjects);
                 }
             }
 
@@ -343,7 +398,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("StratifierComponent")]
         [DataContract]
-        public partial class StratifierComponent : BackboneElement
+        public partial class StratifierComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StratifierComponent"; } }
@@ -437,8 +492,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    foreach (var elem in Stratum) { if (elem != null) yield return new ElementValue("stratum", true, elem); }
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    foreach (var elem in Stratum) { if (elem != null) yield return new ElementValue("stratum", elem); }
                 }
             }
 
@@ -448,7 +503,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("StratifierGroupComponent")]
         [DataContract]
-        public partial class StratifierGroupComponent : BackboneElement
+        public partial class StratifierGroupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StratifierGroupComponent"; } }
@@ -560,9 +615,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Value != null) yield return new ElementValue("value", false, Value);
-                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", true, elem); }
-                    if (MeasureScore != null) yield return new ElementValue("measureScore", false, MeasureScore);
+                    if (Value != null) yield return new ElementValue("value", Value);
+                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", elem); }
+                    if (MeasureScore != null) yield return new ElementValue("measureScore", MeasureScore);
                 }
             }
 
@@ -572,7 +627,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("StratifierGroupPopulationComponent")]
         [DataContract]
-        public partial class StratifierGroupPopulationComponent : BackboneElement
+        public partial class StratifierGroupPopulationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StratifierGroupPopulationComponent"; } }
@@ -702,9 +757,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (CountElement != null) yield return new ElementValue("count", false, CountElement);
-                    if (Subjects != null) yield return new ElementValue("subjects", false, Subjects);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (CountElement != null) yield return new ElementValue("count", CountElement);
+                    if (Subjects != null) yield return new ElementValue("subjects", Subjects);
                 }
             }
 
@@ -1021,16 +1076,16 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (MeasureElement != null) yield return new ElementValue("measure", false, MeasureElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (Reporter != null) yield return new ElementValue("reporter", false, Reporter);
-                if (Period != null) yield return new ElementValue("period", false, Period);
-                foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", true, elem); }
-                if (EvaluatedResources != null) yield return new ElementValue("evaluatedResources", false, EvaluatedResources);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (MeasureElement != null) yield return new ElementValue("measure", MeasureElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (Reporter != null) yield return new ElementValue("reporter", Reporter);
+                if (Period != null) yield return new ElementValue("period", Period);
+                foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", elem); }
+                if (EvaluatedResources != null) yield return new ElementValue("evaluatedResources", EvaluatedResources);
             }
         }
 

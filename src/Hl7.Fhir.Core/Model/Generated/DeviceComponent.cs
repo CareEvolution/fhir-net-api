@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,85 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "DeviceComponent"; } }
 
+        /// <summary>
+        /// Different measurement principle supported by the device.
+        /// (url: http://hl7.org/fhir/ValueSet/measurement-principle)
+        /// </summary>
+        [FhirEnumeration("MeasmntPrinciple")]
+        public enum MeasmntPrinciple
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("other", "http://hl7.org/fhir/measurement-principle"), Description("MSP Other")]
+            Other,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("chemical", "http://hl7.org/fhir/measurement-principle"), Description("MSP Chemical")]
+            Chemical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("electrical", "http://hl7.org/fhir/measurement-principle"), Description("MSP Electrical")]
+            Electrical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("impedance", "http://hl7.org/fhir/measurement-principle"), Description("MSP Impedance")]
+            Impedance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("nuclear", "http://hl7.org/fhir/measurement-principle"), Description("MSP Nuclear")]
+            Nuclear,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("optical", "http://hl7.org/fhir/measurement-principle"), Description("MSP Optical")]
+            Optical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("thermal", "http://hl7.org/fhir/measurement-principle"), Description("MSP Thermal")]
+            Thermal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("biological", "http://hl7.org/fhir/measurement-principle"), Description("MSP Biological")]
+            Biological,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("mechanical", "http://hl7.org/fhir/measurement-principle"), Description("MSP Mechanical")]
+            Mechanical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("acoustical", "http://hl7.org/fhir/measurement-principle"), Description("MSP Acoustical")]
+            Acoustical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measurement-principle)
+            /// </summary>
+            [EnumLiteral("manual", "http://hl7.org/fhir/measurement-principle"), Description("MSP Manual")]
+            Manual,
+        }
+
 
         [FhirType("ProductionSpecificationComponent")]
         [DataContract]
-        public partial class ProductionSpecificationComponent : BackboneElement
+        public partial class ProductionSpecificationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProductionSpecificationComponent"; } }
@@ -188,9 +264,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SpecType != null) yield return new ElementValue("specType", false, SpecType);
-                    if (ComponentId != null) yield return new ElementValue("componentId", false, ComponentId);
-                    if (ProductionSpecElement != null) yield return new ElementValue("productionSpec", false, ProductionSpecElement);
+                    if (SpecType != null) yield return new ElementValue("specType", SpecType);
+                    if (ComponentId != null) yield return new ElementValue("componentId", ComponentId);
+                    if (ProductionSpecElement != null) yield return new ElementValue("productionSpec", ProductionSpecElement);
                 }
             }
 
@@ -200,7 +276,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PropertyComponent")]
         [DataContract]
-        public partial class PropertyComponent : BackboneElement
+        public partial class PropertyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PropertyComponent"; } }
@@ -313,9 +389,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    foreach (var elem in ValueQuantity) { if (elem != null) yield return new ElementValue("valueQuantity", true, elem); }
-                    foreach (var elem in ValueCode) { if (elem != null) yield return new ElementValue("valueCode", true, elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    foreach (var elem in ValueQuantity) { if (elem != null) yield return new ElementValue("valueQuantity", elem); }
+                    foreach (var elem in ValueCode) { if (elem != null) yield return new ElementValue("valueCode", elem); }
                 }
             }
 
@@ -609,17 +685,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (LastSystemChangeElement != null) yield return new ElementValue("lastSystemChange", false, LastSystemChangeElement);
-                if (Source != null) yield return new ElementValue("source", false, Source);
-                if (Parent != null) yield return new ElementValue("parent", false, Parent);
-                foreach (var elem in OperationalStatus) { if (elem != null) yield return new ElementValue("operationalStatus", true, elem); }
-                if (ParameterGroup != null) yield return new ElementValue("parameterGroup", false, ParameterGroup);
-                if (MeasurementPrincipleElement != null) yield return new ElementValue("measurementPrinciple", false, MeasurementPrincipleElement);
-                foreach (var elem in ProductionSpecification) { if (elem != null) yield return new ElementValue("productionSpecification", true, elem); }
-                if (LanguageCode != null) yield return new ElementValue("languageCode", false, LanguageCode);
-                foreach (var elem in Property) { if (elem != null) yield return new ElementValue("property", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (LastSystemChangeElement != null) yield return new ElementValue("lastSystemChange", LastSystemChangeElement);
+                if (Source != null) yield return new ElementValue("source", Source);
+                if (Parent != null) yield return new ElementValue("parent", Parent);
+                foreach (var elem in OperationalStatus) { if (elem != null) yield return new ElementValue("operationalStatus", elem); }
+                if (ParameterGroup != null) yield return new ElementValue("parameterGroup", ParameterGroup);
+                if (MeasurementPrincipleElement != null) yield return new ElementValue("measurementPrinciple", MeasurementPrincipleElement);
+                foreach (var elem in ProductionSpecification) { if (elem != null) yield return new ElementValue("productionSpecification", elem); }
+                if (LanguageCode != null) yield return new ElementValue("languageCode", LanguageCode);
+                foreach (var elem in Property) { if (elem != null) yield return new ElementValue("property", elem); }
             }
         }
 

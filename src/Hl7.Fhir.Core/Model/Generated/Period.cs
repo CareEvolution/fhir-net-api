@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -124,7 +125,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "start.hasValue().not() or end.hasValue().not() or (start <= end)",
             Key = "per-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If present, start SHALL have a lower value than end",
             Xpath = "not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) <= xs:dateTime(f:end/@value))"
         };
@@ -192,8 +193,8 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                if (EndElement != null) yield return new ElementValue("end", false, EndElement);
+                if (StartElement != null) yield return new ElementValue("start", StartElement);
+                if (EndElement != null) yield return new ElementValue("end", EndElement);
             }
         }
 

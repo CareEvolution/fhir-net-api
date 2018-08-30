@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,88 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Composition"; } }
 
+        /// <summary>
+        ///  Set of codes used to value Act.Confidentiality and Role.Confidentiality attribute in accordance with the definition for concept domain "Confidentiality".
+        /// (url: http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassification)
+        /// </summary>
+        [FhirEnumeration("ConfidentialityClassification")]
+        public enum ConfidentialityClassification
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("U", "http://hl7.org/fhir/v3/Confidentiality"), Description("unrestricted")]
+            U,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("L", "http://hl7.org/fhir/v3/Confidentiality"), Description("low")]
+            L,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("M", "http://hl7.org/fhir/v3/Confidentiality"), Description("moderate")]
+            M,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("N", "http://hl7.org/fhir/v3/Confidentiality"), Description("normal")]
+            N,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("R", "http://hl7.org/fhir/v3/Confidentiality"), Description("restricted")]
+            R,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("V", "http://hl7.org/fhir/v3/Confidentiality"), Description("very restricted")]
+            V,
+        }
+
+        /// <summary>
+        /// The way in which a person authenticated a composition.
+        /// (url: http://hl7.org/fhir/ValueSet/composition-attestation-mode)
+        /// </summary>
+        [FhirEnumeration("CompositionAttestationMode")]
+        public enum CompositionAttestationMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/composition-attestation-mode)
+            /// </summary>
+            [EnumLiteral("personal", "http://hl7.org/fhir/composition-attestation-mode"), Description("Personal")]
+            Personal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/composition-attestation-mode)
+            /// </summary>
+            [EnumLiteral("professional", "http://hl7.org/fhir/composition-attestation-mode"), Description("Professional")]
+            Professional,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/composition-attestation-mode)
+            /// </summary>
+            [EnumLiteral("legal", "http://hl7.org/fhir/composition-attestation-mode"), Description("Legal")]
+            Legal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/composition-attestation-mode)
+            /// </summary>
+            [EnumLiteral("official", "http://hl7.org/fhir/composition-attestation-mode"), Description("Official")]
+            Official,
+        }
+
 
         [FhirType("AttesterComponent")]
         [DataContract]
-        public partial class AttesterComponent : BackboneElement
+        public partial class AttesterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AttesterComponent"; } }
@@ -209,9 +288,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                    if (TimeElement != null) yield return new ElementValue("time", false, TimeElement);
-                    if (Party != null) yield return new ElementValue("party", false, Party);
+                    if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                    if (TimeElement != null) yield return new ElementValue("time", TimeElement);
+                    if (Party != null) yield return new ElementValue("party", Party);
                 }
             }
 
@@ -221,7 +300,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RelatesToComponent")]
         [DataContract]
-        public partial class RelatesToComponent : BackboneElement
+        public partial class RelatesToComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatesToComponent"; } }
@@ -336,8 +415,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (Target != null) yield return new ElementValue("target", false, Target);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (Target != null) yield return new ElementValue("target", Target);
                 }
             }
 
@@ -347,7 +426,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EventComponent")]
         [DataContract]
-        public partial class EventComponent : BackboneElement
+        public partial class EventComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EventComponent"; } }
@@ -459,9 +538,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", true, elem); }
-                    if (Period != null) yield return new ElementValue("period", false, Period);
-                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", true, elem); }
+                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
+                    if (Period != null) yield return new ElementValue("period", Period);
+                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
                 }
             }
 
@@ -471,7 +550,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SectionComponent")]
         [DataContract]
-        public partial class SectionComponent : BackboneElement
+        public partial class SectionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SectionComponent"; } }
@@ -725,15 +804,15 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", true, elem); }
-                    if (Text != null) yield return new ElementValue("text", false, Text);
-                    if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                    if (OrderedBy != null) yield return new ElementValue("orderedBy", false, OrderedBy);
-                    foreach (var elem in Entry) { if (elem != null) yield return new ElementValue("entry", true, elem); }
-                    if (EmptyReason != null) yield return new ElementValue("emptyReason", false, EmptyReason);
-                    foreach (var elem in Section) { if (elem != null) yield return new ElementValue("section", true, elem); }
+                    if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", elem); }
+                    if (Text != null) yield return new ElementValue("text", Text);
+                    if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                    if (OrderedBy != null) yield return new ElementValue("orderedBy", OrderedBy);
+                    foreach (var elem in Entry) { if (elem != null) yield return new ElementValue("entry", elem); }
+                    if (EmptyReason != null) yield return new ElementValue("emptyReason", EmptyReason);
+                    foreach (var elem in Section) { if (elem != null) yield return new ElementValue("section", elem); }
                 }
             }
 
@@ -1029,7 +1108,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "section.all(text.exists() or entry.exists() or section.exists())",
             Key = "cmp-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A section must contain at least one of text, entries, or sub-sections",
             Xpath = "exists(f:text) or exists(f:entry) or exists(f:section)"
         };
@@ -1038,7 +1117,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "section.all(emptyReason.empty() or entry.empty())",
             Key = "cmp-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A section can only have an emptyReason if it is empty",
             Xpath = "not(exists(f:emptyReason) and exists(f:entry))"
         };
@@ -1164,21 +1243,21 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (Class != null) yield return new ElementValue("class", false, Class);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Encounter != null) yield return new ElementValue("encounter", false, Encounter);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", true, elem); }
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (ConfidentialityElement != null) yield return new ElementValue("confidentiality", false, ConfidentialityElement);
-                foreach (var elem in Attester) { if (elem != null) yield return new ElementValue("attester", true, elem); }
-                if (Custodian != null) yield return new ElementValue("custodian", false, Custodian);
-                foreach (var elem in RelatesTo) { if (elem != null) yield return new ElementValue("relatesTo", true, elem); }
-                foreach (var elem in Event) { if (elem != null) yield return new ElementValue("event", true, elem); }
-                foreach (var elem in Section) { if (elem != null) yield return new ElementValue("section", true, elem); }
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (Class != null) yield return new ElementValue("class", Class);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Encounter != null) yield return new ElementValue("encounter", Encounter);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", elem); }
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (ConfidentialityElement != null) yield return new ElementValue("confidentiality", ConfidentialityElement);
+                foreach (var elem in Attester) { if (elem != null) yield return new ElementValue("attester", elem); }
+                if (Custodian != null) yield return new ElementValue("custodian", Custodian);
+                foreach (var elem in RelatesTo) { if (elem != null) yield return new ElementValue("relatesTo", elem); }
+                foreach (var elem in Event) { if (elem != null) yield return new ElementValue("event", elem); }
+                foreach (var elem in Section) { if (elem != null) yield return new ElementValue("section", elem); }
             }
         }
 

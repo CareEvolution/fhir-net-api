@@ -8,6 +8,7 @@
 
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;

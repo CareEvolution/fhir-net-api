@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -316,7 +317,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "data.empty() or contentType.exists()",
             Key = "att-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the Attachment has data, it SHALL have a contentType",
             Xpath = "not(exists(f:data)) or exists(f:contentType)"
         };
@@ -408,14 +409,14 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (ContentTypeElement != null) yield return new ElementValue("contentType", false, ContentTypeElement);
-                if (LanguageElement != null) yield return new ElementValue("language", false, LanguageElement);
-                if (DataElement != null) yield return new ElementValue("data", false, DataElement);
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (SizeElement != null) yield return new ElementValue("size", false, SizeElement);
-                if (HashElement != null) yield return new ElementValue("hash", false, HashElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (CreationElement != null) yield return new ElementValue("creation", false, CreationElement);
+                if (ContentTypeElement != null) yield return new ElementValue("contentType", ContentTypeElement);
+                if (LanguageElement != null) yield return new ElementValue("language", LanguageElement);
+                if (DataElement != null) yield return new ElementValue("data", DataElement);
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (SizeElement != null) yield return new ElementValue("size", SizeElement);
+                if (HashElement != null) yield return new ElementValue("hash", HashElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (CreationElement != null) yield return new ElementValue("creation", CreationElement);
             }
         }
 

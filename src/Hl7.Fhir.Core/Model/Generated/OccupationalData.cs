@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EmploymentStatusComponent")]
         [DataContract]
-        public partial class EmploymentStatusComponent : BackboneElement
+        public partial class EmploymentStatusComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EmploymentStatusComponent"; } }
@@ -154,8 +155,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Effective != null) yield return new ElementValue("effective", false, Effective);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Effective != null) yield return new ElementValue("effective", Effective);
                 }
             }
 
@@ -165,7 +166,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("UsualWorkComponent")]
         [DataContract]
-        public partial class UsualWorkComponent : BackboneElement
+        public partial class UsualWorkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "UsualWorkComponent"; } }
@@ -313,10 +314,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Occupation != null) yield return new ElementValue("occupation", false, Occupation);
-                    if (Industry != null) yield return new ElementValue("industry", false, Industry);
-                    if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                    if (Duration != null) yield return new ElementValue("duration", false, Duration);
+                    if (Occupation != null) yield return new ElementValue("occupation", Occupation);
+                    if (Industry != null) yield return new ElementValue("industry", Industry);
+                    if (StartElement != null) yield return new ElementValue("start", StartElement);
+                    if (Duration != null) yield return new ElementValue("duration", Duration);
                 }
             }
 
@@ -326,7 +327,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PastOrPresentJobComponent")]
         [DataContract]
-        public partial class PastOrPresentJobComponent : BackboneElement
+        public partial class PastOrPresentJobComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PastOrPresentJobComponent"; } }
@@ -581,15 +582,15 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Occupation != null) yield return new ElementValue("occupation", false, Occupation);
-                    if (Industry != null) yield return new ElementValue("industry", false, Industry);
-                    if (Effective != null) yield return new ElementValue("effective", false, Effective);
-                    if (Employer != null) yield return new ElementValue("employer", false, Employer);
-                    if (WorkClassification != null) yield return new ElementValue("workClassification", false, WorkClassification);
-                    if (SupervisoryLevel != null) yield return new ElementValue("supervisoryLevel", false, SupervisoryLevel);
-                    foreach (var elem in JobDutyElement) { if (elem != null) yield return new ElementValue("jobDuty", true, elem); }
-                    foreach (var elem in OccupationalHazardElement) { if (elem != null) yield return new ElementValue("occupationalHazard", true, elem); }
-                    if (WorkSchedule != null) yield return new ElementValue("workSchedule", false, WorkSchedule);
+                    if (Occupation != null) yield return new ElementValue("occupation", Occupation);
+                    if (Industry != null) yield return new ElementValue("industry", Industry);
+                    if (Effective != null) yield return new ElementValue("effective", Effective);
+                    if (Employer != null) yield return new ElementValue("employer", Employer);
+                    if (WorkClassification != null) yield return new ElementValue("workClassification", WorkClassification);
+                    if (SupervisoryLevel != null) yield return new ElementValue("supervisoryLevel", SupervisoryLevel);
+                    foreach (var elem in JobDutyElement) { if (elem != null) yield return new ElementValue("jobDuty", elem); }
+                    foreach (var elem in OccupationalHazardElement) { if (elem != null) yield return new ElementValue("occupationalHazard", elem); }
+                    if (WorkSchedule != null) yield return new ElementValue("workSchedule", WorkSchedule);
                 }
             }
 
@@ -599,7 +600,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("WorkScheduleComponent")]
         [DataContract]
-        public partial class WorkScheduleComponent : BackboneElement
+        public partial class WorkScheduleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "WorkScheduleComponent"; } }
@@ -748,9 +749,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (WeeklyWorkDaysElement != null) yield return new ElementValue("weeklyWorkDays", false, WeeklyWorkDaysElement);
-                    if (DailyWorkHoursElement != null) yield return new ElementValue("dailyWorkHours", false, DailyWorkHoursElement);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (WeeklyWorkDaysElement != null) yield return new ElementValue("weeklyWorkDays", WeeklyWorkDaysElement);
+                    if (DailyWorkHoursElement != null) yield return new ElementValue("dailyWorkHours", DailyWorkHoursElement);
                 }
             }
 
@@ -1066,17 +1067,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                foreach (var elem in Recorder) { if (elem != null) yield return new ElementValue("recorder", true, elem); }
-                foreach (var elem in Informant) { if (elem != null) yield return new ElementValue("informant", true, elem); }
-                foreach (var elem in EmploymentStatus) { if (elem != null) yield return new ElementValue("employmentStatus", true, elem); }
-                foreach (var elem in RetirementDateElement) { if (elem != null) yield return new ElementValue("retirementDate", true, elem); }
-                foreach (var elem in CombatZonePeriod) { if (elem != null) yield return new ElementValue("combatZonePeriod", true, elem); }
-                if (UsualWork != null) yield return new ElementValue("usualWork", false, UsualWork);
-                foreach (var elem in PastOrPresentJob) { if (elem != null) yield return new ElementValue("pastOrPresentJob", true, elem); }
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                foreach (var elem in Recorder) { if (elem != null) yield return new ElementValue("recorder", elem); }
+                foreach (var elem in Informant) { if (elem != null) yield return new ElementValue("informant", elem); }
+                foreach (var elem in EmploymentStatus) { if (elem != null) yield return new ElementValue("employmentStatus", elem); }
+                foreach (var elem in RetirementDateElement) { if (elem != null) yield return new ElementValue("retirementDate", elem); }
+                foreach (var elem in CombatZonePeriod) { if (elem != null) yield return new ElementValue("combatZonePeriod", elem); }
+                if (UsualWork != null) yield return new ElementValue("usualWork", UsualWork);
+                foreach (var elem in PastOrPresentJob) { if (elem != null) yield return new ElementValue("pastOrPresentJob", elem); }
             }
         }
 

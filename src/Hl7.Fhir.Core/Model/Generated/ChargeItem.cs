@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,61 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ChargeItem"; } }
 
+        /// <summary>
+        /// Codes identifying the lifecycle stage of a ChargeItem
+        /// (url: http://hl7.org/fhir/ValueSet/chargeitem-status)
+        /// </summary>
+        [FhirEnumeration("ChargeItemStatus")]
+        public enum ChargeItemStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/chargeitem-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("billable", "http://hl7.org/fhir/chargeitem-status"), Description("Billable")]
+            Billable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("not-billable", "http://hl7.org/fhir/chargeitem-status"), Description("Not billable")]
+            NotBillable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("aborted", "http://hl7.org/fhir/chargeitem-status"), Description("Aborted")]
+            Aborted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("billed", "http://hl7.org/fhir/chargeitem-status"), Description("Billed")]
+            Billed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/chargeitem-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/chargeitem-status"), Description("Unknown")]
+            Unknown,
+        }
+
 
         [FhirType("ParticipantComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class ParticipantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParticipantComponent"; } }
@@ -154,8 +206,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Actor != null) yield return new ElementValue("actor", false, Actor);
+                    if (Role != null) yield return new ElementValue("role", Role);
+                    if (Actor != null) yield return new ElementValue("actor", Actor);
                 }
             }
 
@@ -743,30 +795,30 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in DefinitionElement) { if (elem != null) yield return new ElementValue("definition", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", true, elem); }
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Occurrence != null) yield return new ElementValue("occurrence", false, Occurrence);
-                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", true, elem); }
-                if (PerformingOrganization != null) yield return new ElementValue("performingOrganization", false, PerformingOrganization);
-                if (RequestingOrganization != null) yield return new ElementValue("requestingOrganization", false, RequestingOrganization);
-                if (CostCenter != null) yield return new ElementValue("costCenter", false, CostCenter);
-                if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                foreach (var elem in Bodysite) { if (elem != null) yield return new ElementValue("bodysite", true, elem); }
-                if (FactorOverrideElement != null) yield return new ElementValue("factorOverride", false, FactorOverrideElement);
-                if (PriceOverride != null) yield return new ElementValue("priceOverride", false, PriceOverride);
-                if (OverrideReasonElement != null) yield return new ElementValue("overrideReason", false, OverrideReasonElement);
-                if (Enterer != null) yield return new ElementValue("enterer", false, Enterer);
-                if (EnteredDateElement != null) yield return new ElementValue("enteredDate", false, EnteredDateElement);
-                foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", true, elem); }
-                foreach (var elem in Service) { if (elem != null) yield return new ElementValue("service", true, elem); }
-                foreach (var elem in Account) { if (elem != null) yield return new ElementValue("account", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in DefinitionElement) { if (elem != null) yield return new ElementValue("definition", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Occurrence != null) yield return new ElementValue("occurrence", Occurrence);
+                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", elem); }
+                if (PerformingOrganization != null) yield return new ElementValue("performingOrganization", PerformingOrganization);
+                if (RequestingOrganization != null) yield return new ElementValue("requestingOrganization", RequestingOrganization);
+                if (CostCenter != null) yield return new ElementValue("costCenter", CostCenter);
+                if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                foreach (var elem in Bodysite) { if (elem != null) yield return new ElementValue("bodysite", elem); }
+                if (FactorOverrideElement != null) yield return new ElementValue("factorOverride", FactorOverrideElement);
+                if (PriceOverride != null) yield return new ElementValue("priceOverride", PriceOverride);
+                if (OverrideReasonElement != null) yield return new ElementValue("overrideReason", OverrideReasonElement);
+                if (Enterer != null) yield return new ElementValue("enterer", Enterer);
+                if (EnteredDateElement != null) yield return new ElementValue("enteredDate", EnteredDateElement);
+                foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", elem); }
+                foreach (var elem in Service) { if (elem != null) yield return new ElementValue("service", elem); }
+                foreach (var elem in Account) { if (elem != null) yield return new ElementValue("account", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", elem); }
             }
         }
 

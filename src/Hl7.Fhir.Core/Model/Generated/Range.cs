@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -86,7 +87,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "low.empty() or high.empty() or (low <= high)",
             Key = "rng-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If present, low SHALL have a lower value than high",
             Xpath = "not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) <= number(f:high/f:value/@value))"
         };
@@ -154,8 +155,8 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Low != null) yield return new ElementValue("low", false, Low);
-                if (High != null) yield return new ElementValue("high", false, High);
+                if (Low != null) yield return new ElementValue("low", Low);
+                if (High != null) yield return new ElementValue("high", High);
             }
         }
 

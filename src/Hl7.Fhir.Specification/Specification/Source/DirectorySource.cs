@@ -35,6 +35,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
+using Hl7.Fhir.Support.R4;
+using Hl7.Fhir.Serialization.R4;
 
 namespace Hl7.Fhir.Specification.Source
 {

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,112 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Condition"; } }
 
+        /// <summary>
+        /// Preferred value set for Condition Clinical Status.
+        /// (url: http://hl7.org/fhir/ValueSet/condition-clinical)
+        /// </summary>
+        [FhirEnumeration("ConditionClinicalStatusCodes")]
+        public enum ConditionClinicalStatusCodes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/condition-clinical"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("recurrence", "http://hl7.org/fhir/condition-clinical"), Description("Recurrence")]
+            Recurrence,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("relapse", "http://hl7.org/fhir/condition-clinical"), Description("Relapse")]
+            Relapse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("well-controlled", "http://hl7.org/fhir/condition-clinical"), Description("Well-Controlled")]
+            WellControlled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("poorly-controlled", "http://hl7.org/fhir/condition-clinical"), Description("Poorly-Controlled")]
+            PoorlyControlled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/condition-clinical"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("remission", "http://hl7.org/fhir/condition-clinical"), Description("Remission")]
+            Remission,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("resolved", "http://hl7.org/fhir/condition-clinical"), Description("Resolved")]
+            Resolved,
+        }
+
+        /// <summary>
+        /// The verification status to support or decline the clinical status of the condition or diagnosis.
+        /// (url: http://hl7.org/fhir/ValueSet/condition-ver-status)
+        /// </summary>
+        [FhirEnumeration("ConditionVerificationStatus")]
+        public enum ConditionVerificationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("unconfirmed", "http://hl7.org/fhir/condition-ver-status"), Description("Unconfirmed")]
+            Unconfirmed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("provisional", "http://hl7.org/fhir/condition-ver-status"), Description("Provisional")]
+            Provisional,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("differential", "http://hl7.org/fhir/condition-ver-status"), Description("Differential")]
+            Differential,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("confirmed", "http://hl7.org/fhir/condition-ver-status"), Description("Confirmed")]
+            Confirmed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("refuted", "http://hl7.org/fhir/condition-ver-status"), Description("Refuted")]
+            Refuted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/condition-ver-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
 
         [FhirType("StageComponent")]
         [DataContract]
-        public partial class StageComponent : BackboneElement
+        public partial class StageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StageComponent"; } }
@@ -171,9 +274,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Summary != null) yield return new ElementValue("summary", false, Summary);
-                    foreach (var elem in Assessment) { if (elem != null) yield return new ElementValue("assessment", true, elem); }
-                    if (Type != null) yield return new ElementValue("type", false, Type);
+                    if (Summary != null) yield return new ElementValue("summary", Summary);
+                    foreach (var elem in Assessment) { if (elem != null) yield return new ElementValue("assessment", elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
                 }
             }
 
@@ -183,7 +286,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EvidenceComponent")]
         [DataContract]
-        public partial class EvidenceComponent : BackboneElement
+        public partial class EvidenceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EvidenceComponent"; } }
@@ -278,8 +381,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", true, elem); }
-                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", true, elem); }
+                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
+                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
                 }
             }
 
@@ -583,7 +686,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "verificationStatus!='entered-in-error' or clinicalStatus.empty()",
             Key = "con-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Condition.clinicalStatus SHALL NOT be present if verification Status is entered-in-error",
             Xpath = "f:verificationStatus/@value!='entered-in-error' or not(exists(f:clinicalStatus))"
         };
@@ -592,7 +695,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "abatement.empty() or clinicalStatus='resolved' or clinicalStatus='remission' or clinicalStatus='inactive'",
             Key = "con-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If condition is abated, then clinicalStatus must be either inactive, resolved, or remission",
             Xpath = "not(exists(*[starts-with(local-name(.), 'abatement')])) or f:clinicalStatus/@value=('resolved', 'remission', 'inactive')"
         };
@@ -601,7 +704,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "verificationStatus='entered-in-error' or clinicalStatus.exists()",
             Key = "con-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error",
             Xpath = "f:verificationStatus/@value='entered-in-error' or exists(f:clinicalStatus)"
         };
@@ -610,7 +713,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "stage.all(summary.exists() or assessment.exists())",
             Key = "con-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Stage SHALL have summary or assessment",
             Xpath = "exists(f:summary) or exists(f:assessment)"
         };
@@ -619,7 +722,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "evidence.all(code.exists() or detail.exists())",
             Key = "con-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "evidence SHALL have code or details",
             Xpath = "exists(f:code) or exists(f:detail)"
         };
@@ -756,23 +859,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ClinicalStatusElement != null) yield return new ElementValue("clinicalStatus", false, ClinicalStatusElement);
-                if (VerificationStatusElement != null) yield return new ElementValue("verificationStatus", false, VerificationStatusElement);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (Severity != null) yield return new ElementValue("severity", false, Severity);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                foreach (var elem in BodySite) { if (elem != null) yield return new ElementValue("bodySite", true, elem); }
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Onset != null) yield return new ElementValue("onset", false, Onset);
-                if (Abatement != null) yield return new ElementValue("abatement", false, Abatement);
-                if (AssertedDateElement != null) yield return new ElementValue("assertedDate", false, AssertedDateElement);
-                if (Recorder != null) yield return new ElementValue("recorder", false, Recorder);
-                if (Asserter != null) yield return new ElementValue("asserter", false, Asserter);
-                foreach (var elem in Stage) { if (elem != null) yield return new ElementValue("stage", true, elem); }
-                foreach (var elem in Evidence) { if (elem != null) yield return new ElementValue("evidence", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ClinicalStatusElement != null) yield return new ElementValue("clinicalStatus", ClinicalStatusElement);
+                if (VerificationStatusElement != null) yield return new ElementValue("verificationStatus", VerificationStatusElement);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (Severity != null) yield return new ElementValue("severity", Severity);
+                if (Code != null) yield return new ElementValue("code", Code);
+                foreach (var elem in BodySite) { if (elem != null) yield return new ElementValue("bodySite", elem); }
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Onset != null) yield return new ElementValue("onset", Onset);
+                if (Abatement != null) yield return new ElementValue("abatement", Abatement);
+                if (AssertedDateElement != null) yield return new ElementValue("assertedDate", AssertedDateElement);
+                if (Recorder != null) yield return new ElementValue("recorder", Recorder);
+                if (Asserter != null) yield return new ElementValue("asserter", Asserter);
+                foreach (var elem in Stage) { if (elem != null) yield return new ElementValue("stage", elem); }
+                foreach (var elem in Evidence) { if (elem != null) yield return new ElementValue("evidence", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }
 

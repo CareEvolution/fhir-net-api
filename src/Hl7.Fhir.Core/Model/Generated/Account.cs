@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,49 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Account"; } }
 
+        /// <summary>
+        /// Indicates whether the account is available to be used.
+        /// (url: http://hl7.org/fhir/ValueSet/account-status)
+        /// </summary>
+        [FhirEnumeration("AccountStatus")]
+        public enum AccountStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/account-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/account-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/account-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/account-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/account-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/account-status"), Description("Entered in error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/account-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/account-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/account-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/account-status"), Description("Unknown")]
+            Unknown,
+        }
+
 
         [FhirType("CoverageComponent")]
         [DataContract]
-        public partial class CoverageComponent : BackboneElement
+        public partial class CoverageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CoverageComponent"; } }
@@ -173,8 +213,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Coverage != null) yield return new ElementValue("coverage", false, Coverage);
-                    if (PriorityElement != null) yield return new ElementValue("priority", false, PriorityElement);
+                    if (Coverage != null) yield return new ElementValue("coverage", Coverage);
+                    if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
                 }
             }
 
@@ -184,7 +224,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("GuarantorComponent")]
         [DataContract]
-        public partial class GuarantorComponent : BackboneElement
+        public partial class GuarantorComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GuarantorComponent"; } }
@@ -315,9 +355,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Party != null) yield return new ElementValue("party", false, Party);
-                    if (OnHoldElement != null) yield return new ElementValue("onHold", false, OnHoldElement);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
+                    if (Party != null) yield return new ElementValue("party", Party);
+                    if (OnHoldElement != null) yield return new ElementValue("onHold", OnHoldElement);
+                    if (Period != null) yield return new ElementValue("period", Period);
                 }
             }
 
@@ -630,17 +670,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (ServicePeriod != null) yield return new ElementValue("servicePeriod", false, ServicePeriod);
-                foreach (var elem in Coverage) { if (elem != null) yield return new ElementValue("coverage", true, elem); }
-                if (Owner != null) yield return new ElementValue("owner", false, Owner);
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                foreach (var elem in Guarantor) { if (elem != null) yield return new ElementValue("guarantor", true, elem); }
-                if (PartOf != null) yield return new ElementValue("partOf", false, PartOf);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (ServicePeriod != null) yield return new ElementValue("servicePeriod", ServicePeriod);
+                foreach (var elem in Coverage) { if (elem != null) yield return new ElementValue("coverage", elem); }
+                if (Owner != null) yield return new ElementValue("owner", Owner);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                foreach (var elem in Guarantor) { if (elem != null) yield return new ElementValue("guarantor", elem); }
+                if (PartOf != null) yield return new ElementValue("partOf", PartOf);
             }
         }
 

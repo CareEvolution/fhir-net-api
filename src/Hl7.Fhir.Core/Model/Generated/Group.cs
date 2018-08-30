@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,55 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Group"; } }
 
+        /// <summary>
+        /// Types of resources that are part of group
+        /// (url: http://hl7.org/fhir/ValueSet/group-type)
+        /// </summary>
+        [FhirEnumeration("GroupType")]
+        public enum GroupType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("person", "http://hl7.org/fhir/group-type"), Description("Person")]
+            Person,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("animal", "http://hl7.org/fhir/group-type"), Description("Animal")]
+            Animal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("practitioner", "http://hl7.org/fhir/group-type"), Description("Practitioner")]
+            Practitioner,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("device", "http://hl7.org/fhir/group-type"), Description("Device")]
+            Device,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("medication", "http://hl7.org/fhir/group-type"), Description("Medication")]
+            Medication,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("substance", "http://hl7.org/fhir/group-type"), Description("Substance")]
+            Substance,
+        }
+
 
         [FhirType("CharacteristicComponent")]
         [DataContract]
-        public partial class CharacteristicComponent : BackboneElement
+        public partial class CharacteristicComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CharacteristicComponent"; } }
@@ -209,10 +255,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
-                    if (ExcludeElement != null) yield return new ElementValue("exclude", false, ExcludeElement);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Value != null) yield return new ElementValue("value", Value);
+                    if (ExcludeElement != null) yield return new ElementValue("exclude", ExcludeElement);
+                    if (Period != null) yield return new ElementValue("period", Period);
                 }
             }
 
@@ -222,7 +268,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("MemberComponent")]
         [DataContract]
-        public partial class MemberComponent : BackboneElement
+        public partial class MemberComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MemberComponent"; } }
@@ -353,9 +399,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Entity != null) yield return new ElementValue("entity", false, Entity);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
-                    if (InactiveElement != null) yield return new ElementValue("inactive", false, InactiveElement);
+                    if (Entity != null) yield return new ElementValue("entity", Entity);
+                    if (Period != null) yield return new ElementValue("period", Period);
+                    if (InactiveElement != null) yield return new ElementValue("inactive", InactiveElement);
                 }
             }
 
@@ -585,7 +631,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "member.empty() or (actual = true)",
             Key = "grp-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can only have members if group is \"actual\"",
             Xpath = "f:actual/@value=true() or not(exists(f:member))"
         };
@@ -686,15 +732,15 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ActiveElement != null) yield return new ElementValue("active", false, ActiveElement);
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (ActualElement != null) yield return new ElementValue("actual", false, ActualElement);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (QuantityElement != null) yield return new ElementValue("quantity", false, QuantityElement);
-                foreach (var elem in Characteristic) { if (elem != null) yield return new ElementValue("characteristic", true, elem); }
-                foreach (var elem in Member) { if (elem != null) yield return new ElementValue("member", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ActiveElement != null) yield return new ElementValue("active", ActiveElement);
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (ActualElement != null) yield return new ElementValue("actual", ActualElement);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (QuantityElement != null) yield return new ElementValue("quantity", QuantityElement);
+                foreach (var elem in Characteristic) { if (elem != null) yield return new ElementValue("characteristic", elem); }
+                foreach (var elem in Member) { if (elem != null) yield return new ElementValue("member", elem); }
             }
         }
 

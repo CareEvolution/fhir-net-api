@@ -9,10 +9,13 @@
 // [WMR 20161219] Save and reuse existing instance, so generator can detect & handle recursion
 #define REUSE_SNAPSHOT_GENERATOR
 
+using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.FhirPath.R4;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Specification.Source;
@@ -556,12 +559,12 @@ namespace Hl7.Fhir.Validation
             return t == typeof(FhirDateTime) ||
                    t == typeof(Date) ||
                    t == typeof(Instant) ||
-                   t == typeof(Model.Time) ||
+                   t == typeof(Time) ||
                    t == typeof(FhirDecimal) ||
                    t == typeof(Integer) ||
                    t == typeof(PositiveInt) ||
                    t == typeof(UnsignedInt) ||
-                   t == typeof(Model.Quantity) ||
+                   t == typeof(Quantity) ||
                    t == typeof(FhirString);
         }
 

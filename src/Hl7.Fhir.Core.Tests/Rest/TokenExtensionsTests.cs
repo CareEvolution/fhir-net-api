@@ -28,10 +28,10 @@ namespace Hl7.Fhir.Core.Tests.Rest
 
         private IEnumerable<(ContactPoint contactPoint, string expected)> GetContactPointTestData()
         {
-            yield return (new ContactPoint(ContactPointSystem.Phone, ContactPointUse.Mobile, "06-12345678"), "Mobile|06-12345678");
+            yield return (new ContactPoint(ContactPoint.ContactPointSystem.Phone, ContactPoint.ContactPointUse.Mobile, "06-12345678"), "Mobile|06-12345678");
             yield return (new ContactPoint(null, null, "contact"), "contact");
-            yield return (new ContactPoint(null, ContactPointUse.Home, ""), "Home|");
-            yield return (new ContactPoint(null, ContactPointUse.Work, null), "Work|");
+            yield return (new ContactPoint(null, ContactPoint.ContactPointUse.Home, ""), "Home|");
+            yield return (new ContactPoint(null, ContactPoint.ContactPointUse.Work, null), "Work|");
         }
 
         private IEnumerable<(CodeableConcept codeableConcept, string expected)> GetCodeableConceptTestData()

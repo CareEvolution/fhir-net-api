@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -57,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// xml:id (or equivalent in JSON)
         /// </summary>
-        [FhirElement("id",  XmlSerialization=XmlSerializationHint.Attribute, InSummary=true, Order=10)]
+        [FhirElement("id",  XmlSerialization=XmlRepresentation.XmlAttr,TypeRedirect = typeof(Id), InSummary=true, Order=10)]
         [DataMember]
         public FhirString IdElement
         {
@@ -105,7 +106,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "hasValue() | (children().count() > id.count())",
             Key = "ele-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "All FHIR elements must have a @value or children",
             Xpath = "@value|f:*|h:div"
         };
@@ -165,7 +166,8 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Extension) { if (elem != null) yield return new ElementValue("extension", true, elem); }
+                if (IdElement != null) yield return new ElementValue("id", IdElement);
+                foreach (var elem in Extension) { if (elem != null) yield return new ElementValue("extension", elem); }
             }
         }
 

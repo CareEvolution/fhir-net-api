@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -327,14 +328,14 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Request != null) yield return new ElementValue("request", false, Request);
-                if (OutcomeElement != null) yield return new ElementValue("outcome", false, OutcomeElement);
-                if (DispositionElement != null) yield return new ElementValue("disposition", false, DispositionElement);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                if (RequestProvider != null) yield return new ElementValue("requestProvider", false, RequestProvider);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Request != null) yield return new ElementValue("request", Request);
+                if (OutcomeElement != null) yield return new ElementValue("outcome", OutcomeElement);
+                if (DispositionElement != null) yield return new ElementValue("disposition", DispositionElement);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Organization != null) yield return new ElementValue("organization", Organization);
+                if (RequestProvider != null) yield return new ElementValue("requestProvider", RequestProvider);
             }
         }
 

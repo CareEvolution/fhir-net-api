@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -363,13 +364,13 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (UseElement != null) yield return new ElementValue("use", false, UseElement);
-                if (MinElement != null) yield return new ElementValue("min", false, MinElement);
-                if (MaxElement != null) yield return new ElementValue("max", false, MaxElement);
-                if (DocumentationElement != null) yield return new ElementValue("documentation", false, DocumentationElement);
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (ProfileElement != null) yield return new ElementValue("profile", false, ProfileElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (UseElement != null) yield return new ElementValue("use", UseElement);
+                if (MinElement != null) yield return new ElementValue("min", MinElement);
+                if (MaxElement != null) yield return new ElementValue("max", MaxElement);
+                if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
             }
         }
 

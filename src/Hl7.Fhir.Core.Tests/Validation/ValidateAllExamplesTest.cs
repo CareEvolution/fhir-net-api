@@ -16,6 +16,7 @@ using System.Diagnostics;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Tests.Serialization
 {

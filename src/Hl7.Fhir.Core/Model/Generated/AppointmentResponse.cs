@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -248,7 +249,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "participantType.exists() or actor.exists()",
             Key = "apr-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either the participantType or actor must be specified",
             Xpath = "(exists(f:participantType) or exists(f:actor))"
         };
@@ -345,14 +346,14 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (Appointment != null) yield return new ElementValue("appointment", false, Appointment);
-                if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                if (EndElement != null) yield return new ElementValue("end", false, EndElement);
-                foreach (var elem in ParticipantType) { if (elem != null) yield return new ElementValue("participantType", true, elem); }
-                if (Actor != null) yield return new ElementValue("actor", false, Actor);
-                if (ParticipantStatusElement != null) yield return new ElementValue("participantStatus", false, ParticipantStatusElement);
-                if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (Appointment != null) yield return new ElementValue("appointment", Appointment);
+                if (StartElement != null) yield return new ElementValue("start", StartElement);
+                if (EndElement != null) yield return new ElementValue("end", EndElement);
+                foreach (var elem in ParticipantType) { if (elem != null) yield return new ElementValue("participantType", elem); }
+                if (Actor != null) yield return new ElementValue("actor", Actor);
+                if (ParticipantStatusElement != null) yield return new ElementValue("participantStatus", ParticipantStatusElement);
+                if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
             }
         }
 

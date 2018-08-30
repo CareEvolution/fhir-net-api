@@ -8,13 +8,11 @@
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Support;
 using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Model.R4;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-using static Hl7.Fhir.Model.Observation;
 
 namespace Hl7.Fhir.Test
 {
@@ -34,16 +32,16 @@ namespace Hl7.Fhir.Test
 
             Assert.AreEqual(4, b.Entry.Count);
 
-            Assert.AreEqual(HTTPVerb.POST, b.Entry[0].Request.Method);
+            Assert.AreEqual(Bundle.HTTPVerb.POST, b.Entry[0].Request.Method);
             Assert.AreEqual(p, b.Entry[0].Resource);
 
-            Assert.AreEqual(HTTPVerb.GET, b.Entry[1].Request.Method);
+            Assert.AreEqual(Bundle.HTTPVerb.GET, b.Entry[1].Request.Method);
             Assert.AreEqual("Patient/7/_history", b.Entry[1].Request.Url);
 
-            Assert.AreEqual(HTTPVerb.DELETE, b.Entry[2].Request.Method);
+            Assert.AreEqual(Bundle.HTTPVerb.DELETE, b.Entry[2].Request.Method);
             Assert.AreEqual("Patient/8", b.Entry[2].Request.Url);
 
-            Assert.AreEqual(HTTPVerb.GET, b.Entry[3].Request.Method);
+            Assert.AreEqual(Bundle.HTTPVerb.GET, b.Entry[3].Request.Method);
             Assert.AreEqual("Patient/9", b.Entry[3].Request.Url);
             Assert.AreEqual("W/\"bla\"", b.Entry[3].Request.IfNoneMatch);
         }

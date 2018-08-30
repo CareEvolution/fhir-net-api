@@ -43,6 +43,7 @@ using Hl7.Fhir.Specification.Source;
 using System.Diagnostics;
 using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.ElementModel;
 
 namespace Hl7.Fhir.Specification.Snapshot
 {
@@ -733,7 +734,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                 {
                     // Always generate new id's for child elements
                     // Also generate id for current element if not specified by diff
-                    ElementIdGenerator.Update(snap, true, !string.IsNullOrEmpty(diff.Current.ElementId));
+                    ElementIdGenerator.Update(snap, true, !string.IsNullOrEmpty(diff.Current.Id));
                 }
             }
 #else
@@ -1088,8 +1089,8 @@ namespace Hl7.Fhir.Specification.Snapshot
             if (IsEqualPath(elem.Base?.Path, DomainResource_Extension_Path))
             {
                 elem.ShortElement?.RemoveConstrainedByDiffAnnotation();
-                elem.CommentElement?.RemoveConstrainedByDiffAnnotation();
-                elem.DefinitionElement?.RemoveConstrainedByDiffAnnotation();
+                elem.Comment?.RemoveConstrainedByDiffAnnotation();
+                elem.Definition?.RemoveConstrainedByDiffAnnotation();
             }
         }
 

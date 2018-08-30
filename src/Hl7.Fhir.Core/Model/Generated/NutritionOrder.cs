@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OralDietComponent")]
         [DataContract]
-        public partial class OralDietComponent : BackboneElement
+        public partial class OralDietComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OralDietComponent"; } }
@@ -244,12 +245,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
-                    foreach (var elem in Schedule) { if (elem != null) yield return new ElementValue("schedule", true, elem); }
-                    foreach (var elem in Nutrient) { if (elem != null) yield return new ElementValue("nutrient", true, elem); }
-                    foreach (var elem in Texture) { if (elem != null) yield return new ElementValue("texture", true, elem); }
-                    foreach (var elem in FluidConsistencyType) { if (elem != null) yield return new ElementValue("fluidConsistencyType", true, elem); }
-                    if (InstructionElement != null) yield return new ElementValue("instruction", false, InstructionElement);
+                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
+                    foreach (var elem in Schedule) { if (elem != null) yield return new ElementValue("schedule", elem); }
+                    foreach (var elem in Nutrient) { if (elem != null) yield return new ElementValue("nutrient", elem); }
+                    foreach (var elem in Texture) { if (elem != null) yield return new ElementValue("texture", elem); }
+                    foreach (var elem in FluidConsistencyType) { if (elem != null) yield return new ElementValue("fluidConsistencyType", elem); }
+                    if (InstructionElement != null) yield return new ElementValue("instruction", InstructionElement);
                 }
             }
 
@@ -259,7 +260,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("NutrientComponent")]
         [DataContract]
-        public partial class NutrientComponent : BackboneElement
+        public partial class NutrientComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NutrientComponent"; } }
@@ -352,8 +353,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Modifier != null) yield return new ElementValue("modifier", false, Modifier);
-                    if (Amount != null) yield return new ElementValue("amount", false, Amount);
+                    if (Modifier != null) yield return new ElementValue("modifier", Modifier);
+                    if (Amount != null) yield return new ElementValue("amount", Amount);
                 }
             }
 
@@ -363,7 +364,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TextureComponent")]
         [DataContract]
-        public partial class TextureComponent : BackboneElement
+        public partial class TextureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TextureComponent"; } }
@@ -456,8 +457,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Modifier != null) yield return new ElementValue("modifier", false, Modifier);
-                    if (FoodType != null) yield return new ElementValue("foodType", false, FoodType);
+                    if (Modifier != null) yield return new ElementValue("modifier", Modifier);
+                    if (FoodType != null) yield return new ElementValue("foodType", FoodType);
                 }
             }
 
@@ -467,7 +468,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SupplementComponent")]
         [DataContract]
-        public partial class SupplementComponent : BackboneElement
+        public partial class SupplementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SupplementComponent"; } }
@@ -650,11 +651,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (ProductNameElement != null) yield return new ElementValue("productName", false, ProductNameElement);
-                    foreach (var elem in Schedule) { if (elem != null) yield return new ElementValue("schedule", true, elem); }
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    if (InstructionElement != null) yield return new ElementValue("instruction", false, InstructionElement);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (ProductNameElement != null) yield return new ElementValue("productName", ProductNameElement);
+                    foreach (var elem in Schedule) { if (elem != null) yield return new ElementValue("schedule", elem); }
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    if (InstructionElement != null) yield return new ElementValue("instruction", InstructionElement);
                 }
             }
 
@@ -664,7 +665,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EnteralFormulaComponent")]
         [DataContract]
-        public partial class EnteralFormulaComponent : BackboneElement
+        public partial class EnteralFormulaComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EnteralFormulaComponent"; } }
@@ -934,15 +935,15 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (BaseFormulaType != null) yield return new ElementValue("baseFormulaType", false, BaseFormulaType);
-                    if (BaseFormulaProductNameElement != null) yield return new ElementValue("baseFormulaProductName", false, BaseFormulaProductNameElement);
-                    if (AdditiveType != null) yield return new ElementValue("additiveType", false, AdditiveType);
-                    if (AdditiveProductNameElement != null) yield return new ElementValue("additiveProductName", false, AdditiveProductNameElement);
-                    if (CaloricDensity != null) yield return new ElementValue("caloricDensity", false, CaloricDensity);
-                    if (RouteofAdministration != null) yield return new ElementValue("routeofAdministration", false, RouteofAdministration);
-                    foreach (var elem in Administration) { if (elem != null) yield return new ElementValue("administration", true, elem); }
-                    if (MaxVolumeToDeliver != null) yield return new ElementValue("maxVolumeToDeliver", false, MaxVolumeToDeliver);
-                    if (AdministrationInstructionElement != null) yield return new ElementValue("administrationInstruction", false, AdministrationInstructionElement);
+                    if (BaseFormulaType != null) yield return new ElementValue("baseFormulaType", BaseFormulaType);
+                    if (BaseFormulaProductNameElement != null) yield return new ElementValue("baseFormulaProductName", BaseFormulaProductNameElement);
+                    if (AdditiveType != null) yield return new ElementValue("additiveType", AdditiveType);
+                    if (AdditiveProductNameElement != null) yield return new ElementValue("additiveProductName", AdditiveProductNameElement);
+                    if (CaloricDensity != null) yield return new ElementValue("caloricDensity", CaloricDensity);
+                    if (RouteofAdministration != null) yield return new ElementValue("routeofAdministration", RouteofAdministration);
+                    foreach (var elem in Administration) { if (elem != null) yield return new ElementValue("administration", elem); }
+                    if (MaxVolumeToDeliver != null) yield return new ElementValue("maxVolumeToDeliver", MaxVolumeToDeliver);
+                    if (AdministrationInstructionElement != null) yield return new ElementValue("administrationInstruction", AdministrationInstructionElement);
                 }
             }
 
@@ -952,7 +953,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AdministrationComponent")]
         [DataContract]
-        public partial class AdministrationComponent : BackboneElement
+        public partial class AdministrationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AdministrationComponent"; } }
@@ -1063,9 +1064,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Schedule != null) yield return new ElementValue("schedule", false, Schedule);
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    if (Rate != null) yield return new ElementValue("rate", false, Rate);
+                    if (Schedule != null) yield return new ElementValue("schedule", Schedule);
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    if (Rate != null) yield return new ElementValue("rate", Rate);
                 }
             }
 
@@ -1364,7 +1365,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "oralDiet.exists() or supplement.exists() or enteralFormula.exists()",
             Key = "nor-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Nutrition Order SHALL contain either Oral Diet , Supplement, or Enteral Formula class",
             Xpath = "exists(f:oralDiet) or exists(f:supplement) or exists(f:enteralFormula)"
         };
@@ -1489,21 +1490,21 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (IntentElement != null) yield return new ElementValue("intent", false, IntentElement);
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (DateTimeElement != null) yield return new ElementValue("dateTime", false, DateTimeElement);
-                if (Orderer != null) yield return new ElementValue("orderer", false, Orderer);
-                foreach (var elem in AllergyIntolerance) { if (elem != null) yield return new ElementValue("allergyIntolerance", true, elem); }
-                foreach (var elem in FoodPreferenceModifier) { if (elem != null) yield return new ElementValue("foodPreferenceModifier", true, elem); }
-                foreach (var elem in ExcludeFoodModifier) { if (elem != null) yield return new ElementValue("excludeFoodModifier", true, elem); }
-                if (OralDiet != null) yield return new ElementValue("oralDiet", false, OralDiet);
-                foreach (var elem in Supplement) { if (elem != null) yield return new ElementValue("supplement", true, elem); }
-                if (EnteralFormula != null) yield return new ElementValue("enteralFormula", false, EnteralFormula);
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (IntentElement != null) yield return new ElementValue("intent", IntentElement);
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (DateTimeElement != null) yield return new ElementValue("dateTime", DateTimeElement);
+                if (Orderer != null) yield return new ElementValue("orderer", Orderer);
+                foreach (var elem in AllergyIntolerance) { if (elem != null) yield return new ElementValue("allergyIntolerance", elem); }
+                foreach (var elem in FoodPreferenceModifier) { if (elem != null) yield return new ElementValue("foodPreferenceModifier", elem); }
+                foreach (var elem in ExcludeFoodModifier) { if (elem != null) yield return new ElementValue("excludeFoodModifier", elem); }
+                if (OralDiet != null) yield return new ElementValue("oralDiet", OralDiet);
+                foreach (var elem in Supplement) { if (elem != null) yield return new ElementValue("supplement", elem); }
+                if (EnteralFormula != null) yield return new ElementValue("enteralFormula", EnteralFormula);
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }
 

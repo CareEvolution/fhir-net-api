@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -55,6 +56,45 @@ namespace Hl7.Fhir.Model.R4
         public override ResourceType ResourceType { get { return ResourceType.Slot; } }
         [NotMapped]
         public override string TypeName { get { return "Slot"; } }
+
+        /// <summary>
+        /// The free/busy status of the slot.
+        /// (url: http://hl7.org/fhir/ValueSet/slotstatus)
+        /// </summary>
+        [FhirEnumeration("SlotStatus")]
+        public enum SlotStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("busy", "http://hl7.org/fhir/slotstatus"), Description("Busy")]
+            Busy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("free", "http://hl7.org/fhir/slotstatus"), Description("Free")]
+            Free,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("busy-unavailable", "http://hl7.org/fhir/slotstatus"), Description("Busy (Unavailable)")]
+            BusyUnavailable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("busy-tentative", "http://hl7.org/fhir/slotstatus"), Description("Busy (Tentative)")]
+            BusyTentative,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/slotstatus"), Description("Entered in error")]
+            EnteredInError,
+        }
 
 
         /// <summary>
@@ -402,17 +442,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in ServiceCategory) { if (elem != null) yield return new ElementValue("serviceCategory", true, elem); }
-                foreach (var elem in ServiceType) { if (elem != null) yield return new ElementValue("serviceType", true, elem); }
-                foreach (var elem in Specialty) { if (elem != null) yield return new ElementValue("specialty", true, elem); }
-                if (AppointmentType != null) yield return new ElementValue("appointmentType", false, AppointmentType);
-                if (Schedule != null) yield return new ElementValue("schedule", false, Schedule);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                if (EndElement != null) yield return new ElementValue("end", false, EndElement);
-                if (OverbookedElement != null) yield return new ElementValue("overbooked", false, OverbookedElement);
-                if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in ServiceCategory) { if (elem != null) yield return new ElementValue("serviceCategory", elem); }
+                foreach (var elem in ServiceType) { if (elem != null) yield return new ElementValue("serviceType", elem); }
+                foreach (var elem in Specialty) { if (elem != null) yield return new ElementValue("specialty", elem); }
+                if (AppointmentType != null) yield return new ElementValue("appointmentType", AppointmentType);
+                if (Schedule != null) yield return new ElementValue("schedule", Schedule);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (StartElement != null) yield return new ElementValue("start", StartElement);
+                if (EndElement != null) yield return new ElementValue("end", EndElement);
+                if (OverbookedElement != null) yield return new ElementValue("overbooked", OverbookedElement);
+                if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
             }
         }
 

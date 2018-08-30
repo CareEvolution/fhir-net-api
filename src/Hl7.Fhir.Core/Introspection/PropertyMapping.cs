@@ -6,6 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
@@ -50,8 +51,8 @@ namespace Hl7.Fhir.Introspection.R4
             PropertyMapping result = new PropertyMapping();
 
             var elementAttr = prop.GetCustomAttribute<FhirElementAttribute>();
-            var cardinalityAttr = prop.GetCustomAttribute<Validation.CardinalityAttribute>();
-            var allowedTypes = prop.GetCustomAttribute<Validation.AllowedTypesAttribute>();
+            var cardinalityAttr = prop.GetCustomAttribute<CardinalityAttribute>();
+            var allowedTypes = prop.GetCustomAttribute<AllowedTypesAttribute>();
 
             result.Name = determinePropertyName(prop);
             result.ImplementingType = prop.PropertyType;

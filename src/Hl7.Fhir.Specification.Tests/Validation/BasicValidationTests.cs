@@ -17,6 +17,7 @@ using Hl7.Fhir.Validation;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Hl7.Fhir.Model.R4;
 
 namespace Hl7.Fhir.Specification.Tests
 {

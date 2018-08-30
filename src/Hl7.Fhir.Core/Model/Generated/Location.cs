@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,58 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Location"; } }
 
+        /// <summary>
+        /// Indicates whether the location is still in use.
+        /// (url: http://hl7.org/fhir/ValueSet/location-status)
+        /// </summary>
+        [FhirEnumeration("LocationStatus")]
+        public enum LocationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/location-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/location-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/location-status"), Description("Inactive")]
+            Inactive,
+        }
+
+        /// <summary>
+        /// Indicates whether a resource instance represents a specific location or a class of locations.
+        /// (url: http://hl7.org/fhir/ValueSet/location-mode)
+        /// </summary>
+        [FhirEnumeration("LocationMode")]
+        public enum LocationMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-mode)
+            /// </summary>
+            [EnumLiteral("instance", "http://hl7.org/fhir/location-mode"), Description("Instance")]
+            Instance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-mode)
+            /// </summary>
+            [EnumLiteral("kind", "http://hl7.org/fhir/location-mode"), Description("Kind")]
+            Kind,
+        }
+
 
         [FhirType("PositionComponent")]
         [DataContract]
-        public partial class PositionComponent : BackboneElement
+        public partial class PositionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PositionComponent"; } }
@@ -228,9 +277,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (LongitudeElement != null) yield return new ElementValue("longitude", false, LongitudeElement);
-                    if (LatitudeElement != null) yield return new ElementValue("latitude", false, LatitudeElement);
-                    if (AltitudeElement != null) yield return new ElementValue("altitude", false, AltitudeElement);
+                    if (LongitudeElement != null) yield return new ElementValue("longitude", LongitudeElement);
+                    if (LatitudeElement != null) yield return new ElementValue("latitude", LatitudeElement);
+                    if (AltitudeElement != null) yield return new ElementValue("altitude", AltitudeElement);
                 }
             }
 
@@ -240,7 +289,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("HoursOfOperationComponent")]
         [DataContract]
-        public partial class HoursOfOperationComponent : BackboneElement
+        public partial class HoursOfOperationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "HoursOfOperationComponent"; } }
@@ -444,10 +493,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in DaysOfWeekElement) { if (elem != null) yield return new ElementValue("daysOfWeek", true, elem); }
-                    if (AllDayElement != null) yield return new ElementValue("allDay", false, AllDayElement);
-                    if (OpeningTimeElement != null) yield return new ElementValue("openingTime", false, OpeningTimeElement);
-                    if (ClosingTimeElement != null) yield return new ElementValue("closingTime", false, ClosingTimeElement);
+                    foreach (var elem in DaysOfWeekElement) { if (elem != null) yield return new ElementValue("daysOfWeek", elem); }
+                    if (AllDayElement != null) yield return new ElementValue("allDay", AllDayElement);
+                    if (OpeningTimeElement != null) yield return new ElementValue("openingTime", OpeningTimeElement);
+                    if (ClosingTimeElement != null) yield return new ElementValue("closingTime", ClosingTimeElement);
                 }
             }
 
@@ -921,23 +970,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (OperationalStatus != null) yield return new ElementValue("operationalStatus", false, OperationalStatus);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                foreach (var elem in AliasElement) { if (elem != null) yield return new ElementValue("alias", true, elem); }
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
-                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", true, elem); }
-                if (Address != null) yield return new ElementValue("address", false, Address);
-                if (PhysicalType != null) yield return new ElementValue("physicalType", false, PhysicalType);
-                if (Position != null) yield return new ElementValue("position", false, Position);
-                if (ManagingOrganization != null) yield return new ElementValue("managingOrganization", false, ManagingOrganization);
-                if (PartOf != null) yield return new ElementValue("partOf", false, PartOf);
-                foreach (var elem in HoursOfOperation) { if (elem != null) yield return new ElementValue("hoursOfOperation", true, elem); }
-                if (AvailabilityExceptionsElement != null) yield return new ElementValue("availabilityExceptions", false, AvailabilityExceptionsElement);
-                foreach (var elem in Endpoint) { if (elem != null) yield return new ElementValue("endpoint", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (OperationalStatus != null) yield return new ElementValue("operationalStatus", OperationalStatus);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                foreach (var elem in AliasElement) { if (elem != null) yield return new ElementValue("alias", elem); }
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
+                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
+                if (Address != null) yield return new ElementValue("address", Address);
+                if (PhysicalType != null) yield return new ElementValue("physicalType", PhysicalType);
+                if (Position != null) yield return new ElementValue("position", Position);
+                if (ManagingOrganization != null) yield return new ElementValue("managingOrganization", ManagingOrganization);
+                if (PartOf != null) yield return new ElementValue("partOf", PartOf);
+                foreach (var elem in HoursOfOperation) { if (elem != null) yield return new ElementValue("hoursOfOperation", elem); }
+                if (AvailabilityExceptionsElement != null) yield return new ElementValue("availabilityExceptions", AvailabilityExceptionsElement);
+                foreach (var elem in Endpoint) { if (elem != null) yield return new ElementValue("endpoint", elem); }
             }
         }
 

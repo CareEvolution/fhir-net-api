@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,223 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "VerificationResult"; } }
 
+        /// <summary>
+        /// The frequency with which the target must be validated
+        /// (url: http://hl7.org/fhir/ValueSet/need)
+        /// </summary>
+        [FhirEnumeration("need")]
+        public enum need
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/need)
+            /// </summary>
+            [EnumLiteral("none", "http://hl7.org/fhir/need"), Description("None")]
+            None,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/need)
+            /// </summary>
+            [EnumLiteral("initial", "http://hl7.org/fhir/need"), Description("Initial")]
+            Initial,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/need)
+            /// </summary>
+            [EnumLiteral("periodic", "http://hl7.org/fhir/need"), Description("Periodic")]
+            Periodic,
+        }
+
+        /// <summary>
+        /// The validation status of the target
+        /// (url: http://hl7.org/fhir/ValueSet/status)
+        /// </summary>
+        [FhirEnumeration("status")]
+        public enum status
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/status)
+            /// </summary>
+            [EnumLiteral("attested", "http://hl7.org/fhir/status"), Description("Attested")]
+            Attested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/status)
+            /// </summary>
+            [EnumLiteral("validated", "http://hl7.org/fhir/status"), Description("Validated")]
+            Validated,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/status)
+            /// </summary>
+            [EnumLiteral("in-process", "http://hl7.org/fhir/status"), Description("In process")]
+            InProcess,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/status)
+            /// </summary>
+            [EnumLiteral("req-revalid", "http://hl7.org/fhir/status"), Description("Requires revalidation")]
+            ReqRevalid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/status)
+            /// </summary>
+            [EnumLiteral("val-fail", "http://hl7.org/fhir/status"), Description("Validation failed")]
+            ValFail,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/status)
+            /// </summary>
+            [EnumLiteral("reval-fail", "http://hl7.org/fhir/status"), Description("Re-Validation failed")]
+            RevalFail,
+        }
+
+        /// <summary>
+        /// What the target is validated against
+        /// (url: http://hl7.org/fhir/ValueSet/validation-type)
+        /// </summary>
+        [FhirEnumeration("validation_type")]
+        public enum validation_type
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/validation-type)
+            /// </summary>
+            [EnumLiteral("nothing", "http://hl7.org/fhir/validation-type"), Description("Nothing")]
+            Nothing,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/validation-type)
+            /// </summary>
+            [EnumLiteral("primary", "http://hl7.org/fhir/validation-type"), Description("Primary Source")]
+            Primary,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/validation-type)
+            /// </summary>
+            [EnumLiteral("multiple", "http://hl7.org/fhir/validation-type"), Description("Multiple Sources")]
+            Multiple,
+        }
+
+        /// <summary>
+        /// The result if validation fails
+        /// (url: http://hl7.org/fhir/ValueSet/failure-action)
+        /// </summary>
+        [FhirEnumeration("failure_action")]
+        public enum failure_action
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/failure-action)
+            /// </summary>
+            [EnumLiteral("fatal", "http://hl7.org/fhir/failure-action"), Description("Fatal")]
+            Fatal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/failure-action)
+            /// </summary>
+            [EnumLiteral("warn", "http://hl7.org/fhir/failure-action"), Description("Warning")]
+            Warn,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/failure-action)
+            /// </summary>
+            [EnumLiteral("rec-only", "http://hl7.org/fhir/failure-action"), Description("Record only")]
+            RecOnly,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/failure-action)
+            /// </summary>
+            [EnumLiteral("none", "http://hl7.org/fhir/failure-action"), Description("None")]
+            None,
+        }
+
+        /// <summary>
+        /// Status of the validation of the target against the primary source
+        /// (url: http://hl7.org/fhir/ValueSet/validation-status)
+        /// </summary>
+        [FhirEnumeration("validation_status")]
+        public enum validation_status
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/validation-status)
+            /// </summary>
+            [EnumLiteral("successful", "http://hl7.org/fhir/validation-status"), Description("Successful")]
+            Successful,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/validation-status)
+            /// </summary>
+            [EnumLiteral("failed", "http://hl7.org/fhir/validation-status"), Description("Failed")]
+            Failed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/validation-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/validation-status"), Description("Unknown")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// Ability of the primary source to push updates/alerts
+        /// (url: http://hl7.org/fhir/ValueSet/can-push-updates)
+        /// </summary>
+        [FhirEnumeration("can_push_updates")]
+        public enum can_push_updates
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/can-push-updates)
+            /// </summary>
+            [EnumLiteral("yes", "http://hl7.org/fhir/can-push-updates"), Description("Yes")]
+            Yes,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/can-push-updates)
+            /// </summary>
+            [EnumLiteral("no", "http://hl7.org/fhir/can-push-updates"), Description("No")]
+            No,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/can-push-updates)
+            /// </summary>
+            [EnumLiteral("undetermined", "http://hl7.org/fhir/can-push-updates"), Description("Undetermined")]
+            Undetermined,
+        }
+
+        /// <summary>
+        /// Type of alerts/updates the primary source can send
+        /// (url: http://hl7.org/fhir/ValueSet/push-type-available)
+        /// </summary>
+        [FhirEnumeration("push_type_available")]
+        public enum push_type_available
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/push-type-available)
+            /// </summary>
+            [EnumLiteral("specific", "http://hl7.org/fhir/push-type-available"), Description("Specific requested changes")]
+            Specific,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/push-type-available)
+            /// </summary>
+            [EnumLiteral("any", "http://hl7.org/fhir/push-type-available"), Description("Any changes")]
+            Any,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/push-type-available)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/push-type-available"), Description("As defined by source")]
+            Source,
+        }
+
 
         [FhirType("PrimarySourceComponent")]
         [DataContract]
-        public partial class PrimarySourceComponent : BackboneElement
+        public partial class PrimarySourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PrimarySourceComponent"; } }
@@ -335,14 +549,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
-                    foreach (var elem in ValidationProcess) { if (elem != null) yield return new ElementValue("validationProcess", true, elem); }
-                    if (ValidationStatusElement != null) yield return new ElementValue("validationStatus", false, ValidationStatusElement);
-                    if (ValidationDateElement != null) yield return new ElementValue("validationDate", false, ValidationDateElement);
-                    if (CanPushUpdatesElement != null) yield return new ElementValue("canPushUpdates", false, CanPushUpdatesElement);
-                    foreach (var elem in PushTypeAvailableElement) { if (elem != null) yield return new ElementValue("pushTypeAvailable", true, elem); }
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (Organization != null) yield return new ElementValue("organization", Organization);
+                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
+                    foreach (var elem in ValidationProcess) { if (elem != null) yield return new ElementValue("validationProcess", elem); }
+                    if (ValidationStatusElement != null) yield return new ElementValue("validationStatus", ValidationStatusElement);
+                    if (ValidationDateElement != null) yield return new ElementValue("validationDate", ValidationDateElement);
+                    if (CanPushUpdatesElement != null) yield return new ElementValue("canPushUpdates", CanPushUpdatesElement);
+                    foreach (var elem in PushTypeAvailableElement) { if (elem != null) yield return new ElementValue("pushTypeAvailable", elem); }
                 }
             }
 
@@ -352,7 +566,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AttestationComponent")]
         [DataContract]
-        public partial class AttestationComponent : BackboneElement
+        public partial class AttestationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AttestationComponent"; } }
@@ -576,12 +790,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Source != null) yield return new ElementValue("source", false, Source);
-                    if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                    if (Method != null) yield return new ElementValue("method", false, Method);
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                    if (SourceIdentityCertificateElement != null) yield return new ElementValue("sourceIdentityCertificate", false, SourceIdentityCertificateElement);
-                    if (ProxyIdentityCertificateElement != null) yield return new ElementValue("proxyIdentityCertificate", false, ProxyIdentityCertificateElement);
+                    if (Source != null) yield return new ElementValue("source", Source);
+                    if (Organization != null) yield return new ElementValue("organization", Organization);
+                    if (Method != null) yield return new ElementValue("method", Method);
+                    if (DateElement != null) yield return new ElementValue("date", DateElement);
+                    if (SourceIdentityCertificateElement != null) yield return new ElementValue("sourceIdentityCertificate", SourceIdentityCertificateElement);
+                    if (ProxyIdentityCertificateElement != null) yield return new ElementValue("proxyIdentityCertificate", ProxyIdentityCertificateElement);
                 }
             }
 
@@ -591,7 +805,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ValidatorComponent")]
         [DataContract]
-        public partial class ValidatorComponent : BackboneElement
+        public partial class ValidatorComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ValidatorComponent"; } }
@@ -759,10 +973,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                    if (IdentityCertificateElement != null) yield return new ElementValue("identityCertificate", false, IdentityCertificateElement);
-                    if (DateValidatedElement != null) yield return new ElementValue("dateValidated", false, DateValidatedElement);
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (Organization != null) yield return new ElementValue("organization", Organization);
+                    if (IdentityCertificateElement != null) yield return new ElementValue("identityCertificate", IdentityCertificateElement);
+                    if (DateValidatedElement != null) yield return new ElementValue("dateValidated", DateValidatedElement);
                 }
             }
 
@@ -1224,20 +1438,20 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", true, elem); }
-                foreach (var elem in TargetLocationElement) { if (elem != null) yield return new ElementValue("targetLocation", true, elem); }
-                if (NeedElement != null) yield return new ElementValue("need", false, NeedElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (StatusDateElement != null) yield return new ElementValue("statusDate", false, StatusDateElement);
-                if (ValidationTypeElement != null) yield return new ElementValue("validationType", false, ValidationTypeElement);
-                foreach (var elem in ValidationProcess) { if (elem != null) yield return new ElementValue("validationProcess", true, elem); }
-                if (Frequency != null) yield return new ElementValue("frequency", false, Frequency);
-                if (LastPerformedElement != null) yield return new ElementValue("lastPerformed", false, LastPerformedElement);
-                if (NextScheduledElement != null) yield return new ElementValue("nextScheduled", false, NextScheduledElement);
-                if (FailureActionElement != null) yield return new ElementValue("failureAction", false, FailureActionElement);
-                foreach (var elem in PrimarySource) { if (elem != null) yield return new ElementValue("primarySource", true, elem); }
-                if (Attestation != null) yield return new ElementValue("attestation", false, Attestation);
-                foreach (var elem in Validator) { if (elem != null) yield return new ElementValue("validator", true, elem); }
+                foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", elem); }
+                foreach (var elem in TargetLocationElement) { if (elem != null) yield return new ElementValue("targetLocation", elem); }
+                if (NeedElement != null) yield return new ElementValue("need", NeedElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (StatusDateElement != null) yield return new ElementValue("statusDate", StatusDateElement);
+                if (ValidationTypeElement != null) yield return new ElementValue("validationType", ValidationTypeElement);
+                foreach (var elem in ValidationProcess) { if (elem != null) yield return new ElementValue("validationProcess", elem); }
+                if (Frequency != null) yield return new ElementValue("frequency", Frequency);
+                if (LastPerformedElement != null) yield return new ElementValue("lastPerformed", LastPerformedElement);
+                if (NextScheduledElement != null) yield return new ElementValue("nextScheduled", NextScheduledElement);
+                if (FailureActionElement != null) yield return new ElementValue("failureAction", FailureActionElement);
+                foreach (var elem in PrimarySource) { if (elem != null) yield return new ElementValue("primarySource", elem); }
+                if (Attestation != null) yield return new ElementValue("attestation", Attestation);
+                foreach (var elem in Validator) { if (elem != null) yield return new ElementValue("validator", elem); }
             }
         }
 

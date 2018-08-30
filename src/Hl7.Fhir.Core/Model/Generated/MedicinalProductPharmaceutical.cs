@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("CharacteristicsComponent")]
         [DataContract]
-        public partial class CharacteristicsComponent : BackboneElement
+        public partial class CharacteristicsComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CharacteristicsComponent"; } }
@@ -153,8 +154,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Status != null) yield return new ElementValue("status", false, Status);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Status != null) yield return new ElementValue("status", Status);
                 }
             }
 
@@ -361,13 +362,13 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (AdministrableDoseForm != null) yield return new ElementValue("administrableDoseForm", false, AdministrableDoseForm);
-                if (UnitOfPresentation != null) yield return new ElementValue("unitOfPresentation", false, UnitOfPresentation);
-                foreach (var elem in RouteOfAdministration) { if (elem != null) yield return new ElementValue("routeOfAdministration", true, elem); }
-                foreach (var elem in Ingredient) { if (elem != null) yield return new ElementValue("ingredient", true, elem); }
-                foreach (var elem in DeviceElement) { if (elem != null) yield return new ElementValue("device", true, elem); }
-                foreach (var elem in Characteristics) { if (elem != null) yield return new ElementValue("characteristics", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (AdministrableDoseForm != null) yield return new ElementValue("administrableDoseForm", AdministrableDoseForm);
+                if (UnitOfPresentation != null) yield return new ElementValue("unitOfPresentation", UnitOfPresentation);
+                foreach (var elem in RouteOfAdministration) { if (elem != null) yield return new ElementValue("routeOfAdministration", elem); }
+                foreach (var elem in Ingredient) { if (elem != null) yield return new ElementValue("ingredient", elem); }
+                foreach (var elem in DeviceElement) { if (elem != null) yield return new ElementValue("device", elem); }
+                foreach (var elem in Characteristics) { if (elem != null) yield return new ElementValue("characteristics", elem); }
             }
         }
 

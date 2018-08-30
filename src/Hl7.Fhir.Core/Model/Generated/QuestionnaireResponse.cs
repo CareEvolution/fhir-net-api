@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,49 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "QuestionnaireResponse"; } }
 
+        /// <summary>
+        /// Lifecycle status of the questionnaire response.
+        /// (url: http://hl7.org/fhir/ValueSet/questionnaire-answers-status)
+        /// </summary>
+        [FhirEnumeration("QuestionnaireResponseStatus")]
+        public enum QuestionnaireResponseStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/questionnaire-answers-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/questionnaire-answers-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("amended", "http://hl7.org/fhir/questionnaire-answers-status"), Description("Amended")]
+            Amended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/questionnaire-answers-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/questionnaire-answers-status"), Description("Stopped")]
+            Stopped,
+        }
+
 
         [FhirType("ItemComponent")]
         [DataContract]
-        public partial class ItemComponent : BackboneElement
+        public partial class ItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ItemComponent"; } }
@@ -280,12 +320,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (LinkIdElement != null) yield return new ElementValue("linkId", false, LinkIdElement);
-                    if (DefinitionElement != null) yield return new ElementValue("definition", false, DefinitionElement);
-                    if (TextElement != null) yield return new ElementValue("text", false, TextElement);
-                    if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                    foreach (var elem in Answer) { if (elem != null) yield return new ElementValue("answer", true, elem); }
-                    foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
+                    if (LinkIdElement != null) yield return new ElementValue("linkId", LinkIdElement);
+                    if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
+                    if (TextElement != null) yield return new ElementValue("text", TextElement);
+                    if (Subject != null) yield return new ElementValue("subject", Subject);
+                    foreach (var elem in Answer) { if (elem != null) yield return new ElementValue("answer", elem); }
+                    foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
                 }
             }
 
@@ -295,7 +335,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AnswerComponent")]
         [DataContract]
-        public partial class AnswerComponent : BackboneElement
+        public partial class AnswerComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AnswerComponent"; } }
@@ -390,8 +430,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Value != null) yield return new ElementValue("value", false, Value);
-                    foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
+                    if (Value != null) yield return new ElementValue("value", Value);
+                    foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
                 }
             }
 
@@ -613,7 +653,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "item.all((answer.exists() and item.exists()).not())",
             Key = "qrs-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Nested item can't be beneath both item and answer",
             Xpath = "not(exists(f:answer) and exists(f:item))"
         };
@@ -722,17 +762,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", true, elem); }
-                if (QuestionnaireElement != null) yield return new ElementValue("questionnaire", false, QuestionnaireElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (AuthoredElement != null) yield return new ElementValue("authored", false, AuthoredElement);
-                if (Author != null) yield return new ElementValue("author", false, Author);
-                if (Source != null) yield return new ElementValue("source", false, Source);
-                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
+                if (QuestionnaireElement != null) yield return new ElementValue("questionnaire", QuestionnaireElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (AuthoredElement != null) yield return new ElementValue("authored", AuthoredElement);
+                if (Author != null) yield return new ElementValue("author", Author);
+                if (Source != null) yield return new ElementValue("source", Source);
+                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
             }
         }
 

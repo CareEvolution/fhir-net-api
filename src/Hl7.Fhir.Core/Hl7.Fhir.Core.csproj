@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
     <Compile Remove="Properties\Resources.Designer.cs" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Update="Model\Generated\Template-Bindings.cs">
       <DesignTime>True</DesignTime>

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -56,10 +57,37 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ProcessResponse"; } }
 
+        /// <summary>
+        /// This value set includes sample Process Outcome codes.
+        /// (url: http://hl7.org/fhir/ValueSet/process-outcome)
+        /// </summary>
+        [FhirEnumeration("ProcessOutcomeCodes")]
+        public enum ProcessOutcomeCodes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/processoutcomecodes)
+            /// </summary>
+            [EnumLiteral("complete", "http://hl7.org/fhir/processoutcomecodes"), Description("Complete")]
+            Complete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/processoutcomecodes)
+            /// </summary>
+            [EnumLiteral("pended", "http://hl7.org/fhir/processoutcomecodes"), Description("Pended")]
+            Pended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/processoutcomecodes)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/processoutcomecodes"), Description("Error")]
+            Error,
+        }
+
 
         [FhirType("ProcessNoteComponent")]
         [DataContract]
-        public partial class ProcessNoteComponent : BackboneElement
+        public partial class ProcessNoteComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProcessNoteComponent"; } }
@@ -190,8 +218,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (TextElement != null) yield return new ElementValue("text", false, TextElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (TextElement != null) yield return new ElementValue("text", TextElement);
                 }
             }
 
@@ -540,18 +568,18 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                if (Request != null) yield return new ElementValue("request", false, Request);
-                if (OutcomeElement != null) yield return new ElementValue("outcome", false, OutcomeElement);
-                if (DispositionElement != null) yield return new ElementValue("disposition", false, DispositionElement);
-                if (RequestProvider != null) yield return new ElementValue("requestProvider", false, RequestProvider);
-                if (Form != null) yield return new ElementValue("form", false, Form);
-                foreach (var elem in ProcessNote) { if (elem != null) yield return new ElementValue("processNote", true, elem); }
-                foreach (var elem in Error) { if (elem != null) yield return new ElementValue("error", true, elem); }
-                foreach (var elem in CommunicationRequest) { if (elem != null) yield return new ElementValue("communicationRequest", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Organization != null) yield return new ElementValue("organization", Organization);
+                if (Request != null) yield return new ElementValue("request", Request);
+                if (OutcomeElement != null) yield return new ElementValue("outcome", OutcomeElement);
+                if (DispositionElement != null) yield return new ElementValue("disposition", DispositionElement);
+                if (RequestProvider != null) yield return new ElementValue("requestProvider", RequestProvider);
+                if (Form != null) yield return new ElementValue("form", Form);
+                foreach (var elem in ProcessNote) { if (elem != null) yield return new ElementValue("processNote", elem); }
+                foreach (var elem in Error) { if (elem != null) yield return new ElementValue("error", elem); }
+                foreach (var elem in CommunicationRequest) { if (elem != null) yield return new ElementValue("communicationRequest", elem); }
             }
         }
 

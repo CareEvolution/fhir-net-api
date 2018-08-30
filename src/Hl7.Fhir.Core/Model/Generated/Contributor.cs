@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -53,6 +54,39 @@ namespace Hl7.Fhir.Model.R4
     {
         [NotMapped]
         public override string TypeName { get { return "Contributor"; } }
+
+        /// <summary>
+        /// The type of contributor
+        /// (url: http://hl7.org/fhir/ValueSet/contributor-type)
+        /// </summary>
+        [FhirEnumeration("ContributorType")]
+        public enum ContributorType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contributor-type)
+            /// </summary>
+            [EnumLiteral("author", "http://hl7.org/fhir/contributor-type"), Description("Author")]
+            Author,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contributor-type)
+            /// </summary>
+            [EnumLiteral("editor", "http://hl7.org/fhir/contributor-type"), Description("Editor")]
+            Editor,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contributor-type)
+            /// </summary>
+            [EnumLiteral("reviewer", "http://hl7.org/fhir/contributor-type"), Description("Reviewer")]
+            Reviewer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contributor-type)
+            /// </summary>
+            [EnumLiteral("endorser", "http://hl7.org/fhir/contributor-type"), Description("Endorser")]
+            Endorser,
+        }
 
 
         /// <summary>
@@ -201,9 +235,9 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
             }
         }
 

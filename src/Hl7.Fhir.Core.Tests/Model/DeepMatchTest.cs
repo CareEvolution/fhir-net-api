@@ -10,6 +10,7 @@ using Hl7.Fhir.Model.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Serialization.R4;
 using static Hl7.Fhir.Tests.TestDataHelper;
+using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Tests.Model
 {
