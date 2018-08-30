@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,97 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "BiologicallyDerivedProduct"; } }
 
+        /// <summary>
+        /// Biologically Derived Product Category.
+        /// (url: http://hl7.org/fhir/ValueSet/product-category)
+        /// </summary>
+        [FhirEnumeration("BiologicallyDerivedProductCategory")]
+        public enum BiologicallyDerivedProductCategory
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-category)
+            /// </summary>
+            [EnumLiteral("organ", "http://hl7.org/fhir/product-category"), Description("Organ")]
+            Organ,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-category)
+            /// </summary>
+            [EnumLiteral("tissue", "http://hl7.org/fhir/product-category"), Description("Tissue")]
+            Tissue,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-category)
+            /// </summary>
+            [EnumLiteral("fluid", "http://hl7.org/fhir/product-category"), Description("Fluid")]
+            Fluid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-category)
+            /// </summary>
+            [EnumLiteral("cells", "http://hl7.org/fhir/product-category"), Description("Cells")]
+            Cells,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-category)
+            /// </summary>
+            [EnumLiteral("biologicalAgent", "http://hl7.org/fhir/product-category"), Description("BiologicalAgent")]
+            BiologicalAgent,
+        }
+
+        /// <summary>
+        /// Biologically Derived Product Status.
+        /// (url: http://hl7.org/fhir/ValueSet/product-status)
+        /// </summary>
+        [FhirEnumeration("BiologicallyDerivedProductStatus")]
+        public enum BiologicallyDerivedProductStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-status)
+            /// </summary>
+            [EnumLiteral("available", "http://hl7.org/fhir/product-status"), Description("Available")]
+            Available,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-status)
+            /// </summary>
+            [EnumLiteral("unavailable", "http://hl7.org/fhir/product-status"), Description("Unavailable")]
+            Unavailable,
+        }
+
+        /// <summary>
+        /// BiologicallyDerived Product Storage Scale.
+        /// (url: http://hl7.org/fhir/ValueSet/product-storage-scale)
+        /// </summary>
+        [FhirEnumeration("BiologicallyDerivedProductStorageScale")]
+        public enum BiologicallyDerivedProductStorageScale
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-storage-scale)
+            /// </summary>
+            [EnumLiteral("farenheit", "http://hl7.org/fhir/product-storage-scale"), Description("Fahrenheit")]
+            Farenheit,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-storage-scale)
+            /// </summary>
+            [EnumLiteral("celsius", "http://hl7.org/fhir/product-storage-scale"), Description("Celsius")]
+            Celsius,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/product-storage-scale)
+            /// </summary>
+            [EnumLiteral("kelvin", "http://hl7.org/fhir/product-storage-scale"), Description("Kelvin")]
+            Kelvin,
+        }
+
 
         [FhirType("CollectionComponent")]
         [DataContract]
-        public partial class CollectionComponent : BackboneElement
+        public partial class CollectionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CollectionComponent"; } }
@@ -172,9 +260,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Collector != null) yield return new ElementValue("collector", false, Collector);
-                    if (Source != null) yield return new ElementValue("source", false, Source);
-                    if (Collected != null) yield return new ElementValue("collected", false, Collected);
+                    if (Collector != null) yield return new ElementValue("collector", Collector);
+                    if (Source != null) yield return new ElementValue("source", Source);
+                    if (Collected != null) yield return new ElementValue("collected", Collected);
                 }
             }
 
@@ -184,7 +272,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ProcessingComponent")]
         [DataContract]
-        public partial class ProcessingComponent : BackboneElement
+        public partial class ProcessingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProcessingComponent"; } }
@@ -332,10 +420,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (Procedure != null) yield return new ElementValue("procedure", false, Procedure);
-                    if (Additive != null) yield return new ElementValue("additive", false, Additive);
-                    if (Time != null) yield return new ElementValue("time", false, Time);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (Procedure != null) yield return new ElementValue("procedure", Procedure);
+                    if (Additive != null) yield return new ElementValue("additive", Additive);
+                    if (Time != null) yield return new ElementValue("time", Time);
                 }
             }
 
@@ -345,7 +433,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ManipulationComponent")]
         [DataContract]
-        public partial class ManipulationComponent : BackboneElement
+        public partial class ManipulationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ManipulationComponent"; } }
@@ -458,8 +546,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (Time != null) yield return new ElementValue("time", false, Time);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (Time != null) yield return new ElementValue("time", Time);
                 }
             }
 
@@ -469,7 +557,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("StorageComponent")]
         [DataContract]
-        public partial class StorageComponent : BackboneElement
+        public partial class StorageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StorageComponent"; } }
@@ -653,10 +741,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (TemperatureElement != null) yield return new ElementValue("temperature", false, TemperatureElement);
-                    if (ScaleElement != null) yield return new ElementValue("scale", false, ScaleElement);
-                    if (Duration != null) yield return new ElementValue("duration", false, Duration);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (TemperatureElement != null) yield return new ElementValue("temperature", TemperatureElement);
+                    if (ScaleElement != null) yield return new ElementValue("scale", ScaleElement);
+                    if (Duration != null) yield return new ElementValue("duration", Duration);
                 }
             }
 
@@ -967,17 +1055,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ProductCategoryElement != null) yield return new ElementValue("productCategory", false, ProductCategoryElement);
-                if (ProductCode != null) yield return new ElementValue("productCode", false, ProductCode);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in Request) { if (elem != null) yield return new ElementValue("request", true, elem); }
-                if (QuantityElement != null) yield return new ElementValue("quantity", false, QuantityElement);
-                if (Parent != null) yield return new ElementValue("parent", false, Parent);
-                if (Collection != null) yield return new ElementValue("collection", false, Collection);
-                foreach (var elem in Processing) { if (elem != null) yield return new ElementValue("processing", true, elem); }
-                if (Manipulation != null) yield return new ElementValue("manipulation", false, Manipulation);
-                foreach (var elem in Storage) { if (elem != null) yield return new ElementValue("storage", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ProductCategoryElement != null) yield return new ElementValue("productCategory", ProductCategoryElement);
+                if (ProductCode != null) yield return new ElementValue("productCode", ProductCode);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                foreach (var elem in Request) { if (elem != null) yield return new ElementValue("request", elem); }
+                if (QuantityElement != null) yield return new ElementValue("quantity", QuantityElement);
+                if (Parent != null) yield return new ElementValue("parent", Parent);
+                if (Collection != null) yield return new ElementValue("collection", Collection);
+                foreach (var elem in Processing) { if (elem != null) yield return new ElementValue("processing", elem); }
+                if (Manipulation != null) yield return new ElementValue("manipulation", Manipulation);
+                foreach (var elem in Storage) { if (elem != null) yield return new ElementValue("storage", elem); }
             }
         }
 

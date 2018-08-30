@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -54,8 +55,8 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "markdown"; } }
 
-        // Must conform to the pattern "\s*(\S|\s)*"
-        public const string PATTERN = @"\s*(\S|\s)*";
+        // Must conform to the pattern "[ \r\n\t\S]+"
+        public const string PATTERN = @"[ \r\n\t\S]+";
 
         public Markdown(string value)
         {
@@ -67,7 +68,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Primitive value of the element
         /// </summary>
-        [FhirElement("value", IsPrimitiveValue=true, XmlSerialization=XmlSerializationHint.Attribute, InSummary=true, Order=30)]
+        [FhirElement("value", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]
         [DataMember]
         public string Value
         {

@@ -28,7 +28,7 @@ namespace Hl7.Fhir.Model.R4
             return newEntry;
         }
 
-        public static Bundle.EntryComponent AddSearchEntry(this Bundle b, Resource r, string fullUrl, SearchEntryMode searchEntryMode)
+        public static Bundle.EntryComponent AddSearchEntry(this Bundle b, Resource r, string fullUrl, Bundle.SearchEntryMode searchEntryMode)
         {
             var newEntry = new Bundle.EntryComponent
             {
@@ -41,7 +41,7 @@ namespace Hl7.Fhir.Model.R4
             return newEntry;
         }
 
-        public static Bundle.EntryComponent AddSearchEntry(this Bundle b, Resource r, string fullUrl, SearchEntryMode searchEntryMode, decimal searchScore)
+        public static Bundle.EntryComponent AddSearchEntry(this Bundle b, Resource r, string fullUrl, Bundle.SearchEntryMode searchEntryMode, decimal searchScore)
         {
             var newEntry = new Bundle.EntryComponent
             {
@@ -64,7 +64,7 @@ namespace Hl7.Fhir.Model.R4
         {
             if (entry.Request != null)
             {
-                return entry.Request.Method == HTTPVerb.DELETE;
+                return entry.Request.Method == Bundle.HTTPVerb.DELETE;
             }
 
             return false;

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -57,15 +58,15 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// xml:id (or equivalent in JSON)
         /// </summary>
-        [FhirElement("id",  XmlSerialization=XmlSerializationHint.Attribute, InSummary=true, Order=10)]
+        [FhirElement("id", Order=10)]
         [DataMember]
-        public FhirString IdElement
+        public Id IdElement
         {
             get { return _idElement; }
             set { _idElement = value; OnPropertyChanged("IdElement"); }
         }
 
-        private FhirString _idElement;
+        private Id _idElement;
 
         /// <summary>
         /// xml:id (or equivalent in JSON)
@@ -81,7 +82,7 @@ namespace Hl7.Fhir.Model.R4
                 if (value == null)
                     IdElement = null;
                 else
-                    IdElement = new FhirString(value);
+                    IdElement = new Id(value);
                 OnPropertyChanged("Id");
             }
         }
@@ -103,9 +104,9 @@ namespace Hl7.Fhir.Model.R4
 
         public static ElementDefinition.ConstraintComponent Element_ELE_1 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "hasValue() | (children().count() > id.count())",
+            Expression = "hasValue() or (children().count() > id.count())",
             Key = "ele-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "All FHIR elements must have a @value or children",
             Xpath = "@value|f:*|h:div"
         };
@@ -119,7 +120,7 @@ namespace Hl7.Fhir.Model.R4
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if (IdElement != null) dest.IdElement = (FhirString)IdElement.DeepCopy();
+                if (IdElement != null) dest.IdElement = (Id)IdElement.DeepCopy();
                 if (Extension != null) dest.Extension = new List<Extension>(Extension.DeepCopy());
                 return dest;
             }
@@ -165,7 +166,8 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Extension) { if (elem != null) yield return new ElementValue("extension", true, elem); }
+                if (IdElement != null) yield return new ElementValue("id", IdElement);
+                foreach (var elem in Extension) { if (elem != null) yield return new ElementValue("extension", elem); }
             }
         }
 

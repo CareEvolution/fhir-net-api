@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -163,8 +164,8 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Coding) { if (elem != null) yield return new ElementValue("coding", true, elem); }
-                if (TextElement != null) yield return new ElementValue("text", false, TextElement);
+                foreach (var elem in Coding) { if (elem != null) yield return new ElementValue("coding", elem); }
+                if (TextElement != null) yield return new ElementValue("text", TextElement);
             }
         }
 

@@ -12,26 +12,21 @@ using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-
 
 namespace Hl7.Fhir.Serialization.R4
 {
 #pragma warning disable 612,618
     internal class ComplexTypeReader
     {
-        private IFhirReader _current;
+        private ISourceNode _current;
         private ModelInspector _inspector;
 
         public ParserSettings Settings { get; private set; }
 
-        public ComplexTypeReader(IFhirReader reader, ParserSettings settings)
+        public ComplexTypeReader(ISourceNode reader, ParserSettings settings)
         {
             _current = reader;
             _inspector = BaseFhirParser.Inspector;
@@ -43,7 +38,7 @@ namespace Hl7.Fhir.Serialization.R4
             var mapping = _inspector.FindClassMappingByType(elementType);
 
             if (mapping == null)
-                throw Error.Format("Asked to deserialize unknown type '" + elementType.Name + "'", _current);
+                throw Error.Format("Asked to deserialize unknown type '" + elementType.Name + "'", _current.Location);
 
             return Deserialize(mapping, existing);
         }
@@ -63,9 +58,10 @@ namespace Hl7.Fhir.Serialization.R4
                     throw Error.Argument(nameof(existing), "Existing instance is of type {0}, but data indicates resource is a {1}".FormatWith(existing.GetType().Name, mapping.NativeType.Name));
             }
 
-            IEnumerable<Tuple<string, IFhirReader>> members = null;
+            var members = _current.Text != null ?
+                new[] { SourceNode.Valued("value", _current.Text) }.Union(_current.Children()) :
+                _current.Children();
 
-            members = _current.GetMembers();
             read(mapping, members, existing);
 
             return existing;
@@ -73,20 +69,11 @@ namespace Hl7.Fhir.Serialization.R4
         }
 
 
-        private void read(ClassMapping mapping, IEnumerable<Tuple<string,IFhirReader>> members, Base existing)
+        private void read(ClassMapping mapping, IEnumerable<ISourceNode> members, Base existing)
         {
-            //bool hasMember;
-
             foreach (var memberData in members)
             {
-                if (Settings.CustomDeserializer != null && memberData.Item2 is IElementNavigator nav)
-                {
-                    var done = Settings.CustomDeserializer.OnBeforeDeserializeProperty(memberData.Item1, existing, nav);
-                    if (done) continue;
-                }
-
-                //hasMember = true;
-                var memberName = memberData.Item1;  // tuple: first is name of member
+                var memberName = memberData.Name;  // tuple: first is name of member
              
                 // Find a property on the instance that matches the element found in the data
                 // NB: This function knows how to handle suffixed names (e.g. xxxxBoolean) (for choice types).
@@ -104,18 +91,18 @@ namespace Hl7.Fhir.Serialization.R4
                         value = mappedProperty.GetValue(existing);
 
                         if (value != null && !mappedProperty.IsCollection)
-                            throw Error.Format($"Element '{mappedProperty.Name}' must not repeat", _current);
+                            throw Error.Format($"Element '{mappedProperty.Name}' must not repeat", memberData.Location);
                     }
 
-                    var reader = new DispatchingReader(memberData.Item2, Settings, arrayMode: false);
+                    var reader = new DispatchingReader(memberData, Settings, arrayMode: false);
                     value = reader.Deserialize(mappedProperty, memberName, value);
 
-                    if (mappedProperty.RepresentsValueElement && mappedProperty.ElementType.IsEnum() && value is String)
+                    if (mappedProperty.RepresentsValueElement && mappedProperty.ImplementingType.IsEnum() && value is String)
                     {
                         if (!Settings.AllowUnrecognizedEnums)
                         {
-                            if (EnumUtility.ParseLiteral((string)value, mappedProperty.ElementType) == null)
-                                throw Error.Format("Literal '{0}' is not a valid value for enumeration '{1}'".FormatWith(value, mappedProperty.ElementType.Name), _current);
+                            if (EnumUtility.ParseLiteral((string)value, mappedProperty.ImplementingType) == null)
+                                throw Error.Format("Literal '{0}' is not a valid value for enumeration '{1}'".FormatWith(value, mappedProperty.ImplementingType.Name), _current.Location);
                         }
 
                         ((Primitive)existing).ObjectValue = value;
@@ -131,7 +118,7 @@ namespace Hl7.Fhir.Serialization.R4
                 else
                 {
                     if (Settings.AcceptUnknownMembers == false)
-                        throw Error.Format("Encountered unknown member '{0}' while de-serializing".FormatWith(memberName), _current);
+                        throw Error.Format("Encountered unknown member '{0}' while de-serializing".FormatWith(memberName), memberData.Location);
                     else
                         Message.Info("Skipping unknown member " + memberName);
                 }

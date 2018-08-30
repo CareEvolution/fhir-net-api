@@ -72,7 +72,7 @@ namespace Hl7.Fhir.Model.R4
                 if (UserData != null) dest.UserData = new Dictionary<string, object>(UserData);
 #pragma warning restore 618
 
-                if (FhirComments != null) dest.FhirComments = new List<string>(FhirComments);
+               // if (FhirComments != null) dest.FhirComments = new List<string>(FhirComments);
                 return dest;
             }
             else
@@ -117,42 +117,6 @@ namespace Hl7.Fhir.Model.R4
 
         #endregion
 
-
-
-
-        /// <summary>
-        /// A Comment recorded against this element in the FHIR Resource
-        /// </summary>
-        [FhirElement("fhir_comments", InSummary = false, Order = 5)]
-        [Cardinality(Min = 0, Max = -1)]
-        public List<FhirString> FhirCommentsElement
-        {
-            get { if (_fhirCommentsElement == null) _fhirCommentsElement = new List<FhirString>(); return _fhirCommentsElement; }
-            set { _fhirCommentsElement = value; OnPropertyChanged("FhirCommentsElement"); }
-        }
-
-        private List<FhirString> _fhirCommentsElement;
-
-        /// <summary>
-        /// A Comment recorded against this element in the FHIR Resource
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public IEnumerable<string> FhirComments
-        {
-            get => FhirCommentsElement?.Select(elem => elem.Value);
-            set
-            {
-                if (value == null)
-                    FhirCommentsElement = null;
-                else
-                    FhirCommentsElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
-                OnPropertyChanged("FhirComments");
-            }
-        }
-
-
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(String property)
         {
@@ -181,12 +145,6 @@ namespace Hl7.Fhir.Model.R4
         /// Finally returns child nodes defined by the current class.
         /// </summary>
         [NotMapped]
-        internal virtual IEnumerable<ElementValue> NamedChildren
-        {
-            get
-            {
-                foreach (var elem in FhirComments) { if (elem != null) yield return new ElementValue("fhir_comments", true, elem); }
-            }
-        }
+        internal virtual IEnumerable<ElementValue> NamedChildren => Enumerable.Empty<ElementValue>();
     }
 }

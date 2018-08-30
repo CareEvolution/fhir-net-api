@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -57,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ReferenceRangeComponent")]
         [DataContract]
-        public partial class ReferenceRangeComponent : Element
+        public partial class ReferenceRangeComponent : Element, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ReferenceRangeComponent"; } }
@@ -150,8 +151,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (LowLimit != null) yield return new ElementValue("lowLimit", false, LowLimit);
-                    if (HighLimit != null) yield return new ElementValue("highLimit", false, HighLimit);
+                    if (LowLimit != null) yield return new ElementValue("lowLimit", LowLimit);
+                    if (HighLimit != null) yield return new ElementValue("highLimit", HighLimit);
                 }
             }
 
@@ -301,10 +302,10 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Amount != null) yield return new ElementValue("amount", false, Amount);
-                if (AmountType != null) yield return new ElementValue("amountType", false, AmountType);
-                if (AmountTextElement != null) yield return new ElementValue("amountText", false, AmountTextElement);
-                if (ReferenceRange != null) yield return new ElementValue("referenceRange", false, ReferenceRange);
+                if (Amount != null) yield return new ElementValue("amount", Amount);
+                if (AmountType != null) yield return new ElementValue("amountType", AmountType);
+                if (AmountTextElement != null) yield return new ElementValue("amountText", AmountTextElement);
+                if (ReferenceRange != null) yield return new ElementValue("referenceRange", ReferenceRange);
             }
         }
 

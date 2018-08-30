@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -134,7 +135,7 @@ namespace Hl7.Fhir.Model.R4
         /// Who created
         /// </summary>
         [FhirElement("author", InSummary=true, Order=130)]
-        [References("Practitioner","Patient","RelatedPerson")]
+        [References("Practitioner","Patient","RelatedPerson","Organization")]
         [DataMember]
         public ResourceReference Author
         {
@@ -218,11 +219,11 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (Author != null) yield return new ElementValue("author", false, Author);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Author != null) yield return new ElementValue("author", Author);
             }
         }
 

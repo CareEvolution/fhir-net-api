@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,31 +57,63 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "VerificationResult"; } }
 
+        /// <summary>
+        /// The validation status of the target
+        /// (url: http://hl7.org/fhir/ValueSet/verificationresult-status)
+        /// </summary>
+        [FhirEnumeration("status")]
+        public enum status
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/CodeSystem/status)
+            /// </summary>
+            [EnumLiteral("attested", "http://hl7.org/fhir/CodeSystem/status"), Description("Attested")]
+            Attested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/CodeSystem/status)
+            /// </summary>
+            [EnumLiteral("validated", "http://hl7.org/fhir/CodeSystem/status"), Description("Validated")]
+            Validated,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/CodeSystem/status)
+            /// </summary>
+            [EnumLiteral("in-process", "http://hl7.org/fhir/CodeSystem/status"), Description("In process")]
+            InProcess,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/CodeSystem/status)
+            /// </summary>
+            [EnumLiteral("req-revalid", "http://hl7.org/fhir/CodeSystem/status"), Description("Requires revalidation")]
+            ReqRevalid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/CodeSystem/status)
+            /// </summary>
+            [EnumLiteral("val-fail", "http://hl7.org/fhir/CodeSystem/status"), Description("Validation failed")]
+            ValFail,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/CodeSystem/status)
+            /// </summary>
+            [EnumLiteral("reval-fail", "http://hl7.org/fhir/CodeSystem/status"), Description("Re-Validation failed")]
+            RevalFail,
+        }
+
 
         [FhirType("PrimarySourceComponent")]
         [DataContract]
-        public partial class PrimarySourceComponent : BackboneElement
+        public partial class PrimarySourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PrimarySourceComponent"; } }
 
             /// <summary>
-            /// URI of the primary source for validation
-            /// </summary>
-            [FhirElement("identifier", Order=40)]
-            [DataMember]
-            public Identifier Identifier
-            {
-                get { return _identifier; }
-                set { _identifier = value; OnPropertyChanged("Identifier"); }
-            }
-
-            private Identifier _identifier;
-
-            /// <summary>
             /// Reference to the primary source
             /// </summary>
-            [FhirElement("organization", Order=50)]
+            [FhirElement("organization", Order=40)]
             [References("Organization")]
             [DataMember]
             public ResourceReference Organization
@@ -94,8 +127,8 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Type of primary source (License Board; Primary Education; Continuing Education; Postal Service; Relationship owner; Registration Authority; legal source; issuing source; authoritative source)
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("type", InSummary=true, Order=50)]
+            [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<CodeableConcept> Type
             {
@@ -106,10 +139,10 @@ namespace Hl7.Fhir.Model.R4
             private List<CodeableConcept> _type;
 
             /// <summary>
-            /// Method for communicating with the primary source (manual; API; Push)
+            /// The process(es) by which the target is validated
             /// </summary>
-            [FhirElement("validationProcess", InSummary=true, Order=70)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("validationProcess", InSummary=true, Order=60)]
+            [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<CodeableConcept> ValidationProcess
             {
@@ -122,39 +155,20 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// successful | failed | unknown
             /// </summary>
-            [FhirElement("validationStatus", Order=80)]
+            [FhirElement("validationStatus", Order=70)]
             [DataMember]
-            public Code<validation_status> ValidationStatusElement
+            public CodeableConcept ValidationStatus
             {
-                get { return _validationStatusElement; }
-                set { _validationStatusElement = value; OnPropertyChanged("ValidationStatusElement"); }
+                get { return _validationStatus; }
+                set { _validationStatus = value; OnPropertyChanged("ValidationStatus"); }
             }
 
-            private Code<validation_status> _validationStatusElement;
-
-            /// <summary>
-            /// successful | failed | unknown
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public validation_status? ValidationStatus
-            {
-                get { return ValidationStatusElement != null ? ValidationStatusElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        ValidationStatusElement = null;
-                    else
-                        ValidationStatusElement = new Code<validation_status>(value);
-                    OnPropertyChanged("ValidationStatus");
-                }
-            }
+            private CodeableConcept _validationStatus;
 
             /// <summary>
             /// When the target was validated against the primary source
             /// </summary>
-            [FhirElement("validationDate", Order=90)]
+            [FhirElement("validationDate", Order=80)]
             [DataMember]
             public FhirDateTime ValidationDateElement
             {
@@ -186,68 +200,29 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// yes | no | undetermined
             /// </summary>
-            [FhirElement("canPushUpdates", InSummary=true, Order=100)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("canPushUpdates", InSummary=true, Order=90)]
             [DataMember]
-            public Code<can_push_updates> CanPushUpdatesElement
+            public CodeableConcept CanPushUpdates
             {
-                get { return _canPushUpdatesElement; }
-                set { _canPushUpdatesElement = value; OnPropertyChanged("CanPushUpdatesElement"); }
+                get { return _canPushUpdates; }
+                set { _canPushUpdates = value; OnPropertyChanged("CanPushUpdates"); }
             }
 
-            private Code<can_push_updates> _canPushUpdatesElement;
-
-            /// <summary>
-            /// yes | no | undetermined
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public can_push_updates? CanPushUpdates
-            {
-                get { return CanPushUpdatesElement != null ? CanPushUpdatesElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        CanPushUpdatesElement = null;
-                    else
-                        CanPushUpdatesElement = new Code<can_push_updates>(value);
-                    OnPropertyChanged("CanPushUpdates");
-                }
-            }
+            private CodeableConcept _canPushUpdates;
 
             /// <summary>
             /// specific | any | source
             /// </summary>
-            [FhirElement("pushTypeAvailable", Order=110)]
+            [FhirElement("pushTypeAvailable", Order=100)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Code<push_type_available>> PushTypeAvailableElement
+            public List<CodeableConcept> PushTypeAvailable
             {
-                get { if (_pushTypeAvailableElement==null) _pushTypeAvailableElement = new List<Code<push_type_available>>(); return _pushTypeAvailableElement; }
-                set { _pushTypeAvailableElement = value; OnPropertyChanged("PushTypeAvailableElement"); }
+                get { if (_pushTypeAvailable==null) _pushTypeAvailable = new List<CodeableConcept>(); return _pushTypeAvailable; }
+                set { _pushTypeAvailable = value; OnPropertyChanged("PushTypeAvailable"); }
             }
 
-            private List<Code<push_type_available>> _pushTypeAvailableElement;
-
-            /// <summary>
-            /// specific | any | source
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public IEnumerable<push_type_available?> PushTypeAvailable
-            {
-                get { return PushTypeAvailableElement != null ? PushTypeAvailableElement.Select(elem => elem.Value) : null; }
-                set
-                {
-                    if (value == null)
-                        PushTypeAvailableElement = null;
-                    else
-                        PushTypeAvailableElement = new List<Code<push_type_available>>(value.Select(elem=>new Code<push_type_available>(elem)));
-                    OnPropertyChanged("PushTypeAvailable");
-                }
-            }
+            private List<CodeableConcept> _pushTypeAvailable;
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -256,14 +231,13 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
                     if (Organization != null) dest.Organization = (ResourceReference)Organization.DeepCopy();
                     if (Type != null) dest.Type = new List<CodeableConcept>(Type.DeepCopy());
                     if (ValidationProcess != null) dest.ValidationProcess = new List<CodeableConcept>(ValidationProcess.DeepCopy());
-                    if (ValidationStatusElement != null) dest.ValidationStatusElement = (Code<validation_status>)ValidationStatusElement.DeepCopy();
+                    if (ValidationStatus != null) dest.ValidationStatus = (CodeableConcept)ValidationStatus.DeepCopy();
                     if (ValidationDateElement != null) dest.ValidationDateElement = (FhirDateTime)ValidationDateElement.DeepCopy();
-                    if (CanPushUpdatesElement != null) dest.CanPushUpdatesElement = (Code<can_push_updates>)CanPushUpdatesElement.DeepCopy();
-                    if (PushTypeAvailableElement != null) dest.PushTypeAvailableElement = new List<Code<push_type_available>>(PushTypeAvailableElement.DeepCopy());
+                    if (CanPushUpdates != null) dest.CanPushUpdates = (CodeableConcept)CanPushUpdates.DeepCopy();
+                    if (PushTypeAvailable != null) dest.PushTypeAvailable = new List<CodeableConcept>(PushTypeAvailable.DeepCopy());
                     return dest;
                 }
                 else
@@ -281,14 +255,13 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
                 if (!DeepComparable.Matches(Organization, otherT.Organization)) return false;
                 if ( !DeepComparable.Matches(Type, otherT.Type)) return false;
                 if ( !DeepComparable.Matches(ValidationProcess, otherT.ValidationProcess)) return false;
-                if (!DeepComparable.Matches(ValidationStatusElement, otherT.ValidationStatusElement)) return false;
+                if (!DeepComparable.Matches(ValidationStatus, otherT.ValidationStatus)) return false;
                 if (!DeepComparable.Matches(ValidationDateElement, otherT.ValidationDateElement)) return false;
-                if (!DeepComparable.Matches(CanPushUpdatesElement, otherT.CanPushUpdatesElement)) return false;
-                if ( !DeepComparable.Matches(PushTypeAvailableElement, otherT.PushTypeAvailableElement)) return false;
+                if (!DeepComparable.Matches(CanPushUpdates, otherT.CanPushUpdates)) return false;
+                if ( !DeepComparable.Matches(PushTypeAvailable, otherT.PushTypeAvailable)) return false;
 
                 return true;
             }
@@ -299,14 +272,13 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
                 if (!DeepComparable.IsExactly(Organization, otherT.Organization)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
                 if (!DeepComparable.IsExactly(ValidationProcess, otherT.ValidationProcess)) return false;
-                if (!DeepComparable.IsExactly(ValidationStatusElement, otherT.ValidationStatusElement)) return false;
+                if (!DeepComparable.IsExactly(ValidationStatus, otherT.ValidationStatus)) return false;
                 if (!DeepComparable.IsExactly(ValidationDateElement, otherT.ValidationDateElement)) return false;
-                if (!DeepComparable.IsExactly(CanPushUpdatesElement, otherT.CanPushUpdatesElement)) return false;
-                if (!DeepComparable.IsExactly(PushTypeAvailableElement, otherT.PushTypeAvailableElement)) return false;
+                if (!DeepComparable.IsExactly(CanPushUpdates, otherT.CanPushUpdates)) return false;
+                if (!DeepComparable.IsExactly(PushTypeAvailable, otherT.PushTypeAvailable)) return false;
 
                 return true;
             }
@@ -318,14 +290,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (Identifier != null) yield return Identifier;
                     if (Organization != null) yield return Organization;
                     foreach (var elem in Type) { if (elem != null) yield return elem; }
                     foreach (var elem in ValidationProcess) { if (elem != null) yield return elem; }
-                    if (ValidationStatusElement != null) yield return ValidationStatusElement;
+                    if (ValidationStatus != null) yield return ValidationStatus;
                     if (ValidationDateElement != null) yield return ValidationDateElement;
-                    if (CanPushUpdatesElement != null) yield return CanPushUpdatesElement;
-                    foreach (var elem in PushTypeAvailableElement) { if (elem != null) yield return elem; }
+                    if (CanPushUpdates != null) yield return CanPushUpdates;
+                    foreach (var elem in PushTypeAvailable) { if (elem != null) yield return elem; }
                 }
             }
 
@@ -335,14 +306,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
-                    foreach (var elem in ValidationProcess) { if (elem != null) yield return new ElementValue("validationProcess", true, elem); }
-                    if (ValidationStatusElement != null) yield return new ElementValue("validationStatus", false, ValidationStatusElement);
-                    if (ValidationDateElement != null) yield return new ElementValue("validationDate", false, ValidationDateElement);
-                    if (CanPushUpdatesElement != null) yield return new ElementValue("canPushUpdates", false, CanPushUpdatesElement);
-                    foreach (var elem in PushTypeAvailableElement) { if (elem != null) yield return new ElementValue("pushTypeAvailable", true, elem); }
+                    if (Organization != null) yield return new ElementValue("organization", Organization);
+                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
+                    foreach (var elem in ValidationProcess) { if (elem != null) yield return new ElementValue("validationProcess", elem); }
+                    if (ValidationStatus != null) yield return new ElementValue("validationStatus", ValidationStatus);
+                    if (ValidationDateElement != null) yield return new ElementValue("validationDate", ValidationDateElement);
+                    if (CanPushUpdates != null) yield return new ElementValue("canPushUpdates", CanPushUpdates);
+                    foreach (var elem in PushTypeAvailable) { if (elem != null) yield return new ElementValue("pushTypeAvailable", elem); }
                 }
             }
 
@@ -352,7 +322,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AttestationComponent")]
         [DataContract]
-        public partial class AttestationComponent : BackboneElement
+        public partial class AttestationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AttestationComponent"; } }
@@ -362,7 +332,6 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("source", InSummary=true, Order=40)]
             [References("Practitioner")]
-            [Cardinality(Min=1,Max=1)]
             [DataMember]
             public ResourceReference Source
             {
@@ -377,7 +346,6 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("organization", InSummary=true, Order=50)]
             [References("Organization")]
-            [Cardinality(Min=1,Max=1)]
             [DataMember]
             public ResourceReference Organization
             {
@@ -391,7 +359,6 @@ namespace Hl7.Fhir.Model.R4
             /// Who is providing the attested information (owner; authorized representative; authorized intermediary; non-authorized source)
             /// </summary>
             [FhirElement("method", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=1)]
             [DataMember]
             public CodeableConcept Method
             {
@@ -405,7 +372,6 @@ namespace Hl7.Fhir.Model.R4
             /// The date the information was attested to
             /// </summary>
             [FhirElement("date", InSummary=true, Order=70)]
-            [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Date DateElement
             {
@@ -498,6 +464,34 @@ namespace Hl7.Fhir.Model.R4
                 }
             }
 
+            /// <summary>
+            /// Proxy signature
+            /// </summary>
+            [FhirElement("signedProxyRight", Order=100, Choice=ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(FhirString),typeof(FhirUri))]
+            [DataMember]
+            public Element SignedProxyRight
+            {
+                get { return _signedProxyRight; }
+                set { _signedProxyRight = value; OnPropertyChanged("SignedProxyRight"); }
+            }
+
+            private Element _signedProxyRight;
+
+            /// <summary>
+            /// Attester signature
+            /// </summary>
+            [FhirElement("signedSourceAttestation", Order=110, Choice=ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(FhirString),typeof(FhirUri))]
+            [DataMember]
+            public Element SignedSourceAttestation
+            {
+                get { return _signedSourceAttestation; }
+                set { _signedSourceAttestation = value; OnPropertyChanged("SignedSourceAttestation"); }
+            }
+
+            private Element _signedSourceAttestation;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as AttestationComponent;
@@ -511,6 +505,8 @@ namespace Hl7.Fhir.Model.R4
                     if (DateElement != null) dest.DateElement = (Date)DateElement.DeepCopy();
                     if (SourceIdentityCertificateElement != null) dest.SourceIdentityCertificateElement = (FhirString)SourceIdentityCertificateElement.DeepCopy();
                     if (ProxyIdentityCertificateElement != null) dest.ProxyIdentityCertificateElement = (FhirString)ProxyIdentityCertificateElement.DeepCopy();
+                    if (SignedProxyRight != null) dest.SignedProxyRight = (Element)SignedProxyRight.DeepCopy();
+                    if (SignedSourceAttestation != null) dest.SignedSourceAttestation = (Element)SignedSourceAttestation.DeepCopy();
                     return dest;
                 }
                 else
@@ -534,6 +530,8 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
                 if (!DeepComparable.Matches(SourceIdentityCertificateElement, otherT.SourceIdentityCertificateElement)) return false;
                 if (!DeepComparable.Matches(ProxyIdentityCertificateElement, otherT.ProxyIdentityCertificateElement)) return false;
+                if (!DeepComparable.Matches(SignedProxyRight, otherT.SignedProxyRight)) return false;
+                if (!DeepComparable.Matches(SignedSourceAttestation, otherT.SignedSourceAttestation)) return false;
 
                 return true;
             }
@@ -550,6 +548,8 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
                 if (!DeepComparable.IsExactly(SourceIdentityCertificateElement, otherT.SourceIdentityCertificateElement)) return false;
                 if (!DeepComparable.IsExactly(ProxyIdentityCertificateElement, otherT.ProxyIdentityCertificateElement)) return false;
+                if (!DeepComparable.IsExactly(SignedProxyRight, otherT.SignedProxyRight)) return false;
+                if (!DeepComparable.IsExactly(SignedSourceAttestation, otherT.SignedSourceAttestation)) return false;
 
                 return true;
             }
@@ -567,6 +567,8 @@ namespace Hl7.Fhir.Model.R4
                     if (DateElement != null) yield return DateElement;
                     if (SourceIdentityCertificateElement != null) yield return SourceIdentityCertificateElement;
                     if (ProxyIdentityCertificateElement != null) yield return ProxyIdentityCertificateElement;
+                    if (SignedProxyRight != null) yield return SignedProxyRight;
+                    if (SignedSourceAttestation != null) yield return SignedSourceAttestation;
                 }
             }
 
@@ -576,12 +578,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Source != null) yield return new ElementValue("source", false, Source);
-                    if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                    if (Method != null) yield return new ElementValue("method", false, Method);
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                    if (SourceIdentityCertificateElement != null) yield return new ElementValue("sourceIdentityCertificate", false, SourceIdentityCertificateElement);
-                    if (ProxyIdentityCertificateElement != null) yield return new ElementValue("proxyIdentityCertificate", false, ProxyIdentityCertificateElement);
+                    if (Source != null) yield return new ElementValue("source", Source);
+                    if (Organization != null) yield return new ElementValue("organization", Organization);
+                    if (Method != null) yield return new ElementValue("method", Method);
+                    if (DateElement != null) yield return new ElementValue("date", DateElement);
+                    if (SourceIdentityCertificateElement != null) yield return new ElementValue("sourceIdentityCertificate", SourceIdentityCertificateElement);
+                    if (ProxyIdentityCertificateElement != null) yield return new ElementValue("proxyIdentityCertificate", ProxyIdentityCertificateElement);
+                    if (SignedProxyRight != null) yield return new ElementValue("signedProxyRight", SignedProxyRight);
+                    if (SignedSourceAttestation != null) yield return new ElementValue("signedSourceAttestation", SignedSourceAttestation);
                 }
             }
 
@@ -591,28 +595,15 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ValidatorComponent")]
         [DataContract]
-        public partial class ValidatorComponent : BackboneElement
+        public partial class ValidatorComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ValidatorComponent"; } }
 
             /// <summary>
-            /// URI of the validator
-            /// </summary>
-            [FhirElement("identifier", Order=40)]
-            [DataMember]
-            public Identifier Identifier
-            {
-                get { return _identifier; }
-                set { _identifier = value; OnPropertyChanged("Identifier"); }
-            }
-
-            private Identifier _identifier;
-
-            /// <summary>
             /// Reference to the organization validating information
             /// </summary>
-            [FhirElement("organization", Order=50)]
+            [FhirElement("organization", Order=40)]
             [References("Organization")]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -627,7 +618,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// A digital identity certificate associated with the validator
             /// </summary>
-            [FhirElement("identityCertificate", Order=60)]
+            [FhirElement("identityCertificate", Order=50)]
             [DataMember]
             public FhirString IdentityCertificateElement
             {
@@ -657,37 +648,18 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// Date on which the validator last validated the information
+            /// Validator signature
             /// </summary>
-            [FhirElement("dateValidated", Order=70)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("signedValidatorAttestation", Order=60, Choice=ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(FhirString),typeof(FhirUri))]
             [DataMember]
-            public Date DateValidatedElement
+            public Element SignedValidatorAttestation
             {
-                get { return _dateValidatedElement; }
-                set { _dateValidatedElement = value; OnPropertyChanged("DateValidatedElement"); }
+                get { return _signedValidatorAttestation; }
+                set { _signedValidatorAttestation = value; OnPropertyChanged("SignedValidatorAttestation"); }
             }
 
-            private Date _dateValidatedElement;
-
-            /// <summary>
-            /// Date on which the validator last validated the information
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string DateValidated
-            {
-                get { return DateValidatedElement != null ? DateValidatedElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        DateValidatedElement = null;
-                    else
-                        DateValidatedElement = new Date(value);
-                    OnPropertyChanged("DateValidated");
-                }
-            }
+            private Element _signedValidatorAttestation;
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -696,10 +668,9 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
                     if (Organization != null) dest.Organization = (ResourceReference)Organization.DeepCopy();
                     if (IdentityCertificateElement != null) dest.IdentityCertificateElement = (FhirString)IdentityCertificateElement.DeepCopy();
-                    if (DateValidatedElement != null) dest.DateValidatedElement = (Date)DateValidatedElement.DeepCopy();
+                    if (SignedValidatorAttestation != null) dest.SignedValidatorAttestation = (Element)SignedValidatorAttestation.DeepCopy();
                     return dest;
                 }
                 else
@@ -717,10 +688,9 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
                 if (!DeepComparable.Matches(Organization, otherT.Organization)) return false;
                 if (!DeepComparable.Matches(IdentityCertificateElement, otherT.IdentityCertificateElement)) return false;
-                if (!DeepComparable.Matches(DateValidatedElement, otherT.DateValidatedElement)) return false;
+                if (!DeepComparable.Matches(SignedValidatorAttestation, otherT.SignedValidatorAttestation)) return false;
 
                 return true;
             }
@@ -731,10 +701,9 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
                 if (!DeepComparable.IsExactly(Organization, otherT.Organization)) return false;
                 if (!DeepComparable.IsExactly(IdentityCertificateElement, otherT.IdentityCertificateElement)) return false;
-                if (!DeepComparable.IsExactly(DateValidatedElement, otherT.DateValidatedElement)) return false;
+                if (!DeepComparable.IsExactly(SignedValidatorAttestation, otherT.SignedValidatorAttestation)) return false;
 
                 return true;
             }
@@ -746,10 +715,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (Identifier != null) yield return Identifier;
                     if (Organization != null) yield return Organization;
                     if (IdentityCertificateElement != null) yield return IdentityCertificateElement;
-                    if (DateValidatedElement != null) yield return DateValidatedElement;
+                    if (SignedValidatorAttestation != null) yield return SignedValidatorAttestation;
                 }
             }
 
@@ -759,10 +727,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                    if (IdentityCertificateElement != null) yield return new ElementValue("identityCertificate", false, IdentityCertificateElement);
-                    if (DateValidatedElement != null) yield return new ElementValue("dateValidated", false, DateValidatedElement);
+                    if (Organization != null) yield return new ElementValue("organization", Organization);
+                    if (IdentityCertificateElement != null) yield return new ElementValue("identityCertificate", IdentityCertificateElement);
+                    if (SignedValidatorAttestation != null) yield return new ElementValue("signedValidatorAttestation", SignedValidatorAttestation);
                 }
             }
 
@@ -821,34 +788,14 @@ namespace Hl7.Fhir.Model.R4
         /// none | initial | periodic
         /// </summary>
         [FhirElement("need", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<need> NeedElement
+        public CodeableConcept Need
         {
-            get { return _needElement; }
-            set { _needElement = value; OnPropertyChanged("NeedElement"); }
+            get { return _need; }
+            set { _need = value; OnPropertyChanged("Need"); }
         }
 
-        private Code<need> _needElement;
-
-        /// <summary>
-        /// none | initial | periodic
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMember]
-        public need? Need
-        {
-            get { return NeedElement != null ? NeedElement.Value : null; }
-            set
-            {
-                if (value == null)
-                    NeedElement = null;
-                else
-                    NeedElement = new Code<need>(value);
-                OnPropertyChanged("Need");
-            }
-        }
+        private CodeableConcept _need;
 
         /// <summary>
         /// attested | validated | in-process | req-revalid | val-fail | reval-fail
@@ -887,7 +834,6 @@ namespace Hl7.Fhir.Model.R4
         /// When the validation status was updated
         /// </summary>
         [FhirElement("statusDate", InSummary=true, Order=130)]
-        [Cardinality(Min=1,Max=1)]
         [DataMember]
         public FhirDateTime StatusDateElement
         {
@@ -920,40 +866,20 @@ namespace Hl7.Fhir.Model.R4
         /// nothing | primary | multiple
         /// </summary>
         [FhirElement("validationType", InSummary=true, Order=140)]
-        [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<validation_type> ValidationTypeElement
+        public CodeableConcept ValidationType
         {
-            get { return _validationTypeElement; }
-            set { _validationTypeElement = value; OnPropertyChanged("ValidationTypeElement"); }
+            get { return _validationType; }
+            set { _validationType = value; OnPropertyChanged("ValidationType"); }
         }
 
-        private Code<validation_type> _validationTypeElement;
-
-        /// <summary>
-        /// nothing | primary | multiple
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMember]
-        public validation_type? ValidationType
-        {
-            get { return ValidationTypeElement != null ? ValidationTypeElement.Value : null; }
-            set
-            {
-                if (value == null)
-                    ValidationTypeElement = null;
-                else
-                    ValidationTypeElement = new Code<validation_type>(value);
-                OnPropertyChanged("ValidationType");
-            }
-        }
+        private CodeableConcept _validationType;
 
         /// <summary>
         /// The primary process by which the target is validated (edit check; value set; primary source; multiple sources; standalone; in context)
         /// </summary>
         [FhirElement("validationProcess", InSummary=true, Order=150)]
-        [Cardinality(Min=1,Max=-1)]
+        [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> ValidationProcess
         {
@@ -1044,34 +970,14 @@ namespace Hl7.Fhir.Model.R4
         /// fatal | warn | rec-only | none
         /// </summary>
         [FhirElement("failureAction", InSummary=true, Order=190)]
-        [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<failure_action> FailureActionElement
+        public CodeableConcept FailureAction
         {
-            get { return _failureActionElement; }
-            set { _failureActionElement = value; OnPropertyChanged("FailureActionElement"); }
+            get { return _failureAction; }
+            set { _failureAction = value; OnPropertyChanged("FailureAction"); }
         }
 
-        private Code<failure_action> _failureActionElement;
-
-        /// <summary>
-        /// fatal | warn | rec-only | none
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMember]
-        public failure_action? FailureAction
-        {
-            get { return FailureActionElement != null ? FailureActionElement.Value : null; }
-            set
-            {
-                if (value == null)
-                    FailureActionElement = null;
-                else
-                    FailureActionElement = new Code<failure_action>(value);
-                OnPropertyChanged("FailureAction");
-            }
-        }
+        private CodeableConcept _failureAction;
 
         /// <summary>
         /// Information about the primary source(s) involved in validation
@@ -1124,15 +1030,15 @@ namespace Hl7.Fhir.Model.R4
                 base.CopyTo(dest);
                 if (Target != null) dest.Target = new List<ResourceReference>(Target.DeepCopy());
                 if (TargetLocationElement != null) dest.TargetLocationElement = new List<FhirString>(TargetLocationElement.DeepCopy());
-                if (NeedElement != null) dest.NeedElement = (Code<need>)NeedElement.DeepCopy();
+                if (Need != null) dest.Need = (CodeableConcept)Need.DeepCopy();
                 if (StatusElement != null) dest.StatusElement = (Code<status>)StatusElement.DeepCopy();
                 if (StatusDateElement != null) dest.StatusDateElement = (FhirDateTime)StatusDateElement.DeepCopy();
-                if (ValidationTypeElement != null) dest.ValidationTypeElement = (Code<validation_type>)ValidationTypeElement.DeepCopy();
+                if (ValidationType != null) dest.ValidationType = (CodeableConcept)ValidationType.DeepCopy();
                 if (ValidationProcess != null) dest.ValidationProcess = new List<CodeableConcept>(ValidationProcess.DeepCopy());
                 if (Frequency != null) dest.Frequency = (Timing)Frequency.DeepCopy();
                 if (LastPerformedElement != null) dest.LastPerformedElement = (FhirDateTime)LastPerformedElement.DeepCopy();
                 if (NextScheduledElement != null) dest.NextScheduledElement = (Date)NextScheduledElement.DeepCopy();
-                if (FailureActionElement != null) dest.FailureActionElement = (Code<failure_action>)FailureActionElement.DeepCopy();
+                if (FailureAction != null) dest.FailureAction = (CodeableConcept)FailureAction.DeepCopy();
                 if (PrimarySource != null) dest.PrimarySource = new List<PrimarySourceComponent>(PrimarySource.DeepCopy());
                 if (Attestation != null) dest.Attestation = (AttestationComponent)Attestation.DeepCopy();
                 if (Validator != null) dest.Validator = new List<ValidatorComponent>(Validator.DeepCopy());
@@ -1155,15 +1061,15 @@ namespace Hl7.Fhir.Model.R4
             if (!base.Matches(otherT)) return false;
             if ( !DeepComparable.Matches(Target, otherT.Target)) return false;
             if ( !DeepComparable.Matches(TargetLocationElement, otherT.TargetLocationElement)) return false;
-            if (!DeepComparable.Matches(NeedElement, otherT.NeedElement)) return false;
+            if (!DeepComparable.Matches(Need, otherT.Need)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.Matches(StatusDateElement, otherT.StatusDateElement)) return false;
-            if (!DeepComparable.Matches(ValidationTypeElement, otherT.ValidationTypeElement)) return false;
+            if (!DeepComparable.Matches(ValidationType, otherT.ValidationType)) return false;
             if ( !DeepComparable.Matches(ValidationProcess, otherT.ValidationProcess)) return false;
             if (!DeepComparable.Matches(Frequency, otherT.Frequency)) return false;
             if (!DeepComparable.Matches(LastPerformedElement, otherT.LastPerformedElement)) return false;
             if (!DeepComparable.Matches(NextScheduledElement, otherT.NextScheduledElement)) return false;
-            if (!DeepComparable.Matches(FailureActionElement, otherT.FailureActionElement)) return false;
+            if (!DeepComparable.Matches(FailureAction, otherT.FailureAction)) return false;
             if ( !DeepComparable.Matches(PrimarySource, otherT.PrimarySource)) return false;
             if (!DeepComparable.Matches(Attestation, otherT.Attestation)) return false;
             if ( !DeepComparable.Matches(Validator, otherT.Validator)) return false;
@@ -1179,15 +1085,15 @@ namespace Hl7.Fhir.Model.R4
             if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Target, otherT.Target)) return false;
             if (!DeepComparable.IsExactly(TargetLocationElement, otherT.TargetLocationElement)) return false;
-            if (!DeepComparable.IsExactly(NeedElement, otherT.NeedElement)) return false;
+            if (!DeepComparable.IsExactly(Need, otherT.Need)) return false;
             if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.IsExactly(StatusDateElement, otherT.StatusDateElement)) return false;
-            if (!DeepComparable.IsExactly(ValidationTypeElement, otherT.ValidationTypeElement)) return false;
+            if (!DeepComparable.IsExactly(ValidationType, otherT.ValidationType)) return false;
             if (!DeepComparable.IsExactly(ValidationProcess, otherT.ValidationProcess)) return false;
             if (!DeepComparable.IsExactly(Frequency, otherT.Frequency)) return false;
             if (!DeepComparable.IsExactly(LastPerformedElement, otherT.LastPerformedElement)) return false;
             if (!DeepComparable.IsExactly(NextScheduledElement, otherT.NextScheduledElement)) return false;
-            if (!DeepComparable.IsExactly(FailureActionElement, otherT.FailureActionElement)) return false;
+            if (!DeepComparable.IsExactly(FailureAction, otherT.FailureAction)) return false;
             if (!DeepComparable.IsExactly(PrimarySource, otherT.PrimarySource)) return false;
             if (!DeepComparable.IsExactly(Attestation, otherT.Attestation)) return false;
             if (!DeepComparable.IsExactly(Validator, otherT.Validator)) return false;
@@ -1203,15 +1109,15 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var item in base.Children) yield return item;
                 foreach (var elem in Target) { if (elem != null) yield return elem; }
                 foreach (var elem in TargetLocationElement) { if (elem != null) yield return elem; }
-                if (NeedElement != null) yield return NeedElement;
+                if (Need != null) yield return Need;
                 if (StatusElement != null) yield return StatusElement;
                 if (StatusDateElement != null) yield return StatusDateElement;
-                if (ValidationTypeElement != null) yield return ValidationTypeElement;
+                if (ValidationType != null) yield return ValidationType;
                 foreach (var elem in ValidationProcess) { if (elem != null) yield return elem; }
                 if (Frequency != null) yield return Frequency;
                 if (LastPerformedElement != null) yield return LastPerformedElement;
                 if (NextScheduledElement != null) yield return NextScheduledElement;
-                if (FailureActionElement != null) yield return FailureActionElement;
+                if (FailureAction != null) yield return FailureAction;
                 foreach (var elem in PrimarySource) { if (elem != null) yield return elem; }
                 if (Attestation != null) yield return Attestation;
                 foreach (var elem in Validator) { if (elem != null) yield return elem; }
@@ -1224,20 +1130,20 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", true, elem); }
-                foreach (var elem in TargetLocationElement) { if (elem != null) yield return new ElementValue("targetLocation", true, elem); }
-                if (NeedElement != null) yield return new ElementValue("need", false, NeedElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (StatusDateElement != null) yield return new ElementValue("statusDate", false, StatusDateElement);
-                if (ValidationTypeElement != null) yield return new ElementValue("validationType", false, ValidationTypeElement);
-                foreach (var elem in ValidationProcess) { if (elem != null) yield return new ElementValue("validationProcess", true, elem); }
-                if (Frequency != null) yield return new ElementValue("frequency", false, Frequency);
-                if (LastPerformedElement != null) yield return new ElementValue("lastPerformed", false, LastPerformedElement);
-                if (NextScheduledElement != null) yield return new ElementValue("nextScheduled", false, NextScheduledElement);
-                if (FailureActionElement != null) yield return new ElementValue("failureAction", false, FailureActionElement);
-                foreach (var elem in PrimarySource) { if (elem != null) yield return new ElementValue("primarySource", true, elem); }
-                if (Attestation != null) yield return new ElementValue("attestation", false, Attestation);
-                foreach (var elem in Validator) { if (elem != null) yield return new ElementValue("validator", true, elem); }
+                foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", elem); }
+                foreach (var elem in TargetLocationElement) { if (elem != null) yield return new ElementValue("targetLocation", elem); }
+                if (Need != null) yield return new ElementValue("need", Need);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (StatusDateElement != null) yield return new ElementValue("statusDate", StatusDateElement);
+                if (ValidationType != null) yield return new ElementValue("validationType", ValidationType);
+                foreach (var elem in ValidationProcess) { if (elem != null) yield return new ElementValue("validationProcess", elem); }
+                if (Frequency != null) yield return new ElementValue("frequency", Frequency);
+                if (LastPerformedElement != null) yield return new ElementValue("lastPerformed", LastPerformedElement);
+                if (NextScheduledElement != null) yield return new ElementValue("nextScheduled", NextScheduledElement);
+                if (FailureAction != null) yield return new ElementValue("failureAction", FailureAction);
+                foreach (var elem in PrimarySource) { if (elem != null) yield return new ElementValue("primarySource", elem); }
+                if (Attestation != null) yield return new ElementValue("attestation", Attestation);
+                foreach (var elem in Validator) { if (elem != null) yield return new ElementValue("validator", elem); }
             }
         }
 

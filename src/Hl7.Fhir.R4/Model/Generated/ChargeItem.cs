@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,32 +57,83 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ChargeItem"; } }
 
+        /// <summary>
+        /// Codes identifying the lifecycle stage of a ChargeItem.
+        /// (url: http://hl7.org/fhir/ValueSet/chargeitem-status)
+        /// </summary>
+        [FhirEnumeration("ChargeItemStatus")]
+        public enum ChargeItemStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/chargeitem-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("billable", "http://hl7.org/fhir/chargeitem-status"), Description("Billable")]
+            Billable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("not-billable", "http://hl7.org/fhir/chargeitem-status"), Description("Not billable")]
+            NotBillable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("aborted", "http://hl7.org/fhir/chargeitem-status"), Description("Aborted")]
+            Aborted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("billed", "http://hl7.org/fhir/chargeitem-status"), Description("Billed")]
+            Billed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/chargeitem-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/chargeitem-status"), Description("Unknown")]
+            Unknown,
+        }
 
-        [FhirType("ParticipantComponent")]
+
+        [FhirType("PerformerComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class PerformerComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
-            public override string TypeName { get { return "ParticipantComponent"; } }
+            public override string TypeName { get { return "PerformerComponent"; } }
 
             /// <summary>
             /// What type of performance was done
             /// </summary>
-            [FhirElement("role", Order=40)]
+            [FhirElement("function", Order=40)]
             [DataMember]
-            public CodeableConcept Role
+            public CodeableConcept Function
             {
-                get { return _role; }
-                set { _role = value; OnPropertyChanged("Role"); }
+                get { return _function; }
+                set { _function = value; OnPropertyChanged("Function"); }
             }
 
-            private CodeableConcept _role;
+            private CodeableConcept _function;
 
             /// <summary>
             /// Individual who was performing
             /// </summary>
             [FhirElement("actor", Order=50)]
-            [References("Practitioner","Organization","Patient","Device","RelatedPerson")]
+            [References("Practitioner","PractitionerRole","Organization","CareTeam","Patient","Device","RelatedPerson")]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public ResourceReference Actor
@@ -94,12 +146,12 @@ namespace Hl7.Fhir.Model.R4
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
-                var dest = other as ParticipantComponent;
+                var dest = other as PerformerComponent;
 
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (Role != null) dest.Role = (CodeableConcept)Role.DeepCopy();
+                    if (Function != null) dest.Function = (CodeableConcept)Function.DeepCopy();
                     if (Actor != null) dest.Actor = (ResourceReference)Actor.DeepCopy();
                     return dest;
                 }
@@ -109,16 +161,16 @@ namespace Hl7.Fhir.Model.R4
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ParticipantComponent());
+                 return CopyTo(new PerformerComponent());
             }
 
             public override bool Matches(IDeepComparable other)
             {
-                var otherT = other as ParticipantComponent;
+                var otherT = other as PerformerComponent;
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Role, otherT.Role)) return false;
+                if (!DeepComparable.Matches(Function, otherT.Function)) return false;
                 if (!DeepComparable.Matches(Actor, otherT.Actor)) return false;
 
                 return true;
@@ -126,11 +178,11 @@ namespace Hl7.Fhir.Model.R4
 
             public override bool IsExactly(IDeepComparable other)
             {
-                var otherT = other as ParticipantComponent;
+                var otherT = other as PerformerComponent;
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Role, otherT.Role)) return false;
+                if (!DeepComparable.IsExactly(Function, otherT.Function)) return false;
                 if (!DeepComparable.IsExactly(Actor, otherT.Actor)) return false;
 
                 return true;
@@ -143,7 +195,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (Role != null) yield return Role;
+                    if (Function != null) yield return Function;
                     if (Actor != null) yield return Actor;
                 }
             }
@@ -154,8 +206,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Actor != null) yield return new ElementValue("actor", false, Actor);
+                    if (Function != null) yield return new ElementValue("function", Function);
+                    if (Actor != null) yield return new ElementValue("actor", Actor);
                 }
             }
 
@@ -318,16 +370,16 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who performed charged service
         /// </summary>
-        [FhirElement("participant", Order=170)]
+        [FhirElement("performer", Order=170)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<ParticipantComponent> Participant
+        public List<PerformerComponent> Performer
         {
-            get { if (_participant==null) _participant = new List<ParticipantComponent>(); return _participant; }
-            set { _participant = value; OnPropertyChanged("Participant"); }
+            get { if (_performer==null) _performer = new List<PerformerComponent>(); return _performer; }
+            set { _performer = value; OnPropertyChanged("Performer"); }
         }
 
-        private List<ParticipantComponent> _participant;
+        private List<PerformerComponent> _performer;
 
         /// <summary>
         /// Organization providing the charged sevice
@@ -361,7 +413,7 @@ namespace Hl7.Fhir.Model.R4
         /// Organization that has ownership of the (potential, future) revenue
         /// </summary>
         [FhirElement("costCenter", Order=200)]
-        [References("Organization","OrganizationRole")]
+        [References("Organization")]
         [DataMember]
         public ResourceReference CostCenter
         {
@@ -551,9 +603,23 @@ namespace Hl7.Fhir.Model.R4
         private List<ResourceReference> _service;
 
         /// <summary>
+        /// Product charged
+        /// </summary>
+        [FhirElement("product", Order=300, Choice=ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(ResourceReference),typeof(CodeableConcept))]
+        [DataMember]
+        public Element Product
+        {
+            get { return _product; }
+            set { _product = value; OnPropertyChanged("Product"); }
+        }
+
+        private Element _product;
+
+        /// <summary>
         /// Account to place this charge
         /// </summary>
-        [FhirElement("account", InSummary=true, Order=300)]
+        [FhirElement("account", InSummary=true, Order=310)]
         [References("Account")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -568,7 +634,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Comments made about the ChargeItem
         /// </summary>
-        [FhirElement("note", Order=310)]
+        [FhirElement("note", Order=320)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Annotation> Note
@@ -582,7 +648,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Further information supporting this charge
         /// </summary>
-        [FhirElement("supportingInformation", Order=320)]
+        [FhirElement("supportingInformation", Order=330)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<ResourceReference> SupportingInformation
@@ -609,7 +675,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
                 if (Context != null) dest.Context = (ResourceReference)Context.DeepCopy();
                 if (Occurrence != null) dest.Occurrence = (Element)Occurrence.DeepCopy();
-                if (Participant != null) dest.Participant = new List<ParticipantComponent>(Participant.DeepCopy());
+                if (Performer != null) dest.Performer = new List<PerformerComponent>(Performer.DeepCopy());
                 if (PerformingOrganization != null) dest.PerformingOrganization = (ResourceReference)PerformingOrganization.DeepCopy();
                 if (RequestingOrganization != null) dest.RequestingOrganization = (ResourceReference)RequestingOrganization.DeepCopy();
                 if (CostCenter != null) dest.CostCenter = (ResourceReference)CostCenter.DeepCopy();
@@ -622,6 +688,7 @@ namespace Hl7.Fhir.Model.R4
                 if (EnteredDateElement != null) dest.EnteredDateElement = (FhirDateTime)EnteredDateElement.DeepCopy();
                 if (Reason != null) dest.Reason = new List<CodeableConcept>(Reason.DeepCopy());
                 if (Service != null) dest.Service = new List<ResourceReference>(Service.DeepCopy());
+                if (Product != null) dest.Product = (Element)Product.DeepCopy();
                 if (Account != null) dest.Account = new List<ResourceReference>(Account.DeepCopy());
                 if (Note != null) dest.Note = new List<Annotation>(Note.DeepCopy());
                 if (SupportingInformation != null) dest.SupportingInformation = new List<ResourceReference>(SupportingInformation.DeepCopy());
@@ -650,7 +717,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
             if (!DeepComparable.Matches(Context, otherT.Context)) return false;
             if (!DeepComparable.Matches(Occurrence, otherT.Occurrence)) return false;
-            if ( !DeepComparable.Matches(Participant, otherT.Participant)) return false;
+            if ( !DeepComparable.Matches(Performer, otherT.Performer)) return false;
             if (!DeepComparable.Matches(PerformingOrganization, otherT.PerformingOrganization)) return false;
             if (!DeepComparable.Matches(RequestingOrganization, otherT.RequestingOrganization)) return false;
             if (!DeepComparable.Matches(CostCenter, otherT.CostCenter)) return false;
@@ -663,6 +730,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(EnteredDateElement, otherT.EnteredDateElement)) return false;
             if ( !DeepComparable.Matches(Reason, otherT.Reason)) return false;
             if ( !DeepComparable.Matches(Service, otherT.Service)) return false;
+            if (!DeepComparable.Matches(Product, otherT.Product)) return false;
             if ( !DeepComparable.Matches(Account, otherT.Account)) return false;
             if ( !DeepComparable.Matches(Note, otherT.Note)) return false;
             if ( !DeepComparable.Matches(SupportingInformation, otherT.SupportingInformation)) return false;
@@ -684,7 +752,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Subject, otherT.Subject)) return false;
             if (!DeepComparable.IsExactly(Context, otherT.Context)) return false;
             if (!DeepComparable.IsExactly(Occurrence, otherT.Occurrence)) return false;
-            if (!DeepComparable.IsExactly(Participant, otherT.Participant)) return false;
+            if (!DeepComparable.IsExactly(Performer, otherT.Performer)) return false;
             if (!DeepComparable.IsExactly(PerformingOrganization, otherT.PerformingOrganization)) return false;
             if (!DeepComparable.IsExactly(RequestingOrganization, otherT.RequestingOrganization)) return false;
             if (!DeepComparable.IsExactly(CostCenter, otherT.CostCenter)) return false;
@@ -697,6 +765,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(EnteredDateElement, otherT.EnteredDateElement)) return false;
             if (!DeepComparable.IsExactly(Reason, otherT.Reason)) return false;
             if (!DeepComparable.IsExactly(Service, otherT.Service)) return false;
+            if (!DeepComparable.IsExactly(Product, otherT.Product)) return false;
             if (!DeepComparable.IsExactly(Account, otherT.Account)) return false;
             if (!DeepComparable.IsExactly(Note, otherT.Note)) return false;
             if (!DeepComparable.IsExactly(SupportingInformation, otherT.SupportingInformation)) return false;
@@ -718,7 +787,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Subject != null) yield return Subject;
                 if (Context != null) yield return Context;
                 if (Occurrence != null) yield return Occurrence;
-                foreach (var elem in Participant) { if (elem != null) yield return elem; }
+                foreach (var elem in Performer) { if (elem != null) yield return elem; }
                 if (PerformingOrganization != null) yield return PerformingOrganization;
                 if (RequestingOrganization != null) yield return RequestingOrganization;
                 if (CostCenter != null) yield return CostCenter;
@@ -731,6 +800,7 @@ namespace Hl7.Fhir.Model.R4
                 if (EnteredDateElement != null) yield return EnteredDateElement;
                 foreach (var elem in Reason) { if (elem != null) yield return elem; }
                 foreach (var elem in Service) { if (elem != null) yield return elem; }
+                if (Product != null) yield return Product;
                 foreach (var elem in Account) { if (elem != null) yield return elem; }
                 foreach (var elem in Note) { if (elem != null) yield return elem; }
                 foreach (var elem in SupportingInformation) { if (elem != null) yield return elem; }
@@ -743,30 +813,31 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in DefinitionElement) { if (elem != null) yield return new ElementValue("definition", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", true, elem); }
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Occurrence != null) yield return new ElementValue("occurrence", false, Occurrence);
-                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", true, elem); }
-                if (PerformingOrganization != null) yield return new ElementValue("performingOrganization", false, PerformingOrganization);
-                if (RequestingOrganization != null) yield return new ElementValue("requestingOrganization", false, RequestingOrganization);
-                if (CostCenter != null) yield return new ElementValue("costCenter", false, CostCenter);
-                if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                foreach (var elem in Bodysite) { if (elem != null) yield return new ElementValue("bodysite", true, elem); }
-                if (FactorOverrideElement != null) yield return new ElementValue("factorOverride", false, FactorOverrideElement);
-                if (PriceOverride != null) yield return new ElementValue("priceOverride", false, PriceOverride);
-                if (OverrideReasonElement != null) yield return new ElementValue("overrideReason", false, OverrideReasonElement);
-                if (Enterer != null) yield return new ElementValue("enterer", false, Enterer);
-                if (EnteredDateElement != null) yield return new ElementValue("enteredDate", false, EnteredDateElement);
-                foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", true, elem); }
-                foreach (var elem in Service) { if (elem != null) yield return new ElementValue("service", true, elem); }
-                foreach (var elem in Account) { if (elem != null) yield return new ElementValue("account", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in DefinitionElement) { if (elem != null) yield return new ElementValue("definition", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Occurrence != null) yield return new ElementValue("occurrence", Occurrence);
+                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", elem); }
+                if (PerformingOrganization != null) yield return new ElementValue("performingOrganization", PerformingOrganization);
+                if (RequestingOrganization != null) yield return new ElementValue("requestingOrganization", RequestingOrganization);
+                if (CostCenter != null) yield return new ElementValue("costCenter", CostCenter);
+                if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                foreach (var elem in Bodysite) { if (elem != null) yield return new ElementValue("bodysite", elem); }
+                if (FactorOverrideElement != null) yield return new ElementValue("factorOverride", FactorOverrideElement);
+                if (PriceOverride != null) yield return new ElementValue("priceOverride", PriceOverride);
+                if (OverrideReasonElement != null) yield return new ElementValue("overrideReason", OverrideReasonElement);
+                if (Enterer != null) yield return new ElementValue("enterer", Enterer);
+                if (EnteredDateElement != null) yield return new ElementValue("enteredDate", EnteredDateElement);
+                foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", elem); }
+                foreach (var elem in Service) { if (elem != null) yield return new ElementValue("service", elem); }
+                if (Product != null) yield return new ElementValue("product", Product);
+                foreach (var elem in Account) { if (elem != null) yield return new ElementValue("account", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", elem); }
             }
         }
 

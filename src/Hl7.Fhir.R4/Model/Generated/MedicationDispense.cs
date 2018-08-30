@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,67 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "MedicationDispense"; } }
 
+        /// <summary>
+        /// A coded concept specifying the state of the dispense event.
+        /// (url: http://hl7.org/fhir/ValueSet/medication-dispense-status)
+        /// </summary>
+        [FhirEnumeration("MedicationDispenseStatus")]
+        public enum MedicationDispenseStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-dispense-status)
+            /// </summary>
+            [EnumLiteral("preparation", "http://hl7.org/fhir/medication-dispense-status"), Description("Preparation")]
+            Preparation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-dispense-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/medication-dispense-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-dispense-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/medication-dispense-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-dispense-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/medication-dispense-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-dispense-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/medication-dispense-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-dispense-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-dispense-status"), Description("Entered in-Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-dispense-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/medication-dispense-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-dispense-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/medication-dispense-status"), Description("Unknown")]
+            Unknown,
+        }
+
 
         [FhirType("PerformerComponent")]
         [DataContract]
-        public partial class PerformerComponent : BackboneElement
+        public partial class PerformerComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PerformerComponent"; } }
@@ -154,8 +212,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Function != null) yield return new ElementValue("function", false, Function);
-                    if (Actor != null) yield return new ElementValue("actor", false, Actor);
+                    if (Function != null) yield return new ElementValue("function", Function);
+                    if (Actor != null) yield return new ElementValue("actor", Actor);
                 }
             }
 
@@ -165,7 +223,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SubstitutionComponent")]
         [DataContract]
-        public partial class SubstitutionComponent : BackboneElement
+        public partial class SubstitutionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SubstitutionComponent"; } }
@@ -315,10 +373,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (WasSubstitutedElement != null) yield return new ElementValue("wasSubstituted", false, WasSubstitutedElement);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", true, elem); }
-                    foreach (var elem in ResponsibleParty) { if (elem != null) yield return new ElementValue("responsibleParty", true, elem); }
+                    if (WasSubstitutedElement != null) yield return new ElementValue("wasSubstituted", WasSubstitutedElement);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", elem); }
+                    foreach (var elem in ResponsibleParty) { if (elem != null) yield return new ElementValue("responsibleParty", elem); }
                 }
             }
 
@@ -723,7 +781,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "whenHandedOver.empty() or whenPrepared.empty() or whenHandedOver >= whenPrepared",
             Key = "mdd-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "whenHandedOver cannot be before whenPrepared",
             Xpath = "not(exists(f:whenHandedOver/@value)) or not(exists(f:whenPrepared/@value)) or ( f:whenHandedOver/@value >= f:whenPrepared/@value)"
         };
@@ -884,30 +942,30 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Category != null) yield return new ElementValue("category", false, Category);
-                if (Medication != null) yield return new ElementValue("medication", false, Medication);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", true, elem); }
-                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", true, elem); }
-                if (Location != null) yield return new ElementValue("location", false, Location);
-                foreach (var elem in AuthorizingPrescription) { if (elem != null) yield return new ElementValue("authorizingPrescription", true, elem); }
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                if (DaysSupply != null) yield return new ElementValue("daysSupply", false, DaysSupply);
-                if (WhenPreparedElement != null) yield return new ElementValue("whenPrepared", false, WhenPreparedElement);
-                if (WhenHandedOverElement != null) yield return new ElementValue("whenHandedOver", false, WhenHandedOverElement);
-                if (Destination != null) yield return new ElementValue("destination", false, Destination);
-                foreach (var elem in Receiver) { if (elem != null) yield return new ElementValue("receiver", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in DosageInstruction) { if (elem != null) yield return new ElementValue("dosageInstruction", true, elem); }
-                if (Substitution != null) yield return new ElementValue("substitution", false, Substitution);
-                foreach (var elem in DetectedIssue) { if (elem != null) yield return new ElementValue("detectedIssue", true, elem); }
-                if (StatusReason != null) yield return new ElementValue("statusReason", false, StatusReason);
-                foreach (var elem in EventHistory) { if (elem != null) yield return new ElementValue("eventHistory", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Category != null) yield return new ElementValue("category", Category);
+                if (Medication != null) yield return new ElementValue("medication", Medication);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                foreach (var elem in SupportingInformation) { if (elem != null) yield return new ElementValue("supportingInformation", elem); }
+                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", elem); }
+                if (Location != null) yield return new ElementValue("location", Location);
+                foreach (var elem in AuthorizingPrescription) { if (elem != null) yield return new ElementValue("authorizingPrescription", elem); }
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                if (DaysSupply != null) yield return new ElementValue("daysSupply", DaysSupply);
+                if (WhenPreparedElement != null) yield return new ElementValue("whenPrepared", WhenPreparedElement);
+                if (WhenHandedOverElement != null) yield return new ElementValue("whenHandedOver", WhenHandedOverElement);
+                if (Destination != null) yield return new ElementValue("destination", Destination);
+                foreach (var elem in Receiver) { if (elem != null) yield return new ElementValue("receiver", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in DosageInstruction) { if (elem != null) yield return new ElementValue("dosageInstruction", elem); }
+                if (Substitution != null) yield return new ElementValue("substitution", Substitution);
+                foreach (var elem in DetectedIssue) { if (elem != null) yield return new ElementValue("detectedIssue", elem); }
+                if (StatusReason != null) yield return new ElementValue("statusReason", StatusReason);
+                foreach (var elem in EventHistory) { if (elem != null) yield return new ElementValue("eventHistory", elem); }
             }
         }
 

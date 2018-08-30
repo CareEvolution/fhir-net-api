@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,64 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "GraphDefinition"; } }
 
+        /// <summary>
+        /// Defines how a compartment rule is used.
+        /// (url: http://hl7.org/fhir/ValueSet/graph-compartment-use)
+        /// </summary>
+        [FhirEnumeration("GraphCompartmentUse")]
+        public enum GraphCompartmentUse
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/graph-compartment-use)
+            /// </summary>
+            [EnumLiteral("condition", "http://hl7.org/fhir/graph-compartment-use"), Description("Condition")]
+            Condition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/graph-compartment-use)
+            /// </summary>
+            [EnumLiteral("requirement", "http://hl7.org/fhir/graph-compartment-use"), Description("Requirement")]
+            Requirement,
+        }
+
+        /// <summary>
+        /// How a compartment must be linked.
+        /// (url: http://hl7.org/fhir/ValueSet/graph-compartment-rule)
+        /// </summary>
+        [FhirEnumeration("GraphCompartmentRule")]
+        public enum GraphCompartmentRule
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/graph-compartment-rule)
+            /// </summary>
+            [EnumLiteral("identical", "http://hl7.org/fhir/graph-compartment-rule"), Description("Identical")]
+            Identical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/graph-compartment-rule)
+            /// </summary>
+            [EnumLiteral("matching", "http://hl7.org/fhir/graph-compartment-rule"), Description("Matching")]
+            Matching,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/graph-compartment-rule)
+            /// </summary>
+            [EnumLiteral("different", "http://hl7.org/fhir/graph-compartment-rule"), Description("Different")]
+            Different,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/graph-compartment-rule)
+            /// </summary>
+            [EnumLiteral("custom", "http://hl7.org/fhir/graph-compartment-rule"), Description("Custom")]
+            Custom,
+        }
+
 
         [FhirType("LinkComponent")]
         [DataContract]
-        public partial class LinkComponent : BackboneElement
+        public partial class LinkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LinkComponent"; } }
@@ -316,12 +371,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (PathElement != null) yield return new ElementValue("path", false, PathElement);
-                    if (SliceNameElement != null) yield return new ElementValue("sliceName", false, SliceNameElement);
-                    if (MinElement != null) yield return new ElementValue("min", false, MinElement);
-                    if (MaxElement != null) yield return new ElementValue("max", false, MaxElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", true, elem); }
+                    if (PathElement != null) yield return new ElementValue("path", PathElement);
+                    if (SliceNameElement != null) yield return new ElementValue("sliceName", SliceNameElement);
+                    if (MinElement != null) yield return new ElementValue("min", MinElement);
+                    if (MaxElement != null) yield return new ElementValue("max", MaxElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", elem); }
                 }
             }
 
@@ -331,7 +386,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TargetComponent")]
         [DataContract]
-        public partial class TargetComponent : BackboneElement
+        public partial class TargetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TargetComponent"; } }
@@ -535,11 +590,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (ParamsElement != null) yield return new ElementValue("params", false, ParamsElement);
-                    if (ProfileElement != null) yield return new ElementValue("profile", false, ProfileElement);
-                    foreach (var elem in Compartment) { if (elem != null) yield return new ElementValue("compartment", true, elem); }
-                    foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", true, elem); }
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (ParamsElement != null) yield return new ElementValue("params", ParamsElement);
+                    if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
+                    foreach (var elem in Compartment) { if (elem != null) yield return new ElementValue("compartment", elem); }
+                    foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", elem); }
                 }
             }
 
@@ -549,7 +604,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("CompartmentComponent")]
         [DataContract]
-        public partial class CompartmentComponent : BackboneElement
+        public partial class CompartmentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CompartmentComponent"; } }
@@ -791,11 +846,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (UseElement != null) yield return new ElementValue("use", false, UseElement);
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (RuleElement != null) yield return new ElementValue("rule", false, RuleElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
+                    if (UseElement != null) yield return new ElementValue("use", UseElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (RuleElement != null) yield return new ElementValue("rule", RuleElement);
+                    if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 }
             }
 
@@ -1177,6 +1232,22 @@ namespace Hl7.Fhir.Model.R4
         private List<LinkComponent> _link;
 
 
+        public static ElementDefinition.ConstraintComponent GraphDefinition_GDF_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "gdf-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
+
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+
+            InvariantConstraints.Add(GraphDefinition_GDF_0);
+        }
+
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as GraphDefinition;
@@ -1290,21 +1361,21 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                if (ProfileElement != null) yield return new ElementValue("profile", false, ProfileElement);
-                foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", true, elem); }
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (StartElement != null) yield return new ElementValue("start", StartElement);
+                if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
+                foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", elem); }
             }
         }
 

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,37 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "List"; } }
 
+        /// <summary>
+        /// The current state of the list.
+        /// (url: http://hl7.org/fhir/ValueSet/list-status)
+        /// </summary>
+        [FhirEnumeration("ListStatus")]
+        public enum ListStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/list-status)
+            /// </summary>
+            [EnumLiteral("current", "http://hl7.org/fhir/list-status"), Description("Current")]
+            Current,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/list-status)
+            /// </summary>
+            [EnumLiteral("retired", "http://hl7.org/fhir/list-status"), Description("Retired")]
+            Retired,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/list-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/list-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
 
         [FhirType("EntryComponent")]
         [DataContract]
-        public partial class EntryComponent : BackboneElement
+        public partial class EntryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EntryComponent"; } }
@@ -225,10 +253,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Flag != null) yield return new ElementValue("flag", false, Flag);
-                    if (DeletedElement != null) yield return new ElementValue("deleted", false, DeletedElement);
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                    if (Item != null) yield return new ElementValue("item", false, Item);
+                    if (Flag != null) yield return new ElementValue("flag", Flag);
+                    if (DeletedElement != null) yield return new ElementValue("deleted", DeletedElement);
+                    if (DateElement != null) yield return new ElementValue("date", DateElement);
+                    if (Item != null) yield return new ElementValue("item", Item);
                 }
             }
 
@@ -490,11 +518,20 @@ namespace Hl7.Fhir.Model.R4
         private CodeableConcept _emptyReason;
 
 
+        public static ElementDefinition.ConstraintComponent List_LST_3 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "mode = 'working' or entry.date.empty()",
+            Key = "lst-3",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "A date can only be used if the mode of the list is \"working\"",
+            Xpath = "(f:mode/@value = 'working') or not(exists(f:entry/f:date))"
+        };
+
         public static ElementDefinition.ConstraintComponent List_LST_2 = new ElementDefinition.ConstraintComponent
         {
             Expression = "mode = 'changes' or entry.deleted.empty()",
             Key = "lst-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The deleted flag can only be used if the mode of the list is \"changes\"",
             Xpath = "(f:mode/@value = 'changes') or not(exists(f:entry/f:deleted))"
         };
@@ -503,7 +540,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "emptyReason.empty() or entry.empty()",
             Key = "lst-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A list can only have an emptyReason if it is empty",
             Xpath = "not(exists(f:emptyReason) and exists(f:entry))"
         };
@@ -512,6 +549,7 @@ namespace Hl7.Fhir.Model.R4
         {
             base.AddDefaultConstraints();
 
+            InvariantConstraints.Add(List_LST_3);
             InvariantConstraints.Add(List_LST_2);
             InvariantConstraints.Add(List_LST_1);
         }
@@ -621,19 +659,19 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Encounter != null) yield return new ElementValue("encounter", false, Encounter);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (Source != null) yield return new ElementValue("source", false, Source);
-                if (OrderedBy != null) yield return new ElementValue("orderedBy", false, OrderedBy);
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in Entry) { if (elem != null) yield return new ElementValue("entry", true, elem); }
-                if (EmptyReason != null) yield return new ElementValue("emptyReason", false, EmptyReason);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Encounter != null) yield return new ElementValue("encounter", Encounter);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (Source != null) yield return new ElementValue("source", Source);
+                if (OrderedBy != null) yield return new ElementValue("orderedBy", OrderedBy);
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in Entry) { if (elem != null) yield return new ElementValue("entry", elem); }
+                if (EmptyReason != null) yield return new ElementValue("emptyReason", EmptyReason);
             }
         }
 

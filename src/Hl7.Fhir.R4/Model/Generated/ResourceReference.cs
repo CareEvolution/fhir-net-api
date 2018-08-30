@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -169,7 +170,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))",
             Key = "ref-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "SHALL have a contained resource if a local reference is provided",
             Xpath = "not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])"
         };
@@ -245,10 +246,10 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (ReferenceElement != null) yield return new ElementValue("reference", false, ReferenceElement);
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
+                if (ReferenceElement != null) yield return new ElementValue("reference", ReferenceElement);
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
             }
         }
 

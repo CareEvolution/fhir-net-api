@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,37 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "DetectedIssue"; } }
 
+        /// <summary>
+        /// Indicates the potential degree of impact of the identified issue on the patient.
+        /// (url: http://hl7.org/fhir/ValueSet/detectedissue-severity)
+        /// </summary>
+        [FhirEnumeration("DetectedIssueSeverity")]
+        public enum DetectedIssueSeverity
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/detectedissue-severity)
+            /// </summary>
+            [EnumLiteral("high", "http://hl7.org/fhir/detectedissue-severity"), Description("High")]
+            High,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/detectedissue-severity)
+            /// </summary>
+            [EnumLiteral("moderate", "http://hl7.org/fhir/detectedissue-severity"), Description("Moderate")]
+            Moderate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/detectedissue-severity)
+            /// </summary>
+            [EnumLiteral("low", "http://hl7.org/fhir/detectedissue-severity"), Description("Low")]
+            Low,
+        }
+
 
         [FhirType("MitigationComponent")]
         [DataContract]
-        public partial class MitigationComponent : BackboneElement
+        public partial class MitigationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MitigationComponent"; } }
@@ -190,9 +218,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Action != null) yield return new ElementValue("action", false, Action);
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                    if (Author != null) yield return new ElementValue("author", false, Author);
+                    if (Action != null) yield return new ElementValue("action", Action);
+                    if (DateElement != null) yield return new ElementValue("date", DateElement);
+                    if (Author != null) yield return new ElementValue("author", Author);
                 }
             }
 
@@ -542,17 +570,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Category != null) yield return new ElementValue("category", false, Category);
-                if (SeverityElement != null) yield return new ElementValue("severity", false, SeverityElement);
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (Author != null) yield return new ElementValue("author", false, Author);
-                foreach (var elem in Implicated) { if (elem != null) yield return new ElementValue("implicated", true, elem); }
-                if (DetailElement != null) yield return new ElementValue("detail", false, DetailElement);
-                if (ReferenceElement != null) yield return new ElementValue("reference", false, ReferenceElement);
-                foreach (var elem in Mitigation) { if (elem != null) yield return new ElementValue("mitigation", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Category != null) yield return new ElementValue("category", Category);
+                if (SeverityElement != null) yield return new ElementValue("severity", SeverityElement);
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (Author != null) yield return new ElementValue("author", Author);
+                foreach (var elem in Implicated) { if (elem != null) yield return new ElementValue("implicated", elem); }
+                if (DetailElement != null) yield return new ElementValue("detail", DetailElement);
+                if (ReferenceElement != null) yield return new ElementValue("reference", ReferenceElement);
+                foreach (var elem in Mitigation) { if (elem != null) yield return new ElementValue("mitigation", elem); }
             }
         }
 

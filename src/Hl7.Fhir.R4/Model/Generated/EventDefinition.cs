@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -579,23 +580,65 @@ namespace Hl7.Fhir.Model.R4
         private List<CodeableConcept> _topic;
 
         /// <summary>
-        /// A content contributor
+        /// Who authored the content
         /// </summary>
-        [FhirElement("contributor", Order=310)]
+        [FhirElement("author", Order=310)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Contributor> Contributor
+        public List<ContactDetail> Author
         {
-            get { if (_contributor==null) _contributor = new List<Contributor>(); return _contributor; }
-            set { _contributor = value; OnPropertyChanged("Contributor"); }
+            get { if (_author==null) _author = new List<ContactDetail>(); return _author; }
+            set { _author = value; OnPropertyChanged("Author"); }
         }
 
-        private List<Contributor> _contributor;
+        private List<ContactDetail> _author;
+
+        /// <summary>
+        /// Who edited the content
+        /// </summary>
+        [FhirElement("editor", Order=320)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Editor
+        {
+            get { if (_editor==null) _editor = new List<ContactDetail>(); return _editor; }
+            set { _editor = value; OnPropertyChanged("Editor"); }
+        }
+
+        private List<ContactDetail> _editor;
+
+        /// <summary>
+        /// Who reviewed the content
+        /// </summary>
+        [FhirElement("reviewer", Order=330)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Reviewer
+        {
+            get { if (_reviewer==null) _reviewer = new List<ContactDetail>(); return _reviewer; }
+            set { _reviewer = value; OnPropertyChanged("Reviewer"); }
+        }
+
+        private List<ContactDetail> _reviewer;
+
+        /// <summary>
+        /// Who endorsed the content
+        /// </summary>
+        [FhirElement("endorser", Order=340)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Endorser
+        {
+            get { if (_endorser==null) _endorser = new List<ContactDetail>(); return _endorser; }
+            set { _endorser = value; OnPropertyChanged("Endorser"); }
+        }
+
+        private List<ContactDetail> _endorser;
 
         /// <summary>
         /// Additional documentation, citations, etc.
         /// </summary>
-        [FhirElement("relatedArtifact", Order=320)]
+        [FhirElement("relatedArtifact", Order=350)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<RelatedArtifact> RelatedArtifact
@@ -609,7 +652,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// "when" the event occurs
         /// </summary>
-        [FhirElement("trigger", InSummary=true, Order=330)]
+        [FhirElement("trigger", InSummary=true, Order=360)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public TriggerDefinition Trigger
@@ -620,6 +663,22 @@ namespace Hl7.Fhir.Model.R4
 
         private TriggerDefinition _trigger;
 
+
+        public static ElementDefinition.ConstraintComponent EventDefinition_EVD_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "evd-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
+
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+
+            InvariantConstraints.Add(EventDefinition_EVD_0);
+        }
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
@@ -650,7 +709,10 @@ namespace Hl7.Fhir.Model.R4
                 if (LastReviewDateElement != null) dest.LastReviewDateElement = (Date)LastReviewDateElement.DeepCopy();
                 if (EffectivePeriod != null) dest.EffectivePeriod = (Period)EffectivePeriod.DeepCopy();
                 if (Topic != null) dest.Topic = new List<CodeableConcept>(Topic.DeepCopy());
-                if (Contributor != null) dest.Contributor = new List<Contributor>(Contributor.DeepCopy());
+                if (Author != null) dest.Author = new List<ContactDetail>(Author.DeepCopy());
+                if (Editor != null) dest.Editor = new List<ContactDetail>(Editor.DeepCopy());
+                if (Reviewer != null) dest.Reviewer = new List<ContactDetail>(Reviewer.DeepCopy());
+                if (Endorser != null) dest.Endorser = new List<ContactDetail>(Endorser.DeepCopy());
                 if (RelatedArtifact != null) dest.RelatedArtifact = new List<RelatedArtifact>(RelatedArtifact.DeepCopy());
                 if (Trigger != null) dest.Trigger = (TriggerDefinition)Trigger.DeepCopy();
                 return dest;
@@ -692,7 +754,10 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.Matches(EffectivePeriod, otherT.EffectivePeriod)) return false;
             if ( !DeepComparable.Matches(Topic, otherT.Topic)) return false;
-            if ( !DeepComparable.Matches(Contributor, otherT.Contributor)) return false;
+            if ( !DeepComparable.Matches(Author, otherT.Author)) return false;
+            if ( !DeepComparable.Matches(Editor, otherT.Editor)) return false;
+            if ( !DeepComparable.Matches(Reviewer, otherT.Reviewer)) return false;
+            if ( !DeepComparable.Matches(Endorser, otherT.Endorser)) return false;
             if ( !DeepComparable.Matches(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if (!DeepComparable.Matches(Trigger, otherT.Trigger)) return false;
 
@@ -727,7 +792,10 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.IsExactly(EffectivePeriod, otherT.EffectivePeriod)) return false;
             if (!DeepComparable.IsExactly(Topic, otherT.Topic)) return false;
-            if (!DeepComparable.IsExactly(Contributor, otherT.Contributor)) return false;
+            if (!DeepComparable.IsExactly(Author, otherT.Author)) return false;
+            if (!DeepComparable.IsExactly(Editor, otherT.Editor)) return false;
+            if (!DeepComparable.IsExactly(Reviewer, otherT.Reviewer)) return false;
+            if (!DeepComparable.IsExactly(Endorser, otherT.Endorser)) return false;
             if (!DeepComparable.IsExactly(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if (!DeepComparable.IsExactly(Trigger, otherT.Trigger)) return false;
 
@@ -762,7 +830,10 @@ namespace Hl7.Fhir.Model.R4
                 if (LastReviewDateElement != null) yield return LastReviewDateElement;
                 if (EffectivePeriod != null) yield return EffectivePeriod;
                 foreach (var elem in Topic) { if (elem != null) yield return elem; }
-                foreach (var elem in Contributor) { if (elem != null) yield return elem; }
+                foreach (var elem in Author) { if (elem != null) yield return elem; }
+                foreach (var elem in Editor) { if (elem != null) yield return elem; }
+                foreach (var elem in Reviewer) { if (elem != null) yield return elem; }
+                foreach (var elem in Endorser) { if (elem != null) yield return elem; }
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return elem; }
                 if (Trigger != null) yield return Trigger;
             }
@@ -774,31 +845,34 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (SubtitleElement != null) yield return new ElementValue("subtitle", false, SubtitleElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (UsageElement != null) yield return new ElementValue("usage", false, UsageElement);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                if (ApprovalDateElement != null) yield return new ElementValue("approvalDate", false, ApprovalDateElement);
-                if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", false, LastReviewDateElement);
-                if (EffectivePeriod != null) yield return new ElementValue("effectivePeriod", false, EffectivePeriod);
-                foreach (var elem in Topic) { if (elem != null) yield return new ElementValue("topic", true, elem); }
-                foreach (var elem in Contributor) { if (elem != null) yield return new ElementValue("contributor", true, elem); }
-                foreach (var elem in RelatedArtifact) { if (elem != null) yield return new ElementValue("relatedArtifact", true, elem); }
-                if (Trigger != null) yield return new ElementValue("trigger", false, Trigger);
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (SubtitleElement != null) yield return new ElementValue("subtitle", SubtitleElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (UsageElement != null) yield return new ElementValue("usage", UsageElement);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (ApprovalDateElement != null) yield return new ElementValue("approvalDate", ApprovalDateElement);
+                if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", LastReviewDateElement);
+                if (EffectivePeriod != null) yield return new ElementValue("effectivePeriod", EffectivePeriod);
+                foreach (var elem in Topic) { if (elem != null) yield return new ElementValue("topic", elem); }
+                foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", elem); }
+                foreach (var elem in Editor) { if (elem != null) yield return new ElementValue("editor", elem); }
+                foreach (var elem in Reviewer) { if (elem != null) yield return new ElementValue("reviewer", elem); }
+                foreach (var elem in Endorser) { if (elem != null) yield return new ElementValue("endorser", elem); }
+                foreach (var elem in RelatedArtifact) { if (elem != null) yield return new ElementValue("relatedArtifact", elem); }
+                if (Trigger != null) yield return new ElementValue("trigger", Trigger);
             }
         }
 

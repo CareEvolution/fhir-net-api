@@ -283,7 +283,6 @@ namespace Hl7.Fhir.Model.R4
             FHIRAllTypes.CodeSystem,
             FHIRAllTypes.ValueSet,
             FHIRAllTypes.ConceptMap,
-            FHIRAllTypes.ExpansionProfile,
             FHIRAllTypes.NamingSystem,
             FHIRAllTypes.TestScript,
             FHIRAllTypes.TestReport
@@ -315,7 +314,6 @@ namespace Hl7.Fhir.Model.R4
             ResourceType.CodeSystem,
             ResourceType.ValueSet,
             ResourceType.ConceptMap,
-            ResourceType.ExpansionProfile,
             ResourceType.NamingSystem,
             ResourceType.TestScript,
             ResourceType.TestReport
@@ -377,13 +375,15 @@ namespace Hl7.Fhir.Model.R4
 
         public static bool IsProfiledQuantity(FHIRAllTypes type)
         {
-            return
-                type == FHIRAllTypes.Age ||
-                type == FHIRAllTypes.Distance ||
-                type == FHIRAllTypes.SimpleQuantity ||
-                type == FHIRAllTypes.Duration ||
-                type == FHIRAllTypes.Count ||
-                type == FHIRAllTypes.Money;
+            return type == FHIRAllTypes.SimpleQuantity;
+        }
+        
+        public static bool IsProfiledQuantity(string type)
+        {
+            var definedType = FhirTypeNameToFhirType(type);
+            if (definedType == null) return false;
+
+            return IsProfiledQuantity(definedType.Value);
         }
 
         public static bool IsInstanceTypeFor(string superclass, string subclass)

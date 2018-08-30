@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,106 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ConceptMap"; } }
 
+        /// <summary>
+        /// The degree of equivalence between concepts.
+        /// (url: http://hl7.org/fhir/ValueSet/concept-map-equivalence)
+        /// </summary>
+        [FhirEnumeration("ConceptMapEquivalence")]
+        public enum ConceptMapEquivalence
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("relatedto", "http://hl7.org/fhir/concept-map-equivalence"), Description("Related To")]
+            Relatedto,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("equivalent", "http://hl7.org/fhir/concept-map-equivalence"), Description("Equivalent")]
+            Equivalent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("equal", "http://hl7.org/fhir/concept-map-equivalence"), Description("Equal")]
+            Equal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("wider", "http://hl7.org/fhir/concept-map-equivalence"), Description("Wider")]
+            Wider,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("subsumes", "http://hl7.org/fhir/concept-map-equivalence"), Description("Subsumes")]
+            Subsumes,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("narrower", "http://hl7.org/fhir/concept-map-equivalence"), Description("Narrower")]
+            Narrower,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("specializes", "http://hl7.org/fhir/concept-map-equivalence"), Description("Specializes")]
+            Specializes,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("inexact", "http://hl7.org/fhir/concept-map-equivalence"), Description("Inexact")]
+            Inexact,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("unmatched", "http://hl7.org/fhir/concept-map-equivalence"), Description("Unmatched")]
+            Unmatched,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/concept-map-equivalence)
+            /// </summary>
+            [EnumLiteral("disjoint", "http://hl7.org/fhir/concept-map-equivalence"), Description("Disjoint")]
+            Disjoint,
+        }
+
+        /// <summary>
+        /// Defines which action to take if there is no match in the group.
+        /// (url: http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode)
+        /// </summary>
+        [FhirEnumeration("ConceptMapGroupUnmappedMode")]
+        public enum ConceptMapGroupUnmappedMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conceptmap-unmapped-mode)
+            /// </summary>
+            [EnumLiteral("provided", "http://hl7.org/fhir/conceptmap-unmapped-mode"), Description("Provided Code")]
+            Provided,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conceptmap-unmapped-mode)
+            /// </summary>
+            [EnumLiteral("fixed", "http://hl7.org/fhir/conceptmap-unmapped-mode"), Description("Fixed Code")]
+            Fixed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conceptmap-unmapped-mode)
+            /// </summary>
+            [EnumLiteral("other-map", "http://hl7.org/fhir/conceptmap-unmapped-mode"), Description("Other Map")]
+            OtherMap,
+        }
+
 
         [FhirType("GroupComponent")]
         [DataContract]
-        public partial class GroupComponent : BackboneElement
+        public partial class GroupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GroupComponent"; } }
@@ -207,7 +304,7 @@ namespace Hl7.Fhir.Model.R4
             private List<SourceElementComponent> _element;
 
             /// <summary>
-            /// When there is no match for the source concept in the target system, so no mapping is available
+            /// What to do when there is no mapping for the source concept
             /// </summary>
             [FhirElement("unmapped", Order=90)]
             [DataMember]
@@ -297,12 +394,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SourceElement != null) yield return new ElementValue("source", false, SourceElement);
-                    if (SourceVersionElement != null) yield return new ElementValue("sourceVersion", false, SourceVersionElement);
-                    if (TargetElement != null) yield return new ElementValue("target", false, TargetElement);
-                    if (TargetVersionElement != null) yield return new ElementValue("targetVersion", false, TargetVersionElement);
-                    foreach (var elem in Element) { if (elem != null) yield return new ElementValue("element", true, elem); }
-                    if (Unmapped != null) yield return new ElementValue("unmapped", false, Unmapped);
+                    if (SourceElement != null) yield return new ElementValue("source", SourceElement);
+                    if (SourceVersionElement != null) yield return new ElementValue("sourceVersion", SourceVersionElement);
+                    if (TargetElement != null) yield return new ElementValue("target", TargetElement);
+                    if (TargetVersionElement != null) yield return new ElementValue("targetVersion", TargetVersionElement);
+                    foreach (var elem in Element) { if (elem != null) yield return new ElementValue("element", elem); }
+                    if (Unmapped != null) yield return new ElementValue("unmapped", Unmapped);
                 }
             }
 
@@ -312,7 +409,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SourceElementComponent")]
         [DataContract]
-        public partial class SourceElementComponent : BackboneElement
+        public partial class SourceElementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SourceElementComponent"; } }
@@ -461,9 +558,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
-                    foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", true, elem); }
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
+                    foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", elem); }
                 }
             }
 
@@ -473,7 +570,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TargetElementComponent")]
         [DataContract]
-        public partial class TargetElementComponent : BackboneElement
+        public partial class TargetElementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TargetElementComponent"; } }
@@ -713,12 +810,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
-                    if (EquivalenceElement != null) yield return new ElementValue("equivalence", false, EquivalenceElement);
-                    if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
-                    foreach (var elem in DependsOn) { if (elem != null) yield return new ElementValue("dependsOn", true, elem); }
-                    foreach (var elem in Product) { if (elem != null) yield return new ElementValue("product", true, elem); }
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
+                    if (EquivalenceElement != null) yield return new ElementValue("equivalence", EquivalenceElement);
+                    if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                    foreach (var elem in DependsOn) { if (elem != null) yield return new ElementValue("dependsOn", elem); }
+                    foreach (var elem in Product) { if (elem != null) yield return new ElementValue("product", elem); }
                 }
             }
 
@@ -728,7 +825,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OtherElementComponent")]
         [DataContract]
-        public partial class OtherElementComponent : BackboneElement
+        public partial class OtherElementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OtherElementComponent"; } }
@@ -933,10 +1030,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (PropertyElement != null) yield return new ElementValue("property", false, PropertyElement);
-                    if (SystemElement != null) yield return new ElementValue("system", false, SystemElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
-                    if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
+                    if (PropertyElement != null) yield return new ElementValue("property", PropertyElement);
+                    if (SystemElement != null) yield return new ElementValue("system", SystemElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
+                    if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
                 }
             }
 
@@ -946,7 +1043,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("UnmappedComponent")]
         [DataContract]
-        public partial class UnmappedComponent : BackboneElement
+        public partial class UnmappedComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "UnmappedComponent"; } }
@@ -1150,10 +1247,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ModeElement != null) yield return new ElementValue("mode", false, ModeElement);
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
-                    if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
+                    if (ModeElement != null) yield return new ElementValue("mode", ModeElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
+                    if (UrlElement != null) yield return new ElementValue("url", UrlElement);
                 }
             }
 
@@ -1555,11 +1652,20 @@ namespace Hl7.Fhir.Model.R4
         private List<GroupComponent> _group;
 
 
+        public static ElementDefinition.ConstraintComponent ConceptMap_CMD_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "cmd-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
+
         public static ElementDefinition.ConstraintComponent ConceptMap_CMD_1 = new ElementDefinition.ConstraintComponent
         {
             Expression = "group.element.target.all(comment.exists() or equivalence.empty() or ((equivalence != 'narrower') and (equivalence != 'inexact')))",
             Key = "cmd-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the map is narrower or inexact, there SHALL be some comments",
             Xpath = "exists(f:comment) or not(exists(f:equivalence)) or ((f:equivalence/@value != 'narrower') and (f:equivalence/@value != 'inexact'))"
         };
@@ -1568,7 +1674,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "group.unmapped.all((mode = 'other-map') implies url.exists())",
             Key = "cmd-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the mode is 'other-map', a url must be provided",
             Xpath = "(f:mode/@value != 'other-map') or exists(f:url)"
         };
@@ -1577,7 +1683,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "group.unmapped.all((mode = 'fixed') implies code.exists())",
             Key = "cmd-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the mode is 'fixed', a code must be provided",
             Xpath = "(f:mode/@value != 'fixed') or exists(f:code)"
         };
@@ -1586,6 +1692,7 @@ namespace Hl7.Fhir.Model.R4
         {
             base.AddDefaultConstraints();
 
+            InvariantConstraints.Add(ConceptMap_CMD_0);
             InvariantConstraints.Add(ConceptMap_CMD_1);
             InvariantConstraints.Add(ConceptMap_CMD_3);
             InvariantConstraints.Add(ConceptMap_CMD_2);
@@ -1716,24 +1823,24 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                if (Source != null) yield return new ElementValue("source", false, Source);
-                if (Target != null) yield return new ElementValue("target", false, Target);
-                foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", true, elem); }
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (Source != null) yield return new ElementValue("source", Source);
+                if (Target != null) yield return new ElementValue("target", Target);
+                foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", elem); }
             }
         }
 

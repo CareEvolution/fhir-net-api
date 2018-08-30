@@ -20,7 +20,7 @@ namespace Hl7.Fhir.Rest.R4
 {
     internal static class EntryToHttpExtensions
     {
-        public static HttpWebRequest ToHttpRequest(this Bundle.EntryComponent entry, 
+        public static HttpWebRequest ToHttpRequest(this Bundle.EntryComponent entry, Uri baseUrl,
             SearchParameterHandling? handlingPreference, Prefer? returnPreference, ResourceFormat format, bool useFormatParameter, bool CompressRequestBody, out byte[] body)
         {
             System.Diagnostics.Debug.WriteLine("{0}: {1}", entry.Request.Method, entry.Request.Url);
@@ -28,10 +28,16 @@ namespace Hl7.Fhir.Rest.R4
             var interaction = entry.Request;
             body = null;
 
-            if (entry.Resource != null && !(interaction.Method == HTTPVerb.POST || interaction.Method == HTTPVerb.PUT))
+            if (entry.Resource != null && !(interaction.Method == Bundle.HTTPVerb.POST || interaction.Method == Bundle.HTTPVerb.PUT))
                 throw Error.InvalidOperation("Cannot have a body on an Http " + interaction.Method.ToString());
 
-            var location = new RestUrl(interaction.Url);
+            // Create an absolute uri when the interaction.Url is relative.
+            var uri = new Uri(interaction.Url, UriKind.RelativeOrAbsolute);
+            if (!uri.IsAbsoluteUri)
+            {
+                uri = HttpUtil.MakeAbsoluteToBase(uri, baseUrl);
+            }
+            var location = new RestUrl(uri);
 
             if (useFormatParameter)
                 location.AddParam(HttpUtil.RESTPARAM_FORMAT, ContentType.BuildFormatParam(format));
@@ -62,7 +68,7 @@ namespace Hl7.Fhir.Rest.R4
             if (entry.Resource != null)
             {
                 bool searchUsingPost =
-                    interaction.Method == HTTPVerb.POST
+                    interaction.Method == Bundle.HTTPVerb.POST
                     && (entry.HasAnnotation<TransactionBuilder.InteractionType>()
                     && entry.Annotation<TransactionBuilder.InteractionType>() == TransactionBuilder.InteractionType.Search)
                     && entry.Resource is Parameters;
@@ -124,7 +130,7 @@ namespace Hl7.Fhir.Rest.R4
             if (data is Binary)
             {
                 var bin = (Binary)data;
-                body = bin.Content;
+                body = bin.Data;
                 // This is done by the caller after the OnBeforeRequest is called so that other properties
                 // can be set before the content is committed
                 // request.WriteBody(CompressRequestBody, bin.Content);

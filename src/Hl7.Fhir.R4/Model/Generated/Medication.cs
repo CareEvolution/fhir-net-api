@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,16 +57,43 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Medication"; } }
 
+        /// <summary>
+        /// A coded concept defining if the medication is in active use.
+        /// (url: http://hl7.org/fhir/ValueSet/medication-status)
+        /// </summary>
+        [FhirEnumeration("MedicationStatus")]
+        public enum MedicationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/medication-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/medication-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
+
 
         [FhirType("IngredientComponent")]
         [DataContract]
-        public partial class IngredientComponent : BackboneElement
+        public partial class IngredientComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "IngredientComponent"; } }
 
             /// <summary>
-            /// The product contained
+            /// The actual ingredient or content
             /// </summary>
             [FhirElement("item", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
@@ -190,9 +218,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Item != null) yield return new ElementValue("item", false, Item);
-                    if (IsActiveElement != null) yield return new ElementValue("isActive", false, IsActiveElement);
-                    if (Amount != null) yield return new ElementValue("amount", false, Amount);
+                    if (Item != null) yield return new ElementValue("item", Item);
+                    if (IsActiveElement != null) yield return new ElementValue("isActive", IsActiveElement);
+                    if (Amount != null) yield return new ElementValue("amount", Amount);
                 }
             }
 
@@ -202,7 +230,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("BatchComponent")]
         [DataContract]
-        public partial class BatchComponent : BackboneElement
+        public partial class BatchComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "BatchComponent"; } }
@@ -369,9 +397,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (LotNumberElement != null) yield return new ElementValue("lotNumber", false, LotNumberElement);
-                    if (ExpirationDateElement != null) yield return new ElementValue("expirationDate", false, ExpirationDateElement);
-                    if (SerialNumberElement != null) yield return new ElementValue("serialNumber", false, SerialNumberElement);
+                    if (LotNumberElement != null) yield return new ElementValue("lotNumber", LotNumberElement);
+                    if (ExpirationDateElement != null) yield return new ElementValue("expirationDate", ExpirationDateElement);
+                    if (SerialNumberElement != null) yield return new ElementValue("serialNumber", SerialNumberElement);
                 }
             }
 
@@ -573,13 +601,13 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Manufacturer != null) yield return new ElementValue("manufacturer", false, Manufacturer);
-                if (Form != null) yield return new ElementValue("form", false, Form);
-                if (Amount != null) yield return new ElementValue("amount", false, Amount);
-                foreach (var elem in Ingredient) { if (elem != null) yield return new ElementValue("ingredient", true, elem); }
-                if (Batch != null) yield return new ElementValue("batch", false, Batch);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Manufacturer != null) yield return new ElementValue("manufacturer", Manufacturer);
+                if (Form != null) yield return new ElementValue("form", Form);
+                if (Amount != null) yield return new ElementValue("amount", Amount);
+                foreach (var elem in Ingredient) { if (elem != null) yield return new ElementValue("ingredient", elem); }
+                if (Batch != null) yield return new ElementValue("batch", Batch);
             }
         }
 

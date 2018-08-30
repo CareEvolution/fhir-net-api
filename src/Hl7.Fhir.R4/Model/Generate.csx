@@ -66,6 +66,16 @@ public static class StringUtils
         }
         if (int.TryParse(result, out var integerValue))
             result = "N" + result;
+
+        result = result.Replace(".", "_");
+
+        int IsIntegerValue;
+        if (Char.IsDigit(result[0]))
+        {
+            var numMap = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine" };
+            result = numMap[int.Parse(result.Substring(0, 1))] + result.Substring(1);
+        }
+
         return result;
     }
 
@@ -145,6 +155,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.{version.Version};
 using Hl7.Fhir.Validation.{version.Version};
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -182,7 +193,6 @@ using Hl7.Fhir.Utility;
         yield return $"//";
         yield return $"// Generated for FHIR v{version.FhirVersion}";
         yield return $"//";
-        //yield return $"namespace Hl7.Fhir.Model";
         yield return $"namespace Hl7.Fhir.Model.{version.Version}";
         yield return $"{{";
     }
@@ -466,6 +476,11 @@ public class ValueSet
     /// </summary>
     public List<ValueSetValue> Values;
 
+    /// <summary>
+    /// Models referencing this value set
+    /// </summary>
+    public HashSet<string> Models;
+
     private string GetSortedCodesString()
     {
         if (Values == null)
@@ -511,7 +526,7 @@ public class ValueSet
         using (var writer = new StreamWriter(filePath, false, Encoding.UTF8))
         {
             foreach (var line in StringUtils.RenderFileHeader(version)) writer.WriteLine(line);
-            foreach (var valueSet in valueSets)
+            foreach (var valueSet in valueSets.Where(v=>v.Models.Count != 1))
             {
                 writer.WriteLine();
                 foreach (var line in valueSet.Render()) writer.WriteLine(string.IsNullOrEmpty(line) ? string.Empty : "    " + line);
@@ -536,6 +551,7 @@ public class ValueSet
         var allElements = nodesResources.OfType<XmlElement>().Concat(nodesTypesRoot.OfType<XmlElement>());
         foreach (var element in allElements)
         {
+            var name = element.SelectSingleNode("fhir:id/@value", loadedVersion.NSR).InnerText;
             foreach (var eProp in element.SelectNodes("fhir:differential/fhir:element[fhir:type/fhir:code/@value = 'code' and fhir:binding]", loadedVersion.NSR).OfType<XmlElement>())
             {
                 string valuesetUrl = null;
@@ -549,17 +565,23 @@ public class ValueSet
                 {
                     valuesetUrl = n4.Value;
                 }
-                var n5 = eProp.SelectSingleNode("fhir:binding/fhir:valueSetCanonical/@value", loadedVersion.NSR);
+                var n5 = eProp.SelectSingleNode("fhir:binding/fhir:valueSet/@value", loadedVersion.NSR);
                 if (n5 != null)
                 {
                     valuesetUrl = n5.Value;
                 }
+                //System.Diagnostics.Debugger.Launch();
                 var valuesetElement = loadedVersion.Expansions.SelectSingleNode("/fhir:Bundle/fhir:entry/fhir:resource/fhir:ValueSet[fhir:url/@value = '" + valuesetUrl + "']", loadedVersion.NSE) as XmlElement;
                 if (valuesetElement != null)
                 {
                     var enumName = valuesetElement.SelectSingleNode("fhir:name/@value", loadedVersion.NSE).InnerText;
                     // reformat the name so that it is a valid .NET enumeration name
-                    enumName = enumName.Replace(" ", "").Replace("-", "_");
+
+                    enumName = enumName.Replace(" ", "").Replace("-", "_").Replace(".","_");
+
+                    if (enumName == "MimeTypes")
+                        continue;
+
                     if (!valueSetsByEnumName.ContainsKey(enumName))
                     {
                         var valueSet = new ValueSet
@@ -567,7 +589,8 @@ public class ValueSet
                             EnumName = enumName,
                             Url = valuesetUrl,
                             Description = valuesetElement.SelectSingleNode("fhir:description/@value", loadedVersion.NSE).InnerText,
-                            Values = new List<ValueSetValue>()
+                            Values = new List<ValueSetValue>(),
+                            Models = new HashSet<string> { name }
                         };
                         valueSetsByEnumName.Add(enumName, valueSet);
                         var codedValues = new HashSet<string>();
@@ -604,6 +627,10 @@ public class ValueSet
                                 valueSet.Values.Add(valueSetValue);
                             }
                         }
+                    }
+                    else
+                    {
+                        valueSetsByEnumName[enumName].Models.Add(name);
                     }
                 }
             }
@@ -791,18 +818,18 @@ public class ResourceDetails
     /// Create a C# file containing the class corresponding to this FHIR resource or data type
     /// </summary>
     /// <param name="filePath">Path of the target file, that is overwritten if it alreadt exist</param>
-    public void Write(string filePath)
+    public void Write(string filePath, IEnumerable<ValueSet> valueSets )
     {
         using (var writer = new StreamWriter(filePath, false, Encoding.UTF8))
         {
             foreach (var line in StringUtils.RenderFileHeader(Version)) writer.WriteLine(line);
-            foreach (var line in Render()) writer.WriteLine(string.IsNullOrEmpty(line) ? string.Empty : "    " + line);
+            foreach (var line in Render(valueSets)) writer.WriteLine(string.IsNullOrEmpty(line) ? string.Empty : "    " + line);
             writer.WriteLine();
             writer.WriteLine("}");
         }
     }
 
-    private IEnumerable<string> Render()
+    private IEnumerable<string> Render(IEnumerable<ValueSet> valueSets)
     {
         var isElement = Name == "Element" || BaseType == "Element" || BaseType == "BackboneElement" || BaseType == "Quantity" || IsPrimitive;
         foreach (var line in StringUtils.RenderSummary(Description)) yield return line;
@@ -843,6 +870,12 @@ public class ResourceDetails
         yield return $"    [NotMapped]";
         yield return $"    public override string TypeName {{ get {{ return \"{ FhirName }\"; }} }}";
 
+        foreach (var valueSet in valueSets)
+        {
+            yield return string.Empty;
+            foreach (var line in valueSet.Render()) yield return string.IsNullOrEmpty(line) ? string.Empty : "    " + line;
+        }
+
         if (!string.IsNullOrEmpty(Pattern))
         {
             yield return string.Empty;
@@ -863,7 +896,7 @@ public class ResourceDetails
             yield return $"    /// <summary>";
             yield return $"    /// Primitive value of the element";
             yield return $"    /// </summary>";
-            yield return $"    [FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlSerializationHint.Attribute, InSummary=true, Order=30)]";
+            yield return $"    [FhirElement(\"value\", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]";
             // yield return $"    [CLSCompliant(false)]";
             if (!string.IsNullOrEmpty(Pattern) && Name != "FhirDecimal" && Name != "Time" && Name != "Integer" &&
                 Name != "UnsignedInt" && Name != "PositiveInt" && Name != "Instant" && Name != "Markdown" &&
@@ -1197,6 +1230,11 @@ public class ResourceDetails
                 resourceName = "Code";
                 primitiveTypeName = "string";
             }
+            else if (resourceName == "xhtml")
+            {
+                resourceName = "XHtml";
+                primitiveTypeName = "string";
+            }
             else if (resourceName == "base64Binary")
             {
                 resourceName = "Base64Binary";
@@ -1466,7 +1504,7 @@ public class ComponentDetails
     {
         yield return $"[FhirType(\"{ Name }\")]";
         yield return $"[DataContract]";
-        yield return $"public partial class { Name } : { BaseType }";
+        yield return $"public partial class { Name } : { BaseType }, IBackboneElement";
         yield return $"{{";
         yield return $"    [NotMapped]";
         yield return $"    public override string TypeName {{ get {{ return \"{ Name }\"; }} }}";
@@ -1563,8 +1601,8 @@ public class ConstraintDetails
         }
         yield return $"    Key = { StringUtils.Quote(Key) },";
         var severity = Severity == "Error" ?
-            "ConstraintSeverity.Error" :
-            "ConstraintSeverity.Warning";
+            "ElementDefinition.ConstraintSeverity.Error" :
+            "ElementDefinition.ConstraintSeverity.Warning";
         yield return $"    Severity = { severity },";
         if (!string.IsNullOrEmpty(Human))
         {
@@ -1735,12 +1773,12 @@ public class PropertyDetails
         if(PropType == "string" && Name == "Div")
         {
             // for Narrative.Div
-            serialization = ", XmlSerialization=XmlSerializationHint.XhtmlElement";
+            serialization = ", XmlSerialization=XmlRepresentation.XHtml,TypeRedirect = typeof(XHtml)";
         } 
         else if (PropType == "FhirString" && FhirName == "id")
         {
             // for Element.id
-            serialization = ",  XmlSerialization=XmlSerializationHint.Attribute";
+            serialization = ",  XmlSerialization=XmlRepresentation.XmlAttr,TypeRedirect = typeof(Id)";
             InSummaryVersions.Add(string.Empty);
         }
         yield return $"[FhirElement(\"{FhirName}\"{serialization}{InSummaryAttribute()}, Order={nPropNum}{choice})]";
@@ -1839,18 +1877,13 @@ public class PropertyDetails
 
     public IEnumerable<string> RenderAsChildWithName()
     {
-        // Exclude special properties encoded as Xml attributes (Element.Id) - not derived from Base
-        if (IsXmlAttribute) yield break;
-
-        if (PropType == "string") yield break;
-
         if (IsMultiCard())
         {
-            yield return $"foreach (var elem in {Name}) {{ if (elem != null) yield return new ElementValue(\"{FhirName}\", true, elem); }}";
+            yield return $"foreach (var elem in {Name}) {{ if (elem != null) yield return new ElementValue(\"{FhirName}\", elem); }}";
         }
         else
         {
-            yield return $"if ({Name} != null) yield return new ElementValue(\"{FhirName}\", false, {Name});";
+            yield return $"if ({Name} != null) yield return new ElementValue(\"{FhirName}\", {Name});";
         }
     }
 
@@ -1962,6 +1995,10 @@ public class PropertyDetails
             result.Summary = element.SelectSingleNode("fhir:short/@value", ns).Value;
         if (element.SelectSingleNode("fhir:type/fhir:code/@value", ns) != null)
             result.PropType = element.SelectSingleNode("fhir:type/fhir:code/@value", ns).Value;
+        else if (element.SelectSingleNode("fhir:path/@value", ns).Value == "Element.id")
+            result.PropType = "id";
+        else if (element.SelectSingleNode("fhir:path/@value", ns).Value == "Extension.url")
+            result.PropType = "url";
         else
             result.PropType = "BackboneElement";
 
@@ -2313,7 +2350,7 @@ public class PropertyDetails
         // R4 change
         if (codeRequiredBindingNode == null)
         {
-            codeRequiredBindingNode = element.SelectSingleNode("fhir:binding[fhir:strength/@value = 'required']/fhir:valueSetCanonical/@value", ns);
+            codeRequiredBindingNode = element.SelectSingleNode("fhir:binding[fhir:strength/@value = 'required']/fhir:valueSet/@value", ns);
         }
 
         if (codeRequiredBindingNode == null)
@@ -2322,7 +2359,7 @@ public class PropertyDetails
         }
 
         var codeRequiredBinding = codeRequiredBindingNode.Value;
-        if (string.IsNullOrEmpty(codeRequiredBinding) || codeRequiredBinding == "http://hl7.org/fhir/ValueSet/operation-parameter-type")
+        if (string.IsNullOrEmpty(codeRequiredBinding) || codeRequiredBinding == "http://hl7.org/fhir/ValueSet/operation-parameter-type" || codeRequiredBinding == "http://hl7.org/fhir/ValueSet/mimetypes")
         {
             return null;
         }
@@ -2500,7 +2537,7 @@ public class AllVersionsModelInfo : ModelInfoBase
             .ToList();
         _typesNameAndType = resourcesByName
             .Values
-            .Where(r => !r.IsResource() && r.Name != "Xhtml")
+            .Where(r => !r.IsResource())
             .Select(r => Tuple.Create(r.FhirName, r.Name))
             .Distinct()
             .OrderBy(nameAndType => nameAndType.Item1)
@@ -2551,7 +2588,7 @@ public class ModelInfo : ModelInfoBase
             .ToList();
         _version = version;
         _typesNameAndType = resources
-            .Where(r => !r.IsResource() && r.Name != "Xhtml")
+            .Where(r => !r.IsResource())
             .Select(r => Tuple.Create(r.FhirName, r.Name))
             .OrderBy(nameAndType => nameAndType.Item1)
             .ToList();
@@ -2673,6 +2710,8 @@ public class SearchParameter
             case "url": _outputType = "Url"; break;
             case "canonical": _outputType = "Canonical"; break;
             case "uuid": _outputType = "Uuid"; break;
+            case "special": _outputType = "Special"; break;
+            default: _outputType = searchType; break;
         }
         var xpath = sp.SelectSingleNode("fhir:xpath/@value", ns)?.Value ??
             string.Empty;
@@ -2758,6 +2797,7 @@ foreach (var loadedVersion in loadedVersions)
 {
     var valueSetsByEnumName = ValueSet.LoadAll(loadedVersion);
     var resourcesByName = ResourceDetails.LoadAll(loadedVersion, valueSetsByEnumName);
+    var valueSetsByModel = valueSetsByEnumName.Values.Where(v => v.Models.Count == 1).ToLookup(v => v.Models.First(), v => v);
 
     // write enums
     var filePath = Path.Combine(generatedDirectory, "_Enumerations.cs");
@@ -2772,7 +2812,7 @@ foreach (var loadedVersion in loadedVersions)
         {
             filePath = Path.Combine(generatedDirectory, resource.Name + ".cs");
             Console.WriteLine("Creating {0}", filePath);
-            resource.Write(filePath);
+            resource.Write(filePath, valueSetsByModel[resource.Name]);
         }
     }
 

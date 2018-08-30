@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,38 +57,64 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "GuidanceResponse"; } }
 
+        /// <summary>
+        /// The status of a guidance response.
+        /// (url: http://hl7.org/fhir/ValueSet/guidance-response-status)
+        /// </summary>
+        [FhirEnumeration("GuidanceResponseStatus")]
+        public enum GuidanceResponseStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("success", "http://hl7.org/fhir/guidance-response-status"), Description("Success")]
+            Success,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("data-requested", "http://hl7.org/fhir/guidance-response-status"), Description("Data Requested")]
+            DataRequested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("data-required", "http://hl7.org/fhir/guidance-response-status"), Description("Data Required")]
+            DataRequired,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/guidance-response-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("failure", "http://hl7.org/fhir/guidance-response-status"), Description("Failure")]
+            Failure,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/guidance-response-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
 
         /// <summary>
-        /// The id of the request associated with this response, if any
+        /// The identifier of the request associated with this response, if any
         /// </summary>
-        [FhirElement("requestId", InSummary=true, Order=90)]
+        [FhirElement("requestIdentifier", InSummary=true, Order=90)]
         [DataMember]
-        public Id RequestIdElement
+        public Identifier RequestIdentifier
         {
-            get { return _requestIdElement; }
-            set { _requestIdElement = value; OnPropertyChanged("RequestIdElement"); }
+            get { return _requestIdentifier; }
+            set { _requestIdentifier = value; OnPropertyChanged("RequestIdentifier"); }
         }
 
-        private Id _requestIdElement;
-
-        /// <summary>
-        /// The id of the request associated with this response, if any
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMember]
-        public string RequestId
-        {
-            get { return RequestIdElement != null ? RequestIdElement.Value : null; }
-            set
-            {
-                if (value == null)
-                    RequestIdElement = null;
-                else
-                    RequestIdElement = new Id(value);
-                OnPropertyChanged("RequestId");
-            }
-        }
+        private Identifier _requestIdentifier;
 
         /// <summary>
         /// Business identifier
@@ -333,7 +360,7 @@ namespace Hl7.Fhir.Model.R4
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if (RequestIdElement != null) dest.RequestIdElement = (Id)RequestIdElement.DeepCopy();
+                if (RequestIdentifier != null) dest.RequestIdentifier = (Identifier)RequestIdentifier.DeepCopy();
                 if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
                 if (Module != null) dest.Module = (Element)Module.DeepCopy();
                 if (StatusElement != null) dest.StatusElement = (Code<GuidanceResponseStatus>)StatusElement.DeepCopy();
@@ -365,7 +392,7 @@ namespace Hl7.Fhir.Model.R4
             if (otherT == null) return false;
 
             if (!base.Matches(otherT)) return false;
-            if (!DeepComparable.Matches(RequestIdElement, otherT.RequestIdElement)) return false;
+            if (!DeepComparable.Matches(RequestIdentifier, otherT.RequestIdentifier)) return false;
             if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.Matches(Module, otherT.Module)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
@@ -390,7 +417,7 @@ namespace Hl7.Fhir.Model.R4
             if (otherT == null) return false;
 
             if (!base.IsExactly(otherT)) return false;
-            if (!DeepComparable.IsExactly(RequestIdElement, otherT.RequestIdElement)) return false;
+            if (!DeepComparable.IsExactly(RequestIdentifier, otherT.RequestIdentifier)) return false;
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.IsExactly(Module, otherT.Module)) return false;
             if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
@@ -415,7 +442,7 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.Children) yield return item;
-                if (RequestIdElement != null) yield return RequestIdElement;
+                if (RequestIdentifier != null) yield return RequestIdentifier;
                 foreach (var elem in Identifier) { if (elem != null) yield return elem; }
                 if (Module != null) yield return Module;
                 if (StatusElement != null) yield return StatusElement;
@@ -439,21 +466,21 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (RequestIdElement != null) yield return new ElementValue("requestId", false, RequestIdElement);
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (Module != null) yield return new ElementValue("module", false, Module);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (OccurrenceDateTimeElement != null) yield return new ElementValue("occurrenceDateTime", false, OccurrenceDateTimeElement);
-                if (Performer != null) yield return new ElementValue("performer", false, Performer);
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in EvaluationMessage) { if (elem != null) yield return new ElementValue("evaluationMessage", true, elem); }
-                if (OutputParameters != null) yield return new ElementValue("outputParameters", false, OutputParameters);
-                if (Result != null) yield return new ElementValue("result", false, Result);
-                foreach (var elem in DataRequirement) { if (elem != null) yield return new ElementValue("dataRequirement", true, elem); }
+                if (RequestIdentifier != null) yield return new ElementValue("requestIdentifier", RequestIdentifier);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (Module != null) yield return new ElementValue("module", Module);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (OccurrenceDateTimeElement != null) yield return new ElementValue("occurrenceDateTime", OccurrenceDateTimeElement);
+                if (Performer != null) yield return new ElementValue("performer", Performer);
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in EvaluationMessage) { if (elem != null) yield return new ElementValue("evaluationMessage", elem); }
+                if (OutputParameters != null) yield return new ElementValue("outputParameters", OutputParameters);
+                if (Result != null) yield return new ElementValue("result", Result);
+                foreach (var elem in DataRequirement) { if (elem != null) yield return new ElementValue("dataRequirement", elem); }
             }
         }
 

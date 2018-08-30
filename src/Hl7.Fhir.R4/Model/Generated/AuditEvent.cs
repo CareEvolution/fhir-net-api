@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,121 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "AuditEvent"; } }
 
+        /// <summary>
+        /// Indicator for type of action performed during the event that generated the event.
+        /// (url: http://hl7.org/fhir/ValueSet/audit-event-action)
+        /// </summary>
+        [FhirEnumeration("AuditEventAction")]
+        public enum AuditEventAction
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("C", "http://hl7.org/fhir/audit-event-action"), Description("Create")]
+            C,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("R", "http://hl7.org/fhir/audit-event-action"), Description("Read/View/Print")]
+            R,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("U", "http://hl7.org/fhir/audit-event-action"), Description("Update")]
+            U,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("D", "http://hl7.org/fhir/audit-event-action"), Description("Delete")]
+            D,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("E", "http://hl7.org/fhir/audit-event-action"), Description("Execute")]
+            E,
+        }
+
+        /// <summary>
+        /// Indicates whether the event succeeded or failed.
+        /// (url: http://hl7.org/fhir/ValueSet/audit-event-outcome)
+        /// </summary>
+        [FhirEnumeration("AuditEventOutcome")]
+        public enum AuditEventOutcome
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("0", "http://hl7.org/fhir/audit-event-outcome"), Description("Success")]
+            N0,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("4", "http://hl7.org/fhir/audit-event-outcome"), Description("Minor failure")]
+            N4,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("8", "http://hl7.org/fhir/audit-event-outcome"), Description("Serious failure")]
+            N8,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("12", "http://hl7.org/fhir/audit-event-outcome"), Description("Major failure")]
+            N12,
+        }
+
+        /// <summary>
+        /// The type of network access point of this agent in the audit event.
+        /// (url: http://hl7.org/fhir/ValueSet/network-type)
+        /// </summary>
+        [FhirEnumeration("AuditEventAgentNetworkType")]
+        public enum AuditEventAgentNetworkType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("1", "http://hl7.org/fhir/network-type"), Description("Machine Name")]
+            N1,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("2", "http://hl7.org/fhir/network-type"), Description("IP Address")]
+            N2,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("3", "http://hl7.org/fhir/network-type"), Description("Telephone Number")]
+            N3,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("4", "http://hl7.org/fhir/network-type"), Description("Email address")]
+            N4,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("5", "http://hl7.org/fhir/network-type"), Description("URI")]
+            N5,
+        }
+
 
         [FhirType("AgentComponent")]
         [DataContract]
-        public partial class AgentComponent : BackboneElement
+        public partial class AgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AgentComponent"; } }
@@ -92,36 +204,23 @@ namespace Hl7.Fhir.Model.R4
             private List<CodeableConcept> _role;
 
             /// <summary>
-            /// Direct reference to resource
+            /// Identifier of who
             /// </summary>
-            [FhirElement("reference", InSummary=true, Order=60)]
+            [FhirElement("who", InSummary=true, Order=60)]
             [References("PractitionerRole","Practitioner","Organization","Device","Patient","RelatedPerson")]
             [DataMember]
-            public ResourceReference Reference
+            public ResourceReference Who
             {
-                get { return _reference; }
-                set { _reference = value; OnPropertyChanged("Reference"); }
+                get { return _who; }
+                set { _who = value; OnPropertyChanged("Who"); }
             }
 
-            private ResourceReference _reference;
+            private ResourceReference _who;
 
             /// <summary>
-            /// Unique identifier for the user
+            /// Alternative User identity
             /// </summary>
-            [FhirElement("userId", InSummary=true, Order=70)]
-            [DataMember]
-            public Identifier UserId
-            {
-                get { return _userId; }
-                set { _userId = value; OnPropertyChanged("UserId"); }
-            }
-
-            private Identifier _userId;
-
-            /// <summary>
-            /// Alternative User id e.g. authentication
-            /// </summary>
-            [FhirElement("altId", Order=80)]
+            [FhirElement("altId", Order=70)]
             [DataMember]
             public FhirString AltIdElement
             {
@@ -132,7 +231,7 @@ namespace Hl7.Fhir.Model.R4
             private FhirString _altIdElement;
 
             /// <summary>
-            /// Alternative User id e.g. authentication
+            /// Alternative User identity
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -151,9 +250,9 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// Human-meaningful name for the agent
+            /// Human friendly name for the agent
             /// </summary>
-            [FhirElement("name", Order=90)]
+            [FhirElement("name", Order=80)]
             [DataMember]
             public FhirString NameElement
             {
@@ -164,7 +263,7 @@ namespace Hl7.Fhir.Model.R4
             private FhirString _nameElement;
 
             /// <summary>
-            /// Human-meaningful name for the agent
+            /// Human friendly name for the agent
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -185,7 +284,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Whether user is initiator
             /// </summary>
-            [FhirElement("requestor", InSummary=true, Order=100)]
+            [FhirElement("requestor", InSummary=true, Order=90)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public FhirBoolean RequestorElement
@@ -218,7 +317,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Where
             /// </summary>
-            [FhirElement("location", Order=110)]
+            [FhirElement("location", Order=100)]
             [References("Location")]
             [DataMember]
             public ResourceReference Location
@@ -232,7 +331,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Policy that authorized event
             /// </summary>
-            [FhirElement("policy", Order=120)]
+            [FhirElement("policy", Order=110)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<FhirUri> PolicyElement
@@ -265,7 +364,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Type of media
             /// </summary>
-            [FhirElement("media", Order=130)]
+            [FhirElement("media", Order=120)]
             [DataMember]
             public Coding Media
             {
@@ -278,7 +377,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Logical network location for application activity
             /// </summary>
-            [FhirElement("network", Order=140)]
+            [FhirElement("network", Order=130)]
             [DataMember]
             public NetworkComponent Network
             {
@@ -291,7 +390,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Reason given for this user
             /// </summary>
-            [FhirElement("purposeOfUse", Order=150)]
+            [FhirElement("purposeOfUse", Order=140)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<CodeableConcept> PurposeOfUse
@@ -311,8 +410,7 @@ namespace Hl7.Fhir.Model.R4
                     base.CopyTo(dest);
                     if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
                     if (Role != null) dest.Role = new List<CodeableConcept>(Role.DeepCopy());
-                    if (Reference != null) dest.Reference = (ResourceReference)Reference.DeepCopy();
-                    if (UserId != null) dest.UserId = (Identifier)UserId.DeepCopy();
+                    if (Who != null) dest.Who = (ResourceReference)Who.DeepCopy();
                     if (AltIdElement != null) dest.AltIdElement = (FhirString)AltIdElement.DeepCopy();
                     if (NameElement != null) dest.NameElement = (FhirString)NameElement.DeepCopy();
                     if (RequestorElement != null) dest.RequestorElement = (FhirBoolean)RequestorElement.DeepCopy();
@@ -340,8 +438,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(Type, otherT.Type)) return false;
                 if ( !DeepComparable.Matches(Role, otherT.Role)) return false;
-                if (!DeepComparable.Matches(Reference, otherT.Reference)) return false;
-                if (!DeepComparable.Matches(UserId, otherT.UserId)) return false;
+                if (!DeepComparable.Matches(Who, otherT.Who)) return false;
                 if (!DeepComparable.Matches(AltIdElement, otherT.AltIdElement)) return false;
                 if (!DeepComparable.Matches(NameElement, otherT.NameElement)) return false;
                 if (!DeepComparable.Matches(RequestorElement, otherT.RequestorElement)) return false;
@@ -362,8 +459,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
                 if (!DeepComparable.IsExactly(Role, otherT.Role)) return false;
-                if (!DeepComparable.IsExactly(Reference, otherT.Reference)) return false;
-                if (!DeepComparable.IsExactly(UserId, otherT.UserId)) return false;
+                if (!DeepComparable.IsExactly(Who, otherT.Who)) return false;
                 if (!DeepComparable.IsExactly(AltIdElement, otherT.AltIdElement)) return false;
                 if (!DeepComparable.IsExactly(NameElement, otherT.NameElement)) return false;
                 if (!DeepComparable.IsExactly(RequestorElement, otherT.RequestorElement)) return false;
@@ -385,8 +481,7 @@ namespace Hl7.Fhir.Model.R4
                     foreach (var item in base.Children) yield return item;
                     if (Type != null) yield return Type;
                     foreach (var elem in Role) { if (elem != null) yield return elem; }
-                    if (Reference != null) yield return Reference;
-                    if (UserId != null) yield return UserId;
+                    if (Who != null) yield return Who;
                     if (AltIdElement != null) yield return AltIdElement;
                     if (NameElement != null) yield return NameElement;
                     if (RequestorElement != null) yield return RequestorElement;
@@ -404,18 +499,17 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", true, elem); }
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
-                    if (UserId != null) yield return new ElementValue("userId", false, UserId);
-                    if (AltIdElement != null) yield return new ElementValue("altId", false, AltIdElement);
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (RequestorElement != null) yield return new ElementValue("requestor", false, RequestorElement);
-                    if (Location != null) yield return new ElementValue("location", false, Location);
-                    foreach (var elem in PolicyElement) { if (elem != null) yield return new ElementValue("policy", true, elem); }
-                    if (Media != null) yield return new ElementValue("media", false, Media);
-                    if (Network != null) yield return new ElementValue("network", false, Network);
-                    foreach (var elem in PurposeOfUse) { if (elem != null) yield return new ElementValue("purposeOfUse", true, elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", elem); }
+                    if (Who != null) yield return new ElementValue("who", Who);
+                    if (AltIdElement != null) yield return new ElementValue("altId", AltIdElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (RequestorElement != null) yield return new ElementValue("requestor", RequestorElement);
+                    if (Location != null) yield return new ElementValue("location", Location);
+                    foreach (var elem in PolicyElement) { if (elem != null) yield return new ElementValue("policy", elem); }
+                    if (Media != null) yield return new ElementValue("media", Media);
+                    if (Network != null) yield return new ElementValue("network", Network);
+                    foreach (var elem in PurposeOfUse) { if (elem != null) yield return new ElementValue("purposeOfUse", elem); }
                 }
             }
 
@@ -425,7 +519,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("NetworkComponent")]
         [DataContract]
-        public partial class NetworkComponent : BackboneElement
+        public partial class NetworkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "NetworkComponent"; } }
@@ -556,8 +650,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (AddressElement != null) yield return new ElementValue("address", false, AddressElement);
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
+                    if (AddressElement != null) yield return new ElementValue("address", AddressElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
                 }
             }
 
@@ -567,7 +661,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SourceComponent")]
         [DataContract]
-        public partial class SourceComponent : BackboneElement
+        public partial class SourceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SourceComponent"; } }
@@ -607,16 +701,17 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The identity of source detecting the event
             /// </summary>
-            [FhirElement("identifier", InSummary=true, Order=50)]
+            [FhirElement("observer", InSummary=true, Order=50)]
+            [References("PractitionerRole","Practitioner","Organization","Device","Patient","RelatedPerson")]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Identifier Identifier
+            public ResourceReference Observer
             {
-                get { return _identifier; }
-                set { _identifier = value; OnPropertyChanged("Identifier"); }
+                get { return _observer; }
+                set { _observer = value; OnPropertyChanged("Observer"); }
             }
 
-            private Identifier _identifier;
+            private ResourceReference _observer;
 
             /// <summary>
             /// The type of source where event originated
@@ -640,7 +735,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if (SiteElement != null) dest.SiteElement = (FhirString)SiteElement.DeepCopy();
-                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
+                    if (Observer != null) dest.Observer = (ResourceReference)Observer.DeepCopy();
                     if (Type != null) dest.Type = new List<Coding>(Type.DeepCopy());
                     return dest;
                 }
@@ -660,7 +755,7 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(SiteElement, otherT.SiteElement)) return false;
-                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+                if (!DeepComparable.Matches(Observer, otherT.Observer)) return false;
                 if ( !DeepComparable.Matches(Type, otherT.Type)) return false;
 
                 return true;
@@ -673,7 +768,7 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(SiteElement, otherT.SiteElement)) return false;
-                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+                if (!DeepComparable.IsExactly(Observer, otherT.Observer)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
 
                 return true;
@@ -687,7 +782,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.Children) yield return item;
                     if (SiteElement != null) yield return SiteElement;
-                    if (Identifier != null) yield return Identifier;
+                    if (Observer != null) yield return Observer;
                     foreach (var elem in Type) { if (elem != null) yield return elem; }
                 }
             }
@@ -698,9 +793,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SiteElement != null) yield return new ElementValue("site", false, SiteElement);
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
+                    if (SiteElement != null) yield return new ElementValue("site", SiteElement);
+                    if (Observer != null) yield return new ElementValue("observer", Observer);
+                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
                 }
             }
 
@@ -710,41 +805,28 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EntityComponent")]
         [DataContract]
-        public partial class EntityComponent : BackboneElement
+        public partial class EntityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EntityComponent"; } }
 
             /// <summary>
-            /// Specific instance of object
-            /// </summary>
-            [FhirElement("identifier", InSummary=true, Order=40)]
-            [DataMember]
-            public Identifier Identifier
-            {
-                get { return _identifier; }
-                set { _identifier = value; OnPropertyChanged("Identifier"); }
-            }
-
-            private Identifier _identifier;
-
-            /// <summary>
             /// Specific instance of resource
             /// </summary>
-            [FhirElement("reference", InSummary=true, Order=50)]
+            [FhirElement("what", InSummary=true, Order=40)]
             [DataMember]
-            public ResourceReference Reference
+            public ResourceReference What
             {
-                get { return _reference; }
-                set { _reference = value; OnPropertyChanged("Reference"); }
+                get { return _what; }
+                set { _what = value; OnPropertyChanged("What"); }
             }
 
-            private ResourceReference _reference;
+            private ResourceReference _what;
 
             /// <summary>
             /// Type of entity involved
             /// </summary>
-            [FhirElement("type", Order=60)]
+            [FhirElement("type", Order=50)]
             [DataMember]
             public Coding Type
             {
@@ -757,7 +839,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// What role the entity played
             /// </summary>
-            [FhirElement("role", Order=70)]
+            [FhirElement("role", Order=60)]
             [DataMember]
             public Coding Role
             {
@@ -770,7 +852,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Life-cycle stage for the entity
             /// </summary>
-            [FhirElement("lifecycle", Order=80)]
+            [FhirElement("lifecycle", Order=70)]
             [DataMember]
             public Coding Lifecycle
             {
@@ -783,7 +865,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Security labels on the entity
             /// </summary>
-            [FhirElement("securityLabel", Order=90)]
+            [FhirElement("securityLabel", Order=80)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<Coding> SecurityLabel
@@ -797,7 +879,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Descriptor for entity
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=100)]
+            [FhirElement("name", InSummary=true, Order=90)]
             [DataMember]
             public FhirString NameElement
             {
@@ -829,7 +911,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Descriptive text
             /// </summary>
-            [FhirElement("description", Order=110)]
+            [FhirElement("description", Order=100)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -861,7 +943,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Query parameters
             /// </summary>
-            [FhirElement("query", InSummary=true, Order=120)]
+            [FhirElement("query", InSummary=true, Order=110)]
             [DataMember]
             public Base64Binary QueryElement
             {
@@ -893,7 +975,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Additional Information about the entity
             /// </summary>
-            [FhirElement("detail", Order=130)]
+            [FhirElement("detail", Order=120)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<DetailComponent> Detail
@@ -911,8 +993,7 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
-                    if (Reference != null) dest.Reference = (ResourceReference)Reference.DeepCopy();
+                    if (What != null) dest.What = (ResourceReference)What.DeepCopy();
                     if (Type != null) dest.Type = (Coding)Type.DeepCopy();
                     if (Role != null) dest.Role = (Coding)Role.DeepCopy();
                     if (Lifecycle != null) dest.Lifecycle = (Coding)Lifecycle.DeepCopy();
@@ -938,8 +1019,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-                if (!DeepComparable.Matches(Reference, otherT.Reference)) return false;
+                if (!DeepComparable.Matches(What, otherT.What)) return false;
                 if (!DeepComparable.Matches(Type, otherT.Type)) return false;
                 if (!DeepComparable.Matches(Role, otherT.Role)) return false;
                 if (!DeepComparable.Matches(Lifecycle, otherT.Lifecycle)) return false;
@@ -958,8 +1038,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-                if (!DeepComparable.IsExactly(Reference, otherT.Reference)) return false;
+                if (!DeepComparable.IsExactly(What, otherT.What)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
                 if (!DeepComparable.IsExactly(Role, otherT.Role)) return false;
                 if (!DeepComparable.IsExactly(Lifecycle, otherT.Lifecycle)) return false;
@@ -979,8 +1058,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (Identifier != null) yield return Identifier;
-                    if (Reference != null) yield return Reference;
+                    if (What != null) yield return What;
                     if (Type != null) yield return Type;
                     if (Role != null) yield return Role;
                     if (Lifecycle != null) yield return Lifecycle;
@@ -998,16 +1076,15 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Lifecycle != null) yield return new ElementValue("lifecycle", false, Lifecycle);
-                    foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", true, elem); }
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (QueryElement != null) yield return new ElementValue("query", false, QueryElement);
-                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", true, elem); }
+                    if (What != null) yield return new ElementValue("what", What);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Role != null) yield return new ElementValue("role", Role);
+                    if (Lifecycle != null) yield return new ElementValue("lifecycle", Lifecycle);
+                    foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (QueryElement != null) yield return new ElementValue("query", QueryElement);
+                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
                 }
             }
 
@@ -1017,7 +1094,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DetailComponent")]
         [DataContract]
-        public partial class DetailComponent : BackboneElement
+        public partial class DetailComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DetailComponent"; } }
@@ -1132,8 +1209,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -1372,7 +1449,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "entity.all(name.empty() or query.empty())",
             Key = "sev-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either a name or a query (NOT both)",
             Xpath = "not(exists(f:name)) or not(exists(f:query))"
         };
@@ -1481,17 +1558,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                foreach (var elem in Subtype) { if (elem != null) yield return new ElementValue("subtype", true, elem); }
-                if (ActionElement != null) yield return new ElementValue("action", false, ActionElement);
-                if (Period != null) yield return new ElementValue("period", false, Period);
-                if (RecordedElement != null) yield return new ElementValue("recorded", false, RecordedElement);
-                if (OutcomeElement != null) yield return new ElementValue("outcome", false, OutcomeElement);
-                if (OutcomeDescElement != null) yield return new ElementValue("outcomeDesc", false, OutcomeDescElement);
-                foreach (var elem in PurposeOfEvent) { if (elem != null) yield return new ElementValue("purposeOfEvent", true, elem); }
-                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", true, elem); }
-                if (Source != null) yield return new ElementValue("source", false, Source);
-                foreach (var elem in Entity) { if (elem != null) yield return new ElementValue("entity", true, elem); }
+                if (Type != null) yield return new ElementValue("type", Type);
+                foreach (var elem in Subtype) { if (elem != null) yield return new ElementValue("subtype", elem); }
+                if (ActionElement != null) yield return new ElementValue("action", ActionElement);
+                if (Period != null) yield return new ElementValue("period", Period);
+                if (RecordedElement != null) yield return new ElementValue("recorded", RecordedElement);
+                if (OutcomeElement != null) yield return new ElementValue("outcome", OutcomeElement);
+                if (OutcomeDescElement != null) yield return new ElementValue("outcomeDesc", OutcomeDescElement);
+                foreach (var elem in PurposeOfEvent) { if (elem != null) yield return new ElementValue("purposeOfEvent", elem); }
+                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", elem); }
+                if (Source != null) yield return new ElementValue("source", Source);
+                foreach (var elem in Entity) { if (elem != null) yield return new ElementValue("entity", elem); }
             }
         }
 

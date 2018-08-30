@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -53,6 +54,39 @@ namespace Hl7.Fhir.Model.R4
     {
         [NotMapped]
         public override string TypeName { get { return "Narrative"; } }
+
+        /// <summary>
+        /// The status of a resource narrative.
+        /// (url: http://hl7.org/fhir/ValueSet/narrative-status)
+        /// </summary>
+        [FhirEnumeration("NarrativeStatus")]
+        public enum NarrativeStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/narrative-status)
+            /// </summary>
+            [EnumLiteral("generated", "http://hl7.org/fhir/narrative-status"), Description("Generated")]
+            Generated,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/narrative-status)
+            /// </summary>
+            [EnumLiteral("extensions", "http://hl7.org/fhir/narrative-status"), Description("Extensions")]
+            Extensions,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/narrative-status)
+            /// </summary>
+            [EnumLiteral("additional", "http://hl7.org/fhir/narrative-status"), Description("Additional")]
+            Additional,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/narrative-status)
+            /// </summary>
+            [EnumLiteral("empty", "http://hl7.org/fhir/narrative-status"), Description("Empty")]
+            Empty,
+        }
 
 
         /// <summary>
@@ -91,7 +125,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Limited xhtml content
         /// </summary>
-        [FhirElement("div", XmlSerialization=XmlSerializationHint.XhtmlElement, Order=40)]
+        [FhirElement("div", XmlSerialization=XmlRepresentation.XHtml,TypeRedirect = typeof(XHtml), Order=40)]
         [NarrativeXhtmlPattern]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -106,18 +140,18 @@ namespace Hl7.Fhir.Model.R4
 
         public static ElementDefinition.ConstraintComponent Narrative_TXT_1 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "div.all(htmlchecks())",
+            Expression = "div.all(htmlChecks())",
             Key = "txt-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The narrative SHALL contain only the basic html formatting elements and attributes described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained style attributes",
             Xpath = "not(descendant-or-self::*[not(local-name(.)=('a', 'abbr', 'acronym', 'b', 'big', 'blockquote', 'br', 'caption', 'cite', 'code', 'col', 'colgroup', 'dd', 'dfn', 'div', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'samp', 'small', 'span', 'strong', 'sub', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'tt', 'ul', 'var'))]) and not(descendant-or-self::*/@*[not(name(.)=('abbr', 'accesskey', 'align', 'alt', 'axis', 'bgcolor', 'border', 'cellhalign', 'cellpadding', 'cellspacing', 'cellvalign', 'char', 'charoff', 'charset', 'cite', 'class', 'colspan', 'compact', 'coords', 'dir', 'frame', 'headers', 'height', 'href', 'hreflang', 'hspace', 'id', 'lang', 'longdesc', 'name', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'scope', 'shape', 'span', 'src', 'start', 'style', 'summary', 'tabindex', 'title', 'type', 'valign', 'value', 'vspace', 'width'))])"
         };
 
         public static ElementDefinition.ConstraintComponent Narrative_TXT_2 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "div.all(htmlchecks())",
+            Expression = "div.all(htmlChecks())",
             Key = "txt-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The narrative SHALL have some non-whitespace content",
             Xpath = "descendant::text()[normalize-space(.)!=''] or descendant::h:img[@src]"
         };
@@ -184,7 +218,8 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Div != null) yield return new ElementValue("div", Div);
             }
         }
 

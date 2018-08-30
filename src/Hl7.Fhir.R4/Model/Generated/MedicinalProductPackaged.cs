@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("BatchIdentifierComponent")]
         [DataContract]
-        public partial class BatchIdentifierComponent : BackboneElement
+        public partial class BatchIdentifierComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "BatchIdentifierComponent"; } }
@@ -153,8 +154,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (OuterPackaging != null) yield return new ElementValue("outerPackaging", false, OuterPackaging);
-                    if (ImmediatePackaging != null) yield return new ElementValue("immediatePackaging", false, ImmediatePackaging);
+                    if (OuterPackaging != null) yield return new ElementValue("outerPackaging", OuterPackaging);
+                    if (ImmediatePackaging != null) yield return new ElementValue("immediatePackaging", ImmediatePackaging);
                 }
             }
 
@@ -164,7 +165,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PackageItemComponent")]
         [DataContract]
-        public partial class PackageItemComponent : BackboneElement
+        public partial class PackageItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PackageItemComponent"; } }
@@ -240,25 +241,10 @@ namespace Hl7.Fhir.Model.R4
             private List<CodeableConcept> _alternateMaterial;
 
             /// <summary>
-            /// Manufacturer of this Package Item
-            /// </summary>
-            [FhirElement("manufacturer", InSummary=true, Order=90)]
-            [References("Organization")]
-            [Cardinality(Min=0,Max=-1)]
-            [DataMember]
-            public List<ResourceReference> Manufacturer
-            {
-                get { if (_manufacturer==null) _manufacturer = new List<ResourceReference>(); return _manufacturer; }
-                set { _manufacturer = value; OnPropertyChanged("Manufacturer"); }
-            }
-
-            private List<ResourceReference> _manufacturer;
-
-            /// <summary>
             /// A device accompanying a medicinal product
             /// </summary>
-            [FhirElement("device", InSummary=true, Order=100)]
-            [References("MedicinalProductDeviceSpec")]
+            [FhirElement("device", InSummary=true, Order=90)]
+            [References("MedicinalProductDeviceSpec","DeviceDefinition")]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<ResourceReference> Device
@@ -272,35 +258,22 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The manufactured item as contained in the packaged medicinal product
             /// </summary>
-            [FhirElement("manufacturedItem", InSummary=true, Order=110)]
+            [FhirElement("manufacturedItem", InSummary=true, Order=100)]
+            [References("MedicinalProductManufactured")]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<ManufacturedItemComponent> ManufacturedItem
+            public List<ResourceReference> ManufacturedItem
             {
-                get { if (_manufacturedItem==null) _manufacturedItem = new List<ManufacturedItemComponent>(); return _manufacturedItem; }
+                get { if (_manufacturedItem==null) _manufacturedItem = new List<ResourceReference>(); return _manufacturedItem; }
                 set { _manufacturedItem = value; OnPropertyChanged("ManufacturedItem"); }
             }
 
-            private List<ManufacturedItemComponent> _manufacturedItem;
-
-            /// <summary>
-            /// Other codeable characteristics
-            /// </summary>
-            [FhirElement("otherCharacteristics", InSummary=true, Order=120)]
-            [Cardinality(Min=0,Max=-1)]
-            [DataMember]
-            public List<CodeableConcept> OtherCharacteristics
-            {
-                get { if (_otherCharacteristics==null) _otherCharacteristics = new List<CodeableConcept>(); return _otherCharacteristics; }
-                set { _otherCharacteristics = value; OnPropertyChanged("OtherCharacteristics"); }
-            }
-
-            private List<CodeableConcept> _otherCharacteristics;
+            private List<ResourceReference> _manufacturedItem;
 
             /// <summary>
             /// Allows containers within containers
             /// </summary>
-            [FhirElement("packageItem", InSummary=true, Order=130)]
+            [FhirElement("packageItem", InSummary=true, Order=110)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<PackageItemComponent> PackageItem
@@ -314,7 +287,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Dimensions, color etc.
             /// </summary>
-            [FhirElement("physicalCharacteristics", InSummary=true, Order=140)]
+            [FhirElement("physicalCharacteristics", InSummary=true, Order=120)]
             [DataMember]
             public ProdCharacteristic PhysicalCharacteristics
             {
@@ -325,9 +298,23 @@ namespace Hl7.Fhir.Model.R4
             private ProdCharacteristic _physicalCharacteristics;
 
             /// <summary>
+            /// Other codeable characteristics
+            /// </summary>
+            [FhirElement("otherCharacteristics", InSummary=true, Order=130)]
+            [Cardinality(Min=0,Max=-1)]
+            [DataMember]
+            public List<CodeableConcept> OtherCharacteristics
+            {
+                get { if (_otherCharacteristics==null) _otherCharacteristics = new List<CodeableConcept>(); return _otherCharacteristics; }
+                set { _otherCharacteristics = value; OnPropertyChanged("OtherCharacteristics"); }
+            }
+
+            private List<CodeableConcept> _otherCharacteristics;
+
+            /// <summary>
             /// Shelf Life and storage information
             /// </summary>
-            [FhirElement("shelfLifeStorage", InSummary=true, Order=150)]
+            [FhirElement("shelfLifeStorage", InSummary=true, Order=140)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<ProductShelfLife> ShelfLifeStorage
@@ -337,6 +324,21 @@ namespace Hl7.Fhir.Model.R4
             }
 
             private List<ProductShelfLife> _shelfLifeStorage;
+
+            /// <summary>
+            /// Manufacturer of this Package Item
+            /// </summary>
+            [FhirElement("manufacturer", InSummary=true, Order=150)]
+            [References("Organization")]
+            [Cardinality(Min=0,Max=-1)]
+            [DataMember]
+            public List<ResourceReference> Manufacturer
+            {
+                get { if (_manufacturer==null) _manufacturer = new List<ResourceReference>(); return _manufacturer; }
+                set { _manufacturer = value; OnPropertyChanged("Manufacturer"); }
+            }
+
+            private List<ResourceReference> _manufacturer;
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -350,13 +352,13 @@ namespace Hl7.Fhir.Model.R4
                     if (Quantity != null) dest.Quantity = (Quantity)Quantity.DeepCopy();
                     if (Material != null) dest.Material = new List<CodeableConcept>(Material.DeepCopy());
                     if (AlternateMaterial != null) dest.AlternateMaterial = new List<CodeableConcept>(AlternateMaterial.DeepCopy());
-                    if (Manufacturer != null) dest.Manufacturer = new List<ResourceReference>(Manufacturer.DeepCopy());
                     if (Device != null) dest.Device = new List<ResourceReference>(Device.DeepCopy());
-                    if (ManufacturedItem != null) dest.ManufacturedItem = new List<ManufacturedItemComponent>(ManufacturedItem.DeepCopy());
-                    if (OtherCharacteristics != null) dest.OtherCharacteristics = new List<CodeableConcept>(OtherCharacteristics.DeepCopy());
+                    if (ManufacturedItem != null) dest.ManufacturedItem = new List<ResourceReference>(ManufacturedItem.DeepCopy());
                     if (PackageItem != null) dest.PackageItem = new List<PackageItemComponent>(PackageItem.DeepCopy());
                     if (PhysicalCharacteristics != null) dest.PhysicalCharacteristics = (ProdCharacteristic)PhysicalCharacteristics.DeepCopy();
+                    if (OtherCharacteristics != null) dest.OtherCharacteristics = new List<CodeableConcept>(OtherCharacteristics.DeepCopy());
                     if (ShelfLifeStorage != null) dest.ShelfLifeStorage = new List<ProductShelfLife>(ShelfLifeStorage.DeepCopy());
+                    if (Manufacturer != null) dest.Manufacturer = new List<ResourceReference>(Manufacturer.DeepCopy());
                     return dest;
                 }
                 else
@@ -379,13 +381,13 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(Quantity, otherT.Quantity)) return false;
                 if ( !DeepComparable.Matches(Material, otherT.Material)) return false;
                 if ( !DeepComparable.Matches(AlternateMaterial, otherT.AlternateMaterial)) return false;
-                if ( !DeepComparable.Matches(Manufacturer, otherT.Manufacturer)) return false;
                 if ( !DeepComparable.Matches(Device, otherT.Device)) return false;
                 if ( !DeepComparable.Matches(ManufacturedItem, otherT.ManufacturedItem)) return false;
-                if ( !DeepComparable.Matches(OtherCharacteristics, otherT.OtherCharacteristics)) return false;
                 if ( !DeepComparable.Matches(PackageItem, otherT.PackageItem)) return false;
                 if (!DeepComparable.Matches(PhysicalCharacteristics, otherT.PhysicalCharacteristics)) return false;
+                if ( !DeepComparable.Matches(OtherCharacteristics, otherT.OtherCharacteristics)) return false;
                 if ( !DeepComparable.Matches(ShelfLifeStorage, otherT.ShelfLifeStorage)) return false;
+                if ( !DeepComparable.Matches(Manufacturer, otherT.Manufacturer)) return false;
 
                 return true;
             }
@@ -401,13 +403,13 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(Quantity, otherT.Quantity)) return false;
                 if (!DeepComparable.IsExactly(Material, otherT.Material)) return false;
                 if (!DeepComparable.IsExactly(AlternateMaterial, otherT.AlternateMaterial)) return false;
-                if (!DeepComparable.IsExactly(Manufacturer, otherT.Manufacturer)) return false;
                 if (!DeepComparable.IsExactly(Device, otherT.Device)) return false;
                 if (!DeepComparable.IsExactly(ManufacturedItem, otherT.ManufacturedItem)) return false;
-                if (!DeepComparable.IsExactly(OtherCharacteristics, otherT.OtherCharacteristics)) return false;
                 if (!DeepComparable.IsExactly(PackageItem, otherT.PackageItem)) return false;
                 if (!DeepComparable.IsExactly(PhysicalCharacteristics, otherT.PhysicalCharacteristics)) return false;
+                if (!DeepComparable.IsExactly(OtherCharacteristics, otherT.OtherCharacteristics)) return false;
                 if (!DeepComparable.IsExactly(ShelfLifeStorage, otherT.ShelfLifeStorage)) return false;
+                if (!DeepComparable.IsExactly(Manufacturer, otherT.Manufacturer)) return false;
 
                 return true;
             }
@@ -424,13 +426,13 @@ namespace Hl7.Fhir.Model.R4
                     if (Quantity != null) yield return Quantity;
                     foreach (var elem in Material) { if (elem != null) yield return elem; }
                     foreach (var elem in AlternateMaterial) { if (elem != null) yield return elem; }
-                    foreach (var elem in Manufacturer) { if (elem != null) yield return elem; }
                     foreach (var elem in Device) { if (elem != null) yield return elem; }
                     foreach (var elem in ManufacturedItem) { if (elem != null) yield return elem; }
-                    foreach (var elem in OtherCharacteristics) { if (elem != null) yield return elem; }
                     foreach (var elem in PackageItem) { if (elem != null) yield return elem; }
                     if (PhysicalCharacteristics != null) yield return PhysicalCharacteristics;
+                    foreach (var elem in OtherCharacteristics) { if (elem != null) yield return elem; }
                     foreach (var elem in ShelfLifeStorage) { if (elem != null) yield return elem; }
+                    foreach (var elem in Manufacturer) { if (elem != null) yield return elem; }
                 }
             }
 
@@ -440,200 +442,18 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    foreach (var elem in Material) { if (elem != null) yield return new ElementValue("material", true, elem); }
-                    foreach (var elem in AlternateMaterial) { if (elem != null) yield return new ElementValue("alternateMaterial", true, elem); }
-                    foreach (var elem in Manufacturer) { if (elem != null) yield return new ElementValue("manufacturer", true, elem); }
-                    foreach (var elem in Device) { if (elem != null) yield return new ElementValue("device", true, elem); }
-                    foreach (var elem in ManufacturedItem) { if (elem != null) yield return new ElementValue("manufacturedItem", true, elem); }
-                    foreach (var elem in OtherCharacteristics) { if (elem != null) yield return new ElementValue("otherCharacteristics", true, elem); }
-                    foreach (var elem in PackageItem) { if (elem != null) yield return new ElementValue("packageItem", true, elem); }
-                    if (PhysicalCharacteristics != null) yield return new ElementValue("physicalCharacteristics", false, PhysicalCharacteristics);
-                    foreach (var elem in ShelfLifeStorage) { if (elem != null) yield return new ElementValue("shelfLifeStorage", true, elem); }
-                }
-            }
-
-
-        }
-
-
-        [FhirType("ManufacturedItemComponent")]
-        [DataContract]
-        public partial class ManufacturedItemComponent : BackboneElement
-        {
-            [NotMapped]
-            public override string TypeName { get { return "ManufacturedItemComponent"; } }
-
-            /// <summary>
-            /// Dose form as manufactured and before any transformation into the pharmaceutical product
-            /// </summary>
-            [FhirElement("manufacturedDoseForm", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
-            [DataMember]
-            public CodeableConcept ManufacturedDoseForm
-            {
-                get { return _manufacturedDoseForm; }
-                set { _manufacturedDoseForm = value; OnPropertyChanged("ManufacturedDoseForm"); }
-            }
-
-            private CodeableConcept _manufacturedDoseForm;
-
-            /// <summary>
-            /// The “real world” units in which the quantity of the manufactured item is described
-            /// </summary>
-            [FhirElement("unitOfPresentation", InSummary=true, Order=50)]
-            [DataMember]
-            public CodeableConcept UnitOfPresentation
-            {
-                get { return _unitOfPresentation; }
-                set { _unitOfPresentation = value; OnPropertyChanged("UnitOfPresentation"); }
-            }
-
-            private CodeableConcept _unitOfPresentation;
-
-            /// <summary>
-            /// The quantity or "count number" of the manufactured item
-            /// </summary>
-            [FhirElement("quantity", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=1)]
-            [DataMember]
-            public Quantity Quantity
-            {
-                get { return _quantity; }
-                set { _quantity = value; OnPropertyChanged("Quantity"); }
-            }
-
-            private Quantity _quantity;
-
-            /// <summary>
-            /// Manufacturer of the item (Note that this should be named "manufacturer" but it currently causes technical issues)
-            /// </summary>
-            [FhirElement("xManufacturer", InSummary=true, Order=70)]
-            [References("Organization")]
-            [Cardinality(Min=0,Max=-1)]
-            [DataMember]
-            public List<ResourceReference> XManufacturer
-            {
-                get { if (_xManufacturer==null) _xManufacturer = new List<ResourceReference>(); return _xManufacturer; }
-                set { _xManufacturer = value; OnPropertyChanged("XManufacturer"); }
-            }
-
-            private List<ResourceReference> _xManufacturer;
-
-            /// <summary>
-            /// Ingredient
-            /// </summary>
-            [FhirElement("ingredient", InSummary=true, Order=80)]
-            [References("MedicinalProductIngredient")]
-            [Cardinality(Min=0,Max=-1)]
-            [DataMember]
-            public List<ResourceReference> Ingredient
-            {
-                get { if (_ingredient==null) _ingredient = new List<ResourceReference>(); return _ingredient; }
-                set { _ingredient = value; OnPropertyChanged("Ingredient"); }
-            }
-
-            private List<ResourceReference> _ingredient;
-
-            /// <summary>
-            /// Dimensions, color etc.
-            /// </summary>
-            [FhirElement("physicalCharacteristics", InSummary=true, Order=90)]
-            [DataMember]
-            public ProdCharacteristic PhysicalCharacteristics
-            {
-                get { return _physicalCharacteristics; }
-                set { _physicalCharacteristics = value; OnPropertyChanged("PhysicalCharacteristics"); }
-            }
-
-            private ProdCharacteristic _physicalCharacteristics;
-
-            public override IDeepCopyable CopyTo(IDeepCopyable other)
-            {
-                var dest = other as ManufacturedItemComponent;
-
-                if (dest != null)
-                {
-                    base.CopyTo(dest);
-                    if (ManufacturedDoseForm != null) dest.ManufacturedDoseForm = (CodeableConcept)ManufacturedDoseForm.DeepCopy();
-                    if (UnitOfPresentation != null) dest.UnitOfPresentation = (CodeableConcept)UnitOfPresentation.DeepCopy();
-                    if (Quantity != null) dest.Quantity = (Quantity)Quantity.DeepCopy();
-                    if (XManufacturer != null) dest.XManufacturer = new List<ResourceReference>(XManufacturer.DeepCopy());
-                    if (Ingredient != null) dest.Ingredient = new List<ResourceReference>(Ingredient.DeepCopy());
-                    if (PhysicalCharacteristics != null) dest.PhysicalCharacteristics = (ProdCharacteristic)PhysicalCharacteristics.DeepCopy();
-                    return dest;
-                }
-                else
-                    throw new ArgumentException("Can only copy to an object of the same type", "other");
-            }
-
-            public override IDeepCopyable DeepCopy()
-            {
-                 return CopyTo(new ManufacturedItemComponent());
-            }
-
-            public override bool Matches(IDeepComparable other)
-            {
-                var otherT = other as ManufacturedItemComponent;
-                if (otherT == null) return false;
-
-                if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(ManufacturedDoseForm, otherT.ManufacturedDoseForm)) return false;
-                if (!DeepComparable.Matches(UnitOfPresentation, otherT.UnitOfPresentation)) return false;
-                if (!DeepComparable.Matches(Quantity, otherT.Quantity)) return false;
-                if ( !DeepComparable.Matches(XManufacturer, otherT.XManufacturer)) return false;
-                if ( !DeepComparable.Matches(Ingredient, otherT.Ingredient)) return false;
-                if (!DeepComparable.Matches(PhysicalCharacteristics, otherT.PhysicalCharacteristics)) return false;
-
-                return true;
-            }
-
-            public override bool IsExactly(IDeepComparable other)
-            {
-                var otherT = other as ManufacturedItemComponent;
-                if (otherT == null) return false;
-
-                if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(ManufacturedDoseForm, otherT.ManufacturedDoseForm)) return false;
-                if (!DeepComparable.IsExactly(UnitOfPresentation, otherT.UnitOfPresentation)) return false;
-                if (!DeepComparable.IsExactly(Quantity, otherT.Quantity)) return false;
-                if (!DeepComparable.IsExactly(XManufacturer, otherT.XManufacturer)) return false;
-                if (!DeepComparable.IsExactly(Ingredient, otherT.Ingredient)) return false;
-                if (!DeepComparable.IsExactly(PhysicalCharacteristics, otherT.PhysicalCharacteristics)) return false;
-
-                return true;
-            }
-
-
-            [NotMapped]
-            public override IEnumerable<Base> Children
-            {
-                get
-                {
-                    foreach (var item in base.Children) yield return item;
-                    if (ManufacturedDoseForm != null) yield return ManufacturedDoseForm;
-                    if (UnitOfPresentation != null) yield return UnitOfPresentation;
-                    if (Quantity != null) yield return Quantity;
-                    foreach (var elem in XManufacturer) { if (elem != null) yield return elem; }
-                    foreach (var elem in Ingredient) { if (elem != null) yield return elem; }
-                    if (PhysicalCharacteristics != null) yield return PhysicalCharacteristics;
-                }
-            }
-
-            [NotMapped]
-            internal override IEnumerable<ElementValue> NamedChildren
-            {
-                get
-                {
-                    foreach (var item in base.NamedChildren) yield return item;
-                    if (ManufacturedDoseForm != null) yield return new ElementValue("manufacturedDoseForm", false, ManufacturedDoseForm);
-                    if (UnitOfPresentation != null) yield return new ElementValue("unitOfPresentation", false, UnitOfPresentation);
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    foreach (var elem in XManufacturer) { if (elem != null) yield return new ElementValue("xManufacturer", true, elem); }
-                    foreach (var elem in Ingredient) { if (elem != null) yield return new ElementValue("ingredient", true, elem); }
-                    if (PhysicalCharacteristics != null) yield return new ElementValue("physicalCharacteristics", false, PhysicalCharacteristics);
+                    foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    foreach (var elem in Material) { if (elem != null) yield return new ElementValue("material", elem); }
+                    foreach (var elem in AlternateMaterial) { if (elem != null) yield return new ElementValue("alternateMaterial", elem); }
+                    foreach (var elem in Device) { if (elem != null) yield return new ElementValue("device", elem); }
+                    foreach (var elem in ManufacturedItem) { if (elem != null) yield return new ElementValue("manufacturedItem", elem); }
+                    foreach (var elem in PackageItem) { if (elem != null) yield return new ElementValue("packageItem", elem); }
+                    if (PhysicalCharacteristics != null) yield return new ElementValue("physicalCharacteristics", PhysicalCharacteristics);
+                    foreach (var elem in OtherCharacteristics) { if (elem != null) yield return new ElementValue("otherCharacteristics", elem); }
+                    foreach (var elem in ShelfLifeStorage) { if (elem != null) yield return new ElementValue("shelfLifeStorage", elem); }
+                    foreach (var elem in Manufacturer) { if (elem != null) yield return new ElementValue("manufacturer", elem); }
                 }
             }
 
@@ -702,9 +522,38 @@ namespace Hl7.Fhir.Model.R4
         private List<MarketingStatus> _marketingStatus;
 
         /// <summary>
+        /// Manufacturer of this Package Item
+        /// </summary>
+        [FhirElement("marketingAuthorization", InSummary=true, Order=120)]
+        [References("MedicinalProductAuthorization")]
+        [DataMember]
+        public ResourceReference MarketingAuthorization
+        {
+            get { return _marketingAuthorization; }
+            set { _marketingAuthorization = value; OnPropertyChanged("MarketingAuthorization"); }
+        }
+
+        private ResourceReference _marketingAuthorization;
+
+        /// <summary>
+        /// Manufacturer of this Package Item
+        /// </summary>
+        [FhirElement("manufacturer", InSummary=true, Order=130)]
+        [References("Organization")]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ResourceReference> Manufacturer
+        {
+            get { if (_manufacturer==null) _manufacturer = new List<ResourceReference>(); return _manufacturer; }
+            set { _manufacturer = value; OnPropertyChanged("Manufacturer"); }
+        }
+
+        private List<ResourceReference> _manufacturer;
+
+        /// <summary>
         /// Batch numbering
         /// </summary>
-        [FhirElement("batchIdentifier", InSummary=true, Order=120)]
+        [FhirElement("batchIdentifier", InSummary=true, Order=140)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<BatchIdentifierComponent> BatchIdentifier
@@ -718,7 +567,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// A packaging item, as a contained for medicine, possibly with other packaging items within
         /// </summary>
-        [FhirElement("packageItem", InSummary=true, Order=130)]
+        [FhirElement("packageItem", InSummary=true, Order=150)]
         [Cardinality(Min=1,Max=-1)]
         [DataMember]
         public List<PackageItemComponent> PackageItem
@@ -740,6 +589,8 @@ namespace Hl7.Fhir.Model.R4
                 if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
                 if (DescriptionElement != null) dest.DescriptionElement = (FhirString)DescriptionElement.DeepCopy();
                 if (MarketingStatus != null) dest.MarketingStatus = new List<MarketingStatus>(MarketingStatus.DeepCopy());
+                if (MarketingAuthorization != null) dest.MarketingAuthorization = (ResourceReference)MarketingAuthorization.DeepCopy();
+                if (Manufacturer != null) dest.Manufacturer = new List<ResourceReference>(Manufacturer.DeepCopy());
                 if (BatchIdentifier != null) dest.BatchIdentifier = new List<BatchIdentifierComponent>(BatchIdentifier.DeepCopy());
                 if (PackageItem != null) dest.PackageItem = new List<PackageItemComponent>(PackageItem.DeepCopy());
                 return dest;
@@ -762,6 +613,8 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(MarketingStatus, otherT.MarketingStatus)) return false;
+            if (!DeepComparable.Matches(MarketingAuthorization, otherT.MarketingAuthorization)) return false;
+            if ( !DeepComparable.Matches(Manufacturer, otherT.Manufacturer)) return false;
             if ( !DeepComparable.Matches(BatchIdentifier, otherT.BatchIdentifier)) return false;
             if ( !DeepComparable.Matches(PackageItem, otherT.PackageItem)) return false;
 
@@ -777,6 +630,8 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(MarketingStatus, otherT.MarketingStatus)) return false;
+            if (!DeepComparable.IsExactly(MarketingAuthorization, otherT.MarketingAuthorization)) return false;
+            if (!DeepComparable.IsExactly(Manufacturer, otherT.Manufacturer)) return false;
             if (!DeepComparable.IsExactly(BatchIdentifier, otherT.BatchIdentifier)) return false;
             if (!DeepComparable.IsExactly(PackageItem, otherT.PackageItem)) return false;
 
@@ -792,6 +647,8 @@ namespace Hl7.Fhir.Model.R4
                 if (Identifier != null) yield return Identifier;
                 if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in MarketingStatus) { if (elem != null) yield return elem; }
+                if (MarketingAuthorization != null) yield return MarketingAuthorization;
+                foreach (var elem in Manufacturer) { if (elem != null) yield return elem; }
                 foreach (var elem in BatchIdentifier) { if (elem != null) yield return elem; }
                 foreach (var elem in PackageItem) { if (elem != null) yield return elem; }
             }
@@ -803,11 +660,13 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                foreach (var elem in MarketingStatus) { if (elem != null) yield return new ElementValue("marketingStatus", true, elem); }
-                foreach (var elem in BatchIdentifier) { if (elem != null) yield return new ElementValue("batchIdentifier", true, elem); }
-                foreach (var elem in PackageItem) { if (elem != null) yield return new ElementValue("packageItem", true, elem); }
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                foreach (var elem in MarketingStatus) { if (elem != null) yield return new ElementValue("marketingStatus", elem); }
+                if (MarketingAuthorization != null) yield return new ElementValue("marketingAuthorization", MarketingAuthorization);
+                foreach (var elem in Manufacturer) { if (elem != null) yield return new ElementValue("manufacturer", elem); }
+                foreach (var elem in BatchIdentifier) { if (elem != null) yield return new ElementValue("batchIdentifier", elem); }
+                foreach (var elem in PackageItem) { if (elem != null) yield return new ElementValue("packageItem", elem); }
             }
         }
 

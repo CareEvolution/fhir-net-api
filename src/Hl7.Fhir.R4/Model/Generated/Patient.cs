@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,43 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Patient"; } }
 
+        /// <summary>
+        /// The type of link between this patient resource and another patient resource.
+        /// (url: http://hl7.org/fhir/ValueSet/link-type)
+        /// </summary>
+        [FhirEnumeration("LinkType")]
+        public enum LinkType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/link-type)
+            /// </summary>
+            [EnumLiteral("replaced-by", "http://hl7.org/fhir/link-type"), Description("Replaced-by")]
+            ReplacedBy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/link-type)
+            /// </summary>
+            [EnumLiteral("replaces", "http://hl7.org/fhir/link-type"), Description("Replaces")]
+            Replaces,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/link-type)
+            /// </summary>
+            [EnumLiteral("refer", "http://hl7.org/fhir/link-type"), Description("Refer")]
+            Refer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/link-type)
+            /// </summary>
+            [EnumLiteral("seealso", "http://hl7.org/fhir/link-type"), Description("See also")]
+            Seealso,
+        }
+
 
         [FhirType("ContactComponent")]
         [DataContract]
-        public partial class ContactComponent : BackboneElement
+        public partial class ContactComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContactComponent"; } }
@@ -259,13 +293,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Relationship) { if (elem != null) yield return new ElementValue("relationship", true, elem); }
-                    if (Name != null) yield return new ElementValue("name", false, Name);
-                    foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", true, elem); }
-                    if (Address != null) yield return new ElementValue("address", false, Address);
-                    if (GenderElement != null) yield return new ElementValue("gender", false, GenderElement);
-                    if (Organization != null) yield return new ElementValue("organization", false, Organization);
-                    if (Period != null) yield return new ElementValue("period", false, Period);
+                    foreach (var elem in Relationship) { if (elem != null) yield return new ElementValue("relationship", elem); }
+                    if (Name != null) yield return new ElementValue("name", Name);
+                    foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
+                    if (Address != null) yield return new ElementValue("address", Address);
+                    if (GenderElement != null) yield return new ElementValue("gender", GenderElement);
+                    if (Organization != null) yield return new ElementValue("organization", Organization);
+                    if (Period != null) yield return new ElementValue("period", Period);
                 }
             }
 
@@ -275,7 +309,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("CommunicationComponent")]
         [DataContract]
-        public partial class CommunicationComponent : BackboneElement
+        public partial class CommunicationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CommunicationComponent"; } }
@@ -388,8 +422,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Language != null) yield return new ElementValue("language", false, Language);
-                    if (PreferredElement != null) yield return new ElementValue("preferred", false, PreferredElement);
+                    if (Language != null) yield return new ElementValue("language", Language);
+                    if (PreferredElement != null) yield return new ElementValue("preferred", PreferredElement);
                 }
             }
 
@@ -399,7 +433,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("LinkComponent")]
         [DataContract]
-        public partial class LinkComponent : BackboneElement
+        public partial class LinkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LinkComponent"; } }
@@ -420,7 +454,7 @@ namespace Hl7.Fhir.Model.R4
             private ResourceReference _other;
 
             /// <summary>
-            /// replaced-by | replaces | refer | seealso - type of link
+            /// replaced-by | replaces | refer | seealso
             /// </summary>
             [FhirElement("type", InSummary=true, Order=50)]
             [Cardinality(Min=1,Max=1)]
@@ -434,7 +468,7 @@ namespace Hl7.Fhir.Model.R4
             private Code<LinkType> _typeElement;
 
             /// <summary>
-            /// replaced-by | replaces | refer | seealso - type of link
+            /// replaced-by | replaces | refer | seealso
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -514,8 +548,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Other != null) yield return new ElementValue("other", false, Other);
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
+                    if (Other != null) yield return new ElementValue("other", Other);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
                 }
             }
 
@@ -806,7 +840,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "contact.all(name.exists() or telecom.exists() or address.exists() or organization.exists())",
             Key = "pat-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "SHALL at least contain a contact's details or a reference to an organization",
             Xpath = "exists(f:name) or exists(f:telecom) or exists(f:address) or exists(f:organization)"
         };
@@ -935,22 +969,22 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ActiveElement != null) yield return new ElementValue("active", false, ActiveElement);
-                foreach (var elem in Name) { if (elem != null) yield return new ElementValue("name", true, elem); }
-                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", true, elem); }
-                if (GenderElement != null) yield return new ElementValue("gender", false, GenderElement);
-                if (BirthDateElement != null) yield return new ElementValue("birthDate", false, BirthDateElement);
-                if (Deceased != null) yield return new ElementValue("deceased", false, Deceased);
-                foreach (var elem in Address) { if (elem != null) yield return new ElementValue("address", true, elem); }
-                if (MaritalStatus != null) yield return new ElementValue("maritalStatus", false, MaritalStatus);
-                if (MultipleBirth != null) yield return new ElementValue("multipleBirth", false, MultipleBirth);
-                foreach (var elem in Photo) { if (elem != null) yield return new ElementValue("photo", true, elem); }
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                foreach (var elem in Communication) { if (elem != null) yield return new ElementValue("communication", true, elem); }
-                foreach (var elem in GeneralPractitioner) { if (elem != null) yield return new ElementValue("generalPractitioner", true, elem); }
-                if (ManagingOrganization != null) yield return new ElementValue("managingOrganization", false, ManagingOrganization);
-                foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ActiveElement != null) yield return new ElementValue("active", ActiveElement);
+                foreach (var elem in Name) { if (elem != null) yield return new ElementValue("name", elem); }
+                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
+                if (GenderElement != null) yield return new ElementValue("gender", GenderElement);
+                if (BirthDateElement != null) yield return new ElementValue("birthDate", BirthDateElement);
+                if (Deceased != null) yield return new ElementValue("deceased", Deceased);
+                foreach (var elem in Address) { if (elem != null) yield return new ElementValue("address", elem); }
+                if (MaritalStatus != null) yield return new ElementValue("maritalStatus", MaritalStatus);
+                if (MultipleBirth != null) yield return new ElementValue("multipleBirth", MultipleBirth);
+                foreach (var elem in Photo) { if (elem != null) yield return new ElementValue("photo", elem); }
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                foreach (var elem in Communication) { if (elem != null) yield return new ElementValue("communication", elem); }
+                foreach (var elem in GeneralPractitioner) { if (elem != null) yield return new ElementValue("generalPractitioner", elem); }
+                if (ManagingOrganization != null) yield return new ElementValue("managingOrganization", ManagingOrganization);
+                foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", elem); }
             }
         }
 

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,23 +60,23 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PerformerComponent")]
         [DataContract]
-        public partial class PerformerComponent : BackboneElement
+        public partial class PerformerComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PerformerComponent"; } }
 
             /// <summary>
-            /// The role the actor was in
+            /// Type of performance
             /// </summary>
-            [FhirElement("role", InSummary=true, Order=40)]
+            [FhirElement("function", InSummary=true, Order=40)]
             [DataMember]
-            public CodeableConcept Role
+            public CodeableConcept Function
             {
-                get { return _role; }
-                set { _role = value; OnPropertyChanged("Role"); }
+                get { return _function; }
+                set { _function = value; OnPropertyChanged("Function"); }
             }
 
-            private CodeableConcept _role;
+            private CodeableConcept _function;
 
             /// <summary>
             /// The reference to the practitioner
@@ -113,7 +114,7 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (Role != null) dest.Role = (CodeableConcept)Role.DeepCopy();
+                    if (Function != null) dest.Function = (CodeableConcept)Function.DeepCopy();
                     if (Actor != null) dest.Actor = (ResourceReference)Actor.DeepCopy();
                     if (OnBehalfOf != null) dest.OnBehalfOf = (ResourceReference)OnBehalfOf.DeepCopy();
                     return dest;
@@ -133,7 +134,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Role, otherT.Role)) return false;
+                if (!DeepComparable.Matches(Function, otherT.Function)) return false;
                 if (!DeepComparable.Matches(Actor, otherT.Actor)) return false;
                 if (!DeepComparable.Matches(OnBehalfOf, otherT.OnBehalfOf)) return false;
 
@@ -146,7 +147,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Role, otherT.Role)) return false;
+                if (!DeepComparable.IsExactly(Function, otherT.Function)) return false;
                 if (!DeepComparable.IsExactly(Actor, otherT.Actor)) return false;
                 if (!DeepComparable.IsExactly(OnBehalfOf, otherT.OnBehalfOf)) return false;
 
@@ -160,7 +161,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (Role != null) yield return Role;
+                    if (Function != null) yield return Function;
                     if (Actor != null) yield return Actor;
                     if (OnBehalfOf != null) yield return OnBehalfOf;
                 }
@@ -172,9 +173,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Actor != null) yield return new ElementValue("actor", false, Actor);
-                    if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", false, OnBehalfOf);
+                    if (Function != null) yield return new ElementValue("function", Function);
+                    if (Actor != null) yield return new ElementValue("actor", Actor);
+                    if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", OnBehalfOf);
                 }
             }
 
@@ -184,7 +185,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("FocalDeviceComponent")]
         [DataContract]
-        public partial class FocalDeviceComponent : BackboneElement
+        public partial class FocalDeviceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FocalDeviceComponent"; } }
@@ -279,8 +280,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Action != null) yield return new ElementValue("action", false, Action);
-                    if (Manipulated != null) yield return new ElementValue("manipulated", false, Manipulated);
+                    if (Action != null) yield return new ElementValue("action", Action);
+                    if (Manipulated != null) yield return new ElementValue("manipulated", Manipulated);
                 }
             }
 
@@ -303,42 +304,75 @@ namespace Hl7.Fhir.Model.R4
         private List<Identifier> _identifier;
 
         /// <summary>
-        /// Instantiates protocol or definition
+        /// Instantiates FHIR protocol or definition
         /// </summary>
-        [FhirElement("instantiates", InSummary=true, Order=100)]
+        [FhirElement("instantiatesCanonical", InSummary=true, Order=100)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<FhirUri> InstantiatesElement
+        public List<Canonical> InstantiatesCanonicalElement
         {
-            get { if (_instantiatesElement==null) _instantiatesElement = new List<FhirUri>(); return _instantiatesElement; }
-            set { _instantiatesElement = value; OnPropertyChanged("InstantiatesElement"); }
+            get { if (_instantiatesCanonicalElement==null) _instantiatesCanonicalElement = new List<Canonical>(); return _instantiatesCanonicalElement; }
+            set { _instantiatesCanonicalElement = value; OnPropertyChanged("InstantiatesCanonicalElement"); }
         }
 
-        private List<FhirUri> _instantiatesElement;
+        private List<Canonical> _instantiatesCanonicalElement;
 
         /// <summary>
-        /// Instantiates protocol or definition
+        /// Instantiates FHIR protocol or definition
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public IEnumerable<string> Instantiates
+        public IEnumerable<string> InstantiatesCanonical
         {
-            get { return InstantiatesElement != null ? InstantiatesElement.Select(elem => elem.Value) : null; }
+            get { return InstantiatesCanonicalElement != null ? InstantiatesCanonicalElement.Select(elem => elem.Value) : null; }
             set
             {
                 if (value == null)
-                    InstantiatesElement = null;
+                    InstantiatesCanonicalElement = null;
                 else
-                    InstantiatesElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
-                OnPropertyChanged("Instantiates");
+                    InstantiatesCanonicalElement = new List<Canonical>(value.Select(elem=>new Canonical(elem)));
+                OnPropertyChanged("InstantiatesCanonical");
+            }
+        }
+
+        /// <summary>
+        /// Instantiates external protocol or definition
+        /// </summary>
+        [FhirElement("instantiatesUri", InSummary=true, Order=110)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<FhirUri> InstantiatesUriElement
+        {
+            get { if (_instantiatesUriElement==null) _instantiatesUriElement = new List<FhirUri>(); return _instantiatesUriElement; }
+            set { _instantiatesUriElement = value; OnPropertyChanged("InstantiatesUriElement"); }
+        }
+
+        private List<FhirUri> _instantiatesUriElement;
+
+        /// <summary>
+        /// Instantiates external protocol or definition
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public IEnumerable<string> InstantiatesUri
+        {
+            get { return InstantiatesUriElement != null ? InstantiatesUriElement.Select(elem => elem.Value) : null; }
+            set
+            {
+                if (value == null)
+                    InstantiatesUriElement = null;
+                else
+                    InstantiatesUriElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
+                OnPropertyChanged("InstantiatesUri");
             }
         }
 
         /// <summary>
         /// A request for this procedure
         /// </summary>
-        [FhirElement("basedOn", InSummary=true, Order=110)]
+        [FhirElement("basedOn", InSummary=true, Order=120)]
         [References("CarePlan","ServiceRequest")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -353,7 +387,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Part of referenced event
         /// </summary>
-        [FhirElement("partOf", InSummary=true, Order=120)]
+        [FhirElement("partOf", InSummary=true, Order=130)]
         [References("Procedure","Observation","MedicationAdministration")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -368,7 +402,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error | unknown
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=130)]
+        [FhirElement("status", InSummary=true, Order=140)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Code<EventStatus> StatusElement
@@ -401,7 +435,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Reason for current status
         /// </summary>
-        [FhirElement("statusReason", InSummary=true, Order=140)]
+        [FhirElement("statusReason", InSummary=true, Order=150)]
         [DataMember]
         public CodeableConcept StatusReason
         {
@@ -414,7 +448,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Classification of the procedure
         /// </summary>
-        [FhirElement("category", InSummary=true, Order=150)]
+        [FhirElement("category", InSummary=true, Order=160)]
         [DataMember]
         public CodeableConcept Category
         {
@@ -427,7 +461,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Identification of the procedure
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=160)]
+        [FhirElement("code", InSummary=true, Order=170)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -440,7 +474,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who the procedure was performed on
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=170)]
+        [FhirElement("subject", InSummary=true, Order=180)]
         [References("Patient","Group")]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -455,7 +489,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Encounter or episode associated with the procedure
         /// </summary>
-        [FhirElement("context", InSummary=true, Order=180)]
+        [FhirElement("context", InSummary=true, Order=190)]
         [References("Encounter","EpisodeOfCare")]
         [DataMember]
         public ResourceReference Context
@@ -469,7 +503,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// When the procedure was performed
         /// </summary>
-        [FhirElement("performed", InSummary=true, Order=190, Choice=ChoiceType.DatatypeChoice)]
+        [FhirElement("performed", InSummary=true, Order=200, Choice=ChoiceType.DatatypeChoice)]
         [AllowedTypes(typeof(FhirDateTime),typeof(Period),typeof(FhirString),typeof(Age),typeof(Range))]
         [DataMember]
         public Element Performed
@@ -483,7 +517,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who recorded the procedure
         /// </summary>
-        [FhirElement("recorder", InSummary=true, Order=200)]
+        [FhirElement("recorder", InSummary=true, Order=210)]
         [References("Patient","RelatedPerson","Practitioner","PractitionerRole")]
         [DataMember]
         public ResourceReference Recorder
@@ -497,7 +531,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Person who asserts this procedure
         /// </summary>
-        [FhirElement("asserter", InSummary=true, Order=210)]
+        [FhirElement("asserter", InSummary=true, Order=220)]
         [References("Patient","RelatedPerson","Practitioner","PractitionerRole")]
         [DataMember]
         public ResourceReference Asserter
@@ -511,7 +545,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The people who performed the procedure
         /// </summary>
-        [FhirElement("performer", InSummary=true, Order=220)]
+        [FhirElement("performer", InSummary=true, Order=230)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<PerformerComponent> Performer
@@ -525,7 +559,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Where the procedure happened
         /// </summary>
-        [FhirElement("location", InSummary=true, Order=230)]
+        [FhirElement("location", InSummary=true, Order=240)]
         [References("Location")]
         [DataMember]
         public ResourceReference Location
@@ -539,7 +573,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Coded reason procedure performed
         /// </summary>
-        [FhirElement("reasonCode", InSummary=true, Order=240)]
+        [FhirElement("reasonCode", InSummary=true, Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> ReasonCode
@@ -553,7 +587,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The justification that the procedure was performed
         /// </summary>
-        [FhirElement("reasonReference", InSummary=true, Order=250)]
+        [FhirElement("reasonReference", InSummary=true, Order=260)]
         [References("Condition","Observation","Procedure","DiagnosticReport","DocumentReference")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -568,7 +602,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Target body sites
         /// </summary>
-        [FhirElement("bodySite", InSummary=true, Order=260)]
+        [FhirElement("bodySite", InSummary=true, Order=270)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> BodySite
@@ -582,7 +616,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The result of procedure
         /// </summary>
-        [FhirElement("outcome", InSummary=true, Order=270)]
+        [FhirElement("outcome", InSummary=true, Order=280)]
         [DataMember]
         public CodeableConcept Outcome
         {
@@ -595,7 +629,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Any report resulting from the procedure
         /// </summary>
-        [FhirElement("report", Order=280)]
+        [FhirElement("report", Order=290)]
         [References("DiagnosticReport","DocumentReference","Composition")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -610,7 +644,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Complication following the procedure
         /// </summary>
-        [FhirElement("complication", Order=290)]
+        [FhirElement("complication", Order=300)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> Complication
@@ -624,7 +658,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// A condition that is a result of the procedure
         /// </summary>
-        [FhirElement("complicationDetail", Order=300)]
+        [FhirElement("complicationDetail", Order=310)]
         [References("Condition")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -639,7 +673,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Instructions for follow up
         /// </summary>
-        [FhirElement("followUp", Order=310)]
+        [FhirElement("followUp", Order=320)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> FollowUp
@@ -653,7 +687,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Additional information about the procedure
         /// </summary>
-        [FhirElement("note", Order=320)]
+        [FhirElement("note", Order=330)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Annotation> Note
@@ -667,7 +701,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Manipulated, implanted, or removed device
         /// </summary>
-        [FhirElement("focalDevice", Order=330)]
+        [FhirElement("focalDevice", Order=340)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<FocalDeviceComponent> FocalDevice
@@ -681,7 +715,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Items used during procedure
         /// </summary>
-        [FhirElement("usedReference", Order=340)]
+        [FhirElement("usedReference", Order=350)]
         [References("Device","Medication","Substance")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -696,7 +730,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Coded items used during the procedure
         /// </summary>
-        [FhirElement("usedCode", Order=350)]
+        [FhirElement("usedCode", Order=360)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> UsedCode
@@ -716,7 +750,8 @@ namespace Hl7.Fhir.Model.R4
             {
                 base.CopyTo(dest);
                 if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
-                if (InstantiatesElement != null) dest.InstantiatesElement = new List<FhirUri>(InstantiatesElement.DeepCopy());
+                if (InstantiatesCanonicalElement != null) dest.InstantiatesCanonicalElement = new List<Canonical>(InstantiatesCanonicalElement.DeepCopy());
+                if (InstantiatesUriElement != null) dest.InstantiatesUriElement = new List<FhirUri>(InstantiatesUriElement.DeepCopy());
                 if (BasedOn != null) dest.BasedOn = new List<ResourceReference>(BasedOn.DeepCopy());
                 if (PartOf != null) dest.PartOf = new List<ResourceReference>(PartOf.DeepCopy());
                 if (StatusElement != null) dest.StatusElement = (Code<EventStatus>)StatusElement.DeepCopy();
@@ -760,7 +795,8 @@ namespace Hl7.Fhir.Model.R4
 
             if (!base.Matches(otherT)) return false;
             if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-            if ( !DeepComparable.Matches(InstantiatesElement, otherT.InstantiatesElement)) return false;
+            if ( !DeepComparable.Matches(InstantiatesCanonicalElement, otherT.InstantiatesCanonicalElement)) return false;
+            if ( !DeepComparable.Matches(InstantiatesUriElement, otherT.InstantiatesUriElement)) return false;
             if ( !DeepComparable.Matches(BasedOn, otherT.BasedOn)) return false;
             if ( !DeepComparable.Matches(PartOf, otherT.PartOf)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
@@ -797,7 +833,8 @@ namespace Hl7.Fhir.Model.R4
 
             if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-            if (!DeepComparable.IsExactly(InstantiatesElement, otherT.InstantiatesElement)) return false;
+            if (!DeepComparable.IsExactly(InstantiatesCanonicalElement, otherT.InstantiatesCanonicalElement)) return false;
+            if (!DeepComparable.IsExactly(InstantiatesUriElement, otherT.InstantiatesUriElement)) return false;
             if (!DeepComparable.IsExactly(BasedOn, otherT.BasedOn)) return false;
             if (!DeepComparable.IsExactly(PartOf, otherT.PartOf)) return false;
             if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
@@ -834,7 +871,8 @@ namespace Hl7.Fhir.Model.R4
             {
                 foreach (var item in base.Children) yield return item;
                 foreach (var elem in Identifier) { if (elem != null) yield return elem; }
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return elem; }
+                foreach (var elem in InstantiatesCanonicalElement) { if (elem != null) yield return elem; }
+                foreach (var elem in InstantiatesUriElement) { if (elem != null) yield return elem; }
                 foreach (var elem in BasedOn) { if (elem != null) yield return elem; }
                 foreach (var elem in PartOf) { if (elem != null) yield return elem; }
                 if (StatusElement != null) yield return StatusElement;
@@ -869,33 +907,34 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", true, elem); }
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (StatusReason != null) yield return new ElementValue("statusReason", false, StatusReason);
-                if (Category != null) yield return new ElementValue("category", false, Category);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Performed != null) yield return new ElementValue("performed", false, Performed);
-                if (Recorder != null) yield return new ElementValue("recorder", false, Recorder);
-                if (Asserter != null) yield return new ElementValue("asserter", false, Asserter);
-                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", true, elem); }
-                if (Location != null) yield return new ElementValue("location", false, Location);
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                foreach (var elem in BodySite) { if (elem != null) yield return new ElementValue("bodySite", true, elem); }
-                if (Outcome != null) yield return new ElementValue("outcome", false, Outcome);
-                foreach (var elem in Report) { if (elem != null) yield return new ElementValue("report", true, elem); }
-                foreach (var elem in Complication) { if (elem != null) yield return new ElementValue("complication", true, elem); }
-                foreach (var elem in ComplicationDetail) { if (elem != null) yield return new ElementValue("complicationDetail", true, elem); }
-                foreach (var elem in FollowUp) { if (elem != null) yield return new ElementValue("followUp", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in FocalDevice) { if (elem != null) yield return new ElementValue("focalDevice", true, elem); }
-                foreach (var elem in UsedReference) { if (elem != null) yield return new ElementValue("usedReference", true, elem); }
-                foreach (var elem in UsedCode) { if (elem != null) yield return new ElementValue("usedCode", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in InstantiatesCanonicalElement) { if (elem != null) yield return new ElementValue("instantiatesCanonical", elem); }
+                foreach (var elem in InstantiatesUriElement) { if (elem != null) yield return new ElementValue("instantiatesUri", elem); }
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (StatusReason != null) yield return new ElementValue("statusReason", StatusReason);
+                if (Category != null) yield return new ElementValue("category", Category);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Performed != null) yield return new ElementValue("performed", Performed);
+                if (Recorder != null) yield return new ElementValue("recorder", Recorder);
+                if (Asserter != null) yield return new ElementValue("asserter", Asserter);
+                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", elem); }
+                if (Location != null) yield return new ElementValue("location", Location);
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                foreach (var elem in BodySite) { if (elem != null) yield return new ElementValue("bodySite", elem); }
+                if (Outcome != null) yield return new ElementValue("outcome", Outcome);
+                foreach (var elem in Report) { if (elem != null) yield return new ElementValue("report", elem); }
+                foreach (var elem in Complication) { if (elem != null) yield return new ElementValue("complication", elem); }
+                foreach (var elem in ComplicationDetail) { if (elem != null) yield return new ElementValue("complicationDetail", elem); }
+                foreach (var elem in FollowUp) { if (elem != null) yield return new ElementValue("followUp", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in FocalDevice) { if (elem != null) yield return new ElementValue("focalDevice", elem); }
+                foreach (var elem in UsedReference) { if (elem != null) yield return new ElementValue("usedReference", elem); }
+                foreach (var elem in UsedCode) { if (elem != null) yield return new ElementValue("usedCode", elem); }
             }
         }
 

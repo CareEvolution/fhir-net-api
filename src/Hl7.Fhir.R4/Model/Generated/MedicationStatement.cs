@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -55,6 +56,63 @@ namespace Hl7.Fhir.Model.R4
         public override ResourceType ResourceType { get { return ResourceType.MedicationStatement; } }
         [NotMapped]
         public override string TypeName { get { return "MedicationStatement"; } }
+
+        /// <summary>
+        /// A coded concept indicating the current status of a MedicationStatement.
+        /// (url: http://hl7.org/fhir/ValueSet/medication-statement-status)
+        /// </summary>
+        [FhirEnumeration("MedicationStatementStatus")]
+        public enum MedicationStatementStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/medication-statement-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/medication-statement-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-statement-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("intended", "http://hl7.org/fhir/medication-statement-status"), Description("Intended")]
+            Intended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/medication-statement-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/medication-statement-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/medication-statement-status"), Description("Unknown")]
+            Unknown,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("not-taken", "http://hl7.org/fhir/medication-statement-status"), Description("Not Taken")]
+            NotTaken,
+        }
 
 
         /// <summary>
@@ -458,23 +516,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in StatusReason) { if (elem != null) yield return new ElementValue("statusReason", true, elem); }
-                if (Category != null) yield return new ElementValue("category", false, Category);
-                if (Medication != null) yield return new ElementValue("medication", false, Medication);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Effective != null) yield return new ElementValue("effective", false, Effective);
-                if (DateAssertedElement != null) yield return new ElementValue("dateAsserted", false, DateAssertedElement);
-                if (InformationSource != null) yield return new ElementValue("informationSource", false, InformationSource);
-                foreach (var elem in DerivedFrom) { if (elem != null) yield return new ElementValue("derivedFrom", true, elem); }
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in Dosage) { if (elem != null) yield return new ElementValue("dosage", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                foreach (var elem in StatusReason) { if (elem != null) yield return new ElementValue("statusReason", elem); }
+                if (Category != null) yield return new ElementValue("category", Category);
+                if (Medication != null) yield return new ElementValue("medication", Medication);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Effective != null) yield return new ElementValue("effective", Effective);
+                if (DateAssertedElement != null) yield return new ElementValue("dateAsserted", DateAssertedElement);
+                if (InformationSource != null) yield return new ElementValue("informationSource", InformationSource);
+                foreach (var elem in DerivedFrom) { if (elem != null) yield return new ElementValue("derivedFrom", elem); }
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in Dosage) { if (elem != null) yield return new ElementValue("dosage", elem); }
             }
         }
 

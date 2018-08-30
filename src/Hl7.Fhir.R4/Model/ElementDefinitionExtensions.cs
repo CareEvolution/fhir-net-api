@@ -6,14 +6,8 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Model.R4
@@ -48,7 +42,7 @@ namespace Hl7.Fhir.Model.R4
             return ed;
         }
 
-        public static ElementDefinition OfReference(this ElementDefinition ed, string targetProfile, IEnumerable<AggregationMode> aggregation = null, string profile=null)
+        public static ElementDefinition OfReference(this ElementDefinition ed, string targetProfile, IEnumerable<ElementDefinition.AggregationMode> aggregation = null, string profile=null)
         {
             ed.Type.Clear();
             ed.OrReference(targetProfile, aggregation, profile);
@@ -73,7 +67,7 @@ namespace Hl7.Fhir.Model.R4
             return ed;
         }
 
-        public static ElementDefinition OrReference(this ElementDefinition ed, string targetProfile, IEnumerable<AggregationMode> aggregation = null, string profile = null)
+        public static ElementDefinition OrReference(this ElementDefinition ed, string targetProfile, IEnumerable<ElementDefinition.AggregationMode> aggregation = null, string profile = null)
         {
             var newType = new ElementDefinition.TypeRefComponent { Code = FHIRAllTypes.Reference.GetLiteral() };
 
@@ -81,7 +75,7 @@ namespace Hl7.Fhir.Model.R4
                 newType.TargetProfileElement.Add(new Canonical(targetProfile));
             if (profile != null)
                 newType.ProfileElement.Add(new Canonical(profile));
-            if (aggregation != null) newType.Aggregation = aggregation.Cast<AggregationMode?>();
+            if (aggregation != null) newType.Aggregation = aggregation.Cast<ElementDefinition.AggregationMode?>();
 
             ed.Type.Add(newType);
 
@@ -100,7 +94,7 @@ namespace Hl7.Fhir.Model.R4
         {
             var binding = new ElementDefinition.ElementDefinitionBindingComponent
             {
-                ValueSet = new ResourceReference(valueSetUri),
+                ValueSet = valueSetUri,
                 Strength = strength
             };
 

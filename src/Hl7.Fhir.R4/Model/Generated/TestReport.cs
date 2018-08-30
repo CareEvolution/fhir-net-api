@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,142 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "TestReport"; } }
 
+        /// <summary>
+        /// The current status of the test report.
+        /// (url: http://hl7.org/fhir/ValueSet/report-status-codes)
+        /// </summary>
+        [FhirEnumeration("TestReportStatus")]
+        public enum TestReportStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/report-status-codes"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/report-status-codes"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("waiting", "http://hl7.org/fhir/report-status-codes"), Description("Waiting")]
+            Waiting,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/report-status-codes"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/report-status-codes"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
+        /// <summary>
+        /// The reported execution result.
+        /// (url: http://hl7.org/fhir/ValueSet/report-result-codes)
+        /// </summary>
+        [FhirEnumeration("TestReportResult")]
+        public enum TestReportResult
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-result-codes)
+            /// </summary>
+            [EnumLiteral("pass", "http://hl7.org/fhir/report-result-codes"), Description("Pass")]
+            Pass,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-result-codes)
+            /// </summary>
+            [EnumLiteral("fail", "http://hl7.org/fhir/report-result-codes"), Description("Fail")]
+            Fail,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-result-codes)
+            /// </summary>
+            [EnumLiteral("pending", "http://hl7.org/fhir/report-result-codes"), Description("Pending")]
+            Pending,
+        }
+
+        /// <summary>
+        /// The type of participant.
+        /// (url: http://hl7.org/fhir/ValueSet/report-participant-type)
+        /// </summary>
+        [FhirEnumeration("TestReportParticipantType")]
+        public enum TestReportParticipantType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-participant-type)
+            /// </summary>
+            [EnumLiteral("test-engine", "http://hl7.org/fhir/report-participant-type"), Description("Test Engine")]
+            TestEngine,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-participant-type)
+            /// </summary>
+            [EnumLiteral("client", "http://hl7.org/fhir/report-participant-type"), Description("Client")]
+            Client,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-participant-type)
+            /// </summary>
+            [EnumLiteral("server", "http://hl7.org/fhir/report-participant-type"), Description("Server")]
+            Server,
+        }
+
+        /// <summary>
+        /// The results of executing an action.
+        /// (url: http://hl7.org/fhir/ValueSet/report-action-result-codes)
+        /// </summary>
+        [FhirEnumeration("TestReportActionResult")]
+        public enum TestReportActionResult
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("pass", "http://hl7.org/fhir/report-action-result-codes"), Description("Pass")]
+            Pass,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("skip", "http://hl7.org/fhir/report-action-result-codes"), Description("Skip")]
+            Skip,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("fail", "http://hl7.org/fhir/report-action-result-codes"), Description("Fail")]
+            Fail,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("warning", "http://hl7.org/fhir/report-action-result-codes"), Description("Warning")]
+            Warning,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/report-action-result-codes"), Description("Error")]
+            Error,
+        }
+
 
         [FhirType("ParticipantComponent")]
         [DataContract]
-        public partial class ParticipantComponent : BackboneElement
+        public partial class ParticipantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParticipantComponent"; } }
@@ -228,9 +361,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (UriElement != null) yield return new ElementValue("uri", false, UriElement);
-                    if (DisplayElement != null) yield return new ElementValue("display", false, DisplayElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (UriElement != null) yield return new ElementValue("uri", UriElement);
+                    if (DisplayElement != null) yield return new ElementValue("display", DisplayElement);
                 }
             }
 
@@ -240,7 +373,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SetupComponent")]
         [DataContract]
-        public partial class SetupComponent : BackboneElement
+        public partial class SetupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SetupComponent"; } }
@@ -317,7 +450,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
+                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
                 }
             }
 
@@ -327,7 +460,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SetupActionComponent")]
         [DataContract]
-        public partial class SetupActionComponent : BackboneElement
+        public partial class SetupActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SetupActionComponent"; } }
@@ -420,8 +553,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Operation != null) yield return new ElementValue("operation", false, Operation);
-                    if (Assert != null) yield return new ElementValue("assert", false, Assert);
+                    if (Operation != null) yield return new ElementValue("operation", Operation);
+                    if (Assert != null) yield return new ElementValue("assert", Assert);
                 }
             }
 
@@ -431,7 +564,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OperationComponent")]
         [DataContract]
-        public partial class OperationComponent : BackboneElement
+        public partial class OperationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OperationComponent"; } }
@@ -580,9 +713,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ResultElement != null) yield return new ElementValue("result", false, ResultElement);
-                    if (Message != null) yield return new ElementValue("message", false, Message);
-                    if (DetailElement != null) yield return new ElementValue("detail", false, DetailElement);
+                    if (ResultElement != null) yield return new ElementValue("result", ResultElement);
+                    if (Message != null) yield return new ElementValue("message", Message);
+                    if (DetailElement != null) yield return new ElementValue("detail", DetailElement);
                 }
             }
 
@@ -592,7 +725,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AssertComponent")]
         [DataContract]
-        public partial class AssertComponent : BackboneElement
+        public partial class AssertComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AssertComponent"; } }
@@ -741,9 +874,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ResultElement != null) yield return new ElementValue("result", false, ResultElement);
-                    if (Message != null) yield return new ElementValue("message", false, Message);
-                    if (DetailElement != null) yield return new ElementValue("detail", false, DetailElement);
+                    if (ResultElement != null) yield return new ElementValue("result", ResultElement);
+                    if (Message != null) yield return new ElementValue("message", Message);
+                    if (DetailElement != null) yield return new ElementValue("detail", DetailElement);
                 }
             }
 
@@ -753,7 +886,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TestComponent")]
         [DataContract]
-        public partial class TestComponent : BackboneElement
+        public partial class TestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TestComponent"; } }
@@ -902,9 +1035,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
                 }
             }
 
@@ -914,7 +1047,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TestActionComponent")]
         [DataContract]
-        public partial class TestActionComponent : BackboneElement
+        public partial class TestActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TestActionComponent"; } }
@@ -1007,8 +1140,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Operation != null) yield return new ElementValue("operation", false, Operation);
-                    if (Assert != null) yield return new ElementValue("assert", false, Assert);
+                    if (Operation != null) yield return new ElementValue("operation", Operation);
+                    if (Assert != null) yield return new ElementValue("assert", Assert);
                 }
             }
 
@@ -1018,7 +1151,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TeardownComponent")]
         [DataContract]
-        public partial class TeardownComponent : BackboneElement
+        public partial class TeardownComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TeardownComponent"; } }
@@ -1095,7 +1228,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
+                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
                 }
             }
 
@@ -1105,7 +1238,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TeardownActionComponent")]
         [DataContract]
-        public partial class TeardownActionComponent : BackboneElement
+        public partial class TeardownActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TeardownActionComponent"; } }
@@ -1182,7 +1315,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Operation != null) yield return new ElementValue("operation", false, Operation);
+                    if (Operation != null) yield return new ElementValue("operation", Operation);
                 }
             }
 
@@ -1471,7 +1604,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "setup.action.all(operation.exists() xor assert.exists())",
             Key = "inv-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup action SHALL contain either an operation or assert but not both.",
             Xpath = "(f:operation or f:assert) and not(f:operation and f:assert)"
         };
@@ -1480,7 +1613,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "test.action.all(operation.exists() xor assert.exists())",
             Key = "inv-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test action SHALL contain either an operation or assert but not both.",
             Xpath = "(f:operation or f:assert) and not(f:operation and f:assert)"
         };
@@ -1594,18 +1727,18 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (TestScript != null) yield return new ElementValue("testScript", false, TestScript);
-                if (ResultElement != null) yield return new ElementValue("result", false, ResultElement);
-                if (ScoreElement != null) yield return new ElementValue("score", false, ScoreElement);
-                if (TesterElement != null) yield return new ElementValue("tester", false, TesterElement);
-                if (IssuedElement != null) yield return new ElementValue("issued", false, IssuedElement);
-                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", true, elem); }
-                if (Setup != null) yield return new ElementValue("setup", false, Setup);
-                foreach (var elem in Test) { if (elem != null) yield return new ElementValue("test", true, elem); }
-                if (Teardown != null) yield return new ElementValue("teardown", false, Teardown);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (TestScript != null) yield return new ElementValue("testScript", TestScript);
+                if (ResultElement != null) yield return new ElementValue("result", ResultElement);
+                if (ScoreElement != null) yield return new ElementValue("score", ScoreElement);
+                if (TesterElement != null) yield return new ElementValue("tester", TesterElement);
+                if (IssuedElement != null) yield return new ElementValue("issued", IssuedElement);
+                foreach (var elem in Participant) { if (elem != null) yield return new ElementValue("participant", elem); }
+                if (Setup != null) yield return new ElementValue("setup", Setup);
+                foreach (var elem in Test) { if (elem != null) yield return new ElementValue("test", elem); }
+                if (Teardown != null) yield return new ElementValue("teardown", Teardown);
             }
         }
 

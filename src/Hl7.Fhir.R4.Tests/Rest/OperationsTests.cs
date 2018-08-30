@@ -270,7 +270,7 @@ namespace Hl7.Fhir.Tests.Rest
             catch(FhirOperationException fe)
             {
                 Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, fe.Status);
-                Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == IssueSeverity.Error).Any());
+                Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == OperationOutcome.IssueSeverity.Error).Any());
             }
         }
 
@@ -291,7 +291,7 @@ namespace Hl7.Fhir.Tests.Rest
                 catch (FhirOperationException fe)
                 {
                     Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, fe.Status);
-                    Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == IssueSeverity.Error).Any());
+                    Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == OperationOutcome.IssueSeverity.Error).Any());
                 }
             }
         }

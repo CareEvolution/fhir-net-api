@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ParameterComponent")]
         [DataContract]
-        public partial class ParameterComponent : BackboneElement
+        public partial class ParameterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParameterComponent"; } }
@@ -101,7 +102,7 @@ namespace Hl7.Fhir.Model.R4
             /// If parameter is a data type
             /// </summary>
             [FhirElement("value", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(UsageContext),typeof(Dosage))]
+            [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(Expression),typeof(UsageContext),typeof(Dosage))]
             [DataMember]
             public Element Value
             {
@@ -209,10 +210,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
-                    if (Resource != null) yield return new ElementValue("resource", false, Resource);
-                    foreach (var elem in Part) { if (elem != null) yield return new ElementValue("part", true, elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (Value != null) yield return new ElementValue("value", Value);
+                    if (Resource != null) yield return new ElementValue("resource", Resource);
+                    foreach (var elem in Part) { if (elem != null) yield return new ElementValue("part", elem); }
                 }
             }
 
@@ -239,7 +240,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "parameter.all((part.exists() and value.empty() and resource.empty()) or (part.empty() and (value.exists() xor resource.exists())))",
             Key = "inv-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A parameter must have only one of (value, resource, part)",
             Xpath = "exists(f:value) or exists(f:resource) and not(exists(f:value) and exists(f:resource))"
         };
@@ -308,7 +309,7 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", true, elem); }
+                foreach (var elem in Parameter) { if (elem != null) yield return new ElementValue("parameter", elem); }
             }
         }
 

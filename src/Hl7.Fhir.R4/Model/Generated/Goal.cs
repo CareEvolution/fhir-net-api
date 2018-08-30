@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,97 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Goal"; } }
 
+        /// <summary>
+        /// Indicates whether the goal has been met and is still being targeted.
+        /// (url: http://hl7.org/fhir/ValueSet/goal-status)
+        /// </summary>
+        [FhirEnumeration("GoalStatus")]
+        public enum GoalStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/goal-status"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("accepted", "http://hl7.org/fhir/goal-status"), Description("Accepted")]
+            Accepted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/goal-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/goal-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("on-target", "http://hl7.org/fhir/goal-status"), Description("On Target")]
+            OnTarget,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("ahead-of-target", "http://hl7.org/fhir/goal-status"), Description("Ahead of Target")]
+            AheadOfTarget,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("behind-target", "http://hl7.org/fhir/goal-status"), Description("Behind Target")]
+            BehindTarget,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("sustaining", "http://hl7.org/fhir/goal-status"), Description("Sustaining")]
+            Sustaining,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("achieved", "http://hl7.org/fhir/goal-status"), Description("Achieved")]
+            Achieved,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/goal-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/goal-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/goal-status"), Description("Entered In Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("rejected", "http://hl7.org/fhir/goal-status"), Description("Rejected")]
+            Rejected,
+        }
+
 
         [FhirType("TargetComponent")]
         [DataContract]
-        public partial class TargetComponent : BackboneElement
+        public partial class TargetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TargetComponent"; } }
@@ -171,9 +259,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Measure != null) yield return new ElementValue("measure", false, Measure);
-                    if (Detail != null) yield return new ElementValue("detail", false, Detail);
-                    if (Due != null) yield return new ElementValue("due", false, Due);
+                    if (Measure != null) yield return new ElementValue("measure", Measure);
+                    if (Detail != null) yield return new ElementValue("detail", Detail);
+                    if (Due != null) yield return new ElementValue("due", Due);
                 }
             }
 
@@ -452,7 +540,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "target.all((detail.exists() and measure.exists()) or detail.exists().not())",
             Key = "gol-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Goal.target.measure is required if Goal.target.detail is populated",
             Xpath = "(exists(f:*[starts-with(local-name(.), 'detail')]) and exists(f:measure)) or not(exists(f:*[starts-with(local-name(.), 'detail')]))"
         };
@@ -577,21 +665,21 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (Priority != null) yield return new ElementValue("priority", false, Priority);
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Start != null) yield return new ElementValue("start", false, Start);
-                if (Target != null) yield return new ElementValue("target", false, Target);
-                if (StatusDateElement != null) yield return new ElementValue("statusDate", false, StatusDateElement);
-                if (StatusReasonElement != null) yield return new ElementValue("statusReason", false, StatusReasonElement);
-                if (ExpressedBy != null) yield return new ElementValue("expressedBy", false, ExpressedBy);
-                foreach (var elem in Addresses) { if (elem != null) yield return new ElementValue("addresses", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
-                foreach (var elem in OutcomeCode) { if (elem != null) yield return new ElementValue("outcomeCode", true, elem); }
-                foreach (var elem in OutcomeReference) { if (elem != null) yield return new ElementValue("outcomeReference", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (Priority != null) yield return new ElementValue("priority", Priority);
+                if (Description != null) yield return new ElementValue("description", Description);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Start != null) yield return new ElementValue("start", Start);
+                if (Target != null) yield return new ElementValue("target", Target);
+                if (StatusDateElement != null) yield return new ElementValue("statusDate", StatusDateElement);
+                if (StatusReasonElement != null) yield return new ElementValue("statusReason", StatusReasonElement);
+                if (ExpressedBy != null) yield return new ElementValue("expressedBy", ExpressedBy);
+                foreach (var elem in Addresses) { if (elem != null) yield return new ElementValue("addresses", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                foreach (var elem in OutcomeCode) { if (elem != null) yield return new ElementValue("outcomeCode", elem); }
+                foreach (var elem in OutcomeReference) { if (elem != null) yield return new ElementValue("outcomeReference", elem); }
             }
         }
 

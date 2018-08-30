@@ -29,11 +29,14 @@
 */
 
 
+using System;
+
 namespace Hl7.Fhir.Introspection.R4
 {
     /// <summary>
     /// Xml Serialization used for primitive values
     /// </summary>
+    [Obsolete("This enum has been replaced by System.Serialization.XmlRepresentation")]
     public enum XmlSerializationHint
     {
         None,

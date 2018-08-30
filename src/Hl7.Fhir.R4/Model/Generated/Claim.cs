@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RelatedClaimComponent")]
         [DataContract]
-        public partial class RelatedClaimComponent : BackboneElement
+        public partial class RelatedClaimComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatedClaimComponent"; } }
@@ -170,9 +171,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Claim != null) yield return new ElementValue("claim", false, Claim);
-                    if (Relationship != null) yield return new ElementValue("relationship", false, Relationship);
-                    if (Reference != null) yield return new ElementValue("reference", false, Reference);
+                    if (Claim != null) yield return new ElementValue("claim", Claim);
+                    if (Relationship != null) yield return new ElementValue("relationship", Relationship);
+                    if (Reference != null) yield return new ElementValue("reference", Reference);
                 }
             }
 
@@ -182,7 +183,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PayeeComponent")]
         [DataContract]
-        public partial class PayeeComponent : BackboneElement
+        public partial class PayeeComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PayeeComponent"; } }
@@ -294,9 +295,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Resource != null) yield return new ElementValue("resource", false, Resource);
-                    if (Party != null) yield return new ElementValue("party", false, Party);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Resource != null) yield return new ElementValue("resource", Resource);
+                    if (Party != null) yield return new ElementValue("party", Party);
                 }
             }
 
@@ -306,7 +307,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("CareTeamComponent")]
         [DataContract]
-        public partial class CareTeamComponent : BackboneElement
+        public partial class CareTeamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CareTeamComponent"; } }
@@ -491,11 +492,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    if (Provider != null) yield return new ElementValue("provider", false, Provider);
-                    if (ResponsibleElement != null) yield return new ElementValue("responsible", false, ResponsibleElement);
-                    if (Role != null) yield return new ElementValue("role", false, Role);
-                    if (Qualification != null) yield return new ElementValue("qualification", false, Qualification);
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    if (Provider != null) yield return new ElementValue("provider", Provider);
+                    if (ResponsibleElement != null) yield return new ElementValue("responsible", ResponsibleElement);
+                    if (Role != null) yield return new ElementValue("role", Role);
+                    if (Qualification != null) yield return new ElementValue("qualification", Qualification);
                 }
             }
 
@@ -505,7 +506,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SpecialConditionComponent")]
         [DataContract]
-        public partial class SpecialConditionComponent : BackboneElement
+        public partial class SpecialConditionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SpecialConditionComponent"; } }
@@ -689,12 +690,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    if (Category != null) yield return new ElementValue("category", false, Category);
-                    if (Code != null) yield return new ElementValue("code", false, Code);
-                    if (Timing != null) yield return new ElementValue("timing", false, Timing);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
-                    if (Reason != null) yield return new ElementValue("reason", false, Reason);
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    if (Category != null) yield return new ElementValue("category", Category);
+                    if (Code != null) yield return new ElementValue("code", Code);
+                    if (Timing != null) yield return new ElementValue("timing", Timing);
+                    if (Value != null) yield return new ElementValue("value", Value);
+                    if (Reason != null) yield return new ElementValue("reason", Reason);
                 }
             }
 
@@ -704,7 +705,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DiagnosisComponent")]
         [DataContract]
-        public partial class DiagnosisComponent : BackboneElement
+        public partial class DiagnosisComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DiagnosisComponent"; } }
@@ -772,9 +773,22 @@ namespace Hl7.Fhir.Model.R4
             private List<CodeableConcept> _type;
 
             /// <summary>
+            /// Present on admission
+            /// </summary>
+            [FhirElement("onAdmission", Order=70)]
+            [DataMember]
+            public CodeableConcept OnAdmission
+            {
+                get { return _onAdmission; }
+                set { _onAdmission = value; OnPropertyChanged("OnAdmission"); }
+            }
+
+            private CodeableConcept _onAdmission;
+
+            /// <summary>
             /// Package billing code
             /// </summary>
-            [FhirElement("packageCode", Order=70)]
+            [FhirElement("packageCode", Order=80)]
             [DataMember]
             public CodeableConcept PackageCode
             {
@@ -794,6 +808,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) dest.SequenceElement = (PositiveInt)SequenceElement.DeepCopy();
                     if (Diagnosis != null) dest.Diagnosis = (Element)Diagnosis.DeepCopy();
                     if (Type != null) dest.Type = new List<CodeableConcept>(Type.DeepCopy());
+                    if (OnAdmission != null) dest.OnAdmission = (CodeableConcept)OnAdmission.DeepCopy();
                     if (PackageCode != null) dest.PackageCode = (CodeableConcept)PackageCode.DeepCopy();
                     return dest;
                 }
@@ -815,6 +830,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.Matches(Diagnosis, otherT.Diagnosis)) return false;
                 if ( !DeepComparable.Matches(Type, otherT.Type)) return false;
+                if (!DeepComparable.Matches(OnAdmission, otherT.OnAdmission)) return false;
                 if (!DeepComparable.Matches(PackageCode, otherT.PackageCode)) return false;
 
                 return true;
@@ -829,6 +845,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.IsExactly(Diagnosis, otherT.Diagnosis)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
+                if (!DeepComparable.IsExactly(OnAdmission, otherT.OnAdmission)) return false;
                 if (!DeepComparable.IsExactly(PackageCode, otherT.PackageCode)) return false;
 
                 return true;
@@ -844,6 +861,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return SequenceElement;
                     if (Diagnosis != null) yield return Diagnosis;
                     foreach (var elem in Type) { if (elem != null) yield return elem; }
+                    if (OnAdmission != null) yield return OnAdmission;
                     if (PackageCode != null) yield return PackageCode;
                 }
             }
@@ -854,10 +872,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    if (Diagnosis != null) yield return new ElementValue("diagnosis", false, Diagnosis);
-                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", true, elem); }
-                    if (PackageCode != null) yield return new ElementValue("packageCode", false, PackageCode);
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    if (Diagnosis != null) yield return new ElementValue("diagnosis", Diagnosis);
+                    foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
+                    if (OnAdmission != null) yield return new ElementValue("onAdmission", OnAdmission);
+                    if (PackageCode != null) yield return new ElementValue("packageCode", PackageCode);
                 }
             }
 
@@ -867,7 +886,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ProcedureComponent")]
         [DataContract]
-        public partial class ProcedureComponent : BackboneElement
+        public partial class ProcedureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProcedureComponent"; } }
@@ -1018,9 +1037,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                    if (Procedure != null) yield return new ElementValue("procedure", false, Procedure);
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    if (DateElement != null) yield return new ElementValue("date", DateElement);
+                    if (Procedure != null) yield return new ElementValue("procedure", Procedure);
                 }
             }
 
@@ -1030,7 +1049,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("InsuranceComponent")]
         [DataContract]
-        public partial class InsuranceComponent : BackboneElement
+        public partial class InsuranceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InsuranceComponent"; } }
@@ -1290,13 +1309,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    if (FocalElement != null) yield return new ElementValue("focal", false, FocalElement);
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Coverage != null) yield return new ElementValue("coverage", false, Coverage);
-                    if (BusinessArrangementElement != null) yield return new ElementValue("businessArrangement", false, BusinessArrangementElement);
-                    foreach (var elem in PreAuthRefElement) { if (elem != null) yield return new ElementValue("preAuthRef", true, elem); }
-                    if (ClaimResponse != null) yield return new ElementValue("claimResponse", false, ClaimResponse);
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    if (FocalElement != null) yield return new ElementValue("focal", FocalElement);
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (Coverage != null) yield return new ElementValue("coverage", Coverage);
+                    if (BusinessArrangementElement != null) yield return new ElementValue("businessArrangement", BusinessArrangementElement);
+                    foreach (var elem in PreAuthRefElement) { if (elem != null) yield return new ElementValue("preAuthRef", elem); }
+                    if (ClaimResponse != null) yield return new ElementValue("claimResponse", ClaimResponse);
                 }
             }
 
@@ -1306,7 +1325,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AccidentComponent")]
         [DataContract]
-        public partial class AccidentComponent : BackboneElement
+        public partial class AccidentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AccidentComponent"; } }
@@ -1441,9 +1460,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Location != null) yield return new ElementValue("location", false, Location);
+                    if (DateElement != null) yield return new ElementValue("date", DateElement);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Location != null) yield return new ElementValue("location", Location);
                 }
             }
 
@@ -1453,7 +1472,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ItemComponent")]
         [DataContract]
-        public partial class ItemComponent : BackboneElement
+        public partial class ItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ItemComponent"; } }
@@ -1652,15 +1671,15 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Billing Code
             /// </summary>
-            [FhirElement("service", Order=110)]
+            [FhirElement("billcode", Order=110)]
             [DataMember]
-            public CodeableConcept Service
+            public CodeableConcept Billcode
             {
-                get { return _service; }
-                set { _service = value; OnPropertyChanged("Service"); }
+                get { return _billcode; }
+                set { _billcode = value; OnPropertyChanged("Billcode"); }
             }
 
-            private CodeableConcept _service;
+            private CodeableConcept _billcode;
 
             /// <summary>
             /// Service/Product billing modifiers
@@ -1874,7 +1893,7 @@ namespace Hl7.Fhir.Model.R4
                     if (InformationSequenceElement != null) dest.InformationSequenceElement = new List<PositiveInt>(InformationSequenceElement.DeepCopy());
                     if (Revenue != null) dest.Revenue = (CodeableConcept)Revenue.DeepCopy();
                     if (Category != null) dest.Category = (CodeableConcept)Category.DeepCopy();
-                    if (Service != null) dest.Service = (CodeableConcept)Service.DeepCopy();
+                    if (Billcode != null) dest.Billcode = (CodeableConcept)Billcode.DeepCopy();
                     if (Modifier != null) dest.Modifier = new List<CodeableConcept>(Modifier.DeepCopy());
                     if (ProgramCode != null) dest.ProgramCode = new List<CodeableConcept>(ProgramCode.DeepCopy());
                     if (Serviced != null) dest.Serviced = (Element)Serviced.DeepCopy();
@@ -1912,7 +1931,7 @@ namespace Hl7.Fhir.Model.R4
                 if ( !DeepComparable.Matches(InformationSequenceElement, otherT.InformationSequenceElement)) return false;
                 if (!DeepComparable.Matches(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.Matches(Category, otherT.Category)) return false;
-                if (!DeepComparable.Matches(Service, otherT.Service)) return false;
+                if (!DeepComparable.Matches(Billcode, otherT.Billcode)) return false;
                 if ( !DeepComparable.Matches(Modifier, otherT.Modifier)) return false;
                 if ( !DeepComparable.Matches(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.Matches(Serviced, otherT.Serviced)) return false;
@@ -1943,7 +1962,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(InformationSequenceElement, otherT.InformationSequenceElement)) return false;
                 if (!DeepComparable.IsExactly(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
-                if (!DeepComparable.IsExactly(Service, otherT.Service)) return false;
+                if (!DeepComparable.IsExactly(Billcode, otherT.Billcode)) return false;
                 if (!DeepComparable.IsExactly(Modifier, otherT.Modifier)) return false;
                 if (!DeepComparable.IsExactly(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.IsExactly(Serviced, otherT.Serviced)) return false;
@@ -1975,7 +1994,7 @@ namespace Hl7.Fhir.Model.R4
                     foreach (var elem in InformationSequenceElement) { if (elem != null) yield return elem; }
                     if (Revenue != null) yield return Revenue;
                     if (Category != null) yield return Category;
-                    if (Service != null) yield return Service;
+                    if (Billcode != null) yield return Billcode;
                     foreach (var elem in Modifier) { if (elem != null) yield return elem; }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return elem; }
                     if (Serviced != null) yield return Serviced;
@@ -1998,27 +2017,27 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    foreach (var elem in CareTeamSequenceElement) { if (elem != null) yield return new ElementValue("careTeamSequence", true, elem); }
-                    foreach (var elem in DiagnosisSequenceElement) { if (elem != null) yield return new ElementValue("diagnosisSequence", true, elem); }
-                    foreach (var elem in ProcedureSequenceElement) { if (elem != null) yield return new ElementValue("procedureSequence", true, elem); }
-                    foreach (var elem in InformationSequenceElement) { if (elem != null) yield return new ElementValue("informationSequence", true, elem); }
-                    if (Revenue != null) yield return new ElementValue("revenue", false, Revenue);
-                    if (Category != null) yield return new ElementValue("category", false, Category);
-                    if (Service != null) yield return new ElementValue("service", false, Service);
-                    foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", true, elem); }
-                    foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", true, elem); }
-                    if (Serviced != null) yield return new ElementValue("serviced", false, Serviced);
-                    if (Location != null) yield return new ElementValue("location", false, Location);
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    if (UnitPrice != null) yield return new ElementValue("unitPrice", false, UnitPrice);
-                    if (FactorElement != null) yield return new ElementValue("factor", false, FactorElement);
-                    if (Net != null) yield return new ElementValue("net", false, Net);
-                    foreach (var elem in Udi) { if (elem != null) yield return new ElementValue("udi", true, elem); }
-                    if (BodySite != null) yield return new ElementValue("bodySite", false, BodySite);
-                    foreach (var elem in SubSite) { if (elem != null) yield return new ElementValue("subSite", true, elem); }
-                    foreach (var elem in Encounter) { if (elem != null) yield return new ElementValue("encounter", true, elem); }
-                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", true, elem); }
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    foreach (var elem in CareTeamSequenceElement) { if (elem != null) yield return new ElementValue("careTeamSequence", elem); }
+                    foreach (var elem in DiagnosisSequenceElement) { if (elem != null) yield return new ElementValue("diagnosisSequence", elem); }
+                    foreach (var elem in ProcedureSequenceElement) { if (elem != null) yield return new ElementValue("procedureSequence", elem); }
+                    foreach (var elem in InformationSequenceElement) { if (elem != null) yield return new ElementValue("informationSequence", elem); }
+                    if (Revenue != null) yield return new ElementValue("revenue", Revenue);
+                    if (Category != null) yield return new ElementValue("category", Category);
+                    if (Billcode != null) yield return new ElementValue("billcode", Billcode);
+                    foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", elem); }
+                    foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", elem); }
+                    if (Serviced != null) yield return new ElementValue("serviced", Serviced);
+                    if (Location != null) yield return new ElementValue("location", Location);
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    if (UnitPrice != null) yield return new ElementValue("unitPrice", UnitPrice);
+                    if (FactorElement != null) yield return new ElementValue("factor", FactorElement);
+                    if (Net != null) yield return new ElementValue("net", Net);
+                    foreach (var elem in Udi) { if (elem != null) yield return new ElementValue("udi", elem); }
+                    if (BodySite != null) yield return new ElementValue("bodySite", BodySite);
+                    foreach (var elem in SubSite) { if (elem != null) yield return new ElementValue("subSite", elem); }
+                    foreach (var elem in Encounter) { if (elem != null) yield return new ElementValue("encounter", elem); }
+                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
                 }
             }
 
@@ -2028,7 +2047,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DetailComponent")]
         [DataContract]
-        public partial class DetailComponent : BackboneElement
+        public partial class DetailComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DetailComponent"; } }
@@ -2095,15 +2114,15 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Billing Code
             /// </summary>
-            [FhirElement("service", Order=70)]
+            [FhirElement("billcode", Order=70)]
             [DataMember]
-            public CodeableConcept Service
+            public CodeableConcept Billcode
             {
-                get { return _service; }
-                set { _service = value; OnPropertyChanged("Service"); }
+                get { return _billcode; }
+                set { _billcode = value; OnPropertyChanged("Billcode"); }
             }
 
-            private CodeableConcept _service;
+            private CodeableConcept _billcode;
 
             /// <summary>
             /// Service/Product billing modifiers
@@ -2243,7 +2262,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) dest.SequenceElement = (PositiveInt)SequenceElement.DeepCopy();
                     if (Revenue != null) dest.Revenue = (CodeableConcept)Revenue.DeepCopy();
                     if (Category != null) dest.Category = (CodeableConcept)Category.DeepCopy();
-                    if (Service != null) dest.Service = (CodeableConcept)Service.DeepCopy();
+                    if (Billcode != null) dest.Billcode = (CodeableConcept)Billcode.DeepCopy();
                     if (Modifier != null) dest.Modifier = new List<CodeableConcept>(Modifier.DeepCopy());
                     if (ProgramCode != null) dest.ProgramCode = new List<CodeableConcept>(ProgramCode.DeepCopy());
                     if (Quantity != null) dest.Quantity = (SimpleQuantity)Quantity.DeepCopy();
@@ -2272,7 +2291,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.Matches(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.Matches(Category, otherT.Category)) return false;
-                if (!DeepComparable.Matches(Service, otherT.Service)) return false;
+                if (!DeepComparable.Matches(Billcode, otherT.Billcode)) return false;
                 if ( !DeepComparable.Matches(Modifier, otherT.Modifier)) return false;
                 if ( !DeepComparable.Matches(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.Matches(Quantity, otherT.Quantity)) return false;
@@ -2294,7 +2313,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.IsExactly(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
-                if (!DeepComparable.IsExactly(Service, otherT.Service)) return false;
+                if (!DeepComparable.IsExactly(Billcode, otherT.Billcode)) return false;
                 if (!DeepComparable.IsExactly(Modifier, otherT.Modifier)) return false;
                 if (!DeepComparable.IsExactly(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.IsExactly(Quantity, otherT.Quantity)) return false;
@@ -2317,7 +2336,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return SequenceElement;
                     if (Revenue != null) yield return Revenue;
                     if (Category != null) yield return Category;
-                    if (Service != null) yield return Service;
+                    if (Billcode != null) yield return Billcode;
                     foreach (var elem in Modifier) { if (elem != null) yield return elem; }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return elem; }
                     if (Quantity != null) yield return Quantity;
@@ -2335,18 +2354,18 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    if (Revenue != null) yield return new ElementValue("revenue", false, Revenue);
-                    if (Category != null) yield return new ElementValue("category", false, Category);
-                    if (Service != null) yield return new ElementValue("service", false, Service);
-                    foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", true, elem); }
-                    foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", true, elem); }
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    if (UnitPrice != null) yield return new ElementValue("unitPrice", false, UnitPrice);
-                    if (FactorElement != null) yield return new ElementValue("factor", false, FactorElement);
-                    if (Net != null) yield return new ElementValue("net", false, Net);
-                    foreach (var elem in Udi) { if (elem != null) yield return new ElementValue("udi", true, elem); }
-                    foreach (var elem in SubDetail) { if (elem != null) yield return new ElementValue("subDetail", true, elem); }
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    if (Revenue != null) yield return new ElementValue("revenue", Revenue);
+                    if (Category != null) yield return new ElementValue("category", Category);
+                    if (Billcode != null) yield return new ElementValue("billcode", Billcode);
+                    foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", elem); }
+                    foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", elem); }
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    if (UnitPrice != null) yield return new ElementValue("unitPrice", UnitPrice);
+                    if (FactorElement != null) yield return new ElementValue("factor", FactorElement);
+                    if (Net != null) yield return new ElementValue("net", Net);
+                    foreach (var elem in Udi) { if (elem != null) yield return new ElementValue("udi", elem); }
+                    foreach (var elem in SubDetail) { if (elem != null) yield return new ElementValue("subDetail", elem); }
                 }
             }
 
@@ -2356,7 +2375,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SubDetailComponent")]
         [DataContract]
-        public partial class SubDetailComponent : BackboneElement
+        public partial class SubDetailComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SubDetailComponent"; } }
@@ -2423,15 +2442,15 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Billing Code
             /// </summary>
-            [FhirElement("service", Order=70)]
+            [FhirElement("billcode", Order=70)]
             [DataMember]
-            public CodeableConcept Service
+            public CodeableConcept Billcode
             {
-                get { return _service; }
-                set { _service = value; OnPropertyChanged("Service"); }
+                get { return _billcode; }
+                set { _billcode = value; OnPropertyChanged("Billcode"); }
             }
 
-            private CodeableConcept _service;
+            private CodeableConcept _billcode;
 
             /// <summary>
             /// Service/Product billing modifiers
@@ -2557,7 +2576,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) dest.SequenceElement = (PositiveInt)SequenceElement.DeepCopy();
                     if (Revenue != null) dest.Revenue = (CodeableConcept)Revenue.DeepCopy();
                     if (Category != null) dest.Category = (CodeableConcept)Category.DeepCopy();
-                    if (Service != null) dest.Service = (CodeableConcept)Service.DeepCopy();
+                    if (Billcode != null) dest.Billcode = (CodeableConcept)Billcode.DeepCopy();
                     if (Modifier != null) dest.Modifier = new List<CodeableConcept>(Modifier.DeepCopy());
                     if (ProgramCode != null) dest.ProgramCode = new List<CodeableConcept>(ProgramCode.DeepCopy());
                     if (Quantity != null) dest.Quantity = (SimpleQuantity)Quantity.DeepCopy();
@@ -2585,7 +2604,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.Matches(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.Matches(Category, otherT.Category)) return false;
-                if (!DeepComparable.Matches(Service, otherT.Service)) return false;
+                if (!DeepComparable.Matches(Billcode, otherT.Billcode)) return false;
                 if ( !DeepComparable.Matches(Modifier, otherT.Modifier)) return false;
                 if ( !DeepComparable.Matches(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.Matches(Quantity, otherT.Quantity)) return false;
@@ -2606,7 +2625,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.IsExactly(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
-                if (!DeepComparable.IsExactly(Service, otherT.Service)) return false;
+                if (!DeepComparable.IsExactly(Billcode, otherT.Billcode)) return false;
                 if (!DeepComparable.IsExactly(Modifier, otherT.Modifier)) return false;
                 if (!DeepComparable.IsExactly(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.IsExactly(Quantity, otherT.Quantity)) return false;
@@ -2628,7 +2647,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return SequenceElement;
                     if (Revenue != null) yield return Revenue;
                     if (Category != null) yield return Category;
-                    if (Service != null) yield return Service;
+                    if (Billcode != null) yield return Billcode;
                     foreach (var elem in Modifier) { if (elem != null) yield return elem; }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return elem; }
                     if (Quantity != null) yield return Quantity;
@@ -2645,17 +2664,17 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SequenceElement != null) yield return new ElementValue("sequence", false, SequenceElement);
-                    if (Revenue != null) yield return new ElementValue("revenue", false, Revenue);
-                    if (Category != null) yield return new ElementValue("category", false, Category);
-                    if (Service != null) yield return new ElementValue("service", false, Service);
-                    foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", true, elem); }
-                    foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", true, elem); }
-                    if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                    if (UnitPrice != null) yield return new ElementValue("unitPrice", false, UnitPrice);
-                    if (FactorElement != null) yield return new ElementValue("factor", false, FactorElement);
-                    if (Net != null) yield return new ElementValue("net", false, Net);
-                    foreach (var elem in Udi) { if (elem != null) yield return new ElementValue("udi", true, elem); }
+                    if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
+                    if (Revenue != null) yield return new ElementValue("revenue", Revenue);
+                    if (Category != null) yield return new ElementValue("category", Category);
+                    if (Billcode != null) yield return new ElementValue("billcode", Billcode);
+                    foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", elem); }
+                    foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", elem); }
+                    if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                    if (UnitPrice != null) yield return new ElementValue("unitPrice", UnitPrice);
+                    if (FactorElement != null) yield return new ElementValue("factor", FactorElement);
+                    if (Net != null) yield return new ElementValue("net", Net);
+                    foreach (var elem in Udi) { if (elem != null) yield return new ElementValue("udi", elem); }
                 }
             }
 
@@ -2726,20 +2745,19 @@ namespace Hl7.Fhir.Model.R4
         /// Finer grained claim type information
         /// </summary>
         [FhirElement("subType", Order=120)]
-        [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<CodeableConcept> SubType
+        public CodeableConcept SubType
         {
-            get { if (_subType==null) _subType = new List<CodeableConcept>(); return _subType; }
+            get { return _subType; }
             set { _subType = value; OnPropertyChanged("SubType"); }
         }
 
-        private List<CodeableConcept> _subType;
+        private CodeableConcept _subType;
 
         /// <summary>
-        /// complete | proposed | exploratory | other
+        /// claim | preauthorization | predetermination
         /// </summary>
-        [FhirElement("use", Order=130)]
+        [FhirElement("use", InSummary=true, Order=130)]
         [DataMember]
         public Code<Use> UseElement
         {
@@ -2750,7 +2768,7 @@ namespace Hl7.Fhir.Model.R4
         private Code<Use> _useElement;
 
         /// <summary>
-        /// complete | proposed | exploratory | other
+        /// claim | preauthorization | predetermination
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -2896,7 +2914,7 @@ namespace Hl7.Fhir.Model.R4
         private CodeableConcept _fundsReserve;
 
         /// <summary>
-        /// Related Claims which may be revelant to processing this claimn
+        /// Related Claims which may be relevant to processing this claim
         /// </summary>
         [FhirElement("related", Order=220)]
         [Cardinality(Min=0,Max=-1)]
@@ -2924,7 +2942,7 @@ namespace Hl7.Fhir.Model.R4
         private ResourceReference _prescription;
 
         /// <summary>
-        /// Original prescription if superceded by fulfiller
+        /// Original prescription if superseded by fulfiller
         /// </summary>
         [FhirElement("originalPrescription", Order=240)]
         [References("MedicationRequest")]
@@ -3099,7 +3117,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
                 if (StatusElement != null) dest.StatusElement = (Code<FinancialResourceStatusCodes>)StatusElement.DeepCopy();
                 if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
-                if (SubType != null) dest.SubType = new List<CodeableConcept>(SubType.DeepCopy());
+                if (SubType != null) dest.SubType = (CodeableConcept)SubType.DeepCopy();
                 if (UseElement != null) dest.UseElement = (Code<Use>)UseElement.DeepCopy();
                 if (Patient != null) dest.Patient = (ResourceReference)Patient.DeepCopy();
                 if (BillablePeriod != null) dest.BillablePeriod = (Period)BillablePeriod.DeepCopy();
@@ -3143,7 +3161,7 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.Matches(Type, otherT.Type)) return false;
-            if ( !DeepComparable.Matches(SubType, otherT.SubType)) return false;
+            if (!DeepComparable.Matches(SubType, otherT.SubType)) return false;
             if (!DeepComparable.Matches(UseElement, otherT.UseElement)) return false;
             if (!DeepComparable.Matches(Patient, otherT.Patient)) return false;
             if (!DeepComparable.Matches(BillablePeriod, otherT.BillablePeriod)) return false;
@@ -3217,7 +3235,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Identifier) { if (elem != null) yield return elem; }
                 if (StatusElement != null) yield return StatusElement;
                 if (Type != null) yield return Type;
-                foreach (var elem in SubType) { if (elem != null) yield return elem; }
+                if (SubType != null) yield return SubType;
                 if (UseElement != null) yield return UseElement;
                 if (Patient != null) yield return Patient;
                 if (BillablePeriod != null) yield return BillablePeriod;
@@ -3250,33 +3268,33 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                foreach (var elem in SubType) { if (elem != null) yield return new ElementValue("subType", true, elem); }
-                if (UseElement != null) yield return new ElementValue("use", false, UseElement);
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                if (BillablePeriod != null) yield return new ElementValue("billablePeriod", false, BillablePeriod);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (Enterer != null) yield return new ElementValue("enterer", false, Enterer);
-                if (Insurer != null) yield return new ElementValue("insurer", false, Insurer);
-                if (Provider != null) yield return new ElementValue("provider", false, Provider);
-                if (Priority != null) yield return new ElementValue("priority", false, Priority);
-                if (FundsReserve != null) yield return new ElementValue("fundsReserve", false, FundsReserve);
-                foreach (var elem in Related) { if (elem != null) yield return new ElementValue("related", true, elem); }
-                if (Prescription != null) yield return new ElementValue("prescription", false, Prescription);
-                if (OriginalPrescription != null) yield return new ElementValue("originalPrescription", false, OriginalPrescription);
-                if (Payee != null) yield return new ElementValue("payee", false, Payee);
-                if (Referral != null) yield return new ElementValue("referral", false, Referral);
-                if (Facility != null) yield return new ElementValue("facility", false, Facility);
-                foreach (var elem in CareTeam) { if (elem != null) yield return new ElementValue("careTeam", true, elem); }
-                foreach (var elem in Information) { if (elem != null) yield return new ElementValue("information", true, elem); }
-                foreach (var elem in Diagnosis) { if (elem != null) yield return new ElementValue("diagnosis", true, elem); }
-                foreach (var elem in Procedure) { if (elem != null) yield return new ElementValue("procedure", true, elem); }
-                foreach (var elem in Insurance) { if (elem != null) yield return new ElementValue("insurance", true, elem); }
-                if (Accident != null) yield return new ElementValue("accident", false, Accident);
-                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
-                if (Total != null) yield return new ElementValue("total", false, Total);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (SubType != null) yield return new ElementValue("subType", SubType);
+                if (UseElement != null) yield return new ElementValue("use", UseElement);
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                if (BillablePeriod != null) yield return new ElementValue("billablePeriod", BillablePeriod);
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Enterer != null) yield return new ElementValue("enterer", Enterer);
+                if (Insurer != null) yield return new ElementValue("insurer", Insurer);
+                if (Provider != null) yield return new ElementValue("provider", Provider);
+                if (Priority != null) yield return new ElementValue("priority", Priority);
+                if (FundsReserve != null) yield return new ElementValue("fundsReserve", FundsReserve);
+                foreach (var elem in Related) { if (elem != null) yield return new ElementValue("related", elem); }
+                if (Prescription != null) yield return new ElementValue("prescription", Prescription);
+                if (OriginalPrescription != null) yield return new ElementValue("originalPrescription", OriginalPrescription);
+                if (Payee != null) yield return new ElementValue("payee", Payee);
+                if (Referral != null) yield return new ElementValue("referral", Referral);
+                if (Facility != null) yield return new ElementValue("facility", Facility);
+                foreach (var elem in CareTeam) { if (elem != null) yield return new ElementValue("careTeam", elem); }
+                foreach (var elem in Information) { if (elem != null) yield return new ElementValue("information", elem); }
+                foreach (var elem in Diagnosis) { if (elem != null) yield return new ElementValue("diagnosis", elem); }
+                foreach (var elem in Procedure) { if (elem != null) yield return new ElementValue("procedure", elem); }
+                foreach (var elem in Insurance) { if (elem != null) yield return new ElementValue("insurance", elem); }
+                if (Accident != null) yield return new ElementValue("accident", Accident);
+                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
+                if (Total != null) yield return new ElementValue("total", Total);
             }
         }
 

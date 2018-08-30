@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -363,17 +364,17 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ActiveElement != null) yield return new ElementValue("active", false, ActiveElement);
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                foreach (var elem in Relationship) { if (elem != null) yield return new ElementValue("relationship", true, elem); }
-                foreach (var elem in Name) { if (elem != null) yield return new ElementValue("name", true, elem); }
-                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", true, elem); }
-                if (GenderElement != null) yield return new ElementValue("gender", false, GenderElement);
-                if (BirthDateElement != null) yield return new ElementValue("birthDate", false, BirthDateElement);
-                foreach (var elem in Address) { if (elem != null) yield return new ElementValue("address", true, elem); }
-                foreach (var elem in Photo) { if (elem != null) yield return new ElementValue("photo", true, elem); }
-                if (Period != null) yield return new ElementValue("period", false, Period);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ActiveElement != null) yield return new ElementValue("active", ActiveElement);
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                foreach (var elem in Relationship) { if (elem != null) yield return new ElementValue("relationship", elem); }
+                foreach (var elem in Name) { if (elem != null) yield return new ElementValue("name", elem); }
+                foreach (var elem in Telecom) { if (elem != null) yield return new ElementValue("telecom", elem); }
+                if (GenderElement != null) yield return new ElementValue("gender", GenderElement);
+                if (BirthDateElement != null) yield return new ElementValue("birthDate", BirthDateElement);
+                foreach (var elem in Address) { if (elem != null) yield return new ElementValue("address", elem); }
+                foreach (var elem in Photo) { if (elem != null) yield return new ElementValue("photo", elem); }
+                if (Period != null) yield return new ElementValue("period", Period);
             }
         }
 

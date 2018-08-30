@@ -25,7 +25,7 @@ namespace Hl7.Fhir.Rest.Http.R4
 
             var interaction = entry.Request;
 
-            if (entry.Resource != null && !(interaction.Method == HTTPVerb.POST || interaction.Method == HTTPVerb.PUT))
+            if (entry.Resource != null && !(interaction.Method == Bundle.HTTPVerb.POST || interaction.Method == Bundle.HTTPVerb.PUT))
                 throw Error.InvalidOperation("Cannot have a body on an Http " + interaction.Method.ToString());
 
             var location = new RestUrl(interaction.Url);
@@ -59,19 +59,19 @@ namespace Hl7.Fhir.Rest.Http.R4
         /// <summary>
         /// Converts bundle http verb to corresponding <see cref="HttpMethod"/>.
         /// </summary>
-        /// <param name="verb"><see cref="HTTPVerb"/> specified by input bundle.</param>
+        /// <param name="verb"><see cref="Bundle.HTTPVerb"/> specified by input bundle.</param>
         /// <returns><see cref="HttpMethod"/> corresponding to verb specified in input bundle.</returns>
-        private static HttpMethod getMethod(HTTPVerb? verb)
+        private static HttpMethod getMethod(Bundle.HTTPVerb? verb)
         {
             switch(verb)
             {
-                case HTTPVerb.GET:
+                case Bundle.HTTPVerb.GET:
                     return HttpMethod.Get;
-                case HTTPVerb.POST:
+                case Bundle.HTTPVerb.POST:
                     return HttpMethod.Post;
-                case HTTPVerb.PUT:
+                case Bundle.HTTPVerb.PUT:
                     return HttpMethod.Put;
-                case HTTPVerb.DELETE:
+                case Bundle.HTTPVerb.DELETE:
                     return HttpMethod.Delete;
             }
             throw new HttpRequestException($"Valid HttpVerb could not be found for verb type: [{verb}]");
@@ -86,7 +86,7 @@ namespace Hl7.Fhir.Rest.Http.R4
 
             if (data is Binary bin)
             {
-                body = bin.Content;
+                body = bin.Data;
                 // This is done by the caller after the OnBeforeRequest is called so that other properties
                 // can be set before the content is committed
                 // request.WriteBody(CompressRequestBody, bin.Content);

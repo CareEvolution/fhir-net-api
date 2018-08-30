@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,37 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Linkage"; } }
 
+        /// <summary>
+        /// Used to distinguish different roles a resource can play within a set of linked resources.
+        /// (url: http://hl7.org/fhir/ValueSet/linkage-type)
+        /// </summary>
+        [FhirEnumeration("LinkageType")]
+        public enum LinkageType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/linkage-type)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/linkage-type"), Description("Source of truth")]
+            Source,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/linkage-type)
+            /// </summary>
+            [EnumLiteral("alternate", "http://hl7.org/fhir/linkage-type"), Description("Alternate record")]
+            Alternate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/linkage-type)
+            /// </summary>
+            [EnumLiteral("historical", "http://hl7.org/fhir/linkage-type"), Description("Historical/obsolete record")]
+            Historical,
+        }
+
 
         [FhirType("ItemComponent")]
         [DataContract]
-        public partial class ItemComponent : BackboneElement
+        public partial class ItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ItemComponent"; } }
@@ -173,8 +201,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (Resource != null) yield return new ElementValue("resource", false, Resource);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (Resource != null) yield return new ElementValue("resource", Resource);
                 }
             }
 
@@ -247,7 +275,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "item.count()>1",
             Key = "lnk-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have at least two items",
             Xpath = "count(f:item)>1"
         };
@@ -324,9 +352,9 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (ActiveElement != null) yield return new ElementValue("active", false, ActiveElement);
-                if (Author != null) yield return new ElementValue("author", false, Author);
-                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
+                if (ActiveElement != null) yield return new ElementValue("active", ActiveElement);
+                if (Author != null) yield return new ElementValue("author", Author);
+                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
             }
         }
 

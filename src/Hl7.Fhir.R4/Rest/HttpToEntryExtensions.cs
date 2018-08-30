@@ -8,6 +8,7 @@
 
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
@@ -193,7 +194,7 @@ namespace Hl7.Fhir.Rest.R4
         {
             var binary = new Binary();
 
-            binary.Content = data;
+            binary.Data = data;
             binary.ContentType = contentType;
 
             return binary;

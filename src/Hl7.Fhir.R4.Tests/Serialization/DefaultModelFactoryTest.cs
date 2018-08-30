@@ -57,8 +57,8 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(collection is List<int?>);
 
             // Test handling of closed generics
-            Assert.IsTrue(factory.CanCreate(typeof(Code<AddressUse>)));
-            Assert.IsNotNull(factory.Create(typeof(Code<AddressUse>)));
+            Assert.IsTrue(factory.CanCreate(typeof(Code<Address.AddressUse>)));
+            Assert.IsNotNull(factory.Create(typeof(Code<Address.AddressUse>)));
         }
 
         [TestMethod]

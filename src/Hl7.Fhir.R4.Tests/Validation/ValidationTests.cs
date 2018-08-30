@@ -119,10 +119,10 @@ namespace Hl7.Fhir.Tests.Validation
             oo.Issue.Add(issue);
             validateErrorOrFail(oo,true);
 
-            issue.Severity = IssueSeverity.Information;
+            issue.Severity = OperationOutcome.IssueSeverity.Information;
             validateErrorOrFail(oo, true);
 
-            issue.Code = IssueType.Forbidden;
+            issue.Code = OperationOutcome.IssueType.Forbidden;
 
             DotNetAttributeValidation.Validate(oo, true);
         }
@@ -180,7 +180,7 @@ namespace Hl7.Fhir.Tests.Validation
             validateErrorOrFail(enc, membername: "StatusElement");
             validateErrorOrFail(enc,true);  // recursive checking shouldn't matter
 
-            enc.Status = EncounterStatus.Planned;
+            enc.Status = Encounter.EncounterStatus.Planned;
 
             // Now, it should work
             DotNetAttributeValidation.Validate(enc);
@@ -205,7 +205,7 @@ namespace Hl7.Fhir.Tests.Validation
         {
             var p = new Patient();
 
-            p.Text = new Narrative() { Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should be valid</p></div>", Status = NarrativeStatus.Generated  };
+            p.Text = new Narrative() { Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should be valid</p></div>", Status = Narrative.NarrativeStatus.Generated  };
             DotNetAttributeValidation.Validate(p,true);
 
             p.Text.Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should not be valid<p></div>";

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -54,185 +55,61 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "TriggerDefinition"; } }
 
-
-        [FhirType("ConditionComponent")]
-        [DataContract]
-        public partial class ConditionComponent : Element
+        /// <summary>
+        /// The type of trigger.
+        /// (url: http://hl7.org/fhir/ValueSet/trigger-type)
+        /// </summary>
+        [FhirEnumeration("TriggerType")]
+        public enum TriggerType
         {
-            [NotMapped]
-            public override string TypeName { get { return "ConditionComponent"; } }
-
             /// <summary>
-            /// Natural language description of the condition
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
             /// </summary>
-            [FhirElement("description", InSummary=true, Order=40)]
-            [DataMember]
-            public FhirString DescriptionElement
-            {
-                get { return _descriptionElement; }
-                set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
-            }
-
-            private FhirString _descriptionElement;
-
+            [EnumLiteral("named-event", "http://hl7.org/fhir/trigger-type"), Description("Named Event")]
+            NamedEvent,
             /// <summary>
-            /// Natural language description of the condition
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
             /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string Description
-            {
-                get { return DescriptionElement != null ? DescriptionElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        DescriptionElement = null;
-                    else
-                        DescriptionElement = new FhirString(value);
-                    OnPropertyChanged("Description");
-                }
-            }
-
+            [EnumLiteral("periodic", "http://hl7.org/fhir/trigger-type"), Description("Periodic")]
+            Periodic,
             /// <summary>
-            /// text/cql | text/fhirpath | etc.
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
             /// </summary>
-            [FhirElement("language", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
-            [DataMember]
-            public Code LanguageElement
-            {
-                get { return _languageElement; }
-                set { _languageElement = value; OnPropertyChanged("LanguageElement"); }
-            }
-
-            private Code _languageElement;
-
+            [EnumLiteral("data-changed", "http://hl7.org/fhir/trigger-type"), Description("Data Changed")]
+            DataChanged,
             /// <summary>
-            /// text/cql | text/fhirpath | etc.
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
             /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string Language
-            {
-                get { return LanguageElement != null ? LanguageElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        LanguageElement = null;
-                    else
-                        LanguageElement = new Code(value);
-                    OnPropertyChanged("Language");
-                }
-            }
-
+            [EnumLiteral("data-added", "http://hl7.org/fhir/trigger-type"), Description("Data Added")]
+            DataAdded,
             /// <summary>
-            /// Boolean-valued expression
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
             /// </summary>
-            [FhirElement("expression", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=1)]
-            [DataMember]
-            public FhirString ExpressionElement
-            {
-                get { return _expressionElement; }
-                set { _expressionElement = value; OnPropertyChanged("ExpressionElement"); }
-            }
-
-            private FhirString _expressionElement;
-
+            [EnumLiteral("data-modified", "http://hl7.org/fhir/trigger-type"), Description("Data Updated")]
+            DataModified,
             /// <summary>
-            /// Boolean-valued expression
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
             /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string Expression
-            {
-                get { return ExpressionElement != null ? ExpressionElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        ExpressionElement = null;
-                    else
-                        ExpressionElement = new FhirString(value);
-                    OnPropertyChanged("Expression");
-                }
-            }
-
-            public override IDeepCopyable CopyTo(IDeepCopyable other)
-            {
-                var dest = other as ConditionComponent;
-
-                if (dest != null)
-                {
-                    base.CopyTo(dest);
-                    if (DescriptionElement != null) dest.DescriptionElement = (FhirString)DescriptionElement.DeepCopy();
-                    if (LanguageElement != null) dest.LanguageElement = (Code)LanguageElement.DeepCopy();
-                    if (ExpressionElement != null) dest.ExpressionElement = (FhirString)ExpressionElement.DeepCopy();
-                    return dest;
-                }
-                else
-                    throw new ArgumentException("Can only copy to an object of the same type", "other");
-            }
-
-            public override IDeepCopyable DeepCopy()
-            {
-                 return CopyTo(new ConditionComponent());
-            }
-
-            public override bool Matches(IDeepComparable other)
-            {
-                var otherT = other as ConditionComponent;
-                if (otherT == null) return false;
-
-                if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
-                if (!DeepComparable.Matches(LanguageElement, otherT.LanguageElement)) return false;
-                if (!DeepComparable.Matches(ExpressionElement, otherT.ExpressionElement)) return false;
-
-                return true;
-            }
-
-            public override bool IsExactly(IDeepComparable other)
-            {
-                var otherT = other as ConditionComponent;
-                if (otherT == null) return false;
-
-                if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
-                if (!DeepComparable.IsExactly(LanguageElement, otherT.LanguageElement)) return false;
-                if (!DeepComparable.IsExactly(ExpressionElement, otherT.ExpressionElement)) return false;
-
-                return true;
-            }
-
-
-            [NotMapped]
-            public override IEnumerable<Base> Children
-            {
-                get
-                {
-                    foreach (var item in base.Children) yield return item;
-                    if (DescriptionElement != null) yield return DescriptionElement;
-                    if (LanguageElement != null) yield return LanguageElement;
-                    if (ExpressionElement != null) yield return ExpressionElement;
-                }
-            }
-
-            [NotMapped]
-            internal override IEnumerable<ElementValue> NamedChildren
-            {
-                get
-                {
-                    foreach (var item in base.NamedChildren) yield return item;
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (LanguageElement != null) yield return new ElementValue("language", false, LanguageElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
-                }
-            }
-
-
+            [EnumLiteral("data-removed", "http://hl7.org/fhir/trigger-type"), Description("Data Removed")]
+            DataRemoved,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("data-accessed", "http://hl7.org/fhir/trigger-type"), Description("Data Accessed")]
+            DataAccessed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/trigger-type)
+            /// </summary>
+            [EnumLiteral("data-access-ended", "http://hl7.org/fhir/trigger-type"), Description("Data Access Ended")]
+            DataAccessEnded,
         }
 
 
@@ -329,24 +206,24 @@ namespace Hl7.Fhir.Model.R4
         private DataRequirement _data;
 
         /// <summary>
-        /// Whether the event triggers
+        /// Whether the event triggers (boolean expression)
         /// </summary>
         [FhirElement("condition", InSummary=true, Order=70)]
         [DataMember]
-        public ConditionComponent Condition
+        public Expression Condition
         {
             get { return _condition; }
             set { _condition = value; OnPropertyChanged("Condition"); }
         }
 
-        private ConditionComponent _condition;
+        private Expression _condition;
 
 
         public static ElementDefinition.ConstraintComponent TriggerDefinition_TRD_2 = new ElementDefinition.ConstraintComponent
         {
             Expression = "condition.exists() implies data.exists()",
             Key = "trd-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A condition only if there is a data requirement",
             Xpath = "not(exists(f:condition)) or exists(f:data)"
         };
@@ -355,7 +232,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "data.empty() or timing.empty()",
             Key = "trd-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either timing, or a data requirement, but not both",
             Xpath = "not(exists(f:data)) or not(exists(*[starts-with(local-name(.), 'timing')]))"
         };
@@ -373,7 +250,7 @@ namespace Hl7.Fhir.Model.R4
                 if (NameElement != null) dest.NameElement = (FhirString)NameElement.DeepCopy();
                 if (Timing != null) dest.Timing = (Element)Timing.DeepCopy();
                 if (Data != null) dest.Data = (DataRequirement)Data.DeepCopy();
-                if (Condition != null) dest.Condition = (ConditionComponent)Condition.DeepCopy();
+                if (Condition != null) dest.Condition = (Expression)Condition.DeepCopy();
                 return dest;
             }
             else
@@ -435,11 +312,11 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (Timing != null) yield return new ElementValue("timing", false, Timing);
-                if (Data != null) yield return new ElementValue("data", false, Data);
-                if (Condition != null) yield return new ElementValue("condition", false, Condition);
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (Timing != null) yield return new ElementValue("timing", Timing);
+                if (Data != null) yield return new ElementValue("data", Data);
+                if (Condition != null) yield return new ElementValue("condition", Condition);
             }
         }
 

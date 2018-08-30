@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -290,12 +291,12 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (VersionIdElement != null) yield return new ElementValue("versionId", false, VersionIdElement);
-                if (LastUpdatedElement != null) yield return new ElementValue("lastUpdated", false, LastUpdatedElement);
-                if (SourceElement != null) yield return new ElementValue("source", false, SourceElement);
-                foreach (var elem in ProfileElement) { if (elem != null) yield return new ElementValue("profile", true, elem); }
-                foreach (var elem in Security) { if (elem != null) yield return new ElementValue("security", true, elem); }
-                foreach (var elem in Tag) { if (elem != null) yield return new ElementValue("tag", true, elem); }
+                if (VersionIdElement != null) yield return new ElementValue("versionId", VersionIdElement);
+                if (LastUpdatedElement != null) yield return new ElementValue("lastUpdated", LastUpdatedElement);
+                if (SourceElement != null) yield return new ElementValue("source", SourceElement);
+                foreach (var elem in ProfileElement) { if (elem != null) yield return new ElementValue("profile", elem); }
+                foreach (var elem in Security) { if (elem != null) yield return new ElementValue("security", elem); }
+                foreach (var elem in Tag) { if (elem != null) yield return new ElementValue("tag", elem); }
             }
         }
 

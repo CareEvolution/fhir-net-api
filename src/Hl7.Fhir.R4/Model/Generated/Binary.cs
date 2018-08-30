@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -91,7 +92,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Access Control Management
+        /// Identifies another resource to use as proxy when enforcing access control
         /// </summary>
         [FhirElement("securityContext", InSummary=true, Order=60)]
         [DataMember]
@@ -106,16 +107,15 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The actual content
         /// </summary>
-        [FhirElement("content", InSummary=true, Order=70)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("data", Order=70)]
         [DataMember]
-        public Base64Binary ContentElement
+        public Base64Binary DataElement
         {
-            get { return _contentElement; }
-            set { _contentElement = value; OnPropertyChanged("ContentElement"); }
+            get { return _dataElement; }
+            set { _dataElement = value; OnPropertyChanged("DataElement"); }
         }
 
-        private Base64Binary _contentElement;
+        private Base64Binary _dataElement;
 
         /// <summary>
         /// The actual content
@@ -123,16 +123,16 @@ namespace Hl7.Fhir.Model.R4
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public byte[] Content
+        public byte[] Data
         {
-            get { return ContentElement != null ? ContentElement.Value : null; }
+            get { return DataElement != null ? DataElement.Value : null; }
             set
             {
                 if (value == null)
-                    ContentElement = null;
+                    DataElement = null;
                 else
-                    ContentElement = new Base64Binary(value);
-                OnPropertyChanged("Content");
+                    DataElement = new Base64Binary(value);
+                OnPropertyChanged("Data");
             }
         }
 
@@ -146,7 +146,7 @@ namespace Hl7.Fhir.Model.R4
                 base.CopyTo(dest);
                 if (ContentTypeElement != null) dest.ContentTypeElement = (Code)ContentTypeElement.DeepCopy();
                 if (SecurityContext != null) dest.SecurityContext = (ResourceReference)SecurityContext.DeepCopy();
-                if (ContentElement != null) dest.ContentElement = (Base64Binary)ContentElement.DeepCopy();
+                if (DataElement != null) dest.DataElement = (Base64Binary)DataElement.DeepCopy();
                 return dest;
             }
             else
@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model.R4
             if (!base.Matches(otherT)) return false;
             if (!DeepComparable.Matches(ContentTypeElement, otherT.ContentTypeElement)) return false;
             if (!DeepComparable.Matches(SecurityContext, otherT.SecurityContext)) return false;
-            if (!DeepComparable.Matches(ContentElement, otherT.ContentElement)) return false;
+            if (!DeepComparable.Matches(DataElement, otherT.DataElement)) return false;
 
             return true;
         }
@@ -179,7 +179,7 @@ namespace Hl7.Fhir.Model.R4
             if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(ContentTypeElement, otherT.ContentTypeElement)) return false;
             if (!DeepComparable.IsExactly(SecurityContext, otherT.SecurityContext)) return false;
-            if (!DeepComparable.IsExactly(ContentElement, otherT.ContentElement)) return false;
+            if (!DeepComparable.IsExactly(DataElement, otherT.DataElement)) return false;
 
             return true;
         }
@@ -192,7 +192,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var item in base.Children) yield return item;
                 if (ContentTypeElement != null) yield return ContentTypeElement;
                 if (SecurityContext != null) yield return SecurityContext;
-                if (ContentElement != null) yield return ContentElement;
+                if (DataElement != null) yield return DataElement;
             }
         }
 
@@ -202,9 +202,9 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (ContentTypeElement != null) yield return new ElementValue("contentType", false, ContentTypeElement);
-                if (SecurityContext != null) yield return new ElementValue("securityContext", false, SecurityContext);
-                if (ContentElement != null) yield return new ElementValue("content", false, ContentElement);
+                if (ContentTypeElement != null) yield return new ElementValue("contentType", ContentTypeElement);
+                if (SecurityContext != null) yield return new ElementValue("securityContext", SecurityContext);
+                if (DataElement != null) yield return new ElementValue("data", DataElement);
             }
         }
 

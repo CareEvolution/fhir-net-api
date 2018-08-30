@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,193 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "SearchParameter"; } }
 
+        /// <summary>
+        /// How a search parameter relates to the set of elements returned by evaluating its xpath query.
+        /// (url: http://hl7.org/fhir/ValueSet/search-xpath-usage)
+        /// </summary>
+        [FhirEnumeration("XPathUsageType")]
+        public enum XPathUsageType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-xpath-usage)
+            /// </summary>
+            [EnumLiteral("normal", "http://hl7.org/fhir/search-xpath-usage"), Description("Normal")]
+            Normal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-xpath-usage)
+            /// </summary>
+            [EnumLiteral("phonetic", "http://hl7.org/fhir/search-xpath-usage"), Description("Phonetic")]
+            Phonetic,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-xpath-usage)
+            /// </summary>
+            [EnumLiteral("nearby", "http://hl7.org/fhir/search-xpath-usage"), Description("Nearby")]
+            Nearby,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-xpath-usage)
+            /// </summary>
+            [EnumLiteral("distance", "http://hl7.org/fhir/search-xpath-usage"), Description("Distance")]
+            Distance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-xpath-usage)
+            /// </summary>
+            [EnumLiteral("other", "http://hl7.org/fhir/search-xpath-usage"), Description("Other")]
+            Other,
+        }
+
+        /// <summary>
+        /// What Search Comparator Codes are supported in search.
+        /// (url: http://hl7.org/fhir/ValueSet/search-comparator)
+        /// </summary>
+        [FhirEnumeration("SearchComparator")]
+        public enum SearchComparator
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("eq", "http://hl7.org/fhir/search-comparator"), Description("Equals")]
+            Eq,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("ne", "http://hl7.org/fhir/search-comparator"), Description("Not Equals")]
+            Ne,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("gt", "http://hl7.org/fhir/search-comparator"), Description("Greater Than")]
+            Gt,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("lt", "http://hl7.org/fhir/search-comparator"), Description("Less Than")]
+            Lt,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("ge", "http://hl7.org/fhir/search-comparator"), Description("Greater or Equals")]
+            Ge,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("le", "http://hl7.org/fhir/search-comparator"), Description("Less of Equal")]
+            Le,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("sa", "http://hl7.org/fhir/search-comparator"), Description("Starts After")]
+            Sa,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("eb", "http://hl7.org/fhir/search-comparator"), Description("Ends Before")]
+            Eb,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-comparator)
+            /// </summary>
+            [EnumLiteral("ap", "http://hl7.org/fhir/search-comparator"), Description("Approximately")]
+            Ap,
+        }
+
+        /// <summary>
+        /// A supported modifier for a search parameter.
+        /// (url: http://hl7.org/fhir/ValueSet/search-modifier-code)
+        /// </summary>
+        [FhirEnumeration("SearchModifierCode")]
+        public enum SearchModifierCode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("missing", "http://hl7.org/fhir/search-modifier-code"), Description("Missing")]
+            Missing,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("exact", "http://hl7.org/fhir/search-modifier-code"), Description("Exact")]
+            Exact,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("contains", "http://hl7.org/fhir/search-modifier-code"), Description("Contains")]
+            Contains,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("not", "http://hl7.org/fhir/search-modifier-code"), Description("Not")]
+            Not,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("text", "http://hl7.org/fhir/search-modifier-code"), Description("Text")]
+            Text,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("in", "http://hl7.org/fhir/search-modifier-code"), Description("In")]
+            In,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("not-in", "http://hl7.org/fhir/search-modifier-code"), Description("Not In")]
+            NotIn,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("below", "http://hl7.org/fhir/search-modifier-code"), Description("Below")]
+            Below,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("above", "http://hl7.org/fhir/search-modifier-code"), Description("Above")]
+            Above,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("type", "http://hl7.org/fhir/search-modifier-code"), Description("Type")]
+            Type,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("identifier", "http://hl7.org/fhir/search-modifier-code"), Description("Identifier")]
+            Identifier,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("ofType", "http://hl7.org/fhir/search-modifier-code"), Description("Of Type")]
+            OfType,
+        }
+
 
         [FhirType("ComponentComponent")]
         [DataContract]
-        public partial class ComponentComponent : BackboneElement
+        public partial class ComponentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ComponentComponent"; } }
@@ -192,8 +376,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DefinitionElement != null) yield return new ElementValue("definition", false, DefinitionElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
+                    if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
+                    if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
                 }
             }
 
@@ -596,7 +780,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// number | date | string | token | reference | composite | quantity | uri
+        /// number | date | string | token | reference | composite | quantity | uri | special
         /// </summary>
         [FhirElement("type", InSummary=true, Order=240)]
         [Cardinality(Min=1,Max=1)]
@@ -610,7 +794,7 @@ namespace Hl7.Fhir.Model.R4
         private Code<SearchParamType> _typeElement;
 
         /// <summary>
-        /// number | date | string | token | reference | composite | quantity | uri
+        /// number | date | string | token | reference | composite | quantity | uri | special
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -855,7 +1039,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// missing | exact | contains | not | text | in | not-in | below | above | type
+        /// missing | exact | contains | not | text | in | not-in | below | above | type | identifier | ofType
         /// </summary>
         [FhirElement("modifier", Order=320)]
         [Cardinality(Min=0,Max=-1)]
@@ -869,7 +1053,7 @@ namespace Hl7.Fhir.Model.R4
         private List<Code<SearchModifierCode>> _modifierElement;
 
         /// <summary>
-        /// missing | exact | contains | not | text | in | not-in | below | above | type
+        /// missing | exact | contains | not | text | in | not-in | below | above | type | identifier | ofType
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -935,11 +1119,20 @@ namespace Hl7.Fhir.Model.R4
         private List<ComponentComponent> _component;
 
 
+        public static ElementDefinition.ConstraintComponent SearchParameter_SPD_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "spd-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
+
         public static ElementDefinition.ConstraintComponent SearchParameter_SPD_1 = new ElementDefinition.ConstraintComponent
         {
             Expression = "xpath.empty() or xpathUsage.exists()",
             Key = "spd-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If an xpath is present, there SHALL be an xpathUsage",
             Xpath = "not(exists(f:xpath)) or exists(f:xpathUsage)"
         };
@@ -948,7 +1141,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "chain.empty() or type = 'reference'",
             Key = "spd-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Search parameters can only have chain names when the search parameter type is 'reference'",
             Xpath = "not(exists(f:chain)) or (f:type/@value = 'reference')"
         };
@@ -957,6 +1150,7 @@ namespace Hl7.Fhir.Model.R4
         {
             base.AddDefaultConstraints();
 
+            InvariantConstraints.Add(SearchParameter_SPD_0);
             InvariantConstraints.Add(SearchParameter_SPD_1);
             InvariantConstraints.Add(SearchParameter_SPD_2);
         }
@@ -1118,32 +1312,32 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (DerivedFromElement != null) yield return new ElementValue("derivedFrom", false, DerivedFromElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                foreach (var elem in BaseElement) { if (elem != null) yield return new ElementValue("base", true, elem); }
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
-                if (XpathElement != null) yield return new ElementValue("xpath", false, XpathElement);
-                if (XpathUsageElement != null) yield return new ElementValue("xpathUsage", false, XpathUsageElement);
-                foreach (var elem in TargetElement) { if (elem != null) yield return new ElementValue("target", true, elem); }
-                if (MultipleOrElement != null) yield return new ElementValue("multipleOr", false, MultipleOrElement);
-                if (MultipleAndElement != null) yield return new ElementValue("multipleAnd", false, MultipleAndElement);
-                foreach (var elem in ComparatorElement) { if (elem != null) yield return new ElementValue("comparator", true, elem); }
-                foreach (var elem in ModifierElement) { if (elem != null) yield return new ElementValue("modifier", true, elem); }
-                foreach (var elem in ChainElement) { if (elem != null) yield return new ElementValue("chain", true, elem); }
-                foreach (var elem in Component) { if (elem != null) yield return new ElementValue("component", true, elem); }
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (DerivedFromElement != null) yield return new ElementValue("derivedFrom", DerivedFromElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                foreach (var elem in BaseElement) { if (elem != null) yield return new ElementValue("base", elem); }
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
+                if (XpathElement != null) yield return new ElementValue("xpath", XpathElement);
+                if (XpathUsageElement != null) yield return new ElementValue("xpathUsage", XpathUsageElement);
+                foreach (var elem in TargetElement) { if (elem != null) yield return new ElementValue("target", elem); }
+                if (MultipleOrElement != null) yield return new ElementValue("multipleOr", MultipleOrElement);
+                if (MultipleAndElement != null) yield return new ElementValue("multipleAnd", MultipleAndElement);
+                foreach (var elem in ComparatorElement) { if (elem != null) yield return new ElementValue("comparator", elem); }
+                foreach (var elem in ModifierElement) { if (elem != null) yield return new ElementValue("modifier", elem); }
+                foreach (var elem in ChainElement) { if (elem != null) yield return new ElementValue("chain", elem); }
+                foreach (var elem in Component) { if (elem != null) yield return new ElementValue("component", elem); }
             }
         }
 

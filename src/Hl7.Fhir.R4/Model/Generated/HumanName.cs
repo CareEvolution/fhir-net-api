@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -53,6 +54,57 @@ namespace Hl7.Fhir.Model.R4
     {
         [NotMapped]
         public override string TypeName { get { return "HumanName"; } }
+
+        /// <summary>
+        /// The use of a human name.
+        /// (url: http://hl7.org/fhir/ValueSet/name-use)
+        /// </summary>
+        [FhirEnumeration("NameUse")]
+        public enum NameUse
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("usual", "http://hl7.org/fhir/name-use"), Description("Usual")]
+            Usual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("official", "http://hl7.org/fhir/name-use"), Description("Official")]
+            Official,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("temp", "http://hl7.org/fhir/name-use"), Description("Temp")]
+            Temp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("nickname", "http://hl7.org/fhir/name-use"), Description("Nickname")]
+            Nickname,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("anonymous", "http://hl7.org/fhir/name-use"), Description("Anonymous")]
+            Anonymous,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("old", "http://hl7.org/fhir/name-use"), Description("Old")]
+            Old,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("maiden", "http://hl7.org/fhir/name-use"), Description("Name changed for Marriage")]
+            Maiden,
+        }
 
 
         /// <summary>
@@ -345,13 +397,13 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UseElement != null) yield return new ElementValue("use", false, UseElement);
-                if (TextElement != null) yield return new ElementValue("text", false, TextElement);
-                if (FamilyElement != null) yield return new ElementValue("family", false, FamilyElement);
-                foreach (var elem in GivenElement) { if (elem != null) yield return new ElementValue("given", true, elem); }
-                foreach (var elem in PrefixElement) { if (elem != null) yield return new ElementValue("prefix", true, elem); }
-                foreach (var elem in SuffixElement) { if (elem != null) yield return new ElementValue("suffix", true, elem); }
-                if (Period != null) yield return new ElementValue("period", false, Period);
+                if (UseElement != null) yield return new ElementValue("use", UseElement);
+                if (TextElement != null) yield return new ElementValue("text", TextElement);
+                if (FamilyElement != null) yield return new ElementValue("family", FamilyElement);
+                foreach (var elem in GivenElement) { if (elem != null) yield return new ElementValue("given", elem); }
+                foreach (var elem in PrefixElement) { if (elem != null) yield return new ElementValue("prefix", elem); }
+                foreach (var elem in SuffixElement) { if (elem != null) yield return new ElementValue("suffix", elem); }
+                if (Period != null) yield return new ElementValue("period", Period);
             }
         }
 

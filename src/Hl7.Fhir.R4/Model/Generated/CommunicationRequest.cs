@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PayloadComponent")]
         [DataContract]
-        public partial class PayloadComponent : BackboneElement
+        public partial class PayloadComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PayloadComponent"; } }
@@ -137,7 +138,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Content != null) yield return new ElementValue("content", false, Content);
+                    if (Content != null) yield return new ElementValue("content", Content);
                 }
             }
 
@@ -235,9 +236,22 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
+        /// Reason for current status
+        /// </summary>
+        [FhirElement("statusReason", Order=140)]
+        [DataMember]
+        public CodeableConcept StatusReason
+        {
+            get { return _statusReason; }
+            set { _statusReason = value; OnPropertyChanged("StatusReason"); }
+        }
+
+        private CodeableConcept _statusReason;
+
+        /// <summary>
         /// Message category
         /// </summary>
-        [FhirElement("category", Order=140)]
+        [FhirElement("category", Order=150)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> Category
@@ -251,7 +265,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Message urgency
         /// </summary>
-        [FhirElement("priority", InSummary=true, Order=150)]
+        [FhirElement("priority", InSummary=true, Order=160)]
         [DataMember]
         public Code<RequestPriority> PriorityElement
         {
@@ -281,9 +295,41 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
+        /// True if request is prohibiting action
+        /// </summary>
+        [FhirElement("doNotPerform", InSummary=true, Order=170)]
+        [DataMember]
+        public FhirBoolean DoNotPerformElement
+        {
+            get { return _doNotPerformElement; }
+            set { _doNotPerformElement = value; OnPropertyChanged("DoNotPerformElement"); }
+        }
+
+        private FhirBoolean _doNotPerformElement;
+
+        /// <summary>
+        /// True if request is prohibiting action
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public bool? DoNotPerform
+        {
+            get { return DoNotPerformElement != null ? DoNotPerformElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DoNotPerformElement = null;
+                else
+                    DoNotPerformElement = new FhirBoolean(value);
+                OnPropertyChanged("DoNotPerform");
+            }
+        }
+
+        /// <summary>
         /// A channel of communication
         /// </summary>
-        [FhirElement("medium", Order=160)]
+        [FhirElement("medium", Order=180)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> Medium
@@ -297,7 +343,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Focus of message
         /// </summary>
-        [FhirElement("subject", Order=170)]
+        [FhirElement("subject", Order=190)]
         [References("Patient","Group")]
         [DataMember]
         public ResourceReference Subject
@@ -309,24 +355,9 @@ namespace Hl7.Fhir.Model.R4
         private ResourceReference _subject;
 
         /// <summary>
-        /// Message recipient
-        /// </summary>
-        [FhirElement("recipient", Order=180)]
-        [References("Device","Organization","Patient","Practitioner","RelatedPerson","Group","CareTeam")]
-        [Cardinality(Min=0,Max=-1)]
-        [DataMember]
-        public List<ResourceReference> Recipient
-        {
-            get { if (_recipient==null) _recipient = new List<ResourceReference>(); return _recipient; }
-            set { _recipient = value; OnPropertyChanged("Recipient"); }
-        }
-
-        private List<ResourceReference> _recipient;
-
-        /// <summary>
         /// Resources that pertain to this communication request
         /// </summary>
-        [FhirElement("about", Order=190)]
+        [FhirElement("about", Order=200)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<ResourceReference> About
@@ -340,7 +371,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Encounter or episode leading to message
         /// </summary>
-        [FhirElement("context", InSummary=true, Order=200)]
+        [FhirElement("context", InSummary=true, Order=210)]
         [References("Encounter","EpisodeOfCare")]
         [DataMember]
         public ResourceReference Context
@@ -354,7 +385,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Message payload
         /// </summary>
-        [FhirElement("payload", Order=210)]
+        [FhirElement("payload", Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<PayloadComponent> Payload
@@ -368,7 +399,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// When scheduled
         /// </summary>
-        [FhirElement("occurrence", InSummary=true, Order=220, Choice=ChoiceType.DatatypeChoice)]
+        [FhirElement("occurrence", InSummary=true, Order=230, Choice=ChoiceType.DatatypeChoice)]
         [AllowedTypes(typeof(FhirDateTime),typeof(Period))]
         [DataMember]
         public Element Occurrence
@@ -382,7 +413,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// When request transitioned to being actionable
         /// </summary>
-        [FhirElement("authoredOn", InSummary=true, Order=230)]
+        [FhirElement("authoredOn", InSummary=true, Order=240)]
         [DataMember]
         public FhirDateTime AuthoredOnElement
         {
@@ -414,7 +445,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who/what is requesting service
         /// </summary>
-        [FhirElement("requester", InSummary=true, Order=240)]
+        [FhirElement("requester", InSummary=true, Order=250)]
         [References("Practitioner","PractitionerRole","Organization","Patient","RelatedPerson","Device")]
         [DataMember]
         public ResourceReference Requester
@@ -426,9 +457,24 @@ namespace Hl7.Fhir.Model.R4
         private ResourceReference _requester;
 
         /// <summary>
+        /// Message recipient
+        /// </summary>
+        [FhirElement("recipient", Order=260)]
+        [References("Device","Organization","Patient","Practitioner","PractitionerRole","RelatedPerson","Group","CareTeam","HealthcareService")]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ResourceReference> Recipient
+        {
+            get { if (_recipient==null) _recipient = new List<ResourceReference>(); return _recipient; }
+            set { _recipient = value; OnPropertyChanged("Recipient"); }
+        }
+
+        private List<ResourceReference> _recipient;
+
+        /// <summary>
         /// Message sender
         /// </summary>
-        [FhirElement("sender", InSummary=true, Order=250)]
+        [FhirElement("sender", InSummary=true, Order=270)]
         [References("Device","Organization","Patient","Practitioner","PractitionerRole","RelatedPerson","HealthcareService")]
         [DataMember]
         public ResourceReference Sender
@@ -442,7 +488,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Why is communication needed?
         /// </summary>
-        [FhirElement("reasonCode", InSummary=true, Order=260)]
+        [FhirElement("reasonCode", InSummary=true, Order=280)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> ReasonCode
@@ -456,7 +502,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Why is communication needed?
         /// </summary>
-        [FhirElement("reasonReference", InSummary=true, Order=270)]
+        [FhirElement("reasonReference", InSummary=true, Order=290)]
         [References("Condition","Observation","DiagnosticReport","DocumentReference")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -471,7 +517,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Comments made about communication request
         /// </summary>
-        [FhirElement("note", Order=280)]
+        [FhirElement("note", Order=300)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Annotation> Note
@@ -495,17 +541,19 @@ namespace Hl7.Fhir.Model.R4
                 if (Replaces != null) dest.Replaces = new List<ResourceReference>(Replaces.DeepCopy());
                 if (GroupIdentifier != null) dest.GroupIdentifier = (Identifier)GroupIdentifier.DeepCopy();
                 if (StatusElement != null) dest.StatusElement = (Code<RequestStatus>)StatusElement.DeepCopy();
+                if (StatusReason != null) dest.StatusReason = (CodeableConcept)StatusReason.DeepCopy();
                 if (Category != null) dest.Category = new List<CodeableConcept>(Category.DeepCopy());
                 if (PriorityElement != null) dest.PriorityElement = (Code<RequestPriority>)PriorityElement.DeepCopy();
+                if (DoNotPerformElement != null) dest.DoNotPerformElement = (FhirBoolean)DoNotPerformElement.DeepCopy();
                 if (Medium != null) dest.Medium = new List<CodeableConcept>(Medium.DeepCopy());
                 if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
-                if (Recipient != null) dest.Recipient = new List<ResourceReference>(Recipient.DeepCopy());
                 if (About != null) dest.About = new List<ResourceReference>(About.DeepCopy());
                 if (Context != null) dest.Context = (ResourceReference)Context.DeepCopy();
                 if (Payload != null) dest.Payload = new List<PayloadComponent>(Payload.DeepCopy());
                 if (Occurrence != null) dest.Occurrence = (Element)Occurrence.DeepCopy();
                 if (AuthoredOnElement != null) dest.AuthoredOnElement = (FhirDateTime)AuthoredOnElement.DeepCopy();
                 if (Requester != null) dest.Requester = (ResourceReference)Requester.DeepCopy();
+                if (Recipient != null) dest.Recipient = new List<ResourceReference>(Recipient.DeepCopy());
                 if (Sender != null) dest.Sender = (ResourceReference)Sender.DeepCopy();
                 if (ReasonCode != null) dest.ReasonCode = new List<CodeableConcept>(ReasonCode.DeepCopy());
                 if (ReasonReference != null) dest.ReasonReference = new List<ResourceReference>(ReasonReference.DeepCopy());
@@ -532,17 +580,19 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(Replaces, otherT.Replaces)) return false;
             if (!DeepComparable.Matches(GroupIdentifier, otherT.GroupIdentifier)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.Matches(StatusReason, otherT.StatusReason)) return false;
             if ( !DeepComparable.Matches(Category, otherT.Category)) return false;
             if (!DeepComparable.Matches(PriorityElement, otherT.PriorityElement)) return false;
+            if (!DeepComparable.Matches(DoNotPerformElement, otherT.DoNotPerformElement)) return false;
             if ( !DeepComparable.Matches(Medium, otherT.Medium)) return false;
             if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
-            if ( !DeepComparable.Matches(Recipient, otherT.Recipient)) return false;
             if ( !DeepComparable.Matches(About, otherT.About)) return false;
             if (!DeepComparable.Matches(Context, otherT.Context)) return false;
             if ( !DeepComparable.Matches(Payload, otherT.Payload)) return false;
             if (!DeepComparable.Matches(Occurrence, otherT.Occurrence)) return false;
             if (!DeepComparable.Matches(AuthoredOnElement, otherT.AuthoredOnElement)) return false;
             if (!DeepComparable.Matches(Requester, otherT.Requester)) return false;
+            if ( !DeepComparable.Matches(Recipient, otherT.Recipient)) return false;
             if (!DeepComparable.Matches(Sender, otherT.Sender)) return false;
             if ( !DeepComparable.Matches(ReasonCode, otherT.ReasonCode)) return false;
             if ( !DeepComparable.Matches(ReasonReference, otherT.ReasonReference)) return false;
@@ -562,17 +612,19 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Replaces, otherT.Replaces)) return false;
             if (!DeepComparable.IsExactly(GroupIdentifier, otherT.GroupIdentifier)) return false;
             if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.IsExactly(StatusReason, otherT.StatusReason)) return false;
             if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
             if (!DeepComparable.IsExactly(PriorityElement, otherT.PriorityElement)) return false;
+            if (!DeepComparable.IsExactly(DoNotPerformElement, otherT.DoNotPerformElement)) return false;
             if (!DeepComparable.IsExactly(Medium, otherT.Medium)) return false;
             if (!DeepComparable.IsExactly(Subject, otherT.Subject)) return false;
-            if (!DeepComparable.IsExactly(Recipient, otherT.Recipient)) return false;
             if (!DeepComparable.IsExactly(About, otherT.About)) return false;
             if (!DeepComparable.IsExactly(Context, otherT.Context)) return false;
             if (!DeepComparable.IsExactly(Payload, otherT.Payload)) return false;
             if (!DeepComparable.IsExactly(Occurrence, otherT.Occurrence)) return false;
             if (!DeepComparable.IsExactly(AuthoredOnElement, otherT.AuthoredOnElement)) return false;
             if (!DeepComparable.IsExactly(Requester, otherT.Requester)) return false;
+            if (!DeepComparable.IsExactly(Recipient, otherT.Recipient)) return false;
             if (!DeepComparable.IsExactly(Sender, otherT.Sender)) return false;
             if (!DeepComparable.IsExactly(ReasonCode, otherT.ReasonCode)) return false;
             if (!DeepComparable.IsExactly(ReasonReference, otherT.ReasonReference)) return false;
@@ -592,17 +644,19 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Replaces) { if (elem != null) yield return elem; }
                 if (GroupIdentifier != null) yield return GroupIdentifier;
                 if (StatusElement != null) yield return StatusElement;
+                if (StatusReason != null) yield return StatusReason;
                 foreach (var elem in Category) { if (elem != null) yield return elem; }
                 if (PriorityElement != null) yield return PriorityElement;
+                if (DoNotPerformElement != null) yield return DoNotPerformElement;
                 foreach (var elem in Medium) { if (elem != null) yield return elem; }
                 if (Subject != null) yield return Subject;
-                foreach (var elem in Recipient) { if (elem != null) yield return elem; }
                 foreach (var elem in About) { if (elem != null) yield return elem; }
                 if (Context != null) yield return Context;
                 foreach (var elem in Payload) { if (elem != null) yield return elem; }
                 if (Occurrence != null) yield return Occurrence;
                 if (AuthoredOnElement != null) yield return AuthoredOnElement;
                 if (Requester != null) yield return Requester;
+                foreach (var elem in Recipient) { if (elem != null) yield return elem; }
                 if (Sender != null) yield return Sender;
                 foreach (var elem in ReasonCode) { if (elem != null) yield return elem; }
                 foreach (var elem in ReasonReference) { if (elem != null) yield return elem; }
@@ -616,26 +670,28 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                foreach (var elem in Replaces) { if (elem != null) yield return new ElementValue("replaces", true, elem); }
-                if (GroupIdentifier != null) yield return new ElementValue("groupIdentifier", false, GroupIdentifier);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (PriorityElement != null) yield return new ElementValue("priority", false, PriorityElement);
-                foreach (var elem in Medium) { if (elem != null) yield return new ElementValue("medium", true, elem); }
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                foreach (var elem in Recipient) { if (elem != null) yield return new ElementValue("recipient", true, elem); }
-                foreach (var elem in About) { if (elem != null) yield return new ElementValue("about", true, elem); }
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                foreach (var elem in Payload) { if (elem != null) yield return new ElementValue("payload", true, elem); }
-                if (Occurrence != null) yield return new ElementValue("occurrence", false, Occurrence);
-                if (AuthoredOnElement != null) yield return new ElementValue("authoredOn", false, AuthoredOnElement);
-                if (Requester != null) yield return new ElementValue("requester", false, Requester);
-                if (Sender != null) yield return new ElementValue("sender", false, Sender);
-                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", true, elem); }
-                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                foreach (var elem in Replaces) { if (elem != null) yield return new ElementValue("replaces", elem); }
+                if (GroupIdentifier != null) yield return new ElementValue("groupIdentifier", GroupIdentifier);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (StatusReason != null) yield return new ElementValue("statusReason", StatusReason);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
+                if (DoNotPerformElement != null) yield return new ElementValue("doNotPerform", DoNotPerformElement);
+                foreach (var elem in Medium) { if (elem != null) yield return new ElementValue("medium", elem); }
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                foreach (var elem in About) { if (elem != null) yield return new ElementValue("about", elem); }
+                if (Context != null) yield return new ElementValue("context", Context);
+                foreach (var elem in Payload) { if (elem != null) yield return new ElementValue("payload", elem); }
+                if (Occurrence != null) yield return new ElementValue("occurrence", Occurrence);
+                if (AuthoredOnElement != null) yield return new ElementValue("authoredOn", AuthoredOnElement);
+                if (Requester != null) yield return new ElementValue("requester", Requester);
+                foreach (var elem in Recipient) { if (elem != null) yield return new ElementValue("recipient", elem); }
+                if (Sender != null) yield return new ElementValue("sender", Sender);
+                foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
+                foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }
 

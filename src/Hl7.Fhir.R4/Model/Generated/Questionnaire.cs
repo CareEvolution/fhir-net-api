@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,187 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Questionnaire"; } }
 
+        /// <summary>
+        /// Distinguishes groups from questions and display text and indicates data type for questions.
+        /// (url: http://hl7.org/fhir/ValueSet/item-type)
+        /// </summary>
+        [FhirEnumeration("QuestionnaireItemType")]
+        public enum QuestionnaireItemType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("group", "http://hl7.org/fhir/item-type"), Description("Group")]
+            Group,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("display", "http://hl7.org/fhir/item-type"), Description("Display")]
+            Display,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("boolean", "http://hl7.org/fhir/item-type"), Description("Boolean")]
+            Boolean,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("decimal", "http://hl7.org/fhir/item-type"), Description("Decimal")]
+            Decimal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("integer", "http://hl7.org/fhir/item-type"), Description("Integer")]
+            Integer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("date", "http://hl7.org/fhir/item-type"), Description("Date")]
+            Date,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("dateTime", "http://hl7.org/fhir/item-type"), Description("Date Time")]
+            DateTime,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("time", "http://hl7.org/fhir/item-type"), Description("Time")]
+            Time,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("string", "http://hl7.org/fhir/item-type"), Description("String")]
+            String,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("text", "http://hl7.org/fhir/item-type"), Description("Text")]
+            Text,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("url", "http://hl7.org/fhir/item-type"), Description("Url")]
+            Url,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("choice", "http://hl7.org/fhir/item-type"), Description("Choice")]
+            Choice,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("open-choice", "http://hl7.org/fhir/item-type"), Description("Open Choice")]
+            OpenChoice,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("attachment", "http://hl7.org/fhir/item-type"), Description("Attachment")]
+            Attachment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("reference", "http://hl7.org/fhir/item-type"), Description("Reference")]
+            Reference,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("quantity", "http://hl7.org/fhir/item-type"), Description("Quantity")]
+            Quantity,
+        }
+
+        /// <summary>
+        /// The criteria by which a question is enabled.
+        /// (url: http://hl7.org/fhir/ValueSet/questionnaire-enable-operator)
+        /// </summary>
+        [FhirEnumeration("QuestionnaireItemOperator")]
+        public enum QuestionnaireItemOperator
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-operator)
+            /// </summary>
+            [EnumLiteral("exists", "http://hl7.org/fhir/questionnaire-enable-operator"), Description("Exists")]
+            Exists,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-operator)
+            /// </summary>
+            [EnumLiteral("=", "http://hl7.org/fhir/questionnaire-enable-operator"), Description("Equals")]
+            Equal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-operator)
+            /// </summary>
+            [EnumLiteral("!=", "http://hl7.org/fhir/questionnaire-enable-operator"), Description("Not Equals")]
+            NotEqual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-operator)
+            /// </summary>
+            [EnumLiteral(">", "http://hl7.org/fhir/questionnaire-enable-operator"), Description("Greater Than")]
+            GreaterThan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-operator)
+            /// </summary>
+            [EnumLiteral("<", "http://hl7.org/fhir/questionnaire-enable-operator"), Description("Less Than")]
+            LessThan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-operator)
+            /// </summary>
+            [EnumLiteral(">=", "http://hl7.org/fhir/questionnaire-enable-operator"), Description("Greater or Equals")]
+            GreaterOrEqual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-operator)
+            /// </summary>
+            [EnumLiteral("<=", "http://hl7.org/fhir/questionnaire-enable-operator"), Description("Less or Equals")]
+            LessOrEqual,
+        }
+
+        /// <summary>
+        /// Controls how multiple enableWhen values are interpreted -  whether all or any must be true.
+        /// (url: http://hl7.org/fhir/ValueSet/questionnaire-enable-behavior)
+        /// </summary>
+        [FhirEnumeration("EnableWhenBehavior")]
+        public enum EnableWhenBehavior
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-behavior)
+            /// </summary>
+            [EnumLiteral("all", "http://hl7.org/fhir/questionnaire-enable-behavior"), Description("All")]
+            All,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-enable-behavior)
+            /// </summary>
+            [EnumLiteral("any", "http://hl7.org/fhir/questionnaire-enable-behavior"), Description("Any")]
+            Any,
+        }
+
 
         [FhirType("ItemComponent")]
         [DataContract]
-        public partial class ItemComponent : BackboneElement
+        public partial class ItemComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ItemComponent"; } }
@@ -417,15 +595,15 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Valueset containing permitted answers
             /// </summary>
-            [FhirElement("options", Order=160)]
+            [FhirElement("answerValueSet", Order=160)]
             [DataMember]
-            public Canonical OptionsElement
+            public Canonical AnswerValueSetElement
             {
-                get { return _optionsElement; }
-                set { _optionsElement = value; OnPropertyChanged("OptionsElement"); }
+                get { return _answerValueSetElement; }
+                set { _answerValueSetElement = value; OnPropertyChanged("AnswerValueSetElement"); }
             }
 
-            private Canonical _optionsElement;
+            private Canonical _answerValueSetElement;
 
             /// <summary>
             /// Valueset containing permitted answers
@@ -433,32 +611,32 @@ namespace Hl7.Fhir.Model.R4
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
             [IgnoreDataMember]
-            public string Options
+            public string AnswerValueSet
             {
-                get { return OptionsElement != null ? OptionsElement.Value : null; }
+                get { return AnswerValueSetElement != null ? AnswerValueSetElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        OptionsElement = null;
+                        AnswerValueSetElement = null;
                     else
-                        OptionsElement = new Canonical(value);
-                    OnPropertyChanged("Options");
+                        AnswerValueSetElement = new Canonical(value);
+                    OnPropertyChanged("AnswerValueSet");
                 }
             }
 
             /// <summary>
             /// Permitted answer
             /// </summary>
-            [FhirElement("option", Order=170)]
+            [FhirElement("answerOption", Order=170)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<OptionComponent> Option
+            public List<AnswerOptionComponent> AnswerOption
             {
-                get { if (_option==null) _option = new List<OptionComponent>(); return _option; }
-                set { _option = value; OnPropertyChanged("Option"); }
+                get { if (_answerOption==null) _answerOption = new List<AnswerOptionComponent>(); return _answerOption; }
+                set { _answerOption = value; OnPropertyChanged("AnswerOption"); }
             }
 
-            private List<OptionComponent> _option;
+            private List<AnswerOptionComponent> _answerOption;
 
             /// <summary>
             /// Initial value(s) when item is first rendered
@@ -507,8 +685,8 @@ namespace Hl7.Fhir.Model.R4
                     if (RepeatsElement != null) dest.RepeatsElement = (FhirBoolean)RepeatsElement.DeepCopy();
                     if (ReadOnlyElement != null) dest.ReadOnlyElement = (FhirBoolean)ReadOnlyElement.DeepCopy();
                     if (MaxLengthElement != null) dest.MaxLengthElement = (Integer)MaxLengthElement.DeepCopy();
-                    if (OptionsElement != null) dest.OptionsElement = (Canonical)OptionsElement.DeepCopy();
-                    if (Option != null) dest.Option = new List<OptionComponent>(Option.DeepCopy());
+                    if (AnswerValueSetElement != null) dest.AnswerValueSetElement = (Canonical)AnswerValueSetElement.DeepCopy();
+                    if (AnswerOption != null) dest.AnswerOption = new List<AnswerOptionComponent>(AnswerOption.DeepCopy());
                     if (Initial != null) dest.Initial = new List<InitialComponent>(Initial.DeepCopy());
                     if (Item != null) dest.Item = new List<ItemComponent>(Item.DeepCopy());
                     return dest;
@@ -540,8 +718,8 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(RepeatsElement, otherT.RepeatsElement)) return false;
                 if (!DeepComparable.Matches(ReadOnlyElement, otherT.ReadOnlyElement)) return false;
                 if (!DeepComparable.Matches(MaxLengthElement, otherT.MaxLengthElement)) return false;
-                if (!DeepComparable.Matches(OptionsElement, otherT.OptionsElement)) return false;
-                if ( !DeepComparable.Matches(Option, otherT.Option)) return false;
+                if (!DeepComparable.Matches(AnswerValueSetElement, otherT.AnswerValueSetElement)) return false;
+                if ( !DeepComparable.Matches(AnswerOption, otherT.AnswerOption)) return false;
                 if ( !DeepComparable.Matches(Initial, otherT.Initial)) return false;
                 if ( !DeepComparable.Matches(Item, otherT.Item)) return false;
 
@@ -566,8 +744,8 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(RepeatsElement, otherT.RepeatsElement)) return false;
                 if (!DeepComparable.IsExactly(ReadOnlyElement, otherT.ReadOnlyElement)) return false;
                 if (!DeepComparable.IsExactly(MaxLengthElement, otherT.MaxLengthElement)) return false;
-                if (!DeepComparable.IsExactly(OptionsElement, otherT.OptionsElement)) return false;
-                if (!DeepComparable.IsExactly(Option, otherT.Option)) return false;
+                if (!DeepComparable.IsExactly(AnswerValueSetElement, otherT.AnswerValueSetElement)) return false;
+                if (!DeepComparable.IsExactly(AnswerOption, otherT.AnswerOption)) return false;
                 if (!DeepComparable.IsExactly(Initial, otherT.Initial)) return false;
                 if (!DeepComparable.IsExactly(Item, otherT.Item)) return false;
 
@@ -593,8 +771,8 @@ namespace Hl7.Fhir.Model.R4
                     if (RepeatsElement != null) yield return RepeatsElement;
                     if (ReadOnlyElement != null) yield return ReadOnlyElement;
                     if (MaxLengthElement != null) yield return MaxLengthElement;
-                    if (OptionsElement != null) yield return OptionsElement;
-                    foreach (var elem in Option) { if (elem != null) yield return elem; }
+                    if (AnswerValueSetElement != null) yield return AnswerValueSetElement;
+                    foreach (var elem in AnswerOption) { if (elem != null) yield return elem; }
                     foreach (var elem in Initial) { if (elem != null) yield return elem; }
                     foreach (var elem in Item) { if (elem != null) yield return elem; }
                 }
@@ -606,22 +784,22 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (LinkIdElement != null) yield return new ElementValue("linkId", false, LinkIdElement);
-                    if (DefinitionElement != null) yield return new ElementValue("definition", false, DefinitionElement);
-                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", true, elem); }
-                    if (PrefixElement != null) yield return new ElementValue("prefix", false, PrefixElement);
-                    if (TextElement != null) yield return new ElementValue("text", false, TextElement);
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    foreach (var elem in EnableWhen) { if (elem != null) yield return new ElementValue("enableWhen", true, elem); }
-                    if (EnableBehaviorElement != null) yield return new ElementValue("enableBehavior", false, EnableBehaviorElement);
-                    if (RequiredElement != null) yield return new ElementValue("required", false, RequiredElement);
-                    if (RepeatsElement != null) yield return new ElementValue("repeats", false, RepeatsElement);
-                    if (ReadOnlyElement != null) yield return new ElementValue("readOnly", false, ReadOnlyElement);
-                    if (MaxLengthElement != null) yield return new ElementValue("maxLength", false, MaxLengthElement);
-                    if (OptionsElement != null) yield return new ElementValue("options", false, OptionsElement);
-                    foreach (var elem in Option) { if (elem != null) yield return new ElementValue("option", true, elem); }
-                    foreach (var elem in Initial) { if (elem != null) yield return new ElementValue("initial", true, elem); }
-                    foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
+                    if (LinkIdElement != null) yield return new ElementValue("linkId", LinkIdElement);
+                    if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
+                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
+                    if (PrefixElement != null) yield return new ElementValue("prefix", PrefixElement);
+                    if (TextElement != null) yield return new ElementValue("text", TextElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    foreach (var elem in EnableWhen) { if (elem != null) yield return new ElementValue("enableWhen", elem); }
+                    if (EnableBehaviorElement != null) yield return new ElementValue("enableBehavior", EnableBehaviorElement);
+                    if (RequiredElement != null) yield return new ElementValue("required", RequiredElement);
+                    if (RepeatsElement != null) yield return new ElementValue("repeats", RepeatsElement);
+                    if (ReadOnlyElement != null) yield return new ElementValue("readOnly", ReadOnlyElement);
+                    if (MaxLengthElement != null) yield return new ElementValue("maxLength", MaxLengthElement);
+                    if (AnswerValueSetElement != null) yield return new ElementValue("answerValueSet", AnswerValueSetElement);
+                    foreach (var elem in AnswerOption) { if (elem != null) yield return new ElementValue("answerOption", elem); }
+                    foreach (var elem in Initial) { if (elem != null) yield return new ElementValue("initial", elem); }
+                    foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
                 }
             }
 
@@ -631,7 +809,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EnableWhenComponent")]
         [DataContract]
-        public partial class EnableWhenComponent : BackboneElement
+        public partial class EnableWhenComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EnableWhenComponent"; } }
@@ -783,9 +961,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (QuestionElement != null) yield return new ElementValue("question", false, QuestionElement);
-                    if (OperatorElement != null) yield return new ElementValue("operator", false, OperatorElement);
-                    if (Answer != null) yield return new ElementValue("answer", false, Answer);
+                    if (QuestionElement != null) yield return new ElementValue("question", QuestionElement);
+                    if (OperatorElement != null) yield return new ElementValue("operator", OperatorElement);
+                    if (Answer != null) yield return new ElementValue("answer", Answer);
                 }
             }
 
@@ -793,18 +971,18 @@ namespace Hl7.Fhir.Model.R4
         }
 
 
-        [FhirType("OptionComponent")]
+        [FhirType("AnswerOptionComponent")]
         [DataContract]
-        public partial class OptionComponent : BackboneElement
+        public partial class AnswerOptionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
-            public override string TypeName { get { return "OptionComponent"; } }
+            public override string TypeName { get { return "AnswerOptionComponent"; } }
 
             /// <summary>
             /// Answer value
             /// </summary>
             [FhirElement("value", Order=40, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Integer),typeof(Date),typeof(Time),typeof(FhirString),typeof(Coding))]
+            [AllowedTypes(typeof(Integer),typeof(Date),typeof(Time),typeof(FhirString),typeof(Coding),typeof(ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Element Value
@@ -849,7 +1027,7 @@ namespace Hl7.Fhir.Model.R4
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
-                var dest = other as OptionComponent;
+                var dest = other as AnswerOptionComponent;
 
                 if (dest != null)
                 {
@@ -864,12 +1042,12 @@ namespace Hl7.Fhir.Model.R4
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new OptionComponent());
+                 return CopyTo(new AnswerOptionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
             {
-                var otherT = other as OptionComponent;
+                var otherT = other as AnswerOptionComponent;
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
@@ -881,7 +1059,7 @@ namespace Hl7.Fhir.Model.R4
 
             public override bool IsExactly(IDeepComparable other)
             {
-                var otherT = other as OptionComponent;
+                var otherT = other as AnswerOptionComponent;
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
@@ -909,8 +1087,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Value != null) yield return new ElementValue("value", false, Value);
-                    if (InitialSelectedElement != null) yield return new ElementValue("initialSelected", false, InitialSelectedElement);
+                    if (Value != null) yield return new ElementValue("value", Value);
+                    if (InitialSelectedElement != null) yield return new ElementValue("initialSelected", InitialSelectedElement);
                 }
             }
 
@@ -920,7 +1098,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("InitialComponent")]
         [DataContract]
-        public partial class InitialComponent : BackboneElement
+        public partial class InitialComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InitialComponent"; } }
@@ -998,7 +1176,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -1534,16 +1712,25 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "descendants().linkId.isDistinct()",
             Key = "que-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The link ids for groups and questions must be unique within the questionnaire",
             Xpath = "count(descendant::f:linkId/@value)=count(distinct-values(descendant::f:linkId/@value))"
+        };
+
+        public static ElementDefinition.ConstraintComponent Questionnaire_QUE_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "que-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
         };
 
         public static ElementDefinition.ConstraintComponent Questionnaire_QUE_9 = new ElementDefinition.ConstraintComponent
         {
             Expression = "item.all(type!='display' or readOnly.empty())",
             Key = "que-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Read-only can't be specified for \"display\" items",
             Xpath = "not(f:type/@value=('group', 'display') and f:*[starts-with(local-name(.), 'initial')])"
         };
@@ -1552,7 +1739,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "item.all((type!='group' and type!='display') or initial.empty())",
             Key = "que-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Initial values can't be specified for groups or display items",
             Xpath = "not(f:type/@value=('group', 'display') and f:*[starts-with(local-name(.), 'initial')])"
         };
@@ -1561,34 +1748,34 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "item.all(type!='display' or (required.empty() and repeats.empty()))",
             Key = "que-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Required and repeat aren't permitted for display items",
             Xpath = "not(f:type/@value='display' and (f:required or f:repeats))"
         };
 
         public static ElementDefinition.ConstraintComponent Questionnaire_QUE_5 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "item.all((type ='choice' or type = 'open-choice' or type = 'decimal' or type = 'integer' or type = 'date' or type = 'dateTime' or type = 'time' or type = 'string' or type = 'quantity') or (options.empty() and option.empty()))",
+            Expression = "item.all((type ='choice' or type = 'open-choice' or type = 'decimal' or type = 'integer' or type = 'date' or type = 'dateTime' or type = 'time' or type = 'string' or type = 'quantity') or (answerValueSet.empty() and answerOption.empty()))",
             Key = "que-5",
-            Severity = ConstraintSeverity.Warning,
-            Human = "Only 'choice' items can have options",
-            Xpath = "f:type/@value=('choice','open-choice','decimal','integer','date','dateTime','time','string','quantity',') or not(f:option or f:options)"
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Only 'choice' items can have answerValueSet",
+            Xpath = "f:type/@value=('choice','open-choice','decimal','integer','date','dateTime','time','string','quantity',') or not(f:answerOption or f:answerValueSet)"
         };
 
         public static ElementDefinition.ConstraintComponent Questionnaire_QUE_4 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "item.all(option.empty() or options.empty())",
+            Expression = "item.all(answerOption.empty() or answerValueSet.empty())",
             Key = "que-4",
-            Severity = ConstraintSeverity.Warning,
-            Human = "A question cannot have both option and options",
-            Xpath = "not(f:options and f:option)"
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "A question cannot have both answerOption and answerValueSet",
+            Xpath = "not(f:answerValueSet and f:answerOption)"
         };
 
         public static ElementDefinition.ConstraintComponent Questionnaire_QUE_3 = new ElementDefinition.ConstraintComponent
         {
             Expression = "item.all(type!='display' or code.empty())",
             Key = "que-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Display items cannot have a \"code\" asserted",
             Xpath = "not(f:type/@value='display' and f:code)"
         };
@@ -1597,7 +1784,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "item.all((type in ('boolean' | 'decimal' | 'integer' | 'string' | 'text' | 'url' | 'open-choice')) or maxLength.empty())",
             Key = "que-10",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Maximum length can only be declared for simple question types",
             Xpath = "f:type/@value=('boolean', 'decimal', 'integer', 'open-choice', 'string', 'text', 'url') or not(f:maxLength)"
         };
@@ -1606,36 +1793,45 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "item.all((type='group' implies item.empty().not()) and (type.trace('type')='display' implies item.trace('item').empty()))",
             Key = "que-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Group items must have nested items, display items cannot have nested items",
             Xpath = "not((f:type/@value='group' and not(f:item)) or (f:type/@value='display' and f:item))"
         };
 
+        public static ElementDefinition.ConstraintComponent Questionnaire_QUE_13 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "item.all(repeats=true or initial.count() <= 1)",
+            Key = "que-13",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Can only have multiple initial values for repeating items",
+            Xpath = "f:repeats/@value='true' or count(f:initial)<=1"
+        };
+
         public static ElementDefinition.ConstraintComponent Questionnaire_QUE_11 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "item.all(option.empty() or initial.empty())",
+            Expression = "item.all(answerOption.empty() or initial.empty())",
             Key = "que-11",
-            Severity = ConstraintSeverity.Warning,
-            Human = "If one or more option is present, initial[x] must be missing",
-            Xpath = "not(f:option) or not(count(f:*[starts-with(local-name(.), 'initial')]))"
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "If one or more answerOption is present, initial[x] must be missing",
+            Xpath = "not(f:answerOption) or not(count(f:*[starts-with(local-name(.), 'initial')]))"
         };
 
         public static ElementDefinition.ConstraintComponent Questionnaire_QUE_12 = new ElementDefinition.ConstraintComponent
         {
             Expression = "item.all(enableWhen.count() > 2 implies enableBehavior.exists())",
             Key = "que-12",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there are more than one enableWhen, enableBehavior must be specified",
-            Xpath = "not(f:option) or not(count(f:*[starts-with(local-name(.), 'initial')]))"
+            Xpath = "not(f:answerOption) or not(count(f:*[starts-with(local-name(.), 'initial')]))"
         };
 
         public static ElementDefinition.ConstraintComponent Questionnaire_QUE_7 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "item.enableWhen.all(operator = 'exists' implies answer is boolean)",
+            Expression = "item.enableWhen.all(operator = 'exists' implies (answer is Boolean))",
             Key = "que-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the operator is 'exists', the value must be a boolean",
-            Xpath = "(f:operator/value != 'exists') or (exists(f:answerBoolean)"
+            Xpath = "f:operator/@value != 'exists' or exists(f:answerBoolean)"
         };
 
         public override void AddDefaultConstraints()
@@ -1643,6 +1839,7 @@ namespace Hl7.Fhir.Model.R4
             base.AddDefaultConstraints();
 
             InvariantConstraints.Add(Questionnaire_QUE_2);
+            InvariantConstraints.Add(Questionnaire_QUE_0);
             InvariantConstraints.Add(Questionnaire_QUE_9);
             InvariantConstraints.Add(Questionnaire_QUE_8);
             InvariantConstraints.Add(Questionnaire_QUE_6);
@@ -1651,6 +1848,7 @@ namespace Hl7.Fhir.Model.R4
             InvariantConstraints.Add(Questionnaire_QUE_3);
             InvariantConstraints.Add(Questionnaire_QUE_10);
             InvariantConstraints.Add(Questionnaire_QUE_1);
+            InvariantConstraints.Add(Questionnaire_QUE_13);
             InvariantConstraints.Add(Questionnaire_QUE_11);
             InvariantConstraints.Add(Questionnaire_QUE_12);
             InvariantConstraints.Add(Questionnaire_QUE_7);
@@ -1797,28 +1995,28 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                foreach (var elem in DerivedFromElement) { if (elem != null) yield return new ElementValue("derivedFrom", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                foreach (var elem in SubjectTypeElement) { if (elem != null) yield return new ElementValue("subjectType", true, elem); }
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                if (ApprovalDateElement != null) yield return new ElementValue("approvalDate", false, ApprovalDateElement);
-                if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", false, LastReviewDateElement);
-                if (EffectivePeriod != null) yield return new ElementValue("effectivePeriod", false, EffectivePeriod);
-                foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", true, elem); }
-                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", true, elem); }
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                foreach (var elem in DerivedFromElement) { if (elem != null) yield return new ElementValue("derivedFrom", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                foreach (var elem in SubjectTypeElement) { if (elem != null) yield return new ElementValue("subjectType", elem); }
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (ApprovalDateElement != null) yield return new ElementValue("approvalDate", ApprovalDateElement);
+                if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", LastReviewDateElement);
+                if (EffectivePeriod != null) yield return new ElementValue("effectivePeriod", EffectivePeriod);
+                foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
+                foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }
             }
         }
 

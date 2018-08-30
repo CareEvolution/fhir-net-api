@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,16 +60,29 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("JurisdictionalAuthorizationComponent")]
         [DataContract]
-        public partial class JurisdictionalAuthorizationComponent : BackboneElement
+        public partial class JurisdictionalAuthorizationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "JurisdictionalAuthorizationComponent"; } }
 
             /// <summary>
+            /// The assigned number for the marketing authorization
+            /// </summary>
+            [FhirElement("identifier", InSummary=true, Order=40)]
+            [Cardinality(Min=0,Max=-1)]
+            [DataMember]
+            public List<Identifier> Identifier
+            {
+                get { if (_identifier==null) _identifier = new List<Identifier>(); return _identifier; }
+                set { _identifier = value; OnPropertyChanged("Identifier"); }
+            }
+
+            private List<Identifier> _identifier;
+
+            /// <summary>
             /// Country of authorization
             /// </summary>
-            [FhirElement("country", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("country", InSummary=true, Order=50)]
             [DataMember]
             public CodeableConcept Country
             {
@@ -81,28 +95,16 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Jurisdiction within a country
             /// </summary>
-            [FhirElement("jurisdiction", InSummary=true, Order=50)]
+            [FhirElement("jurisdiction", InSummary=true, Order=60)]
+            [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public CodeableConcept Jurisdiction
+            public List<CodeableConcept> Jurisdiction
             {
-                get { return _jurisdiction; }
+                get { if (_jurisdiction==null) _jurisdiction = new List<CodeableConcept>(); return _jurisdiction; }
                 set { _jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
             }
 
-            private CodeableConcept _jurisdiction;
-
-            /// <summary>
-            /// The assigned number for the marketing authorization
-            /// </summary>
-            [FhirElement("number", InSummary=true, Order=60)]
-            [DataMember]
-            public Identifier Number
-            {
-                get { return _number; }
-                set { _number = value; OnPropertyChanged("Number"); }
-            }
-
-            private Identifier _number;
+            private List<CodeableConcept> _jurisdiction;
 
             /// <summary>
             /// The legal status of supply in a jurisdiction or region
@@ -117,6 +119,19 @@ namespace Hl7.Fhir.Model.R4
 
             private CodeableConcept _legalStatusOfSupply;
 
+            /// <summary>
+            /// The start and expected end date of the authorization
+            /// </summary>
+            [FhirElement("validityPeriod", InSummary=true, Order=80)]
+            [DataMember]
+            public Period ValidityPeriod
+            {
+                get { return _validityPeriod; }
+                set { _validityPeriod = value; OnPropertyChanged("ValidityPeriod"); }
+            }
+
+            private Period _validityPeriod;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as JurisdictionalAuthorizationComponent;
@@ -124,10 +139,11 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
+                    if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
                     if (Country != null) dest.Country = (CodeableConcept)Country.DeepCopy();
-                    if (Jurisdiction != null) dest.Jurisdiction = (CodeableConcept)Jurisdiction.DeepCopy();
-                    if (Number != null) dest.Number = (Identifier)Number.DeepCopy();
+                    if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
                     if (LegalStatusOfSupply != null) dest.LegalStatusOfSupply = (CodeableConcept)LegalStatusOfSupply.DeepCopy();
+                    if (ValidityPeriod != null) dest.ValidityPeriod = (Period)ValidityPeriod.DeepCopy();
                     return dest;
                 }
                 else
@@ -145,10 +161,11 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
+                if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
                 if (!DeepComparable.Matches(Country, otherT.Country)) return false;
-                if (!DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-                if (!DeepComparable.Matches(Number, otherT.Number)) return false;
+                if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
                 if (!DeepComparable.Matches(LegalStatusOfSupply, otherT.LegalStatusOfSupply)) return false;
+                if (!DeepComparable.Matches(ValidityPeriod, otherT.ValidityPeriod)) return false;
 
                 return true;
             }
@@ -159,10 +176,11 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
                 if (!DeepComparable.IsExactly(Country, otherT.Country)) return false;
                 if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-                if (!DeepComparable.IsExactly(Number, otherT.Number)) return false;
                 if (!DeepComparable.IsExactly(LegalStatusOfSupply, otherT.LegalStatusOfSupply)) return false;
+                if (!DeepComparable.IsExactly(ValidityPeriod, otherT.ValidityPeriod)) return false;
 
                 return true;
             }
@@ -174,10 +192,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
+                    foreach (var elem in Identifier) { if (elem != null) yield return elem; }
                     if (Country != null) yield return Country;
-                    if (Jurisdiction != null) yield return Jurisdiction;
-                    if (Number != null) yield return Number;
+                    foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
                     if (LegalStatusOfSupply != null) yield return LegalStatusOfSupply;
+                    if (ValidityPeriod != null) yield return ValidityPeriod;
                 }
             }
 
@@ -187,10 +206,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Country != null) yield return new ElementValue("country", false, Country);
-                    if (Jurisdiction != null) yield return new ElementValue("jurisdiction", false, Jurisdiction);
-                    if (Number != null) yield return new ElementValue("number", false, Number);
-                    if (LegalStatusOfSupply != null) yield return new ElementValue("legalStatusOfSupply", false, LegalStatusOfSupply);
+                    foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                    if (Country != null) yield return new ElementValue("country", Country);
+                    foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                    if (LegalStatusOfSupply != null) yield return new ElementValue("legalStatusOfSupply", LegalStatusOfSupply);
+                    if (ValidityPeriod != null) yield return new ElementValue("validityPeriod", ValidityPeriod);
                 }
             }
 
@@ -200,7 +220,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ProcedureComponent")]
         [DataContract]
-        public partial class ProcedureComponent : BackboneElement
+        public partial class ProcedureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ProcedureComponent"; } }
@@ -208,15 +228,15 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Identifier for this procedure
             /// </summary>
-            [FhirElement("number", InSummary=true, Order=40)]
+            [FhirElement("identifier", InSummary=true, Order=40)]
             [DataMember]
-            public Identifier Number
+            public Identifier Identifier
             {
-                get { return _number; }
-                set { _number = value; OnPropertyChanged("Number"); }
+                get { return _identifier; }
+                set { _identifier = value; OnPropertyChanged("Identifier"); }
             }
 
-            private Identifier _number;
+            private Identifier _identifier;
 
             /// <summary>
             /// Type of procedure
@@ -235,15 +255,16 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Date of procedure
             /// </summary>
-            [FhirElement("date", InSummary=true, Order=60)]
+            [FhirElement("date", InSummary=true, Order=60, Choice=ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(Period),typeof(FhirDateTime))]
             [DataMember]
-            public Period Date
+            public Element Date
             {
                 get { return _date; }
                 set { _date = value; OnPropertyChanged("Date"); }
             }
 
-            private Period _date;
+            private Element _date;
 
             /// <summary>
             /// Applcations submitted to obtain a marketing authorization
@@ -251,13 +272,13 @@ namespace Hl7.Fhir.Model.R4
             [FhirElement("application", InSummary=true, Order=70)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<ApplicationComponent> Application
+            public List<ProcedureComponent> Application
             {
-                get { if (_application==null) _application = new List<ApplicationComponent>(); return _application; }
+                get { if (_application==null) _application = new List<ProcedureComponent>(); return _application; }
                 set { _application = value; OnPropertyChanged("Application"); }
             }
 
-            private List<ApplicationComponent> _application;
+            private List<ProcedureComponent> _application;
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -266,10 +287,10 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (Number != null) dest.Number = (Identifier)Number.DeepCopy();
+                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
                     if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
-                    if (Date != null) dest.Date = (Period)Date.DeepCopy();
-                    if (Application != null) dest.Application = new List<ApplicationComponent>(Application.DeepCopy());
+                    if (Date != null) dest.Date = (Element)Date.DeepCopy();
+                    if (Application != null) dest.Application = new List<ProcedureComponent>(Application.DeepCopy());
                     return dest;
                 }
                 else
@@ -287,7 +308,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Number, otherT.Number)) return false;
+                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
                 if (!DeepComparable.Matches(Type, otherT.Type)) return false;
                 if (!DeepComparable.Matches(Date, otherT.Date)) return false;
                 if ( !DeepComparable.Matches(Application, otherT.Application)) return false;
@@ -301,7 +322,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Number, otherT.Number)) return false;
+                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
                 if (!DeepComparable.IsExactly(Date, otherT.Date)) return false;
                 if (!DeepComparable.IsExactly(Application, otherT.Application)) return false;
@@ -316,7 +337,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (Number != null) yield return Number;
+                    if (Identifier != null) yield return Identifier;
                     if (Type != null) yield return Type;
                     if (Date != null) yield return Date;
                     foreach (var elem in Application) { if (elem != null) yield return elem; }
@@ -329,154 +350,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Number != null) yield return new ElementValue("number", false, Number);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Date != null) yield return new ElementValue("date", false, Date);
-                    foreach (var elem in Application) { if (elem != null) yield return new ElementValue("application", true, elem); }
-                }
-            }
-
-
-        }
-
-
-        [FhirType("ApplicationComponent")]
-        [DataContract]
-        public partial class ApplicationComponent : BackboneElement
-        {
-            [NotMapped]
-            public override string TypeName { get { return "ApplicationComponent"; } }
-
-            /// <summary>
-            /// A unique identifier for the specific instance of an application shall be provided in text. The application identifier/number is usually assigned by a Medicines Regulatory Agency
-            /// </summary>
-            [FhirElement("number", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
-            [DataMember]
-            public Identifier Number
-            {
-                get { return _number; }
-                set { _number = value; OnPropertyChanged("Number"); }
-            }
-
-            private Identifier _number;
-
-            /// <summary>
-            /// The type of the application
-            /// </summary>
-            [FhirElement("type", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
-            [DataMember]
-            public CodeableConcept Type
-            {
-                get { return _type; }
-                set { _type = value; OnPropertyChanged("Type"); }
-            }
-
-            private CodeableConcept _type;
-
-            /// <summary>
-            /// Date that the application was made
-            /// </summary>
-            [FhirElement("date", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=1)]
-            [DataMember]
-            public FhirDateTime DateElement
-            {
-                get { return _dateElement; }
-                set { _dateElement = value; OnPropertyChanged("DateElement"); }
-            }
-
-            private FhirDateTime _dateElement;
-
-            /// <summary>
-            /// Date that the application was made
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string Date
-            {
-                get { return DateElement != null ? DateElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        DateElement = null;
-                    else
-                        DateElement = new FhirDateTime(value);
-                    OnPropertyChanged("Date");
-                }
-            }
-
-            public override IDeepCopyable CopyTo(IDeepCopyable other)
-            {
-                var dest = other as ApplicationComponent;
-
-                if (dest != null)
-                {
-                    base.CopyTo(dest);
-                    if (Number != null) dest.Number = (Identifier)Number.DeepCopy();
-                    if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
-                    if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
-                    return dest;
-                }
-                else
-                    throw new ArgumentException("Can only copy to an object of the same type", "other");
-            }
-
-            public override IDeepCopyable DeepCopy()
-            {
-                 return CopyTo(new ApplicationComponent());
-            }
-
-            public override bool Matches(IDeepComparable other)
-            {
-                var otherT = other as ApplicationComponent;
-                if (otherT == null) return false;
-
-                if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Number, otherT.Number)) return false;
-                if (!DeepComparable.Matches(Type, otherT.Type)) return false;
-                if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
-
-                return true;
-            }
-
-            public override bool IsExactly(IDeepComparable other)
-            {
-                var otherT = other as ApplicationComponent;
-                if (otherT == null) return false;
-
-                if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Number, otherT.Number)) return false;
-                if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
-                if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
-
-                return true;
-            }
-
-
-            [NotMapped]
-            public override IEnumerable<Base> Children
-            {
-                get
-                {
-                    foreach (var item in base.Children) yield return item;
-                    if (Number != null) yield return Number;
-                    if (Type != null) yield return Type;
-                    if (DateElement != null) yield return DateElement;
-                }
-            }
-
-            [NotMapped]
-            internal override IEnumerable<ElementValue> NamedChildren
-            {
-                get
-                {
-                    foreach (var item in base.NamedChildren) yield return item;
-                    if (Number != null) yield return new ElementValue("number", false, Number);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (DateElement != null) yield return new ElementValue("date", false, DateElement);
+                    if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Date != null) yield return new ElementValue("date", Date);
+                    foreach (var elem in Application) { if (elem != null) yield return new ElementValue("application", elem); }
                 }
             }
 
@@ -488,20 +365,35 @@ namespace Hl7.Fhir.Model.R4
         /// Business identifier for the marketing authorization, as assigned by a regulator
         /// </summary>
         [FhirElement("identifier", InSummary=true, Order=90)]
+        [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public Identifier Identifier
+        public List<Identifier> Identifier
         {
-            get { return _identifier; }
+            get { if (_identifier==null) _identifier = new List<Identifier>(); return _identifier; }
             set { _identifier = value; OnPropertyChanged("Identifier"); }
         }
 
-        private Identifier _identifier;
+        private List<Identifier> _identifier;
+
+        /// <summary>
+        /// The medicinal product that is being authorized
+        /// </summary>
+        [FhirElement("subject", InSummary=true, Order=100)]
+        [References("MedicinalProduct","MedicinalProductPackaged")]
+        [DataMember]
+        public ResourceReference Subject
+        {
+            get { return _subject; }
+            set { _subject = value; OnPropertyChanged("Subject"); }
+        }
+
+        private ResourceReference _subject;
 
         /// <summary>
         /// The country in which the marketing authorization has been granted
         /// </summary>
-        [FhirElement("country", InSummary=true, Order=100)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("country", InSummary=true, Order=110)]
+        [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> Country
         {
@@ -512,10 +404,23 @@ namespace Hl7.Fhir.Model.R4
         private List<CodeableConcept> _country;
 
         /// <summary>
+        /// Jurisdiction within a country
+        /// </summary>
+        [FhirElement("jurisdiction", InSummary=true, Order=120)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<CodeableConcept> Jurisdiction
+        {
+            get { if (_jurisdiction==null) _jurisdiction = new List<CodeableConcept>(); return _jurisdiction; }
+            set { _jurisdiction = value; OnPropertyChanged("Jurisdiction"); }
+        }
+
+        private List<CodeableConcept> _jurisdiction;
+
+        /// <summary>
         /// The legal status of supply of the medicinal product as classified by the regulator
         /// </summary>
-        [FhirElement("legalStatusOfSupply", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("legalStatusOfSupply", InSummary=true, Order=130)]
         [DataMember]
         public CodeableConcept LegalStatusOfSupply
         {
@@ -528,8 +433,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The status of the marketing authorization
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=120)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary=true, Order=140)]
         [DataMember]
         public CodeableConcept Status
         {
@@ -542,8 +446,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The date at which the given status has become applicable
         /// </summary>
-        [FhirElement("statusDate", InSummary=true, Order=130)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("statusDate", InSummary=true, Order=150)]
         [DataMember]
         public FhirDateTime StatusDateElement
         {
@@ -575,7 +478,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored
         /// </summary>
-        [FhirElement("restoreDate", InSummary=true, Order=140)]
+        [FhirElement("restoreDate", InSummary=true, Order=160)]
         [DataMember]
         public FhirDateTime RestoreDateElement
         {
@@ -607,8 +510,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The beginning of the time period in which the marketing authorization is in the specific status shall be specified A complete date consisting of day, month and year shall be specified using the ISO 8601 date format
         /// </summary>
-        [FhirElement("validityPeriod", InSummary=true, Order=150)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("validityPeriod", InSummary=true, Order=170)]
         [DataMember]
         public Period ValidityPeriod
         {
@@ -621,7 +523,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// A period of time after authorization before generic product applicatiosn can be submitted
         /// </summary>
-        [FhirElement("dataExclusivityPeriod", InSummary=true, Order=160)]
+        [FhirElement("dataExclusivityPeriod", InSummary=true, Order=180)]
         [DataMember]
         public Period DataExclusivityPeriod
         {
@@ -634,7 +536,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The date when the first authorization was granted by a Medicines Regulatory Agency
         /// </summary>
-        [FhirElement("dateOfFirstAuthorization", InSummary=true, Order=170)]
+        [FhirElement("dateOfFirstAuthorization", InSummary=true, Order=190)]
         [DataMember]
         public FhirDateTime DateOfFirstAuthorizationElement
         {
@@ -666,8 +568,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Date of first marketing authorization for a company's new medicinal product in any country in the World
         /// </summary>
-        [FhirElement("internationalBirthDate", InSummary=true, Order=180)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("internationalBirthDate", InSummary=true, Order=200)]
         [DataMember]
         public FhirDateTime InternationalBirthDateElement
         {
@@ -697,9 +598,22 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
+        /// The legal framework against which this authorization is granted
+        /// </summary>
+        [FhirElement("legalBasis", InSummary=true, Order=210)]
+        [DataMember]
+        public CodeableConcept LegalBasis
+        {
+            get { return _legalBasis; }
+            set { _legalBasis = value; OnPropertyChanged("LegalBasis"); }
+        }
+
+        private CodeableConcept _legalBasis;
+
+        /// <summary>
         /// Authorization in areas within a country
         /// </summary>
-        [FhirElement("jurisdictionalAuthorization", InSummary=true, Order=190)]
+        [FhirElement("jurisdictionalAuthorization", InSummary=true, Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<JurisdictionalAuthorizationComponent> JurisdictionalAuthorization
@@ -713,9 +627,8 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Marketing Authorization Holder
         /// </summary>
-        [FhirElement("holder", InSummary=true, Order=200)]
+        [FhirElement("holder", InSummary=true, Order=230)]
         [References("Organization")]
-        [Cardinality(Min=1,Max=1)]
         [DataMember]
         public ResourceReference Holder
         {
@@ -728,9 +641,8 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Medicines Regulatory Agency
         /// </summary>
-        [FhirElement("regulator", InSummary=true, Order=210)]
+        [FhirElement("regulator", InSummary=true, Order=240)]
         [References("Organization")]
-        [Cardinality(Min=1,Max=1)]
         [DataMember]
         public ResourceReference Regulator
         {
@@ -743,8 +655,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The regulatory procedure for granting or amending a marketing authorization
         /// </summary>
-        [FhirElement("procedure", InSummary=true, Order=220)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("procedure", InSummary=true, Order=250)]
         [DataMember]
         public ProcedureComponent Procedure
         {
@@ -754,20 +665,6 @@ namespace Hl7.Fhir.Model.R4
 
         private ProcedureComponent _procedure;
 
-        /// <summary>
-        /// Marketing status of the medicinal product, in contrast to marketing authorizaton
-        /// </summary>
-        [FhirElement("marketingStatus", InSummary=true, Order=230)]
-        [Cardinality(Min=0,Max=-1)]
-        [DataMember]
-        public List<MarketingStatus> MarketingStatus
-        {
-            get { if (_marketingStatus==null) _marketingStatus = new List<MarketingStatus>(); return _marketingStatus; }
-            set { _marketingStatus = value; OnPropertyChanged("MarketingStatus"); }
-        }
-
-        private List<MarketingStatus> _marketingStatus;
-
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
@@ -776,8 +673,10 @@ namespace Hl7.Fhir.Model.R4
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
+                if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
+                if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
                 if (Country != null) dest.Country = new List<CodeableConcept>(Country.DeepCopy());
+                if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
                 if (LegalStatusOfSupply != null) dest.LegalStatusOfSupply = (CodeableConcept)LegalStatusOfSupply.DeepCopy();
                 if (Status != null) dest.Status = (CodeableConcept)Status.DeepCopy();
                 if (StatusDateElement != null) dest.StatusDateElement = (FhirDateTime)StatusDateElement.DeepCopy();
@@ -786,11 +685,11 @@ namespace Hl7.Fhir.Model.R4
                 if (DataExclusivityPeriod != null) dest.DataExclusivityPeriod = (Period)DataExclusivityPeriod.DeepCopy();
                 if (DateOfFirstAuthorizationElement != null) dest.DateOfFirstAuthorizationElement = (FhirDateTime)DateOfFirstAuthorizationElement.DeepCopy();
                 if (InternationalBirthDateElement != null) dest.InternationalBirthDateElement = (FhirDateTime)InternationalBirthDateElement.DeepCopy();
+                if (LegalBasis != null) dest.LegalBasis = (CodeableConcept)LegalBasis.DeepCopy();
                 if (JurisdictionalAuthorization != null) dest.JurisdictionalAuthorization = new List<JurisdictionalAuthorizationComponent>(JurisdictionalAuthorization.DeepCopy());
                 if (Holder != null) dest.Holder = (ResourceReference)Holder.DeepCopy();
                 if (Regulator != null) dest.Regulator = (ResourceReference)Regulator.DeepCopy();
                 if (Procedure != null) dest.Procedure = (ProcedureComponent)Procedure.DeepCopy();
-                if (MarketingStatus != null) dest.MarketingStatus = new List<MarketingStatus>(MarketingStatus.DeepCopy());
                 return dest;
             }
             else
@@ -808,8 +707,10 @@ namespace Hl7.Fhir.Model.R4
             if (otherT == null) return false;
 
             if (!base.Matches(otherT)) return false;
-            if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+            if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
             if ( !DeepComparable.Matches(Country, otherT.Country)) return false;
+            if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
             if (!DeepComparable.Matches(LegalStatusOfSupply, otherT.LegalStatusOfSupply)) return false;
             if (!DeepComparable.Matches(Status, otherT.Status)) return false;
             if (!DeepComparable.Matches(StatusDateElement, otherT.StatusDateElement)) return false;
@@ -818,11 +719,11 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(DataExclusivityPeriod, otherT.DataExclusivityPeriod)) return false;
             if (!DeepComparable.Matches(DateOfFirstAuthorizationElement, otherT.DateOfFirstAuthorizationElement)) return false;
             if (!DeepComparable.Matches(InternationalBirthDateElement, otherT.InternationalBirthDateElement)) return false;
+            if (!DeepComparable.Matches(LegalBasis, otherT.LegalBasis)) return false;
             if ( !DeepComparable.Matches(JurisdictionalAuthorization, otherT.JurisdictionalAuthorization)) return false;
             if (!DeepComparable.Matches(Holder, otherT.Holder)) return false;
             if (!DeepComparable.Matches(Regulator, otherT.Regulator)) return false;
             if (!DeepComparable.Matches(Procedure, otherT.Procedure)) return false;
-            if ( !DeepComparable.Matches(MarketingStatus, otherT.MarketingStatus)) return false;
 
             return true;
         }
@@ -834,7 +735,9 @@ namespace Hl7.Fhir.Model.R4
 
             if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.IsExactly(Subject, otherT.Subject)) return false;
             if (!DeepComparable.IsExactly(Country, otherT.Country)) return false;
+            if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
             if (!DeepComparable.IsExactly(LegalStatusOfSupply, otherT.LegalStatusOfSupply)) return false;
             if (!DeepComparable.IsExactly(Status, otherT.Status)) return false;
             if (!DeepComparable.IsExactly(StatusDateElement, otherT.StatusDateElement)) return false;
@@ -843,11 +746,11 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(DataExclusivityPeriod, otherT.DataExclusivityPeriod)) return false;
             if (!DeepComparable.IsExactly(DateOfFirstAuthorizationElement, otherT.DateOfFirstAuthorizationElement)) return false;
             if (!DeepComparable.IsExactly(InternationalBirthDateElement, otherT.InternationalBirthDateElement)) return false;
+            if (!DeepComparable.IsExactly(LegalBasis, otherT.LegalBasis)) return false;
             if (!DeepComparable.IsExactly(JurisdictionalAuthorization, otherT.JurisdictionalAuthorization)) return false;
             if (!DeepComparable.IsExactly(Holder, otherT.Holder)) return false;
             if (!DeepComparable.IsExactly(Regulator, otherT.Regulator)) return false;
             if (!DeepComparable.IsExactly(Procedure, otherT.Procedure)) return false;
-            if (!DeepComparable.IsExactly(MarketingStatus, otherT.MarketingStatus)) return false;
 
             return true;
         }
@@ -858,8 +761,10 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.Children) yield return item;
-                if (Identifier != null) yield return Identifier;
+                foreach (var elem in Identifier) { if (elem != null) yield return elem; }
+                if (Subject != null) yield return Subject;
                 foreach (var elem in Country) { if (elem != null) yield return elem; }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
                 if (LegalStatusOfSupply != null) yield return LegalStatusOfSupply;
                 if (Status != null) yield return Status;
                 if (StatusDateElement != null) yield return StatusDateElement;
@@ -868,11 +773,11 @@ namespace Hl7.Fhir.Model.R4
                 if (DataExclusivityPeriod != null) yield return DataExclusivityPeriod;
                 if (DateOfFirstAuthorizationElement != null) yield return DateOfFirstAuthorizationElement;
                 if (InternationalBirthDateElement != null) yield return InternationalBirthDateElement;
+                if (LegalBasis != null) yield return LegalBasis;
                 foreach (var elem in JurisdictionalAuthorization) { if (elem != null) yield return elem; }
                 if (Holder != null) yield return Holder;
                 if (Regulator != null) yield return Regulator;
                 if (Procedure != null) yield return Procedure;
-                foreach (var elem in MarketingStatus) { if (elem != null) yield return elem; }
             }
         }
 
@@ -882,21 +787,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                foreach (var elem in Country) { if (elem != null) yield return new ElementValue("country", true, elem); }
-                if (LegalStatusOfSupply != null) yield return new ElementValue("legalStatusOfSupply", false, LegalStatusOfSupply);
-                if (Status != null) yield return new ElementValue("status", false, Status);
-                if (StatusDateElement != null) yield return new ElementValue("statusDate", false, StatusDateElement);
-                if (RestoreDateElement != null) yield return new ElementValue("restoreDate", false, RestoreDateElement);
-                if (ValidityPeriod != null) yield return new ElementValue("validityPeriod", false, ValidityPeriod);
-                if (DataExclusivityPeriod != null) yield return new ElementValue("dataExclusivityPeriod", false, DataExclusivityPeriod);
-                if (DateOfFirstAuthorizationElement != null) yield return new ElementValue("dateOfFirstAuthorization", false, DateOfFirstAuthorizationElement);
-                if (InternationalBirthDateElement != null) yield return new ElementValue("internationalBirthDate", false, InternationalBirthDateElement);
-                foreach (var elem in JurisdictionalAuthorization) { if (elem != null) yield return new ElementValue("jurisdictionalAuthorization", true, elem); }
-                if (Holder != null) yield return new ElementValue("holder", false, Holder);
-                if (Regulator != null) yield return new ElementValue("regulator", false, Regulator);
-                if (Procedure != null) yield return new ElementValue("procedure", false, Procedure);
-                foreach (var elem in MarketingStatus) { if (elem != null) yield return new ElementValue("marketingStatus", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                foreach (var elem in Country) { if (elem != null) yield return new ElementValue("country", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (LegalStatusOfSupply != null) yield return new ElementValue("legalStatusOfSupply", LegalStatusOfSupply);
+                if (Status != null) yield return new ElementValue("status", Status);
+                if (StatusDateElement != null) yield return new ElementValue("statusDate", StatusDateElement);
+                if (RestoreDateElement != null) yield return new ElementValue("restoreDate", RestoreDateElement);
+                if (ValidityPeriod != null) yield return new ElementValue("validityPeriod", ValidityPeriod);
+                if (DataExclusivityPeriod != null) yield return new ElementValue("dataExclusivityPeriod", DataExclusivityPeriod);
+                if (DateOfFirstAuthorizationElement != null) yield return new ElementValue("dateOfFirstAuthorization", DateOfFirstAuthorizationElement);
+                if (InternationalBirthDateElement != null) yield return new ElementValue("internationalBirthDate", InternationalBirthDateElement);
+                if (LegalBasis != null) yield return new ElementValue("legalBasis", LegalBasis);
+                foreach (var elem in JurisdictionalAuthorization) { if (elem != null) yield return new ElementValue("jurisdictionalAuthorization", elem); }
+                if (Holder != null) yield return new ElementValue("holder", Holder);
+                if (Regulator != null) yield return new ElementValue("regulator", Regulator);
+                if (Procedure != null) yield return new ElementValue("procedure", Procedure);
             }
         }
 

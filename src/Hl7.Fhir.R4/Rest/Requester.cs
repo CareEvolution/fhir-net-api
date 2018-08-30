@@ -73,7 +73,8 @@ namespace Hl7.Fhir.Rest.R4
             compressRequestBody = CompressRequestBody; // PCL doesn't support compression at the moment
 
             byte[] outBody;
-            var request = interaction.ToHttpRequest(this.PreferredParameterHandling, this.PreferredReturn, PreferredFormat, UseFormatParameter, compressRequestBody, out outBody);
+
+            var request = interaction.ToHttpRequest(BaseUrl, this.PreferredParameterHandling, this.PreferredReturn, PreferredFormat, UseFormatParameter, compressRequestBody, out outBody);
 
 #if DOTNETFW
             request.Timeout = Timeout;
@@ -127,7 +128,7 @@ namespace Hl7.Fhir.Rest.R4
                         errorResult.Response = new Bundle.ResponseComponent();
                         errorResult.Response.Status = ((int)webResponse.StatusCode).ToString();
 
-                        OperationOutcome operationOutcome = OperationOutcome.ForException(bte, IssueType.Invalid);
+                        OperationOutcome operationOutcome = OperationOutcome.ForException(bte, OperationOutcome.IssueType.Invalid);
 
                         errorResult.Resource = operationOutcome;
                         LastResult = errorResult;

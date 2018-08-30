@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AgentComponent")]
         [DataContract]
-        public partial class AgentComponent : BackboneElement
+        public partial class AgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AgentComponent"; } }
@@ -154,8 +155,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Who != null) yield return new ElementValue("who", false, Who);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Who != null) yield return new ElementValue("who", Who);
                 }
             }
 
@@ -165,7 +166,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RelatesToComponent")]
         [DataContract]
-        public partial class RelatesToComponent : BackboneElement
+        public partial class RelatesToComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelatesToComponent"; } }
@@ -280,8 +281,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (Target != null) yield return new ElementValue("target", false, Target);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (Target != null) yield return new ElementValue("target", Target);
                 }
             }
 
@@ -291,7 +292,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ContentComponent")]
         [DataContract]
-        public partial class ContentComponent : BackboneElement
+        public partial class ContentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContentComponent"; } }
@@ -385,8 +386,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Attachment != null) yield return new ElementValue("attachment", false, Attachment);
-                    if (Format != null) yield return new ElementValue("format", false, Format);
+                    if (Attachment != null) yield return new ElementValue("attachment", Attachment);
+                    if (Format != null) yield return new ElementValue("format", Format);
                 }
             }
 
@@ -396,7 +397,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ContextComponent")]
         [DataContract]
-        public partial class ContextComponent : BackboneElement
+        public partial class ContextComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContextComponent"; } }
@@ -405,15 +406,16 @@ namespace Hl7.Fhir.Model.R4
             /// Context of the document  content
             /// </summary>
             [FhirElement("encounter", Order=40)]
-            [References("Encounter")]
+            [References("Encounter","EpisodeOfCare")]
+            [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public ResourceReference Encounter
+            public List<ResourceReference> Encounter
             {
-                get { return _encounter; }
+                get { if (_encounter==null) _encounter = new List<ResourceReference>(); return _encounter; }
                 set { _encounter = value; OnPropertyChanged("Encounter"); }
             }
 
-            private ResourceReference _encounter;
+            private List<ResourceReference> _encounter;
 
             /// <summary>
             /// Main clinical acts documented
@@ -488,13 +490,13 @@ namespace Hl7.Fhir.Model.R4
             [FhirElement("related", Order=100)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<RelatedComponent> Related
+            public List<ResourceReference> Related
             {
-                get { if (_related==null) _related = new List<RelatedComponent>(); return _related; }
+                get { if (_related==null) _related = new List<ResourceReference>(); return _related; }
                 set { _related = value; OnPropertyChanged("Related"); }
             }
 
-            private List<RelatedComponent> _related;
+            private List<ResourceReference> _related;
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -503,13 +505,13 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (Encounter != null) dest.Encounter = (ResourceReference)Encounter.DeepCopy();
+                    if (Encounter != null) dest.Encounter = new List<ResourceReference>(Encounter.DeepCopy());
                     if (Event != null) dest.Event = new List<CodeableConcept>(Event.DeepCopy());
                     if (Period != null) dest.Period = (Period)Period.DeepCopy();
                     if (FacilityType != null) dest.FacilityType = (CodeableConcept)FacilityType.DeepCopy();
                     if (PracticeSetting != null) dest.PracticeSetting = (CodeableConcept)PracticeSetting.DeepCopy();
                     if (SourcePatientInfo != null) dest.SourcePatientInfo = (ResourceReference)SourcePatientInfo.DeepCopy();
-                    if (Related != null) dest.Related = new List<RelatedComponent>(Related.DeepCopy());
+                    if (Related != null) dest.Related = new List<ResourceReference>(Related.DeepCopy());
                     return dest;
                 }
                 else
@@ -527,7 +529,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Encounter, otherT.Encounter)) return false;
+                if ( !DeepComparable.Matches(Encounter, otherT.Encounter)) return false;
                 if ( !DeepComparable.Matches(Event, otherT.Event)) return false;
                 if (!DeepComparable.Matches(Period, otherT.Period)) return false;
                 if (!DeepComparable.Matches(FacilityType, otherT.FacilityType)) return false;
@@ -562,7 +564,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (Encounter != null) yield return Encounter;
+                    foreach (var elem in Encounter) { if (elem != null) yield return elem; }
                     foreach (var elem in Event) { if (elem != null) yield return elem; }
                     if (Period != null) yield return Period;
                     if (FacilityType != null) yield return FacilityType;
@@ -578,117 +580,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Encounter != null) yield return new ElementValue("encounter", false, Encounter);
-                    foreach (var elem in Event) { if (elem != null) yield return new ElementValue("event", true, elem); }
-                    if (Period != null) yield return new ElementValue("period", false, Period);
-                    if (FacilityType != null) yield return new ElementValue("facilityType", false, FacilityType);
-                    if (PracticeSetting != null) yield return new ElementValue("practiceSetting", false, PracticeSetting);
-                    if (SourcePatientInfo != null) yield return new ElementValue("sourcePatientInfo", false, SourcePatientInfo);
-                    foreach (var elem in Related) { if (elem != null) yield return new ElementValue("related", true, elem); }
-                }
-            }
-
-
-        }
-
-
-        [FhirType("RelatedComponent")]
-        [DataContract]
-        public partial class RelatedComponent : BackboneElement
-        {
-            [NotMapped]
-            public override string TypeName { get { return "RelatedComponent"; } }
-
-            /// <summary>
-            /// Identifier of related objects or events
-            /// </summary>
-            [FhirElement("identifier", Order=40)]
-            [DataMember]
-            public Identifier Identifier
-            {
-                get { return _identifier; }
-                set { _identifier = value; OnPropertyChanged("Identifier"); }
-            }
-
-            private Identifier _identifier;
-
-            /// <summary>
-            /// Related Resource
-            /// </summary>
-            [FhirElement("ref", Order=50)]
-            [DataMember]
-            public ResourceReference Ref
-            {
-                get { return _ref; }
-                set { _ref = value; OnPropertyChanged("Ref"); }
-            }
-
-            private ResourceReference _ref;
-
-            public override IDeepCopyable CopyTo(IDeepCopyable other)
-            {
-                var dest = other as RelatedComponent;
-
-                if (dest != null)
-                {
-                    base.CopyTo(dest);
-                    if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
-                    if (Ref != null) dest.Ref = (ResourceReference)Ref.DeepCopy();
-                    return dest;
-                }
-                else
-                    throw new ArgumentException("Can only copy to an object of the same type", "other");
-            }
-
-            public override IDeepCopyable DeepCopy()
-            {
-                 return CopyTo(new RelatedComponent());
-            }
-
-            public override bool Matches(IDeepComparable other)
-            {
-                var otherT = other as RelatedComponent;
-                if (otherT == null) return false;
-
-                if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-                if (!DeepComparable.Matches(Ref, otherT.Ref)) return false;
-
-                return true;
-            }
-
-            public override bool IsExactly(IDeepComparable other)
-            {
-                var otherT = other as RelatedComponent;
-                if (otherT == null) return false;
-
-                if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-                if (!DeepComparable.IsExactly(Ref, otherT.Ref)) return false;
-
-                return true;
-            }
-
-
-            [NotMapped]
-            public override IEnumerable<Base> Children
-            {
-                get
-                {
-                    foreach (var item in base.Children) yield return item;
-                    if (Identifier != null) yield return Identifier;
-                    if (Ref != null) yield return Ref;
-                }
-            }
-
-            [NotMapped]
-            internal override IEnumerable<ElementValue> NamedChildren
-            {
-                get
-                {
-                    foreach (var item in base.NamedChildren) yield return item;
-                    if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                    if (Ref != null) yield return new ElementValue("ref", false, Ref);
+                    foreach (var elem in Encounter) { if (elem != null) yield return new ElementValue("encounter", elem); }
+                    foreach (var elem in Event) { if (elem != null) yield return new ElementValue("event", elem); }
+                    if (Period != null) yield return new ElementValue("period", Period);
+                    if (FacilityType != null) yield return new ElementValue("facilityType", FacilityType);
+                    if (PracticeSetting != null) yield return new ElementValue("practiceSetting", PracticeSetting);
+                    if (SourcePatientInfo != null) yield return new ElementValue("sourcePatientInfo", SourcePatientInfo);
+                    foreach (var elem in Related) { if (elem != null) yield return new ElementValue("related", elem); }
                 }
             }
 
@@ -804,15 +702,16 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Categorization of document
         /// </summary>
-        [FhirElement("class", InSummary=true, Order=140)]
+        [FhirElement("category", InSummary=true, Order=140)]
+        [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public CodeableConcept Class
+        public List<CodeableConcept> Category
         {
-            get { return _class; }
-            set { _class = value; OnPropertyChanged("Class"); }
+            get { if (_category==null) _category = new List<CodeableConcept>(); return _category; }
+            set { _category = value; OnPropertyChanged("Category"); }
         }
 
-        private CodeableConcept _class;
+        private List<CodeableConcept> _category;
 
         /// <summary>
         /// Who/what is the subject of the document
@@ -829,41 +728,9 @@ namespace Hl7.Fhir.Model.R4
         private ResourceReference _subject;
 
         /// <summary>
-        /// Document creation time
-        /// </summary>
-        [FhirElement("created", Order=160)]
-        [DataMember]
-        public FhirDateTime CreatedElement
-        {
-            get { return _createdElement; }
-            set { _createdElement = value; OnPropertyChanged("CreatedElement"); }
-        }
-
-        private FhirDateTime _createdElement;
-
-        /// <summary>
-        /// Document creation time
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMember]
-        public string Created
-        {
-            get { return CreatedElement != null ? CreatedElement.Value : null; }
-            set
-            {
-                if (value == null)
-                    CreatedElement = null;
-                else
-                    CreatedElement = new FhirDateTime(value);
-                OnPropertyChanged("Created");
-            }
-        }
-
-        /// <summary>
         /// When this document reference was created
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=170)]
+        [FhirElement("date", InSummary=true, Order=160)]
         [DataMember]
         public Instant DateElement
         {
@@ -895,7 +762,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Agent involved
         /// </summary>
-        [FhirElement("agent", InSummary=true, Order=180)]
+        [FhirElement("agent", InSummary=true, Order=170)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<AgentComponent> Agent
@@ -909,7 +776,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who/what authenticated the document
         /// </summary>
-        [FhirElement("authenticator", Order=190)]
+        [FhirElement("authenticator", Order=180)]
         [References("Practitioner","Organization")]
         [DataMember]
         public ResourceReference Authenticator
@@ -923,7 +790,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Organization which maintains the document
         /// </summary>
-        [FhirElement("custodian", Order=200)]
+        [FhirElement("custodian", Order=190)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Custodian
@@ -937,7 +804,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Relationships to other documents
         /// </summary>
-        [FhirElement("relatesTo", InSummary=true, Order=210)]
+        [FhirElement("relatesTo", InSummary=true, Order=200)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<RelatesToComponent> RelatesTo
@@ -949,9 +816,9 @@ namespace Hl7.Fhir.Model.R4
         private List<RelatesToComponent> _relatesTo;
 
         /// <summary>
-        /// Human-readable description (title)
+        /// Human-readable description
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=220)]
+        [FhirElement("description", InSummary=true, Order=210)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -962,7 +829,7 @@ namespace Hl7.Fhir.Model.R4
         private FhirString _descriptionElement;
 
         /// <summary>
-        /// Human-readable description (title)
+        /// Human-readable description
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -983,7 +850,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Document security-tags
         /// </summary>
-        [FhirElement("securityLabel", InSummary=true, Order=230)]
+        [FhirElement("securityLabel", InSummary=true, Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> SecurityLabel
@@ -997,7 +864,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Document referenced
         /// </summary>
-        [FhirElement("content", InSummary=true, Order=240)]
+        [FhirElement("content", InSummary=true, Order=230)]
         [Cardinality(Min=1,Max=-1)]
         [DataMember]
         public List<ContentComponent> Content
@@ -1011,7 +878,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Clinical context of document
         /// </summary>
-        [FhirElement("context", InSummary=true, Order=250)]
+        [FhirElement("context", InSummary=true, Order=240)]
         [DataMember]
         public ContextComponent Context
         {
@@ -1034,9 +901,8 @@ namespace Hl7.Fhir.Model.R4
                 if (StatusElement != null) dest.StatusElement = (Code<DocumentReferenceStatus>)StatusElement.DeepCopy();
                 if (DocStatusElement != null) dest.DocStatusElement = (Code<CompositionStatus>)DocStatusElement.DeepCopy();
                 if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
-                if (Class != null) dest.Class = (CodeableConcept)Class.DeepCopy();
+                if (Category != null) dest.Category = new List<CodeableConcept>(Category.DeepCopy());
                 if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
-                if (CreatedElement != null) dest.CreatedElement = (FhirDateTime)CreatedElement.DeepCopy();
                 if (DateElement != null) dest.DateElement = (Instant)DateElement.DeepCopy();
                 if (Agent != null) dest.Agent = new List<AgentComponent>(Agent.DeepCopy());
                 if (Authenticator != null) dest.Authenticator = (ResourceReference)Authenticator.DeepCopy();
@@ -1068,9 +934,8 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.Matches(DocStatusElement, otherT.DocStatusElement)) return false;
             if (!DeepComparable.Matches(Type, otherT.Type)) return false;
-            if (!DeepComparable.Matches(Class, otherT.Class)) return false;
+            if ( !DeepComparable.Matches(Category, otherT.Category)) return false;
             if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
-            if (!DeepComparable.Matches(CreatedElement, otherT.CreatedElement)) return false;
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if ( !DeepComparable.Matches(Agent, otherT.Agent)) return false;
             if (!DeepComparable.Matches(Authenticator, otherT.Authenticator)) return false;
@@ -1095,9 +960,8 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.IsExactly(DocStatusElement, otherT.DocStatusElement)) return false;
             if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
-            if (!DeepComparable.IsExactly(Class, otherT.Class)) return false;
+            if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
             if (!DeepComparable.IsExactly(Subject, otherT.Subject)) return false;
-            if (!DeepComparable.IsExactly(CreatedElement, otherT.CreatedElement)) return false;
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(Agent, otherT.Agent)) return false;
             if (!DeepComparable.IsExactly(Authenticator, otherT.Authenticator)) return false;
@@ -1122,9 +986,8 @@ namespace Hl7.Fhir.Model.R4
                 if (StatusElement != null) yield return StatusElement;
                 if (DocStatusElement != null) yield return DocStatusElement;
                 if (Type != null) yield return Type;
-                if (Class != null) yield return Class;
+                foreach (var elem in Category) { if (elem != null) yield return elem; }
                 if (Subject != null) yield return Subject;
-                if (CreatedElement != null) yield return CreatedElement;
                 if (DateElement != null) yield return DateElement;
                 foreach (var elem in Agent) { if (elem != null) yield return elem; }
                 if (Authenticator != null) yield return Authenticator;
@@ -1143,23 +1006,22 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (MasterIdentifier != null) yield return new ElementValue("masterIdentifier", false, MasterIdentifier);
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (DocStatusElement != null) yield return new ElementValue("docStatus", false, DocStatusElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (Class != null) yield return new ElementValue("class", false, Class);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", true, elem); }
-                if (Authenticator != null) yield return new ElementValue("authenticator", false, Authenticator);
-                if (Custodian != null) yield return new ElementValue("custodian", false, Custodian);
-                foreach (var elem in RelatesTo) { if (elem != null) yield return new ElementValue("relatesTo", true, elem); }
-                if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", true, elem); }
-                foreach (var elem in Content) { if (elem != null) yield return new ElementValue("content", true, elem); }
-                if (Context != null) yield return new ElementValue("context", false, Context);
+                if (MasterIdentifier != null) yield return new ElementValue("masterIdentifier", MasterIdentifier);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (DocStatusElement != null) yield return new ElementValue("docStatus", DocStatusElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", elem); }
+                if (Authenticator != null) yield return new ElementValue("authenticator", Authenticator);
+                if (Custodian != null) yield return new ElementValue("custodian", Custodian);
+                foreach (var elem in RelatesTo) { if (elem != null) yield return new ElementValue("relatesTo", elem); }
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                foreach (var elem in SecurityLabel) { if (elem != null) yield return new ElementValue("securityLabel", elem); }
+                foreach (var elem in Content) { if (elem != null) yield return new ElementValue("content", elem); }
+                if (Context != null) yield return new ElementValue("context", Context);
             }
         }
 

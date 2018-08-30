@@ -44,8 +44,8 @@ namespace Hl7.Fhir.Model.R4
             var result = new List<ValidationResult>();
             result.AddRange(base.Validate(validationContext));
 
-            if (Content == null)
-                result.Add(DotNetAttributeValidation.BuildResult(validationContext,"Entry must contain (possibly 0-length) data in Content element"));
+            if (Data == null)
+                result.Add(DotNetAttributeValidation.BuildResult(validationContext,"Entry must contain (possibly 0-length) Data element"));
 
             if (ContentType == null)
                 result.Add(DotNetAttributeValidation.BuildResult(validationContext, "Entry must contain a ContentType"));

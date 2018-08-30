@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,70 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "UserSession"; } }
 
+        /// <summary>
+        /// The status of the user session.
+        /// (url: http://hl7.org/fhir/ValueSet/usersession-status)
+        /// </summary>
+        [FhirEnumeration("UserSessionStatus")]
+        public enum UserSessionStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/usersession-status)
+            /// </summary>
+            [EnumLiteral("activating", "http://hl7.org/fhir/usersession-status"), Description("Activating")]
+            Activating,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/usersession-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/usersession-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/usersession-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/usersession-status"), Description("Suspending")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/usersession-status)
+            /// </summary>
+            [EnumLiteral("closing", "http://hl7.org/fhir/usersession-status"), Description("Closing")]
+            Closing,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/usersession-status)
+            /// </summary>
+            [EnumLiteral("closed", "http://hl7.org/fhir/usersession-status"), Description("Closed")]
+            Closed,
+        }
+
+        /// <summary>
+        /// The source of the status of the user session.
+        /// (url: http://hl7.org/fhir/ValueSet/usersession-status-source)
+        /// </summary>
+        [FhirEnumeration("UserSessionStatusSource")]
+        public enum UserSessionStatusSource
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/usersession-status-source)
+            /// </summary>
+            [EnumLiteral("user", "http://hl7.org/fhir/usersession-status-source"), Description("User")]
+            User,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/usersession-status-source)
+            /// </summary>
+            [EnumLiteral("system", "http://hl7.org/fhir/usersession-status-source"), Description("System")]
+            System,
+        }
+
 
         [FhirType("StatusComponent")]
         [DataContract]
-        public partial class StatusComponent : BackboneElement
+        public partial class StatusComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StatusComponent"; } }
@@ -192,8 +253,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CodeElement != null) yield return new ElementValue("code", false, CodeElement);
-                    if (SourceElement != null) yield return new ElementValue("source", false, SourceElement);
+                    if (CodeElement != null) yield return new ElementValue("code", CodeElement);
+                    if (SourceElement != null) yield return new ElementValue("source", SourceElement);
                 }
             }
 
@@ -203,7 +264,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ContextComponent")]
         [DataContract]
-        public partial class ContextComponent : BackboneElement
+        public partial class ContextComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContextComponent"; } }
@@ -317,8 +378,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (Value != null) yield return new ElementValue("value", false, Value);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
 
@@ -558,14 +619,14 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (User != null) yield return new ElementValue("user", false, User);
-                if (Status != null) yield return new ElementValue("status", false, Status);
-                if (Workstation != null) yield return new ElementValue("workstation", false, Workstation);
-                foreach (var elem in Focus) { if (elem != null) yield return new ElementValue("focus", true, elem); }
-                if (CreatedElement != null) yield return new ElementValue("created", false, CreatedElement);
-                if (ExpiresElement != null) yield return new ElementValue("expires", false, ExpiresElement);
-                foreach (var elem in Context) { if (elem != null) yield return new ElementValue("context", true, elem); }
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (User != null) yield return new ElementValue("user", User);
+                if (Status != null) yield return new ElementValue("status", Status);
+                if (Workstation != null) yield return new ElementValue("workstation", Workstation);
+                foreach (var elem in Focus) { if (elem != null) yield return new ElementValue("focus", elem); }
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (ExpiresElement != null) yield return new ElementValue("expires", ExpiresElement);
+                foreach (var elem in Context) { if (elem != null) yield return new ElementValue("context", elem); }
             }
         }
 

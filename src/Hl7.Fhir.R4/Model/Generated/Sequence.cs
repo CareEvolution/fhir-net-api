@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,145 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Sequence"; } }
 
+        /// <summary>
+        /// Type if a sequence -- DNA, RNA, or amino acid sequence.
+        /// (url: http://hl7.org/fhir/ValueSet/sequence-type)
+        /// </summary>
+        [FhirEnumeration("sequenceType")]
+        public enum sequenceType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/sequence-type)
+            /// </summary>
+            [EnumLiteral("aa", "http://hl7.org/fhir/sequence-type"), Description("AA Sequence")]
+            Aa,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/sequence-type)
+            /// </summary>
+            [EnumLiteral("dna", "http://hl7.org/fhir/sequence-type"), Description("DNA Sequence")]
+            Dna,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/sequence-type)
+            /// </summary>
+            [EnumLiteral("rna", "http://hl7.org/fhir/sequence-type"), Description("RNA Sequence")]
+            Rna,
+        }
+
+        /// <summary>
+        /// Type for orientation.
+        /// (url: http://hl7.org/fhir/ValueSet/orientation-type)
+        /// </summary>
+        [FhirEnumeration("orientationType")]
+        public enum orientationType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/orientation-type)
+            /// </summary>
+            [EnumLiteral("sense", "http://hl7.org/fhir/orientation-type"), Description("Sense orientation of referenceSeq")]
+            Sense,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/orientation-type)
+            /// </summary>
+            [EnumLiteral("antisense", "http://hl7.org/fhir/orientation-type"), Description("Antisense orientation of referenceSeq")]
+            Antisense,
+        }
+
+        /// <summary>
+        /// Type for strand.
+        /// (url: http://hl7.org/fhir/ValueSet/strand-type)
+        /// </summary>
+        [FhirEnumeration("strandType")]
+        public enum strandType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/strand-type)
+            /// </summary>
+            [EnumLiteral("watson", "http://hl7.org/fhir/strand-type"), Description("Watson strand of referenceSeq")]
+            Watson,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/strand-type)
+            /// </summary>
+            [EnumLiteral("crick", "http://hl7.org/fhir/strand-type"), Description("Crick strand of referenceSeq")]
+            Crick,
+        }
+
+        /// <summary>
+        /// Type for quality report.
+        /// (url: http://hl7.org/fhir/ValueSet/quality-type)
+        /// </summary>
+        [FhirEnumeration("qualityType")]
+        public enum qualityType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quality-type)
+            /// </summary>
+            [EnumLiteral("indel", "http://hl7.org/fhir/quality-type"), Description("INDEL Comparison")]
+            Indel,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quality-type)
+            /// </summary>
+            [EnumLiteral("snp", "http://hl7.org/fhir/quality-type"), Description("SNP Comparison")]
+            Snp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quality-type)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/quality-type"), Description("UNKNOWN Comparison")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// Type for access of external URI.
+        /// (url: http://hl7.org/fhir/ValueSet/repository-type)
+        /// </summary>
+        [FhirEnumeration("repositoryType")]
+        public enum repositoryType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("directlink", "http://hl7.org/fhir/repository-type"), Description("Click and see")]
+            Directlink,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("openapi", "http://hl7.org/fhir/repository-type"), Description("The URL is the RESTful or other kind of API that can access to the result.")]
+            Openapi,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("login", "http://hl7.org/fhir/repository-type"), Description("Result cannot be access unless an account is logged in")]
+            Login,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("oauth", "http://hl7.org/fhir/repository-type"), Description("Result need to be fetched with API and need LOGIN( or cookies are required when visiting the link of resource)")]
+            Oauth,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("other", "http://hl7.org/fhir/repository-type"), Description("Some other complicated or particular way to get resource from URL.")]
+            Other,
+        }
+
 
         [FhirType("ReferenceSeqComponent")]
         [DataContract]
-        public partial class ReferenceSeqComponent : BackboneElement
+        public partial class ReferenceSeqComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ReferenceSeqComponent"; } }
@@ -388,15 +524,15 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Chromosome != null) yield return new ElementValue("chromosome", false, Chromosome);
-                    if (GenomeBuildElement != null) yield return new ElementValue("genomeBuild", false, GenomeBuildElement);
-                    if (OrientationElement != null) yield return new ElementValue("orientation", false, OrientationElement);
-                    if (ReferenceSeqId != null) yield return new ElementValue("referenceSeqId", false, ReferenceSeqId);
-                    if (ReferenceSeqPointer != null) yield return new ElementValue("referenceSeqPointer", false, ReferenceSeqPointer);
-                    if (ReferenceSeqStringElement != null) yield return new ElementValue("referenceSeqString", false, ReferenceSeqStringElement);
-                    if (StrandElement != null) yield return new ElementValue("strand", false, StrandElement);
-                    if (WindowStartElement != null) yield return new ElementValue("windowStart", false, WindowStartElement);
-                    if (WindowEndElement != null) yield return new ElementValue("windowEnd", false, WindowEndElement);
+                    if (Chromosome != null) yield return new ElementValue("chromosome", Chromosome);
+                    if (GenomeBuildElement != null) yield return new ElementValue("genomeBuild", GenomeBuildElement);
+                    if (OrientationElement != null) yield return new ElementValue("orientation", OrientationElement);
+                    if (ReferenceSeqId != null) yield return new ElementValue("referenceSeqId", ReferenceSeqId);
+                    if (ReferenceSeqPointer != null) yield return new ElementValue("referenceSeqPointer", ReferenceSeqPointer);
+                    if (ReferenceSeqStringElement != null) yield return new ElementValue("referenceSeqString", ReferenceSeqStringElement);
+                    if (StrandElement != null) yield return new ElementValue("strand", StrandElement);
+                    if (WindowStartElement != null) yield return new ElementValue("windowStart", WindowStartElement);
+                    if (WindowEndElement != null) yield return new ElementValue("windowEnd", WindowEndElement);
                 }
             }
 
@@ -406,7 +542,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("VariantComponent")]
         [DataContract]
-        public partial class VariantComponent : BackboneElement
+        public partial class VariantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "VariantComponent"; } }
@@ -663,12 +799,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                    if (EndElement != null) yield return new ElementValue("end", false, EndElement);
-                    if (ObservedAlleleElement != null) yield return new ElementValue("observedAllele", false, ObservedAlleleElement);
-                    if (ReferenceAlleleElement != null) yield return new ElementValue("referenceAllele", false, ReferenceAlleleElement);
-                    if (CigarElement != null) yield return new ElementValue("cigar", false, CigarElement);
-                    if (VariantPointer != null) yield return new ElementValue("variantPointer", false, VariantPointer);
+                    if (StartElement != null) yield return new ElementValue("start", StartElement);
+                    if (EndElement != null) yield return new ElementValue("end", EndElement);
+                    if (ObservedAlleleElement != null) yield return new ElementValue("observedAllele", ObservedAlleleElement);
+                    if (ReferenceAlleleElement != null) yield return new ElementValue("referenceAllele", ReferenceAlleleElement);
+                    if (CigarElement != null) yield return new ElementValue("cigar", CigarElement);
+                    if (VariantPointer != null) yield return new ElementValue("variantPointer", VariantPointer);
                 }
             }
 
@@ -678,7 +814,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("QualityComponent")]
         [DataContract]
-        public partial class QualityComponent : BackboneElement
+        public partial class QualityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "QualityComponent"; } }
@@ -1202,21 +1338,21 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (StandardSequence != null) yield return new ElementValue("standardSequence", false, StandardSequence);
-                    if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                    if (EndElement != null) yield return new ElementValue("end", false, EndElement);
-                    if (Score != null) yield return new ElementValue("score", false, Score);
-                    if (Method != null) yield return new ElementValue("method", false, Method);
-                    if (TruthTPElement != null) yield return new ElementValue("truthTP", false, TruthTPElement);
-                    if (QueryTPElement != null) yield return new ElementValue("queryTP", false, QueryTPElement);
-                    if (TruthFNElement != null) yield return new ElementValue("truthFN", false, TruthFNElement);
-                    if (QueryFPElement != null) yield return new ElementValue("queryFP", false, QueryFPElement);
-                    if (GtFPElement != null) yield return new ElementValue("gtFP", false, GtFPElement);
-                    if (PrecisionElement != null) yield return new ElementValue("precision", false, PrecisionElement);
-                    if (RecallElement != null) yield return new ElementValue("recall", false, RecallElement);
-                    if (FScoreElement != null) yield return new ElementValue("fScore", false, FScoreElement);
-                    if (Roc != null) yield return new ElementValue("roc", false, Roc);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (StandardSequence != null) yield return new ElementValue("standardSequence", StandardSequence);
+                    if (StartElement != null) yield return new ElementValue("start", StartElement);
+                    if (EndElement != null) yield return new ElementValue("end", EndElement);
+                    if (Score != null) yield return new ElementValue("score", Score);
+                    if (Method != null) yield return new ElementValue("method", Method);
+                    if (TruthTPElement != null) yield return new ElementValue("truthTP", TruthTPElement);
+                    if (QueryTPElement != null) yield return new ElementValue("queryTP", QueryTPElement);
+                    if (TruthFNElement != null) yield return new ElementValue("truthFN", TruthFNElement);
+                    if (QueryFPElement != null) yield return new ElementValue("queryFP", QueryFPElement);
+                    if (GtFPElement != null) yield return new ElementValue("gtFP", GtFPElement);
+                    if (PrecisionElement != null) yield return new ElementValue("precision", PrecisionElement);
+                    if (RecallElement != null) yield return new ElementValue("recall", RecallElement);
+                    if (FScoreElement != null) yield return new ElementValue("fScore", FScoreElement);
+                    if (Roc != null) yield return new ElementValue("roc", Roc);
                 }
             }
 
@@ -1226,7 +1362,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RocComponent")]
         [DataContract]
-        public partial class RocComponent : BackboneElement
+        public partial class RocComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RocComponent"; } }
@@ -1544,13 +1680,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in ScoreElement) { if (elem != null) yield return new ElementValue("score", true, elem); }
-                    foreach (var elem in NumTPElement) { if (elem != null) yield return new ElementValue("numTP", true, elem); }
-                    foreach (var elem in NumFPElement) { if (elem != null) yield return new ElementValue("numFP", true, elem); }
-                    foreach (var elem in NumFNElement) { if (elem != null) yield return new ElementValue("numFN", true, elem); }
-                    foreach (var elem in PrecisionElement) { if (elem != null) yield return new ElementValue("precision", true, elem); }
-                    foreach (var elem in SensitivityElement) { if (elem != null) yield return new ElementValue("sensitivity", true, elem); }
-                    foreach (var elem in FMeasureElement) { if (elem != null) yield return new ElementValue("fMeasure", true, elem); }
+                    foreach (var elem in ScoreElement) { if (elem != null) yield return new ElementValue("score", elem); }
+                    foreach (var elem in NumTPElement) { if (elem != null) yield return new ElementValue("numTP", elem); }
+                    foreach (var elem in NumFPElement) { if (elem != null) yield return new ElementValue("numFP", elem); }
+                    foreach (var elem in NumFNElement) { if (elem != null) yield return new ElementValue("numFN", elem); }
+                    foreach (var elem in PrecisionElement) { if (elem != null) yield return new ElementValue("precision", elem); }
+                    foreach (var elem in SensitivityElement) { if (elem != null) yield return new ElementValue("sensitivity", elem); }
+                    foreach (var elem in FMeasureElement) { if (elem != null) yield return new ElementValue("fMeasure", elem); }
                 }
             }
 
@@ -1560,7 +1696,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RepositoryComponent")]
         [DataContract]
-        public partial class RepositoryComponent : BackboneElement
+        public partial class RepositoryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RepositoryComponent"; } }
@@ -1836,12 +1972,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DatasetIdElement != null) yield return new ElementValue("datasetId", false, DatasetIdElement);
-                    if (VariantsetIdElement != null) yield return new ElementValue("variantsetId", false, VariantsetIdElement);
-                    if (ReadsetIdElement != null) yield return new ElementValue("readsetId", false, ReadsetIdElement);
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DatasetIdElement != null) yield return new ElementValue("datasetId", DatasetIdElement);
+                    if (VariantsetIdElement != null) yield return new ElementValue("variantsetId", VariantsetIdElement);
+                    if (ReadsetIdElement != null) yield return new ElementValue("readsetId", ReadsetIdElement);
                 }
             }
 
@@ -1851,7 +1987,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("StructureVariantComponent")]
         [DataContract]
-        public partial class StructureVariantComponent : BackboneElement
+        public partial class StructureVariantComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StructureVariantComponent"; } }
@@ -2052,11 +2188,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (PrecisionElement != null) yield return new ElementValue("precision", false, PrecisionElement);
-                    if (ReportedaCGHRatioElement != null) yield return new ElementValue("reportedaCGHRatio", false, ReportedaCGHRatioElement);
-                    if (LengthElement != null) yield return new ElementValue("length", false, LengthElement);
-                    if (Outer != null) yield return new ElementValue("outer", false, Outer);
-                    if (Inner != null) yield return new ElementValue("inner", false, Inner);
+                    if (PrecisionElement != null) yield return new ElementValue("precision", PrecisionElement);
+                    if (ReportedaCGHRatioElement != null) yield return new ElementValue("reportedaCGHRatio", ReportedaCGHRatioElement);
+                    if (LengthElement != null) yield return new ElementValue("length", LengthElement);
+                    if (Outer != null) yield return new ElementValue("outer", Outer);
+                    if (Inner != null) yield return new ElementValue("inner", Inner);
                 }
             }
 
@@ -2066,7 +2202,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OuterComponent")]
         [DataContract]
-        public partial class OuterComponent : BackboneElement
+        public partial class OuterComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OuterComponent"; } }
@@ -2197,8 +2333,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                    if (EndElement != null) yield return new ElementValue("end", false, EndElement);
+                    if (StartElement != null) yield return new ElementValue("start", StartElement);
+                    if (EndElement != null) yield return new ElementValue("end", EndElement);
                 }
             }
 
@@ -2208,7 +2344,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("InnerComponent")]
         [DataContract]
-        public partial class InnerComponent : BackboneElement
+        public partial class InnerComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InnerComponent"; } }
@@ -2339,8 +2475,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (StartElement != null) yield return new ElementValue("start", false, StartElement);
-                    if (EndElement != null) yield return new ElementValue("end", false, EndElement);
+                    if (StartElement != null) yield return new ElementValue("start", StartElement);
+                    if (EndElement != null) yield return new ElementValue("end", EndElement);
                 }
             }
 
@@ -2649,7 +2785,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "coordinateSystem = 1 or coordinateSystem = 0",
             Key = "seq-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Only 0 and 1 are valid for coordinateSystem",
             Xpath = "count(f:coordinateSystem[@value=0 and @value=1]) = 1"
         };
@@ -2658,7 +2794,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "referenceSeq.all((chromosome.empty() and genomeBuild.empty()) or (chromosome.exists() and genomeBuild.exists()))",
             Key = "seq-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "GenomeBuild and chromosome must be both contained if either one of them is contained",
             Xpath = "(exists(f:chromosome) and exists(f:genomeBuild)) or (not(exists(f:chromosome)) and not(exists(f:genomeBuild)))"
         };
@@ -2667,7 +2803,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "referenceSeq.all((genomeBuild.count()+referenceSeqId.count()+ referenceSeqPointer.count()+ referenceSeqString.count()) = 1)",
             Key = "seq-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Have and only have one of the following elements in referenceSeq : 1. genomeBuild ; 2 referenceSeqId; 3. referenceSeqPointer;  4. referenceSeqString;",
             Xpath = "count(f:genomeBuild)+count(f:referenceSeqId)+count(f:referenceSeqPointer)+count(f:referenceSeqString)=1"
         };
@@ -2798,22 +2934,22 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                if (CoordinateSystemElement != null) yield return new ElementValue("coordinateSystem", false, CoordinateSystemElement);
-                if (Patient != null) yield return new ElementValue("patient", false, Patient);
-                if (Specimen != null) yield return new ElementValue("specimen", false, Specimen);
-                if (Device != null) yield return new ElementValue("device", false, Device);
-                if (Performer != null) yield return new ElementValue("performer", false, Performer);
-                if (Quantity != null) yield return new ElementValue("quantity", false, Quantity);
-                if (ReferenceSeq != null) yield return new ElementValue("referenceSeq", false, ReferenceSeq);
-                foreach (var elem in Variant) { if (elem != null) yield return new ElementValue("variant", true, elem); }
-                if (ObservedSeqElement != null) yield return new ElementValue("observedSeq", false, ObservedSeqElement);
-                foreach (var elem in Quality) { if (elem != null) yield return new ElementValue("quality", true, elem); }
-                if (ReadCoverageElement != null) yield return new ElementValue("readCoverage", false, ReadCoverageElement);
-                foreach (var elem in Repository) { if (elem != null) yield return new ElementValue("repository", true, elem); }
-                foreach (var elem in Pointer) { if (elem != null) yield return new ElementValue("pointer", true, elem); }
-                foreach (var elem in StructureVariant) { if (elem != null) yield return new ElementValue("structureVariant", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                if (CoordinateSystemElement != null) yield return new ElementValue("coordinateSystem", CoordinateSystemElement);
+                if (Patient != null) yield return new ElementValue("patient", Patient);
+                if (Specimen != null) yield return new ElementValue("specimen", Specimen);
+                if (Device != null) yield return new ElementValue("device", Device);
+                if (Performer != null) yield return new ElementValue("performer", Performer);
+                if (Quantity != null) yield return new ElementValue("quantity", Quantity);
+                if (ReferenceSeq != null) yield return new ElementValue("referenceSeq", ReferenceSeq);
+                foreach (var elem in Variant) { if (elem != null) yield return new ElementValue("variant", elem); }
+                if (ObservedSeqElement != null) yield return new ElementValue("observedSeq", ObservedSeqElement);
+                foreach (var elem in Quality) { if (elem != null) yield return new ElementValue("quality", elem); }
+                if (ReadCoverageElement != null) yield return new ElementValue("readCoverage", ReadCoverageElement);
+                foreach (var elem in Repository) { if (elem != null) yield return new ElementValue("repository", elem); }
+                foreach (var elem in Pointer) { if (elem != null) yield return new ElementValue("pointer", elem); }
+                foreach (var elem in StructureVariant) { if (elem != null) yield return new ElementValue("structureVariant", elem); }
             }
         }
 

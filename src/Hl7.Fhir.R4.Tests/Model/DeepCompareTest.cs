@@ -17,6 +17,7 @@ using System.IO;
 using Hl7.Fhir.Serialization.R4;
 using System.Xml;
 using static Hl7.Fhir.Tests.TestDataHelper;
+using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Tests.Model
 {

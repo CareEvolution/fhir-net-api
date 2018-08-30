@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("GeneComponent")]
         [DataContract]
-        public partial class GeneComponent : BackboneElement
+        public partial class GeneComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GeneComponent"; } }
@@ -171,9 +172,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (GeneSequenceOrigin != null) yield return new ElementValue("geneSequenceOrigin", false, GeneSequenceOrigin);
-                    if (Gene != null) yield return new ElementValue("gene", false, Gene);
-                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", true, elem); }
+                    if (GeneSequenceOrigin != null) yield return new ElementValue("geneSequenceOrigin", GeneSequenceOrigin);
+                    if (Gene != null) yield return new ElementValue("gene", Gene);
+                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", elem); }
                 }
             }
 
@@ -183,7 +184,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("GeneElementComponent")]
         [DataContract]
-        public partial class GeneElementComponent : BackboneElement
+        public partial class GeneElementComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "GeneElementComponent"; } }
@@ -295,9 +296,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Element != null) yield return new ElementValue("element", false, Element);
-                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", true, elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Element != null) yield return new ElementValue("element", Element);
+                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", elem); }
                 }
             }
 
@@ -307,7 +308,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ClassificationComponent")]
         [DataContract]
-        public partial class ClassificationComponent : BackboneElement
+        public partial class ClassificationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ClassificationComponent"; } }
@@ -437,10 +438,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Domain != null) yield return new ElementValue("domain", false, Domain);
-                    if (Classification != null) yield return new ElementValue("classification", false, Classification);
-                    foreach (var elem in Subtype) { if (elem != null) yield return new ElementValue("subtype", true, elem); }
-                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", true, elem); }
+                    if (Domain != null) yield return new ElementValue("domain", Domain);
+                    if (Classification != null) yield return new ElementValue("classification", Classification);
+                    foreach (var elem in Subtype) { if (elem != null) yield return new ElementValue("subtype", elem); }
+                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", elem); }
                 }
             }
 
@@ -450,7 +451,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RelationshipComponent")]
         [DataContract]
-        public partial class RelationshipComponent : BackboneElement
+        public partial class RelationshipComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RelationshipComponent"; } }
@@ -687,14 +688,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Substance != null) yield return new ElementValue("substance", false, Substance);
-                    if (Relationship != null) yield return new ElementValue("relationship", false, Relationship);
-                    if (Interaction != null) yield return new ElementValue("interaction", false, Interaction);
-                    if (IsDefiningElement != null) yield return new ElementValue("isDefining", false, IsDefiningElement);
-                    if (Amount != null) yield return new ElementValue("amount", false, Amount);
-                    if (AmountType != null) yield return new ElementValue("amountType", false, AmountType);
-                    if (AmountTextElement != null) yield return new ElementValue("amountText", false, AmountTextElement);
-                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", true, elem); }
+                    if (Substance != null) yield return new ElementValue("substance", Substance);
+                    if (Relationship != null) yield return new ElementValue("relationship", Relationship);
+                    if (Interaction != null) yield return new ElementValue("interaction", Interaction);
+                    if (IsDefiningElement != null) yield return new ElementValue("isDefining", IsDefiningElement);
+                    if (Amount != null) yield return new ElementValue("amount", Amount);
+                    if (AmountType != null) yield return new ElementValue("amountType", AmountType);
+                    if (AmountTextElement != null) yield return new ElementValue("amountText", AmountTextElement);
+                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", elem); }
                 }
             }
 
@@ -704,7 +705,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TargetComponent")]
         [DataContract]
-        public partial class TargetComponent : BackboneElement
+        public partial class TargetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TargetComponent"; } }
@@ -902,14 +903,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Target != null) yield return new ElementValue("target", false, Target);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Interaction != null) yield return new ElementValue("interaction", false, Interaction);
-                    if (Organism != null) yield return new ElementValue("organism", false, Organism);
-                    if (OrganismType != null) yield return new ElementValue("organismType", false, OrganismType);
-                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", true, elem); }
-                    if (Amount != null) yield return new ElementValue("amount", false, Amount);
-                    if (AmountType != null) yield return new ElementValue("amountType", false, AmountType);
+                    if (Target != null) yield return new ElementValue("target", Target);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Interaction != null) yield return new ElementValue("interaction", Interaction);
+                    if (Organism != null) yield return new ElementValue("organism", Organism);
+                    if (OrganismType != null) yield return new ElementValue("organismType", OrganismType);
+                    foreach (var elem in Source) { if (elem != null) yield return new ElementValue("source", elem); }
+                    if (Amount != null) yield return new ElementValue("amount", Amount);
+                    if (AmountType != null) yield return new ElementValue("amountType", AmountType);
                 }
             }
 
@@ -1097,12 +1098,12 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
-                foreach (var elem in Gene) { if (elem != null) yield return new ElementValue("gene", true, elem); }
-                foreach (var elem in GeneElement) { if (elem != null) yield return new ElementValue("geneElement", true, elem); }
-                foreach (var elem in Classification) { if (elem != null) yield return new ElementValue("classification", true, elem); }
-                foreach (var elem in Relationship) { if (elem != null) yield return new ElementValue("relationship", true, elem); }
-                foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", true, elem); }
+                if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                foreach (var elem in Gene) { if (elem != null) yield return new ElementValue("gene", elem); }
+                foreach (var elem in GeneElement) { if (elem != null) yield return new ElementValue("geneElement", elem); }
+                foreach (var elem in Classification) { if (elem != null) yield return new ElementValue("classification", elem); }
+                foreach (var elem in Relationship) { if (elem != null) yield return new ElementValue("relationship", elem); }
+                foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", elem); }
             }
         }
 

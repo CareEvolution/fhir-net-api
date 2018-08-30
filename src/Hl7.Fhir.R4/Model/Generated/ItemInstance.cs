@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -436,16 +437,16 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (CountElement != null) yield return new ElementValue("count", false, CountElement);
-                if (Location != null) yield return new ElementValue("location", false, Location);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (ManufactureDateElement != null) yield return new ElementValue("manufactureDate", false, ManufactureDateElement);
-                if (ExpiryDateElement != null) yield return new ElementValue("expiryDate", false, ExpiryDateElement);
-                if (CurrentSWVersionElement != null) yield return new ElementValue("currentSWVersion", false, CurrentSWVersionElement);
-                if (LotNumberElement != null) yield return new ElementValue("lotNumber", false, LotNumberElement);
-                if (SerialNumberElement != null) yield return new ElementValue("serialNumber", false, SerialNumberElement);
-                if (CarrierAIDCElement != null) yield return new ElementValue("carrierAIDC", false, CarrierAIDCElement);
-                if (CarrierHRFElement != null) yield return new ElementValue("carrierHRF", false, CarrierHRFElement);
+                if (CountElement != null) yield return new ElementValue("count", CountElement);
+                if (Location != null) yield return new ElementValue("location", Location);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (ManufactureDateElement != null) yield return new ElementValue("manufactureDate", ManufactureDateElement);
+                if (ExpiryDateElement != null) yield return new ElementValue("expiryDate", ExpiryDateElement);
+                if (CurrentSWVersionElement != null) yield return new ElementValue("currentSWVersion", CurrentSWVersionElement);
+                if (LotNumberElement != null) yield return new ElementValue("lotNumber", LotNumberElement);
+                if (SerialNumberElement != null) yield return new ElementValue("serialNumber", SerialNumberElement);
+                if (CarrierAIDCElement != null) yield return new ElementValue("carrierAIDC", CarrierAIDCElement);
+                if (CarrierHRFElement != null) yield return new ElementValue("carrierHRF", CarrierHRFElement);
             }
         }
 

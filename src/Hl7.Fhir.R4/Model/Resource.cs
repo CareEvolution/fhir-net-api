@@ -34,6 +34,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.FhirPath.R4;
+using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Validation;
@@ -44,6 +45,7 @@ namespace Hl7.Fhir.Model.R4
 {
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}}")]
     [InvokeIValidatableObject]
+    [FhirType("Resource", IsResource = true)]
     public abstract partial class Resource : Base
     {
         /// <summary>
@@ -55,7 +57,7 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 var bd = this.Annotation<ResourceBaseData>();
-                return bd != null ? bd.Base : null;
+                return bd?.Base;
             }
 
             set
@@ -100,8 +102,8 @@ namespace Hl7.Fhir.Model.R4
                 {
                     result.Issue.Add(new OperationOutcome.IssueComponent()
                     {
-                        Code = IssueType.Invariant,
-                        Severity = IssueSeverity.Warning,
+                        Code = OperationOutcome.IssueType.Invariant,
+                        Severity = OperationOutcome.IssueSeverity.Warning,
                         Details = new CodeableConcept(null, invariantRule.Key, "Unable to validate without a FhirPath expression"),
                         Diagnostics = expression
                     });
@@ -116,8 +118,8 @@ namespace Hl7.Fhir.Model.R4
 
                 result.Issue.Add(new OperationOutcome.IssueComponent()
                 {
-                    Code = IssueType.Invariant,
-                    Severity = IssueSeverity.Error,
+                    Code = OperationOutcome.IssueType.Invariant,
+                    Severity = OperationOutcome.IssueSeverity.Error,
                     Details = new CodeableConcept(null, invariantRule.Key, invariantRule.Human),
                     Diagnostics = expression
                 });
@@ -127,8 +129,8 @@ namespace Hl7.Fhir.Model.R4
             {
                 result.Issue.Add(new OperationOutcome.IssueComponent()
                 {
-                    Code = IssueType.Invariant,
-                    Severity = IssueSeverity.Fatal,
+                    Code = OperationOutcome.IssueType.Invariant,
+                    Severity = OperationOutcome.IssueSeverity.Fatal,
                     Details = new CodeableConcept(null, invariantRule.Key, "FATAL: Unable to process the invariant rule: " + invariantRule.Key + " " + expression),
                     Diagnostics = String.Format("FhirPath: {0}\r\nError: {1}", expression, ex.Message)
                 });
@@ -205,8 +207,8 @@ namespace Hl7.Fhir.Model.R4
             ValidateInvariants(context, results);
             foreach (var item in results.Issue)
             {
-                if (item.Severity == IssueSeverity.Error
-                    || item.Severity == IssueSeverity.Fatal)
+                if (item.Severity == OperationOutcome.IssueSeverity.Error
+                    || item.Severity == OperationOutcome.IssueSeverity.Fatal)
                     result.Add(new ValidationResult(item.Details.Coding[0].Code + ": " + item.Details.Text));
             }
         }
@@ -222,7 +224,7 @@ namespace Hl7.Fhir.Model.R4
                 // Need to serialize to XML until the object model processor exists
                 // string tpXml = Fhir.Serialization.FhirSerializer.SerializeResourceToXml(this);
                 // FhirPath.IFhirPathElement tree = FhirPath.InstanceTree.TreeConstructor.FromXml(tpXml);
-                var tree = new PocoNavigator(this);
+                var tree = this.ToElementNavigator();
                 foreach (var invariantRule in InvariantConstraints)
                 {
                     ValidateInvariantRule(context,invariantRule, tree, result);

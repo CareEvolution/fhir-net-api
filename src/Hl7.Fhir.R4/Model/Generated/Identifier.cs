@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -53,6 +54,45 @@ namespace Hl7.Fhir.Model.R4
     {
         [NotMapped]
         public override string TypeName { get { return "Identifier"; } }
+
+        /// <summary>
+        /// Identifies the purpose for this identifier, if known .
+        /// (url: http://hl7.org/fhir/ValueSet/identifier-use)
+        /// </summary>
+        [FhirEnumeration("IdentifierUse")]
+        public enum IdentifierUse
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("usual", "http://hl7.org/fhir/identifier-use"), Description("Usual")]
+            Usual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("official", "http://hl7.org/fhir/identifier-use"), Description("Official")]
+            Official,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("temp", "http://hl7.org/fhir/identifier-use"), Description("Temp")]
+            Temp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("secondary", "http://hl7.org/fhir/identifier-use"), Description("Secondary")]
+            Secondary,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("old", "http://hl7.org/fhir/identifier-use"), Description("Old")]
+            Old,
+        }
 
 
         /// <summary>
@@ -269,12 +309,12 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UseElement != null) yield return new ElementValue("use", false, UseElement);
-                if (Type != null) yield return new ElementValue("type", false, Type);
-                if (SystemElement != null) yield return new ElementValue("system", false, SystemElement);
-                if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
-                if (Period != null) yield return new ElementValue("period", false, Period);
-                if (Assigner != null) yield return new ElementValue("assigner", false, Assigner);
+                if (UseElement != null) yield return new ElementValue("use", UseElement);
+                if (Type != null) yield return new ElementValue("type", Type);
+                if (SystemElement != null) yield return new ElementValue("system", SystemElement);
+                if (ValueElement != null) yield return new ElementValue("value", ValueElement);
+                if (Period != null) yield return new ElementValue("period", Period);
+                if (Assigner != null) yield return new ElementValue("assigner", Assigner);
             }
         }
 

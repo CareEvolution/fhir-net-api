@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,1489 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "TestScript"; } }
 
+        /// <summary>
+        /// A list of all the concrete types defined in this version of the FHIR specification - Data Types and Resource Types.
+        /// (url: http://hl7.org/fhir/ValueSet/defined-types)
+        /// </summary>
+        [FhirEnumeration("FHIRDefinedType")]
+        public enum FHIRDefinedType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Address", "http://hl7.org/fhir/data-types"), Description("Address")]
+            Address,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Age", "http://hl7.org/fhir/data-types"), Description("Age")]
+            Age,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Annotation", "http://hl7.org/fhir/data-types"), Description("Annotation")]
+            Annotation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Attachment", "http://hl7.org/fhir/data-types"), Description("Attachment")]
+            Attachment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("BackboneElement", "http://hl7.org/fhir/data-types"), Description("BackboneElement")]
+            BackboneElement,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("CodeableConcept", "http://hl7.org/fhir/data-types"), Description("CodeableConcept")]
+            CodeableConcept,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Coding", "http://hl7.org/fhir/data-types"), Description("Coding")]
+            Coding,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("ContactDetail", "http://hl7.org/fhir/data-types"), Description("ContactDetail")]
+            ContactDetail,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("ContactPoint", "http://hl7.org/fhir/data-types"), Description("ContactPoint")]
+            ContactPoint,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Contributor", "http://hl7.org/fhir/data-types"), Description("Contributor")]
+            Contributor,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Count", "http://hl7.org/fhir/data-types"), Description("Count")]
+            Count,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("DataRequirement", "http://hl7.org/fhir/data-types"), Description("DataRequirement")]
+            DataRequirement,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Distance", "http://hl7.org/fhir/data-types"), Description("Distance")]
+            Distance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Dosage", "http://hl7.org/fhir/data-types"), Description("Dosage")]
+            Dosage,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Duration", "http://hl7.org/fhir/data-types"), Description("Duration")]
+            Duration,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Element", "http://hl7.org/fhir/data-types"), Description("Element")]
+            Element,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("ElementDefinition", "http://hl7.org/fhir/data-types"), Description("ElementDefinition")]
+            ElementDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Expression", "http://hl7.org/fhir/data-types"), Description("Expression")]
+            Expression,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Extension", "http://hl7.org/fhir/data-types"), Description("Extension")]
+            Extension,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("HumanName", "http://hl7.org/fhir/data-types"), Description("HumanName")]
+            HumanName,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Identifier", "http://hl7.org/fhir/data-types"), Description("Identifier")]
+            Identifier,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("MarketingStatus", "http://hl7.org/fhir/data-types"), Description("MarketingStatus")]
+            MarketingStatus,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Meta", "http://hl7.org/fhir/data-types"), Description("Meta")]
+            Meta,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Money", "http://hl7.org/fhir/data-types"), Description("Money")]
+            Money,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("MoneyQuantity", "http://hl7.org/fhir/data-types"), Description("MoneyQuantity")]
+            MoneyQuantity,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Narrative", "http://hl7.org/fhir/data-types"), Description("Narrative")]
+            Narrative,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("ParameterDefinition", "http://hl7.org/fhir/data-types"), Description("ParameterDefinition")]
+            ParameterDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Period", "http://hl7.org/fhir/data-types"), Description("Period")]
+            Period,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("ProdCharacteristic", "http://hl7.org/fhir/data-types"), Description("ProdCharacteristic")]
+            ProdCharacteristic,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("ProductShelfLife", "http://hl7.org/fhir/data-types"), Description("ProductShelfLife")]
+            ProductShelfLife,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Quantity", "http://hl7.org/fhir/data-types"), Description("Quantity")]
+            Quantity,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Range", "http://hl7.org/fhir/data-types"), Description("Range")]
+            Range,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Ratio", "http://hl7.org/fhir/data-types"), Description("Ratio")]
+            Ratio,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Reference", "http://hl7.org/fhir/data-types"), Description("Reference")]
+            Reference,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("RelatedArtifact", "http://hl7.org/fhir/data-types"), Description("RelatedArtifact")]
+            RelatedArtifact,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("SampledData", "http://hl7.org/fhir/data-types"), Description("SampledData")]
+            SampledData,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Signature", "http://hl7.org/fhir/data-types"), Description("Signature")]
+            Signature,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("SimpleQuantity", "http://hl7.org/fhir/data-types"), Description("SimpleQuantity")]
+            SimpleQuantity,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("SubstanceAmount", "http://hl7.org/fhir/data-types"), Description("SubstanceAmount")]
+            SubstanceAmount,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("SubstanceMoiety", "http://hl7.org/fhir/data-types"), Description("SubstanceMoiety")]
+            SubstanceMoiety,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("Timing", "http://hl7.org/fhir/data-types"), Description("Timing")]
+            Timing,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("TriggerDefinition", "http://hl7.org/fhir/data-types"), Description("TriggerDefinition")]
+            TriggerDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("UsageContext", "http://hl7.org/fhir/data-types"), Description("UsageContext")]
+            UsageContext,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("base64Binary", "http://hl7.org/fhir/data-types"), Description("base64Binary")]
+            Base64Binary,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("boolean", "http://hl7.org/fhir/data-types"), Description("boolean")]
+            Boolean,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("canonical", "http://hl7.org/fhir/data-types"), Description("canonical")]
+            Canonical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("code", "http://hl7.org/fhir/data-types"), Description("code")]
+            Code,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("date", "http://hl7.org/fhir/data-types"), Description("date")]
+            Date,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("dateTime", "http://hl7.org/fhir/data-types"), Description("dateTime")]
+            DateTime,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("decimal", "http://hl7.org/fhir/data-types"), Description("decimal")]
+            Decimal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("id", "http://hl7.org/fhir/data-types"), Description("id")]
+            Id,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("instant", "http://hl7.org/fhir/data-types"), Description("instant")]
+            Instant,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("integer", "http://hl7.org/fhir/data-types"), Description("integer")]
+            Integer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("markdown", "http://hl7.org/fhir/data-types"), Description("markdown")]
+            Markdown,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("oid", "http://hl7.org/fhir/data-types"), Description("oid")]
+            Oid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("positiveInt", "http://hl7.org/fhir/data-types"), Description("positiveInt")]
+            PositiveInt,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("string", "http://hl7.org/fhir/data-types"), Description("string")]
+            String,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("time", "http://hl7.org/fhir/data-types"), Description("time")]
+            Time,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("unsignedInt", "http://hl7.org/fhir/data-types"), Description("unsignedInt")]
+            UnsignedInt,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("uri", "http://hl7.org/fhir/data-types"), Description("uri")]
+            Uri,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("url", "http://hl7.org/fhir/data-types"), Description("url")]
+            Url,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("uuid", "http://hl7.org/fhir/data-types"), Description("uuid")]
+            Uuid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/data-types)
+            /// </summary>
+            [EnumLiteral("xhtml", "http://hl7.org/fhir/data-types"), Description("XHTML")]
+            Xhtml,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Account", "http://hl7.org/fhir/resource-types"), Description("Account")]
+            Account,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ActivityDefinition", "http://hl7.org/fhir/resource-types"), Description("ActivityDefinition")]
+            ActivityDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("AdverseEvent", "http://hl7.org/fhir/resource-types"), Description("AdverseEvent")]
+            AdverseEvent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("AllergyIntolerance", "http://hl7.org/fhir/resource-types"), Description("AllergyIntolerance")]
+            AllergyIntolerance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Appointment", "http://hl7.org/fhir/resource-types"), Description("Appointment")]
+            Appointment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("AppointmentResponse", "http://hl7.org/fhir/resource-types"), Description("AppointmentResponse")]
+            AppointmentResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("AuditEvent", "http://hl7.org/fhir/resource-types"), Description("AuditEvent")]
+            AuditEvent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Basic", "http://hl7.org/fhir/resource-types"), Description("Basic")]
+            Basic,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Binary", "http://hl7.org/fhir/resource-types"), Description("Binary")]
+            Binary,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("BiologicallyDerivedProduct", "http://hl7.org/fhir/resource-types"), Description("BiologicallyDerivedProduct")]
+            BiologicallyDerivedProduct,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("BodyStructure", "http://hl7.org/fhir/resource-types"), Description("BodyStructure")]
+            BodyStructure,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Bundle", "http://hl7.org/fhir/resource-types"), Description("Bundle")]
+            Bundle,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CapabilityStatement", "http://hl7.org/fhir/resource-types"), Description("CapabilityStatement")]
+            CapabilityStatement,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CarePlan", "http://hl7.org/fhir/resource-types"), Description("CarePlan")]
+            CarePlan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CareTeam", "http://hl7.org/fhir/resource-types"), Description("CareTeam")]
+            CareTeam,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ChargeItem", "http://hl7.org/fhir/resource-types"), Description("ChargeItem")]
+            ChargeItem,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ChargeItemDefinition", "http://hl7.org/fhir/resource-types"), Description("ChargeItemDefinition")]
+            ChargeItemDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Claim", "http://hl7.org/fhir/resource-types"), Description("Claim")]
+            Claim,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ClaimResponse", "http://hl7.org/fhir/resource-types"), Description("ClaimResponse")]
+            ClaimResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ClinicalImpression", "http://hl7.org/fhir/resource-types"), Description("ClinicalImpression")]
+            ClinicalImpression,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CodeSystem", "http://hl7.org/fhir/resource-types"), Description("CodeSystem")]
+            CodeSystem,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Communication", "http://hl7.org/fhir/resource-types"), Description("Communication")]
+            Communication,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CommunicationRequest", "http://hl7.org/fhir/resource-types"), Description("CommunicationRequest")]
+            CommunicationRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CompartmentDefinition", "http://hl7.org/fhir/resource-types"), Description("CompartmentDefinition")]
+            CompartmentDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Composition", "http://hl7.org/fhir/resource-types"), Description("Composition")]
+            Composition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ConceptMap", "http://hl7.org/fhir/resource-types"), Description("ConceptMap")]
+            ConceptMap,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Condition", "http://hl7.org/fhir/resource-types"), Description("Condition")]
+            Condition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Consent", "http://hl7.org/fhir/resource-types"), Description("Consent")]
+            Consent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Contract", "http://hl7.org/fhir/resource-types"), Description("Contract")]
+            Contract,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Coverage", "http://hl7.org/fhir/resource-types"), Description("Coverage")]
+            Coverage,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CoverageEligibilityRequest", "http://hl7.org/fhir/resource-types"), Description("CoverageEligibilityRequest")]
+            CoverageEligibilityRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("CoverageEligibilityResponse", "http://hl7.org/fhir/resource-types"), Description("CoverageEligibilityResponse")]
+            CoverageEligibilityResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DetectedIssue", "http://hl7.org/fhir/resource-types"), Description("DetectedIssue")]
+            DetectedIssue,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Device", "http://hl7.org/fhir/resource-types"), Description("Device")]
+            Device,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DeviceDefinition", "http://hl7.org/fhir/resource-types"), Description("DeviceDefinition")]
+            DeviceDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DeviceMetric", "http://hl7.org/fhir/resource-types"), Description("DeviceMetric")]
+            DeviceMetric,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DeviceRequest", "http://hl7.org/fhir/resource-types"), Description("DeviceRequest")]
+            DeviceRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DeviceUseStatement", "http://hl7.org/fhir/resource-types"), Description("DeviceUseStatement")]
+            DeviceUseStatement,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DiagnosticReport", "http://hl7.org/fhir/resource-types"), Description("DiagnosticReport")]
+            DiagnosticReport,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DocumentManifest", "http://hl7.org/fhir/resource-types"), Description("DocumentManifest")]
+            DocumentManifest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DocumentReference", "http://hl7.org/fhir/resource-types"), Description("DocumentReference")]
+            DocumentReference,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("DomainResource", "http://hl7.org/fhir/resource-types"), Description("DomainResource")]
+            DomainResource,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Encounter", "http://hl7.org/fhir/resource-types"), Description("Encounter")]
+            Encounter,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Endpoint", "http://hl7.org/fhir/resource-types"), Description("Endpoint")]
+            Endpoint,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("EnrollmentRequest", "http://hl7.org/fhir/resource-types"), Description("EnrollmentRequest")]
+            EnrollmentRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("EnrollmentResponse", "http://hl7.org/fhir/resource-types"), Description("EnrollmentResponse")]
+            EnrollmentResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("EntryDefinition", "http://hl7.org/fhir/resource-types"), Description("EntryDefinition")]
+            EntryDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("EpisodeOfCare", "http://hl7.org/fhir/resource-types"), Description("EpisodeOfCare")]
+            EpisodeOfCare,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("EventDefinition", "http://hl7.org/fhir/resource-types"), Description("EventDefinition")]
+            EventDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ExampleScenario", "http://hl7.org/fhir/resource-types"), Description("ExampleScenario")]
+            ExampleScenario,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ExplanationOfBenefit", "http://hl7.org/fhir/resource-types"), Description("ExplanationOfBenefit")]
+            ExplanationOfBenefit,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("FamilyMemberHistory", "http://hl7.org/fhir/resource-types"), Description("FamilyMemberHistory")]
+            FamilyMemberHistory,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Flag", "http://hl7.org/fhir/resource-types"), Description("Flag")]
+            Flag,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Goal", "http://hl7.org/fhir/resource-types"), Description("Goal")]
+            Goal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("GraphDefinition", "http://hl7.org/fhir/resource-types"), Description("GraphDefinition")]
+            GraphDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Group", "http://hl7.org/fhir/resource-types"), Description("Group")]
+            Group,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("GuidanceResponse", "http://hl7.org/fhir/resource-types"), Description("GuidanceResponse")]
+            GuidanceResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("HealthcareService", "http://hl7.org/fhir/resource-types"), Description("HealthcareService")]
+            HealthcareService,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ImagingStudy", "http://hl7.org/fhir/resource-types"), Description("ImagingStudy")]
+            ImagingStudy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Immunization", "http://hl7.org/fhir/resource-types"), Description("Immunization")]
+            Immunization,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ImmunizationEvaluation", "http://hl7.org/fhir/resource-types"), Description("ImmunizationEvaluation")]
+            ImmunizationEvaluation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ImmunizationRecommendation", "http://hl7.org/fhir/resource-types"), Description("ImmunizationRecommendation")]
+            ImmunizationRecommendation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ImplementationGuide", "http://hl7.org/fhir/resource-types"), Description("ImplementationGuide")]
+            ImplementationGuide,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("InsurancePlan", "http://hl7.org/fhir/resource-types"), Description("InsurancePlan")]
+            InsurancePlan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Invoice", "http://hl7.org/fhir/resource-types"), Description("Invoice")]
+            Invoice,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ItemInstance", "http://hl7.org/fhir/resource-types"), Description("ItemInstance")]
+            ItemInstance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Library", "http://hl7.org/fhir/resource-types"), Description("Library")]
+            Library,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Linkage", "http://hl7.org/fhir/resource-types"), Description("Linkage")]
+            Linkage,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("List", "http://hl7.org/fhir/resource-types"), Description("List")]
+            List,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Location", "http://hl7.org/fhir/resource-types"), Description("Location")]
+            Location,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Measure", "http://hl7.org/fhir/resource-types"), Description("Measure")]
+            Measure,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MeasureReport", "http://hl7.org/fhir/resource-types"), Description("MeasureReport")]
+            MeasureReport,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Media", "http://hl7.org/fhir/resource-types"), Description("Media")]
+            Media,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Medication", "http://hl7.org/fhir/resource-types"), Description("Medication")]
+            Medication,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicationAdministration", "http://hl7.org/fhir/resource-types"), Description("MedicationAdministration")]
+            MedicationAdministration,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicationDispense", "http://hl7.org/fhir/resource-types"), Description("MedicationDispense")]
+            MedicationDispense,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicationKnowledge", "http://hl7.org/fhir/resource-types"), Description("MedicationKnowledge")]
+            MedicationKnowledge,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicationRequest", "http://hl7.org/fhir/resource-types"), Description("MedicationRequest")]
+            MedicationRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicationStatement", "http://hl7.org/fhir/resource-types"), Description("MedicationStatement")]
+            MedicationStatement,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProduct", "http://hl7.org/fhir/resource-types"), Description("MedicinalProduct")]
+            MedicinalProduct,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductAuthorization", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductAuthorization")]
+            MedicinalProductAuthorization,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductClinicals", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductClinicals")]
+            MedicinalProductClinicals,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductContraindication", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductContraindication")]
+            MedicinalProductContraindication,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductDeviceSpec", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductDeviceSpec")]
+            MedicinalProductDeviceSpec,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductIndication", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductIndication")]
+            MedicinalProductIndication,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductIngredient", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductIngredient")]
+            MedicinalProductIngredient,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductInteraction", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductInteraction")]
+            MedicinalProductInteraction,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductManufactured", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductManufactured")]
+            MedicinalProductManufactured,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductPackaged", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductPackaged")]
+            MedicinalProductPackaged,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductPharmaceutical", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductPharmaceutical")]
+            MedicinalProductPharmaceutical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MedicinalProductUndesirableEffect", "http://hl7.org/fhir/resource-types"), Description("MedicinalProductUndesirableEffect")]
+            MedicinalProductUndesirableEffect,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MessageDefinition", "http://hl7.org/fhir/resource-types"), Description("MessageDefinition")]
+            MessageDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("MessageHeader", "http://hl7.org/fhir/resource-types"), Description("MessageHeader")]
+            MessageHeader,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("NamingSystem", "http://hl7.org/fhir/resource-types"), Description("NamingSystem")]
+            NamingSystem,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("NutritionOrder", "http://hl7.org/fhir/resource-types"), Description("NutritionOrder")]
+            NutritionOrder,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Observation", "http://hl7.org/fhir/resource-types"), Description("Observation")]
+            Observation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ObservationDefinition", "http://hl7.org/fhir/resource-types"), Description("ObservationDefinition")]
+            ObservationDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("OperationDefinition", "http://hl7.org/fhir/resource-types"), Description("OperationDefinition")]
+            OperationDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("OperationOutcome", "http://hl7.org/fhir/resource-types"), Description("OperationOutcome")]
+            OperationOutcome,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Organization", "http://hl7.org/fhir/resource-types"), Description("Organization")]
+            Organization,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("OrganizationAffiliation", "http://hl7.org/fhir/resource-types"), Description("OrganizationAffiliation")]
+            OrganizationAffiliation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Parameters", "http://hl7.org/fhir/resource-types"), Description("Parameters")]
+            Parameters,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Patient", "http://hl7.org/fhir/resource-types"), Description("Patient")]
+            Patient,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("PaymentNotice", "http://hl7.org/fhir/resource-types"), Description("PaymentNotice")]
+            PaymentNotice,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("PaymentReconciliation", "http://hl7.org/fhir/resource-types"), Description("PaymentReconciliation")]
+            PaymentReconciliation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Person", "http://hl7.org/fhir/resource-types"), Description("Person")]
+            Person,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("PlanDefinition", "http://hl7.org/fhir/resource-types"), Description("PlanDefinition")]
+            PlanDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Practitioner", "http://hl7.org/fhir/resource-types"), Description("Practitioner")]
+            Practitioner,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("PractitionerRole", "http://hl7.org/fhir/resource-types"), Description("PractitionerRole")]
+            PractitionerRole,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Procedure", "http://hl7.org/fhir/resource-types"), Description("Procedure")]
+            Procedure,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ProcessRequest", "http://hl7.org/fhir/resource-types"), Description("ProcessRequest")]
+            ProcessRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ProcessResponse", "http://hl7.org/fhir/resource-types"), Description("ProcessResponse")]
+            ProcessResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Provenance", "http://hl7.org/fhir/resource-types"), Description("Provenance")]
+            Provenance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Questionnaire", "http://hl7.org/fhir/resource-types"), Description("Questionnaire")]
+            Questionnaire,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("QuestionnaireResponse", "http://hl7.org/fhir/resource-types"), Description("QuestionnaireResponse")]
+            QuestionnaireResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("RelatedPerson", "http://hl7.org/fhir/resource-types"), Description("RelatedPerson")]
+            RelatedPerson,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("RequestGroup", "http://hl7.org/fhir/resource-types"), Description("RequestGroup")]
+            RequestGroup,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ResearchStudy", "http://hl7.org/fhir/resource-types"), Description("ResearchStudy")]
+            ResearchStudy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ResearchSubject", "http://hl7.org/fhir/resource-types"), Description("ResearchSubject")]
+            ResearchSubject,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Resource", "http://hl7.org/fhir/resource-types"), Description("Resource")]
+            Resource,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("RiskAssessment", "http://hl7.org/fhir/resource-types"), Description("RiskAssessment")]
+            RiskAssessment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Schedule", "http://hl7.org/fhir/resource-types"), Description("Schedule")]
+            Schedule,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("SearchParameter", "http://hl7.org/fhir/resource-types"), Description("SearchParameter")]
+            SearchParameter,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Sequence", "http://hl7.org/fhir/resource-types"), Description("Sequence")]
+            Sequence,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ServiceRequest", "http://hl7.org/fhir/resource-types"), Description("ServiceRequest")]
+            ServiceRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Slot", "http://hl7.org/fhir/resource-types"), Description("Slot")]
+            Slot,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Specimen", "http://hl7.org/fhir/resource-types"), Description("Specimen")]
+            Specimen,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("SpecimenDefinition", "http://hl7.org/fhir/resource-types"), Description("SpecimenDefinition")]
+            SpecimenDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("StructureDefinition", "http://hl7.org/fhir/resource-types"), Description("StructureDefinition")]
+            StructureDefinition,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("StructureMap", "http://hl7.org/fhir/resource-types"), Description("StructureMap")]
+            StructureMap,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Subscription", "http://hl7.org/fhir/resource-types"), Description("Subscription")]
+            Subscription,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Substance", "http://hl7.org/fhir/resource-types"), Description("Substance")]
+            Substance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("SubstancePolymer", "http://hl7.org/fhir/resource-types"), Description("SubstancePolymer")]
+            SubstancePolymer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("SubstanceReferenceInformation", "http://hl7.org/fhir/resource-types"), Description("SubstanceReferenceInformation")]
+            SubstanceReferenceInformation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("SubstanceSpecification", "http://hl7.org/fhir/resource-types"), Description("SubstanceSpecification")]
+            SubstanceSpecification,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("SupplyDelivery", "http://hl7.org/fhir/resource-types"), Description("SupplyDelivery")]
+            SupplyDelivery,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("SupplyRequest", "http://hl7.org/fhir/resource-types"), Description("SupplyRequest")]
+            SupplyRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("Task", "http://hl7.org/fhir/resource-types"), Description("Task")]
+            Task,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("TerminologyCapabilities", "http://hl7.org/fhir/resource-types"), Description("TerminologyCapabilities")]
+            TerminologyCapabilities,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("TestReport", "http://hl7.org/fhir/resource-types"), Description("TestReport")]
+            TestReport,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("TestScript", "http://hl7.org/fhir/resource-types"), Description("TestScript")]
+            TestScript,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("UserSession", "http://hl7.org/fhir/resource-types"), Description("UserSession")]
+            UserSession,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("ValueSet", "http://hl7.org/fhir/resource-types"), Description("ValueSet")]
+            ValueSet,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("VerificationResult", "http://hl7.org/fhir/resource-types"), Description("VerificationResult")]
+            VerificationResult,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-types)
+            /// </summary>
+            [EnumLiteral("VisionPrescription", "http://hl7.org/fhir/resource-types"), Description("VisionPrescription")]
+            VisionPrescription,
+        }
+
+        /// <summary>
+        /// The type of direction to use for assertion.
+        /// (url: http://hl7.org/fhir/ValueSet/assert-direction-codes)
+        /// </summary>
+        [FhirEnumeration("AssertionDirectionType")]
+        public enum AssertionDirectionType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-direction-codes)
+            /// </summary>
+            [EnumLiteral("response", "http://hl7.org/fhir/assert-direction-codes"), Description("response")]
+            Response,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-direction-codes)
+            /// </summary>
+            [EnumLiteral("request", "http://hl7.org/fhir/assert-direction-codes"), Description("request")]
+            Request,
+        }
+
+        /// <summary>
+        /// The type of operator to use for assertion.
+        /// (url: http://hl7.org/fhir/ValueSet/assert-operator-codes)
+        /// </summary>
+        [FhirEnumeration("AssertionOperatorType")]
+        public enum AssertionOperatorType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("equals", "http://hl7.org/fhir/assert-operator-codes"), Description("equals")]
+            Equals,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("notEquals", "http://hl7.org/fhir/assert-operator-codes"), Description("notEquals")]
+            NotEquals,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("in", "http://hl7.org/fhir/assert-operator-codes"), Description("in")]
+            In,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("notIn", "http://hl7.org/fhir/assert-operator-codes"), Description("notIn")]
+            NotIn,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("greaterThan", "http://hl7.org/fhir/assert-operator-codes"), Description("greaterThan")]
+            GreaterThan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("lessThan", "http://hl7.org/fhir/assert-operator-codes"), Description("lessThan")]
+            LessThan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("empty", "http://hl7.org/fhir/assert-operator-codes"), Description("empty")]
+            Empty,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("notEmpty", "http://hl7.org/fhir/assert-operator-codes"), Description("notEmpty")]
+            NotEmpty,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("contains", "http://hl7.org/fhir/assert-operator-codes"), Description("contains")]
+            Contains,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("notContains", "http://hl7.org/fhir/assert-operator-codes"), Description("notContains")]
+            NotContains,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("eval", "http://hl7.org/fhir/assert-operator-codes"), Description("evaluate")]
+            Eval,
+        }
+
+        /// <summary>
+        /// The allowable request method or HTTP operation codes.
+        /// (url: http://hl7.org/fhir/ValueSet/http-operations)
+        /// </summary>
+        [FhirEnumeration("TestScriptRequestMethodCode")]
+        public enum TestScriptRequestMethodCode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("delete", "http://hl7.org/fhir/http-operations"), Description("DELETE")]
+            Delete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("get", "http://hl7.org/fhir/http-operations"), Description("GET")]
+            Get,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("options", "http://hl7.org/fhir/http-operations"), Description("OPTIONS")]
+            Options,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("patch", "http://hl7.org/fhir/http-operations"), Description("PATCH")]
+            Patch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("post", "http://hl7.org/fhir/http-operations"), Description("POST")]
+            Post,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("put", "http://hl7.org/fhir/http-operations"), Description("PUT")]
+            Put,
+        }
+
+        /// <summary>
+        /// The type of response code to use for assertion.
+        /// (url: http://hl7.org/fhir/ValueSet/assert-response-code-types)
+        /// </summary>
+        [FhirEnumeration("AssertionResponseTypes")]
+        public enum AssertionResponseTypes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("okay", "http://hl7.org/fhir/assert-response-code-types"), Description("okay")]
+            Okay,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("created", "http://hl7.org/fhir/assert-response-code-types"), Description("created")]
+            Created,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("noContent", "http://hl7.org/fhir/assert-response-code-types"), Description("noContent")]
+            NoContent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("notModified", "http://hl7.org/fhir/assert-response-code-types"), Description("notModified")]
+            NotModified,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("bad", "http://hl7.org/fhir/assert-response-code-types"), Description("bad")]
+            Bad,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("forbidden", "http://hl7.org/fhir/assert-response-code-types"), Description("forbidden")]
+            Forbidden,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("notFound", "http://hl7.org/fhir/assert-response-code-types"), Description("notFound")]
+            NotFound,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("methodNotAllowed", "http://hl7.org/fhir/assert-response-code-types"), Description("methodNotAllowed")]
+            MethodNotAllowed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("conflict", "http://hl7.org/fhir/assert-response-code-types"), Description("conflict")]
+            Conflict,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("gone", "http://hl7.org/fhir/assert-response-code-types"), Description("gone")]
+            Gone,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("preconditionFailed", "http://hl7.org/fhir/assert-response-code-types"), Description("preconditionFailed")]
+            PreconditionFailed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("unprocessable", "http://hl7.org/fhir/assert-response-code-types"), Description("unprocessable")]
+            Unprocessable,
+        }
+
 
         [FhirType("OriginComponent")]
         [DataContract]
-        public partial class OriginComponent : BackboneElement
+        public partial class OriginComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OriginComponent"; } }
@@ -173,8 +1653,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (IndexElement != null) yield return new ElementValue("index", false, IndexElement);
-                    if (Profile != null) yield return new ElementValue("profile", false, Profile);
+                    if (IndexElement != null) yield return new ElementValue("index", IndexElement);
+                    if (Profile != null) yield return new ElementValue("profile", Profile);
                 }
             }
 
@@ -184,7 +1664,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("DestinationComponent")]
         [DataContract]
-        public partial class DestinationComponent : BackboneElement
+        public partial class DestinationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "DestinationComponent"; } }
@@ -298,8 +1778,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (IndexElement != null) yield return new ElementValue("index", false, IndexElement);
-                    if (Profile != null) yield return new ElementValue("profile", false, Profile);
+                    if (IndexElement != null) yield return new ElementValue("index", IndexElement);
+                    if (Profile != null) yield return new ElementValue("profile", Profile);
                 }
             }
 
@@ -309,7 +1789,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("MetadataComponent")]
         [DataContract]
-        public partial class MetadataComponent : BackboneElement
+        public partial class MetadataComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MetadataComponent"; } }
@@ -404,8 +1884,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", true, elem); }
-                    foreach (var elem in Capability) { if (elem != null) yield return new ElementValue("capability", true, elem); }
+                    foreach (var elem in Link) { if (elem != null) yield return new ElementValue("link", elem); }
+                    foreach (var elem in Capability) { if (elem != null) yield return new ElementValue("capability", elem); }
                 }
             }
 
@@ -415,7 +1895,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("LinkComponent")]
         [DataContract]
-        public partial class LinkComponent : BackboneElement
+        public partial class LinkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LinkComponent"; } }
@@ -547,8 +2027,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
+                    if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 }
             }
 
@@ -558,7 +2038,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("CapabilityComponent")]
         [DataContract]
-        public partial class CapabilityComponent : BackboneElement
+        public partial class CapabilityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "CapabilityComponent"; } }
@@ -874,13 +2354,13 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (RequiredElement != null) yield return new ElementValue("required", false, RequiredElement);
-                    if (ValidatedElement != null) yield return new ElementValue("validated", false, ValidatedElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    foreach (var elem in OriginElement) { if (elem != null) yield return new ElementValue("origin", true, elem); }
-                    if (DestinationElement != null) yield return new ElementValue("destination", false, DestinationElement);
-                    foreach (var elem in LinkElement) { if (elem != null) yield return new ElementValue("link", true, elem); }
-                    if (CapabilitiesElement != null) yield return new ElementValue("capabilities", false, CapabilitiesElement);
+                    if (RequiredElement != null) yield return new ElementValue("required", RequiredElement);
+                    if (ValidatedElement != null) yield return new ElementValue("validated", ValidatedElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    foreach (var elem in OriginElement) { if (elem != null) yield return new ElementValue("origin", elem); }
+                    if (DestinationElement != null) yield return new ElementValue("destination", DestinationElement);
+                    foreach (var elem in LinkElement) { if (elem != null) yield return new ElementValue("link", elem); }
+                    if (CapabilitiesElement != null) yield return new ElementValue("capabilities", CapabilitiesElement);
                 }
             }
 
@@ -890,7 +2370,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("FixtureComponent")]
         [DataContract]
-        public partial class FixtureComponent : BackboneElement
+        public partial class FixtureComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "FixtureComponent"; } }
@@ -1040,9 +2520,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (AutocreateElement != null) yield return new ElementValue("autocreate", false, AutocreateElement);
-                    if (AutodeleteElement != null) yield return new ElementValue("autodelete", false, AutodeleteElement);
-                    if (Resource != null) yield return new ElementValue("resource", false, Resource);
+                    if (AutocreateElement != null) yield return new ElementValue("autocreate", AutocreateElement);
+                    if (AutodeleteElement != null) yield return new ElementValue("autodelete", AutodeleteElement);
+                    if (Resource != null) yield return new ElementValue("resource", Resource);
                 }
             }
 
@@ -1052,7 +2532,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("VariableComponent")]
         [DataContract]
-        public partial class VariableComponent : BackboneElement
+        public partial class VariableComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "VariableComponent"; } }
@@ -1400,14 +2880,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DefaultValueElement != null) yield return new ElementValue("defaultValue", false, DefaultValueElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
-                    if (HeaderFieldElement != null) yield return new ElementValue("headerField", false, HeaderFieldElement);
-                    if (HintElement != null) yield return new ElementValue("hint", false, HintElement);
-                    if (PathElement != null) yield return new ElementValue("path", false, PathElement);
-                    if (SourceIdElement != null) yield return new ElementValue("sourceId", false, SourceIdElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DefaultValueElement != null) yield return new ElementValue("defaultValue", DefaultValueElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
+                    if (HeaderFieldElement != null) yield return new ElementValue("headerField", HeaderFieldElement);
+                    if (HintElement != null) yield return new ElementValue("hint", HintElement);
+                    if (PathElement != null) yield return new ElementValue("path", PathElement);
+                    if (SourceIdElement != null) yield return new ElementValue("sourceId", SourceIdElement);
                 }
             }
 
@@ -1417,7 +2897,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RuleComponent")]
         [DataContract]
-        public partial class RuleComponent : BackboneElement
+        public partial class RuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RuleComponent"; } }
@@ -1512,8 +2992,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Resource != null) yield return new ElementValue("resource", false, Resource);
-                    foreach (var elem in Param) { if (elem != null) yield return new ElementValue("param", true, elem); }
+                    if (Resource != null) yield return new ElementValue("resource", Resource);
+                    foreach (var elem in Param) { if (elem != null) yield return new ElementValue("param", elem); }
                 }
             }
 
@@ -1523,7 +3003,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RuleParamComponent")]
         [DataContract]
-        public partial class RuleParamComponent : BackboneElement
+        public partial class RuleParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RuleParamComponent"; } }
@@ -1655,8 +3135,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 }
             }
 
@@ -1666,7 +3146,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RulesetComponent")]
         [DataContract]
-        public partial class RulesetComponent : BackboneElement
+        public partial class RulesetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RulesetComponent"; } }
@@ -1761,8 +3241,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Resource != null) yield return new ElementValue("resource", false, Resource);
-                    foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", true, elem); }
+                    if (Resource != null) yield return new ElementValue("resource", Resource);
+                    foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", elem); }
                 }
             }
 
@@ -1772,7 +3252,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RulesetRuleComponent")]
         [DataContract]
-        public partial class RulesetRuleComponent : BackboneElement
+        public partial class RulesetRuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RulesetRuleComponent"; } }
@@ -1886,8 +3366,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (RuleIdElement != null) yield return new ElementValue("ruleId", false, RuleIdElement);
-                    foreach (var elem in Param) { if (elem != null) yield return new ElementValue("param", true, elem); }
+                    if (RuleIdElement != null) yield return new ElementValue("ruleId", RuleIdElement);
+                    foreach (var elem in Param) { if (elem != null) yield return new ElementValue("param", elem); }
                 }
             }
 
@@ -1897,7 +3377,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RulesetRuleParamComponent")]
         [DataContract]
-        public partial class RulesetRuleParamComponent : BackboneElement
+        public partial class RulesetRuleParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RulesetRuleParamComponent"; } }
@@ -2029,8 +3509,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 }
             }
 
@@ -2040,7 +3520,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SetupComponent")]
         [DataContract]
-        public partial class SetupComponent : BackboneElement
+        public partial class SetupComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SetupComponent"; } }
@@ -2117,7 +3597,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
+                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
                 }
             }
 
@@ -2127,7 +3607,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("SetupActionComponent")]
         [DataContract]
-        public partial class SetupActionComponent : BackboneElement
+        public partial class SetupActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SetupActionComponent"; } }
@@ -2220,8 +3700,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Operation != null) yield return new ElementValue("operation", false, Operation);
-                    if (Assert != null) yield return new ElementValue("assert", false, Assert);
+                    if (Operation != null) yield return new ElementValue("operation", Operation);
+                    if (Assert != null) yield return new ElementValue("assert", Assert);
                 }
             }
 
@@ -2231,7 +3711,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OperationComponent")]
         [DataContract]
-        public partial class OperationComponent : BackboneElement
+        public partial class OperationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OperationComponent"; } }
@@ -2830,22 +4310,22 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (ResourceElement != null) yield return new ElementValue("resource", false, ResourceElement);
-                    if (LabelElement != null) yield return new ElementValue("label", false, LabelElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (AcceptElement != null) yield return new ElementValue("accept", false, AcceptElement);
-                    if (ContentTypeElement != null) yield return new ElementValue("contentType", false, ContentTypeElement);
-                    if (DestinationElement != null) yield return new ElementValue("destination", false, DestinationElement);
-                    if (EncodeRequestUrlElement != null) yield return new ElementValue("encodeRequestUrl", false, EncodeRequestUrlElement);
-                    if (OriginElement != null) yield return new ElementValue("origin", false, OriginElement);
-                    if (ParamsElement != null) yield return new ElementValue("params", false, ParamsElement);
-                    foreach (var elem in RequestHeader) { if (elem != null) yield return new ElementValue("requestHeader", true, elem); }
-                    if (RequestIdElement != null) yield return new ElementValue("requestId", false, RequestIdElement);
-                    if (ResponseIdElement != null) yield return new ElementValue("responseId", false, ResponseIdElement);
-                    if (SourceIdElement != null) yield return new ElementValue("sourceId", false, SourceIdElement);
-                    if (TargetIdElement != null) yield return new ElementValue("targetId", false, TargetIdElement);
-                    if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (ResourceElement != null) yield return new ElementValue("resource", ResourceElement);
+                    if (LabelElement != null) yield return new ElementValue("label", LabelElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (AcceptElement != null) yield return new ElementValue("accept", AcceptElement);
+                    if (ContentTypeElement != null) yield return new ElementValue("contentType", ContentTypeElement);
+                    if (DestinationElement != null) yield return new ElementValue("destination", DestinationElement);
+                    if (EncodeRequestUrlElement != null) yield return new ElementValue("encodeRequestUrl", EncodeRequestUrlElement);
+                    if (OriginElement != null) yield return new ElementValue("origin", OriginElement);
+                    if (ParamsElement != null) yield return new ElementValue("params", ParamsElement);
+                    foreach (var elem in RequestHeader) { if (elem != null) yield return new ElementValue("requestHeader", elem); }
+                    if (RequestIdElement != null) yield return new ElementValue("requestId", RequestIdElement);
+                    if (ResponseIdElement != null) yield return new ElementValue("responseId", ResponseIdElement);
+                    if (SourceIdElement != null) yield return new ElementValue("sourceId", SourceIdElement);
+                    if (TargetIdElement != null) yield return new ElementValue("targetId", TargetIdElement);
+                    if (UrlElement != null) yield return new ElementValue("url", UrlElement);
                 }
             }
 
@@ -2855,7 +4335,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("RequestHeaderComponent")]
         [DataContract]
-        public partial class RequestHeaderComponent : BackboneElement
+        public partial class RequestHeaderComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RequestHeaderComponent"; } }
@@ -2988,8 +4468,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (FieldElement != null) yield return new ElementValue("field", false, FieldElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
+                    if (FieldElement != null) yield return new ElementValue("field", FieldElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 }
             }
 
@@ -2999,7 +4479,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("AssertComponent")]
         [DataContract]
-        public partial class AssertComponent : BackboneElement
+        public partial class AssertComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AssertComponent"; } }
@@ -3885,30 +5365,30 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (LabelElement != null) yield return new ElementValue("label", false, LabelElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    if (DirectionElement != null) yield return new ElementValue("direction", false, DirectionElement);
-                    if (CompareToSourceIdElement != null) yield return new ElementValue("compareToSourceId", false, CompareToSourceIdElement);
-                    if (CompareToSourceExpressionElement != null) yield return new ElementValue("compareToSourceExpression", false, CompareToSourceExpressionElement);
-                    if (CompareToSourcePathElement != null) yield return new ElementValue("compareToSourcePath", false, CompareToSourcePathElement);
-                    if (ContentTypeElement != null) yield return new ElementValue("contentType", false, ContentTypeElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", false, ExpressionElement);
-                    if (HeaderFieldElement != null) yield return new ElementValue("headerField", false, HeaderFieldElement);
-                    if (MinimumIdElement != null) yield return new ElementValue("minimumId", false, MinimumIdElement);
-                    if (NavigationLinksElement != null) yield return new ElementValue("navigationLinks", false, NavigationLinksElement);
-                    if (OperatorElement != null) yield return new ElementValue("operator", false, OperatorElement);
-                    if (PathElement != null) yield return new ElementValue("path", false, PathElement);
-                    if (RequestMethodElement != null) yield return new ElementValue("requestMethod", false, RequestMethodElement);
-                    if (RequestURLElement != null) yield return new ElementValue("requestURL", false, RequestURLElement);
-                    if (ResourceElement != null) yield return new ElementValue("resource", false, ResourceElement);
-                    if (ResponseElement != null) yield return new ElementValue("response", false, ResponseElement);
-                    if (ResponseCodeElement != null) yield return new ElementValue("responseCode", false, ResponseCodeElement);
-                    if (Rule != null) yield return new ElementValue("rule", false, Rule);
-                    if (Ruleset != null) yield return new ElementValue("ruleset", false, Ruleset);
-                    if (SourceIdElement != null) yield return new ElementValue("sourceId", false, SourceIdElement);
-                    if (ValidateProfileIdElement != null) yield return new ElementValue("validateProfileId", false, ValidateProfileIdElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
-                    if (WarningOnlyElement != null) yield return new ElementValue("warningOnly", false, WarningOnlyElement);
+                    if (LabelElement != null) yield return new ElementValue("label", LabelElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    if (DirectionElement != null) yield return new ElementValue("direction", DirectionElement);
+                    if (CompareToSourceIdElement != null) yield return new ElementValue("compareToSourceId", CompareToSourceIdElement);
+                    if (CompareToSourceExpressionElement != null) yield return new ElementValue("compareToSourceExpression", CompareToSourceExpressionElement);
+                    if (CompareToSourcePathElement != null) yield return new ElementValue("compareToSourcePath", CompareToSourcePathElement);
+                    if (ContentTypeElement != null) yield return new ElementValue("contentType", ContentTypeElement);
+                    if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
+                    if (HeaderFieldElement != null) yield return new ElementValue("headerField", HeaderFieldElement);
+                    if (MinimumIdElement != null) yield return new ElementValue("minimumId", MinimumIdElement);
+                    if (NavigationLinksElement != null) yield return new ElementValue("navigationLinks", NavigationLinksElement);
+                    if (OperatorElement != null) yield return new ElementValue("operator", OperatorElement);
+                    if (PathElement != null) yield return new ElementValue("path", PathElement);
+                    if (RequestMethodElement != null) yield return new ElementValue("requestMethod", RequestMethodElement);
+                    if (RequestURLElement != null) yield return new ElementValue("requestURL", RequestURLElement);
+                    if (ResourceElement != null) yield return new ElementValue("resource", ResourceElement);
+                    if (ResponseElement != null) yield return new ElementValue("response", ResponseElement);
+                    if (ResponseCodeElement != null) yield return new ElementValue("responseCode", ResponseCodeElement);
+                    if (Rule != null) yield return new ElementValue("rule", Rule);
+                    if (Ruleset != null) yield return new ElementValue("ruleset", Ruleset);
+                    if (SourceIdElement != null) yield return new ElementValue("sourceId", SourceIdElement);
+                    if (ValidateProfileIdElement != null) yield return new ElementValue("validateProfileId", ValidateProfileIdElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
+                    if (WarningOnlyElement != null) yield return new ElementValue("warningOnly", WarningOnlyElement);
                 }
             }
 
@@ -3918,7 +5398,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ActionAssertRuleComponent")]
         [DataContract]
-        public partial class ActionAssertRuleComponent : BackboneElement
+        public partial class ActionAssertRuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionAssertRuleComponent"; } }
@@ -4032,8 +5512,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (RuleIdElement != null) yield return new ElementValue("ruleId", false, RuleIdElement);
-                    foreach (var elem in Param) { if (elem != null) yield return new ElementValue("param", true, elem); }
+                    if (RuleIdElement != null) yield return new ElementValue("ruleId", RuleIdElement);
+                    foreach (var elem in Param) { if (elem != null) yield return new ElementValue("param", elem); }
                 }
             }
 
@@ -4043,7 +5523,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ActionAssertRuleParamComponent")]
         [DataContract]
-        public partial class ActionAssertRuleParamComponent : BackboneElement
+        public partial class ActionAssertRuleParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionAssertRuleParamComponent"; } }
@@ -4176,8 +5656,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 }
             }
 
@@ -4187,7 +5667,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ActionAssertRulesetComponent")]
         [DataContract]
-        public partial class ActionAssertRulesetComponent : BackboneElement
+        public partial class ActionAssertRulesetComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionAssertRulesetComponent"; } }
@@ -4301,8 +5781,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (RulesetIdElement != null) yield return new ElementValue("rulesetId", false, RulesetIdElement);
-                    foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", true, elem); }
+                    if (RulesetIdElement != null) yield return new ElementValue("rulesetId", RulesetIdElement);
+                    foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", elem); }
                 }
             }
 
@@ -4312,7 +5792,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ActionAssertRulesetRuleComponent")]
         [DataContract]
-        public partial class ActionAssertRulesetRuleComponent : BackboneElement
+        public partial class ActionAssertRulesetRuleComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ActionAssertRulesetRuleComponent"; } }
@@ -4426,8 +5906,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (RuleIdElement != null) yield return new ElementValue("ruleId", false, RuleIdElement);
-                    foreach (var elem in Param) { if (elem != null) yield return new ElementValue("param", true, elem); }
+                    if (RuleIdElement != null) yield return new ElementValue("ruleId", RuleIdElement);
+                    foreach (var elem in Param) { if (elem != null) yield return new ElementValue("param", elem); }
                 }
             }
 
@@ -4437,7 +5917,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ParamComponent")]
         [DataContract]
-        public partial class ParamComponent : BackboneElement
+        public partial class ParamComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ParamComponent"; } }
@@ -4570,8 +6050,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (ValueElement != null) yield return new ElementValue("value", false, ValueElement);
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 }
             }
 
@@ -4581,7 +6061,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TestComponent")]
         [DataContract]
-        public partial class TestComponent : BackboneElement
+        public partial class TestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TestComponent"; } }
@@ -4730,9 +6210,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                    if (DescriptionElement != null) yield return new ElementValue("description", false, DescriptionElement);
-                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
+                    if (NameElement != null) yield return new ElementValue("name", NameElement);
+                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
                 }
             }
 
@@ -4742,7 +6222,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TestActionComponent")]
         [DataContract]
-        public partial class TestActionComponent : BackboneElement
+        public partial class TestActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TestActionComponent"; } }
@@ -4835,8 +6315,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Operation != null) yield return new ElementValue("operation", false, Operation);
-                    if (Assert != null) yield return new ElementValue("assert", false, Assert);
+                    if (Operation != null) yield return new ElementValue("operation", Operation);
+                    if (Assert != null) yield return new ElementValue("assert", Assert);
                 }
             }
 
@@ -4846,7 +6326,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TeardownComponent")]
         [DataContract]
-        public partial class TeardownComponent : BackboneElement
+        public partial class TeardownComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TeardownComponent"; } }
@@ -4923,7 +6403,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", true, elem); }
+                    foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
                 }
             }
 
@@ -4933,7 +6413,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TeardownActionComponent")]
         [DataContract]
-        public partial class TeardownActionComponent : BackboneElement
+        public partial class TeardownActionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TeardownActionComponent"; } }
@@ -5010,7 +6490,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Operation != null) yield return new ElementValue("operation", false, Operation);
+                    if (Operation != null) yield return new ElementValue("operation", Operation);
                 }
             }
 
@@ -5523,119 +7003,128 @@ namespace Hl7.Fhir.Model.R4
         private TeardownComponent _teardown;
 
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_4 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "tst-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
+
+        public static ElementDefinition.ConstraintComponent TestScript_TST_4 = new ElementDefinition.ConstraintComponent
         {
             Expression = "metadata.all(capability.required.exists() or capability.validated.exists())",
-            Key = "inv-4",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-4",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "TestScript metadata capability SHALL contain required or validated or both.",
             Xpath = "f:capability/f:required or f:capability/f:validated or (f:capability/f:required and f:capability/f:validated)"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_3 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_3 = new ElementDefinition.ConstraintComponent
         {
             Expression = "variable.all(expression.empty() or headerField.empty() or path.empty())",
-            Key = "inv-3",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-3",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Variable can only contain one of expression, headerField or path.",
             Xpath = "not(f:expression and f:headerField and f:path)"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_1 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_1 = new ElementDefinition.ConstraintComponent
         {
             Expression = "setup.action.all(operation.exists() xor assert.exists())",
-            Key = "inv-1",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-1",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup action SHALL contain either an operation or assert but not both.",
             Xpath = "(f:operation or f:assert) and not(f:operation and f:assert)"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_7 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_7 = new ElementDefinition.ConstraintComponent
         {
             Expression = "setup.action.operation.all(sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' |'search' | 'transaction' | 'history')))",
-            Key = "inv-7",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-7",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup operation SHALL contain either sourceId or targetId or params or url.",
             Xpath = "f:sourceId or ((f:targetId or f:url or f:params) and (count(f:targetId) + count(f:url) + count(f:params) =1)) or (f:type/f:code/@value='capabilities' or f:type/f:code/@value='search' or f:type/f:code/@value='transaction' or f:type/f:code/@value='history')"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_5 = new ElementDefinition.ConstraintComponent
-        {
-            Expression = "setup.action.assert.all(contentType.count() + expression.count() + headerField.count() + minimumId.count() + navigationLinks.count() + path.count() + requestMethod.count() + resource.count() + responseCode.count() + response.count() + rule.count() + ruleset.count() + validateProfileId.count() <=1)",
-            Key = "inv-5",
-            Severity = ConstraintSeverity.Warning,
-            Human = "Only a single assertion SHALL be present within setup action assert element.",
-            Xpath = "count(f:contentType) + count(f:expression) + count(f:headerField) + count(f:minimumId) + count(f:navigationLinks) + count(f:path) + count(f:requestMethod) + count(f:resource) + count(f:responseCode) + count(f:response) + count(f:rule) + count(f:ruleset) + count(f:validateProfileId)  <=1"
-        };
-
-        public static ElementDefinition.ConstraintComponent TestScript_INV_10 = new ElementDefinition.ConstraintComponent
-        {
-            Expression = "setup.action.assert.all(compareToSourceId.empty() xor (compareToSourceExpression.exists() or compareToSourcePath.exists()))",
-            Key = "inv-10",
-            Severity = ConstraintSeverity.Warning,
-            Human = "Setup action assert SHALL contain either compareToSourceId and compareToSourceExpression, compareToSourceId and compareToSourcePath or neither.",
-            Xpath = "(f:compareToSourceId and f:compareToSourceExpression) or (f:compareToSourceId and f:compareToSourcePath) or not(f:compareToSourceId or f:compareToSourceExpression or f:compareToSourcePath)"
-        };
-
-        public static ElementDefinition.ConstraintComponent TestScript_INV_12 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_12 = new ElementDefinition.ConstraintComponent
         {
             Expression = "setup.action.assert.all((response.empty() and responseCode.empty() and direction = 'request') or direction.empty() or direction = 'response')",
-            Key = "inv-12",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-12",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup action assert response and responseCode SHALL be empty when direction equals request",
             Xpath = "((count(f:response) + count(f:responseCode)) = 0 and (f:direction/@value='request')) or (count(f:direction) = 0) or (f:direction/@value='response')"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_2 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_5 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "setup.action.assert.all(contentType.count() + expression.count() + headerField.count() + minimumId.count() + navigationLinks.count() + path.count() + requestMethod.count() + resource.count() + responseCode.count() + response.count() + rule.count() + ruleset.count() + validateProfileId.count() <=1)",
+            Key = "tst-5",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Only a single assertion SHALL be present within setup action assert element.",
+            Xpath = "count(f:contentType) + count(f:expression) + count(f:headerField) + count(f:minimumId) + count(f:navigationLinks) + count(f:path) + count(f:requestMethod) + count(f:resource) + count(f:responseCode) + count(f:response) + count(f:rule) + count(f:ruleset) + count(f:validateProfileId)  <=1"
+        };
+
+        public static ElementDefinition.ConstraintComponent TestScript_TST_10 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "setup.action.assert.all(compareToSourceId.empty() xor (compareToSourceExpression.exists() or compareToSourcePath.exists()))",
+            Key = "tst-10",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Setup action assert SHALL contain either compareToSourceId and compareToSourceExpression, compareToSourceId and compareToSourcePath or neither.",
+            Xpath = "(f:compareToSourceId and f:compareToSourceExpression) or (f:compareToSourceId and f:compareToSourcePath) or not(f:compareToSourceId or f:compareToSourceExpression or f:compareToSourcePath)"
+        };
+
+        public static ElementDefinition.ConstraintComponent TestScript_TST_2 = new ElementDefinition.ConstraintComponent
         {
             Expression = "test.action.all(operation.exists() xor assert.exists())",
-            Key = "inv-2",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-2",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test action SHALL contain either an operation or assert but not both.",
             Xpath = "(f:operation or f:assert) and not(f:operation and f:assert)"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_8 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_8 = new ElementDefinition.ConstraintComponent
         {
             Expression = "test.action.operation.all(sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' | 'search' | 'transaction' | 'history')))",
-            Key = "inv-8",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-8",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test operation SHALL contain either sourceId or targetId or params or url.",
             Xpath = "f:sourceId or (f:targetId or f:url or f:params) and (count(f:targetId) + count(f:url) + count(f:params) =1) or (f:type/f:code/@value='capabilities' or f:type/f:code/@value='search' or f:type/f:code/@value='transaction' or f:type/f:code/@value='history')"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_6 = new ElementDefinition.ConstraintComponent
-        {
-            Expression = "test.action.assert.all(contentType.count() + expression.count() + headerField.count() + minimumId.count() + navigationLinks.count() + path.count() + requestMethod.count() + resource.count() + responseCode.count() + response.count() + rule.count() + ruleset.count() + validateProfileId.count() <=1)",
-            Key = "inv-6",
-            Severity = ConstraintSeverity.Warning,
-            Human = "Only a single assertion SHALL be present within test action assert element.",
-            Xpath = "count(f:contentType) + count(f:expression) + count(f:headerField) + count(f:minimumId) + count(f:navigationLinks) + count(f:path) + count(f:requestMethod) + count(f:resource) + count(f:responseCode) + count(f:response) + count(f:rule) + count(f:ruleset) + count(f:validateProfileId)  <=1"
-        };
-
-        public static ElementDefinition.ConstraintComponent TestScript_INV_11 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_11 = new ElementDefinition.ConstraintComponent
         {
             Expression = "test.action.assert.all(compareToSourceId.empty() xor (compareToSourceExpression.exists() or compareToSourcePath.exists()))",
-            Key = "inv-11",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-11",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test action assert SHALL contain either compareToSourceId and compareToSourceExpression, compareToSourceId and compareToSourcePath or neither.",
             Xpath = "(f:compareToSourceId and f:compareToSourceExpression) or (f:compareToSourceId and f:compareToSourcePath) or not(f:compareToSourceId or f:compareToSourceExpression or f:compareToSourcePath)"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_13 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_13 = new ElementDefinition.ConstraintComponent
         {
             Expression = "test.action.assert.all((response.empty() and responseCode.empty() and direction = 'request') or direction.empty() or direction = 'response')",
-            Key = "inv-13",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-13",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test action assert response and response and responseCode SHALL be empty when direction equals request",
             Xpath = "((count(f:response) + count(f:responseCode)) = 0 and (f:direction/@value='request')) or (count(f:direction) = 0) or (f:direction/@value='response')"
         };
 
-        public static ElementDefinition.ConstraintComponent TestScript_INV_9 = new ElementDefinition.ConstraintComponent
+        public static ElementDefinition.ConstraintComponent TestScript_TST_6 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "test.action.assert.all(contentType.count() + expression.count() + headerField.count() + minimumId.count() + navigationLinks.count() + path.count() + requestMethod.count() + resource.count() + responseCode.count() + response.count() + rule.count() + ruleset.count() + validateProfileId.count() <=1)",
+            Key = "tst-6",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Only a single assertion SHALL be present within test action assert element.",
+            Xpath = "count(f:contentType) + count(f:expression) + count(f:headerField) + count(f:minimumId) + count(f:navigationLinks) + count(f:path) + count(f:requestMethod) + count(f:resource) + count(f:responseCode) + count(f:response) + count(f:rule) + count(f:ruleset) + count(f:validateProfileId)  <=1"
+        };
+
+        public static ElementDefinition.ConstraintComponent TestScript_TST_9 = new ElementDefinition.ConstraintComponent
         {
             Expression = "teardown.action.operation.all(sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' | 'search' | 'transaction' | 'history')))",
-            Key = "inv-9",
-            Severity = ConstraintSeverity.Warning,
+            Key = "tst-9",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Teardown operation SHALL contain either sourceId or targetId or params or url.",
             Xpath = "f:sourceId or (f:targetId or f:url or (f:params and f:resource)) and (count(f:targetId) + count(f:url) + count(f:params) =1) or (f:type/f:code/@value='capabilities' or f:type/f:code/@value='search' or f:type/f:code/@value='transaction' or f:type/f:code/@value='history')"
         };
@@ -5644,19 +7133,20 @@ namespace Hl7.Fhir.Model.R4
         {
             base.AddDefaultConstraints();
 
-            InvariantConstraints.Add(TestScript_INV_4);
-            InvariantConstraints.Add(TestScript_INV_3);
-            InvariantConstraints.Add(TestScript_INV_1);
-            InvariantConstraints.Add(TestScript_INV_7);
-            InvariantConstraints.Add(TestScript_INV_5);
-            InvariantConstraints.Add(TestScript_INV_10);
-            InvariantConstraints.Add(TestScript_INV_12);
-            InvariantConstraints.Add(TestScript_INV_2);
-            InvariantConstraints.Add(TestScript_INV_8);
-            InvariantConstraints.Add(TestScript_INV_6);
-            InvariantConstraints.Add(TestScript_INV_11);
-            InvariantConstraints.Add(TestScript_INV_13);
-            InvariantConstraints.Add(TestScript_INV_9);
+            InvariantConstraints.Add(TestScript_TST_0);
+            InvariantConstraints.Add(TestScript_TST_4);
+            InvariantConstraints.Add(TestScript_TST_3);
+            InvariantConstraints.Add(TestScript_TST_1);
+            InvariantConstraints.Add(TestScript_TST_7);
+            InvariantConstraints.Add(TestScript_TST_12);
+            InvariantConstraints.Add(TestScript_TST_5);
+            InvariantConstraints.Add(TestScript_TST_10);
+            InvariantConstraints.Add(TestScript_TST_2);
+            InvariantConstraints.Add(TestScript_TST_8);
+            InvariantConstraints.Add(TestScript_TST_11);
+            InvariantConstraints.Add(TestScript_TST_13);
+            InvariantConstraints.Add(TestScript_TST_6);
+            InvariantConstraints.Add(TestScript_TST_9);
         }
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -5816,32 +7306,32 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (UrlElement != null) yield return new ElementValue("url", false, UrlElement);
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (VersionElement != null) yield return new ElementValue("version", false, VersionElement);
-                if (NameElement != null) yield return new ElementValue("name", false, NameElement);
-                if (TitleElement != null) yield return new ElementValue("title", false, TitleElement);
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (ExperimentalElement != null) yield return new ElementValue("experimental", false, ExperimentalElement);
-                if (DateElement != null) yield return new ElementValue("date", false, DateElement);
-                if (PublisherElement != null) yield return new ElementValue("publisher", false, PublisherElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (Description != null) yield return new ElementValue("description", false, Description);
-                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", true, elem); }
-                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", true, elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", false, Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", false, Copyright);
-                foreach (var elem in Origin) { if (elem != null) yield return new ElementValue("origin", true, elem); }
-                foreach (var elem in Destination) { if (elem != null) yield return new ElementValue("destination", true, elem); }
-                if (Metadata != null) yield return new ElementValue("metadata", false, Metadata);
-                foreach (var elem in Fixture) { if (elem != null) yield return new ElementValue("fixture", true, elem); }
-                foreach (var elem in Profile) { if (elem != null) yield return new ElementValue("profile", true, elem); }
-                foreach (var elem in Variable) { if (elem != null) yield return new ElementValue("variable", true, elem); }
-                foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", true, elem); }
-                foreach (var elem in Ruleset) { if (elem != null) yield return new ElementValue("ruleset", true, elem); }
-                if (Setup != null) yield return new ElementValue("setup", false, Setup);
-                foreach (var elem in Test) { if (elem != null) yield return new ElementValue("test", true, elem); }
-                if (Teardown != null) yield return new ElementValue("teardown", false, Teardown);
+                if (UrlElement != null) yield return new ElementValue("url", UrlElement);
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (VersionElement != null) yield return new ElementValue("version", VersionElement);
+                if (NameElement != null) yield return new ElementValue("name", NameElement);
+                if (TitleElement != null) yield return new ElementValue("title", TitleElement);
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
+                if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (Description != null) yield return new ElementValue("description", Description);
+                foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
+                foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
+                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                foreach (var elem in Origin) { if (elem != null) yield return new ElementValue("origin", elem); }
+                foreach (var elem in Destination) { if (elem != null) yield return new ElementValue("destination", elem); }
+                if (Metadata != null) yield return new ElementValue("metadata", Metadata);
+                foreach (var elem in Fixture) { if (elem != null) yield return new ElementValue("fixture", elem); }
+                foreach (var elem in Profile) { if (elem != null) yield return new ElementValue("profile", elem); }
+                foreach (var elem in Variable) { if (elem != null) yield return new ElementValue("variable", elem); }
+                foreach (var elem in Rule) { if (elem != null) yield return new ElementValue("rule", elem); }
+                foreach (var elem in Ruleset) { if (elem != null) yield return new ElementValue("ruleset", elem); }
+                if (Setup != null) yield return new ElementValue("setup", Setup);
+                foreach (var elem in Test) { if (elem != null) yield return new ElementValue("test", elem); }
+                if (Teardown != null) yield return new ElementValue("teardown", Teardown);
             }
         }
 

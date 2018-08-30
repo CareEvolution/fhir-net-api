@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,82 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Subscription"; } }
 
+        /// <summary>
+        /// The status of a subscription.
+        /// (url: http://hl7.org/fhir/ValueSet/subscription-status)
+        /// </summary>
+        [FhirEnumeration("SubscriptionStatus")]
+        public enum SubscriptionStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-status)
+            /// </summary>
+            [EnumLiteral("requested", "http://hl7.org/fhir/subscription-status"), Description("Requested")]
+            Requested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/subscription-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-status)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/subscription-status"), Description("Error")]
+            Error,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-status)
+            /// </summary>
+            [EnumLiteral("off", "http://hl7.org/fhir/subscription-status"), Description("Off")]
+            Off,
+        }
+
+        /// <summary>
+        /// The type of method used to execute a subscription.
+        /// (url: http://hl7.org/fhir/ValueSet/subscription-channel-type)
+        /// </summary>
+        [FhirEnumeration("SubscriptionChannelType")]
+        public enum SubscriptionChannelType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("rest-hook", "http://hl7.org/fhir/subscription-channel-type"), Description("Rest Hook")]
+            RestHook,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("websocket", "http://hl7.org/fhir/subscription-channel-type"), Description("Websocket")]
+            Websocket,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("email", "http://hl7.org/fhir/subscription-channel-type"), Description("Email")]
+            Email,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("sms", "http://hl7.org/fhir/subscription-channel-type"), Description("SMS")]
+            Sms,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("message", "http://hl7.org/fhir/subscription-channel-type"), Description("Message")]
+            Message,
+        }
+
 
         [FhirType("ChannelComponent")]
         [DataContract]
-        public partial class ChannelComponent : BackboneElement
+        public partial class ChannelComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ChannelComponent"; } }
@@ -264,10 +337,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TypeElement != null) yield return new ElementValue("type", false, TypeElement);
-                    if (EndpointElement != null) yield return new ElementValue("endpoint", false, EndpointElement);
-                    if (PayloadElement != null) yield return new ElementValue("payload", false, PayloadElement);
-                    foreach (var elem in HeaderElement) { if (elem != null) yield return new ElementValue("header", true, elem); }
+                    if (TypeElement != null) yield return new ElementValue("type", TypeElement);
+                    if (EndpointElement != null) yield return new ElementValue("endpoint", EndpointElement);
+                    if (PayloadElement != null) yield return new ElementValue("payload", PayloadElement);
+                    foreach (var elem in HeaderElement) { if (elem != null) yield return new ElementValue("header", elem); }
                 }
             }
 
@@ -566,14 +639,14 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", true, elem); }
-                if (EndElement != null) yield return new ElementValue("end", false, EndElement);
-                if (ReasonElement != null) yield return new ElementValue("reason", false, ReasonElement);
-                if (CriteriaElement != null) yield return new ElementValue("criteria", false, CriteriaElement);
-                if (ErrorElement != null) yield return new ElementValue("error", false, ErrorElement);
-                if (Channel != null) yield return new ElementValue("channel", false, Channel);
-                foreach (var elem in Tag) { if (elem != null) yield return new ElementValue("tag", true, elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
+                if (EndElement != null) yield return new ElementValue("end", EndElement);
+                if (ReasonElement != null) yield return new ElementValue("reason", ReasonElement);
+                if (CriteriaElement != null) yield return new ElementValue("criteria", CriteriaElement);
+                if (ErrorElement != null) yield return new ElementValue("error", ErrorElement);
+                if (Channel != null) yield return new ElementValue("channel", Channel);
+                foreach (var elem in Tag) { if (elem != null) yield return new ElementValue("tag", elem); }
             }
         }
 

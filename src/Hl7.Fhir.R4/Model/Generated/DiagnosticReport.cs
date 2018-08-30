@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,79 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "DiagnosticReport"; } }
 
+        /// <summary>
+        /// The status of the diagnostic report.
+        /// (url: http://hl7.org/fhir/ValueSet/diagnostic-report-status)
+        /// </summary>
+        [FhirEnumeration("DiagnosticReportStatus")]
+        public enum DiagnosticReportStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("registered", "http://hl7.org/fhir/diagnostic-report-status"), Description("Registered")]
+            Registered,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("partial", "http://hl7.org/fhir/diagnostic-report-status"), Description("Partial")]
+            Partial,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("preliminary", "http://hl7.org/fhir/diagnostic-report-status"), Description("Preliminary")]
+            Preliminary,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("final", "http://hl7.org/fhir/diagnostic-report-status"), Description("Final")]
+            Final,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("amended", "http://hl7.org/fhir/diagnostic-report-status"), Description("Amended")]
+            Amended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("corrected", "http://hl7.org/fhir/diagnostic-report-status"), Description("Corrected")]
+            Corrected,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("appended", "http://hl7.org/fhir/diagnostic-report-status"), Description("Appended")]
+            Appended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/diagnostic-report-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/diagnostic-report-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/diagnostic-report-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/diagnostic-report-status"), Description("Unknown")]
+            Unknown,
+        }
+
 
         [FhirType("MediaComponent")]
         [DataContract]
-        public partial class MediaComponent : BackboneElement
+        public partial class MediaComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "MediaComponent"; } }
@@ -173,8 +243,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (CommentElement != null) yield return new ElementValue("comment", false, CommentElement);
-                    if (Link != null) yield return new ElementValue("link", false, Link);
+                    if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                    if (Link != null) yield return new ElementValue("link", Link);
                 }
             }
 
@@ -391,7 +461,7 @@ namespace Hl7.Fhir.Model.R4
         private List<ResourceReference> _specimen;
 
         /// <summary>
-        /// Observations - simple, or complex nested groups
+        /// Observations
         /// </summary>
         [FhirElement("result", Order=210)]
         [References("Observation")]
@@ -435,7 +505,7 @@ namespace Hl7.Fhir.Model.R4
         private List<MediaComponent> _media;
 
         /// <summary>
-        /// Clinical Interpretation of test results
+        /// Clinical conclusion (interpretation) of test results
         /// </summary>
         [FhirElement("conclusion", Order=240)]
         [DataMember]
@@ -448,7 +518,7 @@ namespace Hl7.Fhir.Model.R4
         private FhirString _conclusionElement;
 
         /// <summary>
-        /// Clinical Interpretation of test results
+        /// Clinical conclusion (interpretation) of test results
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -467,18 +537,18 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Codes for the conclusion
+        /// Codes for the clinical conclusion of test results
         /// </summary>
-        [FhirElement("codedDiagnosis", Order=250)]
+        [FhirElement("conclusionCode", Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<CodeableConcept> CodedDiagnosis
+        public List<CodeableConcept> ConclusionCode
         {
-            get { if (_codedDiagnosis==null) _codedDiagnosis = new List<CodeableConcept>(); return _codedDiagnosis; }
-            set { _codedDiagnosis = value; OnPropertyChanged("CodedDiagnosis"); }
+            get { if (_conclusionCode==null) _conclusionCode = new List<CodeableConcept>(); return _conclusionCode; }
+            set { _conclusionCode = value; OnPropertyChanged("ConclusionCode"); }
         }
 
-        private List<CodeableConcept> _codedDiagnosis;
+        private List<CodeableConcept> _conclusionCode;
 
         /// <summary>
         /// Entire report as issued
@@ -518,7 +588,7 @@ namespace Hl7.Fhir.Model.R4
                 if (ImagingStudy != null) dest.ImagingStudy = new List<ResourceReference>(ImagingStudy.DeepCopy());
                 if (Media != null) dest.Media = new List<MediaComponent>(Media.DeepCopy());
                 if (ConclusionElement != null) dest.ConclusionElement = (FhirString)ConclusionElement.DeepCopy();
-                if (CodedDiagnosis != null) dest.CodedDiagnosis = new List<CodeableConcept>(CodedDiagnosis.DeepCopy());
+                if (ConclusionCode != null) dest.ConclusionCode = new List<CodeableConcept>(ConclusionCode.DeepCopy());
                 if (PresentedForm != null) dest.PresentedForm = new List<Attachment>(PresentedForm.DeepCopy());
                 return dest;
             }
@@ -553,7 +623,7 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(ImagingStudy, otherT.ImagingStudy)) return false;
             if ( !DeepComparable.Matches(Media, otherT.Media)) return false;
             if (!DeepComparable.Matches(ConclusionElement, otherT.ConclusionElement)) return false;
-            if ( !DeepComparable.Matches(CodedDiagnosis, otherT.CodedDiagnosis)) return false;
+            if ( !DeepComparable.Matches(ConclusionCode, otherT.ConclusionCode)) return false;
             if ( !DeepComparable.Matches(PresentedForm, otherT.PresentedForm)) return false;
 
             return true;
@@ -581,7 +651,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(ImagingStudy, otherT.ImagingStudy)) return false;
             if (!DeepComparable.IsExactly(Media, otherT.Media)) return false;
             if (!DeepComparable.IsExactly(ConclusionElement, otherT.ConclusionElement)) return false;
-            if (!DeepComparable.IsExactly(CodedDiagnosis, otherT.CodedDiagnosis)) return false;
+            if (!DeepComparable.IsExactly(ConclusionCode, otherT.ConclusionCode)) return false;
             if (!DeepComparable.IsExactly(PresentedForm, otherT.PresentedForm)) return false;
 
             return true;
@@ -609,7 +679,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in ImagingStudy) { if (elem != null) yield return elem; }
                 foreach (var elem in Media) { if (elem != null) yield return elem; }
                 if (ConclusionElement != null) yield return ConclusionElement;
-                foreach (var elem in CodedDiagnosis) { if (elem != null) yield return elem; }
+                foreach (var elem in ConclusionCode) { if (elem != null) yield return elem; }
                 foreach (var elem in PresentedForm) { if (elem != null) yield return elem; }
             }
         }
@@ -620,24 +690,24 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", true, elem); }
-                if (StatusElement != null) yield return new ElementValue("status", false, StatusElement);
-                if (Category != null) yield return new ElementValue("category", false, Category);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Effective != null) yield return new ElementValue("effective", false, Effective);
-                if (IssuedElement != null) yield return new ElementValue("issued", false, IssuedElement);
-                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", true, elem); }
-                foreach (var elem in ResultsInterpreter) { if (elem != null) yield return new ElementValue("resultsInterpreter", true, elem); }
-                foreach (var elem in Specimen) { if (elem != null) yield return new ElementValue("specimen", true, elem); }
-                foreach (var elem in Result) { if (elem != null) yield return new ElementValue("result", true, elem); }
-                foreach (var elem in ImagingStudy) { if (elem != null) yield return new ElementValue("imagingStudy", true, elem); }
-                foreach (var elem in Media) { if (elem != null) yield return new ElementValue("media", true, elem); }
-                if (ConclusionElement != null) yield return new ElementValue("conclusion", false, ConclusionElement);
-                foreach (var elem in CodedDiagnosis) { if (elem != null) yield return new ElementValue("codedDiagnosis", true, elem); }
-                foreach (var elem in PresentedForm) { if (elem != null) yield return new ElementValue("presentedForm", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
+                if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (Category != null) yield return new ElementValue("category", Category);
+                if (Code != null) yield return new ElementValue("code", Code);
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Effective != null) yield return new ElementValue("effective", Effective);
+                if (IssuedElement != null) yield return new ElementValue("issued", IssuedElement);
+                foreach (var elem in Performer) { if (elem != null) yield return new ElementValue("performer", elem); }
+                foreach (var elem in ResultsInterpreter) { if (elem != null) yield return new ElementValue("resultsInterpreter", elem); }
+                foreach (var elem in Specimen) { if (elem != null) yield return new ElementValue("specimen", elem); }
+                foreach (var elem in Result) { if (elem != null) yield return new ElementValue("result", elem); }
+                foreach (var elem in ImagingStudy) { if (elem != null) yield return new ElementValue("imagingStudy", elem); }
+                foreach (var elem in Media) { if (elem != null) yield return new ElementValue("media", elem); }
+                if (ConclusionElement != null) yield return new ElementValue("conclusion", ConclusionElement);
+                foreach (var elem in ConclusionCode) { if (elem != null) yield return new ElementValue("conclusionCode", elem); }
+                foreach (var elem in PresentedForm) { if (elem != null) yield return new ElementValue("presentedForm", elem); }
             }
         }
 

@@ -126,7 +126,7 @@ namespace Hl7.Fhir.Rest.Http.R4
                             errorResult.Response = new Bundle.ResponseComponent();
                             errorResult.Response.Status = ((int)response.StatusCode).ToString();
 
-                            OperationOutcome operationOutcome = OperationOutcome.ForException(bte, IssueType.Invalid);
+                            OperationOutcome operationOutcome = OperationOutcome.ForException(bte, OperationOutcome.IssueType.Invalid);
 
                             errorResult.Resource = operationOutcome;
                             LastResult = errorResult;

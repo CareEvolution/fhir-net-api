@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("StageComponent")]
         [DataContract]
-        public partial class StageComponent : BackboneElement
+        public partial class StageComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "StageComponent"; } }
@@ -171,9 +172,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Summary != null) yield return new ElementValue("summary", false, Summary);
-                    foreach (var elem in Assessment) { if (elem != null) yield return new ElementValue("assessment", true, elem); }
-                    if (Type != null) yield return new ElementValue("type", false, Type);
+                    if (Summary != null) yield return new ElementValue("summary", Summary);
+                    foreach (var elem in Assessment) { if (elem != null) yield return new ElementValue("assessment", elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
                 }
             }
 
@@ -183,7 +184,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EvidenceComponent")]
         [DataContract]
-        public partial class EvidenceComponent : BackboneElement
+        public partial class EvidenceComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EvidenceComponent"; } }
@@ -278,8 +279,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", true, elem); }
-                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", true, elem); }
+                    foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
+                    foreach (var elem in Detail) { if (elem != null) yield return new ElementValue("detail", elem); }
                 }
             }
 
@@ -306,64 +307,26 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("clinicalStatus", InSummary=true, Order=100)]
         [DataMember]
-        public Code<ConditionClinicalStatusCodes> ClinicalStatusElement
+        public CodeableConcept ClinicalStatus
         {
-            get { return _clinicalStatusElement; }
-            set { _clinicalStatusElement = value; OnPropertyChanged("ClinicalStatusElement"); }
+            get { return _clinicalStatus; }
+            set { _clinicalStatus = value; OnPropertyChanged("ClinicalStatus"); }
         }
 
-        private Code<ConditionClinicalStatusCodes> _clinicalStatusElement;
-
-        /// <summary>
-        /// active | recurrence | relapse | well-controlled | poorly-controlled | inactive | remission | resolved
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMember]
-        public ConditionClinicalStatusCodes? ClinicalStatus
-        {
-            get { return ClinicalStatusElement != null ? ClinicalStatusElement.Value : null; }
-            set
-            {
-                if (value == null)
-                    ClinicalStatusElement = null;
-                else
-                    ClinicalStatusElement = new Code<ConditionClinicalStatusCodes>(value);
-                OnPropertyChanged("ClinicalStatus");
-            }
-        }
+        private CodeableConcept _clinicalStatus;
 
         /// <summary>
         /// unconfirmed | provisional | differential | confirmed | refuted | entered-in-error
         /// </summary>
         [FhirElement("verificationStatus", InSummary=true, Order=110)]
         [DataMember]
-        public Code<ConditionVerificationStatus> VerificationStatusElement
+        public CodeableConcept VerificationStatus
         {
-            get { return _verificationStatusElement; }
-            set { _verificationStatusElement = value; OnPropertyChanged("VerificationStatusElement"); }
+            get { return _verificationStatus; }
+            set { _verificationStatus = value; OnPropertyChanged("VerificationStatus"); }
         }
 
-        private Code<ConditionVerificationStatus> _verificationStatusElement;
-
-        /// <summary>
-        /// unconfirmed | provisional | differential | confirmed | refuted | entered-in-error
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMember]
-        public ConditionVerificationStatus? VerificationStatus
-        {
-            get { return VerificationStatusElement != null ? VerificationStatusElement.Value : null; }
-            set
-            {
-                if (value == null)
-                    VerificationStatusElement = null;
-                else
-                    VerificationStatusElement = new Code<ConditionVerificationStatus>(value);
-                OnPropertyChanged("VerificationStatus");
-            }
-        }
+        private CodeableConcept _verificationStatus;
 
         /// <summary>
         /// problem-list-item | encounter-diagnosis
@@ -477,34 +440,34 @@ namespace Hl7.Fhir.Model.R4
         private Element _abatement;
 
         /// <summary>
-        /// Date record was believed accurate
+        /// Date record was first recorded
         /// </summary>
-        [FhirElement("assertedDate", InSummary=true, Order=200)]
+        [FhirElement("recordedDate", InSummary=true, Order=200)]
         [DataMember]
-        public FhirDateTime AssertedDateElement
+        public FhirDateTime RecordedDateElement
         {
-            get { return _assertedDateElement; }
-            set { _assertedDateElement = value; OnPropertyChanged("AssertedDateElement"); }
+            get { return _recordedDateElement; }
+            set { _recordedDateElement = value; OnPropertyChanged("RecordedDateElement"); }
         }
 
-        private FhirDateTime _assertedDateElement;
+        private FhirDateTime _recordedDateElement;
 
         /// <summary>
-        /// Date record was believed accurate
+        /// Date record was first recorded
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public string AssertedDate
+        public string RecordedDate
         {
-            get { return AssertedDateElement != null ? AssertedDateElement.Value : null; }
+            get { return RecordedDateElement != null ? RecordedDateElement.Value : null; }
             set
             {
                 if (value == null)
-                    AssertedDateElement = null;
+                    RecordedDateElement = null;
                 else
-                    AssertedDateElement = new FhirDateTime(value);
-                OnPropertyChanged("AssertedDate");
+                    RecordedDateElement = new FhirDateTime(value);
+                OnPropertyChanged("RecordedDate");
             }
         }
 
@@ -581,27 +544,27 @@ namespace Hl7.Fhir.Model.R4
 
         public static ElementDefinition.ConstraintComponent Condition_CON_5 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "verificationStatus!='entered-in-error' or clinicalStatus.empty()",
+            Expression = "verificationStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-ver-status' and code='entered-in-error').empty() or clinicalStatus.empty()",
             Key = "con-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Condition.clinicalStatus SHALL NOT be present if verification Status is entered-in-error",
-            Xpath = "f:verificationStatus/@value!='entered-in-error' or not(exists(f:clinicalStatus))"
+            Xpath = "not(exists(f:verificationStatus/f:coding[f:system/@value='http://terminology.hl7.org/CodeSystem/condition-ver-status' and f:code/@value='entered-in-error'])) or not(exists(f:clinicalStatus))"
         };
 
         public static ElementDefinition.ConstraintComponent Condition_CON_4 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "abatement.empty() or clinicalStatus='resolved' or clinicalStatus='remission' or clinicalStatus='inactive'",
+            Expression = "abatement.empty() or clinicalStatus.coding.where(system='http://terminology.hl7.org/CodeSystem/condition-clinical' and (code='resolved' or code='remission' or code='inactive')).exists()",
             Key = "con-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If condition is abated, then clinicalStatus must be either inactive, resolved, or remission",
-            Xpath = "not(exists(*[starts-with(local-name(.), 'abatement')])) or f:clinicalStatus/@value=('resolved', 'remission', 'inactive')"
+            Xpath = "not(exists(*[starts-with(local-name(.), 'abatement')])) or exists(f:clinicalStatus/f:coding[f:system/@value='http://terminology.hl7.org/CodeSystem/condition-clinical' and f:code/@value=('resolved', 'remission', 'inactive')])"
         };
 
         public static ElementDefinition.ConstraintComponent Condition_CON_3 = new ElementDefinition.ConstraintComponent
         {
             Expression = "verificationStatus='entered-in-error' or clinicalStatus.exists()",
             Key = "con-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error",
             Xpath = "f:verificationStatus/@value='entered-in-error' or exists(f:clinicalStatus)"
         };
@@ -610,7 +573,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "stage.all(summary.exists() or assessment.exists())",
             Key = "con-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Stage SHALL have summary or assessment",
             Xpath = "exists(f:summary) or exists(f:assessment)"
         };
@@ -619,7 +582,7 @@ namespace Hl7.Fhir.Model.R4
         {
             Expression = "evidence.all(code.exists() or detail.exists())",
             Key = "con-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "evidence SHALL have code or details",
             Xpath = "exists(f:code) or exists(f:detail)"
         };
@@ -643,8 +606,8 @@ namespace Hl7.Fhir.Model.R4
             {
                 base.CopyTo(dest);
                 if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
-                if (ClinicalStatusElement != null) dest.ClinicalStatusElement = (Code<ConditionClinicalStatusCodes>)ClinicalStatusElement.DeepCopy();
-                if (VerificationStatusElement != null) dest.VerificationStatusElement = (Code<ConditionVerificationStatus>)VerificationStatusElement.DeepCopy();
+                if (ClinicalStatus != null) dest.ClinicalStatus = (CodeableConcept)ClinicalStatus.DeepCopy();
+                if (VerificationStatus != null) dest.VerificationStatus = (CodeableConcept)VerificationStatus.DeepCopy();
                 if (Category != null) dest.Category = new List<CodeableConcept>(Category.DeepCopy());
                 if (Severity != null) dest.Severity = (CodeableConcept)Severity.DeepCopy();
                 if (Code != null) dest.Code = (CodeableConcept)Code.DeepCopy();
@@ -653,7 +616,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Context != null) dest.Context = (ResourceReference)Context.DeepCopy();
                 if (Onset != null) dest.Onset = (Element)Onset.DeepCopy();
                 if (Abatement != null) dest.Abatement = (Element)Abatement.DeepCopy();
-                if (AssertedDateElement != null) dest.AssertedDateElement = (FhirDateTime)AssertedDateElement.DeepCopy();
+                if (RecordedDateElement != null) dest.RecordedDateElement = (FhirDateTime)RecordedDateElement.DeepCopy();
                 if (Recorder != null) dest.Recorder = (ResourceReference)Recorder.DeepCopy();
                 if (Asserter != null) dest.Asserter = (ResourceReference)Asserter.DeepCopy();
                 if (Stage != null) dest.Stage = new List<StageComponent>(Stage.DeepCopy());
@@ -677,8 +640,8 @@ namespace Hl7.Fhir.Model.R4
 
             if (!base.Matches(otherT)) return false;
             if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-            if (!DeepComparable.Matches(ClinicalStatusElement, otherT.ClinicalStatusElement)) return false;
-            if (!DeepComparable.Matches(VerificationStatusElement, otherT.VerificationStatusElement)) return false;
+            if (!DeepComparable.Matches(ClinicalStatus, otherT.ClinicalStatus)) return false;
+            if (!DeepComparable.Matches(VerificationStatus, otherT.VerificationStatus)) return false;
             if ( !DeepComparable.Matches(Category, otherT.Category)) return false;
             if (!DeepComparable.Matches(Severity, otherT.Severity)) return false;
             if (!DeepComparable.Matches(Code, otherT.Code)) return false;
@@ -687,7 +650,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Context, otherT.Context)) return false;
             if (!DeepComparable.Matches(Onset, otherT.Onset)) return false;
             if (!DeepComparable.Matches(Abatement, otherT.Abatement)) return false;
-            if (!DeepComparable.Matches(AssertedDateElement, otherT.AssertedDateElement)) return false;
+            if (!DeepComparable.Matches(RecordedDateElement, otherT.RecordedDateElement)) return false;
             if (!DeepComparable.Matches(Recorder, otherT.Recorder)) return false;
             if (!DeepComparable.Matches(Asserter, otherT.Asserter)) return false;
             if ( !DeepComparable.Matches(Stage, otherT.Stage)) return false;
@@ -704,8 +667,8 @@ namespace Hl7.Fhir.Model.R4
 
             if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-            if (!DeepComparable.IsExactly(ClinicalStatusElement, otherT.ClinicalStatusElement)) return false;
-            if (!DeepComparable.IsExactly(VerificationStatusElement, otherT.VerificationStatusElement)) return false;
+            if (!DeepComparable.IsExactly(ClinicalStatus, otherT.ClinicalStatus)) return false;
+            if (!DeepComparable.IsExactly(VerificationStatus, otherT.VerificationStatus)) return false;
             if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
             if (!DeepComparable.IsExactly(Severity, otherT.Severity)) return false;
             if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
@@ -714,7 +677,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Context, otherT.Context)) return false;
             if (!DeepComparable.IsExactly(Onset, otherT.Onset)) return false;
             if (!DeepComparable.IsExactly(Abatement, otherT.Abatement)) return false;
-            if (!DeepComparable.IsExactly(AssertedDateElement, otherT.AssertedDateElement)) return false;
+            if (!DeepComparable.IsExactly(RecordedDateElement, otherT.RecordedDateElement)) return false;
             if (!DeepComparable.IsExactly(Recorder, otherT.Recorder)) return false;
             if (!DeepComparable.IsExactly(Asserter, otherT.Asserter)) return false;
             if (!DeepComparable.IsExactly(Stage, otherT.Stage)) return false;
@@ -731,8 +694,8 @@ namespace Hl7.Fhir.Model.R4
             {
                 foreach (var item in base.Children) yield return item;
                 foreach (var elem in Identifier) { if (elem != null) yield return elem; }
-                if (ClinicalStatusElement != null) yield return ClinicalStatusElement;
-                if (VerificationStatusElement != null) yield return VerificationStatusElement;
+                if (ClinicalStatus != null) yield return ClinicalStatus;
+                if (VerificationStatus != null) yield return VerificationStatus;
                 foreach (var elem in Category) { if (elem != null) yield return elem; }
                 if (Severity != null) yield return Severity;
                 if (Code != null) yield return Code;
@@ -741,7 +704,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Context != null) yield return Context;
                 if (Onset != null) yield return Onset;
                 if (Abatement != null) yield return Abatement;
-                if (AssertedDateElement != null) yield return AssertedDateElement;
+                if (RecordedDateElement != null) yield return RecordedDateElement;
                 if (Recorder != null) yield return Recorder;
                 if (Asserter != null) yield return Asserter;
                 foreach (var elem in Stage) { if (elem != null) yield return elem; }
@@ -756,23 +719,23 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", true, elem); }
-                if (ClinicalStatusElement != null) yield return new ElementValue("clinicalStatus", false, ClinicalStatusElement);
-                if (VerificationStatusElement != null) yield return new ElementValue("verificationStatus", false, VerificationStatusElement);
-                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", true, elem); }
-                if (Severity != null) yield return new ElementValue("severity", false, Severity);
-                if (Code != null) yield return new ElementValue("code", false, Code);
-                foreach (var elem in BodySite) { if (elem != null) yield return new ElementValue("bodySite", true, elem); }
-                if (Subject != null) yield return new ElementValue("subject", false, Subject);
-                if (Context != null) yield return new ElementValue("context", false, Context);
-                if (Onset != null) yield return new ElementValue("onset", false, Onset);
-                if (Abatement != null) yield return new ElementValue("abatement", false, Abatement);
-                if (AssertedDateElement != null) yield return new ElementValue("assertedDate", false, AssertedDateElement);
-                if (Recorder != null) yield return new ElementValue("recorder", false, Recorder);
-                if (Asserter != null) yield return new ElementValue("asserter", false, Asserter);
-                foreach (var elem in Stage) { if (elem != null) yield return new ElementValue("stage", true, elem); }
-                foreach (var elem in Evidence) { if (elem != null) yield return new ElementValue("evidence", true, elem); }
-                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", true, elem); }
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
+                if (ClinicalStatus != null) yield return new ElementValue("clinicalStatus", ClinicalStatus);
+                if (VerificationStatus != null) yield return new ElementValue("verificationStatus", VerificationStatus);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
+                if (Severity != null) yield return new ElementValue("severity", Severity);
+                if (Code != null) yield return new ElementValue("code", Code);
+                foreach (var elem in BodySite) { if (elem != null) yield return new ElementValue("bodySite", elem); }
+                if (Subject != null) yield return new ElementValue("subject", Subject);
+                if (Context != null) yield return new ElementValue("context", Context);
+                if (Onset != null) yield return new ElementValue("onset", Onset);
+                if (Abatement != null) yield return new ElementValue("abatement", Abatement);
+                if (RecordedDateElement != null) yield return new ElementValue("recordedDate", RecordedDateElement);
+                if (Recorder != null) yield return new ElementValue("recorder", Recorder);
+                if (Asserter != null) yield return new ElementValue("asserter", Asserter);
+                foreach (var elem in Stage) { if (elem != null) yield return new ElementValue("stage", elem); }
+                foreach (var elem in Evidence) { if (elem != null) yield return new ElementValue("evidence", elem); }
+                foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }
 

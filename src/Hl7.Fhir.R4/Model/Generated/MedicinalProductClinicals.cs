@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("UndesirableEffectsComponent")]
         [DataContract]
-        public partial class UndesirableEffectsComponent : BackboneElement
+        public partial class UndesirableEffectsComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "UndesirableEffectsComponent"; } }
@@ -187,10 +188,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (SymptomConditionEffect != null) yield return new ElementValue("symptomConditionEffect", false, SymptomConditionEffect);
-                    if (Classification != null) yield return new ElementValue("classification", false, Classification);
-                    if (FrequencyOfOccurrence != null) yield return new ElementValue("frequencyOfOccurrence", false, FrequencyOfOccurrence);
-                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", true, elem); }
+                    if (SymptomConditionEffect != null) yield return new ElementValue("symptomConditionEffect", SymptomConditionEffect);
+                    if (Classification != null) yield return new ElementValue("classification", Classification);
+                    if (FrequencyOfOccurrence != null) yield return new ElementValue("frequencyOfOccurrence", FrequencyOfOccurrence);
+                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", elem); }
                 }
             }
 
@@ -200,7 +201,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("PopulationComponent")]
         [DataContract]
-        public partial class PopulationComponent : BackboneElement
+        public partial class PopulationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "PopulationComponent"; } }
@@ -328,10 +329,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Age != null) yield return new ElementValue("age", false, Age);
-                    if (Gender != null) yield return new ElementValue("gender", false, Gender);
-                    if (Race != null) yield return new ElementValue("race", false, Race);
-                    if (PhysiologicalCondition != null) yield return new ElementValue("physiologicalCondition", false, PhysiologicalCondition);
+                    if (Age != null) yield return new ElementValue("age", Age);
+                    if (Gender != null) yield return new ElementValue("gender", Gender);
+                    if (Race != null) yield return new ElementValue("race", Race);
+                    if (PhysiologicalCondition != null) yield return new ElementValue("physiologicalCondition", PhysiologicalCondition);
                 }
             }
 
@@ -341,7 +342,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("TherapeuticIndicationComponent")]
         [DataContract]
-        public partial class TherapeuticIndicationComponent : BackboneElement
+        public partial class TherapeuticIndicationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "TherapeuticIndicationComponent"; } }
@@ -540,14 +541,14 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DiseaseSymptomProcedure != null) yield return new ElementValue("diseaseSymptomProcedure", false, DiseaseSymptomProcedure);
-                    if (DiseaseStatus != null) yield return new ElementValue("diseaseStatus", false, DiseaseStatus);
-                    foreach (var elem in Comorbidity) { if (elem != null) yield return new ElementValue("comorbidity", true, elem); }
-                    if (IntendedEffect != null) yield return new ElementValue("intendedEffect", false, IntendedEffect);
-                    if (Duration != null) yield return new ElementValue("duration", false, Duration);
-                    foreach (var elem in UndesirableEffects) { if (elem != null) yield return new ElementValue("undesirableEffects", true, elem); }
-                    foreach (var elem in OtherTherapy) { if (elem != null) yield return new ElementValue("otherTherapy", true, elem); }
-                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", true, elem); }
+                    if (DiseaseSymptomProcedure != null) yield return new ElementValue("diseaseSymptomProcedure", DiseaseSymptomProcedure);
+                    if (DiseaseStatus != null) yield return new ElementValue("diseaseStatus", DiseaseStatus);
+                    foreach (var elem in Comorbidity) { if (elem != null) yield return new ElementValue("comorbidity", elem); }
+                    if (IntendedEffect != null) yield return new ElementValue("intendedEffect", IntendedEffect);
+                    if (Duration != null) yield return new ElementValue("duration", Duration);
+                    foreach (var elem in UndesirableEffects) { if (elem != null) yield return new ElementValue("undesirableEffects", elem); }
+                    foreach (var elem in OtherTherapy) { if (elem != null) yield return new ElementValue("otherTherapy", elem); }
+                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", elem); }
                 }
             }
 
@@ -557,7 +558,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("OtherTherapyComponent")]
         [DataContract]
-        public partial class OtherTherapyComponent : BackboneElement
+        public partial class OtherTherapyComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "OtherTherapyComponent"; } }
@@ -653,8 +654,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (TherapyRelationshipType != null) yield return new ElementValue("therapyRelationshipType", false, TherapyRelationshipType);
-                    if (Medication != null) yield return new ElementValue("medication", false, Medication);
+                    if (TherapyRelationshipType != null) yield return new ElementValue("therapyRelationshipType", TherapyRelationshipType);
+                    if (Medication != null) yield return new ElementValue("medication", Medication);
                 }
             }
 
@@ -664,7 +665,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ContraindicationComponent")]
         [DataContract]
-        public partial class ContraindicationComponent : BackboneElement
+        public partial class ContraindicationComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContraindicationComponent"; } }
@@ -829,12 +830,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Disease != null) yield return new ElementValue("disease", false, Disease);
-                    if (DiseaseStatus != null) yield return new ElementValue("diseaseStatus", false, DiseaseStatus);
-                    foreach (var elem in Comorbidity) { if (elem != null) yield return new ElementValue("comorbidity", true, elem); }
-                    foreach (var elem in TherapeuticIndication) { if (elem != null) yield return new ElementValue("therapeuticIndication", true, elem); }
-                    foreach (var elem in OtherTherapy) { if (elem != null) yield return new ElementValue("otherTherapy", true, elem); }
-                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", true, elem); }
+                    if (Disease != null) yield return new ElementValue("disease", Disease);
+                    if (DiseaseStatus != null) yield return new ElementValue("diseaseStatus", DiseaseStatus);
+                    foreach (var elem in Comorbidity) { if (elem != null) yield return new ElementValue("comorbidity", elem); }
+                    foreach (var elem in TherapeuticIndication) { if (elem != null) yield return new ElementValue("therapeuticIndication", elem); }
+                    foreach (var elem in OtherTherapy) { if (elem != null) yield return new ElementValue("otherTherapy", elem); }
+                    foreach (var elem in Population) { if (elem != null) yield return new ElementValue("population", elem); }
                 }
             }
 
@@ -844,15 +845,47 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("InteractionsComponent")]
         [DataContract]
-        public partial class InteractionsComponent : BackboneElement
+        public partial class InteractionsComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "InteractionsComponent"; } }
 
             /// <summary>
+            /// The interaction described
+            /// </summary>
+            [FhirElement("interaction", InSummary=true, Order=40)]
+            [DataMember]
+            public FhirString InteractionElement
+            {
+                get { return _interactionElement; }
+                set { _interactionElement = value; OnPropertyChanged("InteractionElement"); }
+            }
+
+            private FhirString _interactionElement;
+
+            /// <summary>
+            /// The interaction described
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Interaction
+            {
+                get { return InteractionElement != null ? InteractionElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        InteractionElement = null;
+                    else
+                        InteractionElement = new FhirString(value);
+                    OnPropertyChanged("Interaction");
+                }
+            }
+
+            /// <summary>
             /// The specific medication, food or laboratory test that interacts
             /// </summary>
-            [FhirElement("interactant", InSummary=true, Order=40)]
+            [FhirElement("interactant", InSummary=true, Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<CodeableConcept> Interactant
@@ -866,7 +899,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The type of the interaction
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=50)]
+            [FhirElement("type", InSummary=true, Order=60)]
             [DataMember]
             public CodeableConcept Type
             {
@@ -879,7 +912,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The effect of the interaction
             /// </summary>
-            [FhirElement("effect", InSummary=true, Order=60)]
+            [FhirElement("effect", InSummary=true, Order=70)]
             [DataMember]
             public CodeableConcept Effect
             {
@@ -892,7 +925,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The incidence of the interaction
             /// </summary>
-            [FhirElement("incidence", InSummary=true, Order=70)]
+            [FhirElement("incidence", InSummary=true, Order=80)]
             [DataMember]
             public CodeableConcept Incidence
             {
@@ -905,7 +938,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Actions for managing the interaction
             /// </summary>
-            [FhirElement("management", InSummary=true, Order=80)]
+            [FhirElement("management", InSummary=true, Order=90)]
             [DataMember]
             public CodeableConcept Management
             {
@@ -922,6 +955,7 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
+                    if (InteractionElement != null) dest.InteractionElement = (FhirString)InteractionElement.DeepCopy();
                     if (Interactant != null) dest.Interactant = new List<CodeableConcept>(Interactant.DeepCopy());
                     if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
                     if (Effect != null) dest.Effect = (CodeableConcept)Effect.DeepCopy();
@@ -944,6 +978,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(InteractionElement, otherT.InteractionElement)) return false;
                 if ( !DeepComparable.Matches(Interactant, otherT.Interactant)) return false;
                 if (!DeepComparable.Matches(Type, otherT.Type)) return false;
                 if (!DeepComparable.Matches(Effect, otherT.Effect)) return false;
@@ -959,6 +994,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(InteractionElement, otherT.InteractionElement)) return false;
                 if (!DeepComparable.IsExactly(Interactant, otherT.Interactant)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
                 if (!DeepComparable.IsExactly(Effect, otherT.Effect)) return false;
@@ -975,6 +1011,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
+                    if (InteractionElement != null) yield return InteractionElement;
                     foreach (var elem in Interactant) { if (elem != null) yield return elem; }
                     if (Type != null) yield return Type;
                     if (Effect != null) yield return Effect;
@@ -989,11 +1026,12 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    foreach (var elem in Interactant) { if (elem != null) yield return new ElementValue("interactant", true, elem); }
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (Effect != null) yield return new ElementValue("effect", false, Effect);
-                    if (Incidence != null) yield return new ElementValue("incidence", false, Incidence);
-                    if (Management != null) yield return new ElementValue("management", false, Management);
+                    if (InteractionElement != null) yield return new ElementValue("interaction", InteractionElement);
+                    foreach (var elem in Interactant) { if (elem != null) yield return new ElementValue("interactant", elem); }
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (Effect != null) yield return new ElementValue("effect", Effect);
+                    if (Incidence != null) yield return new ElementValue("incidence", Incidence);
+                    if (Management != null) yield return new ElementValue("management", Management);
                 }
             }
 
@@ -1127,10 +1165,10 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in UndesirableEffects) { if (elem != null) yield return new ElementValue("undesirableEffects", true, elem); }
-                foreach (var elem in TherapeuticIndication) { if (elem != null) yield return new ElementValue("therapeuticIndication", true, elem); }
-                foreach (var elem in Contraindication) { if (elem != null) yield return new ElementValue("contraindication", true, elem); }
-                foreach (var elem in Interactions) { if (elem != null) yield return new ElementValue("interactions", true, elem); }
+                foreach (var elem in UndesirableEffects) { if (elem != null) yield return new ElementValue("undesirableEffects", elem); }
+                foreach (var elem in TherapeuticIndication) { if (elem != null) yield return new ElementValue("therapeuticIndication", elem); }
+                foreach (var elem in Contraindication) { if (elem != null) yield return new ElementValue("contraindication", elem); }
+                foreach (var elem in Interactions) { if (elem != null) yield return new ElementValue("interactions", elem); }
             }
         }
 

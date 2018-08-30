@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,31 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "SpecimenDefinition"; } }
 
+        /// <summary>
+        /// Degree of preference of a type of conditioned specimen.
+        /// (url: http://hl7.org/fhir/ValueSet/specimen-contained-preference)
+        /// </summary>
+        [FhirEnumeration("SpecimenContainedPreference")]
+        public enum SpecimenContainedPreference
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/specimen-contained-preference)
+            /// </summary>
+            [EnumLiteral("preferred", "http://hl7.org/fhir/specimen-contained-preference"), Description("Preferred")]
+            Preferred,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/specimen-contained-preference)
+            /// </summary>
+            [EnumLiteral("alternate", "http://hl7.org/fhir/specimen-contained-preference"), Description("Alternate")]
+            Alternate,
+        }
+
 
         [FhirType("SpecimenToLabComponent")]
         [DataContract]
-        public partial class SpecimenToLabComponent : BackboneElement
+        public partial class SpecimenToLabComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SpecimenToLabComponent"; } }
@@ -473,21 +495,21 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (IsDerivedElement != null) yield return new ElementValue("isDerived", false, IsDerivedElement);
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    if (PreferenceElement != null) yield return new ElementValue("preference", false, PreferenceElement);
-                    if (ContainerMaterial != null) yield return new ElementValue("containerMaterial", false, ContainerMaterial);
-                    if (ContainerType != null) yield return new ElementValue("containerType", false, ContainerType);
-                    if (ContainerCap != null) yield return new ElementValue("containerCap", false, ContainerCap);
-                    if (ContainerDescriptionElement != null) yield return new ElementValue("containerDescription", false, ContainerDescriptionElement);
-                    if (ContainerCapacity != null) yield return new ElementValue("containerCapacity", false, ContainerCapacity);
-                    if (ContainerMinimumVolume != null) yield return new ElementValue("containerMinimumVolume", false, ContainerMinimumVolume);
-                    foreach (var elem in ContainerAdditive) { if (elem != null) yield return new ElementValue("containerAdditive", true, elem); }
-                    if (ContainerPreparationElement != null) yield return new ElementValue("containerPreparation", false, ContainerPreparationElement);
-                    if (RequirementElement != null) yield return new ElementValue("requirement", false, RequirementElement);
-                    if (RetentionTime != null) yield return new ElementValue("retentionTime", false, RetentionTime);
-                    foreach (var elem in RejectionCriterion) { if (elem != null) yield return new ElementValue("rejectionCriterion", true, elem); }
-                    foreach (var elem in Handling) { if (elem != null) yield return new ElementValue("handling", true, elem); }
+                    if (IsDerivedElement != null) yield return new ElementValue("isDerived", IsDerivedElement);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    if (PreferenceElement != null) yield return new ElementValue("preference", PreferenceElement);
+                    if (ContainerMaterial != null) yield return new ElementValue("containerMaterial", ContainerMaterial);
+                    if (ContainerType != null) yield return new ElementValue("containerType", ContainerType);
+                    if (ContainerCap != null) yield return new ElementValue("containerCap", ContainerCap);
+                    if (ContainerDescriptionElement != null) yield return new ElementValue("containerDescription", ContainerDescriptionElement);
+                    if (ContainerCapacity != null) yield return new ElementValue("containerCapacity", ContainerCapacity);
+                    if (ContainerMinimumVolume != null) yield return new ElementValue("containerMinimumVolume", ContainerMinimumVolume);
+                    foreach (var elem in ContainerAdditive) { if (elem != null) yield return new ElementValue("containerAdditive", elem); }
+                    if (ContainerPreparationElement != null) yield return new ElementValue("containerPreparation", ContainerPreparationElement);
+                    if (RequirementElement != null) yield return new ElementValue("requirement", RequirementElement);
+                    if (RetentionTime != null) yield return new ElementValue("retentionTime", RetentionTime);
+                    foreach (var elem in RejectionCriterion) { if (elem != null) yield return new ElementValue("rejectionCriterion", elem); }
+                    foreach (var elem in Handling) { if (elem != null) yield return new ElementValue("handling", elem); }
                 }
             }
 
@@ -497,7 +519,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("ContainerAdditiveComponent")]
         [DataContract]
-        public partial class ContainerAdditiveComponent : BackboneElement
+        public partial class ContainerAdditiveComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ContainerAdditiveComponent"; } }
@@ -575,7 +597,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Additive != null) yield return new ElementValue("additive", false, Additive);
+                    if (Additive != null) yield return new ElementValue("additive", Additive);
                 }
             }
 
@@ -585,7 +607,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("HandlingComponent")]
         [DataContract]
-        public partial class HandlingComponent : BackboneElement
+        public partial class HandlingComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "HandlingComponent"; } }
@@ -767,11 +789,11 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (ConditionSet != null) yield return new ElementValue("conditionSet", false, ConditionSet);
-                    if (TempRange != null) yield return new ElementValue("tempRange", false, TempRange);
-                    if (MaxDuration != null) yield return new ElementValue("maxDuration", false, MaxDuration);
-                    if (LightExposureElement != null) yield return new ElementValue("lightExposure", false, LightExposureElement);
-                    if (InstructionElement != null) yield return new ElementValue("instruction", false, InstructionElement);
+                    if (ConditionSet != null) yield return new ElementValue("conditionSet", ConditionSet);
+                    if (TempRange != null) yield return new ElementValue("tempRange", TempRange);
+                    if (MaxDuration != null) yield return new ElementValue("maxDuration", MaxDuration);
+                    if (LightExposureElement != null) yield return new ElementValue("lightExposure", LightExposureElement);
+                    if (InstructionElement != null) yield return new ElementValue("instruction", InstructionElement);
                 }
             }
 
@@ -975,12 +997,12 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (Identifier != null) yield return new ElementValue("identifier", false, Identifier);
-                if (TypeCollected != null) yield return new ElementValue("typeCollected", false, TypeCollected);
-                if (PatientPreparationElement != null) yield return new ElementValue("patientPreparation", false, PatientPreparationElement);
-                if (TimeAspectElement != null) yield return new ElementValue("timeAspect", false, TimeAspectElement);
-                foreach (var elem in Collection) { if (elem != null) yield return new ElementValue("collection", true, elem); }
-                foreach (var elem in SpecimenToLab) { if (elem != null) yield return new ElementValue("specimenToLab", true, elem); }
+                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                if (TypeCollected != null) yield return new ElementValue("typeCollected", TypeCollected);
+                if (PatientPreparationElement != null) yield return new ElementValue("patientPreparation", PatientPreparationElement);
+                if (TimeAspectElement != null) yield return new ElementValue("timeAspect", TimeAspectElement);
+                foreach (var elem in Collection) { if (elem != null) yield return new ElementValue("collection", elem); }
+                foreach (var elem in SpecimenToLab) { if (elem != null) yield return new ElementValue("specimenToLab", elem); }
             }
         }
 

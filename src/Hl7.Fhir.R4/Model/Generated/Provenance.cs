@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,7 +41,7 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,10 +57,49 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "Provenance"; } }
 
+        /// <summary>
+        /// How an entity was used in an activity.
+        /// (url: http://hl7.org/fhir/ValueSet/provenance-entity-role)
+        /// </summary>
+        [FhirEnumeration("ProvenanceEntityRole")]
+        public enum ProvenanceEntityRole
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("derivation", "http://hl7.org/fhir/provenance-entity-role"), Description("Derivation")]
+            Derivation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("revision", "http://hl7.org/fhir/provenance-entity-role"), Description("Revision")]
+            Revision,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("quotation", "http://hl7.org/fhir/provenance-entity-role"), Description("Quotation")]
+            Quotation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/provenance-entity-role"), Description("Source")]
+            Source,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("removal", "http://hl7.org/fhir/provenance-entity-role"), Description("Removal")]
+            Removal,
+        }
+
 
         [FhirType("AgentComponent")]
         [DataContract]
-        public partial class AgentComponent : BackboneElement
+        public partial class AgentComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "AgentComponent"; } }
@@ -94,31 +134,31 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Who participated
             /// </summary>
-            [FhirElement("who", InSummary=true, Order=60, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Identifier),typeof(ResourceReference))]
+            [FhirElement("who", InSummary=true, Order=60)]
+            [References("Practitioner","PractitionerRole","RelatedPerson","Patient","Device","Organization")]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Element Who
+            public ResourceReference Who
             {
                 get { return _who; }
                 set { _who = value; OnPropertyChanged("Who"); }
             }
 
-            private Element _who;
+            private ResourceReference _who;
 
             /// <summary>
             /// Who the agent is representing
             /// </summary>
-            [FhirElement("onBehalfOf", Order=70, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Identifier),typeof(ResourceReference))]
+            [FhirElement("onBehalfOf", Order=70)]
+            [References("Practitioner","PractitionerRole","RelatedPerson","Patient","Device","Organization")]
             [DataMember]
-            public Element OnBehalfOf
+            public ResourceReference OnBehalfOf
             {
                 get { return _onBehalfOf; }
                 set { _onBehalfOf = value; OnPropertyChanged("OnBehalfOf"); }
             }
 
-            private Element _onBehalfOf;
+            private ResourceReference _onBehalfOf;
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -129,8 +169,8 @@ namespace Hl7.Fhir.Model.R4
                     base.CopyTo(dest);
                     if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
                     if (Role != null) dest.Role = new List<CodeableConcept>(Role.DeepCopy());
-                    if (Who != null) dest.Who = (Element)Who.DeepCopy();
-                    if (OnBehalfOf != null) dest.OnBehalfOf = (Element)OnBehalfOf.DeepCopy();
+                    if (Who != null) dest.Who = (ResourceReference)Who.DeepCopy();
+                    if (OnBehalfOf != null) dest.OnBehalfOf = (ResourceReference)OnBehalfOf.DeepCopy();
                     return dest;
                 }
                 else
@@ -190,10 +230,10 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Type != null) yield return new ElementValue("type", false, Type);
-                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", true, elem); }
-                    if (Who != null) yield return new ElementValue("who", false, Who);
-                    if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", false, OnBehalfOf);
+                    if (Type != null) yield return new ElementValue("type", Type);
+                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", elem); }
+                    if (Who != null) yield return new ElementValue("who", Who);
+                    if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", OnBehalfOf);
                 }
             }
 
@@ -203,7 +243,7 @@ namespace Hl7.Fhir.Model.R4
 
         [FhirType("EntityComponent")]
         [DataContract]
-        public partial class EntityComponent : BackboneElement
+        public partial class EntityComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EntityComponent"; } }
@@ -244,17 +284,16 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Identity of entity
             /// </summary>
-            [FhirElement("what", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Identifier),typeof(ResourceReference))]
+            [FhirElement("what", InSummary=true, Order=50)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Element What
+            public ResourceReference What
             {
                 get { return _what; }
                 set { _what = value; OnPropertyChanged("What"); }
             }
 
-            private Element _what;
+            private ResourceReference _what;
 
             /// <summary>
             /// Entity is attributed to this agent
@@ -278,7 +317,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if (RoleElement != null) dest.RoleElement = (Code<ProvenanceEntityRole>)RoleElement.DeepCopy();
-                    if (What != null) dest.What = (Element)What.DeepCopy();
+                    if (What != null) dest.What = (ResourceReference)What.DeepCopy();
                     if (Agent != null) dest.Agent = new List<AgentComponent>(Agent.DeepCopy());
                     return dest;
                 }
@@ -336,9 +375,9 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (RoleElement != null) yield return new ElementValue("role", false, RoleElement);
-                    if (What != null) yield return new ElementValue("what", false, What);
-                    foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", true, elem); }
+                    if (RoleElement != null) yield return new ElementValue("role", RoleElement);
+                    if (What != null) yield return new ElementValue("what", What);
+                    foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", elem); }
                 }
             }
 
@@ -617,16 +656,16 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", true, elem); }
-                if (Occurred != null) yield return new ElementValue("occurred", false, Occurred);
-                if (RecordedElement != null) yield return new ElementValue("recorded", false, RecordedElement);
-                foreach (var elem in PolicyElement) { if (elem != null) yield return new ElementValue("policy", true, elem); }
-                if (Location != null) yield return new ElementValue("location", false, Location);
-                foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", true, elem); }
-                if (Activity != null) yield return new ElementValue("activity", false, Activity);
-                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", true, elem); }
-                foreach (var elem in Entity) { if (elem != null) yield return new ElementValue("entity", true, elem); }
-                foreach (var elem in Signature) { if (elem != null) yield return new ElementValue("signature", true, elem); }
+                foreach (var elem in Target) { if (elem != null) yield return new ElementValue("target", elem); }
+                if (Occurred != null) yield return new ElementValue("occurred", Occurred);
+                if (RecordedElement != null) yield return new ElementValue("recorded", RecordedElement);
+                foreach (var elem in PolicyElement) { if (elem != null) yield return new ElementValue("policy", elem); }
+                if (Location != null) yield return new ElementValue("location", Location);
+                foreach (var elem in Reason) { if (elem != null) yield return new ElementValue("reason", elem); }
+                if (Activity != null) yield return new ElementValue("activity", Activity);
+                foreach (var elem in Agent) { if (elem != null) yield return new ElementValue("agent", elem); }
+                foreach (var elem in Entity) { if (elem != null) yield return new ElementValue("entity", elem); }
+                foreach (var elem in Signature) { if (elem != null) yield return new ElementValue("signature", elem); }
             }
         }
 
