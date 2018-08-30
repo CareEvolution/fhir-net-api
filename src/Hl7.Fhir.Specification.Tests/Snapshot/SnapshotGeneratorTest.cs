@@ -18,16 +18,17 @@ using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Support;
 using System.Diagnostics;
 using System.IO;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.STU3;
 using System.Collections.Generic;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Specification.Navigation;
-using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.STU3;
 using System.Text;
 using System.Xml;
 using Hl7.Fhir.Utility;
-using static Hl7.Fhir.Model.ElementDefinition.DiscriminatorComponent;
+using static Hl7.Fhir.Model.STU3.ElementDefinition.DiscriminatorComponent;
+using Hl7.Fhir.FhirPath.STU3;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -55,7 +56,7 @@ namespace Hl7.Fhir.Specification.Tests
         [TestInitialize]
         public void Setup()
         {
-            FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
+            ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
 
             var dirSource = new DirectorySource("TestData/snapshot-test", new DirectorySourceSettings { IncludeSubDirectories = true });
             _source = new TimingSource(dirSource);
@@ -1115,15 +1116,15 @@ namespace Hl7.Fhir.Specification.Tests
             // [WMR 20170711] Fix non-standard element id's in source (capitalization)
             // Standardized element ids are preferred, but not mandatory; so the profile is not invalid
             // Nonetheless fix this first, so we can call common assertion methods
-            var elem = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId == "DiagnosticReport.result:cholesterol");
+            var elem = sd.Snapshot.Element.FirstOrDefault(e => e.Id == "DiagnosticReport.result:cholesterol");
             Assert.IsNotNull(elem);
-            elem.ElementId = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
-            Assert.AreEqual("DiagnosticReport.result:Cholesterol", elem.ElementId);
-            elem = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId == "DiagnosticReport.result:triglyceride");
-            elem.ElementId = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
+            elem.Id = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
+            Assert.AreEqual("DiagnosticReport.result:Cholesterol", elem.Id);
+            elem = sd.Snapshot.Element.FirstOrDefault(e => e.Id == "DiagnosticReport.result:triglyceride");
+            elem.Id = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
             Assert.IsNotNull(elem);
-            elem.ElementId = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
-            Assert.AreEqual("DiagnosticReport.result:Triglyceride", elem.ElementId);
+            elem.Id = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
+            Assert.AreEqual("DiagnosticReport.result:Triglyceride", elem.Id);
 
             // Move to slicing entry
             nav.JumpToFirst("DiagnosticReport.result");
@@ -1166,14 +1167,14 @@ namespace Hl7.Fhir.Specification.Tests
             _generator = new SnapshotGenerator(_testResolver, _settings);
 
             // [WMR 20170614] NEW: ExpandElement should maintain the existing element ID...!
-            var orgId = elem.ElementId;
+            var orgId = elem.Id;
 
             var result = _generator.ExpandElement(elems, elem);
 
             dumpOutcome(_generator.Outcome);
             Assert.IsNull(_generator.Outcome);
 
-            Assert.AreEqual(orgId, elem.ElementId);
+            Assert.AreEqual(orgId, elem.Id);
 
             // Verify results
             verifyExpandElement(elem, elems, result);
@@ -1383,7 +1384,7 @@ namespace Hl7.Fhir.Specification.Tests
                 Debug.Print(new string('=', 100));
                 foreach (var elem in sd.Snapshot.Element)
                 {
-                    Debug.WriteLine("{0}  |  {1}  |  {2}", elem.ElementId, elem.Path, elem.Base?.Path);
+                    Debug.WriteLine("{0}  |  {1}  |  {2}", elem.Id, elem.Path, elem.Base?.Path);
                 }
                 // Debug.Unindent();
             }
@@ -1793,7 +1794,7 @@ namespace Hl7.Fhir.Specification.Tests
                 Assert.IsFalse(elem.ShortElement.IsConstrainedByDiff());
                 // Profile overrides the definition property of the extension definition root element 
                 Assert.AreNotEqual(baseElem.Definition, elem.Definition);
-                Assert.IsTrue(elem.DefinitionElement.IsConstrainedByDiff());
+                Assert.IsTrue(elem.Definition.IsConstrainedByDiff());
 
                 Assert.IsTrue(nav.MoveToFirstChild());
 
@@ -1970,7 +1971,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsNotNull(elems);
             Assert.IsTrue(elems.Count > 0);
 
-            var isConstraint = sd.Derivation == StructureDefinition.TypeDerivationRule.Constraint;
+            var isConstraint = sd.Derivation == TypeDerivationRule.Constraint;
 
             Debug.Print("\r\nStructureDefinition '{0}' url = '{1}'", sd.Name, sd.Url);
             Debug.Print("# | Constraints? | Changed? | Element.Path | Element.Base.Path | BaseElement.Path | #Base | Redundant?");
@@ -2032,7 +2033,7 @@ namespace Hl7.Fhir.Specification.Tests
             var baseClone = (ElementDefinition)baseElem.DeepCopy();
 
             // Id, Path & Base are expected to differ
-            baseClone.ElementId = elem.ElementId;
+            baseClone.Id = elem.Id;
             baseClone.Path = elem.Path;
             baseClone.Base = elem.Base;
 
