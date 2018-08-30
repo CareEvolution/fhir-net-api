@@ -20,6 +20,9 @@ using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Model.Primitives;
 using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.Serialization.R4;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.ElementModel.R4;
 
 namespace Hl7.FhirPath.Tests
 {
@@ -32,7 +35,7 @@ namespace Hl7.FhirPath.Tests
             // var navigator = new TreeNavigator(tree);
             // return navigator;
 
-            var patient = (new FhirXmlParser()).Parse<Hl7.Fhir.Model.Patient>(tpXml);
+            var patient = (new FhirXmlParser()).Parse<Patient>(tpXml);
             return patient.ToElementNavigator();
         }
 

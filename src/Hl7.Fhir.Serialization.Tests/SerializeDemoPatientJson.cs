@@ -1,7 +1,10 @@
 ﻿using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Hl7.Fhir.Utility;

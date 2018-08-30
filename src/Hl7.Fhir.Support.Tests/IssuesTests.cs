@@ -1,5 +1,7 @@
 ﻿using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

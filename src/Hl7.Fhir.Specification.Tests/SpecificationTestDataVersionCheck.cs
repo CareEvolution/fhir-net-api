@@ -1,4 +1,6 @@
 ﻿using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -33,13 +35,13 @@ namespace Hl7.Fhir.Specification.Tests
             if (path.Contains("source-test"))
                 return;
 
-            var xmlParser = new Hl7.Fhir.Serialization.FhirXmlParser();
-            var jsonParser = new Serialization.FhirJsonParser();
+            var xmlParser = new FhirXmlParser();
+            var jsonParser = new FhirJsonParser();
             Console.WriteLine($"Validating test files in {path.Replace(basePath, "")}");
             foreach (var item in Directory.EnumerateFiles(path))
             {
                 string content = File.ReadAllText(item);
-                Hl7.Fhir.Model.Resource resource = null;
+                Resource resource = null;
                 try
                 {
                     if (item.EndsWith(".dll"))

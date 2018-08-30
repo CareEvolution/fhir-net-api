@@ -1,6 +1,8 @@
 ﻿using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.FhirPath;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Specification.Source;

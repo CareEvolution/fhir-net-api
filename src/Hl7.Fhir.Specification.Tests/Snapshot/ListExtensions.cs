@@ -1,4 +1,5 @@
 ﻿using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

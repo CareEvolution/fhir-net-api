@@ -8,6 +8,8 @@ using Hl7.Fhir.Utility;
 using System;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Validation;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.ElementModel.R4;
 
 namespace Hl7.Fhir.Specification.Tests
 {

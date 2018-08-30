@@ -20,13 +20,13 @@ namespace Hl7.Fhir.Validation
             buildWeightQuantity(),
             buildWeightHeightObservation(),
             bundleWithSpecificEntries("Contained"),
-            patientWithSpecificOrganization(new[] { AggregationMode.Contained }, "Contained"),
+            patientWithSpecificOrganization(new[] { ElementDefinition.AggregationMode.Contained }, "Contained"),
             bundleWithSpecificEntries("ContainedBundled"),
-            patientWithSpecificOrganization(new[] { AggregationMode.Contained, AggregationMode.Bundled }, "ContainedBundled"),
+            patientWithSpecificOrganization(new[] { ElementDefinition.AggregationMode.Contained, ElementDefinition.AggregationMode.Bundled }, "ContainedBundled"),
             bundleWithSpecificEntries("Bundled"),
-            patientWithSpecificOrganization(new[] { AggregationMode.Bundled }, "Bundled"),
+            patientWithSpecificOrganization(new[] { ElementDefinition.AggregationMode.Bundled }, "Bundled"),
             bundleWithSpecificEntries("Referenced"),
-            patientWithSpecificOrganization(new[] { AggregationMode.Referenced }, "Referenced"),
+            patientWithSpecificOrganization(new[] { ElementDefinition.AggregationMode.Referenced }, "Referenced"),
             buildParametersWithBoundParams(),   
             bundleWithConstrainedContained(),
             buildOrganizationWithRegexConstraintOnName(),
@@ -206,7 +206,7 @@ namespace Hl7.Fhir.Validation
         }
 
 
-        private static StructureDefinition patientWithSpecificOrganization(IEnumerable<AggregationMode> aggregation, string prefix)
+        private static StructureDefinition patientWithSpecificOrganization(IEnumerable<ElementDefinition.AggregationMode> aggregation, string prefix)
         {
             var result = createTestSD($"http://validationtest.org/fhir/StructureDefinition/PatientWith{prefix}Organization", $"Patient with {prefix} managing organization",
                     $"Patient for which the managingOrganization reference is limited to {prefix} references", FHIRAllTypes.Patient);

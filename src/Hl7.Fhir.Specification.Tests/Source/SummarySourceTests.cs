@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 // Use alias to avoid conflict with Hl7.Fhir.Model.Task
 using Tasks = System.Threading.Tasks;
+using Hl7.Fhir.Model.R4;
 
 namespace Hl7.Fhir.Specification.Tests
 {

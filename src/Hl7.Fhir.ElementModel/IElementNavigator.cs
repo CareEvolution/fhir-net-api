@@ -18,7 +18,7 @@ namespace Hl7.Fhir.ElementModel
     /// their defined name (without type suffix) and the underlying raw value is parsed into a native .NET representation
     /// </remarks>
     [Obsolete("IElementNavigator should be replaced by the IElementNode interface, which is returned by the parsers. Where an " +
-        "IElementNavigator is still needed, IElementNode can be turned into an IElementNavigator using the ToElementNavigator() " +
+        "IElementNavigator is still needed, ISourceNode can be turned into an IElementNavigator using the ToElementNavigator() " +
         "extension method.")]
     public interface IElementNavigator
     {

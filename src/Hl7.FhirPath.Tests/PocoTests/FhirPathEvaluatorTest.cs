@@ -22,6 +22,10 @@ using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model.Primitives;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
+using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.FhirPath.R4;
 
 namespace Hl7.FhirPath.Tests
 {
@@ -36,7 +40,7 @@ namespace Hl7.FhirPath.Tests
     
         public PatientFixture()
         {
-            var parser = new Hl7.Fhir.Serialization.FhirXmlParser();
+            var parser = new FhirXmlParser();
             var tpXml = TestData.ReadTextFile("fp-test-patient.xml");
 
             var patient = parser.Parse<Patient>(tpXml);

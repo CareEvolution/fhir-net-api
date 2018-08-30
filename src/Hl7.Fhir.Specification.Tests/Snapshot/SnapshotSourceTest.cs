@@ -5,6 +5,7 @@ using Hl7.Fhir.Model;
 using System.Diagnostics;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Snapshot;
+using Hl7.Fhir.Model.R4;
 
 namespace Hl7.Fhir.Specification.Tests
 {

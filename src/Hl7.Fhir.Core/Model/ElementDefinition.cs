@@ -22,6 +22,16 @@ namespace Hl7.Fhir.Model.R4
     [DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")]
     public partial class ElementDefinition
     {
+        public ElementDefinition()
+        {
+
+        }
+
+        public ElementDefinition(string path)
+        {
+            Path = path;
+        }
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         [NotMapped]
         string DebuggerDisplay

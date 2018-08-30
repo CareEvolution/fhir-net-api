@@ -12,22 +12,21 @@
 #define HACK_STU3_RECURSION
 
 using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Hl7.Fhir.Serialization;
-using System.Collections.Generic;
-using Hl7.Fhir.Specification.Source;
-using Hl7.Fhir.Specification.Snapshot;
-using Hl7.Fhir.Specification.Navigation;
-using Hl7.Fhir.Rest;
+using System.Linq;
 using System.Text;
 using System.Xml;
+using Hl7.Fhir.FhirPath.R4;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization.R4;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Specification.Snapshot;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
-using static Hl7.Fhir.Model.ElementDefinition.DiscriminatorComponent;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -55,7 +54,7 @@ namespace Hl7.Fhir.Specification.Tests
         [TestInitialize]
         public void Setup()
         {
-            FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
+            ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
 
             var dirSource = new DirectorySource("TestData/snapshot-test", new DirectorySourceSettings { IncludeSubDirectories = true });
             _source = new TimingSource(dirSource);
@@ -467,7 +466,7 @@ namespace Hl7.Fhir.Specification.Tests
             var elem = matches[0];
             if (_settings.GenerateElementIds && elementId != null)
             {
-                Assert.AreEqual(elementId, elem.ElementId, $"Invalid elementId in {label} component. Expected = '{elementId}', actual = '{elem.ElementId}'.");
+                Assert.AreEqual(elementId, elem.Id, $"Invalid elementId in {label} component. Expected = '{elementId}', actual = '{elem.Id}'.");
             }
         }
 
@@ -1115,15 +1114,15 @@ namespace Hl7.Fhir.Specification.Tests
             // [WMR 20170711] Fix non-standard element id's in source (capitalization)
             // Standardized element ids are preferred, but not mandatory; so the profile is not invalid
             // Nonetheless fix this first, so we can call common assertion methods
-            var elem = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId == "DiagnosticReport.result:cholesterol");
+            var elem = sd.Snapshot.Element.FirstOrDefault(e => e.Id == "DiagnosticReport.result:cholesterol");
             Assert.IsNotNull(elem);
-            elem.ElementId = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
-            Assert.AreEqual("DiagnosticReport.result:Cholesterol", elem.ElementId);
-            elem = sd.Snapshot.Element.FirstOrDefault(e => e.ElementId == "DiagnosticReport.result:triglyceride");
-            elem.ElementId = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
+            elem.Id = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
+            Assert.AreEqual("DiagnosticReport.result:Cholesterol", elem.Id);
+            elem = sd.Snapshot.Element.FirstOrDefault(e => e.Id == "DiagnosticReport.result:triglyceride");
+            elem.Id = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
             Assert.IsNotNull(elem);
-            elem.ElementId = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
-            Assert.AreEqual("DiagnosticReport.result:Triglyceride", elem.ElementId);
+            elem.Id = elem.Path + ElementIdGenerator.ElementIdSliceNameDelimiter + elem.SliceName;
+            Assert.AreEqual("DiagnosticReport.result:Triglyceride", elem.Id);
 
             // Move to slicing entry
             nav.JumpToFirst("DiagnosticReport.result");
@@ -1166,14 +1165,14 @@ namespace Hl7.Fhir.Specification.Tests
             _generator = new SnapshotGenerator(_testResolver, _settings);
 
             // [WMR 20170614] NEW: ExpandElement should maintain the existing element ID...!
-            var orgId = elem.ElementId;
+            var orgId = elem.Id;
 
             var result = _generator.ExpandElement(elems, elem);
 
             dumpOutcome(_generator.Outcome);
             Assert.IsNull(_generator.Outcome);
 
-            Assert.AreEqual(orgId, elem.ElementId);
+            Assert.AreEqual(orgId, elem.Id);
 
             // Verify results
             verifyExpandElement(elem, elems, result);
@@ -1383,7 +1382,7 @@ namespace Hl7.Fhir.Specification.Tests
                 Debug.Print(new string('=', 100));
                 foreach (var elem in sd.Snapshot.Element)
                 {
-                    Debug.WriteLine("{0}  |  {1}  |  {2}", elem.ElementId, elem.Path, elem.Base?.Path);
+                    Debug.WriteLine("{0}  |  {1}  |  {2}", elem.Id, elem.Path, elem.Base?.Path);
                 }
                 // Debug.Unindent();
             }
@@ -1793,7 +1792,7 @@ namespace Hl7.Fhir.Specification.Tests
                 Assert.IsFalse(elem.ShortElement.IsConstrainedByDiff());
                 // Profile overrides the definition property of the extension definition root element 
                 Assert.AreNotEqual(baseElem.Definition, elem.Definition);
-                Assert.IsTrue(elem.DefinitionElement.IsConstrainedByDiff());
+                Assert.IsTrue(elem.Definition.IsConstrainedByDiff());
 
                 Assert.IsTrue(nav.MoveToFirstChild());
 
@@ -1815,7 +1814,7 @@ namespace Hl7.Fhir.Specification.Tests
                 Assert.AreEqual(baseElem.Short, elem.Short);    // Verify that short property is inherited
                 Assert.IsFalse(elem.ShortElement.IsConstrainedByDiff());
                 Assert.AreEqual(baseElem.Definition, elem.Definition);    // Verify that definition property is inherited
-                Assert.IsFalse(elem.DefinitionElement.IsConstrainedByDiff());
+                Assert.IsFalse(elem.Definition.IsConstrainedByDiff());
             }
             finally
             {
@@ -2032,7 +2031,7 @@ namespace Hl7.Fhir.Specification.Tests
             var baseClone = (ElementDefinition)baseElem.DeepCopy();
 
             // Id, Path & Base are expected to differ
-            baseClone.ElementId = elem.ElementId;
+            baseClone.Id = elem.Id;
             baseClone.Path = elem.Path;
             baseClone.Base = elem.Base;
 
@@ -2062,11 +2061,11 @@ namespace Hl7.Fhir.Specification.Tests
                 || isChanged(elem.Base)
                 || isChanged(elem.Binding)
                 || hasChanges(elem.Code)
-                || isChanged(elem.CommentElement)
+                || isChanged(elem.Comment)
                 || hasChanges(elem.ConditionElement)
                 || hasChanges(elem.Constraint)
                 || isChanged(elem.DefaultValue)
-                || isChanged(elem.DefinitionElement)
+                || isChanged(elem.Definition)
                 || hasChanges(elem.Example)
                 || hasChanges(elem.Extension)
              //   || hasChanges(elem.FhirCommentsElement)
@@ -2078,7 +2077,7 @@ namespace Hl7.Fhir.Specification.Tests
                 || isChanged(elem.MaxElement)
                 || isChanged(elem.MaxLengthElement)
                 || isChanged(elem.MaxValue)
-                || isChanged(elem.MeaningWhenMissingElement)
+                || isChanged(elem.MeaningWhenMissing)
                 || isChanged(elem.MinElement)
                 || isChanged(elem.MinValue)
                 || isChanged(elem.MustSupportElement)
@@ -2087,7 +2086,7 @@ namespace Hl7.Fhir.Specification.Tests
                 || isChanged(elem.PathElement)
                 || isChanged(elem.Pattern)
                 || hasChanges(elem.RepresentationElement)
-                || isChanged(elem.RequirementsElement)
+                || isChanged(elem.Requirements)
                 || isChanged(elem.ShortElement)
                 || isChanged(elem.Slicing)
                 || hasChanges(elem.Type);
@@ -2103,11 +2102,11 @@ namespace Hl7.Fhir.Specification.Tests
             if (isChanged(element.Base)) { return "Base"; }
             if (isChanged(element.Binding)) { return "Binding"; }
             if (hasChanges(element.Code)) { return "Code"; }
-            if (isChanged(element.CommentElement)) { return "Comment"; }
+            if (isChanged(element.Comment)) { return "Comment"; }
             if (hasChanges(element.ConditionElement)) { return "Condition"; }
             if (hasChanges(element.Constraint)) { return "Constraint"; }
             if (isChanged(element.DefaultValue)) { return "DefaultValue"; }
-            if (isChanged(element.DefinitionElement)) { return "Definition"; }
+            if (isChanged(element.Definition)) { return "Definition"; }
             if (hasChanges(element.Example)) { return "Example"; }
             if (hasChanges(element.Extension)) { return "Extension"; }
             //if (hasChanges(element.FhirCommentsElement)) { return "FhirComments"; }
@@ -2119,7 +2118,7 @@ namespace Hl7.Fhir.Specification.Tests
             if (isChanged(element.MaxElement)) { return "Max"; }
             if (isChanged(element.MaxLengthElement)) { return "MaxLength"; }
             if (isChanged(element.MaxValue)) { return "MaxValue"; }
-            if (isChanged(element.MeaningWhenMissingElement)) { return "MeaningWhenMissing"; }
+            if (isChanged(element.MeaningWhenMissing)) { return "MeaningWhenMissing"; }
             if (isChanged(element.MinElement)) { return "Min"; }
             if (isChanged(element.MinValue)) { return "MinValue"; }
             if (isChanged(element.MustSupportElement)) { return "MustSupport"; }
@@ -2128,7 +2127,7 @@ namespace Hl7.Fhir.Specification.Tests
             if (isChanged(element.PathElement)) { return "Path"; }
             if (isChanged(element.Pattern)) { return "Pattern"; }
             if (hasChanges(element.RepresentationElement)) { return "Representation"; }
-            if (isChanged(element.RequirementsElement)) { return "Requirements"; }
+            if (isChanged(element.Requirements)) { return "Requirements"; }
             //if (IsChanged(element.ShortElement)) { return "Short"; }
             //if (IsChanged(element.Slicing)) { return "Slicing"; }
             //if (HasChanges(element.Type)) { return "Type"; }
@@ -3486,7 +3485,7 @@ namespace Hl7.Fhir.Specification.Tests
                 {
                     new ElementDefinition("Patient.identifier")
                     {
-                        Comment = "NationalPatientProfile"
+                        Comment = new Markdown( "NationalPatientProfile" )
                     },
                     new ElementDefinition("Patient.identifier.system")
                     {
@@ -3521,7 +3520,7 @@ namespace Hl7.Fhir.Specification.Tests
                         },
                         Min = 1,
                         // Append to comment inherited from base
-                        Comment = "...SlicedNationalPatientProfile"
+                        Comment = new Markdown("...SlicedNationalPatientProfile")
                     }
                     // Slice: bsn
                     ,new ElementDefinition("Patient.identifier")
@@ -3712,7 +3711,7 @@ namespace Hl7.Fhir.Specification.Tests
                         },
                         Min = 1,
                         // Append to comment inherited from base
-                        Comment = "...SlicedNationalPatientProfile"
+                        Comment = new Markdown("...SlicedNationalPatientProfile")
                     }
                     // Slice: bsn
                     ,new ElementDefinition("Patient.identifier")
@@ -4304,7 +4303,7 @@ namespace Hl7.Fhir.Specification.Tests
                     new ElementDefinition("Questionnaire.url")
                     {
                         // Override default element id
-                        ElementId = "CustomId"
+                        Id = "CustomId"
                     },
                     // Verify that slices receive unique element id
                     new ElementDefinition("Questionnaire.code")
@@ -4380,7 +4379,7 @@ namespace Hl7.Fhir.Specification.Tests
                 // Verify overriden element id in default snapshot
                 var elem = elems.FirstOrDefault(e => e.Path == urlElement.Path);
                 Assert.IsNotNull(elem);
-                Assert.AreEqual(urlElement.ElementId, elem.ElementId);
+                Assert.AreEqual(urlElement.Id, elem.Id);
 
                 // [WMR 20180115] NEW - Use alternative (iterative) approach for full expansion
                 // IMPORTANT: also hook elementHandler event during fullExpansion, to emit (custom) base element annotations
@@ -4394,7 +4393,7 @@ namespace Hl7.Fhir.Specification.Tests
                 // Verify overriden element id in full expansion
                 elem = elems.FirstOrDefault(e => e.Path == urlElement.Path);
                 Assert.IsNotNull(elem);
-                Assert.AreEqual(urlElement.ElementId, elem.ElementId);
+                Assert.AreEqual(urlElement.Id, elem.Id);
             }
             finally
             {
@@ -4405,10 +4404,10 @@ namespace Hl7.Fhir.Specification.Tests
             foreach (var elem in expanded.Snapshot.Element)
             {
                 var baseElem = elem.Annotation<BaseDefAnnotation>()?.BaseElementDefinition;
-                Debug.WriteLine($"{elem.Path} | {elem.SliceName} | Id = {elem.ElementId} | Base Id = {baseElem?.ElementId}");
-                Assert.IsNotNull(elem.ElementId);
+                Debug.WriteLine($"{elem.Path} | {elem.SliceName} | Id = {elem.Id} | Base Id = {baseElem?.Id}");
+                Assert.IsNotNull(elem.Id);
                 Assert.IsNotNull(baseElem);
-                Assert.IsNotNull(baseElem.ElementId);
+                Assert.IsNotNull(baseElem.Id);
 
                 if (elem.Path != urlElement.Path)
                 {
@@ -4423,8 +4422,8 @@ namespace Hl7.Fhir.Specification.Tests
             // [WMR 20170614] derived profile may (further) slice the base profile
             // Element id's are not exactly equal, as the diff id's will introduce slice name(s)
             // => Strip slice names from id; path segments should be equal
-            var idSegments = ElementIdGenerator.ParseId(elem.ElementId);
-            var baseIdSegments = ElementIdGenerator.ParseId(baseElem.ElementId);
+            var idSegments = ElementIdGenerator.ParseId(elem.Id);
+            var baseIdSegments = ElementIdGenerator.ParseId(baseElem.Id);
 
             // Determine if the base element has the same root (i.e. represents base profile of the same type)
             // If so, then the element ids should have the same number of segments
@@ -4517,10 +4516,10 @@ namespace Hl7.Fhir.Specification.Tests
                 foreach (var elem in expanded.Snapshot.Element)
                 {
                     var baseElem = elem.Annotation<BaseDefAnnotation>()?.BaseElementDefinition;
-                    Debug.WriteLine($"{elem.Path} | {elem.SliceName} | Id = {elem.ElementId} | Base Id = {baseElem?.ElementId}");
-                    Assert.IsNotNull(elem.ElementId);
+                    Debug.WriteLine($"{elem.Path} | {elem.SliceName} | Id = {elem.Id} | Base Id = {baseElem?.Id}");
+                    Assert.IsNotNull(elem.Id);
                     Assert.IsNotNull(baseElem);
-                    Assert.IsNotNull(baseElem.ElementId);
+                    Assert.IsNotNull(baseElem.Id);
 
                     assertElementIds(elem, baseElem);
                 }
@@ -4546,7 +4545,7 @@ namespace Hl7.Fhir.Specification.Tests
                 {
                     new ElementDefinition("Patient.identifier")
                     {
-                        ElementId = "Patient.identifier",
+                        Id = "Patient.identifier",
                         Slicing = new ElementDefinition.SlicingComponent()
                         {
                             Discriminator = new List<ElementDefinition.DiscriminatorComponent>()
@@ -4562,7 +4561,7 @@ namespace Hl7.Fhir.Specification.Tests
                     new ElementDefinition("Patient.identifier")
                     {
                         // Slice with custom ElementID
-                        ElementId = "CUSTOM",
+                        Id = "CUSTOM",
                         SliceName = "bsn"
                     },
                     new ElementDefinition("Patient.identifier.use")
@@ -4612,12 +4611,12 @@ namespace Hl7.Fhir.Specification.Tests
             foreach (var elem in elems)
             {
                 var baseElem = elem.Annotation<BaseDefAnnotation>()?.BaseElementDefinition;
-                Debug.WriteLine($"{elem.Path} | {elem.SliceName} | Id = {elem.ElementId} | Base Id = {baseElem?.ElementId}");
-                Assert.IsNotNull(elem.ElementId);
+                Debug.WriteLine($"{elem.Path} | {elem.SliceName} | Id = {elem.Id} | Base Id = {baseElem?.Id}");
+                Assert.IsNotNull(elem.Id);
                 Assert.IsNotNull(baseElem);
-                Assert.IsNotNull(baseElem.ElementId);
+                Assert.IsNotNull(baseElem.Id);
 
-                if (elem.ElementId?.StartsWith("CUSTOM") == true)
+                if (elem.Id?.StartsWith("CUSTOM") == true)
                 {
                     Assert.AreEqual(elem.SliceName, sliceName);
                 }
@@ -4637,7 +4636,7 @@ namespace Hl7.Fhir.Specification.Tests
             {
                 elemDef = elems[idx];
                 if (!ElementDefinitionNavigator.IsChildPath("Patient.identifier", elemDef.Path)) { break; }
-                Assert.IsTrue(elemDef.ElementId.StartsWith("Patient.identifier:bsn"), $"Invalid element id at element #{idx}: {elemDef.ElementId}");
+                Assert.IsTrue(elemDef.Id.StartsWith("Patient.identifier:bsn"), $"Invalid element id at element #{idx}: {elemDef.Id}");
             }
 
             // [WMR 20170711] Dynamically update the slice name and re-generate ids for the subtree
@@ -4654,7 +4653,7 @@ namespace Hl7.Fhir.Specification.Tests
             {
                 elemDef = elems[idx];
                 if (!ElementDefinitionNavigator.IsChildPath("Patient.identifier", elemDef.Path)) { break; }
-                Assert.IsTrue(elemDef.ElementId.StartsWith("Patient.identifier:CHANGED"), $"Invalid element id at element #{idx}: {elemDef.ElementId}");
+                Assert.IsTrue(elemDef.Id.StartsWith("Patient.identifier:CHANGED"), $"Invalid element id at element #{idx}: {elemDef.Id}");
             }
 
         }
@@ -4690,12 +4689,12 @@ namespace Hl7.Fhir.Specification.Tests
             foreach (var elem in expanded.Snapshot.Element)
             {
                 var baseElem = elem.Annotation<BaseDefAnnotation>()?.BaseElementDefinition;
-                Debug.WriteLine($"{elem.Path} | {elem.SliceName} | Id = {elem.ElementId} | Base Id = {baseElem?.ElementId}");
-                Assert.IsNotNull(elem.ElementId);
+                Debug.WriteLine($"{elem.Path} | {elem.SliceName} | Id = {elem.Id} | Base Id = {baseElem?.Id}");
+                Assert.IsNotNull(elem.Id);
                 Assert.IsNotNull(baseElem);
-                Assert.IsNotNull(baseElem.ElementId);
+                Assert.IsNotNull(baseElem.Id);
 
-                if (elem.ElementId?.StartsWith("CUSTOM-") != true)
+                if (elem.Id?.StartsWith("CUSTOM-") != true)
                 {
                     assertElementIds(elem, baseElem);
                 }
@@ -4778,8 +4777,8 @@ namespace Hl7.Fhir.Specification.Tests
                 Assert.IsNotNull(ann);
                 var s49 = new string(' ', 49);
                 var s69 = new string(' ', 69);
-                Debug.Print($"{elem.Path.PadRight(50)}| {ann?.BaseElementDefinition?.Path?.PadRight(49) ?? s49}| {ann?.BaseStructureDefinition?.Url?.PadRight(69) ?? s69}| {elem?.ElementId?.PadRight(49) ?? s49}| {ann?.BaseElementDefinition?.ElementId?.PadRight(49) ?? s49}");
-                var elemId = elem.ElementId;
+                Debug.Print($"{elem.Path.PadRight(50)}| {ann?.BaseElementDefinition?.Path?.PadRight(49) ?? s49}| {ann?.BaseStructureDefinition?.Url?.PadRight(69) ?? s69}| {elem?.Id?.PadRight(49) ?? s49}| {ann?.BaseElementDefinition?.Id?.PadRight(49) ?? s49}");
+                var elemId = elem.Id;
                 Assert.IsNotNull(elemId);
                 Assert.IsTrue(elem.IsRootElement() ? elemId == sd.Type : elemId.StartsWith(sd.Type + "."));
             }
@@ -5069,7 +5068,7 @@ namespace Hl7.Fhir.Specification.Tests
                     new ElementDefinition("Observation.method")
                     {
                         Short = "MoreDerivedMethodShort",
-                        Comment = "MoreDerivedMethodComment"
+                        Comment = new Markdown("MoreDerivedMethodComment")
                     },
                     // Include child constraint to force full expansion of .bodySite node
                     // BUG: if we include this element, then the generated base element for .bodySite is incorrect
@@ -5374,7 +5373,7 @@ namespace Hl7.Fhir.Specification.Tests
                     {
                         Slicing = new ElementDefinition.SlicingComponent()
                         {
-                            Discriminator = ForTypeSlice().ToList()
+                            Discriminator = ElementDefinition.DiscriminatorComponent.ForTypeSlice().ToList()
                         }
                     },
                     new ElementDefinition("MedicationStatement.dosage.dose[x]")
@@ -6357,7 +6356,7 @@ namespace Hl7.Fhir.Specification.Tests
                         },
                         new ElementDefinition("Questionnaire.item.item.type")
                         {
-                            Comment = "level 2"
+                            Comment = new Markdown("level 2")
                         }
                     }
             }
@@ -6403,7 +6402,7 @@ namespace Hl7.Fhir.Specification.Tests
                     {
                         new ElementDefinition("Questionnaire.item.type")
                         {
-                            Comment = "level 1 *"
+                            Comment = new Markdown("level 1 *")
                         },
                         new ElementDefinition("Questionnaire.item.item.type")
                         {
@@ -6629,7 +6628,7 @@ namespace Hl7.Fhir.Specification.Tests
                     {
                         new ElementDefinition("Reference")
                         {
-                            Comment = "CustomReference"
+                            Comment = new Markdown("CustomReference")
                         },
                         new ElementDefinition("Reference.reference")
                         {
@@ -6656,8 +6655,8 @@ namespace Hl7.Fhir.Specification.Tests
                                 new ElementDefinition.TypeRefComponent()
                                 {
                                     Code = FHIRAllTypes.Reference.GetLiteral(),
-                                    Profile = ReferenceProfile.Url,
-                                    TargetProfile = ModelInfo.CanonicalUriForFhirCoreType(FHIRAllTypes.ImagingStudy)
+                                    Profile = new[]{ ReferenceProfile.Url },
+                                    TargetProfileElement = new List<Canonical> { ModelInfo.CanonicalUriForFhirCoreType(FHIRAllTypes.ImagingStudy) }
                                 }
                             }
                         },

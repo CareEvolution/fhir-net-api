@@ -11,6 +11,7 @@ using Hl7.Fhir.Specification.Source;
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;
+using Hl7.Fhir.Model.R4;
 
 namespace Hl7.Fhir.Specification.Tests
 {

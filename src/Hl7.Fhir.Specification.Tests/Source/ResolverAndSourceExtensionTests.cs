@@ -17,6 +17,7 @@ using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Source;
 using System.Xml.Linq;
+using Hl7.Fhir.Model.R4;
 
 namespace Hl7.Fhir.Specification.Tests
 {

@@ -47,11 +47,11 @@ namespace Hl7.FhirPath.Tests
         {
             me.System = value;
         }
-        public static void setValueSet(this Model.ElementDefinition.ElementDefinitionBindingComponent me, string value)
+        public static void setValueSet(this ElementDefinition.ElementDefinitionBindingComponent me, string value)
         {
             me.ValueSet = value;
         }
-        public static Model.Canonical getValueSet(this Model.ElementDefinition.ElementDefinitionBindingComponent me)
+        public static Canonical getValueSet(this ElementDefinition.ElementDefinitionBindingComponent me)
         {
             return me.ValueSetElement;
         }
@@ -278,8 +278,8 @@ namespace Hl7.FhirPath.Tests
         [Fact, Trait("Area", "FhirPathFromSpec")]
         public void testTyping()
         {
-            Model.ElementDefinition ed = new Model.ElementDefinition();
-            ed.Binding = new Model.ElementDefinition.ElementDefinitionBindingComponent();
+            ElementDefinition ed = new ElementDefinition();
+            ed.Binding = new ElementDefinition.ElementDefinitionBindingComponent();
             ed.Binding.setValueSet("http://test.org");
             testBoolean(null, ed.Binding.getValueSet(), "ElementDefinition.binding.valueSet", "startsWith('http:') or startsWith('https') or startsWith('urn:')", true);
         }

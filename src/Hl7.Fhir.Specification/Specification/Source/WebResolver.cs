@@ -14,7 +14,7 @@ using Hl7.Fhir.Rest;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Rest.Http.R4;
 using Hl7.Fhir.Rest.R4;
-using FhirClient = Hl7.Fhir.Rest.Http.R4.FhirClient;
+using FhirClient = Hl7.Fhir.Rest.R4.FhirClient;
 
 namespace Hl7.Fhir.Specification.Source
 {
@@ -25,7 +25,7 @@ namespace Hl7.Fhir.Specification.Source
         /// <summary>Default request timeout in milliseconds.</summary>
         public const int DefaultTimeOut = 5000;
 
-        readonly Func<Uri, Rest.Http.R4.FhirClient> _clientFactory;
+        readonly Func<Uri, Rest.R4.FhirClient> _clientFactory;
 
         /// <summary>Default constructor.</summary>
         public WebResolver() { }

@@ -6,17 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Specification.Snapshot;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Specification.Source;
-using Hl7.Fhir.Specification.Navigation;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Hl7.Fhir.Introspection;
-using static Hl7.Fhir.Model.ElementDefinition.DiscriminatorComponent;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Specification.Snapshot;
+using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static Hl7.Fhir.Model.R4.ElementDefinition.DiscriminatorComponent;
 
 namespace Hl7.Fhir.Specification.Tests
 {
