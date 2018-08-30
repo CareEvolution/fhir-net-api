@@ -33,7 +33,6 @@
    </ItemGroup>
  
   <ItemGroup>    
-    <PackageReference Include="Hl7.FhirPath" Version="0.96.0" />    
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />    
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />    
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="4.5.0" />    
@@ -41,6 +40,8 @@
     <PackageReference Include="System.Net.Requests" Version="4.3.0" />    
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
@@ -54,6 +55,10 @@
   <ItemGroup>
     <None Include="Validation\xhtml\fhir-xhtml.xsd" />
     <None Include="Validation\xhtml\xml.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hl7.Fhir.Serialization\Hl7.Fhir.Serialization.csproj" />
+    <ProjectReference Include="..\Hl7.FhirPath\Hl7.FhirPath.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http" />
