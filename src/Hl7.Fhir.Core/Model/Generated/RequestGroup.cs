@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -194,9 +194,41 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
+            /// routine | urgent | asap | stat
+            /// </summary>
+            [FhirElement("priority", Order=80)]
+            [DataMember]
+            public Code<RequestPriority> PriorityElement
+            {
+                get { return _priorityElement; }
+                set { _priorityElement = value; OnPropertyChanged("PriorityElement"); }
+            }
+
+            private Code<RequestPriority> _priorityElement;
+
+            /// <summary>
+            /// routine | urgent | asap | stat
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public RequestPriority? Priority
+            {
+                get { return PriorityElement != null ? PriorityElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        PriorityElement = null;
+                    else
+                        PriorityElement = new Code<RequestPriority>(value);
+                    OnPropertyChanged("Priority");
+                }
+            }
+
+            /// <summary>
             /// Code representing the meaning of the action or sub-actions
             /// </summary>
-            [FhirElement("code", Order=80)]
+            [FhirElement("code", Order=90)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<CodeableConcept> Code
@@ -210,7 +242,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Supporting documentation for the intended performer of the action
             /// </summary>
-            [FhirElement("documentation", Order=90)]
+            [FhirElement("documentation", Order=100)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<RelatedArtifact> Documentation
@@ -224,7 +256,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Whether or not the action is applicable
             /// </summary>
-            [FhirElement("condition", Order=100)]
+            [FhirElement("condition", Order=110)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<ConditionComponent> Condition
@@ -238,7 +270,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Relationship to another action
             /// </summary>
-            [FhirElement("relatedAction", Order=110)]
+            [FhirElement("relatedAction", Order=120)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<RelatedActionComponent> RelatedAction
@@ -252,7 +284,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// When the action should take place
             /// </summary>
-            [FhirElement("timing", Order=120, Choice=ChoiceType.DatatypeChoice)]
+            [FhirElement("timing", Order=130, Choice=ChoiceType.DatatypeChoice)]
             [AllowedTypes(typeof(FhirDateTime),typeof(Age),typeof(Period),typeof(Duration),typeof(Range),typeof(Timing))]
             [DataMember]
             public Element Timing
@@ -266,7 +298,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Who should perform the action
             /// </summary>
-            [FhirElement("participant", Order=130)]
+            [FhirElement("participant", Order=140)]
             [References("Patient","Practitioner","RelatedPerson")]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
@@ -281,7 +313,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// create | update | remove | fire-event
             /// </summary>
-            [FhirElement("type", Order=140)]
+            [FhirElement("type", Order=150)]
             [DataMember]
             public CodeableConcept Type
             {
@@ -294,7 +326,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// visual-group | logical-group | sentence-group
             /// </summary>
-            [FhirElement("groupingBehavior", Order=150)]
+            [FhirElement("groupingBehavior", Order=160)]
             [DataMember]
             public Code<ActionGroupingBehavior> GroupingBehaviorElement
             {
@@ -326,7 +358,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// any | all | all-or-none | exactly-one | at-most-one | one-or-more
             /// </summary>
-            [FhirElement("selectionBehavior", Order=160)]
+            [FhirElement("selectionBehavior", Order=170)]
             [DataMember]
             public Code<ActionSelectionBehavior> SelectionBehaviorElement
             {
@@ -358,7 +390,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// must | could | must-unless-documented
             /// </summary>
-            [FhirElement("requiredBehavior", Order=170)]
+            [FhirElement("requiredBehavior", Order=180)]
             [DataMember]
             public Code<ActionRequiredBehavior> RequiredBehaviorElement
             {
@@ -390,7 +422,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// yes | no
             /// </summary>
-            [FhirElement("precheckBehavior", Order=180)]
+            [FhirElement("precheckBehavior", Order=190)]
             [DataMember]
             public Code<ActionPrecheckBehavior> PrecheckBehaviorElement
             {
@@ -422,7 +454,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// single | multiple
             /// </summary>
-            [FhirElement("cardinalityBehavior", Order=190)]
+            [FhirElement("cardinalityBehavior", Order=200)]
             [DataMember]
             public Code<ActionCardinalityBehavior> CardinalityBehaviorElement
             {
@@ -454,7 +486,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The target of the action
             /// </summary>
-            [FhirElement("resource", Order=200)]
+            [FhirElement("resource", Order=210)]
             [DataMember]
             public ResourceReference Resource
             {
@@ -467,7 +499,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Sub action
             /// </summary>
-            [FhirElement("action", Order=210)]
+            [FhirElement("action", Order=220)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<ActionComponent> Action
@@ -489,6 +521,7 @@ namespace Hl7.Fhir.Model.R4
                     if (TitleElement != null) dest.TitleElement = (FhirString)TitleElement.DeepCopy();
                     if (DescriptionElement != null) dest.DescriptionElement = (FhirString)DescriptionElement.DeepCopy();
                     if (TextEquivalentElement != null) dest.TextEquivalentElement = (FhirString)TextEquivalentElement.DeepCopy();
+                    if (PriorityElement != null) dest.PriorityElement = (Code<RequestPriority>)PriorityElement.DeepCopy();
                     if (Code != null) dest.Code = new List<CodeableConcept>(Code.DeepCopy());
                     if (Documentation != null) dest.Documentation = new List<RelatedArtifact>(Documentation.DeepCopy());
                     if (Condition != null) dest.Condition = new List<ConditionComponent>(Condition.DeepCopy());
@@ -524,6 +557,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(TitleElement, otherT.TitleElement)) return false;
                 if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
                 if (!DeepComparable.Matches(TextEquivalentElement, otherT.TextEquivalentElement)) return false;
+                if (!DeepComparable.Matches(PriorityElement, otherT.PriorityElement)) return false;
                 if ( !DeepComparable.Matches(Code, otherT.Code)) return false;
                 if ( !DeepComparable.Matches(Documentation, otherT.Documentation)) return false;
                 if ( !DeepComparable.Matches(Condition, otherT.Condition)) return false;
@@ -552,6 +586,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(TitleElement, otherT.TitleElement)) return false;
                 if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
                 if (!DeepComparable.IsExactly(TextEquivalentElement, otherT.TextEquivalentElement)) return false;
+                if (!DeepComparable.IsExactly(PriorityElement, otherT.PriorityElement)) return false;
                 if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
                 if (!DeepComparable.IsExactly(Documentation, otherT.Documentation)) return false;
                 if (!DeepComparable.IsExactly(Condition, otherT.Condition)) return false;
@@ -581,6 +616,7 @@ namespace Hl7.Fhir.Model.R4
                     if (TitleElement != null) yield return TitleElement;
                     if (DescriptionElement != null) yield return DescriptionElement;
                     if (TextEquivalentElement != null) yield return TextEquivalentElement;
+                    if (PriorityElement != null) yield return PriorityElement;
                     foreach (var elem in Code) { if (elem != null) yield return elem; }
                     foreach (var elem in Documentation) { if (elem != null) yield return elem; }
                     foreach (var elem in Condition) { if (elem != null) yield return elem; }
@@ -608,6 +644,7 @@ namespace Hl7.Fhir.Model.R4
                     if (TitleElement != null) yield return new ElementValue("title", TitleElement);
                     if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                     if (TextEquivalentElement != null) yield return new ElementValue("textEquivalent", TextEquivalentElement);
+                    if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
                     foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
                     foreach (var elem in Documentation) { if (elem != null) yield return new ElementValue("documentation", elem); }
                     foreach (var elem in Condition) { if (elem != null) yield return new ElementValue("condition", elem); }

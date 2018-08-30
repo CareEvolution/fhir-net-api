@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,7 +56,7 @@ namespace Hl7.Fhir.Model.R4
 
 
         /// <summary>
-        /// Extensions that cannot be ignored
+        /// Extensions that cannot be ignored if unrecognized
         /// </summary>
         [FhirElement("modifierExtension", InSummary=true, Order=30)]
         [Cardinality(Min=0,Max=-1)]

@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -461,7 +461,7 @@ namespace Hl7.Fhir.Model.R4
 
 
         /// <summary>
-        /// Canonical identifier for this message definition, represented as a URI (globally unique)
+        /// Business Identifier for a given MessageDefinition
         /// </summary>
         [FhirElement("url", InSummary=true, Order=90)]
         [DataMember]
@@ -474,7 +474,7 @@ namespace Hl7.Fhir.Model.R4
         private FhirUri _urlElement;
 
         /// <summary>
-        /// Canonical identifier for this message definition, represented as a URI (globally unique)
+        /// Business Identifier for a given MessageDefinition
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -493,17 +493,18 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Additional identifier for the message definition
+        /// Primary key for the message definition on a given server
         /// </summary>
         [FhirElement("identifier", InSummary=true, Order=100)]
+        [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public Identifier Identifier
+        public List<Identifier> Identifier
         {
-            get { return _identifier; }
+            get { if (_identifier==null) _identifier = new List<Identifier>(); return _identifier; }
             set { _identifier = value; OnPropertyChanged("Identifier"); }
         }
 
-        private Identifier _identifier;
+        private List<Identifier> _identifier;
 
         /// <summary>
         /// Business version of the message definition
@@ -926,7 +927,7 @@ namespace Hl7.Fhir.Model.R4
         private Element _event;
 
         /// <summary>
-        /// Consequence | Currency | Notification
+        /// consequence | currency | notification
         /// </summary>
         [FhirElement("category", InSummary=true, Order=280)]
         [DataMember]
@@ -939,7 +940,7 @@ namespace Hl7.Fhir.Model.R4
         private Code<MessageSignificanceCategory> _categoryElement;
 
         /// <summary>
-        /// Consequence | Currency | Notification
+        /// consequence | currency | notification
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -972,7 +973,7 @@ namespace Hl7.Fhir.Model.R4
         private List<FocusComponent> _focus;
 
         /// <summary>
-        /// Response circumstances
+        /// always | on-error | never | on-success
         /// </summary>
         [FhirElement("responseRequired", Order=300)]
         [DataMember]
@@ -985,7 +986,7 @@ namespace Hl7.Fhir.Model.R4
         private Code<messageheader_response_request> _responseRequiredElement;
 
         /// <summary>
-        /// Response circumstances
+        /// always | on-error | never | on-success
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -1017,6 +1018,48 @@ namespace Hl7.Fhir.Model.R4
 
         private List<AllowedResponseComponent> _allowedResponse;
 
+        /// <summary>
+        /// Canonical URL for a GraphDefinition
+        /// </summary>
+        [FhirElement("graph", Order=320)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<Canonical> GraphElement
+        {
+            get { if (_graphElement==null) _graphElement = new List<Canonical>(); return _graphElement; }
+            set { _graphElement = value; OnPropertyChanged("GraphElement"); }
+        }
+
+        private List<Canonical> _graphElement;
+
+        /// <summary>
+        /// Canonical URL for a GraphDefinition
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public IEnumerable<string> Graph
+        {
+            get { return GraphElement != null ? GraphElement.Select(elem => elem.Value) : null; }
+            set
+            {
+                if (value == null)
+                    GraphElement = null;
+                else
+                    GraphElement = new List<Canonical>(value.Select(elem=>new Canonical(elem)));
+                OnPropertyChanged("Graph");
+            }
+        }
+
+
+        public static ElementDefinition.ConstraintComponent MessageDefinition_MSD_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "msd-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
 
         public static ElementDefinition.ConstraintComponent MessageDefinition_MD_1 = new ElementDefinition.ConstraintComponent
         {
@@ -1031,6 +1074,7 @@ namespace Hl7.Fhir.Model.R4
         {
             base.AddDefaultConstraints();
 
+            InvariantConstraints.Add(MessageDefinition_MSD_0);
             InvariantConstraints.Add(MessageDefinition_MD_1);
         }
 
@@ -1042,7 +1086,7 @@ namespace Hl7.Fhir.Model.R4
             {
                 base.CopyTo(dest);
                 if (UrlElement != null) dest.UrlElement = (FhirUri)UrlElement.DeepCopy();
-                if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
+                if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
                 if (VersionElement != null) dest.VersionElement = (FhirString)VersionElement.DeepCopy();
                 if (NameElement != null) dest.NameElement = (FhirString)NameElement.DeepCopy();
                 if (TitleElement != null) dest.TitleElement = (FhirString)TitleElement.DeepCopy();
@@ -1064,6 +1108,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Focus != null) dest.Focus = new List<FocusComponent>(Focus.DeepCopy());
                 if (ResponseRequiredElement != null) dest.ResponseRequiredElement = (Code<messageheader_response_request>)ResponseRequiredElement.DeepCopy();
                 if (AllowedResponse != null) dest.AllowedResponse = new List<AllowedResponseComponent>(AllowedResponse.DeepCopy());
+                if (GraphElement != null) dest.GraphElement = new List<Canonical>(GraphElement.DeepCopy());
                 return dest;
             }
             else
@@ -1082,7 +1127,7 @@ namespace Hl7.Fhir.Model.R4
 
             if (!base.Matches(otherT)) return false;
             if (!DeepComparable.Matches(UrlElement, otherT.UrlElement)) return false;
-            if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+            if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.Matches(VersionElement, otherT.VersionElement)) return false;
             if (!DeepComparable.Matches(NameElement, otherT.NameElement)) return false;
             if (!DeepComparable.Matches(TitleElement, otherT.TitleElement)) return false;
@@ -1104,6 +1149,7 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(Focus, otherT.Focus)) return false;
             if (!DeepComparable.Matches(ResponseRequiredElement, otherT.ResponseRequiredElement)) return false;
             if ( !DeepComparable.Matches(AllowedResponse, otherT.AllowedResponse)) return false;
+            if ( !DeepComparable.Matches(GraphElement, otherT.GraphElement)) return false;
 
             return true;
         }
@@ -1137,6 +1183,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Focus, otherT.Focus)) return false;
             if (!DeepComparable.IsExactly(ResponseRequiredElement, otherT.ResponseRequiredElement)) return false;
             if (!DeepComparable.IsExactly(AllowedResponse, otherT.AllowedResponse)) return false;
+            if (!DeepComparable.IsExactly(GraphElement, otherT.GraphElement)) return false;
 
             return true;
         }
@@ -1148,7 +1195,7 @@ namespace Hl7.Fhir.Model.R4
             {
                 foreach (var item in base.Children) yield return item;
                 if (UrlElement != null) yield return UrlElement;
-                if (Identifier != null) yield return Identifier;
+                foreach (var elem in Identifier) { if (elem != null) yield return elem; }
                 if (VersionElement != null) yield return VersionElement;
                 if (NameElement != null) yield return NameElement;
                 if (TitleElement != null) yield return TitleElement;
@@ -1170,6 +1217,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Focus) { if (elem != null) yield return elem; }
                 if (ResponseRequiredElement != null) yield return ResponseRequiredElement;
                 foreach (var elem in AllowedResponse) { if (elem != null) yield return elem; }
+                foreach (var elem in GraphElement) { if (elem != null) yield return elem; }
             }
         }
 
@@ -1180,7 +1228,7 @@ namespace Hl7.Fhir.Model.R4
             {
                 foreach (var item in base.NamedChildren) yield return item;
                 if (UrlElement != null) yield return new ElementValue("url", UrlElement);
-                if (Identifier != null) yield return new ElementValue("identifier", Identifier);
+                foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
                 if (VersionElement != null) yield return new ElementValue("version", VersionElement);
                 if (NameElement != null) yield return new ElementValue("name", NameElement);
                 if (TitleElement != null) yield return new ElementValue("title", TitleElement);
@@ -1202,6 +1250,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Focus) { if (elem != null) yield return new ElementValue("focus", elem); }
                 if (ResponseRequiredElement != null) yield return new ElementValue("responseRequired", ResponseRequiredElement);
                 foreach (var elem in AllowedResponse) { if (elem != null) yield return new ElementValue("allowedResponse", elem); }
+                foreach (var elem in GraphElement) { if (elem != null) yield return new ElementValue("graph", elem); }
             }
         }
 

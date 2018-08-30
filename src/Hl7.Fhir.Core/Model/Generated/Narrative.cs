@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,7 +56,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Narrative"; } }
 
         /// <summary>
-        /// The status of a resource narrative
+        /// The status of a resource narrative.
         /// (url: http://hl7.org/fhir/ValueSet/narrative-status)
         /// </summary>
         [FhirEnumeration("NarrativeStatus")]
@@ -140,7 +140,7 @@ namespace Hl7.Fhir.Model.R4
 
         public static ElementDefinition.ConstraintComponent Narrative_TXT_1 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "div.all(htmlchecks())",
+            Expression = "div.all(htmlChecks())",
             Key = "txt-1",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The narrative SHALL contain only the basic html formatting elements and attributes described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained style attributes",
@@ -149,7 +149,7 @@ namespace Hl7.Fhir.Model.R4
 
         public static ElementDefinition.ConstraintComponent Narrative_TXT_2 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "div.all(htmlchecks())",
+            Expression = "div.all(htmlChecks())",
             Key = "txt-2",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The narrative SHALL have some non-whitespace content",

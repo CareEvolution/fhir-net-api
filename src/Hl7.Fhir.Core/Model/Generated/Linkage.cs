@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Linkage"; } }
 
         /// <summary>
-        /// Used to distinguish different roles a resource can play within a set of linked resources
+        /// Used to distinguish different roles a resource can play within a set of linked resources.
         /// (url: http://hl7.org/fhir/ValueSet/linkage-type)
         /// </summary>
         [FhirEnumeration("LinkageType")]

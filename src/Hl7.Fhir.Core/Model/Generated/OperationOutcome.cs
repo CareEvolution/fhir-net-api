@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -185,8 +185,20 @@ namespace Hl7.Fhir.Model.R4
             /// MISSING DESCRIPTION
             /// (system: http://hl7.org/fhir/issue-type)
             /// </summary>
+            [EnumLiteral("multiple-matches", "http://hl7.org/fhir/issue-type"), Description("Multiple Matches")]
+            MultipleMatches,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
             [EnumLiteral("not-found", "http://hl7.org/fhir/issue-type"), Description("Not Found")]
             NotFound,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("deleted", "http://hl7.org/fhir/issue-type"), Description("Deleted")]
+            Deleted,
             /// <summary>
             /// MISSING DESCRIPTION
             /// (system: http://hl7.org/fhir/issue-type)
@@ -227,12 +239,6 @@ namespace Hl7.Fhir.Model.R4
             /// MISSING DESCRIPTION
             /// (system: http://hl7.org/fhir/issue-type)
             /// </summary>
-            [EnumLiteral("incomplete", "http://hl7.org/fhir/issue-type"), Description("Incomplete Results")]
-            Incomplete,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/issue-type)
-            /// </summary>
             [EnumLiteral("transient", "http://hl7.org/fhir/issue-type"), Description("Transient Issue")]
             Transient,
             /// <summary>
@@ -259,6 +265,12 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [EnumLiteral("timeout", "http://hl7.org/fhir/issue-type"), Description("Timeout")]
             Timeout,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("incomplete", "http://hl7.org/fhir/issue-type"), Description("Incomplete Results")]
+            Incomplete,
             /// <summary>
             /// MISSING DESCRIPTION
             /// (system: http://hl7.org/fhir/issue-type)
@@ -393,7 +405,7 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// Path of element(s) related to issue
+            /// Deprecated: Path of element(s) related to issue
             /// </summary>
             [FhirElement("location", InSummary=true, Order=80)]
             [Cardinality(Min=0,Max=-1)]
@@ -407,7 +419,7 @@ namespace Hl7.Fhir.Model.R4
             private List<FhirString> _locationElement;
 
             /// <summary>
-            /// Path of element(s) related to issue
+            /// Deprecated: Path of element(s) related to issue
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]

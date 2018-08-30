@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Goal"; } }
 
         /// <summary>
-        /// Indicates whether the goal has been met and is still being targeted
+        /// Indicates whether the goal has been met and is still being targeted.
         /// (url: http://hl7.org/fhir/ValueSet/goal-status)
         /// </summary>
         [FhirEnumeration("GoalStatus")]

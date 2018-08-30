@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Bundle"; } }
 
         /// <summary>
-        /// Indicates the purpose of a bundle - how it was intended to be used.
+        /// Indicates the purpose of a bundle - how it is intended to be used.
         /// (url: http://hl7.org/fhir/ValueSet/bundle-type)
         /// </summary>
         [FhirEnumeration("BundleType")]
@@ -121,7 +121,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Why an entry is in the result set - whether it's included as a match or because of an _include requirement.
+        /// Why an entry is in the result set - whether it's included as a match or because of an _include requirement, or to convey information or warning information about the search process.
         /// (url: http://hl7.org/fhir/ValueSet/search-entry-mode)
         /// </summary>
         [FhirEnumeration("SearchEntryMode")]
@@ -148,7 +148,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// HTTP verbs (in the HTTP command line).
+        /// HTTP verbs (in the HTTP command line). See [HTTP rfc](https://tools.ietf.org/html/rfc7231) for details.
         /// (url: http://hl7.org/fhir/ValueSet/http-verb)
         /// </summary>
         [FhirEnumeration("HTTPVerb")]
@@ -359,7 +359,7 @@ namespace Hl7.Fhir.Model.R4
             private List<LinkComponent> _link;
 
             /// <summary>
-            /// Absolute URL for resource (server address, or UUID/OID)
+            /// URI for resource (Absolute URL server address or URI for UUID/OID)
             /// </summary>
             [FhirElement("fullUrl", InSummary=true, Order=50)]
             [DataMember]
@@ -372,7 +372,7 @@ namespace Hl7.Fhir.Model.R4
             private FhirUri _fullUrlElement;
 
             /// <summary>
-            /// Absolute URL for resource (server address, or UUID/OID)
+            /// URI for resource (Absolute URL server address or URI for UUID/OID)
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -418,7 +418,7 @@ namespace Hl7.Fhir.Model.R4
             private SearchComponent _search;
 
             /// <summary>
-            /// Transaction Related Information
+            /// Additional execution information (transaction/batch/history)
             /// </summary>
             [FhirElement("request", InSummary=true, Order=80)]
             [DataMember]
@@ -431,7 +431,7 @@ namespace Hl7.Fhir.Model.R4
             private RequestComponent _request;
 
             /// <summary>
-            /// Transaction Related Information
+            /// Results of execution (transaction/batch/history)
             /// </summary>
             [FhirElement("response", InSummary=true, Order=90)]
             [DataMember]
@@ -782,7 +782,7 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// For managing update contention
+            /// For managing cache currency
             /// </summary>
             [FhirElement("ifModifiedSince", InSummary=true, Order=70)]
             [DataMember]
@@ -795,7 +795,7 @@ namespace Hl7.Fhir.Model.R4
             private Instant _ifModifiedSinceElement;
 
             /// <summary>
-            /// For managing update contention
+            /// For managing cache currency
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -1009,7 +1009,7 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// The location, if the operation returns a location
+            /// The location (if the operation returns a location)
             /// </summary>
             [FhirElement("location", InSummary=true, Order=50)]
             [DataMember]
@@ -1022,7 +1022,7 @@ namespace Hl7.Fhir.Model.R4
             private FhirUri _locationElement;
 
             /// <summary>
-            /// The location, if the operation returns a location
+            /// The location (if the operation returns a location)
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -1329,7 +1329,7 @@ namespace Hl7.Fhir.Model.R4
         private List<LinkComponent> _link;
 
         /// <summary>
-        /// Entry in the bundle - will have a resource, or information
+        /// Entry in the bundle - will have a resource or information
         /// </summary>
         [FhirElement("entry", InSummary=true, Order=100)]
         [Cardinality(Min=0,Max=-1)]
@@ -1376,20 +1376,29 @@ namespace Hl7.Fhir.Model.R4
 
         public static ElementDefinition.ConstraintComponent Bundle_BDL_3 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "entry.request.empty() or type = 'batch' or type = 'transaction' or type = 'history'",
+            Expression = "entry.all(request.exists() = (%resource.type = 'batch' or %resource.type = 'transaction' or %resource.type = 'history'))",
             Key = "bdl-3",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
-            Human = "entry.request only for some types of bundles",
+            Human = "entry.request mandatory for batch/transaction/history, otherwise prohibited",
             Xpath = "not(f:entry/f:request) or (f:type/@value = 'batch') or (f:type/@value = 'transaction') or (f:type/@value = 'history')"
         };
 
         public static ElementDefinition.ConstraintComponent Bundle_BDL_4 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "entry.response.empty() or type = 'batch-response' or type = 'transaction-response'",
+            Expression = "entry.all(response.exists() = (%resource.type = 'batch-response' or %resource.type = 'transaction-response' or %resource.type = 'history'))",
             Key = "bdl-4",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
-            Human = "entry.response only for some types of bundles",
-            Xpath = "not(f:entry/f:response) or (f:type/@value = 'batch-response') or (f:type/@value = 'transaction-response')"
+            Human = "entry.response mandatory for batch-response/transaction-response/history, otherwise prohibited",
+            Xpath = "not(f:entry/f:response) or (f:type/@value = 'batch-response') or (f:type/@value = 'transaction-response') or (f:type/@value = 'history')"
+        };
+
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_12 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "type = 'message' implies entry.first().resource.is(MessageHeader)",
+            Key = "bdl-12",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "A message must have a MessageHeader as the first resource",
+            Xpath = "not(f:type/@value='message') or f:entry[1]/f:resource/f:MessageHeader"
         };
 
         public static ElementDefinition.ConstraintComponent Bundle_BDL_1 = new ElementDefinition.ConstraintComponent
@@ -1408,6 +1417,24 @@ namespace Hl7.Fhir.Model.R4
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "entry.search only when a search",
             Xpath = "not(f:entry/f:search) or (f:type/@value = 'searchset')"
+        };
+
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_11 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "type = 'document' implies entry.first().resource.is(Composition)",
+            Key = "bdl-11",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "A document must have a Composition as the first resource",
+            Xpath = "not(f:type/@value='document') or f:entry[1]/f:resource/f:Composition"
+        };
+
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_10 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "type = 'document' implies (meta.lastUpdated.hasValue())",
+            Key = "bdl-10",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "A document must have a date",
+            Xpath = "not(f:type/@value = 'document') or exists(f:meta/f:lastUpdated/f:value)"
         };
 
         public static ElementDefinition.ConstraintComponent Bundle_BDL_8 = new ElementDefinition.ConstraintComponent
@@ -1436,8 +1463,11 @@ namespace Hl7.Fhir.Model.R4
             InvariantConstraints.Add(Bundle_BDL_9);
             InvariantConstraints.Add(Bundle_BDL_3);
             InvariantConstraints.Add(Bundle_BDL_4);
+            InvariantConstraints.Add(Bundle_BDL_12);
             InvariantConstraints.Add(Bundle_BDL_1);
             InvariantConstraints.Add(Bundle_BDL_2);
+            InvariantConstraints.Add(Bundle_BDL_11);
+            InvariantConstraints.Add(Bundle_BDL_10);
             InvariantConstraints.Add(Bundle_BDL_8);
             InvariantConstraints.Add(Bundle_BDL_5);
         }

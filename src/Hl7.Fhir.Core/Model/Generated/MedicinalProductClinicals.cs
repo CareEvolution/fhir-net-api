@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -851,9 +851,41 @@ namespace Hl7.Fhir.Model.R4
             public override string TypeName { get { return "InteractionsComponent"; } }
 
             /// <summary>
+            /// The interaction described
+            /// </summary>
+            [FhirElement("interaction", InSummary=true, Order=40)]
+            [DataMember]
+            public FhirString InteractionElement
+            {
+                get { return _interactionElement; }
+                set { _interactionElement = value; OnPropertyChanged("InteractionElement"); }
+            }
+
+            private FhirString _interactionElement;
+
+            /// <summary>
+            /// The interaction described
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Interaction
+            {
+                get { return InteractionElement != null ? InteractionElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        InteractionElement = null;
+                    else
+                        InteractionElement = new FhirString(value);
+                    OnPropertyChanged("Interaction");
+                }
+            }
+
+            /// <summary>
             /// The specific medication, food or laboratory test that interacts
             /// </summary>
-            [FhirElement("interactant", InSummary=true, Order=40)]
+            [FhirElement("interactant", InSummary=true, Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<CodeableConcept> Interactant
@@ -867,7 +899,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The type of the interaction
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=50)]
+            [FhirElement("type", InSummary=true, Order=60)]
             [DataMember]
             public CodeableConcept Type
             {
@@ -880,7 +912,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The effect of the interaction
             /// </summary>
-            [FhirElement("effect", InSummary=true, Order=60)]
+            [FhirElement("effect", InSummary=true, Order=70)]
             [DataMember]
             public CodeableConcept Effect
             {
@@ -893,7 +925,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// The incidence of the interaction
             /// </summary>
-            [FhirElement("incidence", InSummary=true, Order=70)]
+            [FhirElement("incidence", InSummary=true, Order=80)]
             [DataMember]
             public CodeableConcept Incidence
             {
@@ -906,7 +938,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Actions for managing the interaction
             /// </summary>
-            [FhirElement("management", InSummary=true, Order=80)]
+            [FhirElement("management", InSummary=true, Order=90)]
             [DataMember]
             public CodeableConcept Management
             {
@@ -923,6 +955,7 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
+                    if (InteractionElement != null) dest.InteractionElement = (FhirString)InteractionElement.DeepCopy();
                     if (Interactant != null) dest.Interactant = new List<CodeableConcept>(Interactant.DeepCopy());
                     if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
                     if (Effect != null) dest.Effect = (CodeableConcept)Effect.DeepCopy();
@@ -945,6 +978,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(InteractionElement, otherT.InteractionElement)) return false;
                 if ( !DeepComparable.Matches(Interactant, otherT.Interactant)) return false;
                 if (!DeepComparable.Matches(Type, otherT.Type)) return false;
                 if (!DeepComparable.Matches(Effect, otherT.Effect)) return false;
@@ -960,6 +994,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(InteractionElement, otherT.InteractionElement)) return false;
                 if (!DeepComparable.IsExactly(Interactant, otherT.Interactant)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
                 if (!DeepComparable.IsExactly(Effect, otherT.Effect)) return false;
@@ -976,6 +1011,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
+                    if (InteractionElement != null) yield return InteractionElement;
                     foreach (var elem in Interactant) { if (elem != null) yield return elem; }
                     if (Type != null) yield return Type;
                     if (Effect != null) yield return Effect;
@@ -990,6 +1026,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
+                    if (InteractionElement != null) yield return new ElementValue("interaction", InteractionElement);
                     foreach (var elem in Interactant) { if (elem != null) yield return new ElementValue("interactant", elem); }
                     if (Type != null) yield return new ElementValue("type", Type);
                     if (Effect != null) yield return new ElementValue("effect", Effect);

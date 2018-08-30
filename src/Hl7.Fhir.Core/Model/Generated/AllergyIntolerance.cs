@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -711,34 +711,34 @@ namespace Hl7.Fhir.Model.R4
         private Element _onset;
 
         /// <summary>
-        /// Date record was believed accurate
+        /// Date record was first recorded
         /// </summary>
-        [FhirElement("assertedDate", Order=190)]
+        [FhirElement("recordedDate", Order=190)]
         [DataMember]
-        public FhirDateTime AssertedDateElement
+        public FhirDateTime RecordedDateElement
         {
-            get { return _assertedDateElement; }
-            set { _assertedDateElement = value; OnPropertyChanged("AssertedDateElement"); }
+            get { return _recordedDateElement; }
+            set { _recordedDateElement = value; OnPropertyChanged("RecordedDateElement"); }
         }
 
-        private FhirDateTime _assertedDateElement;
+        private FhirDateTime _recordedDateElement;
 
         /// <summary>
-        /// Date record was believed accurate
+        /// Date record was first recorded
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public string AssertedDate
+        public string RecordedDate
         {
-            get { return AssertedDateElement != null ? AssertedDateElement.Value : null; }
+            get { return RecordedDateElement != null ? RecordedDateElement.Value : null; }
             set
             {
                 if (value == null)
-                    AssertedDateElement = null;
+                    RecordedDateElement = null;
                 else
-                    AssertedDateElement = new FhirDateTime(value);
-                OnPropertyChanged("AssertedDate");
+                    RecordedDateElement = new FhirDateTime(value);
+                OnPropertyChanged("RecordedDate");
             }
         }
 
@@ -874,7 +874,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Patient != null) dest.Patient = (ResourceReference)Patient.DeepCopy();
                 if (Encounter != null) dest.Encounter = (ResourceReference)Encounter.DeepCopy();
                 if (Onset != null) dest.Onset = (Element)Onset.DeepCopy();
-                if (AssertedDateElement != null) dest.AssertedDateElement = (FhirDateTime)AssertedDateElement.DeepCopy();
+                if (RecordedDateElement != null) dest.RecordedDateElement = (FhirDateTime)RecordedDateElement.DeepCopy();
                 if (Recorder != null) dest.Recorder = (ResourceReference)Recorder.DeepCopy();
                 if (Asserter != null) dest.Asserter = (ResourceReference)Asserter.DeepCopy();
                 if (LastOccurrenceElement != null) dest.LastOccurrenceElement = (FhirDateTime)LastOccurrenceElement.DeepCopy();
@@ -907,7 +907,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Patient, otherT.Patient)) return false;
             if (!DeepComparable.Matches(Encounter, otherT.Encounter)) return false;
             if (!DeepComparable.Matches(Onset, otherT.Onset)) return false;
-            if (!DeepComparable.Matches(AssertedDateElement, otherT.AssertedDateElement)) return false;
+            if (!DeepComparable.Matches(RecordedDateElement, otherT.RecordedDateElement)) return false;
             if (!DeepComparable.Matches(Recorder, otherT.Recorder)) return false;
             if (!DeepComparable.Matches(Asserter, otherT.Asserter)) return false;
             if (!DeepComparable.Matches(LastOccurrenceElement, otherT.LastOccurrenceElement)) return false;
@@ -933,7 +933,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Patient, otherT.Patient)) return false;
             if (!DeepComparable.IsExactly(Encounter, otherT.Encounter)) return false;
             if (!DeepComparable.IsExactly(Onset, otherT.Onset)) return false;
-            if (!DeepComparable.IsExactly(AssertedDateElement, otherT.AssertedDateElement)) return false;
+            if (!DeepComparable.IsExactly(RecordedDateElement, otherT.RecordedDateElement)) return false;
             if (!DeepComparable.IsExactly(Recorder, otherT.Recorder)) return false;
             if (!DeepComparable.IsExactly(Asserter, otherT.Asserter)) return false;
             if (!DeepComparable.IsExactly(LastOccurrenceElement, otherT.LastOccurrenceElement)) return false;
@@ -959,7 +959,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Patient != null) yield return Patient;
                 if (Encounter != null) yield return Encounter;
                 if (Onset != null) yield return Onset;
-                if (AssertedDateElement != null) yield return AssertedDateElement;
+                if (RecordedDateElement != null) yield return RecordedDateElement;
                 if (Recorder != null) yield return Recorder;
                 if (Asserter != null) yield return Asserter;
                 if (LastOccurrenceElement != null) yield return LastOccurrenceElement;
@@ -984,7 +984,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Patient != null) yield return new ElementValue("patient", Patient);
                 if (Encounter != null) yield return new ElementValue("encounter", Encounter);
                 if (Onset != null) yield return new ElementValue("onset", Onset);
-                if (AssertedDateElement != null) yield return new ElementValue("assertedDate", AssertedDateElement);
+                if (RecordedDateElement != null) yield return new ElementValue("recordedDate", RecordedDateElement);
                 if (Recorder != null) yield return new ElementValue("recorder", Recorder);
                 if (Asserter != null) yield return new ElementValue("asserter", Asserter);
                 if (LastOccurrenceElement != null) yield return new ElementValue("lastOccurrence", LastOccurrenceElement);

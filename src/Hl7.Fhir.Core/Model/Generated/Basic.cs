@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -135,7 +135,7 @@ namespace Hl7.Fhir.Model.R4
         /// Who created
         /// </summary>
         [FhirElement("author", InSummary=true, Order=130)]
-        [References("Practitioner","Patient","RelatedPerson")]
+        [References("Practitioner","Patient","RelatedPerson","Organization")]
         [DataMember]
         public ResourceReference Author
         {

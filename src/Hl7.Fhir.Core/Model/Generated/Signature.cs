@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -106,31 +106,31 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who signed
         /// </summary>
-        [FhirElement("who", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(FhirUri),typeof(ResourceReference))]
+        [FhirElement("who", InSummary=true, Order=50)]
+        [References("Practitioner","RelatedPerson","Patient","Device","Organization")]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Element Who
+        public ResourceReference Who
         {
             get { return _who; }
             set { _who = value; OnPropertyChanged("Who"); }
         }
 
-        private Element _who;
+        private ResourceReference _who;
 
         /// <summary>
         /// The party represented
         /// </summary>
-        [FhirElement("onBehalfOf", InSummary=true, Order=60, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(FhirUri),typeof(ResourceReference))]
+        [FhirElement("onBehalfOf", InSummary=true, Order=60)]
+        [References("Practitioner","RelatedPerson","Patient","Device","Organization")]
         [DataMember]
-        public Element OnBehalfOf
+        public ResourceReference OnBehalfOf
         {
             get { return _onBehalfOf; }
             set { _onBehalfOf = value; OnPropertyChanged("OnBehalfOf"); }
         }
 
-        private Element _onBehalfOf;
+        private ResourceReference _onBehalfOf;
 
         /// <summary>
         /// The technical format of the signed resources
@@ -199,15 +199,15 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The actual signature content (XML DigSig. JWS, picture, etc.)
         /// </summary>
-        [FhirElement("blob", Order=90)]
+        [FhirElement("data", Order=90)]
         [DataMember]
-        public Base64Binary BlobElement
+        public Base64Binary DataElement
         {
-            get { return _blobElement; }
-            set { _blobElement = value; OnPropertyChanged("BlobElement"); }
+            get { return _dataElement; }
+            set { _dataElement = value; OnPropertyChanged("DataElement"); }
         }
 
-        private Base64Binary _blobElement;
+        private Base64Binary _dataElement;
 
         /// <summary>
         /// The actual signature content (XML DigSig. JWS, picture, etc.)
@@ -215,16 +215,16 @@ namespace Hl7.Fhir.Model.R4
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public byte[] Blob
+        public byte[] Data
         {
-            get { return BlobElement != null ? BlobElement.Value : null; }
+            get { return DataElement != null ? DataElement.Value : null; }
             set
             {
                 if (value == null)
-                    BlobElement = null;
+                    DataElement = null;
                 else
-                    BlobElement = new Base64Binary(value);
-                OnPropertyChanged("Blob");
+                    DataElement = new Base64Binary(value);
+                OnPropertyChanged("Data");
             }
         }
 
@@ -238,11 +238,11 @@ namespace Hl7.Fhir.Model.R4
                 base.CopyTo(dest);
                 if (Type != null) dest.Type = new List<Coding>(Type.DeepCopy());
                 if (WhenElement != null) dest.WhenElement = (Instant)WhenElement.DeepCopy();
-                if (Who != null) dest.Who = (Element)Who.DeepCopy();
-                if (OnBehalfOf != null) dest.OnBehalfOf = (Element)OnBehalfOf.DeepCopy();
+                if (Who != null) dest.Who = (ResourceReference)Who.DeepCopy();
+                if (OnBehalfOf != null) dest.OnBehalfOf = (ResourceReference)OnBehalfOf.DeepCopy();
                 if (TargetFormatElement != null) dest.TargetFormatElement = (Code)TargetFormatElement.DeepCopy();
                 if (SigFormatElement != null) dest.SigFormatElement = (Code)SigFormatElement.DeepCopy();
-                if (BlobElement != null) dest.BlobElement = (Base64Binary)BlobElement.DeepCopy();
+                if (DataElement != null) dest.DataElement = (Base64Binary)DataElement.DeepCopy();
                 return dest;
             }
             else
@@ -266,7 +266,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(OnBehalfOf, otherT.OnBehalfOf)) return false;
             if (!DeepComparable.Matches(TargetFormatElement, otherT.TargetFormatElement)) return false;
             if (!DeepComparable.Matches(SigFormatElement, otherT.SigFormatElement)) return false;
-            if (!DeepComparable.Matches(BlobElement, otherT.BlobElement)) return false;
+            if (!DeepComparable.Matches(DataElement, otherT.DataElement)) return false;
 
             return true;
         }
@@ -283,7 +283,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(OnBehalfOf, otherT.OnBehalfOf)) return false;
             if (!DeepComparable.IsExactly(TargetFormatElement, otherT.TargetFormatElement)) return false;
             if (!DeepComparable.IsExactly(SigFormatElement, otherT.SigFormatElement)) return false;
-            if (!DeepComparable.IsExactly(BlobElement, otherT.BlobElement)) return false;
+            if (!DeepComparable.IsExactly(DataElement, otherT.DataElement)) return false;
 
             return true;
         }
@@ -300,7 +300,7 @@ namespace Hl7.Fhir.Model.R4
                 if (OnBehalfOf != null) yield return OnBehalfOf;
                 if (TargetFormatElement != null) yield return TargetFormatElement;
                 if (SigFormatElement != null) yield return SigFormatElement;
-                if (BlobElement != null) yield return BlobElement;
+                if (DataElement != null) yield return DataElement;
             }
         }
 
@@ -316,7 +316,7 @@ namespace Hl7.Fhir.Model.R4
                 if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", OnBehalfOf);
                 if (TargetFormatElement != null) yield return new ElementValue("targetFormat", TargetFormatElement);
                 if (SigFormatElement != null) yield return new ElementValue("sigFormat", SigFormatElement);
-                if (BlobElement != null) yield return new ElementValue("blob", BlobElement);
+                if (DataElement != null) yield return new ElementValue("data", DataElement);
             }
         }
 

@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -127,9 +127,22 @@ namespace Hl7.Fhir.Model.R4
             private Element _collected;
 
             /// <summary>
+            /// How long it took to collect specimen
+            /// </summary>
+            [FhirElement("duration", InSummary=true, Order=60)]
+            [DataMember]
+            public Duration Duration
+            {
+                get { return _duration; }
+                set { _duration = value; OnPropertyChanged("Duration"); }
+            }
+
+            private Duration _duration;
+
+            /// <summary>
             /// The quantity of specimen collected
             /// </summary>
-            [FhirElement("quantity", Order=60)]
+            [FhirElement("quantity", Order=70)]
             [DataMember]
             public SimpleQuantity Quantity
             {
@@ -142,7 +155,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Technique used to perform collection
             /// </summary>
-            [FhirElement("method", Order=70)]
+            [FhirElement("method", Order=80)]
             [DataMember]
             public CodeableConcept Method
             {
@@ -155,7 +168,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Anatomical collection site
             /// </summary>
-            [FhirElement("bodySite", Order=80)]
+            [FhirElement("bodySite", Order=90)]
             [DataMember]
             public CodeableConcept BodySite
             {
@@ -164,6 +177,20 @@ namespace Hl7.Fhir.Model.R4
             }
 
             private CodeableConcept _bodySite;
+
+            /// <summary>
+            /// Whether or how long patient abstained from food and/or drink
+            /// </summary>
+            [FhirElement("fastingStatus", InSummary=true, Order=100, Choice=ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(CodeableConcept),typeof(Duration))]
+            [DataMember]
+            public Element FastingStatus
+            {
+                get { return _fastingStatus; }
+                set { _fastingStatus = value; OnPropertyChanged("FastingStatus"); }
+            }
+
+            private Element _fastingStatus;
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -174,9 +201,11 @@ namespace Hl7.Fhir.Model.R4
                     base.CopyTo(dest);
                     if (Collector != null) dest.Collector = (ResourceReference)Collector.DeepCopy();
                     if (Collected != null) dest.Collected = (Element)Collected.DeepCopy();
+                    if (Duration != null) dest.Duration = (Duration)Duration.DeepCopy();
                     if (Quantity != null) dest.Quantity = (SimpleQuantity)Quantity.DeepCopy();
                     if (Method != null) dest.Method = (CodeableConcept)Method.DeepCopy();
                     if (BodySite != null) dest.BodySite = (CodeableConcept)BodySite.DeepCopy();
+                    if (FastingStatus != null) dest.FastingStatus = (Element)FastingStatus.DeepCopy();
                     return dest;
                 }
                 else
@@ -196,9 +225,11 @@ namespace Hl7.Fhir.Model.R4
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(Collector, otherT.Collector)) return false;
                 if (!DeepComparable.Matches(Collected, otherT.Collected)) return false;
+                if (!DeepComparable.Matches(Duration, otherT.Duration)) return false;
                 if (!DeepComparable.Matches(Quantity, otherT.Quantity)) return false;
                 if (!DeepComparable.Matches(Method, otherT.Method)) return false;
                 if (!DeepComparable.Matches(BodySite, otherT.BodySite)) return false;
+                if (!DeepComparable.Matches(FastingStatus, otherT.FastingStatus)) return false;
 
                 return true;
             }
@@ -211,9 +242,11 @@ namespace Hl7.Fhir.Model.R4
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(Collector, otherT.Collector)) return false;
                 if (!DeepComparable.IsExactly(Collected, otherT.Collected)) return false;
+                if (!DeepComparable.IsExactly(Duration, otherT.Duration)) return false;
                 if (!DeepComparable.IsExactly(Quantity, otherT.Quantity)) return false;
                 if (!DeepComparable.IsExactly(Method, otherT.Method)) return false;
                 if (!DeepComparable.IsExactly(BodySite, otherT.BodySite)) return false;
+                if (!DeepComparable.IsExactly(FastingStatus, otherT.FastingStatus)) return false;
 
                 return true;
             }
@@ -227,9 +260,11 @@ namespace Hl7.Fhir.Model.R4
                     foreach (var item in base.Children) yield return item;
                     if (Collector != null) yield return Collector;
                     if (Collected != null) yield return Collected;
+                    if (Duration != null) yield return Duration;
                     if (Quantity != null) yield return Quantity;
                     if (Method != null) yield return Method;
                     if (BodySite != null) yield return BodySite;
+                    if (FastingStatus != null) yield return FastingStatus;
                 }
             }
 
@@ -241,9 +276,11 @@ namespace Hl7.Fhir.Model.R4
                     foreach (var item in base.NamedChildren) yield return item;
                     if (Collector != null) yield return new ElementValue("collector", Collector);
                     if (Collected != null) yield return new ElementValue("collected", Collected);
+                    if (Duration != null) yield return new ElementValue("duration", Duration);
                     if (Quantity != null) yield return new ElementValue("quantity", Quantity);
                     if (Method != null) yield return new ElementValue("method", Method);
                     if (BodySite != null) yield return new ElementValue("bodySite", BodySite);
+                    if (FastingStatus != null) yield return new ElementValue("fastingStatus", FastingStatus);
                 }
             }
 
@@ -687,7 +724,6 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("subject", InSummary=true, Order=130)]
         [References("Patient","Group","Device","Substance","Location")]
-        [Cardinality(Min=1,Max=1)]
         [DataMember]
         public ResourceReference Subject
         {
@@ -801,9 +837,23 @@ namespace Hl7.Fhir.Model.R4
         private List<ContainerComponent> _container;
 
         /// <summary>
+        /// State of the specimen
+        /// </summary>
+        [FhirElement("condition", InSummary=true, Order=200)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<CodeableConcept> Condition
+        {
+            get { if (_condition==null) _condition = new List<CodeableConcept>(); return _condition; }
+            set { _condition = value; OnPropertyChanged("Condition"); }
+        }
+
+        private List<CodeableConcept> _condition;
+
+        /// <summary>
         /// Comments
         /// </summary>
-        [FhirElement("note", Order=200)]
+        [FhirElement("note", Order=210)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Annotation> Note
@@ -833,6 +883,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Collection != null) dest.Collection = (CollectionComponent)Collection.DeepCopy();
                 if (Processing != null) dest.Processing = new List<ProcessingComponent>(Processing.DeepCopy());
                 if (Container != null) dest.Container = new List<ContainerComponent>(Container.DeepCopy());
+                if (Condition != null) dest.Condition = new List<CodeableConcept>(Condition.DeepCopy());
                 if (Note != null) dest.Note = new List<Annotation>(Note.DeepCopy());
                 return dest;
             }
@@ -862,6 +913,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Collection, otherT.Collection)) return false;
             if ( !DeepComparable.Matches(Processing, otherT.Processing)) return false;
             if ( !DeepComparable.Matches(Container, otherT.Container)) return false;
+            if ( !DeepComparable.Matches(Condition, otherT.Condition)) return false;
             if ( !DeepComparable.Matches(Note, otherT.Note)) return false;
 
             return true;
@@ -884,6 +936,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Collection, otherT.Collection)) return false;
             if (!DeepComparable.IsExactly(Processing, otherT.Processing)) return false;
             if (!DeepComparable.IsExactly(Container, otherT.Container)) return false;
+            if (!DeepComparable.IsExactly(Condition, otherT.Condition)) return false;
             if (!DeepComparable.IsExactly(Note, otherT.Note)) return false;
 
             return true;
@@ -906,6 +959,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Collection != null) yield return Collection;
                 foreach (var elem in Processing) { if (elem != null) yield return elem; }
                 foreach (var elem in Container) { if (elem != null) yield return elem; }
+                foreach (var elem in Condition) { if (elem != null) yield return elem; }
                 foreach (var elem in Note) { if (elem != null) yield return elem; }
             }
         }
@@ -927,6 +981,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Collection != null) yield return new ElementValue("collection", Collection);
                 foreach (var elem in Processing) { if (elem != null) yield return new ElementValue("processing", elem); }
                 foreach (var elem in Container) { if (elem != null) yield return new ElementValue("container", elem); }
+                foreach (var elem in Condition) { if (elem != null) yield return new ElementValue("condition", elem); }
                 foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }

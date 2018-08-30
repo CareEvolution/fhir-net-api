@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -105,7 +105,7 @@ namespace Hl7.Fhir.Model.R4
             public override string TypeName { get { return "CoverageComponent"; } }
 
             /// <summary>
-            /// The party(s) that are responsible for covering the payment of this account
+            /// The party(s), such as insurances, that may contribute to the payment of this account
             /// </summary>
             [FhirElement("coverage", InSummary=true, Order=40)]
             [References("Coverage")]
@@ -462,14 +462,15 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("subject", InSummary=true, Order=130)]
         [References("Patient","Device","Practitioner","Location","HealthcareService","Organization")]
+        [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public ResourceReference Subject
+        public List<ResourceReference> Subject
         {
-            get { return _subject; }
+            get { if (_subject==null) _subject = new List<ResourceReference>(); return _subject; }
             set { _subject = value; OnPropertyChanged("Subject"); }
         }
 
-        private ResourceReference _subject;
+        private List<ResourceReference> _subject;
 
         /// <summary>
         /// Transaction window
@@ -584,7 +585,7 @@ namespace Hl7.Fhir.Model.R4
                 if (StatusElement != null) dest.StatusElement = (Code<AccountStatus>)StatusElement.DeepCopy();
                 if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
                 if (NameElement != null) dest.NameElement = (FhirString)NameElement.DeepCopy();
-                if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
+                if (Subject != null) dest.Subject = new List<ResourceReference>(Subject.DeepCopy());
                 if (ServicePeriod != null) dest.ServicePeriod = (Period)ServicePeriod.DeepCopy();
                 if (Coverage != null) dest.Coverage = new List<CoverageComponent>(Coverage.DeepCopy());
                 if (Owner != null) dest.Owner = (ResourceReference)Owner.DeepCopy();
@@ -612,7 +613,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.Matches(Type, otherT.Type)) return false;
             if (!DeepComparable.Matches(NameElement, otherT.NameElement)) return false;
-            if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
+            if ( !DeepComparable.Matches(Subject, otherT.Subject)) return false;
             if (!DeepComparable.Matches(ServicePeriod, otherT.ServicePeriod)) return false;
             if ( !DeepComparable.Matches(Coverage, otherT.Coverage)) return false;
             if (!DeepComparable.Matches(Owner, otherT.Owner)) return false;
@@ -654,7 +655,7 @@ namespace Hl7.Fhir.Model.R4
                 if (StatusElement != null) yield return StatusElement;
                 if (Type != null) yield return Type;
                 if (NameElement != null) yield return NameElement;
-                if (Subject != null) yield return Subject;
+                foreach (var elem in Subject) { if (elem != null) yield return elem; }
                 if (ServicePeriod != null) yield return ServicePeriod;
                 foreach (var elem in Coverage) { if (elem != null) yield return elem; }
                 if (Owner != null) yield return Owner;
@@ -674,7 +675,7 @@ namespace Hl7.Fhir.Model.R4
                 if (StatusElement != null) yield return new ElementValue("status", StatusElement);
                 if (Type != null) yield return new ElementValue("type", Type);
                 if (NameElement != null) yield return new ElementValue("name", NameElement);
-                if (Subject != null) yield return new ElementValue("subject", Subject);
+                foreach (var elem in Subject) { if (elem != null) yield return new ElementValue("subject", elem); }
                 if (ServicePeriod != null) yield return new ElementValue("servicePeriod", ServicePeriod);
                 foreach (var elem in Coverage) { if (elem != null) yield return new ElementValue("coverage", elem); }
                 if (Owner != null) yield return new ElementValue("owner", Owner);

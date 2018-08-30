@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -580,23 +580,65 @@ namespace Hl7.Fhir.Model.R4
         private List<CodeableConcept> _topic;
 
         /// <summary>
-        /// A content contributor
+        /// Who authored the content
         /// </summary>
-        [FhirElement("contributor", Order=310)]
+        [FhirElement("author", Order=310)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Contributor> Contributor
+        public List<ContactDetail> Author
         {
-            get { if (_contributor==null) _contributor = new List<Contributor>(); return _contributor; }
-            set { _contributor = value; OnPropertyChanged("Contributor"); }
+            get { if (_author==null) _author = new List<ContactDetail>(); return _author; }
+            set { _author = value; OnPropertyChanged("Author"); }
         }
 
-        private List<Contributor> _contributor;
+        private List<ContactDetail> _author;
+
+        /// <summary>
+        /// Who edited the content
+        /// </summary>
+        [FhirElement("editor", Order=320)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Editor
+        {
+            get { if (_editor==null) _editor = new List<ContactDetail>(); return _editor; }
+            set { _editor = value; OnPropertyChanged("Editor"); }
+        }
+
+        private List<ContactDetail> _editor;
+
+        /// <summary>
+        /// Who reviewed the content
+        /// </summary>
+        [FhirElement("reviewer", Order=330)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Reviewer
+        {
+            get { if (_reviewer==null) _reviewer = new List<ContactDetail>(); return _reviewer; }
+            set { _reviewer = value; OnPropertyChanged("Reviewer"); }
+        }
+
+        private List<ContactDetail> _reviewer;
+
+        /// <summary>
+        /// Who endorsed the content
+        /// </summary>
+        [FhirElement("endorser", Order=340)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Endorser
+        {
+            get { if (_endorser==null) _endorser = new List<ContactDetail>(); return _endorser; }
+            set { _endorser = value; OnPropertyChanged("Endorser"); }
+        }
+
+        private List<ContactDetail> _endorser;
 
         /// <summary>
         /// Additional documentation, citations, etc.
         /// </summary>
-        [FhirElement("relatedArtifact", Order=320)]
+        [FhirElement("relatedArtifact", Order=350)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<RelatedArtifact> RelatedArtifact
@@ -610,7 +652,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// "when" the event occurs
         /// </summary>
-        [FhirElement("trigger", InSummary=true, Order=330)]
+        [FhirElement("trigger", InSummary=true, Order=360)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public TriggerDefinition Trigger
@@ -621,6 +663,22 @@ namespace Hl7.Fhir.Model.R4
 
         private TriggerDefinition _trigger;
 
+
+        public static ElementDefinition.ConstraintComponent EventDefinition_EVD_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "evd-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
+
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+
+            InvariantConstraints.Add(EventDefinition_EVD_0);
+        }
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
@@ -651,7 +709,10 @@ namespace Hl7.Fhir.Model.R4
                 if (LastReviewDateElement != null) dest.LastReviewDateElement = (Date)LastReviewDateElement.DeepCopy();
                 if (EffectivePeriod != null) dest.EffectivePeriod = (Period)EffectivePeriod.DeepCopy();
                 if (Topic != null) dest.Topic = new List<CodeableConcept>(Topic.DeepCopy());
-                if (Contributor != null) dest.Contributor = new List<Contributor>(Contributor.DeepCopy());
+                if (Author != null) dest.Author = new List<ContactDetail>(Author.DeepCopy());
+                if (Editor != null) dest.Editor = new List<ContactDetail>(Editor.DeepCopy());
+                if (Reviewer != null) dest.Reviewer = new List<ContactDetail>(Reviewer.DeepCopy());
+                if (Endorser != null) dest.Endorser = new List<ContactDetail>(Endorser.DeepCopy());
                 if (RelatedArtifact != null) dest.RelatedArtifact = new List<RelatedArtifact>(RelatedArtifact.DeepCopy());
                 if (Trigger != null) dest.Trigger = (TriggerDefinition)Trigger.DeepCopy();
                 return dest;
@@ -693,7 +754,10 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.Matches(EffectivePeriod, otherT.EffectivePeriod)) return false;
             if ( !DeepComparable.Matches(Topic, otherT.Topic)) return false;
-            if ( !DeepComparable.Matches(Contributor, otherT.Contributor)) return false;
+            if ( !DeepComparable.Matches(Author, otherT.Author)) return false;
+            if ( !DeepComparable.Matches(Editor, otherT.Editor)) return false;
+            if ( !DeepComparable.Matches(Reviewer, otherT.Reviewer)) return false;
+            if ( !DeepComparable.Matches(Endorser, otherT.Endorser)) return false;
             if ( !DeepComparable.Matches(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if (!DeepComparable.Matches(Trigger, otherT.Trigger)) return false;
 
@@ -728,7 +792,10 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.IsExactly(EffectivePeriod, otherT.EffectivePeriod)) return false;
             if (!DeepComparable.IsExactly(Topic, otherT.Topic)) return false;
-            if (!DeepComparable.IsExactly(Contributor, otherT.Contributor)) return false;
+            if (!DeepComparable.IsExactly(Author, otherT.Author)) return false;
+            if (!DeepComparable.IsExactly(Editor, otherT.Editor)) return false;
+            if (!DeepComparable.IsExactly(Reviewer, otherT.Reviewer)) return false;
+            if (!DeepComparable.IsExactly(Endorser, otherT.Endorser)) return false;
             if (!DeepComparable.IsExactly(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if (!DeepComparable.IsExactly(Trigger, otherT.Trigger)) return false;
 
@@ -763,7 +830,10 @@ namespace Hl7.Fhir.Model.R4
                 if (LastReviewDateElement != null) yield return LastReviewDateElement;
                 if (EffectivePeriod != null) yield return EffectivePeriod;
                 foreach (var elem in Topic) { if (elem != null) yield return elem; }
-                foreach (var elem in Contributor) { if (elem != null) yield return elem; }
+                foreach (var elem in Author) { if (elem != null) yield return elem; }
+                foreach (var elem in Editor) { if (elem != null) yield return elem; }
+                foreach (var elem in Reviewer) { if (elem != null) yield return elem; }
+                foreach (var elem in Endorser) { if (elem != null) yield return elem; }
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return elem; }
                 if (Trigger != null) yield return Trigger;
             }
@@ -797,7 +867,10 @@ namespace Hl7.Fhir.Model.R4
                 if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", LastReviewDateElement);
                 if (EffectivePeriod != null) yield return new ElementValue("effectivePeriod", EffectivePeriod);
                 foreach (var elem in Topic) { if (elem != null) yield return new ElementValue("topic", elem); }
-                foreach (var elem in Contributor) { if (elem != null) yield return new ElementValue("contributor", elem); }
+                foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", elem); }
+                foreach (var elem in Editor) { if (elem != null) yield return new ElementValue("editor", elem); }
+                foreach (var elem in Reviewer) { if (elem != null) yield return new ElementValue("reviewer", elem); }
+                foreach (var elem in Endorser) { if (elem != null) yield return new ElementValue("endorser", elem); }
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return new ElementValue("relatedArtifact", elem); }
                 if (Trigger != null) yield return new ElementValue("trigger", Trigger);
             }

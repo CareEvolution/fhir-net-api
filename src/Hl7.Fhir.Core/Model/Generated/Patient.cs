@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -454,7 +454,7 @@ namespace Hl7.Fhir.Model.R4
             private ResourceReference _other;
 
             /// <summary>
-            /// replaced-by | replaces | refer | seealso - type of link
+            /// replaced-by | replaces | refer | seealso
             /// </summary>
             [FhirElement("type", InSummary=true, Order=50)]
             [Cardinality(Min=1,Max=1)]
@@ -468,7 +468,7 @@ namespace Hl7.Fhir.Model.R4
             private Code<LinkType> _typeElement;
 
             /// <summary>
-            /// replaced-by | replaces | refer | seealso - type of link
+            /// replaced-by | replaces | refer | seealso
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]

@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Medication"; } }
 
         /// <summary>
-        /// A coded concept defining if the medication is in active use
+        /// A coded concept defining if the medication is in active use.
         /// (url: http://hl7.org/fhir/ValueSet/medication-status)
         /// </summary>
         [FhirEnumeration("MedicationStatus")]
@@ -93,7 +93,7 @@ namespace Hl7.Fhir.Model.R4
             public override string TypeName { get { return "IngredientComponent"; } }
 
             /// <summary>
-            /// The product contained
+            /// The actual ingredient or content
             /// </summary>
             [FhirElement("item", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]

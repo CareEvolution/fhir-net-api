@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,7 +56,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "DataRequirement"; } }
 
         /// <summary>
-        /// The possible sort directions, ascending or descending
+        /// The possible sort directions, ascending or descending.
         /// (url: http://hl7.org/fhir/ValueSet/sort-direction)
         /// </summary>
         [FhirEnumeration("SortDirection")]
@@ -85,10 +85,9 @@ namespace Hl7.Fhir.Model.R4
             public override string TypeName { get { return "CodeFilterComponent"; } }
 
             /// <summary>
-            /// The code-valued attribute of the filter
+            /// A code-valued attribute to filter on
             /// </summary>
             [FhirElement("path", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
             [DataMember]
             public FhirString PathElement
             {
@@ -99,7 +98,7 @@ namespace Hl7.Fhir.Model.R4
             private FhirString _pathElement;
 
             /// <summary>
-            /// The code-valued attribute of the filter
+            /// A code-valued attribute to filter on
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -118,23 +117,73 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// Valueset for the filter
+            /// A coded (token) parameter to search on
             /// </summary>
-            [FhirElement("valueSet", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(FhirUri),typeof(Canonical))]
+            [FhirElement("searchParam", InSummary=true, Order=50)]
             [DataMember]
-            public Element ValueSet
+            public FhirString SearchParamElement
             {
-                get { return _valueSet; }
-                set { _valueSet = value; OnPropertyChanged("ValueSet"); }
+                get { return _searchParamElement; }
+                set { _searchParamElement = value; OnPropertyChanged("SearchParamElement"); }
             }
 
-            private Element _valueSet;
+            private FhirString _searchParamElement;
+
+            /// <summary>
+            /// A coded (token) parameter to search on
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string SearchParam
+            {
+                get { return SearchParamElement != null ? SearchParamElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        SearchParamElement = null;
+                    else
+                        SearchParamElement = new FhirString(value);
+                    OnPropertyChanged("SearchParam");
+                }
+            }
+
+            /// <summary>
+            /// Valueset for the filter
+            /// </summary>
+            [FhirElement("valueSet", InSummary=true, Order=60)]
+            [DataMember]
+            public Canonical ValueSetElement
+            {
+                get { return _valueSetElement; }
+                set { _valueSetElement = value; OnPropertyChanged("ValueSetElement"); }
+            }
+
+            private Canonical _valueSetElement;
+
+            /// <summary>
+            /// Valueset for the filter
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string ValueSet
+            {
+                get { return ValueSetElement != null ? ValueSetElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        ValueSetElement = null;
+                    else
+                        ValueSetElement = new Canonical(value);
+                    OnPropertyChanged("ValueSet");
+                }
+            }
 
             /// <summary>
             /// What code is expected
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=60)]
+            [FhirElement("code", InSummary=true, Order=70)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<Coding> Code
@@ -153,7 +202,8 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if (PathElement != null) dest.PathElement = (FhirString)PathElement.DeepCopy();
-                    if (ValueSet != null) dest.ValueSet = (Element)ValueSet.DeepCopy();
+                    if (SearchParamElement != null) dest.SearchParamElement = (FhirString)SearchParamElement.DeepCopy();
+                    if (ValueSetElement != null) dest.ValueSetElement = (Canonical)ValueSetElement.DeepCopy();
                     if (Code != null) dest.Code = new List<Coding>(Code.DeepCopy());
                     return dest;
                 }
@@ -173,7 +223,8 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(PathElement, otherT.PathElement)) return false;
-                if (!DeepComparable.Matches(ValueSet, otherT.ValueSet)) return false;
+                if (!DeepComparable.Matches(SearchParamElement, otherT.SearchParamElement)) return false;
+                if (!DeepComparable.Matches(ValueSetElement, otherT.ValueSetElement)) return false;
                 if ( !DeepComparable.Matches(Code, otherT.Code)) return false;
 
                 return true;
@@ -186,7 +237,8 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(PathElement, otherT.PathElement)) return false;
-                if (!DeepComparable.IsExactly(ValueSet, otherT.ValueSet)) return false;
+                if (!DeepComparable.IsExactly(SearchParamElement, otherT.SearchParamElement)) return false;
+                if (!DeepComparable.IsExactly(ValueSetElement, otherT.ValueSetElement)) return false;
                 if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
 
                 return true;
@@ -200,7 +252,8 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.Children) yield return item;
                     if (PathElement != null) yield return PathElement;
-                    if (ValueSet != null) yield return ValueSet;
+                    if (SearchParamElement != null) yield return SearchParamElement;
+                    if (ValueSetElement != null) yield return ValueSetElement;
                     foreach (var elem in Code) { if (elem != null) yield return elem; }
                 }
             }
@@ -212,7 +265,8 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (PathElement != null) yield return new ElementValue("path", PathElement);
-                    if (ValueSet != null) yield return new ElementValue("valueSet", ValueSet);
+                    if (SearchParamElement != null) yield return new ElementValue("searchParam", SearchParamElement);
+                    if (ValueSetElement != null) yield return new ElementValue("valueSet", ValueSetElement);
                     foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
                 }
             }
@@ -229,10 +283,9 @@ namespace Hl7.Fhir.Model.R4
             public override string TypeName { get { return "DateFilterComponent"; } }
 
             /// <summary>
-            /// The date-valued attribute of the filter
+            /// A date-valued attribute to filter on
             /// </summary>
             [FhirElement("path", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
             [DataMember]
             public FhirString PathElement
             {
@@ -243,7 +296,7 @@ namespace Hl7.Fhir.Model.R4
             private FhirString _pathElement;
 
             /// <summary>
-            /// The date-valued attribute of the filter
+            /// A date-valued attribute to filter on
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -262,9 +315,41 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
+            /// A date valued parameter to search on
+            /// </summary>
+            [FhirElement("searchParam", InSummary=true, Order=50)]
+            [DataMember]
+            public FhirString SearchParamElement
+            {
+                get { return _searchParamElement; }
+                set { _searchParamElement = value; OnPropertyChanged("SearchParamElement"); }
+            }
+
+            private FhirString _searchParamElement;
+
+            /// <summary>
+            /// A date valued parameter to search on
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string SearchParam
+            {
+                get { return SearchParamElement != null ? SearchParamElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        SearchParamElement = null;
+                    else
+                        SearchParamElement = new FhirString(value);
+                    OnPropertyChanged("SearchParam");
+                }
+            }
+
+            /// <summary>
             /// The value of the filter, as a Period, DateTime, or Duration value
             /// </summary>
-            [FhirElement("value", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
+            [FhirElement("value", InSummary=true, Order=60, Choice=ChoiceType.DatatypeChoice)]
             [AllowedTypes(typeof(FhirDateTime),typeof(Period),typeof(Duration))]
             [DataMember]
             public Element Value
@@ -283,6 +368,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if (PathElement != null) dest.PathElement = (FhirString)PathElement.DeepCopy();
+                    if (SearchParamElement != null) dest.SearchParamElement = (FhirString)SearchParamElement.DeepCopy();
                     if (Value != null) dest.Value = (Element)Value.DeepCopy();
                     return dest;
                 }
@@ -302,6 +388,7 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(PathElement, otherT.PathElement)) return false;
+                if (!DeepComparable.Matches(SearchParamElement, otherT.SearchParamElement)) return false;
                 if (!DeepComparable.Matches(Value, otherT.Value)) return false;
 
                 return true;
@@ -314,6 +401,7 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(PathElement, otherT.PathElement)) return false;
+                if (!DeepComparable.IsExactly(SearchParamElement, otherT.SearchParamElement)) return false;
                 if (!DeepComparable.IsExactly(Value, otherT.Value)) return false;
 
                 return true;
@@ -327,6 +415,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.Children) yield return item;
                     if (PathElement != null) yield return PathElement;
+                    if (SearchParamElement != null) yield return SearchParamElement;
                     if (Value != null) yield return Value;
                 }
             }
@@ -338,6 +427,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (PathElement != null) yield return new ElementValue("path", PathElement);
+                    if (SearchParamElement != null) yield return new ElementValue("searchParam", SearchParamElement);
                     if (Value != null) yield return new ElementValue("value", Value);
                 }
             }
@@ -571,7 +661,7 @@ namespace Hl7.Fhir.Model.R4
         private Element _subject;
 
         /// <summary>
-        /// Indicates that specific structure elements are referenced by the knowledge module
+        /// Indicates specific structure elements that are referenced by the knowledge module
         /// </summary>
         [FhirElement("mustSupport", InSummary=true, Order=60)]
         [Cardinality(Min=0,Max=-1)]
@@ -585,7 +675,7 @@ namespace Hl7.Fhir.Model.R4
         private List<FhirString> _mustSupportElement;
 
         /// <summary>
-        /// Indicates that specific structure elements are referenced by the knowledge module
+        /// Indicates specific structure elements that are referenced by the knowledge module
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -677,6 +767,26 @@ namespace Hl7.Fhir.Model.R4
 
         private List<SortComponent> _sort;
 
+
+        public static ElementDefinition.ConstraintComponent DataRequirement_DRQ_1 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "codeFilter.all(path.exists() xor searchParam.exists())",
+            Key = "drq-1",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Either a path or a searchParam must be provided, but not both",
+            Xpath = "(exists(f:path) and not(exists(f:searchParam))) or (not(exists(f:path)) and exists(f:searchParam))"
+        };
+
+        public static ElementDefinition.ConstraintComponent DataRequirement_DRQ_2 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "dateFilter.all(path.exists() xor searchParam.exists())",
+            Key = "drq-2",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Either a path or a searchParam must be provided, but not both",
+            Xpath = "(exists(f:path) and not(exists(f:searchParam))) or (not(exists(f:path)) and exists(f:searchParam))"
+        };
+
+        // TODO: Add code to enforce the above constraints
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {

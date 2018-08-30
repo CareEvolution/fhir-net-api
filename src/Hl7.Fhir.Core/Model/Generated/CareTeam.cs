@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -108,20 +108,21 @@ namespace Hl7.Fhir.Model.R4
             /// Type of involvement
             /// </summary>
             [FhirElement("role", InSummary=true, Order=40)]
+            [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public CodeableConcept Role
+            public List<CodeableConcept> Role
             {
-                get { return _role; }
+                get { if (_role==null) _role = new List<CodeableConcept>(); return _role; }
                 set { _role = value; OnPropertyChanged("Role"); }
             }
 
-            private CodeableConcept _role;
+            private List<CodeableConcept> _role;
 
             /// <summary>
             /// Who is involved
             /// </summary>
             [FhirElement("member", InSummary=true, Order=50)]
-            [References("Practitioner","RelatedPerson","Patient","Organization","CareTeam")]
+            [References("Practitioner","PractitionerRole","RelatedPerson","Patient","Organization","CareTeam")]
             [DataMember]
             public ResourceReference Member
             {
@@ -165,7 +166,7 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (Role != null) dest.Role = (CodeableConcept)Role.DeepCopy();
+                    if (Role != null) dest.Role = new List<CodeableConcept>(Role.DeepCopy());
                     if (Member != null) dest.Member = (ResourceReference)Member.DeepCopy();
                     if (OnBehalfOf != null) dest.OnBehalfOf = (ResourceReference)OnBehalfOf.DeepCopy();
                     if (Period != null) dest.Period = (Period)Period.DeepCopy();
@@ -186,7 +187,7 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Role, otherT.Role)) return false;
+                if ( !DeepComparable.Matches(Role, otherT.Role)) return false;
                 if (!DeepComparable.Matches(Member, otherT.Member)) return false;
                 if (!DeepComparable.Matches(OnBehalfOf, otherT.OnBehalfOf)) return false;
                 if (!DeepComparable.Matches(Period, otherT.Period)) return false;
@@ -215,7 +216,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (Role != null) yield return Role;
+                    foreach (var elem in Role) { if (elem != null) yield return elem; }
                     if (Member != null) yield return Member;
                     if (OnBehalfOf != null) yield return OnBehalfOf;
                     if (Period != null) yield return Period;
@@ -228,7 +229,7 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (Role != null) yield return new ElementValue("role", Role);
+                    foreach (var elem in Role) { if (elem != null) yield return new ElementValue("role", elem); }
                     if (Member != null) yield return new ElementValue("member", Member);
                     if (OnBehalfOf != null) yield return new ElementValue("onBehalfOf", OnBehalfOf);
                     if (Period != null) yield return new ElementValue("period", Period);
@@ -465,7 +466,7 @@ namespace Hl7.Fhir.Model.R4
             Key = "ctm-1",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "CareTeam.participant.onBehalfOf can only be populated when CareTeam.participant.member is a Practitioner",
-            Xpath = "starts-with(f:member/f:reference/@value, 'Practitioner/') or contains(f:member/f:reference/@value, '/Practitioner/') or not(exists(f:onBehalfOf))"
+            Xpath = "starts-with(f:member/f:reference/@value, 'Practitioner/') or contains(f:member/f:reference/@value, '/Practitioner/') or exists(ancestor::*/f:contains/f:Practitioner/f:id[@value=substring-after(current()/f:member/f:reference/@value, '#')]) or not(exists(f:onBehalfOf))"
         };
 
         public override void AddDefaultConstraints()

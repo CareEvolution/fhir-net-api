@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -596,7 +596,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// A list of alternate names that the location is known as or was known as in the past
+        /// A list of alternate names that the location is known as or was known as in the past
         /// </summary>
         [FhirElement("alias", Order=130)]
         [Cardinality(Min=0,Max=-1)]
@@ -610,7 +610,7 @@ namespace Hl7.Fhir.Model.R4
         private List<FhirString> _aliasElement;
 
         /// <summary>
-        /// A list of alternate names that the location is known as or was known as in the past
+        /// A list of alternate names that the location is known as or was known as in the past
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]

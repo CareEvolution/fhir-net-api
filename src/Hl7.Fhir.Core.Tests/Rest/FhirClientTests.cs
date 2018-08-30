@@ -1981,7 +1981,7 @@ namespace Hl7.Fhir.Tests.Rest
 
             var client = new FhirClient(testEndpoint);
 
-            var binary = new Binary() { Content = arr, ContentType = "image/png" };
+            var binary = new Binary() { Data = arr, ContentType = "image/png" };
             var result = client.Create(binary);
 
             Assert.IsNotNull(result);
@@ -2062,7 +2062,7 @@ namespace Hl7.Fhir.Tests.Rest
             // GET operation $everything with 1 complex parameter
             try
             {
-                loc = client.TypeOperation<Patient>("everything", new Parameters().Add("start", new Annotation() { Text = "test" }), useGet: true);
+                loc = client.TypeOperation<Patient>("everything", new Parameters().Add("start", new Annotation() { Text = new Markdown("test") }), useGet: true);
                 Assert.Fail("An InvalidOperationException was expected here");
             }
             catch (Exception ex)

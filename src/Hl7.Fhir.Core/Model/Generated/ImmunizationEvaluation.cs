@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -191,15 +191,15 @@ namespace Hl7.Fhir.Model.R4
         /// Evaluation target disease
         /// </summary>
         [FhirElement("targetDisease", InSummary=true, Order=140)]
-        [Cardinality(Min=1,Max=-1)]
+        [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public List<CodeableConcept> TargetDisease
+        public CodeableConcept TargetDisease
         {
-            get { if (_targetDisease==null) _targetDisease = new List<CodeableConcept>(); return _targetDisease; }
+            get { return _targetDisease; }
             set { _targetDisease = value; OnPropertyChanged("TargetDisease"); }
         }
 
-        private List<CodeableConcept> _targetDisease;
+        private CodeableConcept _targetDisease;
 
         /// <summary>
         /// Immunization being evaluated
@@ -349,7 +349,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Patient != null) dest.Patient = (ResourceReference)Patient.DeepCopy();
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (Authority != null) dest.Authority = (ResourceReference)Authority.DeepCopy();
-                if (TargetDisease != null) dest.TargetDisease = new List<CodeableConcept>(TargetDisease.DeepCopy());
+                if (TargetDisease != null) dest.TargetDisease = (CodeableConcept)TargetDisease.DeepCopy();
                 if (ImmunizationEvent != null) dest.ImmunizationEvent = (ResourceReference)ImmunizationEvent.DeepCopy();
                 if (DoseStatus != null) dest.DoseStatus = (CodeableConcept)DoseStatus.DeepCopy();
                 if (DoseStatusReason != null) dest.DoseStatusReason = new List<CodeableConcept>(DoseStatusReason.DeepCopy());
@@ -379,7 +379,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Patient, otherT.Patient)) return false;
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(Authority, otherT.Authority)) return false;
-            if ( !DeepComparable.Matches(TargetDisease, otherT.TargetDisease)) return false;
+            if (!DeepComparable.Matches(TargetDisease, otherT.TargetDisease)) return false;
             if (!DeepComparable.Matches(ImmunizationEvent, otherT.ImmunizationEvent)) return false;
             if (!DeepComparable.Matches(DoseStatus, otherT.DoseStatus)) return false;
             if ( !DeepComparable.Matches(DoseStatusReason, otherT.DoseStatusReason)) return false;
@@ -425,7 +425,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Patient != null) yield return Patient;
                 if (DateElement != null) yield return DateElement;
                 if (Authority != null) yield return Authority;
-                foreach (var elem in TargetDisease) { if (elem != null) yield return elem; }
+                if (TargetDisease != null) yield return TargetDisease;
                 if (ImmunizationEvent != null) yield return ImmunizationEvent;
                 if (DoseStatus != null) yield return DoseStatus;
                 foreach (var elem in DoseStatusReason) { if (elem != null) yield return elem; }
@@ -447,7 +447,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Patient != null) yield return new ElementValue("patient", Patient);
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (Authority != null) yield return new ElementValue("authority", Authority);
-                foreach (var elem in TargetDisease) { if (elem != null) yield return new ElementValue("targetDisease", elem); }
+                if (TargetDisease != null) yield return new ElementValue("targetDisease", TargetDisease);
                 if (ImmunizationEvent != null) yield return new ElementValue("immunizationEvent", ImmunizationEvent);
                 if (DoseStatus != null) yield return new ElementValue("doseStatus", DoseStatus);
                 foreach (var elem in DoseStatusReason) { if (elem != null) yield return new ElementValue("doseStatusReason", elem); }

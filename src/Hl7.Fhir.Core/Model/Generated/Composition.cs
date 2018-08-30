@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -59,46 +59,46 @@ namespace Hl7.Fhir.Model.R4
 
         /// <summary>
         ///  Set of codes used to value Act.Confidentiality and Role.Confidentiality attribute in accordance with the definition for concept domain "Confidentiality".
-        /// (url: http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassification)
+        /// (url: http://terminology.hl7.org/ValueSet/v3-ConfidentialityClassification)
         /// </summary>
-        [FhirEnumeration("ConfidentialityClassification")]
-        public enum ConfidentialityClassification
+        [FhirEnumeration("v3_ConfidentialityClassification")]
+        public enum v3_ConfidentialityClassification
         {
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// (system: http://terminology.hl7.org/CodeSystem/v3-Confidentiality)
             /// </summary>
-            [EnumLiteral("U", "http://hl7.org/fhir/v3/Confidentiality"), Description("unrestricted")]
+            [EnumLiteral("U", "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"), Description("unrestricted")]
             U,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// (system: http://terminology.hl7.org/CodeSystem/v3-Confidentiality)
             /// </summary>
-            [EnumLiteral("L", "http://hl7.org/fhir/v3/Confidentiality"), Description("low")]
+            [EnumLiteral("L", "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"), Description("low")]
             L,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// (system: http://terminology.hl7.org/CodeSystem/v3-Confidentiality)
             /// </summary>
-            [EnumLiteral("M", "http://hl7.org/fhir/v3/Confidentiality"), Description("moderate")]
+            [EnumLiteral("M", "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"), Description("moderate")]
             M,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// (system: http://terminology.hl7.org/CodeSystem/v3-Confidentiality)
             /// </summary>
-            [EnumLiteral("N", "http://hl7.org/fhir/v3/Confidentiality"), Description("normal")]
+            [EnumLiteral("N", "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"), Description("normal")]
             N,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// (system: http://terminology.hl7.org/CodeSystem/v3-Confidentiality)
             /// </summary>
-            [EnumLiteral("R", "http://hl7.org/fhir/v3/Confidentiality"), Description("restricted")]
+            [EnumLiteral("R", "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"), Description("restricted")]
             R,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// (system: http://terminology.hl7.org/CodeSystem/v3-Confidentiality)
             /// </summary>
-            [EnumLiteral("V", "http://hl7.org/fhir/v3/Confidentiality"), Description("very restricted")]
+            [EnumLiteral("V", "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"), Description("very restricted")]
             V,
         }
 
@@ -146,7 +146,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// personal | professional | legal | official
             /// </summary>
-            [FhirElement("mode", InSummary=true, Order=40)]
+            [FhirElement("mode", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Code<CompositionAttestationMode> ModeElement
@@ -179,7 +179,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// When the composition was attested
             /// </summary>
-            [FhirElement("time", InSummary=true, Order=50)]
+            [FhirElement("time", Order=50)]
             [DataMember]
             public FhirDateTime TimeElement
             {
@@ -211,7 +211,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Who attested the composition
             /// </summary>
-            [FhirElement("party", InSummary=true, Order=60)]
+            [FhirElement("party", Order=60)]
             [References("Patient","RelatedPerson","Practitioner","PractitionerRole","Organization")]
             [DataMember]
             public ResourceReference Party
@@ -308,7 +308,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// replaces | transforms | signs | appends
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
+            [FhirElement("code", Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Code<DocumentRelationshipType> CodeElement
@@ -341,7 +341,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Target of the relationship
             /// </summary>
-            [FhirElement("target", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
+            [FhirElement("target", Order=50, Choice=ChoiceType.DatatypeChoice)]
             [AllowedTypes(typeof(Identifier),typeof(ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -603,7 +603,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Who and/or what authored the section
             /// </summary>
-            [FhirElement("author", InSummary=true, Order=60)]
+            [FhirElement("author", Order=60)]
             [References("Practitioner","PractitionerRole","Device","Patient","RelatedPerson","Organization")]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
@@ -631,7 +631,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// working | snapshot | changes
             /// </summary>
-            [FhirElement("mode", InSummary=true, Order=80)]
+            [FhirElement("mode", Order=80)]
             [DataMember]
             public Code<ListMode> ModeElement
             {
@@ -883,15 +883,16 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Categorization of Composition
         /// </summary>
-        [FhirElement("class", InSummary=true, Order=120)]
+        [FhirElement("category", InSummary=true, Order=120)]
+        [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public CodeableConcept Class
+        public List<CodeableConcept> Category
         {
-            get { return _class; }
-            set { _class = value; OnPropertyChanged("Class"); }
+            get { if (_category==null) _category = new List<CodeableConcept>(); return _category; }
+            set { _category = value; OnPropertyChanged("Category"); }
         }
 
-        private CodeableConcept _class;
+        private List<CodeableConcept> _category;
 
         /// <summary>
         /// Who and/or what the composition is about
@@ -1006,13 +1007,13 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("confidentiality", InSummary=true, Order=180)]
         [DataMember]
-        public Code<ConfidentialityClassification> ConfidentialityElement
+        public Code<v3_ConfidentialityClassification> ConfidentialityElement
         {
             get { return _confidentialityElement; }
             set { _confidentialityElement = value; OnPropertyChanged("ConfidentialityElement"); }
         }
 
-        private Code<ConfidentialityClassification> _confidentialityElement;
+        private Code<v3_ConfidentialityClassification> _confidentialityElement;
 
         /// <summary>
         /// As defined by affinity domain
@@ -1020,7 +1021,7 @@ namespace Hl7.Fhir.Model.R4
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public ConfidentialityClassification? Confidentiality
+        public v3_ConfidentialityClassification? Confidentiality
         {
             get { return ConfidentialityElement != null ? ConfidentialityElement.Value : null; }
             set
@@ -1028,7 +1029,7 @@ namespace Hl7.Fhir.Model.R4
                 if (value == null)
                     ConfidentialityElement = null;
                 else
-                    ConfidentialityElement = new Code<ConfidentialityClassification>(value);
+                    ConfidentialityElement = new Code<v3_ConfidentialityClassification>(value);
                 OnPropertyChanged("Confidentiality");
             }
         }
@@ -1036,7 +1037,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Attests to accuracy of composition
         /// </summary>
-        [FhirElement("attester", InSummary=true, Order=190)]
+        [FhirElement("attester", Order=190)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<AttesterComponent> Attester
@@ -1064,7 +1065,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Relationships to other compositions/documents
         /// </summary>
-        [FhirElement("relatesTo", InSummary=true, Order=210)]
+        [FhirElement("relatesTo", Order=210)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<RelatesToComponent> RelatesTo
@@ -1140,13 +1141,13 @@ namespace Hl7.Fhir.Model.R4
                 if (Identifier != null) dest.Identifier = (Identifier)Identifier.DeepCopy();
                 if (StatusElement != null) dest.StatusElement = (Code<CompositionStatus>)StatusElement.DeepCopy();
                 if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
-                if (Class != null) dest.Class = (CodeableConcept)Class.DeepCopy();
+                if (Category != null) dest.Category = new List<CodeableConcept>(Category.DeepCopy());
                 if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
                 if (Encounter != null) dest.Encounter = (ResourceReference)Encounter.DeepCopy();
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (Author != null) dest.Author = new List<ResourceReference>(Author.DeepCopy());
                 if (TitleElement != null) dest.TitleElement = (FhirString)TitleElement.DeepCopy();
-                if (ConfidentialityElement != null) dest.ConfidentialityElement = (Code<ConfidentialityClassification>)ConfidentialityElement.DeepCopy();
+                if (ConfidentialityElement != null) dest.ConfidentialityElement = (Code<v3_ConfidentialityClassification>)ConfidentialityElement.DeepCopy();
                 if (Attester != null) dest.Attester = new List<AttesterComponent>(Attester.DeepCopy());
                 if (Custodian != null) dest.Custodian = (ResourceReference)Custodian.DeepCopy();
                 if (RelatesTo != null) dest.RelatesTo = new List<RelatesToComponent>(RelatesTo.DeepCopy());
@@ -1172,7 +1173,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.Matches(Type, otherT.Type)) return false;
-            if (!DeepComparable.Matches(Class, otherT.Class)) return false;
+            if ( !DeepComparable.Matches(Category, otherT.Category)) return false;
             if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
             if (!DeepComparable.Matches(Encounter, otherT.Encounter)) return false;
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
@@ -1197,7 +1198,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
-            if (!DeepComparable.IsExactly(Class, otherT.Class)) return false;
+            if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
             if (!DeepComparable.IsExactly(Subject, otherT.Subject)) return false;
             if (!DeepComparable.IsExactly(Encounter, otherT.Encounter)) return false;
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
@@ -1222,7 +1223,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Identifier != null) yield return Identifier;
                 if (StatusElement != null) yield return StatusElement;
                 if (Type != null) yield return Type;
-                if (Class != null) yield return Class;
+                foreach (var elem in Category) { if (elem != null) yield return elem; }
                 if (Subject != null) yield return Subject;
                 if (Encounter != null) yield return Encounter;
                 if (DateElement != null) yield return DateElement;
@@ -1246,7 +1247,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Identifier != null) yield return new ElementValue("identifier", Identifier);
                 if (StatusElement != null) yield return new ElementValue("status", StatusElement);
                 if (Type != null) yield return new ElementValue("type", Type);
-                if (Class != null) yield return new ElementValue("class", Class);
+                foreach (var elem in Category) { if (elem != null) yield return new ElementValue("category", elem); }
                 if (Subject != null) yield return new ElementValue("subject", Subject);
                 if (Encounter != null) yield return new ElementValue("encounter", Encounter);
                 if (DateElement != null) yield return new ElementValue("date", DateElement);

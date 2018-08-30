@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "AdverseEvent"; } }
 
         /// <summary>
-        /// Overall nature of the event, e.g. real or potential
+        /// Overall nature of the event, e.g. real or potential.
         /// (url: http://hl7.org/fhir/ValueSet/adverse-event-actuality)
         /// </summary>
         [FhirEnumeration("AdverseEventActuality")]
@@ -393,7 +393,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// ProductProblem | ProductQuality | ProductUseError | WrongDose | IncorrectPrescribingInformation | WrongTechnique | WrongRouteOfAdministration | WrongRate | WrongDuration | WrongTime | ExpiredDrug | MedicalDeviceUseError | ProblemDifferentManufacturer | UnsafePhysicalEnvironment
+        /// product-problem | product-quality | product-use-error | wrong-dose | incorrect-prescribing-information | wrong-technique | wrong-route-of-administration | wrong-rate | wrong-duration | wrong-time | expired-drug | medical-device-use-error | problem-different-manufacturer | unsafe-physical-environment
         /// </summary>
         [FhirElement("category", InSummary=true, Order=110)]
         [Cardinality(Min=0,Max=-1)]
@@ -481,9 +481,73 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
+        /// When the event was detected
+        /// </summary>
+        [FhirElement("detected", InSummary=true, Order=160)]
+        [DataMember]
+        public FhirDateTime DetectedElement
+        {
+            get { return _detectedElement; }
+            set { _detectedElement = value; OnPropertyChanged("DetectedElement"); }
+        }
+
+        private FhirDateTime _detectedElement;
+
+        /// <summary>
+        /// When the event was detected
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Detected
+        {
+            get { return DetectedElement != null ? DetectedElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DetectedElement = null;
+                else
+                    DetectedElement = new FhirDateTime(value);
+                OnPropertyChanged("Detected");
+            }
+        }
+
+        /// <summary>
+        /// When the event was recorded
+        /// </summary>
+        [FhirElement("recordedDate", InSummary=true, Order=170)]
+        [DataMember]
+        public FhirDateTime RecordedDateElement
+        {
+            get { return _recordedDateElement; }
+            set { _recordedDateElement = value; OnPropertyChanged("RecordedDateElement"); }
+        }
+
+        private FhirDateTime _recordedDateElement;
+
+        /// <summary>
+        /// When the event was recorded
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string RecordedDate
+        {
+            get { return RecordedDateElement != null ? RecordedDateElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    RecordedDateElement = null;
+                else
+                    RecordedDateElement = new FhirDateTime(value);
+                OnPropertyChanged("RecordedDate");
+            }
+        }
+
+        /// <summary>
         /// Effect on the subject due to this event
         /// </summary>
-        [FhirElement("resultingCondition", InSummary=true, Order=160)]
+        [FhirElement("resultingCondition", InSummary=true, Order=180)]
         [References("Condition")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -498,7 +562,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Location where adverse event occurred
         /// </summary>
-        [FhirElement("location", InSummary=true, Order=170)]
+        [FhirElement("location", InSummary=true, Order=190)]
         [References("Location")]
         [DataMember]
         public ResourceReference Location
@@ -512,7 +576,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Seriousness of the event
         /// </summary>
-        [FhirElement("seriousness", InSummary=true, Order=180)]
+        [FhirElement("seriousness", InSummary=true, Order=200)]
         [DataMember]
         public CodeableConcept Seriousness
         {
@@ -523,9 +587,9 @@ namespace Hl7.Fhir.Model.R4
         private CodeableConcept _seriousness;
 
         /// <summary>
-        /// Mild | Moderate | Severe
+        /// mild | moderate | severe
         /// </summary>
-        [FhirElement("severity", InSummary=true, Order=190)]
+        [FhirElement("severity", InSummary=true, Order=210)]
         [DataMember]
         public CodeableConcept Severity
         {
@@ -538,7 +602,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown
         /// </summary>
-        [FhirElement("outcome", InSummary=true, Order=200)]
+        [FhirElement("outcome", InSummary=true, Order=220)]
         [DataMember]
         public CodeableConcept Outcome
         {
@@ -551,7 +615,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who recorded the adverse event
         /// </summary>
-        [FhirElement("recorder", InSummary=true, Order=210)]
+        [FhirElement("recorder", InSummary=true, Order=230)]
         [References("Patient","Practitioner","RelatedPerson")]
         [DataMember]
         public ResourceReference Recorder
@@ -565,7 +629,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who  was involved in the adverse event or the potential adverse event
         /// </summary>
-        [FhirElement("contributor", InSummary=true, Order=220)]
+        [FhirElement("contributor", InSummary=true, Order=240)]
         [References("Practitioner","Device")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -580,7 +644,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The suspected agent causing the adverse event
         /// </summary>
-        [FhirElement("suspectEntity", InSummary=true, Order=230)]
+        [FhirElement("suspectEntity", InSummary=true, Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<SuspectEntityComponent> SuspectEntity
@@ -594,7 +658,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// AdverseEvent.subjectMedicalHistory
         /// </summary>
-        [FhirElement("subjectMedicalHistory", InSummary=true, Order=240)]
+        [FhirElement("subjectMedicalHistory", InSummary=true, Order=260)]
         [References("Condition","Observation","AllergyIntolerance","FamilyMemberHistory","Immunization","Procedure","Media","DocumentReference")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -609,7 +673,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// AdverseEvent.referenceDocument
         /// </summary>
-        [FhirElement("referenceDocument", InSummary=true, Order=250)]
+        [FhirElement("referenceDocument", InSummary=true, Order=270)]
         [References("DocumentReference")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -624,7 +688,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// AdverseEvent.study
         /// </summary>
-        [FhirElement("study", InSummary=true, Order=260)]
+        [FhirElement("study", InSummary=true, Order=280)]
         [References("ResearchStudy")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -651,6 +715,8 @@ namespace Hl7.Fhir.Model.R4
                 if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
                 if (Context != null) dest.Context = (ResourceReference)Context.DeepCopy();
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
+                if (DetectedElement != null) dest.DetectedElement = (FhirDateTime)DetectedElement.DeepCopy();
+                if (RecordedDateElement != null) dest.RecordedDateElement = (FhirDateTime)RecordedDateElement.DeepCopy();
                 if (ResultingCondition != null) dest.ResultingCondition = new List<ResourceReference>(ResultingCondition.DeepCopy());
                 if (Location != null) dest.Location = (ResourceReference)Location.DeepCopy();
                 if (Seriousness != null) dest.Seriousness = (CodeableConcept)Seriousness.DeepCopy();
@@ -686,6 +752,8 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
             if (!DeepComparable.Matches(Context, otherT.Context)) return false;
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
+            if (!DeepComparable.Matches(DetectedElement, otherT.DetectedElement)) return false;
+            if (!DeepComparable.Matches(RecordedDateElement, otherT.RecordedDateElement)) return false;
             if ( !DeepComparable.Matches(ResultingCondition, otherT.ResultingCondition)) return false;
             if (!DeepComparable.Matches(Location, otherT.Location)) return false;
             if (!DeepComparable.Matches(Seriousness, otherT.Seriousness)) return false;
@@ -714,6 +782,8 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Subject, otherT.Subject)) return false;
             if (!DeepComparable.IsExactly(Context, otherT.Context)) return false;
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
+            if (!DeepComparable.IsExactly(DetectedElement, otherT.DetectedElement)) return false;
+            if (!DeepComparable.IsExactly(RecordedDateElement, otherT.RecordedDateElement)) return false;
             if (!DeepComparable.IsExactly(ResultingCondition, otherT.ResultingCondition)) return false;
             if (!DeepComparable.IsExactly(Location, otherT.Location)) return false;
             if (!DeepComparable.IsExactly(Seriousness, otherT.Seriousness)) return false;
@@ -742,6 +812,8 @@ namespace Hl7.Fhir.Model.R4
                 if (Subject != null) yield return Subject;
                 if (Context != null) yield return Context;
                 if (DateElement != null) yield return DateElement;
+                if (DetectedElement != null) yield return DetectedElement;
+                if (RecordedDateElement != null) yield return RecordedDateElement;
                 foreach (var elem in ResultingCondition) { if (elem != null) yield return elem; }
                 if (Location != null) yield return Location;
                 if (Seriousness != null) yield return Seriousness;
@@ -769,6 +841,8 @@ namespace Hl7.Fhir.Model.R4
                 if (Subject != null) yield return new ElementValue("subject", Subject);
                 if (Context != null) yield return new ElementValue("context", Context);
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
+                if (DetectedElement != null) yield return new ElementValue("detected", DetectedElement);
+                if (RecordedDateElement != null) yield return new ElementValue("recordedDate", RecordedDateElement);
                 foreach (var elem in ResultingCondition) { if (elem != null) yield return new ElementValue("resultingCondition", elem); }
                 if (Location != null) yield return new ElementValue("location", Location);
                 if (Seriousness != null) yield return new ElementValue("seriousness", Seriousness);

@@ -66,6 +66,16 @@ public static class StringUtils
         }
         if (int.TryParse(result, out var integerValue))
             result = "N" + result;
+
+        result = result.Replace(".", "_");
+
+        int IsIntegerValue;
+        if (Char.IsDigit(result[0]))
+        {
+            var numMap = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine" };
+            result = numMap[int.Parse(result.Substring(0, 1))] + result.Substring(1);
+        }
+
         return result;
     }
 
@@ -555,17 +565,23 @@ public class ValueSet
                 {
                     valuesetUrl = n4.Value;
                 }
-                var n5 = eProp.SelectSingleNode("fhir:binding/fhir:valueSetCanonical/@value", loadedVersion.NSR);
+                var n5 = eProp.SelectSingleNode("fhir:binding/fhir:valueSet/@value", loadedVersion.NSR);
                 if (n5 != null)
                 {
                     valuesetUrl = n5.Value;
                 }
+                //System.Diagnostics.Debugger.Launch();
                 var valuesetElement = loadedVersion.Expansions.SelectSingleNode("/fhir:Bundle/fhir:entry/fhir:resource/fhir:ValueSet[fhir:url/@value = '" + valuesetUrl + "']", loadedVersion.NSE) as XmlElement;
                 if (valuesetElement != null)
                 {
                     var enumName = valuesetElement.SelectSingleNode("fhir:name/@value", loadedVersion.NSE).InnerText;
                     // reformat the name so that it is a valid .NET enumeration name
-                    enumName = enumName.Replace(" ", "").Replace("-", "_");
+
+                    enumName = enumName.Replace(" ", "").Replace("-", "_").Replace(".","_");
+
+                    if (enumName == "MimeTypes")
+                        continue;
+
                     if (!valueSetsByEnumName.ContainsKey(enumName))
                     {
                         var valueSet = new ValueSet
@@ -1979,6 +1995,10 @@ public class PropertyDetails
             result.Summary = element.SelectSingleNode("fhir:short/@value", ns).Value;
         if (element.SelectSingleNode("fhir:type/fhir:code/@value", ns) != null)
             result.PropType = element.SelectSingleNode("fhir:type/fhir:code/@value", ns).Value;
+        else if (element.SelectSingleNode("fhir:path/@value", ns).Value == "Element.id")
+            result.PropType = "id";
+        else if (element.SelectSingleNode("fhir:path/@value", ns).Value == "Extension.url")
+            result.PropType = "url";
         else
             result.PropType = "BackboneElement";
 
@@ -2330,7 +2350,7 @@ public class PropertyDetails
         // R4 change
         if (codeRequiredBindingNode == null)
         {
-            codeRequiredBindingNode = element.SelectSingleNode("fhir:binding[fhir:strength/@value = 'required']/fhir:valueSetCanonical/@value", ns);
+            codeRequiredBindingNode = element.SelectSingleNode("fhir:binding[fhir:strength/@value = 'required']/fhir:valueSet/@value", ns);
         }
 
         if (codeRequiredBindingNode == null)
@@ -2339,7 +2359,7 @@ public class PropertyDetails
         }
 
         var codeRequiredBinding = codeRequiredBindingNode.Value;
-        if (string.IsNullOrEmpty(codeRequiredBinding) || codeRequiredBinding == "http://hl7.org/fhir/ValueSet/operation-parameter-type")
+        if (string.IsNullOrEmpty(codeRequiredBinding) || codeRequiredBinding == "http://hl7.org/fhir/ValueSet/operation-parameter-type" || codeRequiredBinding == "http://hl7.org/fhir/ValueSet/mimetypes")
         {
             return null;
         }
@@ -2690,6 +2710,8 @@ public class SearchParameter
             case "url": _outputType = "Url"; break;
             case "canonical": _outputType = "Canonical"; break;
             case "uuid": _outputType = "Uuid"; break;
+            case "special": _outputType = "Special"; break;
+            default: _outputType = searchType; break;
         }
         var xpath = sp.SelectSingleNode("fhir:xpath/@value", ns)?.Value ??
             string.Empty;

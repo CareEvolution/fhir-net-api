@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -95,7 +95,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// How an element value is interpreted when discrimination is evaluated
+        /// How an element value is interpreted when discrimination is evaluated.
         /// (url: http://hl7.org/fhir/ValueSet/discriminator-type)
         /// </summary>
         [FhirEnumeration("DiscriminatorType")]
@@ -188,7 +188,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Whether a reference needs to be version specific or version independent, or whether either can be used
+        /// Whether a reference needs to be version specific or version independent, or whether either can be used.
         /// (url: http://hl7.org/fhir/ValueSet/reference-version-rules)
         /// </summary>
         [FhirEnumeration("ReferenceVersionRules")]
@@ -835,7 +835,7 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// Profile (StructureDefinition or IG) on the Reference target - one must apply
+            /// Profile (StructureDefinition or IG) on the Reference/canonical target - one must apply
             /// </summary>
             [FhirElement("targetProfile", InSummary=true, Order=60)]
             [Cardinality(Min=0,Max=-1)]
@@ -849,7 +849,7 @@ namespace Hl7.Fhir.Model.R4
             private List<Canonical> _targetProfileElement;
 
             /// <summary>
-            /// Profile (StructureDefinition or IG) on the Reference target - one must apply
+            /// Profile (StructureDefinition or IG) on the Reference/canonical target - one must apply
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -1062,7 +1062,7 @@ namespace Hl7.Fhir.Model.R4
             /// Value of Example (one of allowed types)
             /// </summary>
             [FhirElement("value", InSummary=true, Order=50, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(UsageContext),typeof(Dosage))]
+            [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(Expression),typeof(UsageContext),typeof(Dosage))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Element Value
@@ -1286,7 +1286,6 @@ namespace Hl7.Fhir.Model.R4
             /// FHIRPath expression of constraint
             /// </summary>
             [FhirElement("expression", InSummary=true, Order=80)]
-            [Cardinality(Min=1,Max=1)]
             [DataMember]
             public FhirString ExpressionElement
             {
@@ -1550,16 +1549,34 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Source of value set
             /// </summary>
-            [FhirElement("valueSet", InSummary=true, Order=60, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(FhirUri),typeof(Canonical))]
+            [FhirElement("valueSet", InSummary=true, Order=60)]
             [DataMember]
-            public Element ValueSet
+            public Canonical ValueSetElement
             {
-                get { return _valueSet; }
-                set { _valueSet = value; OnPropertyChanged("ValueSet"); }
+                get { return _valueSetElement; }
+                set { _valueSetElement = value; OnPropertyChanged("ValueSetElement"); }
             }
 
-            private Element _valueSet;
+            private Canonical _valueSetElement;
+
+            /// <summary>
+            /// Source of value set
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string ValueSet
+            {
+                get { return ValueSetElement != null ? ValueSetElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        ValueSetElement = null;
+                    else
+                        ValueSetElement = new Canonical(value);
+                    OnPropertyChanged("ValueSet");
+                }
+            }
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1570,7 +1587,7 @@ namespace Hl7.Fhir.Model.R4
                     base.CopyTo(dest);
                     if (StrengthElement != null) dest.StrengthElement = (Code<BindingStrength>)StrengthElement.DeepCopy();
                     if (DescriptionElement != null) dest.DescriptionElement = (FhirString)DescriptionElement.DeepCopy();
-                    if (ValueSet != null) dest.ValueSet = (Element)ValueSet.DeepCopy();
+                    if (ValueSetElement != null) dest.ValueSetElement = (Canonical)ValueSetElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -1590,7 +1607,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(StrengthElement, otherT.StrengthElement)) return false;
                 if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
-                if (!DeepComparable.Matches(ValueSet, otherT.ValueSet)) return false;
+                if (!DeepComparable.Matches(ValueSetElement, otherT.ValueSetElement)) return false;
 
                 return true;
             }
@@ -1603,7 +1620,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(StrengthElement, otherT.StrengthElement)) return false;
                 if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
-                if (!DeepComparable.IsExactly(ValueSet, otherT.ValueSet)) return false;
+                if (!DeepComparable.IsExactly(ValueSetElement, otherT.ValueSetElement)) return false;
 
                 return true;
             }
@@ -1617,7 +1634,7 @@ namespace Hl7.Fhir.Model.R4
                     foreach (var item in base.Children) yield return item;
                     if (StrengthElement != null) yield return StrengthElement;
                     if (DescriptionElement != null) yield return DescriptionElement;
-                    if (ValueSet != null) yield return ValueSet;
+                    if (ValueSetElement != null) yield return ValueSetElement;
                 }
             }
 
@@ -1629,7 +1646,7 @@ namespace Hl7.Fhir.Model.R4
                     foreach (var item in base.NamedChildren) yield return item;
                     if (StrengthElement != null) yield return new ElementValue("strength", StrengthElement);
                     if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
-                    if (ValueSet != null) yield return new ElementValue("valueSet", ValueSet);
+                    if (ValueSetElement != null) yield return new ElementValue("valueSet", ValueSetElement);
                 }
             }
 
@@ -1954,9 +1971,41 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
+        /// If this slice definition constrains an inherited slice definition (or not)
+        /// </summary>
+        [FhirElement("sliceIsConstraining", InSummary=true, Order=120)]
+        [DataMember]
+        public FhirBoolean SliceIsConstrainingElement
+        {
+            get { return _sliceIsConstrainingElement; }
+            set { _sliceIsConstrainingElement = value; OnPropertyChanged("SliceIsConstrainingElement"); }
+        }
+
+        private FhirBoolean _sliceIsConstrainingElement;
+
+        /// <summary>
+        /// If this slice definition constrains an inherited slice definition (or not)
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public bool? SliceIsConstraining
+        {
+            get { return SliceIsConstrainingElement != null ? SliceIsConstrainingElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    SliceIsConstrainingElement = null;
+                else
+                    SliceIsConstrainingElement = new FhirBoolean(value);
+                OnPropertyChanged("SliceIsConstraining");
+            }
+        }
+
+        /// <summary>
         /// Name for element to display with or prompt for element
         /// </summary>
-        [FhirElement("label", InSummary=true, Order=120)]
+        [FhirElement("label", InSummary=true, Order=130)]
         [DataMember]
         public FhirString LabelElement
         {
@@ -1988,7 +2037,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Corresponding codes in terminologies
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=130)]
+        [FhirElement("code", InSummary=true, Order=140)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Coding> Code
@@ -2002,7 +2051,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// This element is sliced - slices follow
         /// </summary>
-        [FhirElement("slicing", InSummary=true, Order=140)]
+        [FhirElement("slicing", InSummary=true, Order=150)]
         [DataMember]
         public SlicingComponent Slicing
         {
@@ -2015,7 +2064,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Concise definition for space-constrained presentation
         /// </summary>
-        [FhirElement("short", InSummary=true, Order=150)]
+        [FhirElement("short", InSummary=true, Order=160)]
         [DataMember]
         public FhirString ShortElement
         {
@@ -2047,7 +2096,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Full formal definition as narrative text
         /// </summary>
-        [FhirElement("definition", InSummary=true, Order=160)]
+        [FhirElement("definition", InSummary=true, Order=170)]
         [DataMember]
         public Markdown Definition
         {
@@ -2060,7 +2109,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Comments about the use of this element
         /// </summary>
-        [FhirElement("comment", InSummary=true, Order=170)]
+        [FhirElement("comment", InSummary=true, Order=180)]
         [DataMember]
         public Markdown Comment
         {
@@ -2073,7 +2122,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Why this resource has been created
         /// </summary>
-        [FhirElement("requirements", InSummary=true, Order=180)]
+        [FhirElement("requirements", InSummary=true, Order=190)]
         [DataMember]
         public Markdown Requirements
         {
@@ -2086,7 +2135,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Other names
         /// </summary>
-        [FhirElement("alias", InSummary=true, Order=190)]
+        [FhirElement("alias", InSummary=true, Order=200)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<FhirString> AliasElement
@@ -2119,7 +2168,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Minimum Cardinality
         /// </summary>
-        [FhirElement("min", InSummary=true, Order=200)]
+        [FhirElement("min", InSummary=true, Order=210)]
         [DataMember]
         public UnsignedInt MinElement
         {
@@ -2151,7 +2200,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Maximum Cardinality (a number or *)
         /// </summary>
-        [FhirElement("max", InSummary=true, Order=210)]
+        [FhirElement("max", InSummary=true, Order=220)]
         [DataMember]
         public FhirString MaxElement
         {
@@ -2183,7 +2232,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Base definition information for tools
         /// </summary>
-        [FhirElement("base", InSummary=true, Order=220)]
+        [FhirElement("base", InSummary=true, Order=230)]
         [DataMember]
         public BaseComponent Base
         {
@@ -2196,7 +2245,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Reference to definition of content for the element
         /// </summary>
-        [FhirElement("contentReference", InSummary=true, Order=230)]
+        [FhirElement("contentReference", InSummary=true, Order=240)]
         [DataMember]
         public FhirUri ContentReferenceElement
         {
@@ -2228,7 +2277,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Data type and Profile for this element
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=240)]
+        [FhirElement("type", InSummary=true, Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<TypeRefComponent> Type
@@ -2242,8 +2291,8 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Specified value if missing from instance
         /// </summary>
-        [FhirElement("defaultValue", InSummary=true, Order=250, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(UsageContext),typeof(Dosage))]
+        [FhirElement("defaultValue", InSummary=true, Order=260, Choice=ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(Expression),typeof(UsageContext),typeof(Dosage))]
         [DataMember]
         public Element DefaultValue
         {
@@ -2256,7 +2305,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Implicit meaning when this element is missing
         /// </summary>
-        [FhirElement("meaningWhenMissing", InSummary=true, Order=260)]
+        [FhirElement("meaningWhenMissing", InSummary=true, Order=270)]
         [DataMember]
         public Markdown MeaningWhenMissing
         {
@@ -2269,7 +2318,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// What the order of the elements means
         /// </summary>
-        [FhirElement("orderMeaning", InSummary=true, Order=270)]
+        [FhirElement("orderMeaning", InSummary=true, Order=280)]
         [DataMember]
         public FhirString OrderMeaningElement
         {
@@ -2301,8 +2350,8 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Value must be exactly this
         /// </summary>
-        [FhirElement("fixed", InSummary=true, Order=280, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(UsageContext),typeof(Dosage))]
+        [FhirElement("fixed", InSummary=true, Order=290, Choice=ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(Expression),typeof(UsageContext),typeof(Dosage))]
         [DataMember]
         public Element Fixed
         {
@@ -2315,8 +2364,8 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Value must have at least these property values
         /// </summary>
-        [FhirElement("pattern", InSummary=true, Order=290, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(UsageContext),typeof(Dosage))]
+        [FhirElement("pattern", InSummary=true, Order=300, Choice=ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(Base64Binary),typeof(FhirBoolean),typeof(Canonical),typeof(Code),typeof(Date),typeof(FhirDateTime),typeof(FhirDecimal),typeof(Id),typeof(Instant),typeof(Integer),typeof(Markdown),typeof(Oid),typeof(PositiveInt),typeof(FhirString),typeof(Time),typeof(UnsignedInt),typeof(FhirUri),typeof(FhirUrl),typeof(Uuid),typeof(Address),typeof(Age),typeof(Annotation),typeof(Attachment),typeof(CodeableConcept),typeof(Coding),typeof(ContactPoint),typeof(Count),typeof(Distance),typeof(Duration),typeof(HumanName),typeof(Identifier),typeof(Money),typeof(Period),typeof(Quantity),typeof(Range),typeof(Ratio),typeof(ResourceReference),typeof(SampledData),typeof(Signature),typeof(Timing),typeof(ParameterDefinition),typeof(DataRequirement),typeof(RelatedArtifact),typeof(ContactDetail),typeof(Contributor),typeof(TriggerDefinition),typeof(Expression),typeof(UsageContext),typeof(Dosage))]
         [DataMember]
         public Element Pattern
         {
@@ -2329,7 +2378,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Example value (as defined for type)
         /// </summary>
-        [FhirElement("example", InSummary=true, Order=300)]
+        [FhirElement("example", InSummary=true, Order=310)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<ExampleComponent> Example
@@ -2343,7 +2392,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Minimum Allowed Value (for some types)
         /// </summary>
-        [FhirElement("minValue", InSummary=true, Order=310, Choice=ChoiceType.DatatypeChoice)]
+        [FhirElement("minValue", InSummary=true, Order=320, Choice=ChoiceType.DatatypeChoice)]
         [AllowedTypes(typeof(Date),typeof(FhirDateTime),typeof(Instant),typeof(Time),typeof(FhirDecimal),typeof(Integer),typeof(PositiveInt),typeof(UnsignedInt),typeof(Quantity))]
         [DataMember]
         public Element MinValue
@@ -2357,7 +2406,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Maximum Allowed Value (for some types)
         /// </summary>
-        [FhirElement("maxValue", InSummary=true, Order=320, Choice=ChoiceType.DatatypeChoice)]
+        [FhirElement("maxValue", InSummary=true, Order=330, Choice=ChoiceType.DatatypeChoice)]
         [AllowedTypes(typeof(Date),typeof(FhirDateTime),typeof(Instant),typeof(Time),typeof(FhirDecimal),typeof(Integer),typeof(PositiveInt),typeof(UnsignedInt),typeof(Quantity))]
         [DataMember]
         public Element MaxValue
@@ -2371,7 +2420,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Max length for strings
         /// </summary>
-        [FhirElement("maxLength", InSummary=true, Order=330)]
+        [FhirElement("maxLength", InSummary=true, Order=340)]
         [DataMember]
         public Integer MaxLengthElement
         {
@@ -2403,7 +2452,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Reference to invariant about presence
         /// </summary>
-        [FhirElement("condition", InSummary=true, Order=340)]
+        [FhirElement("condition", InSummary=true, Order=350)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Id> ConditionElement
@@ -2436,7 +2485,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Condition that must evaluate to true
         /// </summary>
-        [FhirElement("constraint", InSummary=true, Order=350)]
+        [FhirElement("constraint", InSummary=true, Order=360)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<ConstraintComponent> Constraint
@@ -2448,9 +2497,9 @@ namespace Hl7.Fhir.Model.R4
         private List<ConstraintComponent> _constraint;
 
         /// <summary>
-        /// If the element must supported
+        /// If the element must be supported
         /// </summary>
-        [FhirElement("mustSupport", InSummary=true, Order=360)]
+        [FhirElement("mustSupport", InSummary=true, Order=370)]
         [DataMember]
         public FhirBoolean MustSupportElement
         {
@@ -2461,7 +2510,7 @@ namespace Hl7.Fhir.Model.R4
         private FhirBoolean _mustSupportElement;
 
         /// <summary>
-        /// If the element must supported
+        /// If the element must be supported
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -2482,7 +2531,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// If this modifies the meaning of other elements
         /// </summary>
-        [FhirElement("isModifier", InSummary=true, Order=370)]
+        [FhirElement("isModifier", InSummary=true, Order=380)]
         [DataMember]
         public FhirBoolean IsModifierElement
         {
@@ -2514,7 +2563,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Reason that this element is marked as a modifier
         /// </summary>
-        [FhirElement("isModifierReason", InSummary=true, Order=380)]
+        [FhirElement("isModifierReason", InSummary=true, Order=390)]
         [DataMember]
         public FhirString IsModifierReasonElement
         {
@@ -2546,7 +2595,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Include when _summary = true?
         /// </summary>
-        [FhirElement("isSummary", InSummary=true, Order=390)]
+        [FhirElement("isSummary", InSummary=true, Order=400)]
         [DataMember]
         public FhirBoolean IsSummaryElement
         {
@@ -2578,7 +2627,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// ValueSet details if this is coded
         /// </summary>
-        [FhirElement("binding", InSummary=true, Order=400)]
+        [FhirElement("binding", InSummary=true, Order=410)]
         [DataMember]
         public ElementDefinitionBindingComponent Binding
         {
@@ -2591,7 +2640,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Map element to another set of definitions
         /// </summary>
-        [FhirElement("mapping", InSummary=true, Order=410)]
+        [FhirElement("mapping", InSummary=true, Order=420)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<MappingComponent> Mapping
@@ -2602,6 +2651,15 @@ namespace Hl7.Fhir.Model.R4
 
         private List<MappingComponent> _mapping;
 
+
+        public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_19 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "path.matches('[^\\\\s#\\\\/]+')",
+            Key = "eld-19",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Element names cannot include some special characters",
+            Xpath = "matches(path/@value, '[^\\s#\\/]+')"
+        };
 
         public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_2 = new ElementDefinition.ConstraintComponent
         {
@@ -2646,6 +2704,15 @@ namespace Hl7.Fhir.Model.R4
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Binding can only be present for coded elements, string, and uri",
             Xpath = "not(exists(f:binding)) or (count(f:type/f:code) = 0) or  f:type/f:code/@value=('code','Coding','CodeableConcept','Quantity','string', 'uri')"
+        };
+
+        public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_22 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "sliceIsConstraining.exists() implies sliceName.exists()",
+            Key = "eld-22",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "sliceIsConstraining can only appear if slicename is present",
+            Xpath = "exists(f:sliceName) or not(exists(f:sliceIsConstraining))"
         };
 
         public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_8 = new ElementDefinition.ConstraintComponent
@@ -2702,6 +2769,15 @@ namespace Hl7.Fhir.Model.R4
             Xpath = "not(f:isModifier/@value = 'true') or exists(f:isModifierReason)"
         };
 
+        public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_20 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "path.matches('[A-Za-z][A-Za-z0-9]*(\\\\.[a-z][A-Za-z0-9]*)*')",
+            Key = "eld-20",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Element names should be simple alphanumerics, or code generation tools may be broken",
+            Xpath = "matches(path/@value, '[A-Za-z][A-Za-z0-9]*(\\.[a-z][A-Za-z0-9]*)*')"
+        };
+
         public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_1 = new ElementDefinition.ConstraintComponent
         {
             Expression = "slicing.all(discriminator.exists() or description.exists())",
@@ -2731,20 +2807,29 @@ namespace Hl7.Fhir.Model.R4
 
         public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_17 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "type.all(code='Reference' or targetProfile.empty())",
+            Expression = "type.all((code='Reference' or code = 'canonical') or targetProfile.empty())",
             Key = "eld-17",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
-            Human = "targetProfie is only allowed if the type is reference",
+            Human = "targetProfile is only allowed if the type is reference or canonical",
             Xpath = "not(exists(f:targetProfile)) or (f:code/@value = 'Reference')"
+        };
+
+        public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_21 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "constraint.all(expression.exists())",
+            Key = "eld-21",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Constraints should have an expression or else validators will not be able to enforce them",
+            Xpath = "exists(f:expression/@value)"
         };
 
         public static ElementDefinition.ConstraintComponent ElementDefinition_ELD_12 = new ElementDefinition.ConstraintComponent
         {
-            Expression = "binding.all((valueSet is uri).not() or (valueSet as uri).startsWith('http:') or (valueSet as uri).startsWith('https') or (valueSet as uri).startsWith('urn:'))",
+            Expression = "binding.all(valueSet.exists() implies (valueSet.startsWith('http:') or valueSet.startsWith('https') or valueSet.startsWith('urn:')))",
             Key = "eld-12",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
-            Human = "ValueSet as a URI SHALL start with http:// or https:// or urn:",
-            Xpath = "not(exists(f:valueSetUri)) or (starts-with(string(f:valueSetUri/@value), 'http:') or starts-with(string(f:valueSetUri/@value), 'https:') or starts-with(string(f:valueSetUri/@value), 'urn:'))"
+            Human = "ValueSet SHALL start with http:// or https:// or urn:",
+            Xpath = "(starts-with(string(f:valueSet/@value), 'http:') or starts-with(string(f:valueSet/@value), 'https:') or starts-with(string(f:valueSet/@value), 'urn:'))"
         };
 
         // TODO: Add code to enforce the above constraints
@@ -2759,6 +2844,7 @@ namespace Hl7.Fhir.Model.R4
                 if (PathElement != null) dest.PathElement = (FhirString)PathElement.DeepCopy();
                 if (RepresentationElement != null) dest.RepresentationElement = new List<Code<PropertyRepresentation>>(RepresentationElement.DeepCopy());
                 if (SliceNameElement != null) dest.SliceNameElement = (FhirString)SliceNameElement.DeepCopy();
+                if (SliceIsConstrainingElement != null) dest.SliceIsConstrainingElement = (FhirBoolean)SliceIsConstrainingElement.DeepCopy();
                 if (LabelElement != null) dest.LabelElement = (FhirString)LabelElement.DeepCopy();
                 if (Code != null) dest.Code = new List<Coding>(Code.DeepCopy());
                 if (Slicing != null) dest.Slicing = (SlicingComponent)Slicing.DeepCopy();
@@ -2809,6 +2895,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(PathElement, otherT.PathElement)) return false;
             if ( !DeepComparable.Matches(RepresentationElement, otherT.RepresentationElement)) return false;
             if (!DeepComparable.Matches(SliceNameElement, otherT.SliceNameElement)) return false;
+            if (!DeepComparable.Matches(SliceIsConstrainingElement, otherT.SliceIsConstrainingElement)) return false;
             if (!DeepComparable.Matches(LabelElement, otherT.LabelElement)) return false;
             if ( !DeepComparable.Matches(Code, otherT.Code)) return false;
             if (!DeepComparable.Matches(Slicing, otherT.Slicing)) return false;
@@ -2852,6 +2939,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(PathElement, otherT.PathElement)) return false;
             if (!DeepComparable.IsExactly(RepresentationElement, otherT.RepresentationElement)) return false;
             if (!DeepComparable.IsExactly(SliceNameElement, otherT.SliceNameElement)) return false;
+            if (!DeepComparable.IsExactly(SliceIsConstrainingElement, otherT.SliceIsConstrainingElement)) return false;
             if (!DeepComparable.IsExactly(LabelElement, otherT.LabelElement)) return false;
             if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
             if (!DeepComparable.IsExactly(Slicing, otherT.Slicing)) return false;
@@ -2895,6 +2983,7 @@ namespace Hl7.Fhir.Model.R4
                 if (PathElement != null) yield return PathElement;
                 foreach (var elem in RepresentationElement) { if (elem != null) yield return elem; }
                 if (SliceNameElement != null) yield return SliceNameElement;
+                if (SliceIsConstrainingElement != null) yield return SliceIsConstrainingElement;
                 if (LabelElement != null) yield return LabelElement;
                 foreach (var elem in Code) { if (elem != null) yield return elem; }
                 if (Slicing != null) yield return Slicing;
@@ -2937,6 +3026,7 @@ namespace Hl7.Fhir.Model.R4
                 if (PathElement != null) yield return new ElementValue("path", PathElement);
                 foreach (var elem in RepresentationElement) { if (elem != null) yield return new ElementValue("representation", elem); }
                 if (SliceNameElement != null) yield return new ElementValue("sliceName", SliceNameElement);
+                if (SliceIsConstrainingElement != null) yield return new ElementValue("sliceIsConstraining", SliceIsConstrainingElement);
                 if (LabelElement != null) yield return new ElementValue("label", LabelElement);
                 foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
                 if (Slicing != null) yield return new ElementValue("slicing", Slicing);

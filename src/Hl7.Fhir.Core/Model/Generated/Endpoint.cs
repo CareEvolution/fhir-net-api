@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Endpoint"; } }
 
         /// <summary>
-        /// The status of the endpoint
+        /// The status of the endpoint.
         /// (url: http://hl7.org/fhir/ValueSet/endpoint-status)
         /// </summary>
         [FhirEnumeration("EndpointStatus")]

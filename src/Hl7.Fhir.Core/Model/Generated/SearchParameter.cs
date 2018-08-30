@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -97,7 +97,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// What Search Comparator Codes are supported in search
+        /// What Search Comparator Codes are supported in search.
         /// (url: http://hl7.org/fhir/ValueSet/search-comparator)
         /// </summary>
         [FhirEnumeration("SearchComparator")]
@@ -125,7 +125,7 @@ namespace Hl7.Fhir.Model.R4
             /// MISSING DESCRIPTION
             /// (system: http://hl7.org/fhir/search-comparator)
             /// </summary>
-            [EnumLiteral("lt", "http://hl7.org/fhir/search-comparator"), Description("Less Then")]
+            [EnumLiteral("lt", "http://hl7.org/fhir/search-comparator"), Description("Less Than")]
             Lt,
             /// <summary>
             /// MISSING DESCRIPTION
@@ -226,6 +226,18 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [EnumLiteral("type", "http://hl7.org/fhir/search-modifier-code"), Description("Type")]
             Type,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("identifier", "http://hl7.org/fhir/search-modifier-code"), Description("Identifier")]
+            Identifier,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-modifier-code)
+            /// </summary>
+            [EnumLiteral("ofType", "http://hl7.org/fhir/search-modifier-code"), Description("Of Type")]
+            OfType,
         }
 
 
@@ -768,7 +780,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// number | date | string | token | reference | composite | quantity | uri
+        /// number | date | string | token | reference | composite | quantity | uri | special
         /// </summary>
         [FhirElement("type", InSummary=true, Order=240)]
         [Cardinality(Min=1,Max=1)]
@@ -782,7 +794,7 @@ namespace Hl7.Fhir.Model.R4
         private Code<SearchParamType> _typeElement;
 
         /// <summary>
-        /// number | date | string | token | reference | composite | quantity | uri
+        /// number | date | string | token | reference | composite | quantity | uri | special
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -1027,7 +1039,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// missing | exact | contains | not | text | in | not-in | below | above | type
+        /// missing | exact | contains | not | text | in | not-in | below | above | type | identifier | ofType
         /// </summary>
         [FhirElement("modifier", Order=320)]
         [Cardinality(Min=0,Max=-1)]
@@ -1041,7 +1053,7 @@ namespace Hl7.Fhir.Model.R4
         private List<Code<SearchModifierCode>> _modifierElement;
 
         /// <summary>
-        /// missing | exact | contains | not | text | in | not-in | below | above | type
+        /// missing | exact | contains | not | text | in | not-in | below | above | type | identifier | ofType
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -1107,6 +1119,15 @@ namespace Hl7.Fhir.Model.R4
         private List<ComponentComponent> _component;
 
 
+        public static ElementDefinition.ConstraintComponent SearchParameter_SPD_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "spd-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
+
         public static ElementDefinition.ConstraintComponent SearchParameter_SPD_1 = new ElementDefinition.ConstraintComponent
         {
             Expression = "xpath.empty() or xpathUsage.exists()",
@@ -1129,6 +1150,7 @@ namespace Hl7.Fhir.Model.R4
         {
             base.AddDefaultConstraints();
 
+            InvariantConstraints.Add(SearchParameter_SPD_0);
             InvariantConstraints.Add(SearchParameter_SPD_1);
             InvariantConstraints.Add(SearchParameter_SPD_2);
         }

@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,58 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "CarePlan"; } }
 
         /// <summary>
-        /// Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.
-        /// (url: http://hl7.org/fhir/ValueSet/care-plan-status)
-        /// </summary>
-        [FhirEnumeration("CarePlanStatus")]
-        public enum CarePlanStatus
-        {
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-status)
-            /// </summary>
-            [EnumLiteral("draft", "http://hl7.org/fhir/care-plan-status"), Description("Pending")]
-            Draft,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-status)
-            /// </summary>
-            [EnumLiteral("active", "http://hl7.org/fhir/care-plan-status"), Description("Active")]
-            Active,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-status)
-            /// </summary>
-            [EnumLiteral("suspended", "http://hl7.org/fhir/care-plan-status"), Description("Suspended")]
-            Suspended,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-status)
-            /// </summary>
-            [EnumLiteral("completed", "http://hl7.org/fhir/care-plan-status"), Description("Completed")]
-            Completed,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-status)
-            /// </summary>
-            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/care-plan-status"), Description("Entered In Error")]
-            EnteredInError,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-status)
-            /// </summary>
-            [EnumLiteral("cancelled", "http://hl7.org/fhir/care-plan-status"), Description("Cancelled")]
-            Cancelled,
-            /// <summary>
-            /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-status)
-            /// </summary>
-            [EnumLiteral("unknown", "http://hl7.org/fhir/care-plan-status"), Description("Unknown")]
-            Unknown,
-        }
-
-        /// <summary>
-        /// Codes indicating the degree of authority/intentionality associated with a care plan
+        /// Codes indicating the degree of authority/intentionality associated with a care plan.
         /// (url: http://hl7.org/fhir/ValueSet/care-plan-intent)
         /// </summary>
         [FhirEnumeration("CarePlanIntent")]
@@ -117,27 +66,27 @@ namespace Hl7.Fhir.Model.R4
         {
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-intent)
+            /// (system: http://hl7.org/fhir/request-intent)
             /// </summary>
-            [EnumLiteral("proposal", "http://hl7.org/fhir/care-plan-intent"), Description("Proposal")]
+            [EnumLiteral("proposal", "http://hl7.org/fhir/request-intent"), Description("Proposal")]
             Proposal,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-intent)
+            /// (system: http://hl7.org/fhir/request-intent)
             /// </summary>
-            [EnumLiteral("plan", "http://hl7.org/fhir/care-plan-intent"), Description("Plan")]
+            [EnumLiteral("plan", "http://hl7.org/fhir/request-intent"), Description("Plan")]
             Plan,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-intent)
+            /// (system: http://hl7.org/fhir/request-intent)
             /// </summary>
-            [EnumLiteral("order", "http://hl7.org/fhir/care-plan-intent"), Description("Order")]
+            [EnumLiteral("order", "http://hl7.org/fhir/request-intent"), Description("Order")]
             Order,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/care-plan-intent)
+            /// (system: http://hl7.org/fhir/request-intent)
             /// </summary>
-            [EnumLiteral("option", "http://hl7.org/fhir/care-plan-intent"), Description("Option")]
+            [EnumLiteral("option", "http://hl7.org/fhir/request-intent"), Description("Option")]
             Option,
         }
 
@@ -253,6 +202,12 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [EnumLiteral("unknown", "http://hl7.org/fhir/care-plan-activity-status"), Description("Unknown")]
             Unknown,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-plan-activity-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/care-plan-activity-status"), Description("Entered In Error")]
+            EnteredInError,
         }
 
 
@@ -458,41 +413,75 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// Protocol or definition
+            /// Instantiates FHIR protocol or definition
             /// </summary>
-            [FhirElement("instantiates", Order=50)]
+            [FhirElement("instantiatesCanonical", Order=50)]
+            [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public FhirUri InstantiatesElement
+            public List<Canonical> InstantiatesCanonicalElement
             {
-                get { return _instantiatesElement; }
-                set { _instantiatesElement = value; OnPropertyChanged("InstantiatesElement"); }
+                get { if (_instantiatesCanonicalElement==null) _instantiatesCanonicalElement = new List<Canonical>(); return _instantiatesCanonicalElement; }
+                set { _instantiatesCanonicalElement = value; OnPropertyChanged("InstantiatesCanonicalElement"); }
             }
 
-            private FhirUri _instantiatesElement;
+            private List<Canonical> _instantiatesCanonicalElement;
 
             /// <summary>
-            /// Protocol or definition
+            /// Instantiates FHIR protocol or definition
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
             [IgnoreDataMember]
-            public string Instantiates
+            public IEnumerable<string> InstantiatesCanonical
             {
-                get { return InstantiatesElement != null ? InstantiatesElement.Value : null; }
+                get { return InstantiatesCanonicalElement != null ? InstantiatesCanonicalElement.Select(elem => elem.Value) : null; }
                 set
                 {
                     if (value == null)
-                        InstantiatesElement = null;
+                        InstantiatesCanonicalElement = null;
                     else
-                        InstantiatesElement = new FhirUri(value);
-                    OnPropertyChanged("Instantiates");
+                        InstantiatesCanonicalElement = new List<Canonical>(value.Select(elem=>new Canonical(elem)));
+                    OnPropertyChanged("InstantiatesCanonical");
+                }
+            }
+
+            /// <summary>
+            /// Instantiates external protocol or definition
+            /// </summary>
+            [FhirElement("instantiatesUri", Order=60)]
+            [Cardinality(Min=0,Max=-1)]
+            [DataMember]
+            public List<FhirUri> InstantiatesUriElement
+            {
+                get { if (_instantiatesUriElement==null) _instantiatesUriElement = new List<FhirUri>(); return _instantiatesUriElement; }
+                set { _instantiatesUriElement = value; OnPropertyChanged("InstantiatesUriElement"); }
+            }
+
+            private List<FhirUri> _instantiatesUriElement;
+
+            /// <summary>
+            /// Instantiates external protocol or definition
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public IEnumerable<string> InstantiatesUri
+            {
+                get { return InstantiatesUriElement != null ? InstantiatesUriElement.Select(elem => elem.Value) : null; }
+                set
+                {
+                    if (value == null)
+                        InstantiatesUriElement = null;
+                    else
+                        InstantiatesUriElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
+                    OnPropertyChanged("InstantiatesUri");
                 }
             }
 
             /// <summary>
             /// Detail type of activity
             /// </summary>
-            [FhirElement("code", Order=60)]
+            [FhirElement("code", Order=70)]
             [DataMember]
             public CodeableConcept Code
             {
@@ -505,7 +494,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Why activity should be done or why activity was prohibited
             /// </summary>
-            [FhirElement("reasonCode", Order=70)]
+            [FhirElement("reasonCode", Order=80)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<CodeableConcept> ReasonCode
@@ -519,7 +508,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Why activity is needed
             /// </summary>
-            [FhirElement("reasonReference", Order=80)]
+            [FhirElement("reasonReference", Order=90)]
             [References("Condition","Observation","DiagnosticReport","DocumentReference")]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
@@ -534,7 +523,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Goals this activity relates to
             /// </summary>
-            [FhirElement("goal", Order=90)]
+            [FhirElement("goal", Order=100)]
             [References("Goal")]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
@@ -547,9 +536,9 @@ namespace Hl7.Fhir.Model.R4
             private List<ResourceReference> _goal;
 
             /// <summary>
-            /// not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown
+            /// not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown | entered-in-error
             /// </summary>
-            [FhirElement("status", Order=100)]
+            [FhirElement("status", Order=110)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
             public Code<CarePlanActivityStatus> StatusElement
@@ -561,7 +550,7 @@ namespace Hl7.Fhir.Model.R4
             private Code<CarePlanActivityStatus> _statusElement;
 
             /// <summary>
-            /// not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown
+            /// not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown | entered-in-error
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -582,39 +571,20 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Reason for current status
             /// </summary>
-            [FhirElement("statusReason", Order=110)]
+            [FhirElement("statusReason", Order=120)]
             [DataMember]
-            public FhirString StatusReasonElement
+            public CodeableConcept StatusReason
             {
-                get { return _statusReasonElement; }
-                set { _statusReasonElement = value; OnPropertyChanged("StatusReasonElement"); }
+                get { return _statusReason; }
+                set { _statusReason = value; OnPropertyChanged("StatusReason"); }
             }
 
-            private FhirString _statusReasonElement;
-
-            /// <summary>
-            /// Reason for current status
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string StatusReason
-            {
-                get { return StatusReasonElement != null ? StatusReasonElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        StatusReasonElement = null;
-                    else
-                        StatusReasonElement = new FhirString(value);
-                    OnPropertyChanged("StatusReason");
-                }
-            }
+            private CodeableConcept _statusReason;
 
             /// <summary>
             /// If true, activity is prohibiting action
             /// </summary>
-            [FhirElement("doNotPerform", Order=120)]
+            [FhirElement("doNotPerform", Order=130)]
             [DataMember]
             public FhirBoolean DoNotPerformElement
             {
@@ -646,7 +616,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// When activity is to occur
             /// </summary>
-            [FhirElement("scheduled", Order=130, Choice=ChoiceType.DatatypeChoice)]
+            [FhirElement("scheduled", Order=140, Choice=ChoiceType.DatatypeChoice)]
             [AllowedTypes(typeof(Timing),typeof(Period),typeof(FhirString))]
             [DataMember]
             public Element Scheduled
@@ -660,7 +630,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Where it should happen
             /// </summary>
-            [FhirElement("location", Order=140)]
+            [FhirElement("location", Order=150)]
             [References("Location")]
             [DataMember]
             public ResourceReference Location
@@ -674,7 +644,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Who will be responsible?
             /// </summary>
-            [FhirElement("performer", Order=150)]
+            [FhirElement("performer", Order=160)]
             [References("Practitioner","PractitionerRole","Organization","RelatedPerson","Patient","CareTeam","HealthcareService","Device")]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
@@ -689,7 +659,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// What is to be administered/supplied
             /// </summary>
-            [FhirElement("product", Order=160, Choice=ChoiceType.DatatypeChoice)]
+            [FhirElement("product", Order=170, Choice=ChoiceType.DatatypeChoice)]
             [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
             [DataMember]
             public Element Product
@@ -703,7 +673,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// How to consume/day?
             /// </summary>
-            [FhirElement("dailyAmount", Order=170)]
+            [FhirElement("dailyAmount", Order=180)]
             [DataMember]
             public SimpleQuantity DailyAmount
             {
@@ -716,7 +686,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// How much to administer/supply/consume
             /// </summary>
-            [FhirElement("quantity", Order=180)]
+            [FhirElement("quantity", Order=190)]
             [DataMember]
             public SimpleQuantity Quantity
             {
@@ -729,7 +699,7 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Extra info describing activity to perform
             /// </summary>
-            [FhirElement("description", Order=190)]
+            [FhirElement("description", Order=200)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -766,13 +736,14 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if (KindElement != null) dest.KindElement = (Code<CarePlanActivityKind>)KindElement.DeepCopy();
-                    if (InstantiatesElement != null) dest.InstantiatesElement = (FhirUri)InstantiatesElement.DeepCopy();
+                    if (InstantiatesCanonicalElement != null) dest.InstantiatesCanonicalElement = new List<Canonical>(InstantiatesCanonicalElement.DeepCopy());
+                    if (InstantiatesUriElement != null) dest.InstantiatesUriElement = new List<FhirUri>(InstantiatesUriElement.DeepCopy());
                     if (Code != null) dest.Code = (CodeableConcept)Code.DeepCopy();
                     if (ReasonCode != null) dest.ReasonCode = new List<CodeableConcept>(ReasonCode.DeepCopy());
                     if (ReasonReference != null) dest.ReasonReference = new List<ResourceReference>(ReasonReference.DeepCopy());
                     if (Goal != null) dest.Goal = new List<ResourceReference>(Goal.DeepCopy());
                     if (StatusElement != null) dest.StatusElement = (Code<CarePlanActivityStatus>)StatusElement.DeepCopy();
-                    if (StatusReasonElement != null) dest.StatusReasonElement = (FhirString)StatusReasonElement.DeepCopy();
+                    if (StatusReason != null) dest.StatusReason = (CodeableConcept)StatusReason.DeepCopy();
                     if (DoNotPerformElement != null) dest.DoNotPerformElement = (FhirBoolean)DoNotPerformElement.DeepCopy();
                     if (Scheduled != null) dest.Scheduled = (Element)Scheduled.DeepCopy();
                     if (Location != null) dest.Location = (ResourceReference)Location.DeepCopy();
@@ -799,13 +770,14 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(KindElement, otherT.KindElement)) return false;
-                if (!DeepComparable.Matches(InstantiatesElement, otherT.InstantiatesElement)) return false;
+                if ( !DeepComparable.Matches(InstantiatesCanonicalElement, otherT.InstantiatesCanonicalElement)) return false;
+                if ( !DeepComparable.Matches(InstantiatesUriElement, otherT.InstantiatesUriElement)) return false;
                 if (!DeepComparable.Matches(Code, otherT.Code)) return false;
                 if ( !DeepComparable.Matches(ReasonCode, otherT.ReasonCode)) return false;
                 if ( !DeepComparable.Matches(ReasonReference, otherT.ReasonReference)) return false;
                 if ( !DeepComparable.Matches(Goal, otherT.Goal)) return false;
                 if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
-                if (!DeepComparable.Matches(StatusReasonElement, otherT.StatusReasonElement)) return false;
+                if (!DeepComparable.Matches(StatusReason, otherT.StatusReason)) return false;
                 if (!DeepComparable.Matches(DoNotPerformElement, otherT.DoNotPerformElement)) return false;
                 if (!DeepComparable.Matches(Scheduled, otherT.Scheduled)) return false;
                 if (!DeepComparable.Matches(Location, otherT.Location)) return false;
@@ -825,13 +797,14 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(KindElement, otherT.KindElement)) return false;
-                if (!DeepComparable.IsExactly(InstantiatesElement, otherT.InstantiatesElement)) return false;
+                if (!DeepComparable.IsExactly(InstantiatesCanonicalElement, otherT.InstantiatesCanonicalElement)) return false;
+                if (!DeepComparable.IsExactly(InstantiatesUriElement, otherT.InstantiatesUriElement)) return false;
                 if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
                 if (!DeepComparable.IsExactly(ReasonCode, otherT.ReasonCode)) return false;
                 if (!DeepComparable.IsExactly(ReasonReference, otherT.ReasonReference)) return false;
                 if (!DeepComparable.IsExactly(Goal, otherT.Goal)) return false;
                 if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
-                if (!DeepComparable.IsExactly(StatusReasonElement, otherT.StatusReasonElement)) return false;
+                if (!DeepComparable.IsExactly(StatusReason, otherT.StatusReason)) return false;
                 if (!DeepComparable.IsExactly(DoNotPerformElement, otherT.DoNotPerformElement)) return false;
                 if (!DeepComparable.IsExactly(Scheduled, otherT.Scheduled)) return false;
                 if (!DeepComparable.IsExactly(Location, otherT.Location)) return false;
@@ -852,13 +825,14 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.Children) yield return item;
                     if (KindElement != null) yield return KindElement;
-                    if (InstantiatesElement != null) yield return InstantiatesElement;
+                    foreach (var elem in InstantiatesCanonicalElement) { if (elem != null) yield return elem; }
+                    foreach (var elem in InstantiatesUriElement) { if (elem != null) yield return elem; }
                     if (Code != null) yield return Code;
                     foreach (var elem in ReasonCode) { if (elem != null) yield return elem; }
                     foreach (var elem in ReasonReference) { if (elem != null) yield return elem; }
                     foreach (var elem in Goal) { if (elem != null) yield return elem; }
                     if (StatusElement != null) yield return StatusElement;
-                    if (StatusReasonElement != null) yield return StatusReasonElement;
+                    if (StatusReason != null) yield return StatusReason;
                     if (DoNotPerformElement != null) yield return DoNotPerformElement;
                     if (Scheduled != null) yield return Scheduled;
                     if (Location != null) yield return Location;
@@ -877,13 +851,14 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (KindElement != null) yield return new ElementValue("kind", KindElement);
-                    if (InstantiatesElement != null) yield return new ElementValue("instantiates", InstantiatesElement);
+                    foreach (var elem in InstantiatesCanonicalElement) { if (elem != null) yield return new ElementValue("instantiatesCanonical", elem); }
+                    foreach (var elem in InstantiatesUriElement) { if (elem != null) yield return new ElementValue("instantiatesUri", elem); }
                     if (Code != null) yield return new ElementValue("code", Code);
                     foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
                     foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
                     foreach (var elem in Goal) { if (elem != null) yield return new ElementValue("goal", elem); }
                     if (StatusElement != null) yield return new ElementValue("status", StatusElement);
-                    if (StatusReasonElement != null) yield return new ElementValue("statusReason", StatusReasonElement);
+                    if (StatusReason != null) yield return new ElementValue("statusReason", StatusReason);
                     if (DoNotPerformElement != null) yield return new ElementValue("doNotPerform", DoNotPerformElement);
                     if (Scheduled != null) yield return new ElementValue("scheduled", Scheduled);
                     if (Location != null) yield return new ElementValue("location", Location);
@@ -914,42 +889,75 @@ namespace Hl7.Fhir.Model.R4
         private List<Identifier> _identifier;
 
         /// <summary>
-        /// Protocol or definition
+        /// Instantiates FHIR protocol or definition
         /// </summary>
-        [FhirElement("instantiates", InSummary=true, Order=100)]
+        [FhirElement("instantiatesCanonical", InSummary=true, Order=100)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<FhirUri> InstantiatesElement
+        public List<Canonical> InstantiatesCanonicalElement
         {
-            get { if (_instantiatesElement==null) _instantiatesElement = new List<FhirUri>(); return _instantiatesElement; }
-            set { _instantiatesElement = value; OnPropertyChanged("InstantiatesElement"); }
+            get { if (_instantiatesCanonicalElement==null) _instantiatesCanonicalElement = new List<Canonical>(); return _instantiatesCanonicalElement; }
+            set { _instantiatesCanonicalElement = value; OnPropertyChanged("InstantiatesCanonicalElement"); }
         }
 
-        private List<FhirUri> _instantiatesElement;
+        private List<Canonical> _instantiatesCanonicalElement;
 
         /// <summary>
-        /// Protocol or definition
+        /// Instantiates FHIR protocol or definition
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public IEnumerable<string> Instantiates
+        public IEnumerable<string> InstantiatesCanonical
         {
-            get { return InstantiatesElement != null ? InstantiatesElement.Select(elem => elem.Value) : null; }
+            get { return InstantiatesCanonicalElement != null ? InstantiatesCanonicalElement.Select(elem => elem.Value) : null; }
             set
             {
                 if (value == null)
-                    InstantiatesElement = null;
+                    InstantiatesCanonicalElement = null;
                 else
-                    InstantiatesElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
-                OnPropertyChanged("Instantiates");
+                    InstantiatesCanonicalElement = new List<Canonical>(value.Select(elem=>new Canonical(elem)));
+                OnPropertyChanged("InstantiatesCanonical");
+            }
+        }
+
+        /// <summary>
+        /// Instantiates external protocol or definition
+        /// </summary>
+        [FhirElement("instantiatesUri", InSummary=true, Order=110)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<FhirUri> InstantiatesUriElement
+        {
+            get { if (_instantiatesUriElement==null) _instantiatesUriElement = new List<FhirUri>(); return _instantiatesUriElement; }
+            set { _instantiatesUriElement = value; OnPropertyChanged("InstantiatesUriElement"); }
+        }
+
+        private List<FhirUri> _instantiatesUriElement;
+
+        /// <summary>
+        /// Instantiates external protocol or definition
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public IEnumerable<string> InstantiatesUri
+        {
+            get { return InstantiatesUriElement != null ? InstantiatesUriElement.Select(elem => elem.Value) : null; }
+            set
+            {
+                if (value == null)
+                    InstantiatesUriElement = null;
+                else
+                    InstantiatesUriElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
+                OnPropertyChanged("InstantiatesUri");
             }
         }
 
         /// <summary>
         /// Fulfills CarePlan
         /// </summary>
-        [FhirElement("basedOn", InSummary=true, Order=110)]
+        [FhirElement("basedOn", InSummary=true, Order=120)]
         [References("CarePlan")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -964,7 +972,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// CarePlan replaced by this CarePlan
         /// </summary>
-        [FhirElement("replaces", InSummary=true, Order=120)]
+        [FhirElement("replaces", InSummary=true, Order=130)]
         [References("CarePlan")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -979,7 +987,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Part of referenced CarePlan
         /// </summary>
-        [FhirElement("partOf", InSummary=true, Order=130)]
+        [FhirElement("partOf", InSummary=true, Order=140)]
         [References("CarePlan")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -994,16 +1002,16 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// draft | active | suspended | completed | entered-in-error | cancelled | unknown
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=140)]
+        [FhirElement("status", InSummary=true, Order=150)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<CarePlanStatus> StatusElement
+        public Code<RequestStatus> StatusElement
         {
             get { return _statusElement; }
             set { _statusElement = value; OnPropertyChanged("StatusElement"); }
         }
 
-        private Code<CarePlanStatus> _statusElement;
+        private Code<RequestStatus> _statusElement;
 
         /// <summary>
         /// draft | active | suspended | completed | entered-in-error | cancelled | unknown
@@ -1011,7 +1019,7 @@ namespace Hl7.Fhir.Model.R4
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public CarePlanStatus? Status
+        public RequestStatus? Status
         {
             get { return StatusElement != null ? StatusElement.Value : null; }
             set
@@ -1019,7 +1027,7 @@ namespace Hl7.Fhir.Model.R4
                 if (value == null)
                     StatusElement = null;
                 else
-                    StatusElement = new Code<CarePlanStatus>(value);
+                    StatusElement = new Code<RequestStatus>(value);
                 OnPropertyChanged("Status");
             }
         }
@@ -1027,7 +1035,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// proposal | plan | order | option
         /// </summary>
-        [FhirElement("intent", InSummary=true, Order=150)]
+        [FhirElement("intent", InSummary=true, Order=160)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Code<CarePlanIntent> IntentElement
@@ -1060,7 +1068,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Type of plan
         /// </summary>
-        [FhirElement("category", InSummary=true, Order=160)]
+        [FhirElement("category", InSummary=true, Order=170)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> Category
@@ -1074,7 +1082,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Human-friendly name for the care plan
         /// </summary>
-        [FhirElement("title", InSummary=true, Order=170)]
+        [FhirElement("title", InSummary=true, Order=180)]
         [DataMember]
         public FhirString TitleElement
         {
@@ -1106,7 +1114,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Summary of nature of plan
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=180)]
+        [FhirElement("description", InSummary=true, Order=190)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -1138,7 +1146,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who the care plan is for
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=190)]
+        [FhirElement("subject", InSummary=true, Order=200)]
         [References("Patient","Group")]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -1153,7 +1161,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Created in context of
         /// </summary>
-        [FhirElement("context", InSummary=true, Order=200)]
+        [FhirElement("context", InSummary=true, Order=210)]
         [References("Encounter","EpisodeOfCare")]
         [DataMember]
         public ResourceReference Context
@@ -1167,7 +1175,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Time period plan covers
         /// </summary>
-        [FhirElement("period", InSummary=true, Order=210)]
+        [FhirElement("period", InSummary=true, Order=220)]
         [DataMember]
         public Period Period
         {
@@ -1178,24 +1186,70 @@ namespace Hl7.Fhir.Model.R4
         private Period _period;
 
         /// <summary>
-        /// Who is responsible for contents of the plan
+        /// Date record was first recorded
         /// </summary>
-        [FhirElement("author", InSummary=true, Order=220)]
-        [References("Patient","Practitioner","PractitionerRole","Device","RelatedPerson","Organization","CareTeam")]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("created", InSummary=true, Order=230)]
         [DataMember]
-        public List<ResourceReference> Author
+        public FhirDateTime CreatedElement
         {
-            get { if (_author==null) _author = new List<ResourceReference>(); return _author; }
+            get { return _createdElement; }
+            set { _createdElement = value; OnPropertyChanged("CreatedElement"); }
+        }
+
+        private FhirDateTime _createdElement;
+
+        /// <summary>
+        /// Date record was first recorded
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Created
+        {
+            get { return CreatedElement != null ? CreatedElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CreatedElement = null;
+                else
+                    CreatedElement = new FhirDateTime(value);
+                OnPropertyChanged("Created");
+            }
+        }
+
+        /// <summary>
+        /// Who is the designated responsible party
+        /// </summary>
+        [FhirElement("author", InSummary=true, Order=240)]
+        [References("Patient","Practitioner","PractitionerRole","Device","RelatedPerson","Organization","CareTeam")]
+        [DataMember]
+        public ResourceReference Author
+        {
+            get { return _author; }
             set { _author = value; OnPropertyChanged("Author"); }
         }
 
-        private List<ResourceReference> _author;
+        private ResourceReference _author;
+
+        /// <summary>
+        /// Who provided the content of the care plan
+        /// </summary>
+        [FhirElement("contributor", Order=250)]
+        [References("Patient","Practitioner","PractitionerRole","Device","RelatedPerson","Organization","CareTeam")]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ResourceReference> Contributor
+        {
+            get { if (_contributor==null) _contributor = new List<ResourceReference>(); return _contributor; }
+            set { _contributor = value; OnPropertyChanged("Contributor"); }
+        }
+
+        private List<ResourceReference> _contributor;
 
         /// <summary>
         /// Who's involved in plan?
         /// </summary>
-        [FhirElement("careTeam", Order=230)]
+        [FhirElement("careTeam", Order=260)]
         [References("CareTeam")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -1210,7 +1264,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Health issues this plan addresses
         /// </summary>
-        [FhirElement("addresses", InSummary=true, Order=240)]
+        [FhirElement("addresses", InSummary=true, Order=270)]
         [References("Condition")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -1225,7 +1279,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Information considered as part of plan
         /// </summary>
-        [FhirElement("supportingInfo", Order=250)]
+        [FhirElement("supportingInfo", Order=280)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<ResourceReference> SupportingInfo
@@ -1239,7 +1293,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Desired outcome of plan
         /// </summary>
-        [FhirElement("goal", Order=260)]
+        [FhirElement("goal", Order=290)]
         [References("Goal")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -1254,7 +1308,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Action to occur as part of plan
         /// </summary>
-        [FhirElement("activity", Order=270)]
+        [FhirElement("activity", Order=300)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<ActivityComponent> Activity
@@ -1268,7 +1322,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Comments about the plan
         /// </summary>
-        [FhirElement("note", Order=280)]
+        [FhirElement("note", Order=310)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Annotation> Note
@@ -1304,11 +1358,12 @@ namespace Hl7.Fhir.Model.R4
             {
                 base.CopyTo(dest);
                 if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
-                if (InstantiatesElement != null) dest.InstantiatesElement = new List<FhirUri>(InstantiatesElement.DeepCopy());
+                if (InstantiatesCanonicalElement != null) dest.InstantiatesCanonicalElement = new List<Canonical>(InstantiatesCanonicalElement.DeepCopy());
+                if (InstantiatesUriElement != null) dest.InstantiatesUriElement = new List<FhirUri>(InstantiatesUriElement.DeepCopy());
                 if (BasedOn != null) dest.BasedOn = new List<ResourceReference>(BasedOn.DeepCopy());
                 if (Replaces != null) dest.Replaces = new List<ResourceReference>(Replaces.DeepCopy());
                 if (PartOf != null) dest.PartOf = new List<ResourceReference>(PartOf.DeepCopy());
-                if (StatusElement != null) dest.StatusElement = (Code<CarePlanStatus>)StatusElement.DeepCopy();
+                if (StatusElement != null) dest.StatusElement = (Code<RequestStatus>)StatusElement.DeepCopy();
                 if (IntentElement != null) dest.IntentElement = (Code<CarePlanIntent>)IntentElement.DeepCopy();
                 if (Category != null) dest.Category = new List<CodeableConcept>(Category.DeepCopy());
                 if (TitleElement != null) dest.TitleElement = (FhirString)TitleElement.DeepCopy();
@@ -1316,7 +1371,9 @@ namespace Hl7.Fhir.Model.R4
                 if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
                 if (Context != null) dest.Context = (ResourceReference)Context.DeepCopy();
                 if (Period != null) dest.Period = (Period)Period.DeepCopy();
-                if (Author != null) dest.Author = new List<ResourceReference>(Author.DeepCopy());
+                if (CreatedElement != null) dest.CreatedElement = (FhirDateTime)CreatedElement.DeepCopy();
+                if (Author != null) dest.Author = (ResourceReference)Author.DeepCopy();
+                if (Contributor != null) dest.Contributor = new List<ResourceReference>(Contributor.DeepCopy());
                 if (CareTeam != null) dest.CareTeam = new List<ResourceReference>(CareTeam.DeepCopy());
                 if (Addresses != null) dest.Addresses = new List<ResourceReference>(Addresses.DeepCopy());
                 if (SupportingInfo != null) dest.SupportingInfo = new List<ResourceReference>(SupportingInfo.DeepCopy());
@@ -1341,7 +1398,8 @@ namespace Hl7.Fhir.Model.R4
 
             if (!base.Matches(otherT)) return false;
             if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-            if ( !DeepComparable.Matches(InstantiatesElement, otherT.InstantiatesElement)) return false;
+            if ( !DeepComparable.Matches(InstantiatesCanonicalElement, otherT.InstantiatesCanonicalElement)) return false;
+            if ( !DeepComparable.Matches(InstantiatesUriElement, otherT.InstantiatesUriElement)) return false;
             if ( !DeepComparable.Matches(BasedOn, otherT.BasedOn)) return false;
             if ( !DeepComparable.Matches(Replaces, otherT.Replaces)) return false;
             if ( !DeepComparable.Matches(PartOf, otherT.PartOf)) return false;
@@ -1353,7 +1411,9 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
             if (!DeepComparable.Matches(Context, otherT.Context)) return false;
             if (!DeepComparable.Matches(Period, otherT.Period)) return false;
-            if ( !DeepComparable.Matches(Author, otherT.Author)) return false;
+            if (!DeepComparable.Matches(CreatedElement, otherT.CreatedElement)) return false;
+            if (!DeepComparable.Matches(Author, otherT.Author)) return false;
+            if ( !DeepComparable.Matches(Contributor, otherT.Contributor)) return false;
             if ( !DeepComparable.Matches(CareTeam, otherT.CareTeam)) return false;
             if ( !DeepComparable.Matches(Addresses, otherT.Addresses)) return false;
             if ( !DeepComparable.Matches(SupportingInfo, otherT.SupportingInfo)) return false;
@@ -1371,7 +1431,8 @@ namespace Hl7.Fhir.Model.R4
 
             if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-            if (!DeepComparable.IsExactly(InstantiatesElement, otherT.InstantiatesElement)) return false;
+            if (!DeepComparable.IsExactly(InstantiatesCanonicalElement, otherT.InstantiatesCanonicalElement)) return false;
+            if (!DeepComparable.IsExactly(InstantiatesUriElement, otherT.InstantiatesUriElement)) return false;
             if (!DeepComparable.IsExactly(BasedOn, otherT.BasedOn)) return false;
             if (!DeepComparable.IsExactly(Replaces, otherT.Replaces)) return false;
             if (!DeepComparable.IsExactly(PartOf, otherT.PartOf)) return false;
@@ -1383,7 +1444,9 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Subject, otherT.Subject)) return false;
             if (!DeepComparable.IsExactly(Context, otherT.Context)) return false;
             if (!DeepComparable.IsExactly(Period, otherT.Period)) return false;
+            if (!DeepComparable.IsExactly(CreatedElement, otherT.CreatedElement)) return false;
             if (!DeepComparable.IsExactly(Author, otherT.Author)) return false;
+            if (!DeepComparable.IsExactly(Contributor, otherT.Contributor)) return false;
             if (!DeepComparable.IsExactly(CareTeam, otherT.CareTeam)) return false;
             if (!DeepComparable.IsExactly(Addresses, otherT.Addresses)) return false;
             if (!DeepComparable.IsExactly(SupportingInfo, otherT.SupportingInfo)) return false;
@@ -1401,7 +1464,8 @@ namespace Hl7.Fhir.Model.R4
             {
                 foreach (var item in base.Children) yield return item;
                 foreach (var elem in Identifier) { if (elem != null) yield return elem; }
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return elem; }
+                foreach (var elem in InstantiatesCanonicalElement) { if (elem != null) yield return elem; }
+                foreach (var elem in InstantiatesUriElement) { if (elem != null) yield return elem; }
                 foreach (var elem in BasedOn) { if (elem != null) yield return elem; }
                 foreach (var elem in Replaces) { if (elem != null) yield return elem; }
                 foreach (var elem in PartOf) { if (elem != null) yield return elem; }
@@ -1413,7 +1477,9 @@ namespace Hl7.Fhir.Model.R4
                 if (Subject != null) yield return Subject;
                 if (Context != null) yield return Context;
                 if (Period != null) yield return Period;
-                foreach (var elem in Author) { if (elem != null) yield return elem; }
+                if (CreatedElement != null) yield return CreatedElement;
+                if (Author != null) yield return Author;
+                foreach (var elem in Contributor) { if (elem != null) yield return elem; }
                 foreach (var elem in CareTeam) { if (elem != null) yield return elem; }
                 foreach (var elem in Addresses) { if (elem != null) yield return elem; }
                 foreach (var elem in SupportingInfo) { if (elem != null) yield return elem; }
@@ -1430,7 +1496,8 @@ namespace Hl7.Fhir.Model.R4
             {
                 foreach (var item in base.NamedChildren) yield return item;
                 foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
-                foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", elem); }
+                foreach (var elem in InstantiatesCanonicalElement) { if (elem != null) yield return new ElementValue("instantiatesCanonical", elem); }
+                foreach (var elem in InstantiatesUriElement) { if (elem != null) yield return new ElementValue("instantiatesUri", elem); }
                 foreach (var elem in BasedOn) { if (elem != null) yield return new ElementValue("basedOn", elem); }
                 foreach (var elem in Replaces) { if (elem != null) yield return new ElementValue("replaces", elem); }
                 foreach (var elem in PartOf) { if (elem != null) yield return new ElementValue("partOf", elem); }
@@ -1442,7 +1509,9 @@ namespace Hl7.Fhir.Model.R4
                 if (Subject != null) yield return new ElementValue("subject", Subject);
                 if (Context != null) yield return new ElementValue("context", Context);
                 if (Period != null) yield return new ElementValue("period", Period);
-                foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", elem); }
+                if (CreatedElement != null) yield return new ElementValue("created", CreatedElement);
+                if (Author != null) yield return new ElementValue("author", Author);
+                foreach (var elem in Contributor) { if (elem != null) yield return new ElementValue("contributor", elem); }
                 foreach (var elem in CareTeam) { if (elem != null) yield return new ElementValue("careTeam", elem); }
                 foreach (var elem in Addresses) { if (elem != null) yield return new ElementValue("addresses", elem); }
                 foreach (var elem in SupportingInfo) { if (elem != null) yield return new ElementValue("supportingInfo", elem); }

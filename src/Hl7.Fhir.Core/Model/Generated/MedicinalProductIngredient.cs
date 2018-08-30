@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -223,9 +223,22 @@ namespace Hl7.Fhir.Model.R4
             private Ratio _presentation;
 
             /// <summary>
+            /// A lower limit for the quantity of substance in the unit of presentation. For use when there is a range of strengths, this is the lower limit, with the presentation attribute becoming the upper limit
+            /// </summary>
+            [FhirElement("presentationLowLimit", InSummary=true, Order=50)]
+            [DataMember]
+            public Ratio PresentationLowLimit
+            {
+                get { return _presentationLowLimit; }
+                set { _presentationLowLimit = value; OnPropertyChanged("PresentationLowLimit"); }
+            }
+
+            private Ratio _presentationLowLimit;
+
+            /// <summary>
             /// The strength per unitary volume (or mass)
             /// </summary>
-            [FhirElement("concentration", InSummary=true, Order=50)]
+            [FhirElement("concentration", InSummary=true, Order=60)]
             [DataMember]
             public Ratio Concentration
             {
@@ -234,6 +247,209 @@ namespace Hl7.Fhir.Model.R4
             }
 
             private Ratio _concentration;
+
+            /// <summary>
+            /// A lower limit for the strength per unitary volume (or mass), for when there is a range. The concentration attribute then becomes the upper limit
+            /// </summary>
+            [FhirElement("concentrationLowLimit", InSummary=true, Order=70)]
+            [DataMember]
+            public Ratio ConcentrationLowLimit
+            {
+                get { return _concentrationLowLimit; }
+                set { _concentrationLowLimit = value; OnPropertyChanged("ConcentrationLowLimit"); }
+            }
+
+            private Ratio _concentrationLowLimit;
+
+            /// <summary>
+            /// For when strength is measured at a particular point or distance
+            /// </summary>
+            [FhirElement("measurementPoint", InSummary=true, Order=80)]
+            [DataMember]
+            public FhirString MeasurementPointElement
+            {
+                get { return _measurementPointElement; }
+                set { _measurementPointElement = value; OnPropertyChanged("MeasurementPointElement"); }
+            }
+
+            private FhirString _measurementPointElement;
+
+            /// <summary>
+            /// For when strength is measured at a particular point or distance
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string MeasurementPoint
+            {
+                get { return MeasurementPointElement != null ? MeasurementPointElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        MeasurementPointElement = null;
+                    else
+                        MeasurementPointElement = new FhirString(value);
+                    OnPropertyChanged("MeasurementPoint");
+                }
+            }
+
+            /// <summary>
+            /// The country or countries for which the strength range applies
+            /// </summary>
+            [FhirElement("country", InSummary=true, Order=90)]
+            [Cardinality(Min=0,Max=-1)]
+            [DataMember]
+            public List<CodeableConcept> Country
+            {
+                get { if (_country==null) _country = new List<CodeableConcept>(); return _country; }
+                set { _country = value; OnPropertyChanged("Country"); }
+            }
+
+            private List<CodeableConcept> _country;
+
+            /// <summary>
+            /// Strength expressed in terms of a reference substance
+            /// </summary>
+            [FhirElement("referenceStrength", InSummary=true, Order=100)]
+            [Cardinality(Min=0,Max=-1)]
+            [DataMember]
+            public List<ReferenceStrengthComponent> ReferenceStrength
+            {
+                get { if (_referenceStrength==null) _referenceStrength = new List<ReferenceStrengthComponent>(); return _referenceStrength; }
+                set { _referenceStrength = value; OnPropertyChanged("ReferenceStrength"); }
+            }
+
+            private List<ReferenceStrengthComponent> _referenceStrength;
+
+            public override IDeepCopyable CopyTo(IDeepCopyable other)
+            {
+                var dest = other as StrengthComponent;
+
+                if (dest != null)
+                {
+                    base.CopyTo(dest);
+                    if (Presentation != null) dest.Presentation = (Ratio)Presentation.DeepCopy();
+                    if (PresentationLowLimit != null) dest.PresentationLowLimit = (Ratio)PresentationLowLimit.DeepCopy();
+                    if (Concentration != null) dest.Concentration = (Ratio)Concentration.DeepCopy();
+                    if (ConcentrationLowLimit != null) dest.ConcentrationLowLimit = (Ratio)ConcentrationLowLimit.DeepCopy();
+                    if (MeasurementPointElement != null) dest.MeasurementPointElement = (FhirString)MeasurementPointElement.DeepCopy();
+                    if (Country != null) dest.Country = new List<CodeableConcept>(Country.DeepCopy());
+                    if (ReferenceStrength != null) dest.ReferenceStrength = new List<ReferenceStrengthComponent>(ReferenceStrength.DeepCopy());
+                    return dest;
+                }
+                else
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
+            }
+
+            public override IDeepCopyable DeepCopy()
+            {
+                 return CopyTo(new StrengthComponent());
+            }
+
+            public override bool Matches(IDeepComparable other)
+            {
+                var otherT = other as StrengthComponent;
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(Presentation, otherT.Presentation)) return false;
+                if (!DeepComparable.Matches(PresentationLowLimit, otherT.PresentationLowLimit)) return false;
+                if (!DeepComparable.Matches(Concentration, otherT.Concentration)) return false;
+                if (!DeepComparable.Matches(ConcentrationLowLimit, otherT.ConcentrationLowLimit)) return false;
+                if (!DeepComparable.Matches(MeasurementPointElement, otherT.MeasurementPointElement)) return false;
+                if ( !DeepComparable.Matches(Country, otherT.Country)) return false;
+                if ( !DeepComparable.Matches(ReferenceStrength, otherT.ReferenceStrength)) return false;
+
+                return true;
+            }
+
+            public override bool IsExactly(IDeepComparable other)
+            {
+                var otherT = other as StrengthComponent;
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Presentation, otherT.Presentation)) return false;
+                if (!DeepComparable.IsExactly(PresentationLowLimit, otherT.PresentationLowLimit)) return false;
+                if (!DeepComparable.IsExactly(Concentration, otherT.Concentration)) return false;
+                if (!DeepComparable.IsExactly(ConcentrationLowLimit, otherT.ConcentrationLowLimit)) return false;
+                if (!DeepComparable.IsExactly(MeasurementPointElement, otherT.MeasurementPointElement)) return false;
+                if (!DeepComparable.IsExactly(Country, otherT.Country)) return false;
+                if (!DeepComparable.IsExactly(ReferenceStrength, otherT.ReferenceStrength)) return false;
+
+                return true;
+            }
+
+
+            [NotMapped]
+            public override IEnumerable<Base> Children
+            {
+                get
+                {
+                    foreach (var item in base.Children) yield return item;
+                    if (Presentation != null) yield return Presentation;
+                    if (PresentationLowLimit != null) yield return PresentationLowLimit;
+                    if (Concentration != null) yield return Concentration;
+                    if (ConcentrationLowLimit != null) yield return ConcentrationLowLimit;
+                    if (MeasurementPointElement != null) yield return MeasurementPointElement;
+                    foreach (var elem in Country) { if (elem != null) yield return elem; }
+                    foreach (var elem in ReferenceStrength) { if (elem != null) yield return elem; }
+                }
+            }
+
+            [NotMapped]
+            internal override IEnumerable<ElementValue> NamedChildren
+            {
+                get
+                {
+                    foreach (var item in base.NamedChildren) yield return item;
+                    if (Presentation != null) yield return new ElementValue("presentation", Presentation);
+                    if (PresentationLowLimit != null) yield return new ElementValue("presentationLowLimit", PresentationLowLimit);
+                    if (Concentration != null) yield return new ElementValue("concentration", Concentration);
+                    if (ConcentrationLowLimit != null) yield return new ElementValue("concentrationLowLimit", ConcentrationLowLimit);
+                    if (MeasurementPointElement != null) yield return new ElementValue("measurementPoint", MeasurementPointElement);
+                    foreach (var elem in Country) { if (elem != null) yield return new ElementValue("country", elem); }
+                    foreach (var elem in ReferenceStrength) { if (elem != null) yield return new ElementValue("referenceStrength", elem); }
+                }
+            }
+
+
+        }
+
+
+        [FhirType("ReferenceStrengthComponent")]
+        [DataContract]
+        public partial class ReferenceStrengthComponent : BackboneElement, IBackboneElement
+        {
+            [NotMapped]
+            public override string TypeName { get { return "ReferenceStrengthComponent"; } }
+
+            /// <summary>
+            /// Relevent refrerence substance
+            /// </summary>
+            [FhirElement("substance", InSummary=true, Order=40)]
+            [DataMember]
+            public CodeableConcept Substance
+            {
+                get { return _substance; }
+                set { _substance = value; OnPropertyChanged("Substance"); }
+            }
+
+            private CodeableConcept _substance;
+
+            /// <summary>
+            /// Strength expressed in terms of a reference substance
+            /// </summary>
+            [FhirElement("strength", InSummary=true, Order=50)]
+            [Cardinality(Min=1,Max=1)]
+            [DataMember]
+            public Ratio Strength
+            {
+                get { return _strength; }
+                set { _strength = value; OnPropertyChanged("Strength"); }
+            }
+
+            private Ratio _strength;
 
             /// <summary>
             /// For when strength is measured at a particular point or distance
@@ -281,126 +497,6 @@ namespace Hl7.Fhir.Model.R4
 
             private List<CodeableConcept> _country;
 
-            /// <summary>
-            /// Strength expressed in terms of a reference substance
-            /// </summary>
-            [FhirElement("referenceStrength", InSummary=true, Order=80)]
-            [Cardinality(Min=0,Max=-1)]
-            [DataMember]
-            public List<ReferenceStrengthComponent> ReferenceStrength
-            {
-                get { if (_referenceStrength==null) _referenceStrength = new List<ReferenceStrengthComponent>(); return _referenceStrength; }
-                set { _referenceStrength = value; OnPropertyChanged("ReferenceStrength"); }
-            }
-
-            private List<ReferenceStrengthComponent> _referenceStrength;
-
-            public override IDeepCopyable CopyTo(IDeepCopyable other)
-            {
-                var dest = other as StrengthComponent;
-
-                if (dest != null)
-                {
-                    base.CopyTo(dest);
-                    if (Presentation != null) dest.Presentation = (Ratio)Presentation.DeepCopy();
-                    if (Concentration != null) dest.Concentration = (Ratio)Concentration.DeepCopy();
-                    if (MeasurementPointElement != null) dest.MeasurementPointElement = (FhirString)MeasurementPointElement.DeepCopy();
-                    if (Country != null) dest.Country = new List<CodeableConcept>(Country.DeepCopy());
-                    if (ReferenceStrength != null) dest.ReferenceStrength = new List<ReferenceStrengthComponent>(ReferenceStrength.DeepCopy());
-                    return dest;
-                }
-                else
-                    throw new ArgumentException("Can only copy to an object of the same type", "other");
-            }
-
-            public override IDeepCopyable DeepCopy()
-            {
-                 return CopyTo(new StrengthComponent());
-            }
-
-            public override bool Matches(IDeepComparable other)
-            {
-                var otherT = other as StrengthComponent;
-                if (otherT == null) return false;
-
-                if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(Presentation, otherT.Presentation)) return false;
-                if (!DeepComparable.Matches(Concentration, otherT.Concentration)) return false;
-                if (!DeepComparable.Matches(MeasurementPointElement, otherT.MeasurementPointElement)) return false;
-                if ( !DeepComparable.Matches(Country, otherT.Country)) return false;
-                if ( !DeepComparable.Matches(ReferenceStrength, otherT.ReferenceStrength)) return false;
-
-                return true;
-            }
-
-            public override bool IsExactly(IDeepComparable other)
-            {
-                var otherT = other as StrengthComponent;
-                if (otherT == null) return false;
-
-                if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(Presentation, otherT.Presentation)) return false;
-                if (!DeepComparable.IsExactly(Concentration, otherT.Concentration)) return false;
-                if (!DeepComparable.IsExactly(MeasurementPointElement, otherT.MeasurementPointElement)) return false;
-                if (!DeepComparable.IsExactly(Country, otherT.Country)) return false;
-                if (!DeepComparable.IsExactly(ReferenceStrength, otherT.ReferenceStrength)) return false;
-
-                return true;
-            }
-
-
-            [NotMapped]
-            public override IEnumerable<Base> Children
-            {
-                get
-                {
-                    foreach (var item in base.Children) yield return item;
-                    if (Presentation != null) yield return Presentation;
-                    if (Concentration != null) yield return Concentration;
-                    if (MeasurementPointElement != null) yield return MeasurementPointElement;
-                    foreach (var elem in Country) { if (elem != null) yield return elem; }
-                    foreach (var elem in ReferenceStrength) { if (elem != null) yield return elem; }
-                }
-            }
-
-            [NotMapped]
-            internal override IEnumerable<ElementValue> NamedChildren
-            {
-                get
-                {
-                    foreach (var item in base.NamedChildren) yield return item;
-                    if (Presentation != null) yield return new ElementValue("presentation", Presentation);
-                    if (Concentration != null) yield return new ElementValue("concentration", Concentration);
-                    if (MeasurementPointElement != null) yield return new ElementValue("measurementPoint", MeasurementPointElement);
-                    foreach (var elem in Country) { if (elem != null) yield return new ElementValue("country", elem); }
-                    foreach (var elem in ReferenceStrength) { if (elem != null) yield return new ElementValue("referenceStrength", elem); }
-                }
-            }
-
-
-        }
-
-
-        [FhirType("ReferenceStrengthComponent")]
-        [DataContract]
-        public partial class ReferenceStrengthComponent : BackboneElement, IBackboneElement
-        {
-            [NotMapped]
-            public override string TypeName { get { return "ReferenceStrengthComponent"; } }
-
-            /// <summary>
-            /// Relevent refrerence substance
-            /// </summary>
-            [FhirElement("substance", InSummary=true, Order=40)]
-            [DataMember]
-            public CodeableConcept Substance
-            {
-                get { return _substance; }
-                set { _substance = value; OnPropertyChanged("Substance"); }
-            }
-
-            private CodeableConcept _substance;
-
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as ReferenceStrengthComponent;
@@ -409,6 +505,9 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if (Substance != null) dest.Substance = (CodeableConcept)Substance.DeepCopy();
+                    if (Strength != null) dest.Strength = (Ratio)Strength.DeepCopy();
+                    if (MeasurementPointElement != null) dest.MeasurementPointElement = (FhirString)MeasurementPointElement.DeepCopy();
+                    if (Country != null) dest.Country = new List<CodeableConcept>(Country.DeepCopy());
                     return dest;
                 }
                 else
@@ -427,6 +526,9 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(Substance, otherT.Substance)) return false;
+                if (!DeepComparable.Matches(Strength, otherT.Strength)) return false;
+                if (!DeepComparable.Matches(MeasurementPointElement, otherT.MeasurementPointElement)) return false;
+                if ( !DeepComparable.Matches(Country, otherT.Country)) return false;
 
                 return true;
             }
@@ -438,6 +540,9 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(Substance, otherT.Substance)) return false;
+                if (!DeepComparable.IsExactly(Strength, otherT.Strength)) return false;
+                if (!DeepComparable.IsExactly(MeasurementPointElement, otherT.MeasurementPointElement)) return false;
+                if (!DeepComparable.IsExactly(Country, otherT.Country)) return false;
 
                 return true;
             }
@@ -450,6 +555,9 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.Children) yield return item;
                     if (Substance != null) yield return Substance;
+                    if (Strength != null) yield return Strength;
+                    if (MeasurementPointElement != null) yield return MeasurementPointElement;
+                    foreach (var elem in Country) { if (elem != null) yield return elem; }
                 }
             }
 
@@ -460,6 +568,9 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (Substance != null) yield return new ElementValue("substance", Substance);
+                    if (Strength != null) yield return new ElementValue("strength", Strength);
+                    if (MeasurementPointElement != null) yield return new ElementValue("measurementPoint", MeasurementPointElement);
+                    foreach (var elem in Country) { if (elem != null) yield return new ElementValue("country", elem); }
                 }
             }
 
@@ -492,7 +603,7 @@ namespace Hl7.Fhir.Model.R4
             /// Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product
             /// </summary>
             [FhirElement("strength", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=-1)]
+            [Cardinality(Min=0,Max=-1)]
             [DataMember]
             public List<StrengthComponent> Strength
             {

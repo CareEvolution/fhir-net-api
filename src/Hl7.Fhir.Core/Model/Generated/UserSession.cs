@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "UserSession"; } }
 
         /// <summary>
-        /// The status of the user session
+        /// The status of the user session.
         /// (url: http://hl7.org/fhir/ValueSet/usersession-status)
         /// </summary>
         [FhirEnumeration("UserSessionStatus")]
@@ -97,7 +97,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// The source of the status of the user session
+        /// The source of the status of the user session.
         /// (url: http://hl7.org/fhir/ValueSet/usersession-status-source)
         /// </summary>
         [FhirEnumeration("UserSessionStatusSource")]

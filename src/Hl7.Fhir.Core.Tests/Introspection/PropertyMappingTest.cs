@@ -32,6 +32,8 @@ namespace Hl7.Fhir.Tests.Introspection
             Assert.IsFalse(valueProp.IsCollection);     // don't see byte[] as a collection of byte in FHIR
             Assert.IsTrue(valueProp.RepresentsValueElement);
 
+            mapping = ClassMapping.Create(typeof(Code<Address.AddressUse>));
+            Assert.AreEqual("codeOfT<Hl7.Fhir.Model.R4.Address+AddressUse>", mapping.Name);
             Assert.IsTrue(mapping.HasPrimitiveValueMember);
             Assert.AreEqual(3, mapping.PropertyMappings.Count); // id, extension, fhir_comments & value
             valueProp = mapping.PrimitiveValueProperty;

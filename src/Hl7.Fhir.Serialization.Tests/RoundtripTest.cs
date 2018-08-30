@@ -164,8 +164,12 @@ namespace Hl7.Fhir.Serialization.Tests
                 var toExt = ext == ".xml" ? ".json" : ".xml";
                 string outputFile = Path.Combine(outputPath, exampleName) + toExt;
 
+                
+//#if ELABORATE_OUTPUT
+                // Disabled this WriteLine() since it makes the CI build output HUGE
+                // Could be re-enabled for local use to track down errors!
                 Debug.WriteLine("Converting {0} [{1}->{2}] ", exampleName, ext, toExt);
-
+//#endif
                 if (file.Contains("expansions.") || file.Contains("profiles-resources") || file.Contains("profiles-others") || file.Contains("valuesets."))
                     continue;
 
@@ -185,6 +189,27 @@ namespace Hl7.Fhir.Serialization.Tests
             if (filename.Contains(".profile")) return false;
             if (filename.Contains(".schema")) return false;
             if (filename.Contains(".diff")) return false;
+
+			if (filename.EndsWith("package.json"))
+                return true;
+            if (filename.Contains("plandefinition-example-cardiology-os"))
+                return true; // this example has some issues to say the least
+            if (filename.Contains("examplescenario-example"))
+                return true; // this resource has a property name resourceType (which is reserved in the .net json serializer)
+            if (filename.Contains("medicationadministration0306"))
+                return true; // this resource has a property name resourceType (which is reserved in the .net json serializer)
+            if (filename.Contains("medicationadministration0307"))
+                return true; // this resource has a property name resourceType (which is reserved in the .net json serializer)
+            if (filename.Contains("medicationadministration0309"))
+                return true; // this resource has a property name resourceType (which is reserved in the .net json serializer)
+            if (filename.Contains("backbone-elements"))
+                return true; // its not really a resource!
+            if (filename.Contains("json-edge-cases"))
+                return true; // known issues with binary contained resource having content, not data
+            if (filename.Contains("observation-decimal"))
+                return true; // exponential number example is tooo big (and too small)
+            if (filename.Contains("package-min-ver"))
+                return true; // note a resource
 
             return true;
         }

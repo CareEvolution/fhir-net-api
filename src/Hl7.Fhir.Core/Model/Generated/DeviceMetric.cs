@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -482,10 +482,10 @@ namespace Hl7.Fhir.Model.R4
         private ResourceReference _source;
 
         /// <summary>
-        /// Describes the link to the parent DeviceComponent
+        /// Describes the link to the parent Device
         /// </summary>
         [FhirElement("parent", InSummary=true, Order=130)]
-        [References("DeviceComponent")]
+        [References("Device")]
         [DataMember]
         public ResourceReference Parent
         {

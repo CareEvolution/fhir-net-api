@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Sequence"; } }
 
         /// <summary>
-        /// Type if a sequence -- DNA, RNA, or amino acid sequence
+        /// Type if a sequence -- DNA, RNA, or amino acid sequence.
         /// (url: http://hl7.org/fhir/ValueSet/sequence-type)
         /// </summary>
         [FhirEnumeration("sequenceType")]
@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Type for orientation
+        /// Type for orientation.
         /// (url: http://hl7.org/fhir/ValueSet/orientation-type)
         /// </summary>
         [FhirEnumeration("orientationType")]
@@ -106,7 +106,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Type for strand
+        /// Type for strand.
         /// (url: http://hl7.org/fhir/ValueSet/strand-type)
         /// </summary>
         [FhirEnumeration("strandType")]
@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Type for quality report
+        /// Type for quality report.
         /// (url: http://hl7.org/fhir/ValueSet/quality-type)
         /// </summary>
         [FhirEnumeration("qualityType")]
@@ -154,7 +154,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Type for access of external URI
+        /// Type for access of external URI.
         /// (url: http://hl7.org/fhir/ValueSet/repository-type)
         /// </summary>
         [FhirEnumeration("repositoryType")]

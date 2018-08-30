@@ -194,7 +194,7 @@ namespace Hl7.Fhir.Rest.R4
         {
             var binary = new Binary();
 
-            binary.Content = data;
+            binary.Data = data;
             binary.ContentType = contentType;
 
             return binary;

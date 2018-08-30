@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "ImagingStudy"; } }
 
         /// <summary>
-        /// The status of the ImagingStudy
+        /// The status of the ImagingStudy.
         /// (url: http://hl7.org/fhir/ValueSet/imagingstudy-status)
         /// </summary>
         [FhirEnumeration("ImagingStudyStatus")]
@@ -1068,7 +1068,7 @@ namespace Hl7.Fhir.Model.R4
         private List<ResourceReference> _reasonReference;
 
         /// <summary>
-        /// Institution-generated description
+        /// User-defined comments
         /// </summary>
         [FhirElement("note", InSummary=true, Order=260)]
         [Cardinality(Min=0,Max=-1)]
@@ -1082,9 +1082,41 @@ namespace Hl7.Fhir.Model.R4
         private List<Annotation> _note;
 
         /// <summary>
+        /// Institution-generated description
+        /// </summary>
+        [FhirElement("description", InSummary=true, Order=270)]
+        [DataMember]
+        public FhirString DescriptionElement
+        {
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
+        }
+
+        private FhirString _descriptionElement;
+
+        /// <summary>
+        /// Institution-generated description
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new FhirString(value);
+                OnPropertyChanged("Description");
+            }
+        }
+
+        /// <summary>
         /// Each study has one or more series of instances
         /// </summary>
-        [FhirElement("series", InSummary=true, Order=270)]
+        [FhirElement("series", InSummary=true, Order=280)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<SeriesComponent> Series
@@ -1121,6 +1153,7 @@ namespace Hl7.Fhir.Model.R4
                 if (ReasonCode != null) dest.ReasonCode = new List<CodeableConcept>(ReasonCode.DeepCopy());
                 if (ReasonReference != null) dest.ReasonReference = new List<ResourceReference>(ReasonReference.DeepCopy());
                 if (Note != null) dest.Note = new List<Annotation>(Note.DeepCopy());
+                if (DescriptionElement != null) dest.DescriptionElement = (FhirString)DescriptionElement.DeepCopy();
                 if (Series != null) dest.Series = new List<SeriesComponent>(Series.DeepCopy());
                 return dest;
             }
@@ -1157,6 +1190,7 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(ReasonCode, otherT.ReasonCode)) return false;
             if ( !DeepComparable.Matches(ReasonReference, otherT.ReasonReference)) return false;
             if ( !DeepComparable.Matches(Note, otherT.Note)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(Series, otherT.Series)) return false;
 
             return true;
@@ -1186,6 +1220,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(ReasonCode, otherT.ReasonCode)) return false;
             if (!DeepComparable.IsExactly(ReasonReference, otherT.ReasonReference)) return false;
             if (!DeepComparable.IsExactly(Note, otherT.Note)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(Series, otherT.Series)) return false;
 
             return true;
@@ -1215,6 +1250,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in ReasonCode) { if (elem != null) yield return elem; }
                 foreach (var elem in ReasonReference) { if (elem != null) yield return elem; }
                 foreach (var elem in Note) { if (elem != null) yield return elem; }
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in Series) { if (elem != null) yield return elem; }
             }
         }
@@ -1243,6 +1279,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in ReasonCode) { if (elem != null) yield return new ElementValue("reasonCode", elem); }
                 foreach (var elem in ReasonReference) { if (elem != null) yield return new ElementValue("reasonReference", elem); }
                 foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in Series) { if (elem != null) yield return new ElementValue("series", elem); }
             }
         }

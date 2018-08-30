@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "List"; } }
 
         /// <summary>
-        /// The current state of the list
+        /// The current state of the list.
         /// (url: http://hl7.org/fhir/ValueSet/list-status)
         /// </summary>
         [FhirEnumeration("ListStatus")]
@@ -518,6 +518,15 @@ namespace Hl7.Fhir.Model.R4
         private CodeableConcept _emptyReason;
 
 
+        public static ElementDefinition.ConstraintComponent List_LST_3 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "mode = 'working' or entry.date.empty()",
+            Key = "lst-3",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "A date can only be used if the mode of the list is \"working\"",
+            Xpath = "(f:mode/@value = 'working') or not(exists(f:entry/f:date))"
+        };
+
         public static ElementDefinition.ConstraintComponent List_LST_2 = new ElementDefinition.ConstraintComponent
         {
             Expression = "mode = 'changes' or entry.deleted.empty()",
@@ -540,6 +549,7 @@ namespace Hl7.Fhir.Model.R4
         {
             base.AddDefaultConstraints();
 
+            InvariantConstraints.Add(List_LST_3);
             InvariantConstraints.Add(List_LST_2);
             InvariantConstraints.Add(List_LST_1);
         }

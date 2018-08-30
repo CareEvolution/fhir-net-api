@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,29 +58,29 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "ClinicalImpression"; } }
 
         /// <summary>
-        /// The workflow state of a clinical impression.
-        /// (url: http://hl7.org/fhir/ValueSet/clinical-impression-status)
+        /// Codes identifying the lifecycle stage of a clinical impression
+        /// (url: http://hl7.org/fhir/ValueSet/clinicalimpression-status)
         /// </summary>
         [FhirEnumeration("ClinicalImpressionStatus")]
         public enum ClinicalImpressionStatus
         {
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// (system: http://hl7.org/fhir/event-status)
             /// </summary>
-            [EnumLiteral("draft", "http://hl7.org/fhir/clinical-impression-status"), Description("In progress")]
-            Draft,
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/event-status"), Description("In Progress")]
+            InProgress,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// (system: http://hl7.org/fhir/event-status)
             /// </summary>
-            [EnumLiteral("completed", "http://hl7.org/fhir/clinical-impression-status"), Description("Completed")]
+            [EnumLiteral("completed", "http://hl7.org/fhir/event-status"), Description("Completed")]
             Completed,
             /// <summary>
             /// MISSING DESCRIPTION
-            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// (system: http://hl7.org/fhir/event-status)
             /// </summary>
-            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/clinical-impression-status"), Description("Entered in Error")]
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/event-status"), Description("Entered in Error")]
             EnteredInError,
         }
 
@@ -382,9 +382,22 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
+        /// Reason for current status
+        /// </summary>
+        [FhirElement("statusReason", Order=110)]
+        [DataMember]
+        public CodeableConcept StatusReason
+        {
+            get { return _statusReason; }
+            set { _statusReason = value; OnPropertyChanged("StatusReason"); }
+        }
+
+        private CodeableConcept _statusReason;
+
+        /// <summary>
         /// Kind of assessment performed
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=110)]
+        [FhirElement("code", InSummary=true, Order=120)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -397,7 +410,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Why/how the assessment was performed
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=120)]
+        [FhirElement("description", InSummary=true, Order=130)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -429,7 +442,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Patient or group assessed
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=130)]
+        [FhirElement("subject", InSummary=true, Order=140)]
         [References("Patient","Group")]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -444,7 +457,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Encounter or Episode created from
         /// </summary>
-        [FhirElement("context", InSummary=true, Order=140)]
+        [FhirElement("context", InSummary=true, Order=150)]
         [References("Encounter","EpisodeOfCare")]
         [DataMember]
         public ResourceReference Context
@@ -458,7 +471,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Time of assessment
         /// </summary>
-        [FhirElement("effective", InSummary=true, Order=150, Choice=ChoiceType.DatatypeChoice)]
+        [FhirElement("effective", InSummary=true, Order=160, Choice=ChoiceType.DatatypeChoice)]
         [AllowedTypes(typeof(FhirDateTime),typeof(Period))]
         [DataMember]
         public Element Effective
@@ -472,7 +485,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// When the assessment was documented
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=160)]
+        [FhirElement("date", InSummary=true, Order=170)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -504,7 +517,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// The clinician performing the assessment
         /// </summary>
-        [FhirElement("assessor", InSummary=true, Order=170)]
+        [FhirElement("assessor", InSummary=true, Order=180)]
         [References("Practitioner")]
         [DataMember]
         public ResourceReference Assessor
@@ -518,7 +531,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Reference to last assessment
         /// </summary>
-        [FhirElement("previous", Order=180)]
+        [FhirElement("previous", Order=190)]
         [References("ClinicalImpression")]
         [DataMember]
         public ResourceReference Previous
@@ -532,7 +545,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Relevant impressions of patient state
         /// </summary>
-        [FhirElement("problem", InSummary=true, Order=190)]
+        [FhirElement("problem", InSummary=true, Order=200)]
         [References("Condition","AllergyIntolerance")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -547,7 +560,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// One or more sets of investigations (signs, symptoms, etc.)
         /// </summary>
-        [FhirElement("investigation", Order=200)]
+        [FhirElement("investigation", Order=210)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<InvestigationComponent> Investigation
@@ -561,7 +574,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Clinical Protocol followed
         /// </summary>
-        [FhirElement("protocol", Order=210)]
+        [FhirElement("protocol", Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<FhirUri> ProtocolElement
@@ -594,7 +607,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Summary of the assessment
         /// </summary>
-        [FhirElement("summary", Order=220)]
+        [FhirElement("summary", Order=230)]
         [DataMember]
         public FhirString SummaryElement
         {
@@ -626,7 +639,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Possible or likely findings and diagnoses
         /// </summary>
-        [FhirElement("finding", Order=230)]
+        [FhirElement("finding", Order=240)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<FindingComponent> Finding
@@ -640,7 +653,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Estimate of likely outcome
         /// </summary>
-        [FhirElement("prognosisCodeableConcept", Order=240)]
+        [FhirElement("prognosisCodeableConcept", Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> PrognosisCodeableConcept
@@ -654,7 +667,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// RiskAssessment expressing likely outcome
         /// </summary>
-        [FhirElement("prognosisReference", Order=250)]
+        [FhirElement("prognosisReference", Order=260)]
         [References("RiskAssessment")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -667,24 +680,23 @@ namespace Hl7.Fhir.Model.R4
         private List<ResourceReference> _prognosisReference;
 
         /// <summary>
-        /// Action taken as part of assessment procedure
+        /// Information supporting the clinical impression
         /// </summary>
-        [FhirElement("action", Order=260)]
-        [References("ServiceRequest","Procedure","MedicationRequest","Appointment")]
+        [FhirElement("supportingInfo", Order=270)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<ResourceReference> Action
+        public List<ResourceReference> SupportingInfo
         {
-            get { if (_action==null) _action = new List<ResourceReference>(); return _action; }
-            set { _action = value; OnPropertyChanged("Action"); }
+            get { if (_supportingInfo==null) _supportingInfo = new List<ResourceReference>(); return _supportingInfo; }
+            set { _supportingInfo = value; OnPropertyChanged("SupportingInfo"); }
         }
 
-        private List<ResourceReference> _action;
+        private List<ResourceReference> _supportingInfo;
 
         /// <summary>
         /// Comments made about the ClinicalImpression
         /// </summary>
-        [FhirElement("note", Order=270)]
+        [FhirElement("note", Order=280)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Annotation> Note
@@ -705,6 +717,7 @@ namespace Hl7.Fhir.Model.R4
                 base.CopyTo(dest);
                 if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
                 if (StatusElement != null) dest.StatusElement = (Code<ClinicalImpressionStatus>)StatusElement.DeepCopy();
+                if (StatusReason != null) dest.StatusReason = (CodeableConcept)StatusReason.DeepCopy();
                 if (Code != null) dest.Code = (CodeableConcept)Code.DeepCopy();
                 if (DescriptionElement != null) dest.DescriptionElement = (FhirString)DescriptionElement.DeepCopy();
                 if (Subject != null) dest.Subject = (ResourceReference)Subject.DeepCopy();
@@ -720,7 +733,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Finding != null) dest.Finding = new List<FindingComponent>(Finding.DeepCopy());
                 if (PrognosisCodeableConcept != null) dest.PrognosisCodeableConcept = new List<CodeableConcept>(PrognosisCodeableConcept.DeepCopy());
                 if (PrognosisReference != null) dest.PrognosisReference = new List<ResourceReference>(PrognosisReference.DeepCopy());
-                if (Action != null) dest.Action = new List<ResourceReference>(Action.DeepCopy());
+                if (SupportingInfo != null) dest.SupportingInfo = new List<ResourceReference>(SupportingInfo.DeepCopy());
                 if (Note != null) dest.Note = new List<Annotation>(Note.DeepCopy());
                 return dest;
             }
@@ -741,6 +754,7 @@ namespace Hl7.Fhir.Model.R4
             if (!base.Matches(otherT)) return false;
             if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.Matches(StatusReason, otherT.StatusReason)) return false;
             if (!DeepComparable.Matches(Code, otherT.Code)) return false;
             if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.Matches(Subject, otherT.Subject)) return false;
@@ -756,7 +770,7 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(Finding, otherT.Finding)) return false;
             if ( !DeepComparable.Matches(PrognosisCodeableConcept, otherT.PrognosisCodeableConcept)) return false;
             if ( !DeepComparable.Matches(PrognosisReference, otherT.PrognosisReference)) return false;
-            if ( !DeepComparable.Matches(Action, otherT.Action)) return false;
+            if ( !DeepComparable.Matches(SupportingInfo, otherT.SupportingInfo)) return false;
             if ( !DeepComparable.Matches(Note, otherT.Note)) return false;
 
             return true;
@@ -770,6 +784,7 @@ namespace Hl7.Fhir.Model.R4
             if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.IsExactly(StatusReason, otherT.StatusReason)) return false;
             if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
             if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(Subject, otherT.Subject)) return false;
@@ -785,7 +800,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Finding, otherT.Finding)) return false;
             if (!DeepComparable.IsExactly(PrognosisCodeableConcept, otherT.PrognosisCodeableConcept)) return false;
             if (!DeepComparable.IsExactly(PrognosisReference, otherT.PrognosisReference)) return false;
-            if (!DeepComparable.IsExactly(Action, otherT.Action)) return false;
+            if (!DeepComparable.IsExactly(SupportingInfo, otherT.SupportingInfo)) return false;
             if (!DeepComparable.IsExactly(Note, otherT.Note)) return false;
 
             return true;
@@ -799,6 +814,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var item in base.Children) yield return item;
                 foreach (var elem in Identifier) { if (elem != null) yield return elem; }
                 if (StatusElement != null) yield return StatusElement;
+                if (StatusReason != null) yield return StatusReason;
                 if (Code != null) yield return Code;
                 if (DescriptionElement != null) yield return DescriptionElement;
                 if (Subject != null) yield return Subject;
@@ -814,7 +830,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Finding) { if (elem != null) yield return elem; }
                 foreach (var elem in PrognosisCodeableConcept) { if (elem != null) yield return elem; }
                 foreach (var elem in PrognosisReference) { if (elem != null) yield return elem; }
-                foreach (var elem in Action) { if (elem != null) yield return elem; }
+                foreach (var elem in SupportingInfo) { if (elem != null) yield return elem; }
                 foreach (var elem in Note) { if (elem != null) yield return elem; }
             }
         }
@@ -827,6 +843,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var item in base.NamedChildren) yield return item;
                 foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
                 if (StatusElement != null) yield return new ElementValue("status", StatusElement);
+                if (StatusReason != null) yield return new ElementValue("statusReason", StatusReason);
                 if (Code != null) yield return new ElementValue("code", Code);
                 if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 if (Subject != null) yield return new ElementValue("subject", Subject);
@@ -842,7 +859,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Finding) { if (elem != null) yield return new ElementValue("finding", elem); }
                 foreach (var elem in PrognosisCodeableConcept) { if (elem != null) yield return new ElementValue("prognosisCodeableConcept", elem); }
                 foreach (var elem in PrognosisReference) { if (elem != null) yield return new ElementValue("prognosisReference", elem); }
-                foreach (var elem in Action) { if (elem != null) yield return new ElementValue("action", elem); }
+                foreach (var elem in SupportingInfo) { if (elem != null) yield return new ElementValue("supportingInfo", elem); }
                 foreach (var elem in Note) { if (elem != null) yield return new ElementValue("note", elem); }
             }
         }

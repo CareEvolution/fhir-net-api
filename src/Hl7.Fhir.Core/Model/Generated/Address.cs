@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -56,7 +56,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Address"; } }
 
         /// <summary>
-        /// The use of an address
+        /// The use of an address.
         /// (url: http://hl7.org/fhir/ValueSet/address-use)
         /// </summary>
         [FhirEnumeration("AddressUse")]
@@ -95,7 +95,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// The type of an address (physical / postal)
+        /// The type of an address (physical / postal).
         /// (url: http://hl7.org/fhir/ValueSet/address-type)
         /// </summary>
         [FhirEnumeration("AddressType")]

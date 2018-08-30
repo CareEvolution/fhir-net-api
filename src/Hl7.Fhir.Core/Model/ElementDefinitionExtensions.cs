@@ -94,7 +94,7 @@ namespace Hl7.Fhir.Model.R4
         {
             var binding = new ElementDefinition.ElementDefinitionBindingComponent
             {
-                ValueSet = new ResourceReference(valueSetUri),
+                ValueSet = valueSetUri,
                 Strength = strength
             };
 

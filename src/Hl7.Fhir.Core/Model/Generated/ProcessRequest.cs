@@ -41,12 +41,12 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
     /// <summary>
-    /// Request to perform some action on or in regards to an existing resource
+    /// Request to perform some action on or in regard to an existing resource
     /// </summary>
     [FhirType("ProcessRequest", IsResource=true)]
     [DataContract]

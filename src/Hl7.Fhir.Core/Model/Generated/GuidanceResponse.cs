@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "GuidanceResponse"; } }
 
         /// <summary>
-        /// The status of a guidance response
+        /// The status of a guidance response.
         /// (url: http://hl7.org/fhir/ValueSet/guidance-response-status)
         /// </summary>
         [FhirEnumeration("GuidanceResponseStatus")]
@@ -104,36 +104,17 @@ namespace Hl7.Fhir.Model.R4
 
 
         /// <summary>
-        /// The id of the request associated with this response, if any
+        /// The identifier of the request associated with this response, if any
         /// </summary>
-        [FhirElement("requestId", InSummary=true, Order=90)]
+        [FhirElement("requestIdentifier", InSummary=true, Order=90)]
         [DataMember]
-        public Id RequestIdElement
+        public Identifier RequestIdentifier
         {
-            get { return _requestIdElement; }
-            set { _requestIdElement = value; OnPropertyChanged("RequestIdElement"); }
+            get { return _requestIdentifier; }
+            set { _requestIdentifier = value; OnPropertyChanged("RequestIdentifier"); }
         }
 
-        private Id _requestIdElement;
-
-        /// <summary>
-        /// The id of the request associated with this response, if any
-        /// </summary>
-        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-        [NotMapped]
-        [IgnoreDataMember]
-        public string RequestId
-        {
-            get { return RequestIdElement != null ? RequestIdElement.Value : null; }
-            set
-            {
-                if (value == null)
-                    RequestIdElement = null;
-                else
-                    RequestIdElement = new Id(value);
-                OnPropertyChanged("RequestId");
-            }
-        }
+        private Identifier _requestIdentifier;
 
         /// <summary>
         /// Business identifier
@@ -379,7 +360,7 @@ namespace Hl7.Fhir.Model.R4
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if (RequestIdElement != null) dest.RequestIdElement = (Id)RequestIdElement.DeepCopy();
+                if (RequestIdentifier != null) dest.RequestIdentifier = (Identifier)RequestIdentifier.DeepCopy();
                 if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
                 if (Module != null) dest.Module = (Element)Module.DeepCopy();
                 if (StatusElement != null) dest.StatusElement = (Code<GuidanceResponseStatus>)StatusElement.DeepCopy();
@@ -411,7 +392,7 @@ namespace Hl7.Fhir.Model.R4
             if (otherT == null) return false;
 
             if (!base.Matches(otherT)) return false;
-            if (!DeepComparable.Matches(RequestIdElement, otherT.RequestIdElement)) return false;
+            if (!DeepComparable.Matches(RequestIdentifier, otherT.RequestIdentifier)) return false;
             if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.Matches(Module, otherT.Module)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
@@ -436,7 +417,7 @@ namespace Hl7.Fhir.Model.R4
             if (otherT == null) return false;
 
             if (!base.IsExactly(otherT)) return false;
-            if (!DeepComparable.IsExactly(RequestIdElement, otherT.RequestIdElement)) return false;
+            if (!DeepComparable.IsExactly(RequestIdentifier, otherT.RequestIdentifier)) return false;
             if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.IsExactly(Module, otherT.Module)) return false;
             if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
@@ -461,7 +442,7 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.Children) yield return item;
-                if (RequestIdElement != null) yield return RequestIdElement;
+                if (RequestIdentifier != null) yield return RequestIdentifier;
                 foreach (var elem in Identifier) { if (elem != null) yield return elem; }
                 if (Module != null) yield return Module;
                 if (StatusElement != null) yield return StatusElement;
@@ -485,7 +466,7 @@ namespace Hl7.Fhir.Model.R4
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (RequestIdElement != null) yield return new ElementValue("requestId", RequestIdElement);
+                if (RequestIdentifier != null) yield return new ElementValue("requestIdentifier", RequestIdentifier);
                 foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
                 if (Module != null) yield return new ElementValue("module", Module);
                 if (StatusElement != null) yield return new ElementValue("status", StatusElement);

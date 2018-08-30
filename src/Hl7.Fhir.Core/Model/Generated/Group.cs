@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "Group"; } }
 
         /// <summary>
-        /// Types of resources that are part of group
+        /// Types of resources that are part of group.
         /// (url: http://hl7.org/fhir/ValueSet/group-type)
         /// </summary>
         [FhirEnumeration("GroupType")]
@@ -599,7 +599,7 @@ namespace Hl7.Fhir.Model.R4
         }
 
         /// <summary>
-        /// Trait of group members
+        /// Include / Exclude group members by Trait
         /// </summary>
         [FhirElement("characteristic", Order=160)]
         [Cardinality(Min=0,Max=-1)]

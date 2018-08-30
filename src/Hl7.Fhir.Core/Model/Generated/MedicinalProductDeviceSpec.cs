@@ -41,12 +41,12 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
     /// <summary>
-    /// A detailed description of a device, typically as part of a regulated medicinal product. It is not intended to relace the Device resource, which covers use of device instances
+    /// A detailed description of a device, typically as part of a regulated medicinal product. It is not intended to replace the Device resource, which covers use of device instances
     /// </summary>
     [FhirType("MedicinalProductDeviceSpec", IsResource=true)]
     [DataContract]
@@ -411,16 +411,16 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Shelf Life and storage information
         /// </summary>
-        [FhirElement("shelfLife", InSummary=true, Order=190)]
+        [FhirElement("shelfLifeStorage", InSummary=true, Order=190)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<ProductShelfLife> ShelfLife
+        public List<ProductShelfLife> ShelfLifeStorage
         {
-            get { if (_shelfLife==null) _shelfLife = new List<ProductShelfLife>(); return _shelfLife; }
-            set { _shelfLife = value; OnPropertyChanged("ShelfLife"); }
+            get { if (_shelfLifeStorage==null) _shelfLifeStorage = new List<ProductShelfLife>(); return _shelfLifeStorage; }
+            set { _shelfLifeStorage = value; OnPropertyChanged("ShelfLifeStorage"); }
         }
 
-        private List<ProductShelfLife> _shelfLife;
+        private List<ProductShelfLife> _shelfLifeStorage;
 
         /// <summary>
         /// Dimensions, color etc.
@@ -510,7 +510,7 @@ namespace Hl7.Fhir.Model.R4
                 if (SterilisationRequirement != null) dest.SterilisationRequirement = (CodeableConcept)SterilisationRequirement.DeepCopy();
                 if (Usage != null) dest.Usage = (CodeableConcept)Usage.DeepCopy();
                 if (Nomenclature != null) dest.Nomenclature = new List<CodeableConcept>(Nomenclature.DeepCopy());
-                if (ShelfLife != null) dest.ShelfLife = new List<ProductShelfLife>(ShelfLife.DeepCopy());
+                if (ShelfLifeStorage != null) dest.ShelfLifeStorage = new List<ProductShelfLife>(ShelfLifeStorage.DeepCopy());
                 if (PhysicalCharacteristics != null) dest.PhysicalCharacteristics = (ProdCharacteristic)PhysicalCharacteristics.DeepCopy();
                 if (OtherCharacteristics != null) dest.OtherCharacteristics = new List<CodeableConcept>(OtherCharacteristics.DeepCopy());
                 if (BatchIdentifier != null) dest.BatchIdentifier = new List<Identifier>(BatchIdentifier.DeepCopy());
@@ -543,7 +543,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(SterilisationRequirement, otherT.SterilisationRequirement)) return false;
             if (!DeepComparable.Matches(Usage, otherT.Usage)) return false;
             if ( !DeepComparable.Matches(Nomenclature, otherT.Nomenclature)) return false;
-            if ( !DeepComparable.Matches(ShelfLife, otherT.ShelfLife)) return false;
+            if ( !DeepComparable.Matches(ShelfLifeStorage, otherT.ShelfLifeStorage)) return false;
             if (!DeepComparable.Matches(PhysicalCharacteristics, otherT.PhysicalCharacteristics)) return false;
             if ( !DeepComparable.Matches(OtherCharacteristics, otherT.OtherCharacteristics)) return false;
             if ( !DeepComparable.Matches(BatchIdentifier, otherT.BatchIdentifier)) return false;
@@ -569,7 +569,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(SterilisationRequirement, otherT.SterilisationRequirement)) return false;
             if (!DeepComparable.IsExactly(Usage, otherT.Usage)) return false;
             if (!DeepComparable.IsExactly(Nomenclature, otherT.Nomenclature)) return false;
-            if (!DeepComparable.IsExactly(ShelfLife, otherT.ShelfLife)) return false;
+            if (!DeepComparable.IsExactly(ShelfLifeStorage, otherT.ShelfLifeStorage)) return false;
             if (!DeepComparable.IsExactly(PhysicalCharacteristics, otherT.PhysicalCharacteristics)) return false;
             if (!DeepComparable.IsExactly(OtherCharacteristics, otherT.OtherCharacteristics)) return false;
             if (!DeepComparable.IsExactly(BatchIdentifier, otherT.BatchIdentifier)) return false;
@@ -595,7 +595,7 @@ namespace Hl7.Fhir.Model.R4
                 if (SterilisationRequirement != null) yield return SterilisationRequirement;
                 if (Usage != null) yield return Usage;
                 foreach (var elem in Nomenclature) { if (elem != null) yield return elem; }
-                foreach (var elem in ShelfLife) { if (elem != null) yield return elem; }
+                foreach (var elem in ShelfLifeStorage) { if (elem != null) yield return elem; }
                 if (PhysicalCharacteristics != null) yield return PhysicalCharacteristics;
                 foreach (var elem in OtherCharacteristics) { if (elem != null) yield return elem; }
                 foreach (var elem in BatchIdentifier) { if (elem != null) yield return elem; }
@@ -620,7 +620,7 @@ namespace Hl7.Fhir.Model.R4
                 if (SterilisationRequirement != null) yield return new ElementValue("sterilisationRequirement", SterilisationRequirement);
                 if (Usage != null) yield return new ElementValue("usage", Usage);
                 foreach (var elem in Nomenclature) { if (elem != null) yield return new ElementValue("nomenclature", elem); }
-                foreach (var elem in ShelfLife) { if (elem != null) yield return new ElementValue("shelfLife", elem); }
+                foreach (var elem in ShelfLifeStorage) { if (elem != null) yield return new ElementValue("shelfLifeStorage", elem); }
                 if (PhysicalCharacteristics != null) yield return new ElementValue("physicalCharacteristics", PhysicalCharacteristics);
                 foreach (var elem in OtherCharacteristics) { if (elem != null) yield return new ElementValue("otherCharacteristics", elem); }
                 foreach (var elem in BatchIdentifier) { if (elem != null) yield return new ElementValue("batchIdentifier", elem); }

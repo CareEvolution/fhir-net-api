@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -57,6 +57,105 @@ namespace Hl7.Fhir.Model.R4
         [NotMapped]
         public override string TypeName { get { return "ActivityDefinition"; } }
 
+        /// <summary>
+        /// A list of all the request resource types defined in this version of the FHIR specification.
+        /// (url: http://hl7.org/fhir/ValueSet/request-resource-types)
+        /// </summary>
+        [FhirEnumeration("RequestResourceType")]
+        public enum RequestResourceType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("Appointment", "http://hl7.org/fhir/request-resource-types"), Description("Appointment")]
+            Appointment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("AppointmentResponse", "http://hl7.org/fhir/request-resource-types"), Description("AppointmentResponse")]
+            AppointmentResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("CarePlan", "http://hl7.org/fhir/request-resource-types"), Description("CarePlan")]
+            CarePlan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("Claim", "http://hl7.org/fhir/request-resource-types"), Description("Claim")]
+            Claim,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("CommunicationRequest", "http://hl7.org/fhir/request-resource-types"), Description("CommunicationRequest")]
+            CommunicationRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("Contract", "http://hl7.org/fhir/request-resource-types"), Description("Contract")]
+            Contract,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("DeviceRequest", "http://hl7.org/fhir/request-resource-types"), Description("DeviceRequest")]
+            DeviceRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("EnrollmentRequest", "http://hl7.org/fhir/request-resource-types"), Description("EnrollmentRequest")]
+            EnrollmentRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("ImmunizationRecommendation", "http://hl7.org/fhir/request-resource-types"), Description("ImmunizationRecommendation")]
+            ImmunizationRecommendation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("MedicationRequest", "http://hl7.org/fhir/request-resource-types"), Description("MedicationRequest")]
+            MedicationRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("NutritionOrder", "http://hl7.org/fhir/request-resource-types"), Description("NutritionOrder")]
+            NutritionOrder,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("ServiceRequest", "http://hl7.org/fhir/request-resource-types"), Description("ServiceRequest")]
+            ServiceRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("SupplyRequest", "http://hl7.org/fhir/request-resource-types"), Description("SupplyRequest")]
+            SupplyRequest,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("Task", "http://hl7.org/fhir/request-resource-types"), Description("Task")]
+            Task,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/request-resource-types)
+            /// </summary>
+            [EnumLiteral("VisionPrescription", "http://hl7.org/fhir/request-resource-types"), Description("VisionPrescription")]
+            VisionPrescription,
+        }
+
 
         [FhirType("ParticipantComponent")]
         [DataContract]
@@ -66,7 +165,7 @@ namespace Hl7.Fhir.Model.R4
             public override string TypeName { get { return "ParticipantComponent"; } }
 
             /// <summary>
-            /// patient | practitioner | related-person
+            /// patient | practitioner | related-person | device
             /// </summary>
             [FhirElement("type", Order=40)]
             [Cardinality(Min=1,Max=1)]
@@ -80,7 +179,7 @@ namespace Hl7.Fhir.Model.R4
             private Code<ActionParticipantType> _typeElement;
 
             /// <summary>
-            /// patient | practitioner | related-person
+            /// patient | practitioner | related-person | device
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
@@ -190,41 +289,10 @@ namespace Hl7.Fhir.Model.R4
             public override string TypeName { get { return "DynamicValueComponent"; } }
 
             /// <summary>
-            /// Natural language description of the dynamic value
-            /// </summary>
-            [FhirElement("description", Order=40)]
-            [DataMember]
-            public FhirString DescriptionElement
-            {
-                get { return _descriptionElement; }
-                set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
-            }
-
-            private FhirString _descriptionElement;
-
-            /// <summary>
-            /// Natural language description of the dynamic value
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string Description
-            {
-                get { return DescriptionElement != null ? DescriptionElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        DescriptionElement = null;
-                    else
-                        DescriptionElement = new FhirString(value);
-                    OnPropertyChanged("Description");
-                }
-            }
-
-            /// <summary>
             /// The path to the element to be set dynamically
             /// </summary>
-            [FhirElement("path", Order=50)]
+            [FhirElement("path", Order=40)]
+            [Cardinality(Min=1,Max=1)]
             [DataMember]
             public FhirString PathElement
             {
@@ -254,68 +322,18 @@ namespace Hl7.Fhir.Model.R4
             }
 
             /// <summary>
-            /// Language of the expression
-            /// </summary>
-            [FhirElement("language", Order=60)]
-            [DataMember]
-            public FhirString LanguageElement
-            {
-                get { return _languageElement; }
-                set { _languageElement = value; OnPropertyChanged("LanguageElement"); }
-            }
-
-            private FhirString _languageElement;
-
-            /// <summary>
-            /// Language of the expression
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string Language
-            {
-                get { return LanguageElement != null ? LanguageElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        LanguageElement = null;
-                    else
-                        LanguageElement = new FhirString(value);
-                    OnPropertyChanged("Language");
-                }
-            }
-
-            /// <summary>
             /// An expression that provides the dynamic value for the customization
             /// </summary>
-            [FhirElement("expression", Order=70)]
+            [FhirElement("expression", Order=50)]
+            [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public FhirString ExpressionElement
+            public Expression Expression
             {
-                get { return _expressionElement; }
-                set { _expressionElement = value; OnPropertyChanged("ExpressionElement"); }
+                get { return _expression; }
+                set { _expression = value; OnPropertyChanged("Expression"); }
             }
 
-            private FhirString _expressionElement;
-
-            /// <summary>
-            /// An expression that provides the dynamic value for the customization
-            /// </summary>
-            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
-            [NotMapped]
-            [IgnoreDataMember]
-            public string Expression
-            {
-                get { return ExpressionElement != null ? ExpressionElement.Value : null; }
-                set
-                {
-                    if (value == null)
-                        ExpressionElement = null;
-                    else
-                        ExpressionElement = new FhirString(value);
-                    OnPropertyChanged("Expression");
-                }
-            }
+            private Expression _expression;
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -324,10 +342,8 @@ namespace Hl7.Fhir.Model.R4
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if (DescriptionElement != null) dest.DescriptionElement = (FhirString)DescriptionElement.DeepCopy();
                     if (PathElement != null) dest.PathElement = (FhirString)PathElement.DeepCopy();
-                    if (LanguageElement != null) dest.LanguageElement = (FhirString)LanguageElement.DeepCopy();
-                    if (ExpressionElement != null) dest.ExpressionElement = (FhirString)ExpressionElement.DeepCopy();
+                    if (Expression != null) dest.Expression = (Expression)Expression.DeepCopy();
                     return dest;
                 }
                 else
@@ -345,10 +361,8 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.Matches(otherT)) return false;
-                if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
                 if (!DeepComparable.Matches(PathElement, otherT.PathElement)) return false;
-                if (!DeepComparable.Matches(LanguageElement, otherT.LanguageElement)) return false;
-                if (!DeepComparable.Matches(ExpressionElement, otherT.ExpressionElement)) return false;
+                if (!DeepComparable.Matches(Expression, otherT.Expression)) return false;
 
                 return true;
             }
@@ -359,10 +373,8 @@ namespace Hl7.Fhir.Model.R4
                 if (otherT == null) return false;
 
                 if (!base.IsExactly(otherT)) return false;
-                if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
                 if (!DeepComparable.IsExactly(PathElement, otherT.PathElement)) return false;
-                if (!DeepComparable.IsExactly(LanguageElement, otherT.LanguageElement)) return false;
-                if (!DeepComparable.IsExactly(ExpressionElement, otherT.ExpressionElement)) return false;
+                if (!DeepComparable.IsExactly(Expression, otherT.Expression)) return false;
 
                 return true;
             }
@@ -374,10 +386,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.Children) yield return item;
-                    if (DescriptionElement != null) yield return DescriptionElement;
                     if (PathElement != null) yield return PathElement;
-                    if (LanguageElement != null) yield return LanguageElement;
-                    if (ExpressionElement != null) yield return ExpressionElement;
+                    if (Expression != null) yield return Expression;
                 }
             }
 
@@ -387,10 +397,8 @@ namespace Hl7.Fhir.Model.R4
                 get
                 {
                     foreach (var item in base.NamedChildren) yield return item;
-                    if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                     if (PathElement != null) yield return new ElementValue("path", PathElement);
-                    if (LanguageElement != null) yield return new ElementValue("language", LanguageElement);
-                    if (ExpressionElement != null) yield return new ElementValue("expression", ExpressionElement);
+                    if (Expression != null) yield return new ElementValue("expression", Expression);
                 }
             }
 
@@ -920,23 +928,65 @@ namespace Hl7.Fhir.Model.R4
         private List<CodeableConcept> _topic;
 
         /// <summary>
-        /// A content contributor
+        /// Who authored the content
         /// </summary>
-        [FhirElement("contributor", Order=310)]
+        [FhirElement("author", Order=310)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Contributor> Contributor
+        public List<ContactDetail> Author
         {
-            get { if (_contributor==null) _contributor = new List<Contributor>(); return _contributor; }
-            set { _contributor = value; OnPropertyChanged("Contributor"); }
+            get { if (_author==null) _author = new List<ContactDetail>(); return _author; }
+            set { _author = value; OnPropertyChanged("Author"); }
         }
 
-        private List<Contributor> _contributor;
+        private List<ContactDetail> _author;
+
+        /// <summary>
+        /// Who edited the content
+        /// </summary>
+        [FhirElement("editor", Order=320)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Editor
+        {
+            get { if (_editor==null) _editor = new List<ContactDetail>(); return _editor; }
+            set { _editor = value; OnPropertyChanged("Editor"); }
+        }
+
+        private List<ContactDetail> _editor;
+
+        /// <summary>
+        /// Who reviewed the content
+        /// </summary>
+        [FhirElement("reviewer", Order=330)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Reviewer
+        {
+            get { if (_reviewer==null) _reviewer = new List<ContactDetail>(); return _reviewer; }
+            set { _reviewer = value; OnPropertyChanged("Reviewer"); }
+        }
+
+        private List<ContactDetail> _reviewer;
+
+        /// <summary>
+        /// Who endorsed the content
+        /// </summary>
+        [FhirElement("endorser", Order=340)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ContactDetail> Endorser
+        {
+            get { if (_endorser==null) _endorser = new List<ContactDetail>(); return _endorser; }
+            set { _endorser = value; OnPropertyChanged("Endorser"); }
+        }
+
+        private List<ContactDetail> _endorser;
 
         /// <summary>
         /// Additional documentation, citations, etc.
         /// </summary>
-        [FhirElement("relatedArtifact", Order=320)]
+        [FhirElement("relatedArtifact", Order=350)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<RelatedArtifact> RelatedArtifact
@@ -950,7 +1000,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Logic used by the activity definition
         /// </summary>
-        [FhirElement("library", Order=330)]
+        [FhirElement("library", Order=360)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Canonical> LibraryElement
@@ -983,15 +1033,15 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Kind of resource
         /// </summary>
-        [FhirElement("kind", InSummary=true, Order=340)]
+        [FhirElement("kind", InSummary=true, Order=370)]
         [DataMember]
-        public Code<ResourceType> KindElement
+        public Code<RequestResourceType> KindElement
         {
             get { return _kindElement; }
             set { _kindElement = value; OnPropertyChanged("KindElement"); }
         }
 
-        private Code<ResourceType> _kindElement;
+        private Code<RequestResourceType> _kindElement;
 
         /// <summary>
         /// Kind of resource
@@ -999,7 +1049,7 @@ namespace Hl7.Fhir.Model.R4
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public ResourceType? Kind
+        public RequestResourceType? Kind
         {
             get { return KindElement != null ? KindElement.Value : null; }
             set
@@ -1007,15 +1057,47 @@ namespace Hl7.Fhir.Model.R4
                 if (value == null)
                     KindElement = null;
                 else
-                    KindElement = new Code<ResourceType>(value);
+                    KindElement = new Code<RequestResourceType>(value);
                 OnPropertyChanged("Kind");
+            }
+        }
+
+        /// <summary>
+        /// What profile the resource needs to conform to
+        /// </summary>
+        [FhirElement("profile", Order=380)]
+        [DataMember]
+        public Canonical ProfileElement
+        {
+            get { return _profileElement; }
+            set { _profileElement = value; OnPropertyChanged("ProfileElement"); }
+        }
+
+        private Canonical _profileElement;
+
+        /// <summary>
+        /// What profile the resource needs to conform to
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Profile
+        {
+            get { return ProfileElement != null ? ProfileElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    ProfileElement = null;
+                else
+                    ProfileElement = new Canonical(value);
+                OnPropertyChanged("Profile");
             }
         }
 
         /// <summary>
         /// Detail type of activity
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=350)]
+        [FhirElement("code", InSummary=true, Order=390)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -1026,9 +1108,73 @@ namespace Hl7.Fhir.Model.R4
         private CodeableConcept _code;
 
         /// <summary>
+        /// proposal | plan | order
+        /// </summary>
+        [FhirElement("intent", Order=400)]
+        [DataMember]
+        public Code<RequestIntent> IntentElement
+        {
+            get { return _intentElement; }
+            set { _intentElement = value; OnPropertyChanged("IntentElement"); }
+        }
+
+        private Code<RequestIntent> _intentElement;
+
+        /// <summary>
+        /// proposal | plan | order
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public RequestIntent? Intent
+        {
+            get { return IntentElement != null ? IntentElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    IntentElement = null;
+                else
+                    IntentElement = new Code<RequestIntent>(value);
+                OnPropertyChanged("Intent");
+            }
+        }
+
+        /// <summary>
+        /// routine | urgent | asap | stat
+        /// </summary>
+        [FhirElement("priority", Order=410)]
+        [DataMember]
+        public Code<RequestPriority> PriorityElement
+        {
+            get { return _priorityElement; }
+            set { _priorityElement = value; OnPropertyChanged("PriorityElement"); }
+        }
+
+        private Code<RequestPriority> _priorityElement;
+
+        /// <summary>
+        /// routine | urgent | asap | stat
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public RequestPriority? Priority
+        {
+            get { return PriorityElement != null ? PriorityElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PriorityElement = null;
+                else
+                    PriorityElement = new Code<RequestPriority>(value);
+                OnPropertyChanged("Priority");
+            }
+        }
+
+        /// <summary>
         /// True if the activity should not be performed
         /// </summary>
-        [FhirElement("doNotPerform", InSummary=true, Order=360)]
+        [FhirElement("doNotPerform", InSummary=true, Order=420)]
         [DataMember]
         public FhirBoolean DoNotPerformElement
         {
@@ -1060,7 +1206,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// When activity is to occur
         /// </summary>
-        [FhirElement("timing", Order=370, Choice=ChoiceType.DatatypeChoice)]
+        [FhirElement("timing", Order=430, Choice=ChoiceType.DatatypeChoice)]
         [AllowedTypes(typeof(Timing),typeof(FhirDateTime),typeof(Age),typeof(Period),typeof(Range),typeof(Duration))]
         [DataMember]
         public Element Timing
@@ -1074,7 +1220,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Where it should happen
         /// </summary>
-        [FhirElement("location", Order=380)]
+        [FhirElement("location", Order=440)]
         [References("Location")]
         [DataMember]
         public ResourceReference Location
@@ -1088,7 +1234,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Who should participate in the action
         /// </summary>
-        [FhirElement("participant", Order=390)]
+        [FhirElement("participant", Order=450)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<ParticipantComponent> Participant
@@ -1102,7 +1248,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// What's administered/supplied
         /// </summary>
-        [FhirElement("product", Order=400, Choice=ChoiceType.DatatypeChoice)]
+        [FhirElement("product", Order=460, Choice=ChoiceType.DatatypeChoice)]
         [AllowedTypes(typeof(ResourceReference),typeof(CodeableConcept))]
         [DataMember]
         public Element Product
@@ -1116,7 +1262,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// How much is administered/consumed/supplied
         /// </summary>
-        [FhirElement("quantity", Order=410)]
+        [FhirElement("quantity", Order=470)]
         [DataMember]
         public SimpleQuantity Quantity
         {
@@ -1129,7 +1275,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Detailed dosage instructions
         /// </summary>
-        [FhirElement("dosage", Order=420)]
+        [FhirElement("dosage", Order=480)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<Dosage> Dosage
@@ -1143,7 +1289,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// What part of body to perform on
         /// </summary>
-        [FhirElement("bodySite", Order=430)]
+        [FhirElement("bodySite", Order=490)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<CodeableConcept> BodySite
@@ -1157,7 +1303,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// What specimens are required to perform this action
         /// </summary>
-        [FhirElement("specimenRequirement", Order=440)]
+        [FhirElement("specimenRequirement", Order=500)]
         [References("SpecimenDefinition")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
@@ -1170,9 +1316,39 @@ namespace Hl7.Fhir.Model.R4
         private List<ResourceReference> _specimenRequirement;
 
         /// <summary>
+        /// What observations are required to perform this action
+        /// </summary>
+        [FhirElement("observationRequirement", Order=510)]
+        [References("ObservationDefinition")]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ResourceReference> ObservationRequirement
+        {
+            get { if (_observationRequirement==null) _observationRequirement = new List<ResourceReference>(); return _observationRequirement; }
+            set { _observationRequirement = value; OnPropertyChanged("ObservationRequirement"); }
+        }
+
+        private List<ResourceReference> _observationRequirement;
+
+        /// <summary>
+        /// What observations must be produced by this action
+        /// </summary>
+        [FhirElement("observationResultRequirement", Order=520)]
+        [References("ObservationDefinition")]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<ResourceReference> ObservationResultRequirement
+        {
+            get { if (_observationResultRequirement==null) _observationResultRequirement = new List<ResourceReference>(); return _observationResultRequirement; }
+            set { _observationResultRequirement = value; OnPropertyChanged("ObservationResultRequirement"); }
+        }
+
+        private List<ResourceReference> _observationResultRequirement;
+
+        /// <summary>
         /// Transform to apply the template
         /// </summary>
-        [FhirElement("transform", Order=450)]
+        [FhirElement("transform", Order=530)]
         [DataMember]
         public Canonical TransformElement
         {
@@ -1204,7 +1380,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Dynamic aspects of the definition
         /// </summary>
-        [FhirElement("dynamicValue", Order=460)]
+        [FhirElement("dynamicValue", Order=540)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
         public List<DynamicValueComponent> DynamicValue
@@ -1215,6 +1391,22 @@ namespace Hl7.Fhir.Model.R4
 
         private List<DynamicValueComponent> _dynamicValue;
 
+
+        public static ElementDefinition.ConstraintComponent ActivityDefinition_ADF_0 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "name.matches('[A-Z]([A-Za-z0-9_]){0,254}')",
+            Key = "adf-0",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Name should be usable as an identifier for the module by machine processing applications such as code generation",
+            Xpath = "not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')"
+        };
+
+        public override void AddDefaultConstraints()
+        {
+            base.AddDefaultConstraints();
+
+            InvariantConstraints.Add(ActivityDefinition_ADF_0);
+        }
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
@@ -1245,11 +1437,17 @@ namespace Hl7.Fhir.Model.R4
                 if (LastReviewDateElement != null) dest.LastReviewDateElement = (Date)LastReviewDateElement.DeepCopy();
                 if (EffectivePeriod != null) dest.EffectivePeriod = (Period)EffectivePeriod.DeepCopy();
                 if (Topic != null) dest.Topic = new List<CodeableConcept>(Topic.DeepCopy());
-                if (Contributor != null) dest.Contributor = new List<Contributor>(Contributor.DeepCopy());
+                if (Author != null) dest.Author = new List<ContactDetail>(Author.DeepCopy());
+                if (Editor != null) dest.Editor = new List<ContactDetail>(Editor.DeepCopy());
+                if (Reviewer != null) dest.Reviewer = new List<ContactDetail>(Reviewer.DeepCopy());
+                if (Endorser != null) dest.Endorser = new List<ContactDetail>(Endorser.DeepCopy());
                 if (RelatedArtifact != null) dest.RelatedArtifact = new List<RelatedArtifact>(RelatedArtifact.DeepCopy());
                 if (LibraryElement != null) dest.LibraryElement = new List<Canonical>(LibraryElement.DeepCopy());
-                if (KindElement != null) dest.KindElement = (Code<ResourceType>)KindElement.DeepCopy();
+                if (KindElement != null) dest.KindElement = (Code<RequestResourceType>)KindElement.DeepCopy();
+                if (ProfileElement != null) dest.ProfileElement = (Canonical)ProfileElement.DeepCopy();
                 if (Code != null) dest.Code = (CodeableConcept)Code.DeepCopy();
+                if (IntentElement != null) dest.IntentElement = (Code<RequestIntent>)IntentElement.DeepCopy();
+                if (PriorityElement != null) dest.PriorityElement = (Code<RequestPriority>)PriorityElement.DeepCopy();
                 if (DoNotPerformElement != null) dest.DoNotPerformElement = (FhirBoolean)DoNotPerformElement.DeepCopy();
                 if (Timing != null) dest.Timing = (Element)Timing.DeepCopy();
                 if (Location != null) dest.Location = (ResourceReference)Location.DeepCopy();
@@ -1259,6 +1457,8 @@ namespace Hl7.Fhir.Model.R4
                 if (Dosage != null) dest.Dosage = new List<Dosage>(Dosage.DeepCopy());
                 if (BodySite != null) dest.BodySite = new List<CodeableConcept>(BodySite.DeepCopy());
                 if (SpecimenRequirement != null) dest.SpecimenRequirement = new List<ResourceReference>(SpecimenRequirement.DeepCopy());
+                if (ObservationRequirement != null) dest.ObservationRequirement = new List<ResourceReference>(ObservationRequirement.DeepCopy());
+                if (ObservationResultRequirement != null) dest.ObservationResultRequirement = new List<ResourceReference>(ObservationResultRequirement.DeepCopy());
                 if (TransformElement != null) dest.TransformElement = (Canonical)TransformElement.DeepCopy();
                 if (DynamicValue != null) dest.DynamicValue = new List<DynamicValueComponent>(DynamicValue.DeepCopy());
                 return dest;
@@ -1300,11 +1500,17 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.Matches(EffectivePeriod, otherT.EffectivePeriod)) return false;
             if ( !DeepComparable.Matches(Topic, otherT.Topic)) return false;
-            if ( !DeepComparable.Matches(Contributor, otherT.Contributor)) return false;
+            if ( !DeepComparable.Matches(Author, otherT.Author)) return false;
+            if ( !DeepComparable.Matches(Editor, otherT.Editor)) return false;
+            if ( !DeepComparable.Matches(Reviewer, otherT.Reviewer)) return false;
+            if ( !DeepComparable.Matches(Endorser, otherT.Endorser)) return false;
             if ( !DeepComparable.Matches(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if ( !DeepComparable.Matches(LibraryElement, otherT.LibraryElement)) return false;
             if (!DeepComparable.Matches(KindElement, otherT.KindElement)) return false;
+            if (!DeepComparable.Matches(ProfileElement, otherT.ProfileElement)) return false;
             if (!DeepComparable.Matches(Code, otherT.Code)) return false;
+            if (!DeepComparable.Matches(IntentElement, otherT.IntentElement)) return false;
+            if (!DeepComparable.Matches(PriorityElement, otherT.PriorityElement)) return false;
             if (!DeepComparable.Matches(DoNotPerformElement, otherT.DoNotPerformElement)) return false;
             if (!DeepComparable.Matches(Timing, otherT.Timing)) return false;
             if (!DeepComparable.Matches(Location, otherT.Location)) return false;
@@ -1314,6 +1520,8 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(Dosage, otherT.Dosage)) return false;
             if ( !DeepComparable.Matches(BodySite, otherT.BodySite)) return false;
             if ( !DeepComparable.Matches(SpecimenRequirement, otherT.SpecimenRequirement)) return false;
+            if ( !DeepComparable.Matches(ObservationRequirement, otherT.ObservationRequirement)) return false;
+            if ( !DeepComparable.Matches(ObservationResultRequirement, otherT.ObservationResultRequirement)) return false;
             if (!DeepComparable.Matches(TransformElement, otherT.TransformElement)) return false;
             if ( !DeepComparable.Matches(DynamicValue, otherT.DynamicValue)) return false;
 
@@ -1348,11 +1556,17 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.IsExactly(EffectivePeriod, otherT.EffectivePeriod)) return false;
             if (!DeepComparable.IsExactly(Topic, otherT.Topic)) return false;
-            if (!DeepComparable.IsExactly(Contributor, otherT.Contributor)) return false;
+            if (!DeepComparable.IsExactly(Author, otherT.Author)) return false;
+            if (!DeepComparable.IsExactly(Editor, otherT.Editor)) return false;
+            if (!DeepComparable.IsExactly(Reviewer, otherT.Reviewer)) return false;
+            if (!DeepComparable.IsExactly(Endorser, otherT.Endorser)) return false;
             if (!DeepComparable.IsExactly(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if (!DeepComparable.IsExactly(LibraryElement, otherT.LibraryElement)) return false;
             if (!DeepComparable.IsExactly(KindElement, otherT.KindElement)) return false;
+            if (!DeepComparable.IsExactly(ProfileElement, otherT.ProfileElement)) return false;
             if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
+            if (!DeepComparable.IsExactly(IntentElement, otherT.IntentElement)) return false;
+            if (!DeepComparable.IsExactly(PriorityElement, otherT.PriorityElement)) return false;
             if (!DeepComparable.IsExactly(DoNotPerformElement, otherT.DoNotPerformElement)) return false;
             if (!DeepComparable.IsExactly(Timing, otherT.Timing)) return false;
             if (!DeepComparable.IsExactly(Location, otherT.Location)) return false;
@@ -1362,6 +1576,8 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(Dosage, otherT.Dosage)) return false;
             if (!DeepComparable.IsExactly(BodySite, otherT.BodySite)) return false;
             if (!DeepComparable.IsExactly(SpecimenRequirement, otherT.SpecimenRequirement)) return false;
+            if (!DeepComparable.IsExactly(ObservationRequirement, otherT.ObservationRequirement)) return false;
+            if (!DeepComparable.IsExactly(ObservationResultRequirement, otherT.ObservationResultRequirement)) return false;
             if (!DeepComparable.IsExactly(TransformElement, otherT.TransformElement)) return false;
             if (!DeepComparable.IsExactly(DynamicValue, otherT.DynamicValue)) return false;
 
@@ -1396,11 +1612,17 @@ namespace Hl7.Fhir.Model.R4
                 if (LastReviewDateElement != null) yield return LastReviewDateElement;
                 if (EffectivePeriod != null) yield return EffectivePeriod;
                 foreach (var elem in Topic) { if (elem != null) yield return elem; }
-                foreach (var elem in Contributor) { if (elem != null) yield return elem; }
+                foreach (var elem in Author) { if (elem != null) yield return elem; }
+                foreach (var elem in Editor) { if (elem != null) yield return elem; }
+                foreach (var elem in Reviewer) { if (elem != null) yield return elem; }
+                foreach (var elem in Endorser) { if (elem != null) yield return elem; }
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return elem; }
                 foreach (var elem in LibraryElement) { if (elem != null) yield return elem; }
                 if (KindElement != null) yield return KindElement;
+                if (ProfileElement != null) yield return ProfileElement;
                 if (Code != null) yield return Code;
+                if (IntentElement != null) yield return IntentElement;
+                if (PriorityElement != null) yield return PriorityElement;
                 if (DoNotPerformElement != null) yield return DoNotPerformElement;
                 if (Timing != null) yield return Timing;
                 if (Location != null) yield return Location;
@@ -1410,6 +1632,8 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Dosage) { if (elem != null) yield return elem; }
                 foreach (var elem in BodySite) { if (elem != null) yield return elem; }
                 foreach (var elem in SpecimenRequirement) { if (elem != null) yield return elem; }
+                foreach (var elem in ObservationRequirement) { if (elem != null) yield return elem; }
+                foreach (var elem in ObservationResultRequirement) { if (elem != null) yield return elem; }
                 if (TransformElement != null) yield return TransformElement;
                 foreach (var elem in DynamicValue) { if (elem != null) yield return elem; }
             }
@@ -1443,11 +1667,17 @@ namespace Hl7.Fhir.Model.R4
                 if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", LastReviewDateElement);
                 if (EffectivePeriod != null) yield return new ElementValue("effectivePeriod", EffectivePeriod);
                 foreach (var elem in Topic) { if (elem != null) yield return new ElementValue("topic", elem); }
-                foreach (var elem in Contributor) { if (elem != null) yield return new ElementValue("contributor", elem); }
+                foreach (var elem in Author) { if (elem != null) yield return new ElementValue("author", elem); }
+                foreach (var elem in Editor) { if (elem != null) yield return new ElementValue("editor", elem); }
+                foreach (var elem in Reviewer) { if (elem != null) yield return new ElementValue("reviewer", elem); }
+                foreach (var elem in Endorser) { if (elem != null) yield return new ElementValue("endorser", elem); }
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return new ElementValue("relatedArtifact", elem); }
                 foreach (var elem in LibraryElement) { if (elem != null) yield return new ElementValue("library", elem); }
                 if (KindElement != null) yield return new ElementValue("kind", KindElement);
+                if (ProfileElement != null) yield return new ElementValue("profile", ProfileElement);
                 if (Code != null) yield return new ElementValue("code", Code);
+                if (IntentElement != null) yield return new ElementValue("intent", IntentElement);
+                if (PriorityElement != null) yield return new ElementValue("priority", PriorityElement);
                 if (DoNotPerformElement != null) yield return new ElementValue("doNotPerform", DoNotPerformElement);
                 if (Timing != null) yield return new ElementValue("timing", Timing);
                 if (Location != null) yield return new ElementValue("location", Location);
@@ -1457,6 +1687,8 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Dosage) { if (elem != null) yield return new ElementValue("dosage", elem); }
                 foreach (var elem in BodySite) { if (elem != null) yield return new ElementValue("bodySite", elem); }
                 foreach (var elem in SpecimenRequirement) { if (elem != null) yield return new ElementValue("specimenRequirement", elem); }
+                foreach (var elem in ObservationRequirement) { if (elem != null) yield return new ElementValue("observationRequirement", elem); }
+                foreach (var elem in ObservationResultRequirement) { if (elem != null) yield return new ElementValue("observationResultRequirement", elem); }
                 if (TransformElement != null) yield return new ElementValue("transform", TransformElement);
                 foreach (var elem in DynamicValue) { if (elem != null) yield return new ElementValue("dynamicValue", elem); }
             }

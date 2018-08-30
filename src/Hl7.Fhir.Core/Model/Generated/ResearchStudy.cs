@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.R4
         public override string TypeName { get { return "ResearchStudy"; } }
 
         /// <summary>
-        /// Codes that convey the current status of the research study
+        /// Codes that convey the current status of the research study.
         /// (url: http://hl7.org/fhir/ValueSet/research-study-status)
         /// </summary>
         [FhirEnumeration("ResearchStudyStatus")]
@@ -584,16 +584,15 @@ namespace Hl7.Fhir.Model.R4
         /// Condition being studied
         /// </summary>
         [FhirElement("condition", InSummary=true, Order=180)]
-        [References("Condition")]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<ResourceReference> Condition
+        public List<CodeableConcept> Condition
         {
-            get { if (_condition==null) _condition = new List<ResourceReference>(); return _condition; }
+            get { if (_condition==null) _condition = new List<CodeableConcept>(); return _condition; }
             set { _condition = value; OnPropertyChanged("Condition"); }
         }
 
-        private List<ResourceReference> _condition;
+        private List<CodeableConcept> _condition;
 
         /// <summary>
         /// Contact details for the study
@@ -807,7 +806,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Phase != null) dest.Phase = (CodeableConcept)Phase.DeepCopy();
                 if (Category != null) dest.Category = new List<CodeableConcept>(Category.DeepCopy());
                 if (Focus != null) dest.Focus = new List<CodeableConcept>(Focus.DeepCopy());
-                if (Condition != null) dest.Condition = new List<ResourceReference>(Condition.DeepCopy());
+                if (Condition != null) dest.Condition = new List<CodeableConcept>(Condition.DeepCopy());
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
                 if (RelatedArtifact != null) dest.RelatedArtifact = new List<RelatedArtifact>(RelatedArtifact.DeepCopy());
                 if (Keyword != null) dest.Keyword = new List<CodeableConcept>(Keyword.DeepCopy());

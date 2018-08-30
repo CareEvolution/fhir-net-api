@@ -41,7 +41,7 @@ using Hl7.Fhir.Specification;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v3.3.0
+// Generated for FHIR v3.5.0
 //
 namespace Hl7.Fhir.Model.R4
 {
@@ -773,9 +773,22 @@ namespace Hl7.Fhir.Model.R4
             private List<CodeableConcept> _type;
 
             /// <summary>
+            /// Present on admission
+            /// </summary>
+            [FhirElement("onAdmission", Order=70)]
+            [DataMember]
+            public CodeableConcept OnAdmission
+            {
+                get { return _onAdmission; }
+                set { _onAdmission = value; OnPropertyChanged("OnAdmission"); }
+            }
+
+            private CodeableConcept _onAdmission;
+
+            /// <summary>
             /// Package billing code
             /// </summary>
-            [FhirElement("packageCode", Order=70)]
+            [FhirElement("packageCode", Order=80)]
             [DataMember]
             public CodeableConcept PackageCode
             {
@@ -795,6 +808,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) dest.SequenceElement = (PositiveInt)SequenceElement.DeepCopy();
                     if (Diagnosis != null) dest.Diagnosis = (Element)Diagnosis.DeepCopy();
                     if (Type != null) dest.Type = new List<CodeableConcept>(Type.DeepCopy());
+                    if (OnAdmission != null) dest.OnAdmission = (CodeableConcept)OnAdmission.DeepCopy();
                     if (PackageCode != null) dest.PackageCode = (CodeableConcept)PackageCode.DeepCopy();
                     return dest;
                 }
@@ -816,6 +830,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.Matches(Diagnosis, otherT.Diagnosis)) return false;
                 if ( !DeepComparable.Matches(Type, otherT.Type)) return false;
+                if (!DeepComparable.Matches(OnAdmission, otherT.OnAdmission)) return false;
                 if (!DeepComparable.Matches(PackageCode, otherT.PackageCode)) return false;
 
                 return true;
@@ -830,6 +845,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.IsExactly(Diagnosis, otherT.Diagnosis)) return false;
                 if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
+                if (!DeepComparable.IsExactly(OnAdmission, otherT.OnAdmission)) return false;
                 if (!DeepComparable.IsExactly(PackageCode, otherT.PackageCode)) return false;
 
                 return true;
@@ -845,6 +861,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return SequenceElement;
                     if (Diagnosis != null) yield return Diagnosis;
                     foreach (var elem in Type) { if (elem != null) yield return elem; }
+                    if (OnAdmission != null) yield return OnAdmission;
                     if (PackageCode != null) yield return PackageCode;
                 }
             }
@@ -858,6 +875,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
                     if (Diagnosis != null) yield return new ElementValue("diagnosis", Diagnosis);
                     foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
+                    if (OnAdmission != null) yield return new ElementValue("onAdmission", OnAdmission);
                     if (PackageCode != null) yield return new ElementValue("packageCode", PackageCode);
                 }
             }
@@ -1653,15 +1671,15 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Billing Code
             /// </summary>
-            [FhirElement("service", Order=110)]
+            [FhirElement("billcode", Order=110)]
             [DataMember]
-            public CodeableConcept Service
+            public CodeableConcept Billcode
             {
-                get { return _service; }
-                set { _service = value; OnPropertyChanged("Service"); }
+                get { return _billcode; }
+                set { _billcode = value; OnPropertyChanged("Billcode"); }
             }
 
-            private CodeableConcept _service;
+            private CodeableConcept _billcode;
 
             /// <summary>
             /// Service/Product billing modifiers
@@ -1875,7 +1893,7 @@ namespace Hl7.Fhir.Model.R4
                     if (InformationSequenceElement != null) dest.InformationSequenceElement = new List<PositiveInt>(InformationSequenceElement.DeepCopy());
                     if (Revenue != null) dest.Revenue = (CodeableConcept)Revenue.DeepCopy();
                     if (Category != null) dest.Category = (CodeableConcept)Category.DeepCopy();
-                    if (Service != null) dest.Service = (CodeableConcept)Service.DeepCopy();
+                    if (Billcode != null) dest.Billcode = (CodeableConcept)Billcode.DeepCopy();
                     if (Modifier != null) dest.Modifier = new List<CodeableConcept>(Modifier.DeepCopy());
                     if (ProgramCode != null) dest.ProgramCode = new List<CodeableConcept>(ProgramCode.DeepCopy());
                     if (Serviced != null) dest.Serviced = (Element)Serviced.DeepCopy();
@@ -1913,7 +1931,7 @@ namespace Hl7.Fhir.Model.R4
                 if ( !DeepComparable.Matches(InformationSequenceElement, otherT.InformationSequenceElement)) return false;
                 if (!DeepComparable.Matches(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.Matches(Category, otherT.Category)) return false;
-                if (!DeepComparable.Matches(Service, otherT.Service)) return false;
+                if (!DeepComparable.Matches(Billcode, otherT.Billcode)) return false;
                 if ( !DeepComparable.Matches(Modifier, otherT.Modifier)) return false;
                 if ( !DeepComparable.Matches(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.Matches(Serviced, otherT.Serviced)) return false;
@@ -1944,7 +1962,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(InformationSequenceElement, otherT.InformationSequenceElement)) return false;
                 if (!DeepComparable.IsExactly(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
-                if (!DeepComparable.IsExactly(Service, otherT.Service)) return false;
+                if (!DeepComparable.IsExactly(Billcode, otherT.Billcode)) return false;
                 if (!DeepComparable.IsExactly(Modifier, otherT.Modifier)) return false;
                 if (!DeepComparable.IsExactly(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.IsExactly(Serviced, otherT.Serviced)) return false;
@@ -1976,7 +1994,7 @@ namespace Hl7.Fhir.Model.R4
                     foreach (var elem in InformationSequenceElement) { if (elem != null) yield return elem; }
                     if (Revenue != null) yield return Revenue;
                     if (Category != null) yield return Category;
-                    if (Service != null) yield return Service;
+                    if (Billcode != null) yield return Billcode;
                     foreach (var elem in Modifier) { if (elem != null) yield return elem; }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return elem; }
                     if (Serviced != null) yield return Serviced;
@@ -2006,7 +2024,7 @@ namespace Hl7.Fhir.Model.R4
                     foreach (var elem in InformationSequenceElement) { if (elem != null) yield return new ElementValue("informationSequence", elem); }
                     if (Revenue != null) yield return new ElementValue("revenue", Revenue);
                     if (Category != null) yield return new ElementValue("category", Category);
-                    if (Service != null) yield return new ElementValue("service", Service);
+                    if (Billcode != null) yield return new ElementValue("billcode", Billcode);
                     foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", elem); }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", elem); }
                     if (Serviced != null) yield return new ElementValue("serviced", Serviced);
@@ -2096,15 +2114,15 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Billing Code
             /// </summary>
-            [FhirElement("service", Order=70)]
+            [FhirElement("billcode", Order=70)]
             [DataMember]
-            public CodeableConcept Service
+            public CodeableConcept Billcode
             {
-                get { return _service; }
-                set { _service = value; OnPropertyChanged("Service"); }
+                get { return _billcode; }
+                set { _billcode = value; OnPropertyChanged("Billcode"); }
             }
 
-            private CodeableConcept _service;
+            private CodeableConcept _billcode;
 
             /// <summary>
             /// Service/Product billing modifiers
@@ -2244,7 +2262,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) dest.SequenceElement = (PositiveInt)SequenceElement.DeepCopy();
                     if (Revenue != null) dest.Revenue = (CodeableConcept)Revenue.DeepCopy();
                     if (Category != null) dest.Category = (CodeableConcept)Category.DeepCopy();
-                    if (Service != null) dest.Service = (CodeableConcept)Service.DeepCopy();
+                    if (Billcode != null) dest.Billcode = (CodeableConcept)Billcode.DeepCopy();
                     if (Modifier != null) dest.Modifier = new List<CodeableConcept>(Modifier.DeepCopy());
                     if (ProgramCode != null) dest.ProgramCode = new List<CodeableConcept>(ProgramCode.DeepCopy());
                     if (Quantity != null) dest.Quantity = (SimpleQuantity)Quantity.DeepCopy();
@@ -2273,7 +2291,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.Matches(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.Matches(Category, otherT.Category)) return false;
-                if (!DeepComparable.Matches(Service, otherT.Service)) return false;
+                if (!DeepComparable.Matches(Billcode, otherT.Billcode)) return false;
                 if ( !DeepComparable.Matches(Modifier, otherT.Modifier)) return false;
                 if ( !DeepComparable.Matches(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.Matches(Quantity, otherT.Quantity)) return false;
@@ -2295,7 +2313,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.IsExactly(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
-                if (!DeepComparable.IsExactly(Service, otherT.Service)) return false;
+                if (!DeepComparable.IsExactly(Billcode, otherT.Billcode)) return false;
                 if (!DeepComparable.IsExactly(Modifier, otherT.Modifier)) return false;
                 if (!DeepComparable.IsExactly(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.IsExactly(Quantity, otherT.Quantity)) return false;
@@ -2318,7 +2336,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return SequenceElement;
                     if (Revenue != null) yield return Revenue;
                     if (Category != null) yield return Category;
-                    if (Service != null) yield return Service;
+                    if (Billcode != null) yield return Billcode;
                     foreach (var elem in Modifier) { if (elem != null) yield return elem; }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return elem; }
                     if (Quantity != null) yield return Quantity;
@@ -2339,7 +2357,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
                     if (Revenue != null) yield return new ElementValue("revenue", Revenue);
                     if (Category != null) yield return new ElementValue("category", Category);
-                    if (Service != null) yield return new ElementValue("service", Service);
+                    if (Billcode != null) yield return new ElementValue("billcode", Billcode);
                     foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", elem); }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", elem); }
                     if (Quantity != null) yield return new ElementValue("quantity", Quantity);
@@ -2424,15 +2442,15 @@ namespace Hl7.Fhir.Model.R4
             /// <summary>
             /// Billing Code
             /// </summary>
-            [FhirElement("service", Order=70)]
+            [FhirElement("billcode", Order=70)]
             [DataMember]
-            public CodeableConcept Service
+            public CodeableConcept Billcode
             {
-                get { return _service; }
-                set { _service = value; OnPropertyChanged("Service"); }
+                get { return _billcode; }
+                set { _billcode = value; OnPropertyChanged("Billcode"); }
             }
 
-            private CodeableConcept _service;
+            private CodeableConcept _billcode;
 
             /// <summary>
             /// Service/Product billing modifiers
@@ -2558,7 +2576,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) dest.SequenceElement = (PositiveInt)SequenceElement.DeepCopy();
                     if (Revenue != null) dest.Revenue = (CodeableConcept)Revenue.DeepCopy();
                     if (Category != null) dest.Category = (CodeableConcept)Category.DeepCopy();
-                    if (Service != null) dest.Service = (CodeableConcept)Service.DeepCopy();
+                    if (Billcode != null) dest.Billcode = (CodeableConcept)Billcode.DeepCopy();
                     if (Modifier != null) dest.Modifier = new List<CodeableConcept>(Modifier.DeepCopy());
                     if (ProgramCode != null) dest.ProgramCode = new List<CodeableConcept>(ProgramCode.DeepCopy());
                     if (Quantity != null) dest.Quantity = (SimpleQuantity)Quantity.DeepCopy();
@@ -2586,7 +2604,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.Matches(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.Matches(Category, otherT.Category)) return false;
-                if (!DeepComparable.Matches(Service, otherT.Service)) return false;
+                if (!DeepComparable.Matches(Billcode, otherT.Billcode)) return false;
                 if ( !DeepComparable.Matches(Modifier, otherT.Modifier)) return false;
                 if ( !DeepComparable.Matches(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.Matches(Quantity, otherT.Quantity)) return false;
@@ -2607,7 +2625,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(SequenceElement, otherT.SequenceElement)) return false;
                 if (!DeepComparable.IsExactly(Revenue, otherT.Revenue)) return false;
                 if (!DeepComparable.IsExactly(Category, otherT.Category)) return false;
-                if (!DeepComparable.IsExactly(Service, otherT.Service)) return false;
+                if (!DeepComparable.IsExactly(Billcode, otherT.Billcode)) return false;
                 if (!DeepComparable.IsExactly(Modifier, otherT.Modifier)) return false;
                 if (!DeepComparable.IsExactly(ProgramCode, otherT.ProgramCode)) return false;
                 if (!DeepComparable.IsExactly(Quantity, otherT.Quantity)) return false;
@@ -2629,7 +2647,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return SequenceElement;
                     if (Revenue != null) yield return Revenue;
                     if (Category != null) yield return Category;
-                    if (Service != null) yield return Service;
+                    if (Billcode != null) yield return Billcode;
                     foreach (var elem in Modifier) { if (elem != null) yield return elem; }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return elem; }
                     if (Quantity != null) yield return Quantity;
@@ -2649,7 +2667,7 @@ namespace Hl7.Fhir.Model.R4
                     if (SequenceElement != null) yield return new ElementValue("sequence", SequenceElement);
                     if (Revenue != null) yield return new ElementValue("revenue", Revenue);
                     if (Category != null) yield return new ElementValue("category", Category);
-                    if (Service != null) yield return new ElementValue("service", Service);
+                    if (Billcode != null) yield return new ElementValue("billcode", Billcode);
                     foreach (var elem in Modifier) { if (elem != null) yield return new ElementValue("modifier", elem); }
                     foreach (var elem in ProgramCode) { if (elem != null) yield return new ElementValue("programCode", elem); }
                     if (Quantity != null) yield return new ElementValue("quantity", Quantity);
@@ -2727,20 +2745,19 @@ namespace Hl7.Fhir.Model.R4
         /// Finer grained claim type information
         /// </summary>
         [FhirElement("subType", Order=120)]
-        [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<CodeableConcept> SubType
+        public CodeableConcept SubType
         {
-            get { if (_subType==null) _subType = new List<CodeableConcept>(); return _subType; }
+            get { return _subType; }
             set { _subType = value; OnPropertyChanged("SubType"); }
         }
 
-        private List<CodeableConcept> _subType;
+        private CodeableConcept _subType;
 
         /// <summary>
-        /// complete | proposed | exploratory | other
+        /// claim | preauthorization | predetermination
         /// </summary>
-        [FhirElement("use", Order=130)]
+        [FhirElement("use", InSummary=true, Order=130)]
         [DataMember]
         public Code<Use> UseElement
         {
@@ -2751,7 +2768,7 @@ namespace Hl7.Fhir.Model.R4
         private Code<Use> _useElement;
 
         /// <summary>
-        /// complete | proposed | exploratory | other
+        /// claim | preauthorization | predetermination
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
@@ -2897,7 +2914,7 @@ namespace Hl7.Fhir.Model.R4
         private CodeableConcept _fundsReserve;
 
         /// <summary>
-        /// Related Claims which may be revelant to processing this claimn
+        /// Related Claims which may be relevant to processing this claim
         /// </summary>
         [FhirElement("related", Order=220)]
         [Cardinality(Min=0,Max=-1)]
@@ -2925,7 +2942,7 @@ namespace Hl7.Fhir.Model.R4
         private ResourceReference _prescription;
 
         /// <summary>
-        /// Original prescription if superceded by fulfiller
+        /// Original prescription if superseded by fulfiller
         /// </summary>
         [FhirElement("originalPrescription", Order=240)]
         [References("MedicationRequest")]
@@ -3100,7 +3117,7 @@ namespace Hl7.Fhir.Model.R4
                 if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
                 if (StatusElement != null) dest.StatusElement = (Code<FinancialResourceStatusCodes>)StatusElement.DeepCopy();
                 if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
-                if (SubType != null) dest.SubType = new List<CodeableConcept>(SubType.DeepCopy());
+                if (SubType != null) dest.SubType = (CodeableConcept)SubType.DeepCopy();
                 if (UseElement != null) dest.UseElement = (Code<Use>)UseElement.DeepCopy();
                 if (Patient != null) dest.Patient = (ResourceReference)Patient.DeepCopy();
                 if (BillablePeriod != null) dest.BillablePeriod = (Period)BillablePeriod.DeepCopy();
@@ -3144,7 +3161,7 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
             if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
             if (!DeepComparable.Matches(Type, otherT.Type)) return false;
-            if ( !DeepComparable.Matches(SubType, otherT.SubType)) return false;
+            if (!DeepComparable.Matches(SubType, otherT.SubType)) return false;
             if (!DeepComparable.Matches(UseElement, otherT.UseElement)) return false;
             if (!DeepComparable.Matches(Patient, otherT.Patient)) return false;
             if (!DeepComparable.Matches(BillablePeriod, otherT.BillablePeriod)) return false;
@@ -3218,7 +3235,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Identifier) { if (elem != null) yield return elem; }
                 if (StatusElement != null) yield return StatusElement;
                 if (Type != null) yield return Type;
-                foreach (var elem in SubType) { if (elem != null) yield return elem; }
+                if (SubType != null) yield return SubType;
                 if (UseElement != null) yield return UseElement;
                 if (Patient != null) yield return Patient;
                 if (BillablePeriod != null) yield return BillablePeriod;
@@ -3254,7 +3271,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in Identifier) { if (elem != null) yield return new ElementValue("identifier", elem); }
                 if (StatusElement != null) yield return new ElementValue("status", StatusElement);
                 if (Type != null) yield return new ElementValue("type", Type);
-                foreach (var elem in SubType) { if (elem != null) yield return new ElementValue("subType", elem); }
+                if (SubType != null) yield return new ElementValue("subType", SubType);
                 if (UseElement != null) yield return new ElementValue("use", UseElement);
                 if (Patient != null) yield return new ElementValue("patient", Patient);
                 if (BillablePeriod != null) yield return new ElementValue("billablePeriod", BillablePeriod);
