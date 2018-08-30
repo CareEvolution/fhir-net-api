@@ -318,7 +318,7 @@ namespace Hl7.Fhir.Specification.Tests
             var fullElems = fullyExpand(snapElems, issues);
             Debug.WriteLine($"Full expansion: {fullElems.Count} elements");
             dumpBaseElems(fullElems);
-            Assert.AreEqual(313, fullElems.Count);
+            Assert.AreEqual(310, fullElems.Count);
             Assert.AreEqual(issues.Count, 0);
 
             // Verify
@@ -369,7 +369,7 @@ namespace Hl7.Fhir.Specification.Tests
                 Debug.WriteLine($"Full expansion: {fullElems.Count} elements");
                 dumpBaseElems(fullElems);
                 dumpIssues(issues);
-                Assert.AreEqual(350, fullElems.Count);
+                Assert.AreEqual(347, fullElems.Count);
                 Assert.AreEqual(0, issues.Count);
 
                 // Verify
@@ -1040,6 +1040,7 @@ namespace Hl7.Fhir.Specification.Tests
             verifier.VerifyElement("Patient.identifier", "C/1");
         }
 
+#if false
         [TestMethod]
         public void DebugDifferentialTree()
         {
@@ -1049,6 +1050,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsNotNull(tree);
             Debug.Print(string.Join(Environment.NewLine, tree.Select(e => $"{e.Path} : '{e.SliceName}'")));
         }
+#endif
 
         // [WMR 20160802] Unit tests for SnapshotGenerator.ExpandElement
 
@@ -2067,7 +2069,7 @@ namespace Hl7.Fhir.Specification.Tests
                 || isChanged(elem.DefinitionElement)
                 || hasChanges(elem.Example)
                 || hasChanges(elem.Extension)
-                || hasChanges(elem.FhirCommentsElement)
+             //   || hasChanges(elem.FhirCommentsElement)
                 || isChanged(elem.Fixed)
                 || isChanged(elem.IsModifierElement)
                 || isChanged(elem.IsSummaryElement)
@@ -2108,7 +2110,7 @@ namespace Hl7.Fhir.Specification.Tests
             if (isChanged(element.DefinitionElement)) { return "Definition"; }
             if (hasChanges(element.Example)) { return "Example"; }
             if (hasChanges(element.Extension)) { return "Extension"; }
-            if (hasChanges(element.FhirCommentsElement)) { return "FhirComments"; }
+            //if (hasChanges(element.FhirCommentsElement)) { return "FhirComments"; }
             if (isChanged(element.Fixed)) { return "Fixed"; }
             if (isChanged(element.IsModifierElement)) { return "IsModifier"; }
             if (isChanged(element.IsSummaryElement)) { return "IsSummary"; }
@@ -2158,7 +2160,6 @@ namespace Hl7.Fhir.Specification.Tests
         }
 
         [TestMethod]
-        [Ignore]
         public void TestExpandCoreArtifacts()
         {
 
@@ -2196,6 +2197,7 @@ namespace Hl7.Fhir.Specification.Tests
         }
 
         [TestMethod]
+        [TestCategory("LongRunner")]
         public void TestExpandAllCoreResources()
         {
             // Generate snapshots for all core resources, in the original order as they are defined
@@ -3122,6 +3124,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsTrue(baseElem.Alias.SequenceEqual(extElem.Alias));
         }
 
+#if false
         // [WMR 20170213] New - issue reported by Marten - cannot slice Organization.type ?
         // Specifically, snapshot generator drops the slicing component from the slice entry element
         // Explanation: Organization.type is not a list (max = 1) and not a choice type => slicing is not allowed!
@@ -3143,15 +3146,16 @@ namespace Hl7.Fhir.Specification.Tests
                 _generator.PrepareElement -= elementHandler;
             }
 
-            dumpOutcome(_generator.Outcome);
+            //dumpOutcome(_generator.Outcome);
 
-            var elems = expanded.Snapshot.Element;
-            elems.Dump();
+            //var elems = expanded.Snapshot.Element;
+            //elems.Dump();
             //dumpBaseElems(elems);
 
             // TODO: Verify slice
 
         }
+#endif
 
         // [WMR 2017024] NEW: Test for bug with snapshot expansion of ElementDefinition.Binding (reported by NHS)
         // If the diff constrains only Binding.Strength, then snapshot also contains only Binding.Strength - WRONG!
@@ -5854,9 +5858,17 @@ namespace Hl7.Fhir.Specification.Tests
             // Expecting valueReference in snapshot, not value[x]
             var nav = ElementDefinitionNavigator.ForSnapshot(expanded);
             Assert.IsTrue(nav.JumpToFirst("Extension.valueReference"));
+
+            // [WMR 20180723] Changed: SnapshotGenerator.getStructureForTypeRef
+            // Snapshot generator now also expands type.profile for resource references,
+            // even if incorrect, such as in this unit test (referenced profile is on Patient, not on Reference)
+
             // Verify expansion of child element valueReference.reference
             // Expect expansion of core type profile for ResourceReference
-            Assert.IsTrue(nav.MoveToChild("reference"));
+            // Assert.IsTrue(nav.MoveToChild("reference"));
+
+            // Expect expansion of (incorrect!) core type profile for Patient
+            Assert.IsTrue(nav.MoveToChild("photo"));
         }
 
         // If an element constraint introduces multiple type profiles,
@@ -6099,17 +6111,6 @@ namespace Hl7.Fhir.Specification.Tests
                 _generator.PrepareElement -= elementHandler;
             }
 
-        }
-
-        [TestMethod]
-        [Ignore]
-        public void DumpTypes()
-        {
-            Debug.WriteLine($"{"Type", -30} {"Resource",-10} {"DataType", -10} {"Primitive", -10} {"!Primitive",-10} {"Complex", -10}");
-            foreach (FHIRAllTypes type in Enum.GetValues(typeof(FHIRAllTypes)))
-            {
-                Debug.WriteLine($"{type, -30} {ModelInfo.IsKnownResource(type),-10} {ModelInfo.IsDataType(type), -10} {ModelInfo.IsPrimitive(type), -10} {!ModelInfo.IsPrimitive(type),-10} {isComplexDataTypeOrResource(type)}");
-            }
         }
 
         // [WMR 20180115]
@@ -6553,5 +6554,157 @@ namespace Hl7.Fhir.Specification.Tests
         }
 
 
+        // [WMR 20180611] New: Forge issue "Only first item in code field for element is saved"
+        // Issue: if element in diff specifies multiple codes with only display values,
+        // then element in snapshot only contains the first code entry.
+
+        [TestMethod]
+        public void TestObservationWithDisplayCodes()
+        {
+            var sd = new StructureDefinition
+            {
+                Type = FHIRAllTypes.Observation.GetLiteral(),
+                BaseDefinition = ModelInfo.CanonicalUriForFhirCoreType(FHIRAllTypes.Observation),
+                Name = "ObservationWithDisplayCodes",
+                Url = "http://example.org/fhir/StructureDefinition/ObservationWithDisplayCodes",
+                Differential = new StructureDefinition.DifferentialComponent()
+                {
+                    Element = new List<ElementDefinition>()
+                    {
+                        new ElementDefinition("Observation.code")
+                        {
+                            Code = new List<Coding>()
+                            {
+                                new Coding() { Display = "foo" },
+                                new Coding() { Display = "bar" }
+                            }
+                        },
+                    }
+                }
+            };
+
+
+            var resolver = new InMemoryProfileResolver(sd);
+            var multiResolver = new MultiResolver(_testResolver, resolver);
+            var generator = _generator = new SnapshotGenerator(multiResolver, _settings);
+
+            generateSnapshotAndCompare(sd, out StructureDefinition expanded);
+
+            dumpOutcome(generator.Outcome);
+            dumpBaseElems(expanded.Snapshot.Element);
+
+            Assert.IsNotNull(expanded);
+            Assert.IsTrue(expanded.HasSnapshot);
+
+            // Expecting single issue about invalid slice name on SimpleQuantity root element
+            var outcome = generator.Outcome;
+            //Assert.IsNull(outcome);
+            Assert.AreEqual(1, outcome.Issue.Count);
+            assertIssue(outcome.Issue[0], SnapshotGenerator.PROFILE_ELEMENTDEF_INVALID_SLICENAME_ON_ROOT);
+
+            var nav = ElementDefinitionNavigator.ForSnapshot(expanded);
+            Assert.IsNotNull(nav);
+            Assert.IsTrue(nav.JumpToFirst("Observation.code"));
+            var elem = nav.Current;
+            Assert.IsNotNull(elem);
+            // Verify that both codings are included in the snapshot
+            Assert.AreEqual(2, elem.Code.Count);
+            Assert.AreEqual("foo", elem.Code[0].Display);
+            Assert.AreEqual("bar", elem.Code[1].Display);
+        }
+
+        [TestMethod]
+        public void TestReferenceTargetProfile()
+        {
+            // Verify that the snapshot generator correctly expands elements with a targetProfile (on ResourceReference itself)
+            var ReferenceProfile = new StructureDefinition()
+            {
+                Type = FHIRAllTypes.Reference.GetLiteral(),
+                BaseDefinition = ModelInfo.CanonicalUriForFhirCoreType(FHIRAllTypes.Reference),
+                Name = "MyCustomReference",
+                Url = "http://example.org/fhir/StructureDefinition/MyCustomReference",
+                Differential = new StructureDefinition.DifferentialComponent()
+                {
+                    Element = new List<ElementDefinition>()
+                    {
+                        new ElementDefinition("Reference")
+                        {
+                            Comment = "CustomReference"
+                        },
+                        new ElementDefinition("Reference.reference")
+                        {
+                            Min = 1
+                        },
+                    }
+                }
+            };
+
+            var ReportProfile = new StructureDefinition()
+            {
+                Type = FHIRAllTypes.DiagnosticReport.GetLiteral(),
+                BaseDefinition = ModelInfo.CanonicalUriForFhirCoreType(FHIRAllTypes.DiagnosticReport),
+                Name = "MyDiagnosticReport",
+                Url = "http://example.org/fhir/StructureDefinition/MyDiagnosticReport",
+                Differential = new StructureDefinition.DifferentialComponent()
+                {
+                    Element = new List<ElementDefinition>()
+                    {
+                        new ElementDefinition("DiagnosticReport.imagingStudy")
+                        {
+                            Type = new List<ElementDefinition.TypeRefComponent>()
+                            {
+                                new ElementDefinition.TypeRefComponent()
+                                {
+                                    Code = FHIRAllTypes.Reference.GetLiteral(),
+                                    Profile = ReferenceProfile.Url,
+                                    TargetProfile = ModelInfo.CanonicalUriForFhirCoreType(FHIRAllTypes.ImagingStudy)
+                                }
+                            }
+                        },
+                        // Add child element constraint to force expansion
+                        //new ElementDefinition("DiagnosticReport.imagingStudy.identifier")
+                        //{
+                        //    Max = "0"
+                        //}
+                    }
+                }
+            };
+
+            var resolver = new InMemoryProfileResolver(ReportProfile, ReferenceProfile);
+            var multiResolver = new MultiResolver(_testResolver, resolver);
+            var generator = _generator = new SnapshotGenerator(multiResolver, _settings);
+
+            generateSnapshotAndCompare(ReportProfile, out StructureDefinition expanded);
+
+            dumpOutcome(generator.Outcome);
+            dumpBaseElems(expanded.Snapshot.Element);
+
+            Assert.IsNotNull(expanded);
+            Assert.IsTrue(expanded.HasSnapshot);
+
+            // Expecting single issue about invalid slice name on SimpleQuantity root element
+            var outcome = generator.Outcome;
+            Assert.IsNull(outcome);
+
+            var nav = ElementDefinitionNavigator.ForSnapshot(expanded);
+            Assert.IsTrue(nav.JumpToFirst("DiagnosticReport.imagingStudy"));
+            Assert.IsNotNull(nav.Current);
+            // Verify that snapshot generator merges constraints from external ReferenceProfile
+            Assert.AreEqual("CustomReference", nav.Current.Comment);
+            Assert.IsNotNull(nav.Current.Type);
+            Assert.AreEqual(1, nav.Current.Type.Count);
+            Assert.AreEqual(FHIRAllTypes.Reference.GetLiteral(), nav.Current.Type[0].Code);
+            Assert.AreEqual(ReferenceProfile.Url, nav.Current.Type[0].Profile);
+            // By default, snapshot generator does not expand children of element DiagnosticReport.imagingStudy
+            Assert.IsFalse(nav.HasChildren);
+
+            // Explicitly expand children of element DiagnosticReport.imagingStudy
+            Assert.IsTrue(generator.ExpandElement(nav));
+            Assert.IsTrue(nav.HasChildren);
+            Assert.IsTrue(nav.MoveToChild("reference"));
+            Assert.IsNotNull(nav.Current);
+            // Verify profile inherits constraint from external targetProfile on Reference
+            Assert.AreEqual(1, nav.Current.Min);
+        }
     }
 }

@@ -16,10 +16,10 @@ namespace Hl7.Fhir.Serialization.R4
 #pragma warning disable 612, 618
     internal class PrimitiveValueReader
     {
-        private IFhirReader _current;
-        private ModelInspector _inspector;
+        private readonly ISourceNode _current;
+        private readonly ModelInspector _inspector;
 
-        public PrimitiveValueReader(IFhirReader data)
+        public PrimitiveValueReader(ISourceNode data)
         {
             _current = data;
             _inspector = BaseFhirParser.Inspector;
@@ -29,9 +29,9 @@ namespace Hl7.Fhir.Serialization.R4
         internal object Deserialize(Type nativeType)
         {
             if (nativeType == null) throw Error.ArgumentNull(nameof(nativeType));
-                 
-            object primitiveValue = _current.GetPrimitiveValue();
-            
+
+            object primitiveValue = _current.Text;
+
             if (nativeType.IsEnum() && primitiveValue.GetType() == typeof(string))
             {
                 // Don't try to parse enums in the parser -> it's been moved to the Code<T> type
@@ -45,7 +45,7 @@ namespace Hl7.Fhir.Serialization.R4
             catch (NotSupportedException exc)
             {
                 // thrown when an unsupported conversion was required
-                throw Error.Format(exc.Message, _current);
+                throw Error.Format(exc.Message, _current.Location);
             }
         }
     }

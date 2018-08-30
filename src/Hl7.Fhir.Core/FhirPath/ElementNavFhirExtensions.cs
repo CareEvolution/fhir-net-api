@@ -27,15 +27,49 @@ namespace Hl7.Fhir.FhirPath.R4
         {
         }
 
-        public FhirEvaluationContext(Resource context) : base(context?.ToNavigator())
+        public FhirEvaluationContext(Resource context) : base(context?.ToElementNavigator())
         {
         }
 
+        [Obsolete("Use FhirEvaluationContext(ITypedElement context) instead")]
         public FhirEvaluationContext(IElementNavigator context) : base(context)
         {
         }
 
-        public Func<string,IElementNavigator> Resolver { get; set; }
+        public FhirEvaluationContext(ITypedElement context) : base(context.ToElementNavigator())
+        {
+        }
+
+        private Func<string, IElementNavigator> _resolver;
+
+        [Obsolete("Use property ElementResolver instead")]
+        public Func<string, IElementNavigator> Resolver
+        {
+            get { return _resolver; }
+            set
+            {
+                _resolver = value;
+                if (value == null)
+                    _elementResolver = null;
+                else
+                    _elementResolver = (s) => value(s).ToTypedElement();
+            }
+        }
+
+        private Func<string, ITypedElement> _elementResolver;
+
+        public Func<string, ITypedElement> ElementResolver
+        {
+            get { return _elementResolver; }
+            set
+            {
+                _elementResolver = value;
+                if (value == null)
+                    _resolver = null;
+                else
+                    _resolver = (s) => value(s).ToElementNavigator();
+            }
+        }
     }
 
     public static class ElementNavFhirExtensions
@@ -57,9 +91,7 @@ namespace Hl7.Fhir.FhirPath.R4
             IElementNavigator navResolver(string url)
             {
                 var resource = resolver(url);
-                if (resource == null) return null;
-
-                return new PocoNavigator(resource);
+                return resource?.ToElementNavigator();
             }
         }
 
@@ -151,9 +183,8 @@ namespace Hl7.Fhir.FhirPath.R4
                 {
                     return new FhirString((string)result);
                 }
-                if (result is Model.Primitives.PartialDateTime)
+                if (result is Model.Primitives.PartialDateTime dt)
                 {
-                    var dt = (Model.Primitives.PartialDateTime)result;
                     return new FhirDateTime(dt.ToUniversalTime());
                 }
                 else
@@ -164,16 +195,9 @@ namespace Hl7.Fhir.FhirPath.R4
             });
         }
 
-
-        //private static ScopedNavigator createNav(Base input) => new ScopedNavigator(new PocoNavigator(input));
-        private static PocoNavigator createNav(Base input) => new PocoNavigator(input);
-
-        public static IElementNavigator ToNavigator(this Base input) => new PocoNavigator(input);
-
-
         public static IEnumerable<Base> Select(this Base input, string expression, FhirEvaluationContext ctx = null)
         {
-            var inputNav = input.ToNavigator();
+            var inputNav = input.ToElementNavigator();
             var result = inputNav.Select(expression, ctx ?? FhirEvaluationContext.Default);
             return result.ToFhirValues();            
         }
@@ -186,7 +210,7 @@ namespace Hl7.Fhir.FhirPath.R4
 
         public static object Scalar(this Base input, string expression, FhirEvaluationContext ctx = null)
         {
-            var inputNav = input.ToNavigator();
+            var inputNav = input.ToElementNavigator();
             return inputNav.Scalar(expression, ctx ?? FhirEvaluationContext.Default);
         }
 
@@ -198,7 +222,7 @@ namespace Hl7.Fhir.FhirPath.R4
 
         public static bool Predicate(this Base input, string expression, FhirEvaluationContext ctx = null)
         {
-            var inputNav = input.ToNavigator();
+            var inputNav = input.ToElementNavigator();
             return inputNav.Predicate(expression, ctx ?? FhirEvaluationContext.Default);
         }
 
@@ -210,7 +234,7 @@ namespace Hl7.Fhir.FhirPath.R4
 
         public static bool IsBoolean(this Base input, string expression, bool value, FhirEvaluationContext ctx = null)
         {
-            var inputNav = createNav(input);
+            var inputNav = input.ToElementNavigator();
             return inputNav.IsBoolean(expression, value, ctx ?? FhirEvaluationContext.Default);
         }
 

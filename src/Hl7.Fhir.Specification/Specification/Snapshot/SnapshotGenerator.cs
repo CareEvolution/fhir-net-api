@@ -1,4 +1,4 @@
-﻿/* 
+/* 
  * Copyright (c) 2018, Firely (info@fire.ly) and contributors
  * See the file CONTRIBUTORS for details.
  * 
@@ -227,6 +227,18 @@ namespace Hl7.Fhir.Specification.Snapshot
             {
                 _stack.OnFinishRecursion();
             }
+        }
+
+        /// <summary>Merge two sets of element constraints, e.g. base and differential.</summary>
+        /// <param name="snap">A set of element constraints.</param>
+        /// <param name="diff">Another set of element constraints to merge on top of the base.</param>
+        /// <param name="mergeElementId">Determines if the snapshot should inherit Element.id values from the differential.</param>
+        /// <returns>A new <see cref="ElementDefinition"/> instance.</returns>
+        public ElementDefinition MergeElementDefinition(ElementDefinition snap, ElementDefinition diff, bool mergeElementId)
+        {
+            var result = (ElementDefinition)snap.DeepCopy();
+            ElementDefnMerger.Merge(this, result, diff, mergeElementId);
+            return result;
         }
 
         // ***** Private Interface *****
@@ -1611,8 +1623,9 @@ namespace Hl7.Fhir.Specification.Snapshot
             var typeProfile = typeRef.Profile.FirstOrDefault();
 
             // [WMR 20161004] Remove configuration setting; always merge type profiles
-            if (!string.IsNullOrEmpty(typeProfile) && !typeRef.IsReference()) // && _settings.MergeTypeProfiles
-            {
+            // [WMR 20180723] Also expand custom profile on Reference
+            if (!string.IsNullOrEmpty(typeProfile)) // && !typeRef.IsReference()) // && _settings.MergeTypeProfiles
+                {
                 // Try to resolve the custom element type profile reference
                 baseStructure = _resolver.FindStructureDefinition(typeProfile);
                 isValidProfile = ensureSnapshot

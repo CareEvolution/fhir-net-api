@@ -11,19 +11,20 @@ using System.Collections;
 using Hl7.Fhir.Introspection.R4;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.ElementModel;
 
 namespace Hl7.Fhir.Serialization.R4
 {
 #pragma warning disable 612,618
-    public class DispatchingReader
+    internal class DispatchingReader
     {
-        private readonly IFhirReader _current;
+        private readonly ISourceNode _current;
         private readonly ModelInspector _inspector;
         private readonly bool _arrayMode;
 
         public ParserSettings Settings { get; private set; }
 
-        public DispatchingReader(IFhirReader data, ParserSettings settings, bool arrayMode)
+        internal DispatchingReader(ISourceNode data, ParserSettings settings, bool arrayMode)
         {
             _current = data;
             _inspector = BaseFhirParser.Inspector;
@@ -53,7 +54,7 @@ namespace Hl7.Fhir.Serialization.R4
             if(prop.IsPrimitive)
             {
                 var reader = new PrimitiveValueReader(_current);
-                return reader.Deserialize(prop.ElementType);
+                return reader.Deserialize(prop.ImplementingType);
             }
 
             // A Choice property that contains a choice of any resource
@@ -77,7 +78,7 @@ namespace Hl7.Fhir.Serialization.R4
             // Else use the actual return type of the property
             else
             {
-                mapping = _inspector.ImportType(prop.ElementType);
+                mapping = _inspector.ImportType(prop.ImplementingType);
             }
 
             if (existing != null && !(existing is Resource) && !(existing is Element) ) throw Error.Argument(nameof(existing), "Can only read complex elements into types that are Element or Resource");
@@ -92,7 +93,7 @@ namespace Hl7.Fhir.Serialization.R4
             var typeName = mappedProperty.GetChoiceSuffixFromName(memberName);
 
             if (String.IsNullOrEmpty(typeName))
-                throw Error.Format("Encountered polymorph member {0}, but is does not specify the type used".FormatWith(memberName), _current);
+                throw Error.Format("Encountered polymorph member {0}, but is does not specify the type used".FormatWith(memberName), _current.Location);
 
             // Exception: valueResource actually means the element is of type ResourceReference
             if (typeName == "Resource") typeName = "Reference";
@@ -103,7 +104,7 @@ namespace Hl7.Fhir.Serialization.R4
             result = _inspector.FindClassMappingForFhirDataType(typeName);
 
             if (result == null)
-                throw Error.Format("Encountered polymorph member {0}, which uses unknown datatype {1}".FormatWith(memberName, typeName), _current);
+                throw Error.Format("Encountered polymorph member {0}, which uses unknown datatype {1}".FormatWith(memberName, typeName), _current.Location);
 
             return result;
         }

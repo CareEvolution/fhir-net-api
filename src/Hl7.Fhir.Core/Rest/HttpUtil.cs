@@ -73,7 +73,6 @@ namespace Hl7.Fhir.Rest.R4
             return buffer.ToArray();
         }
 
-
         public static Uri MakeAbsoluteToBase(Uri location, Uri baseUrl)
         {
             // If called without a location, just return the base endpoint
@@ -98,6 +97,29 @@ namespace Hl7.Fhir.Rest.R4
             return location;
         }
 
+        public static Uri MakeRelativeFromBase(Uri location, Uri baseUrl)
+        {
+            if (location == null) return null;
+
+            if (!location.IsAbsoluteUri)
+            {
+                throw Error.Argument(nameof(location), "Url is not an absolute uri");
+            }
+
+            if (!baseUrl.IsAbsoluteUri)
+            {
+                throw Error.Argument(nameof(baseUrl), "Url is not an absolute uri");
+            }
+
+            var endp = location.ToString();
+            var bUrl = baseUrl.ToString();
+            if (endp.StartsWith(bUrl))
+            {
+                return new Uri(endp.Substring(bUrl.Length).TrimStart('/'), UriKind.Relative);
+            }
+
+            return location;
+        }
 
         public static bool IsWithin(this Uri me, Uri other)
         {

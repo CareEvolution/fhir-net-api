@@ -20,7 +20,7 @@ namespace Hl7.Fhir.Rest.R4
         public const string OPERATIONPREFIX = "$";
 
         private Bundle _result;
-        private string _baseUrl;
+        private readonly Uri _baseUrl;
 
         public TransactionBuilder(string baseUrl, BundleType type = BundleType.Batch)
         {
@@ -29,7 +29,7 @@ namespace Hl7.Fhir.Rest.R4
                 Type = type
             };
 
-            _baseUrl = baseUrl;
+            _baseUrl = new Uri(baseUrl);
         }
 
         public TransactionBuilder(Uri baseUri, BundleType type = BundleType.Batch)
@@ -65,7 +65,7 @@ namespace Hl7.Fhir.Rest.R4
 
         private void addEntry(Bundle.EntryComponent newEntry, RestUrl path)
         {
-            newEntry.Request.Url = path.Uri.ToString();
+            newEntry.Request.Url = HttpUtil.MakeRelativeFromBase(path.Uri, _baseUrl).ToString();
             _result.Entry.Add(newEntry);
         }
 
@@ -88,12 +88,9 @@ namespace Hl7.Fhir.Rest.R4
                 addEntry(entry, new RestUrl(url));
             else
             {
-                var absoluteUrl = _baseUrl;
-                if(!absoluteUrl.EndsWith("/")) absoluteUrl += "/";
-                absoluteUrl += url;
+                var absoluteUrl = HttpUtil.MakeAbsoluteToBase(uri, _baseUrl);
                 addEntry(entry, new RestUrl(absoluteUrl));
             }
-
             return this;
         }
 
@@ -354,7 +351,7 @@ namespace Hl7.Fhir.Rest.R4
         {
             var entry = newEntry(HTTPVerb.POST, InteractionType.Transaction);
             entry.Resource = transaction;
-            var url = _baseUrl;
+            var url = _baseUrl.ToString();
             if (url.EndsWith("/"))  // in case of a transaction the url cannot end with a forward slash. Remove it here.
                 url = url.TrimEnd('/');
             addEntry(entry, new RestUrl(url));
