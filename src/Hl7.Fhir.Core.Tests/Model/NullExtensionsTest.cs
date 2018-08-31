@@ -3,8 +3,9 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Xml;
 using System.Collections.Generic;
+using Hl7.Fhir.Support.DSTU2;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [TestClass]
     public class NullExtensionsTest

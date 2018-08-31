@@ -14,8 +14,9 @@ using System.Linq;
 using Hl7.FhirPath.Functions;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model.Primitives;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hl7.Fhir.ElementModel.DSTU2;
 
 namespace Hl7.FhirPath.Tests
 {
@@ -99,7 +100,7 @@ namespace Hl7.FhirPath.Tests
         [TestMethod]
         public void TestFhirPathPolymporphism()
         {
-            var patient = new Hl7.Fhir.Model.Patient() { Active = false };
+            var patient = new Patient() { Active = false };
             patient.Meta = new Meta() { LastUpdated = new DateTimeOffset(2018, 5, 24, 14, 48, 0, TimeSpan.Zero) };
             var nav = patient.ToElementNavigator();
 

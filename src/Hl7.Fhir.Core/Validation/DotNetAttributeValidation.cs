@@ -6,14 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Validation
+namespace Hl7.Fhir.Validation.DSTU2
 {
     public class DotNetAttributeValidation
     {

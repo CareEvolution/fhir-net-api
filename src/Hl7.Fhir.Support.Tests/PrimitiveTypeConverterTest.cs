@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Support.Tests.Serialization
+namespace Hl7.Fhir.Support.DSTU2.Tests.Serialization
 {
     [TestClass]
     public class PrimitiveTypeConverterTest

@@ -7,13 +7,13 @@
  */
 
 using System.Collections.Generic;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.ElementModel;
 using System;
 
 #pragma warning disable 1591 // suppress XML summary warnings
 
-namespace Hl7.Fhir.Support
+namespace Hl7.Fhir.Support.DSTU2
 {
     public class Issue
     {

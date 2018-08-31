@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Source;
@@ -17,8 +17,11 @@ using Hl7.Fhir.Validation;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Support.DSTU2;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     [Trait("Category", "Validation")]
     public class BasicValidationTests : IClassFixture<ValidationFixture>

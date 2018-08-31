@@ -6,13 +6,13 @@
 */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Support;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Hl7.Fhir.Support
+namespace Hl7.Fhir.Support.DSTU2
 {
 
     public static class ValidationOutcomeExtensions

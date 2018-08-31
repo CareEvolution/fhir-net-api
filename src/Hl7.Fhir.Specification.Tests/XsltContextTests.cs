@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 using Hl7.Fhir.XPath;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     [TestClass]
     public class XsltContextTests

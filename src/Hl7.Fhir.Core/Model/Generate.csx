@@ -252,9 +252,10 @@ using Hl7.Fhir.Specification;
     /// </summary>
     /// <param name="type">The FHIR resource or data type class type (e.g. Patient)</param>
     /// <param name="abstractType">True if it is an abstract type (e.g. DomainResource)</param>
+    /// <param name="hasBase">True if has a base type (e.g. DomainResource)</param>
     /// <param name="properties">The properties of the FHIR resource or data type class, that are copied or compared by the generate methods</param>
     /// <returns>Lines of C# code of the copy and comparison methods</returns>
-    public static IEnumerable<string> RenderCopyAndComparisonMethods(string type, bool abstractType, IEnumerable<PropertyDetails> properties)
+    public static IEnumerable<string> RenderCopyAndComparisonMethods(string type, bool abstractType, bool hasBase, IEnumerable<PropertyDetails> properties)
     {
         foreach (var line in RenderCopyTo(type, properties)) yield return line;
         if (!abstractType)
@@ -263,9 +264,9 @@ using Hl7.Fhir.Specification;
             foreach (var line in RenderDeepCopy(type)) yield return line;
         }
         yield return string.Empty;
-        foreach (var line in RenderMatches(type, abstractType, properties)) yield return line;
+        foreach (var line in RenderMatches(type, hasBase, properties)) yield return line;
         yield return string.Empty;
-        foreach (var line in RenderIsExactly(type, abstractType, properties)) yield return line;
+        foreach (var line in RenderIsExactly(type, hasBase, properties)) yield return line;
     }
 
     public static IEnumerable<string> RenderDeepCopy(string type)
@@ -301,14 +302,14 @@ using Hl7.Fhir.Specification;
         yield return $"}}";
     }
 
-    private static IEnumerable<string> RenderMatches(string type, bool abstractType, IEnumerable<PropertyDetails> properties)
+    private static IEnumerable<string> RenderMatches(string type, bool hasBase, IEnumerable<PropertyDetails> properties)
     {
         yield return $"public override bool Matches(IDeepComparable other)";
         yield return $"{{";
         yield return $"    var otherT = other as { type };";
         yield return $"    if (otherT == null) return false;";
         yield return string.Empty;
-        if (!abstractType)
+        if (hasBase)
         {
             yield return $"    if (!base.Matches(otherT)) return false;";
         }
@@ -326,14 +327,14 @@ using Hl7.Fhir.Specification;
         yield return $"}}";
     }
 
-    private static IEnumerable<string> RenderIsExactly(string type, bool abstractType, IEnumerable<PropertyDetails> properties)
+    private static IEnumerable<string> RenderIsExactly(string type, bool hasBase, IEnumerable<PropertyDetails> properties)
     {
         yield return $"public override bool IsExactly(IDeepComparable other)";
         yield return $"{{";
         yield return $"    var otherT = other as { type };";
         yield return $"    if (otherT == null) return false;";
         yield return string.Empty;
-        if (!abstractType)
+        if (hasBase)
         {
             yield return $"    if (!base.IsExactly(otherT)) return false;";
         }
@@ -870,6 +871,8 @@ public class ResourceDetails
         yield return $"    [NotMapped]";
         yield return $"    public override string TypeName {{ get {{ return \"{ FhirName }\"; }} }}";
 
+        FixupProperties(Properties, valueSets);
+
         foreach (var valueSet in valueSets)
         {
             yield return string.Empty;
@@ -980,7 +983,7 @@ public class ResourceDetails
             }
             else
             {
-                foreach (var line in StringUtils.RenderCopyAndComparisonMethods(Name, AbstractType, Properties)) yield return string.IsNullOrEmpty(line) ? string.Empty : "    " + line;
+                foreach (var line in StringUtils.RenderCopyAndComparisonMethods(Name, AbstractType, !string.IsNullOrEmpty(BaseType), Properties)) yield return string.IsNullOrEmpty(line) ? string.Empty : "    " + line;
             }
 
             if (Properties.Any())
@@ -1002,6 +1005,18 @@ public class ResourceDetails
             .Concat(new[] { BaseType })
             .Where(pt => pt.StartsWith(prefix))
             .Select(pt => pt.Substring(prefix.Length));
+    }
+
+    private void FixupProperties(List<PropertyDetails> properties, IEnumerable<ValueSet> valueSets)
+    {
+        var valueSetNames = new HashSet<string>(valueSets.Select(v => v.EnumName));
+        foreach(var property in properties)
+        {
+            if(valueSetNames.Contains( property.NativeName) )
+            {
+                property.NativeName = property.NativeName + "_";
+            }
+        }
     }
 
     // private void FixReferencedTypesFhirVersion(string version, Dictionary<string,ResourceDetails> resourcesByName)
@@ -1512,7 +1527,7 @@ public class ComponentDetails
         foreach (var line in StringUtils.RenderProperties(30, Properties)) yield return string.IsNullOrEmpty(line) ? string.Empty : "    " + line;
 
         yield return string.Empty;
-        foreach (var line in StringUtils.RenderCopyAndComparisonMethods(Name, false, Properties)) yield return string.IsNullOrEmpty(line) ? string.Empty : "    " + line;
+        foreach (var line in StringUtils.RenderCopyAndComparisonMethods(Name, abstractType: false, hasBase: true, Properties)) yield return string.IsNullOrEmpty(line) ? string.Empty : "    " + line;
 
         yield return string.Empty;
         yield return string.Empty;
@@ -1773,12 +1788,22 @@ public class PropertyDetails
         if(PropType == "string" && Name == "Div")
         {
             // for Narrative.Div
-            serialization = ", XmlSerialization=XmlRepresentation.XHtml,TypeRedirect = typeof(XHtml)";
+            serialization = ", XmlSerialization=XmlRepresentation.XHtml, TypeRedirect = typeof(XHtml)";
         } 
         else if (PropType == "FhirString" && FhirName == "id")
         {
             // for Element.id
-            serialization = ",  XmlSerialization=XmlRepresentation.XmlAttr,TypeRedirect = typeof(Id)";
+            serialization = ", XmlSerialization=XmlRepresentation.XmlAttr, TypeRedirect = typeof(Id)";
+            InSummaryVersions.Add(string.Empty);
+        }
+        else if (PropType == "FhirUri" && IsXmlAttribute)
+        {
+            serialization = ", XmlSerialization=XmlRepresentation.XmlAttr, TypeRedirect = typeof(FhirUri)";
+            InSummaryVersions.Add(string.Empty);
+        }
+        else if (IsXmlAttribute)
+        {
+            serialization = ", XmlSerialization=XmlRepresentation.XmlAttr";
             InSummaryVersions.Add(string.Empty);
         }
         yield return $"[FhirElement(\"{FhirName}\"{serialization}{InSummaryAttribute()}, Order={nPropNum}{choice})]";
@@ -2030,7 +2055,7 @@ public class PropertyDetails
         result.CardMin = element.SelectSingleNode("fhir:min/@value", ns).Value;
         result.CardMax = element.SelectSingleNode("fhir:max/@value", ns).Value;
 
-        string[] NativeTypes = { "decimal", "dateTime", "time", "integer", "oid", "date", "id", "Code", "code", "instant", "unsignedInt", "positiveInt", "string", "boolean", "uri", "url", "canonical", "uuid", "base64Binary" };
+        string[] NativeTypes = { "decimal", "dateTime", "time", "integer", "oid", "date", "id", "Code", "code", "instant", "unsignedInt", "positiveInt", "string", "boolean", "uri", "url", "canonical", "uuid", "base64Binary", "markdown" };
         if (NativeTypes.Contains(result.PropType))
         {
             result.NativeName = result.Name;
@@ -2067,6 +2092,7 @@ public class PropertyDetails
                     break;
                 case "markdown":
                     result.PropType = "Markdown";
+                    result.NativeType = "string";
                     break;
                 case "integer":
                     result.PropType = "Integer";
@@ -2250,6 +2276,7 @@ public class PropertyDetails
                     break;
                 case "markdown":
                     result.PropType = "Markdown";
+                    result.NativeType = "string";
                     break;
                 case "integer":
                     result.PropType = "Integer";

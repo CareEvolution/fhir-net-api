@@ -9,15 +9,15 @@
 using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Support;
 using System.Diagnostics;
 using System.IO;
-using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Source;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     [TestClass]
     public class ResolverAndSourceExtensionTests

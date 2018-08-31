@@ -7,7 +7,7 @@
  */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Source;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     // [WMR 20171016] Renamed from: ArtifactResolverTests
 

@@ -9,9 +9,9 @@
 using System;
 using System.Collections;
 using System.Linq;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 
-namespace Hl7.Fhir.Support
+namespace Hl7.Fhir.Support.DSTU2
 {
     public static class NullExtensions
     {

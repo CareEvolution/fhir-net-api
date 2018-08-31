@@ -89,6 +89,7 @@ namespace Hl7.Fhir.Model.DSTU2
             var otherT = other as BackboneElement;
             if (otherT == null) return false;
 
+            if (!base.Matches(otherT)) return false;
             if ( !DeepComparable.Matches(ModifierExtension, otherT.ModifierExtension)) return false;
 
             return true;
@@ -99,6 +100,7 @@ namespace Hl7.Fhir.Model.DSTU2
             var otherT = other as BackboneElement;
             if (otherT == null) return false;
 
+            if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(ModifierExtension, otherT.ModifierExtension)) return false;
 
             return true;

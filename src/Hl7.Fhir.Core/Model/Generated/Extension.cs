@@ -56,7 +56,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// identifies the meaning of the extension
         /// </summary>
-        [FhirElement("url", Order=30)]
+        [FhirElement("url", XmlSerialization=XmlRepresentation.XmlAttr, TypeRedirect = typeof(FhirUri), InSummary=true, Order=30)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public FhirUri UrlElement

@@ -244,7 +244,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public ParticipantStatus? ParticipantStatus
+        public ParticipantStatus? ParticipantStatus_
         {
             get { return ParticipantStatusElement != null ? ParticipantStatusElement.Value : null; }
             set
@@ -253,7 +253,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     ParticipantStatusElement = null;
                 else
                     ParticipantStatusElement = new Code<ParticipantStatus>(value);
-                OnPropertyChanged("ParticipantStatus");
+                OnPropertyChanged("ParticipantStatus_");
             }
         }
 

@@ -1,5 +1,6 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 

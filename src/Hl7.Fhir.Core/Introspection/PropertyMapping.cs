@@ -6,16 +6,19 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.DSTU2;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Validation.DSTU2;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
 
-namespace Hl7.Fhir.Introspection
+namespace Hl7.Fhir.Introspection.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{Name={Name} ElementType={ElementType.Name}}")]
     public class PropertyMapping
@@ -50,8 +53,8 @@ namespace Hl7.Fhir.Introspection
             PropertyMapping result = new PropertyMapping();
 
             var elementAttr = prop.GetCustomAttribute<FhirElementAttribute>();
-            var cardinalityAttr = prop.GetCustomAttribute<Validation.CardinalityAttribute>();
-            var allowedTypes = prop.GetCustomAttribute<Validation.AllowedTypesAttribute>();
+            var cardinalityAttr = prop.GetCustomAttribute<CardinalityAttribute>();
+            var allowedTypes = prop.GetCustomAttribute<AllowedTypesAttribute>();
 
             result.Name = determinePropertyName(prop);
             result.ImplementingType = prop.PropertyType;

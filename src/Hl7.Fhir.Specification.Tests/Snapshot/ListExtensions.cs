@@ -1,10 +1,10 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.DSTU2;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     static class IListExtensions
     {

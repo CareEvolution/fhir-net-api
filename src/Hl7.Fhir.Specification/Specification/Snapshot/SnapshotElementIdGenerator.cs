@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
@@ -59,9 +59,9 @@ namespace Hl7.Fhir.Specification.Snapshot
                 do
                 {
                     var elem = nav.Current;
-                    if (force || string.IsNullOrEmpty(elem.ElementId))
+                    if (force || string.IsNullOrEmpty(elem.Id))
                     {
-                        elem.ElementId = generateElementId(elem, parent);
+                        elem.Id = generateElementId(elem, parent);
                     }
                     generateChildElementsId(nav, force);
                 } while (nav.MoveToNext());
@@ -76,7 +76,7 @@ namespace Hl7.Fhir.Specification.Snapshot
             // Add element name (last path component)
             // parent is null for the resource root element
             var pathPart = ElementDefinitionNavigator.GetLastPathComponent(element.Path);
-            var id = addIdComponent(parent?.ElementId, ".", pathPart);
+            var id = addIdComponent(parent?.Id, ".", pathPart);
             // Add element slice name (user defined), if present
             // [WMR 20160922] Except for root element, e.g. SimpleQuantity
             if (parent != null && !string.IsNullOrEmpty(element.Name))

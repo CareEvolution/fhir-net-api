@@ -7,7 +7,8 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath;
 using Hl7.FhirPath.Expressions;
@@ -16,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.FhirPath
+namespace Hl7.Fhir.FhirPath.DSTU2
 {
     public class FhirEvaluationContext : EvaluationContext
     {

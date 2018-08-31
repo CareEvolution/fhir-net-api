@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 
-namespace Hl7.Fhir.Serialization.Tests
+namespace Hl7.Fhir.Serialization.DSTU2.Tests
 {
     public static class SerializationInfoTestHelpers
     {

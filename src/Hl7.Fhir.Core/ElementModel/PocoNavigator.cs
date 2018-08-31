@@ -7,15 +7,16 @@
  */
 
 using Hl7.Fhir.ElementModel.Adapters;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.DSTU2;
 using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.DSTU2
 {
     // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
     [DebuggerDisplay(@"\{{ShortPath,nq}}")]

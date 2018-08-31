@@ -33,22 +33,22 @@ using Hl7.FhirPath;
 using System;
 using System.Text.RegularExpressions;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
     public partial class Date : IStringValue
     {
         public Date(int year, int month, int day)
-            : this(String.Format(Model.FhirDateTime.FMT_YEARMONTHDAY, year, month, day))
+            : this(String.Format(FhirDateTime.FMT_YEARMONTHDAY, year, month, day))
         {
         }
 
         public Date(int year, int month)
-            : this( String.Format(Model.FhirDateTime.FMT_YEARMONTH,year,month) )
+            : this( String.Format(FhirDateTime.FMT_YEARMONTH,year,month) )
         {
         }
 
-        public Date(int year): this( String.Format(Model.FhirDateTime.FMT_YEAR, year))
+        public Date(int year): this( String.Format(FhirDateTime.FMT_YEAR, year))
         {
         }
 

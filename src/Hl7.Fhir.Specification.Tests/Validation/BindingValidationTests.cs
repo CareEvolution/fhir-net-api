@@ -1,15 +1,14 @@
-﻿using Hl7.Fhir.Specification.Source;
-using Hl7.Fhir.Specification.Terminology;
-using Hl7.Fhir.Model;
-using System.Linq;
-using Xunit;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
-using System;
+﻿using System.Linq;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Specification.Terminology;
+using Hl7.Fhir.Support.DSTU2;
 using Hl7.Fhir.Validation;
+using Xunit;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     [Trait("Category", "Validation")]
     public class BindingValidationTests : IClassFixture<ValidationFixture>
@@ -39,7 +38,7 @@ namespace Hl7.Fhir.Specification.Tests
 
             // Non-bindeable things should succeed
             Element v = new FhirBoolean(true);
-            var node = v.ToTypedElement();            
+            var node = v.ToTypedElement();
             Assert.True(_validator.ValidateBinding(ed, node).Success);
 
             v = new Quantity(4.0m, "masked", "http://hl7.org/fhir/data-absent-reason");  // nonsense, but hey UCUM is not provided with the spec
@@ -48,19 +47,19 @@ namespace Hl7.Fhir.Specification.Tests
 
             v = new Quantity(4.0m, "maskedx", "http://hl7.org/fhir/data-absent-reason");  // nonsense, but hey UCUM is not provided with the spec
             node = v.ToTypedElement();
-            Assert.False(_validator.ValidateBinding(ed,node).Success);
+            Assert.False(_validator.ValidateBinding(ed, node).Success);
 
             v = new Quantity(4.0m, "kg");  // sorry, UCUM is not provided with the spec - still validate against data-absent-reason
             node = v.ToTypedElement();
-            Assert.False(_validator.ValidateBinding(ed,node).Success);
+            Assert.False(_validator.ValidateBinding(ed, node).Success);
 
             v = new FhirString("masked");
             node = v.ToTypedElement();
-            Assert.True(_validator.ValidateBinding(ed,node).Success);
+            Assert.True(_validator.ValidateBinding(ed, node).Success);
 
             v = new FhirString("maskedx");
             node = v.ToTypedElement();
-            Assert.False(_validator.ValidateBinding(ed,node).Success);
+            Assert.False(_validator.ValidateBinding(ed, node).Success);
 
             var ic = new Coding("http://hl7.org/fhir/data-absent-reason", "masked");
             var ext = new Extension { Value = ic };
@@ -151,6 +150,6 @@ namespace Hl7.Fhir.Specification.Tests
             result = val.ValidateBinding(cc, binding);
             Assert.True(result.Success);
             Assert.Equal(0, result.Warnings);
-        }      
+        }
     }
 }

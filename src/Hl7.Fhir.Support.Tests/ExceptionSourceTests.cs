@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Support.Tests
+namespace Hl7.Fhir.Support.DSTU2.Tests
 {
     [TestClass]
     public class ExceptionSourceTests

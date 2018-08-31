@@ -7,7 +7,7 @@
  */
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Source;
 using System;
 using System.Diagnostics;
@@ -16,7 +16,7 @@ using System.Linq;
 // Use alias to avoid conflict with Hl7.Fhir.Model.Task
 using Tasks = System.Threading.Tasks;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     [TestClass]
     public class SummarySourceTests

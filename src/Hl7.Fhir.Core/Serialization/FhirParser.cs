@@ -7,8 +7,8 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
 using Newtonsoft.Json;
 using System;
@@ -17,7 +17,7 @@ using System.Xml;
 using System.Xml.Linq;
 
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.DSTU2
 {
     /// <summary>
     /// Static access to parsing.

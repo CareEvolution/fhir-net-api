@@ -33,10 +33,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
     public partial class FhirBoolean : INullableValue<bool>

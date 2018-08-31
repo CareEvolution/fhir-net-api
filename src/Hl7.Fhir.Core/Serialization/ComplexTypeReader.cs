@@ -7,14 +7,14 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.DSTU2
 {
 #pragma warning disable 612,618
     internal class ComplexTypeReader

@@ -7,14 +7,12 @@
  */
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Model;
 using System.Collections.Generic;
-using System.Text;
 using System.Net;
-using static Hl7.Fhir.Model.Observation;
+using System.Text;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Test
 {
@@ -74,7 +72,7 @@ namespace Hl7.Fhir.Test
         [TestMethod]
         public void TestUrlEncoding()
         {
-            var endpoint  = new Uri("https://fhir.sandboxcernerpowerchart.com/may2015/open/d075cf8b-3261-481d-97e5-ba6c48d3b41f");
+            var endpoint = new Uri("https://fhir.sandboxcernerpowerchart.com/may2015/open/d075cf8b-3261-481d-97e5-ba6c48d3b41f");
             var tx = new TransactionBuilder(endpoint);
             tx.Get("https://fhir.sandboxcernerpowerchart.com/may2015/open/d075cf8b-3261-481d-97e5-ba6c48d3b41f/MedicationPrescription?patient=1316024&status=completed%2Cstopped&_count=25&scheduledtiming-bounds-end=<=2014-09-08T18:42:02.000Z&context=14187710&_format=json");
             var b = tx.ToBundle();
@@ -92,7 +90,7 @@ namespace Hl7.Fhir.Test
             string expected = "Key=%3C%26%3E%22%27%C3%A4%C3%AB%C3%AFo%C3%A6%C3%B8%C3%A5%E2%82%AC%24%C2%A3%40%21%23%C2%A4%25%2F%28%29%3D%3F%7C%C2%A7%C2%A8%5E%5C%5B%5D%7B%7D";
 
             string specialCharacters = "<&>\"'äëïoæøå€$£@!#¤%/()=?|§¨^\\[]{}";
-            var  endpoint = new Uri("http://myserver.org/fhir");
+            var endpoint = new Uri("http://myserver.org/fhir");
             string resourceType = "Patient";
             var parameters = new List<Tuple<string, string>>();
             parameters.Add(new Tuple<string, string>("Key", specialCharacters));
@@ -130,7 +128,7 @@ namespace Hl7.Fhir.Test
         {
             string expected = "application/x-www-form-urlencoded";
 
-            var  endpoint = new Uri("http://myserver.org/fhir");
+            var endpoint = new Uri("http://myserver.org/fhir");
             string resourceType = "Patient";
 
             var parameters = new List<Tuple<string, string>>();
@@ -209,7 +207,7 @@ namespace Hl7.Fhir.Test
         {
             var observation = new Observation
             {
-                Status = ObservationStatus.Final,
+                Status = Observation.ObservationStatus.Final,
                 Code = new CodeableConcept("http://loinc.org", "29463-7", "Body weight"),
                 Value = new Quantity(74, "kg")
             };

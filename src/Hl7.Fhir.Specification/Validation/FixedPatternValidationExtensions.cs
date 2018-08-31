@@ -7,10 +7,13 @@
  */
 
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
 using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Support;
+using Hl7.Fhir.Support.DSTU2;
 using System;
 using System.Linq;
 

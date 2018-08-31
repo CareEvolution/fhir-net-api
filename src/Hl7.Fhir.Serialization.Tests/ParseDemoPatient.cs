@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace Hl7.Fhir.Serialization.Tests
+namespace Hl7.Fhir.Serialization.DSTU2.Tests
 {
     [TestClass]
     public class ParseDemoPatient

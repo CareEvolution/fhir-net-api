@@ -6,30 +6,22 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.DSTU2
 {
     public static class HttpToEntryExtensions
     {
         private const string USERDATA_BODY = "$body";
-        private const string EXTENSION_RESPONSE_HEADER = "http://hl7.org/fhir/StructureDefinition/http-response-header";      
+        private const string EXTENSION_RESPONSE_HEADER = "http://hl7.org/fhir/StructureDefinition/http-response-header";
 
         internal static Bundle.EntryComponent ToBundleEntry(this HttpWebResponse response, byte[] body, ParserSettings parserSettings, bool throwOnFormatException)
         {
@@ -46,11 +38,11 @@ namespace Hl7.Fhir.Rest
 
 #if !DOTNETFW
             if (!String.IsNullOrEmpty(response.Headers[HttpUtil.LASTMODIFIED]))
-                    result.Response.LastModified = DateTimeOffset.Parse(response.Headers[HttpUtil.LASTMODIFIED]);
+                result.Response.LastModified = DateTimeOffset.Parse(response.Headers[HttpUtil.LASTMODIFIED]);
 #else
             result.Response.LastModified = response.LastModified;
 #endif
-            result.Response.Etag = getETag(response);                     
+            result.Response.Etag = getETag(response);
 
             if (body != null)
             {
@@ -87,9 +79,9 @@ namespace Hl7.Fhir.Rest
         {
             var result = response.Headers[HttpUtil.ETAG];
 
-            if(result != null)
+            if (result != null)
             {
-                if(result.StartsWith(@"W/")) result = result.Substring(2);
+                if (result.StartsWith(@"W/")) result = result.Substring(2);
                 result = result.Trim('\"');
             }
 
@@ -118,11 +110,11 @@ namespace Hl7.Fhir.Rest
                     result = Encoding.GetEncoding(charset);
             }
             return result;
-        }      
+        }
 
         private static Resource parseResource(string bodyText, string contentType, ParserSettings settings, bool throwOnFormatException)
-        {           
-            Resource result= null;
+        {
+            Resource result = null;
 
             var fhirType = ContentType.GetResourceFormatFromContentType(contentType);
 
@@ -142,7 +134,7 @@ namespace Hl7.Fhir.Rest
                 else
                     result = new FhirXmlParser(settings).Parse<Resource>(bodyText);
             }
-            catch(FormatException fe)
+            catch (FormatException fe)
             {
                 if (throwOnFormatException) throw fe;
                 return null;
@@ -154,8 +146,8 @@ namespace Hl7.Fhir.Rest
 
         internal static bool IsBinaryResponse(string responseUri, string contentType)
         {
-            if (!string.IsNullOrEmpty(contentType) 
-                && (ContentType.XML_CONTENT_HEADERS.Contains(contentType.ToLower()) 
+            if (!string.IsNullOrEmpty(contentType)
+                && (ContentType.XML_CONTENT_HEADERS.Contains(contentType.ToLower())
                     || ContentType.JSON_CONTENT_HEADERS.Contains(contentType.ToLower())
                 )
                 )
@@ -170,7 +162,7 @@ namespace Hl7.Fhir.Rest
                 if (id.Id != null && Id.IsValidValue(id.Id)) return true;
                 if (id.VersionId != null && Id.IsValidValue(id.VersionId)) return true;
             }
-            
+
             return false;
         }
 
@@ -237,11 +229,11 @@ namespace Hl7.Fhir.Rest
             }
         }
 
-        public static IEnumerable<Tuple<string,string>> GetHeaders(this Bundle.ResponseComponent interaction)
+        public static IEnumerable<Tuple<string, string>> GetHeaders(this Bundle.ResponseComponent interaction)
         {
             foreach (var headerExt in interaction.GetExtensions(EXTENSION_RESPONSE_HEADER))
             {
-                if(headerExt.Value != null && headerExt.Value is FhirString)
+                if (headerExt.Value != null && headerExt.Value is FhirString)
                 {
                     var header = ((FhirString)headerExt.Value).Value;
 

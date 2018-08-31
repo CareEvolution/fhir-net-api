@@ -4,7 +4,7 @@ using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.DSTU2
 {
     internal static class RootRenamerExtensions
     {

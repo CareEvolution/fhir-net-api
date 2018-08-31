@@ -7,12 +7,13 @@
  */
 
 using System;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using System.Linq;
 using Hl7.Fhir.Validation;
+using Hl7.Fhir.Support.DSTU2;
 
 namespace Hl7.Fhir.Specification.Terminology
 {

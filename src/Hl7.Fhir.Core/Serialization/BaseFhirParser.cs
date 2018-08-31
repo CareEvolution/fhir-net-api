@@ -7,13 +7,13 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using System;
 using System.Reflection;
 
-
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.DSTU2
 {
     public class BaseFhirParser
     {

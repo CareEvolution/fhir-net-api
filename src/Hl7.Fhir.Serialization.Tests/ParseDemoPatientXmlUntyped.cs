@@ -10,7 +10,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Hl7.Fhir.Serialization.Tests
+namespace Hl7.Fhir.Serialization.DSTU2.Tests
 {
     [TestClass]
     public class ParseDemoPatientXmlUntyped

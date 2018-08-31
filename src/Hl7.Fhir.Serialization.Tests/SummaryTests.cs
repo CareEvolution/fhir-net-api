@@ -1,11 +1,12 @@
 ﻿using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace Hl7.Fhir.Serialization.Tests
+namespace Hl7.Fhir.Serialization.DSTU2.Tests
 {
     [TestClass]
     public class SummaryTests

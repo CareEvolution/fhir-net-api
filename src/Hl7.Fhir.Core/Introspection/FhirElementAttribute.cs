@@ -30,7 +30,9 @@
 
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.DSTU2;
 using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,7 +40,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Introspection
+namespace Hl7.Fhir.Introspection.DSTU2
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public sealed class FhirElementAttribute : ValidationAttribute

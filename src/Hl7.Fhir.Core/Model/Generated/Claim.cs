@@ -2237,7 +2237,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public Use? Use
+        public Use? Use_
         {
             get { return UseElement != null ? UseElement.Value : null; }
             set
@@ -2246,7 +2246,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     UseElement = null;
                 else
                     UseElement = new Code<Use>(value);
-                OnPropertyChanged("Use");
+                OnPropertyChanged("Use_");
             }
         }
 

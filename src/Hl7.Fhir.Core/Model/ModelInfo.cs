@@ -32,11 +32,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Hl7.Fhir.Support;
-using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.DSTU2;
 using System.Diagnostics;
 using Hl7.Fhir.Utility;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public partial class ModelInfo
     {

@@ -32,10 +32,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{ Value={ValueElement.Value} System={System}}")]
     public partial class Identifier

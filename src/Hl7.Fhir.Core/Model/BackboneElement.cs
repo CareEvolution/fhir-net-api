@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.DSTU2;
 using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -35,7 +35,7 @@ using System.Runtime.Serialization;
 
 */
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public abstract partial class BackboneElement : IModifierExtendable, IBackboneElement
     {

@@ -10,9 +10,10 @@ using System.Collections.Generic;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Support;
 using System.Linq;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Support.DSTU2;
 
 namespace Hl7.Fhir.Validation
 {
@@ -163,7 +164,9 @@ namespace Hl7.Fhir.Validation
                     // Only add the issue from the slice outcome if the entry validation did not already catch
                     // the same issue, otherwise the users will see it twice.
                     if(!outcome.Issue.Exists(i => i.Location.First() == issue.Location.First() && i.Details.Text == issue.Details.Text))
+                    {
                         outcome.AddIssue(issue);
+                    }
                 }
             }
 

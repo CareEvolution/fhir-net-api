@@ -7,13 +7,13 @@
  */
 
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
 
-namespace Hl7.Fhir.ElementModel
+namespace Hl7.Fhir.ElementModel.DSTU2
 {
     public static class PocoBuilderExtensions
     {
@@ -30,7 +30,7 @@ namespace Hl7.Fhir.ElementModel
                (T)element.ToPoco(settings);
 
 #pragma warning disable 612, 618
-        public static Base ToPoco(this IElementNavigator navigator, Type pocoType=null, PocoBuilderSettings settings = null) =>
+        public static Base ToPoco(this IElementNavigator navigator, Type pocoType = null, PocoBuilderSettings settings = null) =>
             new PocoBuilder(settings).BuildFrom(navigator.ToSourceNode(), pocoType);
 
         public static T ToPoco<T>(this IElementNavigator navigator, PocoBuilderSettings settings = null) where T : Base =>
@@ -39,12 +39,12 @@ namespace Hl7.Fhir.ElementModel
 
 
         [Obsolete("Use ParseQuantity(this ITypedElement instance) instead")]
-        public static Model.Quantity ParseQuantity(this IElementNavigator instance)
+        public static Quantity ParseQuantity(this IElementNavigator instance)
         {
             return ParseQuantity(instance.ToTypedElement());
         }
 
-        public static Model.Quantity ParseQuantity(this ITypedElement instance)
+        public static Quantity ParseQuantity(this ITypedElement instance)
         {
             var newQuantity = new Quantity
             {
@@ -55,7 +55,7 @@ namespace Hl7.Fhir.ElementModel
             };
 
             var comp = instance.Children("comparator").GetString();
-            if(comp != null)
+            if (comp != null)
                 newQuantity.ComparatorElement = new Code<Quantity.QuantityComparator> { ObjectValue = comp };
 
             return newQuantity;
@@ -104,8 +104,8 @@ namespace Hl7.Fhir.ElementModel
                 case FHIRDefinedType.Extension:
                     return parseExtension(instance);
                 case null:
-                    //HACK: fall through - IElementNav did not provide a type
-                    //should not happen, and I have no intention to handle it.
+                //HACK: fall through - IElementNav did not provide a type
+                //should not happen, and I have no intention to handle it.
                 default:
                     // Not bindable
                     return null;
@@ -132,8 +132,8 @@ namespace Hl7.Fhir.ElementModel
         [Obsolete("Use ParsePrimitive<T>(this ITypedElement instance) instead")]
         public static T ParsePrimitive<T>(this IElementNavigator instance) where T : Primitive, new()
             => ParsePrimitive<T>(instance.ToTypedElement());
-        
-        public static T ParsePrimitive<T>(this ITypedElement instance) where T:Primitive, new()
+
+        public static T ParsePrimitive<T>(this ITypedElement instance) where T : Primitive, new()
                     => new T() { ObjectValue = instance.Value };
 
         [Obsolete("Use ParseCoding(this ITypedElement instance) instead")]
@@ -182,7 +182,7 @@ namespace Hl7.Fhir.ElementModel
         [Obsolete("Use GetString(this IEnumerable<ITypedElement> instance) instead")]
         public static string GetString(this IEnumerable<IElementNavigator> instance)
             => instance.SingleOrDefault()?.Value as string;
-        
+
         public static string GetString(this IEnumerable<ITypedElement> instance)
         {
             return instance.SingleOrDefault()?.Value as string;

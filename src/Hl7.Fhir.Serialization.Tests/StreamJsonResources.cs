@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using System.IO;
 
-namespace Hl7.Fhir.Support.Tests.Serialization
+namespace Hl7.Fhir.Support.DSTU2.Tests.Serialization
 {
     [TestClass]
     public class StreamJsonResources

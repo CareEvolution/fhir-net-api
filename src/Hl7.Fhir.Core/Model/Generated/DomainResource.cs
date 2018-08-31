@@ -182,6 +182,7 @@ namespace Hl7.Fhir.Model.DSTU2
             var otherT = other as DomainResource;
             if (otherT == null) return false;
 
+            if (!base.Matches(otherT)) return false;
             if (!DeepComparable.Matches(Text, otherT.Text)) return false;
             if ( !DeepComparable.Matches(Contained, otherT.Contained)) return false;
             if ( !DeepComparable.Matches(Extension, otherT.Extension)) return false;
@@ -195,6 +196,7 @@ namespace Hl7.Fhir.Model.DSTU2
             var otherT = other as DomainResource;
             if (otherT == null) return false;
 
+            if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Text, otherT.Text)) return false;
             if (!DeepComparable.IsExactly(Contained, otherT.Contained)) return false;
             if (!DeepComparable.IsExactly(Extension, otherT.Extension)) return false;

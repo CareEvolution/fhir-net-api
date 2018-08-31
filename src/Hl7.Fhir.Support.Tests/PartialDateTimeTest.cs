@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace Hl7.Fhir.Support.Tests.Model
+namespace Hl7.Fhir.Support.DSTU2.Tests.Model
 {
     [TestClass]
     public class PartialDateTimeTest

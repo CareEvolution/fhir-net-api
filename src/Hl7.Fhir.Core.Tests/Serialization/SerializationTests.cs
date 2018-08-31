@@ -6,18 +6,19 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
-using Hl7.Fhir.Introspection;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -117,7 +118,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(full.Contains("<photo"));
             Assert.IsNull(p.Meta, "Meta element should not be introduced here.");
 
-            var summ = FhirXmlSerializer.SerializeToString(p, summary: Fhir.Rest.SummaryType.True);
+            var summ = FhirXmlSerializer.SerializeToString(p, summary: SummaryType.True);
             Assert.IsTrue(summ.Contains("<birthDate"));
             Assert.IsFalse(summ.Contains("<photo"));
             Assert.IsNull(p.Meta, "Meta element should not be introduced here.");
@@ -147,7 +148,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(qfull.Contains("<text value=\"TEXT\""));
             Assert.IsTrue(qfull.Contains("<linkId value=\"linkid\""));
 
-            var qSum = FhirXmlSerializer.SerializeToString(q, summary: Fhir.Rest.SummaryType.True);
+            var qSum = FhirXmlSerializer.SerializeToString(q, summary: SummaryType.True);
             Console.WriteLine("summary: Fhir.Rest.SummaryType.True");
             Console.WriteLine(qSum);
             Assert.IsFalse(qSum.Contains("Test Questionnaire"));
@@ -157,7 +158,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsFalse(qSum.Contains("<text value=\"TEXT\""));
             Assert.IsFalse(qSum.Contains("<linkId value=\"linkid\""));
 
-            var qData = FhirXmlSerializer.SerializeToString(q, summary: Fhir.Rest.SummaryType.Data);
+            var qData = FhirXmlSerializer.SerializeToString(q, summary: SummaryType.Data);
             Console.WriteLine("summary: Fhir.Rest.SummaryType.Data");
             Console.WriteLine(qData);
             Assert.IsFalse(qData.Contains("Test Questionnaire"));
@@ -169,7 +170,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(qData.Contains("<linkId value=\"linkid\""));
 
             q.Meta = new Meta { VersionId = "v2" };
-            var qText = FhirXmlSerializer.SerializeToString(q, summary: Fhir.Rest.SummaryType.Text);
+            var qText = FhirXmlSerializer.SerializeToString(q, summary: SummaryType.Text);
             Console.WriteLine("summary: Fhir.Rest.SummaryType.Text");
             Console.WriteLine(qText);
             Assert.IsTrue(qText.Contains("Test Questionnaire"));
@@ -197,12 +198,12 @@ namespace Hl7.Fhir.Tests.Serialization
                 BirthDate = "1972-11-30"
             };
 
-            var pSum = FhirXmlSerializer.SerializeToString(p, summary: Fhir.Rest.SummaryType.True);
+            var pSum = FhirXmlSerializer.SerializeToString(p, summary: SummaryType.True);
             Assert.IsNull(p.Meta, "Meta should not be there");
 
             p.Meta = new Meta { VersionId = "v2" }; // introducing meta data ourselves. 
 
-            pSum = FhirXmlSerializer.SerializeToString(p, summary: Fhir.Rest.SummaryType.True);
+            pSum = FhirXmlSerializer.SerializeToString(p, summary: SummaryType.True);
             Assert.IsNotNull(p.Meta, "Meta should still be there");
             Assert.AreEqual(0, p.Meta.Tag.Where(t => t.System == "http://hl7.org/fhir/v3/ObservationValue" && t.Code == "SUBSETTED").Count(), "Subsetted Tag should not still be there.");
         }
@@ -230,13 +231,13 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(full.Contains("<photo"));
             Assert.IsTrue(full.Contains("<total"));
 
-            var summ = FhirXmlSerializer.SerializeToString(b, summary: Fhir.Rest.SummaryType.True);
+            var summ = FhirXmlSerializer.SerializeToString(b, summary: SummaryType.True);
             Assert.IsTrue(summ.Contains("<entry"));
             Assert.IsTrue(summ.Contains("<birthDate"));
             Assert.IsFalse(summ.Contains("<photo"));
             Assert.IsTrue(summ.Contains("<total"));
 
-            summ = FhirXmlSerializer.SerializeToString(b, summary: Fhir.Rest.SummaryType.Count);
+            summ = FhirXmlSerializer.SerializeToString(b, summary: SummaryType.Count);
             Assert.IsFalse(summ.Contains("<entry"));
             Assert.IsFalse(summ.Contains("<birthDate"));
             Assert.IsFalse(summ.Contains("<photo"));
@@ -293,7 +294,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(full.Contains("<photo"));
             Assert.IsTrue(full.Contains("text/plain"));
 
-            full = FhirXmlSerializer.SerializeToString(p, summary: Hl7.Fhir.Rest.SummaryType.False);
+            full = FhirXmlSerializer.SerializeToString(p, summary: SummaryType.False);
             Assert.IsTrue(full.Contains("narrative"));
             Assert.IsTrue(full.Contains("dud"));
             Assert.IsTrue(full.Contains("temp org"));
@@ -303,7 +304,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(full.Contains("<photo"));
             Assert.IsTrue(full.Contains("text/plain"));
 
-            var summ = FhirXmlSerializer.SerializeToString(p, summary: Fhir.Rest.SummaryType.True);
+            var summ = FhirXmlSerializer.SerializeToString(p, summary: SummaryType.True);
             Assert.IsFalse(summ.Contains("narrative"));
             Assert.IsFalse(summ.Contains("dud"));
             Assert.IsFalse(summ.Contains("contain"));
@@ -312,7 +313,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(summ.Contains("<birthDate"));
             Assert.IsFalse(summ.Contains("<photo"));
 
-            var data = FhirXmlSerializer.SerializeToString(p, summary: Hl7.Fhir.Rest.SummaryType.Data);
+            var data = FhirXmlSerializer.SerializeToString(p, summary: SummaryType.Data);
             Assert.IsFalse(data.Contains("narrative"));
             Assert.IsTrue(data.Contains("contain"));
             Assert.IsTrue(data.Contains("dud"));
@@ -494,7 +495,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
                 Id = "patient-one",
                 Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
-                Meta = new Meta { ElementId = "eric-clapton", VersionId = "1234" },
+                Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
 
                 Name = new List<HumanName> { new HumanName { Family = new[] { "Clapton" }, Use = HumanName.NameUse.Official } },
 
@@ -522,7 +523,7 @@ namespace Hl7.Fhir.Tests.Serialization
             var patientOne = new Patient
             {
                 Id = "patient-one",
-                Meta = new Meta { ElementId = "eric-clapton", VersionId = "1234" },
+                Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
                 Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
                 Active = true,
                 Name = new List<HumanName> { new HumanName { Use = HumanName.NameUse.Official, Family = new[] { "Clapton" } } },
@@ -576,7 +577,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             token = assertProperty(token.Next, "meta");
             Assert.IsTrue(token.HasValues);
-            var childToken = assertStringProperty(token.Values().First(), "id", patientOne.Meta.ElementId);
+            var childToken = assertStringProperty(token.Values().First(), "id", patientOne.Meta.Id);
             childToken = assertStringProperty(childToken.Next, "versionId", patientOne.Meta.VersionId);
 
             token = assertProperty(token.Next, "text");
@@ -616,11 +617,11 @@ namespace Hl7.Fhir.Tests.Serialization
             telecom.AddExtension("http://healthconnex.com.au/hcxd/Phone/IsMain", new FhirBoolean(true));
             patient.Telecom.Add(telecom);
 
-            var doc = FhirXmlSerializer.SerializeToString(patient, Fhir.Rest.SummaryType.True);
+            var doc = FhirXmlSerializer.SerializeToString(patient, SummaryType.True);
 
             Assert.IsFalse(doc.Contains("<extension"), "In the summary there must be no extension section.");
 
-            doc = FhirXmlSerializer.SerializeToString(patient, Fhir.Rest.SummaryType.False);
+            doc = FhirXmlSerializer.SerializeToString(patient, SummaryType.False);
             Assert.IsTrue(doc.Contains("<extension"), "Extension exists when Summary = false");
         }
 

@@ -1,5 +1,6 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Terminology;
 using Hl7.Fhir.Validation;
@@ -7,7 +8,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     public class TerminologyTests : IClassFixture<ValidationFixture>
     {

@@ -7,14 +7,15 @@
  */
 
 
+using System;
+using System.Linq;
+using System.Numerics;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Support.Model;
 using Hl7.Fhir.Utility;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Linq;
-using System.Numerics;
 
 namespace Hl7.Fhir.Serialization
 {

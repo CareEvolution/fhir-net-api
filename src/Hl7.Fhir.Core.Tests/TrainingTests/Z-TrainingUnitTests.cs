@@ -1,11 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Rest;
 using System.Diagnostics;
 using System.Xml;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Support.DSTU2;
 
 namespace FHIR.Server.Tests
 {

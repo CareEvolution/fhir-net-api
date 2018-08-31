@@ -29,14 +29,14 @@
 */
 using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.DSTU2;
 using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public partial class ConceptMap
     {

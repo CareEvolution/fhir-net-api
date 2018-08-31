@@ -10,18 +10,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using boolean = System.Boolean;
-using DecimalType = Hl7.Fhir.Model.FhirDecimal; // System.Decimal;
-using UriType = Hl7.Fhir.Model.FhirUri;
+using DecimalType = Hl7.Fhir.Model.DSTU2.FhirDecimal; // System.Decimal;
+using UriType = Hl7.Fhir.Model.DSTU2.FhirUri;
 using Hl7.Fhir.Serialization;
 using System.IO;
 using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
-using Model = Hl7.Fhir.Model;
+using Model = Hl7.Fhir.Model.DSTU2;
 using Hl7.FhirPath.Functions;
 using Xunit;
 using Xunit.Sdk;
 using Xunit.Abstractions;
 using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
 
 namespace Hl7.FhirPath.Tests
 {

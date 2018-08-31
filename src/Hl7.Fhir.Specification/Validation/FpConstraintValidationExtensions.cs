@@ -6,15 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
-using Hl7.FhirPath;
 using System;
 using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Support;
+using Hl7.Fhir.Support.DSTU2;
+using Hl7.Fhir.Utility;
+using Hl7.FhirPath;
 
 namespace Hl7.Fhir.Validation
 {
@@ -37,11 +37,11 @@ namespace Hl7.Fhir.Validation
             foreach (var constraintElement in definition.Constraint)
             {
                 bool success = false;
-               
+
                 try
                 {
                     var compiled = getExecutableConstraint(v, outcome, instance, constraintElement);
-                    success = compiled.Predicate(instance, new FhirEvaluationContext(context) { ElementResolver = callExternalResolver } );
+                    success = compiled.Predicate(instance, new FhirEvaluationContext(context) { ElementResolver = callExternalResolver });
                 }
                 catch (Exception e)
                 {

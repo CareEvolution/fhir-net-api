@@ -1,9 +1,9 @@
-﻿using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+﻿using System.Collections.Generic;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Validation;
-using Hl7.Fhir.Support;
+using Hl7.Fhir.Support.DSTU2;
 using Hl7.Fhir.Utility;
-using System.Collections.Generic;
 
 namespace Hl7.Fhir.Validation
 {
@@ -22,7 +22,7 @@ namespace Hl7.Fhir.Validation
         public IList<ITypedElement> Members { get; private set; } = new List<ITypedElement>();
 
         public abstract bool Add(ITypedElement instance);
-  
+
         public virtual OperationOutcome Validate(Validator validator, ITypedElement errorLocation)
         {
             var outcome = new OperationOutcome();

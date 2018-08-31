@@ -8,12 +8,14 @@
 
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.FhirPath;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.Support.DSTU2;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
     [TestClass]
     public class OutcomeReportingTest

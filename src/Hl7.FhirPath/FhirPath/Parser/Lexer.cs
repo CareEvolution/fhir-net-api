@@ -6,15 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Model.Primitives;
-using Sprache;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
+using Hl7.Fhir.Model.Primitives;
+using Sprache;
 
 namespace Hl7.FhirPath.Parser
 {
@@ -64,9 +63,9 @@ namespace Hl7.FhirPath.Parser
                                             (Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?  #Timezone
                                         )?
                                     )?
-                                )?", RegexOptions.IgnorePatternWhitespace);     
+                                )?", RegexOptions.IgnorePatternWhitespace);
 
-        public static readonly Parser<PartialDateTime> DateTime = 
+        public static readonly Parser<PartialDateTime> DateTime =
             Parse.Regex(DateTimeRegEx).Select(s => PartialDateTime.Parse(s.Substring(1)));
 
         // TIME
@@ -116,7 +115,7 @@ namespace Hl7.FhirPath.Parser
             from closeQ in Parse.Char('\'')
             select string.Concat(str);
 
-  
+
         // BOOL: 'true' | 'false';
         public static readonly Parser<bool> Bool =
             Parse.String("true").XOr(Parse.String("false")).Text().Select(s => Boolean.Parse(s));
@@ -136,7 +135,7 @@ namespace Hl7.FhirPath.Parser
     {
         public static Parser<string> Unescape(this Parser<IEnumerable<char>> c)
         {
-            return c.Select(chr => new String( Unescape(chr.Single()), 1));
+            return c.Select(chr => new String(Unescape(chr.Single()), 1));
         }
 
         public static char Unescape(char c)

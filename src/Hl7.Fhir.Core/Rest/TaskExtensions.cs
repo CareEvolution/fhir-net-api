@@ -1,9 +1,9 @@
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using System;
 using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.DSTU2
 {
     public static class TaskExtensions
     {

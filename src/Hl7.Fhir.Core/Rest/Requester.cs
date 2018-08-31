@@ -6,8 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using System;
@@ -15,7 +16,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.DSTU2
 {
     internal class Requester
     {
@@ -46,8 +47,8 @@ namespace Hl7.Fhir.Rest
             UseFormatParameter = false;
             PreferredFormat = ResourceFormat.Xml;
             Timeout = 100 * 1000;       // Default timeout is 100 seconds            
-            Prefer = Rest.Prefer.ReturnRepresentation;
-            ParserSettings = Hl7.Fhir.Serialization.ParserSettings.Default;
+            Prefer = Prefer.ReturnRepresentation;
+            ParserSettings = ParserSettings.Default;
         }
 
 

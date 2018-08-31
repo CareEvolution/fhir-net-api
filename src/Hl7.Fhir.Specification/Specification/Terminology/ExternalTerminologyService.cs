@@ -8,11 +8,14 @@
 
 using System;
 using System.Linq;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Support.DSTU2;
 
 namespace Hl7.Fhir.Specification.Terminology
 {

@@ -216,7 +216,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public OrderStatus? OrderStatus
+        public OrderStatus? OrderStatus_
         {
             get { return OrderStatusElement != null ? OrderStatusElement.Value : null; }
             set
@@ -225,7 +225,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     OrderStatusElement = null;
                 else
                     OrderStatusElement = new Code<OrderStatus>(value);
-                OnPropertyChanged("OrderStatus");
+                OnPropertyChanged("OrderStatus_");
             }
         }
 

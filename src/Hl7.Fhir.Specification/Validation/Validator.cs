@@ -10,14 +10,18 @@
 #define REUSE_SNAPSHOT_GENERATOR
 
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
 using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Terminology;
 using Hl7.Fhir.Support;
+using Hl7.Fhir.Support.DSTU2;
 using Hl7.FhirPath;
 using Hl7.FhirPath.Expressions;
 using System;
@@ -556,12 +560,12 @@ namespace Hl7.Fhir.Validation
             return t == typeof(FhirDateTime) ||
                    t == typeof(Date) ||
                    t == typeof(Instant) ||
-                   t == typeof(Model.Time) ||
+                   t == typeof(Time) ||
                    t == typeof(FhirDecimal) ||
                    t == typeof(Integer) ||
                    t == typeof(PositiveInt) ||
                    t == typeof(UnsignedInt) ||
-                   t == typeof(Model.Quantity) ||
+                   t == typeof(Quantity) ||
                    t == typeof(FhirString);
         }
 

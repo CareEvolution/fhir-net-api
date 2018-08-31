@@ -9,18 +9,18 @@
 using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Support;
 using System.Diagnostics;
 using System.IO;
-using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.DSTU2;
 using Hl7.Fhir.Serialization;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Specification.Tests
+namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
 #if NET_XSD_SCHEMA
     [TestClass]

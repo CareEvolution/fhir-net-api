@@ -6,15 +6,15 @@
  * available at https://github.com/ewoutkramer/fhir-net-api/blob/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Specification
+namespace Hl7.Fhir.Specification.DSTU2
 {
     public class PocoStructureDefinitionSummaryProvider : IStructureDefinitionSummaryProvider
     {
@@ -48,7 +48,7 @@ namespace Hl7.Fhir.Specification
 
         internal static ClassMapping GetMappingForType(Type elementType)
         {
-            var inspector = Serialization.BaseFhirParser.Inspector;
+            var inspector = BaseFhirParser.Inspector;
             return inspector.ImportType(elementType);
         }
     }

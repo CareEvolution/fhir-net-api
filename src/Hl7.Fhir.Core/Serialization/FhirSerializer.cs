@@ -6,13 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
 using System;
-using Newtonsoft.Json;
 using System.Xml;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
+using Newtonsoft.Json;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.DSTU2
 {
 
     [Obsolete("Obsolete. Instead, create a new FhirXmlSerializer or FhirJsonSerializer instance and call one of the serialization methods.")]
@@ -34,26 +34,26 @@ namespace Hl7.Fhir.Serialization
         public static byte[] SerializeToXmlBytes(Base instance, SummaryType summary = SummaryType.False, string root = null) => _xmlSerializer.SerializeToBytes(instance, summary, root);
 
         [Obsolete("Create a new FhirXmlSerializer and call Serialize()")]
-        public static void SerializeResource(Resource resource, XmlWriter writer, SummaryType summary = SummaryType.False) => 
+        public static void SerializeResource(Resource resource, XmlWriter writer, SummaryType summary = SummaryType.False) =>
             _xmlSerializer.Serialize(resource, writer, summary);
 
         [Obsolete("Create a new FhirJsonSerializer and call SerializeToString()")]
         public static string SerializeResourceToJson(Resource resource, SummaryType summary = SummaryType.False) => _jsonSerializer.SerializeToString(resource, summary);
 
         [Obsolete("Create a new FhirJsonSerializer and call SerializeToString()")]
-        public static string SerializeToJson(Base instance, SummaryType summary = SummaryType.False) => 
+        public static string SerializeToJson(Base instance, SummaryType summary = SummaryType.False) =>
             _jsonSerializer.SerializeToString(instance, summary);
 
         [Obsolete("Create a new FhirJsonSerializer and call SerializeToBytes()")]
-        public static byte[] SerializeResourceToJsonBytes(Resource resource, SummaryType summary = SummaryType.False) => 
+        public static byte[] SerializeResourceToJsonBytes(Resource resource, SummaryType summary = SummaryType.False) =>
             _jsonSerializer.SerializeToBytes(resource, summary);
 
         [Obsolete("Create a new FhirJsonSerializer and call SerializeToBytes()")]
-        public static byte[] SerializeToJsonBytes(Base instance, SummaryType summary = SummaryType.False) => 
+        public static byte[] SerializeToJsonBytes(Base instance, SummaryType summary = SummaryType.False) =>
             _jsonSerializer.SerializeToBytes(instance, summary);
 
         [Obsolete("Create a new FhirJsonSerializer and call Serialize()")]
         public static void SerializeResource(Resource resource, JsonWriter writer, SummaryType summary = SummaryType.False) =>
             _jsonSerializer.Serialize(resource, writer, summary);
-    }  
+    }
 }

@@ -9,10 +9,9 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Support.DSTU2;
 
 namespace Hl7.Fhir.Validation
 {

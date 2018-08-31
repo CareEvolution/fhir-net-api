@@ -1522,39 +1522,96 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("definition", InSummary=true, Order=100)]
         [DataMember]
-        public Markdown Definition
+        public Markdown DefinitionElement
         {
-            get { return _definition; }
-            set { _definition = value; OnPropertyChanged("Definition"); }
+            get { return _definitionElement; }
+            set { _definitionElement = value; OnPropertyChanged("DefinitionElement"); }
         }
 
-        private Markdown _definition;
+        private Markdown _definitionElement;
+
+        /// <summary>
+        /// Full formal definition as narrative text
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Definition
+        {
+            get { return DefinitionElement != null ? DefinitionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DefinitionElement = null;
+                else
+                    DefinitionElement = new Markdown(value);
+                OnPropertyChanged("Definition");
+            }
+        }
 
         /// <summary>
         /// Comments about the use of this element
         /// </summary>
         [FhirElement("comments", InSummary=true, Order=110)]
         [DataMember]
-        public Markdown Comments
+        public Markdown CommentsElement
         {
-            get { return _comments; }
-            set { _comments = value; OnPropertyChanged("Comments"); }
+            get { return _commentsElement; }
+            set { _commentsElement = value; OnPropertyChanged("CommentsElement"); }
         }
 
-        private Markdown _comments;
+        private Markdown _commentsElement;
+
+        /// <summary>
+        /// Comments about the use of this element
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Comments
+        {
+            get { return CommentsElement != null ? CommentsElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CommentsElement = null;
+                else
+                    CommentsElement = new Markdown(value);
+                OnPropertyChanged("Comments");
+            }
+        }
 
         /// <summary>
         /// Why is this needed?
         /// </summary>
         [FhirElement("requirements", InSummary=true, Order=120)]
         [DataMember]
-        public Markdown Requirements
+        public Markdown RequirementsElement
         {
-            get { return _requirements; }
-            set { _requirements = value; OnPropertyChanged("Requirements"); }
+            get { return _requirementsElement; }
+            set { _requirementsElement = value; OnPropertyChanged("RequirementsElement"); }
         }
 
-        private Markdown _requirements;
+        private Markdown _requirementsElement;
+
+        /// <summary>
+        /// Why is this needed?
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Requirements
+        {
+            get { return RequirementsElement != null ? RequirementsElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    RequirementsElement = null;
+                else
+                    RequirementsElement = new Markdown(value);
+                OnPropertyChanged("Requirements");
+            }
+        }
 
         /// <summary>
         /// Other names
@@ -1731,13 +1788,32 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("meaningWhenMissing", InSummary=true, Order=200)]
         [DataMember]
-        public Markdown MeaningWhenMissing
+        public Markdown MeaningWhenMissingElement
         {
-            get { return _meaningWhenMissing; }
-            set { _meaningWhenMissing = value; OnPropertyChanged("MeaningWhenMissing"); }
+            get { return _meaningWhenMissingElement; }
+            set { _meaningWhenMissingElement = value; OnPropertyChanged("MeaningWhenMissingElement"); }
         }
 
-        private Markdown _meaningWhenMissing;
+        private Markdown _meaningWhenMissingElement;
+
+        /// <summary>
+        /// Implicit meaning when this element is missing
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string MeaningWhenMissing
+        {
+            get { return MeaningWhenMissingElement != null ? MeaningWhenMissingElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    MeaningWhenMissingElement = null;
+                else
+                    MeaningWhenMissingElement = new Markdown(value);
+                OnPropertyChanged("MeaningWhenMissing");
+            }
+        }
 
         /// <summary>
         /// Value must be exactly this
@@ -2154,9 +2230,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (Code != null) dest.Code = new List<Coding>(Code.DeepCopy());
                 if (Slicing != null) dest.Slicing = (SlicingComponent)Slicing.DeepCopy();
                 if (ShortElement != null) dest.ShortElement = (FhirString)ShortElement.DeepCopy();
-                if (Definition != null) dest.Definition = (Markdown)Definition.DeepCopy();
-                if (Comments != null) dest.Comments = (Markdown)Comments.DeepCopy();
-                if (Requirements != null) dest.Requirements = (Markdown)Requirements.DeepCopy();
+                if (DefinitionElement != null) dest.DefinitionElement = (Markdown)DefinitionElement.DeepCopy();
+                if (CommentsElement != null) dest.CommentsElement = (Markdown)CommentsElement.DeepCopy();
+                if (RequirementsElement != null) dest.RequirementsElement = (Markdown)RequirementsElement.DeepCopy();
                 if (AliasElement != null) dest.AliasElement = new List<FhirString>(AliasElement.DeepCopy());
                 if (MinElement != null) dest.MinElement = (Integer)MinElement.DeepCopy();
                 if (MaxElement != null) dest.MaxElement = (FhirString)MaxElement.DeepCopy();
@@ -2164,7 +2240,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (Type != null) dest.Type = new List<TypeRefComponent>(Type.DeepCopy());
                 if (NameReferenceElement != null) dest.NameReferenceElement = (FhirString)NameReferenceElement.DeepCopy();
                 if (DefaultValue != null) dest.DefaultValue = (Element)DefaultValue.DeepCopy();
-                if (MeaningWhenMissing != null) dest.MeaningWhenMissing = (Markdown)MeaningWhenMissing.DeepCopy();
+                if (MeaningWhenMissingElement != null) dest.MeaningWhenMissingElement = (Markdown)MeaningWhenMissingElement.DeepCopy();
                 if (Fixed != null) dest.Fixed = (Element)Fixed.DeepCopy();
                 if (Pattern != null) dest.Pattern = (Element)Pattern.DeepCopy();
                 if (Example != null) dest.Example = (Element)Example.DeepCopy();
@@ -2202,9 +2278,9 @@ namespace Hl7.Fhir.Model.DSTU2
             if ( !DeepComparable.Matches(Code, otherT.Code)) return false;
             if (!DeepComparable.Matches(Slicing, otherT.Slicing)) return false;
             if (!DeepComparable.Matches(ShortElement, otherT.ShortElement)) return false;
-            if (!DeepComparable.Matches(Definition, otherT.Definition)) return false;
-            if (!DeepComparable.Matches(Comments, otherT.Comments)) return false;
-            if (!DeepComparable.Matches(Requirements, otherT.Requirements)) return false;
+            if (!DeepComparable.Matches(DefinitionElement, otherT.DefinitionElement)) return false;
+            if (!DeepComparable.Matches(CommentsElement, otherT.CommentsElement)) return false;
+            if (!DeepComparable.Matches(RequirementsElement, otherT.RequirementsElement)) return false;
             if ( !DeepComparable.Matches(AliasElement, otherT.AliasElement)) return false;
             if (!DeepComparable.Matches(MinElement, otherT.MinElement)) return false;
             if (!DeepComparable.Matches(MaxElement, otherT.MaxElement)) return false;
@@ -2212,7 +2288,7 @@ namespace Hl7.Fhir.Model.DSTU2
             if ( !DeepComparable.Matches(Type, otherT.Type)) return false;
             if (!DeepComparable.Matches(NameReferenceElement, otherT.NameReferenceElement)) return false;
             if (!DeepComparable.Matches(DefaultValue, otherT.DefaultValue)) return false;
-            if (!DeepComparable.Matches(MeaningWhenMissing, otherT.MeaningWhenMissing)) return false;
+            if (!DeepComparable.Matches(MeaningWhenMissingElement, otherT.MeaningWhenMissingElement)) return false;
             if (!DeepComparable.Matches(Fixed, otherT.Fixed)) return false;
             if (!DeepComparable.Matches(Pattern, otherT.Pattern)) return false;
             if (!DeepComparable.Matches(Example, otherT.Example)) return false;
@@ -2243,9 +2319,9 @@ namespace Hl7.Fhir.Model.DSTU2
             if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
             if (!DeepComparable.IsExactly(Slicing, otherT.Slicing)) return false;
             if (!DeepComparable.IsExactly(ShortElement, otherT.ShortElement)) return false;
-            if (!DeepComparable.IsExactly(Definition, otherT.Definition)) return false;
-            if (!DeepComparable.IsExactly(Comments, otherT.Comments)) return false;
-            if (!DeepComparable.IsExactly(Requirements, otherT.Requirements)) return false;
+            if (!DeepComparable.IsExactly(DefinitionElement, otherT.DefinitionElement)) return false;
+            if (!DeepComparable.IsExactly(CommentsElement, otherT.CommentsElement)) return false;
+            if (!DeepComparable.IsExactly(RequirementsElement, otherT.RequirementsElement)) return false;
             if (!DeepComparable.IsExactly(AliasElement, otherT.AliasElement)) return false;
             if (!DeepComparable.IsExactly(MinElement, otherT.MinElement)) return false;
             if (!DeepComparable.IsExactly(MaxElement, otherT.MaxElement)) return false;
@@ -2253,7 +2329,7 @@ namespace Hl7.Fhir.Model.DSTU2
             if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
             if (!DeepComparable.IsExactly(NameReferenceElement, otherT.NameReferenceElement)) return false;
             if (!DeepComparable.IsExactly(DefaultValue, otherT.DefaultValue)) return false;
-            if (!DeepComparable.IsExactly(MeaningWhenMissing, otherT.MeaningWhenMissing)) return false;
+            if (!DeepComparable.IsExactly(MeaningWhenMissingElement, otherT.MeaningWhenMissingElement)) return false;
             if (!DeepComparable.IsExactly(Fixed, otherT.Fixed)) return false;
             if (!DeepComparable.IsExactly(Pattern, otherT.Pattern)) return false;
             if (!DeepComparable.IsExactly(Example, otherT.Example)) return false;
@@ -2284,9 +2360,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 foreach (var elem in Code) { if (elem != null) yield return elem; }
                 if (Slicing != null) yield return Slicing;
                 if (ShortElement != null) yield return ShortElement;
-                if (Definition != null) yield return Definition;
-                if (Comments != null) yield return Comments;
-                if (Requirements != null) yield return Requirements;
+                if (DefinitionElement != null) yield return DefinitionElement;
+                if (CommentsElement != null) yield return CommentsElement;
+                if (RequirementsElement != null) yield return RequirementsElement;
                 foreach (var elem in AliasElement) { if (elem != null) yield return elem; }
                 if (MinElement != null) yield return MinElement;
                 if (MaxElement != null) yield return MaxElement;
@@ -2294,7 +2370,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 foreach (var elem in Type) { if (elem != null) yield return elem; }
                 if (NameReferenceElement != null) yield return NameReferenceElement;
                 if (DefaultValue != null) yield return DefaultValue;
-                if (MeaningWhenMissing != null) yield return MeaningWhenMissing;
+                if (MeaningWhenMissingElement != null) yield return MeaningWhenMissingElement;
                 if (Fixed != null) yield return Fixed;
                 if (Pattern != null) yield return Pattern;
                 if (Example != null) yield return Example;
@@ -2324,9 +2400,9 @@ namespace Hl7.Fhir.Model.DSTU2
                 foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
                 if (Slicing != null) yield return new ElementValue("slicing", Slicing);
                 if (ShortElement != null) yield return new ElementValue("short", ShortElement);
-                if (Definition != null) yield return new ElementValue("definition", Definition);
-                if (Comments != null) yield return new ElementValue("comments", Comments);
-                if (Requirements != null) yield return new ElementValue("requirements", Requirements);
+                if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
+                if (CommentsElement != null) yield return new ElementValue("comments", CommentsElement);
+                if (RequirementsElement != null) yield return new ElementValue("requirements", RequirementsElement);
                 foreach (var elem in AliasElement) { if (elem != null) yield return new ElementValue("alias", elem); }
                 if (MinElement != null) yield return new ElementValue("min", MinElement);
                 if (MaxElement != null) yield return new ElementValue("max", MaxElement);
@@ -2334,7 +2410,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
                 if (NameReferenceElement != null) yield return new ElementValue("nameReference", NameReferenceElement);
                 if (DefaultValue != null) yield return new ElementValue("defaultValue", DefaultValue);
-                if (MeaningWhenMissing != null) yield return new ElementValue("meaningWhenMissing", MeaningWhenMissing);
+                if (MeaningWhenMissingElement != null) yield return new ElementValue("meaningWhenMissing", MeaningWhenMissingElement);
                 if (Fixed != null) yield return new ElementValue("fixed", Fixed);
                 if (Pattern != null) yield return new ElementValue("pattern", Pattern);
                 if (Example != null) yield return new ElementValue("example", Example);

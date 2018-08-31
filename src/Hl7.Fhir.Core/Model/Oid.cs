@@ -36,7 +36,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public partial class Oid : IStringValue
     {
@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Model
 
         public FhirUri AsUri()
         {
-            return new Model.FhirUri(Value);
+            return new FhirUri(Value);
         }
     }
 }

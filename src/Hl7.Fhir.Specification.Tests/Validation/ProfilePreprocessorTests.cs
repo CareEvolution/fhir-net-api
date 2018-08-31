@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Validation;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Xunit;
 
-namespace Hl7.Fhir.Specification.Tests.Validation
+namespace Hl7.Fhir.Specification.DSTU2.Tests.Validation
 {
     [Trait("Category", "Validation")]
     public class ProfilePreprocessorTests

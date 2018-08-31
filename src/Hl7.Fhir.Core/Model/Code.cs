@@ -32,13 +32,15 @@
 using System;
 using System.Text.RegularExpressions;
 
-using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection.DSTU2;
 using System.Runtime.Serialization;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
+using System.ComponentModel.DataAnnotations.Schema;
+using Hl7.Fhir.Specification.DSTU2;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
 #if NET45
     [Serializable]

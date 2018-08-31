@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
@@ -8,7 +8,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 
-namespace Hl7.Fhir.Support.Tests.Serialization
+namespace Hl7.Fhir.Support.DSTU2.Tests.Serialization
 {
     [TestClass]
     public class StreamXmlResources

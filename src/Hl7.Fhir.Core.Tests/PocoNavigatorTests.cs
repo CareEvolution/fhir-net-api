@@ -1,19 +1,18 @@
-﻿using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
-using Hl7.Fhir.Tests;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using Hl7.FhirPath.Expressions;
-using Hl7.Fhir.ElementModel;
-using Hl7.FhirPath;
-using Hl7.Fhir.Introspection;
 using System.IO;
-using Hl7.Fhir.Specification;
+using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Specification.DSTU2;
+using Hl7.Fhir.Tests;
+using Hl7.FhirPath;
+using Hl7.FhirPath.Expressions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir
 {
@@ -42,7 +41,7 @@ namespace Hl7.Fhir
 
             Patient p = new Patient();
             p.Active = true;
-            p.ActiveElement.ElementId = "314";
+            p.ActiveElement.Id = "314";
             p.ActiveElement.AddExtension("http://something.org", new FhirBoolean(false));
             p.ActiveElement.AddExtension("http://something.org", new Integer(314));
             p.Telecom = new List<ContactPoint>();
@@ -100,7 +99,7 @@ namespace Hl7.Fhir
 
             // Now check navigation bits
             var v4 = new PocoNavigator(p);
-            Assert.AreEqual("Patient.telecom.where(system='phone').system", 
+            Assert.AreEqual("Patient.telecom.where(system='phone').system",
                 (v4.Select("Patient.telecom.where(system='phone').system").First() as PocoNavigator).CommonPath);
             v4 = new PocoNavigator(p);
             Assert.AreEqual("Patient.telecom[0].system",
@@ -109,10 +108,10 @@ namespace Hl7.Fhir
             Assert.AreEqual("Patient.telecom[0].system[0]",
                 (v4.Select("Patient.telecom.where(system='phone').system").First() as PocoNavigator).Location);
             v4 = new PocoNavigator(p);
-            Assert.AreEqual("Patient.telecom.where(system='phone').system", 
+            Assert.AreEqual("Patient.telecom.where(system='phone').system",
                 (v4.Select("Patient.telecom[0].system").First() as PocoNavigator).CommonPath);
             v4 = new PocoNavigator(p);
-            Assert.AreEqual("Patient.telecom[0].system", 
+            Assert.AreEqual("Patient.telecom[0].system",
                 (v4.Select("Patient.telecom[0].system").First() as PocoNavigator).ShortPath);
         }
 #pragma warning restore 612,618
@@ -123,7 +122,7 @@ namespace Hl7.Fhir
             Patient p = new Patient();
 
             p.Active = true;
-            p.ActiveElement.ElementId = "314";
+            p.ActiveElement.Id = "314";
             p.ActiveElement.AddExtension("http://something.org", new FhirBoolean(false));
             p.ActiveElement.AddExtension("http://something.org", new Integer(314));
 
@@ -139,7 +138,7 @@ namespace Hl7.Fhir
         public void PocoHasValueTest()
         {
             // Ensure the FHIR extensions are registered
-            FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
+            ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
 
             Patient p = new Patient();
 
@@ -198,7 +197,7 @@ namespace Hl7.Fhir
             Assert.IsTrue(nav.MoveToNext("format"));
             nav.MoveToNext(); // format[1] again
             nav.MoveToNext();   // rest[0]
-            
+
             Assert.IsTrue(nav.Location.Contains("Conformance.rest[0]"));
         }
 

@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Hl7.Fhir.Support
+namespace Hl7.Fhir.Support.DSTU2
 {
     public static class DateExtensions
     {

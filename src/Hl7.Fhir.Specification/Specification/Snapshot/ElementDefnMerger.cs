@@ -9,12 +9,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Support;
 using System.Diagnostics;
 using System.Reflection;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Support.DSTU2;
 
 namespace Hl7.Fhir.Specification.Snapshot
 {
@@ -64,7 +65,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                 // [WMR 20170421] Element.Id is NOT inherited!
                 // Merge custom Element id value from differential in same profile into snapshot
                 // [WMR 20170424] NEW
-                snap.ElementId = mergeId(snap, diff, mergeElementId);
+                snap.Id = mergeId(snap, diff, mergeElementId);
 
                 // representation cannot be overridden
                 snap.NameElement = mergePrimitiveAttribute(snap.NameElement, diff.NameElement);
@@ -291,9 +292,9 @@ namespace Hl7.Fhir.Specification.Snapshot
                 if (mergeElementId)
                 {
                     // Merge custom elementId from differential, if specified
-                    if (diff.ElementId != null)
+                    if (diff.Id != null)
                     {
-                        return diff.ElementId;
+                        return diff.Id;
                     }
                     // Newly introduced named slices NEVER inherit element id
                     // Must always regenerate new unique identifier for named slices
@@ -303,7 +304,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                         return null;
                     }
                     // Otherwise inherit existing element id from snap
-                    return snap.ElementId;
+                    return snap.Id;
                 }
                 else
                 {

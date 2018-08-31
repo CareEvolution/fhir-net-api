@@ -10,18 +10,20 @@
 // extern alias dstu2;
 
 using System;
-using System.Linq;
-using Hl7.FhirPath.Expressions;
 using System.Diagnostics;
-using Hl7.Fhir.Model;
-using System.Xml.Linq;
-using Xunit;
 using System.IO;
-using Xunit.Abstractions;
+using System.Linq;
+using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Model.Primitives;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.FhirPath;
+using Hl7.FhirPath.Expressions;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Hl7.FhirPath.Tests
 {
@@ -33,10 +35,10 @@ namespace Hl7.FhirPath.Tests
         public int Counter = 0;
         public XDocument Xdoc;
 
-    
+
         public PatientFixture()
         {
-            var parser = new Hl7.Fhir.Serialization.FhirXmlParser();
+            var parser = new FhirXmlParser();
             var tpXml = TestData.ReadTextFile("fp-test-patient.xml");
 
             var patient = parser.Parse<Patient>(tpXml);
@@ -139,8 +141,8 @@ namespace Hl7.FhirPath.Tests
         [Fact]
         public void TestDynaBinding()
         {
-            var input = (SourceNode.Node("root", 
-                    SourceNode.Valued("child", "Hello world!"), 
+            var input = (SourceNode.Node("root",
+                    SourceNode.Valued("child", "Hello world!"),
                     SourceNode.Valued("child", "4"))).ToElementNavigator();
 
             Assert.Equal("ello", input.Scalar(@"$this.child[0].substring(1,%context.child[1].toInteger())"));
@@ -191,7 +193,7 @@ namespace Hl7.FhirPath.Tests
 
 
 
-        
+
 
         [Fact]
         public void TestMath()
@@ -271,7 +273,7 @@ namespace Hl7.FhirPath.Tests
         public void TestLogicalShortcut()
         {
             fixture.IsTrue(@"true or (1/0 = 0)");
-            fixture.IsTrue(@"(false and (1/0 = 0)) = false");            
+            fixture.IsTrue(@"(false and (1/0 = 0)) = false");
         }
 
 
@@ -296,7 +298,7 @@ namespace Hl7.FhirPath.Tests
 
             fixture.IsTrue(@"Patient.name.iif({}, 'named', 'unnamed') = 'unnamed'");
 
-         //   fixture.IsTrue(@"Patient.name[0].family.iif(length()-8 != 0, 5/(length()-8), 'no result') = 'no result'");
+            //   fixture.IsTrue(@"Patient.name[0].family.iif(length()-8 != 0, 5/(length()-8), 'no result') = 'no result'");
         }
 
         [Fact]

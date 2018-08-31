@@ -9,13 +9,13 @@
 // To introduce the DSTU2 FHIR specification
 //extern alias dstu2;
 
-using Xunit;
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Utility;
-using System.Linq;
-using Hl7.Fhir.Serialization;
 using System.IO;
-using Hl7.Fhir.Specification;
+using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification.DSTU2;
+using Hl7.Fhir.Utility;
+using Xunit;
 
 namespace Hl7.FhirPath.Tests
 {
@@ -23,7 +23,7 @@ namespace Hl7.FhirPath.Tests
     {
         SourceNode patient;
 
-        public ITypedElement getXmlNode(string xml) => 
+        public ITypedElement getXmlNode(string xml) =>
             FhirXmlNode.Parse(xml).ToTypedElement(new PocoStructureDefinitionSummaryProvider());
 
         public ElementNodeTests()
@@ -31,7 +31,7 @@ namespace Hl7.FhirPath.Tests
             var annotatedNode = SourceNode.Valued("id", "myId1");
             (annotatedNode as IAnnotatable).AddAnnotation("a string annotation");
 
-            patient = SourceNode.Node("Patient", 
+            patient = SourceNode.Node("Patient",
                 SourceNode.Resource("contained", "Observation", SourceNode.Valued("valueBoolean", "true")),
                 SourceNode.Valued("active", "true",
                    annotatedNode,
@@ -107,7 +107,7 @@ namespace Hl7.FhirPath.Tests
             Assert.True(nav.MoveToFirstChild());
             Assert.True(nav.MoveToNext());
             Assert.Equal("active", nav.Name);
-           // Assert.Equal("boolean", nav.Type);
+            // Assert.Equal("boolean", nav.Type);
             Assert.False(nav.MoveToNext());
 
             Assert.Equal("true", nav.Value);
