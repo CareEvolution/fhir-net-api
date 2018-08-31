@@ -45,30 +45,34 @@ using Hl7.Fhir.Specification;
 //
 namespace Hl7.Fhir.Model.DSTU2
 {
-    [FhirType("Quantity")]
+    /// <summary>
+    /// Primitive Type xhtml
+    /// </summary>
+    [FhirType("xhtml")]
     [DataContract]
-    public partial class SimpleQuantity : Quantity
+    public partial class XHtml : Primitive<string>
     {
         [NotMapped]
-        public override string TypeName { get { return "SimpleQuantity"; } }
+        public override string TypeName { get { return "xhtml"; } }
 
-
-
-        public static ElementDefinition.ConstraintComponent SimpleQuantity_SQTY_1 = new ElementDefinition.ConstraintComponent
+        public XHtml(string value)
         {
-            Expression = "comparator.empty()",
-            Key = "sqty-1",
-            Severity = ElementDefinition.ConstraintSeverity.Warning,
-            Human = "The comparator is not used on a SimpleQuantity",
-            Xpath = "not(exists(f:comparator))"
-        };
-
-        // TODO: Add code to enforce the above constraints
-
-        public override IDeepCopyable DeepCopy()
-        {
-             return CopyTo(new SimpleQuantity());
+            Value = value;
         }
+
+        public XHtml(): this((string)null) {}
+
+        /// <summary>
+        /// Primitive value of the element
+        /// </summary>
+        [FhirElement("value", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]
+        [DataMember]
+        public string Value
+        {
+            get { return (string)ObjectValue; }
+            set { ObjectValue = value; OnPropertyChanged("Value"); }
+        }
+
 
     }
 

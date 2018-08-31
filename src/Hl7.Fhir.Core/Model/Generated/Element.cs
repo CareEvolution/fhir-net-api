@@ -46,103 +46,106 @@ using Hl7.Fhir.Specification;
 namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
-    /// Concept - reference to a terminology or just  text
+    /// Base for all elements
     /// </summary>
-    [FhirType("CodeableConcept")]
     [DataContract]
-    public partial class CodeableConcept : Element
+    public abstract partial class Element
     {
         [NotMapped]
-        public override string TypeName { get { return "CodeableConcept"; } }
+        public override string TypeName { get { return "Element"; } }
 
 
         /// <summary>
-        /// Code defined by a terminology system
+        /// xml:id (or equivalent in JSON)
         /// </summary>
-        [FhirElement("coding", InSummary=true, Order=30)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("id",  XmlSerialization=XmlRepresentation.XmlAttr,TypeRedirect = typeof(Id), InSummary=true, Order=10)]
         [DataMember]
-        public List<Coding> Coding
+        public FhirString IdElement
         {
-            get { if (_coding==null) _coding = new List<Coding>(); return _coding; }
-            set { _coding = value; OnPropertyChanged("Coding"); }
+            get { return _idElement; }
+            set { _idElement = value; OnPropertyChanged("IdElement"); }
         }
 
-        private List<Coding> _coding;
+        private FhirString _idElement;
 
         /// <summary>
-        /// Plain text representation of the concept
-        /// </summary>
-        [FhirElement("text", InSummary=true, Order=40)]
-        [DataMember]
-        public FhirString TextElement
-        {
-            get { return _textElement; }
-            set { _textElement = value; OnPropertyChanged("TextElement"); }
-        }
-
-        private FhirString _textElement;
-
-        /// <summary>
-        /// Plain text representation of the concept
+        /// xml:id (or equivalent in JSON)
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public string Text
+        public string Id
         {
-            get { return TextElement != null ? TextElement.Value : null; }
+            get { return IdElement != null ? IdElement.Value : null; }
             set
             {
                 if (value == null)
-                    TextElement = null;
+                    IdElement = null;
                 else
-                    TextElement = new FhirString(value);
-                OnPropertyChanged("Text");
+                    IdElement = new FhirString(value);
+                OnPropertyChanged("Id");
             }
         }
 
+        /// <summary>
+        /// Additional Content defined by implementations
+        /// </summary>
+        [FhirElement("extension", Order=20)]
+        [Cardinality(Min=0,Max=-1)]
+        [DataMember]
+        public List<Extension> Extension
+        {
+            get { if (_extension==null) _extension = new List<Extension>(); return _extension; }
+            set { _extension = value; OnPropertyChanged("Extension"); }
+        }
+
+        private List<Extension> _extension;
+
+
+        public static ElementDefinition.ConstraintComponent Element_ELE_1 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "children()",
+            Key = "ele-1",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "All FHIR elements must have a @value or children",
+            Xpath = "@value|f:*|h:div"
+        };
+
+        // TODO: Add code to enforce the above constraints
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
-            var dest = other as CodeableConcept;
+            var dest = other as Element;
 
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if (Coding != null) dest.Coding = new List<Coding>(Coding.DeepCopy());
-                if (TextElement != null) dest.TextElement = (FhirString)TextElement.DeepCopy();
+                if (IdElement != null) dest.IdElement = (FhirString)IdElement.DeepCopy();
+                if (Extension != null) dest.Extension = new List<Extension>(Extension.DeepCopy());
                 return dest;
             }
             else
                 throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
 
-        public override IDeepCopyable DeepCopy()
-        {
-             return CopyTo(new CodeableConcept());
-        }
-
         public override bool Matches(IDeepComparable other)
         {
-            var otherT = other as CodeableConcept;
+            var otherT = other as Element;
             if (otherT == null) return false;
 
-            if (!base.Matches(otherT)) return false;
-            if ( !DeepComparable.Matches(Coding, otherT.Coding)) return false;
-            if (!DeepComparable.Matches(TextElement, otherT.TextElement)) return false;
+            if (!DeepComparable.Matches(IdElement, otherT.IdElement)) return false;
+            if ( !DeepComparable.Matches(Extension, otherT.Extension)) return false;
 
             return true;
         }
 
         public override bool IsExactly(IDeepComparable other)
         {
-            var otherT = other as CodeableConcept;
+            var otherT = other as Element;
             if (otherT == null) return false;
 
-            if (!base.IsExactly(otherT)) return false;
-            if (!DeepComparable.IsExactly(Coding, otherT.Coding)) return false;
-            if (!DeepComparable.IsExactly(TextElement, otherT.TextElement)) return false;
+            if (!DeepComparable.IsExactly(IdElement, otherT.IdElement)) return false;
+            if (!DeepComparable.IsExactly(Extension, otherT.Extension)) return false;
 
             return true;
         }
@@ -153,8 +156,7 @@ namespace Hl7.Fhir.Model.DSTU2
             get
             {
                 foreach (var item in base.Children) yield return item;
-                foreach (var elem in Coding) { if (elem != null) yield return elem; }
-                if (TextElement != null) yield return TextElement;
+                foreach (var elem in Extension) { if (elem != null) yield return elem; }
             }
         }
 
@@ -164,8 +166,8 @@ namespace Hl7.Fhir.Model.DSTU2
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                foreach (var elem in Coding) { if (elem != null) yield return new ElementValue("coding", elem); }
-                if (TextElement != null) yield return new ElementValue("text", TextElement);
+                if (IdElement != null) yield return new ElementValue("id", IdElement);
+                foreach (var elem in Extension) { if (elem != null) yield return new ElementValue("extension", elem); }
             }
         }
 
