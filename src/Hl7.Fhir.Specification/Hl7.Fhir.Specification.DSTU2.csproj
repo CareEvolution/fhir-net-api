@@ -33,6 +33,10 @@
     <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Hl7.Fhir.Core\Hl7.Fhir.Core.csproj" />
     <ProjectReference Include="..\Hl7.Fhir.Serialization\Hl7.Fhir.Serialization.csproj" />
@@ -53,10 +57,6 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-  </ItemGroup>
- 
   <Target Name="CreateSpecZip" Inputs="@(FhirConformance)" Outputs="specification.zip" BeforeTargets="Compile">
     <Message Text="(Re)creating specification.zip" />
     <CleanSpecFiles DirectoryName="data" />

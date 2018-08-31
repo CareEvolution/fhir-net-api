@@ -1,13 +1,10 @@
 ﻿using System;
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
 using System.Linq;
-using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Utility;
 using Hl7.FhirPath;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
 namespace Hl7.Fhir.Serialization.DSTU2.Tests
@@ -15,8 +12,8 @@ namespace Hl7.Fhir.Serialization.DSTU2.Tests
     [TestClass]
     public class ParseDemoPatientJsonUntyped
     {
-        public ISourceNode getJsonNodeU(string json, FhirJsonNodeSettings settings=null) => 
-            FhirJsonNode.Parse(json, settings:settings);
+        public ISourceNode getJsonNodeU(string json, FhirJsonNodeSettings settings = null) =>
+            FhirJsonNode.Parse(json, settings: settings);
 
         [TestMethod]
         public void CanReadThroughUntypedNavigator()
@@ -57,7 +54,7 @@ namespace Hl7.Fhir.Serialization.DSTU2.Tests
         [TestMethod]
         public void RoundtripJsonUntyped()
         {
-            ParseDemoPatient.RoundtripJson(jsonText => 
+            ParseDemoPatient.RoundtripJson(jsonText =>
                 getJsonNodeU(jsonText, new FhirJsonNodeSettings { AllowJsonComments = true }));
         }
 
@@ -212,10 +209,10 @@ namespace Hl7.Fhir.Serialization.DSTU2.Tests
                 var dummy = nav.Text;
                 Assert.Fail();
             }
-            catch(FormatException fe)
+            catch (FormatException fe)
             {
                 Assert.IsInstanceOfType(fe.InnerException, typeof(JsonException));
-            }                        
+            }
         }
 
         [TestMethod]

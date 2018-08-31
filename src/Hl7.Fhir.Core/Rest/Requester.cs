@@ -6,15 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Serialization.DSTU2;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.IO.Compression;
 using System.Net;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Rest.DSTU2
 {
@@ -99,7 +97,7 @@ namespace Hl7.Fhir.Rest.DSTU2
                     var inBody = readBody(webResponse);
 
                     LastResponse = webResponse;
-                    if (AfterResponse != null) AfterResponse(webResponse,inBody);
+                    if (AfterResponse != null) AfterResponse(webResponse, inBody);
 
                     // Do this call after AfterResponse, so AfterResponse will be called, even if exceptions are thrown by ToBundleEntry()
                     try
@@ -117,7 +115,7 @@ namespace Hl7.Fhir.Rest.DSTU2
                             throw buildFhirOperationException(webResponse.StatusCode, LastResult.Resource);
                         }
                     }
-                    catch(UnsupportedBodyTypeException bte)
+                    catch (UnsupportedBodyTypeException bte)
                     {
                         // The server responded with HTML code. Still build a FhirOperationException and set a LastResult.
                         // Build a very minimal LastResult

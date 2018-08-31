@@ -6,15 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Serialization;
 using System;
-using System.Net;
-using System.Reflection;
-using Hl7.Fhir.Utility;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
+using System.Reflection;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Rest.DSTU2
 {
@@ -62,7 +61,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             {
                 request.Headers["Prefer"] = bodyPreference == Prefer.ReturnMinimal ? "return=minimal" : "return=representation";
             }
-            
+
             if (entry.Resource != null)
             {
                 bool searchUsingPost =
@@ -95,7 +94,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             {
                 try
                 {
-					System.Reflection.PropertyInfo prop = request.GetType().GetRuntimeProperty("UserAgent");
+                    System.Reflection.PropertyInfo prop = request.GetType().GetRuntimeProperty("UserAgent");
 
                     if (prop != null)
                         prop.SetValue(request, agent, null);
@@ -138,7 +137,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             else if (searchUsingPost)
             {
                 IDictionary<string, string> bodyParameters = new Dictionary<string, string>();
-                foreach(Parameters.ParameterComponent parameter in ((Parameters)data).Parameter)
+                foreach (Parameters.ParameterComponent parameter in ((Parameters)data).Parameter)
                 {
                     bodyParameters.Add(parameter.Name, parameter.Value.ToString());
                 }
@@ -167,6 +166,6 @@ namespace Hl7.Fhir.Rest.DSTU2
             }
         }
 
-      
+
     }
 }

@@ -9,11 +9,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Support;
-using Hl7.Fhir.Support.DSTU2;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Rest.DSTU2
@@ -61,7 +60,7 @@ namespace Hl7.Fhir.Rest.DSTU2
     }
 
     public static class FhirClientOperations
-    {  
+    {
         #region Validate (Create/Update/Delete/Resource)
 
         public static async Task<OperationOutcome> ValidateCreateAsync(this FhirClient client, DomainResource resource, FhirUri profile = null)
@@ -107,7 +106,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
         public static OperationOutcome ValidateDelete(this FhirClient client, ResourceIdentity location)
         {
-            return ValidateDeleteAsync(client,location).WaitResult();
+            return ValidateDeleteAsync(client, location).WaitResult();
         }
 
         public static async Task<OperationOutcome> ValidateResourceAsync(this FhirClient client, DomainResource resource, string id = null, FhirUri profile = null)
@@ -144,7 +143,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 
             if (start != null) par.Add("start", start);
             if (end != null) par.Add("end", end);
-            
+
             Resource result;
             if (patient == null)
                 result = await client.TypeOperationAsync<Patient>(RestOperation.FETCH_PATIENT_RECORD, par).ConfigureAwait(false);
@@ -163,22 +162,22 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
 
         #endregion
-                      
+
         #region Meta
 
         //[base]/$meta
         public static async Task<Meta> MetaAsync(this FhirClient client)
         {
-            return extractMeta(OperationResult<Parameters>(await client.WholeSystemOperationAsync(RestOperation.META, useGet:true).ConfigureAwait(false)));
+            return extractMeta(OperationResult<Parameters>(await client.WholeSystemOperationAsync(RestOperation.META, useGet: true).ConfigureAwait(false)));
         }
         public static Meta Meta(this FhirClient client)
         {
             return MetaAsync(client).WaitResult();
         }
-        
+
         //[base]/Resource/$meta
         public static async Task<Meta> MetaAsync(this FhirClient client, ResourceType type)
-        {             
+        {
             return extractMeta(OperationResult<Parameters>(await client.TypeOperationAsync(RestOperation.META, type.ToString(), useGet: true).ConfigureAwait(false)));
         }
         public static Meta Meta(this FhirClient client, ResourceType type)
@@ -217,7 +216,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         {
             return AddMetaAsync(client, location, meta).WaitResult();
         }
-        
+
         public static Task<Meta> AddMetaAsync(this FhirClient client, string location, Meta meta)
         {
             return AddMetaAsync(client, new Uri(location, UriKind.RelativeOrAbsolute), meta);
@@ -279,7 +278,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 
 
         public static async Task<Parameters> TranslateConceptAsync(this FhirClient client, Code code, FhirUri system, FhirString version,
-            FhirUri valueSet, Coding coding, CodeableConcept codeableConcept, FhirUri target, IEnumerable<TranslateConceptDependency> dependencies )
+            FhirUri valueSet, Coding coding, CodeableConcept codeableConcept, FhirUri target, IEnumerable<TranslateConceptDependency> dependencies)
         {
             Parameters par = createTranslateConceptParams(code, system, version, valueSet, coding, codeableConcept, target, dependencies);
 

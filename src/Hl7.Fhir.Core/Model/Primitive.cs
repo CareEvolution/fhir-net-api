@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using Hl7.Fhir.Introspection.DSTU2;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Validation;
-using Hl7.Fhir.Utility;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Utility;
+
+namespace Hl7.Fhir.Model
+{
+    public interface IPrimitive
+    {
+        object ObjectValue { get; set; }
+    }
+}
 
 namespace Hl7.Fhir.Model.DSTU2
 {
 #if NET45
     [Serializable]
 #endif
-    public abstract class Primitive : Element
+    public abstract class Primitive : Element, IPrimitive
     {
         [NotMapped]
         public object ObjectValue { get; set; }

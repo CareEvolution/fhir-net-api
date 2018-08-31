@@ -34,18 +34,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.DSTU2;
 using Hl7.Fhir.FhirPath.DSTU2;
-using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.Validation.DSTU2;
+using Hl7.Fhir.Validation;
 using Hl7.FhirPath;
+
+namespace Hl7.Fhir.Model
+{
+    public interface IResource
+    {
+
+    }
+}
 
 namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}}")]
     [InvokeIValidatableObject]
     [FhirType("Resource", IsResource = true)]
-    public abstract partial class Resource : Base
+    public abstract partial class Resource : Base, IResource
     {
         /// <summary>
         /// This is the base URL of the FHIR server that this resource is hosted on

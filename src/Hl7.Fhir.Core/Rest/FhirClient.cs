@@ -6,17 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Serialization.DSTU2;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Utility;
 
 
 namespace Hl7.Fhir.Rest.DSTU2
@@ -83,23 +80,23 @@ namespace Hl7.Fhir.Rest.DSTU2
             get;
             set;
         }
-        
+
         /// <summary>
         /// The preferred format of the content to be used when communicating with the FHIR server (XML or JSON)
         /// </summary>
         public ResourceFormat PreferredFormat
         {
-            get     { return _requester.PreferredFormat; }
-            set     { _requester.PreferredFormat = value; }
+            get { return _requester.PreferredFormat; }
+            set { _requester.PreferredFormat = value; }
         }
-        
+
         /// <summary>
         /// When passing the content preference, use the _format parameter instead of the request header
         /// </summary>
-        public bool UseFormatParam 
+        public bool UseFormatParam
         {
-            get     { return _requester.UseFormatParameter; }
-            set     { _requester.UseFormatParameter = value; }
+            get { return _requester.UseFormatParameter; }
+            set { _requester.UseFormatParameter = value; }
         }
 
         /// <summary>
@@ -130,7 +127,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// 1. Add the header Accept-Encoding: gzip, deflate
         /// 2. decompress any responses that have Content-Encoding: gzip (or deflate)
         /// </summary>
-        public bool PreferCompressedResponses 
+        public bool PreferCompressedResponses
         {
             get { return _requester.PreferCompressedResponses; }
             set { _requester.PreferCompressedResponses = value; }
@@ -154,8 +151,8 @@ namespace Hl7.Fhir.Rest.DSTU2
 
         public ParserSettings ParserSettings
         {
-            get { return _requester.ParserSettings;  }
-            set { _requester.ParserSettings = value;  }
+            get { return _requester.ParserSettings; }
+            set { _requester.ParserSettings = value; }
         }
 
 
@@ -205,7 +202,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// </returns>
         /// <remarks>Since ResourceLocation is a subclass of Uri, you may pass in ResourceLocations too.</remarks>
         /// <exception cref="FhirOperationException">This will occur if conditional request returns a status 304 and optionally an OperationOutcome</exception>
-        public Task<TResource> ReadAsync<TResource>(Uri location, string ifNoneMatch=null, DateTimeOffset? ifModifiedSince=null) where TResource : Resource
+        public Task<TResource> ReadAsync<TResource>(Uri location, string ifNoneMatch = null, DateTimeOffset? ifModifiedSince = null) where TResource : Resource
         {
             if (location == null) throw Error.ArgumentNull(nameof(location));
 
@@ -325,7 +322,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// <remarks>Throws an exception when the update failed, in particular when an update conflict is detected and the server returns a HTTP 409.
         /// If the resource does not yet exist - and the server allows client-assigned id's - a new resource with the given id will be
         /// created.</remarks>
-        public Task<TResource> UpdateAsync<TResource>(TResource resource, bool versionAware=false) where TResource : Resource
+        public Task<TResource> UpdateAsync<TResource>(TResource resource, bool versionAware = false) where TResource : Resource
         {
             if (resource == null) throw Error.ArgumentNull(nameof(resource));
             if (resource.Id == null) throw Error.Argument(nameof(resource), "Resource needs a non-null Id to send the update to");
@@ -370,7 +367,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             if (condition == null) throw Error.ArgumentNull(nameof(condition));
 
             var upd = new TransactionBuilder(Endpoint);
-                
+
             if (versionAware && resource.HasVersionId)
                 upd.Update(condition, resource, versionId: resource.VersionId);
             else
@@ -490,7 +487,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             if (condition == null) throw Error.ArgumentNull(nameof(condition));
 
             var tx = new TransactionBuilder(Endpoint).Delete(resourceType, condition).ToBundle();
-            await executeAsync<Resource>(tx,new[]{ HttpStatusCode.OK, HttpStatusCode.NoContent}).ConfigureAwait(false);
+            await executeAsync<Resource>(tx, new[] { HttpStatusCode.OK, HttpStatusCode.NoContent }).ConfigureAwait(false);
         }
         /// <summary>
         /// Conditionally delete a resource
@@ -503,9 +500,9 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
 
         #endregion
-        
+
         #region Create
-        
+
         /// <summary>
         /// Create a resource on a FHIR endpoint
         /// </summary>
@@ -518,7 +515,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 
             var tx = new TransactionBuilder(Endpoint).Create(resource).ToBundle();
 
-            return executeAsync<TResource>(tx,new[] { HttpStatusCode.Created, HttpStatusCode.OK });
+            return executeAsync<TResource>(tx, new[] { HttpStatusCode.Created, HttpStatusCode.OK });
         }
         /// <summary>
         /// Create a resource on a FHIR endpoint
@@ -543,7 +540,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             if (resource == null) throw Error.ArgumentNull(nameof(resource));
             if (condition == null) throw Error.ArgumentNull(nameof(condition));
 
-            var tx = new TransactionBuilder(Endpoint).Create(resource,condition).ToBundle();
+            var tx = new TransactionBuilder(Endpoint).Create(resource, condition).ToBundle();
 
             return executeAsync<TResource>(tx, new[] { HttpStatusCode.Created, HttpStatusCode.OK });
         }
@@ -551,9 +548,9 @@ namespace Hl7.Fhir.Rest.DSTU2
         {
             return CreateAsync(resource, condition).WaitResult();
         }
-        
+
         #endregion
-        
+
         #region Conformance
 
         /// <summary>
@@ -584,7 +581,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// <returns>A bundle with the history for the indicated instance, may contain both 
         /// ResourceEntries and DeletedEntries.</returns>
         public Task<Bundle> TypeHistoryAsync(string resourceType, DateTimeOffset? since = null, int? pageSize = null, SummaryType summary = SummaryType.False)
-        {          
+        {
             return internalHistoryAsync(resourceType, null, since, pageSize, summary);
         }
         /// <summary>
@@ -714,12 +711,12 @@ namespace Hl7.Fhir.Rest.DSTU2
         {
             TransactionBuilder history;
 
-            if(resourceType == null)
-                history = new TransactionBuilder(Endpoint).ServerHistory(summary,pageSize,since);
-            else if(id == null)
-                history = new TransactionBuilder(Endpoint).CollectionHistory(resourceType, summary,pageSize,since);
+            if (resourceType == null)
+                history = new TransactionBuilder(Endpoint).ServerHistory(summary, pageSize, since);
+            else if (id == null)
+                history = new TransactionBuilder(Endpoint).CollectionHistory(resourceType, summary, pageSize, since);
             else
-                history = new TransactionBuilder(Endpoint).ResourceHistory(resourceType,id, summary,pageSize,since);
+                history = new TransactionBuilder(Endpoint).ResourceHistory(resourceType, id, summary, pageSize, since);
 
             return executeAsync<Bundle>(history.ToBundle(), HttpStatusCode.OK);
         }
@@ -758,7 +755,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
 
         #endregion
-        
+
         #region Operation
 
         public Task<Resource> WholeSystemOperationAsync(string operationName, Parameters parameters = null, bool useGet = false)
@@ -773,7 +770,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
 
 
-        public Task<Resource> TypeOperationAsync<TResource>(string operationName, Parameters parameters = null, bool useGet = false) 
+        public Task<Resource> TypeOperationAsync<TResource>(string operationName, Parameters parameters = null, bool useGet = false)
             where TResource : Resource
         {
             if (operationName == null) throw Error.ArgumentNull(nameof(operationName));
@@ -789,7 +786,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         {
             return TypeOperationAsync<TResource>(operationName, parameters, useGet).WaitResult();
         }
-            
+
 
 
         public Task<Resource> TypeOperationAsync(string operationName, string typeName, Parameters parameters = null, bool useGet = false)
@@ -836,7 +833,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             return OperationAsync(location, operationName, parameters, useGet).WaitResult();
         }
 
-        
+
         public Task<Resource> OperationAsync(Uri operation, Parameters parameters = null, bool useGet = false)
         {
             if (operation == null) throw Error.ArgumentNull(nameof(operation));
@@ -852,7 +849,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 
 
 
-        private Task<Resource> internalOperationAsync(string operationName, string type = null, string id = null, string vid = null, 
+        private Task<Resource> internalOperationAsync(string operationName, string type = null, string id = null, string vid = null,
             Parameters parameters = null, bool useGet = false)
         {
             // Brian: Not sure why we would create this parameters object as empty.
@@ -882,7 +879,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
 
         #endregion
-        
+
         #region Get
 
         /// <summary>
@@ -932,9 +929,9 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
 
         #endregion
-        
 
-   
+
+
 
         private ResourceIdentity verifyResourceIdentity(Uri location, bool needId, bool needVid)
         {
@@ -990,7 +987,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// </summary>
         /// <param name="rawRequest">The request as it is about to be sent to the server</param>
         /// <param name="body">The data in the body of the request as it is about to be sent to the server</param>
-        protected virtual void BeforeRequest(HttpWebRequest rawRequest, byte[] body) 
+        protected virtual void BeforeRequest(HttpWebRequest rawRequest, byte[] body)
         {
             // Default implementation: call event
             OnBeforeRequest?.Invoke(this, new BeforeRequestEventArgs(rawRequest, body));
@@ -1019,7 +1016,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         // Original
         private TResource execute<TResource>(Bundle tx, IEnumerable<HttpStatusCode> expect) where TResource : Resource
         {
-            return executeAsync<TResource>(tx,  expect).WaitResult();
+            return executeAsync<TResource>(tx, expect).WaitResult();
         }
 
         private async Task<TResource> executeAsync<TResource>(Bundle tx, IEnumerable<HttpStatusCode> expect) where TResource : Resource

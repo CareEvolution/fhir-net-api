@@ -6,19 +6,17 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Serialization.DSTU2;
-using Hl7.Fhir.Specification;
-using Hl7.Fhir.Specification.DSTU2;
-using Hl7.Fhir.Utility;
-using Hl7.Fhir.Validation.DSTU2;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Utility;
+using Hl7.Fhir.Validation;
 
 
-namespace Hl7.Fhir.Introspection.DSTU2
+namespace Hl7.Fhir.Introspection
 {
     [System.Diagnostics.DebuggerDisplay(@"\{Name={Name} ElementType={ElementType.Name}}")]
     public class PropertyMapping
@@ -43,8 +41,8 @@ namespace Hl7.Fhir.Introspection.DSTU2
         public Type[] FhirType { get; private set; }        // may be multiple if this is a choice
 
         public static PropertyMapping Create(PropertyInfo prop) => Create(prop, out IEnumerable<Type> dummy);
-        
-        internal static PropertyMapping Create(PropertyInfo prop, out IEnumerable<Type> referredTypes)        
+
+        internal static PropertyMapping Create(PropertyInfo prop, out IEnumerable<Type> referredTypes)
         {
             if (prop == null) throw Error.ArgumentNull(nameof(prop));
 
@@ -68,7 +66,7 @@ namespace Hl7.Fhir.Introspection.DSTU2
                 result.SerializationHint = elementAttr.XmlSerialization;
                 result.Order = elementAttr.Order;
             }
-          
+
             result.IsCollection = ReflectionHelper.IsTypedCollection(prop.PropertyType) && !prop.PropertyType.IsArray;
 
             // Get to the actual (native) type representing this element
@@ -111,10 +109,10 @@ namespace Hl7.Fhir.Introspection.DSTU2
         {
             var elementAttr = prop.GetCustomAttribute<FhirElementAttribute>();
 
-            if(elementAttr != null && elementAttr.Name != null)
+            if (elementAttr != null && elementAttr.Name != null)
                 return elementAttr.Name;
             else
-                return lowerCamel(prop.Name);            
+                return lowerCamel(prop.Name);
         }
 
         private static string lowerCamel(string p)
@@ -138,26 +136,26 @@ namespace Hl7.Fhir.Introspection.DSTU2
             var valueElementAttr = prop.GetCustomAttribute<FhirElementAttribute>();
             var isValueElement = valueElementAttr != null && valueElementAttr.IsPrimitiveValue;
 
-            if(isValueElement && !isAllowedNativeTypeForDataTypeValue(prop.PropertyType))
+            if (isValueElement && !isAllowedNativeTypeForDataTypeValue(prop.PropertyType))
                 throw Error.Argument(nameof(prop), "Property {0} is marked for use as a primitive element value, but its .NET type ({1}) is not supported by the serializer.".FormatWith(buildQualifiedPropName(prop), prop.PropertyType.Name));
 
             return isValueElement;
         }
 
 
-         //// Special case: this is a member that uses the closed generic Code<T> type - 
-         //       // do mapping for its open, defining type instead
-         //       if (elementType.IsGenericType)
-         //       {
-         //           if (ReflectionHelper.IsClosedGenericType(elementType) &&  
-         //               ReflectionHelper.IsConstructedFromGenericTypeDefinition(elementType, typeof(Code<>)) )
-         //           {
-         //               result.CodeOfTEnumType = elementType.GetGenericArguments()[0];
-         //               elementType = elementType.GetGenericTypeDefinition();
-         //           }
-         //           else
-         //               throw Error.NotSupported("Property {0} on type {1} uses an open generic type, which is not yet supported", prop.Name, prop.DeclaringType.Name);
-         //       }
+        //// Special case: this is a member that uses the closed generic Code<T> type - 
+        //       // do mapping for its open, defining type instead
+        //       if (elementType.IsGenericType)
+        //       {
+        //           if (ReflectionHelper.IsClosedGenericType(elementType) &&  
+        //               ReflectionHelper.IsConstructedFromGenericTypeDefinition(elementType, typeof(Code<>)) )
+        //           {
+        //               result.CodeOfTEnumType = elementType.GetGenericArguments()[0];
+        //               elementType = elementType.GetGenericTypeDefinition();
+        //           }
+        //           else
+        //               throw Error.NotSupported("Property {0} on type {1} uses an open generic type, which is not yet supported", prop.Name, prop.DeclaringType.Name);
+        //       }
 
         public bool MatchesSuffixedName(string suffixedName)
         {
@@ -175,7 +173,7 @@ namespace Hl7.Fhir.Introspection.DSTU2
             else
                 throw Error.Argument(nameof(suffixedName), "The given suffixed name {0} does not match this property's name {1}".FormatWith(suffixedName, Name));
         }
-     
+
         //public Type GetChoiceType(string choiceSuffix)
         //{
         //    string suffix = choiceSuffix.ToUpperInvariant();
@@ -187,7 +185,7 @@ namespace Hl7.Fhir.Introspection.DSTU2
         //                .Select(cattr => cattr.Type)
         //                .FirstOrDefault(); 
         //}
-   
+
 
         private static bool isAllowedNativeTypeForDataTypeValue(Type type)
         {

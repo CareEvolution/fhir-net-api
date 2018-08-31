@@ -20,6 +20,7 @@ using System.Threading.Tasks.Dataflow;
 using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Support.DSTU2;
+using Hl7.Fhir.Model;
 
 namespace Hl7.Fhir.Specification.DSTU2.Tests
 {

@@ -1,9 +1,8 @@
-﻿using Hl7.Fhir.Support;
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Xml;
+﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Support.DSTU2;
+using System.Xml;
+using Hl7.Fhir.Support;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Model.DSTU2
 {

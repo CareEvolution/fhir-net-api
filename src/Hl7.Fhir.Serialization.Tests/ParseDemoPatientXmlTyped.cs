@@ -1,5 +1,4 @@
 ﻿using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Specification.DSTU2;

@@ -6,16 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.ElementModel.DSTU2;
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Utility;
-using Hl7.FhirPath;
-using Hl7.FhirPath.Expressions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.FhirPath;
+using Hl7.FhirPath.Expressions;
 
 namespace Hl7.Fhir.FhirPath.DSTU2
 {
@@ -98,20 +97,20 @@ namespace Hl7.Fhir.FhirPath.DSTU2
         public static SymbolTable AddFhirExtensions(this SymbolTable t)
         {
             t.Add("hasValue", (ElementModel.IElementNavigator f) => f.HasValue(), doNullProp: false);
-            t.Add("resolve", (ElementModel.IElementNavigator f, EvaluationContext ctx) => resolver(f,ctx), doNullProp: false);
+            t.Add("resolve", (ElementModel.IElementNavigator f, EvaluationContext ctx) => resolver(f, ctx), doNullProp: false);
             t.Add("htmlchecks", (ElementModel.IElementNavigator f) => f.HtmlChecks(), doNullProp: false);
 
             return t;
 
             IElementNavigator resolver(ElementModel.IElementNavigator f, EvaluationContext ctx)
             {
-                if(ctx is FhirEvaluationContext fctx)
+                if (ctx is FhirEvaluationContext fctx)
                     return f.Resolve(fctx.Resolver);
                 else
                     return f.Resolve();
             }
         }
-        
+
         /// <summary>
         /// Check if the node has a value, and not just extensions.
         /// </summary>
@@ -158,9 +157,9 @@ namespace Hl7.Fhir.FhirPath.DSTU2
 
                 object result;
 
-                if (r.Value is Hl7.FhirPath.ConstantValue)
+                if (r.Value is ConstantValue)
                 {
-                    result = (r.Value as Hl7.FhirPath.ConstantValue).Value;
+                    result = (r.Value as ConstantValue).Value;
                 }
                 else
                 {
@@ -199,7 +198,7 @@ namespace Hl7.Fhir.FhirPath.DSTU2
         {
             var inputNav = input.ToElementNavigator();
             var result = inputNav.Select(expression, ctx ?? FhirEvaluationContext.Default);
-            return result.ToFhirValues();            
+            return result.ToFhirValues();
         }
 
         [Obsolete("Replace with the overload taking an FhirEvaluationContext, initialized with the resource parameter")]

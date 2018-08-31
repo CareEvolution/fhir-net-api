@@ -7,7 +7,7 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Utility;
 using System.Collections;
 

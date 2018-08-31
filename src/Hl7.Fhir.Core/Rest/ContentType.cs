@@ -7,14 +7,11 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Net;
-using System.Text.RegularExpressions;
 
 
-namespace Hl7.Fhir.Rest.DSTU2
+namespace Hl7.Fhir.Rest
 {
     /// <summary>
     /// The supported formats for Fhir Resources

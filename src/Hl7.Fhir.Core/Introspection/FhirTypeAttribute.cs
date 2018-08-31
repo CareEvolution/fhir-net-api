@@ -29,9 +29,9 @@
 */
 
 using System;
-using Hl7.Fhir.Validation.DSTU2;
+using Hl7.Fhir.Validation;
 
-namespace Hl7.Fhir.Introspection.DSTU2
+namespace Hl7.Fhir.Introspection
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     public sealed class FhirTypeAttribute : InvokeIValidatableObjectAttribute

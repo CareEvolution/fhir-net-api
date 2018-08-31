@@ -1,20 +1,11 @@
-﻿using Hl7.Fhir.ElementModel;
+﻿using System.IO;
+using System.Linq;
+using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.DSTU2;
-using Hl7.Fhir.Introspection.DSTU2;
 using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification;
 using Hl7.Fhir.Specification.DSTU2;
 using Hl7.Fhir.Tests;
-using Hl7.Fhir.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace Hl7.Fhir.Serialization.DSTU2.Tests
 {

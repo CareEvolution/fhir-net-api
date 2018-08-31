@@ -1,5 +1,5 @@
 ﻿/*
-  Copyright (c) 2011-2013, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -28,22 +28,10 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Hl7.Fhir.Introspection.DSTU2
+namespace Hl7.Fhir.Model
 {
-    /// <summary>
-    /// Xml Serialization used for primitive values
-    /// </summary>
-    [Obsolete("This enum has been replaced by System.Serialization.XmlRepresentation")]
-    public enum XmlSerializationHint
+    public interface IBackboneElement
     {
-        None,
-        Attribute, 
-        TextNode,
-        XhtmlElement
+
     }
 }

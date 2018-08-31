@@ -6,15 +6,11 @@
  * available at https://github.com/ewoutkramer/fhir-net-api/blob/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection.DSTU2;
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Source
 {
@@ -70,7 +66,7 @@ namespace Hl7.Fhir.Specification.Source
         }
 
 
-        public static IEnumerable<T> FindAll<T>(this IConformanceSource source) where T:Resource
+        public static IEnumerable<T> FindAll<T>(this IConformanceSource source) where T : Resource
         {
             var type = ModelInfo.GetFhirTypeNameForType(typeof(T));
 

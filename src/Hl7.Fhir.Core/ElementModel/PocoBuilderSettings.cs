@@ -8,7 +8,7 @@
 
 
 
-namespace Hl7.Fhir.Serialization.DSTU2
+namespace Hl7.Fhir.Serialization
 {
     public class PocoBuilderSettings
     {

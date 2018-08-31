@@ -2,7 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Rest.DSTU2
 {

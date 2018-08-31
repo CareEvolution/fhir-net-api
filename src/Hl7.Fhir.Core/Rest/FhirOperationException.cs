@@ -7,11 +7,10 @@
  */
 
 using System;
+using System.Net;
 using System.Runtime.Serialization;
 using System.Security;
-
 using Hl7.Fhir.Model.DSTU2;
-using System.Net;
 
 namespace Hl7.Fhir.Rest.DSTU2
 {

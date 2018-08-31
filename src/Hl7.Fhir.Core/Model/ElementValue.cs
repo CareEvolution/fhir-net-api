@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Model.DSTU2
+namespace Hl7.Fhir.Model
 {
     internal struct ElementValue
     {

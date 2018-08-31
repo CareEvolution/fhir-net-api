@@ -7,7 +7,8 @@
  */
 
 using System;
-using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

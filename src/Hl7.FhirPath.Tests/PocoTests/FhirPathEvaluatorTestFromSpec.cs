@@ -24,6 +24,7 @@ using Xunit.Abstractions;
 using Hl7.Fhir.FhirPath;
 using Hl7.Fhir.ElementModel.DSTU2;
 using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Model;
 
 namespace Hl7.FhirPath.Tests
 {
@@ -132,7 +133,7 @@ namespace Hl7.FhirPath.Tests
         }
 
         // @SuppressWarnings("deprecation")
-        private void testBoolean(Model.Resource resource, Model.Base focus, String focusType, String expression, boolean value)
+        private void testBoolean(Model.Resource resource, Base focus, String focusType, String expression, boolean value)
         {
             var input = focus.ToElementNavigator();
             var container = resource?.ToElementNavigator();

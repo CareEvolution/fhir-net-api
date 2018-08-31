@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Model;
 using System;
 using System.Xml;
 

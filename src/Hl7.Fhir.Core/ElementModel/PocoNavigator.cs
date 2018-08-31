@@ -7,8 +7,8 @@
  */
 
 using Hl7.Fhir.ElementModel.Adapters;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Specification;
 using Hl7.Fhir.Specification.DSTU2;
 using Hl7.Fhir.Utility;
 using System;

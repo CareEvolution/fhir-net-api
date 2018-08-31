@@ -29,12 +29,9 @@
 
 
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Hl7.Fhir.Support;
-using Hl7.Fhir.Support.DSTU2;
 
 namespace Hl7.Fhir.Model.DSTU2
 {
@@ -95,7 +92,7 @@ namespace Hl7.Fhir.Model.DSTU2
             return extendable.AllExtensions().Where(ext => ext.Url == uri);
         }
 
-       
+
         /// <summary>
         /// Return the first extension with the given uri as a string, or null if none was found
         /// </summary>
@@ -107,7 +104,7 @@ namespace Hl7.Fhir.Model.DSTU2
             var ext = extendable.GetExtension(uri);
 
             if (ext != null && ext.Value != null && ext.Value is FhirString)
-                    return ((FhirString)ext.Value).Value;
+                return ((FhirString)ext.Value).Value;
 
             return null;
         }
@@ -181,7 +178,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <param name="value"></param>
         /// <param name="isModifier"></param>
         /// <returns>The newly added Extension</returns>
-        public static Extension AddExtension(this IExtendable extendable, string uri, Element value, bool isModifier=false)
+        public static Extension AddExtension(this IExtendable extendable, string uri, Element value, bool isModifier = false)
         {
             var newExtension = new Extension() { Url = uri, Value = value };
 
@@ -202,8 +199,8 @@ namespace Hl7.Fhir.Model.DSTU2
         public static void RemoveExtension(this IExtendable extendable, string uri)
         {
             var remove = extendable.Extension.Where(ext => ext.Url == uri).ToList();
-           
-            foreach(var ext in remove)
+
+            foreach (var ext in remove)
                 extendable.Extension.Remove(ext);
 
             if (extendable is IModifierExtendable)
@@ -226,7 +223,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <param name="value"></param>
         /// <param name="isModifier"></param>
         /// <returns>The newly added extension</returns>
-        public static Extension SetExtension(this IExtendable extendable, string uri, Element value, bool isModifier=false)
+        public static Extension SetExtension(this IExtendable extendable, string uri, Element value, bool isModifier = false)
         {
             if (extendable.Extension == null)
                 extendable.Extension = new List<Extension>();

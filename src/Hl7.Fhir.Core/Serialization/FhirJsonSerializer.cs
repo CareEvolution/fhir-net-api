@@ -6,10 +6,8 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
-using Hl7.Fhir.Rest.DSTU2;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -24,13 +22,13 @@ namespace Hl7.Fhir.Serialization.DSTU2
         private FhirJsonWriterSettings buildFhirJsonWriterSettings() =>
             new FhirJsonWriterSettings { Pretty = Settings.Pretty };
 
-        public string SerializeToString(Base instance, SummaryType summary = SummaryType.False) => 
+        public string SerializeToString(Base instance, SummaryType summary = SummaryType.False) =>
             MakeElementStack(instance, summary).ToJson(buildFhirJsonWriterSettings());
 
-        public byte[] SerializeToBytes(Base instance, SummaryType summary = SummaryType.False) => 
+        public byte[] SerializeToBytes(Base instance, SummaryType summary = SummaryType.False) =>
             MakeElementStack(instance, summary).ToJsonBytes(buildFhirJsonWriterSettings());
 
-        public JObject SerializeToDocument(Base instance, SummaryType summary = SummaryType.False) => 
+        public JObject SerializeToDocument(Base instance, SummaryType summary = SummaryType.False) =>
             MakeElementStack(instance, summary).ToJObject(buildFhirJsonWriterSettings());
 
         public void Serialize(Base instance, JsonWriter writer, SummaryType summary = SummaryType.False) =>

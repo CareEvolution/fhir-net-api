@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Support.DSTU2
+namespace Hl7.Fhir.Support
 {
     /// <summary>
     /// The exception that is throw when the artifact resolver encounters conflicting conformance resources with identical canonical urls.

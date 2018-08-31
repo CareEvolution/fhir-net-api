@@ -7,13 +7,8 @@
  */
 
 using Hl7.Fhir.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace Hl7.Fhir.Support.DSTU2
+namespace Hl7.Fhir.Support
 {
     public static class DateExtensions
     {

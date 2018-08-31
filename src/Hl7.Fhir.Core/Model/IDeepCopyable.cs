@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Model.DSTU2
+namespace Hl7.Fhir.Model
 {
     public interface IDeepCopyable
     {

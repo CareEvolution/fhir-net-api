@@ -6,23 +6,22 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Introspection.DSTU2
+namespace Hl7.Fhir.Introspection
 {
     //TODO: Find out the right way to handle named resource-local component types (i.e. Patient.AnimalComponent)
     public class ModelInspector
     {
         // Index for easy lookup of resources, key is Tuple<upper resourcename, upper profile>
-        private Dictionary<Tuple<string,string>,ClassMapping> _resourceClasses = new Dictionary<Tuple<string,string>,ClassMapping>();
+        private Dictionary<Tuple<string, string>, ClassMapping> _resourceClasses = new Dictionary<Tuple<string, string>, ClassMapping>();
 
         // Index for easy lookup of datatypes, key is upper typenanme
-        private Dictionary<string, ClassMapping> _dataTypeClasses = new Dictionary<string,ClassMapping>();
+        private Dictionary<string, ClassMapping> _dataTypeClasses = new Dictionary<string, ClassMapping>();
 
         // Index for easy lookup of classmappings, key is Type
         private Dictionary<Type, ClassMapping> _classMappingsByType = new Dictionary<Type, ClassMapping>();
@@ -107,7 +106,7 @@ namespace Hl7.Fhir.Introspection.DSTU2
             var success = _resourceClasses.TryGetValue(key, out entry);
 
             // If that didn't work, try again with no profile
-            if(!success)
+            if (!success)
                 success = _resourceClasses.TryGetValue(noProfileKey, out entry);
 
             if (success)

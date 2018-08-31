@@ -1,10 +1,8 @@
-﻿using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Utility;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Rest.DSTU2
 {
@@ -122,9 +120,9 @@ namespace Hl7.Fhir.Rest.DSTU2
 
         #region Concept Lookup
 
-        public static async Task<Parameters> ConceptLookupAsync(this IFhirClient client, 
-            Code code=null, FhirUri system = null, FhirString version = null, 
-            Coding coding=null, FhirDateTime date = null)
+        public static async Task<Parameters> ConceptLookupAsync(this IFhirClient client,
+            Code code = null, FhirUri system = null, FhirString version = null,
+            Coding coding = null, FhirDateTime date = null)
         {
             var par = new Parameters()
                 .Add(nameof(code), code)
@@ -149,11 +147,11 @@ namespace Hl7.Fhir.Rest.DSTU2
 
         #region Validate Code
 
-        public static async Task<ValidateCodeResult> ValidateCodeAsync(this IFhirClient client, String valueSetId, 
+        public static async Task<ValidateCodeResult> ValidateCodeAsync(this IFhirClient client, String valueSetId,
                 FhirUri identifier = null, FhirUri context = null, ValueSet valueSet = null, Code code = null,
-                FhirUri system = null, FhirString version = null, FhirString display = null, 
+                FhirUri system = null, FhirString version = null, FhirString display = null,
                 Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null,
-                FhirBoolean @abstract = null)   
+                FhirBoolean @abstract = null)
         {
             if (valueSetId == null) throw new ArgumentNullException(nameof(valueSetId));
 
@@ -210,7 +208,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 
             var result = await client.TypeOperationAsync<ValueSet>(RestOperation.VALIDATE_CODE, par).ConfigureAwait(false);
 
-            if(result != null)
+            if (result != null)
                 return ValidateCodeResult.FromParameters(result.OperationResult<Parameters>());
             else
                 return null;

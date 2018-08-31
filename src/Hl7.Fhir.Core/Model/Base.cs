@@ -35,9 +35,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.Validation.DSTU2;
+using Hl7.Fhir.Validation;
 
-namespace Hl7.Fhir.Model.DSTU2
+namespace Hl7.Fhir.Model
 {
 #if NET45
     [Serializable]
@@ -70,7 +70,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (UserData != null) dest.UserData = new Dictionary<string, object>(UserData);
 #pragma warning restore 618
 
-               // if (FhirComments != null) dest.FhirComments = new List<string>(FhirComments);
+                // if (FhirComments != null) dest.FhirComments = new List<string>(FhirComments);
                 return dest;
             }
             else

@@ -7,15 +7,12 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest.DSTU2
+namespace Hl7.Fhir.Rest
 {
     public static class WebRequestExtensions
     {
@@ -139,7 +136,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
 
 
-		public static WebResponse EndGetResponseNoEx(this WebRequest req, IAsyncResult ar)
+        public static WebResponse EndGetResponseNoEx(this WebRequest req, IAsyncResult ar)
         {
             try
             {
@@ -167,7 +164,7 @@ namespace Hl7.Fhir.Rest.DSTU2
                     {
                         result = req.EndGetResponseNoEx(ar);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         caught = ex;
                     }

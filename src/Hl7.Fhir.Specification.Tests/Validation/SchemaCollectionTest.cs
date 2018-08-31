@@ -6,19 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Support;
 using System.Diagnostics;
 using System.IO;
-using Hl7.Fhir.Introspection.DSTU2;
-using Hl7.Fhir.Serialization;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Specification.DSTU2.Tests
 {
@@ -48,7 +42,7 @@ namespace Hl7.Fhir.Specification.DSTU2.Tests
 
             var hasError = false;
             patDoc = XDocument.Parse("<Patient xmlns='http://hl7.org/fhir'><garbage/></Patient>");
-            patDoc.Validate(SchemaCollection.ValidationSchemaSet, (source,args) => hasError = true);
+            patDoc.Validate(SchemaCollection.ValidationSchemaSet, (source, args) => hasError = true);
             Assert.IsTrue(hasError);
         }
 

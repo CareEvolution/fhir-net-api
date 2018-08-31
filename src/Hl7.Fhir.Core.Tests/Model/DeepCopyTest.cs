@@ -19,6 +19,7 @@ using System.Xml;
 using static Hl7.Fhir.Tests.TestDataHelper;
 using System.Diagnostics;
 using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Model;
 
 namespace Hl7.Fhir.Tests.Model
 {

@@ -30,16 +30,9 @@
 
 
 
-using Hl7.Fhir.Introspection.DSTU2;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
-using Hl7.Fhir.Support;
 using System.Diagnostics;
 using Hl7.Fhir.Utility;
 using System.ComponentModel.DataAnnotations.Schema;

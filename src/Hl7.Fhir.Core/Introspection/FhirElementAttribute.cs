@@ -28,19 +28,15 @@
 
 */
 
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification;
-using Hl7.Fhir.Specification.DSTU2;
-using Hl7.Fhir.Validation;
-using Hl7.Fhir.Validation.DSTU2;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Validation;
 
-namespace Hl7.Fhir.Introspection.DSTU2
+namespace Hl7.Fhir.Introspection
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public sealed class FhirElementAttribute : ValidationAttribute
@@ -78,7 +74,7 @@ namespace Hl7.Fhir.Introspection.DSTU2
         // ValidationContext
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if(validationContext == null) throw new ArgumentNullException("validationContext");
+            if (validationContext == null) throw new ArgumentNullException("validationContext");
 
             if (value == null) return ValidationResult.Success;
 
@@ -104,7 +100,7 @@ namespace Hl7.Fhir.Introspection.DSTU2
                 validateElement(value, validationContext, result);
             }
 
-            return result.FirstOrDefault();                
+            return result.FirstOrDefault();
         }
 
         private static void validateElement(object value, ValidationContext validationContext, List<ValidationResult> result)

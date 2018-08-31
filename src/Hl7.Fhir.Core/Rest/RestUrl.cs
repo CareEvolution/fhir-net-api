@@ -6,12 +6,11 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest.DSTU2
+namespace Hl7.Fhir.Rest
 {
     public class RestUrl
     {
@@ -32,20 +31,20 @@ namespace Hl7.Fhir.Rest.DSTU2
             _builder = new UriBuilder(url);
 
             if (!String.IsNullOrEmpty(_builder.Query))
-                _parameters = UriParamList.FromQueryString(_builder.Query); 
+                _parameters = UriParamList.FromQueryString(_builder.Query);
         }
 
-        public RestUrl(string endpoint) : this(new Uri(endpoint,UriKind.Absolute))
+        public RestUrl(string endpoint) : this(new Uri(endpoint, UriKind.Absolute))
         {
         }
 
-        public Uri Uri 
-        { 
+        public Uri Uri
+        {
             get
             {
                 _builder.Query = _parameters.ToQueryString();
                 return _builder.Uri;
-            } 
+            }
         }
 
         public string AsString
@@ -60,7 +59,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         {
             return path.EndsWith(@"/") ? path : path + @"/";
         }
-              
+
 
         /// <summary>
         /// Add additional components to the end of the RestUrl
@@ -72,7 +71,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         public RestUrl AddPath(params string[] components)
         {
             string _components = string.Join("/", components).Trim('/');
-            _builder.Path = delimit(_builder.Path)+ _components;
+            _builder.Path = delimit(_builder.Path) + _components;
             return this;
         }
 
@@ -212,5 +211,5 @@ namespace Hl7.Fhir.Rest.DSTU2
         {
             return AsString;
         }
-    }    
+    }
 }

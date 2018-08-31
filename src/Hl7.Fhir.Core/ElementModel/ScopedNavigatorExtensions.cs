@@ -6,7 +6,6 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Rest;
 using System;
 
 namespace Hl7.Fhir.ElementModel.DSTU2
@@ -20,7 +19,7 @@ namespace Hl7.Fhir.ElementModel.DSTU2
 
             Func<string, ITypedElement> convertedExternalResolver = null;
             if (externalResolver != null)
-                convertedExternalResolver  = (s) => externalResolver(s).Annotation<ScopedNode>() ?? nav.ToTypedElement();
+                convertedExternalResolver = (s) => externalResolver(s).Annotation<ScopedNode>() ?? nav.ToTypedElement();
             return (T)node.Resolve(reference, convertedExternalResolver)?.ToElementNavigator();
         }
 

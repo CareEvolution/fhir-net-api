@@ -6,31 +6,29 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Rest.DSTU2;
-using Hl7.Fhir.Utility;
-using System;
 using System.Xml;
 using System.Xml.Linq;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Serialization.DSTU2
 {
     public class FhirXmlSerializer : BaseFhirSerializer
     {
-        public FhirXmlSerializer(SerializerSettings settings=null) : base(settings)
+        public FhirXmlSerializer(SerializerSettings settings = null) : base(settings)
         {
         }
 
         private FhirXmlWriterSettings buildFhirXmlWriterSettings() =>
             new FhirXmlWriterSettings { Pretty = Settings.Pretty };
 
-        public string SerializeToString(Base instance, SummaryType summary = SummaryType.False, string root = null) => 
+        public string SerializeToString(Base instance, SummaryType summary = SummaryType.False, string root = null) =>
             MakeElementStack(instance, summary)
             .Rename(root)
             .ToXml(settings: buildFhirXmlWriterSettings());
 
-        public byte[] SerializeToBytes(Base instance, SummaryType summary = SummaryType.False, string root = null) => 
+        public byte[] SerializeToBytes(Base instance, SummaryType summary = SummaryType.False, string root = null) =>
             MakeElementStack(instance, summary)
             .Rename(root)
             .ToXmlBytes(settings: buildFhirXmlWriterSettings());

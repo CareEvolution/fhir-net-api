@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.Introspection.DSTU2;
+﻿using Hl7.Fhir.Introspection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

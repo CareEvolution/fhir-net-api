@@ -6,13 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection.DSTU2;
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Serialization.DSTU2
 {
@@ -40,8 +41,8 @@ namespace Hl7.Fhir.Serialization.DSTU2
 
             return Deserialize(mapping, existing);
         }
-        
-        internal Base Deserialize(ClassMapping mapping, Base existing=null)
+
+        internal Base Deserialize(ClassMapping mapping, Base existing = null)
         {
             if (mapping == null) throw Error.ArgumentNull(nameof(mapping));
 
@@ -72,7 +73,7 @@ namespace Hl7.Fhir.Serialization.DSTU2
             foreach (var memberData in members)
             {
                 var memberName = memberData.Name;  // tuple: first is name of member
-             
+
                 // Find a property on the instance that matches the element found in the data
                 // NB: This function knows how to handle suffixed names (e.g. xxxxBoolean) (for choice types).
                 var mappedProperty = mapping.FindMappedElementByName(memberName);

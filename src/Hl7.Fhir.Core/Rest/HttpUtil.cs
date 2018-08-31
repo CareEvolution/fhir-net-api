@@ -6,27 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.DSTU2;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest.DSTU2
+namespace Hl7.Fhir.Rest
 {
-	/*
+    /*
 	 * Brian 16 Dec 2014:
 	 *		Removed the Category in the HTML Header as we don't do this anymore for DSTU2
 	 *		Implement everything using the native .net async patterns
@@ -139,7 +127,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 
             if (me.IsAbsoluteUri)
             {
-                if (other.Authority.ToLower() != me.Authority.ToLower()) 
+                if (other.Authority.ToLower() != me.Authority.ToLower())
                     return false;
             }
 
@@ -149,11 +137,11 @@ namespace Hl7.Fhir.Rest.DSTU2
             var otherLength = otherSegments.Length;
             var meLength = meSegments.Length;
 
-            if (meSegments.Length < otherSegments.Length) 
+            if (meSegments.Length < otherSegments.Length)
                 return false;
             for (int index = 0; index < otherLength; index++)
             {
-                if (otherSegments[index].TrimEnd('/') != meSegments[index].TrimEnd('/')) 
+                if (otherSegments[index].TrimEnd('/') != meSegments[index].TrimEnd('/'))
                     return false;
             }
 
@@ -168,7 +156,8 @@ namespace Hl7.Fhir.Rest.DSTU2
         static HttpUtil()
         {
             RESTURI_PATTERN = @"((http | https)://([A-Za-z0-9\\\/\.\:\%\$])*)?(";
-            RESTURI_PATTERN += String.Join("|", ModelInfo.SupportedResources);
+            RESTURI_PATTERN = @"[A-Za-z]{1,64}";
+            //RESTURI_PATTERN += String.Join("|", ModelInfo.SupportedResources);
             RESTURI_PATTERN += @")\/[A-Za-z0-9\-\.]{1,64}(\/_history\/[A-Za-z0-9\-\.]{1,64})?";
         }
 

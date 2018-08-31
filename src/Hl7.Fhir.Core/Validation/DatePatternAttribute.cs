@@ -6,13 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.DSTU2;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+using Hl7.Fhir.Model.DSTU2;
 
 namespace Hl7.Fhir.Validation.DSTU2
 {
@@ -29,7 +25,7 @@ namespace Hl7.Fhir.Validation.DSTU2
             if (Date.IsValidValue(value as string))
                 return ValidationResult.Success;
             else
-				return DotNetAttributeValidation.BuildResult(validationContext, "{0} is not a correctly formatted Date", value as string);
-		}
+                return DotNetAttributeValidation.BuildResult(validationContext, "{0} is not a correctly formatted Date", value as string);
+        }
     }
 }

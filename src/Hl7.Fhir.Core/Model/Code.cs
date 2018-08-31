@@ -28,17 +28,26 @@
 
 */
 
-
 using System;
-using System.Text.RegularExpressions;
-
-using Hl7.Fhir.Introspection.DSTU2;
-using System.Runtime.Serialization;
-using Hl7.Fhir.Utility;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification;
 using System.ComponentModel.DataAnnotations.Schema;
-using Hl7.Fhir.Specification.DSTU2;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Utility;
+
+namespace Hl7.Fhir.Model
+{
+    /// <summary>
+    /// Provides a way to access the system and code from a Code&lt;T&gt; derived class, without having to mess
+    /// about with the generic types/additional nasty reflection
+    /// </summary>
+    public interface ISystemAndCode
+    {
+        string System { get; }
+        string Code { get; }
+    }
+}
 
 namespace Hl7.Fhir.Model.DSTU2
 {
@@ -52,16 +61,6 @@ namespace Hl7.Fhir.Model.DSTU2
         {
             return Regex.IsMatch(value, "^" + Code.PATTERN + "$", RegexOptions.Singleline);
         }
-    }
-
-    /// <summary>
-    /// Provides a way to access the system and code from a Code&lt;T&gt; derived class, without having to mess
-    /// about with the generic types/additional nasty reflection
-    /// </summary>
-    public interface ISystemAndCode
-    {
-        string System { get; }
-        string Code { get; }
     }
 
 #if NET45
@@ -101,7 +100,7 @@ namespace Hl7.Fhir.Model.DSTU2
             }
         }
 
-        public Code() : this(null) {}
+        public Code() : this(null) { }
 
         public Code(T? value)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;

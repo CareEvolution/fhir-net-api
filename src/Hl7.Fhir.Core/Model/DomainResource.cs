@@ -30,7 +30,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Hl7.Fhir.Introspection.DSTU2;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.DSTU2;
 
 namespace Hl7.Fhir.Model.DSTU2
