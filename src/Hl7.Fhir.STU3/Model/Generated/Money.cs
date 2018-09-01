@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -61,7 +62,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(code or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')",
             Key = "mny-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = \"urn:iso:std:iso:4217\" - currency).",
             Xpath = "(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:iso:std:iso:4217')"
         };

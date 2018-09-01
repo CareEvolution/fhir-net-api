@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.List; } }
         [NotMapped]
         public override string TypeName { get { return "List"; } }
+
+        /// <summary>
+        /// The current state of the list
+        /// (url: http://hl7.org/fhir/ValueSet/list-status)
+        /// </summary>
+        [FhirEnumeration("ListStatus")]
+        public enum ListStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/list-status)
+            /// </summary>
+            [EnumLiteral("current", "http://hl7.org/fhir/list-status"), Description("Current")]
+            Current,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/list-status)
+            /// </summary>
+            [EnumLiteral("retired", "http://hl7.org/fhir/list-status"), Description("Retired")]
+            Retired,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/list-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/list-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("EntryComponent")]
@@ -495,7 +523,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "mode = 'changes' or entry.deleted.empty()",
             Key = "lst-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The deleted flag can only be used if the mode of the list is \"changes\"",
             Xpath = "(f:mode/@value = 'changes') or not(exists(f:entry/f:deleted))"
         };
@@ -504,7 +532,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "emptyReason.empty() or entry.empty()",
             Key = "lst-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A list can only have an emptyReason if it is empty",
             Xpath = "not(exists(f:emptyReason) and exists(f:entry))"
         };

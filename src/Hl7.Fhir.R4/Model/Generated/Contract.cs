@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -374,13 +375,32 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("copyright", Order=90)]
             [DataMember]
-            public Markdown Copyright
+            public Markdown CopyrightElement
             {
-                get { return _copyright; }
-                set { _copyright = value; OnPropertyChanged("Copyright"); }
+                get { return _copyrightElement; }
+                set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
             }
 
-            private Markdown _copyright;
+            private Markdown _copyrightElement;
+
+            /// <summary>
+            /// Publication Ownership
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Copyright
+            {
+                get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        CopyrightElement = null;
+                    else
+                        CopyrightElement = new Markdown(value);
+                    OnPropertyChanged("Copyright");
+                }
+            }
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -394,7 +414,7 @@ namespace Hl7.Fhir.Model.R4
                     if (Publisher != null) dest.Publisher = (ResourceReference)Publisher.DeepCopy();
                     if (PublicationDateElement != null) dest.PublicationDateElement = (FhirDateTime)PublicationDateElement.DeepCopy();
                     if (PublicationStatusElement != null) dest.PublicationStatusElement = (Code<ContractResourcePublicationStatusCodes>)PublicationStatusElement.DeepCopy();
-                    if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                    if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -417,7 +437,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.Matches(Publisher, otherT.Publisher)) return false;
                 if (!DeepComparable.Matches(PublicationDateElement, otherT.PublicationDateElement)) return false;
                 if (!DeepComparable.Matches(PublicationStatusElement, otherT.PublicationStatusElement)) return false;
-                if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+                if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
 
                 return true;
             }
@@ -433,7 +453,7 @@ namespace Hl7.Fhir.Model.R4
                 if (!DeepComparable.IsExactly(Publisher, otherT.Publisher)) return false;
                 if (!DeepComparable.IsExactly(PublicationDateElement, otherT.PublicationDateElement)) return false;
                 if (!DeepComparable.IsExactly(PublicationStatusElement, otherT.PublicationStatusElement)) return false;
-                if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+                if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
 
                 return true;
             }
@@ -450,7 +470,7 @@ namespace Hl7.Fhir.Model.R4
                     if (Publisher != null) yield return Publisher;
                     if (PublicationDateElement != null) yield return PublicationDateElement;
                     if (PublicationStatusElement != null) yield return PublicationStatusElement;
-                    if (Copyright != null) yield return Copyright;
+                    if (CopyrightElement != null) yield return CopyrightElement;
                 }
             }
 
@@ -465,7 +485,7 @@ namespace Hl7.Fhir.Model.R4
                     if (Publisher != null) yield return new ElementValue("publisher", Publisher);
                     if (PublicationDateElement != null) yield return new ElementValue("publicationDate", PublicationDateElement);
                     if (PublicationStatusElement != null) yield return new ElementValue("publicationStatus", PublicationStatusElement);
-                    if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                    if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 }
             }
 

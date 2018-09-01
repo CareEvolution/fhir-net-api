@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,351 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.CapabilityStatement; } }
         [NotMapped]
         public override string TypeName { get { return "CapabilityStatement"; } }
+
+        /// <summary>
+        /// How a capability statement is intended to be used.
+        /// (url: http://hl7.org/fhir/ValueSet/capability-statement-kind)
+        /// </summary>
+        [FhirEnumeration("CapabilityStatementKind")]
+        public enum CapabilityStatementKind
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/capability-statement-kind)
+            /// </summary>
+            [EnumLiteral("instance", "http://hl7.org/fhir/capability-statement-kind"), Description("Instance")]
+            Instance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/capability-statement-kind)
+            /// </summary>
+            [EnumLiteral("capability", "http://hl7.org/fhir/capability-statement-kind"), Description("Capability")]
+            Capability,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/capability-statement-kind)
+            /// </summary>
+            [EnumLiteral("requirements", "http://hl7.org/fhir/capability-statement-kind"), Description("Requirements")]
+            Requirements,
+        }
+
+        /// <summary>
+        /// A code that indicates whether an application accepts unknown elements or extensions when reading resources.
+        /// (url: http://hl7.org/fhir/ValueSet/unknown-content-code)
+        /// </summary>
+        [FhirEnumeration("UnknownContentCode")]
+        public enum UnknownContentCode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/unknown-content-code)
+            /// </summary>
+            [EnumLiteral("no", "http://hl7.org/fhir/unknown-content-code"), Description("Neither Elements or Extensions")]
+            No,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/unknown-content-code)
+            /// </summary>
+            [EnumLiteral("extensions", "http://hl7.org/fhir/unknown-content-code"), Description("Unknown Extensions")]
+            Extensions,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/unknown-content-code)
+            /// </summary>
+            [EnumLiteral("elements", "http://hl7.org/fhir/unknown-content-code"), Description("Unknown Elements")]
+            Elements,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/unknown-content-code)
+            /// </summary>
+            [EnumLiteral("both", "http://hl7.org/fhir/unknown-content-code"), Description("Unknown Elements and Extensions")]
+            Both,
+        }
+
+        /// <summary>
+        /// The mode of a RESTful capability statement.
+        /// (url: http://hl7.org/fhir/ValueSet/restful-capability-mode)
+        /// </summary>
+        [FhirEnumeration("RestfulCapabilityMode")]
+        public enum RestfulCapabilityMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-capability-mode)
+            /// </summary>
+            [EnumLiteral("client", "http://hl7.org/fhir/restful-capability-mode"), Description("Client")]
+            Client,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-capability-mode)
+            /// </summary>
+            [EnumLiteral("server", "http://hl7.org/fhir/restful-capability-mode"), Description("Server")]
+            Server,
+        }
+
+        /// <summary>
+        /// Operations supported by REST at the type or instance level.
+        /// (url: http://hl7.org/fhir/ValueSet/type-restful-interaction)
+        /// </summary>
+        [FhirEnumeration("TypeRestfulInteraction")]
+        public enum TypeRestfulInteraction
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("read", "http://hl7.org/fhir/restful-interaction"), Description("read")]
+            Read,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("vread", "http://hl7.org/fhir/restful-interaction"), Description("vread")]
+            Vread,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("update", "http://hl7.org/fhir/restful-interaction"), Description("update")]
+            Update,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("patch", "http://hl7.org/fhir/restful-interaction"), Description("patch")]
+            Patch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("delete", "http://hl7.org/fhir/restful-interaction"), Description("delete")]
+            Delete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("history-instance", "http://hl7.org/fhir/restful-interaction"), Description("history-instance")]
+            HistoryInstance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("history-type", "http://hl7.org/fhir/restful-interaction"), Description("history-type")]
+            HistoryType,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("create", "http://hl7.org/fhir/restful-interaction"), Description("create")]
+            Create,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("search-type", "http://hl7.org/fhir/restful-interaction"), Description("search-type")]
+            SearchType,
+        }
+
+        /// <summary>
+        /// How the system supports versioning for a resource.
+        /// (url: http://hl7.org/fhir/ValueSet/versioning-policy)
+        /// </summary>
+        [FhirEnumeration("ResourceVersionPolicy")]
+        public enum ResourceVersionPolicy
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/versioning-policy)
+            /// </summary>
+            [EnumLiteral("no-version", "http://hl7.org/fhir/versioning-policy"), Description("No VersionId Support")]
+            NoVersion,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/versioning-policy)
+            /// </summary>
+            [EnumLiteral("versioned", "http://hl7.org/fhir/versioning-policy"), Description("Versioned")]
+            Versioned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/versioning-policy)
+            /// </summary>
+            [EnumLiteral("versioned-update", "http://hl7.org/fhir/versioning-policy"), Description("VersionId tracked fully")]
+            VersionedUpdate,
+        }
+
+        /// <summary>
+        /// A code that indicates how the server supports conditional read.
+        /// (url: http://hl7.org/fhir/ValueSet/conditional-read-status)
+        /// </summary>
+        [FhirEnumeration("ConditionalReadStatus")]
+        public enum ConditionalReadStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-read-status)
+            /// </summary>
+            [EnumLiteral("not-supported", "http://hl7.org/fhir/conditional-read-status"), Description("Not Supported")]
+            NotSupported,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-read-status)
+            /// </summary>
+            [EnumLiteral("modified-since", "http://hl7.org/fhir/conditional-read-status"), Description("If-Modified-Since")]
+            ModifiedSince,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-read-status)
+            /// </summary>
+            [EnumLiteral("not-match", "http://hl7.org/fhir/conditional-read-status"), Description("If-None-Match")]
+            NotMatch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-read-status)
+            /// </summary>
+            [EnumLiteral("full-support", "http://hl7.org/fhir/conditional-read-status"), Description("Full Support")]
+            FullSupport,
+        }
+
+        /// <summary>
+        /// A code that indicates how the server supports conditional delete.
+        /// (url: http://hl7.org/fhir/ValueSet/conditional-delete-status)
+        /// </summary>
+        [FhirEnumeration("ConditionalDeleteStatus")]
+        public enum ConditionalDeleteStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-delete-status)
+            /// </summary>
+            [EnumLiteral("not-supported", "http://hl7.org/fhir/conditional-delete-status"), Description("Not Supported")]
+            NotSupported,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-delete-status)
+            /// </summary>
+            [EnumLiteral("single", "http://hl7.org/fhir/conditional-delete-status"), Description("Single Deletes Supported")]
+            Single,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/conditional-delete-status)
+            /// </summary>
+            [EnumLiteral("multiple", "http://hl7.org/fhir/conditional-delete-status"), Description("Multiple Deletes Supported")]
+            Multiple,
+        }
+
+        /// <summary>
+        /// A set of flags that defines how references are supported.
+        /// (url: http://hl7.org/fhir/ValueSet/reference-handling-policy)
+        /// </summary>
+        [FhirEnumeration("ReferenceHandlingPolicy")]
+        public enum ReferenceHandlingPolicy
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("literal", "http://hl7.org/fhir/reference-handling-policy"), Description("Literal References")]
+            Literal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("logical", "http://hl7.org/fhir/reference-handling-policy"), Description("Logical References")]
+            Logical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("resolves", "http://hl7.org/fhir/reference-handling-policy"), Description("Resolves References")]
+            Resolves,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("enforced", "http://hl7.org/fhir/reference-handling-policy"), Description("Reference Integrity Enforced")]
+            Enforced,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-handling-policy)
+            /// </summary>
+            [EnumLiteral("local", "http://hl7.org/fhir/reference-handling-policy"), Description("Local References Only")]
+            Local,
+        }
+
+        /// <summary>
+        /// Operations supported by REST at the system level.
+        /// (url: http://hl7.org/fhir/ValueSet/system-restful-interaction)
+        /// </summary>
+        [FhirEnumeration("SystemRestfulInteraction")]
+        public enum SystemRestfulInteraction
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("transaction", "http://hl7.org/fhir/restful-interaction"), Description("transaction")]
+            Transaction,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("batch", "http://hl7.org/fhir/restful-interaction"), Description("batch")]
+            Batch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("search-system", "http://hl7.org/fhir/restful-interaction"), Description("search-system")]
+            SearchSystem,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/restful-interaction)
+            /// </summary>
+            [EnumLiteral("history-system", "http://hl7.org/fhir/restful-interaction"), Description("history-system")]
+            HistorySystem,
+        }
+
+        /// <summary>
+        /// The mode of a message capability statement.
+        /// (url: http://hl7.org/fhir/ValueSet/event-capability-mode)
+        /// </summary>
+        [FhirEnumeration("EventCapabilityMode")]
+        public enum EventCapabilityMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-capability-mode)
+            /// </summary>
+            [EnumLiteral("sender", "http://hl7.org/fhir/event-capability-mode"), Description("Sender")]
+            Sender,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/event-capability-mode)
+            /// </summary>
+            [EnumLiteral("receiver", "http://hl7.org/fhir/event-capability-mode"), Description("Receiver")]
+            Receiver,
+        }
+
+        /// <summary>
+        /// Whether the application produces or consumes documents.
+        /// (url: http://hl7.org/fhir/ValueSet/document-mode)
+        /// </summary>
+        [FhirEnumeration("DocumentMode")]
+        public enum DocumentMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/document-mode)
+            /// </summary>
+            [EnumLiteral("producer", "http://hl7.org/fhir/document-mode"), Description("Producer")]
+            Producer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/document-mode)
+            /// </summary>
+            [EnumLiteral("consumer", "http://hl7.org/fhir/document-mode"), Description("Consumer")]
+            Consumer,
+        }
 
 
         [FhirType("SoftwareComponent")]
@@ -1037,13 +1383,32 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("documentation", Order=60)]
             [DataMember]
-            public Markdown Documentation
+            public Markdown DocumentationElement
             {
-                get { return _documentation; }
-                set { _documentation = value; OnPropertyChanged("Documentation"); }
+                get { return _documentationElement; }
+                set { _documentationElement = value; OnPropertyChanged("DocumentationElement"); }
             }
 
-            private Markdown _documentation;
+            private Markdown _documentationElement;
+
+            /// <summary>
+            /// Additional information about the use of the resource type
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Documentation
+            {
+                get { return DocumentationElement != null ? DocumentationElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        DocumentationElement = null;
+                    else
+                        DocumentationElement = new Markdown(value);
+                    OnPropertyChanged("Documentation");
+                }
+            }
 
             /// <summary>
             /// What operations are supported?
@@ -1405,7 +1770,7 @@ namespace Hl7.Fhir.Model.STU3
                     base.CopyTo(dest);
                     if (TypeElement != null) dest.TypeElement = (Code<ResourceType>)TypeElement.DeepCopy();
                     if (Profile != null) dest.Profile = (ResourceReference)Profile.DeepCopy();
-                    if (Documentation != null) dest.Documentation = (Markdown)Documentation.DeepCopy();
+                    if (DocumentationElement != null) dest.DocumentationElement = (Markdown)DocumentationElement.DeepCopy();
                     if (Interaction != null) dest.Interaction = new List<ResourceInteractionComponent>(Interaction.DeepCopy());
                     if (VersioningElement != null) dest.VersioningElement = (Code<ResourceVersionPolicy>)VersioningElement.DeepCopy();
                     if (ReadHistoryElement != null) dest.ReadHistoryElement = (FhirBoolean)ReadHistoryElement.DeepCopy();
@@ -1437,7 +1802,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
                 if (!DeepComparable.Matches(Profile, otherT.Profile)) return false;
-                if (!DeepComparable.Matches(Documentation, otherT.Documentation)) return false;
+                if (!DeepComparable.Matches(DocumentationElement, otherT.DocumentationElement)) return false;
                 if ( !DeepComparable.Matches(Interaction, otherT.Interaction)) return false;
                 if (!DeepComparable.Matches(VersioningElement, otherT.VersioningElement)) return false;
                 if (!DeepComparable.Matches(ReadHistoryElement, otherT.ReadHistoryElement)) return false;
@@ -1462,7 +1827,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
                 if (!DeepComparable.IsExactly(Profile, otherT.Profile)) return false;
-                if (!DeepComparable.IsExactly(Documentation, otherT.Documentation)) return false;
+                if (!DeepComparable.IsExactly(DocumentationElement, otherT.DocumentationElement)) return false;
                 if (!DeepComparable.IsExactly(Interaction, otherT.Interaction)) return false;
                 if (!DeepComparable.IsExactly(VersioningElement, otherT.VersioningElement)) return false;
                 if (!DeepComparable.IsExactly(ReadHistoryElement, otherT.ReadHistoryElement)) return false;
@@ -1488,7 +1853,7 @@ namespace Hl7.Fhir.Model.STU3
                     foreach (var item in base.Children) yield return item;
                     if (TypeElement != null) yield return TypeElement;
                     if (Profile != null) yield return Profile;
-                    if (Documentation != null) yield return Documentation;
+                    if (DocumentationElement != null) yield return DocumentationElement;
                     foreach (var elem in Interaction) { if (elem != null) yield return elem; }
                     if (VersioningElement != null) yield return VersioningElement;
                     if (ReadHistoryElement != null) yield return ReadHistoryElement;
@@ -1512,7 +1877,7 @@ namespace Hl7.Fhir.Model.STU3
                     foreach (var item in base.NamedChildren) yield return item;
                     if (TypeElement != null) yield return new ElementValue("type", TypeElement);
                     if (Profile != null) yield return new ElementValue("profile", Profile);
-                    if (Documentation != null) yield return new ElementValue("documentation", Documentation);
+                    if (DocumentationElement != null) yield return new ElementValue("documentation", DocumentationElement);
                     foreach (var elem in Interaction) { if (elem != null) yield return new ElementValue("interaction", elem); }
                     if (VersioningElement != null) yield return new ElementValue("versioning", VersioningElement);
                     if (ReadHistoryElement != null) yield return new ElementValue("readHistory", ReadHistoryElement);
@@ -3329,13 +3694,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", Order=180)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the capability statement
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Context the content is intended to support
@@ -3370,26 +3754,64 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("purpose", Order=210)]
         [DataMember]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
-            get { return _purpose; }
-            set { _purpose = value; OnPropertyChanged("Purpose"); }
+            get { return _purposeElement; }
+            set { _purposeElement = value; OnPropertyChanged("PurposeElement"); }
         }
 
-        private Markdown _purpose;
+        private Markdown _purposeElement;
+
+        /// <summary>
+        /// Why this capability statement is defined
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Purpose
+        {
+            get { return PurposeElement != null ? PurposeElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PurposeElement = null;
+                else
+                    PurposeElement = new Markdown(value);
+                OnPropertyChanged("Purpose");
+            }
+        }
 
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
         [FhirElement("copyright", Order=220)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// instance | capability | requirements
@@ -3710,7 +4132,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "rest.select(mode).isDistinct()",
             Key = "cpb-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "There can only be one REST declaration per mode.",
             Xpath = "count(f:rest)=count(distinct-values(f:rest/f:mode/@value))"
         };
@@ -3719,7 +4141,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "document.select(profile.reference&mode).isDistinct()",
             Key = "cpb-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The set of documents must be unique by the combination of profile and mode.",
             Xpath = "count(f:document[f:mode/@value='producer'])=count(distinct-values(f:document[f:mode/@value='producer']/f:profile/f:reference/@value)) and count(f:document[f:mode/@value='consumer'])=count(distinct-values(f:document[f:mode/@value='consumer']/f:profile/f:reference/@value))"
         };
@@ -3728,7 +4150,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "implementation.empty() or kind != 'capability'",
             Key = "cpb-15",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Capability Statements of kind 'instance' do not have implementation elements.",
             Xpath = "not(exists(f:implementation)) or (f:kind/@value != 'capability')"
         };
@@ -3737,7 +4159,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "messaging.endpoint.empty() or kind = 'instance'",
             Key = "cpb-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Messaging end-point is required (and is only permitted) when a statement is for an implementation.",
             Xpath = "not(exists(f:messaging/f:endpoint)) or f:kind/@value = 'instance'"
         };
@@ -3746,7 +4168,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(software.empty() and implementation.empty()) or kind != 'requirements'",
             Key = "cpb-14",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Capability Statements of kind 'requirements' do not have software or implementation elements.",
             Xpath = "not(exists(f:software) or exists(f:implementation)) or (f:kind/@value != 'requirements')"
         };
@@ -3755,7 +4177,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(description.count() + software.count() + implementation.count()) > 0",
             Key = "cpb-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A Capability Statement SHALL have at least one of description, software, or implementation element.",
             Xpath = "count(f:software | f:implementation | f:description) > 0"
         };
@@ -3764,7 +4186,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "rest.exists() or messaging.exists() or document.exists()",
             Key = "cpb-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A Capability Statement SHALL have at least one of REST, messaging or document element.",
             Xpath = "exists(f:rest) or exists(f:messaging) or exists(f:document)"
         };
@@ -3773,7 +4195,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "rest.all(resource.select(type).isDistinct())",
             Key = "cpb-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A given resource can only be described once per RESTful mode.",
             Xpath = "count(f:resource)=count(distinct-values(f:resource/f:type/@value))"
         };
@@ -3782,7 +4204,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "rest.resource.all(searchParam.select(name).isDistinct())",
             Key = "cpb-12",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Search parameter names must be unique in the context of a resource.",
             Xpath = "count(f:searchParam)=count(distinct-values(f:searchParam/f:name/@value))"
         };
@@ -3791,7 +4213,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "messaging.all(supportedMessage.empty() != event.empty())",
             Key = "cpb-16",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A Capability Statement messaging element SHALL have either supportedMessage or event element, but not both.",
             Xpath = "exists(f:supportedMessage) != exists(f:event)"
         };
@@ -3828,11 +4250,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (PublisherElement != null) dest.PublisherElement = (FhirString)PublisherElement.DeepCopy();
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
-                if (Purpose != null) dest.Purpose = (Markdown)Purpose.DeepCopy();
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (PurposeElement != null) dest.PurposeElement = (Markdown)PurposeElement.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (KindElement != null) dest.KindElement = (Code<CapabilityStatementKind>)KindElement.DeepCopy();
                 if (InstantiatesElement != null) dest.InstantiatesElement = new List<FhirUri>(InstantiatesElement.DeepCopy());
                 if (Software != null) dest.Software = (SoftwareComponent)Software.DeepCopy();
@@ -3872,11 +4294,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(PublisherElement, otherT.PublisherElement)) return false;
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.Matches(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.Matches(KindElement, otherT.KindElement)) return false;
             if ( !DeepComparable.Matches(InstantiatesElement, otherT.InstantiatesElement)) return false;
             if (!DeepComparable.Matches(Software, otherT.Software)) return false;
@@ -3909,11 +4331,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(PublisherElement, otherT.PublisherElement)) return false;
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.IsExactly(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(KindElement, otherT.KindElement)) return false;
             if (!DeepComparable.IsExactly(InstantiatesElement, otherT.InstantiatesElement)) return false;
             if (!DeepComparable.IsExactly(Software, otherT.Software)) return false;
@@ -3946,11 +4368,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return DateElement;
                 if (PublisherElement != null) yield return PublisherElement;
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
-                if (Description != null) yield return Description;
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
-                if (Purpose != null) yield return Purpose;
-                if (Copyright != null) yield return Copyright;
+                if (PurposeElement != null) yield return PurposeElement;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 if (KindElement != null) yield return KindElement;
                 foreach (var elem in InstantiatesElement) { if (elem != null) yield return elem; }
                 if (Software != null) yield return Software;
@@ -3982,11 +4404,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
-                if (Description != null) yield return new ElementValue("description", Description);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (PurposeElement != null) yield return new ElementValue("purpose", PurposeElement);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 if (KindElement != null) yield return new ElementValue("kind", KindElement);
                 foreach (var elem in InstantiatesElement) { if (elem != null) yield return new ElementValue("instantiates", elem); }
                 if (Software != null) yield return new ElementValue("software", Software);

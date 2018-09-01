@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -1297,7 +1298,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "action.all(resource.exists() != action.exists())",
             Key = "rqg-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have resource or action but not both",
             Xpath = "exists(f:resource) != exists(f:action)"
         };

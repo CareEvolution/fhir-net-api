@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -54,6 +55,63 @@ namespace Hl7.Fhir.Model.STU3
     {
         [NotMapped]
         public override string TypeName { get { return "RelatedArtifact"; } }
+
+        /// <summary>
+        /// The type of relationship to the related artifact
+        /// (url: http://hl7.org/fhir/ValueSet/related-artifact-type)
+        /// </summary>
+        [FhirEnumeration("RelatedArtifactType")]
+        public enum RelatedArtifactType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("documentation", "http://hl7.org/fhir/related-artifact-type"), Description("Documentation")]
+            Documentation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("justification", "http://hl7.org/fhir/related-artifact-type"), Description("Justification")]
+            Justification,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("citation", "http://hl7.org/fhir/related-artifact-type"), Description("Citation")]
+            Citation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("predecessor", "http://hl7.org/fhir/related-artifact-type"), Description("Predecessor")]
+            Predecessor,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("successor", "http://hl7.org/fhir/related-artifact-type"), Description("Successor")]
+            Successor,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("derived-from", "http://hl7.org/fhir/related-artifact-type"), Description("Derived From")]
+            DerivedFrom,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("depends-on", "http://hl7.org/fhir/related-artifact-type"), Description("Depends On")]
+            DependsOn,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/related-artifact-type)
+            /// </summary>
+            [EnumLiteral("composed-of", "http://hl7.org/fhir/related-artifact-type"), Description("Composed Of")]
+            ComposedOf,
+        }
 
 
         /// <summary>

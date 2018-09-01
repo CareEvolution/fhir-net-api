@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.ResearchStudy; } }
         [NotMapped]
         public override string TypeName { get { return "ResearchStudy"; } }
+
+        /// <summary>
+        /// Codes that convey the current status of the research study
+        /// (url: http://hl7.org/fhir/ValueSet/research-study-status)
+        /// </summary>
+        [FhirEnumeration("ResearchStudyStatus")]
+        public enum ResearchStudyStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-study-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/research-study-status"), Description("Draft")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-study-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/research-study-status"), Description("In-progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-study-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/research-study-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-study-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/research-study-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-study-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/research-study-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-study-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/research-study-status"), Description("Entered in error")]
+            EnteredInError,
+        }
 
 
         [FhirType("ArmComponent")]
@@ -417,13 +463,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", Order=200)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// What this is study doing
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Inclusion &amp; exclusion criteria
@@ -556,7 +621,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (RelatedArtifact != null) dest.RelatedArtifact = new List<RelatedArtifact>(RelatedArtifact.DeepCopy());
                 if (Keyword != null) dest.Keyword = new List<CodeableConcept>(Keyword.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
                 if (Enrollment != null) dest.Enrollment = new List<ResourceReference>(Enrollment.DeepCopy());
                 if (Period != null) dest.Period = (Period)Period.DeepCopy();
                 if (Sponsor != null) dest.Sponsor = (ResourceReference)Sponsor.DeepCopy();
@@ -593,7 +658,7 @@ namespace Hl7.Fhir.Model.STU3
             if ( !DeepComparable.Matches(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if ( !DeepComparable.Matches(Keyword, otherT.Keyword)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(Enrollment, otherT.Enrollment)) return false;
             if (!DeepComparable.Matches(Period, otherT.Period)) return false;
             if (!DeepComparable.Matches(Sponsor, otherT.Sponsor)) return false;
@@ -623,7 +688,7 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if (!DeepComparable.IsExactly(Keyword, otherT.Keyword)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(Enrollment, otherT.Enrollment)) return false;
             if (!DeepComparable.IsExactly(Period, otherT.Period)) return false;
             if (!DeepComparable.IsExactly(Sponsor, otherT.Sponsor)) return false;
@@ -653,7 +718,7 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return elem; }
                 foreach (var elem in Keyword) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
-                if (Description != null) yield return Description;
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in Enrollment) { if (elem != null) yield return elem; }
                 if (Period != null) yield return Period;
                 if (Sponsor != null) yield return Sponsor;
@@ -682,7 +747,7 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return new ElementValue("relatedArtifact", elem); }
                 foreach (var elem in Keyword) { if (elem != null) yield return new ElementValue("keyword", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
-                if (Description != null) yield return new ElementValue("description", Description);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in Enrollment) { if (elem != null) yield return new ElementValue("enrollment", elem); }
                 if (Period != null) yield return new ElementValue("period", Period);
                 if (Sponsor != null) yield return new ElementValue("sponsor", Sponsor);

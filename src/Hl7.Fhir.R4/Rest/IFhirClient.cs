@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Serialization.R4;
 
 namespace Hl7.Fhir.Rest.R4

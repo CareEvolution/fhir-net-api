@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,66 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.NamingSystem; } }
         [NotMapped]
         public override string TypeName { get { return "NamingSystem"; } }
+
+        /// <summary>
+        /// Identifies the purpose of the naming system.
+        /// (url: http://hl7.org/fhir/ValueSet/namingsystem-type)
+        /// </summary>
+        [FhirEnumeration("NamingSystemType")]
+        public enum NamingSystemType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-type)
+            /// </summary>
+            [EnumLiteral("codesystem", "http://hl7.org/fhir/namingsystem-type"), Description("Code System")]
+            Codesystem,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-type)
+            /// </summary>
+            [EnumLiteral("identifier", "http://hl7.org/fhir/namingsystem-type"), Description("Identifier")]
+            Identifier,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-type)
+            /// </summary>
+            [EnumLiteral("root", "http://hl7.org/fhir/namingsystem-type"), Description("Root")]
+            Root,
+        }
+
+        /// <summary>
+        /// Identifies the style of unique identifier used to identify a namespace.
+        /// (url: http://hl7.org/fhir/ValueSet/namingsystem-identifier-type)
+        /// </summary>
+        [FhirEnumeration("NamingSystemIdentifierType")]
+        public enum NamingSystemIdentifierType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-identifier-type)
+            /// </summary>
+            [EnumLiteral("oid", "http://hl7.org/fhir/namingsystem-identifier-type"), Description("OID")]
+            Oid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-identifier-type)
+            /// </summary>
+            [EnumLiteral("uuid", "http://hl7.org/fhir/namingsystem-identifier-type"), Description("UUID")]
+            Uuid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-identifier-type)
+            /// </summary>
+            [EnumLiteral("uri", "http://hl7.org/fhir/namingsystem-identifier-type"), Description("URI")]
+            Uri,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/namingsystem-identifier-type)
+            /// </summary>
+            [EnumLiteral("other", "http://hl7.org/fhir/namingsystem-identifier-type"), Description("Other")]
+            Other,
+        }
 
 
         [FhirType("UniqueIdComponent")]
@@ -522,13 +583,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", Order=170)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the naming system
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Context the content is intended to support
@@ -623,7 +703,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "kind != 'root' or uniqueId.type = 'uuid'",
             Key = "nsd-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Root systems cannot have uuid identifiers",
             Xpath = "not(f:kind/@value='root' and f:uniqueId/f:type/@value='uuid')"
         };
@@ -632,7 +712,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "replacedBy.empty() or status = 'retired'",
             Key = "nsd-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can only have replacedBy if naming system is retired",
             Xpath = "not(f:replacedBy) or f:status/@value='retired'"
         };
@@ -641,7 +721,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "uniqueId.where(preferred = true).select(type).isDistinct()",
             Key = "nsd-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can't have more than one preferred identifier for a type",
             Xpath = "not(exists(for $type in distinct-values(f:uniqueId/f:type/@value) return if (count(f:uniqueId[f:type/@value=$type and f:preferred/@value=true()])>1) then $type else ()))"
         };
@@ -670,7 +750,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
                 if (ResponsibleElement != null) dest.ResponsibleElement = (FhirString)ResponsibleElement.DeepCopy();
                 if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
                 if (UsageElement != null) dest.UsageElement = (FhirString)UsageElement.DeepCopy();
@@ -701,7 +781,7 @@ namespace Hl7.Fhir.Model.STU3
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
             if (!DeepComparable.Matches(ResponsibleElement, otherT.ResponsibleElement)) return false;
             if (!DeepComparable.Matches(Type, otherT.Type)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
             if (!DeepComparable.Matches(UsageElement, otherT.UsageElement)) return false;
@@ -725,7 +805,7 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
             if (!DeepComparable.IsExactly(ResponsibleElement, otherT.ResponsibleElement)) return false;
             if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
             if (!DeepComparable.IsExactly(UsageElement, otherT.UsageElement)) return false;
@@ -749,7 +829,7 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
                 if (ResponsibleElement != null) yield return ResponsibleElement;
                 if (Type != null) yield return Type;
-                if (Description != null) yield return Description;
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
                 if (UsageElement != null) yield return UsageElement;
@@ -772,7 +852,7 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
                 if (ResponsibleElement != null) yield return new ElementValue("responsible", ResponsibleElement);
                 if (Type != null) yield return new ElementValue("type", Type);
-                if (Description != null) yield return new ElementValue("description", Description);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
                 if (UsageElement != null) yield return new ElementValue("usage", UsageElement);

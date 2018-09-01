@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,27 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Immunization; } }
         [NotMapped]
         public override string TypeName { get { return "Immunization"; } }
+
+        /// <summary>
+        /// The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the current status of the administered dose of vaccine.
+        /// (url: http://hl7.org/fhir/ValueSet/immunization-status)
+        /// </summary>
+        [FhirEnumeration("ImmunizationStatusCodes")]
+        public enum ImmunizationStatusCodes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-admin-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/medication-admin-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-admin-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-admin-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("PractitionerComponent")]
@@ -1128,7 +1150,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(notGiven = true) or explanation.reasonNotGiven.empty()",
             Key = "imm-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If immunization was administered (notGiven=false) then explanation.reasonNotGiven SHALL be absent.",
             Xpath = "not(f:notGiven/@value=false() and exists(f:explanation/f:reasonNotGiven))"
         };
@@ -1137,7 +1159,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(notGiven = true).not() or (reaction.empty() and explanation.reason.empty())",
             Key = "imm-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If immunization was not administered (notGiven=true) then there SHALL be no reaction nor explanation.reason present",
             Xpath = "not(f:notGiven/@value=true() and (count(f:reaction) > 0 or exists(f:explanation/f:reason)))"
         };

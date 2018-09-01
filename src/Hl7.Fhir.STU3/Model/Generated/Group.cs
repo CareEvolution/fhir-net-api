@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Group; } }
         [NotMapped]
         public override string TypeName { get { return "Group"; } }
+
+        /// <summary>
+        /// Types of resources that are part of group
+        /// (url: http://hl7.org/fhir/ValueSet/group-type)
+        /// </summary>
+        [FhirEnumeration("GroupType")]
+        public enum GroupType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("person", "http://hl7.org/fhir/group-type"), Description("Person")]
+            Person,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("animal", "http://hl7.org/fhir/group-type"), Description("Animal")]
+            Animal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("practitioner", "http://hl7.org/fhir/group-type"), Description("Practitioner")]
+            Practitioner,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("device", "http://hl7.org/fhir/group-type"), Description("Device")]
+            Device,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("medication", "http://hl7.org/fhir/group-type"), Description("Medication")]
+            Medication,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/group-type)
+            /// </summary>
+            [EnumLiteral("substance", "http://hl7.org/fhir/group-type"), Description("Substance")]
+            Substance,
+        }
 
 
         [FhirType("CharacteristicComponent")]
@@ -586,7 +632,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "member.empty() or (actual = true)",
             Key = "grp-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can only have members if group is \"actual\"",
             Xpath = "f:actual/@value=true() or not(exists(f:member))"
         };

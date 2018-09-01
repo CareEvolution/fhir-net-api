@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -54,6 +55,39 @@ namespace Hl7.Fhir.Model.STU3
     {
         [NotMapped]
         public override string TypeName { get { return "Identifier"; } }
+
+        /// <summary>
+        /// Identifies the purpose for this identifier, if known .
+        /// (url: http://hl7.org/fhir/ValueSet/identifier-use)
+        /// </summary>
+        [FhirEnumeration("IdentifierUse")]
+        public enum IdentifierUse
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("usual", "http://hl7.org/fhir/identifier-use"), Description("Usual")]
+            Usual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("official", "http://hl7.org/fhir/identifier-use"), Description("Official")]
+            Official,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("temp", "http://hl7.org/fhir/identifier-use"), Description("Temp")]
+            Temp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identifier-use)
+            /// </summary>
+            [EnumLiteral("secondary", "http://hl7.org/fhir/identifier-use"), Description("Secondary")]
+            Secondary,
+        }
 
 
         /// <summary>

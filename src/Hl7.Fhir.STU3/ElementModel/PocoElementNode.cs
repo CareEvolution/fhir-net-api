@@ -7,13 +7,14 @@
  */
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
-using Hl7.Fhir.Specification.STU3;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.STU3;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.ElementModel.STU3
 {
@@ -58,8 +59,8 @@ namespace Hl7.Fhir.ElementModel.STU3
 
         private IStructureDefinitionSummary down() =>
             // If this is a backbone element, the child type is the nested complex type
-            Definition.Type[0] is IStructureDefinitionSummary be ? 
-                    be : 
+            Definition.Type[0] is IStructureDefinitionSummary be ?
+                    be :
                     Provider.Provide(InstanceType);
 
 

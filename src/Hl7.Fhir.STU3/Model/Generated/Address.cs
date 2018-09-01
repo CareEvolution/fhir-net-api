@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -54,6 +55,66 @@ namespace Hl7.Fhir.Model.STU3
     {
         [NotMapped]
         public override string TypeName { get { return "Address"; } }
+
+        /// <summary>
+        /// The use of an address
+        /// (url: http://hl7.org/fhir/ValueSet/address-use)
+        /// </summary>
+        [FhirEnumeration("AddressUse")]
+        public enum AddressUse
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/address-use)
+            /// </summary>
+            [EnumLiteral("home", "http://hl7.org/fhir/address-use"), Description("Home")]
+            Home,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/address-use)
+            /// </summary>
+            [EnumLiteral("work", "http://hl7.org/fhir/address-use"), Description("Work")]
+            Work,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/address-use)
+            /// </summary>
+            [EnumLiteral("temp", "http://hl7.org/fhir/address-use"), Description("Temporary")]
+            Temp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/address-use)
+            /// </summary>
+            [EnumLiteral("old", "http://hl7.org/fhir/address-use"), Description("Old / Incorrect")]
+            Old,
+        }
+
+        /// <summary>
+        /// The type of an address (physical / postal)
+        /// (url: http://hl7.org/fhir/ValueSet/address-type)
+        /// </summary>
+        [FhirEnumeration("AddressType")]
+        public enum AddressType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/address-type)
+            /// </summary>
+            [EnumLiteral("postal", "http://hl7.org/fhir/address-type"), Description("Postal")]
+            Postal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/address-type)
+            /// </summary>
+            [EnumLiteral("physical", "http://hl7.org/fhir/address-type"), Description("Physical")]
+            Physical,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/address-type)
+            /// </summary>
+            [EnumLiteral("both", "http://hl7.org/fhir/address-type"), Description("Postal & Physical")]
+            Both,
+        }
 
 
         /// <summary>

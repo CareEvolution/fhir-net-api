@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -118,7 +119,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "contained.contained.empty()",
             Key = "dom-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the resource is contained in another resource, it SHALL NOT contain nested Resources",
             Xpath = "not(parent::f:contained and f:contained)"
         };
@@ -127,7 +128,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "contained.text.empty()",
             Key = "dom-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the resource is contained in another resource, it SHALL NOT contain any narrative",
             Xpath = "not(parent::f:contained and f:text)"
         };
@@ -136,7 +137,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()",
             Key = "dom-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated",
             Xpath = "not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))"
         };
@@ -145,7 +146,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "contained.where(('#'+id in %resource.descendants().reference).not()).empty()",
             Key = "dom-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource",
             Xpath = "not(exists(for $id in f:contained/*/@id return $id[not(ancestor::f:contained/parent::*/descendant::f:reference/@value=concat('#', $id))]))"
         };
@@ -182,6 +183,7 @@ namespace Hl7.Fhir.Model.STU3
             var otherT = other as DomainResource;
             if (otherT == null) return false;
 
+            if (!base.Matches(otherT)) return false;
             if (!DeepComparable.Matches(Text, otherT.Text)) return false;
             if ( !DeepComparable.Matches(Contained, otherT.Contained)) return false;
             if ( !DeepComparable.Matches(Extension, otherT.Extension)) return false;
@@ -195,6 +197,7 @@ namespace Hl7.Fhir.Model.STU3
             var otherT = other as DomainResource;
             if (otherT == null) return false;
 
+            if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Text, otherT.Text)) return false;
             if (!DeepComparable.IsExactly(Contained, otherT.Contained)) return false;
             if (!DeepComparable.IsExactly(Extension, otherT.Extension)) return false;

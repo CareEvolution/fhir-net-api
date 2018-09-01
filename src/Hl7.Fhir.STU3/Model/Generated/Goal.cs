@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,93 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Goal; } }
         [NotMapped]
         public override string TypeName { get { return "Goal"; } }
+
+        /// <summary>
+        /// Indicates whether the goal has been met and is still being targeted
+        /// (url: http://hl7.org/fhir/ValueSet/goal-status)
+        /// </summary>
+        [FhirEnumeration("GoalStatus")]
+        public enum GoalStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/goal-status"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("accepted", "http://hl7.org/fhir/goal-status"), Description("Accepted")]
+            Accepted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/goal-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/goal-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("on-target", "http://hl7.org/fhir/goal-status"), Description("On Target")]
+            OnTarget,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("ahead-of-target", "http://hl7.org/fhir/goal-status"), Description("Ahead of Target")]
+            AheadOfTarget,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("behind-target", "http://hl7.org/fhir/goal-status"), Description("Behind Target")]
+            BehindTarget,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("sustaining", "http://hl7.org/fhir/goal-status"), Description("Sustaining")]
+            Sustaining,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("achieved", "http://hl7.org/fhir/goal-status"), Description("Achieved")]
+            Achieved,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/goal-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/goal-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/goal-status"), Description("Entered In Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/goal-status)
+            /// </summary>
+            [EnumLiteral("rejected", "http://hl7.org/fhir/goal-status"), Description("Rejected")]
+            Rejected,
+        }
 
 
         [FhirType("TargetComponent")]
@@ -452,7 +540,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "target.all((detail.exists() and measure.exists()) or detail.exists().not())",
             Key = "gol-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Goal.target.measure is required if Goal.target.detail is populated",
             Xpath = "(exists(f:*[starts-with(local-name(.), 'detail')]) and exists(f:measure)) or not(exists(f:*[starts-with(local-name(.), 'detail')]))"
         };

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -54,6 +55,186 @@ namespace Hl7.Fhir.Model.STU3
     {
         [NotMapped]
         public override string TypeName { get { return "ElementDefinition"; } }
+
+        /// <summary>
+        /// How a property is represented when serialized.
+        /// (url: http://hl7.org/fhir/ValueSet/property-representation)
+        /// </summary>
+        [FhirEnumeration("PropertyRepresentation")]
+        public enum PropertyRepresentation
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("xmlAttr", "http://hl7.org/fhir/property-representation"), Description("XML Attribute")]
+            XmlAttr,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("xmlText", "http://hl7.org/fhir/property-representation"), Description("XML Text")]
+            XmlText,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("typeAttr", "http://hl7.org/fhir/property-representation"), Description("Type Attribute")]
+            TypeAttr,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("cdaText", "http://hl7.org/fhir/property-representation"), Description("CDA Text Format")]
+            CdaText,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/property-representation)
+            /// </summary>
+            [EnumLiteral("xhtml", "http://hl7.org/fhir/property-representation"), Description("XHTML")]
+            Xhtml,
+        }
+
+        /// <summary>
+        /// How an element value is interpreted when discrimination is evaluated
+        /// (url: http://hl7.org/fhir/ValueSet/discriminator-type)
+        /// </summary>
+        [FhirEnumeration("DiscriminatorType")]
+        public enum DiscriminatorType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("value", "http://hl7.org/fhir/discriminator-type"), Description("Value")]
+            Value,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("exists", "http://hl7.org/fhir/discriminator-type"), Description("Exists")]
+            Exists,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("pattern", "http://hl7.org/fhir/discriminator-type"), Description("Pattern")]
+            Pattern,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("type", "http://hl7.org/fhir/discriminator-type"), Description("Type")]
+            Type,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/discriminator-type)
+            /// </summary>
+            [EnumLiteral("profile", "http://hl7.org/fhir/discriminator-type"), Description("Profile")]
+            Profile,
+        }
+
+        /// <summary>
+        /// How slices are interpreted when evaluating an instance.
+        /// (url: http://hl7.org/fhir/ValueSet/resource-slicing-rules)
+        /// </summary>
+        [FhirEnumeration("SlicingRules")]
+        public enum SlicingRules
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-slicing-rules)
+            /// </summary>
+            [EnumLiteral("closed", "http://hl7.org/fhir/resource-slicing-rules"), Description("Closed")]
+            Closed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-slicing-rules)
+            /// </summary>
+            [EnumLiteral("open", "http://hl7.org/fhir/resource-slicing-rules"), Description("Open")]
+            Open,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-slicing-rules)
+            /// </summary>
+            [EnumLiteral("openAtEnd", "http://hl7.org/fhir/resource-slicing-rules"), Description("Open at End")]
+            OpenAtEnd,
+        }
+
+        /// <summary>
+        /// How resource references can be aggregated.
+        /// (url: http://hl7.org/fhir/ValueSet/resource-aggregation-mode)
+        /// </summary>
+        [FhirEnumeration("AggregationMode")]
+        public enum AggregationMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-aggregation-mode)
+            /// </summary>
+            [EnumLiteral("contained", "http://hl7.org/fhir/resource-aggregation-mode"), Description("Contained")]
+            Contained,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-aggregation-mode)
+            /// </summary>
+            [EnumLiteral("referenced", "http://hl7.org/fhir/resource-aggregation-mode"), Description("Referenced")]
+            Referenced,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/resource-aggregation-mode)
+            /// </summary>
+            [EnumLiteral("bundled", "http://hl7.org/fhir/resource-aggregation-mode"), Description("Bundled")]
+            Bundled,
+        }
+
+        /// <summary>
+        /// Whether a reference needs to be version specific or version independent, or whether either can be used
+        /// (url: http://hl7.org/fhir/ValueSet/reference-version-rules)
+        /// </summary>
+        [FhirEnumeration("ReferenceVersionRules")]
+        public enum ReferenceVersionRules
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-version-rules)
+            /// </summary>
+            [EnumLiteral("either", "http://hl7.org/fhir/reference-version-rules"), Description("Either Specific or independent")]
+            Either,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-version-rules)
+            /// </summary>
+            [EnumLiteral("independent", "http://hl7.org/fhir/reference-version-rules"), Description("Version independent")]
+            Independent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reference-version-rules)
+            /// </summary>
+            [EnumLiteral("specific", "http://hl7.org/fhir/reference-version-rules"), Description("Version Specific")]
+            Specific,
+        }
+
+        /// <summary>
+        /// SHALL applications comply with this constraint?
+        /// (url: http://hl7.org/fhir/ValueSet/constraint-severity)
+        /// </summary>
+        [FhirEnumeration("ConstraintSeverity")]
+        public enum ConstraintSeverity
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/constraint-severity)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/constraint-severity"), Description("Error")]
+            Error,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/constraint-severity)
+            /// </summary>
+            [EnumLiteral("warning", "http://hl7.org/fhir/constraint-severity"), Description("Warning")]
+            Warning,
+        }
 
 
         [FhirType("SlicingComponent")]
@@ -1867,39 +2048,96 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("definition", InSummary=true, Order=100)]
         [DataMember]
-        public Markdown Definition
+        public Markdown DefinitionElement
         {
-            get { return _definition; }
-            set { _definition = value; OnPropertyChanged("Definition"); }
+            get { return _definitionElement; }
+            set { _definitionElement = value; OnPropertyChanged("DefinitionElement"); }
         }
 
-        private Markdown _definition;
+        private Markdown _definitionElement;
+
+        /// <summary>
+        /// Full formal definition as narrative text
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Definition
+        {
+            get { return DefinitionElement != null ? DefinitionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DefinitionElement = null;
+                else
+                    DefinitionElement = new Markdown(value);
+                OnPropertyChanged("Definition");
+            }
+        }
 
         /// <summary>
         /// Comments about the use of this element
         /// </summary>
         [FhirElement("comment", InSummary=true, Order=110)]
         [DataMember]
-        public Markdown Comment
+        public Markdown CommentElement
         {
-            get { return _comment; }
-            set { _comment = value; OnPropertyChanged("Comment"); }
+            get { return _commentElement; }
+            set { _commentElement = value; OnPropertyChanged("CommentElement"); }
         }
 
-        private Markdown _comment;
+        private Markdown _commentElement;
+
+        /// <summary>
+        /// Comments about the use of this element
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Comment
+        {
+            get { return CommentElement != null ? CommentElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CommentElement = null;
+                else
+                    CommentElement = new Markdown(value);
+                OnPropertyChanged("Comment");
+            }
+        }
 
         /// <summary>
         /// Why this resource has been created
         /// </summary>
         [FhirElement("requirements", InSummary=true, Order=120)]
         [DataMember]
-        public Markdown Requirements
+        public Markdown RequirementsElement
         {
-            get { return _requirements; }
-            set { _requirements = value; OnPropertyChanged("Requirements"); }
+            get { return _requirementsElement; }
+            set { _requirementsElement = value; OnPropertyChanged("RequirementsElement"); }
         }
 
-        private Markdown _requirements;
+        private Markdown _requirementsElement;
+
+        /// <summary>
+        /// Why this resource has been created
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Requirements
+        {
+            get { return RequirementsElement != null ? RequirementsElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    RequirementsElement = null;
+                else
+                    RequirementsElement = new Markdown(value);
+                OnPropertyChanged("Requirements");
+            }
+        }
 
         /// <summary>
         /// Other names
@@ -2076,13 +2314,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("meaningWhenMissing", InSummary=true, Order=200)]
         [DataMember]
-        public Markdown MeaningWhenMissing
+        public Markdown MeaningWhenMissingElement
         {
-            get { return _meaningWhenMissing; }
-            set { _meaningWhenMissing = value; OnPropertyChanged("MeaningWhenMissing"); }
+            get { return _meaningWhenMissingElement; }
+            set { _meaningWhenMissingElement = value; OnPropertyChanged("MeaningWhenMissingElement"); }
         }
 
-        private Markdown _meaningWhenMissing;
+        private Markdown _meaningWhenMissingElement;
+
+        /// <summary>
+        /// Implicit meaning when this element is missing
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string MeaningWhenMissing
+        {
+            get { return MeaningWhenMissingElement != null ? MeaningWhenMissingElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    MeaningWhenMissingElement = null;
+                else
+                    MeaningWhenMissingElement = new Markdown(value);
+                OnPropertyChanged("MeaningWhenMissing");
+            }
+        }
 
         /// <summary>
         /// What the order of the elements means
@@ -2393,7 +2650,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "min.empty() or max.empty() or (max = '*') or (min <= max.toInteger())",
             Key = "eld-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Min <= Max",
             Xpath = "not(exists(f:min)) or not(exists(f:max)) or (not(f:max/@value) and not(f:min/@value)) or (f:max/@value = '*') or (number(f:max/@value) >= f:min/@value)"
         };
@@ -2402,7 +2659,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "contentReference.empty() or (type.empty() and defaultValue.empty() and fixed.empty() and pattern.empty() and example.empty() and minValue.empty() and maxValue.empty() and maxLength.empty() and binding.empty())",
             Key = "eld-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "if the element definition has a contentReference, it cannot have type, defaultValue, fixed, pattern, example, minValue, maxValue, maxLength, or binding",
             Xpath = "not(exists(f:contentReference) and (exists(f:type) or exists(f:*[starts-with(local-name(.), 'value')]) or exists(f:*[starts-with(local-name(.), 'defaultValue')])  or exists(f:*[starts-with(local-name(.), 'fixed')]) or exists(f:*[starts-with(local-name(.), 'pattern')]) or exists(f:*[starts-with(local-name(.), 'example')]) or exists(f:*[starts-with(local-name(.), 'f:minValue')]) or exists(f:*[starts-with(local-name(.), 'f:maxValue')]) or exists(f:maxLength) or exists(f:binding)))"
         };
@@ -2411,7 +2668,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "pattern.empty() or (type.count() <= 1)",
             Key = "eld-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Pattern may only be specified if there is one type",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'pattern')])) or (count(f:type)<=1)"
         };
@@ -2420,7 +2677,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "fixed.empty() or (type.count()  <= 1)",
             Key = "eld-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Fixed value may only be specified if there is one type",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'fixed')])) or (count(f:type)<=1)"
         };
@@ -2429,7 +2686,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "binding.empty() or type.code.empty() or type.select((code = 'code') or (code = 'Coding') or (code='CodeableConcept') or (code = 'Quantity') or (code = 'Extension') or (code = 'string') or (code = 'uri')).exists()",
             Key = "eld-11",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Binding can only be present for coded elements, string, and uri",
             Xpath = "not(exists(f:binding)) or (count(f:type/f:code) = 0) or  f:type/f:code/@value=('code','Coding','CodeableConcept','Quantity','Extension', 'string', 'uri')"
         };
@@ -2438,7 +2695,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "pattern.empty() or fixed.empty()",
             Key = "eld-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Pattern and value are mutually exclusive",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'pattern')])) or not(exists(f:*[starts-with(local-name(.), 'fixed')]))"
         };
@@ -2447,7 +2704,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "constraint.select(key).isDistinct()",
             Key = "eld-14",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Constraints must be unique by key",
             Xpath = "count(f:constraint) = count(distinct-values(f:constraint/f:key/@value))"
         };
@@ -2456,7 +2713,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "type.select(code&profile&targetProfile).isDistinct()",
             Key = "eld-13",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Types must be unique by the combination of code and profile",
             Xpath = "not(exists(for $type in f:type return $type/preceding-sibling::f:type[f:code/@value=$type/f:code/@value and f:profile/@value = $type/f:profile/@value]))"
         };
@@ -2465,7 +2722,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "sliceName.empty() or sliceName.matches('^[a-zA-Z0-9\\\\/\\\\-_]+$')",
             Key = "eld-16",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "sliceName must be composed of proper tokens separated by \"/\"",
             Xpath = "not(exists(f:sliceName/@value)) or matches(f:sliceName/@value, '^[a-zA-Z0-9\\\\/\\\\-\\\\_]+$')"
         };
@@ -2474,7 +2731,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "defaultValue.empty() or meaningWhenMissing.empty()",
             Key = "eld-15",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "default value and meaningWhenMissing are mutually exclusive",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'fixed')])) or not(exists(f:meaningWhenMissing))"
         };
@@ -2483,7 +2740,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "slicing.all(discriminator.exists() or description.exists())",
             Key = "eld-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there are no discriminators, there must be a definition",
             Xpath = "(f:discriminator) or (f:description)"
         };
@@ -2492,7 +2749,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "max.all(empty() or ($this = '*') or (toInteger() >= 0))",
             Key = "eld-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Max SHALL be a number or \"*\"",
             Xpath = "@value='*' or (normalize-space(@value)!='' and normalize-space(translate(@value, '0123456789',''))='')"
         };
@@ -2501,7 +2758,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "type.all(aggregation.empty() or (code = 'Reference'))",
             Key = "eld-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Aggregation may only be specified if one of the allowed types for the element is a resource",
             Xpath = "not(exists(f:aggregation)) or exists(f:code[@value = 'Reference'])"
         };
@@ -2510,7 +2767,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "binding.all(valueSet.exists() or description.exists())",
             Key = "eld-10",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "provide either a reference or a description (or both)",
             Xpath = "(exists(f:valueSetUri) or exists(f:valueSetReference)) or exists(f:description)"
         };
@@ -2519,7 +2776,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "binding.all(valueSet.is(uri).not() or valueSet.as(uri).startsWith('http:') or valueSet.as(uri).startsWith('https') or valueSet.as(uri).startsWith('urn:'))",
             Key = "eld-12",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "ValueSet as a URI SHALL start with http:// or https:// or urn:",
             Xpath = "not(exists(f:valueSetUri)) or (starts-with(string(f:valueSetUri/@value), 'http:') or starts-with(string(f:valueSetUri/@value), 'https:') or starts-with(string(f:valueSetUri/@value), 'urn:'))"
         };
@@ -2540,9 +2797,9 @@ namespace Hl7.Fhir.Model.STU3
                 if (Code != null) dest.Code = new List<Coding>(Code.DeepCopy());
                 if (Slicing != null) dest.Slicing = (SlicingComponent)Slicing.DeepCopy();
                 if (ShortElement != null) dest.ShortElement = (FhirString)ShortElement.DeepCopy();
-                if (Definition != null) dest.Definition = (Markdown)Definition.DeepCopy();
-                if (Comment != null) dest.Comment = (Markdown)Comment.DeepCopy();
-                if (Requirements != null) dest.Requirements = (Markdown)Requirements.DeepCopy();
+                if (DefinitionElement != null) dest.DefinitionElement = (Markdown)DefinitionElement.DeepCopy();
+                if (CommentElement != null) dest.CommentElement = (Markdown)CommentElement.DeepCopy();
+                if (RequirementsElement != null) dest.RequirementsElement = (Markdown)RequirementsElement.DeepCopy();
                 if (AliasElement != null) dest.AliasElement = new List<FhirString>(AliasElement.DeepCopy());
                 if (MinElement != null) dest.MinElement = (UnsignedInt)MinElement.DeepCopy();
                 if (MaxElement != null) dest.MaxElement = (FhirString)MaxElement.DeepCopy();
@@ -2550,7 +2807,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (ContentReferenceElement != null) dest.ContentReferenceElement = (FhirUri)ContentReferenceElement.DeepCopy();
                 if (Type != null) dest.Type = new List<TypeRefComponent>(Type.DeepCopy());
                 if (DefaultValue != null) dest.DefaultValue = (Element)DefaultValue.DeepCopy();
-                if (MeaningWhenMissing != null) dest.MeaningWhenMissing = (Markdown)MeaningWhenMissing.DeepCopy();
+                if (MeaningWhenMissingElement != null) dest.MeaningWhenMissingElement = (Markdown)MeaningWhenMissingElement.DeepCopy();
                 if (OrderMeaningElement != null) dest.OrderMeaningElement = (FhirString)OrderMeaningElement.DeepCopy();
                 if (Fixed != null) dest.Fixed = (Element)Fixed.DeepCopy();
                 if (Pattern != null) dest.Pattern = (Element)Pattern.DeepCopy();
@@ -2589,9 +2846,9 @@ namespace Hl7.Fhir.Model.STU3
             if ( !DeepComparable.Matches(Code, otherT.Code)) return false;
             if (!DeepComparable.Matches(Slicing, otherT.Slicing)) return false;
             if (!DeepComparable.Matches(ShortElement, otherT.ShortElement)) return false;
-            if (!DeepComparable.Matches(Definition, otherT.Definition)) return false;
-            if (!DeepComparable.Matches(Comment, otherT.Comment)) return false;
-            if (!DeepComparable.Matches(Requirements, otherT.Requirements)) return false;
+            if (!DeepComparable.Matches(DefinitionElement, otherT.DefinitionElement)) return false;
+            if (!DeepComparable.Matches(CommentElement, otherT.CommentElement)) return false;
+            if (!DeepComparable.Matches(RequirementsElement, otherT.RequirementsElement)) return false;
             if ( !DeepComparable.Matches(AliasElement, otherT.AliasElement)) return false;
             if (!DeepComparable.Matches(MinElement, otherT.MinElement)) return false;
             if (!DeepComparable.Matches(MaxElement, otherT.MaxElement)) return false;
@@ -2599,7 +2856,7 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.Matches(ContentReferenceElement, otherT.ContentReferenceElement)) return false;
             if ( !DeepComparable.Matches(Type, otherT.Type)) return false;
             if (!DeepComparable.Matches(DefaultValue, otherT.DefaultValue)) return false;
-            if (!DeepComparable.Matches(MeaningWhenMissing, otherT.MeaningWhenMissing)) return false;
+            if (!DeepComparable.Matches(MeaningWhenMissingElement, otherT.MeaningWhenMissingElement)) return false;
             if (!DeepComparable.Matches(OrderMeaningElement, otherT.OrderMeaningElement)) return false;
             if (!DeepComparable.Matches(Fixed, otherT.Fixed)) return false;
             if (!DeepComparable.Matches(Pattern, otherT.Pattern)) return false;
@@ -2631,9 +2888,9 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
             if (!DeepComparable.IsExactly(Slicing, otherT.Slicing)) return false;
             if (!DeepComparable.IsExactly(ShortElement, otherT.ShortElement)) return false;
-            if (!DeepComparable.IsExactly(Definition, otherT.Definition)) return false;
-            if (!DeepComparable.IsExactly(Comment, otherT.Comment)) return false;
-            if (!DeepComparable.IsExactly(Requirements, otherT.Requirements)) return false;
+            if (!DeepComparable.IsExactly(DefinitionElement, otherT.DefinitionElement)) return false;
+            if (!DeepComparable.IsExactly(CommentElement, otherT.CommentElement)) return false;
+            if (!DeepComparable.IsExactly(RequirementsElement, otherT.RequirementsElement)) return false;
             if (!DeepComparable.IsExactly(AliasElement, otherT.AliasElement)) return false;
             if (!DeepComparable.IsExactly(MinElement, otherT.MinElement)) return false;
             if (!DeepComparable.IsExactly(MaxElement, otherT.MaxElement)) return false;
@@ -2641,7 +2898,7 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(ContentReferenceElement, otherT.ContentReferenceElement)) return false;
             if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
             if (!DeepComparable.IsExactly(DefaultValue, otherT.DefaultValue)) return false;
-            if (!DeepComparable.IsExactly(MeaningWhenMissing, otherT.MeaningWhenMissing)) return false;
+            if (!DeepComparable.IsExactly(MeaningWhenMissingElement, otherT.MeaningWhenMissingElement)) return false;
             if (!DeepComparable.IsExactly(OrderMeaningElement, otherT.OrderMeaningElement)) return false;
             if (!DeepComparable.IsExactly(Fixed, otherT.Fixed)) return false;
             if (!DeepComparable.IsExactly(Pattern, otherT.Pattern)) return false;
@@ -2673,9 +2930,9 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in Code) { if (elem != null) yield return elem; }
                 if (Slicing != null) yield return Slicing;
                 if (ShortElement != null) yield return ShortElement;
-                if (Definition != null) yield return Definition;
-                if (Comment != null) yield return Comment;
-                if (Requirements != null) yield return Requirements;
+                if (DefinitionElement != null) yield return DefinitionElement;
+                if (CommentElement != null) yield return CommentElement;
+                if (RequirementsElement != null) yield return RequirementsElement;
                 foreach (var elem in AliasElement) { if (elem != null) yield return elem; }
                 if (MinElement != null) yield return MinElement;
                 if (MaxElement != null) yield return MaxElement;
@@ -2683,7 +2940,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (ContentReferenceElement != null) yield return ContentReferenceElement;
                 foreach (var elem in Type) { if (elem != null) yield return elem; }
                 if (DefaultValue != null) yield return DefaultValue;
-                if (MeaningWhenMissing != null) yield return MeaningWhenMissing;
+                if (MeaningWhenMissingElement != null) yield return MeaningWhenMissingElement;
                 if (OrderMeaningElement != null) yield return OrderMeaningElement;
                 if (Fixed != null) yield return Fixed;
                 if (Pattern != null) yield return Pattern;
@@ -2714,9 +2971,9 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
                 if (Slicing != null) yield return new ElementValue("slicing", Slicing);
                 if (ShortElement != null) yield return new ElementValue("short", ShortElement);
-                if (Definition != null) yield return new ElementValue("definition", Definition);
-                if (Comment != null) yield return new ElementValue("comment", Comment);
-                if (Requirements != null) yield return new ElementValue("requirements", Requirements);
+                if (DefinitionElement != null) yield return new ElementValue("definition", DefinitionElement);
+                if (CommentElement != null) yield return new ElementValue("comment", CommentElement);
+                if (RequirementsElement != null) yield return new ElementValue("requirements", RequirementsElement);
                 foreach (var elem in AliasElement) { if (elem != null) yield return new ElementValue("alias", elem); }
                 if (MinElement != null) yield return new ElementValue("min", MinElement);
                 if (MaxElement != null) yield return new ElementValue("max", MaxElement);
@@ -2724,7 +2981,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (ContentReferenceElement != null) yield return new ElementValue("contentReference", ContentReferenceElement);
                 foreach (var elem in Type) { if (elem != null) yield return new ElementValue("type", elem); }
                 if (DefaultValue != null) yield return new ElementValue("defaultValue", DefaultValue);
-                if (MeaningWhenMissing != null) yield return new ElementValue("meaningWhenMissing", MeaningWhenMissing);
+                if (MeaningWhenMissingElement != null) yield return new ElementValue("meaningWhenMissing", MeaningWhenMissingElement);
                 if (OrderMeaningElement != null) yield return new ElementValue("orderMeaning", OrderMeaningElement);
                 if (Fixed != null) yield return new ElementValue("fixed", Fixed);
                 if (Pattern != null) yield return new ElementValue("pattern", Pattern);

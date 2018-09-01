@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -108,13 +109,32 @@ namespace Hl7.Fhir.Model.R4
         [FhirElement("text", InSummary=true, Order=50)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Markdown Text
+        public Markdown TextElement
         {
-            get { return _text; }
-            set { _text = value; OnPropertyChanged("Text"); }
+            get { return _textElement; }
+            set { _textElement = value; OnPropertyChanged("TextElement"); }
         }
 
-        private Markdown _text;
+        private Markdown _textElement;
+
+        /// <summary>
+        /// The annotation  - text content (as markdown)
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Text
+        {
+            get { return TextElement != null ? TextElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    TextElement = null;
+                else
+                    TextElement = new Markdown(value);
+                OnPropertyChanged("Text");
+            }
+        }
 
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -126,7 +146,7 @@ namespace Hl7.Fhir.Model.R4
                 base.CopyTo(dest);
                 if (Author != null) dest.Author = (Element)Author.DeepCopy();
                 if (TimeElement != null) dest.TimeElement = (FhirDateTime)TimeElement.DeepCopy();
-                if (Text != null) dest.Text = (Markdown)Text.DeepCopy();
+                if (TextElement != null) dest.TextElement = (Markdown)TextElement.DeepCopy();
                 return dest;
             }
             else
@@ -146,7 +166,7 @@ namespace Hl7.Fhir.Model.R4
             if (!base.Matches(otherT)) return false;
             if (!DeepComparable.Matches(Author, otherT.Author)) return false;
             if (!DeepComparable.Matches(TimeElement, otherT.TimeElement)) return false;
-            if (!DeepComparable.Matches(Text, otherT.Text)) return false;
+            if (!DeepComparable.Matches(TextElement, otherT.TextElement)) return false;
 
             return true;
         }
@@ -159,7 +179,7 @@ namespace Hl7.Fhir.Model.R4
             if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(Author, otherT.Author)) return false;
             if (!DeepComparable.IsExactly(TimeElement, otherT.TimeElement)) return false;
-            if (!DeepComparable.IsExactly(Text, otherT.Text)) return false;
+            if (!DeepComparable.IsExactly(TextElement, otherT.TextElement)) return false;
 
             return true;
         }
@@ -172,7 +192,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var item in base.Children) yield return item;
                 if (Author != null) yield return Author;
                 if (TimeElement != null) yield return TimeElement;
-                if (Text != null) yield return Text;
+                if (TextElement != null) yield return TextElement;
             }
         }
 
@@ -184,7 +204,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var item in base.NamedChildren) yield return item;
                 if (Author != null) yield return new ElementValue("author", Author);
                 if (TimeElement != null) yield return new ElementValue("time", TimeElement);
-                if (Text != null) yield return new ElementValue("text", Text);
+                if (TextElement != null) yield return new ElementValue("text", TextElement);
             }
         }
 

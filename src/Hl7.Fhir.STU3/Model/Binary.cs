@@ -1,6 +1,6 @@
-using Hl7.Fhir.Validation.STU3;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Hl7.Fhir.Validation;
 
 /*
   Copyright (c) 2011-2012, HL7, Inc
@@ -45,12 +45,12 @@ namespace Hl7.Fhir.Model.STU3
             result.AddRange(base.Validate(validationContext));
 
             if (Content == null)
-                result.Add(DotNetAttributeValidation.BuildResult(validationContext,"Entry must contain (possibly 0-length) data in Content element"));
+                result.Add(DotNetAttributeValidation.BuildResult(validationContext, "Entry must contain (possibly 0-length) data in Content element"));
 
             if (ContentType == null)
                 result.Add(DotNetAttributeValidation.BuildResult(validationContext, "Entry must contain a ContentType"));
 
             return result;
         }
-    }       
+    }
 }

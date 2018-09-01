@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -125,7 +126,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// Limited xhtml content
         /// </summary>
-        [FhirElement("div", XmlSerialization=XmlRepresentation.XHtml,TypeRedirect = typeof(XHtml), Order=40)]
+        [FhirElement("div", XmlSerialization=XmlRepresentation.XHtml, TypeRedirect = typeof(XHtml), Order=40)]
         [NarrativeXhtmlPattern]
         [Cardinality(Min=1,Max=1)]
         [DataMember]

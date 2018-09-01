@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,84 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Composition; } }
         [NotMapped]
         public override string TypeName { get { return "Composition"; } }
+
+        /// <summary>
+        ///  Set of codes used to value Act.Confidentiality and Role.Confidentiality attribute in accordance with the definition for concept domain "Confidentiality".
+        /// (url: http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassification)
+        /// </summary>
+        [FhirEnumeration("ConfidentialityClassification")]
+        public enum ConfidentialityClassification
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("U", "http://hl7.org/fhir/v3/Confidentiality"), Description("unrestricted")]
+            U,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("L", "http://hl7.org/fhir/v3/Confidentiality"), Description("low")]
+            L,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("M", "http://hl7.org/fhir/v3/Confidentiality"), Description("moderate")]
+            M,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("N", "http://hl7.org/fhir/v3/Confidentiality"), Description("normal")]
+            N,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("R", "http://hl7.org/fhir/v3/Confidentiality"), Description("restricted")]
+            R,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/v3/Confidentiality)
+            /// </summary>
+            [EnumLiteral("V", "http://hl7.org/fhir/v3/Confidentiality"), Description("very restricted")]
+            V,
+        }
+
+        /// <summary>
+        /// The way in which a person authenticated a composition.
+        /// (url: http://hl7.org/fhir/ValueSet/composition-attestation-mode)
+        /// </summary>
+        [FhirEnumeration("CompositionAttestationMode")]
+        public enum CompositionAttestationMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/composition-attestation-mode)
+            /// </summary>
+            [EnumLiteral("personal", "http://hl7.org/fhir/composition-attestation-mode"), Description("Personal")]
+            Personal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/composition-attestation-mode)
+            /// </summary>
+            [EnumLiteral("professional", "http://hl7.org/fhir/composition-attestation-mode"), Description("Professional")]
+            Professional,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/composition-attestation-mode)
+            /// </summary>
+            [EnumLiteral("legal", "http://hl7.org/fhir/composition-attestation-mode"), Description("Legal")]
+            Legal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/composition-attestation-mode)
+            /// </summary>
+            [EnumLiteral("official", "http://hl7.org/fhir/composition-attestation-mode"), Description("Official")]
+            Official,
+        }
 
 
         [FhirType("AttesterComponent")]
@@ -1011,7 +1090,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "section.all(text.exists() or entry.exists() or section.exists())",
             Key = "cmp-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A section must at least one of text, entries, or sub-sections",
             Xpath = "exists(f:text) or exists(f:entry) or exists(f:section)"
         };
@@ -1020,7 +1099,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "section.all(emptyReason.empty() or entry.empty())",
             Key = "cmp-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A section can only have an emptyReason if it is empty",
             Xpath = "not(exists(f:emptyReason) and exists(f:entry))"
         };

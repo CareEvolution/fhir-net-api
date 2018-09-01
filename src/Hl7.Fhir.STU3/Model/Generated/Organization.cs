@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -400,7 +401,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(identifier.count() + name.count()) > 0",
             Key = "org-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The organization SHALL at least have a name or an id, and possibly more than one",
             Xpath = "count(f:identifier | f:name) > 0"
         };
@@ -409,7 +410,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "telecom.all(where(use = 'home').empty())",
             Key = "org-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The telecom of an organization can never be of use 'home'",
             Xpath = "count(f:use[@value='home']) = 0"
         };
@@ -418,7 +419,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "address.all(where(use = 'home').empty())",
             Key = "org-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "An address of an organization can never be of use 'home'",
             Xpath = "count(f:use[@value='home']) = 0"
         };

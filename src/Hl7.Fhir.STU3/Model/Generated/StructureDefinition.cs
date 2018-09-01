@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,87 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.StructureDefinition; } }
         [NotMapped]
         public override string TypeName { get { return "StructureDefinition"; } }
+
+        /// <summary>
+        /// Defines the type of structure that a definition is describing.
+        /// (url: http://hl7.org/fhir/ValueSet/structure-definition-kind)
+        /// </summary>
+        [FhirEnumeration("StructureDefinitionKind")]
+        public enum StructureDefinitionKind
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/structure-definition-kind)
+            /// </summary>
+            [EnumLiteral("primitive-type", "http://hl7.org/fhir/structure-definition-kind"), Description("Primitive Data Type")]
+            PrimitiveType,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/structure-definition-kind)
+            /// </summary>
+            [EnumLiteral("complex-type", "http://hl7.org/fhir/structure-definition-kind"), Description("Complex Data Type")]
+            ComplexType,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/structure-definition-kind)
+            /// </summary>
+            [EnumLiteral("resource", "http://hl7.org/fhir/structure-definition-kind"), Description("Resource")]
+            Resource,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/structure-definition-kind)
+            /// </summary>
+            [EnumLiteral("logical", "http://hl7.org/fhir/structure-definition-kind"), Description("Logical Model")]
+            Logical,
+        }
+
+        /// <summary>
+        /// How an extension context is interpreted.
+        /// (url: http://hl7.org/fhir/ValueSet/extension-context)
+        /// </summary>
+        [FhirEnumeration("ExtensionContext")]
+        public enum ExtensionContext
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/extension-context)
+            /// </summary>
+            [EnumLiteral("resource", "http://hl7.org/fhir/extension-context"), Description("Resource")]
+            Resource,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/extension-context)
+            /// </summary>
+            [EnumLiteral("datatype", "http://hl7.org/fhir/extension-context"), Description("Datatype")]
+            Datatype,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/extension-context)
+            /// </summary>
+            [EnumLiteral("extension", "http://hl7.org/fhir/extension-context"), Description("Extension")]
+            Extension,
+        }
+
+        /// <summary>
+        /// How a type relates to its baseDefinition.
+        /// (url: http://hl7.org/fhir/ValueSet/type-derivation-rule)
+        /// </summary>
+        [FhirEnumeration("TypeDerivationRule")]
+        public enum TypeDerivationRule
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/type-derivation-rule)
+            /// </summary>
+            [EnumLiteral("specialization", "http://hl7.org/fhir/type-derivation-rule"), Description("Specialization")]
+            Specialization,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/type-derivation-rule)
+            /// </summary>
+            [EnumLiteral("constraint", "http://hl7.org/fhir/type-derivation-rule"), Description("Constraint")]
+            Constraint,
+        }
 
 
         [FhirType("MappingComponent")]
@@ -741,13 +823,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", Order=190)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the structure definition
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Context the content is intended to support
@@ -782,26 +883,64 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("purpose", Order=220)]
         [DataMember]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
-            get { return _purpose; }
-            set { _purpose = value; OnPropertyChanged("Purpose"); }
+            get { return _purposeElement; }
+            set { _purposeElement = value; OnPropertyChanged("PurposeElement"); }
         }
 
-        private Markdown _purpose;
+        private Markdown _purposeElement;
+
+        /// <summary>
+        /// Why this structure definition is defined
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Purpose
+        {
+            get { return PurposeElement != null ? PurposeElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PurposeElement = null;
+                else
+                    PurposeElement = new Markdown(value);
+                OnPropertyChanged("Purpose");
+            }
+        }
 
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
         [FhirElement("copyright", Order=230)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// Assist with indexing and finding
@@ -1155,7 +1294,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "children().element.first().label.empty() and children().element.first().code.empty() and children().element.first().requirements.empty()",
             Key = "sdf-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "In any snapshot or differential, no label, code or requirements on the an element without a \".\" in the path (e.g. the first element)",
             Xpath = "not(exists(f:snapshot/f:element[not(contains(f:path/@value, '.')) and (f:label or f:code or f:requirements)])) and not(exists(f:differential/f:element[not(contains(f:path/@value, '.')) and (f:label or f:code or f:requirements)]))"
         };
@@ -1164,7 +1303,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "kind = 'logical' or (differential.element.type.code.all(hasValue() implies matches('^[a-zA-Z0-9]+$')) and snapshot.element.type.code.all(hasValue() implies matches('^[a-zA-Z0-9]+$')))",
             Key = "sdf-19",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Custom types can only be used in logical models",
             Xpath = "f:kind/@value = 'logical' or count(f:differential/f:element/f:type/f:code[@value and not(matches(string(@value), '^[a-zA-Z0-9]+$'))]|f:snapshot/f:element/f:type/f:code[@value and not(matches(string(@value), '^[a-zA-Z0-9]+$'))]) =0"
         };
@@ -1173,7 +1312,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "snapshot.element.id.trace('ids').isDistinct()",
             Key = "sdf-16",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "All element definitions must have unique ids (snapshot)",
             Xpath = "count(*/f:element)=count(*/f:element/@id)"
         };
@@ -1182,7 +1321,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "contextInvariant.exists() implies type = 'Extension'",
             Key = "sdf-18",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Context Invariants can only be used for extensions",
             Xpath = "not(exists(f:contextInvariant)) or (f:type/@value = 'Extension')"
         };
@@ -1191,7 +1330,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "differential.element.id.trace('ids').isDistinct()",
             Key = "sdf-17",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "All element definitions must have unique ids (diff)",
             Xpath = "count(*/f:element)=count(*/f:element/@id)"
         };
@@ -1200,7 +1339,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "snapshot.exists() implies (snapshot.element.base.exists() = baseDefinition.exists())",
             Key = "sdf-12",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "element.base cannot appear if there is no base on the structure definition",
             Xpath = "f:baseDefinition or not(exists(f:snapshot/f:element/f:base) or exists(f:differential/f:element/f:base))"
         };
@@ -1209,7 +1348,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "snapshot.empty() or snapshot.element.first().path = type",
             Key = "sdf-11",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If there's a type, its content must match the path name in the first element of a snapshot",
             Xpath = "not(exists(f:snapshot)) or (f:type/@value = f:snapshot/f:element[1]/f:path/@value)"
         };
@@ -1218,7 +1357,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "snapshot.element.all(id.exists()) and differential.element.all(id.exists())",
             Key = "sdf-14",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "All element definitions must have an id",
             Xpath = "count(*/f:element)=count(*/f:element/@id)"
         };
@@ -1227,7 +1366,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "derivation = 'constraint' or snapshot.element.select(path).isDistinct()",
             Key = "sdf-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Element paths must be unique unless the structure is a constraint",
             Xpath = "(f:derivation/@value = 'constraint') or (count(f:snapshot/f:element) = count(distinct-values(f:snapshot/f:element/f:path/@value)))"
         };
@@ -1236,7 +1375,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(derivation = 'constraint') or (kind = 'logical') or (url = 'http://hl7.org/fhir/StructureDefinition/'+id)",
             Key = "sdf-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the structure describes a base Resource or Type, the URL has to start with \"http://hl7.org/fhir/StructureDefinition/\" and the tail must match the id",
             Xpath = "(f:derivation/@value = 'constraint') or (f:kind/@value = 'logical') or (f:url/@value=concat('http://hl7.org/fhir/StructureDefinition/', f:id/@value))"
         };
@@ -1245,7 +1384,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "snapshot.exists() or differential.exists()",
             Key = "sdf-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A structure must have either a differential, or a snapshot (or both)",
             Xpath = "exists(f:snapshot) or exists(f:differential)"
         };
@@ -1254,7 +1393,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "type != 'Extension' or derivation = 'specialization' or (context.exists() and contextType.exists())",
             Key = "sdf-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the structure defines an extension then the structure must have context information",
             Xpath = "not(f:type/@value = 'extension') or (f:derivation/@value = 'specialization') or (exists(f:context) and exists(f:contextType))"
         };
@@ -1263,7 +1402,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "abstract = true or baseDefinition.exists()",
             Key = "sdf-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the structure is not abstract, then there SHALL be a baseDefinition",
             Xpath = "(f:abstract/@value=true()) or exists(f:baseDefinition)"
         };
@@ -1272,7 +1411,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "mapping.all(name.exists() or uri.exists())",
             Key = "sdf-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have at least a name or a uri (or both)",
             Xpath = "exists(f:uri) or exists(f:name)"
         };
@@ -1281,7 +1420,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "snapshot.all(element.first().type.empty())",
             Key = "sdf-15",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The first element in a snapshot has no type",
             Xpath = "not(f:element[1]/f:type)"
         };
@@ -1290,7 +1429,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "snapshot.all(element.first().path = %resource.type and element.tail().all(path.startsWith(%resource.type&'.')))",
             Key = "sdf-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "In any snapshot, all the elements must be in the specified type",
             Xpath = "f:element[1]/f:path/@value=parent::f:StructureDefinition/f:type/@value and count(f:element[position()!=1])=count(f:element[position()!=1][starts-with(f:path/@value, concat(ancestor::f:StructureDefinition/f:type/@value, '.'))])"
         };
@@ -1299,7 +1438,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "snapshot.all(element.all(definition and min and max))",
             Key = "sdf-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Each element definition in a snapshot must have a formal definition and cardinalities",
             Xpath = "count(f:element) = count(f:element[exists(f:definition) and exists(f:min) and exists(f:max)])"
         };
@@ -1308,7 +1447,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "differential.all(element.first().path.contains('.').not() implies element.first().type.empty())",
             Key = "sdf-15a",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If the first element in a differential has no \".\" in the path, it has no type",
             Xpath = "not(f:element[1][not(contains(f:path/@value, '.'))]/f:type)"
         };
@@ -1317,7 +1456,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "differential.all(element.first().slicing.empty())",
             Key = "sdf-20",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "No slicing on the root element",
             Xpath = "not(f:element[1]/f:slicing)"
         };
@@ -1326,7 +1465,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "differential.all(element.first().path.startsWith(%resource.type) and element.tail().all(path.startsWith(%resource.type&'.')))",
             Key = "sdf-8a",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "In any differential, all the elements must be in the specified type",
             Xpath = "count(f:element)=count(f:element[f:path/@value=ancestor::f:StructureDefinition/f:type/@value or starts-with(f:path/@value, concat(ancestor::f:StructureDefinition/f:type/@value, '.'))])"
         };
@@ -1374,11 +1513,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (PublisherElement != null) dest.PublisherElement = (FhirString)PublisherElement.DeepCopy();
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
-                if (Purpose != null) dest.Purpose = (Markdown)Purpose.DeepCopy();
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (PurposeElement != null) dest.PurposeElement = (Markdown)PurposeElement.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (Keyword != null) dest.Keyword = new List<Coding>(Keyword.DeepCopy());
                 if (FhirVersionElement != null) dest.FhirVersionElement = (Id)FhirVersionElement.DeepCopy();
                 if (Mapping != null) dest.Mapping = new List<MappingComponent>(Mapping.DeepCopy());
@@ -1419,11 +1558,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(PublisherElement, otherT.PublisherElement)) return false;
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.Matches(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if ( !DeepComparable.Matches(Keyword, otherT.Keyword)) return false;
             if (!DeepComparable.Matches(FhirVersionElement, otherT.FhirVersionElement)) return false;
             if ( !DeepComparable.Matches(Mapping, otherT.Mapping)) return false;
@@ -1457,11 +1596,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(PublisherElement, otherT.PublisherElement)) return false;
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.IsExactly(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(Keyword, otherT.Keyword)) return false;
             if (!DeepComparable.IsExactly(FhirVersionElement, otherT.FhirVersionElement)) return false;
             if (!DeepComparable.IsExactly(Mapping, otherT.Mapping)) return false;
@@ -1495,11 +1634,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return DateElement;
                 if (PublisherElement != null) yield return PublisherElement;
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
-                if (Description != null) yield return Description;
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
-                if (Purpose != null) yield return Purpose;
-                if (Copyright != null) yield return Copyright;
+                if (PurposeElement != null) yield return PurposeElement;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 foreach (var elem in Keyword) { if (elem != null) yield return elem; }
                 if (FhirVersionElement != null) yield return FhirVersionElement;
                 foreach (var elem in Mapping) { if (elem != null) yield return elem; }
@@ -1532,11 +1671,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
-                if (Description != null) yield return new ElementValue("description", Description);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (PurposeElement != null) yield return new ElementValue("purpose", PurposeElement);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 foreach (var elem in Keyword) { if (elem != null) yield return new ElementValue("keyword", elem); }
                 if (FhirVersionElement != null) yield return new ElementValue("fhirVersion", FhirVersionElement);
                 foreach (var elem in Mapping) { if (elem != null) yield return new ElementValue("mapping", elem); }

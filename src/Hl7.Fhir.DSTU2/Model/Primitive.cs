@@ -4,14 +4,6 @@ using System.Linq;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
-{
-    public interface IPrimitive
-    {
-        object ObjectValue { get; set; }
-    }
-}
-
 namespace Hl7.Fhir.Model.DSTU2
 {
 #if NET45

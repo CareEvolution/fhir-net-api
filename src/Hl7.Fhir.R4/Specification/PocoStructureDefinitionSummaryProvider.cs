@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Utility;

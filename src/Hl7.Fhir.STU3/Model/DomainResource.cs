@@ -30,7 +30,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Hl7.Fhir.Validation.STU3;
+using Hl7.Fhir.Validation;
 
 namespace Hl7.Fhir.Model.STU3
 {

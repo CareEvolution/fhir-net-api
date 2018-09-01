@@ -34,7 +34,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
-using Hl7.Fhir.Validation.R4;
+using Hl7.Fhir.Validation;
 
 namespace Hl7.Fhir.Model.R4
 {

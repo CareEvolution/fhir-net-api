@@ -31,7 +31,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Hl7.Fhir.Support.R4;
+using Hl7.Fhir.Support;
 
 namespace Hl7.Fhir.Model.R4
 {

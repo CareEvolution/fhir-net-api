@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Linkage; } }
         [NotMapped]
         public override string TypeName { get { return "Linkage"; } }
+
+        /// <summary>
+        /// Used to distinguish different roles a resource can play within a set of linked resources
+        /// (url: http://hl7.org/fhir/ValueSet/linkage-type)
+        /// </summary>
+        [FhirEnumeration("LinkageType")]
+        public enum LinkageType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/linkage-type)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/linkage-type"), Description("Source of truth")]
+            Source,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/linkage-type)
+            /// </summary>
+            [EnumLiteral("alternate", "http://hl7.org/fhir/linkage-type"), Description("Alternate record")]
+            Alternate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/linkage-type)
+            /// </summary>
+            [EnumLiteral("historical", "http://hl7.org/fhir/linkage-type"), Description("Historical/obsolete record")]
+            Historical,
+        }
 
 
         [FhirType("ItemComponent")]
@@ -248,7 +276,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.count()>1",
             Key = "lnk-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have at least two items",
             Xpath = "count(f:item)>1"
         };

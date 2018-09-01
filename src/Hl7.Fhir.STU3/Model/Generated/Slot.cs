@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,45 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Slot; } }
         [NotMapped]
         public override string TypeName { get { return "Slot"; } }
+
+        /// <summary>
+        /// The free/busy status of the slot.
+        /// (url: http://hl7.org/fhir/ValueSet/slotstatus)
+        /// </summary>
+        [FhirEnumeration("SlotStatus")]
+        public enum SlotStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("busy", "http://hl7.org/fhir/slotstatus"), Description("Busy")]
+            Busy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("free", "http://hl7.org/fhir/slotstatus"), Description("Free")]
+            Free,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("busy-unavailable", "http://hl7.org/fhir/slotstatus"), Description("Busy (Unavailable)")]
+            BusyUnavailable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("busy-tentative", "http://hl7.org/fhir/slotstatus"), Description("Busy (Tentative)")]
+            BusyTentative,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/slotstatus)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/slotstatus"), Description("Entered in error")]
+            EnteredInError,
+        }
 
 
         /// <summary>

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -880,13 +881,32 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("description", InSummary=true, Order=210)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the charge item definition
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// The context that the content is intended to support
@@ -921,13 +941,32 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("copyright", Order=240)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// When the charge item definition was approved by publisher
@@ -1098,10 +1137,10 @@ namespace Hl7.Fhir.Model.R4
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (PublisherElement != null) dest.PublisherElement = (FhirString)PublisherElement.DeepCopy();
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (ApprovalDateElement != null) dest.ApprovalDateElement = (Date)ApprovalDateElement.DeepCopy();
                 if (LastReviewDateElement != null) dest.LastReviewDateElement = (Date)LastReviewDateElement.DeepCopy();
                 if (EffectivePeriod != null) dest.EffectivePeriod = (Period)EffectivePeriod.DeepCopy();
@@ -1138,10 +1177,10 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(PublisherElement, otherT.PublisherElement)) return false;
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.Matches(ApprovalDateElement, otherT.ApprovalDateElement)) return false;
             if (!DeepComparable.Matches(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.Matches(EffectivePeriod, otherT.EffectivePeriod)) return false;
@@ -1171,10 +1210,10 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(PublisherElement, otherT.PublisherElement)) return false;
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(ApprovalDateElement, otherT.ApprovalDateElement)) return false;
             if (!DeepComparable.IsExactly(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.IsExactly(EffectivePeriod, otherT.EffectivePeriod)) return false;
@@ -1204,10 +1243,10 @@ namespace Hl7.Fhir.Model.R4
                 if (DateElement != null) yield return DateElement;
                 if (PublisherElement != null) yield return PublisherElement;
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
-                if (Description != null) yield return Description;
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
-                if (Copyright != null) yield return Copyright;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 if (ApprovalDateElement != null) yield return ApprovalDateElement;
                 if (LastReviewDateElement != null) yield return LastReviewDateElement;
                 if (EffectivePeriod != null) yield return EffectivePeriod;
@@ -1236,10 +1275,10 @@ namespace Hl7.Fhir.Model.R4
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
-                if (Description != null) yield return new ElementValue("description", Description);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 if (ApprovalDateElement != null) yield return new ElementValue("approvalDate", ApprovalDateElement);
                 if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", LastReviewDateElement);
                 if (EffectivePeriod != null) yield return new ElementValue("effectivePeriod", EffectivePeriod);

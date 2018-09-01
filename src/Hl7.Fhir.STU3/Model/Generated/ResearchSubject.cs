@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.ResearchSubject; } }
         [NotMapped]
         public override string TypeName { get { return "ResearchSubject"; } }
+
+        /// <summary>
+        /// Indicates the progression of a study subject through a study
+        /// (url: http://hl7.org/fhir/ValueSet/research-subject-status)
+        /// </summary>
+        [FhirEnumeration("ResearchSubjectStatus")]
+        public enum ResearchSubjectStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-subject-status)
+            /// </summary>
+            [EnumLiteral("candidate", "http://hl7.org/fhir/research-subject-status"), Description("Candidate")]
+            Candidate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-subject-status)
+            /// </summary>
+            [EnumLiteral("enrolled", "http://hl7.org/fhir/research-subject-status"), Description("Enrolled")]
+            Enrolled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-subject-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/research-subject-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-subject-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/research-subject-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-subject-status)
+            /// </summary>
+            [EnumLiteral("withdrawn", "http://hl7.org/fhir/research-subject-status"), Description("Withdrawn")]
+            Withdrawn,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/research-subject-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/research-subject-status"), Description("Completed")]
+            Completed,
+        }
 
 
         /// <summary>

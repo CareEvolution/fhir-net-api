@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Rest.STU3
                         errorResult.Response = new Bundle.ResponseComponent();
                         errorResult.Response.Status = ((int)webResponse.StatusCode).ToString();
 
-                        OperationOutcome operationOutcome = OperationOutcome.ForException(bte, IssueType.Invalid);
+                        OperationOutcome operationOutcome = OperationOutcome.ForException(bte, OperationOutcome.IssueType.Invalid);
 
                         errorResult.Resource = operationOutcome;
                         LastResult = errorResult;

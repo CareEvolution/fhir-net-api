@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,102 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Encounter; } }
         [NotMapped]
         public override string TypeName { get { return "Encounter"; } }
+
+        /// <summary>
+        /// Current state of the encounter
+        /// (url: http://hl7.org/fhir/ValueSet/encounter-status)
+        /// </summary>
+        [FhirEnumeration("EncounterStatus")]
+        public enum EncounterStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/encounter-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("arrived", "http://hl7.org/fhir/encounter-status"), Description("Arrived")]
+            Arrived,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("triaged", "http://hl7.org/fhir/encounter-status"), Description("Triaged")]
+            Triaged,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/encounter-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("onleave", "http://hl7.org/fhir/encounter-status"), Description("On Leave")]
+            Onleave,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("finished", "http://hl7.org/fhir/encounter-status"), Description("Finished")]
+            Finished,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/encounter-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/encounter-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/encounter-status"), Description("Unknown")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// The status of the location.
+        /// (url: http://hl7.org/fhir/ValueSet/encounter-location-status)
+        /// </summary>
+        [FhirEnumeration("EncounterLocationStatus")]
+        public enum EncounterLocationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-location-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/encounter-location-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-location-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/encounter-location-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-location-status)
+            /// </summary>
+            [EnumLiteral("reserved", "http://hl7.org/fhir/encounter-location-status"), Description("Reserved")]
+            Reserved,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/encounter-location-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/encounter-location-status"), Description("Completed")]
+            Completed,
+        }
 
 
         [FhirType("StatusHistoryComponent")]

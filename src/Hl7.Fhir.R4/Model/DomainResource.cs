@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.R4;
 
 namespace Hl7.Fhir.Model.R4

@@ -6,6 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.STU3;
 using Newtonsoft.Json;
 using System;

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,90 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Condition; } }
         [NotMapped]
         public override string TypeName { get { return "Condition"; } }
+
+        /// <summary>
+        /// Preferred value set for Condition Clinical Status.
+        /// (url: http://hl7.org/fhir/ValueSet/condition-clinical)
+        /// </summary>
+        [FhirEnumeration("ConditionClinicalStatusCodes")]
+        public enum ConditionClinicalStatusCodes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/condition-clinical"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("recurrence", "http://hl7.org/fhir/condition-clinical"), Description("Recurrence")]
+            Recurrence,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/condition-clinical"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("remission", "http://hl7.org/fhir/condition-clinical"), Description("Remission")]
+            Remission,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-clinical)
+            /// </summary>
+            [EnumLiteral("resolved", "http://hl7.org/fhir/condition-clinical"), Description("Resolved")]
+            Resolved,
+        }
+
+        /// <summary>
+        /// The verification status to support or decline the clinical status of the condition or diagnosis.
+        /// (url: http://hl7.org/fhir/ValueSet/condition-ver-status)
+        /// </summary>
+        [FhirEnumeration("ConditionVerificationStatus")]
+        public enum ConditionVerificationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("provisional", "http://hl7.org/fhir/condition-ver-status"), Description("Provisional")]
+            Provisional,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("differential", "http://hl7.org/fhir/condition-ver-status"), Description("Differential")]
+            Differential,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("confirmed", "http://hl7.org/fhir/condition-ver-status"), Description("Confirmed")]
+            Confirmed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("refuted", "http://hl7.org/fhir/condition-ver-status"), Description("Refuted")]
+            Refuted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/condition-ver-status"), Description("Entered In Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/condition-ver-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/condition-ver-status"), Description("Unknown")]
+            Unknown,
+        }
 
 
         [FhirType("StageComponent")]
@@ -551,7 +636,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "abatement.empty() or (abatement as boolean).not()  or clinicalStatus='resolved' or clinicalStatus='remission' or clinicalStatus='inactive'",
             Key = "con-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If condition is abated, then clinicalStatus must be either inactive, resolved, or remission",
             Xpath = "not(f:abatementBoolean/@value=true() or (not(exists(f:abatementBoolean)) and exists(*[starts-with(local-name(.), 'abatement')])) or f:clinicalStatus/@value=('resolved', 'remission', 'inactive'))"
         };
@@ -560,7 +645,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "verificationStatus='entered-in-error' or clinicalStatus.exists()",
             Key = "con-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error",
             Xpath = "f:verificationStatus/@value='entered-in-error' or exists(f:clinicalStatus)"
         };
@@ -569,7 +654,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "stage.all(summary.exists() or assessment.exists())",
             Key = "con-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Stage SHALL have summary or assessment",
             Xpath = "exists(f:summary) or exists(f:assessment)"
         };
@@ -578,7 +663,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "evidence.all(code.exists() or detail.exists())",
             Key = "con-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "evidence SHALL have code or details",
             Xpath = "exists(f:code) or exists(f:detail)"
         };

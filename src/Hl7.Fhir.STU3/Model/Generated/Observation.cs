@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Observation; } }
         [NotMapped]
         public override string TypeName { get { return "Observation"; } }
+
+        /// <summary>
+        /// Codes specifying how two observations are related.
+        /// (url: http://hl7.org/fhir/ValueSet/observation-relationshiptypes)
+        /// </summary>
+        [FhirEnumeration("ObservationRelationshipType")]
+        public enum ObservationRelationshipType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/observation-relationshiptypes)
+            /// </summary>
+            [EnumLiteral("has-member", "http://hl7.org/fhir/observation-relationshiptypes"), Description("Has Member")]
+            HasMember,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/observation-relationshiptypes)
+            /// </summary>
+            [EnumLiteral("derived-from", "http://hl7.org/fhir/observation-relationshiptypes"), Description("Derived From")]
+            DerivedFrom,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/observation-relationshiptypes)
+            /// </summary>
+            [EnumLiteral("sequel-to", "http://hl7.org/fhir/observation-relationshiptypes"), Description("Sequel To")]
+            SequelTo,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/observation-relationshiptypes)
+            /// </summary>
+            [EnumLiteral("replaces", "http://hl7.org/fhir/observation-relationshiptypes"), Description("Replaces")]
+            Replaces,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/observation-relationshiptypes)
+            /// </summary>
+            [EnumLiteral("qualified-by", "http://hl7.org/fhir/observation-relationshiptypes"), Description("Qualified By")]
+            QualifiedBy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/observation-relationshiptypes)
+            /// </summary>
+            [EnumLiteral("interfered-by", "http://hl7.org/fhir/observation-relationshiptypes"), Description("Interfered By")]
+            InterferedBy,
+        }
 
 
         [FhirType("ReferenceRangeComponent")]
@@ -892,7 +938,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "value.empty() or code!=component.code",
             Key = "obs-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If code is the same as a component code then the value element associated with the code SHALL NOT be present",
             Xpath = "not(exists(f:*[starts-with(local-name(.), 'value')])) or not(count(for $coding in f:code/f:coding return parent::*/f:component/f:code/f:coding[f:code/@value=$coding/f:code/@value and f:system/@value=$coding/f:system/@value])=0)"
         };
@@ -901,7 +947,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "dataAbsentReason.empty() or value.empty()",
             Key = "obs-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "dataAbsentReason SHALL only be present if Observation.value[x] is not present",
             Xpath = "not(exists(f:dataAbsentReason)) or (not(exists(*[starts-with(local-name(.), 'value')])))"
         };
@@ -910,7 +956,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "referenceRange.all(low.exists() or high.exists() or text.exists())",
             Key = "obs-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have at least a low or a high or text",
             Xpath = "(exists(f:low) or exists(f:high)or exists(f:text))"
         };

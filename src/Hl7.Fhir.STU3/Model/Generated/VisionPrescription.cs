@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,60 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.VisionPrescription; } }
         [NotMapped]
         public override string TypeName { get { return "VisionPrescription"; } }
+
+        /// <summary>
+        /// A coded concept listing the eye codes.
+        /// (url: http://hl7.org/fhir/ValueSet/vision-eye-codes)
+        /// </summary>
+        [FhirEnumeration("VisionEyes")]
+        public enum VisionEyes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/vision-eye-codes)
+            /// </summary>
+            [EnumLiteral("right", "http://hl7.org/fhir/vision-eye-codes"), Description("Right Eye")]
+            Right,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/vision-eye-codes)
+            /// </summary>
+            [EnumLiteral("left", "http://hl7.org/fhir/vision-eye-codes"), Description("Left Eye")]
+            Left,
+        }
+
+        /// <summary>
+        /// A coded concept listing the base codes.
+        /// (url: http://hl7.org/fhir/ValueSet/vision-base-codes)
+        /// </summary>
+        [FhirEnumeration("VisionBase")]
+        public enum VisionBase
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/vision-base-codes)
+            /// </summary>
+            [EnumLiteral("up", "http://hl7.org/fhir/vision-base-codes"), Description("Up")]
+            Up,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/vision-base-codes)
+            /// </summary>
+            [EnumLiteral("down", "http://hl7.org/fhir/vision-base-codes"), Description("Down")]
+            Down,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/vision-base-codes)
+            /// </summary>
+            [EnumLiteral("in", "http://hl7.org/fhir/vision-base-codes"), Description("In")]
+            In,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/vision-base-codes)
+            /// </summary>
+            [EnumLiteral("out", "http://hl7.org/fhir/vision-base-codes"), Description("Out")]
+            Out,
+        }
 
 
         [FhirType("DispenseComponent")]

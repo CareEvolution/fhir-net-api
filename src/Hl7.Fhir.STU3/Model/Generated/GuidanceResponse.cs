@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.GuidanceResponse; } }
         [NotMapped]
         public override string TypeName { get { return "GuidanceResponse"; } }
+
+        /// <summary>
+        /// The status of a guidance response
+        /// (url: http://hl7.org/fhir/ValueSet/guidance-response-status)
+        /// </summary>
+        [FhirEnumeration("GuidanceResponseStatus")]
+        public enum GuidanceResponseStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("success", "http://hl7.org/fhir/guidance-response-status"), Description("Success")]
+            Success,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("data-requested", "http://hl7.org/fhir/guidance-response-status"), Description("Data Requested")]
+            DataRequested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("data-required", "http://hl7.org/fhir/guidance-response-status"), Description("Data Required")]
+            DataRequired,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/guidance-response-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("failure", "http://hl7.org/fhir/guidance-response-status"), Description("Failure")]
+            Failure,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/guidance-response-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/guidance-response-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
 
 
         /// <summary>

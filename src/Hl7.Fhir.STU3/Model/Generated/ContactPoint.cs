@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -54,6 +55,96 @@ namespace Hl7.Fhir.Model.STU3
     {
         [NotMapped]
         public override string TypeName { get { return "ContactPoint"; } }
+
+        /// <summary>
+        /// Telecommunications form for contact point
+        /// (url: http://hl7.org/fhir/ValueSet/contact-point-system)
+        /// </summary>
+        [FhirEnumeration("ContactPointSystem")]
+        public enum ContactPointSystem
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-system)
+            /// </summary>
+            [EnumLiteral("phone", "http://hl7.org/fhir/contact-point-system"), Description("Phone")]
+            Phone,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-system)
+            /// </summary>
+            [EnumLiteral("fax", "http://hl7.org/fhir/contact-point-system"), Description("Fax")]
+            Fax,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-system)
+            /// </summary>
+            [EnumLiteral("email", "http://hl7.org/fhir/contact-point-system"), Description("Email")]
+            Email,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-system)
+            /// </summary>
+            [EnumLiteral("pager", "http://hl7.org/fhir/contact-point-system"), Description("Pager")]
+            Pager,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-system)
+            /// </summary>
+            [EnumLiteral("url", "http://hl7.org/fhir/contact-point-system"), Description("URL")]
+            Url,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-system)
+            /// </summary>
+            [EnumLiteral("sms", "http://hl7.org/fhir/contact-point-system"), Description("SMS")]
+            Sms,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-system)
+            /// </summary>
+            [EnumLiteral("other", "http://hl7.org/fhir/contact-point-system"), Description("Other")]
+            Other,
+        }
+
+        /// <summary>
+        /// Use of contact point
+        /// (url: http://hl7.org/fhir/ValueSet/contact-point-use)
+        /// </summary>
+        [FhirEnumeration("ContactPointUse")]
+        public enum ContactPointUse
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-use)
+            /// </summary>
+            [EnumLiteral("home", "http://hl7.org/fhir/contact-point-use"), Description("Home")]
+            Home,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-use)
+            /// </summary>
+            [EnumLiteral("work", "http://hl7.org/fhir/contact-point-use"), Description("Work")]
+            Work,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-use)
+            /// </summary>
+            [EnumLiteral("temp", "http://hl7.org/fhir/contact-point-use"), Description("Temp")]
+            Temp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-use)
+            /// </summary>
+            [EnumLiteral("old", "http://hl7.org/fhir/contact-point-use"), Description("Old")]
+            Old,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contact-point-use)
+            /// </summary>
+            [EnumLiteral("mobile", "http://hl7.org/fhir/contact-point-use"), Description("Mobile")]
+            Mobile,
+        }
 
 
         /// <summary>
@@ -202,7 +293,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "value.empty() or system.exists()",
             Key = "cpt-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A system is required if a value is provided.",
             Xpath = "not(exists(f:value)) or exists(f:system)"
         };

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -674,26 +675,64 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", InSummary=true, Order=180)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the activity definition
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Why this activity definition is defined
         /// </summary>
         [FhirElement("purpose", Order=190)]
         [DataMember]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
-            get { return _purpose; }
-            set { _purpose = value; OnPropertyChanged("Purpose"); }
+            get { return _purposeElement; }
+            set { _purposeElement = value; OnPropertyChanged("PurposeElement"); }
         }
 
-        private Markdown _purpose;
+        private Markdown _purposeElement;
+
+        /// <summary>
+        /// Why this activity definition is defined
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Purpose
+        {
+            get { return PurposeElement != null ? PurposeElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PurposeElement = null;
+                else
+                    PurposeElement = new Markdown(value);
+                OnPropertyChanged("Purpose");
+            }
+        }
 
         /// <summary>
         /// Describes the clinical usage of the asset
@@ -879,13 +918,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("copyright", Order=290)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// Additional documentation, citations, etc
@@ -1103,8 +1161,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (ExperimentalElement != null) dest.ExperimentalElement = (FhirBoolean)ExperimentalElement.DeepCopy();
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (PublisherElement != null) dest.PublisherElement = (FhirString)PublisherElement.DeepCopy();
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
-                if (Purpose != null) dest.Purpose = (Markdown)Purpose.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
+                if (PurposeElement != null) dest.PurposeElement = (Markdown)PurposeElement.DeepCopy();
                 if (UsageElement != null) dest.UsageElement = (FhirString)UsageElement.DeepCopy();
                 if (ApprovalDateElement != null) dest.ApprovalDateElement = (Date)ApprovalDateElement.DeepCopy();
                 if (LastReviewDateElement != null) dest.LastReviewDateElement = (Date)LastReviewDateElement.DeepCopy();
@@ -1114,7 +1172,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (Topic != null) dest.Topic = new List<CodeableConcept>(Topic.DeepCopy());
                 if (Contributor != null) dest.Contributor = new List<Contributor>(Contributor.DeepCopy());
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (RelatedArtifact != null) dest.RelatedArtifact = new List<RelatedArtifact>(RelatedArtifact.DeepCopy());
                 if (Library != null) dest.Library = new List<ResourceReference>(Library.DeepCopy());
                 if (KindElement != null) dest.KindElement = (Code<ResourceType>)KindElement.DeepCopy();
@@ -1154,8 +1212,8 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.Matches(ExperimentalElement, otherT.ExperimentalElement)) return false;
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(PublisherElement, otherT.PublisherElement)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
-            if (!DeepComparable.Matches(Purpose, otherT.Purpose)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
+            if (!DeepComparable.Matches(PurposeElement, otherT.PurposeElement)) return false;
             if (!DeepComparable.Matches(UsageElement, otherT.UsageElement)) return false;
             if (!DeepComparable.Matches(ApprovalDateElement, otherT.ApprovalDateElement)) return false;
             if (!DeepComparable.Matches(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
@@ -1165,7 +1223,7 @@ namespace Hl7.Fhir.Model.STU3
             if ( !DeepComparable.Matches(Topic, otherT.Topic)) return false;
             if ( !DeepComparable.Matches(Contributor, otherT.Contributor)) return false;
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if ( !DeepComparable.Matches(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if ( !DeepComparable.Matches(Library, otherT.Library)) return false;
             if (!DeepComparable.Matches(KindElement, otherT.KindElement)) return false;
@@ -1198,8 +1256,8 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(ExperimentalElement, otherT.ExperimentalElement)) return false;
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(PublisherElement, otherT.PublisherElement)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
-            if (!DeepComparable.IsExactly(Purpose, otherT.Purpose)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
+            if (!DeepComparable.IsExactly(PurposeElement, otherT.PurposeElement)) return false;
             if (!DeepComparable.IsExactly(UsageElement, otherT.UsageElement)) return false;
             if (!DeepComparable.IsExactly(ApprovalDateElement, otherT.ApprovalDateElement)) return false;
             if (!DeepComparable.IsExactly(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
@@ -1209,7 +1267,7 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(Topic, otherT.Topic)) return false;
             if (!DeepComparable.IsExactly(Contributor, otherT.Contributor)) return false;
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(RelatedArtifact, otherT.RelatedArtifact)) return false;
             if (!DeepComparable.IsExactly(Library, otherT.Library)) return false;
             if (!DeepComparable.IsExactly(KindElement, otherT.KindElement)) return false;
@@ -1242,8 +1300,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (ExperimentalElement != null) yield return ExperimentalElement;
                 if (DateElement != null) yield return DateElement;
                 if (PublisherElement != null) yield return PublisherElement;
-                if (Description != null) yield return Description;
-                if (Purpose != null) yield return Purpose;
+                if (DescriptionElement != null) yield return DescriptionElement;
+                if (PurposeElement != null) yield return PurposeElement;
                 if (UsageElement != null) yield return UsageElement;
                 if (ApprovalDateElement != null) yield return ApprovalDateElement;
                 if (LastReviewDateElement != null) yield return LastReviewDateElement;
@@ -1253,7 +1311,7 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in Topic) { if (elem != null) yield return elem; }
                 foreach (var elem in Contributor) { if (elem != null) yield return elem; }
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
-                if (Copyright != null) yield return Copyright;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return elem; }
                 foreach (var elem in Library) { if (elem != null) yield return elem; }
                 if (KindElement != null) yield return KindElement;
@@ -1285,8 +1343,8 @@ namespace Hl7.Fhir.Model.STU3
                 if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
-                if (Description != null) yield return new ElementValue("description", Description);
-                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                if (PurposeElement != null) yield return new ElementValue("purpose", PurposeElement);
                 if (UsageElement != null) yield return new ElementValue("usage", UsageElement);
                 if (ApprovalDateElement != null) yield return new ElementValue("approvalDate", ApprovalDateElement);
                 if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", LastReviewDateElement);
@@ -1296,7 +1354,7 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in Topic) { if (elem != null) yield return new ElementValue("topic", elem); }
                 foreach (var elem in Contributor) { if (elem != null) yield return new ElementValue("contributor", elem); }
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 foreach (var elem in RelatedArtifact) { if (elem != null) yield return new ElementValue("relatedArtifact", elem); }
                 foreach (var elem in Library) { if (elem != null) yield return new ElementValue("library", elem); }
                 if (KindElement != null) yield return new ElementValue("kind", KindElement);

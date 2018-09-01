@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -89,6 +90,7 @@ namespace Hl7.Fhir.Model.STU3
             var otherT = other as BackboneElement;
             if (otherT == null) return false;
 
+            if (!base.Matches(otherT)) return false;
             if ( !DeepComparable.Matches(ModifierExtension, otherT.ModifierExtension)) return false;
 
             return true;
@@ -99,6 +101,7 @@ namespace Hl7.Fhir.Model.STU3
             var otherT = other as BackboneElement;
             if (otherT == null) return false;
 
+            if (!base.IsExactly(otherT)) return false;
             if (!DeepComparable.IsExactly(ModifierExtension, otherT.ModifierExtension)) return false;
 
             return true;

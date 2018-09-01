@@ -6,15 +6,13 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
+using System;
+using System.Xml;
+using System.Xml.Linq;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Utility;
 using Newtonsoft.Json;
-using System;
-using System.Reflection;
-using System.Xml;
-using System.Xml.Linq;
 
 
 namespace Hl7.Fhir.Serialization.STU3

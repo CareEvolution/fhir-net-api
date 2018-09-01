@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.MessageHeader; } }
         [NotMapped]
         public override string TypeName { get { return "MessageHeader"; } }
+
+        /// <summary>
+        /// The kind of response to a message
+        /// (url: http://hl7.org/fhir/ValueSet/response-code)
+        /// </summary>
+        [FhirEnumeration("ResponseType")]
+        public enum ResponseType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/response-code)
+            /// </summary>
+            [EnumLiteral("ok", "http://hl7.org/fhir/response-code"), Description("OK")]
+            Ok,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/response-code)
+            /// </summary>
+            [EnumLiteral("transient-error", "http://hl7.org/fhir/response-code"), Description("Transient Error")]
+            TransientError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/response-code)
+            /// </summary>
+            [EnumLiteral("fatal-error", "http://hl7.org/fhir/response-code"), Description("Fatal Error")]
+            FatalError,
+        }
 
 
         [FhirType("MessageDestinationComponent")]

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -506,7 +507,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "notDone or notDoneReason.exists().not()",
             Key = "com-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Not Done Reason can only be specified if NotDone is \"true\"",
             Xpath = "f:notDone/@value=true() or not(exists(f:notDoneReason))"
         };

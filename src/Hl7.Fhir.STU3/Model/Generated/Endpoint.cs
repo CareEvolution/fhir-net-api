@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Endpoint; } }
         [NotMapped]
         public override string TypeName { get { return "Endpoint"; } }
+
+        /// <summary>
+        /// The status of the endpoint
+        /// (url: http://hl7.org/fhir/ValueSet/endpoint-status)
+        /// </summary>
+        [FhirEnumeration("EndpointStatus")]
+        public enum EndpointStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/endpoint-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/endpoint-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/endpoint-status"), Description("Error")]
+            Error,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("off", "http://hl7.org/fhir/endpoint-status"), Description("Off")]
+            Off,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/endpoint-status"), Description("Entered in error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/endpoint-status)
+            /// </summary>
+            [EnumLiteral("test", "http://hl7.org/fhir/endpoint-status"), Description("Test")]
+            Test,
+        }
 
 
         /// <summary>

@@ -12,7 +12,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Rest.R4;
-using Hl7.Fhir.Serialization.R4;
+using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Rest.Http.R4
 {

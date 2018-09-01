@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,174 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.AllergyIntolerance; } }
         [NotMapped]
         public override string TypeName { get { return "AllergyIntolerance"; } }
+
+        /// <summary>
+        /// The clinical status of the allergy or intolerance.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-clinical-status)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceClinicalStatus")]
+        public enum AllergyIntoleranceClinicalStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-clinical-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/allergy-clinical-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-clinical-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/allergy-clinical-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-clinical-status)
+            /// </summary>
+            [EnumLiteral("resolved", "http://hl7.org/fhir/allergy-clinical-status"), Description("Resolved")]
+            Resolved,
+        }
+
+        /// <summary>
+        /// Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified substance.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-verification-status)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceVerificationStatus")]
+        public enum AllergyIntoleranceVerificationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-verification-status)
+            /// </summary>
+            [EnumLiteral("unconfirmed", "http://hl7.org/fhir/allergy-verification-status"), Description("Unconfirmed")]
+            Unconfirmed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-verification-status)
+            /// </summary>
+            [EnumLiteral("confirmed", "http://hl7.org/fhir/allergy-verification-status"), Description("Confirmed")]
+            Confirmed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-verification-status)
+            /// </summary>
+            [EnumLiteral("refuted", "http://hl7.org/fhir/allergy-verification-status"), Description("Refuted")]
+            Refuted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-verification-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/allergy-verification-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
+        /// <summary>
+        /// Identification of the underlying physiological mechanism for a Reaction Risk.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-intolerance-type)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceType")]
+        public enum AllergyIntoleranceType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-type)
+            /// </summary>
+            [EnumLiteral("allergy", "http://hl7.org/fhir/allergy-intolerance-type"), Description("Allergy")]
+            Allergy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-type)
+            /// </summary>
+            [EnumLiteral("intolerance", "http://hl7.org/fhir/allergy-intolerance-type"), Description("Intolerance")]
+            Intolerance,
+        }
+
+        /// <summary>
+        /// Category of an identified substance.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-intolerance-category)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceCategory")]
+        public enum AllergyIntoleranceCategory
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-category)
+            /// </summary>
+            [EnumLiteral("food", "http://hl7.org/fhir/allergy-intolerance-category"), Description("Food")]
+            Food,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-category)
+            /// </summary>
+            [EnumLiteral("medication", "http://hl7.org/fhir/allergy-intolerance-category"), Description("Medication")]
+            Medication,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-category)
+            /// </summary>
+            [EnumLiteral("environment", "http://hl7.org/fhir/allergy-intolerance-category"), Description("Environment")]
+            Environment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-category)
+            /// </summary>
+            [EnumLiteral("biologic", "http://hl7.org/fhir/allergy-intolerance-category"), Description("Biologic")]
+            Biologic,
+        }
+
+        /// <summary>
+        /// Estimate of the potential clinical harm, or seriousness, of a reaction to an identified substance.
+        /// (url: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceCriticality")]
+        public enum AllergyIntoleranceCriticality
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-criticality)
+            /// </summary>
+            [EnumLiteral("low", "http://hl7.org/fhir/allergy-intolerance-criticality"), Description("Low Risk")]
+            Low,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-criticality)
+            /// </summary>
+            [EnumLiteral("high", "http://hl7.org/fhir/allergy-intolerance-criticality"), Description("High Risk")]
+            High,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/allergy-intolerance-criticality)
+            /// </summary>
+            [EnumLiteral("unable-to-assess", "http://hl7.org/fhir/allergy-intolerance-criticality"), Description("Unable to Assess Risk")]
+            UnableToAssess,
+        }
+
+        /// <summary>
+        /// Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations.
+        /// (url: http://hl7.org/fhir/ValueSet/reaction-event-severity)
+        /// </summary>
+        [FhirEnumeration("AllergyIntoleranceSeverity")]
+        public enum AllergyIntoleranceSeverity
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reaction-event-severity)
+            /// </summary>
+            [EnumLiteral("mild", "http://hl7.org/fhir/reaction-event-severity"), Description("Mild")]
+            Mild,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reaction-event-severity)
+            /// </summary>
+            [EnumLiteral("moderate", "http://hl7.org/fhir/reaction-event-severity"), Description("Moderate")]
+            Moderate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/reaction-event-severity)
+            /// </summary>
+            [EnumLiteral("severe", "http://hl7.org/fhir/reaction-event-severity"), Description("Severe")]
+            Severe,
+        }
 
 
         [FhirType("ReactionComponent")]
@@ -654,7 +823,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "verificationStatus='entered-in-error' or clinicalStatus.exists()",
             Key = "ait-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "AllergyIntolerance.clinicalStatus SHALL be present if verificationStatus is not entered-in-error.",
             Xpath = "f:verificationStatus/@value='entered-in-error' or exists(f:clinicalStatus)"
         };
@@ -663,7 +832,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "verificationStatus!='entered-in-error' or clinicalStatus.empty()",
             Key = "ait-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "AllergyIntolerance.clinicalStatus SHALL NOT be present if verification Status is entered-in-error",
             Xpath = "f:verificationStatus/@value!='entered-in-error' or not(exists(f:clinicalStatus))"
         };

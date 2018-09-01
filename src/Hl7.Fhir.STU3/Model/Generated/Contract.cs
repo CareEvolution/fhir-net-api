@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,105 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Contract; } }
         [NotMapped]
         public override string TypeName { get { return "Contract"; } }
+
+        /// <summary>
+        /// This value set contract specific codes for status.
+        /// (url: http://hl7.org/fhir/ValueSet/contract-status)
+        /// </summary>
+        [FhirEnumeration("ContractResourceStatusCodes")]
+        public enum ContractResourceStatusCodes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("amended", "http://hl7.org/fhir/contract-status"), Description("Amended")]
+            Amended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("appended", "http://hl7.org/fhir/contract-status"), Description("Appended")]
+            Appended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/contract-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("disputed", "http://hl7.org/fhir/contract-status"), Description("Disputed")]
+            Disputed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/contract-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("executable", "http://hl7.org/fhir/contract-status"), Description("Executable")]
+            Executable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("executed", "http://hl7.org/fhir/contract-status"), Description("Executed")]
+            Executed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("negotiable", "http://hl7.org/fhir/contract-status"), Description("Negotiable")]
+            Negotiable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("offered", "http://hl7.org/fhir/contract-status"), Description("Offered")]
+            Offered,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("policy", "http://hl7.org/fhir/contract-status"), Description("Policy")]
+            Policy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("rejected", "http://hl7.org/fhir/contract-status"), Description("Rejected")]
+            Rejected,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("renewed", "http://hl7.org/fhir/contract-status"), Description("Renewed")]
+            Renewed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("revoked", "http://hl7.org/fhir/contract-status"), Description("Revoked")]
+            Revoked,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("resolved", "http://hl7.org/fhir/contract-status"), Description("Resolved")]
+            Resolved,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contract-status)
+            /// </summary>
+            [EnumLiteral("terminated", "http://hl7.org/fhir/contract-status"), Description("Terminated")]
+            Terminated,
+        }
 
 
         [FhirType("AgentComponent")]

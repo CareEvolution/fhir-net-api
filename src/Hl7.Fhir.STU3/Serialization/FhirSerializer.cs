@@ -12,6 +12,7 @@ using System;
 using Newtonsoft.Json;
 using System.Xml;
 using Hl7.Fhir.Rest.STU3;
+using Hl7.Fhir.Model;
 
 namespace Hl7.Fhir.Serialization.STU3
 {

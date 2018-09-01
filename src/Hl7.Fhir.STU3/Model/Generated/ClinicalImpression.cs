@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.ClinicalImpression; } }
         [NotMapped]
         public override string TypeName { get { return "ClinicalImpression"; } }
+
+        /// <summary>
+        /// The workflow state of a clinical impression.
+        /// (url: http://hl7.org/fhir/ValueSet/clinical-impression-status)
+        /// </summary>
+        [FhirEnumeration("ClinicalImpressionStatus")]
+        public enum ClinicalImpressionStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/clinical-impression-status"), Description("In progress")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/clinical-impression-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/clinical-impression-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/clinical-impression-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("InvestigationComponent")]

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -54,6 +55,39 @@ namespace Hl7.Fhir.Model.STU3
     {
         [NotMapped]
         public override string TypeName { get { return "Quantity"; } }
+
+        /// <summary>
+        /// How the Quantity should be understood and represented.
+        /// (url: http://hl7.org/fhir/ValueSet/quantity-comparator)
+        /// </summary>
+        [FhirEnumeration("QuantityComparator")]
+        public enum QuantityComparator
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quantity-comparator)
+            /// </summary>
+            [EnumLiteral("<", "http://hl7.org/fhir/quantity-comparator"), Description("Less than")]
+            LessThan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quantity-comparator)
+            /// </summary>
+            [EnumLiteral("<=", "http://hl7.org/fhir/quantity-comparator"), Description("Less or Equal to")]
+            LessOrEqual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quantity-comparator)
+            /// </summary>
+            [EnumLiteral(">=", "http://hl7.org/fhir/quantity-comparator"), Description("Greater or Equal to")]
+            GreaterOrEqual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quantity-comparator)
+            /// </summary>
+            [EnumLiteral(">", "http://hl7.org/fhir/quantity-comparator"), Description("Greater than")]
+            GreaterThan,
+        }
 
 
         /// <summary>
@@ -221,7 +255,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "code.empty() or system.exists()",
             Key = "qty-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "If a code for the unit is present, the system SHALL also be present",
             Xpath = "not(exists(f:code)) or exists(f:system)"
         };

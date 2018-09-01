@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,39 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.FamilyMemberHistory; } }
         [NotMapped]
         public override string TypeName { get { return "FamilyMemberHistory"; } }
+
+        /// <summary>
+        /// A code that identifies the status of the family history record.
+        /// (url: http://hl7.org/fhir/ValueSet/history-status)
+        /// </summary>
+        [FhirEnumeration("FamilyHistoryStatus")]
+        public enum FamilyHistoryStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/history-status)
+            /// </summary>
+            [EnumLiteral("partial", "http://hl7.org/fhir/history-status"), Description("Partial")]
+            Partial,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/history-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/history-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/history-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/history-status"), Description("Entered in error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/history-status)
+            /// </summary>
+            [EnumLiteral("health-unknown", "http://hl7.org/fhir/history-status"), Description("Health unknown")]
+            HealthUnknown,
+        }
 
 
         [FhirType("ConditionComponent")]
@@ -569,7 +603,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "age.exists() or estimatedAge.empty()",
             Key = "fhs-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can only have estimatedAge if age[x] is present",
             Xpath = "exists(*[starts-with(local-name(.), 'age')]) or not(exists(f:estimatedAge))"
         };
@@ -578,7 +612,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "notDone or notDoneReason.exists().not()",
             Key = "fhs-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Not Done Reason can only be specified if NotDone is \"true\"",
             Xpath = "f:notDone/@value=true() or not(exists(f:notDoneReason))"
         };
@@ -587,7 +621,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "age.empty() or born.empty()",
             Key = "fhs-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can have age[x] or born[x], but not both",
             Xpath = "not (*[starts-with(local-name(.), 'age')] and *[starts-with(local-name(.), 'birth')])"
         };

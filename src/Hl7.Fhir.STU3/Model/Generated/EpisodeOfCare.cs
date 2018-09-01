@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,57 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.EpisodeOfCare; } }
         [NotMapped]
         public override string TypeName { get { return "EpisodeOfCare"; } }
+
+        /// <summary>
+        /// The status of the episode of care.
+        /// (url: http://hl7.org/fhir/ValueSet/episode-of-care-status)
+        /// </summary>
+        [FhirEnumeration("EpisodeOfCareStatus")]
+        public enum EpisodeOfCareStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/episode-of-care-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/episode-of-care-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/episode-of-care-status)
+            /// </summary>
+            [EnumLiteral("waitlist", "http://hl7.org/fhir/episode-of-care-status"), Description("Waitlist")]
+            Waitlist,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/episode-of-care-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/episode-of-care-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/episode-of-care-status)
+            /// </summary>
+            [EnumLiteral("onhold", "http://hl7.org/fhir/episode-of-care-status"), Description("On Hold")]
+            Onhold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/episode-of-care-status)
+            /// </summary>
+            [EnumLiteral("finished", "http://hl7.org/fhir/episode-of-care-status"), Description("Finished")]
+            Finished,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/episode-of-care-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/episode-of-care-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/episode-of-care-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/episode-of-care-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("StatusHistoryComponent")]

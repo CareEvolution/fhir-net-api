@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Flag; } }
         [NotMapped]
         public override string TypeName { get { return "Flag"; } }
+
+        /// <summary>
+        /// Indicates whether this flag is active and needs to be displayed to a user, or whether it is no longer needed or entered in error.
+        /// (url: http://hl7.org/fhir/ValueSet/flag-status)
+        /// </summary>
+        [FhirEnumeration("FlagStatus")]
+        public enum FlagStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/flag-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/flag-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/flag-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/flag-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/flag-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/flag-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
 
 
         /// <summary>

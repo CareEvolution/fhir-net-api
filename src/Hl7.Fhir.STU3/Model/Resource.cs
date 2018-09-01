@@ -34,10 +34,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.STU3;
 using Hl7.Fhir.FhirPath.STU3;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Rest.STU3;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.Validation.STU3;
+using Hl7.Fhir.Validation;
 using Hl7.FhirPath;
 
 namespace Hl7.Fhir.Model.STU3
@@ -101,8 +101,8 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     result.Issue.Add(new OperationOutcome.IssueComponent()
                     {
-                        Code = IssueType.Invariant,
-                        Severity = IssueSeverity.Warning,
+                        Code = OperationOutcome.IssueType.Invariant,
+                        Severity = OperationOutcome.IssueSeverity.Warning,
                         Details = new CodeableConcept(null, invariantRule.Key, "Unable to validate without a FhirPath expression"),
                         Diagnostics = expression
                     });
@@ -117,8 +117,8 @@ namespace Hl7.Fhir.Model.STU3
 
                 result.Issue.Add(new OperationOutcome.IssueComponent()
                 {
-                    Code = IssueType.Invariant,
-                    Severity = IssueSeverity.Error,
+                    Code = OperationOutcome.IssueType.Invariant,
+                    Severity = OperationOutcome.IssueSeverity.Error,
                     Details = new CodeableConcept(null, invariantRule.Key, invariantRule.Human),
                     Diagnostics = expression
                 });
@@ -128,8 +128,8 @@ namespace Hl7.Fhir.Model.STU3
             {
                 result.Issue.Add(new OperationOutcome.IssueComponent()
                 {
-                    Code = IssueType.Invariant,
-                    Severity = IssueSeverity.Fatal,
+                    Code = OperationOutcome.IssueType.Invariant,
+                    Severity = OperationOutcome.IssueSeverity.Fatal,
                     Details = new CodeableConcept(null, invariantRule.Key, "FATAL: Unable to process the invariant rule: " + invariantRule.Key + " " + expression),
                     Diagnostics = String.Format("FhirPath: {0}\r\nError: {1}", expression, ex.Message)
                 });
@@ -206,8 +206,8 @@ namespace Hl7.Fhir.Model.STU3
             ValidateInvariants(context, results);
             foreach (var item in results.Issue)
             {
-                if (item.Severity == IssueSeverity.Error
-                    || item.Severity == IssueSeverity.Fatal)
+                if (item.Severity == OperationOutcome.IssueSeverity.Error
+                    || item.Severity == OperationOutcome.IssueSeverity.Fatal)
                     result.Add(new ValidationResult(item.Details.Coding[0].Code + ": " + item.Details.Text));
             }
         }

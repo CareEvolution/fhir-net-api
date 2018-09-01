@@ -8,7 +8,7 @@
 
 using System.Collections;
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Serialization.STU3

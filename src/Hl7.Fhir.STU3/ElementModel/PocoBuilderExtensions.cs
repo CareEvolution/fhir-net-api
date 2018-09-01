@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Serialization.STU3;
 
@@ -56,7 +57,7 @@ namespace Hl7.Fhir.ElementModel.STU3
 
             var comp = instance.Children("comparator").GetString();
             if(comp != null)
-                newQuantity.ComparatorElement = new Code<QuantityComparator> { ObjectValue = comp };
+                newQuantity.ComparatorElement = new Code<Quantity.QuantityComparator> { ObjectValue = comp };
 
             return newQuantity;
         }

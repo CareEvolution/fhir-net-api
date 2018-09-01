@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <summary>
         /// identifies the meaning of the extension
         /// </summary>
-        [FhirElement("url", Order=30)]
+        [FhirElement("url", XmlSerialization=XmlRepresentation.XmlAttr, TypeRedirect = typeof(FhirUri), InSummary=true, Order=30)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public FhirUri UrlElement
@@ -108,7 +109,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "extension.exists() != value.exists()",
             Key = "ext-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have either extensions or value[x], not both",
             Xpath = "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
         };

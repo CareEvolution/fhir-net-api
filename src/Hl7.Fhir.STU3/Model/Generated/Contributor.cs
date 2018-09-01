@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -54,6 +55,39 @@ namespace Hl7.Fhir.Model.STU3
     {
         [NotMapped]
         public override string TypeName { get { return "Contributor"; } }
+
+        /// <summary>
+        /// The type of contributor
+        /// (url: http://hl7.org/fhir/ValueSet/contributor-type)
+        /// </summary>
+        [FhirEnumeration("ContributorType")]
+        public enum ContributorType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contributor-type)
+            /// </summary>
+            [EnumLiteral("author", "http://hl7.org/fhir/contributor-type"), Description("Author")]
+            Author,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contributor-type)
+            /// </summary>
+            [EnumLiteral("editor", "http://hl7.org/fhir/contributor-type"), Description("Editor")]
+            Editor,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contributor-type)
+            /// </summary>
+            [EnumLiteral("reviewer", "http://hl7.org/fhir/contributor-type"), Description("Reviewer")]
+            Reviewer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/contributor-type)
+            /// </summary>
+            [EnumLiteral("endorser", "http://hl7.org/fhir/contributor-type"), Description("Endorser")]
+            Endorser,
+        }
 
 
         /// <summary>

@@ -10,7 +10,8 @@ using System;
 using System.Reflection;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.STU3;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.STU3;
 
 
@@ -58,7 +59,7 @@ namespace Hl7.Fhir.Serialization.STU3
 
         public T Parse<T>(ITypedElement element) where T : Base => element.ToPoco<T>(buildPocoBuilderSettings(Settings));
 
-        public Base Parse(ISourceNode node, Type type=null) => node.ToPoco(type, buildPocoBuilderSettings(Settings));
+        public Base Parse(ISourceNode node, Type type = null) => node.ToPoco(type, buildPocoBuilderSettings(Settings));
 
         public T Parse<T>(ISourceNode node) where T : Base => node.ToPoco<T>(buildPocoBuilderSettings(Settings));
 

@@ -34,7 +34,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.FhirPath.R4;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Validation;

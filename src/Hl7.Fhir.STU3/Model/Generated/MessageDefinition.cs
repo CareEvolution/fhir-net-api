@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -284,13 +285,32 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("situation", Order=50)]
             [DataMember]
-            public Markdown Situation
+            public Markdown SituationElement
             {
-                get { return _situation; }
-                set { _situation = value; OnPropertyChanged("Situation"); }
+                get { return _situationElement; }
+                set { _situationElement = value; OnPropertyChanged("SituationElement"); }
             }
 
-            private Markdown _situation;
+            private Markdown _situationElement;
+
+            /// <summary>
+            /// When should this response be used
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Situation
+            {
+                get { return SituationElement != null ? SituationElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        SituationElement = null;
+                    else
+                        SituationElement = new Markdown(value);
+                    OnPropertyChanged("Situation");
+                }
+            }
 
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -300,7 +320,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if (Message != null) dest.Message = (ResourceReference)Message.DeepCopy();
-                    if (Situation != null) dest.Situation = (Markdown)Situation.DeepCopy();
+                    if (SituationElement != null) dest.SituationElement = (Markdown)SituationElement.DeepCopy();
                     return dest;
                 }
                 else
@@ -319,7 +339,7 @@ namespace Hl7.Fhir.Model.STU3
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(Message, otherT.Message)) return false;
-                if (!DeepComparable.Matches(Situation, otherT.Situation)) return false;
+                if (!DeepComparable.Matches(SituationElement, otherT.SituationElement)) return false;
 
                 return true;
             }
@@ -331,7 +351,7 @@ namespace Hl7.Fhir.Model.STU3
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(Message, otherT.Message)) return false;
-                if (!DeepComparable.IsExactly(Situation, otherT.Situation)) return false;
+                if (!DeepComparable.IsExactly(SituationElement, otherT.SituationElement)) return false;
 
                 return true;
             }
@@ -344,7 +364,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     foreach (var item in base.Children) yield return item;
                     if (Message != null) yield return Message;
-                    if (Situation != null) yield return Situation;
+                    if (SituationElement != null) yield return SituationElement;
                 }
             }
 
@@ -355,7 +375,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (Message != null) yield return new ElementValue("message", Message);
-                    if (Situation != null) yield return new ElementValue("situation", Situation);
+                    if (SituationElement != null) yield return new ElementValue("situation", SituationElement);
                 }
             }
 
@@ -653,13 +673,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", InSummary=true, Order=190)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the message definition
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Context the content is intended to support
@@ -694,26 +733,64 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("purpose", InSummary=true, Order=220)]
         [DataMember]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
-            get { return _purpose; }
-            set { _purpose = value; OnPropertyChanged("Purpose"); }
+            get { return _purposeElement; }
+            set { _purposeElement = value; OnPropertyChanged("PurposeElement"); }
         }
 
-        private Markdown _purpose;
+        private Markdown _purposeElement;
+
+        /// <summary>
+        /// Why this message definition is defined
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Purpose
+        {
+            get { return PurposeElement != null ? PurposeElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PurposeElement = null;
+                else
+                    PurposeElement = new Markdown(value);
+                OnPropertyChanged("Purpose");
+            }
+        }
 
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
         [FhirElement("copyright", Order=230)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// Definition this one is based on
@@ -870,7 +947,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "focus.all(max='*' or (max.toInteger() > 0))",
             Key = "md-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Max must be postive int or *",
             Xpath = "f:max/@value='*' or number(f:max/@value) > 0"
         };
@@ -899,11 +976,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (PublisherElement != null) dest.PublisherElement = (FhirString)PublisherElement.DeepCopy();
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
-                if (Purpose != null) dest.Purpose = (Markdown)Purpose.DeepCopy();
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (PurposeElement != null) dest.PurposeElement = (Markdown)PurposeElement.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (Base != null) dest.Base = (ResourceReference)Base.DeepCopy();
                 if (Parent != null) dest.Parent = new List<ResourceReference>(Parent.DeepCopy());
                 if (Replaces != null) dest.Replaces = new List<ResourceReference>(Replaces.DeepCopy());
@@ -939,11 +1016,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(PublisherElement, otherT.PublisherElement)) return false;
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.Matches(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.Matches(Base, otherT.Base)) return false;
             if ( !DeepComparable.Matches(Parent, otherT.Parent)) return false;
             if ( !DeepComparable.Matches(Replaces, otherT.Replaces)) return false;
@@ -972,11 +1049,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(PublisherElement, otherT.PublisherElement)) return false;
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.IsExactly(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(Base, otherT.Base)) return false;
             if (!DeepComparable.IsExactly(Parent, otherT.Parent)) return false;
             if (!DeepComparable.IsExactly(Replaces, otherT.Replaces)) return false;
@@ -1005,11 +1082,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return DateElement;
                 if (PublisherElement != null) yield return PublisherElement;
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
-                if (Description != null) yield return Description;
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
-                if (Purpose != null) yield return Purpose;
-                if (Copyright != null) yield return Copyright;
+                if (PurposeElement != null) yield return PurposeElement;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 if (Base != null) yield return Base;
                 foreach (var elem in Parent) { if (elem != null) yield return elem; }
                 foreach (var elem in Replaces) { if (elem != null) yield return elem; }
@@ -1037,11 +1114,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
-                if (Description != null) yield return new ElementValue("description", Description);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (PurposeElement != null) yield return new ElementValue("purpose", PurposeElement);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 if (Base != null) yield return new ElementValue("base", Base);
                 foreach (var elem in Parent) { if (elem != null) yield return new ElementValue("parent", elem); }
                 foreach (var elem in Replaces) { if (elem != null) yield return new ElementValue("replaces", elem); }

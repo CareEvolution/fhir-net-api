@@ -33,7 +33,7 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
 

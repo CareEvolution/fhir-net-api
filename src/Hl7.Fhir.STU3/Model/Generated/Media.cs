@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Media; } }
         [NotMapped]
         public override string TypeName { get { return "Media"; } }
+
+        /// <summary>
+        /// Whether the media is a photo, video, or audio
+        /// (url: http://hl7.org/fhir/ValueSet/digital-media-type)
+        /// </summary>
+        [FhirEnumeration("DigitalMediaType")]
+        public enum DigitalMediaType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/digital-media-type)
+            /// </summary>
+            [EnumLiteral("photo", "http://hl7.org/fhir/digital-media-type"), Description("Photo")]
+            Photo,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/digital-media-type)
+            /// </summary>
+            [EnumLiteral("video", "http://hl7.org/fhir/digital-media-type"), Description("Video")]
+            Video,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/digital-media-type)
+            /// </summary>
+            [EnumLiteral("audio", "http://hl7.org/fhir/digital-media-type"), Description("Audio")]
+            Audio,
+        }
 
 
         /// <summary>
@@ -404,7 +432,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "height.empty() or type != 'audio'",
             Key = "mda-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Height can only be used for a photo or video",
             Xpath = "not(f:type/@value='audio') or not(f:height)"
         };
@@ -413,7 +441,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "width.empty() or type != 'audio'",
             Key = "mda-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Width can only be used for a photo or video",
             Xpath = "not(f:type/@value='audio') or not(f:width)"
         };
@@ -422,7 +450,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "frames.empty() or type = 'photo'",
             Key = "mda-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Frames can only be used for a photo",
             Xpath = "(f:type/@value='photo') or not(f:frames)"
         };
@@ -431,7 +459,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "duration.empty() or type != 'photo'",
             Key = "mda-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Duration can only be used for an audio or a video",
             Xpath = "not(f:type/@value='photo') or not(f:duration)"
         };

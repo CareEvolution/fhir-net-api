@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,39 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.SupplyDelivery; } }
         [NotMapped]
         public override string TypeName { get { return "SupplyDelivery"; } }
+
+        /// <summary>
+        /// Status of the supply delivery.
+        /// (url: http://hl7.org/fhir/ValueSet/supplydelivery-status)
+        /// </summary>
+        [FhirEnumeration("SupplyDeliveryStatus")]
+        public enum SupplyDeliveryStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplydelivery-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/supplydelivery-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplydelivery-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/supplydelivery-status"), Description("Delivered")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplydelivery-status)
+            /// </summary>
+            [EnumLiteral("abandoned", "http://hl7.org/fhir/supplydelivery-status"), Description("Abandoned")]
+            Abandoned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/supplydelivery-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/supplydelivery-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("SuppliedItemComponent")]

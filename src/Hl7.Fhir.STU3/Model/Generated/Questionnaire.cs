@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,111 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Questionnaire; } }
         [NotMapped]
         public override string TypeName { get { return "Questionnaire"; } }
+
+        /// <summary>
+        /// Distinguishes groups from questions and display text and indicates data type for questions
+        /// (url: http://hl7.org/fhir/ValueSet/item-type)
+        /// </summary>
+        [FhirEnumeration("QuestionnaireItemType")]
+        public enum QuestionnaireItemType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("group", "http://hl7.org/fhir/item-type"), Description("Group")]
+            Group,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("display", "http://hl7.org/fhir/item-type"), Description("Display")]
+            Display,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("boolean", "http://hl7.org/fhir/item-type"), Description("Boolean")]
+            Boolean,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("decimal", "http://hl7.org/fhir/item-type"), Description("Decimal")]
+            Decimal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("integer", "http://hl7.org/fhir/item-type"), Description("Integer")]
+            Integer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("date", "http://hl7.org/fhir/item-type"), Description("Date")]
+            Date,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("dateTime", "http://hl7.org/fhir/item-type"), Description("Date Time")]
+            DateTime,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("time", "http://hl7.org/fhir/item-type"), Description("Time")]
+            Time,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("string", "http://hl7.org/fhir/item-type"), Description("String")]
+            String,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("text", "http://hl7.org/fhir/item-type"), Description("Text")]
+            Text,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("url", "http://hl7.org/fhir/item-type"), Description("Url")]
+            Url,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("choice", "http://hl7.org/fhir/item-type"), Description("Choice")]
+            Choice,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("open-choice", "http://hl7.org/fhir/item-type"), Description("Open Choice")]
+            OpenChoice,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("attachment", "http://hl7.org/fhir/item-type"), Description("Attachment")]
+            Attachment,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("reference", "http://hl7.org/fhir/item-type"), Description("Reference")]
+            Reference,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/item-type)
+            /// </summary>
+            [EnumLiteral("quantity", "http://hl7.org/fhir/item-type"), Description("Quantity")]
+            Quantity,
+        }
 
 
         [FhirType("ItemComponent")]
@@ -1101,26 +1207,64 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", Order=180)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the questionnaire
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Why this questionnaire is defined
         /// </summary>
         [FhirElement("purpose", Order=190)]
         [DataMember]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
-            get { return _purpose; }
-            set { _purpose = value; OnPropertyChanged("Purpose"); }
+            get { return _purposeElement; }
+            set { _purposeElement = value; OnPropertyChanged("PurposeElement"); }
         }
 
-        private Markdown _purpose;
+        private Markdown _purposeElement;
+
+        /// <summary>
+        /// Why this questionnaire is defined
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Purpose
+        {
+            get { return PurposeElement != null ? PurposeElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PurposeElement = null;
+                else
+                    PurposeElement = new Markdown(value);
+                OnPropertyChanged("Purpose");
+            }
+        }
 
         /// <summary>
         /// When the questionnaire was approved by publisher
@@ -1246,13 +1390,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("copyright", Order=260)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// Concept that represents the overall questionnaire
@@ -1320,7 +1483,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "descendants().linkId.isDistinct()",
             Key = "que-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The link ids for groups and questions must be unique within the questionnaire",
             Xpath = "count(descendant::f:linkId/@value)=count(distinct-values(descendant::f:linkId/@value))"
         };
@@ -1329,7 +1492,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all(type!='display' or readOnly.empty())",
             Key = "que-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Read-only can't be specified for \"display\" items",
             Xpath = "not(f:type/@value='display' and f:readOnly)"
         };
@@ -1338,7 +1501,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all((type!='group' and type!='display') or initial.empty())",
             Key = "que-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Default values can't be specified for groups or display items",
             Xpath = "not(f:type/@value=('group', 'display') and f:*[starts-with(local-name(.), 'initial')])"
         };
@@ -1347,7 +1510,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all(type!='display' or (required.empty() and repeats.empty()))",
             Key = "que-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Required and repeat aren't permitted for display items",
             Xpath = "not(f:type/@value='display' and (f:required or f:repeats))"
         };
@@ -1356,7 +1519,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all((type ='choice' or type = 'open-choice') or (options.empty() and option.empty()))",
             Key = "que-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Only 'choice' items can have options",
             Xpath = "f:type/@value=('choice','open-choice') or not(f:option or f:options)"
         };
@@ -1365,7 +1528,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all(option.empty() or options.empty())",
             Key = "que-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A question cannot have both option and options",
             Xpath = "not(f:options and f:option)"
         };
@@ -1374,7 +1537,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all(type!='display' or code.empty())",
             Key = "que-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Display items cannot have a \"code\" asserted",
             Xpath = "not(f:type/@value='display' and f:code)"
         };
@@ -1383,7 +1546,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all((type in ('boolean' | 'decimal' | 'integer' | 'string' | 'text' | 'url')) or maxLength.empty())",
             Key = "que-10",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Maximum length can only be declared for simple question types",
             Xpath = "f:type/@value=('boolean', 'decimal', 'integer', 'open-choice', 'string', 'text', 'url') or not(f:maxLength)"
         };
@@ -1392,7 +1555,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all((type='group' implies item.empty().not()) and (type.trace('type')='display' implies item.trace('item').empty()))",
             Key = "que-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Group items must have nested items, display items cannot have nested items",
             Xpath = "not((f:type/@value='group' and not(f:item)) or (f:type/@value='display' and f:item))"
         };
@@ -1401,7 +1564,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.enableWhen.all(hasAnswer.exists() xor answer.exists())",
             Key = "que-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "enableWhen must contain either a 'answer' or a 'hasAnswer' element",
             Xpath = "count(f:*[starts-with(local-name(.), 'answer')]|self::f:hasAnswer) = 1"
         };
@@ -1438,15 +1601,15 @@ namespace Hl7.Fhir.Model.STU3
                 if (ExperimentalElement != null) dest.ExperimentalElement = (FhirBoolean)ExperimentalElement.DeepCopy();
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (PublisherElement != null) dest.PublisherElement = (FhirString)PublisherElement.DeepCopy();
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
-                if (Purpose != null) dest.Purpose = (Markdown)Purpose.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
+                if (PurposeElement != null) dest.PurposeElement = (Markdown)PurposeElement.DeepCopy();
                 if (ApprovalDateElement != null) dest.ApprovalDateElement = (Date)ApprovalDateElement.DeepCopy();
                 if (LastReviewDateElement != null) dest.LastReviewDateElement = (Date)LastReviewDateElement.DeepCopy();
                 if (EffectivePeriod != null) dest.EffectivePeriod = (Period)EffectivePeriod.DeepCopy();
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (Code != null) dest.Code = new List<Coding>(Code.DeepCopy());
                 if (SubjectTypeElement != null) dest.SubjectTypeElement = new List<Code<ResourceType>>(SubjectTypeElement.DeepCopy());
                 if (Item != null) dest.Item = new List<ItemComponent>(Item.DeepCopy());
@@ -1476,15 +1639,15 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.Matches(ExperimentalElement, otherT.ExperimentalElement)) return false;
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(PublisherElement, otherT.PublisherElement)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
-            if (!DeepComparable.Matches(Purpose, otherT.Purpose)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
+            if (!DeepComparable.Matches(PurposeElement, otherT.PurposeElement)) return false;
             if (!DeepComparable.Matches(ApprovalDateElement, otherT.ApprovalDateElement)) return false;
             if (!DeepComparable.Matches(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.Matches(EffectivePeriod, otherT.EffectivePeriod)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if ( !DeepComparable.Matches(Code, otherT.Code)) return false;
             if ( !DeepComparable.Matches(SubjectTypeElement, otherT.SubjectTypeElement)) return false;
             if ( !DeepComparable.Matches(Item, otherT.Item)) return false;
@@ -1507,15 +1670,15 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(ExperimentalElement, otherT.ExperimentalElement)) return false;
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(PublisherElement, otherT.PublisherElement)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
-            if (!DeepComparable.IsExactly(Purpose, otherT.Purpose)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
+            if (!DeepComparable.IsExactly(PurposeElement, otherT.PurposeElement)) return false;
             if (!DeepComparable.IsExactly(ApprovalDateElement, otherT.ApprovalDateElement)) return false;
             if (!DeepComparable.IsExactly(LastReviewDateElement, otherT.LastReviewDateElement)) return false;
             if (!DeepComparable.IsExactly(EffectivePeriod, otherT.EffectivePeriod)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(Code, otherT.Code)) return false;
             if (!DeepComparable.IsExactly(SubjectTypeElement, otherT.SubjectTypeElement)) return false;
             if (!DeepComparable.IsExactly(Item, otherT.Item)) return false;
@@ -1538,15 +1701,15 @@ namespace Hl7.Fhir.Model.STU3
                 if (ExperimentalElement != null) yield return ExperimentalElement;
                 if (DateElement != null) yield return DateElement;
                 if (PublisherElement != null) yield return PublisherElement;
-                if (Description != null) yield return Description;
-                if (Purpose != null) yield return Purpose;
+                if (DescriptionElement != null) yield return DescriptionElement;
+                if (PurposeElement != null) yield return PurposeElement;
                 if (ApprovalDateElement != null) yield return ApprovalDateElement;
                 if (LastReviewDateElement != null) yield return LastReviewDateElement;
                 if (EffectivePeriod != null) yield return EffectivePeriod;
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
-                if (Copyright != null) yield return Copyright;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 foreach (var elem in Code) { if (elem != null) yield return elem; }
                 foreach (var elem in SubjectTypeElement) { if (elem != null) yield return elem; }
                 foreach (var elem in Item) { if (elem != null) yield return elem; }
@@ -1568,15 +1731,15 @@ namespace Hl7.Fhir.Model.STU3
                 if (ExperimentalElement != null) yield return new ElementValue("experimental", ExperimentalElement);
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
-                if (Description != null) yield return new ElementValue("description", Description);
-                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
+                if (PurposeElement != null) yield return new ElementValue("purpose", PurposeElement);
                 if (ApprovalDateElement != null) yield return new ElementValue("approvalDate", ApprovalDateElement);
                 if (LastReviewDateElement != null) yield return new ElementValue("lastReviewDate", LastReviewDateElement);
                 if (EffectivePeriod != null) yield return new ElementValue("effectivePeriod", EffectivePeriod);
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 foreach (var elem in Code) { if (elem != null) yield return new ElementValue("code", elem); }
                 foreach (var elem in SubjectTypeElement) { if (elem != null) yield return new ElementValue("subjectType", elem); }
                 foreach (var elem in Item) { if (elem != null) yield return new ElementValue("item", elem); }

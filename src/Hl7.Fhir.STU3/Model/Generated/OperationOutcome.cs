@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,222 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.OperationOutcome; } }
         [NotMapped]
         public override string TypeName { get { return "OperationOutcome"; } }
+
+        /// <summary>
+        /// How the issue affects the success of the action.
+        /// (url: http://hl7.org/fhir/ValueSet/issue-severity)
+        /// </summary>
+        [FhirEnumeration("IssueSeverity")]
+        public enum IssueSeverity
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-severity)
+            /// </summary>
+            [EnumLiteral("fatal", "http://hl7.org/fhir/issue-severity"), Description("Fatal")]
+            Fatal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-severity)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/issue-severity"), Description("Error")]
+            Error,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-severity)
+            /// </summary>
+            [EnumLiteral("warning", "http://hl7.org/fhir/issue-severity"), Description("Warning")]
+            Warning,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-severity)
+            /// </summary>
+            [EnumLiteral("information", "http://hl7.org/fhir/issue-severity"), Description("Information")]
+            Information,
+        }
+
+        /// <summary>
+        /// A code that describes the type of issue.
+        /// (url: http://hl7.org/fhir/ValueSet/issue-type)
+        /// </summary>
+        [FhirEnumeration("IssueType")]
+        public enum IssueType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("invalid", "http://hl7.org/fhir/issue-type"), Description("Invalid Content")]
+            Invalid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("structure", "http://hl7.org/fhir/issue-type"), Description("Structural Issue")]
+            Structure,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("required", "http://hl7.org/fhir/issue-type"), Description("Required element missing")]
+            Required,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("value", "http://hl7.org/fhir/issue-type"), Description("Element value invalid")]
+            Value,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("invariant", "http://hl7.org/fhir/issue-type"), Description("Validation rule failed")]
+            Invariant,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("security", "http://hl7.org/fhir/issue-type"), Description("Security Problem")]
+            Security,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("login", "http://hl7.org/fhir/issue-type"), Description("Login Required")]
+            Login,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/issue-type"), Description("Unknown User")]
+            Unknown,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("expired", "http://hl7.org/fhir/issue-type"), Description("Session Expired")]
+            Expired,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("forbidden", "http://hl7.org/fhir/issue-type"), Description("Forbidden")]
+            Forbidden,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("suppressed", "http://hl7.org/fhir/issue-type"), Description("Information  Suppressed")]
+            Suppressed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("processing", "http://hl7.org/fhir/issue-type"), Description("Processing Failure")]
+            Processing,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("not-supported", "http://hl7.org/fhir/issue-type"), Description("Content not supported")]
+            NotSupported,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("duplicate", "http://hl7.org/fhir/issue-type"), Description("Duplicate")]
+            Duplicate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("not-found", "http://hl7.org/fhir/issue-type"), Description("Not Found")]
+            NotFound,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("too-long", "http://hl7.org/fhir/issue-type"), Description("Content Too Long")]
+            TooLong,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("code-invalid", "http://hl7.org/fhir/issue-type"), Description("Invalid Code")]
+            CodeInvalid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("extension", "http://hl7.org/fhir/issue-type"), Description("Unacceptable Extension")]
+            Extension,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("too-costly", "http://hl7.org/fhir/issue-type"), Description("Operation Too Costly")]
+            TooCostly,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("business-rule", "http://hl7.org/fhir/issue-type"), Description("Business Rule Violation")]
+            BusinessRule,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("conflict", "http://hl7.org/fhir/issue-type"), Description("Edit Version Conflict")]
+            Conflict,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("incomplete", "http://hl7.org/fhir/issue-type"), Description("Incomplete Results")]
+            Incomplete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("transient", "http://hl7.org/fhir/issue-type"), Description("Transient Issue")]
+            Transient,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("lock-error", "http://hl7.org/fhir/issue-type"), Description("Lock Error")]
+            LockError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("no-store", "http://hl7.org/fhir/issue-type"), Description("No Store Available")]
+            NoStore,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("exception", "http://hl7.org/fhir/issue-type"), Description("Exception")]
+            Exception,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("timeout", "http://hl7.org/fhir/issue-type"), Description("Timeout")]
+            Timeout,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("throttled", "http://hl7.org/fhir/issue-type"), Description("Throttled")]
+            Throttled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/issue-type)
+            /// </summary>
+            [EnumLiteral("informational", "http://hl7.org/fhir/issue-type"), Description("Informational Note")]
+            Informational,
+        }
 
 
         [FhirType("IssueComponent")]

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -87,7 +88,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())",
             Key = "rat-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present",
             Xpath = "(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) > 0) or (count(f:extension) > 0))"
         };

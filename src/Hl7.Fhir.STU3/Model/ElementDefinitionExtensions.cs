@@ -42,7 +42,7 @@ namespace Hl7.Fhir.Model.STU3
             return ed;
         }
 
-        public static ElementDefinition OfReference(this ElementDefinition ed, string targetProfile, IEnumerable<AggregationMode> aggregation = null, string profile=null)
+        public static ElementDefinition OfReference(this ElementDefinition ed, string targetProfile, IEnumerable<ElementDefinition.AggregationMode> aggregation = null, string profile=null)
         {
             ed.Type.Clear();
             ed.OrReference(targetProfile, aggregation, profile);
@@ -62,13 +62,13 @@ namespace Hl7.Fhir.Model.STU3
             return ed;
         }
 
-        public static ElementDefinition OrReference(this ElementDefinition ed, string targetProfile, IEnumerable<AggregationMode> aggregation = null, string profile = null)
+        public static ElementDefinition OrReference(this ElementDefinition ed, string targetProfile, IEnumerable<ElementDefinition.AggregationMode> aggregation = null, string profile = null)
         {
             var newType = new ElementDefinition.TypeRefComponent { Code = FHIRAllTypes.Reference.GetLiteral() };
 
             if (targetProfile != null) newType.TargetProfile = targetProfile;
             if (profile != null) newType.Profile = profile;
-            if (aggregation != null) newType.Aggregation = aggregation.Cast<AggregationMode?>();
+            if (aggregation != null) newType.Aggregation = aggregation.Cast<ElementDefinition.AggregationMode?>();
 
             ed.Type.Add(newType);
 

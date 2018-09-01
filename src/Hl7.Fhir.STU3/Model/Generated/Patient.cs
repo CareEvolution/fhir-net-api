@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,39 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Patient; } }
         [NotMapped]
         public override string TypeName { get { return "Patient"; } }
+
+        /// <summary>
+        /// The type of link between this patient resource and another patient resource.
+        /// (url: http://hl7.org/fhir/ValueSet/link-type)
+        /// </summary>
+        [FhirEnumeration("LinkType")]
+        public enum LinkType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/link-type)
+            /// </summary>
+            [EnumLiteral("replaced-by", "http://hl7.org/fhir/link-type"), Description("Replaced-by")]
+            ReplacedBy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/link-type)
+            /// </summary>
+            [EnumLiteral("replaces", "http://hl7.org/fhir/link-type"), Description("Replaces")]
+            Replaces,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/link-type)
+            /// </summary>
+            [EnumLiteral("refer", "http://hl7.org/fhir/link-type"), Description("Refer")]
+            Refer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/link-type)
+            /// </summary>
+            [EnumLiteral("seealso", "http://hl7.org/fhir/link-type"), Description("See also")]
+            Seealso,
+        }
 
 
         [FhirType("ContactComponent")]
@@ -943,7 +977,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "contact.all(name.exists() or telecom.exists() or address.exists() or organization.exists())",
             Key = "pat-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "SHALL at least contain a contact's details or a reference to an organization",
             Xpath = "exists(f:name) or exists(f:telecom) or exists(f:address) or exists(f:organization)"
         };

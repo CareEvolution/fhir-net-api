@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
 
 /*
   Copyright (c) 2011+, HL7, Inc.

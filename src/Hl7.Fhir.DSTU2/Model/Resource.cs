@@ -40,14 +40,6 @@ using Hl7.Fhir.Utility;
 using Hl7.Fhir.Validation;
 using Hl7.FhirPath;
 
-namespace Hl7.Fhir.Model
-{
-    public interface IResource
-    {
-
-    }
-}
-
 namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}}")]

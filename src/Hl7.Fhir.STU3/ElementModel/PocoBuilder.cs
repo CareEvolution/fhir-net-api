@@ -7,10 +7,11 @@
  */
 
 
+using System;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Utility;
-using System;
 
 namespace Hl7.Fhir.Serialization.STU3
 {

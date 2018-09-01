@@ -8,10 +8,11 @@
 
 using System;
 using System.Collections;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model;
 
 namespace Hl7.Fhir.Serialization.R4
 {

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,60 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.MeasureReport; } }
         [NotMapped]
         public override string TypeName { get { return "MeasureReport"; } }
+
+        /// <summary>
+        /// The status of the measure report
+        /// (url: http://hl7.org/fhir/ValueSet/measure-report-status)
+        /// </summary>
+        [FhirEnumeration("MeasureReportStatus")]
+        public enum MeasureReportStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-status)
+            /// </summary>
+            [EnumLiteral("complete", "http://hl7.org/fhir/measure-report-status"), Description("Complete")]
+            Complete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-status)
+            /// </summary>
+            [EnumLiteral("pending", "http://hl7.org/fhir/measure-report-status"), Description("Pending")]
+            Pending,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-status)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/measure-report-status"), Description("Error")]
+            Error,
+        }
+
+        /// <summary>
+        /// The type of the measure report
+        /// (url: http://hl7.org/fhir/ValueSet/measure-report-type)
+        /// </summary>
+        [FhirEnumeration("MeasureReportType")]
+        public enum MeasureReportType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-type)
+            /// </summary>
+            [EnumLiteral("individual", "http://hl7.org/fhir/measure-report-type"), Description("Individual")]
+            Individual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-type)
+            /// </summary>
+            [EnumLiteral("patient-list", "http://hl7.org/fhir/measure-report-type"), Description("Patient List")]
+            PatientList,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/measure-report-type)
+            /// </summary>
+            [EnumLiteral("summary", "http://hl7.org/fhir/measure-report-type"), Description("Summary")]
+            Summary,
+        }
 
 
         [FhirType("GroupComponent")]

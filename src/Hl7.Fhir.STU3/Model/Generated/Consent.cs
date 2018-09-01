@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,105 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Consent; } }
         [NotMapped]
         public override string TypeName { get { return "Consent"; } }
+
+        /// <summary>
+        /// Indicates the state of the consent
+        /// (url: http://hl7.org/fhir/ValueSet/consent-state-codes)
+        /// </summary>
+        [FhirEnumeration("ConsentState")]
+        public enum ConsentState
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-state-codes)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/consent-state-codes"), Description("Pending")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-state-codes)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/consent-state-codes"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-state-codes)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/consent-state-codes"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-state-codes)
+            /// </summary>
+            [EnumLiteral("rejected", "http://hl7.org/fhir/consent-state-codes"), Description("Rejected")]
+            Rejected,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-state-codes)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/consent-state-codes"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-state-codes)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/consent-state-codes"), Description("Entered in Error")]
+            EnteredInError,
+        }
+
+        /// <summary>
+        /// How a resource reference is interpreted when testing consent restrictions
+        /// (url: http://hl7.org/fhir/ValueSet/consent-data-meaning)
+        /// </summary>
+        [FhirEnumeration("ConsentDataMeaning")]
+        public enum ConsentDataMeaning
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-data-meaning)
+            /// </summary>
+            [EnumLiteral("instance", "http://hl7.org/fhir/consent-data-meaning"), Description("Instance")]
+            Instance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-data-meaning)
+            /// </summary>
+            [EnumLiteral("related", "http://hl7.org/fhir/consent-data-meaning"), Description("Related")]
+            Related,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-data-meaning)
+            /// </summary>
+            [EnumLiteral("dependents", "http://hl7.org/fhir/consent-data-meaning"), Description("Dependents")]
+            Dependents,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-data-meaning)
+            /// </summary>
+            [EnumLiteral("authoredby", "http://hl7.org/fhir/consent-data-meaning"), Description("AuthoredBy")]
+            Authoredby,
+        }
+
+        /// <summary>
+        /// How an exception statement is applied, such as adding additional consent or removing consent
+        /// (url: http://hl7.org/fhir/ValueSet/consent-except-type)
+        /// </summary>
+        [FhirEnumeration("ConsentExceptType")]
+        public enum ConsentExceptType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-except-type)
+            /// </summary>
+            [EnumLiteral("deny", "http://hl7.org/fhir/consent-except-type"), Description("Opt Out")]
+            Deny,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/consent-except-type)
+            /// </summary>
+            [EnumLiteral("permit", "http://hl7.org/fhir/consent-except-type"), Description("Opt In")]
+            Permit,
+        }
 
 
         [FhirType("ActorComponent")]
@@ -1251,7 +1351,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "policy.exists() or policyRule.exists()",
             Key = "ppc-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either a Policy or PolicyRule",
             Xpath = "exists(f:policy) or exists(f:policyRule)"
         };

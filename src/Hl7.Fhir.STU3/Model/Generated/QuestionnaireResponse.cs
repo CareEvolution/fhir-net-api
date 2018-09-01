@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,45 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.QuestionnaireResponse; } }
         [NotMapped]
         public override string TypeName { get { return "QuestionnaireResponse"; } }
+
+        /// <summary>
+        /// Lifecycle status of the questionnaire response.
+        /// (url: http://hl7.org/fhir/ValueSet/questionnaire-answers-status)
+        /// </summary>
+        [FhirEnumeration("QuestionnaireResponseStatus")]
+        public enum QuestionnaireResponseStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/questionnaire-answers-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/questionnaire-answers-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("amended", "http://hl7.org/fhir/questionnaire-answers-status"), Description("Amended")]
+            Amended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/questionnaire-answers-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/questionnaire-answers-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/questionnaire-answers-status"), Description("Stopped")]
+            Stopped,
+        }
 
 
         [FhirType("ItemComponent")]
@@ -596,7 +636,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "item.all((answer.exists() and item.exists()).not())",
             Key = "qrs-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Nested item can't be beneath both item and answer",
             Xpath = "not(exists(f:answer) and exists(f:item))"
         };

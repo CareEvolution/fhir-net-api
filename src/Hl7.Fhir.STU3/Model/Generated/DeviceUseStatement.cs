@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.DeviceUseStatement; } }
         [NotMapped]
         public override string TypeName { get { return "DeviceUseStatement"; } }
+
+        /// <summary>
+        /// A coded concept indicating the current status of a the Device Usage
+        /// (url: http://hl7.org/fhir/ValueSet/device-statement-status)
+        /// </summary>
+        [FhirEnumeration("DeviceUseStatementStatus")]
+        public enum DeviceUseStatementStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-statement-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/device-statement-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-statement-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/device-statement-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-statement-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/device-statement-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-statement-status)
+            /// </summary>
+            [EnumLiteral("intended", "http://hl7.org/fhir/device-statement-status"), Description("Intended")]
+            Intended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-statement-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/device-statement-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-statement-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/device-statement-status"), Description("On Hold")]
+            OnHold,
+        }
 
 
         /// <summary>

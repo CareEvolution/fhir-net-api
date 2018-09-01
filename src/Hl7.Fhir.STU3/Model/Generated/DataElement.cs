@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.DataElement; } }
         [NotMapped]
         public override string TypeName { get { return "DataElement"; } }
+
+        /// <summary>
+        /// Indicates the degree of precision of the data element definition.
+        /// (url: http://hl7.org/fhir/ValueSet/dataelement-stringency)
+        /// </summary>
+        [FhirEnumeration("DataElementStringency")]
+        public enum DataElementStringency
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/dataelement-stringency)
+            /// </summary>
+            [EnumLiteral("comparable", "http://hl7.org/fhir/dataelement-stringency"), Description("Comparable")]
+            Comparable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/dataelement-stringency)
+            /// </summary>
+            [EnumLiteral("fully-specified", "http://hl7.org/fhir/dataelement-stringency"), Description("Fully Specified")]
+            FullySpecified,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/dataelement-stringency)
+            /// </summary>
+            [EnumLiteral("equivalent", "http://hl7.org/fhir/dataelement-stringency"), Description("Equivalent")]
+            Equivalent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/dataelement-stringency)
+            /// </summary>
+            [EnumLiteral("convertable", "http://hl7.org/fhir/dataelement-stringency"), Description("Convertable")]
+            Convertable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/dataelement-stringency)
+            /// </summary>
+            [EnumLiteral("scaleable", "http://hl7.org/fhir/dataelement-stringency"), Description("Scaleable")]
+            Scaleable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/dataelement-stringency)
+            /// </summary>
+            [EnumLiteral("flexible", "http://hl7.org/fhir/dataelement-stringency"), Description("Flexible")]
+            Flexible,
+        }
 
 
         [FhirType("MappingComponent")]
@@ -593,13 +639,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("copyright", Order=210)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// comparable | fully-specified | equivalent | convertable | scaleable | flexible
@@ -666,7 +731,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "mapping.all(uri.exists() or name.exists())",
             Key = "dae-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "At least one of  name or uri SHALL be present",
             Xpath = "exists(f:uri) or exists(f:name)"
         };
@@ -675,7 +740,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "element.all(base.empty())",
             Key = "dae-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "No base allowed",
             Xpath = "not(exists(f:base))"
         };
@@ -684,7 +749,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "element.all(slicing.empty())",
             Key = "dae-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "No slicing allowed",
             Xpath = "not(exists(f:slicing))"
         };
@@ -717,7 +782,7 @@ namespace Hl7.Fhir.Model.STU3
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (StringencyElement != null) dest.StringencyElement = (Code<DataElementStringency>)StringencyElement.DeepCopy();
                 if (Mapping != null) dest.Mapping = new List<MappingComponent>(Mapping.DeepCopy());
                 if (Element != null) dest.Element = new List<ElementDefinition>(Element.DeepCopy());
@@ -750,7 +815,7 @@ namespace Hl7.Fhir.Model.STU3
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.Matches(StringencyElement, otherT.StringencyElement)) return false;
             if ( !DeepComparable.Matches(Mapping, otherT.Mapping)) return false;
             if ( !DeepComparable.Matches(Element, otherT.Element)) return false;
@@ -776,7 +841,7 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(StringencyElement, otherT.StringencyElement)) return false;
             if (!DeepComparable.IsExactly(Mapping, otherT.Mapping)) return false;
             if (!DeepComparable.IsExactly(Element, otherT.Element)) return false;
@@ -802,7 +867,7 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
-                if (Copyright != null) yield return Copyright;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 if (StringencyElement != null) yield return StringencyElement;
                 foreach (var elem in Mapping) { if (elem != null) yield return elem; }
                 foreach (var elem in Element) { if (elem != null) yield return elem; }
@@ -827,7 +892,7 @@ namespace Hl7.Fhir.Model.STU3
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 if (StringencyElement != null) yield return new ElementValue("stringency", StringencyElement);
                 foreach (var elem in Mapping) { if (elem != null) yield return new ElementValue("mapping", elem); }
                 foreach (var elem in Element) { if (elem != null) yield return new ElementValue("element", elem); }

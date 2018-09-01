@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,54 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Location; } }
         [NotMapped]
         public override string TypeName { get { return "Location"; } }
+
+        /// <summary>
+        /// Indicates whether the location is still in use.
+        /// (url: http://hl7.org/fhir/ValueSet/location-status)
+        /// </summary>
+        [FhirEnumeration("LocationStatus")]
+        public enum LocationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/location-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/location-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/location-status"), Description("Inactive")]
+            Inactive,
+        }
+
+        /// <summary>
+        /// Indicates whether a resource instance represents a specific location or a class of locations.
+        /// (url: http://hl7.org/fhir/ValueSet/location-mode)
+        /// </summary>
+        [FhirEnumeration("LocationMode")]
+        public enum LocationMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-mode)
+            /// </summary>
+            [EnumLiteral("instance", "http://hl7.org/fhir/location-mode"), Description("Instance")]
+            Instance,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/location-mode)
+            /// </summary>
+            [EnumLiteral("kind", "http://hl7.org/fhir/location-mode"), Description("Kind")]
+            Kind,
+        }
 
 
         [FhirType("PositionComponent")]

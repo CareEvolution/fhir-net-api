@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,48 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.AdverseEvent; } }
         [NotMapped]
         public override string TypeName { get { return "AdverseEvent"; } }
+
+        /// <summary>
+        /// Overall categorization of the event, e.g. real or potential
+        /// (url: http://hl7.org/fhir/ValueSet/adverse-event-category)
+        /// </summary>
+        [FhirEnumeration("AdverseEventCategory")]
+        public enum AdverseEventCategory
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/adverse-event-category)
+            /// </summary>
+            [EnumLiteral("AE", "http://hl7.org/fhir/adverse-event-category"), Description("Adverse Event")]
+            AE,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/adverse-event-category)
+            /// </summary>
+            [EnumLiteral("PAE", "http://hl7.org/fhir/adverse-event-category"), Description("Potential Adverse Event")]
+            PAE,
+        }
+
+        /// <summary>
+        /// TODO
+        /// (url: http://hl7.org/fhir/ValueSet/adverse-event-causality)
+        /// </summary>
+        [FhirEnumeration("AdverseEventCausality")]
+        public enum AdverseEventCausality
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/adverse-event-causality)
+            /// </summary>
+            [EnumLiteral("causality1", "http://hl7.org/fhir/adverse-event-causality"), Description("causality1 placeholder")]
+            Causality1,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/adverse-event-causality)
+            /// </summary>
+            [EnumLiteral("causality2", "http://hl7.org/fhir/adverse-event-causality"), Description("causality2 placeholder")]
+            Causality2,
+        }
 
 
         [FhirType("SuspectEntityComponent")]

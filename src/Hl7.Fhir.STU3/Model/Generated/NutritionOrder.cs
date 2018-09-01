@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,69 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.NutritionOrder; } }
         [NotMapped]
         public override string TypeName { get { return "NutritionOrder"; } }
+
+        /// <summary>
+        /// Codes specifying the state of the request. Describes the lifecycle of the nutrition order.
+        /// (url: http://hl7.org/fhir/ValueSet/nutrition-request-status)
+        /// </summary>
+        [FhirEnumeration("NutritionOrderStatus")]
+        public enum NutritionOrderStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/nutrition-request-status"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/nutrition-request-status"), Description("Draft")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/nutrition-request-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("requested", "http://hl7.org/fhir/nutrition-request-status"), Description("Requested")]
+            Requested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/nutrition-request-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/nutrition-request-status"), Description("On-Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/nutrition-request-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/nutrition-request-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/nutrition-request-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/nutrition-request-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("OralDietComponent")]
@@ -1284,7 +1348,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "oralDiet.exists() or supplement.exists() or enteralFormula.exists()",
             Key = "nor-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Nutrition Order SHALL contain either Oral Diet , Supplement, or Enteral Formula class",
             Xpath = "exists(f:oralDiet) or exists(f:supplement) or exists(f:enteralFormula)"
         };

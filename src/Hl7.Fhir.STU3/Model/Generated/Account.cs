@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Account; } }
         [NotMapped]
         public override string TypeName { get { return "Account"; } }
+
+        /// <summary>
+        /// Indicates whether the account is available to be used.
+        /// (url: http://hl7.org/fhir/ValueSet/account-status)
+        /// </summary>
+        [FhirEnumeration("AccountStatus")]
+        public enum AccountStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/account-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/account-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/account-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/account-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/account-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/account-status"), Description("Entered in error")]
+            EnteredInError,
+        }
 
 
         [FhirType("CoverageComponent")]

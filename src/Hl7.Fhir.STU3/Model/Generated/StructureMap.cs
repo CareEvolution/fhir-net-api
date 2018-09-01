@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,291 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.StructureMap; } }
         [NotMapped]
         public override string TypeName { get { return "StructureMap"; } }
+
+        /// <summary>
+        /// How the referenced structure is used in this mapping
+        /// (url: http://hl7.org/fhir/ValueSet/map-model-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapModelMode")]
+        public enum StructureMapModelMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-model-mode)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/map-model-mode"), Description("Source Structure Definition")]
+            Source,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-model-mode)
+            /// </summary>
+            [EnumLiteral("queried", "http://hl7.org/fhir/map-model-mode"), Description("Queried Structure Definition")]
+            Queried,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-model-mode)
+            /// </summary>
+            [EnumLiteral("target", "http://hl7.org/fhir/map-model-mode"), Description("Target Structure Definition")]
+            Target,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-model-mode)
+            /// </summary>
+            [EnumLiteral("produced", "http://hl7.org/fhir/map-model-mode"), Description("Produced Structure Definition")]
+            Produced,
+        }
+
+        /// <summary>
+        /// If this is the default rule set to apply for the source type, or this combination of types
+        /// (url: http://hl7.org/fhir/ValueSet/map-group-type-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapGroupTypeMode")]
+        public enum StructureMapGroupTypeMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-group-type-mode)
+            /// </summary>
+            [EnumLiteral("none", "http://hl7.org/fhir/map-group-type-mode"), Description("Not a Default")]
+            None,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-group-type-mode)
+            /// </summary>
+            [EnumLiteral("types", "http://hl7.org/fhir/map-group-type-mode"), Description("Default for Type Combination")]
+            Types,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-group-type-mode)
+            /// </summary>
+            [EnumLiteral("type-and-types", "http://hl7.org/fhir/map-group-type-mode"), Description("Default for type + combination")]
+            TypeAndTypes,
+        }
+
+        /// <summary>
+        /// Mode for this instance of data
+        /// (url: http://hl7.org/fhir/ValueSet/map-input-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapInputMode")]
+        public enum StructureMapInputMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-input-mode)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/map-input-mode"), Description("Source Instance")]
+            Source,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-input-mode)
+            /// </summary>
+            [EnumLiteral("target", "http://hl7.org/fhir/map-input-mode"), Description("Target Instance")]
+            Target,
+        }
+
+        /// <summary>
+        /// If field is a list, how to manage the source
+        /// (url: http://hl7.org/fhir/ValueSet/map-source-list-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapSourceListMode")]
+        public enum StructureMapSourceListMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("first", "http://hl7.org/fhir/map-source-list-mode"), Description("First")]
+            First,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("not_first", "http://hl7.org/fhir/map-source-list-mode"), Description("All but the first")]
+            Not_first,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("last", "http://hl7.org/fhir/map-source-list-mode"), Description("Last")]
+            Last,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("not_last", "http://hl7.org/fhir/map-source-list-mode"), Description("All but the last")]
+            Not_last,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-source-list-mode)
+            /// </summary>
+            [EnumLiteral("only_one", "http://hl7.org/fhir/map-source-list-mode"), Description("Enforce only one")]
+            Only_one,
+        }
+
+        /// <summary>
+        /// How to interpret the context
+        /// (url: http://hl7.org/fhir/ValueSet/map-context-type)
+        /// </summary>
+        [FhirEnumeration("StructureMapContextType")]
+        public enum StructureMapContextType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-context-type)
+            /// </summary>
+            [EnumLiteral("type", "http://hl7.org/fhir/map-context-type"), Description("Type")]
+            Type,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-context-type)
+            /// </summary>
+            [EnumLiteral("variable", "http://hl7.org/fhir/map-context-type"), Description("Variable")]
+            Variable,
+        }
+
+        /// <summary>
+        /// If field is a list, how to manage the production
+        /// (url: http://hl7.org/fhir/ValueSet/map-target-list-mode)
+        /// </summary>
+        [FhirEnumeration("StructureMapTargetListMode")]
+        public enum StructureMapTargetListMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-target-list-mode)
+            /// </summary>
+            [EnumLiteral("first", "http://hl7.org/fhir/map-target-list-mode"), Description("First")]
+            First,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-target-list-mode)
+            /// </summary>
+            [EnumLiteral("share", "http://hl7.org/fhir/map-target-list-mode"), Description("Share")]
+            Share,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-target-list-mode)
+            /// </summary>
+            [EnumLiteral("last", "http://hl7.org/fhir/map-target-list-mode"), Description("Last")]
+            Last,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-target-list-mode)
+            /// </summary>
+            [EnumLiteral("collate", "http://hl7.org/fhir/map-target-list-mode"), Description("Collate")]
+            Collate,
+        }
+
+        /// <summary>
+        /// How data is copied/created
+        /// (url: http://hl7.org/fhir/ValueSet/map-transform)
+        /// </summary>
+        [FhirEnumeration("StructureMapTransform")]
+        public enum StructureMapTransform
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("create", "http://hl7.org/fhir/map-transform"), Description("create")]
+            Create,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("copy", "http://hl7.org/fhir/map-transform"), Description("copy")]
+            Copy,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("truncate", "http://hl7.org/fhir/map-transform"), Description("truncate")]
+            Truncate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("escape", "http://hl7.org/fhir/map-transform"), Description("escape")]
+            Escape,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("cast", "http://hl7.org/fhir/map-transform"), Description("cast")]
+            Cast,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("append", "http://hl7.org/fhir/map-transform"), Description("append")]
+            Append,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("translate", "http://hl7.org/fhir/map-transform"), Description("translate")]
+            Translate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("reference", "http://hl7.org/fhir/map-transform"), Description("reference")]
+            Reference,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("dateOp", "http://hl7.org/fhir/map-transform"), Description("dateOp")]
+            DateOp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("uuid", "http://hl7.org/fhir/map-transform"), Description("uuid")]
+            Uuid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("pointer", "http://hl7.org/fhir/map-transform"), Description("pointer")]
+            Pointer,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("evaluate", "http://hl7.org/fhir/map-transform"), Description("evaluate")]
+            Evaluate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("cc", "http://hl7.org/fhir/map-transform"), Description("cc")]
+            Cc,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("c", "http://hl7.org/fhir/map-transform"), Description("c")]
+            C,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("qty", "http://hl7.org/fhir/map-transform"), Description("qty")]
+            Qty,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("id", "http://hl7.org/fhir/map-transform"), Description("id")]
+            Id,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/map-transform)
+            /// </summary>
+            [EnumLiteral("cp", "http://hl7.org/fhir/map-transform"), Description("cp")]
+            Cp,
+        }
 
 
         [FhirType("StructureComponent")]
@@ -2261,13 +2547,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", Order=190)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the structure map
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Context the content is intended to support
@@ -2302,26 +2607,64 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("purpose", Order=220)]
         [DataMember]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
-            get { return _purpose; }
-            set { _purpose = value; OnPropertyChanged("Purpose"); }
+            get { return _purposeElement; }
+            set { _purposeElement = value; OnPropertyChanged("PurposeElement"); }
         }
 
-        private Markdown _purpose;
+        private Markdown _purposeElement;
+
+        /// <summary>
+        /// Why this structure map is defined
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Purpose
+        {
+            get { return PurposeElement != null ? PurposeElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PurposeElement = null;
+                else
+                    PurposeElement = new Markdown(value);
+                OnPropertyChanged("Purpose");
+            }
+        }
 
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
         [FhirElement("copyright", Order=230)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// Structure Definition used by this map
@@ -2389,7 +2732,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "group.rule.target.all(context.exists() implies contextType.exists())",
             Key = "smp-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Must have a contextType if you have a context",
             Xpath = "not(f:context) or (f:contextType)"
         };
@@ -2398,7 +2741,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "group.rule.target.all(element.exists() implies context.exists())",
             Key = "smp-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Can only have a element if you have a context",
             Xpath = "not(f:element) or (f:context)"
         };
@@ -2428,11 +2771,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (PublisherElement != null) dest.PublisherElement = (FhirString)PublisherElement.DeepCopy();
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
-                if (Purpose != null) dest.Purpose = (Markdown)Purpose.DeepCopy();
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (PurposeElement != null) dest.PurposeElement = (Markdown)PurposeElement.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (Structure != null) dest.Structure = new List<StructureComponent>(Structure.DeepCopy());
                 if (ImportElement != null) dest.ImportElement = new List<FhirUri>(ImportElement.DeepCopy());
                 if (Group != null) dest.Group = new List<GroupComponent>(Group.DeepCopy());
@@ -2463,11 +2806,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(PublisherElement, otherT.PublisherElement)) return false;
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.Matches(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if ( !DeepComparable.Matches(Structure, otherT.Structure)) return false;
             if ( !DeepComparable.Matches(ImportElement, otherT.ImportElement)) return false;
             if ( !DeepComparable.Matches(Group, otherT.Group)) return false;
@@ -2491,11 +2834,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(PublisherElement, otherT.PublisherElement)) return false;
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.IsExactly(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(Structure, otherT.Structure)) return false;
             if (!DeepComparable.IsExactly(ImportElement, otherT.ImportElement)) return false;
             if (!DeepComparable.IsExactly(Group, otherT.Group)) return false;
@@ -2519,11 +2862,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return DateElement;
                 if (PublisherElement != null) yield return PublisherElement;
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
-                if (Description != null) yield return Description;
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
-                if (Purpose != null) yield return Purpose;
-                if (Copyright != null) yield return Copyright;
+                if (PurposeElement != null) yield return PurposeElement;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 foreach (var elem in Structure) { if (elem != null) yield return elem; }
                 foreach (var elem in ImportElement) { if (elem != null) yield return elem; }
                 foreach (var elem in Group) { if (elem != null) yield return elem; }
@@ -2546,11 +2889,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
-                if (Description != null) yield return new ElementValue("description", Description);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (PurposeElement != null) yield return new ElementValue("purpose", PurposeElement);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 foreach (var elem in Structure) { if (elem != null) yield return new ElementValue("structure", elem); }
                 foreach (var elem in ImportElement) { if (elem != null) yield return new ElementValue("import", elem); }
                 foreach (var elem in Group) { if (elem != null) yield return new ElementValue("group", elem); }

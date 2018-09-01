@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,195 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.DeviceMetric; } }
         [NotMapped]
         public override string TypeName { get { return "DeviceMetric"; } }
+
+        /// <summary>
+        /// Describes the operational status of the DeviceMetric.
+        /// (url: http://hl7.org/fhir/ValueSet/metric-operational-status)
+        /// </summary>
+        [FhirEnumeration("DeviceMetricOperationalStatus")]
+        public enum DeviceMetricOperationalStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-operational-status)
+            /// </summary>
+            [EnumLiteral("on", "http://hl7.org/fhir/metric-operational-status"), Description("On")]
+            On,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-operational-status)
+            /// </summary>
+            [EnumLiteral("off", "http://hl7.org/fhir/metric-operational-status"), Description("Off")]
+            Off,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-operational-status)
+            /// </summary>
+            [EnumLiteral("standby", "http://hl7.org/fhir/metric-operational-status"), Description("Standby")]
+            Standby,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-operational-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/metric-operational-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
+        /// <summary>
+        /// Describes the typical color of representation.
+        /// (url: http://hl7.org/fhir/ValueSet/metric-color)
+        /// </summary>
+        [FhirEnumeration("DeviceMetricColor")]
+        public enum DeviceMetricColor
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-color)
+            /// </summary>
+            [EnumLiteral("black", "http://hl7.org/fhir/metric-color"), Description("Color Black")]
+            Black,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-color)
+            /// </summary>
+            [EnumLiteral("red", "http://hl7.org/fhir/metric-color"), Description("Color Red")]
+            Red,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-color)
+            /// </summary>
+            [EnumLiteral("green", "http://hl7.org/fhir/metric-color"), Description("Color Green")]
+            Green,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-color)
+            /// </summary>
+            [EnumLiteral("yellow", "http://hl7.org/fhir/metric-color"), Description("Color Yellow")]
+            Yellow,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-color)
+            /// </summary>
+            [EnumLiteral("blue", "http://hl7.org/fhir/metric-color"), Description("Color Blue")]
+            Blue,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-color)
+            /// </summary>
+            [EnumLiteral("magenta", "http://hl7.org/fhir/metric-color"), Description("Color Magenta")]
+            Magenta,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-color)
+            /// </summary>
+            [EnumLiteral("cyan", "http://hl7.org/fhir/metric-color"), Description("Color Cyan")]
+            Cyan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-color)
+            /// </summary>
+            [EnumLiteral("white", "http://hl7.org/fhir/metric-color"), Description("Color White")]
+            White,
+        }
+
+        /// <summary>
+        /// Describes the category of the metric.
+        /// (url: http://hl7.org/fhir/ValueSet/metric-category)
+        /// </summary>
+        [FhirEnumeration("DeviceMetricCategory")]
+        public enum DeviceMetricCategory
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-category)
+            /// </summary>
+            [EnumLiteral("measurement", "http://hl7.org/fhir/metric-category"), Description("Measurement")]
+            Measurement,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-category)
+            /// </summary>
+            [EnumLiteral("setting", "http://hl7.org/fhir/metric-category"), Description("Setting")]
+            Setting,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-category)
+            /// </summary>
+            [EnumLiteral("calculation", "http://hl7.org/fhir/metric-category"), Description("Calculation")]
+            Calculation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-category)
+            /// </summary>
+            [EnumLiteral("unspecified", "http://hl7.org/fhir/metric-category"), Description("Unspecified")]
+            Unspecified,
+        }
+
+        /// <summary>
+        /// Describes the type of a metric calibration.
+        /// (url: http://hl7.org/fhir/ValueSet/metric-calibration-type)
+        /// </summary>
+        [FhirEnumeration("DeviceMetricCalibrationType")]
+        public enum DeviceMetricCalibrationType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-calibration-type)
+            /// </summary>
+            [EnumLiteral("unspecified", "http://hl7.org/fhir/metric-calibration-type"), Description("Unspecified")]
+            Unspecified,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-calibration-type)
+            /// </summary>
+            [EnumLiteral("offset", "http://hl7.org/fhir/metric-calibration-type"), Description("Offset")]
+            Offset,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-calibration-type)
+            /// </summary>
+            [EnumLiteral("gain", "http://hl7.org/fhir/metric-calibration-type"), Description("Gain")]
+            Gain,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-calibration-type)
+            /// </summary>
+            [EnumLiteral("two-point", "http://hl7.org/fhir/metric-calibration-type"), Description("Two Point")]
+            TwoPoint,
+        }
+
+        /// <summary>
+        /// Describes the state of a metric calibration.
+        /// (url: http://hl7.org/fhir/ValueSet/metric-calibration-state)
+        /// </summary>
+        [FhirEnumeration("DeviceMetricCalibrationState")]
+        public enum DeviceMetricCalibrationState
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-calibration-state)
+            /// </summary>
+            [EnumLiteral("not-calibrated", "http://hl7.org/fhir/metric-calibration-state"), Description("Not Calibrated")]
+            NotCalibrated,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-calibration-state)
+            /// </summary>
+            [EnumLiteral("calibration-required", "http://hl7.org/fhir/metric-calibration-state"), Description("Calibration Required")]
+            CalibrationRequired,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-calibration-state)
+            /// </summary>
+            [EnumLiteral("calibrated", "http://hl7.org/fhir/metric-calibration-state"), Description("Calibrated")]
+            Calibrated,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/metric-calibration-state)
+            /// </summary>
+            [EnumLiteral("unspecified", "http://hl7.org/fhir/metric-calibration-state"), Description("Unspecified")]
+            Unspecified,
+        }
 
 
         [FhirType("CalibrationComponent")]

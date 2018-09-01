@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,84 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.MedicationStatement; } }
         [NotMapped]
         public override string TypeName { get { return "MedicationStatement"; } }
+
+        /// <summary>
+        /// A coded concept indicating the current status of a MedicationStatement.
+        /// (url: http://hl7.org/fhir/ValueSet/medication-statement-status)
+        /// </summary>
+        [FhirEnumeration("MedicationStatementStatus")]
+        public enum MedicationStatementStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/medication-statement-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/medication-statement-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-statement-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("intended", "http://hl7.org/fhir/medication-statement-status"), Description("Intended")]
+            Intended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/medication-statement-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/medication-statement-status"), Description("On Hold")]
+            OnHold,
+        }
+
+        /// <summary>
+        /// A coded concept identifying level of certainty if patient has taken or has not taken the medication
+        /// (url: http://hl7.org/fhir/ValueSet/medication-statement-taken)
+        /// </summary>
+        [FhirEnumeration("MedicationStatementTaken")]
+        public enum MedicationStatementTaken
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-taken)
+            /// </summary>
+            [EnumLiteral("y", "http://hl7.org/fhir/medication-statement-taken"), Description("Yes")]
+            Y,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-taken)
+            /// </summary>
+            [EnumLiteral("n", "http://hl7.org/fhir/medication-statement-taken"), Description("No")]
+            N,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-taken)
+            /// </summary>
+            [EnumLiteral("unk", "http://hl7.org/fhir/medication-statement-taken"), Description("Unknown")]
+            Unk,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-statement-taken)
+            /// </summary>
+            [EnumLiteral("na", "http://hl7.org/fhir/medication-statement-taken"), Description("Not Applicable")]
+            Na,
+        }
 
 
         /// <summary>
@@ -375,7 +454,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "reasonNotTaken.exists().not() or (taken = 'n')",
             Key = "mst-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Reason not taken is only permitted if Taken is No",
             Xpath = "not(exists(f:reasonNotTaken)) or f:taken/@value='n'"
         };

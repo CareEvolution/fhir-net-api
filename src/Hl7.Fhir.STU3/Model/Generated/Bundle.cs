@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,129 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Bundle; } }
         [NotMapped]
         public override string TypeName { get { return "Bundle"; } }
+
+        /// <summary>
+        /// Indicates the purpose of a bundle - how it was intended to be used.
+        /// (url: http://hl7.org/fhir/ValueSet/bundle-type)
+        /// </summary>
+        [FhirEnumeration("BundleType")]
+        public enum BundleType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("document", "http://hl7.org/fhir/bundle-type"), Description("Document")]
+            Document,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("message", "http://hl7.org/fhir/bundle-type"), Description("Message")]
+            Message,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("transaction", "http://hl7.org/fhir/bundle-type"), Description("Transaction")]
+            Transaction,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("transaction-response", "http://hl7.org/fhir/bundle-type"), Description("Transaction Response")]
+            TransactionResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("batch", "http://hl7.org/fhir/bundle-type"), Description("Batch")]
+            Batch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("batch-response", "http://hl7.org/fhir/bundle-type"), Description("Batch Response")]
+            BatchResponse,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("history", "http://hl7.org/fhir/bundle-type"), Description("History List")]
+            History,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("searchset", "http://hl7.org/fhir/bundle-type"), Description("Search Results")]
+            Searchset,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/bundle-type)
+            /// </summary>
+            [EnumLiteral("collection", "http://hl7.org/fhir/bundle-type"), Description("Collection")]
+            Collection,
+        }
+
+        /// <summary>
+        /// Why an entry is in the result set - whether it's included as a match or because of an _include requirement.
+        /// (url: http://hl7.org/fhir/ValueSet/search-entry-mode)
+        /// </summary>
+        [FhirEnumeration("SearchEntryMode")]
+        public enum SearchEntryMode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-entry-mode)
+            /// </summary>
+            [EnumLiteral("match", "http://hl7.org/fhir/search-entry-mode"), Description("Match")]
+            Match,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-entry-mode)
+            /// </summary>
+            [EnumLiteral("include", "http://hl7.org/fhir/search-entry-mode"), Description("Include")]
+            Include,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/search-entry-mode)
+            /// </summary>
+            [EnumLiteral("outcome", "http://hl7.org/fhir/search-entry-mode"), Description("Outcome")]
+            Outcome,
+        }
+
+        /// <summary>
+        /// HTTP verbs (in the HTTP command line).
+        /// (url: http://hl7.org/fhir/ValueSet/http-verb)
+        /// </summary>
+        [FhirEnumeration("HTTPVerb")]
+        public enum HTTPVerb
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-verb)
+            /// </summary>
+            [EnumLiteral("GET", "http://hl7.org/fhir/http-verb"), Description("GET")]
+            GET,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-verb)
+            /// </summary>
+            [EnumLiteral("POST", "http://hl7.org/fhir/http-verb"), Description("POST")]
+            POST,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-verb)
+            /// </summary>
+            [EnumLiteral("PUT", "http://hl7.org/fhir/http-verb"), Description("PUT")]
+            PUT,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-verb)
+            /// </summary>
+            [EnumLiteral("DELETE", "http://hl7.org/fhir/http-verb"), Description("DELETE")]
+            DELETE,
+        }
 
 
         [FhirType("LinkComponent")]
@@ -1193,7 +1317,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "entry.where(fullUrl).select(fullUrl&resource.meta.versionId).isDistinct()",
             Key = "bdl-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId",
             Xpath = "count(for $entry in f:entry[f:resource] return $entry[count(parent::f:Bundle/f:entry[f:fullUrl/@value=$entry/f:fullUrl/@value and ((not(f:resource/*/f:meta/f:versionId/@value) and not($entry/f:resource/*/f:meta/f:versionId/@value)) or f:resource/*/f:meta/f:versionId/@value=$entry/f:resource/*/f:meta/f:versionId/@value)])!=1])=0"
         };
@@ -1202,7 +1326,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "type = 'document' implies (identifier.system.exists() and identifier.value.exists())",
             Key = "bdl-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "A document must have an identifier with a system and a value",
             Xpath = "not(f:type/@value = 'document') or exists(f:identifier/f:system) or exists(f:identifier/f:value)"
         };
@@ -1211,7 +1335,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "entry.request.empty() or type = 'batch' or type = 'transaction' or type = 'history'",
             Key = "bdl-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "entry.request only for some types of bundles",
             Xpath = "not(f:entry/f:request) or (f:type/@value = 'batch') or (f:type/@value = 'transaction') or (f:type/@value = 'history')"
         };
@@ -1220,7 +1344,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "entry.response.empty() or type = 'batch-response' or type = 'transaction-response'",
             Key = "bdl-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "entry.response only for some types of bundles",
             Xpath = "not(f:entry/f:response) or (f:type/@value = 'batch-response') or (f:type/@value = 'transaction-response')"
         };
@@ -1229,7 +1353,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "total.empty() or (type = 'searchset') or (type = 'history')",
             Key = "bdl-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "total only when a search or history",
             Xpath = "not(f:total) or (f:type/@value = 'searchset') or (f:type/@value = 'history')"
         };
@@ -1238,7 +1362,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "entry.search.empty() or (type = 'searchset')",
             Key = "bdl-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "entry.search only when a search",
             Xpath = "not(f:entry/f:search) or (f:type/@value = 'searchset')"
         };
@@ -1247,7 +1371,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "entry.all(fullUrl.contains('/_history/').not())",
             Key = "bdl-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "fullUrl cannot be a version specific reference",
             Xpath = "not(exists(f:fullUrl[contains(string(@value), '/_history/')]))"
         };
@@ -1256,7 +1380,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "entry.all(resource.exists() or request.exists() or response.exists())",
             Key = "bdl-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "must be a resource unless there's a request or response",
             Xpath = "exists(f:resource) or exists(f:request) or exists(f:response)"
         };

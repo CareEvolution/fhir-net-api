@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,90 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Appointment; } }
         [NotMapped]
         public override string TypeName { get { return "Appointment"; } }
+
+        /// <summary>
+        /// The free/busy status of an appointment.
+        /// (url: http://hl7.org/fhir/ValueSet/appointmentstatus)
+        /// </summary>
+        [FhirEnumeration("AppointmentStatus")]
+        public enum AppointmentStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/appointmentstatus"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("pending", "http://hl7.org/fhir/appointmentstatus"), Description("Pending")]
+            Pending,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("booked", "http://hl7.org/fhir/appointmentstatus"), Description("Booked")]
+            Booked,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("arrived", "http://hl7.org/fhir/appointmentstatus"), Description("Arrived")]
+            Arrived,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("fulfilled", "http://hl7.org/fhir/appointmentstatus"), Description("Fulfilled")]
+            Fulfilled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/appointmentstatus"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("noshow", "http://hl7.org/fhir/appointmentstatus"), Description("No Show")]
+            Noshow,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/appointmentstatus)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/appointmentstatus"), Description("Entered in error")]
+            EnteredInError,
+        }
+
+        /// <summary>
+        /// Is the Participant required to attend the appointment.
+        /// (url: http://hl7.org/fhir/ValueSet/participantrequired)
+        /// </summary>
+        [FhirEnumeration("ParticipantRequired")]
+        public enum ParticipantRequired
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/participantrequired)
+            /// </summary>
+            [EnumLiteral("required", "http://hl7.org/fhir/participantrequired"), Description("Required")]
+            Required,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/participantrequired)
+            /// </summary>
+            [EnumLiteral("optional", "http://hl7.org/fhir/participantrequired"), Description("Optional")]
+            Optional,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/participantrequired)
+            /// </summary>
+            [EnumLiteral("information-only", "http://hl7.org/fhir/participantrequired"), Description("Information Only")]
+            InformationOnly,
+        }
 
 
         [FhirType("ParticipantComponent")]
@@ -670,7 +755,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "(start.exists() and end.exists()) or (status in ('proposed' | 'cancelled'))",
             Key = "app-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Only proposed or cancelled appointments can be missing start/end dates",
             Xpath = "((exists(f:start) and exists(f:end)) or (f:status/@value='proposed') or (f:status/@value='cancelled'))"
         };
@@ -679,7 +764,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "start.empty() xor end.exists()",
             Key = "app-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either start and end are specified, or neither",
             Xpath = "((exists(f:start) and exists(f:end)) or (not(exists(f:start)) and not(exists(f:end))))"
         };
@@ -688,7 +773,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "participant.all(type.exists() or actor.exists())",
             Key = "app-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either the type or actor on the participant SHALL be specified",
             Xpath = "(exists(f:type) or exists(f:actor))"
         };

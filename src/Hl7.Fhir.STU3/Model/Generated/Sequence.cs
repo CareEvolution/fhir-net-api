@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,99 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Sequence; } }
         [NotMapped]
         public override string TypeName { get { return "Sequence"; } }
+
+        /// <summary>
+        /// Type if a sequence -- DNA, RNA, or amino acid sequence
+        /// (url: http://hl7.org/fhir/ValueSet/sequence-type)
+        /// </summary>
+        [FhirEnumeration("sequenceType")]
+        public enum sequenceType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/sequence-type)
+            /// </summary>
+            [EnumLiteral("aa", "http://hl7.org/fhir/sequence-type"), Description("AA Sequence")]
+            Aa,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/sequence-type)
+            /// </summary>
+            [EnumLiteral("dna", "http://hl7.org/fhir/sequence-type"), Description("DNA Sequence")]
+            Dna,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/sequence-type)
+            /// </summary>
+            [EnumLiteral("rna", "http://hl7.org/fhir/sequence-type"), Description("RNA Sequence")]
+            Rna,
+        }
+
+        /// <summary>
+        /// Type for quality report
+        /// (url: http://hl7.org/fhir/ValueSet/quality-type)
+        /// </summary>
+        [FhirEnumeration("qualityType")]
+        public enum qualityType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quality-type)
+            /// </summary>
+            [EnumLiteral("indel", "http://hl7.org/fhir/quality-type"), Description("INDEL Comparison")]
+            Indel,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quality-type)
+            /// </summary>
+            [EnumLiteral("snp", "http://hl7.org/fhir/quality-type"), Description("SNP Comparison")]
+            Snp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/quality-type)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/quality-type"), Description("UNKNOWN Comparison")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// Type for access of external URI
+        /// (url: http://hl7.org/fhir/ValueSet/repository-type)
+        /// </summary>
+        [FhirEnumeration("repositoryType")]
+        public enum repositoryType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("directlink", "http://hl7.org/fhir/repository-type"), Description("Click and see")]
+            Directlink,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("openapi", "http://hl7.org/fhir/repository-type"), Description("The URL is the RESTful or other kind of API that can access to the result.")]
+            Openapi,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("login", "http://hl7.org/fhir/repository-type"), Description("Result cannot be access unless an account is logged in")]
+            Login,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("oauth", "http://hl7.org/fhir/repository-type"), Description("Result need to be fetched with API and need LOGIN( or cookies are required when visiting the link of resource)")]
+            Oauth,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/repository-type)
+            /// </summary>
+            [EnumLiteral("other", "http://hl7.org/fhir/repository-type"), Description("Some other complicated or particular way to get resource from URL.")]
+            Other,
+        }
 
 
         [FhirType("ReferenceSeqComponent")]
@@ -1748,7 +1842,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "coordinateSystem = 1 or coordinateSystem = 0",
             Key = "seq-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Only 0 and 1 are valid for coordinateSystem",
             Xpath = "count(f:coordinateSystem[@value=0 and @value=1]) = 1"
         };
@@ -1757,7 +1851,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "referenceSeq.all(strand.empty() or strand = 1 or strand = -1)",
             Key = "seq-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Only +1 and -1 are valid for strand",
             Xpath = "not(exists(f:strand)) or count(f:strand[@value=-1 and @value=1]) = 1"
         };
@@ -1766,7 +1860,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "referenceSeq.all((chromosome.empty() and genomeBuild.empty()) or (chromosome.exists() and genomeBuild.exists()))",
             Key = "seq-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "GenomeBuild and chromosome must be both contained if either one of them is contained",
             Xpath = "(exists(f:chromosome) and exists(f:genomeBuild)) or (not(exists(f:chromosome)) and not(exists(f:genomeBuild)))"
         };
@@ -1775,7 +1869,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "referenceSeq.all((genomeBuild.count()+referenceSeqId.count()+ referenceSeqPointer.count()+ referenceSeqString.count()) = 1)",
             Key = "seq-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Have and only have one of the following elements in referenceSeq : 1. genomeBuild ; 2 referenceSeqId; 3. referenceSeqPointer;  4. referenceSeqString;",
             Xpath = "count(f:genomeBuild)+count(f:referenceSeqId)+count(f:referenceSeqPointer)+count(f:referenceSeqString)=1"
         };

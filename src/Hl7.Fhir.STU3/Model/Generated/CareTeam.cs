@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,45 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.CareTeam; } }
         [NotMapped]
         public override string TypeName { get { return "CareTeam"; } }
+
+        /// <summary>
+        /// Indicates the status of the care team.
+        /// (url: http://hl7.org/fhir/ValueSet/care-team-status)
+        /// </summary>
+        [FhirEnumeration("CareTeamStatus")]
+        public enum CareTeamStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/care-team-status"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/care-team-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("suspended", "http://hl7.org/fhir/care-team-status"), Description("Suspended")]
+            Suspended,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/care-team-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/care-team-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/care-team-status"), Description("Entered In Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("ParticipantComponent")]
@@ -410,7 +450,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "participant.all(onBehalfOf.exists() implies (member.resolve() is Practitioner))",
             Key = "ctm-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "CareTeam.participant.onBehalfOf can only be populated when CareTeam.participant.member is a Practitioner",
             Xpath = "contains(f:member/f:reference/@value, '/Practitioner/') or not(exists(f:onBehalfOf))"
         };

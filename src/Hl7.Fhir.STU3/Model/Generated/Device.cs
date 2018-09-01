@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,84 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Device; } }
         [NotMapped]
         public override string TypeName { get { return "Device"; } }
+
+        /// <summary>
+        /// Codes to identify how UDI data was entered
+        /// (url: http://hl7.org/fhir/ValueSet/udi-entry-type)
+        /// </summary>
+        [FhirEnumeration("UDIEntryType")]
+        public enum UDIEntryType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("barcode", "http://hl7.org/fhir/udi-entry-type"), Description("BarCode")]
+            Barcode,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("rfid", "http://hl7.org/fhir/udi-entry-type"), Description("RFID")]
+            Rfid,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("manual", "http://hl7.org/fhir/udi-entry-type"), Description("Manual")]
+            Manual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("card", "http://hl7.org/fhir/udi-entry-type"), Description("Card")]
+            Card,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("self-reported", "http://hl7.org/fhir/udi-entry-type"), Description("Self Reported")]
+            SelfReported,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/udi-entry-type)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/udi-entry-type"), Description("Unknown")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// The availability status of the device.
+        /// (url: http://hl7.org/fhir/ValueSet/device-status)
+        /// </summary>
+        [FhirEnumeration("FHIRDeviceStatus")]
+        public enum FHIRDeviceStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/device-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/device-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/device-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/device-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/device-status"), Description("Unknown")]
+            Unknown,
+        }
 
 
         [FhirType("UdiComponent")]

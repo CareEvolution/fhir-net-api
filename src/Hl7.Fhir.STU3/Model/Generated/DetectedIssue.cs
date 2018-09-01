@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.DetectedIssue; } }
         [NotMapped]
         public override string TypeName { get { return "DetectedIssue"; } }
+
+        /// <summary>
+        /// Indicates the potential degree of impact of the identified issue on the patient.
+        /// (url: http://hl7.org/fhir/ValueSet/detectedissue-severity)
+        /// </summary>
+        [FhirEnumeration("DetectedIssueSeverity")]
+        public enum DetectedIssueSeverity
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/detectedissue-severity)
+            /// </summary>
+            [EnumLiteral("high", "http://hl7.org/fhir/detectedissue-severity"), Description("High")]
+            High,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/detectedissue-severity)
+            /// </summary>
+            [EnumLiteral("moderate", "http://hl7.org/fhir/detectedissue-severity"), Description("Moderate")]
+            Moderate,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/detectedissue-severity)
+            /// </summary>
+            [EnumLiteral("low", "http://hl7.org/fhir/detectedissue-severity"), Description("Low")]
+            Low,
+        }
 
 
         [FhirType("MitigationComponent")]

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,39 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Person; } }
         [NotMapped]
         public override string TypeName { get { return "Person"; } }
+
+        /// <summary>
+        /// The level of confidence that this link represents the same actual person, based on NIST Authentication Levels.
+        /// (url: http://hl7.org/fhir/ValueSet/identity-assuranceLevel)
+        /// </summary>
+        [FhirEnumeration("IdentityAssuranceLevel")]
+        public enum IdentityAssuranceLevel
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identity-assuranceLevel)
+            /// </summary>
+            [EnumLiteral("level1", "http://hl7.org/fhir/identity-assuranceLevel"), Description("Level 1")]
+            Level1,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identity-assuranceLevel)
+            /// </summary>
+            [EnumLiteral("level2", "http://hl7.org/fhir/identity-assuranceLevel"), Description("Level 2")]
+            Level2,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identity-assuranceLevel)
+            /// </summary>
+            [EnumLiteral("level3", "http://hl7.org/fhir/identity-assuranceLevel"), Description("Level 3")]
+            Level3,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/identity-assuranceLevel)
+            /// </summary>
+            [EnumLiteral("level4", "http://hl7.org/fhir/identity-assuranceLevel"), Description("Level 4")]
+            Level4,
+        }
 
 
         [FhirType("LinkComponent")]

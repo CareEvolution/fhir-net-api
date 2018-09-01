@@ -28,7 +28,7 @@ namespace Hl7.Fhir.Rest.STU3
             var interaction = entry.Request;
             body = null;
 
-            if (entry.Resource != null && !(interaction.Method == HTTPVerb.POST || interaction.Method == HTTPVerb.PUT))
+            if (entry.Resource != null && !(interaction.Method == Bundle.HTTPVerb.POST || interaction.Method == Bundle.HTTPVerb.PUT))
                 throw Error.InvalidOperation("Cannot have a body on an Http " + interaction.Method.ToString());
 
             // Create an absolute uri when the interaction.Url is relative.
@@ -68,7 +68,7 @@ namespace Hl7.Fhir.Rest.STU3
             if (entry.Resource != null)
             {
                 bool searchUsingPost =
-                    interaction.Method == HTTPVerb.POST
+                    interaction.Method == Bundle.HTTPVerb.POST
                     && (entry.HasAnnotation<TransactionBuilder.InteractionType>()
                     && entry.Annotation<TransactionBuilder.InteractionType>() == TransactionBuilder.InteractionType.Search)
                     && entry.Resource is Parameters;

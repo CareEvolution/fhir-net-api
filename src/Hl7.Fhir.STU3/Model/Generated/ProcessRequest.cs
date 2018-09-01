@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,39 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.ProcessRequest; } }
         [NotMapped]
         public override string TypeName { get { return "ProcessRequest"; } }
+
+        /// <summary>
+        /// List of allowable action which this resource can request.
+        /// (url: http://hl7.org/fhir/ValueSet/actionlist)
+        /// </summary>
+        [FhirEnumeration("ActionList")]
+        public enum ActionList
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/actionlist)
+            /// </summary>
+            [EnumLiteral("cancel", "http://hl7.org/fhir/actionlist"), Description("Cancel, Reverse or Nullify")]
+            Cancel,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/actionlist)
+            /// </summary>
+            [EnumLiteral("poll", "http://hl7.org/fhir/actionlist"), Description("Poll")]
+            Poll,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/actionlist)
+            /// </summary>
+            [EnumLiteral("reprocess", "http://hl7.org/fhir/actionlist"), Description("Re-Process")]
+            Reprocess,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/actionlist)
+            /// </summary>
+            [EnumLiteral("status", "http://hl7.org/fhir/actionlist"), Description("Status Check")]
+            Status,
+        }
 
 
         [FhirType("ItemsComponent")]

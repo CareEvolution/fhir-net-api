@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -59,7 +60,7 @@ namespace Hl7.Fhir.Model.R4
         /// <summary>
         /// identifies the meaning of the extension
         /// </summary>
-        [FhirElement("url", Order=30)]
+        [FhirElement("url", XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public FhirUrl UrlElement

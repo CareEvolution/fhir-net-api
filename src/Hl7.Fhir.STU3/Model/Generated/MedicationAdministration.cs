@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,51 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.MedicationAdministration; } }
         [NotMapped]
         public override string TypeName { get { return "MedicationAdministration"; } }
+
+        /// <summary>
+        /// A set of codes indicating the current status of a MedicationAdministration.
+        /// (url: http://hl7.org/fhir/ValueSet/medication-admin-status)
+        /// </summary>
+        [FhirEnumeration("MedicationAdministrationStatus")]
+        public enum MedicationAdministrationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-admin-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/medication-admin-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-admin-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/medication-admin-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-admin-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/medication-admin-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-admin-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-admin-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-admin-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/medication-admin-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-admin-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/medication-admin-status"), Description("Unknown")]
+            Unknown,
+        }
 
 
         [FhirType("PerformerComponent")]
@@ -689,7 +735,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "reasonNotGiven.empty() or notGiven = true",
             Key = "mad-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Reason not given is only permitted if NotGiven is true",
             Xpath = "not(exists(f:reasonNotGiven) and f:notGiven/@value=false())"
         };
@@ -698,7 +744,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "reasonCode.empty() or notGiven.empty() or notGiven = 'false'",
             Key = "mad-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Reason given is only permitted if NotGiven is false",
             Xpath = "not(exists(f:reasonCode) and f:notGiven/@value=true())"
         };
@@ -707,7 +753,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "dosage.all(dose.exists() or rate.exists())",
             Key = "mad-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "SHALL have at least one of dosage.dose or dosage.rate[x]",
             Xpath = "exists(f:dose) or exists(f:*[starts-with(local-name(.), 'rate')])"
         };

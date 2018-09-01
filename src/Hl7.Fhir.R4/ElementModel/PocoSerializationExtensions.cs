@@ -10,6 +10,7 @@
 using System.Xml;
 using System.Xml.Linq;
 using Hl7.Fhir.ElementModel.R4;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Serialization;
 using Newtonsoft.Json;

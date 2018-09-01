@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,39 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Specimen; } }
         [NotMapped]
         public override string TypeName { get { return "Specimen"; } }
+
+        /// <summary>
+        /// Codes providing the status/availability of a specimen.
+        /// (url: http://hl7.org/fhir/ValueSet/specimen-status)
+        /// </summary>
+        [FhirEnumeration("SpecimenStatus")]
+        public enum SpecimenStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/specimen-status)
+            /// </summary>
+            [EnumLiteral("available", "http://hl7.org/fhir/specimen-status"), Description("Available")]
+            Available,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/specimen-status)
+            /// </summary>
+            [EnumLiteral("unavailable", "http://hl7.org/fhir/specimen-status"), Description("Unavailable")]
+            Unavailable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/specimen-status)
+            /// </summary>
+            [EnumLiteral("unsatisfactory", "http://hl7.org/fhir/specimen-status"), Description("Unsatisfactory")]
+            Unsatisfactory,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/specimen-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/specimen-status"), Description("Entered-in-error")]
+            EnteredInError,
+        }
 
 
         [FhirType("CollectionComponent")]

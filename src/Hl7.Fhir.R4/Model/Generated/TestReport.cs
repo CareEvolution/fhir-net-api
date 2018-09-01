@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -607,13 +608,32 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("message", Order=50)]
             [DataMember]
-            public Markdown Message
+            public Markdown MessageElement
             {
-                get { return _message; }
-                set { _message = value; OnPropertyChanged("Message"); }
+                get { return _messageElement; }
+                set { _messageElement = value; OnPropertyChanged("MessageElement"); }
             }
 
-            private Markdown _message;
+            private Markdown _messageElement;
+
+            /// <summary>
+            /// A message associated with the result
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Message
+            {
+                get { return MessageElement != null ? MessageElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        MessageElement = null;
+                    else
+                        MessageElement = new Markdown(value);
+                    OnPropertyChanged("Message");
+                }
+            }
 
             /// <summary>
             /// A link to further details on the result
@@ -655,7 +675,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if (ResultElement != null) dest.ResultElement = (Code<TestReportActionResult>)ResultElement.DeepCopy();
-                    if (Message != null) dest.Message = (Markdown)Message.DeepCopy();
+                    if (MessageElement != null) dest.MessageElement = (Markdown)MessageElement.DeepCopy();
                     if (DetailElement != null) dest.DetailElement = (FhirUri)DetailElement.DeepCopy();
                     return dest;
                 }
@@ -675,7 +695,7 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(ResultElement, otherT.ResultElement)) return false;
-                if (!DeepComparable.Matches(Message, otherT.Message)) return false;
+                if (!DeepComparable.Matches(MessageElement, otherT.MessageElement)) return false;
                 if (!DeepComparable.Matches(DetailElement, otherT.DetailElement)) return false;
 
                 return true;
@@ -688,7 +708,7 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(ResultElement, otherT.ResultElement)) return false;
-                if (!DeepComparable.IsExactly(Message, otherT.Message)) return false;
+                if (!DeepComparable.IsExactly(MessageElement, otherT.MessageElement)) return false;
                 if (!DeepComparable.IsExactly(DetailElement, otherT.DetailElement)) return false;
 
                 return true;
@@ -702,7 +722,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.Children) yield return item;
                     if (ResultElement != null) yield return ResultElement;
-                    if (Message != null) yield return Message;
+                    if (MessageElement != null) yield return MessageElement;
                     if (DetailElement != null) yield return DetailElement;
                 }
             }
@@ -714,7 +734,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (ResultElement != null) yield return new ElementValue("result", ResultElement);
-                    if (Message != null) yield return new ElementValue("message", Message);
+                    if (MessageElement != null) yield return new ElementValue("message", MessageElement);
                     if (DetailElement != null) yield return new ElementValue("detail", DetailElement);
                 }
             }
@@ -768,13 +788,32 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("message", Order=50)]
             [DataMember]
-            public Markdown Message
+            public Markdown MessageElement
             {
-                get { return _message; }
-                set { _message = value; OnPropertyChanged("Message"); }
+                get { return _messageElement; }
+                set { _messageElement = value; OnPropertyChanged("MessageElement"); }
             }
 
-            private Markdown _message;
+            private Markdown _messageElement;
+
+            /// <summary>
+            /// A message associated with the result
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Message
+            {
+                get { return MessageElement != null ? MessageElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        MessageElement = null;
+                    else
+                        MessageElement = new Markdown(value);
+                    OnPropertyChanged("Message");
+                }
+            }
 
             /// <summary>
             /// A link to further details on the result
@@ -816,7 +855,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if (ResultElement != null) dest.ResultElement = (Code<TestReportActionResult>)ResultElement.DeepCopy();
-                    if (Message != null) dest.Message = (Markdown)Message.DeepCopy();
+                    if (MessageElement != null) dest.MessageElement = (Markdown)MessageElement.DeepCopy();
                     if (DetailElement != null) dest.DetailElement = (FhirString)DetailElement.DeepCopy();
                     return dest;
                 }
@@ -836,7 +875,7 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(ResultElement, otherT.ResultElement)) return false;
-                if (!DeepComparable.Matches(Message, otherT.Message)) return false;
+                if (!DeepComparable.Matches(MessageElement, otherT.MessageElement)) return false;
                 if (!DeepComparable.Matches(DetailElement, otherT.DetailElement)) return false;
 
                 return true;
@@ -849,7 +888,7 @@ namespace Hl7.Fhir.Model.R4
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(ResultElement, otherT.ResultElement)) return false;
-                if (!DeepComparable.IsExactly(Message, otherT.Message)) return false;
+                if (!DeepComparable.IsExactly(MessageElement, otherT.MessageElement)) return false;
                 if (!DeepComparable.IsExactly(DetailElement, otherT.DetailElement)) return false;
 
                 return true;
@@ -863,7 +902,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.Children) yield return item;
                     if (ResultElement != null) yield return ResultElement;
-                    if (Message != null) yield return Message;
+                    if (MessageElement != null) yield return MessageElement;
                     if (DetailElement != null) yield return DetailElement;
                 }
             }
@@ -875,7 +914,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (ResultElement != null) yield return new ElementValue("result", ResultElement);
-                    if (Message != null) yield return new ElementValue("message", Message);
+                    if (MessageElement != null) yield return new ElementValue("message", MessageElement);
                     if (DetailElement != null) yield return new ElementValue("detail", DetailElement);
                 }
             }

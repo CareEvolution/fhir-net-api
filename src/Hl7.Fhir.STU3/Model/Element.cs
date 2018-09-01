@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
-using System.Linq;
-using System.Runtime.Serialization;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification;
-using Hl7.Fhir.Model.STU3;
-using Hl7.Fhir.Introspection.STU3;
 
 /*
   Copyright (c) 2011+, HL7, Inc.

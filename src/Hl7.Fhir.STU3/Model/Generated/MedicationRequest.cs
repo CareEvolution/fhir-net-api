@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,129 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.MedicationRequest; } }
         [NotMapped]
         public override string TypeName { get { return "MedicationRequest"; } }
+
+        /// <summary>
+        /// A coded concept specifying the state of the prescribing event. Describes the lifecycle of the prescription
+        /// (url: http://hl7.org/fhir/ValueSet/medication-request-status)
+        /// </summary>
+        [FhirEnumeration("MedicationRequestStatus")]
+        public enum MedicationRequestStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/medication-request-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/medication-request-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/medication-request-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/medication-request-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-request-status"), Description("Entered In Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/medication-request-status"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/medication-request-status"), Description("Draft")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/medication-request-status"), Description("Unknown")]
+            Unknown,
+        }
+
+        /// <summary>
+        /// The kind of medication order
+        /// (url: http://hl7.org/fhir/ValueSet/medication-request-intent)
+        /// </summary>
+        [FhirEnumeration("MedicationRequestIntent")]
+        public enum MedicationRequestIntent
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("proposal", "http://hl7.org/fhir/medication-request-intent"), Description("Proposal")]
+            Proposal,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("plan", "http://hl7.org/fhir/medication-request-intent"), Description("Plan")]
+            Plan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("order", "http://hl7.org/fhir/medication-request-intent"), Description("Order")]
+            Order,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-intent)
+            /// </summary>
+            [EnumLiteral("instance-order", "http://hl7.org/fhir/medication-request-intent"), Description("Instance Order")]
+            InstanceOrder,
+        }
+
+        /// <summary>
+        /// Identifies the level of importance to be assigned to actioning the request
+        /// (url: http://hl7.org/fhir/ValueSet/medication-request-priority)
+        /// </summary>
+        [FhirEnumeration("MedicationRequestPriority")]
+        public enum MedicationRequestPriority
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-priority)
+            /// </summary>
+            [EnumLiteral("routine", "http://hl7.org/fhir/medication-request-priority"), Description("Routine")]
+            Routine,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-priority)
+            /// </summary>
+            [EnumLiteral("urgent", "http://hl7.org/fhir/medication-request-priority"), Description("Urgent")]
+            Urgent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-priority)
+            /// </summary>
+            [EnumLiteral("stat", "http://hl7.org/fhir/medication-request-priority"), Description("Stat")]
+            Stat,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-request-priority)
+            /// </summary>
+            [EnumLiteral("asap", "http://hl7.org/fhir/medication-request-priority"), Description("ASAP")]
+            Asap,
+        }
 
 
         [FhirType("RequesterComponent")]
@@ -883,7 +1007,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "requester.all((agent.resolve().empty()) or (agent.resolve() is Device) or (agent.resolve() is Practitioner) or onBehalfOf.exists().not())",
             Key = "mps-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "onBehalfOf can only be specified if agent is practitioner or device",
             Xpath = "contains(f:agent/f:reference/@value, '/Practitioner/') or contains(f:agent/f:reference/@value, '/Device/') or not(exists(f:onBehalfOf))"
         };

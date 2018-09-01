@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
 
 namespace Hl7.Fhir.Model.R4
 {
@@ -46,10 +46,9 @@ namespace Hl7.Fhir.Model.R4
         string Publisher { get; set; }
         FhirString PublisherElement { get; set; }        
         List<ContactDetail> Contact { get; set; }
-        Markdown Description { get; set; }
-        //FhirString DescriptionElement { get; set; }
+        Markdown DescriptionElement { get; set; }
         List<UsageContext> UseContext { get; set; }
-        Markdown Purpose { get; set; }       
+        Markdown PurposeElement { get; set; }       
         Code<PublicationStatus> StatusElement { get; set; }
         bool? Experimental { get; set; }
         FhirBoolean ExperimentalElement { get; set; }
@@ -98,7 +97,7 @@ namespace Hl7.Fhir.Model.R4
     {
         //I think ImplementationGuide should have a purpose element.
         [NotMapped]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
             get { return null; }
             set { throw new NotImplementedException(); }
@@ -146,7 +145,7 @@ namespace Hl7.Fhir.Model.R4
     {
         // I think NamingSystem should have Experimental too
         [NotMapped]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
             get { return null; }
             set { throw new NotImplementedException(); }

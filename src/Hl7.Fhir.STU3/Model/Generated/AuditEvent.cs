@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,117 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.AuditEvent; } }
         [NotMapped]
         public override string TypeName { get { return "AuditEvent"; } }
+
+        /// <summary>
+        /// Indicator for type of action performed during the event that generated the event
+        /// (url: http://hl7.org/fhir/ValueSet/audit-event-action)
+        /// </summary>
+        [FhirEnumeration("AuditEventAction")]
+        public enum AuditEventAction
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("C", "http://hl7.org/fhir/audit-event-action"), Description("Create")]
+            C,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("R", "http://hl7.org/fhir/audit-event-action"), Description("Read/View/Print")]
+            R,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("U", "http://hl7.org/fhir/audit-event-action"), Description("Update")]
+            U,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("D", "http://hl7.org/fhir/audit-event-action"), Description("Delete")]
+            D,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-action)
+            /// </summary>
+            [EnumLiteral("E", "http://hl7.org/fhir/audit-event-action"), Description("Execute")]
+            E,
+        }
+
+        /// <summary>
+        /// Indicates whether the event succeeded or failed
+        /// (url: http://hl7.org/fhir/ValueSet/audit-event-outcome)
+        /// </summary>
+        [FhirEnumeration("AuditEventOutcome")]
+        public enum AuditEventOutcome
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("0", "http://hl7.org/fhir/audit-event-outcome"), Description("Success")]
+            N0,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("4", "http://hl7.org/fhir/audit-event-outcome"), Description("Minor failure")]
+            N4,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("8", "http://hl7.org/fhir/audit-event-outcome"), Description("Serious failure")]
+            N8,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/audit-event-outcome)
+            /// </summary>
+            [EnumLiteral("12", "http://hl7.org/fhir/audit-event-outcome"), Description("Major failure")]
+            N12,
+        }
+
+        /// <summary>
+        /// The type of network access point of this agent in the audit event
+        /// (url: http://hl7.org/fhir/ValueSet/network-type)
+        /// </summary>
+        [FhirEnumeration("AuditEventAgentNetworkType")]
+        public enum AuditEventAgentNetworkType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("1", "http://hl7.org/fhir/network-type"), Description("Machine Name")]
+            N1,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("2", "http://hl7.org/fhir/network-type"), Description("IP Address")]
+            N2,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("3", "http://hl7.org/fhir/network-type"), Description("Telephone Number")]
+            N3,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("4", "http://hl7.org/fhir/network-type"), Description("Email address")]
+            N4,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/network-type)
+            /// </summary>
+            [EnumLiteral("5", "http://hl7.org/fhir/network-type"), Description("URI")]
+            N5,
+        }
 
 
         [FhirType("AgentComponent")]
@@ -1360,7 +1472,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "entity.all(name.empty() or query.empty())",
             Key = "sev-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Either a name or a query (NOT both)",
             Xpath = "not(exists(f:name)) or not(exists(f:query))"
         };

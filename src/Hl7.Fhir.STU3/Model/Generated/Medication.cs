@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,33 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Medication; } }
         [NotMapped]
         public override string TypeName { get { return "Medication"; } }
+
+        /// <summary>
+        /// A coded concept defining if the medication is in active use
+        /// (url: http://hl7.org/fhir/ValueSet/medication-status)
+        /// </summary>
+        [FhirEnumeration("MedicationStatus")]
+        public enum MedicationStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/medication-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-status)
+            /// </summary>
+            [EnumLiteral("inactive", "http://hl7.org/fhir/medication-status"), Description("Inactive")]
+            Inactive,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/medication-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/medication-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("IngredientComponent")]

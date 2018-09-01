@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -54,6 +55,57 @@ namespace Hl7.Fhir.Model.STU3
     {
         [NotMapped]
         public override string TypeName { get { return "HumanName"; } }
+
+        /// <summary>
+        /// The use of a human name
+        /// (url: http://hl7.org/fhir/ValueSet/name-use)
+        /// </summary>
+        [FhirEnumeration("NameUse")]
+        public enum NameUse
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("usual", "http://hl7.org/fhir/name-use"), Description("Usual")]
+            Usual,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("official", "http://hl7.org/fhir/name-use"), Description("Official")]
+            Official,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("temp", "http://hl7.org/fhir/name-use"), Description("Temp")]
+            Temp,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("nickname", "http://hl7.org/fhir/name-use"), Description("Nickname")]
+            Nickname,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("anonymous", "http://hl7.org/fhir/name-use"), Description("Anonymous")]
+            Anonymous,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("old", "http://hl7.org/fhir/name-use"), Description("Old")]
+            Old,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/name-use)
+            /// </summary>
+            [EnumLiteral("maiden", "http://hl7.org/fhir/name-use"), Description("Name changed for Marriage")]
+            Maiden,
+        }
 
 
         /// <summary>

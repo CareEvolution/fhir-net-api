@@ -34,7 +34,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
-using Hl7.Fhir.Validation.STU3;
+using Hl7.Fhir.Validation;
 
 namespace Hl7.Fhir.Model.STU3
 {
@@ -160,5 +160,5 @@ namespace Hl7.Fhir.Model.STU3
         {
             return base.Validate(validationContext);
         }
-    }  
+    }
 }

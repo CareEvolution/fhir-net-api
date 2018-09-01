@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,78 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Subscription; } }
         [NotMapped]
         public override string TypeName { get { return "Subscription"; } }
+
+        /// <summary>
+        /// The status of a subscription.
+        /// (url: http://hl7.org/fhir/ValueSet/subscription-status)
+        /// </summary>
+        [FhirEnumeration("SubscriptionStatus")]
+        public enum SubscriptionStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-status)
+            /// </summary>
+            [EnumLiteral("requested", "http://hl7.org/fhir/subscription-status"), Description("Requested")]
+            Requested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-status)
+            /// </summary>
+            [EnumLiteral("active", "http://hl7.org/fhir/subscription-status"), Description("Active")]
+            Active,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-status)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/subscription-status"), Description("Error")]
+            Error,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-status)
+            /// </summary>
+            [EnumLiteral("off", "http://hl7.org/fhir/subscription-status"), Description("Off")]
+            Off,
+        }
+
+        /// <summary>
+        /// The type of method used to execute a subscription.
+        /// (url: http://hl7.org/fhir/ValueSet/subscription-channel-type)
+        /// </summary>
+        [FhirEnumeration("SubscriptionChannelType")]
+        public enum SubscriptionChannelType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("rest-hook", "http://hl7.org/fhir/subscription-channel-type"), Description("Rest Hook")]
+            RestHook,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("websocket", "http://hl7.org/fhir/subscription-channel-type"), Description("Websocket")]
+            Websocket,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("email", "http://hl7.org/fhir/subscription-channel-type"), Description("Email")]
+            Email,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("sms", "http://hl7.org/fhir/subscription-channel-type"), Description("SMS")]
+            Sms,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/subscription-channel-type)
+            /// </summary>
+            [EnumLiteral("message", "http://hl7.org/fhir/subscription-channel-type"), Description("Message")]
+            Message,
+        }
 
 
         [FhirType("ChannelComponent")]

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,45 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Provenance; } }
         [NotMapped]
         public override string TypeName { get { return "Provenance"; } }
+
+        /// <summary>
+        /// How an entity was used in an activity.
+        /// (url: http://hl7.org/fhir/ValueSet/provenance-entity-role)
+        /// </summary>
+        [FhirEnumeration("ProvenanceEntityRole")]
+        public enum ProvenanceEntityRole
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("derivation", "http://hl7.org/fhir/provenance-entity-role"), Description("Derivation")]
+            Derivation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("revision", "http://hl7.org/fhir/provenance-entity-role"), Description("Revision")]
+            Revision,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("quotation", "http://hl7.org/fhir/provenance-entity-role"), Description("Quotation")]
+            Quotation,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("source", "http://hl7.org/fhir/provenance-entity-role"), Description("Source")]
+            Source,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/provenance-entity-role)
+            /// </summary>
+            [EnumLiteral("removal", "http://hl7.org/fhir/provenance-entity-role"), Description("Removal")]
+            Removal,
+        }
 
 
         [FhirType("AgentComponent")]

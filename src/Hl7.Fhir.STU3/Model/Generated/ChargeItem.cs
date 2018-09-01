@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,57 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.ChargeItem; } }
         [NotMapped]
         public override string TypeName { get { return "ChargeItem"; } }
+
+        /// <summary>
+        /// Codes identifying the stage lifecycle stage of a ChargeItem
+        /// (url: http://hl7.org/fhir/ValueSet/chargeitem-status)
+        /// </summary>
+        [FhirEnumeration("ChargeItemStatus")]
+        public enum ChargeItemStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("planned", "http://hl7.org/fhir/chargeitem-status"), Description("Planned")]
+            Planned,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("billable", "http://hl7.org/fhir/chargeitem-status"), Description("Billable")]
+            Billable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("not-billable", "http://hl7.org/fhir/chargeitem-status"), Description("Not billable")]
+            NotBillable,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("aborted", "http://hl7.org/fhir/chargeitem-status"), Description("Aborted")]
+            Aborted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("billed", "http://hl7.org/fhir/chargeitem-status"), Description("Billed")]
+            Billed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/chargeitem-status"), Description("Entered in Error")]
+            EnteredInError,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/chargeitem-status)
+            /// </summary>
+            [EnumLiteral("unknown", "http://hl7.org/fhir/chargeitem-status"), Description("Unknown")]
+            Unknown,
+        }
 
 
         [FhirType("ParticipantComponent")]

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,261 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.TestScript; } }
         [NotMapped]
         public override string TypeName { get { return "TestScript"; } }
+
+        /// <summary>
+        /// The content or mime type.
+        /// (url: http://hl7.org/fhir/ValueSet/content-type)
+        /// </summary>
+        [FhirEnumeration("ContentType")]
+        public enum ContentType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/content-type)
+            /// </summary>
+            [EnumLiteral("xml", "http://hl7.org/fhir/content-type"), Description("xml")]
+            Xml,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/content-type)
+            /// </summary>
+            [EnumLiteral("json", "http://hl7.org/fhir/content-type"), Description("json")]
+            Json,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/content-type)
+            /// </summary>
+            [EnumLiteral("ttl", "http://hl7.org/fhir/content-type"), Description("ttl")]
+            Ttl,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/content-type)
+            /// </summary>
+            [EnumLiteral("none", "http://hl7.org/fhir/content-type"), Description("none")]
+            None,
+        }
+
+        /// <summary>
+        /// The type of direction to use for assertion.
+        /// (url: http://hl7.org/fhir/ValueSet/assert-direction-codes)
+        /// </summary>
+        [FhirEnumeration("AssertionDirectionType")]
+        public enum AssertionDirectionType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-direction-codes)
+            /// </summary>
+            [EnumLiteral("response", "http://hl7.org/fhir/assert-direction-codes"), Description("response")]
+            Response,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-direction-codes)
+            /// </summary>
+            [EnumLiteral("request", "http://hl7.org/fhir/assert-direction-codes"), Description("request")]
+            Request,
+        }
+
+        /// <summary>
+        /// The type of operator to use for assertion.
+        /// (url: http://hl7.org/fhir/ValueSet/assert-operator-codes)
+        /// </summary>
+        [FhirEnumeration("AssertionOperatorType")]
+        public enum AssertionOperatorType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("equals", "http://hl7.org/fhir/assert-operator-codes"), Description("equals")]
+            Equals,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("notEquals", "http://hl7.org/fhir/assert-operator-codes"), Description("notEquals")]
+            NotEquals,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("in", "http://hl7.org/fhir/assert-operator-codes"), Description("in")]
+            In,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("notIn", "http://hl7.org/fhir/assert-operator-codes"), Description("notIn")]
+            NotIn,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("greaterThan", "http://hl7.org/fhir/assert-operator-codes"), Description("greaterThan")]
+            GreaterThan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("lessThan", "http://hl7.org/fhir/assert-operator-codes"), Description("lessThan")]
+            LessThan,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("empty", "http://hl7.org/fhir/assert-operator-codes"), Description("empty")]
+            Empty,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("notEmpty", "http://hl7.org/fhir/assert-operator-codes"), Description("notEmpty")]
+            NotEmpty,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("contains", "http://hl7.org/fhir/assert-operator-codes"), Description("contains")]
+            Contains,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("notContains", "http://hl7.org/fhir/assert-operator-codes"), Description("notContains")]
+            NotContains,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-operator-codes)
+            /// </summary>
+            [EnumLiteral("eval", "http://hl7.org/fhir/assert-operator-codes"), Description("evaluate")]
+            Eval,
+        }
+
+        /// <summary>
+        /// The allowable request method or HTTP operation codes.
+        /// (url: http://hl7.org/fhir/ValueSet/http-operations)
+        /// </summary>
+        [FhirEnumeration("TestScriptRequestMethodCode")]
+        public enum TestScriptRequestMethodCode
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("delete", "http://hl7.org/fhir/http-operations"), Description("DELETE")]
+            Delete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("get", "http://hl7.org/fhir/http-operations"), Description("GET")]
+            Get,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("options", "http://hl7.org/fhir/http-operations"), Description("OPTIONS")]
+            Options,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("patch", "http://hl7.org/fhir/http-operations"), Description("PATCH")]
+            Patch,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("post", "http://hl7.org/fhir/http-operations"), Description("POST")]
+            Post,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/http-operations)
+            /// </summary>
+            [EnumLiteral("put", "http://hl7.org/fhir/http-operations"), Description("PUT")]
+            Put,
+        }
+
+        /// <summary>
+        /// The type of response code to use for assertion.
+        /// (url: http://hl7.org/fhir/ValueSet/assert-response-code-types)
+        /// </summary>
+        [FhirEnumeration("AssertionResponseTypes")]
+        public enum AssertionResponseTypes
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("okay", "http://hl7.org/fhir/assert-response-code-types"), Description("okay")]
+            Okay,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("created", "http://hl7.org/fhir/assert-response-code-types"), Description("created")]
+            Created,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("noContent", "http://hl7.org/fhir/assert-response-code-types"), Description("noContent")]
+            NoContent,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("notModified", "http://hl7.org/fhir/assert-response-code-types"), Description("notModified")]
+            NotModified,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("bad", "http://hl7.org/fhir/assert-response-code-types"), Description("bad")]
+            Bad,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("forbidden", "http://hl7.org/fhir/assert-response-code-types"), Description("forbidden")]
+            Forbidden,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("notFound", "http://hl7.org/fhir/assert-response-code-types"), Description("notFound")]
+            NotFound,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("methodNotAllowed", "http://hl7.org/fhir/assert-response-code-types"), Description("methodNotAllowed")]
+            MethodNotAllowed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("conflict", "http://hl7.org/fhir/assert-response-code-types"), Description("conflict")]
+            Conflict,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("gone", "http://hl7.org/fhir/assert-response-code-types"), Description("gone")]
+            Gone,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("preconditionFailed", "http://hl7.org/fhir/assert-response-code-types"), Description("preconditionFailed")]
+            PreconditionFailed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/assert-response-code-types)
+            /// </summary>
+            [EnumLiteral("unprocessable", "http://hl7.org/fhir/assert-response-code-types"), Description("unprocessable")]
+            Unprocessable,
+        }
 
 
         [FhirType("OriginComponent")]
@@ -5286,13 +5542,32 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("description", Order=190)]
         [DataMember]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            get { return _descriptionElement; }
+            set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
         }
 
-        private Markdown _description;
+        private Markdown _descriptionElement;
+
+        /// <summary>
+        /// Natural language description of the test script
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Description
+        {
+            get { return DescriptionElement != null ? DescriptionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    DescriptionElement = null;
+                else
+                    DescriptionElement = new Markdown(value);
+                OnPropertyChanged("Description");
+            }
+        }
 
         /// <summary>
         /// Context the content is intended to support
@@ -5327,26 +5602,64 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("purpose", Order=220)]
         [DataMember]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
-            get { return _purpose; }
-            set { _purpose = value; OnPropertyChanged("Purpose"); }
+            get { return _purposeElement; }
+            set { _purposeElement = value; OnPropertyChanged("PurposeElement"); }
         }
 
-        private Markdown _purpose;
+        private Markdown _purposeElement;
+
+        /// <summary>
+        /// Why this test script is defined
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Purpose
+        {
+            get { return PurposeElement != null ? PurposeElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PurposeElement = null;
+                else
+                    PurposeElement = new Markdown(value);
+                OnPropertyChanged("Purpose");
+            }
+        }
 
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
         [FhirElement("copyright", Order=230)]
         [DataMember]
-        public Markdown Copyright
+        public Markdown CopyrightElement
         {
-            get { return _copyright; }
-            set { _copyright = value; OnPropertyChanged("Copyright"); }
+            get { return _copyrightElement; }
+            set { _copyrightElement = value; OnPropertyChanged("CopyrightElement"); }
         }
 
-        private Markdown _copyright;
+        private Markdown _copyrightElement;
+
+        /// <summary>
+        /// Use and/or publishing restrictions
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string Copyright
+        {
+            get { return CopyrightElement != null ? CopyrightElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    CopyrightElement = null;
+                else
+                    CopyrightElement = new Markdown(value);
+                OnPropertyChanged("Copyright");
+            }
+        }
 
         /// <summary>
         /// An abstract server representing a client or sender in a message exchange
@@ -5504,7 +5817,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "metadata.all(capability.required.exists() or capability.validated.exists())",
             Key = "inv-4",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "TestScript metadata capability SHALL contain required or validated or both.",
             Xpath = "f:capability/f:required or f:capability/f:validated or (f:capability/f:required and f:capability/f:validated)"
         };
@@ -5513,7 +5826,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "variable.all(expression.empty() or headerField.empty() or path.empty())",
             Key = "inv-3",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Variable can only contain one of expression, headerField or path.",
             Xpath = "not(f:expression and f:headerField and f:path)"
         };
@@ -5522,7 +5835,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "setup.action.all(operation.exists() xor assert.exists())",
             Key = "inv-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup action SHALL contain either an operation or assert but not both.",
             Xpath = "(f:operation or f:assert) and not(f:operation and f:assert)"
         };
@@ -5531,7 +5844,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "setup.action.operation.all(sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' |'search' | 'transaction' | 'history')))",
             Key = "inv-7",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup operation SHALL contain either sourceId or targetId or params or url.",
             Xpath = "f:sourceId or ((f:targetId or f:url or f:params) and (count(f:targetId) + count(f:url) + count(f:params) =1)) or (f:type/f:code/@value='capabilities' or f:type/f:code/@value='search' or f:type/f:code/@value='transaction' or f:type/f:code/@value='history')"
         };
@@ -5540,7 +5853,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "setup.action.assert.all(contentType.count() + expression.count() + headerField.count() + minimumId.count() + navigationLinks.count() + path.count() + requestMethod.count() + resource.count() + responseCode.count() + response.count() + rule.count() + ruleset.count() + validateProfileId.count() <=1)",
             Key = "inv-5",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Only a single assertion SHALL be present within setup action assert element.",
             Xpath = "count(f:contentType) + count(f:expression) + count(f:headerField) + count(f:minimumId) + count(f:navigationLinks) + count(f:path) + count(f:requestMethod) + count(f:resource) + count(f:responseCode) + count(f:response) + count(f:rule) + count(f:ruleset) + count(f:validateProfileId)  <=1"
         };
@@ -5549,7 +5862,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "setup.action.assert.all(compareToSourceId.empty() xor (compareToSourceExpression.exists() or compareToSourcePath.exists()))",
             Key = "inv-10",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup action assert SHALL contain either compareToSourceId and compareToSourceExpression, compareToSourceId and compareToSourcePath or neither.",
             Xpath = "(f:compareToSourceId and f:compareToSourceExpression) or (f:compareToSourceId and f:compareToSourcePath) or not(f:compareToSourceId or f:compareToSourceExpression or f:compareToSourcePath)"
         };
@@ -5558,7 +5871,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "setup.action.assert.all((response.empty() and responseCode.empty() and direction = 'request') or direction.empty() or direction = 'response')",
             Key = "inv-12",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup action assert response and responseCode SHALL be empty when direction equals request",
             Xpath = "((count(f:response) + count(f:responseCode)) = 0 and (f:direction/@value='request')) or (count(f:direction) = 0) or (f:direction/@value='response')"
         };
@@ -5567,7 +5880,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "test.action.all(operation.exists() xor assert.exists())",
             Key = "inv-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test action SHALL contain either an operation or assert but not both.",
             Xpath = "(f:operation or f:assert) and not(f:operation and f:assert)"
         };
@@ -5576,7 +5889,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "test.action.operation.all(sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' | 'search' | 'transaction' | 'history')))",
             Key = "inv-8",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test operation SHALL contain either sourceId or targetId or params or url.",
             Xpath = "f:sourceId or (f:targetId or f:url or f:params) and (count(f:targetId) + count(f:url) + count(f:params) =1) or (f:type/f:code/@value='capabilities' or f:type/f:code/@value='search' or f:type/f:code/@value='transaction' or f:type/f:code/@value='history')"
         };
@@ -5585,7 +5898,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "test.action.assert.all(contentType.count() + expression.count() + headerField.count() + minimumId.count() + navigationLinks.count() + path.count() + requestMethod.count() + resource.count() + responseCode.count() + response.count() + rule.count() + ruleset.count() + validateProfileId.count() <=1)",
             Key = "inv-6",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Only a single assertion SHALL be present within test action assert element.",
             Xpath = "count(f:contentType) + count(f:expression) + count(f:headerField) + count(f:minimumId) + count(f:navigationLinks) + count(f:path) + count(f:requestMethod) + count(f:resource) + count(f:responseCode) + count(f:response) + count(f:rule) + count(f:ruleset) + count(f:validateProfileId)  <=1"
         };
@@ -5594,7 +5907,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "test.action.assert.all(compareToSourceId.empty() xor (compareToSourceExpression.exists() or compareToSourcePath.exists()))",
             Key = "inv-11",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test action assert SHALL contain either compareToSourceId and compareToSourceExpression, compareToSourceId and compareToSourcePath or neither.",
             Xpath = "(f:compareToSourceId and f:compareToSourceExpression) or (f:compareToSourceId and f:compareToSourcePath) or not(f:compareToSourceId or f:compareToSourceExpression or f:compareToSourcePath)"
         };
@@ -5603,7 +5916,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "test.action.assert.all((response.empty() and responseCode.empty() and direction = 'request') or direction.empty() or direction = 'response')",
             Key = "inv-13",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test action assert response and response and responseCode SHALL be empty when direction equals request",
             Xpath = "((count(f:response) + count(f:responseCode)) = 0 and (f:direction/@value='request')) or (count(f:direction) = 0) or (f:direction/@value='response')"
         };
@@ -5612,7 +5925,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "teardown.action.operation.all(sourceId.exists() or (targetId.count() + url.count() + params.count() = 1) or (type.code in ('capabilities' | 'search' | 'transaction' | 'history')))",
             Key = "inv-9",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Teardown operation SHALL contain either sourceId or targetId or params or url.",
             Xpath = "f:sourceId or (f:targetId or f:url or (f:params and f:resource)) and (count(f:targetId) + count(f:url) + count(f:params) =1) or (f:type/f:code/@value='capabilities' or f:type/f:code/@value='search' or f:type/f:code/@value='transaction' or f:type/f:code/@value='history')"
         };
@@ -5653,11 +5966,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) dest.DateElement = (FhirDateTime)DateElement.DeepCopy();
                 if (PublisherElement != null) dest.PublisherElement = (FhirString)PublisherElement.DeepCopy();
                 if (Contact != null) dest.Contact = new List<ContactDetail>(Contact.DeepCopy());
-                if (Description != null) dest.Description = (Markdown)Description.DeepCopy();
+                if (DescriptionElement != null) dest.DescriptionElement = (Markdown)DescriptionElement.DeepCopy();
                 if (UseContext != null) dest.UseContext = new List<UsageContext>(UseContext.DeepCopy());
                 if (Jurisdiction != null) dest.Jurisdiction = new List<CodeableConcept>(Jurisdiction.DeepCopy());
-                if (Purpose != null) dest.Purpose = (Markdown)Purpose.DeepCopy();
-                if (Copyright != null) dest.Copyright = (Markdown)Copyright.DeepCopy();
+                if (PurposeElement != null) dest.PurposeElement = (Markdown)PurposeElement.DeepCopy();
+                if (CopyrightElement != null) dest.CopyrightElement = (Markdown)CopyrightElement.DeepCopy();
                 if (Origin != null) dest.Origin = new List<OriginComponent>(Origin.DeepCopy());
                 if (Destination != null) dest.Destination = new List<DestinationComponent>(Destination.DeepCopy());
                 if (Metadata != null) dest.Metadata = (MetadataComponent)Metadata.DeepCopy();
@@ -5696,11 +6009,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.Matches(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.Matches(PublisherElement, otherT.PublisherElement)) return false;
             if ( !DeepComparable.Matches(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.Matches(Description, otherT.Description)) return false;
+            if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
             if ( !DeepComparable.Matches(UseContext, otherT.UseContext)) return false;
             if ( !DeepComparable.Matches(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.Matches(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.Matches(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.Matches(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.Matches(CopyrightElement, otherT.CopyrightElement)) return false;
             if ( !DeepComparable.Matches(Origin, otherT.Origin)) return false;
             if ( !DeepComparable.Matches(Destination, otherT.Destination)) return false;
             if (!DeepComparable.Matches(Metadata, otherT.Metadata)) return false;
@@ -5732,11 +6045,11 @@ namespace Hl7.Fhir.Model.STU3
             if (!DeepComparable.IsExactly(DateElement, otherT.DateElement)) return false;
             if (!DeepComparable.IsExactly(PublisherElement, otherT.PublisherElement)) return false;
             if (!DeepComparable.IsExactly(Contact, otherT.Contact)) return false;
-            if (!DeepComparable.IsExactly(Description, otherT.Description)) return false;
+            if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
             if (!DeepComparable.IsExactly(UseContext, otherT.UseContext)) return false;
             if (!DeepComparable.IsExactly(Jurisdiction, otherT.Jurisdiction)) return false;
-            if (!DeepComparable.IsExactly(Purpose, otherT.Purpose)) return false;
-            if (!DeepComparable.IsExactly(Copyright, otherT.Copyright)) return false;
+            if (!DeepComparable.IsExactly(PurposeElement, otherT.PurposeElement)) return false;
+            if (!DeepComparable.IsExactly(CopyrightElement, otherT.CopyrightElement)) return false;
             if (!DeepComparable.IsExactly(Origin, otherT.Origin)) return false;
             if (!DeepComparable.IsExactly(Destination, otherT.Destination)) return false;
             if (!DeepComparable.IsExactly(Metadata, otherT.Metadata)) return false;
@@ -5768,11 +6081,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return DateElement;
                 if (PublisherElement != null) yield return PublisherElement;
                 foreach (var elem in Contact) { if (elem != null) yield return elem; }
-                if (Description != null) yield return Description;
+                if (DescriptionElement != null) yield return DescriptionElement;
                 foreach (var elem in UseContext) { if (elem != null) yield return elem; }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return elem; }
-                if (Purpose != null) yield return Purpose;
-                if (Copyright != null) yield return Copyright;
+                if (PurposeElement != null) yield return PurposeElement;
+                if (CopyrightElement != null) yield return CopyrightElement;
                 foreach (var elem in Origin) { if (elem != null) yield return elem; }
                 foreach (var elem in Destination) { if (elem != null) yield return elem; }
                 if (Metadata != null) yield return Metadata;
@@ -5803,11 +6116,11 @@ namespace Hl7.Fhir.Model.STU3
                 if (DateElement != null) yield return new ElementValue("date", DateElement);
                 if (PublisherElement != null) yield return new ElementValue("publisher", PublisherElement);
                 foreach (var elem in Contact) { if (elem != null) yield return new ElementValue("contact", elem); }
-                if (Description != null) yield return new ElementValue("description", Description);
+                if (DescriptionElement != null) yield return new ElementValue("description", DescriptionElement);
                 foreach (var elem in UseContext) { if (elem != null) yield return new ElementValue("useContext", elem); }
                 foreach (var elem in Jurisdiction) { if (elem != null) yield return new ElementValue("jurisdiction", elem); }
-                if (Purpose != null) yield return new ElementValue("purpose", Purpose);
-                if (Copyright != null) yield return new ElementValue("copyright", Copyright);
+                if (PurposeElement != null) yield return new ElementValue("purpose", PurposeElement);
+                if (CopyrightElement != null) yield return new ElementValue("copyright", CopyrightElement);
                 foreach (var elem in Origin) { if (elem != null) yield return new ElementValue("origin", elem); }
                 foreach (var elem in Destination) { if (elem != null) yield return new ElementValue("destination", elem); }
                 if (Metadata != null) yield return new ElementValue("metadata", Metadata);

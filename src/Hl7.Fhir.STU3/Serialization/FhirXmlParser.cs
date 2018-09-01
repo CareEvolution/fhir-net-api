@@ -6,9 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model.STU3;
 using System;
 using System.Xml;
+using Hl7.Fhir.Model;
 
 
 namespace Hl7.Fhir.Serialization.STU3

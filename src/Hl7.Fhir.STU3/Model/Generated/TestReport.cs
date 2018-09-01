@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,138 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.TestReport; } }
         [NotMapped]
         public override string TypeName { get { return "TestReport"; } }
+
+        /// <summary>
+        /// The current status of the test report.
+        /// (url: http://hl7.org/fhir/ValueSet/report-status-codes)
+        /// </summary>
+        [FhirEnumeration("TestReportStatus")]
+        public enum TestReportStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/report-status-codes"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/report-status-codes"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("waiting", "http://hl7.org/fhir/report-status-codes"), Description("Waiting")]
+            Waiting,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("stopped", "http://hl7.org/fhir/report-status-codes"), Description("Stopped")]
+            Stopped,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-status-codes)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/report-status-codes"), Description("Entered In Error")]
+            EnteredInError,
+        }
+
+        /// <summary>
+        /// The reported execution result.
+        /// (url: http://hl7.org/fhir/ValueSet/report-result-codes)
+        /// </summary>
+        [FhirEnumeration("TestReportResult")]
+        public enum TestReportResult
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-result-codes)
+            /// </summary>
+            [EnumLiteral("pass", "http://hl7.org/fhir/report-result-codes"), Description("Pass")]
+            Pass,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-result-codes)
+            /// </summary>
+            [EnumLiteral("fail", "http://hl7.org/fhir/report-result-codes"), Description("Fail")]
+            Fail,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-result-codes)
+            /// </summary>
+            [EnumLiteral("pending", "http://hl7.org/fhir/report-result-codes"), Description("Pending")]
+            Pending,
+        }
+
+        /// <summary>
+        /// The type of participant.
+        /// (url: http://hl7.org/fhir/ValueSet/report-participant-type)
+        /// </summary>
+        [FhirEnumeration("TestReportParticipantType")]
+        public enum TestReportParticipantType
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-participant-type)
+            /// </summary>
+            [EnumLiteral("test-engine", "http://hl7.org/fhir/report-participant-type"), Description("Test Engine")]
+            TestEngine,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-participant-type)
+            /// </summary>
+            [EnumLiteral("client", "http://hl7.org/fhir/report-participant-type"), Description("Client")]
+            Client,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-participant-type)
+            /// </summary>
+            [EnumLiteral("server", "http://hl7.org/fhir/report-participant-type"), Description("Server")]
+            Server,
+        }
+
+        /// <summary>
+        /// The results of executing an action.
+        /// (url: http://hl7.org/fhir/ValueSet/report-action-result-codes)
+        /// </summary>
+        [FhirEnumeration("TestReportActionResult")]
+        public enum TestReportActionResult
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("pass", "http://hl7.org/fhir/report-action-result-codes"), Description("Pass")]
+            Pass,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("skip", "http://hl7.org/fhir/report-action-result-codes"), Description("Skip")]
+            Skip,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("fail", "http://hl7.org/fhir/report-action-result-codes"), Description("Fail")]
+            Fail,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("warning", "http://hl7.org/fhir/report-action-result-codes"), Description("Warning")]
+            Warning,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/report-action-result-codes)
+            /// </summary>
+            [EnumLiteral("error", "http://hl7.org/fhir/report-action-result-codes"), Description("Error")]
+            Error,
+        }
 
 
         [FhirType("ParticipantComponent")]
@@ -475,13 +608,32 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("message", Order=50)]
             [DataMember]
-            public Markdown Message
+            public Markdown MessageElement
             {
-                get { return _message; }
-                set { _message = value; OnPropertyChanged("Message"); }
+                get { return _messageElement; }
+                set { _messageElement = value; OnPropertyChanged("MessageElement"); }
             }
 
-            private Markdown _message;
+            private Markdown _messageElement;
+
+            /// <summary>
+            /// A message associated with the result
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Message
+            {
+                get { return MessageElement != null ? MessageElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        MessageElement = null;
+                    else
+                        MessageElement = new Markdown(value);
+                    OnPropertyChanged("Message");
+                }
+            }
 
             /// <summary>
             /// A link to further details on the result
@@ -523,7 +675,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if (ResultElement != null) dest.ResultElement = (Code<TestReportActionResult>)ResultElement.DeepCopy();
-                    if (Message != null) dest.Message = (Markdown)Message.DeepCopy();
+                    if (MessageElement != null) dest.MessageElement = (Markdown)MessageElement.DeepCopy();
                     if (DetailElement != null) dest.DetailElement = (FhirUri)DetailElement.DeepCopy();
                     return dest;
                 }
@@ -543,7 +695,7 @@ namespace Hl7.Fhir.Model.STU3
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(ResultElement, otherT.ResultElement)) return false;
-                if (!DeepComparable.Matches(Message, otherT.Message)) return false;
+                if (!DeepComparable.Matches(MessageElement, otherT.MessageElement)) return false;
                 if (!DeepComparable.Matches(DetailElement, otherT.DetailElement)) return false;
 
                 return true;
@@ -556,7 +708,7 @@ namespace Hl7.Fhir.Model.STU3
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(ResultElement, otherT.ResultElement)) return false;
-                if (!DeepComparable.IsExactly(Message, otherT.Message)) return false;
+                if (!DeepComparable.IsExactly(MessageElement, otherT.MessageElement)) return false;
                 if (!DeepComparable.IsExactly(DetailElement, otherT.DetailElement)) return false;
 
                 return true;
@@ -570,7 +722,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     foreach (var item in base.Children) yield return item;
                     if (ResultElement != null) yield return ResultElement;
-                    if (Message != null) yield return Message;
+                    if (MessageElement != null) yield return MessageElement;
                     if (DetailElement != null) yield return DetailElement;
                 }
             }
@@ -582,7 +734,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (ResultElement != null) yield return new ElementValue("result", ResultElement);
-                    if (Message != null) yield return new ElementValue("message", Message);
+                    if (MessageElement != null) yield return new ElementValue("message", MessageElement);
                     if (DetailElement != null) yield return new ElementValue("detail", DetailElement);
                 }
             }
@@ -636,13 +788,32 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("message", Order=50)]
             [DataMember]
-            public Markdown Message
+            public Markdown MessageElement
             {
-                get { return _message; }
-                set { _message = value; OnPropertyChanged("Message"); }
+                get { return _messageElement; }
+                set { _messageElement = value; OnPropertyChanged("MessageElement"); }
             }
 
-            private Markdown _message;
+            private Markdown _messageElement;
+
+            /// <summary>
+            /// A message associated with the result
+            /// </summary>
+            /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+            [NotMapped]
+            [IgnoreDataMember]
+            public string Message
+            {
+                get { return MessageElement != null ? MessageElement.Value : null; }
+                set
+                {
+                    if (value == null)
+                        MessageElement = null;
+                    else
+                        MessageElement = new Markdown(value);
+                    OnPropertyChanged("Message");
+                }
+            }
 
             /// <summary>
             /// A link to further details on the result
@@ -684,7 +855,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     base.CopyTo(dest);
                     if (ResultElement != null) dest.ResultElement = (Code<TestReportActionResult>)ResultElement.DeepCopy();
-                    if (Message != null) dest.Message = (Markdown)Message.DeepCopy();
+                    if (MessageElement != null) dest.MessageElement = (Markdown)MessageElement.DeepCopy();
                     if (DetailElement != null) dest.DetailElement = (FhirString)DetailElement.DeepCopy();
                     return dest;
                 }
@@ -704,7 +875,7 @@ namespace Hl7.Fhir.Model.STU3
 
                 if (!base.Matches(otherT)) return false;
                 if (!DeepComparable.Matches(ResultElement, otherT.ResultElement)) return false;
-                if (!DeepComparable.Matches(Message, otherT.Message)) return false;
+                if (!DeepComparable.Matches(MessageElement, otherT.MessageElement)) return false;
                 if (!DeepComparable.Matches(DetailElement, otherT.DetailElement)) return false;
 
                 return true;
@@ -717,7 +888,7 @@ namespace Hl7.Fhir.Model.STU3
 
                 if (!base.IsExactly(otherT)) return false;
                 if (!DeepComparable.IsExactly(ResultElement, otherT.ResultElement)) return false;
-                if (!DeepComparable.IsExactly(Message, otherT.Message)) return false;
+                if (!DeepComparable.IsExactly(MessageElement, otherT.MessageElement)) return false;
                 if (!DeepComparable.IsExactly(DetailElement, otherT.DetailElement)) return false;
 
                 return true;
@@ -731,7 +902,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     foreach (var item in base.Children) yield return item;
                     if (ResultElement != null) yield return ResultElement;
-                    if (Message != null) yield return Message;
+                    if (MessageElement != null) yield return MessageElement;
                     if (DetailElement != null) yield return DetailElement;
                 }
             }
@@ -743,7 +914,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     foreach (var item in base.NamedChildren) yield return item;
                     if (ResultElement != null) yield return new ElementValue("result", ResultElement);
-                    if (Message != null) yield return new ElementValue("message", Message);
+                    if (MessageElement != null) yield return new ElementValue("message", MessageElement);
                     if (DetailElement != null) yield return new ElementValue("detail", DetailElement);
                 }
             }
@@ -1472,7 +1643,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "setup.action.all(operation.exists() xor assert.exists())",
             Key = "inv-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Setup action SHALL contain either an operation or assert but not both.",
             Xpath = "(f:operation or f:assert) and not(f:operation and f:assert)"
         };
@@ -1481,7 +1652,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "test.action.all(operation.exists() xor assert.exists())",
             Key = "inv-2",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Test action SHALL contain either an operation or assert but not both.",
             Xpath = "(f:operation or f:assert) and not(f:operation and f:assert)"
         };

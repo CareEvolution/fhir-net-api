@@ -45,10 +45,9 @@ namespace Hl7.Fhir.Model.STU3
         string Publisher { get; set; }
         FhirString PublisherElement { get; set; }        
         List<ContactDetail> Contact { get; set; }
-        Markdown Description { get; set; }
-        //FhirString DescriptionElement { get; set; }
+        Markdown DescriptionElement { get; set; }
         List<UsageContext> UseContext { get; set; }
-        Markdown Purpose { get; set; }       
+        Markdown PurposeElement { get; set; }       
         Code<PublicationStatus> StatusElement { get; set; }
         bool? Experimental { get; set; }
         FhirBoolean ExperimentalElement { get; set; }
@@ -97,7 +96,7 @@ namespace Hl7.Fhir.Model.STU3
     {
         //I think ImplementationGuide should have a purpose element.
         [NotMapped]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
             get { return null; }
             set { throw new NotImplementedException(); }
@@ -134,7 +133,7 @@ namespace Hl7.Fhir.Model.STU3
 
     public partial class ExpansionProfile : IVersionableConformanceResource
     {
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
             get { return null; }
             set { throw new NotImplementedException(); }
@@ -146,14 +145,14 @@ namespace Hl7.Fhir.Model.STU3
         // I think DataElement should have Description too
         [NotMapped]
         [Obsolete("This property is internal only, and doesn't actually exist in the FHIR object model")]
-        public Markdown Description
+        public Markdown DescriptionElement
         {
             get { return null; }
             set { throw new NotImplementedException(); }
         }
 
         [NotMapped]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
             get { return null; }
             set { throw new NotImplementedException(); }
@@ -165,7 +164,7 @@ namespace Hl7.Fhir.Model.STU3
     {
         // I think NamingSystem should have Experimental too
         [NotMapped]
-        public Markdown Purpose
+        public Markdown PurposeElement
         {
             get { return null; }
             set { throw new NotImplementedException(); }

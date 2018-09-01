@@ -13,6 +13,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using Hl7.Fhir.Model.STU3;
+using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Serialization.STU3;
 using Hl7.Fhir.Utility;
 

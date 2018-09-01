@@ -1109,7 +1109,7 @@ namespace Hl7.Fhir.Rest.STU3
         private bool isPostOrPut(Bundle.EntryComponent interaction)
         {
             var method = interaction.Request.Method;
-            return method == HTTPVerb.POST || method == HTTPVerb.PUT;
+            return method == Bundle.HTTPVerb.POST || method == Bundle.HTTPVerb.PUT;
         }
 
 

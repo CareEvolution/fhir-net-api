@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -317,7 +318,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "data.empty() or contentType.exists()",
             Key = "att-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "It the Attachment has data, it SHALL have a contentType",
             Xpath = "not(exists(f:data)) or exists(f:contentType)"
         };

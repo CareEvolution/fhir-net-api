@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.R4;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -2157,13 +2158,32 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("preparationInstruction", Order=200)]
         [DataMember]
-        public Markdown PreparationInstruction
+        public Markdown PreparationInstructionElement
         {
-            get { return _preparationInstruction; }
-            set { _preparationInstruction = value; OnPropertyChanged("PreparationInstruction"); }
+            get { return _preparationInstructionElement; }
+            set { _preparationInstructionElement = value; OnPropertyChanged("PreparationInstructionElement"); }
         }
 
-        private Markdown _preparationInstruction;
+        private Markdown _preparationInstructionElement;
+
+        /// <summary>
+        /// The instructions for preparing the medication
+        /// </summary>
+        /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
+        [NotMapped]
+        [IgnoreDataMember]
+        public string PreparationInstruction
+        {
+            get { return PreparationInstructionElement != null ? PreparationInstructionElement.Value : null; }
+            set
+            {
+                if (value == null)
+                    PreparationInstructionElement = null;
+                else
+                    PreparationInstructionElement = new Markdown(value);
+                OnPropertyChanged("PreparationInstruction");
+            }
+        }
 
         /// <summary>
         /// The intended or approved route of administration
@@ -2324,7 +2344,7 @@ namespace Hl7.Fhir.Model.R4
                 if (ProductType != null) dest.ProductType = new List<CodeableConcept>(ProductType.DeepCopy());
                 if (Monograph != null) dest.Monograph = new List<MonographComponent>(Monograph.DeepCopy());
                 if (Ingredient != null) dest.Ingredient = new List<IngredientComponent>(Ingredient.DeepCopy());
-                if (PreparationInstruction != null) dest.PreparationInstruction = (Markdown)PreparationInstruction.DeepCopy();
+                if (PreparationInstructionElement != null) dest.PreparationInstructionElement = (Markdown)PreparationInstructionElement.DeepCopy();
                 if (IntendedRoute != null) dest.IntendedRoute = new List<CodeableConcept>(IntendedRoute.DeepCopy());
                 if (Cost != null) dest.Cost = new List<CostComponent>(Cost.DeepCopy());
                 if (MonitoringProgram != null) dest.MonitoringProgram = new List<MonitoringProgramComponent>(MonitoringProgram.DeepCopy());
@@ -2363,7 +2383,7 @@ namespace Hl7.Fhir.Model.R4
             if ( !DeepComparable.Matches(ProductType, otherT.ProductType)) return false;
             if ( !DeepComparable.Matches(Monograph, otherT.Monograph)) return false;
             if ( !DeepComparable.Matches(Ingredient, otherT.Ingredient)) return false;
-            if (!DeepComparable.Matches(PreparationInstruction, otherT.PreparationInstruction)) return false;
+            if (!DeepComparable.Matches(PreparationInstructionElement, otherT.PreparationInstructionElement)) return false;
             if ( !DeepComparable.Matches(IntendedRoute, otherT.IntendedRoute)) return false;
             if ( !DeepComparable.Matches(Cost, otherT.Cost)) return false;
             if ( !DeepComparable.Matches(MonitoringProgram, otherT.MonitoringProgram)) return false;
@@ -2395,7 +2415,7 @@ namespace Hl7.Fhir.Model.R4
             if (!DeepComparable.IsExactly(ProductType, otherT.ProductType)) return false;
             if (!DeepComparable.IsExactly(Monograph, otherT.Monograph)) return false;
             if (!DeepComparable.IsExactly(Ingredient, otherT.Ingredient)) return false;
-            if (!DeepComparable.IsExactly(PreparationInstruction, otherT.PreparationInstruction)) return false;
+            if (!DeepComparable.IsExactly(PreparationInstructionElement, otherT.PreparationInstructionElement)) return false;
             if (!DeepComparable.IsExactly(IntendedRoute, otherT.IntendedRoute)) return false;
             if (!DeepComparable.IsExactly(Cost, otherT.Cost)) return false;
             if (!DeepComparable.IsExactly(MonitoringProgram, otherT.MonitoringProgram)) return false;
@@ -2427,7 +2447,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in ProductType) { if (elem != null) yield return elem; }
                 foreach (var elem in Monograph) { if (elem != null) yield return elem; }
                 foreach (var elem in Ingredient) { if (elem != null) yield return elem; }
-                if (PreparationInstruction != null) yield return PreparationInstruction;
+                if (PreparationInstructionElement != null) yield return PreparationInstructionElement;
                 foreach (var elem in IntendedRoute) { if (elem != null) yield return elem; }
                 foreach (var elem in Cost) { if (elem != null) yield return elem; }
                 foreach (var elem in MonitoringProgram) { if (elem != null) yield return elem; }
@@ -2458,7 +2478,7 @@ namespace Hl7.Fhir.Model.R4
                 foreach (var elem in ProductType) { if (elem != null) yield return new ElementValue("productType", elem); }
                 foreach (var elem in Monograph) { if (elem != null) yield return new ElementValue("monograph", elem); }
                 foreach (var elem in Ingredient) { if (elem != null) yield return new ElementValue("ingredient", elem); }
-                if (PreparationInstruction != null) yield return new ElementValue("preparationInstruction", PreparationInstruction);
+                if (PreparationInstructionElement != null) yield return new ElementValue("preparationInstruction", PreparationInstructionElement);
                 foreach (var elem in IntendedRoute) { if (elem != null) yield return new ElementValue("intendedRoute", elem); }
                 foreach (var elem in Cost) { if (elem != null) yield return new ElementValue("cost", elem); }
                 foreach (var elem in MonitoringProgram) { if (elem != null) yield return new ElementValue("monitoringProgram", elem); }

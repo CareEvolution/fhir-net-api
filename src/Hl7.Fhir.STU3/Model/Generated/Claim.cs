@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,39 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Claim; } }
         [NotMapped]
         public override string TypeName { get { return "Claim"; } }
+
+        /// <summary>
+        /// Complete, proposed, exploratory, other
+        /// (url: http://hl7.org/fhir/ValueSet/claim-use)
+        /// </summary>
+        [FhirEnumeration("Use")]
+        public enum Use
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/claim-use)
+            /// </summary>
+            [EnumLiteral("complete", "http://hl7.org/fhir/claim-use"), Description("Complete")]
+            Complete,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/claim-use)
+            /// </summary>
+            [EnumLiteral("proposed", "http://hl7.org/fhir/claim-use"), Description("Proposed")]
+            Proposed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/claim-use)
+            /// </summary>
+            [EnumLiteral("exploratory", "http://hl7.org/fhir/claim-use"), Description("Exploratory")]
+            Exploratory,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/claim-use)
+            /// </summary>
+            [EnumLiteral("other", "http://hl7.org/fhir/claim-use"), Description("Other")]
+            Other,
+        }
 
 
         [FhirType("RelatedClaimComponent")]
@@ -2738,7 +2772,7 @@ namespace Hl7.Fhir.Model.STU3
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
         [IgnoreDataMember]
-        public Use? Use
+        public Use? Use_
         {
             get { return UseElement != null ? UseElement.Value : null; }
             set
@@ -2747,7 +2781,7 @@ namespace Hl7.Fhir.Model.STU3
                     UseElement = null;
                 else
                     UseElement = new Code<Use>(value);
-                OnPropertyChanged("Use");
+                OnPropertyChanged("Use_");
             }
         }
 

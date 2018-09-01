@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,39 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.ImagingStudy; } }
         [NotMapped]
         public override string TypeName { get { return "ImagingStudy"; } }
+
+        /// <summary>
+        /// Availability of the resource
+        /// (url: http://hl7.org/fhir/ValueSet/instance-availability)
+        /// </summary>
+        [FhirEnumeration("InstanceAvailability")]
+        public enum InstanceAvailability
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://dicom.nema.org/resources/ontology/DCM)
+            /// </summary>
+            [EnumLiteral("ONLINE", "http://dicom.nema.org/resources/ontology/DCM"), Description("Online")]
+            ONLINE,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://dicom.nema.org/resources/ontology/DCM)
+            /// </summary>
+            [EnumLiteral("OFFLINE", "http://dicom.nema.org/resources/ontology/DCM"), Description("Offline")]
+            OFFLINE,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://dicom.nema.org/resources/ontology/DCM)
+            /// </summary>
+            [EnumLiteral("NEARLINE", "http://dicom.nema.org/resources/ontology/DCM"), Description("Nearline")]
+            NEARLINE,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://dicom.nema.org/resources/ontology/DCM)
+            /// </summary>
+            [EnumLiteral("UNAVAILABLE", "http://dicom.nema.org/resources/ontology/DCM"), Description("Unavailable")]
+            UNAVAILABLE,
+        }
 
 
         [FhirType("SeriesComponent")]

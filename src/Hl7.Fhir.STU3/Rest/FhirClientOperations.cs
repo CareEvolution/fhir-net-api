@@ -11,9 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.STU3;
 using Hl7.Fhir.Support;
-using Hl7.Fhir.Support.STU3;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Rest.STU3

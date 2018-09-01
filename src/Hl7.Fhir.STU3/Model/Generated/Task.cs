@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Introspection.STU3;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
 using Hl7.Fhir.Validation.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
@@ -56,6 +57,87 @@ namespace Hl7.Fhir.Model.STU3
         public override ResourceType ResourceType { get { return ResourceType.Task; } }
         [NotMapped]
         public override string TypeName { get { return "Task"; } }
+
+        /// <summary>
+        /// The current status of the task.
+        /// (url: http://hl7.org/fhir/ValueSet/task-status)
+        /// </summary>
+        [FhirEnumeration("TaskStatus")]
+        public enum TaskStatus
+        {
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("draft", "http://hl7.org/fhir/task-status"), Description("Draft")]
+            Draft,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("requested", "http://hl7.org/fhir/task-status"), Description("Requested")]
+            Requested,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("received", "http://hl7.org/fhir/task-status"), Description("Received")]
+            Received,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("accepted", "http://hl7.org/fhir/task-status"), Description("Accepted")]
+            Accepted,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("rejected", "http://hl7.org/fhir/task-status"), Description("Rejected")]
+            Rejected,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("ready", "http://hl7.org/fhir/task-status"), Description("Ready")]
+            Ready,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("cancelled", "http://hl7.org/fhir/task-status"), Description("Cancelled")]
+            Cancelled,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("in-progress", "http://hl7.org/fhir/task-status"), Description("In Progress")]
+            InProgress,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("on-hold", "http://hl7.org/fhir/task-status"), Description("On Hold")]
+            OnHold,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("failed", "http://hl7.org/fhir/task-status"), Description("Failed")]
+            Failed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("completed", "http://hl7.org/fhir/task-status"), Description("Completed")]
+            Completed,
+            /// <summary>
+            /// MISSING DESCRIPTION
+            /// (system: http://hl7.org/fhir/task-status)
+            /// </summary>
+            [EnumLiteral("entered-in-error", "http://hl7.org/fhir/task-status"), Description("Entered in Error")]
+            EnteredInError,
+        }
 
 
         [FhirType("RequesterComponent")]
@@ -1007,7 +1089,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             Expression = "lastModified.exists().not() or authoredOn.exists().not() or lastModified >= authoredOn",
             Key = "inv-1",
-            Severity = ConstraintSeverity.Warning,
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "Last modified date must be greater than or equal to authored-on date.",
             Xpath = "not(exists(f:lastModified/@value)) or not(exists(f:authoredOn/@value)) or f:lastModified/@value >= f:authoredOn/@value"
         };
