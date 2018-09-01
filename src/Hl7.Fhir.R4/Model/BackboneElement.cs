@@ -40,9 +40,4 @@ namespace Hl7.Fhir.Model.R4
     public abstract partial class BackboneElement : IModifierExtendable, IBackboneElement
     {
     }
-    
-    public interface IBackboneElement
-    {
-
-    }
 }
