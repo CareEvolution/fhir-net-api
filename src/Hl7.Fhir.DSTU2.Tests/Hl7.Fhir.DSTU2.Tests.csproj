@@ -8,13 +8,8 @@
   <Import Project="..\fhir-net-api.targets" />
 
   <PropertyGroup>
-    <AssemblyName>Hl7.Fhir.Core.Tests</AssemblyName>
     <ContainsTests>true</ContainsTests>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Hl7.Fhir.Support\Hl7.Fhir.Support.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
@@ -52,7 +47,7 @@
     <None Remove="TestData\fp-test-patient.xml" />
     <Compile Include="..\Hl7.Fhir.Support.Tests\Utils\XmlAssert.cs" Link="XmlAssert.cs" />
     <Compile Include="..\Hl7.Fhir.Support.Tests\Utils\JsonAssert.cs" Link="JsonAssert.cs" />
-    <Content Include="..\Hl7.Fhir.Specification\data\profiles-others.xml" Link="TestData\profiles-others.xml">
+    <Content Include="..\Hl7.Fhir.Specification.DSTU2\data\profiles-others.xml" Link="TestData\profiles-others.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\examples.zip;TestData\examples-json.zip">
@@ -61,6 +56,10 @@
     <Content Include="TestData\fhir-logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hl7.Fhir.DSTU2\Hl7.Fhir.DSTU2.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -156,7 +156,7 @@ namespace Hl7.Fhir.Rest
         static HttpUtil()
         {
             RESTURI_PATTERN = @"((http | https)://([A-Za-z0-9\\\/\.\:\%\$])*)?(";
-            RESTURI_PATTERN = @"[A-Za-z]{1,64}";
+            RESTURI_PATTERN += @"[A-Za-z]{1,64}";
             //RESTURI_PATTERN += String.Join("|", ModelInfo.SupportedResources);
             RESTURI_PATTERN += @")\/[A-Za-z0-9\-\.]{1,64}(\/_history\/[A-Za-z0-9\-\.]{1,64})?";
         }
