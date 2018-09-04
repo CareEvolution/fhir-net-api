@@ -8,13 +8,12 @@
   <Import Project="..\fhir-net-api.targets" />
 
   <PropertyGroup>
-    <AssemblyName>Hl7.Fhir.Specification.Tests</AssemblyName>
     <ContainsTests>true</ContainsTests>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Hl7.Fhir.Core\Hl7.Fhir.Core.csproj" />
-    <ProjectReference Include="..\Hl7.Fhir.Specification\Hl7.Fhir.Specification.csproj" />
+    <ProjectReference Include="..\Hl7.Fhir.Specification.DSTU2\Hl7.Fhir.Specification.DSTU2.csproj" />
     <ProjectReference Include="..\Hl7.Fhir.Support\Hl7.Fhir.Support.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -53,13 +52,13 @@
   </ItemGroup>
   -->
   <ItemGroup>
-    <Content Include="..\Hl7.Fhir.Specification\data\profiles-others.xml" Link="TestData\snapshot-test\WMR\profiles-others.xml">
+    <Content Include="..\Hl7.Fhir.Specification.DSTU2\data\profiles-others.xml" Link="TestData\snapshot-test\WMR\profiles-others.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Hl7.Fhir.Specification\data\profiles-resources.xml" Link="TestData\snapshot-test\WMR\profiles-resources.xml">
+    <Content Include="..\Hl7.Fhir.Specification.DSTU2\data\profiles-resources.xml" Link="TestData\snapshot-test\WMR\profiles-resources.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Hl7.Fhir.Specification\data\profiles-types.xml" Link="TestData\snapshot-test\profiles-types.xml">
+    <Content Include="..\Hl7.Fhir.Specification.DSTU2\data\profiles-types.xml" Link="TestData\snapshot-test\profiles-types.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

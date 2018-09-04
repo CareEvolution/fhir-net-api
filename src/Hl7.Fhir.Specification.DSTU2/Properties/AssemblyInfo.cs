@@ -6,5 +6,5 @@ using System.Runtime.CompilerServices;
 [assembly: CLSCompliant(true)]
 
 #if DEBUG
-[assembly: InternalsVisibleTo("Hl7.Fhir.Specification.Tests")]
+[assembly: InternalsVisibleTo("Hl7.Fhir.Specification.DSTU2.Tests")]
 #endif
