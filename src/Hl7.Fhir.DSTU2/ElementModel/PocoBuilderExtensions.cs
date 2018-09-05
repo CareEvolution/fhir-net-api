@@ -19,27 +19,6 @@ namespace Hl7.Fhir.ElementModel.DSTU2
 {
     public static class PocoBuilderExtensions
     {
-        public static Base ToPoco(this ISourceNode source, Type pocoType = null, PocoBuilderSettings settings = null) =>
-            new PocoBuilder(settings).BuildFrom(source, pocoType);
-
-        public static T ToPoco<T>(this ISourceNode source, PocoBuilderSettings settings = null) where T : Base =>
-               (T)source.ToPoco(typeof(T), settings);
-
-        public static Base ToPoco(this ITypedElement element, PocoBuilderSettings settings = null) =>
-            new PocoBuilder(settings).BuildFrom(element);
-
-        public static T ToPoco<T>(this ITypedElement element, PocoBuilderSettings settings = null) where T : Base =>
-               (T)element.ToPoco(settings);
-
-#pragma warning disable 612, 618
-        public static Base ToPoco(this IElementNavigator navigator, Type pocoType=null, PocoBuilderSettings settings = null) =>
-            new PocoBuilder(settings).BuildFrom(navigator.ToSourceNode(), pocoType);
-
-        public static T ToPoco<T>(this IElementNavigator navigator, PocoBuilderSettings settings = null) where T : Base =>
-               (T)navigator.ToPoco(typeof(T), settings);
-#pragma warning restore 612, 618
-
-
         [Obsolete("Use ParseQuantity(this ITypedElement instance) instead")]
         public static Quantity ParseQuantity(this IElementNavigator instance)
         {

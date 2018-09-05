@@ -9,7 +9,6 @@
 using System;
 using System.Reflection;
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.ElementModel.DSTU2;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
@@ -55,21 +54,37 @@ namespace Hl7.Fhir.Serialization.DSTU2
                 IgnoreUnknownMembers = ps.AcceptUnknownMembers
             };
 
-        public Base Parse(ITypedElement element) => element.ToPoco(buildPocoBuilderSettings(Settings));
+        public Base Parse(ITypedElement element)
+        {
+            return new PocoBuilder(buildPocoBuilderSettings(Settings)).BuildFrom(element);
+        }
 
-        public T Parse<T>(ITypedElement element) where T : Base => element.ToPoco<T>(buildPocoBuilderSettings(Settings));
+        public T Parse<T>(ITypedElement element) where T : Base
+        {
+            return (T)new PocoBuilder(buildPocoBuilderSettings(Settings)).BuildFrom(element);
+        }
 
-        public Base Parse(ISourceNode node, Type type = null) => node.ToPoco(type, buildPocoBuilderSettings(Settings));
+        public Base Parse(ISourceNode node, Type type = null)
+        {
+            return new PocoBuilder(buildPocoBuilderSettings(Settings)).BuildFrom(node, type);
+        }
 
-        public T Parse<T>(ISourceNode node) where T : Base => node.ToPoco<T>(buildPocoBuilderSettings(Settings));
+        public T Parse<T>(ISourceNode node) where T : Base
+        {
+            return (T)new PocoBuilder(buildPocoBuilderSettings(Settings)).BuildFrom(node, typeof(T));
+        }
 
 #pragma warning disable 612, 618
-        public Base Parse(IElementNavigator nav, Type type = null) => nav.ToPoco(type, buildPocoBuilderSettings(Settings));
+        public Base Parse(IElementNavigator nav, Type type = null)
+        {
+            return new PocoBuilder(buildPocoBuilderSettings(Settings)).BuildFrom(nav.ToSourceNode(), type);
+        }
 
-        public T Parse<T>(IElementNavigator nav) where T : Base => (T)nav.ToPoco<T>(buildPocoBuilderSettings(Settings));
+        public T Parse<T>(IElementNavigator nav) where T : Base
+        {
+            return (T)new PocoBuilder(buildPocoBuilderSettings(Settings)).BuildFrom(nav.ToSourceNode(), typeof(T));
+        }
 #pragma warning restore 612, 618
-
-
     }
 
 }
