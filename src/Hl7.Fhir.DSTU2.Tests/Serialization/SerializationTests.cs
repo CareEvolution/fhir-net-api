@@ -18,6 +18,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -494,7 +496,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
                 Id = "patient-one",
                 Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
-                Meta = new Meta { ElementId = "eric-clapton", VersionId = "1234" },
+                Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
 
                 Name = new List<HumanName> { new HumanName { Family = new[] { "Clapton" }, Use = HumanName.NameUse.Official } },
 
@@ -522,7 +524,7 @@ namespace Hl7.Fhir.Tests.Serialization
             var patientOne = new Patient
             {
                 Id = "patient-one",
-                Meta = new Meta { ElementId = "eric-clapton", VersionId = "1234" },
+                Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
                 Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
                 Active = true,
                 Name = new List<HumanName> { new HumanName { Use = HumanName.NameUse.Official, Family = new[] { "Clapton" } } },
@@ -576,7 +578,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             token = assertProperty(token.Next, "meta");
             Assert.IsTrue(token.HasValues);
-            var childToken = assertStringProperty(token.Values().First(), "id", patientOne.Meta.ElementId);
+            var childToken = assertStringProperty(token.Values().First(), "id", patientOne.Meta.Id);
             childToken = assertStringProperty(childToken.Next, "versionId", patientOne.Meta.VersionId);
 
             token = assertProperty(token.Next, "text");

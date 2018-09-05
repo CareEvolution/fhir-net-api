@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
-    public partial class PositiveInt : INullableIntegerValue
+    public partial class PositiveInt : INullableIntegerValue, IParsedPrimitive
     {
-            public static bool IsValidValue(string value)
+        public static bool IsValidValue(string value)
+        {
+            try
             {
-                try
-                {
-                    var dummy = XmlConvert.ToInt32(value);
-                    if (dummy <= 0) return false;
-                }
-                catch
-                {
-                    return false;
-                }
-
-                return true;
+                var dummy = XmlConvert.ToInt32(value);
+                if (dummy <= 0) return false;
             }
-       
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        [NotMapped]
+        public object ParsedValue => Value;
+
     }
 }

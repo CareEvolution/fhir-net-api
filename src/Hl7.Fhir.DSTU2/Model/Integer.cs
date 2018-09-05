@@ -28,17 +28,13 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml;
-using Hl7.Fhir.Model;
 
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
-    public partial class Integer : INullableIntegerValue
+    public partial class Integer : INullableIntegerValue, IParsedPrimitive
     {
         public static bool IsValidValue(string value)
         {
@@ -53,5 +49,8 @@ namespace Hl7.Fhir.Model
 
             return true;
         }
+
+        [NotMapped]
+        public object ParsedValue => Value;
     }
 }

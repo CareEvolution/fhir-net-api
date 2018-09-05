@@ -16,6 +16,7 @@ using System.Xml.Linq;
 using System.ComponentModel.DataAnnotations;
 using Hl7.Fhir.Validation;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Model.DSTU2;
 
 namespace Hl7.Fhir.Tests.Model
 {

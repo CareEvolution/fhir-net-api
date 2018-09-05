@@ -1,59 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
-  
-   * Redistributions of source code must retain the above copyright notice, this 
+
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
-  
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
+
 
 */
+
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// Contains a collection of resources
     /// </summary>
     [FhirType("Bundle", IsResource=true)]
     [DataContract]
-    public partial class Bundle : Hl7.Fhir.Model.Resource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Bundle : Resource
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Bundle; } }
         [NotMapped]
         public override string TypeName { get { return "Bundle"; } }
-        
+
         /// <summary>
         /// Indicates the purpose of a bundle - how it was intended to be used.
         /// (url: http://hl7.org/fhir/ValueSet/bundle-type)
@@ -177,120 +181,121 @@ namespace Hl7.Fhir.Model
             DELETE,
         }
 
+
         [FhirType("LinkComponent")]
         [DataContract]
-        public partial class LinkComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class LinkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LinkComponent"; } }
-            
+
             /// <summary>
             /// http://www.iana.org/assignments/link-relations/link-relations.xhtml
             /// </summary>
             [FhirElement("relation", InSummary=true, Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirString RelationElement
+            public FhirString RelationElement
             {
-                get { return _RelationElement; }
-                set { _RelationElement = value; OnPropertyChanged("RelationElement"); }
+                get { return _relationElement; }
+                set { _relationElement = value; OnPropertyChanged("RelationElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirString _RelationElement;
-            
+
+            private FhirString _relationElement;
+
             /// <summary>
             /// http://www.iana.org/assignments/link-relations/link-relations.xhtml
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Relation
             {
                 get { return RelationElement != null ? RelationElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        RelationElement = null; 
+                        RelationElement = null;
                     else
-                        RelationElement = new Hl7.Fhir.Model.FhirString(value);
+                        RelationElement = new FhirString(value);
                     OnPropertyChanged("Relation");
                 }
             }
-            
+
             /// <summary>
             /// Reference details for the link
             /// </summary>
             [FhirElement("url", InSummary=true, Order=50)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirUri UrlElement
+            public FhirUri UrlElement
             {
-                get { return _UrlElement; }
-                set { _UrlElement = value; OnPropertyChanged("UrlElement"); }
+                get { return _urlElement; }
+                set { _urlElement = value; OnPropertyChanged("UrlElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirUri _UrlElement;
-            
+
+            private FhirUri _urlElement;
+
             /// <summary>
             /// Reference details for the link
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Url
             {
                 get { return UrlElement != null ? UrlElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        UrlElement = null; 
+                        UrlElement = null;
                     else
-                        UrlElement = new Hl7.Fhir.Model.FhirUri(value);
+                        UrlElement = new FhirUri(value);
                     OnPropertyChanged("Url");
                 }
             }
-            
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as LinkComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(RelationElement != null) dest.RelationElement = (Hl7.Fhir.Model.FhirString)RelationElement.DeepCopy();
-                    if(UrlElement != null) dest.UrlElement = (Hl7.Fhir.Model.FhirUri)UrlElement.DeepCopy();
+                    if (RelationElement != null) dest.RelationElement = (FhirString)RelationElement.DeepCopy();
+                    if (UrlElement != null) dest.UrlElement = (FhirUri)UrlElement.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new LinkComponent());
+                 return CopyTo(new LinkComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as LinkComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(RelationElement, otherT.RelationElement)) return false;
-                if( !DeepComparable.Matches(UrlElement, otherT.UrlElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(RelationElement, otherT.RelationElement)) return false;
+                if (!DeepComparable.Matches(UrlElement, otherT.UrlElement)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as LinkComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(RelationElement, otherT.RelationElement)) return false;
-                if( !DeepComparable.IsExactly(UrlElement, otherT.UrlElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(RelationElement, otherT.RelationElement)) return false;
+                if (!DeepComparable.IsExactly(UrlElement, otherT.UrlElement)) return false;
+
                 return true;
             }
 
@@ -317,170 +322,169 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         [FhirType("EntryComponent")]
         [DataContract]
-        public partial class EntryComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class EntryComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "EntryComponent"; } }
-            
+
             /// <summary>
             /// Links related to this entry
             /// </summary>
             [FhirElement("link", InSummary=true, Order=40)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Bundle.LinkComponent> Link
+            public List<LinkComponent> Link
             {
-                get { if(_Link==null) _Link = new List<Hl7.Fhir.Model.Bundle.LinkComponent>(); return _Link; }
-                set { _Link = value; OnPropertyChanged("Link"); }
+                get { if (_link==null) _link = new List<LinkComponent>(); return _link; }
+                set { _link = value; OnPropertyChanged("Link"); }
             }
-            
-            private List<Hl7.Fhir.Model.Bundle.LinkComponent> _Link;
-            
+
+            private List<LinkComponent> _link;
+
             /// <summary>
             /// Absolute URL for resource (server address, or UUID/OID)
             /// </summary>
             [FhirElement("fullUrl", InSummary=true, Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirUri FullUrlElement
+            public FhirUri FullUrlElement
             {
-                get { return _FullUrlElement; }
-                set { _FullUrlElement = value; OnPropertyChanged("FullUrlElement"); }
+                get { return _fullUrlElement; }
+                set { _fullUrlElement = value; OnPropertyChanged("FullUrlElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirUri _FullUrlElement;
-            
+
+            private FhirUri _fullUrlElement;
+
             /// <summary>
             /// Absolute URL for resource (server address, or UUID/OID)
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string FullUrl
             {
                 get { return FullUrlElement != null ? FullUrlElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        FullUrlElement = null; 
+                        FullUrlElement = null;
                     else
-                        FullUrlElement = new Hl7.Fhir.Model.FhirUri(value);
+                        FullUrlElement = new FhirUri(value);
                     OnPropertyChanged("FullUrl");
                 }
             }
-            
+
             /// <summary>
             /// A resource in the bundle
             /// </summary>
             [FhirElement("resource", InSummary=true, Order=60, Choice=ChoiceType.ResourceChoice)]
-            [CLSCompliant(false)]
-			[AllowedTypes(typeof(Hl7.Fhir.Model.Resource))]
+            [AllowedTypes(typeof(Resource))]
             [DataMember]
-            public Hl7.Fhir.Model.Resource Resource
+            public Resource Resource
             {
-                get { return _Resource; }
-                set { _Resource = value; OnPropertyChanged("Resource"); }
+                get { return _resource; }
+                set { _resource = value; OnPropertyChanged("Resource"); }
             }
-            
-            private Hl7.Fhir.Model.Resource _Resource;
-            
+
+            private Resource _resource;
+
             /// <summary>
             /// Search related information
             /// </summary>
             [FhirElement("search", InSummary=true, Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Bundle.SearchComponent Search
+            public SearchComponent Search
             {
-                get { return _Search; }
-                set { _Search = value; OnPropertyChanged("Search"); }
+                get { return _search; }
+                set { _search = value; OnPropertyChanged("Search"); }
             }
-            
-            private Hl7.Fhir.Model.Bundle.SearchComponent _Search;
-            
+
+            private SearchComponent _search;
+
             /// <summary>
             /// Transaction Related Information
             /// </summary>
             [FhirElement("request", InSummary=true, Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.Bundle.RequestComponent Request
+            public RequestComponent Request
             {
-                get { return _Request; }
-                set { _Request = value; OnPropertyChanged("Request"); }
+                get { return _request; }
+                set { _request = value; OnPropertyChanged("Request"); }
             }
-            
-            private Hl7.Fhir.Model.Bundle.RequestComponent _Request;
-            
+
+            private RequestComponent _request;
+
             /// <summary>
             /// Transaction Related Information
             /// </summary>
             [FhirElement("response", InSummary=true, Order=90)]
             [DataMember]
-            public Hl7.Fhir.Model.Bundle.ResponseComponent Response
+            public ResponseComponent Response
             {
-                get { return _Response; }
-                set { _Response = value; OnPropertyChanged("Response"); }
+                get { return _response; }
+                set { _response = value; OnPropertyChanged("Response"); }
             }
-            
-            private Hl7.Fhir.Model.Bundle.ResponseComponent _Response;
-            
+
+            private ResponseComponent _response;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as EntryComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Link != null) dest.Link = new List<Hl7.Fhir.Model.Bundle.LinkComponent>(Link.DeepCopy());
-                    if(FullUrlElement != null) dest.FullUrlElement = (Hl7.Fhir.Model.FhirUri)FullUrlElement.DeepCopy();
-                    if(Resource != null) dest.Resource = (Hl7.Fhir.Model.Resource)Resource.DeepCopy();
-                    if(Search != null) dest.Search = (Hl7.Fhir.Model.Bundle.SearchComponent)Search.DeepCopy();
-                    if(Request != null) dest.Request = (Hl7.Fhir.Model.Bundle.RequestComponent)Request.DeepCopy();
-                    if(Response != null) dest.Response = (Hl7.Fhir.Model.Bundle.ResponseComponent)Response.DeepCopy();
+                    if (Link != null) dest.Link = new List<LinkComponent>(Link.DeepCopy());
+                    if (FullUrlElement != null) dest.FullUrlElement = (FhirUri)FullUrlElement.DeepCopy();
+                    if (Resource != null) dest.Resource = (Resource)Resource.DeepCopy();
+                    if (Search != null) dest.Search = (SearchComponent)Search.DeepCopy();
+                    if (Request != null) dest.Request = (RequestComponent)Request.DeepCopy();
+                    if (Response != null) dest.Response = (ResponseComponent)Response.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new EntryComponent());
+                 return CopyTo(new EntryComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as EntryComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(Link, otherT.Link)) return false;
-                if( !DeepComparable.Matches(FullUrlElement, otherT.FullUrlElement)) return false;
-                if( !DeepComparable.Matches(Resource, otherT.Resource)) return false;
-                if( !DeepComparable.Matches(Search, otherT.Search)) return false;
-                if( !DeepComparable.Matches(Request, otherT.Request)) return false;
-                if( !DeepComparable.Matches(Response, otherT.Response)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if ( !DeepComparable.Matches(Link, otherT.Link)) return false;
+                if (!DeepComparable.Matches(FullUrlElement, otherT.FullUrlElement)) return false;
+                if (!DeepComparable.Matches(Resource, otherT.Resource)) return false;
+                if (!DeepComparable.Matches(Search, otherT.Search)) return false;
+                if (!DeepComparable.Matches(Request, otherT.Request)) return false;
+                if (!DeepComparable.Matches(Response, otherT.Response)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as EntryComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(Link, otherT.Link)) return false;
-                if( !DeepComparable.IsExactly(FullUrlElement, otherT.FullUrlElement)) return false;
-                if( !DeepComparable.IsExactly(Resource, otherT.Resource)) return false;
-                if( !DeepComparable.IsExactly(Search, otherT.Search)) return false;
-                if( !DeepComparable.IsExactly(Request, otherT.Request)) return false;
-                if( !DeepComparable.IsExactly(Response, otherT.Response)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Link, otherT.Link)) return false;
+                if (!DeepComparable.IsExactly(FullUrlElement, otherT.FullUrlElement)) return false;
+                if (!DeepComparable.IsExactly(Resource, otherT.Resource)) return false;
+                if (!DeepComparable.IsExactly(Search, otherT.Search)) return false;
+                if (!DeepComparable.IsExactly(Request, otherT.Request)) return false;
+                if (!DeepComparable.IsExactly(Response, otherT.Response)) return false;
+
                 return true;
             }
 
@@ -515,122 +519,122 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         [FhirType("SearchComponent")]
         [DataContract]
-        public partial class SearchComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class SearchComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "SearchComponent"; } }
-            
+
             /// <summary>
             /// match | include | outcome - why this is in the result set
             /// </summary>
             [FhirElement("mode", InSummary=true, Order=40)]
             [DataMember]
-            public Code<Hl7.Fhir.Model.Bundle.SearchEntryMode> ModeElement
+            public Code<SearchEntryMode> ModeElement
             {
-                get { return _ModeElement; }
-                set { _ModeElement = value; OnPropertyChanged("ModeElement"); }
+                get { return _modeElement; }
+                set { _modeElement = value; OnPropertyChanged("ModeElement"); }
             }
-            
-            private Code<Hl7.Fhir.Model.Bundle.SearchEntryMode> _ModeElement;
-            
+
+            private Code<SearchEntryMode> _modeElement;
+
             /// <summary>
             /// match | include | outcome - why this is in the result set
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
-            public Hl7.Fhir.Model.Bundle.SearchEntryMode? Mode
+            [IgnoreDataMember]
+            public SearchEntryMode? Mode
             {
                 get { return ModeElement != null ? ModeElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        ModeElement = null; 
+                    if (value == null)
+                        ModeElement = null;
                     else
-                        ModeElement = new Code<Hl7.Fhir.Model.Bundle.SearchEntryMode>(value);
+                        ModeElement = new Code<SearchEntryMode>(value);
                     OnPropertyChanged("Mode");
                 }
             }
-            
+
             /// <summary>
             /// Search ranking (between 0 and 1)
             /// </summary>
             [FhirElement("score", InSummary=true, Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDecimal ScoreElement
+            public FhirDecimal ScoreElement
             {
-                get { return _ScoreElement; }
-                set { _ScoreElement = value; OnPropertyChanged("ScoreElement"); }
+                get { return _scoreElement; }
+                set { _scoreElement = value; OnPropertyChanged("ScoreElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirDecimal _ScoreElement;
-            
+
+            private FhirDecimal _scoreElement;
+
             /// <summary>
             /// Search ranking (between 0 and 1)
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public decimal? Score
             {
                 get { return ScoreElement != null ? ScoreElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        ScoreElement = null; 
+                    if (value == null)
+                        ScoreElement = null;
                     else
-                        ScoreElement = new Hl7.Fhir.Model.FhirDecimal(value);
+                        ScoreElement = new FhirDecimal(value);
                     OnPropertyChanged("Score");
                 }
             }
-            
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as SearchComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(ModeElement != null) dest.ModeElement = (Code<Hl7.Fhir.Model.Bundle.SearchEntryMode>)ModeElement.DeepCopy();
-                    if(ScoreElement != null) dest.ScoreElement = (Hl7.Fhir.Model.FhirDecimal)ScoreElement.DeepCopy();
+                    if (ModeElement != null) dest.ModeElement = (Code<SearchEntryMode>)ModeElement.DeepCopy();
+                    if (ScoreElement != null) dest.ScoreElement = (FhirDecimal)ScoreElement.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new SearchComponent());
+                 return CopyTo(new SearchComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as SearchComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(ModeElement, otherT.ModeElement)) return false;
-                if( !DeepComparable.Matches(ScoreElement, otherT.ScoreElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(ModeElement, otherT.ModeElement)) return false;
+                if (!DeepComparable.Matches(ScoreElement, otherT.ScoreElement)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as SearchComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(ModeElement, otherT.ModeElement)) return false;
-                if( !DeepComparable.IsExactly(ScoreElement, otherT.ScoreElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(ModeElement, otherT.ModeElement)) return false;
+                if (!DeepComparable.IsExactly(ScoreElement, otherT.ScoreElement)) return false;
+
                 return true;
             }
 
@@ -657,264 +661,264 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         [FhirType("RequestComponent")]
         [DataContract]
-        public partial class RequestComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class RequestComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "RequestComponent"; } }
-            
+
             /// <summary>
             /// GET | POST | PUT | DELETE
             /// </summary>
             [FhirElement("method", InSummary=true, Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Code<Hl7.Fhir.Model.Bundle.HTTPVerb> MethodElement
+            public Code<HTTPVerb> MethodElement
             {
-                get { return _MethodElement; }
-                set { _MethodElement = value; OnPropertyChanged("MethodElement"); }
+                get { return _methodElement; }
+                set { _methodElement = value; OnPropertyChanged("MethodElement"); }
             }
-            
-            private Code<Hl7.Fhir.Model.Bundle.HTTPVerb> _MethodElement;
-            
+
+            private Code<HTTPVerb> _methodElement;
+
             /// <summary>
             /// GET | POST | PUT | DELETE
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
-            public Hl7.Fhir.Model.Bundle.HTTPVerb? Method
+            [IgnoreDataMember]
+            public HTTPVerb? Method
             {
                 get { return MethodElement != null ? MethodElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        MethodElement = null; 
+                    if (value == null)
+                        MethodElement = null;
                     else
-                        MethodElement = new Code<Hl7.Fhir.Model.Bundle.HTTPVerb>(value);
+                        MethodElement = new Code<HTTPVerb>(value);
                     OnPropertyChanged("Method");
                 }
             }
-            
+
             /// <summary>
             /// URL for HTTP equivalent of this entry
             /// </summary>
             [FhirElement("url", InSummary=true, Order=50)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirUri UrlElement
+            public FhirUri UrlElement
             {
-                get { return _UrlElement; }
-                set { _UrlElement = value; OnPropertyChanged("UrlElement"); }
+                get { return _urlElement; }
+                set { _urlElement = value; OnPropertyChanged("UrlElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirUri _UrlElement;
-            
+
+            private FhirUri _urlElement;
+
             /// <summary>
             /// URL for HTTP equivalent of this entry
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Url
             {
                 get { return UrlElement != null ? UrlElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        UrlElement = null; 
+                        UrlElement = null;
                     else
-                        UrlElement = new Hl7.Fhir.Model.FhirUri(value);
+                        UrlElement = new FhirUri(value);
                     OnPropertyChanged("Url");
                 }
             }
-            
+
             /// <summary>
             /// For managing cache currency
             /// </summary>
             [FhirElement("ifNoneMatch", InSummary=true, Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirString IfNoneMatchElement
+            public FhirString IfNoneMatchElement
             {
-                get { return _IfNoneMatchElement; }
-                set { _IfNoneMatchElement = value; OnPropertyChanged("IfNoneMatchElement"); }
+                get { return _ifNoneMatchElement; }
+                set { _ifNoneMatchElement = value; OnPropertyChanged("IfNoneMatchElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirString _IfNoneMatchElement;
-            
+
+            private FhirString _ifNoneMatchElement;
+
             /// <summary>
             /// For managing cache currency
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string IfNoneMatch
             {
                 get { return IfNoneMatchElement != null ? IfNoneMatchElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        IfNoneMatchElement = null; 
+                        IfNoneMatchElement = null;
                     else
-                        IfNoneMatchElement = new Hl7.Fhir.Model.FhirString(value);
+                        IfNoneMatchElement = new FhirString(value);
                     OnPropertyChanged("IfNoneMatch");
                 }
             }
-            
+
             /// <summary>
             /// For managing update contention
             /// </summary>
             [FhirElement("ifModifiedSince", InSummary=true, Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Instant IfModifiedSinceElement
+            public Instant IfModifiedSinceElement
             {
-                get { return _IfModifiedSinceElement; }
-                set { _IfModifiedSinceElement = value; OnPropertyChanged("IfModifiedSinceElement"); }
+                get { return _ifModifiedSinceElement; }
+                set { _ifModifiedSinceElement = value; OnPropertyChanged("IfModifiedSinceElement"); }
             }
-            
-            private Hl7.Fhir.Model.Instant _IfModifiedSinceElement;
-            
+
+            private Instant _ifModifiedSinceElement;
+
             /// <summary>
             /// For managing update contention
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public DateTimeOffset? IfModifiedSince
             {
                 get { return IfModifiedSinceElement != null ? IfModifiedSinceElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        IfModifiedSinceElement = null; 
+                    if (value == null)
+                        IfModifiedSinceElement = null;
                     else
-                        IfModifiedSinceElement = new Hl7.Fhir.Model.Instant(value);
+                        IfModifiedSinceElement = new Instant(value);
                     OnPropertyChanged("IfModifiedSince");
                 }
             }
-            
+
             /// <summary>
             /// For managing update contention
             /// </summary>
             [FhirElement("ifMatch", InSummary=true, Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirString IfMatchElement
+            public FhirString IfMatchElement
             {
-                get { return _IfMatchElement; }
-                set { _IfMatchElement = value; OnPropertyChanged("IfMatchElement"); }
+                get { return _ifMatchElement; }
+                set { _ifMatchElement = value; OnPropertyChanged("IfMatchElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirString _IfMatchElement;
-            
+
+            private FhirString _ifMatchElement;
+
             /// <summary>
             /// For managing update contention
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string IfMatch
             {
                 get { return IfMatchElement != null ? IfMatchElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        IfMatchElement = null; 
+                        IfMatchElement = null;
                     else
-                        IfMatchElement = new Hl7.Fhir.Model.FhirString(value);
+                        IfMatchElement = new FhirString(value);
                     OnPropertyChanged("IfMatch");
                 }
             }
-            
+
             /// <summary>
             /// For conditional creates
             /// </summary>
             [FhirElement("ifNoneExist", InSummary=true, Order=90)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirString IfNoneExistElement
+            public FhirString IfNoneExistElement
             {
-                get { return _IfNoneExistElement; }
-                set { _IfNoneExistElement = value; OnPropertyChanged("IfNoneExistElement"); }
+                get { return _ifNoneExistElement; }
+                set { _ifNoneExistElement = value; OnPropertyChanged("IfNoneExistElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirString _IfNoneExistElement;
-            
+
+            private FhirString _ifNoneExistElement;
+
             /// <summary>
             /// For conditional creates
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string IfNoneExist
             {
                 get { return IfNoneExistElement != null ? IfNoneExistElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        IfNoneExistElement = null; 
+                        IfNoneExistElement = null;
                     else
-                        IfNoneExistElement = new Hl7.Fhir.Model.FhirString(value);
+                        IfNoneExistElement = new FhirString(value);
                     OnPropertyChanged("IfNoneExist");
                 }
             }
-            
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as RequestComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(MethodElement != null) dest.MethodElement = (Code<Hl7.Fhir.Model.Bundle.HTTPVerb>)MethodElement.DeepCopy();
-                    if(UrlElement != null) dest.UrlElement = (Hl7.Fhir.Model.FhirUri)UrlElement.DeepCopy();
-                    if(IfNoneMatchElement != null) dest.IfNoneMatchElement = (Hl7.Fhir.Model.FhirString)IfNoneMatchElement.DeepCopy();
-                    if(IfModifiedSinceElement != null) dest.IfModifiedSinceElement = (Hl7.Fhir.Model.Instant)IfModifiedSinceElement.DeepCopy();
-                    if(IfMatchElement != null) dest.IfMatchElement = (Hl7.Fhir.Model.FhirString)IfMatchElement.DeepCopy();
-                    if(IfNoneExistElement != null) dest.IfNoneExistElement = (Hl7.Fhir.Model.FhirString)IfNoneExistElement.DeepCopy();
+                    if (MethodElement != null) dest.MethodElement = (Code<HTTPVerb>)MethodElement.DeepCopy();
+                    if (UrlElement != null) dest.UrlElement = (FhirUri)UrlElement.DeepCopy();
+                    if (IfNoneMatchElement != null) dest.IfNoneMatchElement = (FhirString)IfNoneMatchElement.DeepCopy();
+                    if (IfModifiedSinceElement != null) dest.IfModifiedSinceElement = (Instant)IfModifiedSinceElement.DeepCopy();
+                    if (IfMatchElement != null) dest.IfMatchElement = (FhirString)IfMatchElement.DeepCopy();
+                    if (IfNoneExistElement != null) dest.IfNoneExistElement = (FhirString)IfNoneExistElement.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new RequestComponent());
+                 return CopyTo(new RequestComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as RequestComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(MethodElement, otherT.MethodElement)) return false;
-                if( !DeepComparable.Matches(UrlElement, otherT.UrlElement)) return false;
-                if( !DeepComparable.Matches(IfNoneMatchElement, otherT.IfNoneMatchElement)) return false;
-                if( !DeepComparable.Matches(IfModifiedSinceElement, otherT.IfModifiedSinceElement)) return false;
-                if( !DeepComparable.Matches(IfMatchElement, otherT.IfMatchElement)) return false;
-                if( !DeepComparable.Matches(IfNoneExistElement, otherT.IfNoneExistElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(MethodElement, otherT.MethodElement)) return false;
+                if (!DeepComparable.Matches(UrlElement, otherT.UrlElement)) return false;
+                if (!DeepComparable.Matches(IfNoneMatchElement, otherT.IfNoneMatchElement)) return false;
+                if (!DeepComparable.Matches(IfModifiedSinceElement, otherT.IfModifiedSinceElement)) return false;
+                if (!DeepComparable.Matches(IfMatchElement, otherT.IfMatchElement)) return false;
+                if (!DeepComparable.Matches(IfNoneExistElement, otherT.IfNoneExistElement)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as RequestComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(MethodElement, otherT.MethodElement)) return false;
-                if( !DeepComparable.IsExactly(UrlElement, otherT.UrlElement)) return false;
-                if( !DeepComparable.IsExactly(IfNoneMatchElement, otherT.IfNoneMatchElement)) return false;
-                if( !DeepComparable.IsExactly(IfModifiedSinceElement, otherT.IfModifiedSinceElement)) return false;
-                if( !DeepComparable.IsExactly(IfMatchElement, otherT.IfMatchElement)) return false;
-                if( !DeepComparable.IsExactly(IfNoneExistElement, otherT.IfNoneExistElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(MethodElement, otherT.MethodElement)) return false;
+                if (!DeepComparable.IsExactly(UrlElement, otherT.UrlElement)) return false;
+                if (!DeepComparable.IsExactly(IfNoneMatchElement, otherT.IfNoneMatchElement)) return false;
+                if (!DeepComparable.IsExactly(IfModifiedSinceElement, otherT.IfModifiedSinceElement)) return false;
+                if (!DeepComparable.IsExactly(IfMatchElement, otherT.IfMatchElement)) return false;
+                if (!DeepComparable.IsExactly(IfNoneExistElement, otherT.IfNoneExistElement)) return false;
+
                 return true;
             }
 
@@ -949,193 +953,193 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         [FhirType("ResponseComponent")]
         [DataContract]
-        public partial class ResponseComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class ResponseComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ResponseComponent"; } }
-            
+
             /// <summary>
             /// Status return code for entry
             /// </summary>
             [FhirElement("status", InSummary=true, Order=40)]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirString StatusElement
+            public FhirString StatusElement
             {
-                get { return _StatusElement; }
-                set { _StatusElement = value; OnPropertyChanged("StatusElement"); }
+                get { return _statusElement; }
+                set { _statusElement = value; OnPropertyChanged("StatusElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirString _StatusElement;
-            
+
+            private FhirString _statusElement;
+
             /// <summary>
             /// Status return code for entry
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Status
             {
                 get { return StatusElement != null ? StatusElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        StatusElement = null; 
+                        StatusElement = null;
                     else
-                        StatusElement = new Hl7.Fhir.Model.FhirString(value);
+                        StatusElement = new FhirString(value);
                     OnPropertyChanged("Status");
                 }
             }
-            
+
             /// <summary>
             /// The location, if the operation returns a location
             /// </summary>
             [FhirElement("location", InSummary=true, Order=50)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirUri LocationElement
+            public FhirUri LocationElement
             {
-                get { return _LocationElement; }
-                set { _LocationElement = value; OnPropertyChanged("LocationElement"); }
+                get { return _locationElement; }
+                set { _locationElement = value; OnPropertyChanged("LocationElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirUri _LocationElement;
-            
+
+            private FhirUri _locationElement;
+
             /// <summary>
             /// The location, if the operation returns a location
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Location
             {
                 get { return LocationElement != null ? LocationElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        LocationElement = null; 
+                        LocationElement = null;
                     else
-                        LocationElement = new Hl7.Fhir.Model.FhirUri(value);
+                        LocationElement = new FhirUri(value);
                     OnPropertyChanged("Location");
                 }
             }
-            
+
             /// <summary>
             /// The etag for the resource (if relevant)
             /// </summary>
             [FhirElement("etag", InSummary=true, Order=60)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirString EtagElement
+            public FhirString EtagElement
             {
-                get { return _EtagElement; }
-                set { _EtagElement = value; OnPropertyChanged("EtagElement"); }
+                get { return _etagElement; }
+                set { _etagElement = value; OnPropertyChanged("EtagElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirString _EtagElement;
-            
+
+            private FhirString _etagElement;
+
             /// <summary>
             /// The etag for the resource (if relevant)
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Etag
             {
                 get { return EtagElement != null ? EtagElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        EtagElement = null; 
+                        EtagElement = null;
                     else
-                        EtagElement = new Hl7.Fhir.Model.FhirString(value);
+                        EtagElement = new FhirString(value);
                     OnPropertyChanged("Etag");
                 }
             }
-            
+
             /// <summary>
             /// Server's date time modified
             /// </summary>
             [FhirElement("lastModified", InSummary=true, Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Instant LastModifiedElement
+            public Instant LastModifiedElement
             {
-                get { return _LastModifiedElement; }
-                set { _LastModifiedElement = value; OnPropertyChanged("LastModifiedElement"); }
+                get { return _lastModifiedElement; }
+                set { _lastModifiedElement = value; OnPropertyChanged("LastModifiedElement"); }
             }
-            
-            private Hl7.Fhir.Model.Instant _LastModifiedElement;
-            
+
+            private Instant _lastModifiedElement;
+
             /// <summary>
             /// Server's date time modified
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public DateTimeOffset? LastModified
             {
                 get { return LastModifiedElement != null ? LastModifiedElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        LastModifiedElement = null; 
+                    if (value == null)
+                        LastModifiedElement = null;
                     else
-                        LastModifiedElement = new Hl7.Fhir.Model.Instant(value);
+                        LastModifiedElement = new Instant(value);
                     OnPropertyChanged("LastModified");
                 }
             }
-            
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as ResponseComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(StatusElement != null) dest.StatusElement = (Hl7.Fhir.Model.FhirString)StatusElement.DeepCopy();
-                    if(LocationElement != null) dest.LocationElement = (Hl7.Fhir.Model.FhirUri)LocationElement.DeepCopy();
-                    if(EtagElement != null) dest.EtagElement = (Hl7.Fhir.Model.FhirString)EtagElement.DeepCopy();
-                    if(LastModifiedElement != null) dest.LastModifiedElement = (Hl7.Fhir.Model.Instant)LastModifiedElement.DeepCopy();
+                    if (StatusElement != null) dest.StatusElement = (FhirString)StatusElement.DeepCopy();
+                    if (LocationElement != null) dest.LocationElement = (FhirUri)LocationElement.DeepCopy();
+                    if (EtagElement != null) dest.EtagElement = (FhirString)EtagElement.DeepCopy();
+                    if (LastModifiedElement != null) dest.LastModifiedElement = (Instant)LastModifiedElement.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new ResponseComponent());
+                 return CopyTo(new ResponseComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as ResponseComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
-                if( !DeepComparable.Matches(LocationElement, otherT.LocationElement)) return false;
-                if( !DeepComparable.Matches(EtagElement, otherT.EtagElement)) return false;
-                if( !DeepComparable.Matches(LastModifiedElement, otherT.LastModifiedElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
+                if (!DeepComparable.Matches(LocationElement, otherT.LocationElement)) return false;
+                if (!DeepComparable.Matches(EtagElement, otherT.EtagElement)) return false;
+                if (!DeepComparable.Matches(LastModifiedElement, otherT.LastModifiedElement)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as ResponseComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
-                if( !DeepComparable.IsExactly(LocationElement, otherT.LocationElement)) return false;
-                if( !DeepComparable.IsExactly(EtagElement, otherT.EtagElement)) return false;
-                if( !DeepComparable.IsExactly(LastModifiedElement, otherT.LastModifiedElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
+                if (!DeepComparable.IsExactly(LocationElement, otherT.LocationElement)) return false;
+                if (!DeepComparable.IsExactly(EtagElement, otherT.EtagElement)) return false;
+                if (!DeepComparable.IsExactly(LastModifiedElement, otherT.LastModifiedElement)) return false;
+
                 return true;
             }
 
@@ -1166,174 +1170,174 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         /// <summary>
         /// document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
         /// </summary>
         [FhirElement("type", InSummary=true, Order=50)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.Bundle.BundleType> TypeElement
+        public Code<BundleType> TypeElement
         {
-            get { return _TypeElement; }
-            set { _TypeElement = value; OnPropertyChanged("TypeElement"); }
+            get { return _typeElement; }
+            set { _typeElement = value; OnPropertyChanged("TypeElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.Bundle.BundleType> _TypeElement;
-        
+
+        private Code<BundleType> _typeElement;
+
         /// <summary>
         /// document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.Bundle.BundleType? Type
+        [IgnoreDataMember]
+        public BundleType? Type
         {
             get { return TypeElement != null ? TypeElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  TypeElement = null; 
+                if (value == null)
+                    TypeElement = null;
                 else
-                  TypeElement = new Code<Hl7.Fhir.Model.Bundle.BundleType>(value);
+                    TypeElement = new Code<BundleType>(value);
                 OnPropertyChanged("Type");
             }
         }
-        
+
         /// <summary>
         /// If search, the total number of matches
         /// </summary>
         [FhirElement("total", InSummary=true, Order=60)]
         [DataMember]
-        public Hl7.Fhir.Model.UnsignedInt TotalElement
+        public UnsignedInt TotalElement
         {
-            get { return _TotalElement; }
-            set { _TotalElement = value; OnPropertyChanged("TotalElement"); }
+            get { return _totalElement; }
+            set { _totalElement = value; OnPropertyChanged("TotalElement"); }
         }
-        
-        private Hl7.Fhir.Model.UnsignedInt _TotalElement;
-        
+
+        private UnsignedInt _totalElement;
+
         /// <summary>
         /// If search, the total number of matches
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public int? Total
         {
             get { return TotalElement != null ? TotalElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  TotalElement = null; 
+                if (value == null)
+                    TotalElement = null;
                 else
-                  TotalElement = new Hl7.Fhir.Model.UnsignedInt(value);
+                    TotalElement = new UnsignedInt(value);
                 OnPropertyChanged("Total");
             }
         }
-        
+
         /// <summary>
         /// Links related to this Bundle
         /// </summary>
         [FhirElement("link", InSummary=true, Order=70)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Bundle.LinkComponent> Link
+        public List<LinkComponent> Link
         {
-            get { if(_Link==null) _Link = new List<Hl7.Fhir.Model.Bundle.LinkComponent>(); return _Link; }
-            set { _Link = value; OnPropertyChanged("Link"); }
+            get { if (_link==null) _link = new List<LinkComponent>(); return _link; }
+            set { _link = value; OnPropertyChanged("Link"); }
         }
-        
-        private List<Hl7.Fhir.Model.Bundle.LinkComponent> _Link;
-        
+
+        private List<LinkComponent> _link;
+
         /// <summary>
         /// Entry in the bundle - will have a resource, or information
         /// </summary>
         [FhirElement("entry", InSummary=true, Order=80)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Bundle.EntryComponent> Entry
+        public List<EntryComponent> Entry
         {
-            get { if(_Entry==null) _Entry = new List<Hl7.Fhir.Model.Bundle.EntryComponent>(); return _Entry; }
-            set { _Entry = value; OnPropertyChanged("Entry"); }
+            get { if (_entry==null) _entry = new List<EntryComponent>(); return _entry; }
+            set { _entry = value; OnPropertyChanged("Entry"); }
         }
-        
-        private List<Hl7.Fhir.Model.Bundle.EntryComponent> _Entry;
-        
+
+        private List<EntryComponent> _entry;
+
         /// <summary>
         /// Digital Signature
         /// </summary>
         [FhirElement("signature", InSummary=true, Order=90)]
         [DataMember]
-        public Hl7.Fhir.Model.Signature Signature
+        public Signature Signature
         {
-            get { return _Signature; }
-            set { _Signature = value; OnPropertyChanged("Signature"); }
+            get { return _signature; }
+            set { _signature = value; OnPropertyChanged("Signature"); }
         }
-        
-        private Hl7.Fhir.Model.Signature _Signature;
-        
 
-        public static ElementDefinition.ConstraintComponent Bundle_BDL_2 = new ElementDefinition.ConstraintComponent()
+        private Signature _signature;
+
+
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_2 = new ElementDefinition.ConstraintComponent
         {
-            Extension = new List<Model.Extension>() { new Model.Extension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression", new FhirString("entry.search.empty() or (type = 'searchset')"))},
+            Expression = "entry.search.empty() or (type = 'searchset')",
             Key = "bdl-2",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "entry.search only when a search",
             Xpath = "not(f:entry/f:search) or (f:type/@value = 'searchset')"
         };
 
-        public static ElementDefinition.ConstraintComponent Bundle_BDL_1 = new ElementDefinition.ConstraintComponent()
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_1 = new ElementDefinition.ConstraintComponent
         {
-            Extension = new List<Model.Extension>() { new Model.Extension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression", new FhirString("total.empty() or (type = 'searchset') or (type = 'history')"))},
+            Expression = "total.empty() or (type = 'searchset') or (type = 'history')",
             Key = "bdl-1",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "total only when a search or history",
             Xpath = "not(f:total) or (f:type/@value = 'searchset') or (f:type/@value = 'history')"
         };
 
-        public static ElementDefinition.ConstraintComponent Bundle_BDL_7 = new ElementDefinition.ConstraintComponent()
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_7 = new ElementDefinition.ConstraintComponent
         {
-            Extension = new List<Model.Extension>() { new Model.Extension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression", new FhirString("entry.where(fullUrl).select(fullUrl|resource.meta.versionId).isDistinct()"))},
+            Expression = "entry.where(fullUrl).select(fullUrl|resource.meta.versionId).isDistinct()",
             Key = "bdl-7",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId",
             Xpath = "count(for $entry in f:entry[f:resource] return $entry[count(parent::f:Bundle/f:entry[f:fullUrl/@value=$entry/f:fullUrl/@value and ((not(f:resource/*/f:meta/f:versionId/@value) and not($entry/f:resource/*/f:meta/f:versionId/@value)) or f:resource/*/f:meta/f:versionId/@value=$entry/f:resource/*/f:meta/f:versionId/@value)])!=1])=0"
         };
 
-        public static ElementDefinition.ConstraintComponent Bundle_BDL_3 = new ElementDefinition.ConstraintComponent()
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_3 = new ElementDefinition.ConstraintComponent
         {
-            Extension = new List<Model.Extension>() { new Model.Extension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression", new FhirString("entry.request.empty() or type = 'batch' or type = 'transaction' or type = 'history'"))},
+            Expression = "entry.request.empty() or type = 'batch' or type = 'transaction' or type = 'history'",
             Key = "bdl-3",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "entry.request only for some types of bundles",
             Xpath = "not(f:entry/f:request) or (f:type/@value = 'batch') or (f:type/@value = 'transaction') or (f:type/@value = 'history')"
         };
 
-        public static ElementDefinition.ConstraintComponent Bundle_BDL_4 = new ElementDefinition.ConstraintComponent()
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_4 = new ElementDefinition.ConstraintComponent
         {
-            Extension = new List<Model.Extension>() { new Model.Extension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression", new FhirString("entry.response.empty() or type = 'batch-response' or type = 'transaction-response'"))},
+            Expression = "entry.response.empty() or type = 'batch-response' or type = 'transaction-response'",
             Key = "bdl-4",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "entry.response only for some types of bundles",
             Xpath = "not(f:entry/f:response) or (f:type/@value = 'batch-response') or (f:type/@value = 'transaction-response')"
         };
 
-        public static ElementDefinition.ConstraintComponent Bundle_BDL_5 = new ElementDefinition.ConstraintComponent()
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_5 = new ElementDefinition.ConstraintComponent
         {
-            Extension = new List<Model.Extension>() { new Model.Extension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression", new FhirString("entry.all(resource or request or response)"))},
+            Expression = "entry.all(resource or request or response)",
             Key = "bdl-5",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "must be a resource unless there's a request or response",
             Xpath = "f:resource or f:request or f:response"
         };
 
-        public static ElementDefinition.ConstraintComponent Bundle_BDL_6 = new ElementDefinition.ConstraintComponent()
+        public static ElementDefinition.ConstraintComponent Bundle_BDL_6 = new ElementDefinition.ConstraintComponent
         {
-            Extension = new List<Model.Extension>() { new Model.Extension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression", new FhirString("entry.all(fullUrl.empty() xor resource)"))},
+            Expression = "entry.all(fullUrl.empty() xor resource)",
             Key = "bdl-6",
             Severity = ElementDefinition.ConstraintSeverity.Warning,
             Human = "The fullUrl element must be present when a resource is present, and not present otherwise",
@@ -1356,53 +1360,53 @@ namespace Hl7.Fhir.Model
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as Bundle;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.Bundle.BundleType>)TypeElement.DeepCopy();
-                if(TotalElement != null) dest.TotalElement = (Hl7.Fhir.Model.UnsignedInt)TotalElement.DeepCopy();
-                if(Link != null) dest.Link = new List<Hl7.Fhir.Model.Bundle.LinkComponent>(Link.DeepCopy());
-                if(Entry != null) dest.Entry = new List<Hl7.Fhir.Model.Bundle.EntryComponent>(Entry.DeepCopy());
-                if(Signature != null) dest.Signature = (Hl7.Fhir.Model.Signature)Signature.DeepCopy();
+                if (TypeElement != null) dest.TypeElement = (Code<BundleType>)TypeElement.DeepCopy();
+                if (TotalElement != null) dest.TotalElement = (UnsignedInt)TotalElement.DeepCopy();
+                if (Link != null) dest.Link = new List<LinkComponent>(Link.DeepCopy());
+                if (Entry != null) dest.Entry = new List<EntryComponent>(Entry.DeepCopy());
+                if (Signature != null) dest.Signature = (Signature)Signature.DeepCopy();
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new Bundle());
+             return CopyTo(new Bundle());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as Bundle;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
-            if( !DeepComparable.Matches(TotalElement, otherT.TotalElement)) return false;
-            if( !DeepComparable.Matches(Link, otherT.Link)) return false;
-            if( !DeepComparable.Matches(Entry, otherT.Entry)) return false;
-            if( !DeepComparable.Matches(Signature, otherT.Signature)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
+            if (!DeepComparable.Matches(TotalElement, otherT.TotalElement)) return false;
+            if ( !DeepComparable.Matches(Link, otherT.Link)) return false;
+            if ( !DeepComparable.Matches(Entry, otherT.Entry)) return false;
+            if (!DeepComparable.Matches(Signature, otherT.Signature)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as Bundle;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
-            if( !DeepComparable.IsExactly(TotalElement, otherT.TotalElement)) return false;
-            if( !DeepComparable.IsExactly(Link, otherT.Link)) return false;
-            if( !DeepComparable.IsExactly(Entry, otherT.Entry)) return false;
-            if( !DeepComparable.IsExactly(Signature, otherT.Signature)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
+            if (!DeepComparable.IsExactly(TotalElement, otherT.TotalElement)) return false;
+            if (!DeepComparable.IsExactly(Link, otherT.Link)) return false;
+            if (!DeepComparable.IsExactly(Entry, otherT.Entry)) return false;
+            if (!DeepComparable.IsExactly(Signature, otherT.Signature)) return false;
+
             return true;
         }
 
@@ -1412,11 +1416,11 @@ namespace Hl7.Fhir.Model
             get
             {
                 foreach (var item in base.Children) yield return item;
-				if (TypeElement != null) yield return TypeElement;
-				if (TotalElement != null) yield return TotalElement;
-				foreach (var elem in Link) { if (elem != null) yield return elem; }
-				foreach (var elem in Entry) { if (elem != null) yield return elem; }
-				if (Signature != null) yield return Signature;
+                if (TypeElement != null) yield return TypeElement;
+                if (TotalElement != null) yield return TotalElement;
+                foreach (var elem in Link) { if (elem != null) yield return elem; }
+                foreach (var elem in Entry) { if (elem != null) yield return elem; }
+                if (Signature != null) yield return Signature;
             }
         }
 
@@ -1435,5 +1439,5 @@ namespace Hl7.Fhir.Model
         }
 
     }
-    
+
 }

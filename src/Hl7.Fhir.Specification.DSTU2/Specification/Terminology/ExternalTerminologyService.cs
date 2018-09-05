@@ -7,12 +7,11 @@
  */
 
 using System;
-using System.Linq;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Specification.Terminology
 {
@@ -25,9 +24,9 @@ namespace Hl7.Fhir.Specification.Terminology
 
         public IFhirClient Endpoint { get; set; }
 
-        public OperationOutcome ValidateCode(string canonical = null, string context = null, ValueSet valueSet = null, 
-            string code = null, string system = null, string version = null, string display = null, 
-            Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null, 
+        public OperationOutcome ValidateCode(string canonical = null, string context = null, ValueSet valueSet = null,
+            string code = null, string system = null, string version = null, string display = null,
+            Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null,
             bool? @abstract = null, string displayLanguage = null)
         {
             if (!String.IsNullOrEmpty(displayLanguage))
@@ -39,12 +38,12 @@ namespace Hl7.Fhir.Specification.Terminology
                     Endpoint.ValidateCode(
                                 identifier: canonical != null ? new FhirUri(canonical) : null,
                                 context: context != null ? new FhirUri(context) : null,
-                                valueSet: valueSet, 
+                                valueSet: valueSet,
                                 code: code != null ? new Code(code) : null,
                                 system: system != null ? new FhirUri(system) : null,
                                 version: version != null ? new FhirString(version) : null,
                                 display: display != null ? new FhirString(display) : null,
-                                coding: coding, codeableConcept: codeableConcept, date: date, 
+                                coding: coding, codeableConcept: codeableConcept, date: date,
                                 @abstract: @abstract != null ? new FhirBoolean(@abstract) : null);
 
                 OperationOutcome outcome = processResult(code, system, display, coding, codeableConcept, resultValidateCode);

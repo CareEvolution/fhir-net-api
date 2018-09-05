@@ -38,6 +38,7 @@ using System.Runtime.Serialization;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hl7.Fhir.Rest
 {
@@ -344,39 +345,6 @@ namespace Hl7.Fhir.Rest
             if (Elements.Any()) result.Add(Tuple.Create(SEARCH_PARAM_ELEMENTS, String.Join(",",Elements)));
 
             result.AddRange(Parameters);
-            return result;
-        }
-
-
-        public static SearchParams FromParameters(Parameters parameters)
-        {
-            var result = new SearchParams();
-
-            foreach (var parameter in parameters.Parameter)
-            {
-                var name = parameter.Name;
-                var value = parameter.Value;
-                
-                if(value != null && value is Primitive)
-                {
-                    result.Add(parameter.Name, PrimitiveTypeConverter.ConvertTo<string>(value));
-                }
-                else
-                    if (value == null) throw Error.NotSupported("Can only convert primitive parameters to Uri parameters");
-            }
-
-            return result;
-        }
-
-        public Parameters ToParameters()
-        {
-            var result = new Parameters();
-
-            foreach (var parameter in ToUriParamList())
-            {
-                result.Add(parameter.Item1, new FhirString(parameter.Item2));
-            }
-
             return result;
         }
     }

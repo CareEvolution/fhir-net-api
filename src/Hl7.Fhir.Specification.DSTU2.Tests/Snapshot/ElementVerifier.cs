@@ -1,12 +1,10 @@
-﻿using Hl7.Fhir.Model;
-using Hl7.Fhir.Specification.Snapshot;
-using Hl7.Fhir.Specification.Source;
-using Hl7.Fhir.Utility;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Specification.Snapshot;
+using Hl7.Fhir.Specification.Source;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -58,7 +56,7 @@ namespace Hl7.Fhir.Specification.Tests
                     }
                     if (_settings.GenerateElementIds && elementId != null)
                     {
-                        Assert.AreEqual(elementId, element.ElementId, $"Invalid elementId. Expected = '{elementId}', actual = '{element.ElementId}'.");
+                        Assert.AreEqual(elementId, element.Id, $"Invalid elementId. Expected = '{elementId}', actual = '{element.Id}'.");
                     }
                     if (fixedValue != null)
                     {

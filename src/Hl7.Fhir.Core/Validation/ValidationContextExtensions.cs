@@ -6,13 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hl7.Fhir.Validation
 {
@@ -45,31 +39,5 @@ namespace Hl7.Fhir.Validation
             else
                 return false;
         }
-
-        /// <summary>
-        /// Sets the callback to resolve a url to a resource when FhirPath validation encounters 
-        /// a call to resolve() in an invariant.
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="resolver"></param>
-        public static void SetResolver(this ValidationContext ctx, Func<string,Resource> resolver)
-        {
-            ctx.Items[RESOLVER_ITEM_KEY] = resolver;
-        }
-
-
-        /// <summary>
-        /// Gets the callback that is used by FhirPath validation when an invariant invokes the resolve() function.
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <returns></returns>
-        public static Func<string,Resource> Resolver(this ValidationContext ctx)
-        {
-            if (ctx.Items.TryGetValue(RESOLVER_ITEM_KEY, out object result))
-                return result is Func<string, Resource> c ? c : null;
-            else
-                return null;
-        }
-
     }
 }

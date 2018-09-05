@@ -23,18 +23,19 @@
 
 #define THREADSAFE
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Summary;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Specification.Summary;
+using Hl7.Fhir.Support;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Source
 {
@@ -656,7 +657,7 @@ namespace Hl7.Fhir.Specification.Source
 
                 // local helper function to validate file/folder attributes, exclude system and/or hidden
                 bool isValid(FileAttributes attr) => (attr & (FileAttributes.System | FileAttributes.Hidden)) == 0;
-                
+
                 // local helper function to filter executables (*.exe, *.dll)
                 bool isExtensionSafe(string extension) => !ExecutableExtensions.Contains(extension, ExtensionComparer);
 
@@ -782,7 +783,7 @@ namespace Hl7.Fhir.Specification.Source
                 where canonical != null
                 group cr by canonical into g
                 where g.Count() > 1 // g.Skip(1).Any()
-            select g;
+                select g;
 
             if (duplicates.Any())
             {

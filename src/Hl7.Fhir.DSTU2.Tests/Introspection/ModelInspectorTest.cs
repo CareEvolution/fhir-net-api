@@ -6,18 +6,16 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
 using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
 using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Introspection
 {
     [TestClass]
-	public class ModelInspectorTest
+    public class ModelInspectorTest
     {
         [TestMethod]
         public void TestResourceNameResolving()
@@ -72,13 +70,13 @@ namespace Hl7.Fhir.Tests.Introspection
             // Should also have found the abstract classes
             Assert.IsNotNull(inspector.FindClassMappingForFhirDataType("Element"));
             Assert.IsNotNull(inspector.FindClassMappingForResource("Resource"));
-           
+
             // The open generic Code<> should not be there
             var codeOfT = inspector.FindClassMappingByType(typeof(Code<>));
             Assert.IsNull(codeOfT);
         }
 
-   }
+    }
 
 
     [FhirEnumeration("SomeEnum")]

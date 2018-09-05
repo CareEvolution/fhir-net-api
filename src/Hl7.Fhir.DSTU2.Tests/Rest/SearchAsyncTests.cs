@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Rest;
-using Task = System.Threading.Tasks.Task;
+using Hl7.Fhir.Rest.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Task = System.Threading.Tasks.Task;
 
 namespace Hl7.Fhir.Core.AsyncTests
 {
@@ -45,7 +46,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
-            
+
             Console.WriteLine("Test Completed");
         }
 
@@ -169,7 +170,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 .SummaryOnly()
                 .OrderBy("birthdate",
                     SortOrder.Descending);
-            
+
             var task1 = client.SearchAsync<Patient>(srchParams);
             var task2 = client.SearchAsync<Patient>(srchParams);
             var task3 = client.SearchAsync<Patient>(srchParams);
@@ -178,7 +179,7 @@ namespace Hl7.Fhir.Core.AsyncTests
             var result1 = task1.Result;
 
             Assert.IsTrue(result1.Entry.Count >= 1);
-            
+
             while (result1 != null)
             {
                 foreach (var e in result1.Entry)
@@ -243,7 +244,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 ReturnFullResource = true
             };
 
-            var result1 = await client.SearchAsync<Patient>(new []{"family=clark"});
+            var result1 = await client.SearchAsync<Patient>(new[] { "family=clark" });
 
             Assert.IsTrue(result1.Entry.Count >= 1);
 
@@ -271,7 +272,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 ReturnFullResource = true
             };
 
-            var result1 = await client.SearchUsingPostAsync<Patient>(new[] { "family=Chalmers" }, pageSize:5);
+            var result1 = await client.SearchUsingPostAsync<Patient>(new[] { "family=Chalmers" }, pageSize: 5);
 
             Assert.IsTrue(result1.Entry.Count >= 1);
 
@@ -299,7 +300,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 ReturnFullResource = true
             };
 
-            var result1 = await client.SearchAsync<Patient>(new[] { "family=clark" },null,1);
+            var result1 = await client.SearchAsync<Patient>(new[] { "family=clark" }, null, 1);
 
             Assert.IsTrue(result1.Entry.Count >= 1);
 

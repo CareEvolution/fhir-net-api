@@ -1,5 +1,4 @@
-﻿using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Specification;
+﻿using Hl7.Fhir.Specification.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Serialization.Tests

@@ -6,14 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Support;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Reflection;
-using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Serialization
@@ -24,7 +19,7 @@ namespace Hl7.Fhir.Serialization
         {
         }
 
-     
+
         public bool CanCreate(Type type)
         {
             if (type == null) throw Error.ArgumentNull(nameof(type));
@@ -54,11 +49,11 @@ namespace Hl7.Fhir.Serialization
             // is not a concrete collection type, but an interface, create a new List of
             // the given type.
             if (ReflectionHelper.IsTypedCollection(typeToCreate) && !typeToCreate.IsArray && typeToCreate.GetTypeInfo().IsInterface)
-			{
+            {
                 var elementType = ReflectionHelper.GetCollectionItemType(typeToCreate);
                 typeToCreate = typeof(List<>).MakeGenericType(elementType);
             }
-                             
+
             return Activator.CreateInstance(typeToCreate);
         }
     }

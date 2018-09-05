@@ -6,16 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using Hl7.Fhir.Serialization;
-using System.Xml;
 using static Hl7.Fhir.Tests.TestDataHelper;
 
 namespace Hl7.Fhir.Tests.Model
@@ -79,6 +72,6 @@ namespace Hl7.Fhir.Tests.Model
             Assert.IsTrue(a.IsExactly(c));
             Assert.IsTrue(a.Matches(c));
         }
-        
+
     }
 }

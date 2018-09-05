@@ -1,11 +1,13 @@
-﻿using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+﻿using System.IO;
+using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.DSTU2;
 using Hl7.Fhir.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System.Linq;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
@@ -16,7 +18,7 @@ namespace Hl7.Fhir.Serialization.Tests
             XmlParsingHelpers.ParseToTypedElement(xml, new PocoStructureDefinitionSummaryProvider(), s);
         public ITypedElement getJsonNode(string json, FhirJsonNodeSettings s = null) =>
             JsonParsingHelpers.ParseToTypedElement(json, new PocoStructureDefinitionSummaryProvider(), settings: s);
-        
+
 
         [TestMethod]
         public void CanSerializeSubtree()

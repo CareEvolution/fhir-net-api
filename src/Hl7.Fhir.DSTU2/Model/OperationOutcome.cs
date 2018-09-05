@@ -1,11 +1,12 @@
 ﻿using Hl7.Fhir.Introspection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{ToString()}}")]
     public partial class OperationOutcome
@@ -119,7 +120,7 @@ namespace Hl7.Fhir.Model
             {
                 get
                 {
-                    return String.Format("Code=\"{0}\" {1}", this.Code, _Details.DebuggerDisplay("Details."));
+                    return String.Format("Code=\"{0}\" {1}", this.Code, _details.DebuggerDisplay("Details."));
                 }
             }
 

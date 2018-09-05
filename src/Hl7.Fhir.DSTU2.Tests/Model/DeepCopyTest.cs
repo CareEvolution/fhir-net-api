@@ -6,18 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using Hl7.Fhir.Serialization;
-using System.Xml;
-using static Hl7.Fhir.Tests.TestDataHelper;
 using System.Diagnostics;
+using System.Linq;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static Hl7.Fhir.Tests.TestDataHelper;
 
 namespace Hl7.Fhir.Tests.Model
 {
@@ -68,7 +65,7 @@ namespace Hl7.Fhir.Tests.Model
             var sw = new Stopwatch();
 
             sw.Start();
-            for(var loop=0; loop<1000; loop++)
+            for (var loop = 0; loop < 1000; loop++)
             {
                 p.DeepCopy();
             }

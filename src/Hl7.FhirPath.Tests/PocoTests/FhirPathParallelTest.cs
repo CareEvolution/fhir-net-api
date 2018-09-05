@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Source;
 using Hl7.FhirPath;
 using System;

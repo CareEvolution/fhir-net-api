@@ -8,10 +8,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using Hl7.Fhir.Model;
-using System.Diagnostics;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Navigation

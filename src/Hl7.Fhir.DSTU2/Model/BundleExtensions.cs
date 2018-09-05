@@ -6,16 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public static class BundleExtensions
     {
@@ -73,13 +71,13 @@ namespace Hl7.Fhir.Model
         public static bool HasResource(this Bundle.EntryComponent entry)
         {
             return entry.Resource != null;
-        }        
+        }
 
         public static IEnumerable<Resource> GetResources(this Bundle bundle)
         {
             return bundle.Entry.Where(e => e.HasResource()).Select(e => e.Resource);
         }
-        
+
 
         /// <summary>
         /// Find all entries in a Bundle that match the given reference.
@@ -160,7 +158,7 @@ namespace Hl7.Fhir.Model
         {
             if (type == null) throw Error.ArgumentNull(nameof(type));
             if (id == null) throw Error.ArgumentNull(nameof(id));
-            var identity = ResourceIdentity.Build(type,id,version);
+            var identity = ResourceIdentity.Build(type, id, version);
 
             return FindEntry(bundle, identity, includeDeleted);
         }
@@ -205,7 +203,7 @@ namespace Hl7.Fhir.Model
 
         public static ResourceIdentity GetResourceLocation(this Bundle.EntryComponent entry, string baseUrl = null)
         {
-            return entry.FullUrl != null ?  new ResourceIdentity(entry.FullUrl) : null;
+            return entry.FullUrl != null ? new ResourceIdentity(entry.FullUrl) : null;
         }
     }
 

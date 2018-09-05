@@ -45,11 +45,12 @@
 
 using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Support;
 using System.Diagnostics;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Model;
 
 namespace Hl7.Fhir.Specification.Snapshot
 {

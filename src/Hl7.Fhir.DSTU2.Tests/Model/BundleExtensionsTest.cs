@@ -6,19 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hl7.Fhir.Rest;
+using Hl7.Fhir.Model.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Model
 {
     [TestClass]
-	public class BundleExtensionsTest
+    public class BundleExtensionsTest
     {
         [TestMethod]
         public void TestFindEntry()
@@ -47,7 +43,7 @@ namespace Hl7.Fhir.Tests.Model
             testBundle.AddResourceEntry(new Patient { Id = "1234", Meta = new Meta { VersionId = "v2" } }, "http://nu.nl/fhir/Patient/1234");
             testBundle.AddResourceEntry(new Patient { Id = "1234", Meta = new Meta { VersionId = "v3" } }, "http://nu.nl/fhir/Patient/1234");
             testBundle.AddResourceEntry(new Patient { Id = "1234", Meta = new Meta { VersionId = "v4" } }, "http://nu.nl/fhir/Patient/1234")
-                        .Request = new Bundle.RequestComponent { Method = Bundle.HTTPVerb.DELETE } ;
+                        .Request = new Bundle.RequestComponent { Method = Bundle.HTTPVerb.DELETE };
 
             testBundle.AddResourceEntry(new Patient { Id = "5678" }, "http://server1.com/fhir/Patient/5678");
             testBundle.AddResourceEntry(new Patient { Id = "1.2.3.4.5" }, "urn:oid:1.2.3.4.5");
@@ -77,7 +73,7 @@ namespace Hl7.Fhir.Tests.Model
             testBundle.AddSearchEntry(new Patient { Id = "5678" }, "http://server1.com/fhir/Patient/5678", Bundle.SearchEntryMode.Match);
 
             var firstEntry = testBundle.FindEntry("http://server1.com/fhir/Patient/5678").First();
-            
+
             Assert.AreEqual(Bundle.SearchEntryMode.Match, firstEntry.Search.Mode);
             Assert.AreEqual("5678", firstEntry.Resource.Id);
 

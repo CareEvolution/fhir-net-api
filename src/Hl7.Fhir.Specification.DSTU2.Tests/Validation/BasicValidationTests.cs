@@ -1,22 +1,23 @@
-﻿using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Navigation;
-using Hl7.Fhir.Specification.Source;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Xml.Linq;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Support;
-using System.Collections.Generic;
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Utility;
-using Xunit;
-using System;
-using Hl7.Fhir.Validation;
-using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using System.Xml.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Specification.DSTU2;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Support;
+using Hl7.Fhir.Validation;
+using Xunit;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -96,8 +97,8 @@ namespace Hl7.Fhir.Specification.Tests
                     SourceNode.Node("extension",
                         SourceNode.Valued("value", "4")),
                     SourceNode.Node("nonExistant")
-                        ).ToTypedElement(new PocoStructureDefinitionSummaryProvider(), type: "boolean", settings: new TypedElementSettings { ErrorMode = TypedElementSettings.TypeErrorMode.Passthrough});
-                    
+                        ).ToTypedElement(new PocoStructureDefinitionSummaryProvider(), type: "boolean", settings: new TypedElementSettings { ErrorMode = TypedElementSettings.TypeErrorMode.Passthrough });
+
             var matches = ChildNameMatcher.Match(boolDefNav, new ScopedNode(data));
             Assert.Single(matches.UnmatchedInstanceElements);
             Assert.Equal(3, matches.Matches.Count());        // id, extension, value

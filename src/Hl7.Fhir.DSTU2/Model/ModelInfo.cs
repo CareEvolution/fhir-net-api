@@ -35,8 +35,9 @@ using Hl7.Fhir.Support;
 using Hl7.Fhir.Introspection;
 using System.Diagnostics;
 using Hl7.Fhir.Utility;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public partial class ModelInfo
     {
@@ -88,70 +89,6 @@ namespace Hl7.Fhir.Model
             public ResourceType[] Target { get; set; }
         }
 
-#if false
-        // [WMR 20160421] Slow, based on reflection...
-        public static string FhirTypeToFhirTypeName(FHIRDefinedType type)
-        {
-            return type.GetLiteral();
-        }
-
-        // [WMR 20160421] Wrong!
-        // FhirTypeToFhirTypeName parses the typename from EnumLiteral attribute on individual FHIRDefinedType member
-        // FhirTypeNameToFhirType converts enum member name to FHIRDefinedType enum value
-        // Currently, the EnumLiteral attribute value is always equal to the Enum member name and the C# type name
-        // However, this is not guaranteed! e.g. a FHIR type name could be a reserved word in C#
-
-        public static FHIRDefinedType? FhirTypeNameToFhirType(string name)
-        {
-            FHIRDefinedType result; // = FHIRDefinedType.Patient;
-
-            if (Enum.TryParse<FHIRDefinedType>(name, ignoreCase: true, result: out result))
-                return result;
-            else
-                return null;
-        }
-#elif false
-        // [WMR 20160421] NEW - Improved & optimized
-        // 1. Convert from/to FHIR type names as defined by EnumLiteral attributes on FHIRDefinedType enum members
-        // 2. Cache lookup tables, to optimize runtime reflection
-
-        /// <summary>Returns the <see cref="FHIRDefinedType"/> enum value that represents the specified FHIR type name, or <c>null</c>.</summary>
-        public static string FhirTypeToFhirTypeName(FHIRDefinedType type)
-        {
-            string result;
-            _fhirTypeToFhirTypeName.Value.TryGetValue(type, out result);
-            return result;
-        }
-
-        private static Lazy<IDictionary<FHIRDefinedType, string>> _fhirTypeToFhirTypeName
-            = new Lazy<IDictionary<FHIRDefinedType, string>>(InitFhirTypeToFhirTypeName);
-
-        private static IDictionary<FHIRDefinedType, string> InitFhirTypeToFhirTypeName()
-        {
-            // Build reverse lookup table
-            return _fhirTypeNameToFhirType.Value.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
-        }
-
-        /// <summary>Returns the FHIR type name represented by the specified <see cref="FHIRDefinedType"/> enum value, or <c>null</c>.</summary>
-        public static FHIRDefinedType? FhirTypeNameToFhirType(string typeName)
-        {
-            FHIRDefinedType result;
-            if (_fhirTypeNameToFhirType.Value.TryGetValue(typeName, out result))
-            {
-                return result;
-            }
-            return null;
-        }
-
-        private static Lazy<IDictionary<string, FHIRDefinedType>> _fhirTypeNameToFhirType
-            = new Lazy<IDictionary<string, FHIRDefinedType>>(InitFhirTypeNameToFhirType);
-
-        private static IDictionary<string, FHIRDefinedType> InitFhirTypeNameToFhirType()
-        {
-            var values = Enum.GetValues(typeof(FHIRDefinedType)).OfType<FHIRDefinedType>();
-            return values.ToDictionary(type => type.GetLiteral());
-        }
-#else
         // [WMR 2017-10-25] Remove Lazy initialization
         // These methods are used frequently throughout the API (and by clients) and initialization cost is low
 
@@ -168,7 +105,6 @@ namespace Hl7.Fhir.Model
         /// <summary>Returns the <see cref="FHIRDefinedType"/> enum value that represents the specified FHIR type name, or <c>null</c>.</summary>
         public static string FhirTypeToFhirTypeName(FHIRDefinedType type)
             => _fhirTypeToFhirTypeName.TryGetValue(type, out var result) ? result : null;
-#endif
 
         // [WMR 20171025] NEW: Conversion methods for ResourceType
 
@@ -212,12 +148,6 @@ namespace Hl7.Fhir.Model
             return result;
         }
 
-        [Obsolete("Use GetFhirTypeNameForType() instead")]
-        public static string GetFhirTypeForType(Type type)
-        {
-            return GetFhirTypeNameForType(type);
-        }
-
         /// <summary>Determines if the specified value represents the name of a known FHIR resource.</summary>
         public static bool IsKnownResource(string name)
         {
@@ -237,25 +167,6 @@ namespace Hl7.Fhir.Model
         {
             var name = FhirTypeToFhirTypeName(type);
             return name != null && IsKnownResource(name);
-        }
-
-        [Obsolete("Use GetTypeForFhirType() which covers all types, not just resources")]
-        public static Type GetTypeForResourceName(string name)
-        {
-            if (!IsKnownResource(name)) return null;
-
-            return GetTypeForFhirType(name);
-        }
-
-        [Obsolete("Use GetFhirTypeNameForType() which covers all types, not just resources")]
-        public static string GetResourceNameForType(Type type)
-        {
-            var name = GetFhirTypeForType(type);
-
-            if (name != null && IsKnownResource(name))
-                return name;
-            else
-                return null;
         }
 
         /// <summary>Determines if the specified value represents the name of a FHIR primitive data type.</summary>

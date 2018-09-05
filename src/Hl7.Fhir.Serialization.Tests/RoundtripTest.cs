@@ -14,6 +14,9 @@ using System.IO.Compression;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Specification.DSTU2;
 
 namespace Hl7.Fhir.Serialization.Tests
 {

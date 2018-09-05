@@ -6,16 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System.Diagnostics;
-using Hl7.Fhir.Utility;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.ElementModel;
 using System.IO;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.FhirPath;
-using Hl7.FhirPath;
 using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.FhirPath;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Introspection
 {

@@ -1,59 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
-  
-   * Redistributions of source code must retain the above copyright notice, this 
+
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
-  
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
+
 
 */
+
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance)
     /// </summary>
     [FhirType("AllergyIntolerance", IsResource=true)]
     [DataContract]
-    public partial class AllergyIntolerance : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class AllergyIntolerance : DomainResource
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.AllergyIntolerance; } }
         [NotMapped]
         public override string TypeName { get { return "AllergyIntolerance"; } }
-        
+
         /// <summary>
         /// Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified Substance.
         /// (url: http://hl7.org/fhir/ValueSet/allergy-intolerance-status)
@@ -240,253 +244,254 @@ namespace Hl7.Fhir.Model
             Severe,
         }
 
+
         [FhirType("ReactionComponent")]
         [DataContract]
-        public partial class ReactionComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class ReactionComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "ReactionComponent"; } }
-            
+
             /// <summary>
             /// Specific substance considered to be responsible for event
             /// </summary>
             [FhirElement("substance", InSummary=true, Order=40)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept Substance
+            public CodeableConcept Substance
             {
-                get { return _Substance; }
-                set { _Substance = value; OnPropertyChanged("Substance"); }
+                get { return _substance; }
+                set { _substance = value; OnPropertyChanged("Substance"); }
             }
-            
-            private Hl7.Fhir.Model.CodeableConcept _Substance;
-            
+
+            private CodeableConcept _substance;
+
             /// <summary>
             /// unlikely | likely | confirmed - clinical certainty about the specific substance
             /// </summary>
             [FhirElement("certainty", InSummary=true, Order=50)]
             [DataMember]
-            public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCertainty> CertaintyElement
+            public Code<AllergyIntoleranceCertainty> CertaintyElement
             {
-                get { return _CertaintyElement; }
-                set { _CertaintyElement = value; OnPropertyChanged("CertaintyElement"); }
+                get { return _certaintyElement; }
+                set { _certaintyElement = value; OnPropertyChanged("CertaintyElement"); }
             }
-            
-            private Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCertainty> _CertaintyElement;
-            
+
+            private Code<AllergyIntoleranceCertainty> _certaintyElement;
+
             /// <summary>
             /// unlikely | likely | confirmed - clinical certainty about the specific substance
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
-            public Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCertainty? Certainty
+            [IgnoreDataMember]
+            public AllergyIntoleranceCertainty? Certainty
             {
                 get { return CertaintyElement != null ? CertaintyElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        CertaintyElement = null; 
+                    if (value == null)
+                        CertaintyElement = null;
                     else
-                        CertaintyElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCertainty>(value);
+                        CertaintyElement = new Code<AllergyIntoleranceCertainty>(value);
                     OnPropertyChanged("Certainty");
                 }
             }
-            
+
             /// <summary>
             /// Clinical symptoms/signs associated with the Event
             /// </summary>
             [FhirElement("manifestation", InSummary=true, Order=60)]
             [Cardinality(Min=1,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.CodeableConcept> Manifestation
+            public List<CodeableConcept> Manifestation
             {
-                get { if(_Manifestation==null) _Manifestation = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Manifestation; }
-                set { _Manifestation = value; OnPropertyChanged("Manifestation"); }
+                get { if (_manifestation==null) _manifestation = new List<CodeableConcept>(); return _manifestation; }
+                set { _manifestation = value; OnPropertyChanged("Manifestation"); }
             }
-            
-            private List<Hl7.Fhir.Model.CodeableConcept> _Manifestation;
-            
+
+            private List<CodeableConcept> _manifestation;
+
             /// <summary>
             /// Description of the event as a whole
             /// </summary>
             [FhirElement("description", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirString DescriptionElement
+            public FhirString DescriptionElement
             {
-                get { return _DescriptionElement; }
-                set { _DescriptionElement = value; OnPropertyChanged("DescriptionElement"); }
+                get { return _descriptionElement; }
+                set { _descriptionElement = value; OnPropertyChanged("DescriptionElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirString _DescriptionElement;
-            
+
+            private FhirString _descriptionElement;
+
             /// <summary>
             /// Description of the event as a whole
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Description
             {
                 get { return DescriptionElement != null ? DescriptionElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        DescriptionElement = null; 
+                        DescriptionElement = null;
                     else
-                        DescriptionElement = new Hl7.Fhir.Model.FhirString(value);
+                        DescriptionElement = new FhirString(value);
                     OnPropertyChanged("Description");
                 }
             }
-            
+
             /// <summary>
             /// Date(/time) when manifestations showed
             /// </summary>
             [FhirElement("onset", InSummary=true, Order=80)]
             [DataMember]
-            public Hl7.Fhir.Model.FhirDateTime OnsetElement
+            public FhirDateTime OnsetElement
             {
-                get { return _OnsetElement; }
-                set { _OnsetElement = value; OnPropertyChanged("OnsetElement"); }
+                get { return _onsetElement; }
+                set { _onsetElement = value; OnPropertyChanged("OnsetElement"); }
             }
-            
-            private Hl7.Fhir.Model.FhirDateTime _OnsetElement;
-            
+
+            private FhirDateTime _onsetElement;
+
             /// <summary>
             /// Date(/time) when manifestations showed
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
+            [IgnoreDataMember]
             public string Onset
             {
                 get { return OnsetElement != null ? OnsetElement.Value : null; }
                 set
                 {
                     if (value == null)
-                        OnsetElement = null; 
+                        OnsetElement = null;
                     else
-                        OnsetElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                        OnsetElement = new FhirDateTime(value);
                     OnPropertyChanged("Onset");
                 }
             }
-            
+
             /// <summary>
             /// mild | moderate | severe (of event as a whole)
             /// </summary>
             [FhirElement("severity", InSummary=true, Order=90)]
             [DataMember]
-            public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity> SeverityElement
+            public Code<AllergyIntoleranceSeverity> SeverityElement
             {
-                get { return _SeverityElement; }
-                set { _SeverityElement = value; OnPropertyChanged("SeverityElement"); }
+                get { return _severityElement; }
+                set { _severityElement = value; OnPropertyChanged("SeverityElement"); }
             }
-            
-            private Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity> _SeverityElement;
-            
+
+            private Code<AllergyIntoleranceSeverity> _severityElement;
+
             /// <summary>
             /// mild | moderate | severe (of event as a whole)
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
-            public Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity? Severity
+            [IgnoreDataMember]
+            public AllergyIntoleranceSeverity? Severity
             {
                 get { return SeverityElement != null ? SeverityElement.Value : null; }
                 set
                 {
-                    if (!value.HasValue)
-                        SeverityElement = null; 
+                    if (value == null)
+                        SeverityElement = null;
                     else
-                        SeverityElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity>(value);
+                        SeverityElement = new Code<AllergyIntoleranceSeverity>(value);
                     OnPropertyChanged("Severity");
                 }
             }
-            
+
             /// <summary>
             /// How the subject was exposed to the substance
             /// </summary>
             [FhirElement("exposureRoute", InSummary=true, Order=100)]
             [DataMember]
-            public Hl7.Fhir.Model.CodeableConcept ExposureRoute
+            public CodeableConcept ExposureRoute
             {
-                get { return _ExposureRoute; }
-                set { _ExposureRoute = value; OnPropertyChanged("ExposureRoute"); }
+                get { return _exposureRoute; }
+                set { _exposureRoute = value; OnPropertyChanged("ExposureRoute"); }
             }
-            
-            private Hl7.Fhir.Model.CodeableConcept _ExposureRoute;
-            
+
+            private CodeableConcept _exposureRoute;
+
             /// <summary>
             /// Text about event not captured in other fields
             /// </summary>
             [FhirElement("note", Order=110)]
             [DataMember]
-            public Hl7.Fhir.Model.Annotation Note
+            public Annotation Note
             {
-                get { return _Note; }
-                set { _Note = value; OnPropertyChanged("Note"); }
+                get { return _note; }
+                set { _note = value; OnPropertyChanged("Note"); }
             }
-            
-            private Hl7.Fhir.Model.Annotation _Note;
-            
+
+            private Annotation _note;
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as ReactionComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Substance != null) dest.Substance = (Hl7.Fhir.Model.CodeableConcept)Substance.DeepCopy();
-                    if(CertaintyElement != null) dest.CertaintyElement = (Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCertainty>)CertaintyElement.DeepCopy();
-                    if(Manifestation != null) dest.Manifestation = new List<Hl7.Fhir.Model.CodeableConcept>(Manifestation.DeepCopy());
-                    if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.FhirString)DescriptionElement.DeepCopy();
-                    if(OnsetElement != null) dest.OnsetElement = (Hl7.Fhir.Model.FhirDateTime)OnsetElement.DeepCopy();
-                    if(SeverityElement != null) dest.SeverityElement = (Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceSeverity>)SeverityElement.DeepCopy();
-                    if(ExposureRoute != null) dest.ExposureRoute = (Hl7.Fhir.Model.CodeableConcept)ExposureRoute.DeepCopy();
-                    if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
+                    if (Substance != null) dest.Substance = (CodeableConcept)Substance.DeepCopy();
+                    if (CertaintyElement != null) dest.CertaintyElement = (Code<AllergyIntoleranceCertainty>)CertaintyElement.DeepCopy();
+                    if (Manifestation != null) dest.Manifestation = new List<CodeableConcept>(Manifestation.DeepCopy());
+                    if (DescriptionElement != null) dest.DescriptionElement = (FhirString)DescriptionElement.DeepCopy();
+                    if (OnsetElement != null) dest.OnsetElement = (FhirDateTime)OnsetElement.DeepCopy();
+                    if (SeverityElement != null) dest.SeverityElement = (Code<AllergyIntoleranceSeverity>)SeverityElement.DeepCopy();
+                    if (ExposureRoute != null) dest.ExposureRoute = (CodeableConcept)ExposureRoute.DeepCopy();
+                    if (Note != null) dest.Note = (Annotation)Note.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new ReactionComponent());
+                 return CopyTo(new ReactionComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as ReactionComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(Substance, otherT.Substance)) return false;
-                if( !DeepComparable.Matches(CertaintyElement, otherT.CertaintyElement)) return false;
-                if( !DeepComparable.Matches(Manifestation, otherT.Manifestation)) return false;
-                if( !DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
-                if( !DeepComparable.Matches(OnsetElement, otherT.OnsetElement)) return false;
-                if( !DeepComparable.Matches(SeverityElement, otherT.SeverityElement)) return false;
-                if( !DeepComparable.Matches(ExposureRoute, otherT.ExposureRoute)) return false;
-                if( !DeepComparable.Matches(Note, otherT.Note)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(Substance, otherT.Substance)) return false;
+                if (!DeepComparable.Matches(CertaintyElement, otherT.CertaintyElement)) return false;
+                if ( !DeepComparable.Matches(Manifestation, otherT.Manifestation)) return false;
+                if (!DeepComparable.Matches(DescriptionElement, otherT.DescriptionElement)) return false;
+                if (!DeepComparable.Matches(OnsetElement, otherT.OnsetElement)) return false;
+                if (!DeepComparable.Matches(SeverityElement, otherT.SeverityElement)) return false;
+                if (!DeepComparable.Matches(ExposureRoute, otherT.ExposureRoute)) return false;
+                if (!DeepComparable.Matches(Note, otherT.Note)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as ReactionComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(Substance, otherT.Substance)) return false;
-                if( !DeepComparable.IsExactly(CertaintyElement, otherT.CertaintyElement)) return false;
-                if( !DeepComparable.IsExactly(Manifestation, otherT.Manifestation)) return false;
-                if( !DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
-                if( !DeepComparable.IsExactly(OnsetElement, otherT.OnsetElement)) return false;
-                if( !DeepComparable.IsExactly(SeverityElement, otherT.SeverityElement)) return false;
-                if( !DeepComparable.IsExactly(ExposureRoute, otherT.ExposureRoute)) return false;
-                if( !DeepComparable.IsExactly(Note, otherT.Note)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Substance, otherT.Substance)) return false;
+                if (!DeepComparable.IsExactly(CertaintyElement, otherT.CertaintyElement)) return false;
+                if (!DeepComparable.IsExactly(Manifestation, otherT.Manifestation)) return false;
+                if (!DeepComparable.IsExactly(DescriptionElement, otherT.DescriptionElement)) return false;
+                if (!DeepComparable.IsExactly(OnsetElement, otherT.OnsetElement)) return false;
+                if (!DeepComparable.IsExactly(SeverityElement, otherT.SeverityElement)) return false;
+                if (!DeepComparable.IsExactly(ExposureRoute, otherT.ExposureRoute)) return false;
+                if (!DeepComparable.IsExactly(Note, otherT.Note)) return false;
+
                 return true;
             }
 
@@ -525,419 +530,410 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         /// <summary>
         /// External ids for this item
         /// </summary>
         [FhirElement("identifier", InSummary=true, Order=90)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Identifier> Identifier
+        public List<Identifier> Identifier
         {
-            get { if(_Identifier==null) _Identifier = new List<Hl7.Fhir.Model.Identifier>(); return _Identifier; }
-            set { _Identifier = value; OnPropertyChanged("Identifier"); }
+            get { if (_identifier==null) _identifier = new List<Identifier>(); return _identifier; }
+            set { _identifier = value; OnPropertyChanged("Identifier"); }
         }
-        
-        private List<Hl7.Fhir.Model.Identifier> _Identifier;
-        
+
+        private List<Identifier> _identifier;
+
         /// <summary>
         /// Date(/time) when manifestations showed
         /// </summary>
         [FhirElement("onset", InSummary=true, Order=100)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime OnsetElement
+        public FhirDateTime OnsetElement
         {
-            get { return _OnsetElement; }
-            set { _OnsetElement = value; OnPropertyChanged("OnsetElement"); }
+            get { return _onsetElement; }
+            set { _onsetElement = value; OnPropertyChanged("OnsetElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirDateTime _OnsetElement;
-        
+
+        private FhirDateTime _onsetElement;
+
         /// <summary>
         /// Date(/time) when manifestations showed
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Onset
         {
             get { return OnsetElement != null ? OnsetElement.Value : null; }
             set
             {
                 if (value == null)
-                  OnsetElement = null; 
+                    OnsetElement = null;
                 else
-                  OnsetElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    OnsetElement = new FhirDateTime(value);
                 OnPropertyChanged("Onset");
             }
         }
-        
+
         /// <summary>
         /// When recorded
         /// </summary>
         [FhirElement("recordedDate", InSummary=true, Order=110)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime RecordedDateElement
+        public FhirDateTime RecordedDateElement
         {
-            get { return _RecordedDateElement; }
-            set { _RecordedDateElement = value; OnPropertyChanged("RecordedDateElement"); }
+            get { return _recordedDateElement; }
+            set { _recordedDateElement = value; OnPropertyChanged("RecordedDateElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirDateTime _RecordedDateElement;
-        
+
+        private FhirDateTime _recordedDateElement;
+
         /// <summary>
         /// When recorded
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string RecordedDate
         {
             get { return RecordedDateElement != null ? RecordedDateElement.Value : null; }
             set
             {
                 if (value == null)
-                  RecordedDateElement = null; 
+                    RecordedDateElement = null;
                 else
-                  RecordedDateElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    RecordedDateElement = new FhirDateTime(value);
                 OnPropertyChanged("RecordedDate");
             }
         }
-        
+
         /// <summary>
         /// Who recorded the sensitivity
         /// </summary>
         [FhirElement("recorder", InSummary=true, Order=120)]
-        [CLSCompliant(false)]
-		[References("Practitioner","Patient")]
+        [References("Practitioner","Patient")]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference Recorder
+        public ResourceReference Recorder
         {
-            get { return _Recorder; }
-            set { _Recorder = value; OnPropertyChanged("Recorder"); }
+            get { return _recorder; }
+            set { _recorder = value; OnPropertyChanged("Recorder"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _Recorder;
-        
+
+        private ResourceReference _recorder;
+
         /// <summary>
         /// Who the sensitivity is for
         /// </summary>
         [FhirElement("patient", InSummary=true, Order=130)]
-        [CLSCompliant(false)]
-		[References("Patient")]
+        [References("Patient")]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference Patient
+        public ResourceReference Patient
         {
-            get { return _Patient; }
-            set { _Patient = value; OnPropertyChanged("Patient"); }
+            get { return _patient; }
+            set { _patient = value; OnPropertyChanged("Patient"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _Patient;
-        
+
+        private ResourceReference _patient;
+
         /// <summary>
         /// Source of the information about the allergy
         /// </summary>
         [FhirElement("reporter", InSummary=true, Order=140)]
-        [CLSCompliant(false)]
-		[References("Patient","RelatedPerson","Practitioner")]
+        [References("Patient","RelatedPerson","Practitioner")]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference Reporter
+        public ResourceReference Reporter
         {
-            get { return _Reporter; }
-            set { _Reporter = value; OnPropertyChanged("Reporter"); }
+            get { return _reporter; }
+            set { _reporter = value; OnPropertyChanged("Reporter"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _Reporter;
-        
+
+        private ResourceReference _reporter;
+
         /// <summary>
         /// Substance, (or class) considered to be responsible for risk
         /// </summary>
         [FhirElement("substance", InSummary=true, Order=150)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Substance
+        public CodeableConcept Substance
         {
-            get { return _Substance; }
-            set { _Substance = value; OnPropertyChanged("Substance"); }
+            get { return _substance; }
+            set { _substance = value; OnPropertyChanged("Substance"); }
         }
-        
-        private Hl7.Fhir.Model.CodeableConcept _Substance;
-        
+
+        private CodeableConcept _substance;
+
         /// <summary>
         /// active | unconfirmed | confirmed | inactive | resolved | refuted | entered-in-error
         /// </summary>
         [FhirElement("status", InSummary=true, Order=160)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceStatus> StatusElement
+        public Code<AllergyIntoleranceStatus> StatusElement
         {
-            get { return _StatusElement; }
-            set { _StatusElement = value; OnPropertyChanged("StatusElement"); }
+            get { return _statusElement; }
+            set { _statusElement = value; OnPropertyChanged("StatusElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceStatus> _StatusElement;
-        
+
+        private Code<AllergyIntoleranceStatus> _statusElement;
+
         /// <summary>
         /// active | unconfirmed | confirmed | inactive | resolved | refuted | entered-in-error
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceStatus? Status
+        [IgnoreDataMember]
+        public AllergyIntoleranceStatus? Status
         {
             get { return StatusElement != null ? StatusElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  StatusElement = null; 
+                if (value == null)
+                    StatusElement = null;
                 else
-                  StatusElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceStatus>(value);
+                    StatusElement = new Code<AllergyIntoleranceStatus>(value);
                 OnPropertyChanged("Status");
             }
         }
-        
+
         /// <summary>
         /// CRITL | CRITH | CRITU
         /// </summary>
         [FhirElement("criticality", InSummary=true, Order=170)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality> CriticalityElement
+        public Code<AllergyIntoleranceCriticality> CriticalityElement
         {
-            get { return _CriticalityElement; }
-            set { _CriticalityElement = value; OnPropertyChanged("CriticalityElement"); }
+            get { return _criticalityElement; }
+            set { _criticalityElement = value; OnPropertyChanged("CriticalityElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality> _CriticalityElement;
-        
+
+        private Code<AllergyIntoleranceCriticality> _criticalityElement;
+
         /// <summary>
         /// CRITL | CRITH | CRITU
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality? Criticality
+        [IgnoreDataMember]
+        public AllergyIntoleranceCriticality? Criticality
         {
             get { return CriticalityElement != null ? CriticalityElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  CriticalityElement = null; 
+                if (value == null)
+                    CriticalityElement = null;
                 else
-                  CriticalityElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality>(value);
+                    CriticalityElement = new Code<AllergyIntoleranceCriticality>(value);
                 OnPropertyChanged("Criticality");
             }
         }
-        
+
         /// <summary>
         /// allergy | intolerance - Underlying mechanism (if known)
         /// </summary>
         [FhirElement("type", InSummary=true, Order=180)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType> TypeElement
+        public Code<AllergyIntoleranceType> TypeElement
         {
-            get { return _TypeElement; }
-            set { _TypeElement = value; OnPropertyChanged("TypeElement"); }
+            get { return _typeElement; }
+            set { _typeElement = value; OnPropertyChanged("TypeElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType> _TypeElement;
-        
+
+        private Code<AllergyIntoleranceType> _typeElement;
+
         /// <summary>
         /// allergy | intolerance - Underlying mechanism (if known)
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType? Type
+        [IgnoreDataMember]
+        public AllergyIntoleranceType? Type
         {
             get { return TypeElement != null ? TypeElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  TypeElement = null; 
+                if (value == null)
+                    TypeElement = null;
                 else
-                  TypeElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType>(value);
+                    TypeElement = new Code<AllergyIntoleranceType>(value);
                 OnPropertyChanged("Type");
             }
         }
-        
+
         /// <summary>
         /// food | medication | environment | other - Category of Substance
         /// </summary>
         [FhirElement("category", InSummary=true, Order=190)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCategory> CategoryElement
+        public Code<AllergyIntoleranceCategory> CategoryElement
         {
-            get { return _CategoryElement; }
-            set { _CategoryElement = value; OnPropertyChanged("CategoryElement"); }
+            get { return _categoryElement; }
+            set { _categoryElement = value; OnPropertyChanged("CategoryElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCategory> _CategoryElement;
-        
+
+        private Code<AllergyIntoleranceCategory> _categoryElement;
+
         /// <summary>
         /// food | medication | environment | other - Category of Substance
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCategory? Category
+        [IgnoreDataMember]
+        public AllergyIntoleranceCategory? Category
         {
             get { return CategoryElement != null ? CategoryElement.Value : null; }
             set
             {
-                if (!value.HasValue)
-                  CategoryElement = null; 
+                if (value == null)
+                    CategoryElement = null;
                 else
-                  CategoryElement = new Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCategory>(value);
+                    CategoryElement = new Code<AllergyIntoleranceCategory>(value);
                 OnPropertyChanged("Category");
             }
         }
-        
+
         /// <summary>
         /// Date(/time) of last known occurrence of a reaction
         /// </summary>
         [FhirElement("lastOccurence", InSummary=true, Order=200)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirDateTime LastOccurenceElement
+        public FhirDateTime LastOccurenceElement
         {
-            get { return _LastOccurenceElement; }
-            set { _LastOccurenceElement = value; OnPropertyChanged("LastOccurenceElement"); }
+            get { return _lastOccurenceElement; }
+            set { _lastOccurenceElement = value; OnPropertyChanged("LastOccurenceElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirDateTime _LastOccurenceElement;
-        
+
+        private FhirDateTime _lastOccurenceElement;
+
         /// <summary>
         /// Date(/time) of last known occurrence of a reaction
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string LastOccurence
         {
             get { return LastOccurenceElement != null ? LastOccurenceElement.Value : null; }
             set
             {
                 if (value == null)
-                  LastOccurenceElement = null; 
+                    LastOccurenceElement = null;
                 else
-                  LastOccurenceElement = new Hl7.Fhir.Model.FhirDateTime(value);
+                    LastOccurenceElement = new FhirDateTime(value);
                 OnPropertyChanged("LastOccurence");
             }
         }
-        
+
         /// <summary>
         /// Additional text not captured in other fields
         /// </summary>
         [FhirElement("note", Order=210)]
         [DataMember]
-        public Hl7.Fhir.Model.Annotation Note
+        public Annotation Note
         {
-            get { return _Note; }
-            set { _Note = value; OnPropertyChanged("Note"); }
+            get { return _note; }
+            set { _note = value; OnPropertyChanged("Note"); }
         }
-        
-        private Hl7.Fhir.Model.Annotation _Note;
-        
+
+        private Annotation _note;
+
         /// <summary>
         /// Adverse Reaction Events linked to exposure to substance
         /// </summary>
         [FhirElement("reaction", Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.AllergyIntolerance.ReactionComponent> Reaction
+        public List<ReactionComponent> Reaction
         {
-            get { if(_Reaction==null) _Reaction = new List<Hl7.Fhir.Model.AllergyIntolerance.ReactionComponent>(); return _Reaction; }
-            set { _Reaction = value; OnPropertyChanged("Reaction"); }
+            get { if (_reaction==null) _reaction = new List<ReactionComponent>(); return _reaction; }
+            set { _reaction = value; OnPropertyChanged("Reaction"); }
         }
-        
-        private List<Hl7.Fhir.Model.AllergyIntolerance.ReactionComponent> _Reaction;
-        
 
-        public override void AddDefaultConstraints()
-        {
-            base.AddDefaultConstraints();
+        private List<ReactionComponent> _reaction;
 
-        }
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as AllergyIntolerance;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.Identifier>(Identifier.DeepCopy());
-                if(OnsetElement != null) dest.OnsetElement = (Hl7.Fhir.Model.FhirDateTime)OnsetElement.DeepCopy();
-                if(RecordedDateElement != null) dest.RecordedDateElement = (Hl7.Fhir.Model.FhirDateTime)RecordedDateElement.DeepCopy();
-                if(Recorder != null) dest.Recorder = (Hl7.Fhir.Model.ResourceReference)Recorder.DeepCopy();
-                if(Patient != null) dest.Patient = (Hl7.Fhir.Model.ResourceReference)Patient.DeepCopy();
-                if(Reporter != null) dest.Reporter = (Hl7.Fhir.Model.ResourceReference)Reporter.DeepCopy();
-                if(Substance != null) dest.Substance = (Hl7.Fhir.Model.CodeableConcept)Substance.DeepCopy();
-                if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceStatus>)StatusElement.DeepCopy();
-                if(CriticalityElement != null) dest.CriticalityElement = (Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCriticality>)CriticalityElement.DeepCopy();
-                if(TypeElement != null) dest.TypeElement = (Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceType>)TypeElement.DeepCopy();
-                if(CategoryElement != null) dest.CategoryElement = (Code<Hl7.Fhir.Model.AllergyIntolerance.AllergyIntoleranceCategory>)CategoryElement.DeepCopy();
-                if(LastOccurenceElement != null) dest.LastOccurenceElement = (Hl7.Fhir.Model.FhirDateTime)LastOccurenceElement.DeepCopy();
-                if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
-                if(Reaction != null) dest.Reaction = new List<Hl7.Fhir.Model.AllergyIntolerance.ReactionComponent>(Reaction.DeepCopy());
+                if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
+                if (OnsetElement != null) dest.OnsetElement = (FhirDateTime)OnsetElement.DeepCopy();
+                if (RecordedDateElement != null) dest.RecordedDateElement = (FhirDateTime)RecordedDateElement.DeepCopy();
+                if (Recorder != null) dest.Recorder = (ResourceReference)Recorder.DeepCopy();
+                if (Patient != null) dest.Patient = (ResourceReference)Patient.DeepCopy();
+                if (Reporter != null) dest.Reporter = (ResourceReference)Reporter.DeepCopy();
+                if (Substance != null) dest.Substance = (CodeableConcept)Substance.DeepCopy();
+                if (StatusElement != null) dest.StatusElement = (Code<AllergyIntoleranceStatus>)StatusElement.DeepCopy();
+                if (CriticalityElement != null) dest.CriticalityElement = (Code<AllergyIntoleranceCriticality>)CriticalityElement.DeepCopy();
+                if (TypeElement != null) dest.TypeElement = (Code<AllergyIntoleranceType>)TypeElement.DeepCopy();
+                if (CategoryElement != null) dest.CategoryElement = (Code<AllergyIntoleranceCategory>)CategoryElement.DeepCopy();
+                if (LastOccurenceElement != null) dest.LastOccurenceElement = (FhirDateTime)LastOccurenceElement.DeepCopy();
+                if (Note != null) dest.Note = (Annotation)Note.DeepCopy();
+                if (Reaction != null) dest.Reaction = new List<ReactionComponent>(Reaction.DeepCopy());
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new AllergyIntolerance());
+             return CopyTo(new AllergyIntolerance());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as AllergyIntolerance;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-            if( !DeepComparable.Matches(OnsetElement, otherT.OnsetElement)) return false;
-            if( !DeepComparable.Matches(RecordedDateElement, otherT.RecordedDateElement)) return false;
-            if( !DeepComparable.Matches(Recorder, otherT.Recorder)) return false;
-            if( !DeepComparable.Matches(Patient, otherT.Patient)) return false;
-            if( !DeepComparable.Matches(Reporter, otherT.Reporter)) return false;
-            if( !DeepComparable.Matches(Substance, otherT.Substance)) return false;
-            if( !DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
-            if( !DeepComparable.Matches(CriticalityElement, otherT.CriticalityElement)) return false;
-            if( !DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
-            if( !DeepComparable.Matches(CategoryElement, otherT.CategoryElement)) return false;
-            if( !DeepComparable.Matches(LastOccurenceElement, otherT.LastOccurenceElement)) return false;
-            if( !DeepComparable.Matches(Note, otherT.Note)) return false;
-            if( !DeepComparable.Matches(Reaction, otherT.Reaction)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if ( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.Matches(OnsetElement, otherT.OnsetElement)) return false;
+            if (!DeepComparable.Matches(RecordedDateElement, otherT.RecordedDateElement)) return false;
+            if (!DeepComparable.Matches(Recorder, otherT.Recorder)) return false;
+            if (!DeepComparable.Matches(Patient, otherT.Patient)) return false;
+            if (!DeepComparable.Matches(Reporter, otherT.Reporter)) return false;
+            if (!DeepComparable.Matches(Substance, otherT.Substance)) return false;
+            if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.Matches(CriticalityElement, otherT.CriticalityElement)) return false;
+            if (!DeepComparable.Matches(TypeElement, otherT.TypeElement)) return false;
+            if (!DeepComparable.Matches(CategoryElement, otherT.CategoryElement)) return false;
+            if (!DeepComparable.Matches(LastOccurenceElement, otherT.LastOccurenceElement)) return false;
+            if (!DeepComparable.Matches(Note, otherT.Note)) return false;
+            if ( !DeepComparable.Matches(Reaction, otherT.Reaction)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as AllergyIntolerance;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-            if( !DeepComparable.IsExactly(OnsetElement, otherT.OnsetElement)) return false;
-            if( !DeepComparable.IsExactly(RecordedDateElement, otherT.RecordedDateElement)) return false;
-            if( !DeepComparable.IsExactly(Recorder, otherT.Recorder)) return false;
-            if( !DeepComparable.IsExactly(Patient, otherT.Patient)) return false;
-            if( !DeepComparable.IsExactly(Reporter, otherT.Reporter)) return false;
-            if( !DeepComparable.IsExactly(Substance, otherT.Substance)) return false;
-            if( !DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
-            if( !DeepComparable.IsExactly(CriticalityElement, otherT.CriticalityElement)) return false;
-            if( !DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
-            if( !DeepComparable.IsExactly(CategoryElement, otherT.CategoryElement)) return false;
-            if( !DeepComparable.IsExactly(LastOccurenceElement, otherT.LastOccurenceElement)) return false;
-            if( !DeepComparable.IsExactly(Note, otherT.Note)) return false;
-            if( !DeepComparable.IsExactly(Reaction, otherT.Reaction)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.IsExactly(OnsetElement, otherT.OnsetElement)) return false;
+            if (!DeepComparable.IsExactly(RecordedDateElement, otherT.RecordedDateElement)) return false;
+            if (!DeepComparable.IsExactly(Recorder, otherT.Recorder)) return false;
+            if (!DeepComparable.IsExactly(Patient, otherT.Patient)) return false;
+            if (!DeepComparable.IsExactly(Reporter, otherT.Reporter)) return false;
+            if (!DeepComparable.IsExactly(Substance, otherT.Substance)) return false;
+            if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
+            if (!DeepComparable.IsExactly(CriticalityElement, otherT.CriticalityElement)) return false;
+            if (!DeepComparable.IsExactly(TypeElement, otherT.TypeElement)) return false;
+            if (!DeepComparable.IsExactly(CategoryElement, otherT.CategoryElement)) return false;
+            if (!DeepComparable.IsExactly(LastOccurenceElement, otherT.LastOccurenceElement)) return false;
+            if (!DeepComparable.IsExactly(Note, otherT.Note)) return false;
+            if (!DeepComparable.IsExactly(Reaction, otherT.Reaction)) return false;
+
             return true;
         }
 
@@ -947,20 +943,20 @@ namespace Hl7.Fhir.Model
             get
             {
                 foreach (var item in base.Children) yield return item;
-				foreach (var elem in Identifier) { if (elem != null) yield return elem; }
-				if (OnsetElement != null) yield return OnsetElement;
-				if (RecordedDateElement != null) yield return RecordedDateElement;
-				if (Recorder != null) yield return Recorder;
-				if (Patient != null) yield return Patient;
-				if (Reporter != null) yield return Reporter;
-				if (Substance != null) yield return Substance;
-				if (StatusElement != null) yield return StatusElement;
-				if (CriticalityElement != null) yield return CriticalityElement;
-				if (TypeElement != null) yield return TypeElement;
-				if (CategoryElement != null) yield return CategoryElement;
-				if (LastOccurenceElement != null) yield return LastOccurenceElement;
-				if (Note != null) yield return Note;
-				foreach (var elem in Reaction) { if (elem != null) yield return elem; }
+                foreach (var elem in Identifier) { if (elem != null) yield return elem; }
+                if (OnsetElement != null) yield return OnsetElement;
+                if (RecordedDateElement != null) yield return RecordedDateElement;
+                if (Recorder != null) yield return Recorder;
+                if (Patient != null) yield return Patient;
+                if (Reporter != null) yield return Reporter;
+                if (Substance != null) yield return Substance;
+                if (StatusElement != null) yield return StatusElement;
+                if (CriticalityElement != null) yield return CriticalityElement;
+                if (TypeElement != null) yield return TypeElement;
+                if (CategoryElement != null) yield return CategoryElement;
+                if (LastOccurenceElement != null) yield return LastOccurenceElement;
+                if (Note != null) yield return Note;
+                foreach (var elem in Reaction) { if (elem != null) yield return elem; }
             }
         }
 
@@ -988,5 +984,5 @@ namespace Hl7.Fhir.Model
         }
 
     }
-    
+
 }

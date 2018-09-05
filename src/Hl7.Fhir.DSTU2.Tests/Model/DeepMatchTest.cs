@@ -6,9 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Serialization;
 using static Hl7.Fhir.Tests.TestDataHelper;
 
 namespace Hl7.Fhir.Tests.Model
@@ -40,7 +40,7 @@ namespace Hl7.Fhir.Tests.Model
             p2.Gender = null;
             Assert.IsFalse(p2.Matches(p));
             Assert.IsTrue(p.Matches(p2));
-            
+
             // If both are null, we're fine
             p.Gender = null;
             Assert.IsTrue(p2.Matches(p));

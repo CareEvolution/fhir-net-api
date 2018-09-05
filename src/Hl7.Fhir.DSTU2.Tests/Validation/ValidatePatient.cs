@@ -6,22 +6,19 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Serialization;
-using System.Xml;
 using System.Collections.Generic;
-using Hl7.Fhir.Validation;
 using System.ComponentModel.DataAnnotations;
-using Hl7.Fhir.Model;
-using System.Xml.Linq;
-using System.Xml.Schema;
 using System.IO;
+using System.Xml;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Validation;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Validation
 {
     [TestClass]
-	public class ValidatePatient
+    public class ValidatePatient
     {
         [TestMethod]
         public void ValidateDemoPatient()
@@ -46,7 +43,7 @@ namespace Hl7.Fhir.Tests.Validation
             patient.Identifier[0].System = "urn:oid:crap really not valid";
 
             results = new List<ValidationResult>();
-            
+
             Assert.IsFalse(DotNetAttributeValidation.TryValidate(patient, results, true));
             Assert.IsTrue(results.Count > 0);
         }

@@ -6,19 +6,15 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Hl7.Fhir.Model;
 using System.Diagnostics;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
     [TestClass]
-	public class MeasurePerformance
+    public class MeasurePerformance
     {
         [TestMethod]
         public void RunPerfTest()

@@ -10,18 +10,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using boolean = System.Boolean;
-using DecimalType = Hl7.Fhir.Model.FhirDecimal; // System.Decimal;
-using UriType = Hl7.Fhir.Model.FhirUri;
+using DecimalType = Hl7.Fhir.Model.DSTU2.FhirDecimal; // System.Decimal;
+using UriType = Hl7.Fhir.Model.DSTU2.FhirUri;
 using Hl7.Fhir.Serialization;
 using System.IO;
 using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
-using Model = Hl7.Fhir.Model;
+using Model = Hl7.Fhir.Model.DSTU2;
 using Hl7.FhirPath.Functions;
 using Xunit;
 using Xunit.Sdk;
 using Xunit.Abstractions;
 using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.ElementModel.DSTU2;
 
 namespace Hl7.FhirPath.Tests
 {
@@ -130,7 +133,7 @@ namespace Hl7.FhirPath.Tests
         }
 
         // @SuppressWarnings("deprecation")
-        private void testBoolean(Model.Resource resource, Model.Base focus, String focusType, String expression, boolean value)
+        private void testBoolean(Model.Resource resource, Base focus, String focusType, String expression, boolean value)
         {
             var input = focus.ToElementNavigator();
             var container = resource?.ToElementNavigator();
@@ -215,8 +218,8 @@ namespace Hl7.FhirPath.Tests
 
                 if (!_cache.ContainsKey(inputfile))
                 {                    
-                    _cache.Add(inputfile, (Model.DomainResource)(new FhirXmlParser().Parse<Model.DomainResource>(
-                        File.ReadAllText(Path.Combine(basepath, inputfile)))));
+                    _cache.Add(inputfile, new FhirXmlParser().Parse<Model.DomainResource>(
+                        File.ReadAllText(Path.Combine(basepath, inputfile))));
                 }
                 resource = _cache[inputfile];
 

@@ -1,12 +1,9 @@
-﻿using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Hl7.Fhir.ElementModel.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.ElementModel.Tests
 {

@@ -7,10 +7,9 @@
  */
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
+using System.Linq;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 
@@ -239,21 +238,21 @@ namespace Hl7.Fhir.Validation
                 return resolutionOutcome;
             else
                 outcome.Add(resolutionOutcome);
-            
+
             // If we have an instance type, it should be compatible with the declared type on the definition and the stated profiles
             if (InstanceType != null)
             {
                 if (DeclaredType != null)
                 {
                     if (!ModelInfo.IsInstanceTypeFor(DeclaredType.BaseType(), InstanceType.BaseType()))
-                        outcome.AddIssue($"The declared type of the element ({DeclaredType.ReadableName()}) is incompatible with that of the instance ('{InstanceType.ReadableName()}')", 
+                        outcome.AddIssue($"The declared type of the element ({DeclaredType.ReadableName()}) is incompatible with that of the instance ('{InstanceType.ReadableName()}')",
                             Issue.CONTENT_ELEMENT_HAS_INCORRECT_TYPE, _path);
                 }
 
                 foreach (var type in StatedProfiles)
                 {
                     if (!ModelInfo.IsInstanceTypeFor(type.BaseType(), InstanceType.BaseType()))
-                        outcome.AddIssue($"Instance of type '{InstanceType.ReadableName()}' is incompatible with the stated profile '{type.Url}' which is constraining constrained type '{type.ReadableName()}'", 
+                        outcome.AddIssue($"Instance of type '{InstanceType.ReadableName()}' is incompatible with the stated profile '{type.Url}' which is constraining constrained type '{type.ReadableName()}'",
                             Issue.CONTENT_ELEMENT_HAS_INCORRECT_TYPE, _path);
                 }
             }
@@ -266,7 +265,7 @@ namespace Hl7.Fhir.Validation
                 if (baseTypes.Count > 1)
                 {
                     var combinedNames = String.Join(" and ", baseTypes.Select(bt => bt.GetLiteral()));
-                    outcome.AddIssue($"The stated profiles are constraints on multiple different core types ({combinedNames}), which can never be satisfied.", 
+                    outcome.AddIssue($"The stated profiles are constraints on multiple different core types ({combinedNames}), which can never be satisfied.",
                         Issue.CONTENT_MISMATCHING_PROFILES, _path);
                 }
                 else
@@ -291,7 +290,7 @@ namespace Hl7.Fhir.Validation
             {
                 if (_lastMinimalSet != null)
                     return _lastMinimalSet;
-                        
+
                 // Provided validation was done, IF there are stated profiles, they are correct constraints on the instance, and compatible with the declared type
                 // so we can just return that list (we might even remove the ones that are constraints on constraints)
                 if (StatedProfiles.Any())

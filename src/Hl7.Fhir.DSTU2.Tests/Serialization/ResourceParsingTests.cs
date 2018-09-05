@@ -7,12 +7,13 @@
  */
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Serialization;
-using System.IO;
-using Hl7.Fhir.Model;
-using System.Diagnostics;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -50,10 +51,10 @@ namespace Hl7.Fhir.Tests.Serialization
                 parser.Parse<Resource>(xml);
                 Assert.Fail("Should have thrown");
             }
-            catch(FormatException fe)
+            catch (FormatException fe)
             {
                 Assert.IsFalse(fe.Message.Contains("pos -1"));
-            }            
+            }
         }
 
         [TestMethod]
@@ -70,7 +71,7 @@ namespace Hl7.Fhir.Tests.Serialization
             catch (FormatException fe)
             {
                 Assert.IsFalse(fe.Message.Contains("pos -1"));
-            }            
+            }
         }
 
 
@@ -91,7 +92,7 @@ namespace Hl7.Fhir.Tests.Serialization
             }
 
             xml = "<Patient xmlns='http://hl7.org/fhir'><f:active value='false' xmlns:f='http://somehwere.else.nl' /></Patient>";
-            
+
             try
             {
                 parser.Parse<Resource>(xml);
@@ -170,7 +171,7 @@ namespace Hl7.Fhir.Tests.Serialization
             for (var i = 0; i < 500; i++)
                 p = pser.Parse<Patient>(json);
             sw.Stop();
-            Debug.WriteLine($"Parsing took {sw.ElapsedMilliseconds/500.0*1000} micros");
+            Debug.WriteLine($"Parsing took {sw.ElapsedMilliseconds / 500.0 * 1000} micros");
         }
 
         [TestMethod]
@@ -190,7 +191,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Debug.WriteLine($"Parsing took {sw.ElapsedMilliseconds / 500.0 * 1000} micros");
         }
 
-     
+
         [TestMethod]
         public void AcceptUnknownEnums()
         {
@@ -222,7 +223,7 @@ namespace Hl7.Fhir.Tests.Serialization
                 p = pser.Parse<Patient>(xml2);
                 Assert.Fail();
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 // By default, should *not* accept unknown enums
             }

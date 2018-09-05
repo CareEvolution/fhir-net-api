@@ -32,15 +32,16 @@ using Hl7.Fhir.Serialization;
 using Hl7.FhirPath;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
-    public partial class FhirDateTime : IStringValue
+    public partial class FhirDateTime : IStringValue, IParsedPrimitive
     {
         public FhirDateTime(DateTimeOffset dt) : this(PrimitiveTypeConverter.ConvertTo<string>(dt))
         {
@@ -111,6 +112,9 @@ namespace Hl7.Fhir.Model
 
             return PrimitiveTypeConverter.ConvertTo<DateTime>(this.Value);
         }
+
+        [NotMapped]
+        public object ParsedValue => ToPartialDateTime();
 
         public Primitives.PartialDateTime? ToPartialDateTime()
         {
