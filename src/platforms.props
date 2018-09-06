@@ -89,7 +89,4 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'uap' Or '$(TargetFramework)' == 'uap10' ">
     <DefineConstants>$(DefineConstants);$(WindowsUP)</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">
-    <DefineConstants>$(DefineConstants);$(NetStandard15)</DefineConstants>
-  </PropertyGroup>
 </Project>

@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		fhir-net-api.props = fhir-net-api.props
 		fhir-net-api.targets = fhir-net-api.targets
+		global.json = global.json
 		platforms.props = platforms.props
 	EndProjectSection
 EndProject

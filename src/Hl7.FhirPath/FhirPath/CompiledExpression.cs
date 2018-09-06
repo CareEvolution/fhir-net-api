@@ -1,14 +1,8 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using Hl7.FhirPath.Parser;
-using Hl7.FhirPath;
-using Hl7.FhirPath.Expressions;
-using Sprache;
-using System.Text;
-using System.Threading.Tasks;
-using Hl7.FhirPath.Functions;
+using System.Linq;
 using Hl7.Fhir.ElementModel;
+using Hl7.FhirPath.Functions;
 
 namespace Hl7.FhirPath
 {

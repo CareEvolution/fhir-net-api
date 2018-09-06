@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.IO.Compression;
-using System.Reflection;
-using System.Text;
 
 namespace Hl7.Fhir.Tests
 {
@@ -14,7 +10,7 @@ namespace Hl7.Fhir.Tests
             //string location = typeof(TestDataHelper).GetTypeInfo().Assembly.Location;
             //var path = Path.GetDirectoryName(location);
             //return Path.Combine(path, "TestData", filename);
-            return Path.Combine("TestData",filename);
+            return Path.Combine("TestData", filename);
         }
 
         public static string ReadTestData(string filename)

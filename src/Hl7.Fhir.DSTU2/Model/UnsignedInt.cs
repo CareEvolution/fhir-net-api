@@ -21,6 +21,6 @@ namespace Hl7.Fhir.Model.DSTU2
         }
 
         [NotMapped]
-        public object ParsedValue => Value;
+        public object ParsedValue => (long)Value;
     }
 }
