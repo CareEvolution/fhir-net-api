@@ -12,6 +12,7 @@ using Hl7.Fhir.Rest;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Test
 {
@@ -109,10 +110,10 @@ namespace Hl7.Fhir.Test
         [TestMethod]
         public void TestCoreIdentifiers()
         {
-            var patientId = ResourceIdentity.Core(FHIRDefinedType.Patient);
+            var patientId = ResourceIdentity.Core(FHIRDefinedType.Patient.GetLiteral());
             Assert.AreEqual("http://hl7.org/fhir/StructureDefinition/Patient", patientId.ToString());
 
-            var oidId = ResourceIdentity.Core(FHIRDefinedType.Oid);
+            var oidId = ResourceIdentity.Core(FHIRDefinedType.Oid.GetLiteral());
             Assert.AreEqual("http://hl7.org/fhir/StructureDefinition/oid", oidId.ToString());
 
             var observationId = ResourceIdentity.Core("Observation");

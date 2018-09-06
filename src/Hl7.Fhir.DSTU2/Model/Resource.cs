@@ -150,7 +150,7 @@ namespace Hl7.Fhir.Model.DSTU2
         {
             if (Id == null) return null;
 
-            var result = Rest.DSTU2.ResourceIdentity.Build(TypeName, Id, VersionId);
+            var result = Rest.ResourceIdentity.Build(TypeName, Id, VersionId);
 
             if (!string.IsNullOrEmpty(baseUrl))
                 return result.WithBase(baseUrl);

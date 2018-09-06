@@ -2,9 +2,11 @@
 using System.Diagnostics;
 using System.Linq;
 using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
 using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Validation
 {
@@ -256,7 +258,7 @@ namespace Hl7.Fhir.Validation
             result.Abstract = false;
 
             if (baseUri == null)
-                baseUri = ResourceIdentity.Core(constrainedType).ToString();
+                baseUri = ResourceIdentity.Core(constrainedType.GetLiteral()).ToString();
 
             result.Base = baseUri;
 

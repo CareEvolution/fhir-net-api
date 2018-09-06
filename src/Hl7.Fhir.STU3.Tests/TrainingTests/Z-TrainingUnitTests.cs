@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Xml;
 using Hl7.Fhir.Model.STU3;
+using Hl7.Fhir.Rest;
 using Hl7.Fhir.Rest.STU3;
 using Hl7.Fhir.Support;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

@@ -35,6 +35,7 @@ using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.ElementModel.STU3;
 using Hl7.Fhir.FhirPath.STU3;
 using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Rest;
 using Hl7.Fhir.Rest.STU3;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Validation;
@@ -148,7 +149,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             if (Id == null) return null;
 
-            var result = Rest.STU3.ResourceIdentity.Build(TypeName, Id, VersionId);
+            var result = Rest.ResourceIdentity.Build(TypeName, Id, VersionId);
 
             if (!string.IsNullOrEmpty(baseUrl))
                 return result.WithBase(baseUrl);
