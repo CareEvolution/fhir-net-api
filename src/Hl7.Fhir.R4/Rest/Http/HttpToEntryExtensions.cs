@@ -31,15 +31,15 @@ namespace Hl7.Fhir.Rest.Http.R4
 
             var contentType = response.Content.Headers.ContentType;
 
-            Encoding charEncoding;
-
-            try
+            Encoding charEncoding = Encoding.UTF8;
+            if( response.Content.Headers.ContentType?.CharSet != null )
             {
-                charEncoding = Encoding.GetEncoding(response.Content.Headers.ContentType.CharSet);
-            }
-            catch (ArgumentException)
-            {
-                charEncoding = Encoding.UTF8;
+                try
+                {
+                    charEncoding = Encoding.GetEncoding(response.Content.Headers.ContentType.CharSet);
+                }
+                catch (ArgumentException)
+                { }
             }
 
             result.Response.Location = response.Headers.Location?.AbsoluteUri ?? response.Content.Headers.ContentLocation?.AbsoluteUri;
