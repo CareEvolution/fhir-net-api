@@ -36,10 +36,8 @@ using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.FhirPath.R4;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Rest;
-using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Validation;
-using Hl7.Fhir.Validation.R4;
 using Hl7.FhirPath;
 
 namespace Hl7.Fhir.Model.R4
@@ -47,7 +45,7 @@ namespace Hl7.Fhir.Model.R4
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}}")]
     [InvokeIValidatableObject]
     [FhirType("Resource", IsResource = true)]
-    public abstract partial class Resource : Base
+    public abstract partial class Resource : ResourceBase
     {
         /// <summary>
         /// This is the base URL of the FHIR server that this resource is hosted on
@@ -64,7 +62,7 @@ namespace Hl7.Fhir.Model.R4
             set
             {
                 this.RemoveAnnotations<ResourceBaseData>();
-                AddAnnotation(new ResourceBaseData { Base = value } );
+                AddAnnotation(new ResourceBaseData { Base = value });
             }
         }
 
@@ -228,7 +226,7 @@ namespace Hl7.Fhir.Model.R4
                 var tree = this.ToElementNavigator();
                 foreach (var invariantRule in InvariantConstraints)
                 {
-                    ValidateInvariantRule(context,invariantRule, tree, result);
+                    ValidateInvariantRule(context, invariantRule, tree, result);
                 }
 
                 sw.Stop();

@@ -46,7 +46,7 @@ namespace Hl7.Fhir.Model.STU3
     [FhirType("Resource", IsResource = true)]
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}}")]
     [InvokeIValidatableObject]
-    public abstract partial class Resource : Base
+    public abstract partial class Resource : ResourceBase
     {
         /// <summary>
         /// This is the base URL of the FHIR server that this resource is hosted on
