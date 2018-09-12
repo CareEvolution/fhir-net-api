@@ -11,7 +11,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
@@ -52,7 +52,21 @@ namespace Hl7.Fhir.Rest.Http.R4
 
             Client.DefaultRequestHeaders.Add("User-Agent", ".NET FhirClient for FHIR " + ModelInfo.Version);
             UseFormatParameter = false;
-            PreferredFormat = ResourceFormat.Xml;
+            PreferredFormat = ResourceFormat.Json;
+            Client.Timeout = new TimeSpan(0, 0, 100);       // Default timeout is 100 seconds            
+            PreferredReturn = Prefer.ReturnRepresentation;
+            PreferredParameterHandling = null;
+            ParserSettings = ParserSettings.Default;
+        }
+
+        public Requester(Uri baseUrl, HttpClient httpClient)
+        {
+            BaseUrl = baseUrl;
+            Client = httpClient;
+
+            Client.DefaultRequestHeaders.Add("User-Agent", ".NET FhirClient for FHIR " + ModelInfo.Version);
+            UseFormatParameter = false;
+            PreferredFormat = ResourceFormat.Json;
             Client.Timeout = new TimeSpan(0, 0, 100);       // Default timeout is 100 seconds            
             PreferredReturn = Prefer.ReturnRepresentation;
             PreferredParameterHandling = null;
@@ -60,17 +74,17 @@ namespace Hl7.Fhir.Rest.Http.R4
         }
 
 
-        public Bundle.EntryComponent LastResult { get; private set; }
+        public IBundleEntry LastResult { get; private set; }
         public HttpStatusCode? LastStatusCode => LastResponse?.StatusCode;
         public HttpResponseMessage LastResponse { get; private set; }
         public HttpRequestMessage LastRequest { get; private set; }
 
-        public Bundle.EntryComponent Execute(Bundle.EntryComponent interaction)
+        public IBundleEntry Execute(IBundleEntry interaction)
         {
             return ExecuteAsync(interaction).WaitResult();
         }
 
-        public async Task<Bundle.EntryComponent> ExecuteAsync(Bundle.EntryComponent interaction)
+        public async Task<IBundleEntry> ExecuteAsync(IBundleEntry interaction)
         {
             if (interaction == null) throw Error.ArgumentNull(nameof(interaction));
             bool compressRequestBody = false;
@@ -145,7 +159,7 @@ namespace Hl7.Fhir.Rest.Http.R4
             }
         }
 
-        private static Exception buildFhirOperationException(HttpStatusCode status, Resource body)
+        private static Exception buildFhirOperationException(HttpStatusCode status, ResourceBase body)
         {
             string message;
 
@@ -166,7 +180,6 @@ namespace Hl7.Fhir.Rest.Http.R4
                 return new FhirOperationException($"{message}. Body has no content.", status);
         }
 
-        #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
@@ -186,6 +199,5 @@ namespace Hl7.Fhir.Rest.Http.R4
         {
             Dispose(true);
         }
-        #endregion
     }
 }

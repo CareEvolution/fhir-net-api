@@ -29,17 +29,17 @@ namespace Hl7.Fhir.Rest.R4
 
         Bundle.ResponseComponent LastResult { get; }
 
-        [Obsolete]
-        HttpWebRequest LastRequest { get; }
+        //[Obsolete]
+        //HttpWebRequest LastRequest { get; }
 
-        [Obsolete]
-        HttpWebResponse LastResponse { get; }
+        //[Obsolete]
+        //HttpWebResponse LastResponse { get; }
 
-        [Obsolete]
-        event EventHandler<AfterResponseEventArgs> OnAfterResponse;
+        //[Obsolete]
+        //event EventHandler<AfterResponseEventArgs> OnAfterResponse;
 
-        [Obsolete]
-        event EventHandler<BeforeRequestEventArgs> OnBeforeRequest; 
+        //[Obsolete]
+        //event EventHandler<BeforeRequestEventArgs> OnBeforeRequest; 
 
         CapabilityStatement CapabilityStatement(SummaryType? summary = default(SummaryType?));
         Task<CapabilityStatement> CapabilityStatementAsync(SummaryType? summary = default(SummaryType?));

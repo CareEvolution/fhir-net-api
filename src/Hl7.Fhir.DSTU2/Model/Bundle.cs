@@ -34,15 +34,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using Hl7.Fhir.Utility;
 using Hl7.Fhir.Validation;
 
 namespace Hl7.Fhir.Model.DSTU2
 {
     [InvokeIValidatableObject]
-    public partial class Bundle : IValidatableObject
+    public partial class Bundle : IBundle, IValidatableObject
     {
         [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
-        public partial class EntryComponent
+        public partial class EntryComponent : IBundleEntry
         {
             [DebuggerBrowsable(DebuggerBrowsableState.Never)]
             [NotMapped]
@@ -60,8 +62,42 @@ namespace Hl7.Fhir.Model.DSTU2
 
             [Obsolete("Base no longer exists in BundleEntryComponent. You need to replace any code using this element."), NotMapped]
             public string Base { get; set; }
+
+            ResourceBase IBundleEntry.Resource => Resource;
+            IBundleSearch IBundleEntry.Search => Search;
+            IBundleRequest IBundleEntry.Request => Request;
+            IBundleResponse IBundleEntry.Response => Response;
         }
 
+        public partial class SearchComponent : IBundleSearch
+        {
+            string IBundleSearch.ModeLiteral { get; }
+        }
+
+        public partial class RequestComponent : IBundleRequest
+        {
+            HttpMethod IBundleRequest.HttpMethod
+            {
+                get
+                {
+                    switch (Method)
+                    {
+                        case HTTPVerb.GET:
+                            return HttpMethod.Get;
+                        case HTTPVerb.POST:
+                            return HttpMethod.Post;
+                        case HTTPVerb.PUT:
+                            return HttpMethod.Put;
+                        case HTTPVerb.DELETE:
+                            return HttpMethod.Delete;
+                    }
+                    throw new HttpRequestException($"Valid HttpVerb could not be found for verb type: [{Method}]");
+                }
+            }
+        }
+
+        public partial class ResponseComponent : IBundleResponse
+        { }
 
         [Obsolete("Base no longer exists in Bundle. You need to replace any code using this element."), NotMapped]
         public string Base { get; set; }
@@ -131,6 +167,9 @@ namespace Hl7.Fhir.Model.DSTU2
             set { setLink(ATOM_LINKREL_ALTERNATE, value); }
         }
 
+        string IBundle.TypeLiteral => Type.GetLiteral();
+        IEnumerable<IBundleEntry> IBundle.Entries => Entry;
+
         private Uri getLink(string rel)
         {
             if (Link == null) return null;
@@ -162,3 +201,4 @@ namespace Hl7.Fhir.Model.DSTU2
         }
     }
 }
+

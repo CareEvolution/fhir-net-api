@@ -43,7 +43,7 @@ namespace Hl7.Fhir.Model.STU3
     [Serializable]
 #endif
     [FhirType("Element")]
-    public abstract partial class Element : Base, IExtendable
+    public abstract partial class Element : ElementBase, IExtendable
     {
     }
 

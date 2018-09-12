@@ -51,6 +51,31 @@ namespace Hl7.Fhir.Rest.Http.R4
             RequestHeaders = requester.Client.DefaultRequestHeaders;
         }
 
+        /// <summary>
+        /// Creates a new client using a default endpoint
+        /// If the endpoint does not end with a slash (/), it will be added.
+        /// </summary>
+        /// <param name="endpoint">
+        /// The URL of the server to connect to.<br/>
+        /// If the trailing '/' is not present, then it will be appended automatically
+        /// </param>
+        /// <param name="verifyFhirVersion">
+        /// <param name="httpClient"></param>
+        /// If parameter is set to true the first time a request is made to the server a 
+        /// conformance check will be made to check that the FHIR versions are compatible.
+        /// When they are not compatible, a FhirException will be thrown.
+        /// </param>
+        public FhirClient(Uri endpoint, bool verifyFhirVersion, HttpClient httpClient)
+        {
+            Endpoint = GetValidatedEndpoint(endpoint);
+            VerifyFhirVersion = verifyFhirVersion;
+
+            var requester = new Requester(Endpoint, httpClient);
+            Requester = requester;
+
+            // Expose default request headers to user.
+            RequestHeaders = requester.Client.DefaultRequestHeaders;
+        }
 
         /// <summary>
         /// Creates a new client using a default endpoint
@@ -93,10 +118,10 @@ namespace Hl7.Fhir.Rest.Http.R4
         new public HttpResponseMessage LastResponse { get { return (Requester as Requester)?.LastResponse; } }
 
         //[Obsolete]
-        public override event EventHandler<AfterResponseEventArgs> OnAfterResponse = (args, e) => throw new NotImplementedException();
+        //public override event EventHandler<AfterResponseEventArgs> OnAfterResponse = (args, e) => throw new NotImplementedException();
 
         //[Obsolete]
-        public override event EventHandler<BeforeRequestEventArgs> OnBeforeRequest = (args, e) => throw new NotImplementedException();
+        //public override event EventHandler<BeforeRequestEventArgs> OnBeforeRequest = (args, e) => throw new NotImplementedException();
 
         /// <summary>
         /// Override dispose in order to clean up request headers tied to disposed requester.

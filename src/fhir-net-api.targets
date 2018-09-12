@@ -22,7 +22,6 @@
         </When>
         <Otherwise>
           <PropertyGroup>
-            <VSTestLogger>/logger:Console</VSTestLogger>
             <TestCaseFilter />
           </PropertyGroup>
         </Otherwise>

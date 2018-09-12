@@ -8,14 +8,13 @@
 
 using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Rest.R4;
-using Hl7.Fhir.Rest.Http;
 using Hl7.Fhir.Model.R4;
-using Hl7.Fhir.Utility;
-using Hl7.Fhir.Rest.Http.R4;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.Http.R4;
+using Hl7.Fhir.Rest.R4;
+using Hl7.Fhir.Support;
+using Hl7.Fhir.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Test
 {
@@ -38,41 +37,6 @@ namespace Hl7.Fhir.Test
 
             tx = new TransactionBuilder("http://myserver.org/fhir").Search(new SearchParams().Where("name=ewout"), resourceType: "Patient");
             Assert.AreEqual(TransactionBuilder.InteractionType.Search, tx.ToBundle().Entry[0].Annotation<TransactionBuilder.InteractionType>());
-        }
-
-        [TestMethod]
-        public void TestPreferSettingWebRequester()
-        {
-            var p = new Patient();
-            var endpoint = new Uri("http://myserver.org/fhir");
-            var tx = new TransactionBuilder(endpoint)
-                        .Create(p);
-            var b = tx.ToBundle();
-            byte[] dummy;
-
-            var request = b.Entry[0].ToHttpRequest(endpoint,SearchParameterHandling.Lenient, Prefer.ReturnMinimal, ResourceFormat.Json, false, false, out dummy);
-            Assert.AreEqual("return=minimal", request.Headers["Prefer"]);
-
-            request = b.Entry[0].ToHttpRequest(endpoint,SearchParameterHandling.Strict, Prefer.ReturnRepresentation, ResourceFormat.Json, false, false, out dummy);
-            Assert.AreEqual("return=representation", request.Headers["Prefer"]);
-
-            request = b.Entry[0].ToHttpRequest(endpoint,SearchParameterHandling.Strict, Prefer.OperationOutcome, ResourceFormat.Json, false, false, out dummy);
-            Assert.AreEqual("return=OperationOutcome", request.Headers["Prefer"]);
-
-            request = b.Entry[0].ToHttpRequest(endpoint,SearchParameterHandling.Strict, null, ResourceFormat.Json, false, false, out dummy);
-            Assert.IsNull(request.Headers["Prefer"]);
-
-            tx = new TransactionBuilder("http://myserver.org/fhir").Search(new SearchParams().Where("name=ewout"), resourceType: "Patient");
-            b = tx.ToBundle();
-
-            request = b.Entry[0].ToHttpRequest(endpoint,SearchParameterHandling.Lenient, Prefer.ReturnMinimal, ResourceFormat.Json, false, false, out dummy);
-            Assert.AreEqual("handling=lenient", request.Headers["Prefer"]);
-
-            request = b.Entry[0].ToHttpRequest(endpoint,SearchParameterHandling.Strict, Prefer.ReturnRepresentation, ResourceFormat.Json, false, false, out dummy);
-            Assert.AreEqual("handling=strict", request.Headers["Prefer"]);
-
-            request = b.Entry[0].ToHttpRequest(endpoint, null, Prefer.ReturnRepresentation, ResourceFormat.Json, false, false, out dummy);
-            Assert.IsNull(request.Headers["Prefer"]);        
         }
 
         [TestMethod]
@@ -109,8 +73,7 @@ namespace Hl7.Fhir.Test
 
             request = b.Entry[0].ToHttpRequestMessage(endpoint, null, Prefer.ReturnRepresentation, ResourceFormat.Json, false, false);
             request.Headers.TryGetValues("Prefer", out preferHeader);
-            Assert.IsNull(preferHeader);        
+            Assert.IsNull(preferHeader);
         }
     }
 }
- 

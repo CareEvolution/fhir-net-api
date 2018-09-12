@@ -31,7 +31,7 @@ namespace Hl7.Fhir.ElementModel.DSTU2
             Current = parent;
             InstanceType = parent.TypeName;
             var typeInfo = provider.Provide(parent.GetType());
-            Definition = Specification.ElementDefinitionSummary.ForRoot(rootName ?? parent.TypeName, typeInfo);
+            Definition = ElementDefinitionSummary.ForRoot(rootName ?? parent.TypeName, typeInfo);
             Location = InstanceType;
             ShortPath = InstanceType;
             ArrayIndex = 0;

@@ -37,8 +37,10 @@ namespace Hl7.Fhir.Model.R4
     /// <summary>
     /// Resource for capturing binary data
     /// </summary>
-    public partial class Binary
+    public partial class Binary : IBinary
     {
+        byte[] IBinary.Content => Data;
+
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();

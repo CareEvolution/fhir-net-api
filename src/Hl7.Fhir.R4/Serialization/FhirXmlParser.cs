@@ -27,7 +27,7 @@ namespace Hl7.Fhir.Serialization.R4
         private FhirXmlNodeSettings buildNodeSettings(ParserSettings settings) =>
                 new FhirXmlNodeSettings
                 {
-                    DisallowSchemaLocation = Settings.DisallowXsiAttributesOnRoot,
+                    DisallowSchemaLocation = Settings.DisallowXsiAttributesOnRoot
                 };
 
         public Base Parse(string xml, Type dataType)

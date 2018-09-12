@@ -1,17 +1,16 @@
-﻿using Hl7.Fhir.Model.R4;
+﻿using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Serialization.R4;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest.R4
+namespace Hl7.Fhir.Rest
 {
     public interface IRequester
     {
-        Bundle.EntryComponent Execute(Bundle.EntryComponent interaction);
-        Task<Bundle.EntryComponent> ExecuteAsync(Bundle.EntryComponent interaction);
+        IBundleEntry Execute(IBundleEntry interaction);
+        Task<IBundleEntry> ExecuteAsync(IBundleEntry interaction);
 
-        Bundle.EntryComponent LastResult { get; }
+        IBundleEntry LastResult { get; }
         bool UseFormatParameter { get; set; }
         ResourceFormat PreferredFormat { get; set; }
         int Timeout { get; set; }           // In milliseconds

@@ -40,7 +40,7 @@ namespace Hl7.Fhir.Model.R4
     [Serializable]
 #endif
     [FhirType("Element", IsResource = false)]
-    public abstract partial class Element : Base, IExtendable
+    public abstract partial class Element : ElementBase, IExtendable
     {
 
     }

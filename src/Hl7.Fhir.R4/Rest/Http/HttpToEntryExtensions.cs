@@ -7,12 +7,15 @@
  */
 
 using System;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Hl7.Fhir.Model.R4;
-using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.R4;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Rest.Http.R4
 {
@@ -32,7 +35,7 @@ namespace Hl7.Fhir.Rest.Http.R4
             var contentType = response.Content.Headers.ContentType;
 
             Encoding charEncoding = Encoding.UTF8;
-            if( response.Content.Headers.ContentType?.CharSet != null )
+            if (response.Content.Headers.ContentType?.CharSet != null)
             {
                 try
                 {
@@ -51,9 +54,9 @@ namespace Hl7.Fhir.Rest.Http.R4
             {
                 result.Response.SetBody(body);
 
-                if (Rest.R4.HttpToEntryExtensions.IsBinaryResponse(result.Response.Location, contentType.MediaType.ToString()))
+                if (IsBinaryResponse(result.Response.Location, contentType.MediaType.ToString()))
                 {
-                    result.Resource = Rest.R4.HttpToEntryExtensions.MakeBinaryResource(body, contentType.ToString());
+                    result.Resource = MakeBinaryResource(body, contentType.ToString());
                     if (result.Response.Location != null)
                     {
                         var ri = new ResourceIdentity(result.Response.Location);
@@ -65,8 +68,8 @@ namespace Hl7.Fhir.Rest.Http.R4
                 }
                 else
                 {
-                    var bodyText = Rest.R4.HttpToEntryExtensions.DecodeBody(body, charEncoding);
-                    var resource = Rest.R4.HttpToEntryExtensions.ParseResource(bodyText, contentType.MediaType.ToString(), parserSettings, throwOnFormatException);
+                    var bodyText = DecodeBody(body, charEncoding);
+                    var resource = ParseResource(bodyText, contentType.MediaType.ToString(), parserSettings, throwOnFormatException);
                     result.Resource = resource;
 
                     if (result.Response.Location != null)
@@ -77,12 +80,129 @@ namespace Hl7.Fhir.Rest.Http.R4
             return result;
         }
 
+        internal static void SetBody(this Bundle.ResponseComponent interaction, byte[] data)
+        {
+            interaction.RemoveAnnotations<Body>();
+            interaction.AddAnnotation(new Body { Data = data });
+        }
+
+
         internal static void SetHeaders(this Bundle.ResponseComponent interaction, HttpResponseHeaders headers)
         {
             foreach (var header in headers)
             {
                 interaction.AddExtension(EXTENSION_RESPONSE_HEADER, new FhirString(header.Key + ":" + header.Value));
             }
+        }
+
+        internal static string DecodeBody(byte[] body, Encoding enc)
+        {
+            if (body == null) return null;
+            if (enc == null) enc = Encoding.UTF8;
+
+            // [WMR 20160421] Explicit disposal
+            // return (new StreamReader(new MemoryStream(body), enc, true)).ReadToEnd();
+            using (var stream = new MemoryStream(body))
+            using (var reader = new StreamReader(stream, enc, true))
+            {
+                return reader.ReadToEnd();
+            }
+        }
+
+        internal static Binary MakeBinaryResource(byte[] data, string contentType)
+        {
+            var binary = new Binary();
+
+            binary.Data = data;
+            binary.ContentType = contentType;
+
+            return binary;
+        }
+
+        internal static bool IsBinaryResponse(string responseUri, string contentType)
+        {
+            if (!string.IsNullOrEmpty(contentType)
+                && (ContentType.XML_CONTENT_HEADERS.Contains(contentType.ToLower())
+                    || ContentType.JSON_CONTENT_HEADERS.Contains(contentType.ToLower())
+                )
+                )
+                return false;
+
+            if (ResourceIdentity.IsRestResourceIdentity(responseUri))
+            {
+                var id = new ResourceIdentity(responseUri);
+
+                if (id.ResourceType != ResourceType.Binary.ToString()) return false;
+
+                if (id.Id != null && Id.IsValidValue(id.Id)) return true;
+                if (id.VersionId != null && Id.IsValidValue(id.VersionId)) return true;
+            }
+
+            return false;
+        }
+
+        internal static Resource ParseResource(string bodyText, string contentType, ParserSettings settings, bool throwOnFormatException)
+        {
+            Resource result = null;
+
+            var fhirType = ContentType.GetResourceFormatFromContentType(contentType);
+
+            if (fhirType == ResourceFormat.Unknown)
+                throw new UnsupportedBodyTypeException(
+                    "Endpoint returned a body with contentType '{0}', while a valid FHIR xml/json body type was expected. Is this a FHIR endpoint?"
+                        .FormatWith(contentType), contentType, bodyText);
+
+            if (!SerializationUtil.ProbeIsJson(bodyText) && !SerializationUtil.ProbeIsXml(bodyText))
+                throw new UnsupportedBodyTypeException(
+                        "Endpoint said it returned '{0}', but the body is not recognized as either xml or json.".FormatWith(contentType), contentType, bodyText);
+
+            try
+            {
+                if (fhirType == ResourceFormat.Json)
+                    result = new FhirJsonParser(settings).Parse<Resource>(bodyText);
+                else
+                    result = new FhirXmlParser(settings).Parse<Resource>(bodyText);
+            }
+            catch (FormatException fe)
+            {
+                if (throwOnFormatException) throw fe;
+                return null;
+            }
+
+            return result;
+        }
+
+        private class Body
+        {
+            public byte[] Data;
+        }
+
+        public static byte[] GetBody(this Bundle.ResponseComponent interaction)
+        {
+            var body = interaction.Annotation<Body>();
+            return body != null ? body.Data : null;
+        }
+
+        public static string GetBodyAsText(this Bundle.ResponseComponent interaction)
+        {
+            var body = interaction.GetBody();
+
+            if (body != null)
+                return DecodeBody(body, Encoding.UTF8);
+            else
+                return null;
+        }
+    }
+
+    public class UnsupportedBodyTypeException : Exception
+    {
+        public string BodyType { get; set; }
+
+        public string Body { get; set; }
+        public UnsupportedBodyTypeException(string message, string mimeType, string body) : base(message)
+        {
+            BodyType = mimeType;
+            Body = body;
         }
     }
 }

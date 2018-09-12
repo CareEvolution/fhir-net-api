@@ -42,9 +42,11 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// This is the Parameters partial class that adds all the specific functionality of a Parameters to the model
     /// </summary>
-    [System.Diagnostics.DebuggerDisplay(@"\{Count={_Parameter != null ? _Parameter.Count : 0}}")]
-    public partial class Parameters
-    {   
+    [System.Diagnostics.DebuggerDisplay(@"\{Count={_parameter != null ? _parameter.Count : 0}}")]
+    public partial class Parameters : IParameters
+    {
+        IEnumerable<IParameterComponent> IParameters.Parameters => _parameter;
+
         /// <summary>
         /// Add a parameter with a given name and value.
         /// </summary>
@@ -165,7 +167,7 @@ namespace Hl7.Fhir.Model.DSTU2
         }
 
         [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
-        public partial class ParameterComponent
+        public partial class ParameterComponent : IParameterComponent
         {
             [DebuggerBrowsable(DebuggerBrowsableState.Never)]
             [NotMapped]
@@ -176,6 +178,9 @@ namespace Hl7.Fhir.Model.DSTU2
                     return String.Format("Name=\"{0}\" Value.Type={1}", this.Name, this.Value);
                 }
             }
+
+            ElementBase IParameterComponent.Value => _value;
+            ResourceBase IParameterComponent.Resource => _resource;
         }
 
     }

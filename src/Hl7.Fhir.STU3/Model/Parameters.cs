@@ -30,19 +30,12 @@
 
 
 
-using Hl7.Fhir.Introspection;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
-using Hl7.Fhir.Support;
-using System.Diagnostics;
-using Hl7.Fhir.Utility;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
+using System.Linq;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Model.STU3
 {
@@ -50,8 +43,10 @@ namespace Hl7.Fhir.Model.STU3
     /// This is the Parameters partial class that adds all the specific functionality of a Parameters to the model
     /// </summary>
     [System.Diagnostics.DebuggerDisplay(@"\{Count={_Parameter != null ? _Parameter.Count : 0}}")]
-    public partial class Parameters
-    {   
+    public partial class Parameters : IParameters
+    {
+        IEnumerable<IParameterComponent> IParameters.Parameters => _parameter;
+
         /// <summary>
         /// Add a parameter with a given name and value.
         /// </summary>
@@ -83,13 +78,13 @@ namespace Hl7.Fhir.Model.STU3
         /// <param name="name">The name of the parameter</param>
         /// <param name="tuples">The value of the parameter as a list of tuples of (name,FHIR datatype or Resource)</param>
         /// <returns>this (Parameters), so you can chain AddParameter calls</returns>
-        public Parameters Add(string name, IEnumerable<Tuple<string,Base>> tuples)
+        public Parameters Add(string name, IEnumerable<Tuple<string, Base>> tuples)
         {
             if (name == null) throw new ArgumentNullException("name");
             if (tuples == null) throw new ArgumentNullException("tuples");
 
             var newParam = new ParameterComponent() { Name = name };
-            
+
             foreach (var tuple in tuples)
             {
                 var newPart = new ParameterComponent() { Name = tuple.Item1 };
@@ -121,7 +116,7 @@ namespace Hl7.Fhir.Model.STU3
         {
             if (name == null) throw new ArgumentNullException("name");
 
-            foreach(var hit in Get(name,matchPrefix).ToList()) Parameter.Remove(hit);
+            foreach (var hit in Get(name, matchPrefix).ToList()) Parameter.Remove(hit);
         }
 
 
@@ -172,7 +167,7 @@ namespace Hl7.Fhir.Model.STU3
         }
 
         [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
-        public partial class ParameterComponent
+        public partial class ParameterComponent : IParameterComponent
         {
             [DebuggerBrowsable(DebuggerBrowsableState.Never)]
             [NotMapped]
@@ -183,6 +178,9 @@ namespace Hl7.Fhir.Model.STU3
                     return String.Format("Name=\"{0}\" Value=\"{1}\"", this.Name, this.Value);
                 }
             }
+
+            ElementBase IParameterComponent.Value => _value;
+            ResourceBase IParameterComponent.Resource => _resource;
         }
 
     }
