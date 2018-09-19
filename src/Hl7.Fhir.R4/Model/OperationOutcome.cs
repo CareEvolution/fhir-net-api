@@ -9,7 +9,7 @@ using System.Text;
 namespace Hl7.Fhir.Model.R4
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{ToString()}}")]
-    public partial class OperationOutcome
+    public partial class OperationOutcome : IOperationOutcome
     {
         [Obsolete("You should now pass in the IssueType. This now defaults to IssueType.Processing")]
         public static OperationOutcome ForMessage(string message, IssueSeverity severity = IssueSeverity.Error)
@@ -110,9 +110,10 @@ namespace Hl7.Fhir.Model.R4
             }
         }
 
+        IReadOnlyList<IOperationIssue> IOperationOutcome.Issue => _issue;
 
         [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
-        public partial class IssueComponent
+        public partial class IssueComponent : IOperationIssue
         {
             [DebuggerBrowsable(DebuggerBrowsableState.Never)]
             [NotMapped]
@@ -179,6 +180,26 @@ namespace Hl7.Fhir.Model.R4
                 set
                 {
                     this.SetIntegerExtension(OPERATIONOUTCOME_ISSUE_HIERARCHY, value);
+                }
+            }
+
+            CommonIssueSeverity? IOperationIssue.Severity
+            {
+                get
+                {
+                    switch (Severity)
+                    {
+                        case IssueSeverity.Error:
+                            return CommonIssueSeverity.Error;
+                        case IssueSeverity.Fatal:
+                            return CommonIssueSeverity.Fatal;
+                        case IssueSeverity.Information:
+                            return CommonIssueSeverity.Information;
+                        case IssueSeverity.Warning:
+                            return CommonIssueSeverity.Warning;
+                        default:
+                            return null;
+                    }
                 }
             }
         }

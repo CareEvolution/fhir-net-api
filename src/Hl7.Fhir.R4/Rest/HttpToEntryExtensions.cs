@@ -17,7 +17,7 @@ using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Serialization.R4;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest.Http.R4
+namespace Hl7.Fhir.Rest.R4
 {
     internal static class HttpToEntryExtensions
     {
@@ -194,15 +194,4 @@ namespace Hl7.Fhir.Rest.Http.R4
         }
     }
 
-    public class UnsupportedBodyTypeException : Exception
-    {
-        public string BodyType { get; set; }
-
-        public string Body { get; set; }
-        public UnsupportedBodyTypeException(string message, string mimeType, string body) : base(message)
-        {
-            BodyType = mimeType;
-            Body = body;
-        }
-    }
 }

@@ -8,6 +8,7 @@
 
 using System;
 using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
 using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Support;
@@ -57,7 +58,7 @@ namespace Hl7.Fhir.Specification.Terminology
                 if (ex.Status == System.Net.HttpStatusCode.NotFound)
                     throw new ValueSetUnknownException(ex.Message);
                 else
-                    return ex.Outcome;
+                    return ex.Outcome as OperationOutcome;
             }
         }
 

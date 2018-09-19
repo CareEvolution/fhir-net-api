@@ -22,7 +22,6 @@ namespace Hl7.Fhir.Rest.STU3
         Bundle.ResponseComponent LastResult { get; }
         ParserSettings ParserSettings { get; set; }
         ResourceFormat PreferredFormat { get; set; }
-        bool ReturnFullResource { get; set; }
         int Timeout { get; set; }
         bool UseFormatParam { get; set; }
         bool VerifyFhirVersion { get; set; }

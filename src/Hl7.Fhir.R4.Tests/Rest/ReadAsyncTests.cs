@@ -2,7 +2,7 @@
 using System.Linq;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Rest;
-using Hl7.Fhir.Rest.Http.R4;
+using Hl7.Fhir.Rest.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Core.AsyncTests

@@ -1,9 +1,5 @@
-﻿using Hl7.Fhir.Model.R4;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using Hl7.Fhir.Model.R4;
 
 namespace Hl7.Fhir.Rest.R4
 {

@@ -10,6 +10,7 @@ using System;
 using System.IO.Compression;
 using System.Net;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
@@ -46,7 +47,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             PreferredFormat = ResourceFormat.Xml;
             Timeout = 100 * 1000;       // Default timeout is 100 seconds            
             Prefer = Rest.Prefer.ReturnRepresentation;
-            ParserSettings = Hl7.Fhir.Serialization.ParserSettings.Default;
+            ParserSettings = ParserSettings.Default;
         }
 
 
@@ -71,9 +72,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             byte[] outBody;
             var request = interaction.ToHttpRequest(BaseUrl, Prefer, PreferredFormat, UseFormatParameter, compressRequestBody, out outBody);
 
-#if DOTNETFW
             request.Timeout = Timeout;
-#endif
 
             if (PreferCompressedResponses)
             {
@@ -148,11 +147,8 @@ namespace Hl7.Fhir.Rest.DSTU2
             {
                 byte[] body = null;
                 var respStream = response.GetResponseStream();
-#if !DOTNETFW
-                var contentEncoding = response.Headers["Content-Encoding"];
-#else
                 var contentEncoding = response.ContentEncoding;
-#endif
+
                 if (contentEncoding == "gzip")
                 {
                     using (var decompressed = new GZipStream(respStream, CompressionMode.Decompress, true))
@@ -196,7 +192,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             else
                 message = $"Operation was unsuccessful, and returned status {status}";
 
-            if (body is OperationOutcome outcome)
+            if (body is IOperationOutcome outcome)
                 return new FhirOperationException($"{message}. OperationOutcome: {outcome.ToString()}.", status, outcome);
             else if (body != null)
                 return new FhirOperationException($"{message}. Body contains a {body.TypeName}.", status);

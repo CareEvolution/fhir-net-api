@@ -14,10 +14,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
-using Hl7.Fhir.Core.Rest.Http.R4;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Rest;
-using Hl7.Fhir.Rest.Http.R4;
 using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Serialization.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -73,16 +72,22 @@ namespace Hl7.Fhir.Tests.Rest
         [TestMethod, TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         public void FetchConformanceWebClient()
         {
-            FhirClient client = new FhirClient(testEndpoint);
+            var messageHander = new HttpClientEventHandler();
+            FhirClient client = new FhirClient(testEndpoint, messageHandler: messageHander);
             client.ParserSettings.AllowUnrecognizedEnums = true;
+
+            HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
+            messageHander.OnAfterResponse += (object sender, AfterResponseEventArgs e) =>
+            {
+                httpStatusCode = e.RawResponse.StatusCode;
+            };
 
             var entry = client.CapabilityStatement();
 
             Assert.IsNotNull(entry);
             Assert.IsNotNull(entry.FhirVersion);
-            // Assert.AreEqual("Spark.Service", c.Software.Name); // This is only for ewout's server
             Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
-            Assert.AreEqual("200", client.LastResult.Status);
+            Assert.AreEqual(HttpStatusCode.OK, httpStatusCode);
 
             entry = client.CapabilityStatement(SummaryType.True);
 
@@ -90,7 +95,7 @@ namespace Hl7.Fhir.Tests.Rest
             Assert.IsNotNull(entry);
             Assert.IsNotNull(entry.FhirVersion);
             Assert.AreEqual(CapabilityStatement.RestfulCapabilityMode.Server, entry.Rest[0].Mode.Value);
-            Assert.AreEqual("200", client.LastResult.Status);
+            Assert.AreEqual(HttpStatusCode.OK, httpStatusCode);
 
             Assert.IsNotNull(entry.Rest[0].Resource, "The resource property should be in the summary");
             Assert.AreNotEqual(0, entry.Rest[0].Resource.Count, "There is expected to be at least 1 resource defined in the conformance statement");
@@ -131,7 +136,8 @@ namespace Hl7.Fhir.Tests.Rest
         [TestMethod, TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         public void ReadHttpClient()
         {
-            using (FhirClient client = new FhirClient(testEndpoint))
+            using (var messageHandler = new HttpClientEventHandler())
+            using (FhirClient client = new FhirClient(testEndpoint, messageHandler: messageHandler))
             {
 
                 var loc = client.Read<Location>("Location/1");
@@ -146,6 +152,12 @@ namespace Hl7.Fhir.Tests.Rest
                 Assert.AreEqual(loc2.Id, loc.Id);
                 Assert.AreEqual(loc2.Meta.VersionId, loc.Meta.VersionId);
 
+                HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
+                messageHandler.OnAfterResponse += (object sender, AfterResponseEventArgs e) =>
+                {
+                    httpStatusCode = e.RawResponse.StatusCode;
+                };
+
                 try
                 {
                     var random = client.Read<Location>(new Uri("Location/45qq54", UriKind.Relative));
@@ -154,7 +166,7 @@ namespace Hl7.Fhir.Tests.Rest
                 catch (FhirOperationException ex)
                 {
                     Assert.AreEqual(HttpStatusCode.NotFound, ex.Status);
-                    Assert.AreEqual("404", client.LastResult.Status);
+                    Assert.AreEqual(HttpStatusCode.NotFound, httpStatusCode);
                 }
 
                 var loc3 = client.Read<Location>(ResourceIdentity.Build("Location", "1", loc.Meta.VersionId));
@@ -219,7 +231,7 @@ namespace Hl7.Fhir.Tests.Rest
         }
 #endif
 
-        public static void Compression_OnBeforeHttpRequestGZip(object sender, Core.Rest.Http.R4.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeHttpRequestGZip(object sender, BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -229,7 +241,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        public static void Compression_OnBeforeHttpRequestDeflate(object sender, Core.Rest.Http.R4.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeHttpRequestDeflate(object sender, BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -239,7 +251,7 @@ namespace Hl7.Fhir.Tests.Rest
             }
         }
 
-        public static void Compression_OnBeforeHttpRequestZipOrDeflate(object sender, Core.Rest.Http.R4.BeforeRequestEventArgs e)
+        public static void Compression_OnBeforeHttpRequestZipOrDeflate(object sender, BeforeRequestEventArgs e)
         {
             if (e.RawRequest != null)
             {
@@ -254,7 +266,7 @@ namespace Hl7.Fhir.Tests.Rest
             TestCategory("IntegrationTest")]
         public void SearchHttpClient()
         {
-            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
+            using (var handler = new HttpClientEventHandler())
             using (FhirClient client = new FhirClient(testEndpoint, messageHandler: handler))
             {
                 Bundle result;
@@ -468,11 +480,12 @@ namespace Hl7.Fhir.Tests.Rest
 
                 Assert.IsNull(patC);
 
-                if (client.LastBody != null)
-                {
-                    var returned = client.LastBodyAsResource;
-                    Assert.IsTrue(returned is OperationOutcome);
-                }
+                // TODO
+                //if (client.LastBody != null)
+                //{
+                //    var returned = client.LastBodyAsResource;
+                //    Assert.IsTrue(returned is OperationOutcome);
+                //}
 
                 // Now validate this resource
                 client.PreferredReturn = Prefer.ReturnRepresentation;      // which is also the default
@@ -494,7 +507,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         public void CreateEditDeleteHttpClient()
         {
-            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
+            using (var handler = new HttpClientEventHandler())
             using (FhirClient client = new FhirClient(testEndpoint, messageHandler: handler))
             {
 
@@ -538,7 +551,6 @@ namespace Hl7.Fhir.Tests.Rest
                 catch (FhirOperationException ex)
                 {
                     Assert.AreEqual(HttpStatusCode.Gone, ex.Status, "Expected the record to be gone");
-                    Assert.AreEqual("410", client.LastResult.Status);
                 }
             }
         }
@@ -929,7 +941,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         public void CallsCallbacksHttpClient()
         {
-            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
+            using (var handler = new HttpClientEventHandler())
             using (FhirClient client = new FhirClient(testEndpoint, messageHandler: handler))
             {
                 client.ParserSettings.AllowUnrecognizedEnums = true;
@@ -992,7 +1004,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         public void RequestFullResourceHttpClient()
         {
-            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
+            using (var handler = new HttpClientEventHandler())
             using (var client = new FhirClient(testEndpoint, messageHandler: handler))
             {
 
@@ -1066,24 +1078,17 @@ namespace Hl7.Fhir.Tests.Rest
                     if (fe.Status != HttpStatusCode.InternalServerError)
                         Assert.Fail("Server response of 500 did not result in FhirOperationException with status 500.");
 
-                    if (client.LastResult == null)
-                        Assert.Fail("LastResult not set in error case.");
-
-                    if (client.LastResult.Status != "500")
-                        Assert.Fail("LastResult.Status is not 500.");
-
                     if (!fe.Message.Contains("a valid FHIR xml/json body type was expected") && !fe.Message.Contains("not recognized as either xml or json"))
                         Assert.Fail("Failed to recognize invalid body contents");
 
                     // Check that LastResult is of type OperationOutcome and properly filled.
-                    OperationOutcome operationOutcome = client.LastBodyAsResource as OperationOutcome;
-                    Assert.IsNotNull(operationOutcome, "Returned resource is not an OperationOutcome");
+                    Assert.IsNotNull(fe.Outcome, "Returned resource is not an OperationOutcome");
 
-                    Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
+                    Assert.IsTrue(fe.Outcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                    Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                    Assert.IsTrue(fe.Outcome.Issue[0].Severity == CommonIssueSeverity.Error, "OperationOutcome is not of severity 'error'");
 
-                    string message = operationOutcome.Issue[0].Diagnostics;
+                    string message = fe.Outcome.Issue[0].Diagnostics;
                     if (!message.Contains("a valid FHIR xml/json body type was expected") && !message.Contains("not recognized as either xml or json"))
                         Assert.Fail("Failed to carry error message over into OperationOutcome");
                 }
@@ -1111,21 +1116,12 @@ namespace Hl7.Fhir.Tests.Rest
                     if (fe.Status != HttpStatusCode.NotFound)
                         Assert.Fail("Server response of 404 did not result in FhirOperationException with status 404.");
 
-                    if (client.LastResult == null)
-                        Assert.Fail("LastResult not set in error case.");
-
-                    Bundle.ResponseComponent entryComponent = client.LastResult;
-
-                    if (entryComponent.Status != "404")
-                        Assert.Fail("LastResult.Status is not 404.");
-
                     // Check that LastResult is of type OperationOutcome and properly filled.
-                    OperationOutcome operationOutcome = client.LastBodyAsResource as OperationOutcome;
-                    Assert.IsNotNull(operationOutcome, "Returned resource is not an OperationOutcome");
+                    Assert.IsNotNull(fe.Outcome, "Returned resource is not an OperationOutcome");
 
-                    Assert.IsTrue(operationOutcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
+                    Assert.IsTrue(fe.Outcome.Issue.Count > 0, "OperationOutcome does not contain an issue");
 
-                    Assert.IsTrue(operationOutcome.Issue[0].Severity == OperationOutcome.IssueSeverity.Error, "OperationOutcome is not of severity 'error'");
+                    Assert.IsTrue(fe.Outcome.Issue[0].Severity == CommonIssueSeverity.Error, "OperationOutcome is not of severity 'error'");
                 }
                 catch (Exception e)
                 {
@@ -1195,7 +1191,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestMethod, TestCategory("IntegrationTest"), TestCategory("FhirClient")]
         public void TestAuthenticationOnBeforeWebClient()
         {
-            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
+            using (var handler = new HttpClientEventHandler())
             using (FhirClient validationFhirClient = new FhirClient("https://sqlonfhir.azurewebsites.net/fhir", messageHandler: handler))
             {
                 handler.OnBeforeRequest += (object sender, BeforeRequestEventArgs e) =>
@@ -1228,7 +1224,7 @@ namespace Hl7.Fhir.Tests.Rest
                 arr = ms.ToArray();
             }
 
-            using (var handler = new Core.Rest.Http.R4.HttpClientEventHandler())
+            using (var handler = new HttpClientEventHandler())
             using (FhirClient client = new FhirClient(testEndpoint, messageHandler: handler))
             {
                 var binary = new Binary() { Data = arr, ContentType = "image/png" };
@@ -1289,10 +1285,10 @@ namespace Hl7.Fhir.Tests.Rest
             loc = client.TypeOperation<Patient>("everything", null, useGet: false);
             Assert.IsNotNull(loc);
 
-            
+
 
             // GET operation $everything with 1 primitive parameter
-             loc = client.TypeOperation<Patient>("everything", new Parameters().Add("start", new Date(2017, 11)), useGet: true);
+            loc = client.TypeOperation<Patient>("everything", new Parameters().Add("start", new Date(2017, 11)), useGet: true);
             Assert.IsNotNull(loc);
 
             // GET operation $everything with 1 primitive2token parameter

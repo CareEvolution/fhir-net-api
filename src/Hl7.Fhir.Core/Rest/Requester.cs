@@ -12,13 +12,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest.R4;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest.Http.R4
+namespace Hl7.Fhir.Rest
 {
-    internal class Requester : IRequester, IDisposable
+    public abstract class Requester : IDisposable
     {
         public Uri BaseUrl { get; private set; }
         public HttpClient Client { get; private set; }
@@ -45,26 +44,15 @@ namespace Hl7.Fhir.Rest.Http.R4
 
         public ParserSettings ParserSettings { get; set; }
 
-        public Requester(Uri baseUrl, HttpMessageHandler messageHandler)
-        {
-            BaseUrl = baseUrl;
-            Client = new HttpClient(messageHandler);
-
-            Client.DefaultRequestHeaders.Add("User-Agent", ".NET FhirClient for FHIR " + ModelInfo.Version);
-            UseFormatParameter = false;
-            PreferredFormat = ResourceFormat.Json;
-            Client.Timeout = new TimeSpan(0, 0, 100);       // Default timeout is 100 seconds            
-            PreferredReturn = Prefer.ReturnRepresentation;
-            PreferredParameterHandling = null;
-            ParserSettings = ParserSettings.Default;
-        }
+        public Requester(Uri baseUrl, HttpMessageHandler messageHandler) : this(baseUrl, new HttpClient(messageHandler))
+        { }
 
         public Requester(Uri baseUrl, HttpClient httpClient)
         {
             BaseUrl = baseUrl;
             Client = httpClient;
 
-            Client.DefaultRequestHeaders.Add("User-Agent", ".NET FhirClient for FHIR " + ModelInfo.Version);
+            Client.DefaultRequestHeaders.Add("User-Agent", ".NET FhirClient for FHIR " + Version);
             UseFormatParameter = false;
             PreferredFormat = ResourceFormat.Json;
             Client.Timeout = new TimeSpan(0, 0, 100);       // Default timeout is 100 seconds            
@@ -72,12 +60,6 @@ namespace Hl7.Fhir.Rest.Http.R4
             PreferredParameterHandling = null;
             ParserSettings = ParserSettings.Default;
         }
-
-
-        public IBundleEntry LastResult { get; private set; }
-        public HttpStatusCode? LastStatusCode => LastResponse?.StatusCode;
-        public HttpResponseMessage LastResponse { get; private set; }
-        public HttpRequestMessage LastRequest { get; private set; }
 
         public IBundleEntry Execute(IBundleEntry interaction)
         {
@@ -87,19 +69,14 @@ namespace Hl7.Fhir.Rest.Http.R4
         public async Task<IBundleEntry> ExecuteAsync(IBundleEntry interaction)
         {
             if (interaction == null) throw Error.ArgumentNull(nameof(interaction));
-            bool compressRequestBody = false;
 
-            compressRequestBody = CompressRequestBody; // PCL doesn't support compression at the moment
-
-            using (var requestMessage = interaction.ToHttpRequestMessage(this.BaseUrl, this.PreferredParameterHandling, this.PreferredReturn, PreferredFormat, UseFormatParameter, compressRequestBody))
+            using (var requestMessage = CreateHttpRequestMessage(interaction))
             {
                 if (PreferCompressedResponses)
                 {
                     requestMessage.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
                     requestMessage.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("deflate"));
                 }
-
-                LastRequest = requestMessage;
 
                 byte[] outgoingBody = null;
                 if (requestMessage.Method == HttpMethod.Post || requestMessage.Method == HttpMethod.Put)
@@ -113,37 +90,22 @@ namespace Hl7.Fhir.Rest.Http.R4
                     {
                         var body = await response.Content.ReadAsByteArrayAsync();
 
-                        LastResponse = response;
-
                         // Do this call after AfterResponse, so AfterResponse will be called, even if exceptions are thrown by ToBundleEntry()
                         try
                         {
-                            LastResult = null;
-
                             if (response.IsSuccessStatusCode)
                             {
-                                LastResult = response.ToBundleEntry(body, ParserSettings, throwOnFormatException: true);
-                                return LastResult;
+                                return CreateBundleEntry(response, body, throwOnFormatException: true);
                             }
                             else
                             {
-                                LastResult = response.ToBundleEntry(body, ParserSettings, throwOnFormatException: false);
-                                throw buildFhirOperationException(response.StatusCode, LastResult.Resource);
+                                var bundle = CreateBundleEntry(response, body, throwOnFormatException: false);
+                                throw buildFhirOperationException(response.StatusCode, bundle.Resource);
                             }
                         }
                         catch (UnsupportedBodyTypeException bte)
                         {
-                            // The server responded with HTML code. Still build a FhirOperationException and set a LastResult.
-                            // Build a very minimal LastResult
-                            var errorResult = new Bundle.EntryComponent();
-                            errorResult.Response = new Bundle.ResponseComponent();
-                            errorResult.Response.Status = ((int)response.StatusCode).ToString();
-
-                            OperationOutcome operationOutcome = OperationOutcome.ForException(bte, OperationOutcome.IssueType.Invalid);
-
-                            errorResult.Resource = operationOutcome;
-                            LastResult = errorResult;
-
+                            var operationOutcome = CreateOperationOutcomeForException(bte);
                             throw buildFhirOperationException(response.StatusCode, operationOutcome);
                         }
                     }
@@ -159,6 +121,14 @@ namespace Hl7.Fhir.Rest.Http.R4
             }
         }
 
+        protected abstract HttpRequestMessage CreateHttpRequestMessage(IBundleEntry entry);
+
+        protected abstract ResourceBase CreateOperationOutcomeForException(Exception exception);
+
+        protected abstract string Version { get; }
+
+        protected abstract IBundleEntry CreateBundleEntry(HttpResponseMessage response, byte[] body, bool throwOnFormatException);
+
         private static Exception buildFhirOperationException(HttpStatusCode status, ResourceBase body)
         {
             string message;
@@ -172,7 +142,7 @@ namespace Hl7.Fhir.Rest.Http.R4
             else
                 message = $"Operation was unsuccessful, and returned status {status}";
 
-            if (body is OperationOutcome outcome)
+            if (body is IOperationOutcome outcome)
                 return new FhirOperationException($"{message}. OperationOutcome: {outcome.ToString()}.", status, outcome);
             else if (body != null)
                 return new FhirOperationException($"{message}. Body contains a {body.TypeName}.", status);

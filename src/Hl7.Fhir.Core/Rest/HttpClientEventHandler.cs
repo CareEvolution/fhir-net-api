@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Core.Rest.Http.R4
+namespace Hl7.Fhir.Rest
 {
     public class HttpClientEventHandler : HttpClientHandler
     {

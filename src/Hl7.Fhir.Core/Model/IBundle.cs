@@ -15,6 +15,7 @@ namespace Hl7.Fhir.Model
         Uri LastLink { get; }
         IEnumerable<IBundleEntry> Entries { get; }
     }
+
     public interface IBundleEntry : IAnnotated
     {
         string FullUrl { get; }
@@ -23,11 +24,13 @@ namespace Hl7.Fhir.Model
         IBundleRequest Request { get; }
         IBundleResponse Response { get; }
     }
+
     public interface IBundleSearch
     {
         string ModeLiteral { get; }
         decimal? Score { get; }
     }
+
     public interface IBundleRequest
     {
         HttpMethod HttpMethod { get; }
@@ -37,11 +40,31 @@ namespace Hl7.Fhir.Model
         string IfMatch { get; }
         string IfNoneExist { get; }
     }
+
     public interface IBundleResponse
     {
         string Status { get; }
         string Location { get; }
         string Etag { get; }
         DateTimeOffset? LastModified { get; }
+    }
+
+    public interface IOperationOutcome
+    {
+        IReadOnlyList<IOperationIssue> Issue { get; }
+    }
+
+    public interface IOperationIssue
+    {
+        CommonIssueSeverity? Severity { get; }
+        string Diagnostics { get; }
+    }
+
+    public enum CommonIssueSeverity
+    {
+        Fatal,
+        Error,
+        Warning,
+        Information,
     }
 }

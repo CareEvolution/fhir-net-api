@@ -1,25 +1,18 @@
-﻿using Hl7.Fhir.Model.R4;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Serialization.R4;
-using Hl7.Fhir.Utility;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.R4;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Rest.R4
 {
     public abstract partial class BaseFhirClient : IDisposable, IFhirClient
     {
-        // [Obsolete]
-        //public abstract event EventHandler<AfterResponseEventArgs> OnAfterResponse;
-
-        // [Obsolete]
-        //public abstract event EventHandler<BeforeRequestEventArgs> OnBeforeRequest;
-
-        protected IRequester Requester { get; set; }
+        protected Requester Requester { get; set; }
 
         /// <summary>
         /// The default endpoint for use with operations that use discrete id/version parameters
@@ -122,30 +115,11 @@ namespace Hl7.Fhir.Rest.R4
             set { Requester.CompressRequestBody = value; }
         }
 #endif
-
-
-        /// <summary>
-        /// The last transaction result that was executed on this connection to the FHIR server
-        /// </summary>
-        public Bundle.ResponseComponent LastResult => Requester.LastResult?.Response;
-
         public ParserSettings ParserSettings
         {
             get { return Requester.ParserSettings; }
             set { Requester.ParserSettings = value; }
         }
-
-        public abstract byte[] LastBody { get; }
-
-        public abstract Resource LastBodyAsResource { get; }
-
-        public abstract string LastBodyAsText { get; }
-
-        [Obsolete]
-        public virtual HttpWebRequest LastRequest { get => throw new NotImplementedException(); }
-
-        [Obsolete]
-        public virtual HttpWebResponse LastResponse { get => throw new NotImplementedException(); }
 
         protected static Uri GetValidatedEndpoint(Uri endpoint)
         {
@@ -158,7 +132,7 @@ namespace Hl7.Fhir.Rest.R4
 
             return endpoint;
         }
-        
+
         #region Read
 
         /// <summary>
@@ -919,9 +893,6 @@ namespace Hl7.Fhir.Rest.R4
 
         #endregion
 
-
-
-
         private ResourceIdentity verifyResourceIdentity(Uri location, bool needId, bool needVid)
         {
             var result = new ResourceIdentity(location);
@@ -984,16 +955,16 @@ namespace Hl7.Fhir.Rest.R4
 
             if (!expect.Select(sc => ((int)sc).ToString()).Contains(response.Response.Status))
             {
-                Enum.TryParse<HttpStatusCode>(response.Response.Status, out HttpStatusCode code);
+                Enum.TryParse(response.Response.Status, out HttpStatusCode code);
                 throw new FhirOperationException("Operation concluded successfully, but the return status {0} was unexpected".FormatWith(response.Response.Status), code);
             }
 
-            Resource result;
+            ResourceBase result;
 
             // Special feature: if ReturnFullResource was requested (using the Prefer header), but the server did not return the resource
             // (or it returned an OperationOutcome) - explicitly go out to the server to get the resource and return it. 
             // This behavior is only valid for PUT and POST requests, where the server may device whether or not to return the full body of the alterend resource.
-            var noRealBody = response.Resource == null || (response.Resource is OperationOutcome && string.IsNullOrEmpty(response.Resource.Id));
+            var noRealBody = response.Resource == null || (response.Resource is OperationOutcome outcome && string.IsNullOrEmpty(outcome.Id));
             if (noRealBody && isPostOrPut(request)
                 && PreferredReturn == Prefer.ReturnRepresentation && response.Response.Location != null
                 && new ResourceIdentity(response.Response.Location).IsRestResourceIdentity()) // Check that it isn't an operation too
@@ -1013,9 +984,10 @@ namespace Hl7.Fhir.Rest.R4
                 if (result is OperationOutcome)
                     return null;
 
-                var message = String.Format("Operation {0} on {1} expected a body of type {2} but a {3} was returned", response.Request.Method,
+                var message = String.Format("Operation {0} on {1} expected a body of type {2} but a {3} was returned", response.Request.HttpMethod,
                     response.Request.Url, typeof(TResource).Name, result.GetType().Name);
-                throw new FhirOperationException(message, Requester.LastStatusCode);
+                Enum.TryParse(response.Response.Status, out HttpStatusCode code);
+                throw new FhirOperationException(message, code);
             }
             else
                 return result as TResource;
@@ -1062,7 +1034,7 @@ namespace Hl7.Fhir.Rest.R4
             {
                 if (disposing)
                 {
-                    if(Requester is IDisposable disposableRequester)
+                    if (Requester is IDisposable disposableRequester)
                     {
                         disposableRequester.Dispose();
                     }

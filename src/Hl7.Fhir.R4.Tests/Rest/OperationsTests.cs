@@ -7,9 +7,9 @@
  */
 
 using System.Linq;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.R4;
 using Hl7.Fhir.Rest;
-using Hl7.Fhir.Rest.Http.R4;
 using Hl7.Fhir.Rest.R4;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -150,7 +150,7 @@ namespace Hl7.Fhir.Tests.Rest
             catch (FhirOperationException fe)
             {
                 Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, fe.Status);
-                Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == OperationOutcome.IssueSeverity.Error).Any());
+                Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == CommonIssueSeverity.Error).Any());
             }
         }
 

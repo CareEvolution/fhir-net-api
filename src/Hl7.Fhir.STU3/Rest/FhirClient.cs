@@ -111,26 +111,11 @@ namespace Hl7.Fhir.Rest.STU3
             set { _requester.Timeout = value; }
         }
 
-
-        //private bool _returnFullResource = false;
-
-        /// <summary>
-        /// Should calls to Create, Update and transaction operations return the whole updated content?
-        /// </summary>
-        /// <remarks>Refer to specification section 2.1.0.5 (Managing Return Content)</remarks>
-        [Obsolete("In STU3 this is no longer a true/false option, use the PreferredReturn property instead")]
-        public bool ReturnFullResource
-        {
-            get => _requester.PreferredReturn == Prefer.ReturnRepresentation;
-            set => _requester.PreferredReturn = value ? Prefer.ReturnRepresentation : Prefer.ReturnMinimal;
-        }
-
         /// <summary>
         /// Should calls to Create, Update and transaction operations return the whole updated content, 
         /// or an OperationOutcome?
         /// </summary>
         /// <remarks>Refer to specification section 2.1.0.5 (Managing Return Content)</remarks>
-
         public Prefer? PreferredReturn
         {
             get => _requester.PreferredReturn;

@@ -23,24 +23,6 @@ namespace Hl7.Fhir.Rest.R4
         bool UseFormatParam { get; set; }
         bool VerifyFhirVersion { get; set; }
 
-        byte[] LastBody { get; }
-        Resource LastBodyAsResource { get; }
-        string LastBodyAsText { get; }
-
-        Bundle.ResponseComponent LastResult { get; }
-
-        //[Obsolete]
-        //HttpWebRequest LastRequest { get; }
-
-        //[Obsolete]
-        //HttpWebResponse LastResponse { get; }
-
-        //[Obsolete]
-        //event EventHandler<AfterResponseEventArgs> OnAfterResponse;
-
-        //[Obsolete]
-        //event EventHandler<BeforeRequestEventArgs> OnBeforeRequest; 
-
         CapabilityStatement CapabilityStatement(SummaryType? summary = default(SummaryType?));
         Task<CapabilityStatement> CapabilityStatementAsync(SummaryType? summary = default(SummaryType?));
         Bundle Continue(Bundle current, PageDirection direction = PageDirection.Next);
