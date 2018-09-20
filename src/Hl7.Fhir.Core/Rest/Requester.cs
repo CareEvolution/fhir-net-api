@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Rest
             Client.Timeout = new TimeSpan(0, 0, 100);       // Default timeout is 100 seconds            
             PreferredReturn = Prefer.ReturnRepresentation;
             PreferredParameterHandling = null;
-            ParserSettings = ParserSettings.Default;
+            ParserSettings = ParserSettings.CreateDefault();
         }
 
         public IBundleEntry Execute(IBundleEntry interaction)

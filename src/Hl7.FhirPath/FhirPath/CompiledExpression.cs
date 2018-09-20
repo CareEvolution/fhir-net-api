@@ -6,25 +6,6 @@ using Hl7.FhirPath.Functions;
 
 namespace Hl7.FhirPath
 {
-    public class EvaluationContext
-    {
-        public static readonly EvaluationContext Default = new EvaluationContext();
-
-        public EvaluationContext()
-        {
-            // no defaults yet
-        }
-
-        public EvaluationContext(IElementNavigator container)
-        {
-            Container = container;
-        }
-
-        public IElementNavigator Container { get; set; }
-    }
-
-
-
     public delegate IEnumerable<IElementNavigator> CompiledExpression(IElementNavigator root, EvaluationContext ctx);
 
     public static class CompiledExpressionExtensions
