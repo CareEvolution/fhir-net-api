@@ -272,14 +272,6 @@ namespace Hl7.Fhir.Rest
 
         public bool IsLocal { get { return Form == ResourceIdentityForm.Local; } }
 
-
-        [Obsolete("Recommend using the ResourceBase property")]
-        public Uri Endpoint
-        {
-            get { return BaseUri; }
-        }
-
-
         private void parseComponents(string url)
         {
             if (isRelativeRestUrl(url) || isAbsoluteRestUrl(url))
@@ -349,13 +341,6 @@ namespace Hl7.Fhir.Rest
         public Uri BaseUri
         {
             get; private set;
-        }
-
-
-        [Obsolete("Use the ResourceType instead")]
-        public string Collection
-        {
-            get { return ResourceType; }
         }
 
         /// <summary>

@@ -208,9 +208,9 @@ namespace Hl7.Fhir.Tests.Rest
         {
             if (e.RawRequest != null)
             {
-                // e.RawRequest.AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip;
-                e.RawRequest.Headers.Remove("Accept-Encoding");
-                e.RawRequest.Headers["Accept-Encoding"] = "gzip";
+                //// e.RawRequest.AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip;
+                //e.RawRequest.Headers.Accept
+                //e.RawRequest.Headers["Accept-Encoding"] = "gzip";
             }
         }
 
@@ -218,9 +218,9 @@ namespace Hl7.Fhir.Tests.Rest
         {
             if (e.RawRequest != null)
             {
-                // e.RawRequest.AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip;
-                e.RawRequest.Headers.Remove("Accept-Encoding");
-                e.RawRequest.Headers["Accept-Encoding"] = "deflate";
+                //// e.RawRequest.AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip;
+                //e.RawRequest.Headers.Remove("Accept-Encoding");
+                //e.RawRequest.Headers["Accept-Encoding"] = "deflate";
             }
         }
 
@@ -229,8 +229,8 @@ namespace Hl7.Fhir.Tests.Rest
             if (e.RawRequest != null)
             {
                 // e.RawRequest.AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip;
-                e.RawRequest.Headers.Remove("Accept-Encoding");
-                e.RawRequest.Headers["Accept-Encoding"] = "gzip, deflate";
+                //e.RawRequest.Headers.Remove("Accept-Encoding");
+                //e.RawRequest.Headers["Accept-Encoding"] = "gzip, deflate";
             }
         }
 
@@ -289,7 +289,7 @@ namespace Hl7.Fhir.Tests.Rest
         private void Client_OnAfterResponse(object sender, AfterResponseEventArgs e)
         {
             // Test that the response was compressed
-            Assert.AreEqual("gzip", e.RawResponse.Headers[HttpResponseHeader.ContentEncoding]);
+            Assert.AreEqual("gzip", e.RawResponse.Content.Headers.ContentEncoding);
         }
 
 #if NO_ASYNC_ANYMORE
@@ -865,7 +865,7 @@ namespace Hl7.Fhir.Tests.Rest
         {
             var client = new FhirClient(testEndpoint);
             var minimal = false;
-            client.OnBeforeRequest += (object s, BeforeRequestEventArgs e) => e.RawRequest.Headers["Prefer"] = minimal ? "return=minimal" : "return=representation";
+            client.OnBeforeRequest += (object s, BeforeRequestEventArgs e) => e.RawRequest.Headers.TryAddWithoutValidation("Prefer", minimal ? "return=minimal" : "return=representation");
 
             var result = client.Read<Patient>("Patient/example");
             Assert.IsNotNull(result);
@@ -1071,7 +1071,7 @@ namespace Hl7.Fhir.Tests.Rest
             FhirClient validationFhirClient = new FhirClient("https://sqlonfhir.azurewebsites.net/fhir");
             validationFhirClient.OnBeforeRequest += (object sender, BeforeRequestEventArgs e) =>
             {
-                e.RawRequest.Headers["Authorization"] = "Bearer bad-bearer";
+                e.RawRequest.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "bad-bearer");
             };
             try
             {
@@ -1108,7 +1108,7 @@ namespace Hl7.Fhir.Tests.Rest
             void Client_OnBeforeRequest(object sender, BeforeRequestEventArgs e)
             {
                 // Removing the Accept part of the request. The server should send the resource back in the original Content-Type (in this case image/png)
-                e.RawRequest.Accept = null;
+                e.RawRequest.Headers.Accept.Clear();
             }
 
             client.OnBeforeRequest += Client_OnBeforeRequest;

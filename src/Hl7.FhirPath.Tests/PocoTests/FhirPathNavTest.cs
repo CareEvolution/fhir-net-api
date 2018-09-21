@@ -21,7 +21,7 @@ namespace Hl7.FhirPath.Tests
 {
     public class FhirPathNavTest
     {
-        public IElementNavigator getTestData()
+        public ITypedElement getTestData()
         {
             var tpXml = TestData.ReadTextFile("fp-test-patient.xml");
             // var tree = TreeConstructor.FromXml(tpXml);
@@ -29,7 +29,7 @@ namespace Hl7.FhirPath.Tests
             // return navigator;
 
             var patient = (new FhirXmlParser()).Parse<Patient>(tpXml);
-            return patient.ToElementNavigator();
+            return patient.ToTypedElement();
         }
 
         [Fact]

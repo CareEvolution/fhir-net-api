@@ -11,10 +11,12 @@ using System;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model.Primitives;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
+using System.Collections.Generic;
 
 namespace Hl7.FhirPath
 {
-    public class ConstantValue : IElementNavigator
+    public class ConstantValue : ITypedElement
     {
         public static object ToFhirPathValue(object value)
         {
@@ -70,7 +72,7 @@ namespace Hl7.FhirPath
             private set;
         }
 
-        public string Type
+        public string InstanceType
         {
             get
             {
@@ -100,15 +102,17 @@ namespace Hl7.FhirPath
             }
         }
 
+        public IElementDefinitionSummary Definition => null;
+
         public override string ToString()
         {
-            return this.ToStringRepresentation();
+            return ConversionOperators.ToStringRepresentation(this);
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is IElementNavigator)
-                return Object.Equals((obj as IElementNavigator).Value,Value);
+            if (obj is ITypedElement)
+                return Object.Equals((obj as ITypedElement).Value,Value);
             else
                 return false;
         }
@@ -131,10 +135,14 @@ namespace Hl7.FhirPath
             return false;
         }
 
-        public IElementNavigator Clone()
+        public ITypedElement Clone()
         {
             return new ConstantValue(Value);
         }
 
+        public IEnumerable<ITypedElement> Children(string name = null)
+        {
+            return Array.Empty<ITypedElement>();
+        }
     }
 }

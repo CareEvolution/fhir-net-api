@@ -988,7 +988,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         protected virtual void BeforeRequest(HttpWebRequest rawRequest, byte[] body)
         {
             // Default implementation: call event
-            OnBeforeRequest?.Invoke(this, new BeforeRequestEventArgs(rawRequest, body));
+            //OnBeforeRequest?.Invoke(this, new BeforeRequestEventArgs(rawRequest, body));
         }
 
         /// <summary>
@@ -999,7 +999,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         protected virtual void AfterResponse(HttpWebResponse webResponse, byte[] body)
         {
             // Default implementation: call event
-            OnAfterResponse?.Invoke(this, new AfterResponseEventArgs(webResponse, body));
+            //OnAfterResponse?.Invoke(this, new AfterResponseEventArgs(webResponse, body));
         }
 
         // Original
@@ -1094,30 +1094,5 @@ namespace Hl7.Fhir.Rest.DSTU2
                 throw Error.NotSupported("This client support FHIR version {0}, but the server uses version {1}".FormatWith(ModelInfo.Version, conf.FhirVersion));
             }
         }
-    }
-
-
-    public class BeforeRequestEventArgs : EventArgs
-    {
-        public BeforeRequestEventArgs(HttpWebRequest rawRequest, byte[] body)
-        {
-            this.RawRequest = rawRequest;
-            this.Body = body;
-        }
-
-        public HttpWebRequest RawRequest { get; internal set; }
-        public byte[] Body { get; internal set; }
-    }
-
-    public class AfterResponseEventArgs : EventArgs
-    {
-        public AfterResponseEventArgs(HttpWebResponse webResponse, byte[] body)
-        {
-            this.RawResponse = webResponse;
-            this.Body = body;
-        }
-
-        public HttpWebResponse RawResponse { get; internal set; }
-        public byte[] Body { get; internal set; }
     }
 }

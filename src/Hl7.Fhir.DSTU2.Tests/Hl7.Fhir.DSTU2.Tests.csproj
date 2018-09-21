@@ -50,6 +50,7 @@
 
   <ItemGroup>
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup>

@@ -149,7 +149,6 @@ namespace Hl7.Fhir.ElementModel.R4
             };
     }
 
-
     public static class PocoNavigatorExtensions
     {
 #pragma warning disable 612, 618

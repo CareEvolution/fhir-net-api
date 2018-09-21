@@ -29,9 +29,9 @@ namespace Hl7.FhirPath.Tests
 {
     public class PatientFixture : IDisposable
     {
-        public IElementNavigator TestInput;
-        public IElementNavigator Questionnaire;
-        public IElementNavigator UuidProfile;
+        public ITypedElement TestInput;
+        public ITypedElement Questionnaire;
+        public ITypedElement UuidProfile;
         public int Counter = 0;
         public XDocument Xdoc;
 
@@ -42,15 +42,15 @@ namespace Hl7.FhirPath.Tests
             var tpXml = TestData.ReadTextFile("fp-test-patient.xml");
 
             var patient = parser.Parse<Patient>(tpXml);
-            TestInput = patient.ToElementNavigator();
+            TestInput = patient.ToTypedElement();
 
             tpXml = TestData.ReadTextFile("questionnaire-example.xml");
             var quest = parser.Parse<Questionnaire>(tpXml);
-            Questionnaire = quest.ToElementNavigator();
+            Questionnaire = quest.ToTypedElement();
 
             tpXml = TestData.ReadTextFile("uuid.profile.xml");
             var uuid = parser.Parse<StructureDefinition>(tpXml);
-            UuidProfile = uuid.ToElementNavigator();
+            UuidProfile = uuid.ToTypedElement();
 
             Xdoc = new XDocument(new XElement("group", new XAttribute("name", "CSharpTests")));
         }
@@ -85,7 +85,7 @@ namespace Hl7.FhirPath.Tests
             Assert.True(TestInput.IsBoolean(expr, true));
         }
 
-        public void IsTrue(string expr, IElementNavigator input)
+        public void IsTrue(string expr, ITypedElement input)
         {
             Assert.True(input.IsBoolean(expr, true));
         }
@@ -141,9 +141,11 @@ namespace Hl7.FhirPath.Tests
         [Fact]
         public void TestDynaBinding()
         {
-            var input = (SourceNode.Node("root",
+#pragma warning disable CS0618 // Type or member is obsolete
+            var input = SourceNode.Node("root",
                     SourceNode.Valued("child", "Hello world!"),
-                    SourceNode.Valued("child", "4"))).ToElementNavigator();
+                    SourceNode.Valued("child", "4")).ToTypedElement();
+#pragma warning restore CS0618 // Type or member is obsolete
 
             Assert.Equal("ello", input.Scalar(@"$this.child[0].substring(1,%context.child[1].toInteger())"));
         }
@@ -374,13 +376,13 @@ namespace Hl7.FhirPath.Tests
             fixture.IsTrue("@T10:01:02Z !~ @T10:01:55+01:00");
         }
 
-        public static string ToString(IElementNavigator nav)
+        public static string ToString(ITypedElement nav)
         {
             var result = nav.Name;
 
-            if (nav.Type != null)
+            if (nav.InstanceType != null)
             {
-                result += ": " + nav.Type;
+                result += ": " + nav.InstanceType;
             }
 
             if (nav.Value != null) result += " = " + nav.Value;

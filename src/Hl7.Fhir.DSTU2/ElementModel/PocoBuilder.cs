@@ -90,7 +90,7 @@ namespace Hl7.Fhir.Serialization.DSTU2
                     AllowUnrecognizedEnums = _settings.AllowUnrecognizedEnums
                 };
 
-                return typeToBuild.CanBeTreatedAsType(typeof(Resource))
+                return typeToBuild.CanBeTreatedAsType(typeof(ResourceBase))
                     ? new ResourceReader(source, settings).Deserialize()
                     : new ComplexTypeReader(source, settings).Deserialize(typeToBuild);
             }

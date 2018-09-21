@@ -286,14 +286,14 @@ namespace Hl7.Fhir.Specification.Summary
                             // Initialize default summary information
                             // Note: not exposed by IElementNavigator, cannot use harvester
                             properties.SetPosition(navStream.Position);
-                            properties.SetTypeName(current.Type);
+                            properties.SetTypeName(current.InstanceType);
                             properties.SetResourceUri(navStream.Position);
 
                             // Allow caller to modify/enrich harvested properties
                             customPropertyInitializer?.Invoke(properties);
 
                             // Generate the final (immutable) ArtifactSummary instance
-                            var summary = generate(properties, current, harvesters);
+                            var summary = generate(properties, current.ToElementNavigator(), harvesters);
 
                             result.Add(summary);
                         }

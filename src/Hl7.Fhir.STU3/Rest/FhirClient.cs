@@ -1124,29 +1124,4 @@ namespace Hl7.Fhir.Rest.STU3
             }
         }
     }
-
-
-    public class BeforeRequestEventArgs : EventArgs
-    {
-        public BeforeRequestEventArgs(HttpWebRequest rawRequest, byte[] body)
-        {
-            this.RawRequest = rawRequest;
-            this.Body = body;
-        }
-
-        public HttpWebRequest RawRequest { get; internal set; }
-        public byte[] Body { get; internal set; }
-    }
-
-    public class AfterResponseEventArgs : EventArgs
-    {
-        public AfterResponseEventArgs(HttpWebResponse webResponse, byte[] body)
-        {
-            this.RawResponse = webResponse;
-            this.Body = body;
-        }
-
-        public HttpWebResponse RawResponse { get; internal set; }
-        public byte[] Body { get; internal set; }
-    }
 }

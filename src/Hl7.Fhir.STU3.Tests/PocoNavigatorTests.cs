@@ -103,19 +103,19 @@ namespace Hl7.Fhir
             Assert.AreEqual("Patient.telecom.where(system='phone').system", v3.CommonPath);
 
             // Now check navigation bits
-            var v4 = new PocoNavigator(p);
+            var v4 = p.ToTypedElement();
             Assert.AreEqual("Patient.telecom.where(system='phone').system", 
                 (v4.Select("Patient.telecom.where(system='phone').system").First() as PocoNavigator).CommonPath);
-            v4 = new PocoNavigator(p);
+            //v4 = new PocoNavigator(p);
             Assert.AreEqual("Patient.telecom[0].system",
                 (v4.Select("Patient.telecom.where(system='phone').system").First() as PocoNavigator).ShortPath);
-            v4 = new PocoNavigator(p);
+            //v4 = new PocoNavigator(p);
             Assert.AreEqual("Patient.telecom[0].system[0]",
                 (v4.Select("Patient.telecom.where(system='phone').system").First() as PocoNavigator).Location);
-            v4 = new PocoNavigator(p);
+            //v4 = new PocoNavigator(p);
             Assert.AreEqual("Patient.telecom.where(system='phone').system", 
                 (v4.Select("Patient.telecom[0].system").First() as PocoNavigator).CommonPath);
-            v4 = new PocoNavigator(p);
+            //v4 = new PocoNavigator(p);
             Assert.AreEqual("Patient.telecom[0].system", 
                 (v4.Select("Patient.telecom[0].system").First() as PocoNavigator).ShortPath);
         }
@@ -212,12 +212,12 @@ namespace Hl7.Fhir
         {
             var xml = File.ReadAllText(@"TestData\fp-test-patient.xml");
             var cs = (new FhirXmlParser()).Parse<Patient>(xml);
-            var nav = cs.ToElementNavigator();
+            var nav = cs.ToTypedElement();
 
             ElementNavPerformance(nav);
         }
 
-        private static void ElementNavPerformance(IElementNavigator nav)
+        private static void ElementNavPerformance(ITypedElement nav)
         {
             // run extraction once to allow for caching
             extract();

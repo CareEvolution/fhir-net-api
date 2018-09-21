@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             PreferredFormat = ResourceFormat.Xml;
             Timeout = 100 * 1000;       // Default timeout is 100 seconds            
             Prefer = Rest.Prefer.ReturnRepresentation;
-            ParserSettings = ParserSettings.Default;
+            ParserSettings = ParserSettings.CreateDefault();
         }
 
 

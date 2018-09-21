@@ -56,55 +56,29 @@ namespace Hl7.FhirPath
         }
 
 
-        public static IEnumerable<IElementNavigator> Select(this IElementNavigator input, string expression, EvaluationContext ctx=null)
+        public static IEnumerable<ITypedElement> Select(this ITypedElement input, string expression, EvaluationContext ctx=null)
         {
             var evaluator = getCompiledExpression(expression);
             return evaluator(input, ctx ?? EvaluationContext.CreateDefault());
         }
 
-        [Obsolete("Replace with the overload taking an EvaluationContext, initialized with the resource parameter")]
-        public static IEnumerable<IElementNavigator> Select(this IElementNavigator input, string expression, IElementNavigator resource)
-        {
-            return input.Select(expression, new EvaluationContext(resource));
-        }
-
-
-        public static object Scalar(this IElementNavigator input, string expression, EvaluationContext ctx = null)
+        public static object Scalar(this ITypedElement input, string expression, EvaluationContext ctx = null)
         {
             var evaluator = getCompiledExpression(expression);
             return evaluator.Scalar(input, ctx ?? EvaluationContext.CreateDefault());
         }
 
-        [Obsolete("Replace with the overload taking an EvaluationContext, initialized with the resource parameter")]
-        public static object Scalar(this IElementNavigator input, string expression, IElementNavigator resource)
-        {
-            return input.Scalar(expression, new EvaluationContext(resource));
-        }
-
-        public static bool Predicate(this IElementNavigator input, string expression, EvaluationContext ctx = null)
+        public static bool Predicate(this ITypedElement input, string expression, EvaluationContext ctx = null)
         {
             var evaluator = getCompiledExpression(expression);
             return evaluator.Predicate(input, ctx ?? EvaluationContext.CreateDefault());
         }
 
-        [Obsolete("Replace with the overload taking an EvaluationContext, initialized with the resource parameter")]
-        public static bool Predicate(this IElementNavigator input, string expression, IElementNavigator resource)
-        {
-            return input.Predicate(expression, new EvaluationContext(resource));
-        }
 
-
-        public static bool IsBoolean(this IElementNavigator input, string expression, bool value, EvaluationContext ctx = null)
+        public static bool IsBoolean(this ITypedElement input, string expression, bool value, EvaluationContext ctx = null)
         {
             var evaluator = getCompiledExpression(expression);
             return evaluator.IsBoolean(value, input, ctx ?? EvaluationContext.CreateDefault());
         }
-
-        [Obsolete("Replace with the overload taking an EvaluationContext, initialized with the resource parameter")]
-        public static bool IsBoolean(this IElementNavigator input, string expression, bool value, IElementNavigator resource)
-        {
-            return input.IsBoolean(expression, value, new EvaluationContext(resource));
-        }
-
     }
 }

@@ -17,7 +17,6 @@ namespace Hl7.Fhir.Support
     /// because it found multiple existing resources matching the specified identifier.
     /// </para>
     /// </summary>
-    /// <remarks>Generic replacement for the obsolete <seealso cref="CanonicalUrlConflictException"/>.</remarks>
     public class ResolvingConflictException : InvalidOperationException
     {
         #region Factory

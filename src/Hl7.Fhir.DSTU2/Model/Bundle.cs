@@ -60,9 +60,6 @@ namespace Hl7.Fhir.Model.DSTU2
                 }
             }
 
-            [Obsolete("Base no longer exists in BundleEntryComponent. You need to replace any code using this element."), NotMapped]
-            public string Base { get; set; }
-
             ResourceBase IBundleEntry.Resource => Resource;
             IBundleSearch IBundleEntry.Search => Search;
             IBundleRequest IBundleEntry.Request => Request;
@@ -98,9 +95,6 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public partial class ResponseComponent : IBundleResponse
         { }
-
-        [Obsolete("Base no longer exists in Bundle. You need to replace any code using this element."), NotMapped]
-        public string Base { get; set; }
 
         public const string ATOM_LINKREL_SELF = "self";
         public const string ATOM_LINKREL_PREVIOUS = "previous";

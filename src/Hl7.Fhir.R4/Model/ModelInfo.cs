@@ -160,25 +160,6 @@ namespace Hl7.Fhir.Model.R4
             return name != null && IsKnownResource(name);
         }
 
-        [Obsolete("Use GetTypeForFhirType() which covers all types, not just resources")]
-        public static Type GetTypeForResourceName(string name)
-        {
-            if (!IsKnownResource(name)) return null;
-
-            return GetTypeForFhirType(name);
-        }
-
-        [Obsolete("Use GetFhirTypeNameForType() which covers all types, not just resources")]
-        public static string GetResourceNameForType(Type type)
-        {
-            var name = GetFhirTypeForType(type);
-
-            if (name != null && IsKnownResource(name))
-                return name;
-            else
-                return null;
-        }
-
         /// <summary>Determines if the specified value represents the name of a FHIR primitive data type.</summary>
         public static bool IsPrimitive(string name)
         {

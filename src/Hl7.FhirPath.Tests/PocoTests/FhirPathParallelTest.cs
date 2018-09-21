@@ -44,8 +44,8 @@ namespace Vonk.Core.Tests.Support
         {
             return new[]
             {
-                new object[]{ "Api", new Func<IElementNavigator, string, EvaluationContext, IEnumerable<IElementNavigator>>((nav, expr, context) => IValueProviderFPExtensions.Select(nav, expr, context)) },
-                new object[]{ "Concurrent", new Func<IElementNavigator, string, EvaluationContext, IEnumerable<IElementNavigator>>((nav, expr, context) => FhirPathExtensions.Select(nav, expr, context))},
+                new object[]{ "Api", new Func<ITypedElement, string, EvaluationContext, IEnumerable<ITypedElement>>((nav, expr, context) => IValueProviderFPExtensions.Select(nav, expr, context)) },
+                new object[]{ "Concurrent", new Func<ITypedElement, string, EvaluationContext, IEnumerable<ITypedElement>>((nav, expr, context) => FhirPathExtensions.Select(nav, expr, context))},
             };
         }
 
@@ -63,15 +63,14 @@ namespace Vonk.Core.Tests.Support
         [Theory]
         [MemberData(nameof(GetSelectMethods))]
         [Trait("TestCategory", "LongRunner")]
-        public async T.Task MassiveParallelSelectsShouldBeCorrect(string testDescriptor, Func<IElementNavigator, string, EvaluationContext, IEnumerable<IElementNavigator>> selector)
+        public async T.Task MassiveParallelSelectsShouldBeCorrect(string testDescriptor, Func<ITypedElement, string, EvaluationContext, IEnumerable<ITypedElement>> selector)
         {
             var actual = new ConcurrentBag<(string canonical, DataElement resource)>();
             var buffer = new BufferBlock<DataElement>();
             var processor = new ActionBlock<DataElement>(r =>
                 {
-                    var pocoNav = r.ToElementNavigator();
-                    var evalContext = new EvaluationContext(r.ToElementNavigator());
-                    var canonical = selector(r.ToElementNavigator(), "url", evalContext).Single().Value.ToString();
+                    var evalContext = new EvaluationContext(r.ToTypedElement());
+                    var canonical = selector(r.ToTypedElement(), "url", evalContext).Single().Value.ToString();
                     actual.Add((canonical, r));
                 }
                 ,
@@ -141,7 +140,7 @@ namespace Vonk.Core.Tests.Support
         }
 
 
-        public static IEnumerable<IElementNavigator> Select(this IElementNavigator input, string expression, EvaluationContext ctx = null)
+        public static IEnumerable<ITypedElement> Select(this ITypedElement input, string expression, EvaluationContext ctx = null)
         {
             var evaluator = GetCompiledExpression(expression);
             return evaluator(input, ctx ?? EvaluationContext.CreateDefault());

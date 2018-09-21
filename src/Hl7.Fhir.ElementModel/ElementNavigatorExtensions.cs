@@ -34,14 +34,6 @@ namespace Hl7.Fhir.ElementModel
         public static IEnumerable<IElementNavigator> Children(this IEnumerable<IElementNavigator> navigators, string name = null) =>
             navigators.SelectMany(n => n.Children(name));
 
-        //Since moving to the first child can be very expensive on stacked navigators, we should not offer this
-        //functionality, unless by adding it to IElementNavigator
-        [Obsolete("This method can be prohibitively expensive, and should not be used anymore.")]
-        public static bool HasChildren(this IEnumerable<IElementNavigator> navigators, string name = null) => navigators.Children(name).Any();
-
-        [Obsolete("This method can be prohibitively expensive, and should not be used anymore.")]
-        public static bool HasChildren(this IElementNavigator navigator, string name = null) => navigator.Children(name).Any();
-
         public static IEnumerable<IElementNavigator> Descendants(this IElementNavigator navigator)
         {
             foreach (var child in navigator.Children())

@@ -1,7 +1,9 @@
-﻿using Hl7.Fhir.Serialization;
+﻿using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace Hl7.Fhir.Support.Tests.Serialization
 {
@@ -22,7 +24,7 @@ namespace Hl7.Fhir.Support.Tests.Serialization
                 Assert.AreEqual("http://hl7.org/fhir/StructureDefinition/integer", stream.Position);
 
                 var nav = stream.Current;
-                Assert.IsTrue(nav.MoveToFirstChild("name"));
+                Assert.IsTrue(nav.Children("name").Any());
                 Assert.AreEqual("integer", nav.Value);
 
                 var current = stream.Position;
@@ -62,7 +64,7 @@ namespace Hl7.Fhir.Support.Tests.Serialization
                 Assert.AreEqual("http://example.org/Patient/pat1", stream.Position);
                 var current = stream.Position;
 
-                var nav = stream.Current;
+                var nav = stream.Current.ToElementNavigator();
                 Assert.IsTrue(nav.MoveToFirstChild("gender"));
                 Assert.AreEqual("male", nav.Value);
 

@@ -20,6 +20,8 @@ using Hl7.FhirPath;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.ElementModel.R4;
 using Hl7.Fhir.FhirPath.R4;
+using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.ElementModel;
 
 namespace HealthConnex.Fhir.Server.Tests
 {
@@ -132,7 +134,7 @@ namespace HealthConnex.Fhir.Server.Tests
 
         private static void ExtractExamplesFromResource(Dictionary<string, int> exampleSearchValues, Resource resource, ModelInfo.SearchParamDefinition index, string key)
         {
-            var nav = new PocoNavigator(resource);
+            var nav = resource.ToTypedElement();
             var results = nav.Select(index.Expression, new FhirEvaluationContext(nav));
             if (results.Count() > 0)
             {

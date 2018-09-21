@@ -117,12 +117,11 @@ namespace Hl7.Fhir.Tests.Model
 
         private static void ExtractExamplesFromResource(Dictionary<string, int> exampleSearchValues, Resource resource, ModelInfo.SearchParamDefinition index, string key)
         {
-            var resourceModel = resource.ToElementNavigator();
-            var navigator = resource.ToElementNavigator();
+            var resourceModel = resource.ToTypedElement();
 
             try
             {
-                var results = resourceModel.Select(index.Expression, new EvaluationContext(navigator));
+                var results = resourceModel.Select(index.Expression, new EvaluationContext(resourceModel));
                 if (results.Count() > 0)
                 {
                     foreach (var t2 in results)
