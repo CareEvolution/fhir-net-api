@@ -64,51 +64,51 @@ namespace Hl7.Fhir.ElementModel.STU3
         ///   'string' => code
         ///   'uri' => code
         /// </remarks>
-        public static Element ParseBindable(this ITypedElement instance)
-        {
-            var instanceType = ModelInfo.FhirTypeNameToFhirType(instance.InstanceType);
+        //public static Element ParseBindable(this ITypedElement instance)
+        //{
+        //    var instanceType = ModelInfo.FhirTypeNameToFhirType(instance.InstanceType);
 
-            switch (instanceType)
-            {
-                case FHIRAllTypes.Code:
-                    return instance.ParsePrimitive<Code>();
-                case FHIRAllTypes.Coding:
-                    return instance.ParseCoding();
-                case FHIRAllTypes.CodeableConcept:
-                    return instance.ParseCodeableConcept();
-                case FHIRAllTypes.Quantity:
-                    return parseQuantity(instance);
-                case FHIRAllTypes.String:
-                    return new Code(instance.ParsePrimitive<FhirString>()?.Value);
-                case FHIRAllTypes.Uri:
-                    return new Code(instance.ParsePrimitive<FhirUri>()?.Value);
-                case FHIRAllTypes.Extension:
-                    return parseExtension(instance);
-                case null:
-                //HACK: fall through - IElementNav did not provide a type
-                //should not happen, and I have no intention to handle it.
-                default:
-                    // Not bindable
-                    return null;
-            }
+        //    switch (instanceType)
+        //    {
+        //        case FHIRAllTypes.Code:
+        //            return instance.ParsePrimitive<Code>();
+        //        case FHIRAllTypes.Coding:
+        //            return instance.ParseCoding();
+        //        case FHIRAllTypes.CodeableConcept:
+        //            return instance.ParseCodeableConcept();
+        //        case FHIRAllTypes.Quantity:
+        //            return parseQuantity(instance);
+        //        case FHIRAllTypes.String:
+        //            return new Code(instance.ParsePrimitive<FhirString>()?.Value);
+        //        case FHIRAllTypes.Uri:
+        //            return new Code(instance.ParsePrimitive<FhirUri>()?.Value);
+        //        case FHIRAllTypes.Extension:
+        //            return parseExtension(instance);
+        //        case null:
+        //        //HACK: fall through - IElementNav did not provide a type
+        //        //should not happen, and I have no intention to handle it.
+        //        default:
+        //            // Not bindable
+        //            return null;
+        //    }
 
-            Coding parseQuantity(ITypedElement nav)
-            {
-                var newCoding = new Coding();
-                var q = instance.ParseQuantity();
-                newCoding.Code = q.Unit;
-                newCoding.System = q.System ?? "http://unitsofmeasure.org";
-                return newCoding;
-            }
+        //    Coding parseQuantity(ITypedElement nav)
+        //    {
+        //        var newCoding = new Coding();
+        //        var q = instance.ParseQuantity();
+        //        newCoding.Code = q.Unit;
+        //        newCoding.System = q.System ?? "http://unitsofmeasure.org";
+        //        return newCoding;
+        //    }
 
-            Element parseExtension(ITypedElement nav)
-            {
-                // HACK: For now, assume this is a typed navigator, so we have "value",
-                // not the unparsed "valueCode" etc AND we have Type (in ParseBindable())
-                var valueChild = instance.Children("value").FirstOrDefault();
-                return valueChild?.ParseBindable();
-            }
-        }
+        //    Element parseExtension(ITypedElement nav)
+        //    {
+        //        // HACK: For now, assume this is a typed navigator, so we have "value",
+        //        // not the unparsed "valueCode" etc AND we have Type (in ParseBindable())
+        //        var valueChild = instance.Children("value").FirstOrDefault();
+        //        return valueChild?.ParseBindable();
+        //    }
+        //}
 
         public static T ParsePrimitive<T>(this ITypedElement instance) where T : Primitive, new()
                     => new T() { ObjectValue = instance.Value };

@@ -1017,7 +1017,7 @@ namespace Hl7.Fhir.Rest.STU3
         protected virtual void BeforeRequest(HttpWebRequest rawRequest, byte[] body) 
         {
             // Default implementation: call event
-            OnBeforeRequest?.Invoke(this, new BeforeRequestEventArgs(rawRequest, body));
+            //OnBeforeRequest?.Invoke(this, new BeforeRequestEventArgs(rawRequest, body));
         }
 
         /// <summary>
@@ -1028,7 +1028,7 @@ namespace Hl7.Fhir.Rest.STU3
         protected virtual void AfterResponse(HttpWebResponse webResponse, byte[] body)
         {
             // Default implementation: call event
-            OnAfterResponse?.Invoke(this, new AfterResponseEventArgs(webResponse, body));
+            //OnAfterResponse?.Invoke(this, new AfterResponseEventArgs(webResponse, body));
         }
 
         // Original
