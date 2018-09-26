@@ -48,57 +48,47 @@ namespace Hl7.Fhir
 
             Assert.IsTrue(new FhirString("Patient.active").IsExactly(p.Select("descendants().shortpathname()").FirstOrDefault()));
 
-            var patient = new PocoNavigator(p);
+            var patient = p.ToTypedElement();
 
             Assert.AreEqual("Patient", patient.Location);
 
-            patient.MoveToFirstChild();
-            Assert.AreEqual("Patient.active[0]", patient.Location);
-            Assert.AreEqual("Patient.active", patient.ShortPath);
+            var active = patient.Children("active").FirstOrDefault() as PocoElementNode;
+            Assert.AreEqual("Patient.active[0]", active.Location);
+            Assert.AreEqual("Patient.active", active.ShortPath);
 
-            patient.MoveToFirstChild();
-            Assert.AreEqual("Patient.active[0].id[0]", patient.Location);
-            Assert.AreEqual("Patient.active.id", patient.ShortPath);
+            var firstActiveChild = active.Children(null).FirstOrDefault() as PocoElementNode;
+            Assert.AreEqual("Patient.active[0].id[0]", firstActiveChild.Location);
+            Assert.AreEqual("Patient.active.id", firstActiveChild.ShortPath);
 
-            Assert.IsTrue(patient.MoveToNext());
-            Assert.AreEqual("Patient.active[0].extension[0]", patient.Location);
-            Assert.AreEqual("Patient.active.extension[0]", patient.ShortPath);
+            var secondActiveChild = active.Children(null).Skip(1).FirstOrDefault() as PocoElementNode;
+            Assert.AreEqual("Patient.active[0].extension[0]", secondActiveChild.Location);
+            Assert.AreEqual("Patient.active.extension[0]", secondActiveChild.ShortPath);
 
-            PocoNavigator v1 = patient.Clone() as PocoNavigator;
-            v1.MoveToFirstChild();
-            v1.MoveToNext();
-            Assert.AreEqual("Patient.active[0].extension[0].value[0]", v1.Location);
-            Assert.AreEqual("Patient.active.extension[0].value", v1.ShortPath);
-            Assert.IsFalse(v1.MoveToNext());
+            var secondActiveGrandChild = secondActiveChild.Children(null).Skip(1).FirstOrDefault() as PocoElementNode;
+            Assert.AreEqual("Patient.active[0].extension[0].value[0]", secondActiveGrandChild.Location);
+            Assert.AreEqual("Patient.active.extension[0].value", secondActiveGrandChild.ShortPath);
 
             // Ensure that the original navigator hasn't changed
-            Assert.AreEqual("Patient.active[0].extension[0]", patient.Location);
-            Assert.AreEqual("Patient.active.extension[0]", patient.ShortPath);
+            Assert.AreEqual("Patient.active[0].extension[0]", secondActiveChild.Location);
+            Assert.AreEqual("Patient.active.extension[0]", secondActiveChild.ShortPath);
 
-            PocoNavigator v2 = patient.Clone() as PocoNavigator;
-            v2.MoveToNext();
-            v2.MoveToFirstChild();
-            v2.MoveToNext();
-            Assert.AreEqual("Patient.active[0].extension[1].value[0]", v2.Location);
-            Assert.AreEqual("Patient.active.extension[1].value", v2.ShortPath);
-            Assert.AreEqual("Patient.active.extension('http://something.org').value", v2.CommonPath);
+            var thirdActiveGrandChild = active.Children(null).Skip(2).FirstOrDefault().Children().Skip(1).FirstOrDefault() as PocoElementNode;
+            Assert.AreEqual("Patient.active[0].extension[1].value[0]", thirdActiveGrandChild.Location);
+            Assert.AreEqual("Patient.active.extension[1].value", thirdActiveGrandChild.ShortPath);
 
-            PocoNavigator v3 = new PocoNavigator(p);
-            v3.MoveToFirstChild(); System.Diagnostics.Trace.WriteLine($"{v3.ShortPath} = {v3.FhirValue.ToString()}");
-            v3.MoveToNext(); System.Diagnostics.Trace.WriteLine($"{v3.ShortPath} = {v3.FhirValue.ToString()}");
-            // v3.MoveToNext(); System.Diagnostics.Trace.WriteLine($"{v3.ShortPath} = {v3.FhirValue.ToString()}");
-            // v3.MoveToNext(); System.Diagnostics.Trace.WriteLine($"{v3.ShortPath} = {v3.FhirValue.ToString()}");
-            v3.MoveToFirstChild("system"); System.Diagnostics.Trace.WriteLine($"{v3.ShortPath} = {v3.FhirValue.ToString()}");
-            Assert.AreEqual("Patient.telecom[0].system[0]", v3.Location);
-            Assert.AreEqual("Patient.telecom[0].system", v3.ShortPath);
-            Assert.AreEqual("Patient.telecom.where(system='phone').system", v3.CommonPath);
+            var telecom = patient.Children().Skip(1).FirstOrDefault().Children("system").FirstOrDefault() as PocoElementNode;
+            Assert.AreEqual("Patient.telecom[0].system[0]", telecom.Location);
+            Assert.AreEqual("Patient.telecom[0].system", telecom.ShortPath);
 
             // Now check navigation bits
             Assert.AreEqual("Patient.telecom[0].system",
                 (p.ToTypedElement().Select("Patient.telecom.where(system='phone').system").First() as PocoElementNode).ShortPath);
-            var v4 = new PocoNavigator(p);
+            Assert.AreEqual("Patient.telecom[0].system",
+                (patient.Select("Patient.telecom.where(system='phone').system").First() as PocoElementNode).ShortPath);
             Assert.AreEqual("Patient.telecom[0].system[0]",
-                (v4.Select("Patient.telecom.where(system='phone').system").First()).Location);
+                (patient.Select("Patient.telecom.where(system='phone').system").First() as PocoElementNode).Location);
+            Assert.AreEqual("Patient.telecom[0].system", 
+                (patient.Select("Patient.telecom[0].system").First() as PocoElementNode).ShortPath);
         }
 #pragma warning restore 612,618
 
@@ -187,54 +177,16 @@ namespace Hl7.Fhir
 
 
         [TestMethod]
-        public void PocoTypedElementPerformance()
+        public void PocoNavPerformance()
         {
             var xml = File.ReadAllText(@"TestData\fp-test-patient.xml");
             var cs = (new FhirXmlParser()).Parse<Patient>(xml);
             var nav = cs.ToTypedElement();
 
-            TypedElementPerformance(nav);
-        }
-
-        private static void TypedElementPerformance(ITypedElement nav)
-        {
-            // run extraction once to allow for caching
-            extract();
-
-            //System.Threading.Thread.Sleep(20000);
-
-            var sw = new Stopwatch();
-            sw.Start();
-            for (var i = 0; i < 5_000; i++)
-            {
-                extract();
-            }
-            sw.Stop();
-
-            Debug.WriteLine($"Navigating took {sw.ElapsedMilliseconds / 5 } micros");
-
-            void extract()
-            {
-                var usual = nav.Children("identifier").First().Children("use").First().Value;
-                var phone = nav.Children("telecom").First().Children("system").First().Value;
-                var prefs = nav.Children("communication").Where(c => c.Children("preferred").Any(pr => pr.Value is string s && s == "true")).Count();
-                var link = nav.Children("link").Children("other").Children("reference");
-            }
-        }
-
-        [TestMethod]
-        public void PocoNavPerformance()
-        {
-            var xml = File.ReadAllText(@"TestData\fp-test-patient.xml");
-            var cs = (new FhirXmlParser()).Parse<Patient>(xml);
-            var nav = cs.ToElementNavigator();
-
             ElementNavPerformance(nav);
         }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-        private static void ElementNavPerformance(IElementNavigator nav)
-#pragma warning restore CS0618 // Type or member is obsolete
+        private static void ElementNavPerformance(ITypedElement nav)
         {
             // run extraction once to allow for caching
             extract();

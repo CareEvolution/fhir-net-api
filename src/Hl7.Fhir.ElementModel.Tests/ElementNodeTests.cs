@@ -101,27 +101,22 @@ namespace Hl7.FhirPath.Tests
         [Fact]
         public void CanNavigateOverNode()
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var nav = patient.ToElementNavigator();
-#pragma warning restore CS0618 // Type or member is obsolete
+            Assert.Equal("Patient", patient.Name);
+            var children = patient.Children().ToList();
+            Assert.Equal(2, children.Count());
+            Assert.Equal("active", children[1].Name);
+            Assert.Equal("true", children[1].Text);
 
-            Assert.Equal("Patient", nav.Name);
-            Assert.True(nav.MoveToFirstChild());
-            Assert.True(nav.MoveToNext());
-            Assert.Equal("active", nav.Name);
-           // Assert.Equal("boolean", nav.Type);
-            Assert.False(nav.MoveToNext());
+            var ids = children[1].Children("id").ToList();
+            Assert.Equal("id", ids[0].Name);
+            Assert.Empty(ids[0].Children());
+            Assert.Equal("id", ids[1].Name);
 
-            Assert.Equal("true", nav.Value);
-            Assert.True(nav.MoveToFirstChild("id"));
-            Assert.Equal("id", nav.Name);
-            Assert.False(nav.MoveToFirstChild());
-            Assert.True(nav.MoveToNext());
-            Assert.Equal("id", nav.Name);
-            Assert.True(nav.MoveToNext("extension"));
-            Assert.Equal("extension", nav.Name);
-            Assert.True(nav.MoveToFirstChild());
-            Assert.Equal("value", nav.Name);
+            var extensions = children[1].Children("extension").ToList();
+            Assert.NotEmpty(extensions);
+            Assert.Equal("extension", extensions[0].Name);
+            Assert.NotEmpty(extensions[0].Children());
+            Assert.Equal("value", extensions[0].Children().FirstOrDefault().Name);
         }
 
         [Fact]

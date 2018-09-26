@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
-    <TargetFrameworks>net45;netstandard1.1;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
   
   <Import Project="..\fhir-net-api.props" />
@@ -8,19 +8,16 @@
 
    <PropertyGroup>
     <Version>$(FhirApiVersion)</Version>
-    <PackageId>Hl7.Fhir.DSTU2</PackageId>
-    <Title>HL7 FHIR Core support API for DSTU2</Title>	
-    <Summary>Core .NET support for working with HL7 FHIR. Supports FHIR DSTU2 (1.0)</Summary>
+    <Title>HL7 FHIR Core support API</Title>	
+    <Summary>Core .NET support for working with HL7 FHIR.</Summary>
     <Description>This is the core support library for HL7's FHIR standard (http://hl7.org/fhir). It contains the core functionality to working with RESTful FHIR servers: POCO classes for FHIR, parsing/serialization of FHIR data and a FhirClient for easy access to FHIR servers.</Description>
     <PackageTags>HL7 FHIR REST parse serialize class model</PackageTags>
-    <AssemblyName>Hl7.Fhir.DSTU2.Core</AssemblyName>
     <RootNamespace>Hl7.Fhir</RootNamespace>
   </PropertyGroup>
 
    <ItemGroup>
-     <Compile Remove="Rest\Search\**" />
-     <EmbeddedResource Remove="Rest\Search\**" />
-     <None Remove="Rest\Search\**" />
+     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
    </ItemGroup>
 
   <ItemGroup>    
@@ -31,6 +28,8 @@
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
     <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
  
   <ItemGroup>
@@ -39,65 +38,28 @@
     <None Include="Model\Source\profiles-types.xml" />
     <None Include="Model\Source\search-parameters.xml" />
   </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\Hl7.Fhir.Serialization\Hl7.Fhir.Serialization.csproj" />
     <ProjectReference Include="..\Hl7.Fhir.Support\Hl7.Fhir.Support.csproj" />
     <ProjectReference Include="..\Hl7.FhirPath\Hl7.FhirPath.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Model\Generated\Template-Bindings.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Template-Bindings.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Model\Generated\Template-DataTypeModel.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Template-DataTypeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Model\Generated\Template-Model.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Template-Model.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Model\Generated\Template-ModelInfo.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Template-ModelInfo.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Model\Generated\Template-ProfiledDataTypes.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Template-ProfiledDataTypes.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
+  
   <ItemGroup>
     <None Update="Model\Generated\Template-Bindings.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Template-Bindings.cs</LastGenOutput>
-    </None>
-    <None Update="Model\Generated\Template-Children.ttinclude">
-      <Generator>
-      </Generator>
     </None>
     <None Update="Model\Generated\Template-DataTypeModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Template-DataTypeModel.cs</LastGenOutput>
     </None>
     <None Update="Model\Generated\Template-Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Template-Model.cs</LastGenOutput>
     </None>
     <None Update="Model\Generated\Template-ModelInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Template-ModelInfo.cs</LastGenOutput>
     </None>
     <None Update="Model\Generated\Template-ProfiledDataTypes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Template-ProfiledDataTypes.cs</LastGenOutput>
     </None>
   </ItemGroup>
 </Project>

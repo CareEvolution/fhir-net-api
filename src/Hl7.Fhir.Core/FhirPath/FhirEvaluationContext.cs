@@ -32,39 +32,6 @@ namespace Hl7.Fhir.FhirPath
         {
         }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-        private Func<string, IElementNavigator> _resolver;
-#pragma warning restore CS0618 // Type or member is obsolete
-
-        [Obsolete("Use property ElementResolver instead")]
-        public Func<string, IElementNavigator> Resolver
-        {
-            get { return _resolver; }
-            set
-            {
-                _resolver = value;
-                if (value == null)
-                    _elementResolver = null;
-                else
-                    _elementResolver = (s) => value(s).ToTypedElement();
-            }
-        }
-
-        private Func<string, ITypedElement> _elementResolver;
-
-        public Func<string, ITypedElement> ElementResolver
-        {
-            get { return _elementResolver; }
-            set
-            {
-                _elementResolver = value;
-                if (value == null)
-                    _resolver = null;
-                else
-#pragma warning disable CS0618 // Type or member is obsolete
-                    _resolver = (s) => value(s).ToElementNavigator();
-#pragma warning restore CS0618 // Type or member is obsolete
-            }
-        }
+        public Func<string, ITypedElement> ElementResolver { get; set; }
     }
 }

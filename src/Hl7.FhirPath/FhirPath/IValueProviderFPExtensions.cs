@@ -57,22 +57,10 @@ namespace Hl7.FhirPath
             return evaluator(input, ctx ?? EvaluationContext.CreateDefault());
         }
 
-        [Obsolete("Use Select(this ITypedElement input) instead")]
-        public static IEnumerable<IElementNavigator> Select(this IElementNavigator input, string expression, EvaluationContext ctx = null)
-        {
-            return Select(input.ToTypedElement(), expression, ctx).Select(t => t.ToElementNavigator());
-        }
-
         public static object Scalar(this ITypedElement input, string expression, EvaluationContext ctx = null)
         {
             var evaluator = getCompiledExpression(expression);
             return evaluator.Scalar(input, ctx ?? EvaluationContext.CreateDefault());
-        }
-
-        [Obsolete("Use Scalar(this ITypedElement input) instead")]
-        public static object Scalar(this IElementNavigator input, string expression, EvaluationContext ctx = null)
-        {
-            return Scalar(input.ToTypedElement(), expression, ctx);
         }
 
         public static bool Predicate(this ITypedElement input, string expression, EvaluationContext ctx = null)
@@ -81,23 +69,11 @@ namespace Hl7.FhirPath
             return evaluator.Predicate(input, ctx ?? EvaluationContext.CreateDefault());
         }
 
-        [Obsolete("Use Predicate(this ITypedElement input) instead")]
-        public static bool Predicate(this IElementNavigator input, string expression, EvaluationContext ctx = null)
-        {
-            return Predicate(input.ToTypedElement(), expression, ctx);
-        }
-
 
         public static bool IsBoolean(this ITypedElement input, string expression, bool value, EvaluationContext ctx = null)
         {
             var evaluator = getCompiledExpression(expression);
             return evaluator.IsBoolean(value, input, ctx ?? EvaluationContext.CreateDefault());
-        }
-
-        [Obsolete("Use IsBoolean(this ITypedElement input) instead")]
-        public static bool IsBoolean(this IElementNavigator input, string expression, bool value, EvaluationContext ctx = null)
-        {
-            return IsBoolean(input.ToTypedElement(), expression, value, ctx);
         }
     }
 }

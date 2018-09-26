@@ -169,4 +169,10 @@ namespace Hl7.Fhir.ElementModel
                 return Enumerable.Empty<object>();
         }
     }
+
+    public static class TypedElementExtensions
+    {
+        public static ITypedElement ToTypedElement(this Base @base, string rootName = null) =>
+            new PocoElementNode(@base, new PocoStructureDefinitionSummaryProvider(), rootName: rootName);
+    }
 }
