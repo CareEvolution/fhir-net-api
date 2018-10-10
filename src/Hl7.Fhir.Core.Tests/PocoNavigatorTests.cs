@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Hl7.FhirPath;
@@ -39,7 +41,7 @@ namespace Hl7.Fhir
 
             Patient p = new Patient();
             p.Active = true;
-            p.ActiveElement.ElementId = "314";
+            p.ActiveElement.Id = "314";
             p.ActiveElement.AddExtension("http://something.org", new FhirBoolean(false));
             p.ActiveElement.AddExtension("http://something.org", new Integer(314));
             p.Telecom = new List<ContactPoint>();
@@ -87,7 +89,7 @@ namespace Hl7.Fhir
                 (patient.Select("Patient.telecom.where(system='phone').system").First() as PocoElementNode).ShortPath);
             Assert.AreEqual("Patient.telecom[0].system[0]",
                 (patient.Select("Patient.telecom.where(system='phone').system").First() as PocoElementNode).Location);
-            Assert.AreEqual("Patient.telecom[0].system", 
+            Assert.AreEqual("Patient.telecom[0].system",
                 (patient.Select("Patient.telecom[0].system").First() as PocoElementNode).ShortPath);
         }
 #pragma warning restore 612,618
@@ -98,7 +100,7 @@ namespace Hl7.Fhir
             Patient p = new Patient();
 
             p.Active = true;
-            p.ActiveElement.ElementId = "314";
+            p.ActiveElement.Id = "314";
             p.ActiveElement.AddExtension("http://something.org", new FhirBoolean(false));
             p.ActiveElement.AddExtension("http://something.org", new Integer(314));
 
@@ -114,7 +116,7 @@ namespace Hl7.Fhir
         public void PocoHasValueTest()
         {
             // Ensure the FHIR extensions are registered
-            FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
+            ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
 
             Patient p = new Patient();
 
@@ -141,10 +143,10 @@ namespace Hl7.Fhir
             var json = TestDataHelper.ReadTestData("TestPatient.json");
             var xml = TestDataHelper.ReadTestData("TestPatient.xml");
 
-            var pocoP = (new FhirJsonParser()).Parse<Patient>(json).ToTypedElement();
+            var pocoP = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Patient>(json).ToTypedElement();
             var jsonP = FhirJsonNode.Parse(json, settings: new FhirJsonParsingSettings { AllowJsonComments = true })
-                .ToTypedElement(new PocoStructureDefinitionSummaryProvider());
-            var xmlP = FhirXmlNode.Parse(xml).ToTypedElement(new PocoStructureDefinitionSummaryProvider());
+                .ToTypedElement(DSTU2ModelInfo.Instance.StructureDefinitionProvider);
+            var xmlP = FhirXmlNode.Parse(xml).ToTypedElement(DSTU2ModelInfo.Instance.StructureDefinitionProvider);
 
             doCompare(pocoP, jsonP, "poco<->json");
             doCompare(pocoP, xmlP, "poco<->xml");
@@ -165,7 +167,7 @@ namespace Hl7.Fhir
         public void IncorrectPathInTwoSuccessiveRepeatingMembers()
         {
             var xml = File.ReadAllText(@"TestData\issue-444-testdata.xml");
-            var cs = (new FhirXmlParser()).Parse<Conformance>(xml);
+            var cs = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Conformance>(xml);
             var nav = cs.ToTypedElement();
 
             var rest = nav.Children().Where(c => c.Name == "rest").FirstOrDefault();
@@ -180,7 +182,7 @@ namespace Hl7.Fhir
         public void PocoNavPerformance()
         {
             var xml = File.ReadAllText(@"TestData\fp-test-patient.xml");
-            var cs = (new FhirXmlParser()).Parse<Patient>(xml);
+            var cs = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Patient>(xml);
             var nav = cs.ToTypedElement();
 
             ElementNavPerformance(nav);

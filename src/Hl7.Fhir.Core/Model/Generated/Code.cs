@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
 
@@ -38,27 +38,29 @@ using Hl7.Fhir.Specification;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [FhirType("code")]
     [DataContract]
-    public partial class Code : Hl7.Fhir.Model.Primitive<string>, System.ComponentModel.INotifyPropertyChanged
+    public partial class Code : Primitive<string>
     {
         [NotMapped]
         public override string TypeName { get { return "code"; } }
-        
+
         // Must conform to the pattern "[^\s]+([\s][^\s]+)*"
         public const string PATTERN = @"[^\s]+([\s][^\s]+)*";
 
-		public Code(string value)
-		{
-			Value = value;
-		}
+        public Code(string value)
+        {
+            Value = value;
+        }
 
-		public Code(): this((string)null) {}
+        public Code(): this((string)null) {}
 
         /// <summary>
         /// Primitive value of the element
@@ -71,9 +73,8 @@ namespace Hl7.Fhir.Model
             get { return (string)ObjectValue; }
             set { ObjectValue = value; OnPropertyChanged("Value"); }
         }
-        
 
-    
+
     }
-    
+
 }

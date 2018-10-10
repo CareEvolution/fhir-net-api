@@ -1,12 +1,8 @@
-﻿using Hl7.Fhir.Model;
+﻿using System.IO;
+using System.Linq;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hl7.Fhir.ElementModel.Tests
 {
@@ -20,7 +16,7 @@ namespace Hl7.Fhir.ElementModel.Tests
         {
             var bundleXml = File.ReadAllText("TestData\\bundle-contained-references.xml");
 
-            var bundle = (new FhirXmlParser()).Parse<Bundle>(bundleXml);
+            var bundle = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Bundle>(bundleXml);
             Assert.IsNotNull(bundle);
             _bundleNode = new ScopedNode(bundle.ToTypedElement());
         }

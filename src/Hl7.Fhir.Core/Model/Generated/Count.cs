@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -36,23 +38,38 @@ using Hl7.Fhir.Utility;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [FhirType("Quantity")]
+    [DataContract]
     public partial class Count : Quantity
     {
         [NotMapped]
         public override string TypeName { get { return "Count"; } }
-        
+
+
+
+        public static ElementDefinition.ConstraintComponent Count_CNT_1 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "(code or value.empty()) and (system.empty() or system = %ucum) and (code.empty() or code = '1') and (value.empty() or value.toString().contains('.').not())",
+            Key = "cnt-1",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "There SHALL be a code with a value of \"1\" if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.  If present, the value SHALL a whole number.",
+            Xpath = "(f:code or not(f:value)) and (not(exists(f:system)) or (f:system/@value='http://unitsofmeasure.org' and f:code/@value='1')) and not(contains(f:value/@value, '.'))"
+        };
+
+        // TODO: Add code to enforce the above constraints
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new Count());
+             return CopyTo(new Count());
         }
-        
-        // TODO: Add code to enforce these constraints:
-        // * There SHALL be a code with a value of "1" if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.  If present, the value SHALL a whole number.
+
     }
+
 }

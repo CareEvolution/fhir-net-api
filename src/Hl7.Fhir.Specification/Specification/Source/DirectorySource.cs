@@ -9,20 +9,20 @@
 // [WMR 20171023] TODO
 // - Allow configuration of duplicate canonical url handling strategy
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Summary;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Specification.Summary;
+using Hl7.Fhir.Support;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Source
 {
@@ -104,38 +104,6 @@ namespace Hl7.Fhir.Specification.Source
         /// <param name="settings">Configuration settings that control the behavior of the <see cref="DirectorySource"/>.</param>
         /// <exception cref="ArgumentNullException">One of the specified arguments is <c>null</c>.</exception>
         public DirectorySource(DirectorySourceSettings settings) : this(SpecificationDirectory, settings)
-        {
-            //
-        }
-
-
-        /// <summary>
-        /// Create a new <see cref="DirectorySource"/> instance to browse and resolve resources
-        /// from the specified content directory and optionally also from subdirectories.
-        /// </summary>
-        /// <param name="includeSubdirectories">
-        /// Determines wether the <see cref="DirectorySource"/> should also
-        /// recursively scan all subdirectories of the specified content directory.
-        /// </param>
-        [Obsolete("Instead, use DirectorySource(DirectorySourceSettings settings)")]
-        public DirectorySource(bool includeSubdirectories) : this(SpecificationDirectory, includeSubdirectories)
-        {
-            //
-        }
-
-        /// <summary>
-        /// Create a new <see cref="DirectorySource"/> instance to browse and resolve resources
-        /// from the specified <paramref name="contentDirectory"/> and optionally also from subdirectories.
-        /// </summary>
-        /// <param name="contentDirectory">The file path of the target directory.</param>
-        /// <param name="includeSubdirectories">
-        /// Determines wether the <see cref="DirectorySource"/> should also
-        /// recursively scan all subdirectories of the specified content directory.
-        /// </param>
-        [Obsolete("Instead, use DirectorySource(string contentDirectory, DirectorySourceSettings settings)")]
-        public DirectorySource(string contentDirectory, bool includeSubdirectories)
-            : this(contentDirectory,
-                  new DirectorySourceSettings() { IncludeSubDirectories = includeSubdirectories })
         {
             //
         }
@@ -662,7 +630,7 @@ namespace Hl7.Fhir.Specification.Source
 
                 // local helper function to validate file/folder attributes, exclude system and/or hidden
                 bool isValid(FileAttributes attr) => (attr & (FileAttributes.System | FileAttributes.Hidden)) == 0;
-                
+
                 // local helper function to filter executables (*.exe, *.dll)
                 bool isExtensionSafe(string extension) => !ExecutableExtensions.Contains(extension, PathComparer);
 
@@ -778,28 +746,6 @@ namespace Hl7.Fhir.Specification.Source
             var uniqueArtifacts = ResolveDuplicateFilenames(files, settings.FormatPreference);
             var summaries = harvestSummaries(uniqueArtifacts);
 
-#if false
-            // [WMR 20180914] OBSOLETE
-            // Conflict will prevent clients from retrieving list of summaries...
-            // Instead, throw in Resolve methods
-
-            // Check for duplicate canonical urls, this is forbidden within a single source (and actually, universally,
-            // but if another source has the same url, the order of polling in the MultiArtifactSource matters)
-            var duplicates =
-                from cr in summaries.ConformanceResources()
-                let canonical = cr.GetConformanceCanonicalUrl()
-                where canonical != null
-                group cr by canonical into g
-                where g.Count() > 1 // g.Skip(1).Any()
-                select g;
-
-            if (duplicates.Any())
-            {
-                // [WMR 20171023] TODO: Allow configuration, e.g. optional callback delegate
-                throw new CanonicalUrlConflictException(duplicates.Select(d => new CanonicalUrlConflictException.CanonicalUrlConflict(d.Key, d.Select(ci => ci.Origin))));
-            }
-#endif
-
             return summaries;
         }
 
@@ -908,7 +854,7 @@ namespace Hl7.Fhir.Specification.Source
                     if (nav != null)
                     {
                         // Parse target resource from navigator
-                        var parser = new BaseFhirParser();
+                        var parser = new BaseFhirParser(DSTU2ModelInfo.Instance);
                         result = parser.Parse<T>(nav);
                         // Add origin annotation
                         result?.SetOrigin(origin);

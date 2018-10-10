@@ -30,10 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Hl7.Fhir.Introspection;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public interface IConformanceResource
     {
@@ -41,7 +40,7 @@ namespace Hl7.Fhir.Model
         FhirString NameElement { get; set; }
 
         string Url { get; set; }
-        Hl7.Fhir.Model.FhirUri UrlElement { get; set; }
+        FhirUri UrlElement { get; set; }
 
         string Publisher { get; set; }
         FhirString PublisherElement { get; set; }
@@ -50,34 +49,34 @@ namespace Hl7.Fhir.Model
         FhirString DescriptionElement { get; set; }
 
         ConformanceResourceStatus? Status { get; set; }
-        Code<Hl7.Fhir.Model.ConformanceResourceStatus> StatusElement { get; set; }
+        Code<ConformanceResourceStatus> StatusElement { get; set; }
         bool? Experimental { get; set; }
-        Hl7.Fhir.Model.FhirBoolean ExperimentalElement { get; set; }
+        FhirBoolean ExperimentalElement { get; set; }
         string Date { get; set; }
-        Hl7.Fhir.Model.FhirDateTime DateElement { get; set; }
+        FhirDateTime DateElement { get; set; }
 
         List<CodeableConcept> UseContext { get; set; }
         //List<ContactPoint> Contact { get; set; }
     }
     public interface IConformanceResourceContact
     {
-        Hl7.Fhir.Model.FhirString NameElement { get; set; }
+        FhirString NameElement { get; set; }
         string Name { get; set; }
-        List<Hl7.Fhir.Model.ContactPoint> Telecom { get; set; }
+        List<ContactPoint> Telecom { get; set; }
     }
 
     public interface IVersionableConformanceResource : IConformanceResource
     {
         string Version { get; set; }
 
-        Hl7.Fhir.Model.FhirString VersionElement { get; set; }
+        FhirString VersionElement { get; set; }
     }
 
     public partial class StructureDefinition : IVersionableConformanceResource
     {
         public partial class ContactComponent : IConformanceResourceContact
         { }
-    }   
+    }
 
     public partial class ValueSet : IVersionableConformanceResource
     {
@@ -173,7 +172,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Will return the (first) preferred UniqueId, or the first UniqueId if there is no preferred UniqueId
         /// </summary>
-        [NotMapped]        
+        [NotMapped]
         public string Url
         {
             get

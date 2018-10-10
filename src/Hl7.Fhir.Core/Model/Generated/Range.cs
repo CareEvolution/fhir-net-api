@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
 
@@ -38,89 +38,103 @@ using Hl7.Fhir.Specification;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// Set of values bounded by low and high
     /// </summary>
     [FhirType("Range")]
     [DataContract]
-    public partial class Range : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class Range : Element
     {
         [NotMapped]
         public override string TypeName { get { return "Range"; } }
-        
+
+
         /// <summary>
         /// Low limit
         /// </summary>
         [FhirElement("low", InSummary=true, Order=30)]
         [DataMember]
-        public Hl7.Fhir.Model.SimpleQuantity Low
+        public SimpleQuantity Low
         {
-            get { return _Low; }
-            set { _Low = value; OnPropertyChanged("Low"); }
+            get { return _low; }
+            set { _low = value; OnPropertyChanged("Low"); }
         }
-        
-        private Hl7.Fhir.Model.SimpleQuantity _Low;
-        
+
+        private SimpleQuantity _low;
+
         /// <summary>
         /// High limit
         /// </summary>
         [FhirElement("high", InSummary=true, Order=40)]
         [DataMember]
-        public Hl7.Fhir.Model.SimpleQuantity High
+        public SimpleQuantity High
         {
-            get { return _High; }
-            set { _High = value; OnPropertyChanged("High"); }
+            get { return _high; }
+            set { _high = value; OnPropertyChanged("High"); }
         }
-        
-        private Hl7.Fhir.Model.SimpleQuantity _High;
-        
+
+        private SimpleQuantity _high;
+
+
+        public static ElementDefinition.ConstraintComponent Range_RNG_2 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "low.empty() or high.empty() or (low <= high)",
+            Key = "rng-2",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "If present, low SHALL have a lower value than high",
+            Xpath = "not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) <= number(f:high/f:value/@value))"
+        };
+
+        // TODO: Add code to enforce the above constraints
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as Range;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Low != null) dest.Low = (Hl7.Fhir.Model.SimpleQuantity)Low.DeepCopy();
-                if(High != null) dest.High = (Hl7.Fhir.Model.SimpleQuantity)High.DeepCopy();
+                if (Low != null) dest.Low = (SimpleQuantity)Low.DeepCopy();
+                if (High != null) dest.High = (SimpleQuantity)High.DeepCopy();
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new Range());
+             return CopyTo(new Range());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as Range;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(Low, otherT.Low)) return false;
-            if( !DeepComparable.Matches(High, otherT.High)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(Low, otherT.Low)) return false;
+            if (!DeepComparable.Matches(High, otherT.High)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as Range;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(Low, otherT.Low)) return false;
-            if( !DeepComparable.IsExactly(High, otherT.High)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(Low, otherT.Low)) return false;
+            if (!DeepComparable.IsExactly(High, otherT.High)) return false;
+
             return true;
         }
 
@@ -136,18 +150,16 @@ namespace Hl7.Fhir.Model
         }
 
         [NotMapped]
-        internal override IEnumerable<ElementValue> NamedChildren 
-        { 
-            get 
-            { 
-                foreach (var item in base.NamedChildren) yield return item; 
+        internal override IEnumerable<ElementValue> NamedChildren
+        {
+            get
+            {
+                foreach (var item in base.NamedChildren) yield return item;
                 if (Low != null) yield return new ElementValue("low", Low);
                 if (High != null) yield return new ElementValue("high", High);
- 
-            } 
-        } 
-    
-    
+            }
+        }
+
     }
-    
+
 }

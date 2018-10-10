@@ -21,7 +21,7 @@ namespace Hl7.Fhir.ElementModel
     internal class ElementDefinitionSummaryCache : Dictionary<string, IElementDefinitionSummary>
     {
         public static ElementDefinitionSummaryCache ForType(IStructureDefinitionSummary type)
-            => new ElementDefinitionSummaryCache(type.GetElements().ToDictionary(c => c.ElementName));
+            => new ElementDefinitionSummaryCache(type.Elements.ToDictionary(c => c.ElementName));
 
         public static ElementDefinitionSummaryCache Empty = new ElementDefinitionSummaryCache();
 

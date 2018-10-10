@@ -1,22 +1,24 @@
-﻿using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Navigation;
-using Hl7.Fhir.Specification.Source;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Xml.Linq;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Support;
-using System.Collections.Generic;
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Utility;
-using Xunit;
-using System;
-using Hl7.Fhir.Validation;
-using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using System.Xml.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Support;
+using Hl7.Fhir.Validation;
+using Xunit;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -64,7 +66,7 @@ namespace Hl7.Fhir.Specification.Tests
         public void TestEmptyElement()
         {
             var boolSd = _source.FindStructureDefinitionForCoreType(FHIRDefinedType.Boolean);
-            var data = SourceNode.Node("active").ToTypedElement(new PocoStructureDefinitionSummaryProvider(), "boolean");
+            var data = SourceNode.Node("active").ToTypedElement(DSTU2ModelInfo.Instance.StructureDefinitionProvider, "boolean");
 
             var result = _validator.Validate(data, boolSd);
             Assert.False(result.Success);
@@ -76,7 +78,7 @@ namespace Hl7.Fhir.Specification.Tests
         public void NameMatching()
         {
             var data = SourceNode.Valued("active", "true")
-                .ToTypedElement(new PocoStructureDefinitionSummaryProvider(), "boolean");
+                .ToTypedElement(DSTU2ModelInfo.Instance.StructureDefinitionProvider, "boolean");
 
             Assert.True(ChildNameMatcher.NameMatches("active", data));
             Assert.True(ChildNameMatcher.NameMatches("activeBoolean", data));
@@ -96,8 +98,8 @@ namespace Hl7.Fhir.Specification.Tests
                     SourceNode.Node("extension",
                         SourceNode.Valued("value", "4")),
                     SourceNode.Node("nonExistant")
-                        ).ToTypedElement(new PocoStructureDefinitionSummaryProvider(), type: "boolean", settings: new TypedElementSettings { ErrorMode = TypedElementSettings.TypeErrorMode.Passthrough});
-                    
+                        ).ToTypedElement(DSTU2ModelInfo.Instance.StructureDefinitionProvider, type: "boolean", settings: new TypedElementSettings { ErrorMode = TypedElementSettings.TypeErrorMode.Passthrough });
+
             var matches = ChildNameMatcher.Match(boolDefNav, new ScopedNode(data));
             Assert.Single(matches.UnmatchedInstanceElements);
             Assert.Equal(3, matches.Matches.Count());        // id, extension, value
@@ -161,7 +163,7 @@ namespace Hl7.Fhir.Specification.Tests
                         SourceNode.Valued("id", "myId2"),
                         SourceNode.Node("extension",
                             SourceNode.Valued("valueInteger", "4")))
-                            .ToTypedElement(new PocoStructureDefinitionSummaryProvider(), "boolean");
+                            .ToTypedElement(DSTU2ModelInfo.Instance.StructureDefinitionProvider, "boolean");
 
             var report = _validator.Validate(data, boolSd);
 
@@ -408,7 +410,7 @@ namespace Hl7.Fhir.Specification.Tests
         {
             var questionnaireXml = File.ReadAllText("TestData\\validation\\questionnaire-sdc-profile-example-cap.xml");
 
-            var questionnaire = (new FhirXmlParser()).Parse<Questionnaire>(questionnaireXml);
+            var questionnaire = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Questionnaire>(questionnaireXml);
             Assert.NotNull(questionnaire);
 
             // the questionnaire instance references the profile to be validated:
@@ -463,7 +465,7 @@ namespace Hl7.Fhir.Specification.Tests
         {
             var careplanXml = File.ReadAllText("TestData\\validation\\careplan-example-integrated.xml");
 
-            var careplan = (new FhirXmlParser()).Parse<CarePlan>(careplanXml);
+            var careplan = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<CarePlan>(careplanXml);
             Assert.NotNull(careplan);
             var careplanSd = _source.FindStructureDefinitionForCoreType(FHIRDefinedType.CarePlan);
 
@@ -479,7 +481,7 @@ namespace Hl7.Fhir.Specification.Tests
         {
             var questionnaireXml = File.ReadAllText("TestData\\validation\\questionnaire-sdc-profile-example-cap.xml");
 
-            var questionnaire = (new FhirXmlParser()).Parse<Questionnaire>(questionnaireXml);
+            var questionnaire = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Questionnaire>(questionnaireXml);
             Assert.NotNull(questionnaire);
 
             var sw = new Stopwatch();
@@ -528,7 +530,7 @@ namespace Hl7.Fhir.Specification.Tests
         {
             var bundleXml = File.ReadAllText("TestData\\validation\\bundle-contained-references.xml");
 
-            var bundle = (new FhirXmlParser()).Parse<Bundle>(bundleXml);
+            var bundle = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Bundle>(bundleXml);
             Assert.NotNull(bundle);
 
             var ctx = new ValidationSettings() { ResourceResolver = _source, GenerateSnapshot = true, ResolveExteralReferences = true, Trace = false };
@@ -638,7 +640,7 @@ namespace Hl7.Fhir.Specification.Tests
         public void ValidateExtensionExamples()
         {
             var levinXml = File.ReadAllText(@"TestData\validation\Levin.patient.xml");
-            var levin = (new FhirXmlParser()).Parse<Patient>(levinXml);
+            var levin = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(levinXml);
             DebugDumpOutputXml(levin);
             Assert.NotNull(levin);
 
@@ -697,7 +699,7 @@ namespace Hl7.Fhir.Specification.Tests
                 if (File.Exists(path))
                 {
                     var xml = File.ReadAllText(path);
-                    return (new FhirXmlParser()).Parse<Resource>(xml);
+                    return (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Resource>(xml);
                 }
                 else
                     return null;
@@ -741,7 +743,7 @@ namespace Hl7.Fhir.Specification.Tests
             // var res = source.ResolveByUri("Patient/pat1"); // cf. "Patient/Levin"
 
             var jsonPatient = File.ReadAllText(@"TestData\validation\patient-ck.json");
-            var parser = new FhirJsonParser();
+            var parser = new FhirJsonParser(DSTU2ModelInfo.Instance);
             var patient = parser.Parse<Patient>(jsonPatient);
             Assert.NotNull(patient);
 
@@ -802,7 +804,7 @@ namespace Hl7.Fhir.Specification.Tests
         public void ValidateInternalReferenceWithinContainedResources()
         {
             var obsOverview = File.ReadAllText(@"TestData\validation\observation-list.xml");
-            var parser = new FhirXmlParser();
+            var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
 
             var obsList = parser.Parse<List>(obsOverview);
             Assert.NotNull(obsList);

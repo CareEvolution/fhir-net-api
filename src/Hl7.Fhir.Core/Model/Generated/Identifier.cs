@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
 
@@ -38,21 +38,23 @@ using Hl7.Fhir.Specification;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// An identifier intended for computation
     /// </summary>
     [FhirType("Identifier")]
     [DataContract]
-    public partial class Identifier : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class Identifier : Element
     {
         [NotMapped]
         public override string TypeName { get { return "Identifier"; } }
-        
+
         /// <summary>
         /// Identifies the purpose for this identifier, if known .
         /// (url: http://hl7.org/fhir/ValueSet/identifier-use)
@@ -86,197 +88,197 @@ namespace Hl7.Fhir.Model
             Secondary,
         }
 
+
         /// <summary>
         /// usual | official | temp | secondary (If known)
         /// </summary>
         [FhirElement("use", InSummary=true, Order=30)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.Identifier.IdentifierUse> UseElement
+        public Code<IdentifierUse> UseElement
         {
-            get { return _UseElement; }
-            set { _UseElement = value; OnPropertyChanged("UseElement"); }
+            get { return _useElement; }
+            set { _useElement = value; OnPropertyChanged("UseElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.Identifier.IdentifierUse> _UseElement;
-        
+
+        private Code<IdentifierUse> _useElement;
+
         /// <summary>
         /// usual | official | temp | secondary (If known)
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.Identifier.IdentifierUse? Use
+        [IgnoreDataMember]
+        public IdentifierUse? Use
         {
             get { return UseElement != null ? UseElement.Value : null; }
             set
             {
                 if (!value.HasValue)
-                  UseElement = null; 
+                    UseElement = null;
                 else
-                  UseElement = new Code<Hl7.Fhir.Model.Identifier.IdentifierUse>(value);
+                    UseElement = new Code<IdentifierUse>(value);
                 OnPropertyChanged("Use");
             }
         }
-        
+
         /// <summary>
         /// Description of identifier
         /// </summary>
         [FhirElement("type", InSummary=true, Order=40)]
         [DataMember]
-        public Hl7.Fhir.Model.CodeableConcept Type
+        public CodeableConcept Type
         {
-            get { return _Type; }
-            set { _Type = value; OnPropertyChanged("Type"); }
+            get { return _type; }
+            set { _type = value; OnPropertyChanged("Type"); }
         }
-        
-        private Hl7.Fhir.Model.CodeableConcept _Type;
-        
+
+        private CodeableConcept _type;
+
         /// <summary>
         /// The namespace for the identifier
         /// </summary>
         [FhirElement("system", InSummary=true, Order=50)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirUri SystemElement
+        public FhirUri SystemElement
         {
-            get { return _SystemElement; }
-            set { _SystemElement = value; OnPropertyChanged("SystemElement"); }
+            get { return _systemElement; }
+            set { _systemElement = value; OnPropertyChanged("SystemElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirUri _SystemElement;
-        
+
+        private FhirUri _systemElement;
+
         /// <summary>
         /// The namespace for the identifier
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string System
         {
             get { return SystemElement != null ? SystemElement.Value : null; }
             set
             {
                 if (value == null)
-                  SystemElement = null; 
+                    SystemElement = null;
                 else
-                  SystemElement = new Hl7.Fhir.Model.FhirUri(value);
+                    SystemElement = new FhirUri(value);
                 OnPropertyChanged("System");
             }
         }
-        
+
         /// <summary>
         /// The value that is unique
         /// </summary>
         [FhirElement("value", InSummary=true, Order=60)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirString ValueElement
+        public FhirString ValueElement
         {
-            get { return _ValueElement; }
-            set { _ValueElement = value; OnPropertyChanged("ValueElement"); }
+            get { return _valueElement; }
+            set { _valueElement = value; OnPropertyChanged("ValueElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirString _ValueElement;
-        
+
+        private FhirString _valueElement;
+
         /// <summary>
         /// The value that is unique
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Value
         {
             get { return ValueElement != null ? ValueElement.Value : null; }
             set
             {
                 if (value == null)
-                  ValueElement = null; 
+                    ValueElement = null;
                 else
-                  ValueElement = new Hl7.Fhir.Model.FhirString(value);
+                    ValueElement = new FhirString(value);
                 OnPropertyChanged("Value");
             }
         }
-        
+
         /// <summary>
         /// Time period when id is/was valid for use
         /// </summary>
         [FhirElement("period", InSummary=true, Order=70)]
         [DataMember]
-        public Hl7.Fhir.Model.Period Period
+        public Period Period
         {
-            get { return _Period; }
-            set { _Period = value; OnPropertyChanged("Period"); }
+            get { return _period; }
+            set { _period = value; OnPropertyChanged("Period"); }
         }
-        
-        private Hl7.Fhir.Model.Period _Period;
-        
+
+        private Period _period;
+
         /// <summary>
         /// Organization that issued id (may be just text)
         /// </summary>
         [FhirElement("assigner", InSummary=true, Order=80)]
-        [CLSCompliant(false)]
-		[References("Organization")]
+        [References("Organization")]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference Assigner
+        public ResourceReference Assigner
         {
-            get { return _Assigner; }
-            set { _Assigner = value; OnPropertyChanged("Assigner"); }
+            get { return _assigner; }
+            set { _assigner = value; OnPropertyChanged("Assigner"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _Assigner;
-        
+
+        private ResourceReference _assigner;
+
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as Identifier;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(UseElement != null) dest.UseElement = (Code<Hl7.Fhir.Model.Identifier.IdentifierUse>)UseElement.DeepCopy();
-                if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(SystemElement != null) dest.SystemElement = (Hl7.Fhir.Model.FhirUri)SystemElement.DeepCopy();
-                if(ValueElement != null) dest.ValueElement = (Hl7.Fhir.Model.FhirString)ValueElement.DeepCopy();
-                if(Period != null) dest.Period = (Hl7.Fhir.Model.Period)Period.DeepCopy();
-                if(Assigner != null) dest.Assigner = (Hl7.Fhir.Model.ResourceReference)Assigner.DeepCopy();
+                if (UseElement != null) dest.UseElement = (Code<IdentifierUse>)UseElement.DeepCopy();
+                if (Type != null) dest.Type = (CodeableConcept)Type.DeepCopy();
+                if (SystemElement != null) dest.SystemElement = (FhirUri)SystemElement.DeepCopy();
+                if (ValueElement != null) dest.ValueElement = (FhirString)ValueElement.DeepCopy();
+                if (Period != null) dest.Period = (Period)Period.DeepCopy();
+                if (Assigner != null) dest.Assigner = (ResourceReference)Assigner.DeepCopy();
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new Identifier());
+             return CopyTo(new Identifier());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as Identifier;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(UseElement, otherT.UseElement)) return false;
-            if( !DeepComparable.Matches(Type, otherT.Type)) return false;
-            if( !DeepComparable.Matches(SystemElement, otherT.SystemElement)) return false;
-            if( !DeepComparable.Matches(ValueElement, otherT.ValueElement)) return false;
-            if( !DeepComparable.Matches(Period, otherT.Period)) return false;
-            if( !DeepComparable.Matches(Assigner, otherT.Assigner)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(UseElement, otherT.UseElement)) return false;
+            if (!DeepComparable.Matches(Type, otherT.Type)) return false;
+            if (!DeepComparable.Matches(SystemElement, otherT.SystemElement)) return false;
+            if (!DeepComparable.Matches(ValueElement, otherT.ValueElement)) return false;
+            if (!DeepComparable.Matches(Period, otherT.Period)) return false;
+            if (!DeepComparable.Matches(Assigner, otherT.Assigner)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as Identifier;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(UseElement, otherT.UseElement)) return false;
-            if( !DeepComparable.IsExactly(Type, otherT.Type)) return false;
-            if( !DeepComparable.IsExactly(SystemElement, otherT.SystemElement)) return false;
-            if( !DeepComparable.IsExactly(ValueElement, otherT.ValueElement)) return false;
-            if( !DeepComparable.IsExactly(Period, otherT.Period)) return false;
-            if( !DeepComparable.IsExactly(Assigner, otherT.Assigner)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(UseElement, otherT.UseElement)) return false;
+            if (!DeepComparable.IsExactly(Type, otherT.Type)) return false;
+            if (!DeepComparable.IsExactly(SystemElement, otherT.SystemElement)) return false;
+            if (!DeepComparable.IsExactly(ValueElement, otherT.ValueElement)) return false;
+            if (!DeepComparable.IsExactly(Period, otherT.Period)) return false;
+            if (!DeepComparable.IsExactly(Assigner, otherT.Assigner)) return false;
+
             return true;
         }
 
@@ -296,22 +298,20 @@ namespace Hl7.Fhir.Model
         }
 
         [NotMapped]
-        internal override IEnumerable<ElementValue> NamedChildren 
-        { 
-            get 
-            { 
-                foreach (var item in base.NamedChildren) yield return item; 
+        internal override IEnumerable<ElementValue> NamedChildren
+        {
+            get
+            {
+                foreach (var item in base.NamedChildren) yield return item;
                 if (UseElement != null) yield return new ElementValue("use", UseElement);
                 if (Type != null) yield return new ElementValue("type", Type);
                 if (SystemElement != null) yield return new ElementValue("system", SystemElement);
                 if (ValueElement != null) yield return new ElementValue("value", ValueElement);
                 if (Period != null) yield return new ElementValue("period", Period);
                 if (Assigner != null) yield return new ElementValue("assigner", Assigner);
- 
-            } 
-        } 
-    
-    
+            }
+        }
+
     }
-    
+
 }

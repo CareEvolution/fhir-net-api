@@ -6,44 +6,22 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
 using System;
-using System.Reflection;
-
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Specification;
 
 namespace Hl7.Fhir.Serialization
 {
     public class BaseFhirParser
     {
-        public readonly ParserSettings Settings;
+        protected readonly IModelInfo _modelInfo;
+        protected readonly ParserSettings _parserSettings;
 
-        public BaseFhirParser(ParserSettings settings = null)
+        public BaseFhirParser(IModelInfo modelInfo, ParserSettings settings = null)
         {
-            Settings = settings?.Clone() ?? new ParserSettings();
-        }
-
-        private static Lazy<ModelInspector> _inspector = createDefaultModelInspector();
-
-        private static Lazy<ModelInspector> createDefaultModelInspector()
-        {
-            return new Lazy<ModelInspector>(() =>
-            {
-                var result = new ModelInspector();
-
-                result.Import(typeof(Resource).GetTypeInfo().Assembly);
-                return result;
-            });
-
-        }
-
-        internal static ModelInspector Inspector
-        {
-            get
-            {
-                return _inspector.Value;
-            }
+            _parserSettings = settings ?? new ParserSettings();
+            _modelInfo = modelInfo;
         }
 
         private PocoBuilderSettings buildPocoBuilderSettings(ParserSettings ps) =>
@@ -53,13 +31,12 @@ namespace Hl7.Fhir.Serialization
                 IgnoreUnknownMembers = ps.AcceptUnknownMembers
             };
 
-        public Base Parse(ITypedElement element) => element.ToPoco(buildPocoBuilderSettings(Settings));
+        public Base Parse(ITypedElement element) => element.ToPoco(_modelInfo, buildPocoBuilderSettings(_parserSettings));
 
-        public T Parse<T>(ITypedElement element) where T : Base => element.ToPoco<T>(buildPocoBuilderSettings(Settings));
+        public T Parse<T>(ITypedElement element) where T : Base => element.ToPoco<T>(_modelInfo, buildPocoBuilderSettings(_parserSettings));
 
-        public Base Parse(ISourceNode node, Type type=null) => node.ToPoco(type, buildPocoBuilderSettings(Settings));
+        public Base Parse(ISourceNode node, Type type = null) => node.ToPoco(_modelInfo, type, buildPocoBuilderSettings(_parserSettings));
 
-        public T Parse<T>(ISourceNode node) where T : Base => node.ToPoco<T>(buildPocoBuilderSettings(Settings));
+        public T Parse<T>(ISourceNode node) where T : Base => node.ToPoco<T>(_modelInfo, buildPocoBuilderSettings(_parserSettings));
     }
-
 }

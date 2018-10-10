@@ -7,7 +7,7 @@
  */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using System;
@@ -57,7 +57,7 @@ namespace Hl7.Fhir.Validation
 
         internal static IComparable GetComparableValue(this ITypedElement instance, Type expectedType)
         {
-            if (expectedType == typeof(Model.Quantity))
+            if (expectedType == typeof(Quantity))
             {
                 var q = instance.ParseQuantity();
                 // These checks should probably be somewhere else since it has nothing to do with parsing

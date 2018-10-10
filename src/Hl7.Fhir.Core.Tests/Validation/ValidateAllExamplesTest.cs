@@ -8,14 +8,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Xml;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
-using Hl7.Fhir.Model;
+using System.IO;
+using System.Linq;
+using System.Xml;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -26,7 +27,7 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestCategory("LongRunner")]
         public void ValidateInvariantAllExamples()
         {
-            FhirXmlParser parser = new FhirXmlParser();
+            FhirXmlParser parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
             int errorCount = 0;
             int testFileCount = 0;
             Dictionary<string, int> failedInvariantCodes = new Dictionary<string, int>();
@@ -80,7 +81,7 @@ namespace Hl7.Fhir.Tests.Serialization
                             }
 
                             Trace.WriteLine("-------------------------");
-                            Trace.WriteLine(new FhirXmlSerializer().SerializeToString(resource));
+                            Trace.WriteLine(new FhirXmlSerializer(DSTU2ModelInfo.Instance).SerializeToString(resource));
                             Trace.WriteLine("-------------------------");
                         }
                         if (outcome.Issue.Count != 0)
@@ -111,9 +112,9 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestCategory("LongRunner")]
         public void ValidateInvariantAllExamplesWithOtherConstraints()
         {
-           string profiles = TestDataHelper.GetFullPathForExample("profiles-others.xml");
+            string profiles = TestDataHelper.GetFullPathForExample("profiles-others.xml");
 
-            FhirXmlParser parser = new FhirXmlParser();
+            FhirXmlParser parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
             int errorCount = 0;
             int testFileCount = 0;
             Dictionary<string, int> failedInvariantCodes = new Dictionary<string, int>();
@@ -124,7 +125,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Dictionary<string, List<ElementDefinition.ConstraintComponent>> invariantCache = new Dictionary<string, List<ElementDefinition.ConstraintComponent>>();
             using (Stream streamOther = File.OpenRead(profiles))
             {
-                otherSDs = new Fhir.Serialization.FhirXmlParser().Parse<Bundle>(SerializationUtil.XmlReaderFromStream(streamOther));
+                otherSDs = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Bundle>(SerializationUtil.XmlReaderFromStream(streamOther));
                 foreach (StructureDefinition resource in otherSDs.Entry.Select(e => e.Resource).Where(r => r != null && r is StructureDefinition))
                 {
                     List<ElementDefinition.ConstraintComponent> cacheForResource;
@@ -238,9 +239,9 @@ namespace Hl7.Fhir.Tests.Serialization
                                 Trace.WriteLine("\t" + item.Diagnostics);
 
                             }
-                          //  Trace.WriteLine("-------------------------");
-                          //  Trace.WriteLine(FhirSerializer.SerializeResourceToXml(resource));
-                          //  Trace.WriteLine("-------------------------");
+                            //  Trace.WriteLine("-------------------------");
+                            //  Trace.WriteLine(FhirSerializer.SerializeResourceToXml(resource));
+                            //  Trace.WriteLine("-------------------------");
                             // count the issue
                             errorCount++;
                         }

@@ -10,7 +10,7 @@
  * [WMR 20160909] Removed, pollutes the Navigation namespace
  * Maybe move to Snapshot namespace?
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,13 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Support;
 using System;
 using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Support;
 
 namespace Hl7.Fhir.Validation
 {
@@ -60,7 +61,7 @@ namespace Hl7.Fhir.Validation
             if (value is Primitive)
                 return value.ToString();
             else
-                return new FhirJsonSerializer().SerializeToString(value);
+                return new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(value);
         }
 
         public static bool IsExactlyEqualTo(this ITypedElement left, ITypedElement right)
@@ -76,7 +77,7 @@ namespace Hl7.Fhir.Validation
 
             if (childrenL.Count() != childrenR.Count()) return false;
 
-            return childrenL.Zip(childrenR, 
+            return childrenL.Zip(childrenR,
                             (childL, childR) => childL.Name == childR.Name && childL.IsExactlyEqualTo(childR)).All(t => t);
         }
 
@@ -107,7 +108,7 @@ namespace Hl7.Fhir.Validation
         {
             if (value == null && pattern == null) return true;
             if (value == null || pattern == null) return false;
-            
+
             if (!ValueEquality(value.Value, pattern.Value)) return false;
 
             // Compare the children.

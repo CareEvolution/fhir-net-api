@@ -14,9 +14,6 @@ namespace Hl7.Fhir.Specification.Terminology
 {
     public class ValueSetExpanderSettings
     {
-        [Obsolete("Use the CreateDefault() method, as using this static member may cause threading issues.")]
-        public static ValueSetExpanderSettings Default = new ValueSetExpanderSettings();
-
         /// <summary>
         /// The <see cref="IResourceResolver"/> to use when a reference to another valueset is encountered />
         /// </summary>

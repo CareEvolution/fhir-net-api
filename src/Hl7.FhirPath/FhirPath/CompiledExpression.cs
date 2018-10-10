@@ -39,6 +39,4 @@ namespace Hl7.FhirPath
                 return result.Value == value;
         }
     }
-
-
 }

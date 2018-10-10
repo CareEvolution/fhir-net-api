@@ -6,12 +6,12 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
 using System;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.DSTU2
 {
     public class TransactionBuilder
     {
@@ -82,7 +82,7 @@ namespace Hl7.Fhir.Rest
         public TransactionBuilder Get(string url)
         {
             var entry = newEntry(Bundle.HTTPVerb.GET, InteractionType.Unspecified);
-            var uri = new Uri(url,UriKind.RelativeOrAbsolute);
+            var uri = new Uri(url, UriKind.RelativeOrAbsolute);
 
             if (uri.IsAbsoluteUri)
                 addEntry(entry, new RestUrl(url));
@@ -120,7 +120,7 @@ namespace Hl7.Fhir.Rest
         }
 
 
-        public TransactionBuilder Update(string id, Resource body, string versionId=null)
+        public TransactionBuilder Update(string id, Resource body, string versionId = null)
         {
             var entry = newEntry(Bundle.HTTPVerb.PUT, InteractionType.Update);
             entry.Resource = body;
@@ -131,7 +131,7 @@ namespace Hl7.Fhir.Rest
             return this;
         }
 
-        public TransactionBuilder Update(SearchParams condition, Resource body, string versionId=null)
+        public TransactionBuilder Update(SearchParams condition, Resource body, string versionId = null)
         {
             var entry = newEntry(Bundle.HTTPVerb.PUT, InteractionType.Update);
             entry.Resource = body;
@@ -195,10 +195,10 @@ namespace Hl7.Fhir.Rest
             return this;
         }
 
-        
+
         public TransactionBuilder Conformance(SummaryType? summary)
         {
-            var entry =  newEntry(Bundle.HTTPVerb.GET, InteractionType.Capabilities);
+            var entry = newEntry(Bundle.HTTPVerb.GET, InteractionType.Capabilities);
             var path = newRestUrl().AddPath(METADATA);
             if (summary.HasValue)
                 path.AddParam(SearchParams.SEARCH_PARAM_SUMMARY, summary.Value.ToString().ToLower());
@@ -208,36 +208,36 @@ namespace Hl7.Fhir.Rest
         }
 
 
-        private void addHistoryEntry(RestUrl path, SummaryType? summaryOnly = null, int? pageSize=null, DateTimeOffset? since = null)
+        private void addHistoryEntry(RestUrl path, SummaryType? summaryOnly = null, int? pageSize = null, DateTimeOffset? since = null)
         {
             var entry = newEntry(Bundle.HTTPVerb.GET, InteractionType.History);
 
-            if(summaryOnly.HasValue) path.AddParam(SearchParams.SEARCH_PARAM_SUMMARY, summaryOnly.Value.ToString().ToLower());
-            if(pageSize.HasValue) path.AddParam(HttpUtil.HISTORY_PARAM_COUNT, pageSize.Value.ToString());
-            if(since.HasValue) path.AddParam(HttpUtil.HISTORY_PARAM_SINCE, PrimitiveTypeConverter.ConvertTo<string>(since.Value));
+            if (summaryOnly.HasValue) path.AddParam(SearchParams.SEARCH_PARAM_SUMMARY, summaryOnly.Value.ToString().ToLower());
+            if (pageSize.HasValue) path.AddParam(HttpUtil.HISTORY_PARAM_COUNT, pageSize.Value.ToString());
+            if (since.HasValue) path.AddParam(HttpUtil.HISTORY_PARAM_SINCE, PrimitiveTypeConverter.ConvertTo<string>(since.Value));
 
             addEntry(entry, path);
         }
 
-        public TransactionBuilder ResourceHistory(string resourceType, string id, SummaryType? summaryOnly = null, int? pageSize=null, DateTimeOffset? since = null)
+        public TransactionBuilder ResourceHistory(string resourceType, string id, SummaryType? summaryOnly = null, int? pageSize = null, DateTimeOffset? since = null)
         {
             var path = newRestUrl().AddPath(resourceType, id, HISTORY);
             addHistoryEntry(path, summaryOnly, pageSize, since);
-            
+
             return this;
         }
 
 
-        public TransactionBuilder CollectionHistory(string resourceType, SummaryType? summaryOnly = null, int? pageSize=null, DateTimeOffset? since = null)
-        {            
+        public TransactionBuilder CollectionHistory(string resourceType, SummaryType? summaryOnly = null, int? pageSize = null, DateTimeOffset? since = null)
+        {
             var path = newRestUrl().AddPath(resourceType, HISTORY);
-            addHistoryEntry(path,summaryOnly, pageSize, since);
-            
+            addHistoryEntry(path, summaryOnly, pageSize, since);
+
             return this;
         }
 
 
-        public TransactionBuilder ServerHistory(SummaryType? summaryOnly = null, int? pageSize=null, DateTimeOffset? since = null)
+        public TransactionBuilder ServerHistory(SummaryType? summaryOnly = null, int? pageSize = null, DateTimeOffset? since = null)
         {
             var path = newRestUrl().AddPath(HISTORY);
             addHistoryEntry(path, summaryOnly, pageSize, since);
@@ -294,7 +294,7 @@ namespace Hl7.Fhir.Rest
         }
 
         public TransactionBuilder EndpointOperation(RestUrl endpoint, string name, Parameters parameters, bool useGet = false)
-        {          
+        {
             var path = new RestUrl(endpoint).AddPath(OPERATIONPREFIX + name);
 
             return EndpointOperation(path, parameters, useGet);
@@ -309,13 +309,13 @@ namespace Hl7.Fhir.Rest
         public TransactionBuilder TypeOperation(string resourceType, string name, Parameters parameters, bool useGet = false)
         {
             var path = newRestUrl().AddPath(resourceType, OPERATIONPREFIX + name);
-            return EndpointOperation(path,parameters, useGet);
+            return EndpointOperation(path, parameters, useGet);
         }
 
         public TransactionBuilder ResourceOperation(string resourceType, string id, string vid, string name, Parameters parameters, bool useGet = false)
         {
             var path = newRestUrl().AddPath(resourceType, id);
-            if(vid != null) path.AddPath(HISTORY, vid);
+            if (vid != null) path.AddPath(HISTORY, vid);
             path.AddPath(OPERATIONPREFIX + name);
 
             return EndpointOperation(path, parameters, useGet);
@@ -327,7 +327,7 @@ namespace Hl7.Fhir.Rest
             var entry = newEntry(Bundle.HTTPVerb.GET, InteractionType.Search);
             var path = newRestUrl();
             if (resourceType != null) path.AddPath(resourceType);
-            if(q != null) path.AddParams(q.ToUriParamList());
+            if (q != null) path.AddParams(q.ToUriParamList());
             addEntry(entry, path);
 
             return this;

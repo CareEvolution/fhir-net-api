@@ -7,14 +7,15 @@
  */
 
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace Hl7.Fhir.Serialization
+namespace Hl7.Fhir.Serialization.DSTU2
 {
     public static class PocoSerializationExtensions
     {

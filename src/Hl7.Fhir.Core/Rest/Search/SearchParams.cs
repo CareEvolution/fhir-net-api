@@ -28,14 +28,12 @@
 
 */
 
-
-
-using Hl7.Fhir.Introspection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 
@@ -66,7 +64,7 @@ namespace Hl7.Fhir.Rest.Search
         P ModifiedBy(string modifier);
     }
 
-    public interface IBaseParam<P,V> : IBaseParam<P>
+    public interface IBaseParam<P, V> : IBaseParam<P>
     {
         P Is(V value);
     }
@@ -91,7 +89,7 @@ namespace Hl7.Fhir.Rest.Search
         }
     }
 
-    public class SearchParam<P,V> : SearchParam<P>, IBaseParam<P,V>
+    public class SearchParam<P, V> : SearchParam<P>, IBaseParam<P, V>
     {
         public P Is(V value)
         {
@@ -118,14 +116,14 @@ namespace Hl7.Fhir.Rest.Search
     // Where(SearchParam) + Where(SearchParams) +  SearchParams SearchParam.And(this SearchParam, SearchParam that)
     // Or the same?
 
-    public interface IMultiValued<P> : IBaseParam<P> {  }
+    public interface IMultiValued<P> : IBaseParam<P> { }
 
-    public interface IOrderedValue<P,V> : IBaseParam<P,V> { }
+    public interface IOrderedValue<P, V> : IBaseParam<P, V> { }
 
     public interface IOrderedRangeValue<P, V> : IOrderedValue<P, V> { }
 
 
-    public class StringParameter : SearchParam<StringParameter,string>, IMultiValued<StringParameter>
+    public class StringParameter : SearchParam<StringParameter, string>, IMultiValued<StringParameter>
     {
         public StringParameter Exactly() => this.ModifiedBy("exact");
         public StringParameter Exactly(string value) => this.ModifiedBy("exact").Is(value);
@@ -133,7 +131,7 @@ namespace Hl7.Fhir.Rest.Search
         public StringParameter AsText() => this.ModifiedBy("text");
     }
 
-    public class UriParameter : SearchParam<UriParameter,string>, IMultiValued<UriParameter>
+    public class UriParameter : SearchParam<UriParameter, string>, IMultiValued<UriParameter>
     {
         public UriParameter Is(Uri value) => this.Is(value?.OriginalString);
 
@@ -142,16 +140,16 @@ namespace Hl7.Fhir.Rest.Search
 
     }
 
-    public class DateTimeParameter : SearchParam<DateTimeParameter,string>, IOrderedRangeValue<DateTimeParameter, string>, IMultiValued<DateTimeParameter>
+    public class DateTimeParameter : SearchParam<DateTimeParameter, string>, IOrderedRangeValue<DateTimeParameter, string>, IMultiValued<DateTimeParameter>
     {
         public DateTimeParameter Is(DateTimeOffset value) => this.Is(value.Canonical());
     }
 
-    public class NumberParameter : SearchParam<NumberParameter,decimal>, IOrderedValue<NumberParameter,decimal>, IMultiValued<NumberParameter> { }
+    public class NumberParameter : SearchParam<NumberParameter, decimal>, IOrderedValue<NumberParameter, decimal>, IMultiValued<NumberParameter> { }
 
     public class ModifierParameter : SearchParam<ModifierParameter, bool> { }
 
-    public class TokenParameter : SearchParam<TokenParameter,string>, IMultiValued<TokenParameter>
+    public class TokenParameter : SearchParam<TokenParameter, string>, IMultiValued<TokenParameter>
     {
         public string System { get; set; }
 
@@ -211,38 +209,38 @@ namespace Hl7.Fhir.Rest.Search
 
     }
 
-    public class SummaryParam : SearchParam<SummaryParam,SummaryType> { }
+    public class SummaryParam : SearchParam<SummaryParam, SummaryType> { }
 
-    
+
 
     public static class ParamConstructors
     {
         internal static string Canonical(this object value) => PrimitiveTypeConverter.ConvertTo<string>(value);
 
-        public static ModifierParameter Missing<P>(this IBaseParam<P> par, bool value = true) 
+        public static ModifierParameter Missing<P>(this IBaseParam<P> par, bool value = true)
             => new ModifierParameter().Named(par.Name).ModifiedBy("missing").Is(value);
 
-        public static P EqualTo<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P,V>
+        public static P EqualTo<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P, V>
             => par.Is($"eq{par.Is(value).Value}");
-        public static P NotEqualTo<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P,V>
+        public static P NotEqualTo<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P, V>
             => par.Is($"ne{par.Is(value).Value}");
-        public static P GreaterThan<P,V>(this IOrderedValue<P,V> par, V value) where P:SearchParam<P,V>
+        public static P GreaterThan<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P, V>
            => par.Is($"gt{par.Is(value).Value}");
-        public static P LessThan<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P,V>
+        public static P LessThan<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P, V>
            => par.Is($"lt{par.Is(value).Value}");
-        public static P GreaterThanOrEqual<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P,V>
+        public static P GreaterThanOrEqual<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P, V>
            => par.Is($"ge{par.Is(value).Value}");
-        public static P LessThanOrEqual<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P,V>
+        public static P LessThanOrEqual<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P, V>
            => par.Is($"le{par.Is(value).Value}");
-        public static P IsApproximately<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P,V>
+        public static P IsApproximately<P, V>(this IOrderedValue<P, V> par, V value) where P : SearchParam<P, V>
            => par.Is($"ap{par.Is(value).Value}");
-        public static P StartsAfter<P, V>(this IOrderedRangeValue<P, V> par, V value) where P : SearchParam<P,V>
+        public static P StartsAfter<P, V>(this IOrderedRangeValue<P, V> par, V value) where P : SearchParam<P, V>
            => par.Is($"sa{par.Is(value).Value}");
-        public static P EndsBefore<P, V>(this IOrderedRangeValue<P, V> par, V value) where P : SearchParam<P,V>
+        public static P EndsBefore<P, V>(this IOrderedRangeValue<P, V> par, V value) where P : SearchParam<P, V>
            => par.Is($"eb{par.Is(value).Value}");
 
 
-        public static P Or<P>(this IMultiValued<P> par, IMultiValued<P> other) where P:IBaseParam<P>, new()
+        public static P Or<P>(this IMultiValued<P> par, IMultiValued<P> other) where P : IBaseParam<P>, new()
         {
             var o = (P)other;
             var p = (P)par;
@@ -292,8 +290,8 @@ namespace Hl7.Fhir.Rest.Search
             SEARCH_PARAM_ELEMENTS
             // lastUpdated, _tag, _profile, _security, _list
             };
-     
-     
+
+
         public const string SEARCH_MODIF_ASCENDING = "asc";
         public const string SEARCH_MODIF_DESCENDING = "desc";
 
@@ -330,7 +328,7 @@ namespace Hl7.Fhir.Rest.Search
             else if (name == SEARCH_PARAM_COUNT)
             {
                 int count;
-                if ( !Int32.TryParse(value, out count) || count <= 0) throw Error.Format("Invalid {0}: '{1}' is not a positive integer".FormatWith(name, value));
+                if (!Int32.TryParse(value, out count) || count <= 0) throw Error.Format("Invalid {0}: '{1}' is not a positive integer".FormatWith(name, value));
                 Count = count;
             }
             else if (name == SEARCH_PARAM_INCLUDE) addNonEmpty(name, Include, value);
@@ -339,8 +337,8 @@ namespace Hl7.Fhir.Rest.Search
             {
                 var order = name.Substring(SEARCH_PARAM_SORT.Length + 1).ToLower();
 
-                if ( "ascending".StartsWith(order) && order.Length >= 3) addNonEmptySort(value, SortOrder.Ascending);
-                else if ( "descending".StartsWith(order) && order.Length >= 4) addNonEmptySort(value, SortOrder.Descending);
+                if ("ascending".StartsWith(order) && order.Length >= 3) addNonEmptySort(value, SortOrder.Ascending);
+                else if ("descending".StartsWith(order) && order.Length >= 4) addNonEmptySort(value, SortOrder.Descending);
                 else throw Error.Format("Invalid {0}: '{1}' is not a recognized sort order".FormatWith(SEARCH_PARAM_SORT, order));
             }
             else if (name == SEARCH_PARAM_SORT)
@@ -369,7 +367,7 @@ namespace Hl7.Fhir.Rest.Search
                 else if (SEARCH_CONTAINED_TYPE_CONTAINER.Equals(value)) ContainedType = ContainedResult.Container;
                 else throw Error.Format("Invalid {0}: '{1}' is not a recognized containedType value".FormatWith(name, value));
             }
-            else if (name== SEARCH_PARAM_ELEMENTS)
+            else if (name == SEARCH_PARAM_ELEMENTS)
             {
                 if (String.IsNullOrEmpty(value)) throw Error.Format("Invalid {0} value: it cannot be empty".FormatWith(name));
                 Elements.AddRange(value.Split(','));
@@ -402,7 +400,7 @@ namespace Hl7.Fhir.Rest.Search
         /// <summary>
         /// The 'regular' parameters. The parameters that have no special meaning.
         /// </summary>
-        public IList<Tuple<string,string>> Parameters { get; private set; }
+        public IList<Tuple<string, string>> Parameters { get; private set; }
 
 
         public const string SEARCH_PARAM_QUERY = "_query";
@@ -422,7 +420,7 @@ namespace Hl7.Fhir.Rest.Search
         /// </summary>
         [NotMapped]
         [IgnoreDataMemberAttribute]
-        public string Text{ get; set; }
+        public string Text { get; set; }
 
 
         public const string SEARCH_PARAM_CONTENT = "_content";
@@ -432,7 +430,7 @@ namespace Hl7.Fhir.Rest.Search
         /// </summary>
         [NotMapped]
         [IgnoreDataMemberAttribute]
-        public string Content{ get; set; }
+        public string Content { get; set; }
 
 
         public const string SEARCH_PARAM_COUNT = "_count";
@@ -520,11 +518,11 @@ namespace Hl7.Fhir.Rest.Search
 
         public const string SEARCH_PARAM_ELEMENTS = "_elements";
 
-        public List<string> Elements { get; private set;  }
+        public List<string> Elements { get; private set; }
 
 
 
-        public static SearchParams FromUriParamList(IEnumerable<Tuple<string,string>> parameters)
+        public static SearchParams FromUriParamList(IEnumerable<Tuple<string, string>> parameters)
         {
             var result = new SearchParams();
 
@@ -557,42 +555,9 @@ namespace Hl7.Fhir.Rest.Search
             if (!String.IsNullOrEmpty(Filter)) result.Add(Tuple.Create(SEARCH_PARAM_FILTER, Filter));
             if (Contained != null) result.Add(Tuple.Create(SEARCH_PARAM_CONTAINED, Contained.Value.ToString().ToLower()));
             if (ContainedType != null) result.Add(Tuple.Create(SEARCH_PARAM_CONTAINEDTYPE, ContainedType.Value.ToString().ToLower()));
-            if (Elements.Any()) result.Add(Tuple.Create(SEARCH_PARAM_ELEMENTS, String.Join(",",Elements)));
+            if (Elements.Any()) result.Add(Tuple.Create(SEARCH_PARAM_ELEMENTS, String.Join(",", Elements)));
 
             result.AddRange(Parameters);
-            return result;
-        }
-
-
-        public static SearchParams FromParameters(Parameters parameters)
-        {
-            var result = new SearchParams();
-
-            foreach (var parameter in parameters.Parameter)
-            {
-                var name = parameter.Name;
-                var value = parameter.Value;
-                
-                if(value != null && value is Primitive)
-                {
-                    result.Add(parameter.Name, PrimitiveTypeConverter.ConvertTo<string>(value));
-                }
-                else
-                    if (value == null) throw Error.NotSupported("Can only convert primitive parameters to Uri parameters");
-            }
-
-            return result;
-        }
-
-        public Parameters ToParameters()
-        {
-            var result = new Parameters();
-
-            foreach (var parameter in ToUriParamList())
-            {
-                result.Add(parameter.Item1, new FhirString(parameter.Item2));
-            }
-
             return result;
         }
     }

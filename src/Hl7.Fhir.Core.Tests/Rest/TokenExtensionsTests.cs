@@ -1,7 +1,8 @@
-﻿using Hl7.Fhir.Model;
+﻿using System.Collections.Generic;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 
 namespace Hl7.Fhir.Core.Tests.Rest
 {
@@ -13,7 +14,7 @@ namespace Hl7.Fhir.Core.Tests.Rest
             yield return (new Identifier("system", "1"), "system|1");
             yield return (new Identifier("", "1"), "1");
             yield return (new Identifier(null, "1"), "1");
-            yield return (new Identifier("system",""), "system|");
+            yield return (new Identifier("system", ""), "system|");
             yield return (new Identifier("system", null), "system|");
         }
 

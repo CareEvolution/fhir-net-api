@@ -29,12 +29,16 @@
 */
 
 using System;
+using Hl7.Fhir.Introspection;
 using Hl7.FhirPath;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
-    public partial class Instant : INullableValue<DateTimeOffset>
+    public partial class Instant : INullableValue<DateTimeOffset>, IParsedPrimitive
     {
+        [NotMapped]
+        public object ParsedValue => ToPartialDateTime();
+
         public static Instant FromLocalDateTime(int year, int month, int day,
                             int hour, int min, int sec, int milis = 0)
         {

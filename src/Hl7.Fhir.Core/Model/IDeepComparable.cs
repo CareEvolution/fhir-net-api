@@ -27,10 +27,7 @@
   
 */
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Hl7.Fhir.Model
 {
@@ -50,37 +47,52 @@ namespace Hl7.Fhir.Model
             {
                 return a.IsExactly(b);
             }
-            else
-                return false;
+
+            return false;
         }
 
-        public static bool Matches(IDeepComparable a, IDeepComparable pattern)
+        public static bool Matches(IDeepComparable a, IDeepComparable b)
         {
-            if (pattern == null) return true;
+            if (b == null) return true;
 
-            if (a != null && pattern != null)
-            {
-                return a.Matches(pattern);
-            }
-            else
-                return false;
+            return a != null && a.Matches(b);
         }
 
-        public static bool IsExactly<T>(this IEnumerable<T> source, IEnumerable<T> other) 
-                where T : IDeepComparable 
+        public static bool IsExactly<T>(this List<T> source, List<T> other)
+            where T : IDeepComparable
         {
             if (other == null) return false;
 
-            if (source.Count() != other.Count()) return false;
-            return source.Zip(other, (a, b) => IsExactly(a, b)).All(r => r == true);
+            if (source.Count != other.Count) return false;
+            for (var i = 0; i < source.Count; i++)
+            {
+                if (!IsExactly(source[i], other[i])) return false;
+            }
+            return true;
         }
 
-        public static bool Matches<T>(this IEnumerable<T> source, IEnumerable<T> pattern)
-                    where T : IDeepComparable
+        public static bool Matches<T>(this List<T> source, List<T> pattern)
+            where T : IDeepComparable
         {
             if (pattern == null) return true;       // if not present in the pattern, there's a match
 
-            return source.All(src => pattern.Any(patt => Matches(src, patt)));
+            for (var i = 0; i < source.Count; i++)
+            {
+                var srcItem = source[i];
+                var matched = false;
+                for (var j = 0; j < pattern.Count; j++)
+                {
+                    if (Matches(srcItem, pattern[j]))
+                    {
+                        matched = true;
+                        break;
+                    }
+                }
+
+                if (!matched) return false;
+            }
+
+            return true;
         }
     }
 }

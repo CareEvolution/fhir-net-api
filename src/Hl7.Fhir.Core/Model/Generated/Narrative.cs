@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
 
 /*
@@ -38,21 +38,23 @@ using Hl7.Fhir.Specification;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// A human-readable formatted text, including images
     /// </summary>
     [FhirType("Narrative")]
     [DataContract]
-    public partial class Narrative : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class Narrative : Element
     {
         [NotMapped]
         public override string TypeName { get { return "Narrative"; } }
-        
+
         /// <summary>
         /// The status of a resource narrative
         /// (url: http://hl7.org/fhir/ValueSet/narrative-status)
@@ -86,95 +88,126 @@ namespace Hl7.Fhir.Model
             Empty,
         }
 
+
         /// <summary>
         /// generated | extensions | additional | empty
         /// </summary>
-        [FhirElement("status", InSummary = true, Order = 30)]
+        [FhirElement("status", Order=30)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.Narrative.NarrativeStatus> StatusElement
+        public Code<NarrativeStatus> StatusElement
         {
-            get { return _StatusElement; }
-            set { _StatusElement = value; OnPropertyChanged("StatusElement"); }
+            get { return _statusElement; }
+            set { _statusElement = value; OnPropertyChanged("StatusElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.Narrative.NarrativeStatus> _StatusElement;
-        
+
+        private Code<NarrativeStatus> _statusElement;
+
         /// <summary>
         /// generated | extensions | additional | empty
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.Narrative.NarrativeStatus? Status
+        [IgnoreDataMember]
+        public NarrativeStatus? Status
         {
             get { return StatusElement != null ? StatusElement.Value : null; }
             set
             {
-                if(value == null)
-                  StatusElement = null; 
+                if (!value.HasValue)
+                    StatusElement = null;
                 else
-                  StatusElement = new Code<Hl7.Fhir.Model.Narrative.NarrativeStatus>(value);
+                    StatusElement = new Code<NarrativeStatus>(value);
                 OnPropertyChanged("Status");
             }
         }
-        
+
         /// <summary>
         /// Limited xhtml content
         /// </summary>
-        [FhirElement("div", XmlSerialization=XmlRepresentation.XHtml, InSummary=true, Order=40, TypeRedirect = typeof(XHtml))]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("div", XmlSerialization=XmlRepresentation.XHtml, TypeRedirect = typeof(XHtml), Order=40)]
         [NarrativeXhtmlPattern]
+        [Cardinality(Min=1,Max=1)]
         [DataMember]
         public string Div
         {
-            get { return _Div; }
-            set { _Div = value; OnPropertyChanged("Div"); }
+            get { return _div; }
+            set { _div = value; OnPropertyChanged("Div"); }
         }
-        
-        private string _Div;
-        
+
+        private string _div;
+
+
+        public static ElementDefinition.ConstraintComponent Narrative_TXT_3 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "div.all(true)",
+            Key = "txt-3",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "The narrative SHALL contain only the basic html formatting attributes described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained style attributes",
+            Xpath = "not(descendant-or-self::*/@*[not(name(.)=('abbr', 'accesskey', 'align', 'alt', 'axis', 'bgcolor', 'border', 'cellhalign', 'cellpadding', 'cellspacing', 'cellvalign', 'char', 'charoff', 'charset', 'cite', 'class', 'colspan', 'compact', 'coords', 'dir', 'frame', 'headers', 'height', 'href', 'hreflang', 'hspace', 'id', 'lang', 'longdesc', 'name', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'scope', 'shape', 'span', 'src', 'start', 'style', 'summary', 'tabindex', 'title', 'type', 'valign', 'value', 'vspace', 'width'))])"
+        };
+
+        public static ElementDefinition.ConstraintComponent Narrative_TXT_1 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "div.all(true)",
+            Key = "txt-1",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "The narrative SHALL contain only the basic html formatting elements described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained style attributes",
+            Xpath = "not(descendant-or-self::*[not(local-name(.)=('a', 'abbr', 'acronym', 'b', 'big', 'blockquote', 'br', 'caption', 'cite', 'code', 'col', 'colgroup', 'dd', 'dfn', 'div', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'samp', 'small', 'span', 'strong', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'tt', 'ul', 'var'))])"
+        };
+
+        public static ElementDefinition.ConstraintComponent Narrative_TXT_2 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "div.all(true)",
+            Key = "txt-2",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "The narrative SHALL have some non-whitespace content",
+            Xpath = "descendant::text()[normalize-space(.)!=''] or descendant::h:img[@src]"
+        };
+
+        // TODO: Add code to enforce the above constraints
+
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as Narrative;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.Narrative.NarrativeStatus>)StatusElement.DeepCopy();
-                if(Div != null) dest.Div = Div;
+                if (StatusElement != null) dest.StatusElement = (Code<NarrativeStatus>)StatusElement.DeepCopy();
+                if (Div != null) dest.Div = Div;
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new Narrative());
+             return CopyTo(new Narrative());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as Narrative;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
-            if( Div != otherT.Div ) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(StatusElement, otherT.StatusElement)) return false;
+            if (Div != otherT.Div) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as Narrative;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
-            if( Div != otherT.Div ) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(StatusElement, otherT.StatusElement)) return false;
+            if (Div != otherT.Div) return false;
+
             return true;
         }
 
@@ -183,14 +216,10 @@ namespace Hl7.Fhir.Model
         {
             get
             {
-                // Element elements
-                foreach (var p in Extension) { if (p != null) yield return p; }
-                // Narrative elements
+                foreach (var item in base.Children) yield return item;
                 if (StatusElement != null) yield return StatusElement;
-                // Div property does not implement Base...
             }
         }
-
 
         [NotMapped]
         internal override IEnumerable<ElementValue> NamedChildren
@@ -199,9 +228,10 @@ namespace Hl7.Fhir.Model
             {
                 foreach (var item in base.NamedChildren) yield return item;
                 if (StatusElement != null) yield return new ElementValue("status", StatusElement);
-                if (Div != null) yield return new ElementValue("div", Div);                
+                if (Div != null) yield return new ElementValue("div", Div);
             }
         }
+
     }
-    
+
 }

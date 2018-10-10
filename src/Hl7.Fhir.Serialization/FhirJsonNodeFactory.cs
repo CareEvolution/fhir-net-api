@@ -33,7 +33,7 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        public static ISourceNode Create(JObject root, string rootName = null, FhirJsonParsingSettings settings = null) => 
+        public static ISourceNode Create(JObject root, string rootName = null, FhirJsonParsingSettings settings = null) =>
             new FhirJsonNode(root, rootName, settings);
     }
 }

@@ -6,16 +6,14 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public static class BundleExtensions
     {
@@ -73,13 +71,13 @@ namespace Hl7.Fhir.Model
         public static bool HasResource(this Bundle.EntryComponent entry)
         {
             return entry.Resource != null;
-        }        
+        }
 
         public static IEnumerable<Resource> GetResources(this Bundle bundle)
         {
             return bundle.Entry.Where(e => e.HasResource()).Select(e => e.Resource);
         }
-        
+
 
         /// <summary>
         /// Find all entries in a Bundle that match the given reference.
@@ -147,26 +145,6 @@ namespace Hl7.Fhir.Model
         }
 
         /// <summary>
-        /// Find all entries in a Bundle with the given type/id/version
-        /// </summary>
-        /// <param name="bundle">Bundle to search in</param>
-        /// <param name="type">Type of entry to find</param>
-        /// <param name="id">Id of the entry to find</param>
-        /// <param name="version">Version of the entry to find. Optional.</param>
-        /// <param name="includeDeleted">Whether to include deleted entries in the search. Optional.</param>
-        /// <returns>A list of Resources with the given identity, or an empty list if none were found.</returns>
-        [Obsolete("Bundle Entries are now identified by their fullUrl, so cannot be referenced anymore by just the type and id. Use the other overloads instead")]
-        public static IEnumerable<Bundle.EntryComponent> FindEntry(this Bundle bundle, string type, string id, string version = null, bool includeDeleted = false)
-        {
-            if (type == null) throw Error.ArgumentNull(nameof(type));
-            if (id == null) throw Error.ArgumentNull(nameof(id));
-            var identity = ResourceIdentity.Build(type,id,version);
-
-            return FindEntry(bundle, identity, includeDeleted);
-        }
-
-
-        /// <summary>
         /// Filter all BundleEntries that have a given tag.
         /// </summary>
         /// <param name="entries">List of bundle entries to filter on</param>
@@ -205,7 +183,7 @@ namespace Hl7.Fhir.Model
 
         public static ResourceIdentity GetResourceLocation(this Bundle.EntryComponent entry, string baseUrl = null)
         {
-            return entry.FullUrl != null ?  new ResourceIdentity(entry.FullUrl) : null;
+            return entry.FullUrl != null ? new ResourceIdentity(entry.FullUrl) : null;
         }
     }
 

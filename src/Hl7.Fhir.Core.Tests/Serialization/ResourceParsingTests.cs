@@ -7,12 +7,13 @@
  */
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Serialization;
-using System.IO;
-using Hl7.Fhir.Model;
-using System.Diagnostics;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -23,7 +24,7 @@ namespace Hl7.Fhir.Tests.Serialization
         public void ConfigureFailOnUnknownMember()
         {
             var xml = "<Patient xmlns='http://hl7.org/fhir'><daytona></daytona></Patient>";
-            var parser = new FhirXmlParser();
+            var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
 
             try
             {
@@ -34,7 +35,7 @@ namespace Hl7.Fhir.Tests.Serialization
             {
             }
 
-            parser.Settings.AcceptUnknownMembers = true;
+            parser = new FhirXmlParser(DSTU2ModelInfo.Instance, new ParserSettings { AcceptUnknownMembers = true });
             parser.Parse<Resource>(xml);
         }
 
@@ -43,24 +44,7 @@ namespace Hl7.Fhir.Tests.Serialization
         public void ReturnsLineNumbersXml()
         {
             var xml = "<Patient xmlns='http://hl7.org/fhir'><iDontExist value='piet' /></Patient>";
-            var parser = new FhirXmlParser();
-
-            try
-            {
-                parser.Parse<Resource>(xml);
-                Assert.Fail("Should have thrown");
-            }
-            catch(FormatException fe)
-            {
-                Assert.IsFalse(fe.Message.Contains("pos -1"));
-            }            
-        }
-
-        [TestMethod]
-        public void ReturnsLineNumbersJson()
-        {
-            var xml = "<Patient xmlns='http://hl7.org/fhir'><iDontExist value='piet' /></Patient>";
-            var parser = new FhirXmlParser();
+            var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
 
             try
             {
@@ -70,7 +54,24 @@ namespace Hl7.Fhir.Tests.Serialization
             catch (FormatException fe)
             {
                 Assert.IsFalse(fe.Message.Contains("pos -1"));
-            }            
+            }
+        }
+
+        [TestMethod]
+        public void ReturnsLineNumbersJson()
+        {
+            var xml = "<Patient xmlns='http://hl7.org/fhir'><iDontExist value='piet' /></Patient>";
+            var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
+
+            try
+            {
+                parser.Parse<Resource>(xml);
+                Assert.Fail("Should have thrown");
+            }
+            catch (FormatException fe)
+            {
+                Assert.IsFalse(fe.Message.Contains("pos -1"));
+            }
         }
 
 
@@ -78,7 +79,7 @@ namespace Hl7.Fhir.Tests.Serialization
         public void RequiresHl7Namespace()
         {
             var xml = "<Patient><active value='false' /></Patient>";
-            var parser = new FhirXmlParser();
+            var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
 
             try
             {
@@ -91,7 +92,7 @@ namespace Hl7.Fhir.Tests.Serialization
             }
 
             xml = "<Patient xmlns='http://hl7.org/fhir'><f:active value='false' xmlns:f='http://somehwere.else.nl' /></Patient>";
-            
+
             try
             {
                 parser.Parse<Resource>(xml);
@@ -108,13 +109,13 @@ namespace Hl7.Fhir.Tests.Serialization
         {
             var xml = "<Patient xmlns='http://hl7.org/fhir' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' " +
                             "xsi:schemaLocation='http://hl7.org/fhir ../../schema/fhir-all.xsd'><active value='true' /></Patient>";
-            var parser = new FhirXmlParser();
+            var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
 
             // By default, parser will accept xsi: elements
             parser.Parse<Resource>(xml);
 
             // Now, enforce xsi: attributes are no longer accepted
-            parser.Settings.DisallowXsiAttributesOnRoot = true;
+            parser = new FhirXmlParser(DSTU2ModelInfo.Instance, new ParserSettings { DisallowXsiAttributesOnRoot = true });
 
             try
             {
@@ -151,16 +152,16 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(outp.Contains("&#xA;"));
         }
 
-        internal FhirXmlParser FhirXmlParser = new FhirXmlParser();
-        internal FhirJsonParser FhirJsonParser = new FhirJsonParser();
-        internal FhirXmlSerializer FhirXmlSerializer = new FhirXmlSerializer();
-        internal FhirJsonSerializer FhirJsonSerializer = new FhirJsonSerializer();
+        internal FhirXmlParser FhirXmlParser = new FhirXmlParser(DSTU2ModelInfo.Instance);
+        internal FhirJsonParser FhirJsonParser = new FhirJsonParser(DSTU2ModelInfo.Instance);
+        internal FhirXmlSerializer FhirXmlSerializer = new FhirXmlSerializer(DSTU2ModelInfo.Instance);
+        internal FhirJsonSerializer FhirJsonSerializer = new FhirJsonSerializer(DSTU2ModelInfo.Instance);
 
         [TestMethod]
         public void ParsePerfJson()
         {
             string json = TestDataHelper.ReadTestData("TestPatient.json");
-            var pser = new FhirJsonParser();
+            var pser = new FhirJsonParser(DSTU2ModelInfo.Instance);
 
             // Assume that we can happily read the patient gender when enums are enforced
             var p = pser.Parse<Patient>(json);
@@ -170,14 +171,14 @@ namespace Hl7.Fhir.Tests.Serialization
             for (var i = 0; i < 500; i++)
                 p = pser.Parse<Patient>(json);
             sw.Stop();
-            Debug.WriteLine($"Parsing took {sw.ElapsedMilliseconds/500.0*1000} micros");
+            Debug.WriteLine($"Parsing took {sw.ElapsedMilliseconds / 500.0 * 1000} micros");
         }
 
         [TestMethod]
         public void ParsePerfXml()
         {
             string xml = TestDataHelper.ReadTestData("TestPatient.xml");
-            var pser = new FhirXmlParser();
+            var pser = new FhirXmlParser(DSTU2ModelInfo.Instance);
 
             // Assume that we can happily read the patient gender when enums are enforced
             var p = pser.Parse<Patient>(xml);
@@ -190,12 +191,12 @@ namespace Hl7.Fhir.Tests.Serialization
             Debug.WriteLine($"Parsing took {sw.ElapsedMilliseconds / 500.0 * 1000} micros");
         }
 
-     
+
         [TestMethod]
         public void AcceptUnknownEnums()
         {
             string json = TestDataHelper.ReadTestData("TestPatient.json");
-            var pser = new FhirJsonParser();
+            var pser = new FhirJsonParser(DSTU2ModelInfo.Instance);
 
             // Assume that we can happily read the patient gender when enums are enforced
             var p = pser.Parse<Patient>(json);
@@ -204,7 +205,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(AdministrativeGender.Male, p.Gender.Value);
 
             // Verify that if we relax the restriction that everything still works
-            pser.Settings.AllowUnrecognizedEnums = true;
+            pser = new FhirJsonParser(DSTU2ModelInfo.Instance, new ParserSettings { AllowUnrecognizedEnums = true });
             p = pser.Parse<Patient>(json);
 
             Assert.IsNotNull(p.Gender);
@@ -218,17 +219,17 @@ namespace Hl7.Fhir.Tests.Serialization
 
             try
             {
-                pser.Settings.AllowUnrecognizedEnums = false;
+                pser = new FhirJsonParser(DSTU2ModelInfo.Instance, new ParserSettings { AllowUnrecognizedEnums = false });
                 p = pser.Parse<Patient>(xml2);
                 Assert.Fail();
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 // By default, should *not* accept unknown enums
             }
 
             // Now, allow unknown enums and check support
-            pser.Settings.AllowUnrecognizedEnums = true;
+            pser = new FhirJsonParser(DSTU2ModelInfo.Instance, new ParserSettings { AllowUnrecognizedEnums = true });
             p = pser.Parse<Patient>(xml2);
             Assert.IsNull(p.Gender);
             Assert.AreEqual("superman", p.GenderElement.ObjectValue);

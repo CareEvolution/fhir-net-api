@@ -6,25 +6,17 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
-using Hl7.FhirPath;
 using System;
+using Hl7.Fhir.ElementModel;
+using Hl7.FhirPath;
 
 namespace Hl7.Fhir.FhirPath
 {
     public class FhirEvaluationContext : EvaluationContext
     {
-        [Obsolete("Please use CreateDefault() instead of this member, which may cause raise conditions.")]
-        new public static readonly FhirEvaluationContext Default = new FhirEvaluationContext();
-
-        public static new FhirEvaluationContext CreateDefault() => new FhirEvaluationContext();
+        public new static FhirEvaluationContext CreateDefault() => new FhirEvaluationContext();
 
         public FhirEvaluationContext() : base()
-        {
-        }
-
-        public FhirEvaluationContext(Resource context) : base(context?.ToTypedElement())
         {
         }
 

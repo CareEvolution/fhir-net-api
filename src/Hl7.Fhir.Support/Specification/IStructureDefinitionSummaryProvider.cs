@@ -50,8 +50,7 @@ namespace Hl7.Fhir.Specification
         string TypeName { get; }
         bool IsAbstract { get; }
         bool IsResource { get; }
-
-        IEnumerable<IElementDefinitionSummary> GetElements();
+        IEnumerable<IElementDefinitionSummary> Elements { get; }
     }
 
     public interface IStructureDefinitionReference : ITypeSerializationInfo

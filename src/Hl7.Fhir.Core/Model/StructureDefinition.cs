@@ -27,14 +27,13 @@
   
 */
 
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Hl7.Fhir.Introspection;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     // [WMR 20160803] Add common base interfaces
     public interface IElementList : IModifierExtendable, INotifyPropertyChanged, IValidatableObject, IDeepCopyable, IDeepComparable
@@ -46,12 +45,12 @@ namespace Hl7.Fhir.Model
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}} Url={Url}")]
     public partial class StructureDefinition
     {
-        public partial class SnapshotComponent : IElementList {}
+        public partial class SnapshotComponent : IElementList { }
 
         public partial class DifferentialComponent : IElementList { }
 
         [NotMapped]
-        public bool IsConstraint {  get { return ConstrainedType != null && !IsExtension; } }
+        public bool IsConstraint { get { return ConstrainedType != null && !IsExtension; } }
 
         [NotMapped]
         public bool IsExtension

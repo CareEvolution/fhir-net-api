@@ -6,16 +6,14 @@
  * available at https://github.com/ewoutkramer/fhir-net-api/blob/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Navigation;
-using Hl7.Fhir.Specification.Source;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification
 {
@@ -73,7 +71,7 @@ namespace Hl7.Fhir.Specification
 
         public bool IsResource => false;
 
-        public IEnumerable<IElementDefinitionSummary> GetElements() => StructureDefinitionComplexTypeSerializationInfo.getElements(_nav);
+        public IEnumerable<IElementDefinitionSummary> Elements => StructureDefinitionComplexTypeSerializationInfo.getElements(_nav);
     }
 
     internal struct StructureDefinitionComplexTypeSerializationInfo : IStructureDefinitionSummary
@@ -83,6 +81,16 @@ namespace Hl7.Fhir.Specification
         public StructureDefinitionComplexTypeSerializationInfo(ElementDefinitionNavigator nav)
         {
             this._nav = nav;
+            if (_nav.Current == null && !_nav.MoveToFirstChild())
+            {
+
+
+                Elements = Enumerable.Empty<IElementDefinitionSummary>();
+            }
+            else
+            {
+                Elements = getElements(_nav);
+            }
         }
 
         public string TypeName => _nav.StructureDefinition.Name;
@@ -91,13 +99,7 @@ namespace Hl7.Fhir.Specification
 
         public bool IsResource => _nav.StructureDefinition.Kind == StructureDefinition.StructureDefinitionKind.Resource;
 
-        public IEnumerable<IElementDefinitionSummary> GetElements()
-        {
-            if (_nav.Current == null && !_nav.MoveToFirstChild())
-                return Enumerable.Empty<IElementDefinitionSummary>();
-
-            return getElements(_nav);
-        }
+        public IEnumerable<IElementDefinitionSummary> Elements { get; }
 
         private static bool isPrimitiveValueConstraint(ElementDefinition ed) => ed.Path.EndsWith(".value") && ed.Type.All(t => t.Code == null);
 
@@ -115,7 +117,7 @@ namespace Hl7.Fhir.Specification
                 {
                     if (nav.PathName == lastName) continue;    // ignore slices
                     if (isPrimitiveValueConstraint(nav.Current)) continue;      // ignore value attribute
-                            
+
                     lastName = nav.PathName;
                     yield return new ElementDefinitionSerializationInfo(nav.ShallowCopy());
                 }
@@ -192,7 +194,8 @@ namespace Hl7.Fhir.Specification
 
         public XmlRepresentation Representation
         {
-            get {
+            get
+            {
                 if (!_definition.Representation.Any()) return XmlRepresentation.XmlElement;
 
                 switch (_definition.Representation.First())
@@ -213,7 +216,7 @@ namespace Hl7.Fhir.Specification
 
         // TODO: This is actually not complete: the Type might be any subclass of Resource (including DomainResource), but this will
         // do for all current situations. I will regret doing this at some point in the future.
-        private static bool isResource(ElementDefinition defn) => defn.Type.Count == 1 && 
+        private static bool isResource(ElementDefinition defn) => defn.Type.Count == 1 &&
             (defn.Type[0].Code == FHIRDefinedType.Resource || defn.Type[0].Code == FHIRDefinedType.DomainResource);
 
         public ITypeSerializationInfo[] Type => _types.Value;

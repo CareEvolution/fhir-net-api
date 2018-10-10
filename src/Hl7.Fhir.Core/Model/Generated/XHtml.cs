@@ -1,5 +1,15 @@
-﻿/*
-  Copyright (c) 2011-2013, HL7, Inc.
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
+using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
+
+/*
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -28,22 +38,42 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+#pragma warning disable 1591 // suppress XML summary warnings
 
-namespace Hl7.Fhir.Introspection
+//
+// Generated for FHIR v1.0.2
+//
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
-    /// Xml Serialization used for primitive values
+    /// Primitive Type xhtml
     /// </summary>
-    [Obsolete("This enum has been replaced by System.Serialization.XmlRepresentation")]
-    public enum XmlSerializationHint
+    [FhirType("xhtml")]
+    [DataContract]
+    public partial class XHtml : Primitive<string>
     {
-        None,
-        Attribute, 
-        TextNode,
-        XhtmlElement
+        [NotMapped]
+        public override string TypeName { get { return "xhtml"; } }
+
+        public XHtml(string value)
+        {
+            Value = value;
+        }
+
+        public XHtml(): this((string)null) {}
+
+        /// <summary>
+        /// Primitive value of the element
+        /// </summary>
+        [FhirElement("value", IsPrimitiveValue=true, XmlSerialization=XmlRepresentation.XmlAttr, InSummary=true, Order=30)]
+        [DataMember]
+        public string Value
+        {
+            get { return (string)ObjectValue; }
+            set { ObjectValue = value; OnPropertyChanged("Value"); }
+        }
+
+
     }
+
 }

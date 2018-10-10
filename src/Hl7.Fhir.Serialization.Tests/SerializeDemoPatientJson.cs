@@ -1,7 +1,9 @@
 ﻿using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Hl7.Fhir.Utility;
@@ -20,7 +22,7 @@ namespace Hl7.Fhir.Serialization.Tests
     public class SerializeDemoPatientJson
     {
         public ITypedElement getJsonElement(string json, FhirJsonParsingSettings s = null) => 
-            JsonParsingHelpers.ParseToTypedElement(json, new PocoStructureDefinitionSummaryProvider(), settings: s);
+            JsonParsingHelpers.ParseToTypedElement(json, DSTU2ModelInfo.Instance.StructureDefinitionProvider, settings: s);
 
         [TestMethod]
         public void CanSerializeThroughNavigatorAndCompare()
@@ -50,7 +52,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void CanSerializeFromPoco()
         {
             var tp = File.ReadAllText(@"TestData\fp-test-patient.json");
-            var pser = new FhirJsonParser(new ParserSettings { DisallowXsiAttributesOnRoot = false } );
+            var pser = new FhirJsonParser(DSTU2ModelInfo.Instance, new ParserSettings { DisallowXsiAttributesOnRoot = false } );
             var pat = pser.Parse<Patient>(tp);
 
             var output = pat.ToJson();
@@ -68,10 +70,10 @@ namespace Hl7.Fhir.Serialization.Tests
             var pretty = nav.ToJson(new FhirJsonSerializationSettings { Pretty = true });
             Assert.IsTrue(pretty.Substring(0, 20).Contains('\n'));
 
-            var p = (new FhirJsonParser()).Parse<Patient>(json);
-            output = (new FhirJsonSerializer(new SerializerSettings { Pretty = false })).SerializeToString(p);
+            var p = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Patient>(json);
+            output = (new FhirJsonSerializer(DSTU2ModelInfo.Instance, new SerializerSettings { Pretty = false })).SerializeToString(p);
             Assert.IsFalse(output.Substring(0, 20).Contains('\n'));
-            pretty = (new FhirJsonSerializer(new SerializerSettings { Pretty = true })).SerializeToString(p);
+            pretty = (new FhirJsonSerializer(DSTU2ModelInfo.Instance, new SerializerSettings { Pretty = true })).SerializeToString(p);
             Assert.IsTrue(pretty.Substring(0, 20).Contains('\n'));
         }
     }

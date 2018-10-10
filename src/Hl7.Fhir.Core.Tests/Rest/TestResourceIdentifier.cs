@@ -10,6 +10,9 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Test
 {
@@ -107,10 +110,10 @@ namespace Hl7.Fhir.Test
         [TestMethod]
         public void TestCoreIdentifiers()
         {
-            var patientId = ResourceIdentity.Core(FHIRDefinedType.Patient);
+            var patientId = ResourceIdentity.Core(FHIRDefinedType.Patient.GetLiteral());
             Assert.AreEqual("http://hl7.org/fhir/StructureDefinition/Patient", patientId.ToString());
 
-            var oidId = ResourceIdentity.Core(FHIRDefinedType.Oid);
+            var oidId = ResourceIdentity.Core(FHIRDefinedType.Oid.GetLiteral());
             Assert.AreEqual("http://hl7.org/fhir/StructureDefinition/oid", oidId.ToString());
 
             var observationId = ResourceIdentity.Core("Observation");
@@ -245,8 +248,8 @@ namespace Hl7.Fhir.Test
             Assert.IsTrue(ResourceIdentity.IsRestResourceIdentity("Patient/4"));
             Assert.IsTrue(ResourceIdentity.IsRestResourceIdentity("Patient/4/_history/5"));
             Assert.IsTrue(ResourceIdentity.IsRestResourceIdentity("http://nu.nl/fhir/Patient/4"));
-            Assert.IsFalse(ResourceIdentity.IsRestResourceIdentity("http://nu.nl/fhir/crap"));
-            Assert.IsFalse(ResourceIdentity.IsRestResourceIdentity("x/y/z/4"));
+            Assert.IsTrue(ResourceIdentity.IsRestResourceIdentity("http://nu.nl/fhir/crap"));
+            Assert.IsTrue(ResourceIdentity.IsRestResourceIdentity("x/y/z/4"));
             Assert.IsFalse(ResourceIdentity.IsRestResourceIdentity("urn:oid:1.2.3.4.5"));
         }
 

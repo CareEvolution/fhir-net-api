@@ -6,7 +6,7 @@
 */
 
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Support;
 using System;
 using System.Collections.Generic;

@@ -7,12 +7,11 @@
  */
 
 
-using Hl7.Fhir.Introspection;
-using System;
 using System.Diagnostics;
 using System.Text;
+using Hl7.Fhir.Introspection;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
     [DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")]
@@ -32,7 +31,8 @@ namespace Hl7.Fhir.Model
         [NotMapped]
         string DebuggerDisplay
         {
-            get {
+            get
+            {
                 StringBuilder sb = new StringBuilder(128);
                 // sb.AppendFormat("Path='{0}'", Path);
                 // if (Name != null) { sb.AppendFormat(" Name='{0}'", Name); }
@@ -45,5 +45,23 @@ namespace Hl7.Fhir.Model
                 return sb.ToString();
             }
         }
+
+        partial class ConstraintComponent
+        {
+            [NotMapped]
+            public string Expression
+            {
+                get
+                {
+                    return this.GetStringExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression");
+                }
+                set
+                {
+                    this.SetStringExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression", value);
+                }
+            }
+        }
     }
+
+
 }

@@ -6,38 +6,38 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Newtonsoft.Json;
 using System;
-
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Specification;
+using Newtonsoft.Json;
 
 namespace Hl7.Fhir.Serialization
 {
     public class FhirJsonParser : BaseFhirParser
     {
-        public FhirJsonParser(ParserSettings settings=null) : base(settings)
+        public FhirJsonParser(IModelInfo modelInfo, ParserSettings settings = null) : base(modelInfo, settings)
         {
-            //
+            // True for DSTU2, should be false in STU3
+            _jsonNodeSettings = new FhirJsonParsingSettings { AllowJsonComments = modelInfo.Version == "1.0.2" };
         }
 
         public T Parse<T>(string json) where T : Base => (T)Parse(json, typeof(T));
 
         public T Parse<T>(JsonReader reader) where T : Base => (T)Parse(reader, typeof(T));
 
-        // TODO: True for DSTU2, should be false in STU3
-        private readonly FhirJsonParsingSettings jsonNodeSettings = new FhirJsonParsingSettings { AllowJsonComments = true };
+        private readonly FhirJsonParsingSettings _jsonNodeSettings;
 
         public Base Parse(string json, Type dataType)
         {
             var jsonReader =
-                FhirJsonNode.Parse(json, ModelInfo.GetFhirTypeNameForType(dataType), jsonNodeSettings);
+                FhirJsonNode.Parse(json, _modelInfo.GetFhirTypeNameForType(dataType), _jsonNodeSettings);
             return Parse(jsonReader, dataType);
         }
 
         public Base Parse(JsonReader reader, Type dataType)
         {
             var jsonReader =
-                FhirJsonNode.Read(reader, ModelInfo.GetFhirTypeNameForType(dataType), jsonNodeSettings);
+                FhirJsonNode.Read(reader, _modelInfo.GetFhirTypeNameForType(dataType), _jsonNodeSettings);
             return Parse(jsonReader, dataType);
         }
     }

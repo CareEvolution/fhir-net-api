@@ -7,29 +7,31 @@
  */
 
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification;
 
 namespace Hl7.Fhir.ElementModel
 {
     public static class PocoBuilderExtensions
     {
-        public static Base ToPoco(this ISourceNode source, Type pocoType = null, PocoBuilderSettings settings = null) =>
-            new PocoBuilder(settings).BuildFrom(source, pocoType);
+        public static Base ToPoco(this ISourceNode source, IModelInfo modelInfo, Type pocoType = null, PocoBuilderSettings settings = null) =>
+            new PocoBuilder(modelInfo, settings).BuildFrom(source, pocoType);
 
-        public static T ToPoco<T>(this ISourceNode source, PocoBuilderSettings settings = null) where T : Base =>
-               (T)source.ToPoco(typeof(T), settings);
+        public static T ToPoco<T>(this ISourceNode source, IModelInfo modelInfo, PocoBuilderSettings settings = null) where T : Base =>
+               (T)source.ToPoco(modelInfo, typeof(T), settings);
 
-        public static Base ToPoco(this ITypedElement element, PocoBuilderSettings settings = null) =>
-            new PocoBuilder(settings).BuildFrom(element);
+        public static Base ToPoco(this ITypedElement element, IModelInfo modelInfo, PocoBuilderSettings settings = null) =>
+            new PocoBuilder(modelInfo, settings).BuildFrom(element);
 
-        public static T ToPoco<T>(this ITypedElement element, PocoBuilderSettings settings = null) where T : Base =>
-               (T)element.ToPoco(settings);
+        public static T ToPoco<T>(this ITypedElement element, IModelInfo modelInfo, PocoBuilderSettings settings = null) where T : Base =>
+               (T)element.ToPoco(modelInfo, settings);
 
-        public static Model.Quantity ParseQuantity(this ITypedElement instance)
+        public static Quantity ParseQuantity(this ITypedElement instance)
         {
             var newQuantity = new Quantity
             {
@@ -40,7 +42,7 @@ namespace Hl7.Fhir.ElementModel
             };
 
             var comp = instance.Children("comparator").GetString();
-            if(comp != null)
+            if (comp != null)
                 newQuantity.ComparatorElement = new Code<Quantity.QuantityComparator> { ObjectValue = comp };
 
             return newQuantity;
@@ -83,8 +85,8 @@ namespace Hl7.Fhir.ElementModel
                 case FHIRDefinedType.Extension:
                     return parseExtension(instance);
                 case null:
-                    //HACK: fall through - IElementNav did not provide a type
-                    //should not happen, and I have no intention to handle it.
+                //HACK: fall through - IElementNav did not provide a type
+                //should not happen, and I have no intention to handle it.
                 default:
                     // Not bindable
                     return null;
@@ -108,7 +110,7 @@ namespace Hl7.Fhir.ElementModel
             }
         }
 
-        public static T ParsePrimitive<T>(this ITypedElement instance) where T:Primitive, new()
+        public static T ParsePrimitive<T>(this ITypedElement instance) where T : Primitive, new()
                     => new T() { ObjectValue = instance.Value };
 
         public static Coding ParseCoding(this ITypedElement instance)

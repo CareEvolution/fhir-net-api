@@ -7,12 +7,14 @@
  */
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.ElementModel
 {
@@ -30,7 +32,7 @@ namespace Hl7.Fhir.ElementModel
             Current = parent;
             InstanceType = parent.TypeName;
             var typeInfo = provider.Provide(parent.GetType());
-            Definition = Specification.ElementDefinitionSummary.ForRoot(rootName ?? parent.TypeName, typeInfo);
+            Definition = ElementDefinitionSummary.ForRoot(rootName ?? parent.TypeName, typeInfo);
             Location = InstanceType;
             ShortPath = InstanceType;
             ArrayIndex = 0;
@@ -57,8 +59,8 @@ namespace Hl7.Fhir.ElementModel
 
         private IStructureDefinitionSummary down() =>
             // If this is a backbone element, the child type is the nested complex type
-            Definition.Type[0] is IStructureDefinitionSummary be ? 
-                    be : 
+            Definition.Type[0] is IStructureDefinitionSummary be ?
+                    be :
                     Provider.Provide(InstanceType);
 
 
@@ -70,7 +72,7 @@ namespace Hl7.Fhir.ElementModel
 
             string oldElementName = null;
             int arrayIndex = 0;
-            var childElementDefinitions = down().GetElements();
+            var childElementDefinitions = down().Elements;
 
             foreach (var child in children)
             {
@@ -116,23 +118,9 @@ namespace Hl7.Fhir.ElementModel
                     {
                         case string s:
                             return s;
-                        case Hl7.Fhir.Model.Instant ins:
-                            return ins.ToPartialDateTime();
-                        case Hl7.Fhir.Model.Time time:
-                            return time.ToTime();
-                        case Hl7.Fhir.Model.Date dt:
-                            return dt.ToPartialDateTime();
-                        case FhirDateTime fdt:
-                            return fdt.ToPartialDateTime();
-                        case Hl7.Fhir.Model.Integer fint:
-                            return (long)fint.Value;
-                        case Hl7.Fhir.Model.PositiveInt pint:
-                            return (long)pint.Value;
-                        case Hl7.Fhir.Model.UnsignedInt unsint:
-                            return (long)unsint.Value;
-                        case Hl7.Fhir.Model.Base64Binary b64:
-                            return b64.Value != null ? PrimitiveTypeConverter.ConvertTo<string>(b64.Value) : null;
-                        case Primitive prim:
+                        case IParsedPrimitive p:
+                            return p.ParsedValue;
+                        case IPrimitive prim:
                             return prim.ObjectValue;
                         default:
                             return null;
@@ -141,7 +129,7 @@ namespace Hl7.Fhir.ElementModel
                 catch (FormatException)
                 {
                     // If it fails, just return the unparsed contents
-                    return (Current as Primitive)?.ObjectValue;
+                    return (Current as IPrimitive)?.ObjectValue;
                 }
             }
         }
@@ -169,10 +157,39 @@ namespace Hl7.Fhir.ElementModel
                 return Enumerable.Empty<object>();
         }
     }
+    public static class TypedElementExtensions
+    {
+        public static ITypedElement ToTypedElement(this Base @base, PocoStructureDefinitionSummaryProvider provider, string rootName = null) =>
+            new PocoElementNode(@base, provider, rootName: rootName);
 
+        public static ITypedElement ScopeToSummary(this ITypedElement instance, SummaryType summary)
+        {
+            if (summary == SummaryType.False) return instance;
+
+            var baseNav = new ScopedNode(instance);
+
+            switch (summary)
+            {
+                case SummaryType.True:
+                    return MaskingNode.ForSummary(baseNav);
+                case SummaryType.Text:
+                    return MaskingNode.ForText(baseNav);
+                case SummaryType.Data:
+                    return MaskingNode.ForData(baseNav);
+                case SummaryType.Count:
+                    return MaskingNode.ForCount(baseNav);
+                default:
+                    return baseNav;
+            }
+        }
+    }
+}
+
+namespace Hl7.Fhir.Model.DSTU2
+{
     public static class TypedElementExtensions
     {
         public static ITypedElement ToTypedElement(this Base @base, string rootName = null) =>
-            new PocoElementNode(@base, new PocoStructureDefinitionSummaryProvider(), rootName: rootName);
+            new PocoElementNode(@base, DSTU2ModelInfo.Instance.StructureDefinitionProvider, rootName: rootName);
     }
 }

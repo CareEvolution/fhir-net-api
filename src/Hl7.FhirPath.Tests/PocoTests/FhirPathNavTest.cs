@@ -11,7 +11,7 @@
 
 using System.Linq;
 using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.FhirPath.Functions;
 using Xunit;
@@ -27,7 +27,7 @@ namespace Hl7.FhirPath.Tests
             // var navigator = new TreeNavigator(tree);
             // return navigator;
 
-            var patient = (new FhirXmlParser()).Parse<Patient>(tpXml);
+            var patient = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(tpXml);
             return patient.ToTypedElement();
         }
 

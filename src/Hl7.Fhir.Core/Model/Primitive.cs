@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Validation;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
 #if !NETSTANDARD1_1
     [Serializable]
 #endif
-    public abstract class Primitive : Element
+    public abstract class Primitive : Element, IPrimitive
     {
         [NotMapped]
         public object ObjectValue { get; set; }
@@ -38,7 +32,7 @@ namespace Hl7.Fhir.Model
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             if (other == null) throw Error.ArgumentNull(nameof(other));
-            if(this.GetType() != other.GetType())
+            if (this.GetType() != other.GetType())
                 throw Error.Argument(nameof(other), "Can only copy to an object of the same type");
 
             base.CopyTo(other);

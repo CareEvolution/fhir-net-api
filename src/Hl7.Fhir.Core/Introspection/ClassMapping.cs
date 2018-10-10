@@ -6,14 +6,12 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Introspection
 {
@@ -67,7 +65,7 @@ namespace Hl7.Fhir.Introspection
         {
             get
             {
-                return _orderedMappings; 
+                return _orderedMappings;
             }
         }
 
@@ -79,8 +77,8 @@ namespace Hl7.Fhir.Introspection
         public PropertyMapping PrimitiveValueProperty { get; private set; }
 
         public bool HasPrimitiveValueMember
-        { 
-            get { return PrimitiveValueProperty != null; } 
+        {
+            get { return PrimitiveValueProperty != null; }
         }
 
         public PropertyMapping FindMappedElementByName(string name)
@@ -92,11 +90,11 @@ namespace Hl7.Fhir.Introspection
 
             // Direct success
             if (success) return prop;
-            
+
             // Not found, maybe a polymorphic name
             // TODO: specify possible polymorhpic variations using attributes
             // to speedup look up & aid validation
-            return PropertyMappings.SingleOrDefault(p => p.MatchesSuffixedName(name));            
+            return PropertyMappings.SingleOrDefault(p => p.MatchesSuffixedName(name));
         }
 
 
@@ -115,8 +113,7 @@ namespace Hl7.Fhir.Introspection
                 result.Profile = getProfile(type);
                 result.IsResource = IsFhirResource(type);
                 result.IsAbstract = type.GetTypeInfo().IsAbstract;
-                result.IsCodeOfT = ReflectionHelper.IsClosedGenericType(type) &&
-                                    ReflectionHelper.IsConstructedFromGenericTypeDefinition(type, typeof(Code<>));
+                result.IsCodeOfT = typeof(ISystemAndCode).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo());
 
                 result.IsBackbone = type.CanBeTreatedAsType(typeof(IBackboneElement));
 
@@ -143,7 +140,7 @@ namespace Hl7.Fhir.Introspection
                 // Skip properties that are marked as NotMapped
                 if (ReflectionHelper.GetAttribute<NotMappedAttribute>(property) != null) continue;
 
-                var propMapping = PropertyMapping.Create(property);      
+                var propMapping = PropertyMapping.Create(property);
                 var propKey = propMapping.Name.ToUpperInvariant();
 
                 if (me._propMappings.ContainsKey(propKey))
@@ -160,20 +157,20 @@ namespace Hl7.Fhir.Introspection
         }
 
 
-        private static string getProfile(Type type) => 
+        private static string getProfile(Type type) =>
             type.GetTypeInfo().GetCustomAttribute<FhirTypeAttribute>()?.Profile;
 
         private static string collectTypeName(Type type)
         {
             var attr = type.GetTypeInfo().GetCustomAttribute<FhirTypeAttribute>();
             string name = attr?.Name ?? type.Name;
-           
-            if(ReflectionHelper.IsClosedGenericType(type))
+
+            if (ReflectionHelper.IsClosedGenericType(type))
             {
                 name += "<";
                 name += String.Join(",", type.GetTypeInfo().GenericTypeArguments.Select(arg => arg.FullName));
-				name += ">";
-			}
+                name += ">";
+            }
 
             return name;
         }
@@ -181,7 +178,7 @@ namespace Hl7.Fhir.Introspection
         public static bool IsFhirResource(Type type)
         {
             var attr = ReflectionHelper.GetAttribute<FhirTypeAttribute>(type.GetTypeInfo());
-            return typeof(Resource).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo())
+            return typeof(ResourceBase).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo())
                    || (attr != null && attr.IsResource);
             //var attr = ReflectionHelper.GetAttribute<FhirTypeAttribute>(type);
             //return typeof(Resource).IsAssignableFrom(type)

@@ -7,11 +7,8 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Net;
-using System.Text.RegularExpressions;
 
 
 namespace Hl7.Fhir.Rest
@@ -28,15 +25,28 @@ namespace Hl7.Fhir.Rest
 
     public static class ContentType
     {
-        public const string JSON_CONTENT_HEADER = "application/json+fhir";  // The formal FHIR mime type (still to be registered).
-        public static readonly string[] JSON_CONTENT_HEADERS = new string[]
-            { JSON_CONTENT_HEADER,
-                "application/fhir+json", "application/json", "text/json"};
+        public const string JSON_CONTENT_HEADER_DSTU2 = "application/json+fhir";
+        public const string JSON_CONTENT_HEADER = "application/fhir+json";
 
-        public const string XML_CONTENT_HEADER = "application/xml+fhir";   // The formal FHIR mime type (still to be registered).
+        public const string XML_CONTENT_HEADER_DSTU2 = "application/xml+fhir";
+        public const string XML_CONTENT_HEADER = "application/fhir+xml";
+
+        public static readonly string[] JSON_CONTENT_HEADERS = new string[]
+            {
+                JSON_CONTENT_HEADER_DSTU2,
+                JSON_CONTENT_HEADER,
+                "application/json",
+                "text/json" };
+
+        // The formal FHIR mime type (still to be registered).
         public static readonly string[] XML_CONTENT_HEADERS = new string[]
-            { XML_CONTENT_HEADER, "text/xml", "application/xml",
-                "application/fhir+xml", "text/xml+fhir" };
+            {
+                XML_CONTENT_HEADER_DSTU2,
+                XML_CONTENT_HEADER,
+                "text/xml",
+                "application/xml",
+                "text/xml+fhir"
+            };
 
         public const string FORMAT_PARAM_XML = "xml";
         public const string FORMAT_PARAM_JSON = "json";
@@ -118,21 +128,6 @@ namespace Hl7.Fhir.Rest
 
             return JSON_CONTENT_HEADERS.Contains(f) || XML_CONTENT_HEADERS.Contains(f);
         }
-
-
-        /// <summary>
-        /// Checks whether a given content type is valid as a content type for bundles
-        /// </summary>
-        /// <param name="contentType">The content type, as it appears on e.g. a Http Content-Type header</param>
-        /// <returns></returns>
-        [Obsolete("Since DSTU1, there is no difference in mediatype header for bundles anymore. Use IsValidResourceContentType() instead.")]
-        public static bool IsValidBundleContentType(string contentType)
-        {
-            var f = contentType.ToLowerInvariant();
-
-            return (JSON_CONTENT_HEADERS.Contains(f));
-        }
-
 
         /// <summary>
         /// Checks whether a given format parameter is a valid as a content type for resource data

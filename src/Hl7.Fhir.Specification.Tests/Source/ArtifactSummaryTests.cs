@@ -1,6 +1,7 @@
 ﻿using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Specification.Summary;
 using Hl7.Fhir.Utility;
@@ -297,7 +298,7 @@ namespace Hl7.Fhir.Specification.Tests
                     if (nav != null)
                     {
                         // Parse target resource from navigator
-                        var parser = new BaseFhirParser();
+                        var parser = new BaseFhirParser(DSTU2ModelInfo.Instance);
                         var corePatient = parser.Parse<StructureDefinition>(nav);
                         Assert.IsNotNull(corePatient);
                         Assert.AreEqual(corePatientUrl, corePatient.Url);

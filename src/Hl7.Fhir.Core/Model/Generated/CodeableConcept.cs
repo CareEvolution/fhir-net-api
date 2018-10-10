@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
 
@@ -38,109 +38,112 @@ using Hl7.Fhir.Specification;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// Concept - reference to a terminology or just  text
     /// </summary>
     [FhirType("CodeableConcept")]
     [DataContract]
-    public partial class CodeableConcept : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class CodeableConcept : Element
     {
         [NotMapped]
         public override string TypeName { get { return "CodeableConcept"; } }
-        
+
+
         /// <summary>
         /// Code defined by a terminology system
         /// </summary>
         [FhirElement("coding", InSummary=true, Order=30)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Coding> Coding
+        public List<Coding> Coding
         {
-            get { if(_Coding==null) _Coding = new List<Hl7.Fhir.Model.Coding>(); return _Coding; }
-            set { _Coding = value; OnPropertyChanged("Coding"); }
+            get { if (_coding == null) _coding = new List<Coding>(); return _coding; }
+            set { _coding = value; OnPropertyChanged("Coding"); }
         }
-        
-        private List<Hl7.Fhir.Model.Coding> _Coding;
-        
+
+        private List<Coding> _coding;
+
         /// <summary>
         /// Plain text representation of the concept
         /// </summary>
         [FhirElement("text", InSummary=true, Order=40)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirString TextElement
+        public FhirString TextElement
         {
-            get { return _TextElement; }
-            set { _TextElement = value; OnPropertyChanged("TextElement"); }
+            get { return _textElement; }
+            set { _textElement = value; OnPropertyChanged("TextElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirString _TextElement;
-        
+
+        private FhirString _textElement;
+
         /// <summary>
         /// Plain text representation of the concept
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Text
         {
             get { return TextElement != null ? TextElement.Value : null; }
             set
             {
                 if (value == null)
-                  TextElement = null; 
+                    TextElement = null;
                 else
-                  TextElement = new Hl7.Fhir.Model.FhirString(value);
+                    TextElement = new FhirString(value);
                 OnPropertyChanged("Text");
             }
         }
-        
+
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as CodeableConcept;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Coding != null) dest.Coding = new List<Hl7.Fhir.Model.Coding>(Coding.DeepCopy());
-                if(TextElement != null) dest.TextElement = (Hl7.Fhir.Model.FhirString)TextElement.DeepCopy();
+                if (Coding != null) dest.Coding = new List<Coding>(Coding.DeepCopy());
+                if (TextElement != null) dest.TextElement = (FhirString)TextElement.DeepCopy();
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new CodeableConcept());
+             return CopyTo(new CodeableConcept());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as CodeableConcept;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(Coding, otherT.Coding)) return false;
-            if( !DeepComparable.Matches(TextElement, otherT.TextElement)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(Coding, otherT.Coding)) return false;
+            if (!DeepComparable.Matches(TextElement, otherT.TextElement)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as CodeableConcept;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(Coding, otherT.Coding)) return false;
-            if( !DeepComparable.IsExactly(TextElement, otherT.TextElement)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(Coding, otherT.Coding)) return false;
+            if (!DeepComparable.IsExactly(TextElement, otherT.TextElement)) return false;
+
             return true;
         }
 
@@ -156,18 +159,16 @@ namespace Hl7.Fhir.Model
         }
 
         [NotMapped]
-        internal override IEnumerable<ElementValue> NamedChildren 
-        { 
-            get 
-            { 
-                foreach (var item in base.NamedChildren) yield return item; 
+        internal override IEnumerable<ElementValue> NamedChildren
+        {
+            get
+            {
+                foreach (var item in base.NamedChildren) yield return item;
                 foreach (var elem in Coding) { if (elem != null) yield return new ElementValue("coding", elem); }
                 if (TextElement != null) yield return new ElementValue("text", TextElement);
- 
-            } 
-        } 
-    
-    
+            }
+        }
+
     }
-    
+
 }

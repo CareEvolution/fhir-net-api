@@ -3,11 +3,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-<Import Project="..\fhir-net-api.props" />
+  <Import Project="..\fhir-net-api.props" />
   <Import Project="..\fhir-net-api.targets" />
 
   <PropertyGroup>
-    <AssemblyName>Hl7.Fhir.Core.Tests</AssemblyName>
     <ContainsTests>true</ContainsTests>
   </PropertyGroup>
 
@@ -23,7 +22,10 @@
     <PackageReference Include="System.IO.Compression" Version="4.3.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.AppContext" Version="4.3.0" />
     <PackageReference Include="System.Drawing.Common" Version="4.5.0" />
   </ItemGroup>

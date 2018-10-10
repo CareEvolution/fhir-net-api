@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.Model;
+﻿using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Validation;
@@ -23,7 +23,7 @@ namespace Hl7.Fhir.Support.Tests.Model
 
             var validator = new Validator(ctx);
 
-            var pat = new FhirJsonParser().Parse<Patient>(json);
+            var pat = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Patient>(json);
 
             var report = validator.Validate(pat);
             Assert.IsTrue(report.Success);

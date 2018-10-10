@@ -28,27 +28,27 @@
 
 */
 
-using Hl7.Fhir.Serialization;
-using Hl7.FhirPath;
 using System;
 using System.Text.RegularExpressions;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Serialization;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
-    public partial class Date : IStringValue
+    public partial class Date : IStringValue, IParsedPrimitive
     {
         public Date(int year, int month, int day)
-            : this(String.Format(Model.FhirDateTime.FMT_YEARMONTHDAY, year, month, day))
+            : this(String.Format(FhirDateTime.FMT_YEARMONTHDAY, year, month, day))
         {
         }
 
         public Date(int year, int month)
-            : this( String.Format(Model.FhirDateTime.FMT_YEARMONTH,year,month) )
+            : this(String.Format(FhirDateTime.FMT_YEARMONTH, year, month))
         {
         }
 
-        public Date(int year): this( String.Format(Model.FhirDateTime.FMT_YEAR, year))
+        public Date(int year) : this(String.Format(FhirDateTime.FMT_YEAR, year))
         {
         }
 
@@ -85,6 +85,8 @@ namespace Hl7.Fhir.Model
             return PrimitiveTypeConverter.ConvertTo<DateTimeOffset>(this.Value);
         }
 
+        [NotMapped]
+        public object ParsedValue => ToPartialDateTime();
 
         public Primitives.PartialDateTime? ToPartialDateTime()
         {
@@ -101,7 +103,7 @@ namespace Hl7.Fhir.Model
 
         public static bool operator >(Date a, Date b)
         {
-            var aValue = !Object.ReferenceEquals(a,null) ? a.Value : null;
+            var aValue = !Object.ReferenceEquals(a, null) ? a.Value : null;
             var bValue = !Object.ReferenceEquals(b, null) ? b.Value : null;
 
             if (aValue == null) return bValue == null;

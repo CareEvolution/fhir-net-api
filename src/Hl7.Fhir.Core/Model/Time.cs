@@ -31,17 +31,17 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml;
+using Hl7.Fhir.Introspection;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
-    public partial class Time : IStringValue
+    public partial class Time : IStringValue, IParsedPrimitive
     {
+        [NotMapped]
+        public object ParsedValue => ToTime();
+
         public Primitives.PartialTime? ToTime()
         {
             if (Value != null)

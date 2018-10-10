@@ -7,11 +7,10 @@
  */
 
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Support;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Support;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -61,7 +60,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.AreEqual(1, _report.AtLevel(1).Count());
             Assert.AreEqual(2, _report.AtLevel(2).Count());
 
-            CollectionAssert.AreEquivalent(new int[] { 0, 1, 2, 2, 0 }, _report.Issue.Select(i=>i.GetHierarchyLevel()).ToArray());
+            CollectionAssert.AreEquivalent(new int[] { 0, 1, 2, 2, 0 }, _report.Issue.Select(i => i.GetHierarchyLevel()).ToArray());
         }
 
         [TestMethod]

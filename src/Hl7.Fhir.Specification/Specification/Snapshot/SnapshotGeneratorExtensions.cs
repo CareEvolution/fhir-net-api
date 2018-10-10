@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using System;
@@ -72,47 +72,5 @@ namespace Hl7.Fhir.Specification.Snapshot
                 elem.RemoveAllConstrainedByDiffExtensions();
             }
         }
-
-        // ========== For internal use only ==========
-        // [WMR 20170209] OBSOLETE
-#if false
-
-        /// <summary>Removes a specific extension from the snapshot element definition and it's descendant elements, recursively.</summary>
-        /// <param name="elemDef">An <see cref="ElementDefinition"/> instance.</param>
-        /// <param name="uri">The canonical url of the extension.</param>
-        static void ClearAllExtensions(this ElementDefinition elemDef, string uri)
-        {
-            if (elemDef != null)
-            {
-                ClearExtensions(elemDef, uri);
-            }
-        }
-
-        static void ClearExtensions<T>(this IEnumerable<T> elements, string uri) where T : Base
-        {
-            if (elements != null)
-            {
-                foreach (var child in elements)
-                {
-                    ClearExtensions(child, uri);
-                }
-            }
-        }
-
-        static void ClearExtensions<T>(this T element, string uri) where T : Base
-        {
-            if (element != null)
-            {
-                ClearExtension(element as IExtendable, uri);
-                ClearExtensions(element.Children, uri);
-            }
-        }
-
-        static void ClearExtension(this IExtendable extendable, string uri)
-        {
-            extendable?.RemoveExtension(uri);
-        }
-#endif
-
     }
 }

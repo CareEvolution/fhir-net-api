@@ -5,15 +5,16 @@
  * This file is licensed under the BSD 3-Clause license
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
- 
+
 // #define DUMPOUTPUT
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Specification.Navigation;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Snapshot
 {
@@ -44,7 +45,7 @@ namespace Hl7.Fhir.Specification.Snapshot
         {
             var diff = new List<ElementDefinition>(elements.DeepCopy());   // We're going to modify the differential
 
-            if (diff.Count == 0 ) return diff;        // nothing to do
+            if (diff.Count == 0) return diff;        // nothing to do
 
             var index = 0;
 
@@ -122,5 +123,5 @@ namespace Hl7.Fhir.Specification.Snapshot
             return diff;
         }
 
-    }     
+    }
 }

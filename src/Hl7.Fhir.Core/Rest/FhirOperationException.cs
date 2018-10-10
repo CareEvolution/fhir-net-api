@@ -9,37 +9,34 @@
 using System;
 using System.Runtime.Serialization;
 using System.Security;
-
-using Hl7.Fhir.Model;
 using System.Net;
+using Hl7.Fhir.Model;
 
 namespace Hl7.Fhir.Rest
 {
     /// <summary>
     /// Represents HL7 FHIR errors that occur during application execution.
     /// </summary>
-#if !NETSTANDARD1_1
     [SerializableAttribute]
-#endif
     public class FhirOperationException : Exception
     {
         /// <summary>
-        /// Gets or sets the outcome of the operation <see cref="OperationOutcome"/>.
+        /// Gets or sets the outcome of the operation <see cref="IOperationOutcome"/>.
         /// </summary>
-        public OperationOutcome Outcome { get; set; }
+        public IOperationOutcome Outcome { get; set; }
         /// <summary>
         /// The HTTP Status Code that resulted in this Exception
         /// </summary>
         /// <remarks>
         /// </remarks>
-        public HttpStatusCode Status { get; set; }
+        public HttpStatusCode? Status { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirOperationException"/> class with a specified error message.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="status">The http status code associated with the message</param>
-        public FhirOperationException(string message, HttpStatusCode status)
+        public FhirOperationException(string message, HttpStatusCode? status)
             : base(message)
         {
             Status = status;
@@ -52,7 +49,7 @@ namespace Hl7.Fhir.Rest
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="status">The http status code associated with the message</param>
         /// <param name="inner">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. </param>
-        public FhirOperationException(string message, HttpStatusCode status, Exception inner)
+        public FhirOperationException(string message, HttpStatusCode? status, Exception inner)
             : base(message, inner)
         {
             Status = status;
@@ -63,9 +60,9 @@ namespace Hl7.Fhir.Rest
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="status">The http status code associated with the message</param>
-        /// <param name="outcome">The outcome of the operation <see cref="OperationOutcome"/>.</param>
+        /// <param name="outcome">The outcome of the operation <see cref="IOperationOutcome"/>.</param>
         /// <param name="inner">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. </param>
-        public FhirOperationException(string message, HttpStatusCode status, OperationOutcome outcome, Exception inner)
+        public FhirOperationException(string message, HttpStatusCode? status, IOperationOutcome outcome, Exception inner)
             : base(message, inner)
         {
             Outcome = outcome;
@@ -77,8 +74,8 @@ namespace Hl7.Fhir.Rest
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="status">The http status code associated with the message</param>
-        /// <param name="outcome">The outcome of the operation <see cref="OperationOutcome"/>.</param>
-        public FhirOperationException(string message, HttpStatusCode status, OperationOutcome outcome)
+        /// <param name="outcome">The outcome of the operation <see cref="IOperationOutcome"/>.</param>
+        public FhirOperationException(string message, HttpStatusCode? status, IOperationOutcome outcome)
             : base(message)
         {
             Outcome = outcome;
@@ -86,7 +83,6 @@ namespace Hl7.Fhir.Rest
         }
 
 
-#if !NETSTANDARD1_1
         /// <summary>
         /// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with information about the exception.
         /// </summary>
@@ -101,6 +97,5 @@ namespace Hl7.Fhir.Rest
 
             base.GetObjectData(info, context);
         }
-#endif
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
 
@@ -38,21 +38,24 @@ using Hl7.Fhir.Specification;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// A ratio of two Quantity values - a numerator and a denominator
     /// </summary>
     [FhirType("Ratio")]
     [DataContract]
-    public partial class Ratio : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class Ratio : Element
     {
         [NotMapped]
         public override string TypeName { get { return "Ratio"; } }
-        
+
+
         /// <summary>
         /// Numerator value
         /// </summary>
@@ -60,12 +63,12 @@ namespace Hl7.Fhir.Model
         [DataMember]
         public Quantity Numerator
         {
-            get { return _Numerator; }
-            set { _Numerator = value; OnPropertyChanged("Numerator"); }
+            get { return _numerator; }
+            set { _numerator = value; OnPropertyChanged("Numerator"); }
         }
-        
-        private Quantity _Numerator;
-        
+
+        private Quantity _numerator;
+
         /// <summary>
         /// Denominator value
         /// </summary>
@@ -73,54 +76,65 @@ namespace Hl7.Fhir.Model
         [DataMember]
         public Quantity Denominator
         {
-            get { return _Denominator; }
-            set { _Denominator = value; OnPropertyChanged("Denominator"); }
+            get { return _denominator; }
+            set { _denominator = value; OnPropertyChanged("Denominator"); }
         }
-        
-        private Quantity _Denominator;
-        
+
+        private Quantity _denominator;
+
+
+        public static ElementDefinition.ConstraintComponent Ratio_RAT_1 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "numerator.empty() xor denominator",
+            Key = "rat-1",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present",
+            Xpath = "(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) > 0) or (count(f:extension) > 0))"
+        };
+
+        // TODO: Add code to enforce the above constraints
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as Ratio;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Numerator != null) dest.Numerator = (Quantity)Numerator.DeepCopy();
-                if(Denominator != null) dest.Denominator = (Quantity)Denominator.DeepCopy();
+                if (Numerator != null) dest.Numerator = (Quantity)Numerator.DeepCopy();
+                if (Denominator != null) dest.Denominator = (Quantity)Denominator.DeepCopy();
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new Ratio());
+             return CopyTo(new Ratio());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as Ratio;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(Numerator, otherT.Numerator)) return false;
-            if( !DeepComparable.Matches(Denominator, otherT.Denominator)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(Numerator, otherT.Numerator)) return false;
+            if (!DeepComparable.Matches(Denominator, otherT.Denominator)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as Ratio;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(Numerator, otherT.Numerator)) return false;
-            if( !DeepComparable.IsExactly(Denominator, otherT.Denominator)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(Numerator, otherT.Numerator)) return false;
+            if (!DeepComparable.IsExactly(Denominator, otherT.Denominator)) return false;
+
             return true;
         }
 
@@ -136,18 +150,16 @@ namespace Hl7.Fhir.Model
         }
 
         [NotMapped]
-        internal override IEnumerable<ElementValue> NamedChildren 
-        { 
-            get 
-            { 
-                foreach (var item in base.NamedChildren) yield return item; 
+        internal override IEnumerable<ElementValue> NamedChildren
+        {
+            get
+            {
+                foreach (var item in base.NamedChildren) yield return item;
                 if (Numerator != null) yield return new ElementValue("numerator", Numerator);
                 if (Denominator != null) yield return new ElementValue("denominator", Denominator);
- 
-            } 
-        } 
-    
-    
+            }
+        }
+
     }
-    
+
 }

@@ -6,11 +6,11 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Introspection
 {
@@ -18,13 +18,15 @@ namespace Hl7.Fhir.Introspection
     public class ModelInspector
     {
         // Index for easy lookup of resources, key is Tuple<upper resourcename, upper profile>
-        private Dictionary<Tuple<string,string>,ClassMapping> _resourceClasses = new Dictionary<Tuple<string,string>,ClassMapping>();
+        private Dictionary<Tuple<string, string>, ClassMapping> _resourceClasses = new Dictionary<Tuple<string, string>, ClassMapping>();
 
         // Index for easy lookup of datatypes, key is upper typenanme
-        private Dictionary<string, ClassMapping> _dataTypeClasses = new Dictionary<string,ClassMapping>();
+        private Dictionary<string, ClassMapping> _dataTypeClasses = new Dictionary<string, ClassMapping>();
 
         // Index for easy lookup of classmappings, key is Type
         private Dictionary<Type, ClassMapping> _classMappingsByType = new Dictionary<Type, ClassMapping>();
+
+        public IEnumerable<ClassMapping> ClassMappings => _classMappingsByType.Values;
 
         public void Import(Assembly assembly)
         {
@@ -45,6 +47,21 @@ namespace Hl7.Fhir.Introspection
                     ImportType(type);
                 else
                     Message.Info("Skipped type {0} while doing inspection: not recognized as representing a FHIR type", type.Name);
+            }
+
+            // second pass to pick up closed form generics from property mappings
+            foreach (var classMapping in _classMappingsByType.Values.ToArray())
+            {
+                foreach(var propertyMapping in classMapping.PropertyMappings.Where(pm => !pm.RepresentsValueElement))
+                {
+                    if (!propertyMapping.IsBackboneElement)
+                    {
+                        foreach(var type in propertyMapping.FhirType)
+                        {
+                            ImportType(type);
+                        }
+                    }
+                }
             }
         }
 
@@ -102,7 +119,7 @@ namespace Hl7.Fhir.Introspection
             var success = _resourceClasses.TryGetValue(key, out entry);
 
             // If that didn't work, try again with no profile
-            if(!success)
+            if (!success)
                 success = _resourceClasses.TryGetValue(noProfileKey, out entry);
 
             if (success)

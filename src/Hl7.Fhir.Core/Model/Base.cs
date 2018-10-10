@@ -29,14 +29,13 @@
 
 
 
-using Hl7.Fhir.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Hl7.Fhir.Introspection;
-using System.Runtime.Serialization;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Validation;
 
 namespace Hl7.Fhir.Model
 {
@@ -45,7 +44,7 @@ namespace Hl7.Fhir.Model
 #endif
     [InvokeIValidatableObject]
     [System.Runtime.Serialization.DataContract]
-    public abstract class Base : Hl7.Fhir.Validation.IValidatableObject, IDeepCopyable, IDeepComparable, IAnnotated, IAnnotatable
+    public abstract class Base : IValidatableObject, IDeepCopyable, IDeepComparable, IAnnotated, IAnnotatable
     {
         public abstract bool IsExactly(IDeepComparable other);
         public abstract bool Matches(IDeepComparable pattern);
@@ -60,18 +59,11 @@ namespace Hl7.Fhir.Model
         {
             if (other is Base dest)
             {
-                // if (UserData != null) dest.UserData = new Dictionary<string, object>(UserData);
                 if (_annotations.IsValueCreated)
                 {
                     dest.annotations.Clear();
                     dest.annotations.AddRange(annotations);
                 }
-
-#pragma warning disable 618, 620
-                if (UserData != null) dest.UserData = new Dictionary<string, object>(UserData);
-#pragma warning restore 618
-
-               // if (FhirComments != null) dest.FhirComments = new List<string>(FhirComments);
                 return dest;
             }
             else
@@ -85,16 +77,7 @@ namespace Hl7.Fhir.Model
             return Enumerable.Empty<ValidationResult>();
         }
 
-#region << Annotations and UserData >>
-        private Dictionary<string, object> _userData = new Dictionary<string, object>();
-
-        [NotMapped]
-        [Obsolete("Use the typed interface provided by IAnnotatable instead")]
-        public Dictionary<string, object> UserData
-        {
-            get { return _userData; }
-            private set { _userData = value; }
-        }
+        #region << Annotations >>
 
         private Lazy<List<object>> _annotations = new Lazy<List<object>>(() => new List<object>());
         private List<object> annotations { get { return _annotations.Value; } }
@@ -114,7 +97,7 @@ namespace Hl7.Fhir.Model
             annotations.RemoveOfType(type);
         }
 
-#endregion
+        #endregion
 
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(String property)

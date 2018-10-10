@@ -8,16 +8,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Xml;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.FhirPath;
-using Hl7.Fhir.Utility;
+using System.IO;
+using System.Linq;
+using System.Xml;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Utility;
+using Hl7.FhirPath;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Model
 {
@@ -28,7 +29,7 @@ namespace Hl7.Fhir.Tests.Model
         [TestCategory("LongRunner")]
         public void SearchExtractionAllExamples()
         {
-            FhirXmlParser parser = new FhirXmlParser();
+            FhirXmlParser parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
             int errorCount = 0;
             int testFileCount = 0;
             Dictionary<String, int> exampleSearchValues = new Dictionary<string, int>();
@@ -155,7 +156,7 @@ namespace Hl7.Fhir.Tests.Model
                     }
                 }
             }
-            catch(ArgumentException ex)
+            catch (ArgumentException ex)
             {
                 Debug.WriteLine("FATAL: Error parsing expression in search index {0}.{1} {2}\r\n\t{3}", index.Resource, index.Name, index.Expression, ex.Message);
             }

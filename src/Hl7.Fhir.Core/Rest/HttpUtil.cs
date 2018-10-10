@@ -168,7 +168,7 @@ namespace Hl7.Fhir.Rest
         static HttpUtil()
         {
             RESTURI_PATTERN = @"((http | https)://([A-Za-z0-9\\\/\.\:\%\$])*)?(";
-            RESTURI_PATTERN += String.Join("|", ModelInfo.SupportedResources);
+            RESTURI_PATTERN += @"[A-Za-z]{1,64}";
             RESTURI_PATTERN += @")\/[A-Za-z0-9\-\.]{1,64}(\/_history\/[A-Za-z0-9\-\.]{1,64})?";
         }
 
@@ -213,17 +213,41 @@ namespace Hl7.Fhir.Rest
         }
     }
 
+    public enum SearchParameterHandling
+    {
+        /// <summary>
+        /// Server should return an error for any unknown or unsupported parameter        
+        /// </summary>
+        [EnumLiteral("strict")]
+        Strict,
+
+        /// <summary>
+        /// Server should ignore any unknown or unsupported parameter
+        /// </summary>
+        [EnumLiteral("lenient")]
+        Lenient
+    }
+
 
     public enum Prefer
     {
         /// <summary>
         /// Prefer to receive the full resource in the body after completion of the interaction
         /// </summary>
+        [EnumLiteral("representation")]
         ReturnRepresentation,
 
         /// <summary>
         /// Prefer to not a receive a body after completion of the interaction
         /// </summary>
-        ReturnMinimal
+        [EnumLiteral("minimal")]
+        ReturnMinimal,
+
+        /// <summary>
+        /// Prefer to receive an OperationOutcome resource containing hints and warnings about the 
+        /// operation rather than the full resource
+        /// </summary>
+        [EnumLiteral("OperationOutcome")]
+        OperationOutcome
     }
 }

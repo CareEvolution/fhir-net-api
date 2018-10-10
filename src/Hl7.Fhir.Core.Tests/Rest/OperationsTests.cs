@@ -14,6 +14,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
 
 namespace Hl7.Fhir.Tests.Rest
 {
@@ -144,7 +146,7 @@ namespace Hl7.Fhir.Tests.Rest
             catch(FhirOperationException fe)
             {
                 Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, fe.Status);
-                Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == OperationOutcome.IssueSeverity.Error).Any());
+                Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == CommonIssueSeverity.Error).Any());
             }
         }
 

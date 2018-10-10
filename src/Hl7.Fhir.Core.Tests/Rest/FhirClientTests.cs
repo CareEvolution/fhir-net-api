@@ -7,19 +7,18 @@
  */
 
 using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Net;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Model;
-using System.IO;
-using System.Threading.Tasks;
-using Hl7.Fhir.Utility;
-using static Hl7.Fhir.Model.Bundle;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Serialization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Rest
 {
@@ -49,10 +48,10 @@ namespace Hl7.Fhir.Tests.Rest
             System.Diagnostics.Trace.WriteLine("Testing against fhir server: " + testEndpoint);
         }
 
-        public static void DebugDumpBundle(Hl7.Fhir.Model.Bundle b)
+        public static void DebugDumpBundle(Bundle b)
         {
             System.Diagnostics.Trace.WriteLine(String.Format("--------------------------------------------\r\nBundle Type: {0} ({1} total items, {2} included)", b.Type.ToString(), b.Total, (b.Entry != null ? b.Entry.Count.ToString() : "-")));
-         
+
             if (b.Entry != null)
             {
                 foreach (var item in b.Entry)
@@ -61,12 +60,12 @@ namespace Hl7.Fhir.Tests.Rest
                         System.Diagnostics.Trace.WriteLine(String.Format("        {0}: {1}", item.Request.Method.ToString(), item.Request.Url));
                     if (item.Response != null && item.Response.Status != null)
                         System.Diagnostics.Trace.WriteLine(String.Format("        {0}", item.Response.Status));
-                    if (item.Resource != null && item.Resource is Hl7.Fhir.Model.DomainResource)
+                    if (item.Resource != null && item.Resource is DomainResource)
                     {
                         if (item.Resource.Meta != null && item.Resource.Meta.LastUpdated.HasValue)
                             System.Diagnostics.Trace.WriteLine(String.Format("            Last Updated:{0}, [{1}]", item.Resource.Meta.LastUpdated.Value, item.Resource.Meta.LastUpdated.Value.ToString("HH:mm:ss.FFFF")));
-                        Hl7.Fhir.Rest.ResourceIdentity ri = new Hl7.Fhir.Rest.ResourceIdentity(item.FullUrl);
-                        System.Diagnostics.Trace.WriteLine(String.Format("            {0}", (item.Resource as Hl7.Fhir.Model.DomainResource).ResourceIdentity(ri.BaseUri).OriginalString));
+                        ResourceIdentity ri = new ResourceIdentity(item.FullUrl);
+                        System.Diagnostics.Trace.WriteLine(String.Format("            {0}", (item.Resource as Hl7.Fhir.Model.DSTU2.DomainResource).ResourceIdentity(ri.BaseUri).OriginalString));
                     }
                 }
             }

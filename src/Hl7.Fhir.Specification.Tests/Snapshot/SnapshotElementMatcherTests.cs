@@ -7,7 +7,7 @@
  */
 
 using System;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Snapshot;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Specification.Source;

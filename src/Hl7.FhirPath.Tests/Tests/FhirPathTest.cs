@@ -11,10 +11,10 @@
 
 using System;
 using System.Linq;
-using Hl7.FhirPath.Functions;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Model.Primitives;
-using Hl7.Fhir.Model;
+using Hl7.FhirPath.Functions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.FhirPath.Tests
@@ -53,7 +53,7 @@ namespace Hl7.FhirPath.Tests
             Assert.AreEqual(1L, new ConstantValue(true).ToDecimal());
             Assert.AreEqual(0L, new ConstantValue(false).ToDecimal());
             Assert.IsNull(new ConstantValue(2).ToDecimal());
-//            Assert.Null(new ConstantValue("2").ToDecimal());   Not clear according to spec
+            //            Assert.Null(new ConstantValue("2").ToDecimal());   Not clear according to spec
             Assert.IsNull(new ConstantValue(DateTimeOffset.Now).ToDecimal());
         }
 
@@ -62,7 +62,7 @@ namespace Hl7.FhirPath.Tests
         {
             var values = FhirValueList.Create(1, true, "hi", 4.0m, 4.0f, PartialDateTime.Now());
             
-            
+
             Test.IsInstanceOfType(values.Item(0).Single().Value, typeof(Int64));
             Test.IsInstanceOfType(values.Item(1).Single().Value, typeof(Boolean));
             Test.IsInstanceOfType(values.Item(2).Single().Value, typeof(String));

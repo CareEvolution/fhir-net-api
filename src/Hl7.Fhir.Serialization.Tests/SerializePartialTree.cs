@@ -1,11 +1,10 @@
-﻿using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
+﻿using System.IO;
+using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System.Linq;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
@@ -13,17 +12,17 @@ namespace Hl7.Fhir.Serialization.Tests
     public class SerializePartialTree
     {
         public ITypedElement getXmlNode(string xml, FhirXmlParsingSettings s = null) =>
-            XmlParsingHelpers.ParseToTypedElement(xml, new PocoStructureDefinitionSummaryProvider(), s);
+            XmlParsingHelpers.ParseToTypedElement(xml, DSTU2ModelInfo.Instance.StructureDefinitionProvider, s);
         public ITypedElement getJsonNode(string json, FhirJsonParsingSettings s = null) =>
-            JsonParsingHelpers.ParseToTypedElement(json, new PocoStructureDefinitionSummaryProvider(), settings: s);
-        
+            JsonParsingHelpers.ParseToTypedElement(json, DSTU2ModelInfo.Instance.StructureDefinitionProvider, settings: s);
+
 
         [TestMethod]
         public void CanSerializeSubtree()
         {
             var tpXml = File.ReadAllText(@"TestData\fp-test-patient.xml");
             var tpJson = File.ReadAllText(@"TestData\fp-test-patient.json");
-            var pat = (new FhirXmlParser()).Parse<Patient>(tpXml);
+            var pat = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(tpXml);
 
             // Should work on the parent resource
             var navXml = getXmlNode(tpXml);
@@ -61,10 +60,10 @@ namespace Hl7.Fhir.Serialization.Tests
             assertAreNavsEqual(navXml, navJson, navPoco);
 
             var navRtXml = JsonParsingHelpers.ParseToTypedElement(navXml.ToJson(), navXml.InstanceType,
-                new PocoStructureDefinitionSummaryProvider(), navXml.Name);
-            var navRtJson = navJson.ToPoco().ToTypedElement(navJson.Name);
+                DSTU2ModelInfo.Instance.StructureDefinitionProvider, navXml.Name);
+            var navRtJson = navJson.ToPoco(DSTU2ModelInfo.Instance).ToTypedElement(navJson.Name);
             var navRtPoco = XmlParsingHelpers.ParseToTypedElement(navPoco.ToXml(), navPoco.InstanceType,
-                new PocoStructureDefinitionSummaryProvider());
+                DSTU2ModelInfo.Instance.StructureDefinitionProvider);
             assertAreNavsEqual(navRtXml, navRtJson, navRtPoco);
         }
 

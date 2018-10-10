@@ -16,7 +16,8 @@ using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Model.Primitives;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
@@ -37,7 +38,7 @@ namespace Hl7.FhirPath.Tests
 
         public PatientFixture()
         {
-            var parser = new FhirXmlParser();
+            var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
             var tpXml = TestData.ReadTextFile("fp-test-patient.xml");
 
             var patient = parser.Parse<Patient>(tpXml);

@@ -25,4 +25,14 @@ namespace Hl7.Fhir.Model
 
     /// <summary>Common nullable integer value property interface.</summary>
     public interface INullableIntegerValue : INullableValue<int> { }
+
+    /// <summary>
+    /// Provides a way to access the system and code from a Code&lt;T&gt; derived class, without having to mess
+    /// about with the generic types/additional nasty reflection
+    /// </summary>
+    public interface ISystemAndCode
+    {
+        string System { get; }
+        string Code { get; }
+    }
 }

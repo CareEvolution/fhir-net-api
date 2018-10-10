@@ -7,21 +7,23 @@
  */
 
 using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Support;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Hl7.Fhir.Serialization;
-using System.Collections.Generic;
-using Hl7.Fhir.Specification.Source;
-using Hl7.Fhir.Specification.Snapshot;
-using Hl7.Fhir.Specification.Navigation;
-using Hl7.Fhir.Rest;
+using System.Linq;
 using System.Text;
 using System.Xml;
+using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification.Navigation;
+using Hl7.Fhir.Specification.Snapshot;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -49,7 +51,7 @@ namespace Hl7.Fhir.Specification.Tests
         [TestInitialize]
         public void Setup()
         {
-            FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
+            ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
 
             var dirSource = new DirectorySource("TestData/snapshot-test", new DirectorySourceSettings { IncludeSubDirectories = true });
             _source = new TimingSource(dirSource);
@@ -308,7 +310,7 @@ namespace Hl7.Fhir.Specification.Tests
             var fullElems = fullyExpand(snapElems, issues);
             Debug.WriteLine($"Full expansion: {fullElems.Count} elements");
             dumpBaseElems(fullElems);
-            
+
             Assert.AreEqual(305, fullElems.Count);
             Assert.AreEqual(issues.Count, 0);
 
@@ -382,7 +384,7 @@ namespace Hl7.Fhir.Specification.Tests
             }
         }
 
-        
+
         [TestMethod]
         public void TestSnapshotRecursionChecker()
         {
@@ -457,7 +459,7 @@ namespace Hl7.Fhir.Specification.Tests
             var elem = matches[0];
             if (_settings.GenerateElementIds && elementId != null)
             {
-                Assert.AreEqual(elementId, elem.ElementId, $"Invalid elementId in {label} component. Expected = '{elementId}', actual = '{elem.ElementId}'.");
+                Assert.AreEqual(elementId, elem.Id, $"Invalid elementId in {label} component. Expected = '{elementId}', actual = '{elem.Id}'.");
             }
         }
 
@@ -876,7 +878,7 @@ namespace Hl7.Fhir.Specification.Tests
             // if (!areEqual)
             // {
             var tempPath = Path.GetTempPath();
-            var xmlSer = new FhirXmlSerializer();
+            var xmlSer = new FhirXmlSerializer(DSTU2ModelInfo.Instance);
             File.WriteAllText(Path.Combine(tempPath, "snapshotgen-source.xml"), xmlSer.SerializeToString(original));
             File.WriteAllText(Path.Combine(tempPath, "snapshotgen-dest.xml"), xmlSer.SerializeToString(expanded));
             // }
@@ -1134,15 +1136,15 @@ namespace Hl7.Fhir.Specification.Tests
             _generator = new SnapshotGenerator(_testResolver, _settings);
 
             // [WMR 20170614] NEW: ExpandElement should maintain the existing element ID...!
-            var orgId = elem.ElementId;
+            var orgId = elem.Id;
 
             var result = _generator.ExpandElement(elems, elem);
 
             dumpOutcome(_generator.Outcome);
             Assert.IsNull(_generator.Outcome);
 
-            Assert.AreEqual(orgId, elem.ElementId);
- 
+            Assert.AreEqual(orgId, elem.Id);
+
             // Verify results
             verifyExpandElement(elem, elems, result);
         }
@@ -1330,7 +1332,7 @@ namespace Hl7.Fhir.Specification.Tests
 
                     return be != null ?
                         $"  #{e.GetHashCode(),-8} {formatElementPathName(e)} | {e.Base?.Path} <== #{be.GetHashCode(),-8} {formatElementPathName(be)} | {be.Base?.Path}"
-                      : $"  #{e.GetHashCode(),-8} {formatElementPathName(e)} | {e.Base?.Path}"; 
+                      : $"  #{e.GetHashCode(),-8} {formatElementPathName(e)} | {e.Base?.Path}";
                 })
             ));
         }
@@ -1347,7 +1349,7 @@ namespace Hl7.Fhir.Specification.Tests
                 Debug.Print(new string('=', 100));
                 foreach (var elem in sd.Snapshot.Element)
                 {
-                    Debug.WriteLine("{0}  |  {1}  |  {2}", elem.ElementId, elem.Path, elem.Base?.Path);
+                    Debug.WriteLine("{0}  |  {1}  |  {2}", elem.Id, elem.Path, elem.Base?.Path);
                 }
                 // Debug.Unindent();
             }
@@ -1987,7 +1989,7 @@ namespace Hl7.Fhir.Specification.Tests
             var baseClone = (ElementDefinition)baseElem.DeepCopy();
 
             // Id, Path & Base are expected to differ
-            baseClone.ElementId = elem.ElementId;
+            baseClone.Id = elem.Id;
             baseClone.Path = elem.Path;
             baseClone.Base = elem.Base;
 
@@ -2011,7 +2013,7 @@ namespace Hl7.Fhir.Specification.Tests
             var baseClone = (ElementDefinition)baseElem.DeepCopy();
 
             // Id, Path & Base are expected to differ
-            baseClone.ElementId = elem.ElementId;
+            baseClone.Id = elem.Id;
             baseClone.Path = elem.Path;
             baseClone.Base = elem.Base;
 
@@ -2048,7 +2050,7 @@ namespace Hl7.Fhir.Specification.Tests
                 || isChanged(elem.DefinitionElement)
                 || isChanged(elem.Example)
                 || hasChanges(elem.Extension)
-             //   || hasChanges(elem.FhirCommentsElement)
+                //   || hasChanges(elem.FhirCommentsElement)
                 || isChanged(elem.Fixed)
                 || isChanged(elem.IsModifierElement)
                 || isChanged(elem.IsSummaryElement)
@@ -2230,7 +2232,7 @@ namespace Hl7.Fhir.Specification.Tests
         {
             using (var reader = XmlReader.Create(stream))
             {
-                var parser = new FhirXmlParser();
+                var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
                 var bundle = parser.Parse<Bundle>(reader);
                 foreach (var entry in bundle.Entry)
                 {
@@ -4527,12 +4529,12 @@ namespace Hl7.Fhir.Specification.Tests
             }
             finally
             {
-               // _generator.BeforeExpandElement -= beforeExpandElementHandler_DEBUG;
+                // _generator.BeforeExpandElement -= beforeExpandElementHandler_DEBUG;
             }
 
             dumpOutcome(_generator.Outcome);
             Assert.IsTrue(expanded.HasSnapshot);
-           // dumpElements(expanded.Snapshot.Element);
+            // dumpElements(expanded.Snapshot.Element);
 
             var nav = ElementDefinitionNavigator.ForSnapshot(expanded);
             Assert.IsTrue(nav.JumpToFirst("Patient.identifier"));
@@ -5160,7 +5162,7 @@ namespace Hl7.Fhir.Specification.Tests
             // Assert.IsTrue(nav.JumpToFirst("Patient.generalPractitioner"));
             Assert.IsTrue(nav.JumpToFirst("Patient.careProvider"));
             Assert.IsTrue(hasChanges(nav.Current));
-            Assert.IsFalse(isChanged(nav.Current)); 
+            Assert.IsFalse(isChanged(nav.Current));
             Assert.IsTrue(hasChanges(nav.Current.Type));
             foreach (var type in nav.Current.Type)
             {
@@ -5209,7 +5211,7 @@ namespace Hl7.Fhir.Specification.Tests
 
             var nav = ElementDefinitionNavigator.ForSnapshot(expanded);
             Assert.IsTrue(nav.JumpToFirst("Questionnaire.group.title"));
-            Assert.AreEqual("level 1" ,nav.Current.Short);
+            Assert.AreEqual("level 1", nav.Current.Short);
 
             Assert.IsTrue(nav.JumpToFirst("Questionnaire.group.group.title"));
             Assert.AreEqual("level 2", nav.Current.Comments);
@@ -5388,7 +5390,7 @@ namespace Hl7.Fhir.Specification.Tests
             // _generator.PrepareElement += elementHandler;
             //try
             //{
-                generateSnapshotAndCompare(sd, out expanded);
+            generateSnapshotAndCompare(sd, out expanded);
             //}
             //finally
             //{
@@ -5401,7 +5403,7 @@ namespace Hl7.Fhir.Specification.Tests
             var elems = expanded.Snapshot.Element;
             // dumpElements(elems);
             dumpBaseElems(elems);
-            
+
             foreach (var elem in elems)
             {
                 Assert.IsNull(elem.Name, $"Error! Unexpected slice name '{elem.Name}' on element with path '{elem.Path}'");

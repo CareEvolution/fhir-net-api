@@ -6,16 +6,17 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
 using System;
 using System.Xml;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Specification;
 
 
 namespace Hl7.Fhir.Serialization
 {
     public class FhirXmlParser : BaseFhirParser
     {
-        public FhirXmlParser(ParserSettings settings=null) : base(settings)
+        public FhirXmlParser(IModelInfo modelInfo, ParserSettings settings = null) : base(modelInfo, settings)
         {
             //
         }
@@ -27,18 +28,18 @@ namespace Hl7.Fhir.Serialization
         private FhirXmlParsingSettings buildNodeSettings(ParserSettings settings) =>
                 new FhirXmlParsingSettings
                 {
-                    DisallowSchemaLocation = Settings.DisallowXsiAttributesOnRoot,
+                    DisallowSchemaLocation = _parserSettings.DisallowXsiAttributesOnRoot,
                 };
 
         public Base Parse(string xml, Type dataType)
         {
-            var xmlReader = FhirXmlNode.Parse(xml, buildNodeSettings(Settings));
+            var xmlReader = FhirXmlNode.Parse(xml, buildNodeSettings(_parserSettings));
             return Parse(xmlReader, dataType);
         }
 
         public Base Parse(XmlReader reader, Type dataType)
         {
-            var xmlReader = FhirXmlNode.Read(reader, buildNodeSettings(Settings));
+            var xmlReader = FhirXmlNode.Read(reader, buildNodeSettings(_parserSettings));
             return Parse(xmlReader, dataType);
         }
     }

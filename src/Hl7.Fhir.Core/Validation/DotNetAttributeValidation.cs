@@ -22,19 +22,18 @@ namespace Hl7.Fhir.Validation
             return new ValidationContext(value);
         }
 
-        public static void Validate(object value, bool recurse = false, Func<string, Resource> resolver = null)
+        public static void Validate(object value, bool recurse = false)
         {
             if (value == null) throw new ArgumentNullException("value");
             //    assertSupportedInstanceType(value);
 
             var validationContext = BuildContext(value);
             validationContext.SetValidateRecursively(recurse);
-            validationContext.SetResolver(resolver);
 
             Validator.ValidateObject(value, validationContext, true);
         }
 
-        public static bool TryValidate(object value, ICollection<ValidationResult> validationResults = null, bool recurse = false, Func<string,Resource> resolver=null)
+        public static bool TryValidate(object value, ICollection<ValidationResult> validationResults = null, bool recurse = false)
         {
             if (value == null) throw new ArgumentNullException("value");
           // assertSupportedInstanceType(value);
@@ -42,7 +41,6 @@ namespace Hl7.Fhir.Validation
             var results = validationResults ?? new List<ValidationResult>();
             var validationContext = BuildContext(value);
             validationContext.SetValidateRecursively(recurse);
-            validationContext.SetResolver(resolver);
             return Validator.TryValidateObject(value, validationContext, results, true);
 
             // Note, if you pass a null validationResults, you will *not* get results (it's not an out param!)

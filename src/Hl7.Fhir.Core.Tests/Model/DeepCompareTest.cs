@@ -6,16 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
-using System.Xml;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static Hl7.Fhir.Tests.TestDataHelper;
 
 namespace Hl7.Fhir.Tests.Model
@@ -28,7 +21,7 @@ namespace Hl7.Fhir.Tests.Model
         {
             string xml = ReadTestData("TestPatient.xml");
 
-            var p = new FhirXmlParser().Parse<Patient>(xml);
+            var p = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Patient>(xml);
             var p2 = (Patient)p.DeepCopy();
 
             Assert.IsTrue(p2.IsExactly(p));
@@ -39,7 +32,7 @@ namespace Hl7.Fhir.Tests.Model
         {
             string xml = ReadTestData("TestPatient.xml");
 
-            var p = new FhirXmlParser().Parse<Patient>(xml);
+            var p = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Patient>(xml);
             var p2 = (Patient)p.DeepCopy();
 
             p2.ActiveElement.Value = !p2.ActiveElement.Value;
@@ -57,7 +50,7 @@ namespace Hl7.Fhir.Tests.Model
         {
             string xml = ReadTestData("TestPatient.xml");
 
-            var p = new FhirXmlParser().Parse<Patient>(xml);
+            var p = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Patient>(xml);
             var p2 = (Patient)p.DeepCopy();
 
             var rel = (CodeableConcept)p.Contact[0].Relationship[0].DeepCopy();
@@ -79,6 +72,6 @@ namespace Hl7.Fhir.Tests.Model
             Assert.IsTrue(a.IsExactly(c));
             Assert.IsTrue(a.Matches(c));
         }
-        
+
     }
 }

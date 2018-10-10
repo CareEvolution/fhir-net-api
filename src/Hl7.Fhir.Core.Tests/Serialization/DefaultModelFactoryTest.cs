@@ -6,20 +6,18 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using Hl7.Fhir.Model;
 using System.Collections;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Serialization;
+using System.Collections.Generic;
 using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
     [TestClass]
-	public class DefaultModelFactoryTest
-    {    
+    public class DefaultModelFactoryTest
+    {
         [TestMethod]
         public void TestSupportedTypes()
         {
@@ -28,11 +26,11 @@ namespace Hl7.Fhir.Tests.Serialization
             // Test creation of a class with no constructor
             Assert.IsTrue(factory.CanCreate(typeof(TestCreate)));
             Assert.IsNotNull(factory.Create(typeof(TestCreate)));
-            
+
             // Test creation of class with a public no-args constructor
             Assert.IsTrue(factory.CanCreate(typeof(TestCreatePublicConstructor)));
             Assert.IsNotNull(factory.Create(typeof(TestCreatePublicConstructor)));
-            
+
             // Test creation of primitives
             Assert.IsTrue(factory.CanCreate(typeof(int)));
             Assert.IsNotNull(factory.Create(typeof(int)));
@@ -50,7 +48,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             Assert.IsTrue(factory.CanCreate(typeof(IList<HumanName>)));
             Assert.IsNotNull(factory.Create(typeof(ICollection<HumanName>)));
-            
+
             Assert.IsTrue(factory.CanCreate(typeof(IList<int?>)));
             collection = factory.Create(typeof(ICollection<int?>));
             Assert.IsNotNull(collection);
@@ -80,11 +78,11 @@ namespace Hl7.Fhir.Tests.Serialization
     [FhirType("Patient")]   // implicitly, this is a resource
     public class NewPatient : Patient { }
 
-    public class TestCreate 
+    public class TestCreate
     {
     }
 
-    public class TestCreatePublicConstructor 
+    public class TestCreatePublicConstructor
     {
         public TestCreatePublicConstructor()
         {

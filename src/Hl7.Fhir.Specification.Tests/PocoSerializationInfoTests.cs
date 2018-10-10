@@ -1,5 +1,4 @@
-﻿using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Specification;
+﻿using Hl7.Fhir.Model.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Serialization.Tests
@@ -18,18 +17,18 @@ namespace Hl7.Fhir.Serialization.Tests
         //}
 
         [TestMethod]
-        public void TestCanLocateTypes() => SerializationInfoTestHelpers.TestCanLocateTypes(new PocoStructureDefinitionSummaryProvider());
+        public void TestCanLocateTypes() => SerializationInfoTestHelpers.TestCanLocateTypes(DSTU2ModelInfo.Instance.StructureDefinitionProvider);
 
         [TestMethod]
-        public void TestCanGetElements() => SerializationInfoTestHelpers.TestCanGetElements(new PocoStructureDefinitionSummaryProvider());
+        public void TestCanGetElements() => SerializationInfoTestHelpers.TestCanGetElements(DSTU2ModelInfo.Instance.StructureDefinitionProvider);
 
         [TestMethod]
-        public void TestSpecialTypes() => SerializationInfoTestHelpers.TestSpecialTypes(new PocoStructureDefinitionSummaryProvider());
+        public void TestSpecialTypes() => SerializationInfoTestHelpers.TestSpecialTypes(DSTU2ModelInfo.Instance.StructureDefinitionProvider);
 
         [TestMethod]
-        public void TestProvidedOrder() => SerializationInfoTestHelpers.TestProvidedOrder(new PocoStructureDefinitionSummaryProvider());
+        public void TestProvidedOrder() => SerializationInfoTestHelpers.TestProvidedOrder(DSTU2ModelInfo.Instance.StructureDefinitionProvider);
 
         [TestMethod]
-        public void TestValueIsNotAChild() => SerializationInfoTestHelpers.TestValueIsNotAChild(new PocoStructureDefinitionSummaryProvider());
+        public void TestValueIsNotAChild() => SerializationInfoTestHelpers.TestValueIsNotAChild(DSTU2ModelInfo.Instance.StructureDefinitionProvider);
     }
 }

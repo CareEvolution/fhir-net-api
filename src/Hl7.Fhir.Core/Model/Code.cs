@@ -28,17 +28,14 @@
 
 */
 
-
 using System;
-using System.Text.RegularExpressions;
-
-using Hl7.Fhir.Introspection;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Utility;
-using Hl7.Fhir.Serialization;
+using System.Text.RegularExpressions;
+using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Specification;
+using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
 #if !NETSTANDARD1_1
     [Serializable]
@@ -50,16 +47,6 @@ namespace Hl7.Fhir.Model
         {
             return Regex.IsMatch(value, "^" + Code.PATTERN + "$", RegexOptions.Singleline);
         }
-    }
-
-    /// <summary>
-    /// Provides a way to access the system and code from a Code&lt;T&gt; derived class, without having to mess
-    /// about with the generic types/additional nasty reflection
-    /// </summary>
-    public interface ISystemAndCode
-    {
-        string System { get; }
-        string Code { get; }
     }
 
 #if !NETSTANDARD1_1
@@ -99,7 +86,7 @@ namespace Hl7.Fhir.Model
             }
         }
 
-        public Code() : this(null) {}
+        public Code() : this(null) { }
 
         public Code(T? value)
         {

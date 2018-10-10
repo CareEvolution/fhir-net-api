@@ -1,15 +1,13 @@
-﻿using Hl7.Fhir.Specification.Source;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hl7.Fhir.Model;
-using System.IO;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Specification.Snapshot;
-using Hl7.Fhir.Serialization;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Validation
 {
@@ -176,7 +174,7 @@ namespace Hl7.Fhir.Validation
                 .OrType(FHIRDefinedType.Quantity, "http://validationtest.org/fhir/StructureDefinition/HeightQuantity")
                 .OrType(FHIRDefinedType.String));
 
-            Debug.WriteLine(new FhirXmlSerializer().SerializeToString(result));
+            Debug.WriteLine(new FhirXmlSerializer(DSTU2ModelInfo.Instance).SerializeToString(result));
             return result;
         }
 
@@ -198,7 +196,7 @@ namespace Hl7.Fhir.Validation
 
         private static StructureDefinition bundleWithConstrainedContained()
         {
-            var result = createTestSD($"http://validationtest.org/fhir/StructureDefinition/BundleWithConstrainedContained", 
+            var result = createTestSD($"http://validationtest.org/fhir/StructureDefinition/BundleWithConstrainedContained",
                             $"Bundle with a constraint on the Bundle.entry.resource",
                     $"Bundle with a constraint on the Bundle.entry.resource", FHIRDefinedType.Bundle);
 
@@ -240,7 +238,7 @@ namespace Hl7.Fhir.Validation
         }
 
 
-        private static StructureDefinition createTestSD(string url, string name, string description, FHIRDefinedType constrainedType, string baseUri=null)
+        private static StructureDefinition createTestSD(string url, string name, string description, FHIRDefinedType constrainedType, string baseUri = null)
         {
             var result = new StructureDefinition();
 
@@ -260,8 +258,8 @@ namespace Hl7.Fhir.Validation
             result.ConstrainedType = constrainedType;
             result.Abstract = false;
 
-            if(baseUri == null)
-                baseUri = ResourceIdentity.Core(constrainedType).ToString();
+            if (baseUri == null)
+                baseUri = ResourceIdentity.Core(constrainedType.GetLiteral()).ToString();
 
             result.Base = baseUri;
 

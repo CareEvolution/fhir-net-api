@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
+using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -34,195 +38,175 @@ using Hl7.Fhir.Utility;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
-// Generated, and then post-processed by hand for FHIR v1.0.1
+// Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// Base Resource
     /// </summary>
     [DataContract]
-    [FhirType("Resource", IsResource = true)]
-    public abstract partial class Resource : Base
+    public abstract partial class Resource
     {
         [NotMapped]
-        public virtual ResourceType ResourceType { get { return ResourceType.Resource; } }
+        public abstract ResourceType ResourceType { get; }
         [NotMapped]
         public override string TypeName { get { return "Resource"; } }
-        
-        /// <summary>
-        /// Codes indicating the type of validation to perform
-        /// </summary>
-        [FhirEnumeration("ResourceValidationMode")]
-        public enum ResourceValidationMode
-        {
-            /// <summary>
-            /// The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not violate any uniqueness constraints).
-            /// </summary>
-            [EnumLiteral("create", "http://hl7.org/fhir/resource-validation-mode")]
-            Create,
-            /// <summary>
-            /// The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate).
-            /// </summary>
-            [EnumLiteral("update", "http://hl7.org/fhir/resource-validation-mode")]
-            Update,
-            /// <summary>
-            /// The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules).
-            /// </summary>
-            [EnumLiteral("delete", "http://hl7.org/fhir/resource-validation-mode")]
-            Delete,
-        }
-        
+
+
         /// <summary>
         /// Logical id of this artifact
         /// </summary>
         [FhirElement("id", InSummary=true, Order=10)]
         [DataMember]
-        public Hl7.Fhir.Model.Id IdElement
+        public Id IdElement
         {
-            get { return _IdElement; }
-            set { _IdElement = value; OnPropertyChanged("IdElement"); }
+            get { return _idElement; }
+            set { _idElement = value; OnPropertyChanged("IdElement"); }
         }
-        
-        private Hl7.Fhir.Model.Id _IdElement;
-        
+
+        private Id _idElement;
+
         /// <summary>
         /// Logical id of this artifact
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Id
         {
             get { return IdElement != null ? IdElement.Value : null; }
             set
             {
-                if(value == null)
-                  IdElement = null; 
+                if (value == null)
+                    IdElement = null;
                 else
-                  IdElement = new Hl7.Fhir.Model.Id(value);
+                    IdElement = new Id(value);
                 OnPropertyChanged("Id");
             }
         }
-        
+
         /// <summary>
         /// Metadata about the resource
         /// </summary>
         [FhirElement("meta", InSummary=true, Order=20)]
         [DataMember]
-        public Hl7.Fhir.Model.Meta Meta
+        public Meta Meta
         {
-            get { return _Meta; }
-            set { _Meta = value; OnPropertyChanged("Meta"); }
+            get { return _meta; }
+            set { _meta = value; OnPropertyChanged("Meta"); }
         }
-        
-        private Hl7.Fhir.Model.Meta _Meta;
-        
+
+        private Meta _meta;
+
         /// <summary>
         /// A set of rules under which this content was created
         /// </summary>
         [FhirElement("implicitRules", InSummary=true, Order=30)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirUri ImplicitRulesElement
+        public FhirUri ImplicitRulesElement
         {
-            get { return _ImplicitRulesElement; }
-            set { _ImplicitRulesElement = value; OnPropertyChanged("ImplicitRulesElement"); }
+            get { return _implicitRulesElement; }
+            set { _implicitRulesElement = value; OnPropertyChanged("ImplicitRulesElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirUri _ImplicitRulesElement;
-        
+
+        private FhirUri _implicitRulesElement;
+
         /// <summary>
         /// A set of rules under which this content was created
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string ImplicitRules
         {
             get { return ImplicitRulesElement != null ? ImplicitRulesElement.Value : null; }
             set
             {
-                if(value == null)
-                  ImplicitRulesElement = null; 
+                if (value == null)
+                    ImplicitRulesElement = null;
                 else
-                  ImplicitRulesElement = new Hl7.Fhir.Model.FhirUri(value);
+                    ImplicitRulesElement = new FhirUri(value);
                 OnPropertyChanged("ImplicitRules");
             }
         }
-        
+
         /// <summary>
         /// Language of the resource content
         /// </summary>
         [FhirElement("language", Order=40)]
         [DataMember]
-        public Hl7.Fhir.Model.Code LanguageElement
+        public Code LanguageElement
         {
-            get { return _LanguageElement; }
-            set { _LanguageElement = value; OnPropertyChanged("LanguageElement"); }
+            get { return _languageElement; }
+            set { _languageElement = value; OnPropertyChanged("LanguageElement"); }
         }
-        
-        private Hl7.Fhir.Model.Code _LanguageElement;
-        
+
+        private Code _languageElement;
+
         /// <summary>
         /// Language of the resource content
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string Language
         {
             get { return LanguageElement != null ? LanguageElement.Value : null; }
             set
             {
-                if(value == null)
-                  LanguageElement = null; 
+                if (value == null)
+                    LanguageElement = null;
                 else
-                  LanguageElement = new Hl7.Fhir.Model.Code(value);
+                    LanguageElement = new Code(value);
                 OnPropertyChanged("Language");
             }
         }
-        
+
+
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as Resource;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(IdElement != null) dest.IdElement = (Hl7.Fhir.Model.Id)IdElement.DeepCopy();
-                if(Meta != null) dest.Meta = (Hl7.Fhir.Model.Meta)Meta.DeepCopy();
-                if(ImplicitRulesElement != null) dest.ImplicitRulesElement = (Hl7.Fhir.Model.FhirUri)ImplicitRulesElement.DeepCopy();
-                if(LanguageElement != null) dest.LanguageElement = (Hl7.Fhir.Model.Code)LanguageElement.DeepCopy();
+                if (IdElement != null) dest.IdElement = (Id)IdElement.DeepCopy();
+                if (Meta != null) dest.Meta = (Meta)Meta.DeepCopy();
+                if (ImplicitRulesElement != null) dest.ImplicitRulesElement = (FhirUri)ImplicitRulesElement.DeepCopy();
+                if (LanguageElement != null) dest.LanguageElement = (Code)LanguageElement.DeepCopy();
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as Resource;
-            if(otherT == null) return false;
-            
-            if( !DeepComparable.Matches(IdElement, otherT.IdElement)) return false;
-            if( !DeepComparable.Matches(Meta, otherT.Meta)) return false;
-            if( !DeepComparable.Matches(ImplicitRulesElement, otherT.ImplicitRulesElement)) return false;
-            if( !DeepComparable.Matches(LanguageElement, otherT.LanguageElement)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!DeepComparable.Matches(IdElement, otherT.IdElement)) return false;
+            if (!DeepComparable.Matches(Meta, otherT.Meta)) return false;
+            if (!DeepComparable.Matches(ImplicitRulesElement, otherT.ImplicitRulesElement)) return false;
+            if (!DeepComparable.Matches(LanguageElement, otherT.LanguageElement)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as Resource;
-            if(otherT == null) return false;
-            
-            if( !DeepComparable.IsExactly(IdElement, otherT.IdElement)) return false;
-            if( !DeepComparable.IsExactly(Meta, otherT.Meta)) return false;
-            if( !DeepComparable.IsExactly(ImplicitRulesElement, otherT.ImplicitRulesElement)) return false;
-            if( !DeepComparable.IsExactly(LanguageElement, otherT.LanguageElement)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!DeepComparable.IsExactly(IdElement, otherT.IdElement)) return false;
+            if (!DeepComparable.IsExactly(Meta, otherT.Meta)) return false;
+            if (!DeepComparable.IsExactly(ImplicitRulesElement, otherT.ImplicitRulesElement)) return false;
+            if (!DeepComparable.IsExactly(LanguageElement, otherT.LanguageElement)) return false;
+
             return true;
         }
 
@@ -245,12 +229,13 @@ namespace Hl7.Fhir.Model
             get
             {
                 foreach (var item in base.NamedChildren) yield return item;
-                if (IdElement != null) yield return new ElementValue("id",IdElement);
-                if (Meta != null) yield return new ElementValue("meta",Meta);
-                if (ImplicitRulesElement != null) yield return new ElementValue("implicitRules",ImplicitRulesElement);
-                if (LanguageElement != null) yield return new ElementValue("language",LanguageElement);
+                if (IdElement != null) yield return new ElementValue("id", IdElement);
+                if (Meta != null) yield return new ElementValue("meta", Meta);
+                if (ImplicitRulesElement != null) yield return new ElementValue("implicitRules", ImplicitRulesElement);
+                if (LanguageElement != null) yield return new ElementValue("language", LanguageElement);
             }
         }
+
     }
 
 }

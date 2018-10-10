@@ -6,11 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Utility;
 using System;
 using System.Linq;
+using Hl7.Fhir.Rest;
 
 namespace Hl7.Fhir.ElementModel
 {
@@ -104,9 +102,9 @@ namespace Hl7.Fhir.ElementModel
             // First, get the url to fetch from the focus
             string url = null;
 
-            if (element.InstanceType == FHIRDefinedType.String.GetLiteral() && element.Value is string s)
+            if (element.InstanceType == "string" && element.Value is string s)
                 url = s;
-            else if (element.InstanceType == FHIRDefinedType.Reference.GetLiteral())
+            else if (element.InstanceType == "Reference")
                 url = element.ParseResourceReference()?.Reference;
 
             if (url == null) return default;   // nothing found to resolve

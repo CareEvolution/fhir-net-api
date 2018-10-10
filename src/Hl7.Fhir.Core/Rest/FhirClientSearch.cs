@@ -7,12 +7,12 @@
  */
 
 using System;
-using Hl7.Fhir.Model;
 using System.Net;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.DSTU2
 {
     public partial class FhirClient
     {
@@ -26,7 +26,7 @@ namespace Hl7.Fhir.Rest
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
         public Task<Bundle> SearchAsync(SearchParams q, string resourceType = null)
         {
-            var tx = new TransactionBuilder(Endpoint).Search(q,resourceType).ToBundle();
+            var tx = new TransactionBuilder(Endpoint).Search(q, resourceType).ToBundle();
             return executeAsync<Bundle>(tx, HttpStatusCode.OK);
         }
         /// <summary>
@@ -76,8 +76,6 @@ namespace Hl7.Fhir.Rest
         public Task<Bundle> SearchAsync<TResource>(SearchParams q)
             where TResource : Resource
         {
-            // [WMR 20160421] GetResourceNameForType is obsolete
-            // return Search(q, ModelInfo.GetResourceNameForType(typeof(TResource)));
             return SearchAsync(q, ModelInfo.GetFhirTypeNameForType(typeof(TResource)));
         }
         /// <summary>
@@ -118,12 +116,10 @@ namespace Hl7.Fhir.Rest
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
         /// <remarks>All parameters are optional, leaving all parameters empty will return an unfiltered list 
         /// of all resources of the given Resource type</remarks>
-        public Task<Bundle> SearchAsync<TResource>(string[] criteria = null, string[] includes = null, int? pageSize = null, 
+        public Task<Bundle> SearchAsync<TResource>(string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
             where TResource : Resource, new()
         {
-            // [WMR 20160421] GetResourceNameForType is obsolete
-            // return Search(ModelInfo.GetResourceNameForType(typeof(TResource)), criteria, includes, pageSize, summary);
             return SearchAsync(ModelInfo.GetFhirTypeNameForType(typeof(TResource)), criteria, includes, pageSize, summary, revIncludes);
         }
         /// <summary>
@@ -139,11 +135,11 @@ namespace Hl7.Fhir.Rest
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
         /// <remarks>All parameters are optional, leaving all parameters empty will return an unfiltered list 
         /// of all resources of the given Resource type</remarks>
-        public Bundle Search<TResource>(string[] criteria = null, string[] includes = null, int? pageSize = null, 
+        public Bundle Search<TResource>(string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
             where TResource : Resource, new()
         {
-            return SearchAsync<TResource>(criteria,includes,pageSize,summary, revIncludes).WaitResult();
+            return SearchAsync<TResource>(criteria, includes, pageSize, summary, revIncludes).WaitResult();
         }
 
         /// <summary>
@@ -202,7 +198,7 @@ namespace Hl7.Fhir.Rest
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
         /// <remarks>All parameters are optional, leaving all parameters empty will return an unfiltered list 
         /// of all resources of the given Resource type</remarks>
-        public Task<Bundle> SearchAsync(string resource, string[] criteria = null, string[] includes = null, int? pageSize = null, 
+        public Task<Bundle> SearchAsync(string resource, string[] criteria = null, string[] includes = null, int? pageSize = null,
                 SummaryType? summary = null, string[] revIncludes = null)
         {
             if (resource == null) throw Error.ArgumentNull(nameof(resource));
@@ -222,7 +218,7 @@ namespace Hl7.Fhir.Rest
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
         /// <remarks>All parameters are optional, leaving all parameters empty will return an unfiltered list 
         /// of all resources of the given Resource type</remarks>
-        public Bundle Search(string resource, string[] criteria = null, string[] includes = null, int? pageSize = null, 
+        public Bundle Search(string resource, string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
         {
             return SearchAsync(resource, criteria, includes, pageSize, summary, revIncludes).WaitResult();
@@ -283,7 +279,7 @@ namespace Hl7.Fhir.Rest
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
         /// <remarks>All parameters are optional, leaving all parameters empty will return an unfiltered list 
         /// of all resources of the given Resource type</remarks>
-        public Task<Bundle> WholeSystemSearchAsync(string[] criteria = null, string[] includes = null, int? pageSize = null, 
+        public Task<Bundle> WholeSystemSearchAsync(string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
         {
             return SearchAsync(toQuery(criteria, includes, pageSize, summary, revIncludes));
@@ -301,7 +297,7 @@ namespace Hl7.Fhir.Rest
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
         /// <remarks>All parameters are optional, leaving all parameters empty will return an unfiltered list 
         /// of all resources of the given Resource type</remarks>
-        public Bundle WholeSystemSearch(string[] criteria = null, string[] includes = null, int? pageSize = null, 
+        public Bundle WholeSystemSearch(string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
         {
             return WholeSystemSearchAsync(criteria, includes, pageSize, summary, revIncludes).WaitResult();

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text;
+using Hl7.Fhir.Introspection;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -37,10 +32,7 @@ using System.Text;
 
 */
 
-//
-// Generated on Wed, Dec 24, 2014 16:02+0100 for FHIR v0.4.0
-//
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public partial class Questionnaire
     {

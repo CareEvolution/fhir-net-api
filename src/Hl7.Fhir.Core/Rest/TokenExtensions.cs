@@ -1,11 +1,12 @@
 ﻿using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.DSTU2
 {
     internal static class TokenExtensions
     {

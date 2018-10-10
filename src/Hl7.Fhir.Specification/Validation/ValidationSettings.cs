@@ -17,9 +17,6 @@ namespace Hl7.Fhir.Validation
 
     public class ValidationSettings
     {
-        [Obsolete("Use the CreateDefault() method, as using this static member may cause threading issues.")]
-        public static readonly ValidationSettings Default = new ValidationSettings();
-
         /// <summary>
         /// The resolver to use when references to other resources are encountered in the instance.
         /// </summary>

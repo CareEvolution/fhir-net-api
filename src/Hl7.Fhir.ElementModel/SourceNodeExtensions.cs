@@ -211,6 +211,6 @@ namespace Hl7.Fhir.ElementModel
 "type information (see other overload) will cause side-effects with components in the API that are not prepared to deal with" +
 "missing type information. Please don't use this overload unless you know what you are doing.")]
         public static ITypedElement ToTypedElement(this ISourceNode node) =>
-        new SourceNodeToTypedElementAdapter(node);
+            new SourceNodeToTypedElementAdapter(node);
     }
 }

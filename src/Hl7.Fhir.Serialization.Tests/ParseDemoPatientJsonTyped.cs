@@ -1,19 +1,19 @@
-﻿using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Specification;
-using Hl7.Fhir.Tests;
-using Hl7.Fhir.Utility;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Tests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
     [TestClass]
     public class ParseDemoPatientJsonTyped
     {
-        public ITypedElement getJsonNode(string json, FhirJsonParsingSettings settings = null) 
-            => JsonParsingHelpers.ParseToTypedElement(json, new PocoStructureDefinitionSummaryProvider(), settings: settings);
+        public ITypedElement getJsonNode(string json, FhirJsonParsingSettings settings = null)
+            => JsonParsingHelpers.ParseToTypedElement(json, DSTU2ModelInfo.Instance.StructureDefinitionProvider, settings: settings);
 
         // This test should resurface once you read this through a validating reader navigator (or somesuch)
         [TestMethod]
@@ -79,10 +79,10 @@ namespace Hl7.Fhir.Serialization.Tests
         {
             var tp = File.ReadAllText(@"TestData\fp-test-patient.json");
             // will allow whitespace and comments to come through      
-            var navJson = JsonParsingHelpers.ParseToTypedElement(tp, new PocoStructureDefinitionSummaryProvider());
+            var navJson = JsonParsingHelpers.ParseToTypedElement(tp, DSTU2ModelInfo.Instance.StructureDefinitionProvider);
             var xml = navJson.ToXml();
 
-            var navXml = XmlParsingHelpers.ParseToTypedElement(xml, new PocoStructureDefinitionSummaryProvider());
+            var navXml = XmlParsingHelpers.ParseToTypedElement(xml, DSTU2ModelInfo.Instance.StructureDefinitionProvider);
             var json = navXml.ToJson();
 
             JsonAssert.AreSame(tp, json);
@@ -93,13 +93,13 @@ namespace Hl7.Fhir.Serialization.Tests
         {
             // First, use a simple value where a complex type was expected
             var tp = "{ 'resourceType' : 'Patient', 'maritalStatus' : 'UNK' }";
-            var navJson = JsonParsingHelpers.ParseToTypedElement(tp, new PocoStructureDefinitionSummaryProvider());
+            var navJson = JsonParsingHelpers.ParseToTypedElement(tp, DSTU2ModelInfo.Instance.StructureDefinitionProvider);
             var errors = navJson.VisitAndCatch();
             Assert.IsTrue(errors.Single().Message.Contains("it cannot have a value"));
 
             // then, use a simple value where an array (of a complex type) was expected
             tp = "{ 'resourceType' : 'Patient', 'name' : ['Ewout'] }";
-            navJson = JsonParsingHelpers.ParseToTypedElement(tp, new PocoStructureDefinitionSummaryProvider());
+            navJson = JsonParsingHelpers.ParseToTypedElement(tp, DSTU2ModelInfo.Instance.StructureDefinitionProvider);
             errors = navJson.VisitAndCatch();
             Assert.IsTrue(errors.Single().Message.Contains("it cannot have a value"));
         }
@@ -109,13 +109,13 @@ namespace Hl7.Fhir.Serialization.Tests
         {
             // Use a single element where an array was expected
             var tp = "{ 'resourceType' : 'Patient', 'identifier' :  { 'value': 'AB60001' }}";
-            var navJson = JsonParsingHelpers.ParseToTypedElement(tp, new PocoStructureDefinitionSummaryProvider());
+            var navJson = JsonParsingHelpers.ParseToTypedElement(tp, DSTU2ModelInfo.Instance.StructureDefinitionProvider);
             var errors = navJson.VisitAndCatch();
             Assert.IsTrue(errors.Single().Message.Contains("an array must be used here"));
 
             // Use an array where a single value was expected
             tp = "{ 'resourceType' : 'Patient', 'active' : [true,false] }";
-            navJson = JsonParsingHelpers.ParseToTypedElement(tp, new PocoStructureDefinitionSummaryProvider());
+            navJson = JsonParsingHelpers.ParseToTypedElement(tp, DSTU2ModelInfo.Instance.StructureDefinitionProvider);
             errors = navJson.VisitAndCatch();
             Assert.IsTrue(errors.Single().Message.Contains("an array must not be used here"));
         }
@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Serialization.Tests
              "'status': 'generated', " +
              "'div': 'crap' } }");
             var errors = nav.VisitAndCatch();
-            Assert.AreEqual(0,errors.Count);
+            Assert.AreEqual(0, errors.Count);
 
             // Total crap - now with validation
             nav = getValidatingJsonNav("{ 'resourceType': 'Patient', 'text': {" +

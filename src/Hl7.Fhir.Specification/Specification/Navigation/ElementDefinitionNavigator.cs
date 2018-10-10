@@ -8,10 +8,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using Hl7.Fhir.Model;
-using System.Diagnostics;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Navigation
@@ -132,37 +132,6 @@ namespace Hl7.Fhir.Specification.Navigation
         {
             get { return Elements.Count; }
         }
-
-
-
-
-        //IElementNavigator INavigator<IElementNavigator>.Clone()
-        //{
-        //    return this.ShallowCopy();
-        //}
-
-        //string INamedNode.Name
-        //{
-        //    get
-        //    {
-        //        return this.PathName;
-        //    }
-        //}
-
-        //object IValueProvider.Value
-        //{
-        //    get
-        //    {
-        //        return Current;
-        //    }
-        //}
-
-
-        //string ITypeNameProvider.TypeName
-        //{
-        //    get { return "ElementDefinition";  }
-        //}
-
 
         //----------------------------------
         //

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
-using System.Linq;
-using System.Runtime.Serialization;
-
-/*
+﻿/*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
@@ -35,12 +28,15 @@ using System.Runtime.Serialization;
 
 */
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     public abstract partial class BackboneElement : IModifierExtendable, IBackboneElement
     {
     }
-    
+}
+
+namespace Hl7.Fhir.Model
+{
     public interface IBackboneElement
     {
 

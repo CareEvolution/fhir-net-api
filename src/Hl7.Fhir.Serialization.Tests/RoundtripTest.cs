@@ -14,6 +14,8 @@ using System.IO.Compression;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Serialization.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
@@ -41,7 +43,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void FullRoundtripOfAllExamplesXmlNavPocoProvider()
         {
             FullRoundtripOfAllExamples("examples.zip", "FHIRRoundTripTestXml",
-                "Roundtripping xml->json->xml", usingPoco: false, provider: new PocoStructureDefinitionSummaryProvider());
+                "Roundtripping xml->json->xml", usingPoco: false, provider: DSTU2ModelInfo.Instance.StructureDefinitionProvider);
         }
 
         [TestMethod]
@@ -49,7 +51,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void FullRoundtripOfAllExamplesJsonNavPocoProvider()
         {
             FullRoundtripOfAllExamples("examples-json.zip", "FHIRRoundTripTestJson",
-                "Roundtripping json->xml->json", usingPoco: false, provider: new PocoStructureDefinitionSummaryProvider());
+                "Roundtripping json->xml->json", usingPoco: false, provider: DSTU2ModelInfo.Instance.StructureDefinitionProvider);
         }
 
         [TestMethod]
@@ -232,7 +234,7 @@ namespace Hl7.Fhir.Serialization.Tests
             if (inputFile.EndsWith(".xml"))
             {
                 var xml = File.ReadAllText(inputFile);
-                var resource = new FhirXmlParser().Parse<Resource>(xml);
+                var resource = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Resource>(xml);
 
                 var r2 = resource.DeepCopy();
                 Assert.IsTrue(resource.Matches(r2 as Resource), "Serialization of " + inputFile + " did not match output - Matches test");
@@ -240,14 +242,14 @@ namespace Hl7.Fhir.Serialization.Tests
                 Assert.IsFalse(resource.Matches(null), "Serialization of " + inputFile + " matched null - Matches test");
                 Assert.IsFalse(resource.IsExactly(null), "Serialization of " + inputFile + " matched null - IsExactly test");
 
-                var json = new FhirJsonSerializer().SerializeToString(resource);
+                var json = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(resource);
                 File.WriteAllText(outputFile, json);
             }
             else
             {
                 var json = File.ReadAllText(inputFile);
-                var resource = new FhirJsonParser().Parse<Resource>(json);
-                var xml = new FhirXmlSerializer().SerializeToString(resource);
+                var resource = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Resource>(json);
+                var xml = new FhirXmlSerializer(DSTU2ModelInfo.Instance).SerializeToString(resource);
                 File.WriteAllText(outputFile, xml);
             }
         }

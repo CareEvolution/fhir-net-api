@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
 
@@ -38,20 +38,23 @@ using Hl7.Fhir.Specification;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// Base for elements defined inside a resource
     /// </summary>
     [DataContract]
-    public abstract partial class BackboneElement : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public abstract partial class BackboneElement : Element
     {
         [NotMapped]
         public override string TypeName { get { return "BackboneElement"; } }
-        
+
+
         /// <summary>
         /// Extensions that cannot be ignored
         /// </summary>
@@ -60,46 +63,46 @@ namespace Hl7.Fhir.Model
         [DataMember]
         public List<Extension> ModifierExtension
         {
-            get { if(_ModifierExtension==null) _ModifierExtension = new List<Extension>(); return _ModifierExtension; }
-            set { _ModifierExtension = value; OnPropertyChanged("ModifierExtension"); }
+            get { if (_modifierExtension == null) _modifierExtension = new List<Extension>(); return _modifierExtension; }
+            set { _modifierExtension = value; OnPropertyChanged("ModifierExtension"); }
         }
-        
-        private List<Extension> _ModifierExtension;
-        
+
+        private List<Extension> _modifierExtension;
+
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as BackboneElement;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(ModifierExtension != null) dest.ModifierExtension = new List<Extension>(ModifierExtension.DeepCopy());
+                if (ModifierExtension != null) dest.ModifierExtension = new List<Extension>(ModifierExtension.DeepCopy());
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as BackboneElement;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(ModifierExtension, otherT.ModifierExtension)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(ModifierExtension, otherT.ModifierExtension)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as BackboneElement;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(ModifierExtension, otherT.ModifierExtension)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(ModifierExtension, otherT.ModifierExtension)) return false;
+
             return true;
         }
 
@@ -114,17 +117,15 @@ namespace Hl7.Fhir.Model
         }
 
         [NotMapped]
-        internal override IEnumerable<ElementValue> NamedChildren 
-        { 
-            get 
-            { 
-                foreach (var item in base.NamedChildren) yield return item; 
+        internal override IEnumerable<ElementValue> NamedChildren
+        {
+            get
+            {
+                foreach (var item in base.NamedChildren) yield return item;
                 foreach (var elem in ModifierExtension) { if (elem != null) yield return new ElementValue("modifierExtension", elem); }
- 
-            } 
-        } 
-    
-    
+            }
+        }
+
     }
-    
+
 }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Xml;
+using Hl7.Fhir.Introspection;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
-    public partial class UnsignedInt : INullableIntegerValue
+    public partial class UnsignedInt : INullableIntegerValue, IParsedPrimitive
     {
         public static bool IsValidValue(string value)
         {
@@ -23,5 +19,8 @@ namespace Hl7.Fhir.Model
 
             return true;
         }
+
+        [NotMapped]
+        public object ParsedValue => (long)Value;
     }
 }

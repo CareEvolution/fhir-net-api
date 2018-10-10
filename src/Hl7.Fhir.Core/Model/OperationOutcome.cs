@@ -5,17 +5,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{ToString()}}")]
-    public partial class OperationOutcome
+    public partial class OperationOutcome : IOperationOutcome
     {
-        [Obsolete("You should now pass in the IssueType. This now defaults to IssueType.Processing")]
-        public static OperationOutcome ForMessage(string message, OperationOutcome.IssueSeverity severity = IssueSeverity.Error)
-        {
-            return ForMessage(message, IssueType.Processing, severity);
-        }
-
         public static OperationOutcome ForMessage(string message, OperationOutcome.IssueType code, OperationOutcome.IssueSeverity severity = IssueSeverity.Error)
         {
             return new OperationOutcome() {
@@ -25,11 +19,6 @@ namespace Hl7.Fhir.Model
                             } };
         }
 
-        [Obsolete("You should now pass in the IssueType. This now defaults to IssueType.Processing")]
-        public static OperationOutcome ForException(Exception e, OperationOutcome.IssueSeverity severity = IssueSeverity.Error)
-        {
-            return ForException(e, IssueType.Processing, severity);
-        }
         public static OperationOutcome ForException(Exception e, OperationOutcome.IssueType type, OperationOutcome.IssueSeverity severity = IssueSeverity.Error)
         {
             var result = OperationOutcome.ForMessage(e.Message, type, severity);
@@ -109,9 +98,10 @@ namespace Hl7.Fhir.Model
             }
         }
 
+        IReadOnlyList<IOperationIssue> IOperationOutcome.Issue => _issue;
 
         [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
-        public partial class IssueComponent
+        public partial class IssueComponent : IOperationIssue
         {
             [DebuggerBrowsable(DebuggerBrowsableState.Never)]
             [NotMapped]
@@ -119,7 +109,7 @@ namespace Hl7.Fhir.Model
             {
                 get
                 {
-                    return String.Format("Code=\"{0}\" {1}", this.Code, _Details.DebuggerDisplay("Details."));
+                    return String.Format("Code=\"{0}\" {1}", this.Code, _details.DebuggerDisplay("Details."));
                 }
             }
 
@@ -178,6 +168,26 @@ namespace Hl7.Fhir.Model
                 set
                 {
                     this.SetIntegerExtension(OPERATIONOUTCOME_ISSUE_HIERARCHY, value);
+                }
+            }
+
+            CommonIssueSeverity? IOperationIssue.Severity
+            {
+                get
+                {
+                    switch (Severity)
+                    {
+                        case IssueSeverity.Error:
+                            return CommonIssueSeverity.Error;
+                        case IssueSeverity.Fatal:
+                            return CommonIssueSeverity.Fatal;
+                        case IssueSeverity.Information:
+                            return CommonIssueSeverity.Information;
+                        case IssueSeverity.Warning:
+                            return CommonIssueSeverity.Warning;
+                        default:
+                            return null;
+                    }
                 }
             }
         }

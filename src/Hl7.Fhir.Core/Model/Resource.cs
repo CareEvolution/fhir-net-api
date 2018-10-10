@@ -27,22 +27,25 @@
   
 */
 
-using Hl7.Fhir.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.FhirPath.DSTU2;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Rest;
-using Hl7.FhirPath;
-using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.Validation;
+using Hl7.FhirPath;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay("\\{\"{TypeName,nq}/{Id,nq}\" Identity={ResourceIdentity()}}")]
     [InvokeIValidatableObject]
-    public abstract partial class Resource 
+    [FhirType("Resource", IsResource = true)]
+    public abstract partial class Resource : ResourceBase
     {
         /// <summary>
         /// This is the base URL of the FHIR server that this resource is hosted on
@@ -59,7 +62,7 @@ namespace Hl7.Fhir.Model
             set
             {
                 this.RemoveAnnotations<ResourceBaseData>();
-                AddAnnotation(new ResourceBaseData { Base = value } );
+                AddAnnotation(new ResourceBaseData { Base = value });
             }
         }
 
@@ -107,7 +110,7 @@ namespace Hl7.Fhir.Model
                 }
 
                 // Ensure the FHIR extensions are registered
-                Hl7.Fhir.FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
+                ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
 
                 if (model.Predicate(expression, new EvaluationContext(model)))
                     return true;
@@ -145,7 +148,7 @@ namespace Hl7.Fhir.Model
         {
             if (Id == null) return null;
 
-            var result =  Hl7.Fhir.Rest.ResourceIdentity.Build(TypeName, Id, VersionId);
+            var result = Rest.ResourceIdentity.Build(TypeName, Id, VersionId);
 
             if (!string.IsNullOrEmpty(baseUrl))
                 return result.WithBase(baseUrl);
@@ -223,7 +226,7 @@ namespace Hl7.Fhir.Model
                 var tree = this.ToTypedElement();
                 foreach (var invariantRule in InvariantConstraints)
                 {
-                    ValidateInvariantRule(context,invariantRule, tree, result);
+                    ValidateInvariantRule(context, invariantRule, tree, result);
                 }
 
                 sw.Stop();
@@ -234,11 +237,11 @@ namespace Hl7.Fhir.Model
         [NotMapped]
         public string VersionId
         {
-            get 
+            get
             {
                 if (HasVersionId)
                     return Meta.VersionId;
-                else 
+                else
                     return null;
             }
             set

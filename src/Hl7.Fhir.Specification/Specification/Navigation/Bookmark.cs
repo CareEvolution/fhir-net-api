@@ -7,9 +7,9 @@
  */
 
 using System;
-using Hl7.Fhir.Model;
-using System.Text;
 using System.Diagnostics;
+using System.Text;
+using Hl7.Fhir.Model.DSTU2;
 
 namespace Hl7.Fhir.Specification.Navigation
 {
@@ -36,7 +36,7 @@ namespace Hl7.Fhir.Specification.Navigation
 
         /// <summary>Indicates if the bookmark is empty, i.e. represents an unpositioned navigator.</summary>
         public bool IsEmpty => data == null;
-        
+
         // Equality
 
         public override bool Equals(object obj) => obj is Bookmark && Equals((Bookmark)obj);

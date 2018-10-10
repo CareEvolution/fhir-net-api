@@ -18,6 +18,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Serialization.DSTU2;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -31,7 +33,7 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestMethod]
         public void SerializeMetaXml()
         {
-            var xml = new FhirXmlSerializer().SerializeToString(metaPoco, root: "meta");
+            var xml = new FhirXmlSerializer(DSTU2ModelInfo.Instance).SerializeToString(metaPoco, root: "meta");
             Assert.AreEqual(metaXml, xml);
         }
 
@@ -39,27 +41,27 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestMethod]
         public void SerializeMetaJson()
         {
-            var json = new FhirJsonSerializer().SerializeToString(metaPoco);
+            var json = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(metaPoco);
             Assert.AreEqual(metaJson, json);
         }
 
         [TestMethod]
         public void ParseMetaXml()
         {
-            var poco = (Meta)(new FhirXmlParser().Parse(metaXml, typeof(Meta)));
-            var xml = new FhirXmlSerializer().SerializeToString(poco, root: "meta");
+            var poco = (Meta)(new FhirXmlParser(DSTU2ModelInfo.Instance).Parse(metaXml, typeof(Meta)));
+            var xml = new FhirXmlSerializer(DSTU2ModelInfo.Instance).SerializeToString(poco, root: "meta");
 
             Assert.IsTrue(poco.IsExactly(metaPoco));
             Assert.AreEqual(metaXml, xml);
         }
 
-        internal FhirXmlSerializer FhirXmlSerializer = new FhirXmlSerializer();
-        internal FhirJsonSerializer FhirJsonSerializer = new FhirJsonSerializer();
+        internal FhirXmlSerializer FhirXmlSerializer = new FhirXmlSerializer(DSTU2ModelInfo.Instance);
+        internal FhirJsonSerializer FhirJsonSerializer = new FhirJsonSerializer(DSTU2ModelInfo.Instance);
 
         [TestMethod]
         public void ParseMetaJson()
         {
-            var poco = (Meta)(new FhirJsonParser().Parse(metaJson, typeof(Meta)));
+            var poco = (Meta)(new FhirJsonParser(DSTU2ModelInfo.Instance).Parse(metaJson, typeof(Meta)));
             var json = FhirJsonSerializer.SerializeToString(poco);
 
             Assert.IsTrue(poco.IsExactly(metaPoco));
@@ -207,8 +209,8 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(0, p.Meta.Tag.Where(t => t.System == "http://hl7.org/fhir/v3/ObservationValue" && t.Code == "SUBSETTED").Count(), "Subsetted Tag should not still be there.");
         }
 
-        private FhirXmlParser FhirXmlParser = new FhirXmlParser();
-        private FhirJsonParser FhirJsonParser = new FhirJsonParser();
+        private FhirXmlParser FhirXmlParser = new FhirXmlParser(DSTU2ModelInfo.Instance);
+        private FhirJsonParser FhirJsonParser = new FhirJsonParser(DSTU2ModelInfo.Instance);
 
         [TestMethod]
         public void TestBundleSummary()
@@ -253,7 +255,7 @@ namespace Hl7.Fhir.Tests.Serialization
                 NextLink = new Uri("Organization/123456/_history/123456", UriKind.Relative)
             };
 
-            var xml = new FhirXmlSerializer().SerializeToString(b);
+            var xml = new FhirXmlSerializer(DSTU2ModelInfo.Instance).SerializeToString(b);
 
             b = FhirXmlParser.Parse<Bundle>(xml);
 
@@ -394,7 +396,7 @@ namespace Hl7.Fhir.Tests.Serialization
         public void SerializeUnknownEnums()
         {
             string xml = TestDataHelper.ReadTestData("TestPatient.xml");
-            var pser = new FhirXmlParser();
+            var pser = new FhirXmlParser(DSTU2ModelInfo.Instance);
             var p = pser.Parse<Patient>(xml);
             string outp = FhirXmlSerializer.SerializeToString(p);
             Assert.IsTrue(outp.Contains("\"male\""));
@@ -428,7 +430,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             var xml = FhirXmlSerializer.SerializeToString(p);
 
-            var p2 = (new FhirXmlParser()).Parse<Patient>(xml);
+            var p2 = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(xml);
             Assert.AreEqual(1, p2.Extension.Count);
             Assert.AreEqual(1, p2.Contact.Count);
         }
@@ -451,7 +453,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             string json = TestDataHelper.ReadTestData(@"valueset-v2-0717.json");
             Assert.IsNotNull(json);
-            var parser = new FhirJsonParser();
+            var parser = new FhirJsonParser(DSTU2ModelInfo.Instance);
             var vs = parser.Parse<ValueSet>(json);
             Assert.IsNotNull(vs);
 
@@ -494,7 +496,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
                 Id = "patient-one",
                 Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
-                Meta = new Meta { ElementId = "eric-clapton", VersionId = "1234" },
+                Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
 
                 Name = new List<HumanName> { new HumanName { Family = new[] { "Clapton" }, Use = HumanName.NameUse.Official } },
 
@@ -522,7 +524,7 @@ namespace Hl7.Fhir.Tests.Serialization
             var patientOne = new Patient
             {
                 Id = "patient-one",
-                Meta = new Meta { ElementId = "eric-clapton", VersionId = "1234" },
+                Meta = new Meta { Id = "eric-clapton", VersionId = "1234" },
                 Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
                 Active = true,
                 Name = new List<HumanName> { new HumanName { Use = HumanName.NameUse.Official, Family = new[] { "Clapton" } } },
@@ -530,7 +532,7 @@ namespace Hl7.Fhir.Tests.Serialization
                 BirthDate = "2015-07-09",
             };
 
-            var serializer = new FhirJsonSerializer();
+            var serializer = new FhirJsonSerializer(DSTU2ModelInfo.Instance);
             var jsonText = serializer.SerializeToString(patientOne);
             Assert.IsNotNull(jsonText);
 
@@ -576,7 +578,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             token = assertProperty(token.Next, "meta");
             Assert.IsTrue(token.HasValues);
-            var childToken = assertStringProperty(token.Values().First(), "id", patientOne.Meta.ElementId);
+            var childToken = assertStringProperty(token.Values().First(), "id", patientOne.Meta.Id);
             childToken = assertStringProperty(childToken.Next, "versionId", patientOne.Meta.VersionId);
 
             token = assertProperty(token.Next, "text");
@@ -631,28 +633,28 @@ namespace Hl7.Fhir.Tests.Serialization
         public void DateTimeOffsetAccuracyTest()
         {
             var patient = new Patient { Meta = new Meta { LastUpdated = DateTimeOffset.UtcNow } };
-            var json = new FhirJsonSerializer().SerializeToString(patient); 
-            var res = new FhirJsonParser().Parse<Patient>(json);
+            var json = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(patient); 
+            var res = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Patient>(json);
             Assert.IsTrue(patient.IsExactly(res), "1");
            
             // Is the parsing still correct without milliseconds?
             patient = new Patient { Meta = new Meta { LastUpdated = new DateTimeOffset(2018, 8, 13, 13, 41, 56, TimeSpan.Zero)} };
             json = "{\"resourceType\":\"Patient\",\"meta\":{\"lastUpdated\":\"2018-08-13T13:41:56+00:00\"}}";
-            res = new FhirJsonParser().Parse<Patient>(json);
+            res = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Patient>(json);
             Assert.IsTrue(patient.IsExactly(res), "2");
 
             // Is the serialization still correct without milliseconds?
-            var json2 = new FhirJsonSerializer().SerializeToString(patient); 
+            var json2 = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(patient); 
             Assert.AreEqual(json, json2, "3");
 
             // Is the parsing still correct with a few milliseconds and TimeZone?
             patient = new Patient { Meta = new Meta { LastUpdated = new DateTimeOffset(2018, 8, 13, 13, 41, 56, 12, TimeSpan.Zero) } };
             json = "{\"resourceType\":\"Patient\",\"meta\":{\"lastUpdated\":\"2018-08-13T13:41:56.012+00:00\"}}";
-            res = new FhirJsonParser().Parse<Patient>(json);
+            res = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Patient>(json);
             Assert.IsTrue(patient.IsExactly(res), "4");
 
             // Is the serialization still correct with a few milliseconds?
-            json2 = new FhirJsonSerializer().SerializeToString(patient);
+            json2 = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(patient);
             Assert.AreEqual(json, json2, "5");
         }
     }

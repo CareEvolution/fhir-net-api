@@ -9,9 +9,15 @@
 // [WMR 20161219] Save and reuse existing instance, so generator can detect & handle recursion
 #define REUSE_SNAPSHOT_GENERATOR
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.FhirPath;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.FhirPath.DSTU2;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Snapshot;
@@ -20,12 +26,6 @@ using Hl7.Fhir.Specification.Terminology;
 using Hl7.Fhir.Support;
 using Hl7.FhirPath;
 using Hl7.FhirPath.Expressions;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Xml;
 
 namespace Hl7.Fhir.Validation
 {
@@ -165,8 +165,6 @@ namespace Hl7.Fhir.Validation
             return () => validateElement(nav, instance);
         }
 
-
-        //   private OperationOutcome validateElement(ElementDefinitionNavigator definition, IElementNavigator instance)
 
         private OperationOutcome validateElement(ElementDefinitionNavigator definition, ScopedNode instance)
         {
@@ -421,8 +419,8 @@ namespace Hl7.Fhir.Validation
 
         private string toStringRepresentation(ITypedElement vp)
         {
-            return vp == null || vp.Value == null ? 
-                null : 
+            return vp == null || vp.Value == null ?
+                null :
                 PrimitiveTypeConverter.ConvertTo<string>(vp.Value);
         }
 
@@ -488,14 +486,14 @@ namespace Hl7.Fhir.Validation
                 generator.Update(definition);
 
 #if DEBUG
-                string xml = (new FhirXmlSerializer()).SerializeToString(definition);
+                string xml = (new FhirXmlSerializer(DSTU2ModelInfo.Instance)).SerializeToString(definition);
                 string name = definition.Id ?? definition.Name.Replace(" ", "").Replace("/", "");
                 var dir = Path.Combine(Path.GetTempPath(), "validation");
 
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
 
-                File.WriteAllText(Path.Combine(dir,name) + ".StructureDefinition.xml", xml);
+                File.WriteAllText(Path.Combine(dir, name) + ".StructureDefinition.xml", xml);
 #endif
 
 
@@ -524,12 +522,12 @@ namespace Hl7.Fhir.Validation
             return t == typeof(FhirDateTime) ||
                    t == typeof(Date) ||
                    t == typeof(Instant) ||
-                   t == typeof(Model.Time) ||
+                   t == typeof(Time) ||
                    t == typeof(FhirDecimal) ||
                    t == typeof(Integer) ||
                    t == typeof(PositiveInt) ||
                    t == typeof(UnsignedInt) ||
-                   t == typeof(Model.Quantity) ||
+                   t == typeof(Quantity) ||
                    t == typeof(FhirString);
         }
 

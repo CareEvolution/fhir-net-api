@@ -7,17 +7,18 @@
  */
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
 using System.Diagnostics;
-using Hl7.Fhir.Specification.Source;
-using System.Net;
-using Hl7.Fhir.Support;
-using System.Xml.Linq;
 using System.IO;
-using Hl7.Fhir.Serialization;
 using System.Linq;
-using Hl7.Fhir.Utility;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest.DSTU2;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Support;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Specification.Tests
 {
@@ -33,7 +34,7 @@ namespace Hl7.Fhir.Specification.Tests
         }
 
         static IResourceResolver source = null;
-        
+
         [TestMethod]
         public void ResolveByCanonicalFromZip()
         {
@@ -81,52 +82,28 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.AreEqual("http://test.fhir.org/r2/StructureDefinition/Observation", artifact.GetOrigin());
         }
 
-        private class TestFhirClient : Rest.FhirClient
-        {
-            private int _status = 0;
-
-            public int Status
-            {
-                get { return _status; }
-                private set { _status = value; }
-            }
-
-            public TestFhirClient(Uri endpoint) : base(endpoint) { Status = 1; }
-
-            protected override void BeforeRequest(HttpWebRequest rawRequest, byte[] body)
-            {
-                Status = 2;
-                base.BeforeRequest(rawRequest, body);
-            }
-
-            protected override void AfterResponse(HttpWebResponse webResponse, byte[] body)
-            {
-                Status = 3;
-                base.AfterResponse(webResponse, body);
-            }
-        }
-
         [TestMethod, TestCategory("IntegrationTest")]
 
         public void RetrieveWebArtifactCustomFhirClient()
         {
-            TestFhirClient client = null;
+            using (var testHandler = new TestHttpHandler())
+            {
+                FhirClient client = null;
+                var wa = new WebResolver(id => client = new FhirClient(id, messageHandler: testHandler)) { TimeOut = DefaultTimeOut };
 
-            var wa = new WebResolver(id => client = new TestFhirClient(id)) { TimeOut = DefaultTimeOut };
+                Assert.IsNull(client);
 
-            Assert.IsNull(client);
+                var artifact = wa.ResolveByUri("http://test.fhir.org/r2/StructureDefinition/Patient");
 
-            var artifact = wa.ResolveByUri("http://test.fhir.org/r2/StructureDefinition/Patient");
+                Assert.IsNotNull(testHandler.LastResponse);
 
-            Assert.IsNotNull(client);
-            Assert.AreEqual(client.Status, 3);
-
-            Assert.IsNotNull(artifact);
-            Assert.IsTrue(artifact is StructureDefinition);
-            Assert.AreEqual("Patient", ((StructureDefinition)artifact).Name);
+                Assert.IsNotNull(artifact);
+                Assert.IsTrue(artifact is StructureDefinition);
+                Assert.AreEqual("Patient", ((StructureDefinition)artifact).Name);
+            }
         }
 
-        [TestMethod,TestCategory("IntegrationTest")]
+        [TestMethod, TestCategory("IntegrationTest")]
         public void RetrieveArtifactMulti()
         {
             var resolver = new MultiResolver(source, new WebResolver() { TimeOut = DefaultTimeOut });
@@ -211,7 +188,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsNotNull(eventArgs);
             Assert.AreEqual(resourceUri, eventArgs.Url);
             Assert.AreEqual(resource2, eventArgs.Resource);
-            
+
             // Verify that the cache returned a new instance with exact same value
             Assert.AreNotEqual(resource2.GetHashCode(), resource.GetHashCode());
             Assert.IsTrue(resource.IsExactly(resource2));
@@ -225,7 +202,7 @@ namespace Hl7.Fhir.Specification.Tests
             // Create empty in-memory resolver
             var mem = new InMemoryProfileResolver();
             var cache = new CachedResolver(mem);
-            
+
             // Load on demand should return null
             var resource = cache.ResolveByCanonicalUri(resourceUri);
             Assert.IsNull(resource);
@@ -323,7 +300,7 @@ namespace Hl7.Fhir.Specification.Tests
             // Save back to disk to create a conflicting duplicate
             var b = new Bundle();
             b.AddResourceEntry(ext, url);
-            var xml = new FhirXmlSerializer().SerializeToString(b);
+            var xml = new FhirXmlSerializer(DSTU2ModelInfo.Instance).SerializeToString(b);
             var filePath = Path.Combine(DirectorySource.SpecificationDirectory, dupFileName) + ".xml";
             var filePath2 = Path.Combine(DirectorySource.SpecificationDirectory, dupFileName) + "2.xml";
             File.WriteAllText(filePath, xml);
@@ -354,5 +331,24 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsTrue(conflictException);
         }
 
+        private class TestHttpHandler : HttpClientHandler
+        {
+            public HttpRequestMessage LastRequest { get; private set; }
+            public HttpResponseMessage LastResponse { get; private set; }
+
+            public Action<HttpRequestMessage> BeforeRequest { get; set; }
+
+            public Action<HttpResponseMessage> AfterResponse { get; set; }
+
+            protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                BeforeRequest?.Invoke(request);
+                LastRequest = request;
+                var response = await base.SendAsync(request, cancellationToken);
+                AfterResponse?.Invoke(response);
+                LastResponse = response;
+                return response;
+            }
+        }
     }
 }

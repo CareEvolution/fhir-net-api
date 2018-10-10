@@ -7,14 +7,16 @@
  */
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Support;
-using Hl7.Fhir.Rest;
-using Hl7.Fhir.Model;
 using System.Collections.Generic;
-using System.Text;
 using System.Net;
-using static Hl7.Fhir.Model.Observation;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static Hl7.Fhir.Model.DSTU2.Observation;
 
 namespace Hl7.Fhir.Test
 {

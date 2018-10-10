@@ -28,32 +28,28 @@
 
 */
 
-using Hl7.Fhir.Serialization;
-using Hl7.FhirPath;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Serialization;
 
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
-    public partial class FhirDateTime : IStringValue
+    public partial class FhirDateTime : IStringValue, IParsedPrimitive
     {
         public FhirDateTime(DateTimeOffset dt) : this(PrimitiveTypeConverter.ConvertTo<string>(dt))
         {
         }
 
         [Obsolete("Use FhirDateTime(DateTimeOffset dt) instead")]
-        public FhirDateTime(DateTime dt) : this( new DateTimeOffset(dt) )
+        public FhirDateTime(DateTime dt) : this(new DateTimeOffset(dt))
         {
         }
 
         [Obsolete("Use FhirDateTime(int year, int month, int day, int hr, int min, int sec, TimeSpan offset) instead")]
         public FhirDateTime(int year, int month, int day, int hr, int min, int sec = 0)
-            : this(new DateTime(year,month,day,hr,min,sec,DateTimeKind.Local))
+            : this(new DateTime(year, month, day, hr, min, sec, DateTimeKind.Local))
         {
         }
 
@@ -69,7 +65,7 @@ namespace Hl7.Fhir.Model
         }
 
         public FhirDateTime(int year, int month)
-            : this( String.Format(System.Globalization.CultureInfo.InvariantCulture, FMT_YEARMONTH, year,month) )
+            : this(String.Format(System.Globalization.CultureInfo.InvariantCulture, FMT_YEARMONTH, year, month))
         {
         }
 
@@ -78,7 +74,7 @@ namespace Hl7.Fhir.Model
         {
         }
 
-        
+
         public const string FMT_FULL = "yyyy-MM-dd'T'HH:mm:ssK";
         public const string FMT_YEAR = "{0:D4}";
         public const string FMT_YEARMONTH = "{0:D4}-{1:D2}";
@@ -120,6 +116,9 @@ namespace Hl7.Fhir.Model
 
             return PrimitiveTypeConverter.ConvertTo<DateTime>(this.Value);
         }
+
+        [NotMapped]
+        public object ParsedValue => ToPartialDateTime();
 
         public Primitives.PartialDateTime? ToPartialDateTime()
         {

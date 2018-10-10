@@ -6,19 +6,16 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Hl7.Fhir.Model;
 using System.Diagnostics;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
     [TestClass]
-	public class MeasurePerformance
+    public class MeasurePerformance
     {
         [TestMethod]
         public void RunPerfTest()
@@ -26,7 +23,7 @@ namespace Hl7.Fhir.Tests.Serialization
             string xml = TestDataHelper.ReadTestData("TestPatient.xml");
             string json = TestDataHelper.ReadTestData(@"TestPatient.json");
 
-            var once = new FhirXmlParser().Parse<Resource>(xml);
+            var once = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Resource>(xml);
 
             Stopwatch x = new Stopwatch();
 
@@ -34,7 +31,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             for (int i = 0; i < 1000; i++)
             {
-                var result = new FhirXmlParser().Parse<Resource>(xml);
+                var result = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Resource>(xml);
             }
             x.Stop();
 

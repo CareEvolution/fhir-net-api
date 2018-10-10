@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
-using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Specification;
 
@@ -38,24 +38,26 @@ using Hl7.Fhir.Specification;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [FhirType("markdown")]
     [DataContract]
-    public partial class Markdown : Hl7.Fhir.Model.Primitive<string>, System.ComponentModel.INotifyPropertyChanged
+    public partial class Markdown : Primitive<string>
     {
         [NotMapped]
         public override string TypeName { get { return "markdown"; } }
-        
-		public Markdown(string value)
-		{
-			Value = value;
-		}
 
-		public Markdown(): this((string)null) {}
+        public Markdown(string value)
+        {
+            Value = value;
+        }
+
+        public Markdown(): this((string)null) {}
 
         /// <summary>
         /// Primitive value of the element
@@ -67,9 +69,8 @@ namespace Hl7.Fhir.Model
             get { return (string)ObjectValue; }
             set { ObjectValue = value; OnPropertyChanged("Value"); }
         }
-        
 
-    
+
     }
-    
+
 }

@@ -6,25 +6,54 @@
  * available at https://github.com/ewoutkramer/fhir-net-api/blob/master/LICENSE
  */
 
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Rest;
 
 namespace Hl7.Fhir.Specification
 {
     public class PocoStructureDefinitionSummaryProvider : IStructureDefinitionSummaryProvider
     {
+        private readonly IModelInfo _modelInfo;
+        private readonly ModelInspector _modelInspector;
+        private readonly Dictionary<Type, PocoComplexTypeSerializationInfo> _structureSummaryByType = new Dictionary<Type, PocoComplexTypeSerializationInfo>();
+        private readonly object _lockObject = new object();
+
+        public PocoStructureDefinitionSummaryProvider(IModelInfo modelInfo, ModelInspector modelInspector)
+        {
+            _modelInfo = modelInfo;
+            _modelInspector = modelInspector;
+            foreach (var classMapping in modelInspector.ClassMappings)
+            {
+                _structureSummaryByType.Add(classMapping.NativeType, new PocoComplexTypeSerializationInfo(classMapping));
+            }
+            foreach (var structureSummary in _structureSummaryByType.Values)
+            {
+                structureSummary.Elements = CreateElements(structureSummary.ClassMapping);
+            }
+        }
+
         public IStructureDefinitionSummary Provide(Type type)
         {
-            var classMapping = GetMappingForType(type);
-            if (classMapping == null) return null;
+            PocoComplexTypeSerializationInfo entry;
+            if (_structureSummaryByType.TryGetValue(type, out entry))
+            {
+                return entry;
+            }
 
-            return new PocoComplexTypeSerializationInfo(classMapping);
+            var classMapping = _modelInspector.ImportType(type);
+            if (classMapping == null) return null;
+            lock (_lockObject)
+            {
+                entry = new PocoComplexTypeSerializationInfo(classMapping);
+                entry.Elements = CreateElements(entry.ClassMapping);
+                _structureSummaryByType.Add(classMapping.NativeType, entry);
+            }
+
+            return entry;
         }
 
         public IStructureDefinitionSummary Provide(string canonical)
@@ -32,7 +61,7 @@ namespace Hl7.Fhir.Specification
             var isLocalType = !canonical.Contains("/");
             var typeName = canonical;
 
-            if(!isLocalType)
+            if (!isLocalType)
             {
                 // So, we have received a canonical url, not being a relative path
                 // (know resource/datatype), we -for now- only know how to get a ClassMapping
@@ -41,92 +70,104 @@ namespace Hl7.Fhir.Specification
                 return null;
             }
 
-            Type csType = ModelInfo.GetTypeForFhirType(typeName);
+            Type csType = _modelInfo.GetTypeForFhirType(typeName);
             if (csType == null) return null;
 
             return Provide(csType);
         }
 
-        internal static ClassMapping GetMappingForType(Type elementType)
+        private IEnumerable<IElementDefinitionSummary> CreateElements(ClassMapping classMapping)
         {
-            var inspector = Serialization.BaseFhirParser.Inspector;
-            return inspector.ImportType(elementType);
+            return classMapping.PropertyMappings
+                .Where(pm => !pm.RepresentsValueElement)
+                .Select(pm => (IElementDefinitionSummary)new PocoElementSerializationInfo(pm, CreateTypes(pm)))
+                .ToList();
+        }
+
+        private ITypeSerializationInfo[] CreateTypes(PropertyMapping propertyMapping)
+        {
+            if (propertyMapping.IsBackboneElement)
+            {
+                return new ITypeSerializationInfo[] { _structureSummaryByType[propertyMapping.ImplementingType] };
+            }
+            else
+            {
+                var names = propertyMapping.FhirType.Select(ft => getFhirTypeName(ft));
+                return names.Select(n => (ITypeSerializationInfo)new PocoTypeReferenceInfo(n)).ToArray();
+            }
+
+            string getFhirTypeName(Type ft)
+            {
+                var map = _modelInfo.FindClassMappingByType(ft);
+                return map.IsCodeOfT ? "code" : map.Name;
+            }
         }
     }
 
-
-    internal struct PocoComplexTypeSerializationInfo : IStructureDefinitionSummary
+    public interface IModelInfo
     {
-        private readonly ClassMapping _classMapping;
+        string Version { get; }
+        PocoStructureDefinitionSummaryProvider StructureDefinitionProvider { get; }
+        string GetFhirTypeNameForType(Type dataType);
+        Type GetTypeForFhirType(string typeName);
+        ClassMapping FindClassMappingByType(Type elementType);
+        ClassMapping FindClassMappingForFhirDataType(string typeName);
+        ClassMapping FindClassMappingForResource(string resourceTypeName);
+        Base AddSubsettedTag(Base instance, SummaryType summaryType);
+    }
 
+    internal class PocoComplexTypeSerializationInfo : IStructureDefinitionSummary
+    {
         public PocoComplexTypeSerializationInfo(ClassMapping classMapping)
         {
-            _classMapping = classMapping;
+            ClassMapping = classMapping;
+            if (!ClassMapping.IsBackbone)
+            {
+                TypeName = ClassMapping.Name;
+            }
+            else
+            {
+                // IBackboneElement isn't a good marker, because Timing.RepeatComponent is IBackboneElement but not BackboneElement.
+                if (ClassMapping.NativeType.BaseType.Name.Contains("BackboneElement"))
+                {
+                    TypeName = "BackboneElement";
+                }
+                else
+                {
+                    TypeName = "Element";
+                }
+
+            }
         }
 
-        public string TypeName => !_classMapping.IsBackbone ? _classMapping.Name :
-            (_classMapping.NativeType.CanBeTreatedAsType(typeof(BackboneElement)) ?
-            "BackboneElement" : "Element");
+        public string TypeName { get; }
 
-        public bool IsAbstract => _classMapping.IsAbstract;
-        public bool IsResource => _classMapping.IsResource;
+        public ClassMapping ClassMapping { get; }
 
-        public IEnumerable<IElementDefinitionSummary> GetElements() =>
-            _classMapping.PropertyMappings.Where(pm => !pm.RepresentsValueElement).Select(pm =>
-            (IElementDefinitionSummary)new PocoElementSerializationInfo(pm));
+        public bool IsAbstract => ClassMapping.IsAbstract;
+        public bool IsResource => ClassMapping.IsResource;
+
+        public IEnumerable<IElementDefinitionSummary> Elements { get; set; }
     }
 
-    internal struct PocoTypeReferenceInfo : IStructureDefinitionReference
+    internal class PocoTypeReferenceInfo : IStructureDefinitionReference
     {
         public PocoTypeReferenceInfo(string canonical)
         {
             ReferredType = canonical;
         }
 
-        public string ReferredType { get; private set; }
+        public string ReferredType { get; }
     }
 
-
-    internal struct PocoElementSerializationInfo : IElementDefinitionSummary
+    internal class PocoElementSerializationInfo : IElementDefinitionSummary
     {
         private readonly PropertyMapping _pm;
 
-        // [WMR 20180822] OPTIMIZE: use LazyInitializer.EnsureInitialized instead of Lazy<T>
-        // Lazy<T> introduces considerable performance degradation when running in debugger (F5) ?
-        //private readonly Lazy<ITypeSerializationInfo[]> _types;
-        private ITypeSerializationInfo[] _types;
-
-        internal PocoElementSerializationInfo(PropertyMapping pm)
+        internal PocoElementSerializationInfo(PropertyMapping pm, ITypeSerializationInfo[] type)
         {
             _pm = pm;
-
-            // [WMR 20180822] OPTIMIZE
-            // _types = new Lazy<ITypeSerializationInfo[]>(() => buildTypes(pm));
-            _types = null;
-        }
-
-        // [WMR 20180822] OPTIMIZE
-        // private static ITypeSerializationInfo[] buildTypes(PropertyMapping pm)
-        private ITypeSerializationInfo[] buildTypes()
-        {
-            var pm = _pm;
-
-            if (pm.IsBackboneElement)
-            {
-                var mapping = PocoStructureDefinitionSummaryProvider.GetMappingForType(pm.ImplementingType);
-                return new ITypeSerializationInfo[] { new PocoComplexTypeSerializationInfo(mapping) };
-            }
-            else
-            {              
-                var names = pm.FhirType.Select(ft => getFhirTypeName(ft));
-                return names.Select(n => (ITypeSerializationInfo)new PocoTypeReferenceInfo(n)).ToArray();
-            }
-
-            string getFhirTypeName(Type ft)
-            {
-                var map = PocoStructureDefinitionSummaryProvider.GetMappingForType(ft);
-                return map.IsCodeOfT ? "code" : map.Name;
-            }
+            Type = type;
         }
 
         public string ElementName => _pm.Name;
@@ -146,18 +187,7 @@ namespace Hl7.Fhir.Specification
 
         public int Order => _pm.Order;
 
-        // [WMR 20180822] OPTIMIZE
-        public ITypeSerializationInfo[] Type //=> _types.Value;
-        {
-            get
-            {
-                // [WMR 20180822] Optimize lazy initialization
-                // Multiple threads may execute buildTypes, first result is used & assigned
-                // Safe, because buildTypes is idempotent
-                LazyInitializer.EnsureInitialized(ref _types, buildTypes);
-                return _types;
-            }
-        }
+        public ITypeSerializationInfo[] Type { get; }
 
         public string NonDefaultNamespace => null;
     }

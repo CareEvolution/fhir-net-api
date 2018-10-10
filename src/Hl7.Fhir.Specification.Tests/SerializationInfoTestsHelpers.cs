@@ -54,7 +54,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public static void TestValueIsNotAChild(IStructureDefinitionSummaryProvider provider)
         {
             var p = provider.Provide("string");
-            var children = p.GetElements();
+            var children = p.Elements;
             Assert.IsFalse(children.Any(c => c.ElementName == "value"));
         }
 
@@ -88,7 +88,7 @@ namespace Hl7.Fhir.Serialization.Tests
             checkType(p, "meta", false, "Meta");
 
             // Should not have the special "value" attribute
-            Assert.IsFalse(p.GetElements().Any(c => c.ElementName == "value"));
+            Assert.IsFalse(p.Elements.Any(c => c.ElementName == "value"));
 
             var b = provider.Provide("Bundle");
             checkType(b, "total", false, "unsignedInt");
@@ -108,7 +108,7 @@ namespace Hl7.Fhir.Serialization.Tests
 
         private static void checkType(IStructureDefinitionSummary parent, string ename, bool mayRepeat, params string[] types)
         {
-            var child = parent.GetElements().SingleOrDefault(c => c.ElementName == ename);
+            var child = parent.Elements.SingleOrDefault(c => c.ElementName == ename);
             Assert.IsNotNull(child);
             Assert.AreEqual(types.Count() > 1, child.IsChoiceElement);
             Assert.AreEqual(mayRepeat, child.IsCollection);
@@ -120,7 +120,7 @@ namespace Hl7.Fhir.Serialization.Tests
 
         private static IStructureDefinitionSummary checkBBType(IStructureDefinitionSummary parent, string ename, string bbType, bool mayRepeat)
         {
-            var child = parent.GetElements().SingleOrDefault(c => c.ElementName == ename);
+            var child = parent.Elements.SingleOrDefault(c => c.ElementName == ename);
 
             Assert.IsNotNull(child);
             Assert.AreEqual(mayRepeat, child.IsCollection);
@@ -162,7 +162,7 @@ namespace Hl7.Fhir.Serialization.Tests
             void hasCorrectOrder(string typename)
             {
                 var si = provider.Provide(typename);
-                var children = si.GetElements();
+                var children = si.Elements;
                 var max = children.Aggregate(0, (a, i) =>
                     i.Order > a ? i.Order : fail($"Order of {i.ElementName} is out of order"));
 

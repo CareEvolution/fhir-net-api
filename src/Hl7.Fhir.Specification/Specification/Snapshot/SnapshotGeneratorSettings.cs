@@ -16,11 +16,6 @@ namespace Hl7.Fhir.Specification.Snapshot
     /// <summary>Configuration settings for the <see cref="SnapshotGenerator"/> class.</summary>
     public sealed class SnapshotGeneratorSettings
     {
-        /// <summary>Default configuration settings for the <see cref="SnapshotGenerator"/> class.</summary>
-        [Obsolete("Use the CreateDefault() method, as using this static member may cause threading issues.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static readonly SnapshotGeneratorSettings Default = new SnapshotGeneratorSettings();
-
         /// <summary>Creates a new <see cref="SnapshotGeneratorSettings"/> instance with default property values.</summary>
         public static SnapshotGeneratorSettings CreateDefault() => new SnapshotGeneratorSettings();
 

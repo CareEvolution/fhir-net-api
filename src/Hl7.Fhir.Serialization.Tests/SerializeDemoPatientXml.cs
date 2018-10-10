@@ -1,7 +1,9 @@
 ﻿using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Hl7.Fhir.Utility;
@@ -20,9 +22,9 @@ namespace Hl7.Fhir.Serialization.Tests
     public class SerializeDemoPatientXml
     {
         public ITypedElement getXmlElement(string xml, FhirXmlParsingSettings s = null) =>
-            XmlParsingHelpers.ParseToTypedElement(xml, new PocoStructureDefinitionSummaryProvider(), s);
+            XmlParsingHelpers.ParseToTypedElement(xml, DSTU2ModelInfo.Instance.StructureDefinitionProvider, s);
         public ITypedElement getJsonElement(string json, FhirJsonParsingSettings s = null) =>
-            JsonParsingHelpers.ParseToTypedElement(json, new PocoStructureDefinitionSummaryProvider(), settings: s);
+            JsonParsingHelpers.ParseToTypedElement(json, DSTU2ModelInfo.Instance.StructureDefinitionProvider, settings: s);
 
 
         [TestMethod]
@@ -64,7 +66,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void CanSerializeFromPoco()
         {
             var tpXml = File.ReadAllText(@"TestData\fp-test-patient.xml");
-            var pser = new FhirXmlParser(new ParserSettings { DisallowXsiAttributesOnRoot = false });
+            var pser = new FhirXmlParser(DSTU2ModelInfo.Instance, new ParserSettings { DisallowXsiAttributesOnRoot = false });
             var pat = pser.Parse<Patient>(tpXml);
 
             var nav = pat.ToTypedElement();
@@ -77,7 +79,7 @@ namespace Hl7.Fhir.Serialization.Tests
         {
             var tpXml = File.ReadAllText(@"TestData\fp-test-patient.xml");
             var tpJson = File.ReadAllText(@"TestData\fp-test-patient.json");
-            var pat = (new FhirXmlParser()).Parse<Patient>(tpXml);
+            var pat = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(tpXml);
 
             var navXml = getXmlElement(tpXml);
             var navJson = getJsonElement(tpJson);
@@ -109,10 +111,10 @@ namespace Hl7.Fhir.Serialization.Tests
             var pretty = nav.ToXml(new FhirXmlSerializationSettings { Pretty = true });
             Assert.IsTrue(pretty.Substring(0, 50).Contains('\n'));
 
-            var p = (new FhirXmlParser()).Parse<Patient>(xml);
-            output = (new FhirXmlSerializer(new SerializerSettings { Pretty = false })).SerializeToString(p);
+            var p = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(xml);
+            output = (new FhirXmlSerializer(DSTU2ModelInfo.Instance, new SerializerSettings { Pretty = false })).SerializeToString(p);
             Assert.IsFalse(output.Substring(0, 50).Contains('\n'));
-            pretty = (new FhirXmlSerializer(new SerializerSettings { Pretty = true })).SerializeToString(p);
+            pretty = (new FhirXmlSerializer(DSTU2ModelInfo.Instance, new SerializerSettings { Pretty = true })).SerializeToString(p);
             Assert.IsTrue(pretty.Substring(0, 50).Contains('\n'));
         }
 

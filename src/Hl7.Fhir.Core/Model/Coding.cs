@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Diagnostics;
 using System.Text;
+using Hl7.Fhir.ElementModel;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -40,13 +41,11 @@ using System.Text;
 //
 // Generated on Wed, Dec 24, 2014 16:02+0100 for FHIR v0.4.0
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
-    public partial class Coding : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class Coding
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        [NotMapped]
         internal string DebuggerDisplay
         {
             get

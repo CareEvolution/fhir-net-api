@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -36,23 +38,38 @@ using Hl7.Fhir.Utility;
 
 */
 
+#pragma warning disable 1591 // suppress XML summary warnings
+
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     [FhirType("Quantity")]
+    [DataContract]
     public partial class SimpleQuantity : Quantity
     {
         [NotMapped]
         public override string TypeName { get { return "SimpleQuantity"; } }
-        
+
+
+
+        public static ElementDefinition.ConstraintComponent SimpleQuantity_SQTY_1 = new ElementDefinition.ConstraintComponent
+        {
+            Expression = "comparator.empty()",
+            Key = "sqty-1",
+            Severity = ElementDefinition.ConstraintSeverity.Warning,
+            Human = "The comparator is not used on a SimpleQuantity",
+            Xpath = "not(exists(f:comparator))"
+        };
+
+        // TODO: Add code to enforce the above constraints
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new SimpleQuantity());
+             return CopyTo(new SimpleQuantity());
         }
-        
-        // TODO: Add code to enforce these constraints:
-        // * The comparator is not used on a SimpleQuantity
+
     }
+
 }

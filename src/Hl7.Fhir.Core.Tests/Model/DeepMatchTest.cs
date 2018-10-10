@@ -6,9 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static Hl7.Fhir.Tests.TestDataHelper;
 
 namespace Hl7.Fhir.Tests.Model
@@ -21,7 +21,7 @@ namespace Hl7.Fhir.Tests.Model
         {
             string xml = ReadTestData("TestPatient.xml");
 
-            var p = new FhirXmlParser().Parse<Patient>(xml);
+            var p = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Patient>(xml);
             var p2 = (Patient)p.DeepCopy();
 
             Assert.IsTrue(p2.Matches(p));
@@ -33,14 +33,14 @@ namespace Hl7.Fhir.Tests.Model
         {
             string xml = ReadTestData("TestPatient.xml");
 
-            var p = new FhirXmlParser().Parse<Patient>(xml);
+            var p = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Patient>(xml);
             var p2 = (Patient)p.DeepCopy();
 
             // If you set an element to null in the pattern, it need not be set in the source
             p2.Gender = null;
             Assert.IsFalse(p2.Matches(p));
             Assert.IsTrue(p.Matches(p2));
-            
+
             // If both are null, we're fine
             p.Gender = null;
             Assert.IsTrue(p2.Matches(p));
@@ -57,7 +57,7 @@ namespace Hl7.Fhir.Tests.Model
         {
             string xml = ReadTestData("TestPatient.xml");
 
-            var p = new FhirXmlParser().Parse<Patient>(xml);
+            var p = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Patient>(xml);
             var p2 = (Patient)p.DeepCopy();
 
             var rel = (CodeableConcept)p.Contact[0].Relationship[0].DeepCopy();

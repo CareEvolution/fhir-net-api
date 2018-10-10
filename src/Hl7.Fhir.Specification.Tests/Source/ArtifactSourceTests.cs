@@ -6,8 +6,9 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -134,7 +135,7 @@ namespace Hl7.Fhir.Specification.Tests
 
             using (var stream = fa.LoadArtifactByName("TestPatient.xml"))
             {
-                var pat = new FhirXmlParser().Parse<Resource>(SerializationUtil.XmlReaderFromStream(stream));
+                var pat = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Resource>(SerializationUtil.XmlReaderFromStream(stream));
                 Assert.IsNotNull(pat);
             }
         }

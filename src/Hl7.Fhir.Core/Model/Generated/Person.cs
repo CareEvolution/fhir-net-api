@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Validation;
 using System.Linq;
 using System.Runtime.Serialization;
+using Hl7.Fhir.Introspection;
+using Hl7.Fhir.Validation;
+using Hl7.Fhir.Validation.DSTU2;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Specification;
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -35,25 +37,26 @@ using Hl7.Fhir.Utility;
   
 
 */
+
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
 // Generated for FHIR v1.0.2
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.DSTU2
 {
     /// <summary>
     /// A generic person record
     /// </summary>
     [FhirType("Person", IsResource=true)]
     [DataContract]
-    public partial class Person : Hl7.Fhir.Model.DomainResource, System.ComponentModel.INotifyPropertyChanged
+    public partial class Person : DomainResource
     {
         [NotMapped]
         public override ResourceType ResourceType { get { return ResourceType.Person; } }
         [NotMapped]
         public override string TypeName { get { return "Person"; } }
-        
+
         /// <summary>
         /// The level of confidence that this link represents the same actual person, based on NIST Authentication Levels.
         /// (url: http://hl7.org/fhir/ValueSet/identity-assuranceLevel)
@@ -87,102 +90,102 @@ namespace Hl7.Fhir.Model
             Level4,
         }
 
+
         [FhirType("LinkComponent")]
         [DataContract]
-        public partial class LinkComponent : Hl7.Fhir.Model.BackboneElement, System.ComponentModel.INotifyPropertyChanged, IBackboneElement
+        public partial class LinkComponent : BackboneElement, IBackboneElement
         {
             [NotMapped]
             public override string TypeName { get { return "LinkComponent"; } }
-            
+
             /// <summary>
             /// The resource to which this actual person is associated
             /// </summary>
             [FhirElement("target", Order=40)]
-            [CLSCompliant(false)]
-			[References("Patient","Practitioner","RelatedPerson","Person")]
+            [References("Patient","Practitioner","RelatedPerson","Person")]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
-            public Hl7.Fhir.Model.ResourceReference Target
+            public ResourceReference Target
             {
-                get { return _Target; }
-                set { _Target = value; OnPropertyChanged("Target"); }
+                get { return _target; }
+                set { _target = value; OnPropertyChanged("Target"); }
             }
-            
-            private Hl7.Fhir.Model.ResourceReference _Target;
-            
+
+            private ResourceReference _target;
+
             /// <summary>
             /// level1 | level2 | level3 | level4
             /// </summary>
             [FhirElement("assurance", Order=50)]
             [DataMember]
-            public Code<Hl7.Fhir.Model.Person.IdentityAssuranceLevel> AssuranceElement
+            public Code<IdentityAssuranceLevel> AssuranceElement
             {
-                get { return _AssuranceElement; }
-                set { _AssuranceElement = value; OnPropertyChanged("AssuranceElement"); }
+                get { return _assuranceElement; }
+                set { _assuranceElement = value; OnPropertyChanged("AssuranceElement"); }
             }
-            
-            private Code<Hl7.Fhir.Model.Person.IdentityAssuranceLevel> _AssuranceElement;
-            
+
+            private Code<IdentityAssuranceLevel> _assuranceElement;
+
             /// <summary>
             /// level1 | level2 | level3 | level4
             /// </summary>
             /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
             [NotMapped]
-            [IgnoreDataMemberAttribute]
-            public Hl7.Fhir.Model.Person.IdentityAssuranceLevel? Assurance
+            [IgnoreDataMember]
+            public IdentityAssuranceLevel? Assurance
             {
                 get { return AssuranceElement != null ? AssuranceElement.Value : null; }
                 set
                 {
                     if (!value.HasValue)
-                        AssuranceElement = null; 
+                        AssuranceElement = null;
                     else
-                        AssuranceElement = new Code<Hl7.Fhir.Model.Person.IdentityAssuranceLevel>(value);
+                        AssuranceElement = new Code<IdentityAssuranceLevel>(value);
                     OnPropertyChanged("Assurance");
                 }
             }
-            
+
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
                 var dest = other as LinkComponent;
-                
+
                 if (dest != null)
                 {
                     base.CopyTo(dest);
-                    if(Target != null) dest.Target = (Hl7.Fhir.Model.ResourceReference)Target.DeepCopy();
-                    if(AssuranceElement != null) dest.AssuranceElement = (Code<Hl7.Fhir.Model.Person.IdentityAssuranceLevel>)AssuranceElement.DeepCopy();
+                    if (Target != null) dest.Target = (ResourceReference)Target.DeepCopy();
+                    if (AssuranceElement != null) dest.AssuranceElement = (Code<IdentityAssuranceLevel>)AssuranceElement.DeepCopy();
                     return dest;
                 }
                 else
-                	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                    throw new ArgumentException("Can only copy to an object of the same type", "other");
             }
-            
+
             public override IDeepCopyable DeepCopy()
             {
-                return CopyTo(new LinkComponent());
+                 return CopyTo(new LinkComponent());
             }
-            
+
             public override bool Matches(IDeepComparable other)
             {
                 var otherT = other as LinkComponent;
-                if(otherT == null) return false;
-                
-                if(!base.Matches(otherT)) return false;
-                if( !DeepComparable.Matches(Target, otherT.Target)) return false;
-                if( !DeepComparable.Matches(AssuranceElement, otherT.AssuranceElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.Matches(otherT)) return false;
+                if (!DeepComparable.Matches(Target, otherT.Target)) return false;
+                if (!DeepComparable.Matches(AssuranceElement, otherT.AssuranceElement)) return false;
+
                 return true;
             }
-            
+
             public override bool IsExactly(IDeepComparable other)
             {
                 var otherT = other as LinkComponent;
-                if(otherT == null) return false;
-                
-                if(!base.IsExactly(otherT)) return false;
-                if( !DeepComparable.IsExactly(Target, otherT.Target)) return false;
-                if( !DeepComparable.IsExactly(AssuranceElement, otherT.AssuranceElement)) return false;
-                
+                if (otherT == null) return false;
+
+                if (!base.IsExactly(otherT)) return false;
+                if (!DeepComparable.IsExactly(Target, otherT.Target)) return false;
+                if (!DeepComparable.IsExactly(AssuranceElement, otherT.AssuranceElement)) return false;
+
                 return true;
             }
 
@@ -209,276 +212,269 @@ namespace Hl7.Fhir.Model
                 }
             }
 
-            
+
         }
-        
-        
+
+
         /// <summary>
         /// A human identifier for this person
         /// </summary>
         [FhirElement("identifier", Order=90)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Identifier> Identifier
+        public List<Identifier> Identifier
         {
-            get { if(_Identifier==null) _Identifier = new List<Hl7.Fhir.Model.Identifier>(); return _Identifier; }
-            set { _Identifier = value; OnPropertyChanged("Identifier"); }
+            get { if (_identifier == null) _identifier = new List<Identifier>(); return _identifier; }
+            set { _identifier = value; OnPropertyChanged("Identifier"); }
         }
-        
-        private List<Hl7.Fhir.Model.Identifier> _Identifier;
-        
+
+        private List<Identifier> _identifier;
+
         /// <summary>
         /// A name associated with the person
         /// </summary>
         [FhirElement("name", InSummary=true, Order=100)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.HumanName> Name
+        public List<HumanName> Name
         {
-            get { if(_Name==null) _Name = new List<Hl7.Fhir.Model.HumanName>(); return _Name; }
-            set { _Name = value; OnPropertyChanged("Name"); }
+            get { if (_name == null) _name = new List<HumanName>(); return _name; }
+            set { _name = value; OnPropertyChanged("Name"); }
         }
-        
-        private List<Hl7.Fhir.Model.HumanName> _Name;
-        
+
+        private List<HumanName> _name;
+
         /// <summary>
         /// A contact detail for the person
         /// </summary>
         [FhirElement("telecom", InSummary=true, Order=110)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.ContactPoint> Telecom
+        public List<ContactPoint> Telecom
         {
-            get { if(_Telecom==null) _Telecom = new List<Hl7.Fhir.Model.ContactPoint>(); return _Telecom; }
-            set { _Telecom = value; OnPropertyChanged("Telecom"); }
+            get { if (_telecom == null) _telecom = new List<ContactPoint>(); return _telecom; }
+            set { _telecom = value; OnPropertyChanged("Telecom"); }
         }
-        
-        private List<Hl7.Fhir.Model.ContactPoint> _Telecom;
-        
+
+        private List<ContactPoint> _telecom;
+
         /// <summary>
         /// male | female | other | unknown
         /// </summary>
         [FhirElement("gender", InSummary=true, Order=120)]
         [DataMember]
-        public Code<Hl7.Fhir.Model.AdministrativeGender> GenderElement
+        public Code<AdministrativeGender> GenderElement
         {
-            get { return _GenderElement; }
-            set { _GenderElement = value; OnPropertyChanged("GenderElement"); }
+            get { return _genderElement; }
+            set { _genderElement = value; OnPropertyChanged("GenderElement"); }
         }
-        
-        private Code<Hl7.Fhir.Model.AdministrativeGender> _GenderElement;
-        
+
+        private Code<AdministrativeGender> _genderElement;
+
         /// <summary>
         /// male | female | other | unknown
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
-        public Hl7.Fhir.Model.AdministrativeGender? Gender
+        [IgnoreDataMember]
+        public AdministrativeGender? Gender
         {
             get { return GenderElement != null ? GenderElement.Value : null; }
             set
             {
                 if (!value.HasValue)
-                  GenderElement = null; 
+                    GenderElement = null;
                 else
-                  GenderElement = new Code<Hl7.Fhir.Model.AdministrativeGender>(value);
+                    GenderElement = new Code<AdministrativeGender>(value);
                 OnPropertyChanged("Gender");
             }
         }
-        
+
         /// <summary>
         /// The date on which the person was born
         /// </summary>
         [FhirElement("birthDate", InSummary=true, Order=130)]
         [DataMember]
-        public Hl7.Fhir.Model.Date BirthDateElement
+        public Date BirthDateElement
         {
-            get { return _BirthDateElement; }
-            set { _BirthDateElement = value; OnPropertyChanged("BirthDateElement"); }
+            get { return _birthDateElement; }
+            set { _birthDateElement = value; OnPropertyChanged("BirthDateElement"); }
         }
-        
-        private Hl7.Fhir.Model.Date _BirthDateElement;
-        
+
+        private Date _birthDateElement;
+
         /// <summary>
         /// The date on which the person was born
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public string BirthDate
         {
             get { return BirthDateElement != null ? BirthDateElement.Value : null; }
             set
             {
                 if (value == null)
-                  BirthDateElement = null; 
+                    BirthDateElement = null;
                 else
-                  BirthDateElement = new Hl7.Fhir.Model.Date(value);
+                    BirthDateElement = new Date(value);
                 OnPropertyChanged("BirthDate");
             }
         }
-        
+
         /// <summary>
         /// One or more addresses for the person
         /// </summary>
         [FhirElement("address", Order=140)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Address> Address
+        public List<Address> Address
         {
-            get { if(_Address==null) _Address = new List<Hl7.Fhir.Model.Address>(); return _Address; }
-            set { _Address = value; OnPropertyChanged("Address"); }
+            get { if (_address == null) _address = new List<Address>(); return _address; }
+            set { _address = value; OnPropertyChanged("Address"); }
         }
-        
-        private List<Hl7.Fhir.Model.Address> _Address;
-        
+
+        private List<Address> _address;
+
         /// <summary>
         /// Image of the person
         /// </summary>
         [FhirElement("photo", Order=150)]
         [DataMember]
-        public Hl7.Fhir.Model.Attachment Photo
+        public Attachment Photo
         {
-            get { return _Photo; }
-            set { _Photo = value; OnPropertyChanged("Photo"); }
+            get { return _photo; }
+            set { _photo = value; OnPropertyChanged("Photo"); }
         }
-        
-        private Hl7.Fhir.Model.Attachment _Photo;
-        
+
+        private Attachment _photo;
+
         /// <summary>
         /// The organization that is the custodian of the person record
         /// </summary>
         [FhirElement("managingOrganization", InSummary=true, Order=160)]
-        [CLSCompliant(false)]
-		[References("Organization")]
+        [References("Organization")]
         [DataMember]
-        public Hl7.Fhir.Model.ResourceReference ManagingOrganization
+        public ResourceReference ManagingOrganization
         {
-            get { return _ManagingOrganization; }
-            set { _ManagingOrganization = value; OnPropertyChanged("ManagingOrganization"); }
+            get { return _managingOrganization; }
+            set { _managingOrganization = value; OnPropertyChanged("ManagingOrganization"); }
         }
-        
-        private Hl7.Fhir.Model.ResourceReference _ManagingOrganization;
-        
+
+        private ResourceReference _managingOrganization;
+
         /// <summary>
         /// This person's record is in active use
         /// </summary>
         [FhirElement("active", InSummary=true, Order=170)]
         [DataMember]
-        public Hl7.Fhir.Model.FhirBoolean ActiveElement
+        public FhirBoolean ActiveElement
         {
-            get { return _ActiveElement; }
-            set { _ActiveElement = value; OnPropertyChanged("ActiveElement"); }
+            get { return _activeElement; }
+            set { _activeElement = value; OnPropertyChanged("ActiveElement"); }
         }
-        
-        private Hl7.Fhir.Model.FhirBoolean _ActiveElement;
-        
+
+        private FhirBoolean _activeElement;
+
         /// <summary>
         /// This person's record is in active use
         /// </summary>
         /// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>
         [NotMapped]
-        [IgnoreDataMemberAttribute]
+        [IgnoreDataMember]
         public bool? Active
         {
             get { return ActiveElement != null ? ActiveElement.Value : null; }
             set
             {
                 if (!value.HasValue)
-                  ActiveElement = null; 
+                    ActiveElement = null;
                 else
-                  ActiveElement = new Hl7.Fhir.Model.FhirBoolean(value);
+                    ActiveElement = new FhirBoolean(value);
                 OnPropertyChanged("Active");
             }
         }
-        
+
         /// <summary>
         /// Link to a resource that concerns the same actual person
         /// </summary>
         [FhirElement("link", Order=180)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Person.LinkComponent> Link
+        public List<LinkComponent> Link
         {
-            get { if(_Link==null) _Link = new List<Hl7.Fhir.Model.Person.LinkComponent>(); return _Link; }
-            set { _Link = value; OnPropertyChanged("Link"); }
+            get { if (_link == null) _link = new List<LinkComponent>(); return _link; }
+            set { _link = value; OnPropertyChanged("Link"); }
         }
-        
-        private List<Hl7.Fhir.Model.Person.LinkComponent> _Link;
-        
 
-        public override void AddDefaultConstraints()
-        {
-            base.AddDefaultConstraints();
+        private List<LinkComponent> _link;
 
-        }
 
         public override IDeepCopyable CopyTo(IDeepCopyable other)
         {
             var dest = other as Person;
-            
+
             if (dest != null)
             {
                 base.CopyTo(dest);
-                if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.Identifier>(Identifier.DeepCopy());
-                if(Name != null) dest.Name = new List<Hl7.Fhir.Model.HumanName>(Name.DeepCopy());
-                if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.ContactPoint>(Telecom.DeepCopy());
-                if(GenderElement != null) dest.GenderElement = (Code<Hl7.Fhir.Model.AdministrativeGender>)GenderElement.DeepCopy();
-                if(BirthDateElement != null) dest.BirthDateElement = (Hl7.Fhir.Model.Date)BirthDateElement.DeepCopy();
-                if(Address != null) dest.Address = new List<Hl7.Fhir.Model.Address>(Address.DeepCopy());
-                if(Photo != null) dest.Photo = (Hl7.Fhir.Model.Attachment)Photo.DeepCopy();
-                if(ManagingOrganization != null) dest.ManagingOrganization = (Hl7.Fhir.Model.ResourceReference)ManagingOrganization.DeepCopy();
-                if(ActiveElement != null) dest.ActiveElement = (Hl7.Fhir.Model.FhirBoolean)ActiveElement.DeepCopy();
-                if(Link != null) dest.Link = new List<Hl7.Fhir.Model.Person.LinkComponent>(Link.DeepCopy());
+                if (Identifier != null) dest.Identifier = new List<Identifier>(Identifier.DeepCopy());
+                if (Name != null) dest.Name = new List<HumanName>(Name.DeepCopy());
+                if (Telecom != null) dest.Telecom = new List<ContactPoint>(Telecom.DeepCopy());
+                if (GenderElement != null) dest.GenderElement = (Code<AdministrativeGender>)GenderElement.DeepCopy();
+                if (BirthDateElement != null) dest.BirthDateElement = (Date)BirthDateElement.DeepCopy();
+                if (Address != null) dest.Address = new List<Address>(Address.DeepCopy());
+                if (Photo != null) dest.Photo = (Attachment)Photo.DeepCopy();
+                if (ManagingOrganization != null) dest.ManagingOrganization = (ResourceReference)ManagingOrganization.DeepCopy();
+                if (ActiveElement != null) dest.ActiveElement = (FhirBoolean)ActiveElement.DeepCopy();
+                if (Link != null) dest.Link = new List<LinkComponent>(Link.DeepCopy());
                 return dest;
             }
             else
-            	throw new ArgumentException("Can only copy to an object of the same type", "other");
+                throw new ArgumentException("Can only copy to an object of the same type", "other");
         }
-        
+
         public override IDeepCopyable DeepCopy()
         {
-            return CopyTo(new Person());
+             return CopyTo(new Person());
         }
-        
+
         public override bool Matches(IDeepComparable other)
         {
             var otherT = other as Person;
-            if(otherT == null) return false;
-            
-            if(!base.Matches(otherT)) return false;
-            if( !DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
-            if( !DeepComparable.Matches(Name, otherT.Name)) return false;
-            if( !DeepComparable.Matches(Telecom, otherT.Telecom)) return false;
-            if( !DeepComparable.Matches(GenderElement, otherT.GenderElement)) return false;
-            if( !DeepComparable.Matches(BirthDateElement, otherT.BirthDateElement)) return false;
-            if( !DeepComparable.Matches(Address, otherT.Address)) return false;
-            if( !DeepComparable.Matches(Photo, otherT.Photo)) return false;
-            if( !DeepComparable.Matches(ManagingOrganization, otherT.ManagingOrganization)) return false;
-            if( !DeepComparable.Matches(ActiveElement, otherT.ActiveElement)) return false;
-            if( !DeepComparable.Matches(Link, otherT.Link)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.Matches(otherT)) return false;
+            if (!DeepComparable.Matches(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.Matches(Name, otherT.Name)) return false;
+            if (!DeepComparable.Matches(Telecom, otherT.Telecom)) return false;
+            if (!DeepComparable.Matches(GenderElement, otherT.GenderElement)) return false;
+            if (!DeepComparable.Matches(BirthDateElement, otherT.BirthDateElement)) return false;
+            if (!DeepComparable.Matches(Address, otherT.Address)) return false;
+            if (!DeepComparable.Matches(Photo, otherT.Photo)) return false;
+            if (!DeepComparable.Matches(ManagingOrganization, otherT.ManagingOrganization)) return false;
+            if (!DeepComparable.Matches(ActiveElement, otherT.ActiveElement)) return false;
+            if (!DeepComparable.Matches(Link, otherT.Link)) return false;
+
             return true;
         }
-        
+
         public override bool IsExactly(IDeepComparable other)
         {
             var otherT = other as Person;
-            if(otherT == null) return false;
-            
-            if(!base.IsExactly(otherT)) return false;
-            if( !DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
-            if( !DeepComparable.IsExactly(Name, otherT.Name)) return false;
-            if( !DeepComparable.IsExactly(Telecom, otherT.Telecom)) return false;
-            if( !DeepComparable.IsExactly(GenderElement, otherT.GenderElement)) return false;
-            if( !DeepComparable.IsExactly(BirthDateElement, otherT.BirthDateElement)) return false;
-            if( !DeepComparable.IsExactly(Address, otherT.Address)) return false;
-            if( !DeepComparable.IsExactly(Photo, otherT.Photo)) return false;
-            if( !DeepComparable.IsExactly(ManagingOrganization, otherT.ManagingOrganization)) return false;
-            if( !DeepComparable.IsExactly(ActiveElement, otherT.ActiveElement)) return false;
-            if( !DeepComparable.IsExactly(Link, otherT.Link)) return false;
-            
+            if (otherT == null) return false;
+
+            if (!base.IsExactly(otherT)) return false;
+            if (!DeepComparable.IsExactly(Identifier, otherT.Identifier)) return false;
+            if (!DeepComparable.IsExactly(Name, otherT.Name)) return false;
+            if (!DeepComparable.IsExactly(Telecom, otherT.Telecom)) return false;
+            if (!DeepComparable.IsExactly(GenderElement, otherT.GenderElement)) return false;
+            if (!DeepComparable.IsExactly(BirthDateElement, otherT.BirthDateElement)) return false;
+            if (!DeepComparable.IsExactly(Address, otherT.Address)) return false;
+            if (!DeepComparable.IsExactly(Photo, otherT.Photo)) return false;
+            if (!DeepComparable.IsExactly(ManagingOrganization, otherT.ManagingOrganization)) return false;
+            if (!DeepComparable.IsExactly(ActiveElement, otherT.ActiveElement)) return false;
+            if (!DeepComparable.IsExactly(Link, otherT.Link)) return false;
+
             return true;
         }
 
@@ -488,16 +484,16 @@ namespace Hl7.Fhir.Model
             get
             {
                 foreach (var item in base.Children) yield return item;
-				foreach (var elem in Identifier) { if (elem != null) yield return elem; }
-				foreach (var elem in Name) { if (elem != null) yield return elem; }
-				foreach (var elem in Telecom) { if (elem != null) yield return elem; }
-				if (GenderElement != null) yield return GenderElement;
-				if (BirthDateElement != null) yield return BirthDateElement;
-				foreach (var elem in Address) { if (elem != null) yield return elem; }
-				if (Photo != null) yield return Photo;
-				if (ManagingOrganization != null) yield return ManagingOrganization;
-				if (ActiveElement != null) yield return ActiveElement;
-				foreach (var elem in Link) { if (elem != null) yield return elem; }
+                foreach (var elem in Identifier) { if (elem != null) yield return elem; }
+                foreach (var elem in Name) { if (elem != null) yield return elem; }
+                foreach (var elem in Telecom) { if (elem != null) yield return elem; }
+                if (GenderElement != null) yield return GenderElement;
+                if (BirthDateElement != null) yield return BirthDateElement;
+                foreach (var elem in Address) { if (elem != null) yield return elem; }
+                if (Photo != null) yield return Photo;
+                if (ManagingOrganization != null) yield return ManagingOrganization;
+                if (ActiveElement != null) yield return ActiveElement;
+                foreach (var elem in Link) { if (elem != null) yield return elem; }
             }
         }
 
@@ -521,5 +517,5 @@ namespace Hl7.Fhir.Model
         }
 
     }
-    
+
 }

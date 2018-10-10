@@ -7,14 +7,12 @@
  */
 
 using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Model;
-using System.Xml.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Validation;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Tests.Validation
 {
@@ -27,7 +25,7 @@ namespace Hl7.Fhir.Tests.Validation
             Id id = new Id("az23");
 
             DotNetAttributeValidation.Validate(id);
-            DotNetAttributeValidation.Validate(id,true);        // recursive checking shouldnt matter
+            DotNetAttributeValidation.Validate(id, true);        // recursive checking shouldnt matter
 
             id = new Id("!notgood!");
             validateErrorOrFail(id);
@@ -40,7 +38,7 @@ namespace Hl7.Fhir.Tests.Validation
         }
 
 
-        private void validateErrorOrFail(object instance, bool recurse=false, string membername=null)
+        private void validateErrorOrFail(object instance, bool recurse = false, string membername = null)
         {
             try
             {
@@ -48,13 +46,13 @@ namespace Hl7.Fhir.Tests.Validation
                 DotNetAttributeValidation.Validate(instance, recurse);
                 Assert.Fail();
             }
-            catch (ValidationException ve) 
+            catch (ValidationException ve)
             {
                 if (membername != null)
                     Assert.IsTrue(ve.ValidationResult.MemberNames.Contains(membername));
             }
         }
-     
+
         [TestMethod]
         public void OIDandUUIDUrls()
         {
@@ -82,7 +80,7 @@ namespace Hl7.Fhir.Tests.Validation
             Assert.IsTrue(Uri.Equals(new Uri("http://nu.nl"), new Uri("http://nu.nl")));
         }
 
-   
+
 
         [TestMethod]
         public void TestAllowedChoices()
@@ -102,15 +100,15 @@ namespace Hl7.Fhir.Tests.Validation
         public void TestCardinality()
         {
             OperationOutcome oo = new OperationOutcome();
-            validateErrorOrFail(oo,true);
+            validateErrorOrFail(oo, true);
 
             oo.Issue = new List<OperationOutcome.IssueComponent>();
-            validateErrorOrFail(oo,true);
+            validateErrorOrFail(oo, true);
 
             var issue = new OperationOutcome.IssueComponent();
 
             oo.Issue.Add(issue);
-            validateErrorOrFail(oo,true);
+            validateErrorOrFail(oo, true);
 
             issue.Severity = OperationOutcome.IssueSeverity.Information;
             validateErrorOrFail(oo, true);
@@ -140,7 +138,7 @@ namespace Hl7.Fhir.Tests.Validation
             var pr = new Patient();
             pr.Contained = new List<Resource> { p };
 
-            validateErrorOrFail(pr,true);
+            validateErrorOrFail(pr, true);
             DotNetAttributeValidation.Validate(pr);
         }
 
@@ -149,7 +147,7 @@ namespace Hl7.Fhir.Tests.Validation
         {
             var pat = new Patient();
             var patn = new Patient();
-            pat.Contained = new List<Resource> { patn } ;
+            pat.Contained = new List<Resource> { patn };
             patn.Contained = new List<Resource> { new Patient() };
 
             // Contained resources should not themselves contain resources
@@ -171,7 +169,7 @@ namespace Hl7.Fhir.Tests.Validation
             // First create an incomplete encounter (class not supplied)
             var enc = new Encounter();
             validateErrorOrFail(enc, membername: "StatusElement");
-            validateErrorOrFail(enc,true);  // recursive checking shouldn't matter
+            validateErrorOrFail(enc, true);  // recursive checking shouldn't matter
 
             enc.Status = Encounter.EncounterState.Planned;
 
@@ -198,14 +196,14 @@ namespace Hl7.Fhir.Tests.Validation
         {
             var p = new Patient();
 
-            p.Text = new Narrative() { Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should be valid</p></div>", Status = Narrative.NarrativeStatus.Generated  };
-            DotNetAttributeValidation.Validate(p,true);
+            p.Text = new Narrative() { Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should be valid</p></div>", Status = Narrative.NarrativeStatus.Generated };
+            DotNetAttributeValidation.Validate(p, true);
 
             p.Text.Div = "<div xmlns='http://www.w3.org/1999/xhtml'><p>should not be valid<p></div>";
-            validateErrorOrFail(p,true);
+            validateErrorOrFail(p, true);
 
             p.Text.Div = "<div xmlns='http://www.w3.org/1999/xhtml'><img onmouseover='bigImg(this)' src='smiley.gif' alt='Smiley' /></div>";
-            validateErrorOrFail(p,true);
+            validateErrorOrFail(p, true);
         }
 #endif       
     }
