@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
-using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 
-namespace Hl7.Fhir.Rest
+namespace Hl7.Fhir.Rest.DSTU2
 {
     public interface IFhirClient
     {
@@ -13,21 +13,12 @@ namespace Hl7.Fhir.Rest
         bool CompressRequestBody { get; set; }
 #endif
         Uri Endpoint { get; }
-        byte[] LastBody { get; }
-        Resource LastBodyAsResource { get; }
-        string LastBodyAsText { get; }
-        HttpWebRequest LastRequest { get; }
-        HttpWebResponse LastResponse { get; }
-        Bundle.ResponseComponent LastResult { get; }
         ParserSettings ParserSettings { get; set; }
         ResourceFormat PreferredFormat { get; set; }
         bool ReturnFullResource { get; set; }
         int Timeout { get; set; }
         bool UseFormatParam { get; set; }
         bool VerifyFhirVersion { get; set; }
-
-        event EventHandler<AfterResponseEventArgs> OnAfterResponse;
-        event EventHandler<BeforeRequestEventArgs> OnBeforeRequest;
 
         Conformance Conformance(SummaryType? summary = default(SummaryType?));
         Task<Conformance> ConformanceAsync(SummaryType? summary = default(SummaryType?));

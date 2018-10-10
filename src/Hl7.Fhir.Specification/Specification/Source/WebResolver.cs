@@ -9,8 +9,10 @@
 using System;
 using System.Diagnostics;
 using System.Net;
-using Hl7.Fhir.Model;
+using System.Net.Http;
+using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Rest;
+using Hl7.Fhir.Rest.DSTU2;
 using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Specification.Source
@@ -71,7 +73,7 @@ namespace Hl7.Fhir.Specification.Source
                 LastError = foe;
                 return null;
             }
-            catch (WebException we)
+            catch (HttpRequestException we)
             {
                 LastError = we;
                 return null;
