@@ -1,4 +1,5 @@
 ﻿using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.ElementModel.DSTU2;
 using Hl7.Fhir.FhirPath;
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.FhirPath;

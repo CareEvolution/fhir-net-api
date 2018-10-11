@@ -51,9 +51,6 @@ namespace Hl7.Fhir.Rest.DSTU2
 
             if (body != null && body.Length != 0)
             {
-                result.Response.RemoveAnnotations<Body>();
-                result.Response.AddAnnotation(new Body { Data = body });
-
                 if (IsBinaryResponse(result.Response.Location, contentType.MediaType.ToString()))
                 {
                     result.Resource = new Binary { Content = body, ContentType = contentType.ToString() };
@@ -77,12 +74,6 @@ namespace Hl7.Fhir.Rest.DSTU2
             }
 
             return result;
-        }
-
-        internal static void SetBody(this Bundle.ResponseComponent interaction, byte[] data)
-        {
-            interaction.RemoveAnnotations<Body>();
-            interaction.AddAnnotation(new Body { Data = data });
         }
 
 
@@ -158,27 +149,5 @@ namespace Hl7.Fhir.Rest.DSTU2
 
             return result;
         }
-
-        private class Body
-        {
-            public byte[] Data;
-        }
-
-        public static byte[] GetBody(this Bundle.ResponseComponent interaction)
-        {
-            var body = interaction.Annotation<Body>();
-            return body != null ? body.Data : null;
-        }
-
-        public static string GetBodyAsText(this Bundle.ResponseComponent interaction)
-        {
-            var body = interaction.GetBody();
-
-            if (body != null)
-                return DecodeBody(body, Encoding.UTF8);
-            else
-                return null;
-        }
     }
-
 }

@@ -13,7 +13,7 @@ using Hl7.Fhir.Model;
 using Hl7.FhirPath;
 using Hl7.FhirPath.Expressions;
 
-namespace Hl7.Fhir.FhirPath
+namespace Hl7.Fhir.FhirPath.DSTU2
 {
     public static class ElementNavFhirExtensions
     {
