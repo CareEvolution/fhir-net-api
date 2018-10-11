@@ -102,6 +102,11 @@ namespace Hl7.Fhir.Specification
                 return map.IsCodeOfT ? "code" : map.Name;
             }
         }
+
+        internal bool IsProfiledQuantity(string typeName)
+        {
+            return _modelInfo.IsProfiledQuantity(typeName);
+        }
     }
 
     public interface IModelInfo
@@ -114,6 +119,7 @@ namespace Hl7.Fhir.Specification
         ClassMapping FindClassMappingForFhirDataType(string typeName);
         ClassMapping FindClassMappingForResource(string resourceTypeName);
         Base AddSubsettedTag(Base instance, SummaryType summaryType);
+        bool IsProfiledQuantity(string typeName);
     }
 
     internal class PocoComplexTypeSerializationInfo : IStructureDefinitionSummary

@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
-using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
@@ -43,7 +42,7 @@ namespace Hl7.Fhir.ElementModel
             IElementDefinitionSummary summary)
         {
             Current = instance;
-            InstanceType = determineInstanceType(instance, summary);
+            InstanceType = determineInstanceType(parent.Provider, instance, summary);
             Provider = parent.Provider;
             ExceptionHandler = parent.ExceptionHandler;
             Definition = summary;
@@ -137,12 +136,12 @@ namespace Hl7.Fhir.ElementModel
 
         public string InstanceType { get; private set; }
 
-        public static string determineInstanceType(object instance, IElementDefinitionSummary summary)
+        public static string determineInstanceType(PocoStructureDefinitionSummaryProvider provider, object instance, IElementDefinitionSummary summary)
         {
             var typeName = !summary.IsChoiceElement && !summary.IsResource ?
                         summary.Type.Single().GetTypeName() : ((Base)instance).TypeName;
 
-            return ModelInfo.IsProfiledQuantity(typeName) ? "Quantity" : typeName;
+            return provider.IsProfiledQuantity(typeName) ? "Quantity" : typeName;
         }
 
         public string Location { get; private set; }
@@ -185,11 +184,3 @@ namespace Hl7.Fhir.ElementModel
     }
 }
 
-namespace Hl7.Fhir.Model.DSTU2
-{
-    public static class TypedElementExtensions
-    {
-        public static ITypedElement ToTypedElement(this Base @base, string rootName = null) =>
-            new PocoElementNode(@base, DSTU2ModelInfo.Instance.StructureDefinitionProvider, rootName: rootName);
-    }
-}

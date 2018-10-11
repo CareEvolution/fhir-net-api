@@ -5,5 +5,3 @@ using System.Runtime.CompilerServices;
 #if DEBUG
 [assembly: InternalsVisibleTo("Hl7.Fhir.Core.Tests")]
 #endif
-
-[assembly: InternalsVisibleTo("Hl7.Fhir.DSTU2")]

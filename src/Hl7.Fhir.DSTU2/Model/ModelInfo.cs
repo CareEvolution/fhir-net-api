@@ -509,5 +509,10 @@ namespace Hl7.Fhir.Model.DSTU2
             foreach (var child in instance.Children)
                 AddSubsettedTag(child, atRoot: false);
         }
+
+        public bool IsProfiledQuantity(string typeName)
+        {
+            return ModelInfo.IsProfiledQuantity(typeName);
+        }
     }
 }

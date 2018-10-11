@@ -105,7 +105,7 @@ namespace Hl7.Fhir.ElementModel
             if (element.InstanceType == "string" && element.Value is string s)
                 url = s;
             else if (element.InstanceType == "Reference")
-                url = element.ParseResourceReference()?.Reference;
+                url = element.Children("reference").SingleOrDefault()?.Value as string;
 
             if (url == null) return default;   // nothing found to resolve
 
