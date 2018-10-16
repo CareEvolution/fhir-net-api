@@ -120,7 +120,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 
         #region Concept Lookup
 
-        public static async Task<Parameters> ConceptLookupAsync(this IFhirClient client,
+        public static async Task<Parameters> ConceptLookupAsync(this FhirClient client,
             Code code = null, FhirUri system = null, FhirString version = null,
             Coding coding = null, FhirDateTime date = null)
         {
@@ -135,7 +135,7 @@ namespace Hl7.Fhir.Rest.DSTU2
                 .OperationResult<Parameters>();
         }
 
-        public static Parameters ConceptLookup(this IFhirClient client,
+        public static Parameters ConceptLookup(this FhirClient client,
             Code code = null, FhirUri system = null, FhirString version = null,
             Coding coding = null, FhirDateTime date = null)
 
@@ -147,7 +147,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 
         #region Validate Code
 
-        public static async Task<ValidateCodeResult> ValidateCodeAsync(this IFhirClient client, String valueSetId,
+        public static async Task<ValidateCodeResult> ValidateCodeAsync(this FhirClient client, String valueSetId,
                 FhirUri identifier = null, FhirUri context = null, ValueSet valueSet = null, Code code = null,
                 FhirUri system = null, FhirString version = null, FhirString display = null,
                 Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null,
@@ -177,7 +177,7 @@ namespace Hl7.Fhir.Rest.DSTU2
                 return null;
         }
 
-        public static ValidateCodeResult ValidateCode(this IFhirClient client, String valueSetId,
+        public static ValidateCodeResult ValidateCode(this FhirClient client, String valueSetId,
                 FhirUri identifier = null, FhirUri context = null, ValueSet valueSet = null, Code code = null,
                 FhirUri system = null, FhirString version = null, FhirString display = null,
                 Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null,
@@ -187,7 +187,7 @@ namespace Hl7.Fhir.Rest.DSTU2
                 coding, codeableConcept, date, @abstract).WaitResult();
         }
 
-        public async static Task<ValidateCodeResult> ValidateCodeAsync(this IFhirClient client,
+        public async static Task<ValidateCodeResult> ValidateCodeAsync(this FhirClient client,
                 FhirUri identifier = null, FhirUri context = null, ValueSet valueSet = null, Code code = null,
                 FhirUri system = null, FhirString version = null, FhirString display = null,
                 Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null,
@@ -214,7 +214,7 @@ namespace Hl7.Fhir.Rest.DSTU2
                 return null;
         }
 
-        public static ValidateCodeResult ValidateCode(this IFhirClient client,
+        public static ValidateCodeResult ValidateCode(this FhirClient client,
                 FhirUri identifier = null, FhirUri context = null, ValueSet valueSet = null, Code code = null,
                 FhirUri system = null, FhirString version = null, FhirString display = null,
                 Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null,

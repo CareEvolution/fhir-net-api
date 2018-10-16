@@ -7,7 +7,7 @@
  */
 
 using System;
-using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 
@@ -120,7 +120,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         }
 
 
-        public TransactionBuilder Update(string id, Resource body, string versionId = null)
+        public TransactionBuilder Update(string id, ResourceBase body, string versionId = null)
         {
             var entry = newEntry(Bundle.HTTPVerb.PUT, InteractionType.Update);
             entry.Resource = body;
@@ -131,7 +131,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             return this;
         }
 
-        public TransactionBuilder Update(SearchParams condition, Resource body, string versionId = null)
+        public TransactionBuilder Update(SearchParams condition, ResourceBase body, string versionId = null)
         {
             var entry = newEntry(Bundle.HTTPVerb.PUT, InteractionType.Update);
             entry.Resource = body;
@@ -173,7 +173,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             return this;
         }
 
-        public TransactionBuilder Create(Resource body)
+        public TransactionBuilder Create(ResourceBase body)
         {
             var entry = newEntry(Bundle.HTTPVerb.POST, InteractionType.Create);
             entry.Resource = body;
@@ -183,7 +183,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             return this;
         }
 
-        public TransactionBuilder Create(Resource body, SearchParams condition)
+        public TransactionBuilder Create(ResourceBase body, SearchParams condition)
         {
             var entry = newEntry(Bundle.HTTPVerb.POST, InteractionType.Create);
             entry.Resource = body;

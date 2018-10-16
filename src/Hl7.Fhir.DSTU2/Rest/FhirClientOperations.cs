@@ -188,7 +188,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         //[base]/Resource/id/$meta/[_history/vid]
         public static async Task<Meta> MetaAsync(this FhirClient client, Uri location)
         {
-            Resource result;
+            ResourceBase result;
             result = await client.InstanceOperationAsync(location, RestOperation.META, useGet: true).ConfigureAwait(false);
 
             return extractMeta(OperationResult<Parameters>(result));
@@ -326,7 +326,7 @@ namespace Hl7.Fhir.Rest.DSTU2
             return par;
         }
 
-        internal static T OperationResult<T>(this Resource result) where T : Resource
+        internal static T OperationResult<T>(this ResourceBase result) where T : ResourceBase
         {
             if (result == null) return null;
 

@@ -9,6 +9,7 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
 
@@ -74,7 +75,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// <typeparam name="TResource">The type of resource to filter on</typeparam>
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
         public Task<Bundle> SearchAsync<TResource>(SearchParams q)
-            where TResource : Resource
+            where TResource : ResourceBase
         {
             return SearchAsync(q, ModelInfo.GetFhirTypeNameForType(typeof(TResource)));
         }
@@ -84,17 +85,17 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// <param name="q">The Query resource containing the search parameters</param>
         /// <typeparam name="TResource">The type of resource to filter on</typeparam>
         /// <returns>A Bundle with all resources found by the search, or an empty Bundle if none were found.</returns>
-        public Bundle Search<TResource>(SearchParams q) where TResource : Resource
+        public Bundle Search<TResource>(SearchParams q) where TResource : ResourceBase
         {
             return SearchAsync<TResource>(q).WaitResult();
         }
 
-        public Task<Bundle> SearchUsingPostAsync<TResource>(SearchParams q) where TResource : Resource
+        public Task<Bundle> SearchUsingPostAsync<TResource>(SearchParams q) where TResource : ResourceBase
         {
             return SearchUsingPostAsync(q, ModelInfo.GetFhirTypeNameForType(typeof(TResource)));
         }
 
-        public Bundle SearchUsingPost<TResource>(SearchParams q) where TResource : Resource
+        public Bundle SearchUsingPost<TResource>(SearchParams q) where TResource : ResourceBase
         {
             return SearchUsingPostAsync(q, ModelInfo.GetFhirTypeNameForType(typeof(TResource))).WaitResult();
         }
@@ -118,7 +119,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// of all resources of the given Resource type</remarks>
         public Task<Bundle> SearchAsync<TResource>(string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
-            where TResource : Resource, new()
+            where TResource : ResourceBase, new()
         {
             return SearchAsync(ModelInfo.GetFhirTypeNameForType(typeof(TResource)), criteria, includes, pageSize, summary, revIncludes);
         }
@@ -137,7 +138,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// of all resources of the given Resource type</remarks>
         public Bundle Search<TResource>(string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
-            where TResource : Resource, new()
+            where TResource : ResourceBase, new()
         {
             return SearchAsync<TResource>(criteria, includes, pageSize, summary, revIncludes).WaitResult();
         }
@@ -157,7 +158,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// of all resources of the given Resource type</remarks>
         public Task<Bundle> SearchUsingPostAsync<TResource>(string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
-            where TResource : Resource, new()
+            where TResource : ResourceBase, new()
         {
             return SearchUsingPostAsync(ModelInfo.GetFhirTypeNameForType(typeof(TResource)), criteria, includes, pageSize, summary, revIncludes);
         }
@@ -176,7 +177,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// of all resources of the given Resource type</remarks>
         public Bundle SearchUsingPost<TResource>(string[] criteria = null, string[] includes = null, int? pageSize = null,
             SummaryType? summary = null, string[] revIncludes = null)
-            where TResource : Resource, new()
+            where TResource : ResourceBase, new()
         {
             return SearchUsingPostAsync<TResource>(criteria, includes, pageSize, summary, revIncludes).WaitResult();
         }
@@ -357,7 +358,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// it is possible to specify include parameters to include resources in the bundle that the
         /// returned resource refers to.</remarks>
         public Task<Bundle> SearchByIdAsync<TResource>(string id, string[] includes = null, int? pageSize = null,
-                string[] revIncludes = null) where TResource : Resource, new()
+                string[] revIncludes = null) where TResource : ResourceBase, new()
         {
             if (id == null) throw Error.ArgumentNull(nameof(id));
 
@@ -377,7 +378,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// <remarks>This operation is similar to Read, but additionally,
         /// it is possible to specify include parameters to include resources in the bundle that the
         /// returned resource refers to.</remarks>
-        public Bundle SearchById<TResource>(string id, string[] includes = null, int? pageSize = null, string[] revIncludes = null) where TResource : Resource, new()
+        public Bundle SearchById<TResource>(string id, string[] includes = null, int? pageSize = null, string[] revIncludes = null) where TResource : ResourceBase, new()
         {
             return SearchByIdAsync<TResource>(id, includes, pageSize, revIncludes).WaitResult();
         }
@@ -396,7 +397,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// it is possible to specify include parameters to include resources in the bundle that the
         /// returned resource refers to.</remarks>
         public Task<Bundle> SearchByIdUsingPostAsync<TResource>(string id, string[] includes = null, int? pageSize = null,
-                string[] revIncludes = null) where TResource : Resource, new()
+                string[] revIncludes = null) where TResource : ResourceBase, new()
         {
             if (id == null) throw Error.ArgumentNull(nameof(id));
 
@@ -416,7 +417,7 @@ namespace Hl7.Fhir.Rest.DSTU2
         /// <remarks>This operation is similar to Read, but additionally,
         /// it is possible to specify include parameters to include resources in the bundle that the
         /// returned resource refers to.</remarks>
-        public Bundle SearchByIdUsingPost<TResource>(string id, string[] includes = null, int? pageSize = null, string[] revIncludes = null) where TResource : Resource, new()
+        public Bundle SearchByIdUsingPost<TResource>(string id, string[] includes = null, int? pageSize = null, string[] revIncludes = null) where TResource : ResourceBase, new()
         {
             return SearchByIdUsingPostAsync<TResource>(id, includes, pageSize, revIncludes).WaitResult();
         }
@@ -591,6 +592,10 @@ namespace Hl7.Fhir.Rest.DSTU2
 
         #endregion
     }
+}
+
+namespace Hl7.Fhir.Rest
+{ 
 
     public enum PageDirection
     {
