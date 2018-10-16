@@ -13,7 +13,7 @@ using Hl7.Fhir.Utility;
 using System;
 using System.Linq;
 using System.Xml;
-using System.Xml.Linq;
+//using System.Xml.Linq;
 
 namespace Hl7.Fhir.Serialization
 {
@@ -60,11 +60,11 @@ namespace Hl7.Fhir.Serialization
             {
                 using (source.Catch((o, a) => ExceptionHandler.NotifyOrThrow(o, a)))
                 {
-                    build(source, dest);
+                    build(source, dest, true);
                 }
             }
             else
-                build(source, dest);
+                build(source, dest, true);
 
             return dest;
         }
@@ -94,7 +94,7 @@ namespace Hl7.Fhir.Serialization
             return true;
         }
 
-        private void build(ITypedElement source, XContainer parent)
+        private void build(ITypedElement source, XmlWriter parent, bool atRoot)
         {
             var xmlDetails = source.GetXmlSerializationDetails();
             var sourceComments = (source as IAnnotated)?.Annotation<SourceComments>();
@@ -138,7 +138,6 @@ namespace Hl7.Fhir.Serialization
             var ns = serializationInfo?.NonDefaultNamespace ??
                             xmlDetails?.Namespace.NamespaceName ??
                             (usesAttribute ? "" : XmlNs.FHIR);
-            bool atRoot = parent is XDocument;
             var localName = serializationInfo?.IsChoiceElement == true ?
                             source.Name + source.InstanceType.Capitalize() : source.Name;
 
@@ -146,12 +145,12 @@ namespace Hl7.Fhir.Serialization
             // an attribute with the child's name + the child's Value into the parent
             if (usesAttribute && !String.IsNullOrWhiteSpace(value) && !atRoot)
             {
-                parent.Add(new XAttribute(XName.Get(localName, ns), value));
+                parent.WriteAttributeString(localName, ns, value);
                 return;
             }
             // else: fall through - value will be serialized as an element
 
-            var me = new XElement(XName.Get(localName, ns));
+            parent.WriteStartElement(localName, ns);
 
             if (xmlDetails?.SchemaLocation != null)
                 me.Add(new XAttribute(XmlNs.XSCHEMALOCATION, xmlDetails.SchemaLocation));
@@ -204,12 +203,12 @@ namespace Hl7.Fhir.Serialization
                 writeComments(sourceComments.DocumentEndComments, parent);
         }
 
-        private void writeComments(string[] comments, XContainer parent)
+        private void writeComments(string[] comments, XmlWriter parent)
         {
             if (comments?.Any() == true)
             {
                 foreach (var comment in comments)
-                    parent.Add(new XComment(comment));
+                    parent.WriteComment(comment);
             }
         }
     }
