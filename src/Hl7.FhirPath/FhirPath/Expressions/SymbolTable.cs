@@ -185,6 +185,5 @@ namespace Hl7.FhirPath.Expressions
         {
             table.Add(new CallSignature(name, typeof(string)), InvokeeFactory.Return(value));
         }
-
     }
 }

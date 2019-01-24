@@ -276,6 +276,9 @@ namespace Hl7.Fhir.Validation
         {
             get
             {
+                // Use a provided compiler
+                if (Settings?.FhirPathCompiler != null)
+                    return Settings.FhirPathCompiler;
 
                 if (_fpCompiler == null)
                 {

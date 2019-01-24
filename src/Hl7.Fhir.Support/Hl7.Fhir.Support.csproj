@@ -7,7 +7,6 @@
   <Import Project="..\fhir-net-api.targets" />
 
   <PropertyGroup>
-    <Version>$(SupportApiVersion)</Version>
     <PackageId>Hl7.Fhir.Support</PackageId>
     <Title>HL7 FHIR support library</Title>
     <Summary>Common interfaces and classes used by all FHIR .NET assemblies</Summary>
@@ -20,7 +19,7 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(DefineConstants.Contains('USE_CODE_GEN'))">
+  <ItemGroup Condition="$(DefineConstants.Contains('USE_CODE_GEN')) AND '$(TargetFramework)' != 'net45'">
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>

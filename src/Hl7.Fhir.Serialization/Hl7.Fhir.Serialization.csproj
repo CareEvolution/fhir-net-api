@@ -7,7 +7,6 @@
   <Import Project="..\fhir-net-api.targets" />
 
   <PropertyGroup>
-    <Version>$(SupportApiVersion)</Version>
     <PackageId>Hl7.Fhir.Serialization</PackageId>
     <Title>HL7 FHIR serialization functionality</Title>
     <Summary>Version-independent parsering and serialization functionality</Summary>
@@ -16,8 +15,18 @@
     <AssemblyName>Hl7.Fhir.Serialization</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.1'">
-    <Compile Remove="Properties\Resources.Designer.cs" />
+  <ItemGroup>
+    <EmbeddedResource Include="xhtml\fhir-xhtml.xsd">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xhtml\xml.xsd">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="xhtml\fhir-xhtml.xsd" />
+    <None Remove="xhtml\xml.xsd" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,5 +38,4 @@
     <ProjectReference Include="..\Hl7.Fhir.ElementModel\Hl7.Fhir.ElementModel.csproj" />
     <ProjectReference Include="..\Hl7.Fhir.Support\Hl7.Fhir.Support.csproj" />
   </ItemGroup>
-
 </Project>

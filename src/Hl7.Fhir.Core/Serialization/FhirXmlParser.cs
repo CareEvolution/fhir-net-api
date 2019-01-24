@@ -31,13 +31,13 @@ namespace Hl7.Fhir.Serialization
                     DisallowSchemaLocation = _parserSettings.DisallowXsiAttributesOnRoot,
                 };
 
-        public Base Parse(string xml, Type dataType)
+        public Base Parse(string xml, Type dataType = null)
         {
             var xmlReader = FhirXmlNode.Parse(xml, buildNodeSettings(_parserSettings));
             return Parse(xmlReader, dataType);
         }
 
-        public Base Parse(XmlReader reader, Type dataType)
+        public Base Parse(XmlReader reader, Type dataType = null)
         {
             var xmlReader = FhirXmlNode.Read(reader, buildNodeSettings(_parserSettings));
             return Parse(xmlReader, dataType);

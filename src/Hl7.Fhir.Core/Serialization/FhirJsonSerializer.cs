@@ -32,7 +32,7 @@ namespace Hl7.Fhir.Serialization
                 .ToTypedElement(_modelInfo.StructureDefinitionProvider)
                 .ToJsonBytes(buildFhirJsonWriterSettings());
 
-        public byte[] SerializeToBytes(Base instance, SummaryType summary) =>
+        public byte[] SerializeToBytes(Base instance, SummaryType summary, string[] elements = null) =>
             _modelInfo
                 .AddSubsettedTag(instance, summary)
                 .ToTypedElement(_modelInfo.StructureDefinitionProvider)

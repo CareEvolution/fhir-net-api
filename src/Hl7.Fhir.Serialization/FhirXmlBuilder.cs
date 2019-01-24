@@ -13,7 +13,7 @@ using Hl7.Fhir.Utility;
 using System;
 using System.Linq;
 using System.Xml;
-//using System.Xml.Linq;
+using System.Xml.Linq;
 
 namespace Hl7.Fhir.Serialization
 {

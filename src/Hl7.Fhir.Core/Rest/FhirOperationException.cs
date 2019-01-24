@@ -6,11 +6,10 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using System.Runtime.Serialization;
-using System.Security;
 using System.Net;
 using Hl7.Fhir.Model;
+using System;
+using System.Net;
 
 namespace Hl7.Fhir.Rest
 {
@@ -20,67 +19,52 @@ namespace Hl7.Fhir.Rest
     [SerializableAttribute]
     public class FhirOperationException : Exception
     {
-        /// <summary>
-        /// Gets or sets the outcome of the operation <see cref="IOperationOutcome"/>.
-        /// </summary>
-        public IOperationOutcome Outcome { get; set; }
-        /// <summary>
-        /// The HTTP Status Code that resulted in this Exception
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
-        public HttpStatusCode? Status { get; set; }
+        /// <summary>Gets or sets the outcome of the operation <see cref="OperationOutcome"/>.</summary>
+        public OperationOutcome Outcome { get; private set; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FhirOperationException"/> class with a specified error message.
-        /// </summary>
+        /// <summary>The HTTP Status Code that resulted in this Exception.</summary>
+        public HttpStatusCode Status { get; private set; }
+
+        /// <summary>Initializes a new instance of the <see cref="FhirOperationException"/> class with a specified error message.</summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="status">The http status code associated with the message</param>
-        public FhirOperationException(string message, HttpStatusCode? status)
-            : base(message)
-        {
-            Status = status;
-        }
+        public FhirOperationException(string message, HttpStatusCode status)
+            : this(message, status, null, null) { }
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FhirOperationException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+        /// Initializes a new instance of the <see cref="FhirOperationException"/> class with a specified error message
+        /// and a reference to the inner exception that is the cause of this exception.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="status">The http status code associated with the message</param>
-        /// <param name="inner">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. </param>
-        public FhirOperationException(string message, HttpStatusCode? status, Exception inner)
-            : base(message, inner)
-        {
-            Status = status;
-        }
+        /// <param name="inner">The exception that is the cause of the current exception, or a <c>null</c> reference (Nothing in Visual Basic) if no inner exception is specified. </param>
+        public FhirOperationException(string message, HttpStatusCode status, Exception inner)
+            : this(message, status, null, inner) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirOperationException"/> class with a specified error message.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="status">The http status code associated with the message</param>
-        /// <param name="outcome">The outcome of the operation <see cref="IOperationOutcome"/>.</param>
-        /// <param name="inner">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. </param>
-        public FhirOperationException(string message, HttpStatusCode? status, IOperationOutcome outcome, Exception inner)
-            : base(message, inner)
-        {
-            Outcome = outcome;
-            Status = status;
-        }
+        /// <param name="outcome">The outcome of the operation <see cref="OperationOutcome"/>.</param>
+        public FhirOperationException(string message, HttpStatusCode status, OperationOutcome outcome)
+            : this(message, status, outcome, null) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FhirOperationException"/> class with a specified error message.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="status">The http status code associated with the message</param>
-        /// <param name="outcome">The outcome of the operation <see cref="IOperationOutcome"/>.</param>
-        public FhirOperationException(string message, HttpStatusCode? status, IOperationOutcome outcome)
-            : base(message)
+        /// <param name="outcome">The outcome of the operation <see cref="OperationOutcome"/>.</param>
+        /// <param name="inner">The exception that is the cause of the current exception, or a <c>null</c> reference (Nothing in Visual Basic) if no inner exception is specified. </param>
+        public FhirOperationException(string message, HttpStatusCode status, OperationOutcome outcome, Exception inner)
+            : base(message, inner)
         {
             Outcome = outcome;
             Status = status;
         }
+    }
 
 
         /// <summary>

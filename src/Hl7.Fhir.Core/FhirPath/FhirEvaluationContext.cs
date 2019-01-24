@@ -13,8 +13,8 @@ using Hl7.FhirPath;
 namespace Hl7.Fhir.FhirPath
 {
     public class FhirEvaluationContext : EvaluationContext
-    {
-        public new static FhirEvaluationContext CreateDefault() => new FhirEvaluationContext();
+    {      
+        public static new FhirEvaluationContext CreateDefault() => new FhirEvaluationContext();
 
         public FhirEvaluationContext() : base()
         {

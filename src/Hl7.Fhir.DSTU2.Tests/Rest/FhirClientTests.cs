@@ -274,6 +274,14 @@ namespace Hl7.Fhir.Tests.Rest
 
         }
 
+        [TestMethod, TestCategory("FhirClient")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void SearchInvalidCriteria()
+        {
+            FhirClient client = new FhirClient(testEndpoint);
+            var result = client.Search<Patient>(new string[] { "test" });
+        }
+        
 #if NO_ASYNC_ANYMORE
         [TestMethod, TestCategory("FhirClient")]
         public void SearchAsync()

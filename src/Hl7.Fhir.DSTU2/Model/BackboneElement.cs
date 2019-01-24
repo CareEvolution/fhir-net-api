@@ -30,6 +30,7 @@
 
 namespace Hl7.Fhir.Model.DSTU2
 {
+    [FhirType("BackboneElement", IsResource = false)]
     public abstract partial class BackboneElement : IModifierExtendable, IBackboneElement
     {
     }

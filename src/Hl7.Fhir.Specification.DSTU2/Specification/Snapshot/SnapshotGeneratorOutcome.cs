@@ -276,7 +276,6 @@ namespace Hl7.Fhir.Specification.Snapshot
             );
         }
 #endif
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 
 }

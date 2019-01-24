@@ -27,17 +27,17 @@ namespace Hl7.Fhir.Serialization
 
         private readonly FhirJsonParsingSettings _jsonNodeSettings;
 
-        public Base Parse(string json, Type dataType)
+        public Base Parse(string json, Type dataType = null)
         {
             var jsonReader =
-                FhirJsonNode.Parse(json, _modelInfo.GetFhirTypeNameForType(dataType), _jsonNodeSettings);
+                FhirJsonNode.Parse(json, dataType != null ? _modelInfo.GetFhirTypeNameForType(dataType) : null, jsonNodeSettings);
             return Parse(jsonReader, dataType);
         }
 
-        public Base Parse(JsonReader reader, Type dataType)
+        public Base Parse(JsonReader reader, Type dataType = null)
         {
             var jsonReader =
-                FhirJsonNode.Read(reader, _modelInfo.GetFhirTypeNameForType(dataType), _jsonNodeSettings);
+                FhirJsonNode.Read(reader, dataType != null ? _modelInfo.GetFhirTypeNameForType(dataType) : null, jsonNodeSettings);
             return Parse(jsonReader, dataType);
         }
     }

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
-  
+
   <Import Project="..\fhir-net-api.props" />
   <Import Project="..\fhir-net-api.targets" />
 
@@ -19,8 +19,14 @@
      <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
      <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
    </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Rest\Search\**" />
+    <EmbeddedResource Remove="Rest\Search\**" />
+    <None Remove="Rest\Search\**" />
+  </ItemGroup>
 
-  <ItemGroup>    
+
+  <ItemGroup Condition=" '$(TargetFramework)' != 'net45' ">
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
@@ -30,6 +36,18 @@
     <PackageReference Include="System.Net.Requests" Version="4.3.0" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Model\Source\expansions.xml" />
+    <None Include="Model\Source\profiles-resources.xml" />
+    <None Include="Model\Source\profiles-types.xml" />
+    <None Include="Model\Source\search-parameters.xml" />
   </ItemGroup>
   
   <ItemGroup>

@@ -6,18 +6,17 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Hl7.Fhir.ElementModel
 {
-    internal class PocoElementNode : ITypedElement, IAnnotated, IExceptionSource, IShortPathGenerator
+    internal class PocoElementNode : ITypedElement, IAnnotated, IExceptionSource, IShortPathGenerator, IFhirValueProvider, IResourceTypeSupplier
     {
         public readonly object Current;
         public readonly PocoStructureDefinitionSummaryProvider Provider;
@@ -146,12 +145,19 @@ namespace Hl7.Fhir.ElementModel
 
         public string Location { get; private set; }
 
+        public string ResourceType => Current is Resource ? InstanceType : null;
+
         public IEnumerable<object> Annotations(Type type)
         {
             if (type == typeof(PocoElementNode) || type == typeof(ITypedElement) || type == typeof(IShortPathGenerator))
                 return new[] { this };
+            else if (type == typeof(IFhirValueProvider))
+                return new[] { this };
+            else if (type == typeof(IResourceTypeSupplier))
+                return new[] { this };
             else if (FhirValue is IAnnotated ia)
                 return ia.Annotations(type);
+
             else
                 return Enumerable.Empty<object>();
         }
