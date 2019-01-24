@@ -9,7 +9,8 @@
 using System.Net;
 using Hl7.Fhir.Model;
 using System;
-using System.Net;
+using System.Security;
+using System.Runtime.Serialization;
 
 namespace Hl7.Fhir.Rest
 {
@@ -19,8 +20,8 @@ namespace Hl7.Fhir.Rest
     [SerializableAttribute]
     public class FhirOperationException : Exception
     {
-        /// <summary>Gets or sets the outcome of the operation <see cref="OperationOutcome"/>.</summary>
-        public OperationOutcome Outcome { get; private set; }
+        /// <summary>Gets or sets the outcome of the operation <see cref="IOperationOutcome"/>.</summary>
+        public IOperationOutcome Outcome { get; private set; }
 
         /// <summary>The HTTP Status Code that resulted in this Exception.</summary>
         public HttpStatusCode Status { get; private set; }
@@ -47,8 +48,8 @@ namespace Hl7.Fhir.Rest
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="status">The http status code associated with the message</param>
-        /// <param name="outcome">The outcome of the operation <see cref="OperationOutcome"/>.</param>
-        public FhirOperationException(string message, HttpStatusCode status, OperationOutcome outcome)
+        /// <param name="outcome">The outcome of the operation <see cref="IOperationOutcome"/>.</param>
+        public FhirOperationException(string message, HttpStatusCode status, IOperationOutcome outcome)
             : this(message, status, outcome, null) { }
 
         /// <summary>
@@ -56,16 +57,14 @@ namespace Hl7.Fhir.Rest
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="status">The http status code associated with the message</param>
-        /// <param name="outcome">The outcome of the operation <see cref="OperationOutcome"/>.</param>
+        /// <param name="outcome">The outcome of the operation <see cref="IOperationOutcome"/>.</param>
         /// <param name="inner">The exception that is the cause of the current exception, or a <c>null</c> reference (Nothing in Visual Basic) if no inner exception is specified. </param>
-        public FhirOperationException(string message, HttpStatusCode status, OperationOutcome outcome, Exception inner)
+        public FhirOperationException(string message, HttpStatusCode status, IOperationOutcome outcome, Exception inner)
             : base(message, inner)
         {
             Outcome = outcome;
             Status = status;
         }
-    }
-
 
         /// <summary>
         /// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with information about the exception.

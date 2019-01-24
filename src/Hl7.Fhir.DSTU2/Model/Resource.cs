@@ -253,14 +253,6 @@ namespace Hl7.Fhir.Model.DSTU2
 
         [NotMapped]
         public bool HasVersionId => Meta?.VersionId != null;
-
-        #region Obsolete members
-        [Obsolete("Use ValidateInvariantRule(ValidationContext context, ElementDefinition.ConstraintComponent invariantRule, ITypedElement model, OperationOutcome result) instead. Obsolete since 2018-10-17")]
-        public static bool ValidateInvariantRule(ValidationContext context, ElementDefinition.ConstraintComponent invariantRule, IElementNavigator model, OperationOutcome result)
-        {
-            return ValidateInvariantRule(context, invariantRule, model.ToTypedElement(), result);
-        }
-        #endregion
     }
 }
 
