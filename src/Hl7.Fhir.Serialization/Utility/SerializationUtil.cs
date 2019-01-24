@@ -156,8 +156,7 @@ namespace Hl7.Fhir.Utility
             {
                 OmitXmlDeclaration = true,
                 NewLineHandling = NewLineHandling.Entitize,
-                Indent = pretty,
-                Async = true,
+                Indent = pretty
             };
 
             // [WMR 20160421] Explicit disposal
