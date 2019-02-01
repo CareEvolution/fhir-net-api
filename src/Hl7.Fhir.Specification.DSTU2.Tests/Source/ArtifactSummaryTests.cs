@@ -32,11 +32,11 @@ namespace Hl7.Fhir.Specification.Tests
 
         [TestMethod]
         public void TestPatientXmlSummaryWithCustomHarvester()
-            => TestPatientSummaryWithCustomHarvester(Path.Combine("TestData","TestPatient.xml", "Donald"));
+            => TestPatientSummaryWithCustomHarvester(Path.Combine("TestData","TestPatient.xml"), "Donald");
 
         [TestMethod]
         public void TestPatientJsonSummaryWithCustomHarvester()
-            => TestPatientSummaryWithCustomHarvester(Path.Combine("TestData","TestPatient.json", "Chalmers"));
+            => TestPatientSummaryWithCustomHarvester(Path.Combine("TestData","TestPatient.json"), "Chalmers");
 
         void TestPatientSummaryWithCustomHarvester(string path, params string[] expectedNames)
         {

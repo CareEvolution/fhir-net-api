@@ -408,7 +408,7 @@ namespace Hl7.Fhir.Specification.Tests
         [Fact]
         public void ValidateOverNameRef()
         {
-            var questionnaireXml = File.ReadAllText(Path.Combine("TestData","validation\\questionnaire-sdc-profile-example-cap.xml"));
+            var questionnaireXml = File.ReadAllText(Path.Combine("TestData","validation","questionnaire-sdc-profile-example-cap.xml"));
 
             var questionnaire = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Questionnaire>(questionnaireXml);
             Assert.NotNull(questionnaire);
@@ -463,7 +463,7 @@ namespace Hl7.Fhir.Specification.Tests
         [Fact]
         public void ValidateContained()
         {
-            var careplanXml = File.ReadAllText(Path.Combine("TestData","validation\\careplan-example-integrated.xml"));
+            var careplanXml = File.ReadAllText(Path.Combine("TestData","validation","careplan-example-integrated.xml"));
 
             var careplan = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<CarePlan>(careplanXml);
             Assert.NotNull(careplan);
@@ -479,7 +479,7 @@ namespace Hl7.Fhir.Specification.Tests
         [Fact]
         public void MeasureDeepCopyPerformance()
         {
-            var questionnaireXml = File.ReadAllText(Path.Combine("TestData","validation\\questionnaire-sdc-profile-example-cap.xml"));
+            var questionnaireXml = File.ReadAllText(Path.Combine("TestData","validation","questionnaire-sdc-profile-example-cap.xml"));
 
             var questionnaire = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Questionnaire>(questionnaireXml);
             Assert.NotNull(questionnaire);
@@ -528,7 +528,7 @@ namespace Hl7.Fhir.Specification.Tests
         [Fact]
         public void ValidateBundle()
         {
-            var bundleXml = File.ReadAllText(Path.Combine("TestData","validation\\bundle-contained-references.xml"));
+            var bundleXml = File.ReadAllText(Path.Combine("TestData","validation","bundle-contained-references.xml"));
 
             var bundle = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Bundle>(bundleXml);
             Assert.NotNull(bundle);
@@ -568,7 +568,7 @@ namespace Hl7.Fhir.Specification.Tests
         [Fact]
         public void RunXsdValidation()
         {
-            var careplanXml = File.ReadAllText(Path.Combine("TestData","validation\\careplan-example-integrated.xml"));
+            var careplanXml = File.ReadAllText(Path.Combine("TestData","validation","careplan-example-integrated.xml"));
             var cpDoc = XDocument.Parse(careplanXml, LoadOptions.SetLineInfo);
 
             var report = _validator.Validate(cpDoc.CreateReader());

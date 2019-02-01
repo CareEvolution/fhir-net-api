@@ -6,28 +6,26 @@
  * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
  */
 
-using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
-using Hl7.Fhir.Model;
+using System.IO;
 using System.IO.Compression;
-using Hl7.Fhir.Specification;
-using Hl7.Fhir.Tests;
-using Hl7.Fhir.Specification.Source;
-using Hl7.Fhir.Serialization.DSTU2;
 using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Tests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
     [TestClass]
     public class RoundtripTest
-    { 
+    {
         [TestMethod]
         [TestCategory("LongRunner")]
         public void FullRoundtripOfAllExamplesXmlPoco()
         {
-            FullRoundtripOfAllExamples("examples.zip", "FHIRRoundTripTestXml", 
-                "Roundtripping xml->json->xml", usingPoco: true, provider:null);
+            FullRoundtripOfAllExamples("examples.zip", "FHIRRoundTripTestXml",
+                "Roundtripping xml->json->xml", usingPoco: true, provider: null);
         }
 
         [TestMethod]
@@ -269,8 +267,8 @@ namespace Hl7.Fhir.Serialization.Tests
             else
             {
                 var json = File.ReadAllText(inputFile);
-                var nav = JsonParsingHelpers.ParseToTypedElement(json, provider, 
-                    settings: new FhirJsonParsingSettings { AllowJsonComments = true } );
+                var nav = JsonParsingHelpers.ParseToTypedElement(json, provider,
+                    settings: new FhirJsonParsingSettings { AllowJsonComments = true });
                 var xml = nav.ToXml();
                 File.WriteAllText(outputFile, xml);
             }
