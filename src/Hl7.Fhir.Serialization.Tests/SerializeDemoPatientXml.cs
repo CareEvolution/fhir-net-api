@@ -30,7 +30,7 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void CanSerializeThroughNavigatorAndCompare()
         {
-            var tpXml = File.ReadAllText(@"TestData\fp-test-patient.xml");
+            var tpXml = File.ReadAllText(Path.Combine("TestData","fp-test-patient.xml"));
             var nav = getXmlElement(tpXml);
             var output = nav.ToXml();
             XmlAssert.AreSame("fp-test-patient.xml", tpXml, output, ignoreSchemaLocation: true);
@@ -39,7 +39,7 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void TestPruneEmptyNodes()
         {
-            var tpXml = File.ReadAllText(@"TestData\test-empty-nodes.xml");
+            var tpXml = File.ReadAllText(Path.Combine("TestData","test-empty-nodes.xml"));
 
             // Make sure permissive parsing is on - otherwise the parser will complain about all those empty nodes
             var nav = getXmlElement(tpXml, new FhirXmlParsingSettings { PermissiveParsing = true });
@@ -50,7 +50,7 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void TestElementReordering()
         {
-            var tpXml = File.ReadAllText(@"TestData\patient-out-of-order.xml");
+            var tpXml = File.ReadAllText(Path.Combine("TestData","patient-out-of-order.xml"));
             var nav = getXmlElement(tpXml, new FhirXmlParsingSettings { PermissiveParsing = true });  // since the order is incorrect
             var root = nav.ToXDocument().Root;
 
@@ -65,7 +65,7 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void CanSerializeFromPoco()
         {
-            var tpXml = File.ReadAllText(@"TestData\fp-test-patient.xml");
+            var tpXml = File.ReadAllText(Path.Combine("TestData","fp-test-patient.xml"));
             var pser = new FhirXmlParser(DSTU2ModelInfo.Instance, new ParserSettings { DisallowXsiAttributesOnRoot = false });
             var pat = pser.Parse<Patient>(tpXml);
 
@@ -77,8 +77,8 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void CompareSubtrees()
         {
-            var tpXml = File.ReadAllText(@"TestData\fp-test-patient.xml");
-            var tpJson = File.ReadAllText(@"TestData\fp-test-patient.json");
+            var tpXml = File.ReadAllText(Path.Combine("TestData","fp-test-patient.xml"));
+            var tpJson = File.ReadAllText(Path.Combine("TestData","fp-test-patient.json"));
             var pat = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(tpXml);
 
             var navXml = getXmlElement(tpXml);
@@ -103,7 +103,7 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void DoesPretty()
         {
-            var xml = File.ReadAllText(@"TestData\fp-test-patient.xml");
+            var xml = File.ReadAllText(Path.Combine("TestData","fp-test-patient.xml"));
 
             var nav = getXmlElement(xml);
             var output = nav.ToXml();

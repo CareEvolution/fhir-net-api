@@ -17,6 +17,7 @@ using Hl7.Fhir.Model.Primitives;
 using Hl7.FhirPath.Functions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.FhirPath;
+using Hl7.Fhir.FhirPath.DSTU2;
 using System.Diagnostics;
 using System.Threading.Tasks.Dataflow;
 

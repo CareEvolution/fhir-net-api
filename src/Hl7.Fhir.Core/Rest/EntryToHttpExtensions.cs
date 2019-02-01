@@ -49,19 +49,19 @@ namespace Hl7.Fhir.Rest
             if (interaction.IfModifiedSince != null) request.Headers.IfModifiedSince = interaction.IfModifiedSince.Value.UtcDateTime;
             if (interaction.IfNoneExist != null) request.Headers.Add("If-None-Exist", interaction.IfNoneExist);
 
-            var interactionType = entry.Annotation<TransactionBuilder.InteractionType>();
+            var interactionType = entry.Annotation<InteractionType>();
 
-            if (interactionType == TransactionBuilder.InteractionType.Create && returnPreference != null)
+            if (interactionType == InteractionType.Create && returnPreference != null)
                 request.Headers.Add("Prefer", "return=" + PrimitiveTypeConverter.ConvertTo<string>(returnPreference));
-            else if (interactionType == TransactionBuilder.InteractionType.Search && handlingPreference != null)
+            else if (interactionType == InteractionType.Search && handlingPreference != null)
                 request.Headers.Add("Prefer", "handling=" + PrimitiveTypeConverter.ConvertTo<string>(handlingPreference));
 
             if (entry.Resource != null)
             {
                 bool searchUsingPost =
                    interaction.HttpMethod == HttpMethod.Post
-                   && (entry.HasAnnotation<TransactionBuilder.InteractionType>()
-                   && entry.Annotation<TransactionBuilder.InteractionType>() == TransactionBuilder.InteractionType.Search)
+                   && (entry.HasAnnotation<InteractionType>()
+                   && entry.Annotation<InteractionType>() == InteractionType.Search)
                    && entry.Resource is IParameters;
                 setBodyAndContentType(modelInfo, request, entry.Resource, format, CompressRequestBody, searchUsingPost);
             }

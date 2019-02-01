@@ -285,7 +285,7 @@ namespace Hl7.Fhir.Specification.Tests
             var subPath3 = Path.Combine(testPath, "sub3");
             Directory.CreateDirectory(subPath3);
 
-            const string srcPath = @"TestData\snapshot-test\WMR\";
+            string srcPath = Path.Combine("TestData","snapshot-test","WMR");
             const string srcFile1 = "MyBasic.structuredefinition.xml";
             const string srcFile2 = "MyBundle.structuredefinition.xml";
 

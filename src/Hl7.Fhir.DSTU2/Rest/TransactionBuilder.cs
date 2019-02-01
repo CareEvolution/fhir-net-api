@@ -38,22 +38,6 @@ namespace Hl7.Fhir.Rest.DSTU2
         {
         }
 
-
-        internal enum InteractionType
-        {
-            Search,
-            Unspecified,
-            Read,
-            VRead,
-            Update,
-            Delete,
-            Create,
-            Capabilities,
-            History,
-            Operation,
-            Transaction
-        }
-
         private Bundle.EntryComponent newEntry(Bundle.HTTPVerb method, InteractionType interactionType)
         {
             var newEntry = new Bundle.EntryComponent();

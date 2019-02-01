@@ -17,7 +17,7 @@ namespace Hl7.Fhir.Support.Tests.Serialization
         [TestMethod]
         public void ScanThroughBundle()
         {
-            var xmlBundle = Path.Combine(Directory.GetCurrentDirectory(), @"TestData\profiles-types.xml");
+            var xmlBundle = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine("TestData","profiles-types.xml"));
             using (var stream = XmlNavigatorStream.FromPath(xmlBundle))
             {
                 Assert.IsTrue(stream.IsBundle);
@@ -57,7 +57,7 @@ namespace Hl7.Fhir.Support.Tests.Serialization
         [TestMethod]
         public void ScanThroughSingle()
         {
-            var xmlPatient = Path.Combine(Directory.GetCurrentDirectory(), @"TestData\fp-test-patient.xml");
+            var xmlPatient = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine("TestData","fp-test-patient.xml"));
             using (var stream = XmlNavigatorStream.FromPath(xmlPatient))
             {
                 Assert.IsFalse(stream.IsBundle);
@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Support.Tests.Serialization
         public void ReadCrap()
         {
             // Try a random other xml file
-            var xmlfile = Path.Combine(Directory.GetCurrentDirectory(), @"TestData\source-test\books.xml");
+            var xmlfile = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine("TestData","source-test","books.xml"));
 
             using (var stream = XmlNavigatorStream.FromPath(xmlfile))
             {
@@ -97,7 +97,7 @@ namespace Hl7.Fhir.Support.Tests.Serialization
         [TestMethod]
         public void ScanPerformance()
         {
-            var xmlBundle = Path.Combine(Directory.GetCurrentDirectory(), @"TestData\profiles-types.xml");
+            var xmlBundle = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine("TestData","profiles-types.xml"));
 
             var sw = new Stopwatch();
             sw.Start();

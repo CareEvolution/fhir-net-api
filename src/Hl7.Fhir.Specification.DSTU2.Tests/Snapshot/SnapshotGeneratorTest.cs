@@ -898,7 +898,7 @@ namespace Hl7.Fhir.Specification.Tests
             {
                 //var summaries = dirSource.ListSummaries(ResourceType.StructureDefinition);
                 //summaries = summaries.Where(s => Path.GetFileNameWithoutExtension(s.Origin) == "profiles-others");
-                var path = Path.GetFullPath(@"TestData\snapshot-test\WMR\profiles-others.xml");
+                var path = Path.GetFullPath(Path.Combine("TestData","snapshot-test","WMR","profiles-others.xml"));
                 var summaries = dirSource.ListSummaries(ResourceType.StructureDefinition).FromFile(path);
                 foreach (var summary in summaries)
                 {
@@ -1271,7 +1271,7 @@ namespace Hl7.Fhir.Specification.Tests
                 Debug.WriteLine("Base = '{0}'".FormatWith(sd.Base));
 
                 // FhirClient client = new FhirClient("http://fhir2.healthintersections.com.au/open/");
-                // var folderPath = Path.Combine(Directory.GetCurrentDirectory(), @"TestData\snapshot-test\download");
+                // var folderPath = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine("TestData","snapshot-test\download");
                 // if (!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
 
                 var component = differential ? sd.Differential.Element : sd.Snapshot.Element;

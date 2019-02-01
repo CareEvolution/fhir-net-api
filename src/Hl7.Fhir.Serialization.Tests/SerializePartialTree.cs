@@ -20,8 +20,8 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void CanSerializeSubtree()
         {
-            var tpXml = File.ReadAllText(@"TestData\fp-test-patient.xml");
-            var tpJson = File.ReadAllText(@"TestData\fp-test-patient.json");
+            var tpXml = File.ReadAllText(Path.Combine("TestData","fp-test-patient.xml"));
+            var tpJson = File.ReadAllText(Path.Combine("TestData","fp-test-patient.json"));
             var pat = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(tpXml);
 
             // Should work on the parent resource
