@@ -178,7 +178,7 @@ namespace Hl7.Fhir.Introspection
         public static bool IsFhirResource(Type type)
         {
             var attr = ReflectionHelper.GetAttribute<FhirTypeAttribute>(type.GetTypeInfo());
-            return typeof(ResourceBase).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo())
+            return typeof(IResource).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo())
                    || (attr != null && attr.IsResource);
             //var attr = ReflectionHelper.GetAttribute<FhirTypeAttribute>(type);
             //return typeof(Resource).IsAssignableFrom(type)

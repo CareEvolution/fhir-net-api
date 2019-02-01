@@ -14,6 +14,7 @@ using System.Linq;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
 using Xunit;
 
@@ -142,7 +143,7 @@ namespace Hl7.FhirPath.Tests
         [Fact]
         public void CanUseBackboneTypeForEntry()
         {
-            var _sdsProvider = new PocoStructureDefinitionSummaryProvider();
+            var _sdsProvider = DSTU2ModelInfo.Instance.StructureDefinitionProvider;
             var bundleJson = "{\"resourceType\":\"Bundle\", \"entry\":[{\"fullUrl\":\"http://example.org/Patient/1\"}]}";
             var bundle = FhirJsonNode.Parse(bundleJson);
             var typedBundle = bundle.ToTypedElement(_sdsProvider, "Bundle");

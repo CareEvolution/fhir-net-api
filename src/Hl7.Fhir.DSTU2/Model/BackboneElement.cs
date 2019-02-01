@@ -28,6 +28,8 @@
 
 */
 
+using Hl7.Fhir.Introspection;
+
 namespace Hl7.Fhir.Model.DSTU2
 {
     [FhirType("BackboneElement", IsResource = false)]

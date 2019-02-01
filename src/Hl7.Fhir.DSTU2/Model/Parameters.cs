@@ -180,7 +180,7 @@ namespace Hl7.Fhir.Model.DSTU2
             }
 
             ElementBase IParameterComponent.Value => _value;
-            ResourceBase IParameterComponent.Resource => _resource;
+            IResource IParameterComponent.Resource => _resource;
         }
 
     }

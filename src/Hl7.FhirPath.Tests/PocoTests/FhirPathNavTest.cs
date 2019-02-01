@@ -24,7 +24,7 @@ namespace Hl7.FhirPath.Tests
         public ITypedElement getTestData()
         {
             var tpXml = TestData.ReadTextFile("fp-test-patient.xml");
-            return FhirXmlNode.Parse(tpXml).ToTypedElement(new PocoStructureDefinitionSummaryProvider());
+            return FhirXmlNode.Parse(tpXml).ToTypedElement(DSTU2ModelInfo.Instance.StructureDefinitionProvider);
         }
 
         [Fact]

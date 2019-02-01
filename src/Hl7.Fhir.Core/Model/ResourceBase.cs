@@ -3,8 +3,13 @@
     /// <summary>
     /// An empty base class to handle Resources in version independent way
     /// </summary>
-    public abstract class ResourceBase : Base
+    // public abstract class ResourceBase : Base
+    // {
+    // }
+
+    public interface IResource
     {
+
     }
 
     /// <summary>

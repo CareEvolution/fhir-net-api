@@ -19,7 +19,7 @@ namespace Hl7.Fhir.Model
     public interface IBundleEntry : IAnnotated
     {
         string FullUrl { get; }
-        ResourceBase Resource { get; }
+        IResource Resource { get; }
         IBundleSearch Search { get; }
         IBundleRequest Request { get; }
         IBundleResponse Response { get; }

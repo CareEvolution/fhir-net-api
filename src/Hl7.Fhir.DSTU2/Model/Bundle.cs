@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 }
             }
 
-            ResourceBase IBundleEntry.Resource => Resource;
+            IResource IBundleEntry.Resource => Resource;
             IBundleSearch IBundleEntry.Search => Search;
             IBundleRequest IBundleEntry.Request => Request;
             IBundleResponse IBundleEntry.Response => Response;

@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Tests.Serialization
         {
             string xmlPacientTest = TestDataHelper.ReadTestData("TestPatient.xml");
             
-            var poco = new FhirXmlParser().Parse(xmlPacientTest);
+            var poco = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse(xmlPacientTest);
             
             Assert.AreEqual(((Patient)poco).Id, "pat1");
             Assert.AreEqual(((Patient)poco).Contained.First().Id, "1");
@@ -86,7 +86,7 @@ namespace Hl7.Fhir.Tests.Serialization
         {
             string jsonPatient = TestDataHelper.ReadTestData("TestPatient.json");
 
-            var poco = new FhirJsonParser().Parse(jsonPatient);
+            var poco = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse(jsonPatient);
 
             Assert.AreEqual(((Patient)poco).Id, "pat1");
             Assert.AreEqual(((Patient)poco).Contained.First().Id, "1");

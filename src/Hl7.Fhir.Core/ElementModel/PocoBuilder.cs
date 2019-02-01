@@ -89,13 +89,13 @@ namespace Hl7.Fhir.Serialization
 
             Base Build()
             {
-                return typeToBuild.CanBeTreatedAsType(typeof(ResourceBase))
+                return typeToBuild.CanBeTreatedAsType(typeof(IResource))
                     ? DeserializeResource(source)
                     : DeserializeComplexType(typeToBuild, source);
             }
         }
 
-        private ResourceBase DeserializeResource(ISourceNode node)
+        private Base DeserializeResource(ISourceNode node)
         {
             // If there's no a priori knowledge of the type of Resource we will encounter,
             // we'll have to determine from the data itself. 
@@ -107,7 +107,7 @@ namespace Hl7.Fhir.Serialization
 
             // Delegate the actual work to the ComplexTypeReader, since
             // the serialization of Resources and ComplexTypes are virtually the same
-            return (ResourceBase)DeserializeComplexType(mapping, node);
+            return DeserializeComplexType(mapping, node);
         }
 
         private Base DeserializeComplexType(Type elementType, ISourceNode node)
@@ -237,7 +237,7 @@ namespace Hl7.Fhir.Serialization
                 mapping = _modelInfo.FindClassMappingByType(prop.ImplementingType);
             }
 
-            if (existing != null && !(existing is ResourceBase) && !(existing is ElementBase)) throw Error.Argument(nameof(existing), "Can only read complex elements into types that are Element or Resource");
+            if (existing != null && !(existing is IResource) && !(existing is ElementBase)) throw Error.Argument(nameof(existing), "Can only read complex elements into types that are Element or Resource");
             return DeserializeComplexType(mapping, node, (Base)existing);
 
             ClassMapping DetermineElementPropertyType()

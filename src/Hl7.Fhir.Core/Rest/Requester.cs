@@ -111,13 +111,13 @@ namespace Hl7.Fhir.Rest
 
         protected abstract HttpRequestMessage CreateHttpRequestMessage(IBundleEntry entry);
 
-        protected abstract ResourceBase CreateOperationOutcomeForException(Exception exception);
+        protected abstract IResource CreateOperationOutcomeForException(Exception exception);
 
         protected abstract string Version { get; }
 
         protected abstract IBundleEntry CreateBundleEntry(HttpResponseMessage response, byte[] body, bool throwOnFormatException);
 
-        private static Exception buildFhirOperationException(HttpStatusCode status, ResourceBase body)
+        private static Exception buildFhirOperationException(HttpStatusCode status, IResource body)
         {
             string message;
 

@@ -70,7 +70,7 @@ namespace Hl7.Fhir.Rest
             return request;
         }
 
-        private static void setBodyAndContentType(IModelInfo modelInfo, HttpRequestMessage request, ResourceBase data, ResourceFormat format, bool CompressRequestBody, bool searchUsingPost)
+        private static void setBodyAndContentType(IModelInfo modelInfo, HttpRequestMessage request, IResource data, ResourceFormat format, bool CompressRequestBody, bool searchUsingPost)
         {
             if (data == null) throw Error.ArgumentNull(nameof(data));
 
@@ -107,8 +107,8 @@ namespace Hl7.Fhir.Rest
             else
             {
                 body = format == ResourceFormat.Xml ?
-                    new FhirXmlSerializer(modelInfo).SerializeToBytes(data, summary: SummaryType.False) :
-                    new FhirJsonSerializer(modelInfo).SerializeToBytes(data, summary: SummaryType.False);
+                    new FhirXmlSerializer(modelInfo).SerializeToBytes(data as Base, summary: SummaryType.False) :
+                    new FhirJsonSerializer(modelInfo).SerializeToBytes(data as Base, summary: SummaryType.False);
 
                 // This is done by the caller after the OnBeforeRequest is called so that other properties
                 // can be set before the content is committed

@@ -118,7 +118,7 @@ namespace Hl7.Fhir.Specification
         ClassMapping FindClassMappingByType(Type elementType);
         ClassMapping FindClassMappingForFhirDataType(string typeName);
         ClassMapping FindClassMappingForResource(string resourceTypeName);
-        Base AddSubsettedTag(Base instance, SummaryType summaryType);
+        Base AddSubsettedTag(Base instance, SummaryType summaryType, string[] elements);
         bool IsProfiledQuantity(string typeName);
     }
 

@@ -25,59 +25,60 @@ namespace Hl7.Fhir.Serialization
         private FhirXmlSerializationSettings buildFhirXmlWriterSettings() =>
             new FhirXmlSerializationSettings { Pretty = Settings.Pretty };
 
-        public string SerializeToString(Base instance, string root = null) =>
-            instance.ToTypedElement(_modelInfo.StructureDefinitionProvider)
-            .Rename(root)
-            .ToXml(settings: buildFhirXmlWriterSettings());
+        // public string SerializeToString(Base instance, string root = null) =>
+        //     instance
+        //         .ToTypedElement(_modelInfo.StructureDefinitionProvider)
+        //         .Rename(root)
+        //         .ToXml(settings: buildFhirXmlWriterSettings());
 
-        public string SerializeToString(Base instance, SummaryType summary, string root = null)
+        public string SerializeToString(Base instance, SummaryType summary = SummaryType.False, string root = null, string[] elements = null)
         {
             return _modelInfo
-                .AddSubsettedTag(instance, summary)
+                .AddSubsettedTag(instance, summary, elements)
                 .ToTypedElement(_modelInfo.StructureDefinitionProvider)
-                .ScopeToSummary(summary)
+                .ScopeToSummary(summary, elements)
                 .Rename(root)
                 .ToXml(settings: buildFhirXmlWriterSettings());
         }
 
-        public byte[] SerializeToBytes(Base instance, string root = null) =>
-            instance.ToTypedElement(_modelInfo.StructureDefinitionProvider)
-            .Rename(root)
-            .ToXmlBytes(settings: buildFhirXmlWriterSettings());
+        // public byte[] SerializeToBytes(Base instance, string root = null) =>
+        //     instance.ToTypedElement(_modelInfo.StructureDefinitionProvider)
+        //     .Rename(root)
+        //     .ToXmlBytes(settings: buildFhirXmlWriterSettings());
 
-        public byte[] SerializeToBytes(Base instance, SummaryType summary, string root = null) =>
+        public byte[] SerializeToBytes(Base instance, SummaryType summary = SummaryType.False, string root = null, string[] elements = null) =>
             _modelInfo
-                .AddSubsettedTag(instance, summary)
+                .AddSubsettedTag(instance, summary, elements)
                 .ToTypedElement(_modelInfo.StructureDefinitionProvider)
-                .ScopeToSummary(summary)
+                .ScopeToSummary(summary, elements)
                 .Rename(root)
                 .ToXmlBytes(settings: buildFhirXmlWriterSettings());
 
-        public XDocument SerializeToDocument(Base instance, string root = null) =>
-            instance
-                .ToTypedElement(_modelInfo.StructureDefinitionProvider)
-                .Rename(root)
-                .ToXDocument(buildFhirXmlWriterSettings()).Rename(root);
+        // public XDocument SerializeToDocument(Base instance, string root = null) =>
+        //     instance
+        //         .ToTypedElement(_modelInfo.StructureDefinitionProvider)
+        //         .Rename(root)
+        //         .ToXDocument(buildFhirXmlWriterSettings()).Rename(root);
 
-        public XDocument SerializeToDocument(Base instance, SummaryType summary, string root = null) =>
+        public XDocument SerializeToDocument(Base instance, SummaryType summary = SummaryType.False, string root = null, string[] elements = null) =>
            _modelInfo
-                .AddSubsettedTag(instance, summary)
+                .AddSubsettedTag(instance, summary, elements)
                 .ToTypedElement(_modelInfo.StructureDefinitionProvider)
-                .ScopeToSummary(summary)
+                .ScopeToSummary(summary, elements)
                 .Rename(root)
                 .ToXDocument(buildFhirXmlWriterSettings()).Rename(root);
 
-        public void Serialize(Base instance, XmlWriter writer, string root = null) =>
-            instance
-                .ToTypedElement(_modelInfo.StructureDefinitionProvider)
-                .Rename(root)
-                .WriteTo(writer, settings: buildFhirXmlWriterSettings());
+        // public void Serialize(Base instance, XmlWriter writer, string root = null) =>
+        //     instance
+        //         .ToTypedElement(_modelInfo.StructureDefinitionProvider)
+        //         .Rename(root)
+        //         .WriteTo(writer, settings: buildFhirXmlWriterSettings());
 
-        public void Serialize(Base instance, XmlWriter writer, SummaryType summary, string root = null) =>
+        public void Serialize(Base instance, XmlWriter writer, SummaryType summary = SummaryType.False, string root = null, string[] elements = null) =>
             _modelInfo
-                .AddSubsettedTag(instance, summary)
+                .AddSubsettedTag(instance, summary, elements)
                 .ToTypedElement(_modelInfo.StructureDefinitionProvider)
-                .ScopeToSummary(summary)
+                .ScopeToSummary(summary, elements)
                 .Rename(root)
                 .WriteTo(writer, settings: buildFhirXmlWriterSettings());
     }

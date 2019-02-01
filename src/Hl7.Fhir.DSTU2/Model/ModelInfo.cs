@@ -482,9 +482,9 @@ namespace Hl7.Fhir.Model.DSTU2
             return ModelInfo.GetTypeForFhirType(typeName);
         }
 
-        public Base AddSubsettedTag(Base instance, SummaryType summary)
+        public Base AddSubsettedTag(Base instance, SummaryType summary, string[] elements = null)
         {
-            if (summary == SummaryType.False) return instance;
+            if (summary == SummaryType.False && elements == null) return instance;
 
             var patchedInstance = (Base)instance.DeepCopy();
             AddSubsettedTag(patchedInstance, atRoot: true);

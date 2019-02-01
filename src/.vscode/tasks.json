@@ -5,11 +5,11 @@
     "tasks": [
         {
             "label": "build",
+            "command": "dotnet",
             "type": "shell",
-            "command": "msbuild",
             "args": [
-                "/property:GenerateFullPaths=true",
-                "/t:build"
+                "build",
+                "/property:GenerateFullPaths=true"
             ],
             "group": {
                 "kind": "build",

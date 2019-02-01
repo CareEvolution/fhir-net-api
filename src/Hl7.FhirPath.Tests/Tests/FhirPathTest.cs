@@ -121,7 +121,7 @@ namespace Hl7.FhirPath.Tests
         [TestMethod]
         public void TestFhirPathTrace()
         {
-            var patient = new Hl7.Fhir.Model.Patient() { Id = "pat45", Active = false };
+            var patient = new Hl7.Fhir.Model.DSTU2.Patient() { Id = "pat45", Active = false };
             patient.Meta = new Meta() { LastUpdated = new DateTimeOffset(2018, 5, 24, 14, 48, 0, TimeSpan.Zero) };
             var nav = patient.ToTypedElement();
 

@@ -24,19 +24,26 @@ namespace Hl7.Fhir.Serialization
         private FhirJsonSerializationSettings buildFhirJsonWriterSettings() =>
             new FhirJsonSerializationSettings { Pretty = Settings.Pretty };
 
-        public string SerializeToString(Base instance) =>
-            instance.ToTypedElement(_modelInfo.StructureDefinitionProvider).ToJson(buildFhirJsonWriterSettings());
+        // public string SerializeToString(Base instance) =>
+        //     instance.ToTypedElement(_modelInfo.StructureDefinitionProvider).ToJson(buildFhirJsonWriterSettings());
 
-        public byte[] SerializeToBytes(Base instance) =>
-            instance
-                .ToTypedElement(_modelInfo.StructureDefinitionProvider)
-                .ToJsonBytes(buildFhirJsonWriterSettings());
-
-        public byte[] SerializeToBytes(Base instance, SummaryType summary, string[] elements = null) =>
+        public string SerializeToString(Base instance, SummaryType summary = SummaryType.False, string[] elements = null) =>
             _modelInfo
-                .AddSubsettedTag(instance, summary)
+                .AddSubsettedTag(instance, summary, elements)
                 .ToTypedElement(_modelInfo.StructureDefinitionProvider)
-                .ScopeToSummary(summary)
+                .ScopeToSummary(summary, elements)
+                .ToJson(buildFhirJsonWriterSettings());
+
+        // public byte[] SerializeToBytes(Base instance) =>
+        //     instance
+        //         .ToTypedElement(_modelInfo.StructureDefinitionProvider)
+        //         .ToJsonBytes(buildFhirJsonWriterSettings());
+
+        public byte[] SerializeToBytes(Base instance, SummaryType summary = SummaryType.False, string[] elements = null) =>
+            _modelInfo
+                .AddSubsettedTag(instance, summary, elements)
+                .ToTypedElement(_modelInfo.StructureDefinitionProvider)
+                .ScopeToSummary(summary, elements)
                 .ToJsonBytes(buildFhirJsonWriterSettings());
 
         public JObject SerializeToDocument(Base instance) =>

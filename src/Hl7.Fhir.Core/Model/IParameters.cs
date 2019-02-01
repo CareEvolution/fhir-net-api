@@ -11,6 +11,6 @@ namespace Hl7.Fhir.Model
     {
         string Name { get; }
         ElementBase Value { get; }
-        ResourceBase Resource { get; }
+        IResource Resource { get; }
     }
 }

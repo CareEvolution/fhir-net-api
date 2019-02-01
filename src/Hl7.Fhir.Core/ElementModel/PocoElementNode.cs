@@ -145,7 +145,7 @@ namespace Hl7.Fhir.ElementModel
 
         public string Location { get; private set; }
 
-        public string ResourceType => Current is Resource ? InstanceType : null;
+        public string ResourceType => Current is IResource ? InstanceType : null;
 
         public IEnumerable<object> Annotations(Type type)
         {
@@ -167,9 +167,12 @@ namespace Hl7.Fhir.ElementModel
         public static ITypedElement ToTypedElement(this Base @base, PocoStructureDefinitionSummaryProvider provider, string rootName = null) =>
             new PocoElementNode(@base, provider, rootName: rootName);
 
-        public static ITypedElement ScopeToSummary(this ITypedElement instance, SummaryType summary)
+        public static ITypedElement ScopeToSummary(this ITypedElement instance, SummaryType summary, string[] elements)
         {
-            if (summary == SummaryType.False) return instance;
+            if (summary == SummaryType.False && elements == null) return instance;
+
+            if (elements != null && summary != SummaryType.False)
+                throw Error.Argument("elements", "Elements parameter is supported only when summary is SummaryType.False or summary is not specified at all.");
 
             var baseNav = new ScopedNode(instance);
 
@@ -183,6 +186,8 @@ namespace Hl7.Fhir.ElementModel
                     return MaskingNode.ForData(baseNav);
                 case SummaryType.Count:
                     return MaskingNode.ForCount(baseNav);
+                case SummaryType.False:
+                    return MaskingNode.ForElements(baseNav, elements);
                 default:
                     return baseNav;
             }
