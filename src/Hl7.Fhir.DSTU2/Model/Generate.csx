@@ -159,31 +159,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ""AS IS"" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ""AS IS"" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings";
@@ -2553,58 +2551,6 @@ public class ModelInfoBase
     }
 }
 
-public class AllVersionsModelInfo : ModelInfoBase
-{
-    private LoadedVersion _version;
-
-    public AllVersionsModelInfo(Dictionary<string, ResourceDetails> resourcesByName, LoadedVersion version)
-    {
-        _resourceNames = resourcesByName
-            .Values
-            .Where(r => r.IsResource() && r.Name != "DomainResource" && r.Name != "Resource")
-            .Select(r => r.Name)
-            .Distinct()
-            .OrderBy(name => name)
-            .ToList();
-        _typesNameAndType = resourcesByName
-            .Values
-            .Where(r => !r.IsResource())
-            .Select(r => Tuple.Create(r.FhirName, r.Name))
-            .Distinct()
-            .OrderBy(nameAndType => nameAndType.Item1)
-            .ToList();
-        _resourcesNameAndType = resourcesByName
-            .Values
-            .Where(r => r.IsResource())
-            .Select(r => Tuple.Create(r.FhirName, r.Name))
-            .Distinct()
-            .OrderBy(nameAndType => nameAndType.Item1)
-            .ToList();
-        _version = version;
-    }
-
-    public void Write(string filePath)
-    {
-        using (var writer = new StreamWriter(filePath, false, Encoding.UTF8))
-        {
-            foreach (var line in StringUtils.RenderFileHeader(_version)) writer.WriteLine(line);
-            foreach (var line in Render()) writer.WriteLine(string.IsNullOrEmpty(line) ? string.Empty : "    " + line);
-            writer.WriteLine();
-            writer.WriteLine("}");
-        }
-    }
-
-    public IEnumerable<string> Render()
-    {
-        yield return $"public static partial class ModelInfo";
-        yield return $"{{";
-        foreach (var line in RenderSupportedResources()) yield return string.IsNullOrEmpty(line) ? string.Empty : "    " + line;
-        yield return string.Empty;
-        foreach (var line in RenderFhirCsTypeToString()) yield return string.IsNullOrEmpty(line) ? string.Empty : "    " + line;
-        yield return $"}}";
-    }
-}
-
 public class ModelInfo : ModelInfoBase
 {
     private LoadedVersion _version;
@@ -2852,36 +2798,3 @@ foreach (var loadedVersion in loadedVersions)
     Console.WriteLine("Creating {0}", filePath);
     modelInfo.Write(filePath);
 }
-
-// foreach (var loadedVersion in loadedVersions)
-// {
-//     Directory.CreateDirectory(Path.Combine(generatedDirectory, loadedVersion.Version));
-// }
-
-
-// var allVersionsModelInfo = new AllVersionsModelInfo(resourcesByNameByVersion, loadedVersions);
-// var allVersionsModelInfoFilePath = Path.Combine(generatedDirectory, "AllVersionsModelInfo.cs");
-// Console.WriteLine("Creating {0}", allVersionsModelInfoFilePath);
-// allVersionsModelInfo.Write(allVersionsModelInfoFilePath);
-
-//var sharedResourcesByName = resourcesByNameByVersion[string.Empty];
-//var toSkip = new[] { "Element", "Extension", "Narrative", "Resource", "Xhtml" }
-// foreach (var pair in resourcesByNameByVersion)
-// {
-//     if (!string.IsNullOrEmpty(pair.Key))
-//     {
-//         var modelInfo = new ModelInfo(pair.Value.Values, Array.Empty<ResourceDetails>());
-//         var filePath = Path.Combine(generatedDirectory, pair.Key, "ModelInfo.cs");
-//         Console.WriteLine("Creating {0}", filePath);
-//         modelInfo.Write(filePath);
-//     }
-//     foreach (var resource in pair.Value.Values)
-//     {
-//         //if (!toSkip.Contains(resource.Name))
-//         {
-//             var filePath = Path.Combine(generatedDirectory, pair.Key, resource.Name + ".cs");
-//             Console.WriteLine("Creating {0}", filePath);
-//             resource.Write(filePath);
-//         }
-//     }
-// }
