@@ -184,6 +184,42 @@ namespace Hl7.Fhir
 
 
         [TestMethod]
+        public void PocoTypedElementPerformance()
+        {
+            var xml = File.ReadAllText(@"TestData\fp-test-patient.xml");
+            var cs = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(xml);
+            var nav = cs.ToTypedElement();
+
+            TypedElementPerformance(nav);
+        }
+
+        private static void TypedElementPerformance(ITypedElement nav)
+        {
+            // run extraction once to allow for caching
+            extract();
+
+            //System.Threading.Thread.Sleep(20000);
+
+            var sw = new Stopwatch();
+            sw.Start();
+            for (var i = 0; i < 5_000; i++)
+            {
+                extract();
+            }
+            sw.Stop();
+
+            Debug.WriteLine($"Navigating took {sw.ElapsedMilliseconds / 5 } micros");
+
+            void extract()
+            {
+                var usual = nav.Children("identifier").First().Children("use").First().Value;
+                var phone = nav.Children("telecom").First().Children("system").First().Value;
+                var prefs = nav.Children("communication").Where(c => c.Children("preferred").Any(pr => pr.Value is string s && s == "true")).Count();
+                var link = nav.Children("link").Children("other").Children("reference");
+            }
+        }
+
+        [TestMethod]
         public void PocoNavPerformance()
         {
             var xml = File.ReadAllText(Path.Combine("TestData","fp-test-patient.xml"));

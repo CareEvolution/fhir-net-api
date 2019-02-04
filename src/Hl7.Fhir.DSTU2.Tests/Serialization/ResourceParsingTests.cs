@@ -288,5 +288,22 @@ namespace Hl7.Fhir.Tests.Serialization
             var json = FhirJsonSerializer.SerializeToString(p);
             Assert.IsNotNull(FhirJsonParser.Parse<Resource>(json));
         }
+
+        [TestMethod]
+        public void NarrativeMustBeValidXml()
+        {
+            try
+            {
+                var json =
+                    "{\"resourceType\": \"Patient\", \"text\": {\"status\": \"generated\", \"div\": \"text without div\" } }";
+                var patient = new FhirJsonParser(DSTU2ModelInfo.Instance, new ParserSettings { PermissiveParsing = false }).Parse<Patient>(json);
+
+                Assert.Fail("Should have thrown on invalid Div format");
+            }
+            catch (FormatException fe)
+            {
+                Assert.IsTrue(fe.Message.Contains("Invalid Xml encountered"));
+            }
+        }
     }
 }

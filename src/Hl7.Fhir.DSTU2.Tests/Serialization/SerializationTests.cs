@@ -378,26 +378,55 @@ namespace Hl7.Fhir.Tests.Serialization
         {
             var dec6 = 6m;
             var dec60 = 6.0m;
+            var ext = new FhirDecimal(dec6);
+            var obs = new Observation();
+            obs.AddExtension("http://example.org/DecimalPrecision", ext);
 
-            var obs = new Observation { Value = new FhirDecimal(dec6) };
             var json = FhirJsonSerializer.SerializeToString(obs);
             var obs2 = FhirJsonParser.Parse<Observation>(json);
-            Assert.AreEqual("6", ((FhirDecimal)obs2.Value).Value.Value.ToString(CultureInfo.InvariantCulture));
 
-            obs = new Observation { Value = new FhirDecimal(dec60) };
+            Assert.AreEqual("6", ((FhirDecimal)obs2.GetExtension("http://example.org/DecimalPrecision").Value).Value.Value.ToString(CultureInfo.InvariantCulture));
+
+            ext = new FhirDecimal(dec60);
+            obs = new Observation();
+            obs.AddExtension("http://example.org/DecimalPrecision", ext);
+
             json = FhirJsonSerializer.SerializeToString(obs);
             obs2 = FhirJsonParser.Parse<Observation>(json);
-            Assert.AreEqual("6.0", ((FhirDecimal)obs2.Value).Value.Value.ToString(CultureInfo.InvariantCulture));
+
+            Assert.AreEqual("6.0", ((FhirDecimal)obs2.GetExtension("http://example.org/DecimalPrecision").Value).Value.Value.ToString(CultureInfo.InvariantCulture));
         }
 
         [TestMethod]
         public void TestLongDecimalSerialization()
         {
             var dec = 3.1415926535897932384626433833m;
-            var obs = new Observation { Value = new FhirDecimal(dec) };
+            var ext = new FhirDecimal(dec);
+            var obs = new Observation();
+            obs.AddExtension("http://example.org/DecimalPrecision", ext);
+
             var json = FhirJsonSerializer.SerializeToString(obs);
             var obs2 = FhirJsonParser.Parse<Observation>(json);
-            Assert.AreEqual(dec.ToString(CultureInfo.InvariantCulture), ((FhirDecimal)obs2.Value).Value.Value.ToString(CultureInfo.InvariantCulture));
+
+            Assert.AreEqual(dec.ToString(CultureInfo.InvariantCulture), ((FhirDecimal)obs2.GetExtension("http://example.org/DecimalPrecision").Value).Value.Value.ToString(CultureInfo.InvariantCulture));
+        }
+
+        [TestMethod]
+        public void TestParseUnkownPolymorphPropertyInJson()
+        {
+            var dec6 = 6m;
+            var ext = new FhirDecimal(dec6);
+            var obs = new Observation { Value = new FhirDecimal(dec6) };
+            var json = FhirJsonSerializer.SerializeToString(obs);
+            try
+            {
+                var obs2 = FhirJsonParser.Parse<Observation>(json);
+                Assert.Fail("valueDecimal is not a known type for Observation");
+            }
+            catch (FormatException)
+            {
+
+            }
         }
 
         [TestMethod]
@@ -502,7 +531,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             string json = TestDataHelper.ReadTestData(@"valueset-v2-0717.json");
             Assert.IsNotNull(json);
-            var parser = new FhirJsonParser(DSTU2ModelInfo.Instance);
+            var parser = new FhirJsonParser(DSTU2ModelInfo.Instance, new ParserSettings { PermissiveParsing = true });
             var vs = parser.Parse<ValueSet>(json);
             Assert.IsNotNull(vs);
 
@@ -705,6 +734,25 @@ namespace Hl7.Fhir.Tests.Serialization
             // Is the serialization still correct with a few milliseconds?
             json2 = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(patient);
             Assert.AreEqual(json, json2, "5");
+        }
+
+        [TestMethod]
+        public void SerializerHandlesEmptyChildObjects()
+        {
+            var fhirJsonParser = new FhirJsonParser(DSTU2ModelInfo.Instance);
+
+            string json = TestDataHelper.ReadTestData("TestPatient.json");
+            var poco = fhirJsonParser.Parse<Patient>(json);
+
+            Assert.AreEqual(1, poco.Name.Count);
+
+            poco.Meta = new Meta();
+
+            var reserialized = poco.ToJson();
+
+            var newPoco = fhirJsonParser.Parse<Patient>(reserialized);
+
+            Assert.AreEqual(1, newPoco.Name.Count);
         }
     }
 }
