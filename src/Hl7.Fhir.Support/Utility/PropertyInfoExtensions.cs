@@ -49,7 +49,7 @@ namespace Hl7.Fhir.Utility
                 throw new ArgumentException("Generic param T should be the type of property's declaring class.", nameof(propertyInfo));
 
             Type[] arguments = new Type[] { typeof(object), typeof(object) };
-            DynamicMethod setter = new DynamicMethod($"{propertyInfo.Name}_set", null, arguments, propertyInfo.DeclaringType, true);
+            DynamicMethod setter = new DynamicMethod($"{propertyInfo.Name}_set", typeof(object), arguments, propertyInfo.DeclaringType, true);
             ILGenerator il = setter.GetILGenerator();
 
             il.Emit(OpCodes.Ldarg_0);
@@ -62,14 +62,14 @@ namespace Hl7.Fhir.Utility
                 il.Emit(OpCodes.Unbox_Any, propertyInfo.PropertyType);
 
             il.EmitCall(OpCodes.Callvirt, setMethod, null);
-            //il.Emit(OpCodes.Ldarg_0);
+            il.Emit(OpCodes.Ldarg_0);
 
             il.Emit(OpCodes.Ret);
 
-            //var del = (Func<T, object, object>)setter.CreateDelegate(typeof(Func<T, object, object>));
-            //Action<T, object> actionDelegate = (obj, val) => del(obj, val);
+            var del = (Func<T, object, object>)setter.CreateDelegate(typeof(Func<T, object, object>));
+            Action<T, object> actionDelegate = (obj, val) => del(obj, val);
 
-            return (Action<T, object>)setter.CreateDelegate(typeof(Action<T, object>));
+            return actionDelegate;
         }
 
         public static Action<object, object> GetValueSetter(this PropertyInfo propertyInfo)
