@@ -462,6 +462,11 @@ namespace Hl7.Fhir.Model.DSTU2
             return _modelInspector.FindClassMappingByType(elementType);
         }
 
+        public ClassMapping FindClassMappingByType(string elementType)
+        {
+            return _modelInspector.FindClassMappingByType(elementType);
+        }
+
         public ClassMapping FindClassMappingForFhirDataType(string typeName)
         {
             return _modelInspector.FindClassMappingForFhirDataType(typeName);

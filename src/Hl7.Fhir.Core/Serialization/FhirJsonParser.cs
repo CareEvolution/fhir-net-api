@@ -21,7 +21,7 @@ namespace Hl7.Fhir.Serialization
             _jsonNodeSettings = new FhirJsonParsingSettings
             { 
                 AllowJsonComments = modelInfo.Version == "1.0.2",
-                PermissiveParsing = settings.PermissiveParsing
+                PermissiveParsing = _parserSettings.PermissiveParsing
             };
         }
 

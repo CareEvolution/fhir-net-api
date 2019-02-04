@@ -126,7 +126,7 @@ namespace Hl7.Fhir.Serialization.Tests
             // Total crap - passes unless we activate xhtml validation
             var nav = getJsonNode("{ 'resourceType': 'Patient', 'text': {" +
              "'status': 'generated', " +
-             "'div': 'crap' } }");
+             "'div': 'crap' } }", new FhirJsonParsingSettings { PermissiveParsing = true });
             var errors = nav.VisitAndCatch();
             Assert.AreEqual(0, errors.Count);
 

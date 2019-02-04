@@ -116,6 +116,7 @@ namespace Hl7.Fhir.Specification
         string GetFhirTypeNameForType(Type dataType);
         Type GetTypeForFhirType(string typeName);
         ClassMapping FindClassMappingByType(Type elementType);
+        ClassMapping FindClassMappingByType(string elementType);
         ClassMapping FindClassMappingForFhirDataType(string typeName);
         ClassMapping FindClassMappingForResource(string resourceTypeName);
         Base AddSubsettedTag(Base instance, SummaryType summaryType, string[] elements);

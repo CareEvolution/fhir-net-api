@@ -19,7 +19,6 @@ namespace Hl7.Fhir
     [TestClass]
     public class PocoNavigatorTests
     {
-#pragma warning disable 612,618
         [TestMethod]
         public void TestPocoPath()
         {
@@ -96,7 +95,6 @@ namespace Hl7.Fhir
             Assert.AreEqual("Patient.telecom[0].system",
                 (patient.Select("Patient.telecom[0].system").First() as PocoElementNode).ShortPath);
         }
-#pragma warning restore 612,618
 
         [TestMethod]
         public void PocoExtensionTest()
