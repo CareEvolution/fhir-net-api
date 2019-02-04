@@ -18,7 +18,11 @@ namespace Hl7.Fhir.Serialization
         public FhirJsonParser(IModelInfo modelInfo, ParserSettings settings = null) : base(modelInfo, settings)
         {
             // True for DSTU2, should be false in STU3
-            _jsonNodeSettings = new FhirJsonParsingSettings { AllowJsonComments = modelInfo.Version == "1.0.2" };
+            _jsonNodeSettings = new FhirJsonParsingSettings
+            { 
+                AllowJsonComments = modelInfo.Version == "1.0.2",
+                PermissiveParsing = settings.PermissiveParsing
+            };
         }
 
         public T Parse<T>(string json) where T : Base => (T)Parse(json, typeof(T));
