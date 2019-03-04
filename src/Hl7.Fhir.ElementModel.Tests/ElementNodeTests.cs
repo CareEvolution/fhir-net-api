@@ -3,7 +3,7 @@
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 // To introduce the DSTU2 FHIR specification
@@ -134,11 +134,36 @@ namespace Hl7.FhirPath.Tests
         [Fact]
         public void ReadsFromNav()
         {
-            var tpXml = File.ReadAllText(@"TestData\fp-test-patient.xml");
+            var tpXml = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.xml"));
             var nav = getXmlNode(tpXml).ToSourceNode();
             var nodes = SourceNode.FromNode(nav);
             Assert.True(nav.IsEqualTo(nodes).Success);
         }
+
+        //[Fact]
+        //public void CanUseBackboneTypeForEntry()
+        //{
+        //    var _sdsProvider = new PocoStructureDefinitionSummaryProvider();
+        //    var bundleJson = "{\"resourceType\":\"Bundle\", \"entry\":[{\"fullUrl\":\"http://example.org/Patient/1\"}]}";
+        //    var bundle = FhirJsonNode.Parse(bundleJson);
+        //    var typedBundle = bundle.ToTypedElement(_sdsProvider, "Bundle");
+
+        //    //Type of entry is BackboneElement, but you can't set that, see below.
+        //    Assert.Equal("BackboneElement", typedBundle.Select("$this.entry[0]").First().InstanceType);
+            
+        //    var entry = SourceNode.Node("entry", SourceNode.Valued("fullUrl", "http://example.org/Patient/1"));
+
+        //    //What DOES work:
+        //    var typedEntry = entry.ToTypedElement(_sdsProvider, "Element"); //But you can't use BackboneElement here, see below.
+        //    Assert.Equal("Element", typedEntry.InstanceType);
+
+        //    //But this leads to a System.ArgumentException: 
+        //    //Type BackboneElement is not a mappable Fhir datatype or resource
+        //    //Parameter name: type
+        //    typedEntry = entry.ToTypedElement(_sdsProvider, "BackboneElement");
+        //    Assert.Equal("BackboneElement", typedEntry.InstanceType);
+        //    // Expected to be able to use BackboneElement as type for the entry SourceNode;
+        //}
 
         [Fact]
         public void CannotUseAbstractType()

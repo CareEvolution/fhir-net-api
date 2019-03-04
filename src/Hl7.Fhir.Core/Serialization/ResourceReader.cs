@@ -1,9 +1,9 @@
-﻿/* 
+/* 
  * Copyright (c) 2014, Firely (info@fire.ly) and contributors
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 using Hl7.Fhir.ElementModel;
@@ -29,14 +29,15 @@ namespace Hl7.Fhir.Serialization
 
         public Base Deserialize(Base existing = null)
         {
-            if (_reader.InstanceType is null)
-                throw Error.Format("Underlying data source was not able to provide the actual instance type of the resource.");
+            if(_reader.InstanceType is null)
+                ComplexTypeReader.RaiseFormatError(
+                    "Underlying data source was not able to provide the actual instance type of the resource.", _reader.Location);
 
             var mapping = _modelInfo.FindClassMappingForResource(_reader.InstanceType);
 
             if (mapping == null)
-                throw Error.Format("Asked to deserialize unknown resource '" + _reader.InstanceType + "'", _reader.Location);
-
+                ComplexTypeReader.RaiseFormatError($"Asked to deserialize unknown resource '{_reader.InstanceType}'", _reader.Location);
+             
             // Delegate the actual work to the ComplexTypeReader, since
             // the serialization of Resources and ComplexTypes are virtually the same
             var cplxReader = new ComplexTypeReader(_modelInfo, _reader, Settings);

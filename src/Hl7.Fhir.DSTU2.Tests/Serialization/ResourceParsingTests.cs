@@ -3,7 +3,7 @@
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 using System;
@@ -14,6 +14,7 @@ using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Serialization.DSTU2;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Hl7.Fhir.ElementModel;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
@@ -304,6 +305,15 @@ namespace Hl7.Fhir.Tests.Serialization
             {
                 Assert.IsTrue(fe.Message.Contains("Invalid Xml encountered"));
             }
+        }
+
+        [TestMethod]
+        public void ParseEmptyContained()
+        {
+            var xml = "<Patient xmlns='http://hl7.org/fhir'><contained></contained></Patient>";
+            var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
+
+            Assert.ThrowsException<FormatException>(() => parser.Parse<Patient>(xml));
         }
     }
 }

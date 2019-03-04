@@ -3,7 +3,7 @@
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 // To introduce the DSTU2 FHIR specification
@@ -553,7 +553,7 @@ namespace Hl7.FhirPath.Tests
 
             fixture.IsTrue("Patient.contained.name[0].family.indexOf('ywo') = 4");
             fixture.IsTrue("Patient.contained.name[0].family.indexOf('') = 0");
-            fixture.IsTrue("Patient.contained.name[0].family.indexOf('qq').empty()");
+            fixture.IsTrue("Patient.contained.name[0].family.indexOf('qq') = -1");
 
             fixture.IsTrue("Patient.contained.name[0].family.contains('ywo')");
             fixture.IsTrue("Patient.contained.name[0].family.contains('ywox')=false");

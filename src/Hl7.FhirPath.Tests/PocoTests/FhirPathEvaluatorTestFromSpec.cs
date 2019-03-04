@@ -3,7 +3,7 @@
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 using System;
@@ -214,7 +214,7 @@ namespace Hl7.FhirPath.Tests
 
                 // Now perform this unit test
                 Model.DomainResource resource = null;
-                string basepath = Path.Combine(TestData.GetTestDataBasePath(),"fhirpath","input");
+                string basepath = Path.Combine(TestData.GetTestDataBasePath(), "fhirpath", "input");
 
                 if (!_cache.ContainsKey(inputfile))
                 {
@@ -332,6 +332,8 @@ namespace Hl7.FhirPath.Tests
         [Fact, Trait("Area", "FhirPathFromSpec")]
         public void testExtensionDefinitions()
         {
+            // obsolete:
+            // Bundle b = (Bundle)FhirParser.ParseResourceFromXml(File.ReadAllText(Path.Combine(TestData", "extension-definitions.xml")));
             var parser = new FhirXmlParser(DSTU2ModelInfo.Instance);
             Model.Bundle b = parser.Parse<Model.Bundle>(TestData.ReadTextFile("extension-definitions.xml"));
 

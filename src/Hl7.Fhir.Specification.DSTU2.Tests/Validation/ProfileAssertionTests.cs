@@ -20,8 +20,8 @@ namespace Hl7.Fhir.Specification.Tests
         {
             Resolver = new CachedResolver(
                     new MultiResolver(
-                        new BasicValidationTests.BundleExampleResolver(Path.Combine("TestData","validation")),
-                        new DirectorySource(Path.Combine("TestData","validation")),
+                        new BasicValidationTests.BundleExampleResolver(Path.Combine("TestData", "validation")),
+                        new DirectorySource(Path.Combine("TestData", "validation")),
                         new TestProfileArtifactSource(),
                         new ZipSource("specification.zip")));
 

@@ -14,7 +14,7 @@ namespace Hl7.Fhir.ElementModel.Tests
         [TestInitialize]
         public void SetupSource()
         {
-            var bundleXml = File.ReadAllText(Path.Combine("TestData","bundle-contained-references.xml"));
+            var bundleXml = File.ReadAllText(Path.Combine("TestData", "bundle-contained-references.xml"));
 
             var bundle = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Bundle>(bundleXml);
             Assert.IsNotNull(bundle);

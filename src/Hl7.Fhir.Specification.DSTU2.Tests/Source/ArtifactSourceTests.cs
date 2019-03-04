@@ -3,7 +3,7 @@
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 using Hl7.Fhir.Model.DSTU2;
@@ -16,6 +16,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using ssac = System.Security.AccessControl;
 
 namespace Hl7.Fhir.Specification.Tests
@@ -72,6 +73,9 @@ namespace Hl7.Fhir.Specification.Tests
             var fourthRun = sw.ElapsedMilliseconds;
             Assert.IsTrue(fourthRun > secondRun);
 
+            // Something fishy going on here.
+            // if I do not wait before the statement File.SetLastWriteTimeUtc fa.IsActual returns true
+            Thread.Sleep(500);
             File.SetLastWriteTimeUtc(zipFile, DateTimeOffset.UtcNow.DateTime);
             Assert.IsFalse(fa.IsActual());
         }
@@ -266,7 +270,7 @@ namespace Hl7.Fhir.Specification.Tests
         }
 
         // [WMR 20170817] NEW
-        // https://github.com/ewoutkramer/fhir-net-api/issues/410
+        // https://github.com/FirelyTeam/fhir-net-api/issues/410
         // DirectorySource should gracefully handle insufficient access permissions
         // i.e. silently ignore all inaccessible files & folders
 
@@ -285,7 +289,7 @@ namespace Hl7.Fhir.Specification.Tests
             var subPath3 = Path.Combine(testPath, "sub3");
             Directory.CreateDirectory(subPath3);
 
-            string srcPath = Path.Combine("TestData","snapshot-test","WMR");
+            string srcPath = Path.Combine("TestData", "snapshot-test", "WMR");
             const string srcFile1 = "MyBasic.structuredefinition.xml";
             const string srcFile2 = "MyBundle.structuredefinition.xml";
 

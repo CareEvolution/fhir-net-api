@@ -3,7 +3,7 @@
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 using System;
@@ -50,7 +50,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsNotNull(extDefn);
             Assert.IsInstanceOfType(extDefn, typeof(StructureDefinition));
 
-            var dirSource = new DirectorySource(Path.Combine("TestData","validation"));
+            var dirSource = new DirectorySource(Path.Combine("TestData", "validation"));
             extDefn = dirSource.ResolveByCanonicalUri("http://example.com/StructureDefinition/patient-telecom-reslice-ek|1.0");
 
             Assert.ThrowsException<ArgumentException>(() => dirSource.ResolveByCanonicalUri("http://example.com/StructureDefinition/patient-telecom-reslice-ek|1.0|"));

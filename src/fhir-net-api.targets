@@ -9,6 +9,7 @@
     <Copy SourceFiles="$(OutputPath)$(PackageId).$(PackageVersion).symbols.nupkg" DestinationFolder="$(PackageOutputDirectory)" />
   </Target>
 -->
+
     <Choose>  
         <When Condition="$(APPVEYOR)=='True' ">
           <PropertyGroup>

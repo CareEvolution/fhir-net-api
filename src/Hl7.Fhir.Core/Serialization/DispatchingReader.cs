@@ -3,7 +3,7 @@
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 using System.Collections;
@@ -64,7 +64,8 @@ namespace Hl7.Fhir.Serialization
             }
 
             if (_current.InstanceType is null)
-                throw Error.Format("Underlying data source was not able to provide the actual instance type of the resource.");
+                ComplexTypeReader.RaiseFormatError(
+                    "Underlying data source was not able to provide the actual instance type of the resource.", _current.Location);
 
             ClassMapping mapping = prop.Choice == ChoiceType.DatatypeChoice
                 ? getMappingForType(prop, memberName, _current.InstanceType)
@@ -87,7 +88,8 @@ namespace Hl7.Fhir.Serialization
             result = _modelInfo.FindClassMappingForFhirDataType(typeName);
 
             if (result == null)
-                throw Error.Format("Encountered polymorph member {0}, which uses unknown datatype {1}".FormatWith(memberName, typeName), _current.Location);
+                ComplexTypeReader.RaiseFormatError(
+                    $"Encountered polymorph member {memberName}, which uses unknown datatype {typeName}", _current.Location);
 
             return result;
         }

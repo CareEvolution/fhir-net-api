@@ -169,8 +169,8 @@ namespace Hl7.Fhir
         [TestMethod]
         public void IncorrectPathInTwoSuccessiveRepeatingMembers()
         {
-            var xml = File.ReadAllText(Path.Combine("TestData","issue-444-testdata.xml"));
-            var cs = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Conformance>(xml);
+            var xml = File.ReadAllText(Path.Combine("TestData", "issue-444-testdata.xml"));
+            var cs = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Conformance>(xml);
             var nav = cs.ToTypedElement();
 
             var rest = nav.Children().Where(c => c.Name == "rest").FirstOrDefault();
@@ -184,7 +184,7 @@ namespace Hl7.Fhir
         [TestMethod]
         public void PocoTypedElementPerformance()
         {
-            var xml = File.ReadAllText(@"TestData\fp-test-patient.xml");
+            var xml = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.xml"));
             var cs = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(xml);
             var nav = cs.ToTypedElement();
 
@@ -220,7 +220,7 @@ namespace Hl7.Fhir
         [TestMethod]
         public void PocoNavPerformance()
         {
-            var xml = File.ReadAllText(Path.Combine("TestData","fp-test-patient.xml"));
+            var xml = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.xml"));
             var cs = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse<Patient>(xml);
             var nav = cs.ToTypedElement();
 

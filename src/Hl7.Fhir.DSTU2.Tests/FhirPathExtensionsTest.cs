@@ -3,7 +3,7 @@
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 using System.IO;
@@ -28,7 +28,7 @@ namespace Hl7.Fhir.Tests.Introspection
         public void SetupSource()
         {
             ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
-            var bundleXml = File.ReadAllText(Path.Combine("TestData","bundle-contained-references.xml"));
+            var bundleXml = File.ReadAllText(Path.Combine("TestData", "bundle-contained-references.xml"));
 
             _parsed = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Bundle>(bundleXml);
             _bundleElement = new ScopedNode(_parsed.ToTypedElement());

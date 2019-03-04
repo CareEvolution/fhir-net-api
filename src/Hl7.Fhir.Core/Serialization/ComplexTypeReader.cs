@@ -1,9 +1,9 @@
-﻿/* 
+/* 
  * Copyright (c) 2014, Firely (info@fire.ly) and contributors
  * See the file CONTRIBUTORS for details.
  * 
  * This file is licensed under the BSD 3-Clause license
- * available at https://raw.githubusercontent.com/ewoutkramer/fhir-net-api/master/LICENSE
+ * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
 using Hl7.Fhir.ElementModel;
@@ -61,9 +61,14 @@ namespace Hl7.Fhir.Serialization
             var mapping = _modelInfo.FindClassMappingByType(_current.InstanceType);
 
             if (mapping == null)
-                throw Error.Format("Asked to deserialize unknown type '" + _current.InstanceType + "'", _current.Location);
+                RaiseFormatError($"Asked to deserialize unknown type '{_current.InstanceType}'", _current.Location);
 
             return Deserialize(mapping, existing);
+        }
+
+        internal static void RaiseFormatError(string message, string location)
+        {
+            throw Error.Format("While building a POCO: " + message, location);
         }
 
         internal Base Deserialize(ClassMapping mapping, Base existing = null)
@@ -124,7 +129,7 @@ namespace Hl7.Fhir.Serialization
                         value = mappedProperty.GetValue(existing);
 
                         if (value != null && !mappedProperty.IsCollection)
-                            throw Error.Format($"Element '{mappedProperty.Name}' must not repeat", memberData.Location);
+                            RaiseFormatError($"Element '{mappedProperty.Name}' must not repeat", memberData.Location);
                     }
 
                     var reader = new DispatchingReader(_modelInfo, memberData, Settings, arrayMode: false);
@@ -140,7 +145,7 @@ namespace Hl7.Fhir.Serialization
                         if (!Settings.AllowUnrecognizedEnums)
                         {
                             if (EnumUtility.ParseLiteral((string)value, mappedProperty.ImplementingType) == null)
-                                throw Error.Format("Literal '{0}' is not a valid value for enumeration '{1}'".FormatWith(value, mappedProperty.ImplementingType.Name), _current.Location);
+                                RaiseFormatError($"Literal '{value}' is not a valid value for enumeration '{mappedProperty.ImplementingType.Name}'", _current.Location);
                         }
 
                         ((IPrimitive)existing).ObjectValue = value;
@@ -156,7 +161,7 @@ namespace Hl7.Fhir.Serialization
                 else
                 {
                     if (Settings.AcceptUnknownMembers == false)
-                        throw Error.Format("Encountered unknown member '{0}' while de-serializing".FormatWith(memberName), memberData.Location);
+                        RaiseFormatError($"Encountered unknown member '{memberName}' while de-serializing", memberData.Location);
                     else
                         Message.Info("Skipping unknown member " + memberName);
                 }
