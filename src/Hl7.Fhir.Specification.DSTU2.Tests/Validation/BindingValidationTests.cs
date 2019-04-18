@@ -129,7 +129,7 @@ namespace Hl7.Fhir.Specification.Tests
             };
 
             var cc = new CodeableConcept();
-            cc.Coding.Add(new Coding(null,null,"Just some display text"));
+            cc.Coding.Add(new Coding(null, null, "Just some display text"));
 
             // First, with no code at all in a CC
             var result = val.ValidateBinding(cc, binding);

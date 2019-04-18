@@ -443,7 +443,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                     };
                     matchSlice(snapNav, diffNav, discriminator, match);
                     result.Add(match);
-                    
+
                     // Match to base slice? Then consume and advance to next
                     if (match.Action == MatchAction.Merge)
                     {

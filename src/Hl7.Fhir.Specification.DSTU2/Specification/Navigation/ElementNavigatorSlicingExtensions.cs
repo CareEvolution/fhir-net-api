@@ -47,25 +47,25 @@ namespace Hl7.Fhir.Specification.Navigation
             return false;
         }
 
-/*
-        /// <summary>
-        /// If the current element is a slice entry, then advance the navigator to the first associated named slice.
-        /// Otherwise remain positioned at the current element.
-        /// </summary>
-        /// <returns><c>true</c> if succesful, <c>false</c> otherwise.</returns>
-        public static bool MoveToFirstSlice(this ElementDefinitionNavigator nav)
-        {
-            if (nav == null) { throw Error.ArgumentNull(nameof(nav)); }
-            if (nav.Current == null) { throw Error.Argument(nameof(nav), "Cannot move navigator to previous slice. Current node is not set."); }
-            if (nav.Current.Slicing != null)
-            {
-                var bm = nav.Bookmark();
-                if (nav.MoveToNextSliceAtAnyLevel()) { return true; }
-                nav.ReturnToBookmark(bm);
-            }
-            return false;
-        }
-*/
+        /*
+                /// <summary>
+                /// If the current element is a slice entry, then advance the navigator to the first associated named slice.
+                /// Otherwise remain positioned at the current element.
+                /// </summary>
+                /// <returns><c>true</c> if succesful, <c>false</c> otherwise.</returns>
+                public static bool MoveToFirstSlice(this ElementDefinitionNavigator nav)
+                {
+                    if (nav == null) { throw Error.ArgumentNull(nameof(nav)); }
+                    if (nav.Current == null) { throw Error.Argument(nameof(nav), "Cannot move navigator to previous slice. Current node is not set."); }
+                    if (nav.Current.Slicing != null)
+                    {
+                        var bm = nav.Bookmark();
+                        if (nav.MoveToNextSliceAtAnyLevel()) { return true; }
+                        nav.ReturnToBookmark(bm);
+                    }
+                    return false;
+                }
+        */
 
         /// <summary>
         /// Advance the navigator to the next slice in the current slice group and on the current slicing level.
@@ -216,7 +216,7 @@ namespace Hl7.Fhir.Specification.Navigation
                         yield return intro.Bookmark();
                     }
                 }
-                
+
                 // Else...there might be something wrong, I need to add logic here to find slices that are out of 
                 // order, of have a resliced name that does not start with the last slice intro we found.
             }

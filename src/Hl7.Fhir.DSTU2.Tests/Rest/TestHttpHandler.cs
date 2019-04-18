@@ -12,7 +12,7 @@ namespace Hl7.Fhir.Tests.Rest
         public HttpRequestMessage LastRequest { get; private set; }
         public HttpResponseMessage LastResponse { get; set; }
 
-        public Action<HttpRequestMessage> BeforeRequest { get; set; } 
+        public Action<HttpRequestMessage> BeforeRequest { get; set; }
 
         public Action<HttpResponseMessage> AfterResponse { get; set; }
 

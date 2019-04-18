@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Definition of a Medication
     /// </summary>
-    [FhirType("Medication", IsResource=true)]
+    [FhirType("Medication", IsResource = true)]
     [DataContract]
     public partial class Medication : DomainResource
     {
@@ -68,7 +66,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// powder | tablets | carton +
             /// </summary>
-            [FhirElement("form", Order=40)]
+            [FhirElement("form", Order = 40)]
             [DataMember]
             public CodeableConcept Form
             {
@@ -81,8 +79,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Active or inactive ingredient
             /// </summary>
-            [FhirElement("ingredient", Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("ingredient", Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<IngredientComponent> Ingredient
             {
@@ -92,8 +90,8 @@ namespace Hl7.Fhir.Model.DSTU2
 
             private List<IngredientComponent> _ingredient;
 
-            [FhirElement("batch", Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("batch", Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<BatchComponent> Batch
             {
@@ -121,7 +119,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ProductComponent());
+                return CopyTo(new ProductComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -189,9 +187,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The product contained
             /// </summary>
-            [FhirElement("item", Order=40)]
-            [References("Substance","Medication")]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("item", Order = 40)]
+            [References("Substance", "Medication")]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Item
             {
@@ -204,7 +202,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Quantity of ingredient present
             /// </summary>
-            [FhirElement("amount", Order=50)]
+            [FhirElement("amount", Order = 50)]
             [DataMember]
             public Ratio Amount
             {
@@ -231,7 +229,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new IngredientComponent());
+                return CopyTo(new IngredientComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -292,7 +290,7 @@ namespace Hl7.Fhir.Model.DSTU2
             [NotMapped]
             public override string TypeName { get { return "BatchComponent"; } }
 
-            [FhirElement("lotNumber", Order=40)]
+            [FhirElement("lotNumber", Order = 40)]
             [DataMember]
             public FhirString LotNumberElement
             {
@@ -318,7 +316,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 }
             }
 
-            [FhirElement("expirationDate", Order=50)]
+            [FhirElement("expirationDate", Order = 50)]
             [DataMember]
             public FhirDateTime ExpirationDateElement
             {
@@ -361,7 +359,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new BatchComponent());
+                return CopyTo(new BatchComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -425,7 +423,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// E.g. box, vial, blister-pack
             /// </summary>
-            [FhirElement("container", Order=40)]
+            [FhirElement("container", Order = 40)]
             [DataMember]
             public CodeableConcept Container
             {
@@ -438,8 +436,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// What is  in the package
             /// </summary>
-            [FhirElement("content", Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("content", Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ContentComponent> Content
             {
@@ -466,7 +464,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new PackageComponent());
+                return CopyTo(new PackageComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -530,9 +528,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A product in the package
             /// </summary>
-            [FhirElement("item", Order=40)]
+            [FhirElement("item", Order = 40)]
             [References("Medication")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Item
             {
@@ -545,7 +543,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Quantity present in the package
             /// </summary>
-            [FhirElement("amount", Order=50)]
+            [FhirElement("amount", Order = 50)]
             [DataMember]
             public SimpleQuantity Amount
             {
@@ -572,7 +570,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContentComponent());
+                return CopyTo(new ContentComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -629,7 +627,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Codes that identify this medication
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=90)]
+        [FhirElement("code", InSummary = true, Order = 90)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -642,7 +640,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// True if a brand
         /// </summary>
-        [FhirElement("isBrand", InSummary=true, Order=100)]
+        [FhirElement("isBrand", InSummary = true, Order = 100)]
         [DataMember]
         public FhirBoolean IsBrandElement
         {
@@ -674,7 +672,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Manufacturer of the item
         /// </summary>
-        [FhirElement("manufacturer", InSummary=true, Order=110)]
+        [FhirElement("manufacturer", InSummary = true, Order = 110)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Manufacturer
@@ -688,7 +686,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Administrable medication details
         /// </summary>
-        [FhirElement("product", Order=120)]
+        [FhirElement("product", Order = 120)]
         [DataMember]
         public ProductComponent Product
         {
@@ -701,7 +699,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Details about packaged medications
         /// </summary>
-        [FhirElement("package", Order=130)]
+        [FhirElement("package", Order = 130)]
         [DataMember]
         public PackageComponent Package
         {
@@ -732,7 +730,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Medication());
+            return CopyTo(new Medication());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -150,7 +150,7 @@ namespace Hl7.FhirPath.Tests
 
         //    //Type of entry is BackboneElement, but you can't set that, see below.
         //    Assert.Equal("BackboneElement", typedBundle.Select("$this.entry[0]").First().InstanceType);
-            
+
         //    var entry = SourceNode.Node("entry", SourceNode.Valued("fullUrl", "http://example.org/Patient/1"));
 
         //    //What DOES work:

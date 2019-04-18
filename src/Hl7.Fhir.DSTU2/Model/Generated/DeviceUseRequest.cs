@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A request for a patient to use or be given a medical device
     /// </summary>
-    [FhirType("DeviceUseRequest", IsResource=true)]
+    [FhirType("DeviceUseRequest", IsResource = true)]
     [DataContract]
     public partial class DeviceUseRequest : DomainResource
     {
@@ -163,8 +161,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Target body site
         /// </summary>
-        [FhirElement("bodySite", InSummary=true, Order=90, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
+        [FhirElement("bodySite", InSummary = true, Order = 90, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(CodeableConcept), typeof(ResourceReference))]
         [DataMember]
         public Element BodySite
         {
@@ -177,7 +175,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | aborted
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=100)]
+        [FhirElement("status", InSummary = true, Order = 100)]
         [DataMember]
         public Code<DeviceUseRequestStatus> StatusElement
         {
@@ -209,9 +207,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Device requested
         /// </summary>
-        [FhirElement("device", InSummary=true, Order=110)]
+        [FhirElement("device", InSummary = true, Order = 110)]
         [References("Device")]
-        [Cardinality(Min=1,Max=1)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Device
         {
@@ -224,7 +222,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Encounter motivating request
         /// </summary>
-        [FhirElement("encounter", InSummary=true, Order=120)]
+        [FhirElement("encounter", InSummary = true, Order = 120)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference Encounter
@@ -238,8 +236,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Request identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=130)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 130)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -252,8 +250,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason for request
         /// </summary>
-        [FhirElement("indication", InSummary=true, Order=140)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("indication", InSummary = true, Order = 140)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Indication
         {
@@ -266,8 +264,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Notes or comments
         /// </summary>
-        [FhirElement("notes", InSummary=true, Order=150)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("notes", InSummary = true, Order = 150)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<FhirString> NotesElement
         {
@@ -291,7 +289,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     NotesElement = null;
                 else
-                    NotesElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                    NotesElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                 OnPropertyChanged("Notes");
             }
         }
@@ -299,8 +297,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// PRN
         /// </summary>
-        [FhirElement("prnReason", InSummary=true, Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("prnReason", InSummary = true, Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> PrnReason
         {
@@ -313,7 +311,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When ordered
         /// </summary>
-        [FhirElement("orderedOn", InSummary=true, Order=170)]
+        [FhirElement("orderedOn", InSummary = true, Order = 170)]
         [DataMember]
         public FhirDateTime OrderedOnElement
         {
@@ -345,7 +343,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When recorded
         /// </summary>
-        [FhirElement("recordedOn", InSummary=true, Order=180)]
+        [FhirElement("recordedOn", InSummary = true, Order = 180)]
         [DataMember]
         public FhirDateTime RecordedOnElement
         {
@@ -377,9 +375,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Focus of request
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=190)]
+        [FhirElement("subject", InSummary = true, Order = 190)]
         [References("Patient")]
-        [Cardinality(Min=1,Max=1)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Subject
         {
@@ -392,8 +390,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Schedule for use
         /// </summary>
-        [FhirElement("timing", InSummary=true, Order=200, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(Timing),typeof(Period),typeof(FhirDateTime))]
+        [FhirElement("timing", InSummary = true, Order = 200, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(Timing), typeof(Period), typeof(FhirDateTime))]
         [DataMember]
         public Element Timing
         {
@@ -406,7 +404,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// routine | urgent | stat | asap
         /// </summary>
-        [FhirElement("priority", InSummary=true, Order=210)]
+        [FhirElement("priority", InSummary = true, Order = 210)]
         [DataMember]
         public Code<DeviceUseRequestPriority> PriorityElement
         {
@@ -464,7 +462,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new DeviceUseRequest());
+            return CopyTo(new DeviceUseRequest());
         }
 
         public override bool Matches(IDeepComparable other)

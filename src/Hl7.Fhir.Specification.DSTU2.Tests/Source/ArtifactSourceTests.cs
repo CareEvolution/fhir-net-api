@@ -200,7 +200,7 @@ namespace Hl7.Fhir.Specification.Tests
         {
             // var (testPath, numFiles) = prepareExampleDirectory();
             var (testPath, numFiles) = (_testPath, _numFiles);
-            var fa = new DirectorySource(testPath, new DirectorySourceSettings() {  IncludeSubDirectories = true });
+            var fa = new DirectorySource(testPath, new DirectorySourceSettings() { IncludeSubDirectories = true });
             var names = fa.ListArtifactNames();
 
             Assert.AreEqual(numFiles, names.Count());
@@ -330,11 +330,11 @@ namespace Hl7.Fhir.Specification.Tests
 
                     // Abort unit test if we can't access file permissions
                     var fs = forbiddenFile.GetAccessControl();
-                    
+
                     // Revoke file read permissions for the current user
                     fs.AddAccessRule(rule);
                     Debug.Print($"Removing read permissions from fole: '{forbiddenFile}' ...");
-                    
+
                     // Abort unit test if we can't modify file permissions
                     forbiddenFile.SetAccessControl(fs);
 
@@ -355,7 +355,7 @@ namespace Hl7.Fhir.Specification.Tests
 
                         // [WMR 20170823] Also test ListResourceUris => prepareResources()
                         var profileUrls = dirSource.ListResourceUris(ResourceType.StructureDefinition);
-                        
+
                         // Materialize the sequence
                         var urlList = profileUrls.ToList();
                         Assert.IsFalse(urlList.Contains(profileUrl1));
@@ -399,5 +399,5 @@ namespace Hl7.Fhir.Specification.Tests
             }
         }
 
-   }
+    }
 }

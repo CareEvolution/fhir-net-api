@@ -38,7 +38,7 @@ namespace Hl7.Fhir.Model.DSTU2
             return ed;
         }
 
-        public static ElementDefinition OfType(this ElementDefinition ed, FHIRDefinedType type, string profile=null, IEnumerable<ElementDefinition.AggregationMode> aggs=null)
+        public static ElementDefinition OfType(this ElementDefinition ed, FHIRDefinedType type, string profile = null, IEnumerable<ElementDefinition.AggregationMode> aggs = null)
         {
             ed.Type.Clear();
             ed.OrType(type, profile, aggs);
@@ -50,14 +50,14 @@ namespace Hl7.Fhir.Model.DSTU2
         {
             var newType = new ElementDefinition.TypeRefComponent { Code = type };
             if (profile != null) newType.Profile = new[] { profile };
-            if(aggs != null) newType.Aggregation = aggs.Cast<ElementDefinition.AggregationMode?>();
+            if (aggs != null) newType.Aggregation = aggs.Cast<ElementDefinition.AggregationMode?>();
 
             ed.Type.Add(newType);
 
             return ed;
         }
 
-        public static ElementDefinition Value(this ElementDefinition ed, Element fix=null, Element pattern=null )
+        public static ElementDefinition Value(this ElementDefinition ed, Element fix = null, Element pattern = null)
         {
             ed.Fixed = fix;
             ed.Pattern = pattern;

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Key Object Selection
     /// </summary>
-    [FhirType("ImagingObjectSelection", IsResource=true)]
+    [FhirType("ImagingObjectSelection", IsResource = true)]
     [DataContract]
     public partial class ImagingObjectSelection : DomainResource
     {
@@ -68,8 +66,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Study instance UID
             /// </summary>
-            [FhirElement("uid", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("uid", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Oid UidElement
             {
@@ -101,7 +99,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Retrieve study URL
             /// </summary>
-            [FhirElement("url", InSummary=true, Order=50)]
+            [FhirElement("url", InSummary = true, Order = 50)]
             [DataMember]
             public FhirUri UrlElement
             {
@@ -133,7 +131,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reference to ImagingStudy
             /// </summary>
-            [FhirElement("imagingStudy", InSummary=true, Order=60)]
+            [FhirElement("imagingStudy", InSummary = true, Order = 60)]
             [References("ImagingStudy")]
             [DataMember]
             public ResourceReference ImagingStudy
@@ -147,8 +145,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Series identity of the selected instances
             /// </summary>
-            [FhirElement("series", InSummary=true, Order=70)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("series", InSummary = true, Order = 70)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<SeriesComponent> Series
             {
@@ -177,7 +175,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new StudyComponent());
+                return CopyTo(new StudyComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -249,7 +247,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Series instance UID
             /// </summary>
-            [FhirElement("uid", InSummary=true, Order=40)]
+            [FhirElement("uid", InSummary = true, Order = 40)]
             [DataMember]
             public Oid UidElement
             {
@@ -281,7 +279,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Retrieve series URL
             /// </summary>
-            [FhirElement("url", InSummary=true, Order=50)]
+            [FhirElement("url", InSummary = true, Order = 50)]
             [DataMember]
             public FhirUri UrlElement
             {
@@ -313,8 +311,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The selected instance
             /// </summary>
-            [FhirElement("instance", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("instance", InSummary = true, Order = 60)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<InstanceComponent> Instance
             {
@@ -342,7 +340,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SeriesComponent());
+                return CopyTo(new SeriesComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -410,8 +408,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// SOP class UID of instance
             /// </summary>
-            [FhirElement("sopClass", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("sopClass", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Oid SopClassElement
             {
@@ -443,8 +441,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Selected instance UID
             /// </summary>
-            [FhirElement("uid", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("uid", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Oid UidElement
             {
@@ -476,8 +474,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Retrieve instance URL
             /// </summary>
-            [FhirElement("url", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("url", InSummary = true, Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri UrlElement
             {
@@ -509,8 +507,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The frame set
             /// </summary>
-            [FhirElement("frames", InSummary=true, Order=70)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("frames", InSummary = true, Order = 70)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FramesComponent> Frames
             {
@@ -539,7 +537,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new InstanceComponent());
+                return CopyTo(new InstanceComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -611,8 +609,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Frame numbers
             /// </summary>
-            [FhirElement("frameNumbers", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("frameNumbers", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<UnsignedInt> FrameNumbersElement
             {
@@ -636,7 +634,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         FrameNumbersElement = null;
                     else
-                        FrameNumbersElement = new List<UnsignedInt>(value.Select(elem=>new UnsignedInt(elem)));
+                        FrameNumbersElement = new List<UnsignedInt>(value.Select(elem => new UnsignedInt(elem)));
                     OnPropertyChanged("FrameNumbers");
                 }
             }
@@ -644,8 +642,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Retrieve frame URL
             /// </summary>
-            [FhirElement("url", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("url", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri UrlElement
             {
@@ -691,7 +689,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new FramesComponent());
+                return CopyTo(new FramesComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -748,8 +746,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Instance UID
         /// </summary>
-        [FhirElement("uid", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("uid", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Oid UidElement
         {
@@ -781,9 +779,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Patient of the selected objects
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=100)]
+        [FhirElement("patient", InSummary = true, Order = 100)]
         [References("Patient")]
-        [Cardinality(Min=1,Max=1)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Patient
         {
@@ -796,8 +794,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason for selection
         /// </summary>
-        [FhirElement("title", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("title", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public CodeableConcept Title
         {
@@ -810,7 +808,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Description text
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=120)]
+        [FhirElement("description", InSummary = true, Order = 120)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -842,8 +840,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Author (human or machine)
         /// </summary>
-        [FhirElement("author", InSummary=true, Order=130)]
-        [References("Practitioner","Device","Organization","Patient","RelatedPerson")]
+        [FhirElement("author", InSummary = true, Order = 130)]
+        [References("Practitioner", "Device", "Organization", "Patient", "RelatedPerson")]
         [DataMember]
         public ResourceReference Author
         {
@@ -856,7 +854,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Authoring time of the selection
         /// </summary>
-        [FhirElement("authoringTime", InSummary=true, Order=140)]
+        [FhirElement("authoringTime", InSummary = true, Order = 140)]
         [DataMember]
         public FhirDateTime AuthoringTimeElement
         {
@@ -888,8 +886,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Study identity of the selected instances
         /// </summary>
-        [FhirElement("study", InSummary=true, Order=150)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("study", InSummary = true, Order = 150)]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<StudyComponent> Study
         {
@@ -922,7 +920,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new ImagingObjectSelection());
+            return CopyTo(new ImagingObjectSelection());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -44,7 +44,7 @@ namespace Hl7.FhirPath.Expressions
         public override Invokee VisitVariableRef(FP.VariableRefExpression expression, SymbolTable scope)
         {
             // HACK, for now, $this is special, and we handle in run-time, not compile time...
-            if(expression.Name == "builtin.this")
+            if (expression.Name == "builtin.this")
                 return InvokeeFactory.GetThis;
 
             // HACK, for now, $this is special, and we handle in run-time, not compile time...
@@ -76,7 +76,7 @@ namespace Hl7.FhirPath.Expressions
                 // If we have multiple candidates, delay resolution to runtime
                 return (new DynaDispatcher(name, candidateTable).Dispatcher);
             }
-            else if(count == 1)
+            else if (count == 1)
             {
                 // There's only one candidate, again we don't have the right parameter types at
                 // to match yet.

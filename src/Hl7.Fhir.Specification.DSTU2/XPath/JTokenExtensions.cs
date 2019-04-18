@@ -38,7 +38,7 @@ namespace Hl7.Fhir.XPath
             else
                 throw new FormatException("Cannot parse this resource, the 'resourceType' property is missing to indicate the type of resource");
         }
-   
+
         public static string ElementText(this JProperty prop)
         {
             // The value for a "primitive" property needs to be converted to Xml syntax
@@ -72,7 +72,7 @@ namespace Hl7.Fhir.XPath
 
                 return result.ToString();
             }
-            
+
             // We only handle primitive & complex, other nodes are expanded by the ElementChildren() function
             else
                 throw new InvalidOperationException("Don't know how to get text from a JToken of type " + prop.GetType().Name);
@@ -126,13 +126,13 @@ namespace Hl7.Fhir.XPath
         public static IEnumerable<JProperty> ElementChildren(this JProperty prop)
         {
             // At the leaves of the model, we'll find primitive properties named "(value)". They have no children.
-            if (prop.IsValueProperty()) yield break;    
+            if (prop.IsValueProperty()) yield break;
 
             // Otherwise, property MUST be a complex JObject, since we translate primitives
             // to JObjects with a value property + extensions + id, and expand JArray to repeating JProperties,
             // thus, this function may never be called with anything else
             var parent = prop.Value as JObject;
-            if(parent == null) throw new InvalidOperationException("ElementChildren expects a property that's either a JValue named '(value)' or a JObject");
+            if (parent == null) throw new InvalidOperationException("ElementChildren expects a property that's either a JValue named '(value)' or a JObject");
 
             // Special case: If we have a complex object with a 'resourceType' property, this is represented as a complex JObject with
             // a single member named after the name of the resourceType
@@ -146,7 +146,7 @@ namespace Hl7.Fhir.XPath
             // since we need to scan it anyway, and need to rescan it in some cases
             var children = parent.Properties().ToList();
 
-            foreach(var child in children)
+            foreach (var child in children)
             {
                 // Note: children can be "normal" properties or "appendix" properties (member with "_" prefix)
 
@@ -214,19 +214,19 @@ namespace Hl7.Fhir.XPath
         private static JProperty mergeAppendix(JProperty prop, JProperty appendix)
         {
             // If prop is not null, it's either a JObject or a JArray of JObject (guaranteed by the caller)
-            if(appendix == null) throw new ArgumentNullException("appendix", "Need an appendix to be able to expand property");
+            if (appendix == null) throw new ArgumentNullException("appendix", "Need an appendix to be able to expand property");
 
             bool isArray = (prop != null && prop.Value is JArray) || appendix.Value is JArray;
 
             if (!isArray)
             {
                 var appendixContents = appendix.Value as JObject;
-                if(appendixContents == null)
+                if (appendixContents == null)
                     throw new FormatException(String.Format("Appendix property {0} is not a complex value.", appendix.Name));
 
                 // There's no corresponding property for the appendix, just return the appendix
                 if (prop == null) return new JProperty(baseChildName(appendix.Name), appendix.Value);
-                              
+
                 // Combine both the primitive and the appendix into a single property
                 var value = (JObject)prop.Value;
                 value.Add(appendixContents.Properties());
@@ -241,7 +241,7 @@ namespace Hl7.Fhir.XPath
 
                 // Expand both enumerables, since we browse them multiple times anyway
                 var elements = ((JArray)prop.Value).Children().ToList();
-                var appendixElements =((JArray)appendix.Value).Children().ToList();
+                var appendixElements = ((JArray)appendix.Value).Children().ToList();
 
                 // property + appendix Arrays should be a 1-to-1 mapping, so the same size
                 if (elements.Count != appendixElements.Count)
@@ -251,9 +251,9 @@ namespace Hl7.Fhir.XPath
                 for (var index = 0; index < elements.Count; index++)
                 {
                     var primitiveElem = (JObject)elements[index];
-                    
-                    if( appendixElements[index] is JObject )
-                        primitiveElem.Add( ((JObject)appendixElements[index]).Properties());
+
+                    if (appendixElements[index] is JObject)
+                        primitiveElem.Add(((JObject)appendixElements[index]).Properties());
                 }
 
                 return prop;
@@ -298,7 +298,7 @@ namespace Hl7.Fhir.XPath
             if (arr == null)
                 throw new FormatException(String.Format("Property {0} has to be an array", propName));
 
-            if(!arr.Children().All(c => c is JValue || c.Type == JTokenType.Null))
+            if (!arr.Children().All(c => c is JValue || c.Type == JTokenType.Null))
                 throw new FormatException(String.Format("Property {0} contains an element that is neither primitive nor null", propName));
         }
 
@@ -306,10 +306,10 @@ namespace Hl7.Fhir.XPath
         {
             var arr = value as JArray;
 
-            if(arr == null)
+            if (arr == null)
                 throw new FormatException(String.Format("Property {0} has to be an array", propName));
 
-            if(!arr.Children().All(c => c is JObject || c.Type == JTokenType.Null))
+            if (!arr.Children().All(c => c is JObject || c.Type == JTokenType.Null))
                 throw new FormatException(String.Format("Property {0} contains an element that is neither complex nor null", propName));
         }
 

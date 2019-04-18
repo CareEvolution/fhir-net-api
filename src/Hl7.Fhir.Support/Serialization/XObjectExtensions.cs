@@ -102,7 +102,7 @@ namespace Hl7.Fhir.Utility
         {
             var scan = node.PreviousNode;
 
-            while(scan != null)
+            while (scan != null)
             {
                 yield return scan;
                 scan = scan.PreviousNode;

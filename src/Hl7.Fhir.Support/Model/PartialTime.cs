@@ -56,13 +56,13 @@ namespace Hl7.Fhir.Model.Primitives
             return "2016-01-01T" + value;
         }
 
-        
+
         private DateTimeOffset toDTO()
         {
             return PrimitiveTypeConverter.ConvertTo<DateTimeOffset>(toDTOParseable(_value)).ToUniversalTime();
         }
 
-     
+
         // overload operator <
         public static bool operator <(PartialTime a, PartialTime b)
         {
@@ -104,7 +104,7 @@ namespace Hl7.Fhir.Model.Primitives
             var left = toDTO();
             var right = other.toDTO();
 
-            return   (left.Year == right.Year) && (left.Month == right.Month) && (left.Day == right.Day)              
+            return (left.Year == right.Year) && (left.Month == right.Month) && (left.Day == right.Day)
                             && (left.Hour == right.Hour) && (left.Minute == right.Minute);
         }
 

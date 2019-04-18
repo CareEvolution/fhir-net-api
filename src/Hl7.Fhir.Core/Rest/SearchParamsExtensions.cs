@@ -25,7 +25,7 @@ namespace Hl7.Fhir.Rest
             return qry;
         }
 
-	    public static SearchParams Where(this SearchParams qry, string criterium)
+        public static SearchParams Where(this SearchParams qry, string criterium)
         {
             var keyVal = criterium.SplitLeft('=');
             qry.Add(keyVal.Item1, keyVal.Item2);
@@ -35,9 +35,9 @@ namespace Hl7.Fhir.Rest
 
         public static SearchParams Custom(this SearchParams qry, string customQueryName)
         {
-			if (customQueryName == null) throw Error.ArgumentNull(nameof(customQueryName));
+            if (customQueryName == null) throw Error.ArgumentNull(nameof(customQueryName));
 
-			qry.Query = customQueryName;
+            qry.Query = customQueryName;
             return qry;
         }
 
@@ -63,7 +63,7 @@ namespace Hl7.Fhir.Rest
 
 
         public static SearchParams SummaryOnly(this SearchParams qry, SummaryType summaryOnly = SummaryType.True)
-        {            
+        {
             qry.Summary = summaryOnly;
             return qry;
         }

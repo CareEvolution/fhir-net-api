@@ -39,10 +39,10 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.AreEqual("Patient", root.Name);
 
             var children = root.ElementChildren();
-                    
+
             Assert.IsFalse(children.Any(c => c.Name == "resourceType"));
-            Assert.AreEqual(1,children.Count(c => c.Name == "identifier"));
-            Assert.AreEqual(2,children.Count(c => c.Name == "name"));
+            Assert.AreEqual(1, children.Count(c => c.Name == "identifier"));
+            Assert.AreEqual(2, children.Count(c => c.Name == "name"));
             Assert.AreEqual(1, children.Count(c => c.Name == "birthDate"));
         }
 
@@ -88,7 +88,7 @@ namespace Hl7.Fhir.Specification.Tests
 
             JToken crap;
             Assert.IsFalse(active.TryGetValue("(value)", out crap)); // !!!! there are extensions, but no value
-            Assert.IsNotNull(active["extension"]);           
+            Assert.IsNotNull(active["extension"]);
         }
 
         [TestMethod]
@@ -123,7 +123,7 @@ namespace Hl7.Fhir.Specification.Tests
             var children = root.ElementChildren();
 
             var names = children.Where(c => c.Name == "name");
-            Assert.AreEqual(2,names.Count());
+            Assert.AreEqual(2, names.Count());
             Assert.IsTrue(names.All(n => n.Value is JObject));
 
             // move into first given name
@@ -133,8 +133,8 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.AreEqual(2, firstNames.Count());
 
             Assert.IsTrue(firstNames.All(n => n.Value is JObject));
-            Assert.AreEqual("Peter",firstNames.First().PrimitivePropertyValue().Value);
-            Assert.AreEqual("James",firstNames.Skip(1).First().PrimitivePropertyValue().Value);
+            Assert.AreEqual("Peter", firstNames.First().PrimitivePropertyValue().Value);
+            Assert.AreEqual("James", firstNames.Skip(1).First().PrimitivePropertyValue().Value);
         }
 
         [TestMethod]

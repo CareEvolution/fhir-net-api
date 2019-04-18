@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A homogeneous material with a definite composition
     /// </summary>
-    [FhirType("Substance", IsResource=true)]
+    [FhirType("Substance", IsResource = true)]
     [DataContract]
     public partial class Substance : DomainResource
     {
@@ -68,7 +66,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Identifier of the package/container
             /// </summary>
-            [FhirElement("identifier", InSummary=true, Order=40)]
+            [FhirElement("identifier", InSummary = true, Order = 40)]
             [DataMember]
             public Identifier Identifier
             {
@@ -81,7 +79,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// When no longer valid to use
             /// </summary>
-            [FhirElement("expiry", InSummary=true, Order=50)]
+            [FhirElement("expiry", InSummary = true, Order = 50)]
             [DataMember]
             public FhirDateTime ExpiryElement
             {
@@ -113,7 +111,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Amount of substance in the package
             /// </summary>
-            [FhirElement("quantity", InSummary=true, Order=60)]
+            [FhirElement("quantity", InSummary = true, Order = 60)]
             [DataMember]
             public SimpleQuantity Quantity
             {
@@ -141,7 +139,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new InstanceComponent());
+                return CopyTo(new InstanceComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -209,7 +207,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Optional amount (concentration)
             /// </summary>
-            [FhirElement("quantity", InSummary=true, Order=40)]
+            [FhirElement("quantity", InSummary = true, Order = 40)]
             [DataMember]
             public Ratio Quantity
             {
@@ -222,9 +220,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A component of the substance
             /// </summary>
-            [FhirElement("substance", InSummary=true, Order=50)]
+            [FhirElement("substance", InSummary = true, Order = 50)]
             [References("Substance")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Substance
             {
@@ -251,7 +249,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new IngredientComponent());
+                return CopyTo(new IngredientComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -308,8 +306,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unique identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -322,8 +320,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What class/type of substance this is
         /// </summary>
-        [FhirElement("category", InSummary=true, Order=100)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("category", InSummary = true, Order = 100)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Category
         {
@@ -336,8 +334,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What substance this is
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("code", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -350,7 +348,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Textual description of the substance, comments
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=120)]
+        [FhirElement("description", InSummary = true, Order = 120)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -382,8 +380,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If this describes a specific package/container of the substance
         /// </summary>
-        [FhirElement("instance", InSummary=true, Order=130)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("instance", InSummary = true, Order = 130)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<InstanceComponent> Instance
         {
@@ -396,8 +394,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Composition information about the substance
         /// </summary>
-        [FhirElement("ingredient", InSummary=true, Order=140)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("ingredient", InSummary = true, Order = 140)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<IngredientComponent> Ingredient
         {
@@ -429,7 +427,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Substance());
+            return CopyTo(new Substance());
         }
 
         public override bool Matches(IDeepComparable other)

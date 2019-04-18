@@ -21,13 +21,13 @@ namespace Hl7.Fhir.Validation
             var result = outcome;
 
             foreach (var issue in result.Issue)
-                if(!issue.Success) 
+                if (!issue.Success)
                     issue.Severity = OperationOutcome.IssueSeverity.Information;
         }
 
         public static void Flatten(this OperationOutcome outcome)
         {
-            foreach(var issue in outcome.Issue)
+            foreach (var issue in outcome.Issue)
             {
                 issue.RemoveExtension(ValidationOutcomeExtensions.OPERATIONOUTCOME_ISSUE_HIERARCHY);
             }

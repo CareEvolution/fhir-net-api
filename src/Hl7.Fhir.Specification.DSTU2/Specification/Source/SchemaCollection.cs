@@ -27,19 +27,19 @@ namespace Hl7.Fhir.Specification.Source
         }
 
 
-        private static string[] minimalSchemas = { "xml.xsd", "fhir-single.xsd", "fhir-xhtml.xsd","xmldsig-core-schema.xsd" };
-        
+        private static string[] minimalSchemas = { "xml.xsd", "fhir-single.xsd", "fhir-xhtml.xsd", "xmldsig-core-schema.xsd" };
+
         private static XmlSchemaSet compileValidationSchemas()
         {
             var resolver = ZipSource.CreateValidationSource();
 
             XmlSchemaSet schemas = new XmlSchemaSet();
 
-            foreach(var schemaName in minimalSchemas)
+            foreach (var schemaName in minimalSchemas)
             {
                 using (var schema = resolver.LoadArtifactByName(schemaName))
                 {
-                    if(schema == null)
+                    if (schema == null)
                         throw new FileNotFoundException("Cannot find manifest resources that represent the minimal set of schemas required for validation");
 
                     schemas.Add(null, XmlReader.Create(schema));   // null = use schema namespace as specified in schema file

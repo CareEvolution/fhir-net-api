@@ -70,7 +70,7 @@ namespace Hl7.Fhir.Tests.Model
         [TestMethod]
         public void TodayTests()
         {
-            var todayLocal = Date.Today(); 
+            var todayLocal = Date.Today();
             Assert.AreEqual(DateTimeOffset.Now.ToString("yyy-MM-dd"), todayLocal.Value);
 
             var todayUtc = Date.UtcToday();
@@ -105,7 +105,7 @@ namespace Hl7.Fhir.Tests.Model
                 var uriEncodedUrl = string.Format(urlFormat, Uri.EscapeDataString(param1), Uri.EscapeDataString(param2));
                 Assert.AreEqual(manuallyEncodedUrl, uriEncodedUrl);
                 var uri = new Uri(manuallyEncodedUrl, UriKind.RelativeOrAbsolute);
-                var bundle = new Bundle {SelfLink = uri};
+                var bundle = new Bundle { SelfLink = uri };
                 if (uri.IsAbsoluteUri)
                 {
                     Assert.AreEqual(uri.AbsoluteUri, bundle.SelfLink.AbsoluteUri);
@@ -476,7 +476,7 @@ namespace Hl7.Fhir.Tests.Model
             Assert.IsNull(ns.UrlElement);
 
             ns.UniqueId.Add(new NamingSystem.UniqueIdComponent { Value = "http://nu.nl" });
-            ns.UniqueId.Add(new NamingSystem.UniqueIdComponent { Value = "http://dan.nl", Preferred=true });
+            ns.UniqueId.Add(new NamingSystem.UniqueIdComponent { Value = "http://dan.nl", Preferred = true });
 
             Assert.AreEqual("http://dan.nl", ns.Url);
             Assert.AreEqual("http://dan.nl", ns.UrlElement.Value);

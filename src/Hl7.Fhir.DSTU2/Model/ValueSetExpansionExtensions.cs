@@ -9,8 +9,8 @@ namespace Hl7.Fhir.Model.DSTU2
 {
     public static class ValueSetExpansionExtensions
     {
-     
-        public static ValueSet.ContainsComponent FindCode(this IEnumerable<ValueSet.ContainsComponent> cnt, string code, string system=null)
+
+        public static ValueSet.ContainsComponent FindCode(this IEnumerable<ValueSet.ContainsComponent> cnt, string code, string system = null)
         {
             foreach (var contains in cnt)
             {
@@ -22,7 +22,7 @@ namespace Hl7.Fhir.Model.DSTU2
         }
 
 
-        public static ValueSet.ContainsComponent FindCode(this ValueSet.ContainsComponent contains, string code, string system=null)
+        public static ValueSet.ContainsComponent FindCode(this ValueSet.ContainsComponent contains, string code, string system = null)
         {
             // Direct hit
             if (code == contains.Code && (system == null || system == contains.System))

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// System of unique identification
     /// </summary>
-    [FhirType("NamingSystem", IsResource=true)]
+    [FhirType("NamingSystem", IsResource = true)]
     [DataContract]
     public partial class NamingSystem : DomainResource
     {
@@ -128,7 +126,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of a individual to contact
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=40)]
+            [FhirElement("name", InSummary = true, Order = 40)]
             [DataMember]
             public FhirString NameElement
             {
@@ -160,8 +158,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Contact details for individual or publisher
             /// </summary>
-            [FhirElement("telecom", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("telecom", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ContactPoint> Telecom
             {
@@ -188,7 +186,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContactComponent());
+                return CopyTo(new ContactComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -252,8 +250,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// oid | uuid | uri | other
             /// </summary>
-            [FhirElement("type", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<NamingSystemIdentifierType> TypeElement
             {
@@ -285,8 +283,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The unique identifier
             /// </summary>
-            [FhirElement("value", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("value", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString ValueElement
             {
@@ -318,7 +316,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Is this the id that should be used for this type
             /// </summary>
-            [FhirElement("preferred", Order=60)]
+            [FhirElement("preferred", Order = 60)]
             [DataMember]
             public FhirBoolean PreferredElement
             {
@@ -350,7 +348,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// When is identifier valid?
             /// </summary>
-            [FhirElement("period", Order=70)]
+            [FhirElement("period", Order = 70)]
             [DataMember]
             public Period Period
             {
@@ -379,7 +377,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new UniqueIdComponent());
+                return CopyTo(new UniqueIdComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -444,8 +442,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Human-readable label
         /// </summary>
-        [FhirElement("name", Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("name", Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirString NameElement
         {
@@ -477,8 +475,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// draft | active | retired
         /// </summary>
-        [FhirElement("status", Order=100)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", Order = 100)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ConformanceResourceStatus> StatusElement
         {
@@ -510,8 +508,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// codesystem | identifier | root
         /// </summary>
-        [FhirElement("kind", Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("kind", Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<NamingSystemType> KindElement
         {
@@ -543,7 +541,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Name of the publisher (Organization or individual)
         /// </summary>
-        [FhirElement("publisher", InSummary=true, Order=120)]
+        [FhirElement("publisher", InSummary = true, Order = 120)]
         [DataMember]
         public FhirString PublisherElement
         {
@@ -575,8 +573,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contact details of the publisher
         /// </summary>
-        [FhirElement("contact", InSummary=true, Order=130)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("contact", InSummary = true, Order = 130)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactComponent> Contact
         {
@@ -589,7 +587,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who maintains system namespace?
         /// </summary>
-        [FhirElement("responsible", Order=140)]
+        [FhirElement("responsible", Order = 140)]
         [DataMember]
         public FhirString ResponsibleElement
         {
@@ -621,8 +619,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Publication Date(/time)
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=150)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("date", InSummary = true, Order = 150)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -654,7 +652,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// e.g. driver,  provider,  patient, bank etc.
         /// </summary>
-        [FhirElement("type", Order=160)]
+        [FhirElement("type", Order = 160)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -667,7 +665,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What does naming system identify?
         /// </summary>
-        [FhirElement("description", Order=170)]
+        [FhirElement("description", Order = 170)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -699,8 +697,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Content intends to support these contexts
         /// </summary>
-        [FhirElement("useContext", InSummary=true, Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("useContext", InSummary = true, Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> UseContext
         {
@@ -713,7 +711,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// How/where is it used
         /// </summary>
-        [FhirElement("usage", Order=190)]
+        [FhirElement("usage", Order = 190)]
         [DataMember]
         public FhirString UsageElement
         {
@@ -745,8 +743,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unique identifiers used for system
         /// </summary>
-        [FhirElement("uniqueId", Order=200)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("uniqueId", Order = 200)]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<UniqueIdComponent> UniqueId
         {
@@ -759,7 +757,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Use this instead
         /// </summary>
-        [FhirElement("replacedBy", Order=210)]
+        [FhirElement("replacedBy", Order = 210)]
         [References("NamingSystem")]
         [DataMember]
         public ResourceReference ReplacedBy
@@ -835,7 +833,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new NamingSystem());
+            return CopyTo(new NamingSystem());
         }
 
         public override bool Matches(IDeepComparable other)

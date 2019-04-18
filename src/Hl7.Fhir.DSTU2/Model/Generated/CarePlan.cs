@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Healthcare plan for patient or group
     /// </summary>
-    [FhirType("CarePlan", IsResource=true)]
+    [FhirType("CarePlan", IsResource = true)]
     [DataContract]
     public partial class CarePlan : DomainResource
     {
@@ -179,7 +177,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// includes | replaces | fulfills
             /// </summary>
-            [FhirElement("code", Order=40)]
+            [FhirElement("code", Order = 40)]
             [DataMember]
             public Code<CarePlanRelationship> CodeElement
             {
@@ -211,9 +209,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Plan relationship exists with
             /// </summary>
-            [FhirElement("plan", Order=50)]
+            [FhirElement("plan", Order = 50)]
             [References("CarePlan")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Plan
             {
@@ -240,7 +238,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RelatedPlanComponent());
+                return CopyTo(new RelatedPlanComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -304,7 +302,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of involvement
             /// </summary>
-            [FhirElement("role", Order=40)]
+            [FhirElement("role", Order = 40)]
             [DataMember]
             public CodeableConcept Role
             {
@@ -317,8 +315,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Who is involved
             /// </summary>
-            [FhirElement("member", Order=50)]
-            [References("Practitioner","RelatedPerson","Patient","Organization")]
+            [FhirElement("member", Order = 50)]
+            [References("Practitioner", "RelatedPerson", "Patient", "Organization")]
             [DataMember]
             public ResourceReference Member
             {
@@ -345,7 +343,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ParticipantComponent());
+                return CopyTo(new ParticipantComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -409,8 +407,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Appointments, orders, etc.
             /// </summary>
-            [FhirElement("actionResulting", Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("actionResulting", Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> ActionResulting
             {
@@ -423,8 +421,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Comments about the activity status/progress
             /// </summary>
-            [FhirElement("progress", Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("progress", Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Annotation> Progress
             {
@@ -437,8 +435,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Activity details defined in specific resource
             /// </summary>
-            [FhirElement("reference", Order=60)]
-            [References("Appointment","CommunicationRequest","DeviceUseRequest","DiagnosticOrder","MedicationOrder","NutritionOrder","Order","ProcedureRequest","ProcessRequest","ReferralRequest","SupplyRequest","VisionPrescription")]
+            [FhirElement("reference", Order = 60)]
+            [References("Appointment", "CommunicationRequest", "DeviceUseRequest", "DiagnosticOrder", "MedicationOrder", "NutritionOrder", "Order", "ProcedureRequest", "ProcessRequest", "ReferralRequest", "SupplyRequest", "VisionPrescription")]
             [DataMember]
             public ResourceReference Reference
             {
@@ -451,7 +449,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// In-line definition of activity
             /// </summary>
-            [FhirElement("detail", Order=70)]
+            [FhirElement("detail", Order = 70)]
             [DataMember]
             public DetailComponent Detail
             {
@@ -480,7 +478,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ActivityComponent());
+                return CopyTo(new ActivityComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -552,7 +550,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// diet | drug | encounter | observation | procedure | supply | other
             /// </summary>
-            [FhirElement("category", Order=40)]
+            [FhirElement("category", Order = 40)]
             [DataMember]
             public CodeableConcept Category
             {
@@ -565,7 +563,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Detail type of activity
             /// </summary>
-            [FhirElement("code", Order=50)]
+            [FhirElement("code", Order = 50)]
             [DataMember]
             public CodeableConcept Code
             {
@@ -578,8 +576,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Why activity should be done
             /// </summary>
-            [FhirElement("reasonCode", Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("reasonCode", Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> ReasonCode
             {
@@ -592,9 +590,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Condition triggering need for activity
             /// </summary>
-            [FhirElement("reasonReference", Order=70)]
+            [FhirElement("reasonReference", Order = 70)]
             [References("Condition")]
-            [Cardinality(Min=0,Max=-1)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> ReasonReference
             {
@@ -607,9 +605,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Goals this activity relates to
             /// </summary>
-            [FhirElement("goal", Order=80)]
+            [FhirElement("goal", Order = 80)]
             [References("Goal")]
-            [Cardinality(Min=0,Max=-1)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> Goal
             {
@@ -622,7 +620,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// not-started | scheduled | in-progress | on-hold | completed | cancelled
             /// </summary>
-            [FhirElement("status", Order=90)]
+            [FhirElement("status", Order = 90)]
             [DataMember]
             public Code<CarePlanActivityStatus> StatusElement
             {
@@ -654,7 +652,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reason for current status
             /// </summary>
-            [FhirElement("statusReason", Order=100)]
+            [FhirElement("statusReason", Order = 100)]
             [DataMember]
             public CodeableConcept StatusReason
             {
@@ -667,8 +665,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Do NOT do
             /// </summary>
-            [FhirElement("prohibited", Order=110)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("prohibited", Order = 110)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirBoolean ProhibitedElement
             {
@@ -700,8 +698,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// When activity is to occur
             /// </summary>
-            [FhirElement("scheduled", Order=120, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Timing),typeof(Period),typeof(FhirString))]
+            [FhirElement("scheduled", Order = 120, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(Timing), typeof(Period), typeof(FhirString))]
             [DataMember]
             public Element Scheduled
             {
@@ -714,7 +712,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Where it should happen
             /// </summary>
-            [FhirElement("location", Order=130)]
+            [FhirElement("location", Order = 130)]
             [References("Location")]
             [DataMember]
             public ResourceReference Location
@@ -728,9 +726,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Who will be responsible?
             /// </summary>
-            [FhirElement("performer", Order=140)]
-            [References("Practitioner","Organization","RelatedPerson","Patient")]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("performer", Order = 140)]
+            [References("Practitioner", "Organization", "RelatedPerson", "Patient")]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> Performer
             {
@@ -743,8 +741,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// What is to be administered/supplied
             /// </summary>
-            [FhirElement("product", Order=150, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
+            [FhirElement("product", Order = 150, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(CodeableConcept), typeof(ResourceReference))]
             [DataMember]
             public Element Product
             {
@@ -757,7 +755,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// How to consume/day?
             /// </summary>
-            [FhirElement("dailyAmount", Order=160)]
+            [FhirElement("dailyAmount", Order = 160)]
             [DataMember]
             public SimpleQuantity DailyAmount
             {
@@ -770,7 +768,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// How much to administer/supply/consume
             /// </summary>
-            [FhirElement("quantity", Order=170)]
+            [FhirElement("quantity", Order = 170)]
             [DataMember]
             public SimpleQuantity Quantity
             {
@@ -783,7 +781,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Extra info describing activity to perform
             /// </summary>
-            [FhirElement("description", Order=180)]
+            [FhirElement("description", Order = 180)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -842,7 +840,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new DetailComponent());
+                return CopyTo(new DetailComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -951,8 +949,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External Ids for this plan
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -965,8 +963,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who care plan is for
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=100)]
-        [References("Patient","Group")]
+        [FhirElement("subject", InSummary = true, Order = 100)]
+        [References("Patient", "Group")]
         [DataMember]
         public ResourceReference Subject
         {
@@ -979,8 +977,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// proposed | draft | active | completed | cancelled
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<CarePlanStatus> StatusElement
         {
@@ -1012,8 +1010,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Created in context of
         /// </summary>
-        [FhirElement("context", InSummary=true, Order=120)]
-        [References("Encounter","EpisodeOfCare")]
+        [FhirElement("context", InSummary = true, Order = 120)]
+        [References("Encounter", "EpisodeOfCare")]
         [DataMember]
         public ResourceReference Context
         {
@@ -1026,7 +1024,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Time period plan covers
         /// </summary>
-        [FhirElement("period", InSummary=true, Order=130)]
+        [FhirElement("period", InSummary = true, Order = 130)]
         [DataMember]
         public Period Period
         {
@@ -1039,9 +1037,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who is responsible for contents of the plan
         /// </summary>
-        [FhirElement("author", InSummary=true, Order=140)]
-        [References("Patient","Practitioner","RelatedPerson","Organization")]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("author", InSummary = true, Order = 140)]
+        [References("Patient", "Practitioner", "RelatedPerson", "Organization")]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Author
         {
@@ -1054,7 +1052,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When last updated
         /// </summary>
-        [FhirElement("modified", InSummary=true, Order=150)]
+        [FhirElement("modified", InSummary = true, Order = 150)]
         [DataMember]
         public FhirDateTime ModifiedElement
         {
@@ -1086,8 +1084,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Type of plan
         /// </summary>
-        [FhirElement("category", InSummary=true, Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("category", InSummary = true, Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Category
         {
@@ -1100,7 +1098,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Summary of nature of plan
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=170)]
+        [FhirElement("description", InSummary = true, Order = 170)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -1132,9 +1130,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Health issues this plan addresses
         /// </summary>
-        [FhirElement("addresses", InSummary=true, Order=180)]
+        [FhirElement("addresses", InSummary = true, Order = 180)]
         [References("Condition")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Addresses
         {
@@ -1147,8 +1145,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Information considered as part of plan
         /// </summary>
-        [FhirElement("support", Order=190)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("support", Order = 190)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Support
         {
@@ -1161,8 +1159,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Plans related to this one
         /// </summary>
-        [FhirElement("relatedPlan", Order=200)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("relatedPlan", Order = 200)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<RelatedPlanComponent> RelatedPlan
         {
@@ -1175,8 +1173,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who's involved in plan?
         /// </summary>
-        [FhirElement("participant", Order=210)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("participant", Order = 210)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ParticipantComponent> Participant
         {
@@ -1189,9 +1187,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Desired outcome of plan
         /// </summary>
-        [FhirElement("goal", Order=220)]
+        [FhirElement("goal", Order = 220)]
         [References("Goal")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Goal
         {
@@ -1204,8 +1202,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Action to occur as part of plan
         /// </summary>
-        [FhirElement("activity", Order=230)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("activity", Order = 230)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ActivityComponent> Activity
         {
@@ -1218,7 +1216,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Comments about the plan
         /// </summary>
-        [FhirElement("note", Order=240)]
+        [FhirElement("note", Order = 240)]
         [DataMember]
         public Annotation Note
         {
@@ -1276,7 +1274,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new CarePlan());
+            return CopyTo(new CarePlan());
         }
 
         public override bool Matches(IDeepComparable other)

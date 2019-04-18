@@ -15,7 +15,7 @@ using System.Xml.Linq;
 namespace Hl7.Fhir.Serialization
 {
     internal static class XObjectFhirXmlExtensions
-    {         
+    {
         public static bool IsResourceName(this XName elementName) =>
             Char.IsUpper(elementName.LocalName, 0) && elementName.Namespace == XmlNs.XFHIR;
 
@@ -66,7 +66,7 @@ namespace Hl7.Fhir.Serialization
         public static bool IsRelevantNode(this XObject scan)
         {
             return scan.NodeType == XmlNodeType.Element ||
-                   (scan is XAttribute attr && isRelevantAttribute(attr));            
+                   (scan is XAttribute attr && isRelevantAttribute(attr));
         }
 
         private static bool isRelevantAttribute(XAttribute a) =>

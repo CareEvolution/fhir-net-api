@@ -37,7 +37,7 @@ namespace Hl7.FhirPath.Tests
             var newq4 = new Quantity(3.15, "kg");
 
             Assert.Equal(newq, newq2);
-            Assert.Throws<NotSupportedException>( () => newq == newq3);
+            Assert.Throws<NotSupportedException>(() => newq == newq3);
             Assert.NotEqual(newq, newq4);
         }
 
@@ -64,7 +64,7 @@ namespace Hl7.FhirPath.Tests
             var a = new Quantity(3.14m, "kg");
             var b = new Quantity(30.5, "g");
 
-            Assert.Throws<NotSupportedException>( () => a < b);
+            Assert.Throws<NotSupportedException>(() => a < b);
             Assert.Throws<NotSupportedException>(() => a == b);
             Assert.Throws<NotSupportedException>(() => a >= b);
 

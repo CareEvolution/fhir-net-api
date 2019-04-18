@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Sample for analysis
     /// </summary>
-    [FhirType("Specimen", IsResource=true)]
+    [FhirType("Specimen", IsResource = true)]
     [DataContract]
     public partial class Specimen : DomainResource
     {
@@ -101,7 +99,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Who collected the specimen
             /// </summary>
-            [FhirElement("collector", InSummary=true, Order=40)]
+            [FhirElement("collector", InSummary = true, Order = 40)]
             [References("Practitioner")]
             [DataMember]
             public ResourceReference Collector
@@ -115,8 +113,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Collector comments
             /// </summary>
-            [FhirElement("comment", Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("comment", Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirString> CommentElement
             {
@@ -140,7 +138,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         CommentElement = null;
                     else
-                        CommentElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                        CommentElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                     OnPropertyChanged("Comment");
                 }
             }
@@ -148,8 +146,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Collection time
             /// </summary>
-            [FhirElement("collected", InSummary=true, Order=60, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(FhirDateTime),typeof(Period))]
+            [FhirElement("collected", InSummary = true, Order = 60, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(FhirDateTime), typeof(Period))]
             [DataMember]
             public Element Collected
             {
@@ -162,7 +160,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The quantity of specimen collected
             /// </summary>
-            [FhirElement("quantity", Order=70)]
+            [FhirElement("quantity", Order = 70)]
             [DataMember]
             public SimpleQuantity Quantity
             {
@@ -175,7 +173,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Technique used to perform collection
             /// </summary>
-            [FhirElement("method", Order=80)]
+            [FhirElement("method", Order = 80)]
             [DataMember]
             public CodeableConcept Method
             {
@@ -188,7 +186,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Anatomical collection site
             /// </summary>
-            [FhirElement("bodySite", Order=90)]
+            [FhirElement("bodySite", Order = 90)]
             [DataMember]
             public CodeableConcept BodySite
             {
@@ -219,7 +217,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new CollectionComponent());
+                return CopyTo(new CollectionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -299,7 +297,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Textual description of procedure
             /// </summary>
-            [FhirElement("description", Order=40)]
+            [FhirElement("description", Order = 40)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -331,7 +329,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Indicates the treatment or processing step  applied to the specimen
             /// </summary>
-            [FhirElement("procedure", Order=50)]
+            [FhirElement("procedure", Order = 50)]
             [DataMember]
             public CodeableConcept Procedure
             {
@@ -344,9 +342,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Material used in the processing step
             /// </summary>
-            [FhirElement("additive", Order=60)]
+            [FhirElement("additive", Order = 60)]
             [References("Substance")]
-            [Cardinality(Min=0,Max=-1)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> Additive
             {
@@ -374,7 +372,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new TreatmentComponent());
+                return CopyTo(new TreatmentComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -442,8 +440,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Id for the container
             /// </summary>
-            [FhirElement("identifier", InSummary=true, Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("identifier", InSummary = true, Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Identifier> Identifier
             {
@@ -456,7 +454,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Textual description of the container
             /// </summary>
-            [FhirElement("description", Order=50)]
+            [FhirElement("description", Order = 50)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -488,7 +486,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Kind of container directly associated with specimen
             /// </summary>
-            [FhirElement("type", Order=60)]
+            [FhirElement("type", Order = 60)]
             [DataMember]
             public CodeableConcept Type
             {
@@ -501,7 +499,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Container volume or size
             /// </summary>
-            [FhirElement("capacity", Order=70)]
+            [FhirElement("capacity", Order = 70)]
             [DataMember]
             public SimpleQuantity Capacity
             {
@@ -514,7 +512,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Quantity of specimen within container
             /// </summary>
-            [FhirElement("specimenQuantity", Order=80)]
+            [FhirElement("specimenQuantity", Order = 80)]
             [DataMember]
             public SimpleQuantity SpecimenQuantity
             {
@@ -527,8 +525,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Additive associated with container
             /// </summary>
-            [FhirElement("additive", Order=90, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
+            [FhirElement("additive", Order = 90, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(CodeableConcept), typeof(ResourceReference))]
             [DataMember]
             public Element Additive
             {
@@ -559,7 +557,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContainerComponent());
+                return CopyTo(new ContainerComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -632,8 +630,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External Identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -646,7 +644,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// available | unavailable | unsatisfactory | entered-in-error
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=100)]
+        [FhirElement("status", InSummary = true, Order = 100)]
         [DataMember]
         public Code<SpecimenStatus> StatusElement
         {
@@ -678,7 +676,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Kind of material that forms the specimen
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=110)]
+        [FhirElement("type", InSummary = true, Order = 110)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -691,9 +689,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Specimen from which this specimen originated
         /// </summary>
-        [FhirElement("parent", Order=120)]
+        [FhirElement("parent", Order = 120)]
         [References("Specimen")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Parent
         {
@@ -706,9 +704,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Where the specimen came from. This may be from the patient(s) or from the environment or a device
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=130)]
-        [References("Patient","Group","Device","Substance")]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("subject", InSummary = true, Order = 130)]
+        [References("Patient", "Group", "Device", "Substance")]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Subject
         {
@@ -721,7 +719,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Identifier assigned by the lab
         /// </summary>
-        [FhirElement("accessionIdentifier", InSummary=true, Order=140)]
+        [FhirElement("accessionIdentifier", InSummary = true, Order = 140)]
         [DataMember]
         public Identifier AccessionIdentifier
         {
@@ -734,7 +732,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The time when specimen was received for processing
         /// </summary>
-        [FhirElement("receivedTime", InSummary=true, Order=150)]
+        [FhirElement("receivedTime", InSummary = true, Order = 150)]
         [DataMember]
         public FhirDateTime ReceivedTimeElement
         {
@@ -766,7 +764,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Collection details
         /// </summary>
-        [FhirElement("collection", Order=160)]
+        [FhirElement("collection", Order = 160)]
         [DataMember]
         public CollectionComponent Collection
         {
@@ -779,8 +777,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Treatment and processing step details
         /// </summary>
-        [FhirElement("treatment", Order=170)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("treatment", Order = 170)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<TreatmentComponent> Treatment
         {
@@ -793,8 +791,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Direct container of specimen (tube/slide, etc.)
         /// </summary>
-        [FhirElement("container", Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("container", Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContainerComponent> Container
         {
@@ -830,7 +828,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Specimen());
+            return CopyTo(new Specimen());
         }
 
         public override bool Matches(IDeepComparable other)

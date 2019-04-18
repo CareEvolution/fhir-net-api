@@ -18,11 +18,11 @@ namespace Hl7.FhirPath.Tests
         }
     }
 
-    public static class Test 
+    public static class Test
     {
         public static void Fail(string message)
         {
-            throw new Exception("Test failed. "+ message);
+            throw new Exception("Test failed. " + message);
         }
 
         public static bool IsInstanceOfType(object value, Type expectedType)

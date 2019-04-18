@@ -7,8 +7,8 @@
         /// </summary>
         public static Parser<string> LineEnd =
             (from r in Char('\r').Optional()
-            from n in Char('\n')
-            select r.IsDefined ? r.Get().ToString() + n : n.ToString())
+             from n in Char('\n')
+             select r.IsDefined ? r.Get().ToString() + n : n.ToString())
             .Named("LineEnd");
 
         /// <summary>

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A server push subscription criteria
     /// </summary>
-    [FhirType("Subscription", IsResource=true)]
+    [FhirType("Subscription", IsResource = true)]
     [DataContract]
     public partial class Subscription : DomainResource
     {
@@ -140,8 +138,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// rest-hook | websocket | email | sms | message
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<SubscriptionChannelType> TypeElement
             {
@@ -173,7 +171,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Where the channel points to
             /// </summary>
-            [FhirElement("endpoint", InSummary=true, Order=50)]
+            [FhirElement("endpoint", InSummary = true, Order = 50)]
             [DataMember]
             public FhirUri EndpointElement
             {
@@ -205,8 +203,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Mimetype to send, or blank for no payload
             /// </summary>
-            [FhirElement("payload", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("payload", InSummary = true, Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString PayloadElement
             {
@@ -238,7 +236,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Usage depends on the channel type
             /// </summary>
-            [FhirElement("header", InSummary=true, Order=70)]
+            [FhirElement("header", InSummary = true, Order = 70)]
             [DataMember]
             public FhirString HeaderElement
             {
@@ -286,7 +284,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ChannelComponent());
+                return CopyTo(new ChannelComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -351,8 +349,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Rule for server push criteria
         /// </summary>
-        [FhirElement("criteria", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("criteria", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirString CriteriaElement
         {
@@ -384,8 +382,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contact details for source (e.g. troubleshooting)
         /// </summary>
-        [FhirElement("contact", InSummary=true, Order=100)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("contact", InSummary = true, Order = 100)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactPoint> Contact
         {
@@ -398,8 +396,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Description of why this subscription was created
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("reason", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirString ReasonElement
         {
@@ -431,8 +429,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// requested | active | error | off
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=120)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 120)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<SubscriptionStatus> StatusElement
         {
@@ -464,7 +462,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Latest error note
         /// </summary>
-        [FhirElement("error", InSummary=true, Order=130)]
+        [FhirElement("error", InSummary = true, Order = 130)]
         [DataMember]
         public FhirString ErrorElement
         {
@@ -496,8 +494,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The channel on which to report matches to the criteria
         /// </summary>
-        [FhirElement("channel", InSummary=true, Order=140)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("channel", InSummary = true, Order = 140)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ChannelComponent Channel
         {
@@ -510,7 +508,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When to automatically delete the subscription
         /// </summary>
-        [FhirElement("end", InSummary=true, Order=150)]
+        [FhirElement("end", InSummary = true, Order = 150)]
         [DataMember]
         public Instant EndElement
         {
@@ -542,8 +540,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A tag to add to matching resources
         /// </summary>
-        [FhirElement("tag", InSummary=true, Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("tag", InSummary = true, Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Coding> Tag
         {
@@ -577,7 +575,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Subscription());
+            return CopyTo(new Subscription());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -71,7 +71,7 @@ namespace Hl7.FhirPath.Tests
         public void CheckTypeDetermination()
         {
             var values = FhirValueList.Create(1, true, "hi", 4.0m, 4.0f, PartialDateTime.Now());
-            
+
 
             Test.IsInstanceOfType(values.Item(0).Single().Value, typeof(Int64));
             Test.IsInstanceOfType(values.Item(1).Single().Value, typeof(Boolean));

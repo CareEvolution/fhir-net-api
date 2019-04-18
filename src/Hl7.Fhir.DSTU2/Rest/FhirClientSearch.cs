@@ -599,7 +599,7 @@ namespace Hl7.Fhir.Rest.DSTU2
 }
 
 namespace Hl7.Fhir.Rest
-{ 
+{
 
     public enum PageDirection
     {

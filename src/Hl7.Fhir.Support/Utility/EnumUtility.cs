@@ -46,33 +46,33 @@ namespace Hl7.Fhir.Utility
             return (T?)ParseLiteral(rawValue, typeof(T), ignoreCase);
         }
 
-		public static string GetName( Type enumType )
-		{
-			return GetEnumMapping(enumType).Name;
-		}
+        public static string GetName(Type enumType)
+        {
+            return GetEnumMapping(enumType).Name;
+        }
 
-		public static string GetName<T>() where T : struct
-		{
-			return GetName(typeof(T));
-		}
+        public static string GetName<T>() where T : struct
+        {
+            return GetName(typeof(T));
+        }
 
-		private static EnumMapping GetEnumMapping( Type enumType )
-		{
-			EnumMapping fieldInfo = null;
+        private static EnumMapping GetEnumMapping(Type enumType)
+        {
+            EnumMapping fieldInfo = null;
 
-			lock ( _cacheLock )
-			{
-				if ( !_cache.TryGetValue( enumType, out fieldInfo ) )
-				{
-					fieldInfo = EnumMapping.Create( enumType );
-					_cache.Add( enumType, fieldInfo );
-				}
-			}
+            lock (_cacheLock)
+            {
+                if (!_cache.TryGetValue(enumType, out fieldInfo))
+                {
+                    fieldInfo = EnumMapping.Create(enumType);
+                    _cache.Add(enumType, fieldInfo);
+                }
+            }
 
-			return fieldInfo;
-		}
+            return fieldInfo;
+        }
 
-		internal class EnumMapping
+        internal class EnumMapping
         {
             // Symbolic name of the enumeration
             public string Name { get; private set; }
@@ -139,7 +139,7 @@ namespace Hl7.Fhir.Utility
 
             public static bool IsMappableEnum(Type t)
             {
-                return t.IsEnum() &&  t.GetTypeInfo().GetCustomAttribute<FhirEnumerationAttribute>() != null;
+                return t.IsEnum() && t.GetTypeInfo().GetCustomAttribute<FhirEnumerationAttribute>() != null;
             }
 
 

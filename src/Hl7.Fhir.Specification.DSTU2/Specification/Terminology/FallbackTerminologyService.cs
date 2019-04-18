@@ -17,9 +17,9 @@ namespace Hl7.Fhir.Specification.Terminology
             _fallbackService = fallback;
         }
 
-        public OperationOutcome ValidateCode(string canonical = null, string context = null, ValueSet valueSet = null, 
-            string code = null, string system = null, string version = null, string display = null, 
-            Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null, 
+        public OperationOutcome ValidateCode(string canonical = null, string context = null, ValueSet valueSet = null,
+            string code = null, string system = null, string version = null, string display = null,
+            Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null,
             bool? @abstract = default(bool?), string displayLanguage = null)
         {
 

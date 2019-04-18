@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Contains a collection of resources
     /// </summary>
-    [FhirType("Bundle", IsResource=true)]
+    [FhirType("Bundle", IsResource = true)]
     [DataContract]
     public partial class Bundle : Resource
     {
@@ -191,8 +189,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// http://www.iana.org/assignments/link-relations/link-relations.xhtml
             /// </summary>
-            [FhirElement("relation", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("relation", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString RelationElement
             {
@@ -224,8 +222,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reference details for the link
             /// </summary>
-            [FhirElement("url", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("url", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri UrlElement
             {
@@ -271,7 +269,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new LinkComponent());
+                return CopyTo(new LinkComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -335,8 +333,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Links related to this entry
             /// </summary>
-            [FhirElement("link", InSummary=true, Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("link", InSummary = true, Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<LinkComponent> Link
             {
@@ -349,7 +347,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Absolute URL for resource (server address, or UUID/OID)
             /// </summary>
-            [FhirElement("fullUrl", InSummary=true, Order=50)]
+            [FhirElement("fullUrl", InSummary = true, Order = 50)]
             [DataMember]
             public FhirUri FullUrlElement
             {
@@ -381,7 +379,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A resource in the bundle
             /// </summary>
-            [FhirElement("resource", InSummary=true, Order=60, Choice=ChoiceType.ResourceChoice)]
+            [FhirElement("resource", InSummary = true, Order = 60, Choice = ChoiceType.ResourceChoice)]
             [AllowedTypes(typeof(Resource))]
             [DataMember]
             public Resource Resource
@@ -395,7 +393,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Search related information
             /// </summary>
-            [FhirElement("search", InSummary=true, Order=70)]
+            [FhirElement("search", InSummary = true, Order = 70)]
             [DataMember]
             public SearchComponent Search
             {
@@ -408,7 +406,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Transaction Related Information
             /// </summary>
-            [FhirElement("request", InSummary=true, Order=80)]
+            [FhirElement("request", InSummary = true, Order = 80)]
             [DataMember]
             public RequestComponent Request
             {
@@ -421,7 +419,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Transaction Related Information
             /// </summary>
-            [FhirElement("response", InSummary=true, Order=90)]
+            [FhirElement("response", InSummary = true, Order = 90)]
             [DataMember]
             public ResponseComponent Response
             {
@@ -452,7 +450,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new EntryComponent());
+                return CopyTo(new EntryComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -532,7 +530,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// match | include | outcome - why this is in the result set
             /// </summary>
-            [FhirElement("mode", InSummary=true, Order=40)]
+            [FhirElement("mode", InSummary = true, Order = 40)]
             [DataMember]
             public Code<SearchEntryMode> ModeElement
             {
@@ -564,7 +562,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Search ranking (between 0 and 1)
             /// </summary>
-            [FhirElement("score", InSummary=true, Order=50)]
+            [FhirElement("score", InSummary = true, Order = 50)]
             [DataMember]
             public FhirDecimal ScoreElement
             {
@@ -610,7 +608,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SearchComponent());
+                return CopyTo(new SearchComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -674,8 +672,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// GET | POST | PUT | DELETE
             /// </summary>
-            [FhirElement("method", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("method", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<HTTPVerb> MethodElement
             {
@@ -707,8 +705,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// URL for HTTP equivalent of this entry
             /// </summary>
-            [FhirElement("url", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("url", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri UrlElement
             {
@@ -740,7 +738,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// For managing cache currency
             /// </summary>
-            [FhirElement("ifNoneMatch", InSummary=true, Order=60)]
+            [FhirElement("ifNoneMatch", InSummary = true, Order = 60)]
             [DataMember]
             public FhirString IfNoneMatchElement
             {
@@ -772,7 +770,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// For managing update contention
             /// </summary>
-            [FhirElement("ifModifiedSince", InSummary=true, Order=70)]
+            [FhirElement("ifModifiedSince", InSummary = true, Order = 70)]
             [DataMember]
             public Instant IfModifiedSinceElement
             {
@@ -804,7 +802,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// For managing update contention
             /// </summary>
-            [FhirElement("ifMatch", InSummary=true, Order=80)]
+            [FhirElement("ifMatch", InSummary = true, Order = 80)]
             [DataMember]
             public FhirString IfMatchElement
             {
@@ -836,7 +834,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// For conditional creates
             /// </summary>
-            [FhirElement("ifNoneExist", InSummary=true, Order=90)]
+            [FhirElement("ifNoneExist", InSummary = true, Order = 90)]
             [DataMember]
             public FhirString IfNoneExistElement
             {
@@ -886,7 +884,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RequestComponent());
+                return CopyTo(new RequestComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -966,8 +964,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Status return code for entry
             /// </summary>
-            [FhirElement("status", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("status", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString StatusElement
             {
@@ -999,7 +997,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The location, if the operation returns a location
             /// </summary>
-            [FhirElement("location", InSummary=true, Order=50)]
+            [FhirElement("location", InSummary = true, Order = 50)]
             [DataMember]
             public FhirUri LocationElement
             {
@@ -1031,7 +1029,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The etag for the resource (if relevant)
             /// </summary>
-            [FhirElement("etag", InSummary=true, Order=60)]
+            [FhirElement("etag", InSummary = true, Order = 60)]
             [DataMember]
             public FhirString EtagElement
             {
@@ -1063,7 +1061,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Server's date time modified
             /// </summary>
-            [FhirElement("lastModified", InSummary=true, Order=70)]
+            [FhirElement("lastModified", InSummary = true, Order = 70)]
             [DataMember]
             public Instant LastModifiedElement
             {
@@ -1111,7 +1109,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ResponseComponent());
+                return CopyTo(new ResponseComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1176,8 +1174,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=50)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("type", InSummary = true, Order = 50)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<BundleType> TypeElement
         {
@@ -1209,7 +1207,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If search, the total number of matches
         /// </summary>
-        [FhirElement("total", InSummary=true, Order=60)]
+        [FhirElement("total", InSummary = true, Order = 60)]
         [DataMember]
         public UnsignedInt TotalElement
         {
@@ -1241,8 +1239,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Links related to this Bundle
         /// </summary>
-        [FhirElement("link", InSummary=true, Order=70)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("link", InSummary = true, Order = 70)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<LinkComponent> Link
         {
@@ -1255,8 +1253,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Entry in the bundle - will have a resource, or information
         /// </summary>
-        [FhirElement("entry", InSummary=true, Order=80)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("entry", InSummary = true, Order = 80)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<EntryComponent> Entry
         {
@@ -1269,7 +1267,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Digital Signature
         /// </summary>
-        [FhirElement("signature", InSummary=true, Order=90)]
+        [FhirElement("signature", InSummary = true, Order = 90)]
         [DataMember]
         public Signature Signature
         {
@@ -1376,7 +1374,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Bundle());
+            return CopyTo(new Bundle());
         }
 
         public override bool Matches(IDeepComparable other)

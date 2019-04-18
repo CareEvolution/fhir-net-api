@@ -47,15 +47,15 @@ namespace Hl7.Fhir.Support.Tests.Model
 
         private IEnumerable<(string leftop, string op, string rightop, bool result)> GetTestdata()
         {
-            yield return ( "0002", ">", "0001",  true );
-            yield return ( "0001", ">", "0001",  false );
-            yield return ( "0001", ">=", "0001",  true);
-            yield return ( "0001", ">", "0001",  false );
-            yield return ("2017-11-21T16:03:12", ">", "2017-11-21T16:03:11",  true );
-            yield return ( "2017-11-21T16:03:12+01:00", ">", "2017-11-21T17:03:11+02:00",  true );
-            yield return ( "2017-11-21T16:03:11+01:00", "==", "2017-11-21T17:03:11+02:00",  true );
-            yield return ( "2018-01-01", "==", "2018-01-01",  true );
-            yield return ( "2018-01", "<", "2018-02",  true );
+            yield return ("0002", ">", "0001", true);
+            yield return ("0001", ">", "0001", false);
+            yield return ("0001", ">=", "0001", true);
+            yield return ("0001", ">", "0001", false);
+            yield return ("2017-11-21T16:03:12", ">", "2017-11-21T16:03:11", true);
+            yield return ("2017-11-21T16:03:12+01:00", ">", "2017-11-21T17:03:11+02:00", true);
+            yield return ("2017-11-21T16:03:11+01:00", "==", "2017-11-21T17:03:11+02:00", true);
+            yield return ("2018-01-01", "==", "2018-01-01", true);
+            yield return ("2018-01", "<", "2018-02", true);
         }
 
         [TestMethod]

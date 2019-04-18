@@ -109,7 +109,7 @@ namespace Hl7.Fhir.Utility
             return new NotImplementedException();
         }
 
-        public static FormatException Format(string message, Exception innerException=null)
+        public static FormatException Format(string message, Exception innerException = null)
         {
             return new FormatException(message, innerException);
         }

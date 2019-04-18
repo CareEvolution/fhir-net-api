@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Event record kept for security purposes
     /// </summary>
-    [FhirType("AuditEvent", IsResource=true)]
+    [FhirType("AuditEvent", IsResource = true)]
     [DataContract]
     public partial class AuditEvent : DomainResource
     {
@@ -179,8 +177,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type/identifier of event
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Type
             {
@@ -193,8 +191,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// More specific type/id for the event
             /// </summary>
-            [FhirElement("subtype", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("subtype", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> Subtype
             {
@@ -207,7 +205,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of action performed during the event
             /// </summary>
-            [FhirElement("action", InSummary=true, Order=60)]
+            [FhirElement("action", InSummary = true, Order = 60)]
             [DataMember]
             public Code<AuditEventAction> ActionElement
             {
@@ -239,8 +237,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Time when the event occurred on source
             /// </summary>
-            [FhirElement("dateTime", InSummary=true, Order=70)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("dateTime", InSummary = true, Order = 70)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Instant DateTimeElement
             {
@@ -272,7 +270,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether the event succeeded or failed
             /// </summary>
-            [FhirElement("outcome", InSummary=true, Order=80)]
+            [FhirElement("outcome", InSummary = true, Order = 80)]
             [DataMember]
             public Code<AuditEventOutcome> OutcomeElement
             {
@@ -304,7 +302,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Description of the event outcome
             /// </summary>
-            [FhirElement("outcomeDesc", InSummary=true, Order=90)]
+            [FhirElement("outcomeDesc", InSummary = true, Order = 90)]
             [DataMember]
             public FhirString OutcomeDescElement
             {
@@ -336,8 +334,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The purposeOfUse of the event
             /// </summary>
-            [FhirElement("purposeOfEvent", InSummary=true, Order=100)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("purposeOfEvent", InSummary = true, Order = 100)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> PurposeOfEvent
             {
@@ -369,7 +367,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new EventComponent());
+                return CopyTo(new EventComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -453,8 +451,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// User roles (e.g. local RBAC codes)
             /// </summary>
-            [FhirElement("role", Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("role", Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> Role
             {
@@ -467,8 +465,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Direct reference to resource
             /// </summary>
-            [FhirElement("reference", InSummary=true, Order=50)]
-            [References("Practitioner","Organization","Device","Patient","RelatedPerson")]
+            [FhirElement("reference", InSummary = true, Order = 50)]
+            [References("Practitioner", "Organization", "Device", "Patient", "RelatedPerson")]
             [DataMember]
             public ResourceReference Reference
             {
@@ -481,7 +479,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Unique identifier for the user
             /// </summary>
-            [FhirElement("userId", InSummary=true, Order=60)]
+            [FhirElement("userId", InSummary = true, Order = 60)]
             [DataMember]
             public Identifier UserId
             {
@@ -494,7 +492,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Alternative User id e.g. authentication
             /// </summary>
-            [FhirElement("altId", Order=70)]
+            [FhirElement("altId", Order = 70)]
             [DataMember]
             public FhirString AltIdElement
             {
@@ -526,7 +524,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Human-meaningful name for the user
             /// </summary>
-            [FhirElement("name", Order=80)]
+            [FhirElement("name", Order = 80)]
             [DataMember]
             public FhirString NameElement
             {
@@ -558,8 +556,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether user is initiator
             /// </summary>
-            [FhirElement("requestor", Order=90)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("requestor", Order = 90)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirBoolean RequestorElement
             {
@@ -591,7 +589,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Where
             /// </summary>
-            [FhirElement("location", Order=100)]
+            [FhirElement("location", Order = 100)]
             [References("Location")]
             [DataMember]
             public ResourceReference Location
@@ -605,8 +603,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Policy that authorized event
             /// </summary>
-            [FhirElement("policy", Order=110)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("policy", Order = 110)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirUri> PolicyElement
             {
@@ -630,7 +628,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PolicyElement = null;
                     else
-                        PolicyElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
+                        PolicyElement = new List<FhirUri>(value.Select(elem => new FhirUri(elem)));
                     OnPropertyChanged("Policy");
                 }
             }
@@ -638,7 +636,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of media
             /// </summary>
-            [FhirElement("media", Order=120)]
+            [FhirElement("media", Order = 120)]
             [DataMember]
             public Coding Media
             {
@@ -651,7 +649,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Logical network location for application activity
             /// </summary>
-            [FhirElement("network", Order=130)]
+            [FhirElement("network", Order = 130)]
             [DataMember]
             public NetworkComponent Network
             {
@@ -664,8 +662,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reason given for this user
             /// </summary>
-            [FhirElement("purposeOfUse", Order=140)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("purposeOfUse", Order = 140)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> PurposeOfUse
             {
@@ -701,7 +699,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ParticipantComponent());
+                return CopyTo(new ParticipantComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -801,7 +799,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Identifier for the network access point of the user device
             /// </summary>
-            [FhirElement("address", Order=40)]
+            [FhirElement("address", Order = 40)]
             [DataMember]
             public FhirString AddressElement
             {
@@ -833,7 +831,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The type of network access point
             /// </summary>
-            [FhirElement("type", Order=50)]
+            [FhirElement("type", Order = 50)]
             [DataMember]
             public Code<AuditEventParticipantNetworkType> TypeElement
             {
@@ -879,7 +877,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new NetworkComponent());
+                return CopyTo(new NetworkComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -943,7 +941,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Logical source location within the enterprise
             /// </summary>
-            [FhirElement("site", Order=40)]
+            [FhirElement("site", Order = 40)]
             [DataMember]
             public FhirString SiteElement
             {
@@ -975,8 +973,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The identity of source detecting the event
             /// </summary>
-            [FhirElement("identifier", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("identifier", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Identifier Identifier
             {
@@ -989,8 +987,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The type of source where event originated
             /// </summary>
-            [FhirElement("type", Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("type", Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> Type
             {
@@ -1018,7 +1016,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SourceComponent());
+                return CopyTo(new SourceComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1086,7 +1084,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Specific instance of object (e.g. versioned)
             /// </summary>
-            [FhirElement("identifier", InSummary=true, Order=40)]
+            [FhirElement("identifier", InSummary = true, Order = 40)]
             [DataMember]
             public Identifier Identifier
             {
@@ -1099,7 +1097,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Specific instance of resource (e.g. versioned)
             /// </summary>
-            [FhirElement("reference", InSummary=true, Order=50)]
+            [FhirElement("reference", InSummary = true, Order = 50)]
             [DataMember]
             public ResourceReference Reference
             {
@@ -1112,7 +1110,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of object involved
             /// </summary>
-            [FhirElement("type", Order=60)]
+            [FhirElement("type", Order = 60)]
             [DataMember]
             public Coding Type
             {
@@ -1125,7 +1123,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// What role the Object played
             /// </summary>
-            [FhirElement("role", Order=70)]
+            [FhirElement("role", Order = 70)]
             [DataMember]
             public Coding Role
             {
@@ -1138,7 +1136,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Life-cycle stage for the object
             /// </summary>
-            [FhirElement("lifecycle", Order=80)]
+            [FhirElement("lifecycle", Order = 80)]
             [DataMember]
             public Coding Lifecycle
             {
@@ -1151,8 +1149,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Security labels applied to the object
             /// </summary>
-            [FhirElement("securityLabel", Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("securityLabel", Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> SecurityLabel
             {
@@ -1165,7 +1163,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Instance-specific descriptor for Object
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=100)]
+            [FhirElement("name", InSummary = true, Order = 100)]
             [DataMember]
             public FhirString NameElement
             {
@@ -1197,7 +1195,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Descriptive text
             /// </summary>
-            [FhirElement("description", Order=110)]
+            [FhirElement("description", Order = 110)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -1229,7 +1227,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Actual query for object
             /// </summary>
-            [FhirElement("query", InSummary=true, Order=120)]
+            [FhirElement("query", InSummary = true, Order = 120)]
             [DataMember]
             public Base64Binary QueryElement
             {
@@ -1261,8 +1259,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Additional Information about the Object
             /// </summary>
-            [FhirElement("detail", Order=130)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("detail", Order = 130)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<DetailComponent> Detail
             {
@@ -1297,7 +1295,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ObjectComponent());
+                return CopyTo(new ObjectComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1393,8 +1391,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of the property
             /// </summary>
-            [FhirElement("type", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString TypeElement
             {
@@ -1426,8 +1424,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Property value
             /// </summary>
-            [FhirElement("value", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("value", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Base64Binary ValueElement
             {
@@ -1473,7 +1471,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new DetailComponent());
+                return CopyTo(new DetailComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1530,8 +1528,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What was done
         /// </summary>
-        [FhirElement("event", Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("event", Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public EventComponent Event
         {
@@ -1544,8 +1542,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A person, a hardware device or software process
         /// </summary>
-        [FhirElement("participant", Order=100)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("participant", Order = 100)]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<ParticipantComponent> Participant
         {
@@ -1558,8 +1556,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Application systems and processes
         /// </summary>
-        [FhirElement("source", Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("source", Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public SourceComponent Source
         {
@@ -1572,8 +1570,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Specific instances of data or objects that have been accessed
         /// </summary>
-        [FhirElement("object", Order=120)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("object", Order = 120)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ObjectComponent> Object
         {
@@ -1619,7 +1617,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new AuditEvent());
+            return CopyTo(new AuditEvent());
         }
 
         public override bool Matches(IDeepComparable other)

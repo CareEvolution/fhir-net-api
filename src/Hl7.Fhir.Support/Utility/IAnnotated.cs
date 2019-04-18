@@ -31,7 +31,7 @@ namespace Hl7.Fhir.Utility
 
         public static A Annotation<A>(this IAnnotated annotated) => (A)annotated.Annotation(typeof(A));
 
-        public static bool TryGetAnnotation<A>(this IAnnotated annotated, out A annotation) where A:class
+        public static bool TryGetAnnotation<A>(this IAnnotated annotated, out A annotation) where A : class
         {
             annotation = annotated.Annotations<A>()?.FirstOrDefault();
             return annotation != null;

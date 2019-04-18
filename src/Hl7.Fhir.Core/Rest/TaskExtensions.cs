@@ -7,7 +7,7 @@ namespace Hl7.Fhir.Rest
 {
     public static class TaskExtensions
     {
-        public static T WaitResult<T>(this Task<T> task) where T: class 
+        public static T WaitResult<T>(this Task<T> task) where T : class
         {
             if (task == null) return null;
 
@@ -15,7 +15,7 @@ namespace Hl7.Fhir.Rest
             {
                 task.Wait();
             }
-            catch(AggregateException ae)
+            catch (AggregateException ae)
             {
                 //throw ae;
                 throw ae.Flatten().InnerException;
@@ -23,7 +23,7 @@ namespace Hl7.Fhir.Rest
 
             return task.Result;
         }
-        
+
         /// <summary>
         /// Use the WaitNoResult so that the exception handling throws what you expect,
         /// and not the Aggregate exception

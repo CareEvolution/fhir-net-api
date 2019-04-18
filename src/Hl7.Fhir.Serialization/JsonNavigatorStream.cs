@@ -251,7 +251,7 @@ namespace Hl7.Fhir.Serialization
             {
                 throwIfDisposed();
                 var jelem = _current?.element;
-                return jelem != null ? FhirJsonNode.Create(jelem, settings:ParserSettings) : null;
+                return jelem != null ? FhirJsonNode.Create(jelem, settings: ParserSettings) : null;
             }
         }
 

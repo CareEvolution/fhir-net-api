@@ -15,8 +15,8 @@ namespace Hl7.Fhir.Specification
     {
         private ElementDefinitionSummary() { }
 
-        public ElementDefinitionSummary(string elementName, bool isCollection, bool isChoice, 
-            bool isResource, XmlRepresentation representation, ITypeSerializationInfo[] type, 
+        public ElementDefinitionSummary(string elementName, bool isCollection, bool isChoice,
+            bool isResource, XmlRepresentation representation, ITypeSerializationInfo[] type,
             int order, string nonDefaultNS, bool inSummary, bool isRequired)
         {
             ElementName = elementName ?? throw new ArgumentNullException(nameof(elementName));
@@ -46,9 +46,9 @@ namespace Hl7.Fhir.Specification
         }
 
         public static ElementDefinitionSummary ForRoot(string rootName, IStructureDefinitionSummary rootType) =>
-            new ElementDefinitionSummary(rootName, isCollection: false, isChoice: false, 
-                isResource: rootType.IsResource, 
-                representation: XmlRepresentation.XmlElement, 
+            new ElementDefinitionSummary(rootName, isCollection: false, isChoice: false,
+                isResource: rootType.IsResource,
+                representation: XmlRepresentation.XmlElement,
                 type: new[] { rootType }, order: 0, nonDefaultNS: null, inSummary: true, isRequired: false);
 
         public string ElementName { get; private set; }

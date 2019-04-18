@@ -6,7 +6,7 @@ namespace Hl7.FhirPath.Sprache
     {
         public static IResult<U> IfSuccess<T, U>(this IResult<T> result, Func<IResult<T>, IResult<U>> next)
         {
-            if(result == null) throw new ArgumentNullException("result");
+            if (result == null) throw new ArgumentNullException("result");
 
             if (result.WasSuccessful)
                 return next(result);
@@ -18,8 +18,8 @@ namespace Hl7.FhirPath.Sprache
         {
             if (result == null) throw new ArgumentNullException("result");
 
-            return result.WasSuccessful 
-                ? result 
+            return result.WasSuccessful
+                ? result
                 : next(result);
         }
     }

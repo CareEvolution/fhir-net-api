@@ -20,13 +20,13 @@ namespace Hl7.Fhir.Validation
 {
     internal class SliceBucket : BaseBucket
     {
-        public SliceBucket(ElementDefinitionNavigator root, Validator validator, string[] discriminator=null) : base(root.Current)
+        public SliceBucket(ElementDefinitionNavigator root, Validator validator, string[] discriminator = null) : base(root.Current)
         {
             // TODO: Should check whether the discriminator is a valid child path of root. Wait until we have the
             // definition walker, which would walk across references if necessary.
             foreach (var d in discriminator)
             {
-                if(d.EndsWith("@type"))
+                if (d.EndsWith("@type"))
                     throw Error.NotImplemented($"Slicing with an '@type' discriminator is not yet supported by this validator.");
                 else if (d.EndsWith("@profile"))
                     throw Error.NotImplemented($"Slicing with an '@profile' discriminator is not yet supported by this validator.");
@@ -59,7 +59,7 @@ namespace Hl7.Fhir.Validation
             }
 
             // Now, it did not validate against the constraints...
-            if(Discriminator?.Any() == true)
+            if (Discriminator?.Any() == true)
             {
                 // Get the full path of the discriminator, which is rooted in the current instance path
                 var baseInstancePath = candidate.Location;
@@ -69,7 +69,7 @@ namespace Hl7.Fhir.Validation
                 // (note won't work if deceasedBoolean is allowed as a discriminator vlaue)
                 var discriminatorPaths = Discriminator.Select(d => strip(baseInstancePath + "." + d)).ToArray();
 
-                if(errorOnDiscriminator(discriminatorPaths, report))
+                if (errorOnDiscriminator(discriminatorPaths, report))
                 {
                     // Failed on a discriminator => this instance does not belong to this slice
                     return false;
@@ -87,7 +87,7 @@ namespace Hl7.Fhir.Validation
             {
                 // No discriminator, and validation failed => not a member of this slice
                 return false;
-            }            
+            }
         }
 
 
@@ -98,7 +98,7 @@ namespace Hl7.Fhir.Validation
 
         private static bool errorOnDiscriminator(string[] discriminators, OperationOutcome outcome)
         {
-            foreach(var location in outcome.ListErrors().SelectMany(i => i.Location)
+            foreach (var location in outcome.ListErrors().SelectMany(i => i.Location)
                 .Union(outcome.Issue.Select(i => i.Annotation<SlicePathAnnotation>()?.Value)
                                     .Where(p => !string.IsNullOrEmpty(p))))
             {

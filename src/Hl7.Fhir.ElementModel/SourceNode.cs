@@ -43,12 +43,12 @@ namespace Hl7.Fhir.ElementModel
                     return $"{basePath}.{Name}[{myIndex}]";
                 }
                 else
-                    return Name;            
+                    return Name;
             }
         }
 
-        private SourceNode(string name, string text,  
-            IEnumerable<SourceNode> children=null, string resourceType=null)
+        private SourceNode(string name, string text,
+            IEnumerable<SourceNode> children = null, string resourceType = null)
         {
             Name = name;
             Text = text;
@@ -111,7 +111,7 @@ namespace Hl7.Fhir.ElementModel
 
         public IElementDefinitionSummary Definition => throw new NotImplementedException();
 
-        public ChildNodes this[string name] => new ChildNodes(_children.Where(c=>c.Name == name).ToList());
+        public ChildNodes this[string name] => new ChildNodes(_children.Where(c => c.Name == name).ToList());
 
         public SourceNode this[int index] => _children[index];
 

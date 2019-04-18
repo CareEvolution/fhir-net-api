@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.Primitives
 
 
         // overload operator <
-        public static bool operator < (PartialDateTime a, PartialDateTime b)
+        public static bool operator <(PartialDateTime a, PartialDateTime b)
         {
             return a.ToUniversalTime() < b.ToUniversalTime();
         }
@@ -93,7 +93,7 @@ namespace Hl7.Fhir.Model.Primitives
         {
             if (other == null) return false;
 
-            var len = Math.Min(10,Math.Min(_value.Length, other._value.Length));
+            var len = Math.Min(10, Math.Min(_value.Length, other._value.Length));
 
             return String.Compare(_value, 0, other._value, 0, len) == 0;
         }
@@ -125,7 +125,7 @@ namespace Hl7.Fhir.Model.Primitives
         public override string ToString()
         {
             return _value;
-        } 
+        }
 
         public static PartialDateTime Now()
         {

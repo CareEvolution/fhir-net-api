@@ -42,7 +42,7 @@ namespace Hl7.FhirPath.Functions
                     return null;
                 }
             }
-            else if(val is bool)
+            else if (val is bool)
             {
                 return (bool)val ? 1L : 0L;
             }

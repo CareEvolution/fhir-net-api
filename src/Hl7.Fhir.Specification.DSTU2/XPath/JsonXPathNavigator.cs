@@ -90,15 +90,15 @@ namespace Hl7.Fhir.XPath
             return position.Children.Where(c => isAttribute(c));
         }
 
-        private Lazy<List<Tuple<string,string>>> _namespaces = new Lazy<List<Tuple<string,string>>>( () =>
-            new List<Tuple<string,string>>() { 
+        private Lazy<List<Tuple<string, string>>> _namespaces = new Lazy<List<Tuple<string, string>>>(() =>
+             new List<Tuple<string, string>>() {
                 Tuple.Create(FHIR_PREFIX,XmlNs.FHIR),
                 Tuple.Create(XHTML_PREFIX,XmlNs.XHTML),
-        //        Tuple.Create(XML_PREFIX,XML_NS),
-            });
-       
+                 //        Tuple.Create(XML_PREFIX,XML_NS),
+             });
 
-        private IEnumerable<Tuple<string,string>> namespaceChildren()
+
+        private IEnumerable<Tuple<string, string>> namespaceChildren()
         {
             //switch (scope)
             //{
@@ -144,7 +144,7 @@ namespace Hl7.Fhir.XPath
         }
 
         public override string BaseURI
-        {            
+        {
             get { return _nameTable.Get(String.Empty); }
         }
 
@@ -152,7 +152,7 @@ namespace Hl7.Fhir.XPath
         {
             return new JsonXPathNavigator(this);
         }
-     
+
         public override bool IsSamePosition(XPathNavigator nav)
         {
             var other = nav as JsonXPathNavigator;
@@ -176,7 +176,7 @@ namespace Hl7.Fhir.XPath
         }
 
         public override bool MoveToFirstChild()
-        {          
+        {
             if (NodeType == XPathNodeType.Element || NodeType == XPathNodeType.Root)
             {
                 return moveToElementChild(0);
@@ -203,7 +203,7 @@ namespace Hl7.Fhir.XPath
 
         public override bool MoveToParent()
         {
-            switch(NodeType)
+            switch (NodeType)
             {
                 case XPathNodeType.Root:
                     return false;
@@ -230,7 +230,7 @@ namespace Hl7.Fhir.XPath
             // Keep the current state, when we cannot move after we've moved up to the parent, we'll need to stay
             // where we are
             var currentState = _state.Pop();
-            
+
             // Can we move?
             if (NodeType == XPathNodeType.Element || NodeType == XPathNodeType.Text)
             {
@@ -310,7 +310,7 @@ namespace Hl7.Fhir.XPath
             }
         }
 
-        private Tuple<string,string> currentNamespace
+        private Tuple<string, string> currentNamespace
         {
             get
             {
@@ -353,7 +353,7 @@ namespace Hl7.Fhir.XPath
                 return moveToNamespaceChild(0, namespaceScope);
             }
             else
-                return false;                
+                return false;
         }
 
         public override bool MoveToNextNamespace(XPathNamespaceScope namespaceScope)
@@ -420,7 +420,7 @@ namespace Hl7.Fhir.XPath
 
         public override string NamespaceURI
         {
-            get 
+            get
             {
                 if (NodeType == XPathNodeType.Element)
                 {
@@ -471,7 +471,7 @@ namespace Hl7.Fhir.XPath
             }
         }
 
-     
+
         public override string Value
         {
             get
@@ -495,7 +495,7 @@ namespace Hl7.Fhir.XPath
                 }
                 else
                     return position.Element.ElementText();
-            }   
+            }
         }
 
         public override string ToString()

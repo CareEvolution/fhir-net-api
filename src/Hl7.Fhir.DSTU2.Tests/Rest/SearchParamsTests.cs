@@ -18,7 +18,7 @@ using Hl7.Fhir.Rest;
 namespace Hl7.Fhir.Test.Rest
 {
     [TestClass]
-	public class SearchParamsTests
+    public class SearchParamsTests
     {
         [TestMethod]
         public void CountSetToNullAndGet()
@@ -43,7 +43,7 @@ namespace Hl7.Fhir.Test.Rest
             Assert.AreEqual(2, vals.Count());
             Assert.AreEqual("someVal", vals.First());
             Assert.AreEqual("someVal2", vals.Skip(1).First());
-            
+
             Assert.AreEqual("someVal3", paramlist.SingleValue("testXY"));
 
             paramlist.Remove("testXY");
@@ -57,7 +57,7 @@ namespace Hl7.Fhir.Test.Rest
             var q = new SearchParams();
 
             q.Add("name", "ewout");
-            
+
             // Validate no "Default" search parameters are added except for the ones the user added
             Assert.AreEqual("name=ewout", q.ToUriParamList().ToQueryString());
         }
@@ -84,7 +84,7 @@ namespace Hl7.Fhir.Test.Rest
             Assert.AreEqual("Observation.subject", q.Include.Skip(1).First());
             Assert.AreEqual(1, q.Elements.Count);
             Assert.AreEqual("field1", q.Elements.First());
-            
+
             q.Query = "special2";
             q.Count = 32;
             q.Summary = SummaryType.True;
@@ -97,7 +97,7 @@ namespace Hl7.Fhir.Test.Rest
             Assert.AreEqual("special2", q.Query);
             Assert.AreEqual(32, q.Count);
             Assert.AreEqual(SummaryType.True, q.Summary);
-            Assert.AreEqual(2,q.Sort.Count);
+            Assert.AreEqual(2, q.Sort.Count);
             Assert.AreEqual(Tuple.Create("sorted2", SortOrder.Ascending), q.Sort.Skip(1).Single());
             Assert.AreEqual(3, q.Include.Count);
             Assert.IsTrue(q.Include.Contains("Patient.name2"));
@@ -209,7 +209,7 @@ namespace Hl7.Fhir.Test.Rest
             Assert.AreEqual(q.Query, q2.Query);
             Assert.AreEqual(q.Count, q2.Count);
             Assert.AreEqual(q.Summary, q2.Summary);
-            
+
             CollectionAssert.AreEquivalent(q.Sort.ToList(), q2.Sort.ToList());
             CollectionAssert.AreEquivalent(q.Include.ToList(), q2.Include.ToList());
             CollectionAssert.AreEquivalent(q.Parameters.ToList(), q2.Parameters.ToList());
@@ -222,7 +222,7 @@ namespace Hl7.Fhir.Test.Rest
             var q = new SearchParams();
             q.Add("parameter", String.Empty);
             CollectionAssert.AreEquivalent(
-                new[] { Tuple.Create("parameter", String.Empty) }, 
+                new[] { Tuple.Create("parameter", String.Empty) },
                 q.Parameters.ToList()
             );
         }

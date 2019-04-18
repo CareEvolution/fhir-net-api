@@ -67,11 +67,11 @@ namespace Hl7.Fhir.Specification.Source
         }
 
         public IList<IResourceResolver> Sources
-        { 
-            get { return _sources; } 
+        {
+            get { return _sources; }
         }
 
-   
+
         public Resource ResolveByUri(string uri)
         {
             if (uri == null) throw Error.ArgumentNull(nameof(uri));
@@ -84,7 +84,7 @@ namespace Hl7.Fhir.Specification.Source
 
                     if (result != null) return result;
                 }
-                catch(NotImplementedException)
+                catch (NotImplementedException)
                 {
                     // Don't do anything, just try the next IArtifactSource
                 }

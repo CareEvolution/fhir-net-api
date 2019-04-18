@@ -57,7 +57,7 @@ namespace Hl7.Fhir.Specification.Source
             if (!ResourceIdentity.IsRestResourceIdentity(uri))
             {
                 // Weakness in FhirClient, need to have the base :-(  So return null if we cannot determine it.
-                return null;     
+                return null;
             }
 
             var id = new ResourceIdentity(uri);

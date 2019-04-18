@@ -148,7 +148,7 @@ namespace Hl7.Fhir.Utility
             }
         }
 
-        public static string WriteXmlToString(Action<XmlWriter> serializer, bool pretty=false)
+        public static string WriteXmlToString(Action<XmlWriter> serializer, bool pretty = false)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -181,7 +181,7 @@ namespace Hl7.Fhir.Utility
             return doc;
         }
 
-        public static string WriteJsonToString(Action<JsonWriter> serializer, bool pretty=false)
+        public static string WriteJsonToString(Action<JsonWriter> serializer, bool pretty = false)
         {
             StringBuilder resultBuilder = new StringBuilder();
 

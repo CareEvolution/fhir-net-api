@@ -44,7 +44,7 @@ namespace Hl7.Fhir.Specification.Terminology
                 handleDefine(source);
                 handleCompose(source);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 // Expansion failed - remove (partial) expansion
                 source.Expansion = null;
@@ -136,12 +136,12 @@ namespace Hl7.Fhir.Specification.Terminology
         {
             if (!source.Compose.Include.Any()) return;
 
-            foreach(var include in source.Compose.Include)
+            foreach (var include in source.Compose.Include)
             {
                 if (!include.Concept.Any())
                     throw new ValueSetExpansionTooComplexException($"Expansion for ValueSet '{source.Url}' uses an include with just a system ('{include.System}') and no enumerated concepts to include.");
 
-                if(include.Filter.Any())
+                if (include.Filter.Any())
                     throw new ValueSetExpansionTooComplexException($"Expansion for ValueSet '{source.Url}' uses a filter to include concepts, which is not supported.");
 
                 // Yes, exclusion could make this smaller again, but alas, before we have processed those we might have run out of memory

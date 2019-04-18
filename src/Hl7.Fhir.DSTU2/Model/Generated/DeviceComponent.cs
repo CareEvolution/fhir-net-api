@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// An instance of a medical-related component of a medical device
     /// </summary>
-    [FhirType("DeviceComponent", IsResource=true)]
+    [FhirType("DeviceComponent", IsResource = true)]
     [DataContract]
     public partial class DeviceComponent : DomainResource
     {
@@ -143,7 +141,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Specification type
             /// </summary>
-            [FhirElement("specType", InSummary=true, Order=40)]
+            [FhirElement("specType", InSummary = true, Order = 40)]
             [DataMember]
             public CodeableConcept SpecType
             {
@@ -156,7 +154,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Internal component unique identification
             /// </summary>
-            [FhirElement("componentId", InSummary=true, Order=50)]
+            [FhirElement("componentId", InSummary = true, Order = 50)]
             [DataMember]
             public Identifier ComponentId
             {
@@ -169,7 +167,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A printable string defining the component
             /// </summary>
-            [FhirElement("productionSpec", InSummary=true, Order=60)]
+            [FhirElement("productionSpec", InSummary = true, Order = 60)]
             [DataMember]
             public FhirString ProductionSpecElement
             {
@@ -216,7 +214,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ProductionSpecificationComponent());
+                return CopyTo(new ProductionSpecificationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -277,8 +275,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What kind of component it is
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("type", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -291,8 +289,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Instance id assigned by the software stack
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=100)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("identifier", InSummary = true, Order = 100)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Identifier Identifier
         {
@@ -305,8 +303,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Recent system change timestamp
         /// </summary>
-        [FhirElement("lastSystemChange", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("lastSystemChange", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Instant LastSystemChangeElement
         {
@@ -338,7 +336,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A source device of this component
         /// </summary>
-        [FhirElement("source", InSummary=true, Order=120)]
+        [FhirElement("source", InSummary = true, Order = 120)]
         [References("Device")]
         [DataMember]
         public ResourceReference Source
@@ -352,7 +350,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Parent resource link
         /// </summary>
-        [FhirElement("parent", InSummary=true, Order=130)]
+        [FhirElement("parent", InSummary = true, Order = 130)]
         [References("DeviceComponent")]
         [DataMember]
         public ResourceReference Parent
@@ -366,8 +364,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Component operational status
         /// </summary>
-        [FhirElement("operationalStatus", InSummary=true, Order=140)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("operationalStatus", InSummary = true, Order = 140)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> OperationalStatus
         {
@@ -380,7 +378,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Current supported parameter group
         /// </summary>
-        [FhirElement("parameterGroup", InSummary=true, Order=150)]
+        [FhirElement("parameterGroup", InSummary = true, Order = 150)]
         [DataMember]
         public CodeableConcept ParameterGroup
         {
@@ -393,7 +391,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+
         /// </summary>
-        [FhirElement("measurementPrinciple", InSummary=true, Order=160)]
+        [FhirElement("measurementPrinciple", InSummary = true, Order = 160)]
         [DataMember]
         public Code<Measmnt_Principle> MeasurementPrincipleElement
         {
@@ -425,8 +423,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Production specification of the component
         /// </summary>
-        [FhirElement("productionSpecification", InSummary=true, Order=170)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("productionSpecification", InSummary = true, Order = 170)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ProductionSpecificationComponent> ProductionSpecification
         {
@@ -439,7 +437,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Language code for the human-readable text strings produced by the device
         /// </summary>
-        [FhirElement("languageCode", InSummary=true, Order=180)]
+        [FhirElement("languageCode", InSummary = true, Order = 180)]
         [DataMember]
         public CodeableConcept LanguageCode
         {
@@ -475,7 +473,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new DeviceComponent());
+            return CopyTo(new DeviceComponent());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -19,7 +19,7 @@ using Hl7.Fhir.Rest;
 namespace Hl7.Fhir.Test.Serialization
 {
     [TestClass]
-	public class FhirParserTests
+    public class FhirParserTests
     {
         [TestMethod]
         public void TestParseQueryFromUriParametersSimple()

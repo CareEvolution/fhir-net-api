@@ -27,7 +27,7 @@ namespace Hl7.Fhir.Specification.Navigation
             {
                 do
                 {
-                    if(nav.PathName == name) return true;
+                    if (nav.PathName == name) return true;
                 }
                 while (nav.MoveToNext());
                 nav.MoveToParent();
@@ -49,7 +49,7 @@ namespace Hl7.Fhir.Specification.Navigation
             }
 
             nav.ReturnToBookmark(bm);
-            return false;           
+            return false;
         }
 
         // [WMR 20160802] NEW
@@ -77,7 +77,7 @@ namespace Hl7.Fhir.Specification.Navigation
         public static bool MoveTo(this ElementDefinitionNavigator nav, string name)
         {
             // MoveNext method performs parameter validation
-            return MoveToNext(nav, name) || MoveToPrevious(nav,name);
+            return MoveToNext(nav, name) || MoveToPrevious(nav, name);
         }
 
         // [WMR 20160802] NEW - Move to the specified ElementDefinition

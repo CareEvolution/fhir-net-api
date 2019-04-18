@@ -28,9 +28,9 @@ namespace Hl7.Fhir.Specification.Source
         private string _cachePath;
         private string _zipPath;
 
-        public ZipCacher(string zipPath, string cacheKey=null)
+        public ZipCacher(string zipPath, string cacheKey = null)
         {
-            if(cacheKey == null) cacheKey = Guid.NewGuid().ToString();
+            if (cacheKey == null) cacheKey = Guid.NewGuid().ToString();
             _cachePath = Path.Combine(Path.GetTempPath(), cacheKey);
             _zipPath = zipPath;
         }
@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Specification.Source
             var zipCachePath = Path.Combine(cache.FullName, cacheName);
 
             var zipCacheDir = new DirectoryInfo(zipCachePath);
-                        
+
             return zipCacheDir;
         }
     }

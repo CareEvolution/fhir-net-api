@@ -101,7 +101,7 @@ namespace Hl7.FhirPath.Expressions
 
     public class FunctionCallExpression : Expression
     {
-        public FunctionCallExpression(Expression focus, string name, TypeInfo type, params Expression[] arguments) : this(focus, name, type, (IEnumerable<Expression>) arguments)
+        public FunctionCallExpression(Expression focus, string name, TypeInfo type, params Expression[] arguments) : this(focus, name, type, (IEnumerable<Expression>)arguments)
         {
         }
 
@@ -147,7 +147,7 @@ namespace Hl7.FhirPath.Expressions
 
     public class ChildExpression : FunctionCallExpression
     {
-        public ChildExpression(Expression focus, string name) : base(focus, OP_PREFIX+"children", TypeInfo.Any, new ConstantExpression(name, TypeInfo.String))
+        public ChildExpression(Expression focus, string name) : base(focus, OP_PREFIX + "children", TypeInfo.Any, new ConstantExpression(name, TypeInfo.String))
         {
         }
 
@@ -160,7 +160,7 @@ namespace Hl7.FhirPath.Expressions
 
     public class IndexerExpression : FunctionCallExpression
     {
-        public IndexerExpression(Expression collection, Expression index) : base(collection, OP_PREFIX+"item", TypeInfo.Any, index)
+        public IndexerExpression(Expression collection, Expression index) : base(collection, OP_PREFIX + "item", TypeInfo.Any, index)
         {
         }
 
@@ -179,7 +179,7 @@ namespace Hl7.FhirPath.Expressions
         internal static readonly int BIN_PREFIX_LEN = BIN_PREFIX.Length;
 
 
-        public BinaryExpression(char op, Expression left, Expression right) : this(new String(op,1), left, right)
+        public BinaryExpression(char op, Expression left, Expression right) : this(new String(op, 1), left, right)
         {
         }
 
@@ -217,7 +217,7 @@ namespace Hl7.FhirPath.Expressions
         internal const string URY_PREFIX = "unary.";
         internal static readonly int URY_PREFIX_LEN = URY_PREFIX.Length;
 
-        public UnaryExpression(char op, Expression operand) : this(new String(op,1), operand)
+        public UnaryExpression(char op, Expression operand) : this(new String(op, 1), operand)
         {
         }
 
@@ -283,7 +283,7 @@ namespace Hl7.FhirPath.Expressions
             Contents = contents;
         }
 
-        public IEnumerable<Expression> Contents { get; private set;  }
+        public IEnumerable<Expression> Contents { get; private set; }
 
         public override T Accept<T>(ExpressionVisitor<T> visitor, SymbolTable scope)
         {
@@ -344,7 +344,7 @@ namespace Hl7.FhirPath.Expressions
 
     public class AxisExpression : VariableRefExpression
     {
-        public AxisExpression(string axisName) : base(OP_PREFIX+axisName)
+        public AxisExpression(string axisName) : base(OP_PREFIX + axisName)
         {
             if (axisName == null) throw Error.ArgumentNull("axisName");
         }

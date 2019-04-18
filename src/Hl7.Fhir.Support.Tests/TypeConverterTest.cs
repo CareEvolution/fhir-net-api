@@ -14,13 +14,13 @@ using Hl7.Fhir.Utility;
 namespace Hl7.Fhir.Tests.Serialization
 {
     [TestClass]
-	public class TypeConverterTest
+    public class TypeConverterTest
     {
         [TestMethod]
         public void TestStringToBinary()
         {
             var result = PrimitiveTypeConverter.ConvertTo<byte[]>("AAECAw==");
-            CollectionAssert.AreEqual(new byte[] { 0x00, 0x01, 0x02, 0x03 },result);
+            CollectionAssert.AreEqual(new byte[] { 0x00, 0x01, 0x02, 0x03 }, result);
             Assert.AreEqual("AAECAw==", PrimitiveTypeConverter.ConvertTo<string>(result));
         }
 
@@ -48,7 +48,7 @@ namespace Hl7.Fhir.Tests.Serialization
         public void TestStringToInteger()
         {
             var result = PrimitiveTypeConverter.ConvertTo<int>("-314159");
-            Assert.AreEqual(-314159,result);
+            Assert.AreEqual(-314159, result);
             Assert.AreEqual("-314159", PrimitiveTypeConverter.ConvertTo<string>(result));
         }
 
@@ -56,7 +56,7 @@ namespace Hl7.Fhir.Tests.Serialization
         public void TestStringToDecimal()
         {
             var result = PrimitiveTypeConverter.ConvertTo<decimal>("3.141592653589");
-            Assert.AreEqual( 3.141592653589M, result);
+            Assert.AreEqual(3.141592653589M, result);
             Assert.AreEqual("3.141592653589", PrimitiveTypeConverter.ConvertTo<string>(result));
         }
 
@@ -94,7 +94,7 @@ namespace Hl7.Fhir.Tests.Serialization
                 PrimitiveTypeConverter.ConvertTo<AG>("otherX");
                 Assert.Fail();
             }
-            catch(NotSupportedException)
+            catch (NotSupportedException)
             {
                 // succeeds
             }
@@ -121,13 +121,13 @@ namespace Hl7.Fhir.Tests.Serialization
             catch (Exception) { }
         }
 
-	    [TestMethod]
-	    public void TestStringToDateTimeOffset()
-	    {
-		    Assert.AreEqual(new DateTimeOffset(1976, 12, 12, 0, 0, 0, TimeSpan.Zero), PrimitiveTypeConverter.ConvertTo<DateTimeOffset>("1976-12-12"));
-	    }
+        [TestMethod]
+        public void TestStringToDateTimeOffset()
+        {
+            Assert.AreEqual(new DateTimeOffset(1976, 12, 12, 0, 0, 0, TimeSpan.Zero), PrimitiveTypeConverter.ConvertTo<DateTimeOffset>("1976-12-12"));
+        }
 
-	    [TestMethod]
+        [TestMethod]
         public void TestStringToUri()
         {
             var result = PrimitiveTypeConverter.ConvertTo<Uri>("http://www.nu.nl/test");

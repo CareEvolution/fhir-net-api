@@ -163,7 +163,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.Contains("is incompatible with that of the instance", report.ToString());
         }
 
-        
+
         [Fact]
         public void ResourceWithStatedProfiles()
         {
@@ -175,11 +175,11 @@ namespace Hl7.Fhir.Specification.Tests
             assertion.AddStatedProfile(ModelInfo.CanonicalUriForFhirCoreType(FHIRDefinedType.Observation));
             assertion.AddStatedProfile("http://validationtest.org/fhir/StructureDefinition/WeightHeightObservation");
             assertion.AddStatedProfile("http://hl7.org/fhir/StructureDefinition/devicemetricobservation");
-            
+
             var report = assertion.Validate();
             Assert.True(report.Success);
             Assert.Equal(2, assertion.MinimalProfiles.Count());
-            Assert.Equal( assertion.MinimalProfiles, assertion.StatedProfiles.Skip(1));
+            Assert.Equal(assertion.MinimalProfiles, assertion.StatedProfiles.Skip(1));
 
             assertion.SetDeclaredType(FHIRDefinedType.Procedure);
             report = assertion.Validate();

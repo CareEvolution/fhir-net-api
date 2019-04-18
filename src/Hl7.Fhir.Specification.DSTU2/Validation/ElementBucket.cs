@@ -41,7 +41,7 @@ namespace Hl7.Fhir.Validation
         {
             var outcome = base.Validate(validator, errorLocation);
 
-            foreach(var member in Members)
+            foreach (var member in Members)
             {
                 outcome.Include(Validator.Validate(member, Root));
             }

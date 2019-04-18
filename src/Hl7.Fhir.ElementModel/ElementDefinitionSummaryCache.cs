@@ -51,8 +51,8 @@ namespace Hl7.Fhir.ElementModel
         {
         }
 
-        private ElementDefinitionSummaryCache(IEnumerable<IElementDefinitionSummary> elements) 
-            : base(elements.ToDictionary( eds => eds.ElementName))
+        private ElementDefinitionSummaryCache(IEnumerable<IElementDefinitionSummary> elements)
+            : base(elements.ToDictionary(eds => eds.ElementName))
         {
         }
     }

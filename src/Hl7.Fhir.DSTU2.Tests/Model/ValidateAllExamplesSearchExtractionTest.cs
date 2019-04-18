@@ -39,7 +39,7 @@ namespace Hl7.Fhir.Tests.Model
                     .ToLookup(ks => ks.Rt, es => es.Def);
 
             SearchExtractionAllExamplesInternal();
-     //       SearchExtractionAllExamplesInternal();
+            //       SearchExtractionAllExamplesInternal();
         }
 
 
@@ -134,10 +134,10 @@ namespace Hl7.Fhir.Tests.Model
             public int count;
         }
 
-       
-  
-        private static void ExtractExamplesFromResource(Dictionary<ModelInfo.SearchParamDefinition, Holder> exampleSearchValues, Resource resource, 
-            ModelInfo.SearchParamDefinition index )
+
+
+        private static void ExtractExamplesFromResource(Dictionary<ModelInfo.SearchParamDefinition, Holder> exampleSearchValues, Resource resource,
+            ModelInfo.SearchParamDefinition index)
         {
             var resourceModel = resource.ToTypedElement();
 

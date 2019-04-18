@@ -30,7 +30,7 @@ namespace Hl7.Fhir.Validation.DSTU2
             if (Date.IsValidValue(value as string))
                 return ValidationResult.Success;
             else
-				return DotNetAttributeValidation.BuildResult(validationContext, "{0} is not a correctly formatted Date", value as string);
-		}
+                return DotNetAttributeValidation.BuildResult(validationContext, "{0} is not a correctly formatted Date", value as string);
+        }
     }
 }

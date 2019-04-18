@@ -1525,7 +1525,7 @@ namespace Hl7.Fhir.Specification.Snapshot
 
             // First try to resolve the custom element type profile, if specified
             var typeProfile = typeRef.Profile.FirstOrDefault();
-            
+
             // [WMR 20161004] Remove configuration setting; always merge type profiles
             // [WMR 20180723] Also expand custom profile on Reference
             if (!string.IsNullOrEmpty(typeProfile)) // && !typeRef.IsReference()) // && _settings.MergeTypeProfiles

@@ -21,8 +21,8 @@ namespace Hl7.Fhir.Specification.Navigation
             {
                 while (nav.MoveToNext()) ;
                 var result = nav.InsertAfter(child);
-                
-                if(!result) nav.ReturnToBookmark(bm);
+
+                if (!result) nav.ReturnToBookmark(bm);
                 return result;
             }
             else
@@ -36,9 +36,9 @@ namespace Hl7.Fhir.Specification.Navigation
         {
             var parent = nav.Bookmark();
 
-            if(nav.MoveToFirstChild())
+            if (nav.MoveToFirstChild())
             {
-                while(!nav.IsAtBookmark(parent)) nav.DeleteTree();
+                while (!nav.IsAtBookmark(parent)) nav.DeleteTree();
             }
 
             return nav.Delete();
@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Specification.Navigation
                 else
                     // Then insert other childs after that
                     dest.InsertAfter(copiedChild);
-                
+
                 // If there are nested children in the source, insert them under
                 // the newly inserted node in the destination
                 if (source.HasChildren) dest.CopyChildren(source);

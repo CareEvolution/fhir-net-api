@@ -49,12 +49,12 @@ namespace Hl7.Fhir.Model.DSTU2
             result.AddRange(base.Validate(validationContext));
 
             if (Content == null)
-                result.Add(DotNetAttributeValidation.BuildResult(validationContext,"Entry must contain (possibly 0-length) data in Content element"));
+                result.Add(DotNetAttributeValidation.BuildResult(validationContext, "Entry must contain (possibly 0-length) data in Content element"));
 
             if (ContentType == null)
                 result.Add(DotNetAttributeValidation.BuildResult(validationContext, "Entry must contain a ContentType"));
 
             return result;
         }
-    }       
+    }
 }

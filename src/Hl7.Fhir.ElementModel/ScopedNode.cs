@@ -132,8 +132,8 @@ namespace Hl7.Fhir.ElementModel
         {
             if (_cache.ContainedResources == null)
             {
-                _cache.ContainedResources = AtResource ? 
-                    this.Children("contained").Cast<ScopedNode>():
+                _cache.ContainedResources = AtResource ?
+                    this.Children("contained").Cast<ScopedNode>() :
                     Enumerable.Empty<ScopedNode>();
             }
             return _cache.ContainedResources;

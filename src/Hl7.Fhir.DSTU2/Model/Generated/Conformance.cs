@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A conformance statement
     /// </summary>
-    [FhirType("Conformance", IsResource=true)]
+    [FhirType("Conformance", IsResource = true)]
     [DataContract]
     public partial class Conformance : DomainResource
     {
@@ -464,7 +462,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of a individual to contact
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=40)]
+            [FhirElement("name", InSummary = true, Order = 40)]
             [DataMember]
             public FhirString NameElement
             {
@@ -496,8 +494,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Contact details for individual or publisher
             /// </summary>
-            [FhirElement("telecom", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("telecom", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ContactPoint> Telecom
             {
@@ -524,7 +522,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContactComponent());
+                return CopyTo(new ContactComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -588,8 +586,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A name the software is known by
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("name", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString NameElement
             {
@@ -621,7 +619,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Version covered by this statement
             /// </summary>
-            [FhirElement("version", InSummary=true, Order=50)]
+            [FhirElement("version", InSummary = true, Order = 50)]
             [DataMember]
             public FhirString VersionElement
             {
@@ -653,7 +651,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Date this version released
             /// </summary>
-            [FhirElement("releaseDate", InSummary=true, Order=60)]
+            [FhirElement("releaseDate", InSummary = true, Order = 60)]
             [DataMember]
             public FhirDateTime ReleaseDateElement
             {
@@ -700,7 +698,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SoftwareComponent());
+                return CopyTo(new SoftwareComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -768,8 +766,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Describes this specific instance
             /// </summary>
-            [FhirElement("description", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("description", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -801,7 +799,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Base URL for the installation
             /// </summary>
-            [FhirElement("url", InSummary=true, Order=50)]
+            [FhirElement("url", InSummary = true, Order = 50)]
             [DataMember]
             public FhirUri UrlElement
             {
@@ -847,7 +845,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ImplementationComponent());
+                return CopyTo(new ImplementationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -911,8 +909,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// client | server
             /// </summary>
-            [FhirElement("mode", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("mode", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<RestfulConformanceMode> ModeElement
             {
@@ -944,7 +942,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// General description of implementation
             /// </summary>
-            [FhirElement("documentation", Order=50)]
+            [FhirElement("documentation", Order = 50)]
             [DataMember]
             public FhirString DocumentationElement
             {
@@ -976,7 +974,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Information about security of implementation
             /// </summary>
-            [FhirElement("security", Order=60)]
+            [FhirElement("security", Order = 60)]
             [DataMember]
             public SecurityComponent Security
             {
@@ -989,8 +987,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Resource served on the REST interface
             /// </summary>
-            [FhirElement("resource", InSummary=true, Order=70)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("resource", InSummary = true, Order = 70)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<ResourceComponent> Resource
             {
@@ -1003,8 +1001,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// What operations are supported?
             /// </summary>
-            [FhirElement("interaction", Order=80)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("interaction", Order = 80)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<SystemInteractionComponent> Interaction
             {
@@ -1017,7 +1015,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// not-supported | batch | transaction | both
             /// </summary>
-            [FhirElement("transactionMode", Order=90)]
+            [FhirElement("transactionMode", Order = 90)]
             [DataMember]
             public Code<TransactionMode> TransactionModeElement
             {
@@ -1049,8 +1047,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Search params for searching all resources
             /// </summary>
-            [FhirElement("searchParam", Order=100)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("searchParam", Order = 100)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<SearchParamComponent> SearchParam
             {
@@ -1063,8 +1061,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Definition of an operation or a custom query
             /// </summary>
-            [FhirElement("operation", Order=110)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("operation", Order = 110)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<OperationComponent> Operation
             {
@@ -1077,8 +1075,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Compartments served/used by system
             /// </summary>
-            [FhirElement("compartment", Order=120)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("compartment", Order = 120)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirUri> CompartmentElement
             {
@@ -1102,7 +1100,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         CompartmentElement = null;
                     else
-                        CompartmentElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
+                        CompartmentElement = new List<FhirUri>(value.Select(elem => new FhirUri(elem)));
                     OnPropertyChanged("Compartment");
                 }
             }
@@ -1131,7 +1129,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RestComponent());
+                return CopyTo(new RestComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1223,7 +1221,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Adds CORS Headers (http://enable-cors.org/)
             /// </summary>
-            [FhirElement("cors", Order=40)]
+            [FhirElement("cors", Order = 40)]
             [DataMember]
             public FhirBoolean CorsElement
             {
@@ -1255,8 +1253,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates
             /// </summary>
-            [FhirElement("service", Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("service", Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> Service
             {
@@ -1269,7 +1267,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// General description of how security works
             /// </summary>
-            [FhirElement("description", Order=60)]
+            [FhirElement("description", Order = 60)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -1301,8 +1299,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Certificates associated with security profiles
             /// </summary>
-            [FhirElement("certificate", Order=70)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("certificate", Order = 70)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CertificateComponent> Certificate
             {
@@ -1331,7 +1329,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SecurityComponent());
+                return CopyTo(new SecurityComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1403,7 +1401,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Mime type for certificate
             /// </summary>
-            [FhirElement("type", Order=40)]
+            [FhirElement("type", Order = 40)]
             [DataMember]
             public Code TypeElement
             {
@@ -1435,7 +1433,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Actual certificate
             /// </summary>
-            [FhirElement("blob", Order=50)]
+            [FhirElement("blob", Order = 50)]
             [DataMember]
             public Base64Binary BlobElement
             {
@@ -1481,7 +1479,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new CertificateComponent());
+                return CopyTo(new CertificateComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1545,8 +1543,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A resource type that is supported
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<ResourceType> TypeElement
             {
@@ -1578,7 +1576,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Base System profile for all uses of resource
             /// </summary>
-            [FhirElement("profile", Order=50)]
+            [FhirElement("profile", Order = 50)]
             [References("StructureDefinition")]
             [DataMember]
             public ResourceReference Profile
@@ -1592,8 +1590,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// What operations are supported?
             /// </summary>
-            [FhirElement("interaction", Order=60)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("interaction", Order = 60)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<ResourceInteractionComponent> Interaction
             {
@@ -1606,7 +1604,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// no-version | versioned | versioned-update
             /// </summary>
-            [FhirElement("versioning", Order=70)]
+            [FhirElement("versioning", Order = 70)]
             [DataMember]
             public Code<ResourceVersionPolicy> VersioningElement
             {
@@ -1638,7 +1636,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether vRead can return past versions
             /// </summary>
-            [FhirElement("readHistory", Order=80)]
+            [FhirElement("readHistory", Order = 80)]
             [DataMember]
             public FhirBoolean ReadHistoryElement
             {
@@ -1670,7 +1668,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// If update can commit to a new identity
             /// </summary>
-            [FhirElement("updateCreate", Order=90)]
+            [FhirElement("updateCreate", Order = 90)]
             [DataMember]
             public FhirBoolean UpdateCreateElement
             {
@@ -1702,7 +1700,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// If allows/uses conditional create
             /// </summary>
-            [FhirElement("conditionalCreate", Order=100)]
+            [FhirElement("conditionalCreate", Order = 100)]
             [DataMember]
             public FhirBoolean ConditionalCreateElement
             {
@@ -1734,7 +1732,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// If allows/uses conditional update
             /// </summary>
-            [FhirElement("conditionalUpdate", Order=110)]
+            [FhirElement("conditionalUpdate", Order = 110)]
             [DataMember]
             public FhirBoolean ConditionalUpdateElement
             {
@@ -1766,7 +1764,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// not-supported | single | multiple - how conditional delete is supported
             /// </summary>
-            [FhirElement("conditionalDelete", Order=120)]
+            [FhirElement("conditionalDelete", Order = 120)]
             [DataMember]
             public Code<ConditionalDeleteStatus> ConditionalDeleteElement
             {
@@ -1798,8 +1796,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// _include values supported by the server
             /// </summary>
-            [FhirElement("searchInclude", Order=130)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("searchInclude", Order = 130)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirString> SearchIncludeElement
             {
@@ -1823,7 +1821,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SearchIncludeElement = null;
                     else
-                        SearchIncludeElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                        SearchIncludeElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                     OnPropertyChanged("SearchInclude");
                 }
             }
@@ -1831,8 +1829,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// _revinclude values supported by the server
             /// </summary>
-            [FhirElement("searchRevInclude", Order=140)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("searchRevInclude", Order = 140)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirString> SearchRevIncludeElement
             {
@@ -1856,7 +1854,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SearchRevIncludeElement = null;
                     else
-                        SearchRevIncludeElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                        SearchRevIncludeElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                     OnPropertyChanged("SearchRevInclude");
                 }
             }
@@ -1864,8 +1862,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Search params supported by implementation
             /// </summary>
-            [FhirElement("searchParam", Order=150)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("searchParam", Order = 150)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<SearchParamComponent> SearchParam
             {
@@ -1902,7 +1900,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ResourceComponent());
+                return CopyTo(new ResourceComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2006,8 +2004,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// read | vread | update | delete | history-instance | validate | history-type | create | search-type
             /// </summary>
-            [FhirElement("code", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<TypeRestfulInteraction> CodeElement
             {
@@ -2039,7 +2037,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Anything special about operation behavior
             /// </summary>
-            [FhirElement("documentation", Order=50)]
+            [FhirElement("documentation", Order = 50)]
             [DataMember]
             public FhirString DocumentationElement
             {
@@ -2085,7 +2083,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ResourceInteractionComponent());
+                return CopyTo(new ResourceInteractionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2149,8 +2147,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of search parameter
             /// </summary>
-            [FhirElement("name", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("name", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString NameElement
             {
@@ -2182,7 +2180,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Source of definition for parameter
             /// </summary>
-            [FhirElement("definition", Order=50)]
+            [FhirElement("definition", Order = 50)]
             [DataMember]
             public FhirUri DefinitionElement
             {
@@ -2214,8 +2212,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// number | date | string | token | reference | composite | quantity | uri
             /// </summary>
-            [FhirElement("type", Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<SearchParamType> TypeElement
             {
@@ -2247,7 +2245,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Server-specific usage
             /// </summary>
-            [FhirElement("documentation", Order=70)]
+            [FhirElement("documentation", Order = 70)]
             [DataMember]
             public FhirString DocumentationElement
             {
@@ -2279,8 +2277,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Types of resource (if a resource reference)
             /// </summary>
-            [FhirElement("target", Order=80)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("target", Order = 80)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Code<ResourceType>> TargetElement
             {
@@ -2304,7 +2302,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         TargetElement = null;
                     else
-                        TargetElement = new List<Code<ResourceType>>(value.Select(elem=>new Code<ResourceType>(elem)));
+                        TargetElement = new List<Code<ResourceType>>(value.Select(elem => new Code<ResourceType>(elem)));
                     OnPropertyChanged("Target");
                 }
             }
@@ -2312,8 +2310,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// missing | exact | contains | not | text | in | not-in | below | above | type
             /// </summary>
-            [FhirElement("modifier", Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("modifier", Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Code<SearchModifierCode>> ModifierElement
             {
@@ -2337,7 +2335,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         ModifierElement = null;
                     else
-                        ModifierElement = new List<Code<SearchModifierCode>>(value.Select(elem=>new Code<SearchModifierCode>(elem)));
+                        ModifierElement = new List<Code<SearchModifierCode>>(value.Select(elem => new Code<SearchModifierCode>(elem)));
                     OnPropertyChanged("Modifier");
                 }
             }
@@ -2345,8 +2343,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Chained names supported
             /// </summary>
-            [FhirElement("chain", Order=100)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("chain", Order = 100)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirString> ChainElement
             {
@@ -2370,7 +2368,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         ChainElement = null;
                     else
-                        ChainElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                        ChainElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                     OnPropertyChanged("Chain");
                 }
             }
@@ -2397,7 +2395,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SearchParamComponent());
+                return CopyTo(new SearchParamComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2481,8 +2479,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// transaction | search-system | history-system
             /// </summary>
-            [FhirElement("code", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<SystemRestfulInteraction> CodeElement
             {
@@ -2514,7 +2512,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Anything special about operation behavior
             /// </summary>
-            [FhirElement("documentation", Order=50)]
+            [FhirElement("documentation", Order = 50)]
             [DataMember]
             public FhirString DocumentationElement
             {
@@ -2560,7 +2558,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SystemInteractionComponent());
+                return CopyTo(new SystemInteractionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2624,8 +2622,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name by which the operation/query is invoked
             /// </summary>
-            [FhirElement("name", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("name", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString NameElement
             {
@@ -2657,9 +2655,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The defined operation/query
             /// </summary>
-            [FhirElement("definition", Order=50)]
+            [FhirElement("definition", Order = 50)]
             [References("OperationDefinition")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Definition
             {
@@ -2686,7 +2684,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new OperationComponent());
+                return CopyTo(new OperationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2750,8 +2748,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A messaging service end-point
             /// </summary>
-            [FhirElement("endpoint", Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("endpoint", Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<EndpointComponent> Endpoint
             {
@@ -2764,7 +2762,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reliable Message Cache Length (min)
             /// </summary>
-            [FhirElement("reliableCache", Order=50)]
+            [FhirElement("reliableCache", Order = 50)]
             [DataMember]
             public UnsignedInt ReliableCacheElement
             {
@@ -2796,7 +2794,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Messaging interface behavior details
             /// </summary>
-            [FhirElement("documentation", Order=60)]
+            [FhirElement("documentation", Order = 60)]
             [DataMember]
             public FhirString DocumentationElement
             {
@@ -2828,8 +2826,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Declare support for this event
             /// </summary>
-            [FhirElement("event", Order=70)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("event", Order = 70)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<EventComponent> Event
             {
@@ -2858,7 +2856,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new MessagingComponent());
+                return CopyTo(new MessagingComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2930,8 +2928,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// http | ftp | mllp +
             /// </summary>
-            [FhirElement("protocol", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("protocol", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Protocol
             {
@@ -2944,8 +2942,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Address of end-point
             /// </summary>
-            [FhirElement("address", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("address", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri AddressElement
             {
@@ -2991,7 +2989,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new EndpointComponent());
+                return CopyTo(new EndpointComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -3055,8 +3053,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Event type
             /// </summary>
-            [FhirElement("code", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Code
             {
@@ -3069,7 +3067,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Consequence | Currency | Notification
             /// </summary>
-            [FhirElement("category", Order=50)]
+            [FhirElement("category", Order = 50)]
             [DataMember]
             public Code<MessageSignificanceCategory> CategoryElement
             {
@@ -3101,8 +3099,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// sender | receiver
             /// </summary>
-            [FhirElement("mode", Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("mode", Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<ConformanceEventMode> ModeElement
             {
@@ -3134,8 +3132,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Resource that's focus of message
             /// </summary>
-            [FhirElement("focus", Order=70)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("focus", Order = 70)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<ResourceType> FocusElement
             {
@@ -3167,9 +3165,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Profile that describes the request
             /// </summary>
-            [FhirElement("request", Order=80)]
+            [FhirElement("request", Order = 80)]
             [References("StructureDefinition")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Request
             {
@@ -3182,9 +3180,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Profile that describes the response
             /// </summary>
-            [FhirElement("response", Order=90)]
+            [FhirElement("response", Order = 90)]
             [References("StructureDefinition")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Response
             {
@@ -3197,7 +3195,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Endpoint-specific event documentation
             /// </summary>
-            [FhirElement("documentation", Order=100)]
+            [FhirElement("documentation", Order = 100)]
             [DataMember]
             public FhirString DocumentationElement
             {
@@ -3248,7 +3246,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new EventComponent());
+                return CopyTo(new EventComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -3332,8 +3330,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// producer | consumer
             /// </summary>
-            [FhirElement("mode", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("mode", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<DocumentMode> ModeElement
             {
@@ -3365,7 +3363,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Description of document support
             /// </summary>
-            [FhirElement("documentation", Order=50)]
+            [FhirElement("documentation", Order = 50)]
             [DataMember]
             public FhirString DocumentationElement
             {
@@ -3397,9 +3395,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Constraint on a resource used in the document
             /// </summary>
-            [FhirElement("profile", Order=60)]
+            [FhirElement("profile", Order = 60)]
             [References("StructureDefinition")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Profile
             {
@@ -3427,7 +3425,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new DocumentComponent());
+                return CopyTo(new DocumentComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -3488,7 +3486,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Logical uri to reference this statement
         /// </summary>
-        [FhirElement("url", InSummary=true, Order=90)]
+        [FhirElement("url", InSummary = true, Order = 90)]
         [DataMember]
         public FhirUri UrlElement
         {
@@ -3520,7 +3518,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Logical id for this version of the statement
         /// </summary>
-        [FhirElement("version", InSummary=true, Order=100)]
+        [FhirElement("version", InSummary = true, Order = 100)]
         [DataMember]
         public FhirString VersionElement
         {
@@ -3552,7 +3550,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Informal name for this conformance statement
         /// </summary>
-        [FhirElement("name", InSummary=true, Order=110)]
+        [FhirElement("name", InSummary = true, Order = 110)]
         [DataMember]
         public FhirString NameElement
         {
@@ -3584,7 +3582,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// draft | active | retired
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=120)]
+        [FhirElement("status", InSummary = true, Order = 120)]
         [DataMember]
         public Code<ConformanceResourceStatus> StatusElement
         {
@@ -3616,7 +3614,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If for testing purposes, not real usage
         /// </summary>
-        [FhirElement("experimental", InSummary=true, Order=130)]
+        [FhirElement("experimental", InSummary = true, Order = 130)]
         [DataMember]
         public FhirBoolean ExperimentalElement
         {
@@ -3648,7 +3646,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Name of the publisher (Organization or individual)
         /// </summary>
-        [FhirElement("publisher", InSummary=true, Order=140)]
+        [FhirElement("publisher", InSummary = true, Order = 140)]
         [DataMember]
         public FhirString PublisherElement
         {
@@ -3680,8 +3678,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contact details of the publisher
         /// </summary>
-        [FhirElement("contact", InSummary=true, Order=150)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("contact", InSummary = true, Order = 150)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactComponent> Contact
         {
@@ -3694,8 +3692,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Publication Date(/time)
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=160)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("date", InSummary = true, Order = 160)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -3727,7 +3725,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Human description of the conformance statement
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=170)]
+        [FhirElement("description", InSummary = true, Order = 170)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -3759,7 +3757,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Why is this needed?
         /// </summary>
-        [FhirElement("requirements", Order=180)]
+        [FhirElement("requirements", Order = 180)]
         [DataMember]
         public FhirString RequirementsElement
         {
@@ -3791,7 +3789,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
-        [FhirElement("copyright", Order=190)]
+        [FhirElement("copyright", Order = 190)]
         [DataMember]
         public FhirString CopyrightElement
         {
@@ -3823,8 +3821,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// instance | capability | requirements
         /// </summary>
-        [FhirElement("kind", InSummary=true, Order=200)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("kind", InSummary = true, Order = 200)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ConformanceStatementKind> KindElement
         {
@@ -3856,7 +3854,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Software that is covered by this conformance statement
         /// </summary>
-        [FhirElement("software", InSummary=true, Order=210)]
+        [FhirElement("software", InSummary = true, Order = 210)]
         [DataMember]
         public SoftwareComponent Software
         {
@@ -3869,7 +3867,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If this describes a specific instance
         /// </summary>
-        [FhirElement("implementation", InSummary=true, Order=220)]
+        [FhirElement("implementation", InSummary = true, Order = 220)]
         [DataMember]
         public ImplementationComponent Implementation
         {
@@ -3882,8 +3880,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// FHIR Version the system uses
         /// </summary>
-        [FhirElement("fhirVersion", InSummary=true, Order=230)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("fhirVersion", InSummary = true, Order = 230)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Id FhirVersionElement
         {
@@ -3915,8 +3913,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// no | extensions | elements | both
         /// </summary>
-        [FhirElement("acceptUnknown", InSummary=true, Order=240)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("acceptUnknown", InSummary = true, Order = 240)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<UnknownContentCode> AcceptUnknownElement
         {
@@ -3948,8 +3946,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// formats supported (xml | json | mime type)
         /// </summary>
-        [FhirElement("format", InSummary=true, Order=250)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("format", InSummary = true, Order = 250)]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<Code> FormatElement
         {
@@ -3973,7 +3971,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     FormatElement = null;
                 else
-                    FormatElement = new List<Code>(value.Select(elem=>new Code(elem)));
+                    FormatElement = new List<Code>(value.Select(elem => new Code(elem)));
                 OnPropertyChanged("Format");
             }
         }
@@ -3981,9 +3979,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Profiles for use cases supported
         /// </summary>
-        [FhirElement("profile", Order=260)]
+        [FhirElement("profile", Order = 260)]
         [References("StructureDefinition")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Profile
         {
@@ -3996,8 +3994,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If the endpoint is a RESTful one
         /// </summary>
-        [FhirElement("rest", InSummary=true, Order=270)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("rest", InSummary = true, Order = 270)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<RestComponent> Rest
         {
@@ -4010,8 +4008,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If messaging is supported
         /// </summary>
-        [FhirElement("messaging", Order=280)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("messaging", Order = 280)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<MessagingComponent> Messaging
         {
@@ -4024,8 +4022,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Document definition
         /// </summary>
-        [FhirElement("document", Order=290)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("document", Order = 290)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<DocumentComponent> Document
         {
@@ -4178,7 +4176,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Conformance());
+            return CopyTo(new Conformance());
         }
 
         public override bool Matches(IDeepComparable other)

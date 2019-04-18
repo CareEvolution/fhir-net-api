@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Potential outcomes for a subject with likelihood
     /// </summary>
-    [FhirType("RiskAssessment", IsResource=true)]
+    [FhirType("RiskAssessment", IsResource = true)]
     [DataContract]
     public partial class RiskAssessment : DomainResource
     {
@@ -68,8 +66,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Possible outcome for the subject
             /// </summary>
-            [FhirElement("outcome", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("outcome", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept Outcome
             {
@@ -82,8 +80,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Likelihood of specified outcome
             /// </summary>
-            [FhirElement("probability", Order=50, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(FhirDecimal),typeof(Range),typeof(CodeableConcept))]
+            [FhirElement("probability", Order = 50, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(FhirDecimal), typeof(Range), typeof(CodeableConcept))]
             [DataMember]
             public Element Probability
             {
@@ -96,7 +94,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Relative likelihood
             /// </summary>
-            [FhirElement("relativeRisk", Order=60)]
+            [FhirElement("relativeRisk", Order = 60)]
             [DataMember]
             public FhirDecimal RelativeRiskElement
             {
@@ -128,8 +126,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Timeframe or age range
             /// </summary>
-            [FhirElement("when", Order=70, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Period),typeof(Range))]
+            [FhirElement("when", Order = 70, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(Period), typeof(Range))]
             [DataMember]
             public Element When
             {
@@ -142,7 +140,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Explanation of prediction
             /// </summary>
-            [FhirElement("rationale", Order=80)]
+            [FhirElement("rationale", Order = 80)]
             [DataMember]
             public FhirString RationaleElement
             {
@@ -191,7 +189,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new PredictionComponent());
+                return CopyTo(new PredictionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -260,8 +258,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who/what does assessment apply to?
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=90)]
-        [References("Patient","Group")]
+        [FhirElement("subject", InSummary = true, Order = 90)]
+        [References("Patient", "Group")]
         [DataMember]
         public ResourceReference Subject
         {
@@ -274,7 +272,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When was assessment made?
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=100)]
+        [FhirElement("date", InSummary = true, Order = 100)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -306,7 +304,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Condition assessed
         /// </summary>
-        [FhirElement("condition", InSummary=true, Order=110)]
+        [FhirElement("condition", InSummary = true, Order = 110)]
         [References("Condition")]
         [DataMember]
         public ResourceReference Condition
@@ -320,7 +318,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Where was assessment performed?
         /// </summary>
-        [FhirElement("encounter", InSummary=true, Order=120)]
+        [FhirElement("encounter", InSummary = true, Order = 120)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference Encounter
@@ -334,8 +332,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who did assessment?
         /// </summary>
-        [FhirElement("performer", InSummary=true, Order=130)]
-        [References("Practitioner","Device")]
+        [FhirElement("performer", InSummary = true, Order = 130)]
+        [References("Practitioner", "Device")]
         [DataMember]
         public ResourceReference Performer
         {
@@ -348,7 +346,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unique identifier for the assessment
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=140)]
+        [FhirElement("identifier", InSummary = true, Order = 140)]
         [DataMember]
         public Identifier Identifier
         {
@@ -361,7 +359,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Evaluation mechanism
         /// </summary>
-        [FhirElement("method", InSummary=true, Order=150)]
+        [FhirElement("method", InSummary = true, Order = 150)]
         [DataMember]
         public CodeableConcept Method
         {
@@ -374,8 +372,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Information used in assessment
         /// </summary>
-        [FhirElement("basis", Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("basis", Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Basis
         {
@@ -388,8 +386,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Outcome predicted
         /// </summary>
-        [FhirElement("prediction", Order=170)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("prediction", Order = 170)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<PredictionComponent> Prediction
         {
@@ -402,7 +400,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// How to reduce risk
         /// </summary>
-        [FhirElement("mitigation", Order=180)]
+        [FhirElement("mitigation", Order = 180)]
         [DataMember]
         public FhirString MitigationElement
         {
@@ -483,7 +481,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new RiskAssessment());
+            return CopyTo(new RiskAssessment());
         }
 
         public override bool Matches(IDeepComparable other)

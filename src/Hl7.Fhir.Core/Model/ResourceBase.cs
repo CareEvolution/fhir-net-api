@@ -9,7 +9,7 @@
 
     public interface IResource
     {
-        string TypeName {get;}
+        string TypeName { get; }
     }
 
     /// <summary>

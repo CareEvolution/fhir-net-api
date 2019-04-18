@@ -32,7 +32,7 @@ namespace Hl7.FhirPath.Tests
         {
 
             Assert.Null(Typecasts.Unbox(emptyColl, typeof(string)));
-            Assert.Equal(collection,Typecasts.Unbox(collection, typeof(IEnumerable<ITypedElement>)));
+            Assert.Equal(collection, Typecasts.Unbox(collection, typeof(IEnumerable<ITypedElement>)));
             Assert.Equal(complex, Typecasts.Unbox(singleC, typeof(ITypedElement)));
 
             Assert.Equal(4L, Typecasts.Unbox(singleV, typeof(long)));
@@ -73,8 +73,8 @@ namespace Hl7.FhirPath.Tests
 
             Assert.True(Typecasts.CanCastTo(complex, typeof(IEnumerable<ITypedElement>)));
             var result = (IEnumerable<ITypedElement>)Typecasts.CastTo(complex, typeof(IEnumerable<ITypedElement>));
-            Assert.Equal(complex,result.Single());
-            checkCast<ITypedElement>(complex, complex );
+            Assert.Equal(complex, result.Single());
+            checkCast<ITypedElement>(complex, complex);
             Assert.False(Typecasts.CanCastTo(collection, typeof(bool)));
             Assert.False(Typecasts.CanCastTo(collection, typeof(bool?)));
             Assert.False(Typecasts.CanCastTo(collection, typeof(string)));
@@ -110,7 +110,7 @@ namespace Hl7.FhirPath.Tests
         public void CastNullable()
         {
             checkCast<object>("hi", "hi");
-            
+
             Assert.True(Typecasts.CanCastTo("hi", typeof(IEnumerable<ITypedElement>)));
             var result = (IEnumerable<ITypedElement>)Typecasts.CastTo("hi", typeof(IEnumerable<ITypedElement>));
             Assert.Equal("hi", result.Single().Value);

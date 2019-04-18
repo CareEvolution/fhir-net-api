@@ -17,7 +17,7 @@ namespace Hl7.Fhir.Validation
 {
     public class DotNetAttributeValidation
     {
-        public static ValidationContext BuildContext(object value=null)
+        public static ValidationContext BuildContext(object value = null)
         {
             return new ValidationContext(value);
         }
@@ -36,7 +36,7 @@ namespace Hl7.Fhir.Validation
         public static bool TryValidate(object value, ICollection<ValidationResult> validationResults = null, bool recurse = false)
         {
             if (value == null) throw new ArgumentNullException("value");
-          // assertSupportedInstanceType(value);
+            // assertSupportedInstanceType(value);
 
             var results = validationResults ?? new List<ValidationResult>();
             var validationContext = BuildContext(value);
@@ -45,13 +45,13 @@ namespace Hl7.Fhir.Validation
 
             // Note, if you pass a null validationResults, you will *not* get results (it's not an out param!)
         }
-     
+
 
         internal static ValidationResult BuildResult(ValidationContext context, string message, params object[] messageArgs)
         {
             var resultMessage = String.Format(message, messageArgs);
 
-            if(context != null && context.MemberName != null)
+            if (context != null && context.MemberName != null)
                 return new ValidationResult(resultMessage, new string[] { context.MemberName });
             else
                 return new ValidationResult(resultMessage);

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A request for a procedure to be performed
     /// </summary>
-    [FhirType("ProcedureRequest", IsResource=true)]
+    [FhirType("ProcedureRequest", IsResource = true)]
     [DataContract]
     public partial class ProcedureRequest : DomainResource
     {
@@ -163,8 +161,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unique identifier for the request
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -177,9 +175,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who the procedure should be done to
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=100)]
-        [References("Patient","Group")]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("subject", InSummary = true, Order = 100)]
+        [References("Patient", "Group")]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Subject
         {
@@ -192,8 +190,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What procedure to perform
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("code", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -206,8 +204,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What part of body to perform on
         /// </summary>
-        [FhirElement("bodySite", InSummary=true, Order=120)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("bodySite", InSummary = true, Order = 120)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> BodySite
         {
@@ -220,8 +218,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Why procedure should occur
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=130, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
+        [FhirElement("reason", InSummary = true, Order = 130, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(CodeableConcept), typeof(ResourceReference))]
         [DataMember]
         public Element Reason
         {
@@ -234,8 +232,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When procedure should occur
         /// </summary>
-        [FhirElement("scheduled", InSummary=true, Order=140, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(FhirDateTime),typeof(Period),typeof(Timing))]
+        [FhirElement("scheduled", InSummary = true, Order = 140, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(FhirDateTime), typeof(Period), typeof(Timing))]
         [DataMember]
         public Element Scheduled
         {
@@ -248,7 +246,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Encounter request created during
         /// </summary>
-        [FhirElement("encounter", InSummary=true, Order=150)]
+        [FhirElement("encounter", InSummary = true, Order = 150)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference Encounter
@@ -262,8 +260,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who should perform the procedure
         /// </summary>
-        [FhirElement("performer", InSummary=true, Order=160)]
-        [References("Practitioner","Organization","Patient","RelatedPerson")]
+        [FhirElement("performer", InSummary = true, Order = 160)]
+        [References("Practitioner", "Organization", "Patient", "RelatedPerson")]
         [DataMember]
         public ResourceReference Performer
         {
@@ -276,7 +274,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// proposed | draft | requested | received | accepted | in-progress | completed | suspended | rejected | aborted
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=170)]
+        [FhirElement("status", InSummary = true, Order = 170)]
         [DataMember]
         public Code<ProcedureRequestStatus> StatusElement
         {
@@ -308,8 +306,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Additional information about desired procedure
         /// </summary>
-        [FhirElement("notes", InSummary=true, Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("notes", InSummary = true, Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Annotation> Notes
         {
@@ -322,8 +320,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Preconditions for procedure
         /// </summary>
-        [FhirElement("asNeeded", InSummary=true, Order=190, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(FhirBoolean),typeof(CodeableConcept))]
+        [FhirElement("asNeeded", InSummary = true, Order = 190, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(FhirBoolean), typeof(CodeableConcept))]
         [DataMember]
         public Element AsNeeded
         {
@@ -336,7 +334,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When request was created
         /// </summary>
-        [FhirElement("orderedOn", InSummary=true, Order=200)]
+        [FhirElement("orderedOn", InSummary = true, Order = 200)]
         [DataMember]
         public FhirDateTime OrderedOnElement
         {
@@ -368,8 +366,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who made request
         /// </summary>
-        [FhirElement("orderer", InSummary=true, Order=210)]
-        [References("Practitioner","Patient","RelatedPerson","Device")]
+        [FhirElement("orderer", InSummary = true, Order = 210)]
+        [References("Practitioner", "Patient", "RelatedPerson", "Device")]
         [DataMember]
         public ResourceReference Orderer
         {
@@ -382,7 +380,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// routine | urgent | stat | asap
         /// </summary>
-        [FhirElement("priority", InSummary=true, Order=220)]
+        [FhirElement("priority", InSummary = true, Order = 220)]
         [DataMember]
         public Code<ProcedureRequestPriority> PriorityElement
         {
@@ -441,7 +439,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new ProcedureRequest());
+            return CopyTo(new ProcedureRequest());
         }
 
         public override bool Matches(IDeepComparable other)

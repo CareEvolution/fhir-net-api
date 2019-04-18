@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A request to perform an action
     /// </summary>
-    [FhirType("Order", IsResource=true)]
+    [FhirType("Order", IsResource = true)]
     [DataContract]
     public partial class Order : DomainResource
     {
@@ -68,7 +66,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Code specifies when request should be done. The code may simply be a priority code
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
+            [FhirElement("code", InSummary = true, Order = 40)]
             [DataMember]
             public CodeableConcept Code
             {
@@ -81,7 +79,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A formal schedule
             /// </summary>
-            [FhirElement("schedule", InSummary=true, Order=50)]
+            [FhirElement("schedule", InSummary = true, Order = 50)]
             [DataMember]
             public Timing Schedule
             {
@@ -108,7 +106,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new WhenComponent());
+                return CopyTo(new WhenComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -165,8 +163,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Identifiers assigned to this order by the orderer or by the receiver
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -179,7 +177,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When the order was made
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=100)]
+        [FhirElement("date", InSummary = true, Order = 100)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -211,8 +209,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Patient this order is about
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=110)]
-        [References("Patient","Group","Device","Substance")]
+        [FhirElement("subject", InSummary = true, Order = 110)]
+        [References("Patient", "Group", "Device", "Substance")]
         [DataMember]
         public ResourceReference Subject
         {
@@ -225,8 +223,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who initiated the order
         /// </summary>
-        [FhirElement("source", InSummary=true, Order=120)]
-        [References("Practitioner","Organization")]
+        [FhirElement("source", InSummary = true, Order = 120)]
+        [References("Practitioner", "Organization")]
         [DataMember]
         public ResourceReference Source
         {
@@ -239,8 +237,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who is intended to fulfill the order
         /// </summary>
-        [FhirElement("target", InSummary=true, Order=130)]
-        [References("Organization","Device","Practitioner")]
+        [FhirElement("target", InSummary = true, Order = 130)]
+        [References("Organization", "Device", "Practitioner")]
         [DataMember]
         public ResourceReference Target
         {
@@ -253,8 +251,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Text - why the order was made
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=140, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
+        [FhirElement("reason", InSummary = true, Order = 140, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(CodeableConcept), typeof(ResourceReference))]
         [DataMember]
         public Element Reason
         {
@@ -267,7 +265,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When order should be fulfilled
         /// </summary>
-        [FhirElement("when", InSummary=true, Order=150)]
+        [FhirElement("when", InSummary = true, Order = 150)]
         [DataMember]
         public WhenComponent When
         {
@@ -280,8 +278,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What action is being ordered
         /// </summary>
-        [FhirElement("detail", InSummary=true, Order=160)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("detail", InSummary = true, Order = 160)]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<ResourceReference> Detail
         {
@@ -331,7 +329,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Order());
+            return CopyTo(new Order());
         }
 
         public override bool Matches(IDeepComparable other)

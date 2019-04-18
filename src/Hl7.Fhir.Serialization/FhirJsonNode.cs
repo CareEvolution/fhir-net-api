@@ -28,7 +28,7 @@ namespace Hl7.Fhir.Serialization
                     $"Alternatively, specify a {nameof(nodeName)} using the parameter.");
             Location = Name;
 
-            JsonValue = null;           
+            JsonValue = null;
             ArrayIndex = null;
             UsesShadow = false;
             _settings = settings?.Clone() ?? new FhirJsonParsingSettings();
@@ -183,7 +183,7 @@ namespace Hl7.Fhir.Serialization
                     {
                         // Make sure the representation of this Json-typed value is turned
                         // into a string representation compatible with the XML serialization
-                        return JsonValue.Value is string s ? s.Trim() 
+                        return JsonValue.Value is string s ? s.Trim()
                             : PrimitiveTypeConverter.ConvertTo<string>(JsonValue.Value);
                     }
                 }
@@ -312,7 +312,7 @@ namespace Hl7.Fhir.Serialization
             ExceptionHandler.NotifyOrThrow(this, ExceptionNotification.Error(Error.Format("Parser: " + message, lineNumber, linePosition)));
         }
 
-        private (int lineNumber, int linePosition) getPosition(JToken node) => 
+        private (int lineNumber, int linePosition) getPosition(JToken node) =>
             node is IJsonLineInfo jli ? (jli.LineNumber, jli.LinePosition) : (-1, -1);
 
         public IEnumerable<object> Annotations(Type type)
@@ -361,7 +361,7 @@ namespace Hl7.Fhir.Serialization
                     {
                         try
                         {
-                            doc = SerializationUtil.XDocumentFromXmlText((string) nav.Value);
+                            doc = SerializationUtil.XDocumentFromXmlText((string)nav.Value);
                         }
                         catch (FormatException ex)
                         {

@@ -21,6 +21,6 @@ namespace Hl7.Fhir.XPath
         public static JsonXPathNavigator GetNavigator(this JsonReader reader)
         {
             return new JsonXPathNavigator(reader);
-        }            
+        }
     }
 }

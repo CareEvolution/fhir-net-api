@@ -42,13 +42,13 @@ namespace Hl7.Fhir.Model.DSTU2
         public static Instant FromLocalDateTime(int year, int month, int day,
                             int hour, int min, int sec, int milis = 0)
         {
-            return new Instant( new DateTimeOffset(year, month, day, hour, min, sec,
-                            DateTimeOffset.Now.Offset) );
+            return new Instant(new DateTimeOffset(year, month, day, hour, min, sec,
+                            DateTimeOffset.Now.Offset));
         }
 
 
         public static Instant FromDateTimeUtc(int year, int month, int day,
-                                            int hour, int min, int sec, int milis=0)
+                                            int hour, int min, int sec, int milis = 0)
         {
             return new Instant(new DateTimeOffset(year, month, day, hour, min, sec,
                                    TimeSpan.Zero));

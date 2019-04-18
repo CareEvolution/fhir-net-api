@@ -28,7 +28,7 @@ namespace Hl7.Fhir.Specification.Source
         public static ZipSource CreateValidationSource()
         {
             var path = Path.Combine(DirectorySource.SpecificationDirectory, SpecificationZipFileName);
-            if(!File.Exists(path))
+            if (!File.Exists(path))
             {
                 throw new FileNotFoundException($"Cannot create a {nameof(ZipSource)} for the core specification: '{SpecificationZipFileName}' was not found.");
             }
@@ -82,7 +82,8 @@ namespace Hl7.Fhir.Specification.Source
         public string Mask
         {
             get { return _mask; }
-            set {
+            set
+            {
                 _mask = value;
                 // No need to lock, DirectorySource is synchronized
                 var source = _lazySource.Value;
@@ -194,7 +195,7 @@ namespace Hl7.Fhir.Specification.Source
         private string GetCacheKey()
         {
             Assembly assembly = typeof(ZipSource).GetTypeInfo().Assembly;
-            var versionInfo =  assembly.GetCustomAttribute(typeof(AssemblyInformationalVersionAttribute)) as AssemblyInformationalVersionAttribute;
+            var versionInfo = assembly.GetCustomAttribute(typeof(AssemblyInformationalVersionAttribute)) as AssemblyInformationalVersionAttribute;
             var productInfo = assembly.GetCustomAttribute(typeof(AssemblyProductAttribute)) as AssemblyProductAttribute;
             return $"FhirArtifactCache-{versionInfo.InformationalVersion}-{productInfo.Product}";
         }

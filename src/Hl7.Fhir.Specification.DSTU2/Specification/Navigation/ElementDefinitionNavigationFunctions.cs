@@ -119,7 +119,7 @@ namespace Hl7.Fhir.Specification.Navigation
             return !string.IsNullOrEmpty(basePath)
                 && !string.IsNullOrEmpty(path)
                 && dot1 == -1 && dot2 == -1;
-                // && !ModelInfo.IsCoreModelType(baseElementPath);
+            // && !ModelInfo.IsCoreModelType(baseElementPath);
         }
 
 

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Remittance resource
     /// </summary>
-    [FhirType("ClaimResponse", IsResource=true)]
+    [FhirType("ClaimResponse", IsResource = true)]
     [DataContract]
     public partial class ClaimResponse : DomainResource
     {
@@ -68,8 +66,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Service instance
             /// </summary>
-            [FhirElement("sequenceLinkId", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("sequenceLinkId", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public PositiveInt SequenceLinkIdElement
             {
@@ -101,8 +99,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// List of note numbers which apply
             /// </summary>
-            [FhirElement("noteNumber", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("noteNumber", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<PositiveInt> NoteNumberElement
             {
@@ -126,7 +124,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         NoteNumberElement = null;
                     else
-                        NoteNumberElement = new List<PositiveInt>(value.Select(elem=>new PositiveInt(elem)));
+                        NoteNumberElement = new List<PositiveInt>(value.Select(elem => new PositiveInt(elem)));
                     OnPropertyChanged("NoteNumber");
                 }
             }
@@ -134,8 +132,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Adjudication details
             /// </summary>
-            [FhirElement("adjudication", InSummary=true, Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("adjudication", InSummary = true, Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ItemAdjudicationComponent> Adjudication
             {
@@ -148,8 +146,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Detail line items
             /// </summary>
-            [FhirElement("detail", InSummary=true, Order=70)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("detail", InSummary = true, Order = 70)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ItemDetailComponent> Detail
             {
@@ -178,7 +176,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ItemsComponent());
+                return CopyTo(new ItemsComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -250,8 +248,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Adjudication category such as co-pay, eligible, benefit, etc.
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Code
             {
@@ -264,7 +262,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Monetary amount
             /// </summary>
-            [FhirElement("amount", InSummary=true, Order=50)]
+            [FhirElement("amount", InSummary = true, Order = 50)]
             [DataMember]
             public Money Amount
             {
@@ -277,7 +275,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Non-monetary value
             /// </summary>
-            [FhirElement("value", InSummary=true, Order=60)]
+            [FhirElement("value", InSummary = true, Order = 60)]
             [DataMember]
             public FhirDecimal ValueElement
             {
@@ -324,7 +322,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ItemAdjudicationComponent());
+                return CopyTo(new ItemAdjudicationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -392,8 +390,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Service instance
             /// </summary>
-            [FhirElement("sequenceLinkId", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("sequenceLinkId", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public PositiveInt SequenceLinkIdElement
             {
@@ -425,8 +423,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Detail adjudication
             /// </summary>
-            [FhirElement("adjudication", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("adjudication", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<DetailAdjudicationComponent> Adjudication
             {
@@ -439,8 +437,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Subdetail line items
             /// </summary>
-            [FhirElement("subDetail", InSummary=true, Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("subDetail", InSummary = true, Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<SubDetailComponent> SubDetail
             {
@@ -468,7 +466,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ItemDetailComponent());
+                return CopyTo(new ItemDetailComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -536,8 +534,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Adjudication category such as co-pay, eligible, benefit, etc.
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Code
             {
@@ -550,7 +548,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Monetary amount
             /// </summary>
-            [FhirElement("amount", InSummary=true, Order=50)]
+            [FhirElement("amount", InSummary = true, Order = 50)]
             [DataMember]
             public Money Amount
             {
@@ -563,7 +561,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Non-monetary value
             /// </summary>
-            [FhirElement("value", InSummary=true, Order=60)]
+            [FhirElement("value", InSummary = true, Order = 60)]
             [DataMember]
             public FhirDecimal ValueElement
             {
@@ -610,7 +608,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new DetailAdjudicationComponent());
+                return CopyTo(new DetailAdjudicationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -678,8 +676,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Service instance
             /// </summary>
-            [FhirElement("sequenceLinkId", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("sequenceLinkId", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public PositiveInt SequenceLinkIdElement
             {
@@ -711,8 +709,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Subdetail adjudication
             /// </summary>
-            [FhirElement("adjudication", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("adjudication", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<SubdetailAdjudicationComponent> Adjudication
             {
@@ -739,7 +737,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SubDetailComponent());
+                return CopyTo(new SubDetailComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -803,8 +801,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Adjudication category such as co-pay, eligible, benefit, etc.
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Code
             {
@@ -817,7 +815,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Monetary amount
             /// </summary>
-            [FhirElement("amount", InSummary=true, Order=50)]
+            [FhirElement("amount", InSummary = true, Order = 50)]
             [DataMember]
             public Money Amount
             {
@@ -830,7 +828,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Non-monetary value
             /// </summary>
-            [FhirElement("value", InSummary=true, Order=60)]
+            [FhirElement("value", InSummary = true, Order = 60)]
             [DataMember]
             public FhirDecimal ValueElement
             {
@@ -877,7 +875,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SubdetailAdjudicationComponent());
+                return CopyTo(new SubdetailAdjudicationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -945,8 +943,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Service instances
             /// </summary>
-            [FhirElement("sequenceLinkId", InSummary=true, Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("sequenceLinkId", InSummary = true, Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<PositiveInt> SequenceLinkIdElement
             {
@@ -970,7 +968,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         SequenceLinkIdElement = null;
                     else
-                        SequenceLinkIdElement = new List<PositiveInt>(value.Select(elem=>new PositiveInt(elem)));
+                        SequenceLinkIdElement = new List<PositiveInt>(value.Select(elem => new PositiveInt(elem)));
                     OnPropertyChanged("SequenceLinkId");
                 }
             }
@@ -978,8 +976,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Group, Service or Product
             /// </summary>
-            [FhirElement("service", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("service", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Service
             {
@@ -992,7 +990,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Professional fee or Product charge
             /// </summary>
-            [FhirElement("fee", InSummary=true, Order=60)]
+            [FhirElement("fee", InSummary = true, Order = 60)]
             [DataMember]
             public Money Fee
             {
@@ -1005,8 +1003,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// List of note numbers which apply
             /// </summary>
-            [FhirElement("noteNumberLinkId", InSummary=true, Order=70)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("noteNumberLinkId", InSummary = true, Order = 70)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<PositiveInt> NoteNumberLinkIdElement
             {
@@ -1030,7 +1028,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         NoteNumberLinkIdElement = null;
                     else
-                        NoteNumberLinkIdElement = new List<PositiveInt>(value.Select(elem=>new PositiveInt(elem)));
+                        NoteNumberLinkIdElement = new List<PositiveInt>(value.Select(elem => new PositiveInt(elem)));
                     OnPropertyChanged("NoteNumberLinkId");
                 }
             }
@@ -1038,8 +1036,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Added items adjudication
             /// </summary>
-            [FhirElement("adjudication", InSummary=true, Order=80)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("adjudication", InSummary = true, Order = 80)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<AddedItemAdjudicationComponent> Adjudication
             {
@@ -1052,8 +1050,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Added items details
             /// </summary>
-            [FhirElement("detail", InSummary=true, Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("detail", InSummary = true, Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<AddedItemsDetailComponent> Detail
             {
@@ -1084,7 +1082,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AddedItemComponent());
+                return CopyTo(new AddedItemComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1164,8 +1162,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Adjudication category such as co-pay, eligible, benefit, etc.
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Code
             {
@@ -1178,7 +1176,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Monetary amount
             /// </summary>
-            [FhirElement("amount", InSummary=true, Order=50)]
+            [FhirElement("amount", InSummary = true, Order = 50)]
             [DataMember]
             public Money Amount
             {
@@ -1191,7 +1189,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Non-monetary value
             /// </summary>
-            [FhirElement("value", InSummary=true, Order=60)]
+            [FhirElement("value", InSummary = true, Order = 60)]
             [DataMember]
             public FhirDecimal ValueElement
             {
@@ -1238,7 +1236,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AddedItemAdjudicationComponent());
+                return CopyTo(new AddedItemAdjudicationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1306,8 +1304,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Service or Product
             /// </summary>
-            [FhirElement("service", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("service", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Service
             {
@@ -1320,7 +1318,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Professional fee or Product charge
             /// </summary>
-            [FhirElement("fee", InSummary=true, Order=50)]
+            [FhirElement("fee", InSummary = true, Order = 50)]
             [DataMember]
             public Money Fee
             {
@@ -1333,8 +1331,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Added items detail adjudication
             /// </summary>
-            [FhirElement("adjudication", InSummary=true, Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("adjudication", InSummary = true, Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<AddedItemDetailAdjudicationComponent> Adjudication
             {
@@ -1362,7 +1360,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AddedItemsDetailComponent());
+                return CopyTo(new AddedItemsDetailComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1430,8 +1428,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Adjudication category such as co-pay, eligible, benefit, etc.
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Code
             {
@@ -1444,7 +1442,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Monetary amount
             /// </summary>
-            [FhirElement("amount", InSummary=true, Order=50)]
+            [FhirElement("amount", InSummary = true, Order = 50)]
             [DataMember]
             public Money Amount
             {
@@ -1457,7 +1455,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Non-monetary value
             /// </summary>
-            [FhirElement("value", InSummary=true, Order=60)]
+            [FhirElement("value", InSummary = true, Order = 60)]
             [DataMember]
             public FhirDecimal ValueElement
             {
@@ -1504,7 +1502,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AddedItemDetailAdjudicationComponent());
+                return CopyTo(new AddedItemDetailAdjudicationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1572,7 +1570,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Item sequence number
             /// </summary>
-            [FhirElement("sequenceLinkId", InSummary=true, Order=40)]
+            [FhirElement("sequenceLinkId", InSummary = true, Order = 40)]
             [DataMember]
             public PositiveInt SequenceLinkIdElement
             {
@@ -1604,7 +1602,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Detail sequence number
             /// </summary>
-            [FhirElement("detailSequenceLinkId", InSummary=true, Order=50)]
+            [FhirElement("detailSequenceLinkId", InSummary = true, Order = 50)]
             [DataMember]
             public PositiveInt DetailSequenceLinkIdElement
             {
@@ -1636,7 +1634,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Subdetail sequence number
             /// </summary>
-            [FhirElement("subdetailSequenceLinkId", InSummary=true, Order=60)]
+            [FhirElement("subdetailSequenceLinkId", InSummary = true, Order = 60)]
             [DataMember]
             public PositiveInt SubdetailSequenceLinkIdElement
             {
@@ -1668,8 +1666,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Error code detailing processing issues
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=70)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", InSummary = true, Order = 70)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Code
             {
@@ -1698,7 +1696,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ErrorsComponent());
+                return CopyTo(new ErrorsComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1770,7 +1768,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Note Number for this note
             /// </summary>
-            [FhirElement("number", InSummary=true, Order=40)]
+            [FhirElement("number", InSummary = true, Order = 40)]
             [DataMember]
             public PositiveInt NumberElement
             {
@@ -1802,7 +1800,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// display | print | printoper
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=50)]
+            [FhirElement("type", InSummary = true, Order = 50)]
             [DataMember]
             public Coding Type
             {
@@ -1815,7 +1813,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Note explanatory text
             /// </summary>
-            [FhirElement("text", InSummary=true, Order=60)]
+            [FhirElement("text", InSummary = true, Order = 60)]
             [DataMember]
             public FhirString TextElement
             {
@@ -1862,7 +1860,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new NotesComponent());
+                return CopyTo(new NotesComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1930,8 +1928,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Service instance identifier
             /// </summary>
-            [FhirElement("sequence", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("sequence", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public PositiveInt SequenceElement
             {
@@ -1963,8 +1961,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Is the focal Coverage
             /// </summary>
-            [FhirElement("focal", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("focal", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirBoolean FocalElement
             {
@@ -1996,9 +1994,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Insurance information
             /// </summary>
-            [FhirElement("coverage", InSummary=true, Order=60)]
+            [FhirElement("coverage", InSummary = true, Order = 60)]
             [References("Coverage")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Coverage
             {
@@ -2011,7 +2009,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Business agreement
             /// </summary>
-            [FhirElement("businessArrangement", InSummary=true, Order=70)]
+            [FhirElement("businessArrangement", InSummary = true, Order = 70)]
             [DataMember]
             public FhirString BusinessArrangementElement
             {
@@ -2043,8 +2041,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Patient relationship to subscriber
             /// </summary>
-            [FhirElement("relationship", InSummary=true, Order=80)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("relationship", InSummary = true, Order = 80)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Relationship
             {
@@ -2057,8 +2055,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Pre-Authorization/Determination Reference
             /// </summary>
-            [FhirElement("preAuthRef", InSummary=true, Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("preAuthRef", InSummary = true, Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirString> PreAuthRefElement
             {
@@ -2082,7 +2080,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         PreAuthRefElement = null;
                     else
-                        PreAuthRefElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                        PreAuthRefElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                     OnPropertyChanged("PreAuthRef");
                 }
             }
@@ -2090,7 +2088,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Adjudication results
             /// </summary>
-            [FhirElement("claimResponse", InSummary=true, Order=100)]
+            [FhirElement("claimResponse", InSummary = true, Order = 100)]
             [References("ClaimResponse")]
             [DataMember]
             public ResourceReference ClaimResponse
@@ -2104,7 +2102,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Original version
             /// </summary>
-            [FhirElement("originalRuleset", InSummary=true, Order=110)]
+            [FhirElement("originalRuleset", InSummary = true, Order = 110)]
             [DataMember]
             public Coding OriginalRuleset
             {
@@ -2137,7 +2135,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new CoverageComponent());
+                return CopyTo(new CoverageComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2218,8 +2216,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Response  number
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -2232,7 +2230,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Id of resource triggering adjudication
         /// </summary>
-        [FhirElement("request", InSummary=true, Order=100)]
+        [FhirElement("request", InSummary = true, Order = 100)]
         [References("Claim")]
         [DataMember]
         public ResourceReference Request
@@ -2246,7 +2244,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Resource version
         /// </summary>
-        [FhirElement("ruleset", InSummary=true, Order=110)]
+        [FhirElement("ruleset", InSummary = true, Order = 110)]
         [DataMember]
         public Coding Ruleset
         {
@@ -2259,7 +2257,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Original version
         /// </summary>
-        [FhirElement("originalRuleset", InSummary=true, Order=120)]
+        [FhirElement("originalRuleset", InSummary = true, Order = 120)]
         [DataMember]
         public Coding OriginalRuleset
         {
@@ -2272,7 +2270,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Creation date
         /// </summary>
-        [FhirElement("created", InSummary=true, Order=130)]
+        [FhirElement("created", InSummary = true, Order = 130)]
         [DataMember]
         public FhirDateTime CreatedElement
         {
@@ -2304,7 +2302,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Insurer
         /// </summary>
-        [FhirElement("organization", InSummary=true, Order=140)]
+        [FhirElement("organization", InSummary = true, Order = 140)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Organization
@@ -2318,7 +2316,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Responsible practitioner
         /// </summary>
-        [FhirElement("requestProvider", InSummary=true, Order=150)]
+        [FhirElement("requestProvider", InSummary = true, Order = 150)]
         [References("Practitioner")]
         [DataMember]
         public ResourceReference RequestProvider
@@ -2332,7 +2330,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Responsible organization
         /// </summary>
-        [FhirElement("requestOrganization", InSummary=true, Order=160)]
+        [FhirElement("requestOrganization", InSummary = true, Order = 160)]
         [References("Organization")]
         [DataMember]
         public ResourceReference RequestOrganization
@@ -2346,7 +2344,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// complete | error
         /// </summary>
-        [FhirElement("outcome", InSummary=true, Order=170)]
+        [FhirElement("outcome", InSummary = true, Order = 170)]
         [DataMember]
         public Code<RemittanceOutcome> OutcomeElement
         {
@@ -2378,7 +2376,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Disposition Message
         /// </summary>
-        [FhirElement("disposition", InSummary=true, Order=180)]
+        [FhirElement("disposition", InSummary = true, Order = 180)]
         [DataMember]
         public FhirString DispositionElement
         {
@@ -2410,7 +2408,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Party to be paid any benefits payable
         /// </summary>
-        [FhirElement("payeeType", InSummary=true, Order=190)]
+        [FhirElement("payeeType", InSummary = true, Order = 190)]
         [DataMember]
         public Coding PayeeType
         {
@@ -2423,8 +2421,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Line items
         /// </summary>
-        [FhirElement("item", InSummary=true, Order=200)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("item", InSummary = true, Order = 200)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ItemsComponent> Item
         {
@@ -2437,8 +2435,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Insurer added line items
         /// </summary>
-        [FhirElement("addItem", InSummary=true, Order=210)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("addItem", InSummary = true, Order = 210)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<AddedItemComponent> AddItem
         {
@@ -2451,8 +2449,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Processing errors
         /// </summary>
-        [FhirElement("error", InSummary=true, Order=220)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("error", InSummary = true, Order = 220)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ErrorsComponent> Error
         {
@@ -2465,7 +2463,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Total Cost of service from the Claim
         /// </summary>
-        [FhirElement("totalCost", InSummary=true, Order=230)]
+        [FhirElement("totalCost", InSummary = true, Order = 230)]
         [DataMember]
         public Money TotalCost
         {
@@ -2478,7 +2476,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unallocated deductible
         /// </summary>
-        [FhirElement("unallocDeductable", InSummary=true, Order=240)]
+        [FhirElement("unallocDeductable", InSummary = true, Order = 240)]
         [DataMember]
         public Money UnallocDeductable
         {
@@ -2491,7 +2489,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Total benefit payable for the Claim
         /// </summary>
-        [FhirElement("totalBenefit", InSummary=true, Order=250)]
+        [FhirElement("totalBenefit", InSummary = true, Order = 250)]
         [DataMember]
         public Money TotalBenefit
         {
@@ -2504,7 +2502,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Payment adjustment for non-Claim issues
         /// </summary>
-        [FhirElement("paymentAdjustment", InSummary=true, Order=260)]
+        [FhirElement("paymentAdjustment", InSummary = true, Order = 260)]
         [DataMember]
         public Money PaymentAdjustment
         {
@@ -2517,7 +2515,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason for Payment adjustment
         /// </summary>
-        [FhirElement("paymentAdjustmentReason", InSummary=true, Order=270)]
+        [FhirElement("paymentAdjustmentReason", InSummary = true, Order = 270)]
         [DataMember]
         public Coding PaymentAdjustmentReason
         {
@@ -2530,7 +2528,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Expected data of Payment
         /// </summary>
-        [FhirElement("paymentDate", InSummary=true, Order=280)]
+        [FhirElement("paymentDate", InSummary = true, Order = 280)]
         [DataMember]
         public Date PaymentDateElement
         {
@@ -2562,7 +2560,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Payment amount
         /// </summary>
-        [FhirElement("paymentAmount", InSummary=true, Order=290)]
+        [FhirElement("paymentAmount", InSummary = true, Order = 290)]
         [DataMember]
         public Money PaymentAmount
         {
@@ -2575,7 +2573,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Payment identifier
         /// </summary>
-        [FhirElement("paymentRef", InSummary=true, Order=300)]
+        [FhirElement("paymentRef", InSummary = true, Order = 300)]
         [DataMember]
         public Identifier PaymentRef
         {
@@ -2588,7 +2586,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Funds reserved status
         /// </summary>
-        [FhirElement("reserved", InSummary=true, Order=310)]
+        [FhirElement("reserved", InSummary = true, Order = 310)]
         [DataMember]
         public Coding Reserved
         {
@@ -2601,7 +2599,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Printed Form Identifier
         /// </summary>
-        [FhirElement("form", InSummary=true, Order=320)]
+        [FhirElement("form", InSummary = true, Order = 320)]
         [DataMember]
         public Coding Form
         {
@@ -2614,8 +2612,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Processing notes
         /// </summary>
-        [FhirElement("note", InSummary=true, Order=330)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("note", InSummary = true, Order = 330)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<NotesComponent> Note
         {
@@ -2628,8 +2626,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Insurance or medical plan
         /// </summary>
-        [FhirElement("coverage", InSummary=true, Order=340)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("coverage", InSummary = true, Order = 340)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CoverageComponent> Coverage
         {
@@ -2681,7 +2679,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new ClaimResponse());
+            return CopyTo(new ClaimResponse());
         }
 
         public override bool Matches(IDeepComparable other)

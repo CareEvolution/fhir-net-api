@@ -340,7 +340,7 @@ namespace Hl7.Fhir.Model.DSTU2
             return uri != null
                 // [WMR 20181025] Issue #746
                 // Note: FhirCoreProfileBaseUri.IsBaseOf(new Uri("Dummy", UriKind.RelativeOrAbsolute)) = true...?!
-                && uri.IsAbsoluteUri 
+                && uri.IsAbsoluteUri
                 && FhirCoreProfileBaseUri.IsBaseOf(uri)
                 && IsCoreModelType(FhirCoreProfileBaseUri.MakeRelativeUri(uri).ToString());
         }

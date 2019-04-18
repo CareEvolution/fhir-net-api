@@ -36,14 +36,14 @@ namespace Hl7.Fhir.Specification.Terminology
             return _resolver.FindValueSet(canonical);
         }
 
-        public OperationOutcome ValidateCode(string canonical = null, string context = null, ValueSet valueSet = null, 
-            string code = null, string system = null, string version = null, string display = null, 
-            Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null, 
+        public OperationOutcome ValidateCode(string canonical = null, string context = null, ValueSet valueSet = null,
+            string code = null, string system = null, string version = null, string display = null,
+            Coding coding = null, CodeableConcept codeableConcept = null, FhirDateTime date = null,
             bool? @abstract = null, string displayLanguage = null)
         {
-            if(valueSet == null)
+            if (valueSet == null)
             {
-                if(canonical == null)
+                if (canonical == null)
                     throw Error.Argument("Have to supply either a canonical url or a valueset.");
 
                 try
@@ -110,7 +110,7 @@ namespace Hl7.Fhir.Specification.Terminology
 
         private OperationOutcome validateCodeVS(ValueSet vs, string code, string system, string display, bool? abstractAllowed)
         {
-            if(code == null)
+            if (code == null)
                 return Issue.TERMINOLOGY_NO_CODE_IN_INSTANCE.NewOutcomeWithIssue($"No code supplied.");
 
             lock (vs.SyncLock)

@@ -134,7 +134,7 @@ namespace Hl7.Fhir.Validation
 
         [Fact]
         public void TestParseUnbindable()
-        { 
+        {
             // Now, something non-bindable
             var x = new HumanName().WithGiven("Ewout");
             var node = x.ToTypedElement();

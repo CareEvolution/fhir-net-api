@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Clinical issue with action
     /// </summary>
-    [FhirType("DetectedIssue", IsResource=true)]
+    [FhirType("DetectedIssue", IsResource = true)]
     [DataContract]
     public partial class DetectedIssue : DomainResource
     {
@@ -95,8 +93,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// What mitigation?
             /// </summary>
-            [FhirElement("action", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("action", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept Action
             {
@@ -109,7 +107,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Date committed
             /// </summary>
-            [FhirElement("date", Order=50)]
+            [FhirElement("date", Order = 50)]
             [DataMember]
             public FhirDateTime DateElement
             {
@@ -141,7 +139,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Who is committing?
             /// </summary>
-            [FhirElement("author", Order=60)]
+            [FhirElement("author", Order = 60)]
             [References("Practitioner")]
             [DataMember]
             public ResourceReference Author
@@ -170,7 +168,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new MitigationComponent());
+                return CopyTo(new MitigationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -231,7 +229,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Associated patient
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=90)]
+        [FhirElement("patient", InSummary = true, Order = 90)]
         [References("Patient")]
         [DataMember]
         public ResourceReference Patient
@@ -245,7 +243,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Issue Category, e.g. drug-drug, duplicate therapy, etc.
         /// </summary>
-        [FhirElement("category", InSummary=true, Order=100)]
+        [FhirElement("category", InSummary = true, Order = 100)]
         [DataMember]
         public CodeableConcept Category
         {
@@ -258,7 +256,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// high | moderate | low
         /// </summary>
-        [FhirElement("severity", InSummary=true, Order=110)]
+        [FhirElement("severity", InSummary = true, Order = 110)]
         [DataMember]
         public Code<DetectedIssueSeverity> SeverityElement
         {
@@ -290,8 +288,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Problem resource
         /// </summary>
-        [FhirElement("implicated", InSummary=true, Order=120)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("implicated", InSummary = true, Order = 120)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Implicated
         {
@@ -304,7 +302,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Description and context
         /// </summary>
-        [FhirElement("detail", Order=130)]
+        [FhirElement("detail", Order = 130)]
         [DataMember]
         public FhirString DetailElement
         {
@@ -336,7 +334,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When identified
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=140)]
+        [FhirElement("date", InSummary = true, Order = 140)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -368,8 +366,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The provider or device that identified the issue
         /// </summary>
-        [FhirElement("author", InSummary=true, Order=150)]
-        [References("Practitioner","Device")]
+        [FhirElement("author", InSummary = true, Order = 150)]
+        [References("Practitioner", "Device")]
         [DataMember]
         public ResourceReference Author
         {
@@ -382,7 +380,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unique id for the detected issue
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=160)]
+        [FhirElement("identifier", InSummary = true, Order = 160)]
         [DataMember]
         public Identifier Identifier
         {
@@ -395,7 +393,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Authority for issue
         /// </summary>
-        [FhirElement("reference", Order=170)]
+        [FhirElement("reference", Order = 170)]
         [DataMember]
         public FhirUri ReferenceElement
         {
@@ -427,8 +425,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Step taken to address
         /// </summary>
-        [FhirElement("mitigation", Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("mitigation", Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<MitigationComponent> Mitigation
         {
@@ -464,7 +462,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new DetectedIssue());
+            return CopyTo(new DetectedIssue());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -28,7 +28,7 @@ namespace Hl7.Fhir.Specification.Tests
             var nav = buildNav();
 
             // At root;
-            Assert.AreEqual(XPathNodeType.Root,nav.NodeType);
+            Assert.AreEqual(XPathNodeType.Root, nav.NodeType);
             Assert.IsFalse(nav.IsEmptyElement);
             Assert.AreEqual(String.Empty, nav.Name);
             Assert.AreEqual(String.Empty, nav.LocalName);
@@ -47,7 +47,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsFalse(nav.IsEmptyElement);
             Assert.AreEqual("f:Patient", nav.Name);
             Assert.AreEqual("Patient", nav.LocalName);
-            Assert.AreEqual(XmlNs.FHIR , nav.NamespaceURI);
+            Assert.AreEqual(XmlNs.FHIR, nav.NamespaceURI);
             Assert.AreEqual(JsonXPathNavigator.FHIR_PREFIX, nav.Prefix);
         }
 
@@ -78,12 +78,12 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.AreEqual(XPathNodeType.Element, nav.NodeType);
             Assert.AreEqual("f:period", nav.Name);
 
-            Assert.IsTrue(nav.MoveToNext());        
+            Assert.IsTrue(nav.MoveToNext());
             Assert.AreEqual(XPathNodeType.Element, nav.NodeType);
             Assert.AreEqual("f:assigner", nav.Name);
             Assert.IsTrue(nav.MoveToFirstChild());
             Assert.AreEqual("f:display", nav.Name);
-            
+
             Assert.IsTrue(nav.MoveToParent());      // back to assigner
 
             Assert.IsTrue(nav.MoveToNext());        // move to use
@@ -124,7 +124,7 @@ namespace Hl7.Fhir.Specification.Tests
 
             Assert.IsTrue(nav.MoveToNext());        // family #2  - du
             Assert.AreEqual("f:family", nav.Name);
-            
+
             Assert.IsTrue(nav.MoveToFirstAttribute()); // @value="du"
             Assert.AreEqual("du", nav.Value);
             Assert.AreEqual("value", nav.Name);
@@ -158,8 +158,8 @@ namespace Hl7.Fhir.Specification.Tests
         {
             var nav = buildNav();
             Assert.IsTrue(nav.MoveToFirstChild());
-            Assert.IsTrue(nav.MoveToFirstChild());   
-            Assert.IsTrue(nav.MoveToNext()); 
+            Assert.IsTrue(nav.MoveToFirstChild());
+            Assert.IsTrue(nav.MoveToNext());
             Assert.IsTrue(nav.MoveToNext());
             Assert.IsTrue(nav.MoveToPrevious());
             Assert.IsTrue(nav.MoveToPrevious());
@@ -182,7 +182,7 @@ namespace Hl7.Fhir.Specification.Tests
 
             // Just checking, it should NOT be the same position
             Assert.IsFalse(nav.IsSamePosition(nav2));
-            
+
             Assert.IsTrue(nav.MoveToNext()); // nodeB[0]
             Assert.IsTrue(nav.MoveToNext()); // nodeB[1]
 
@@ -191,7 +191,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsTrue(nav2.MoveToFirstChild()); // nodeA
             Assert.IsTrue(nav2.MoveToNext()); // nodeB[0]
             Assert.IsTrue(nav2.MoveToNext()); // nodeB[1]
-            
+
             // Now, they should have arrived at the same position
             Assert.IsTrue(nav.IsSamePosition(nav2));
 
@@ -207,7 +207,7 @@ namespace Hl7.Fhir.Specification.Tests
             var nav = buildNav();
             var mgr = new XmlNamespaceManager(nav.NameTable);
             mgr.AddNamespace("f", XmlNs.FHIR);
-            
+
             var result = nav.Select("/f:Patient/f:telecom", mgr);
             Assert.AreEqual(2, result.Count);
 
@@ -248,7 +248,7 @@ namespace Hl7.Fhir.Specification.Tests
 
         [TestMethod]
         public void TestTransform()
-        { 
+        {
             string identityTransform = @"<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform"">" +
                     @"<xsl:template match=""@*|node()"">" +
                     @"<xsl:copy>" +
@@ -271,7 +271,7 @@ namespace Hl7.Fhir.Specification.Tests
             xmlw.Flush();
 
             Assert.IsTrue(sw.ToString().StartsWith("<?xml version=\"1.0\" encoding=\"utf-16\"?>" +
-                "<f:Patient id=\"pat1\" xmlns:f=\"http://hl7.org/fhir\"><f:identifier><f:period><f:start value=\"2001-05-06\" /></f:period>"+
+                "<f:Patient id=\"pat1\" xmlns:f=\"http://hl7.org/fhir\"><f:identifier><f:period><f:start value=\"2001-05-06\" /></f:period>" +
                 "<f:assigner><f:display value=\"Acme Healthcare\" /></f:assigner><f:use value=\"usual\" />"));
         }
 

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// An instance of a manufactured te that is used in the provision of healthcare
     /// </summary>
-    [FhirType("Device", IsResource=true)]
+    [FhirType("Device", IsResource = true)]
     [DataContract]
     public partial class Device : DomainResource
     {
@@ -88,8 +86,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Instance id from manufacturer, owner, and others
         /// </summary>
-        [FhirElement("identifier", Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -102,8 +100,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What kind of device this is
         /// </summary>
-        [FhirElement("type", Order=100)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("type", Order = 100)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -116,8 +114,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Device notes and comments
         /// </summary>
-        [FhirElement("note", Order=110)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("note", Order = 110)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Annotation> Note
         {
@@ -130,7 +128,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// available | not-available | entered-in-error
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=120)]
+        [FhirElement("status", InSummary = true, Order = 120)]
         [DataMember]
         public Code<DeviceStatus> StatusElement
         {
@@ -162,7 +160,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Name of device manufacturer
         /// </summary>
-        [FhirElement("manufacturer", Order=130)]
+        [FhirElement("manufacturer", Order = 130)]
         [DataMember]
         public FhirString ManufacturerElement
         {
@@ -194,7 +192,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Model id assigned by the manufacturer
         /// </summary>
-        [FhirElement("model", Order=140)]
+        [FhirElement("model", Order = 140)]
         [DataMember]
         public FhirString ModelElement
         {
@@ -226,7 +224,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Version number (i.e. software)
         /// </summary>
-        [FhirElement("version", Order=150)]
+        [FhirElement("version", Order = 150)]
         [DataMember]
         public FhirString VersionElement
         {
@@ -258,7 +256,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Manufacture date
         /// </summary>
-        [FhirElement("manufactureDate", Order=160)]
+        [FhirElement("manufactureDate", Order = 160)]
         [DataMember]
         public FhirDateTime ManufactureDateElement
         {
@@ -290,7 +288,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Date and time of expiry of this device (if applicable)
         /// </summary>
-        [FhirElement("expiry", Order=170)]
+        [FhirElement("expiry", Order = 170)]
         [DataMember]
         public FhirDateTime ExpiryElement
         {
@@ -322,7 +320,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// FDA mandated Unique Device Identifier
         /// </summary>
-        [FhirElement("udi", Order=180)]
+        [FhirElement("udi", Order = 180)]
         [DataMember]
         public FhirString UdiElement
         {
@@ -354,7 +352,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Lot number of manufacture
         /// </summary>
-        [FhirElement("lotNumber", Order=190)]
+        [FhirElement("lotNumber", Order = 190)]
         [DataMember]
         public FhirString LotNumberElement
         {
@@ -386,7 +384,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Organization responsible for device
         /// </summary>
-        [FhirElement("owner", Order=200)]
+        [FhirElement("owner", Order = 200)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Owner
@@ -400,7 +398,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Where the resource is found
         /// </summary>
-        [FhirElement("location", Order=210)]
+        [FhirElement("location", Order = 210)]
         [References("Location")]
         [DataMember]
         public ResourceReference Location
@@ -414,7 +412,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If the resource is affixed to a person
         /// </summary>
-        [FhirElement("patient", Order=220)]
+        [FhirElement("patient", Order = 220)]
         [References("Patient")]
         [DataMember]
         public ResourceReference Patient
@@ -428,8 +426,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Details for human/organization for support
         /// </summary>
-        [FhirElement("contact", Order=230)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("contact", Order = 230)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactPoint> Contact
         {
@@ -442,7 +440,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Network address to contact device
         /// </summary>
-        [FhirElement("url", Order=240)]
+        [FhirElement("url", Order = 240)]
         [DataMember]
         public FhirUri UrlElement
         {
@@ -503,7 +501,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Device());
+            return CopyTo(new Device());
         }
 
         public override bool Matches(IDeepComparable other)

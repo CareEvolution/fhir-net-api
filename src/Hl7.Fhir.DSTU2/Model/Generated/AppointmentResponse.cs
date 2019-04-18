@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection
     /// </summary>
-    [FhirType("AppointmentResponse", IsResource=true)]
+    [FhirType("AppointmentResponse", IsResource = true)]
     [DataContract]
     public partial class AppointmentResponse : DomainResource
     {
@@ -106,8 +104,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External Ids for this item
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -120,9 +118,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Appointment this response relates to
         /// </summary>
-        [FhirElement("appointment", InSummary=true, Order=100)]
+        [FhirElement("appointment", InSummary = true, Order = 100)]
         [References("Appointment")]
-        [Cardinality(Min=1,Max=1)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Appointment
         {
@@ -135,7 +133,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Time from appointment, or requested new start time
         /// </summary>
-        [FhirElement("start", Order=110)]
+        [FhirElement("start", Order = 110)]
         [DataMember]
         public Instant StartElement
         {
@@ -167,7 +165,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Time from appointment, or requested new end time
         /// </summary>
-        [FhirElement("end", Order=120)]
+        [FhirElement("end", Order = 120)]
         [DataMember]
         public Instant EndElement
         {
@@ -199,8 +197,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Role of participant in the appointment
         /// </summary>
-        [FhirElement("participantType", InSummary=true, Order=130)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("participantType", InSummary = true, Order = 130)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> ParticipantType
         {
@@ -213,8 +211,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Person, Location/HealthcareService or Device
         /// </summary>
-        [FhirElement("actor", InSummary=true, Order=140)]
-        [References("Patient","Practitioner","RelatedPerson","Device","HealthcareService","Location")]
+        [FhirElement("actor", InSummary = true, Order = 140)]
+        [References("Patient", "Practitioner", "RelatedPerson", "Device", "HealthcareService", "Location")]
         [DataMember]
         public ResourceReference Actor
         {
@@ -227,8 +225,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// accepted | declined | tentative | in-process | completed | needs-action
         /// </summary>
-        [FhirElement("participantStatus", InSummary=true, Order=150)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("participantStatus", InSummary = true, Order = 150)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ParticipantStatus> ParticipantStatusElement
         {
@@ -260,7 +258,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Additional comments
         /// </summary>
-        [FhirElement("comment", Order=160)]
+        [FhirElement("comment", Order = 160)]
         [DataMember]
         public FhirString CommentElement
         {
@@ -329,7 +327,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new AppointmentResponse());
+            return CopyTo(new AppointmentResponse());
         }
 
         public override bool Matches(IDeepComparable other)

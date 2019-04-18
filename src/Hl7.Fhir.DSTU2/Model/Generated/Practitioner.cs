@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A person with a  formal responsibility in the provisioning of healthcare or related services
     /// </summary>
-    [FhirType("Practitioner", IsResource=true)]
+    [FhirType("Practitioner", IsResource = true)]
     [DataContract]
     public partial class Practitioner : DomainResource
     {
@@ -68,7 +66,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Organization where the roles are performed
             /// </summary>
-            [FhirElement("managingOrganization", Order=40)]
+            [FhirElement("managingOrganization", Order = 40)]
             [References("Organization")]
             [DataMember]
             public ResourceReference ManagingOrganization
@@ -82,7 +80,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Roles which this practitioner may perform
             /// </summary>
-            [FhirElement("role", InSummary=true, Order=50)]
+            [FhirElement("role", InSummary = true, Order = 50)]
             [DataMember]
             public CodeableConcept Role
             {
@@ -95,8 +93,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Specific specialty of the practitioner
             /// </summary>
-            [FhirElement("specialty", InSummary=true, Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("specialty", InSummary = true, Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> Specialty
             {
@@ -109,7 +107,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The period during which the practitioner is authorized to perform in these role(s)
             /// </summary>
-            [FhirElement("period", InSummary=true, Order=70)]
+            [FhirElement("period", InSummary = true, Order = 70)]
             [DataMember]
             public Period Period
             {
@@ -122,9 +120,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The location(s) at which this practitioner provides care
             /// </summary>
-            [FhirElement("location", Order=80)]
+            [FhirElement("location", Order = 80)]
             [References("Location")]
-            [Cardinality(Min=0,Max=-1)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> Location
             {
@@ -137,9 +135,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The list of healthcare services that this worker provides for this role's Organization/Location(s)
             /// </summary>
-            [FhirElement("healthcareService", Order=90)]
+            [FhirElement("healthcareService", Order = 90)]
             [References("HealthcareService")]
-            [Cardinality(Min=0,Max=-1)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> HealthcareService
             {
@@ -170,7 +168,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new PractitionerRoleComponent());
+                return CopyTo(new PractitionerRoleComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -250,8 +248,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// An identifier for this qualification for the practitioner
             /// </summary>
-            [FhirElement("identifier", Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("identifier", Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Identifier> Identifier
             {
@@ -264,8 +262,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Coded representation of the qualification
             /// </summary>
-            [FhirElement("code", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept Code
             {
@@ -278,7 +276,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Period during which the qualification is valid
             /// </summary>
-            [FhirElement("period", Order=60)]
+            [FhirElement("period", Order = 60)]
             [DataMember]
             public Period Period
             {
@@ -291,7 +289,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Organization that regulates and issues the qualification
             /// </summary>
-            [FhirElement("issuer", Order=70)]
+            [FhirElement("issuer", Order = 70)]
             [References("Organization")]
             [DataMember]
             public ResourceReference Issuer
@@ -321,7 +319,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new QualificationComponent());
+                return CopyTo(new QualificationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -386,8 +384,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A identifier for the person as this agent
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -400,7 +398,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Whether this practitioner's record is in active use
         /// </summary>
-        [FhirElement("active", InSummary=true, Order=100)]
+        [FhirElement("active", InSummary = true, Order = 100)]
         [DataMember]
         public FhirBoolean ActiveElement
         {
@@ -432,7 +430,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A name associated with the person
         /// </summary>
-        [FhirElement("name", InSummary=true, Order=110)]
+        [FhirElement("name", InSummary = true, Order = 110)]
         [DataMember]
         public HumanName Name
         {
@@ -445,8 +443,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A contact detail for the practitioner
         /// </summary>
-        [FhirElement("telecom", InSummary=true, Order=120)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("telecom", InSummary = true, Order = 120)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactPoint> Telecom
         {
@@ -459,8 +457,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Where practitioner can be found/visited
         /// </summary>
-        [FhirElement("address", InSummary=true, Order=130)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("address", InSummary = true, Order = 130)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Address> Address
         {
@@ -473,7 +471,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// male | female | other | unknown
         /// </summary>
-        [FhirElement("gender", InSummary=true, Order=140)]
+        [FhirElement("gender", InSummary = true, Order = 140)]
         [DataMember]
         public Code<AdministrativeGender> GenderElement
         {
@@ -505,7 +503,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The date  on which the practitioner was born
         /// </summary>
-        [FhirElement("birthDate", InSummary=true, Order=150)]
+        [FhirElement("birthDate", InSummary = true, Order = 150)]
         [DataMember]
         public Date BirthDateElement
         {
@@ -537,8 +535,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Image of the person
         /// </summary>
-        [FhirElement("photo", Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("photo", Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Attachment> Photo
         {
@@ -551,8 +549,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Roles/organizations the practitioner is associated with
         /// </summary>
-        [FhirElement("practitionerRole", Order=170)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("practitionerRole", Order = 170)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<PractitionerRoleComponent> PractitionerRole
         {
@@ -565,8 +563,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Qualifications obtained by training and certification
         /// </summary>
-        [FhirElement("qualification", Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("qualification", Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<QualificationComponent> Qualification
         {
@@ -579,8 +577,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A language the practitioner is able to use in patient communication
         /// </summary>
-        [FhirElement("communication", Order=190)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("communication", Order = 190)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Communication
         {
@@ -617,7 +615,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Practitioner());
+            return CopyTo(new Practitioner());
         }
 
         public override bool Matches(IDeepComparable other)

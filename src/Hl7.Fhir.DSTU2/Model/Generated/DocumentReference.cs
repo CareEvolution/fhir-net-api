@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A reference to a document
     /// </summary>
-    [FhirType("DocumentReference", IsResource=true)]
+    [FhirType("DocumentReference", IsResource = true)]
     [DataContract]
     public partial class DocumentReference : DomainResource
     {
@@ -101,8 +99,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// replaces | transforms | signs | appends
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<DocumentRelationshipType> CodeElement
             {
@@ -134,9 +132,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Target of the relationship
             /// </summary>
-            [FhirElement("target", InSummary=true, Order=50)]
+            [FhirElement("target", InSummary = true, Order = 50)]
             [References("DocumentReference")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Target
             {
@@ -163,7 +161,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RelatesToComponent());
+                return CopyTo(new RelatesToComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -227,8 +225,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Where to access the document
             /// </summary>
-            [FhirElement("attachment", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("attachment", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Attachment Attachment
             {
@@ -241,8 +239,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Format/content rules for the document
             /// </summary>
-            [FhirElement("format", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("format", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> Format
             {
@@ -269,7 +267,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContentComponent());
+                return CopyTo(new ContentComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -333,7 +331,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Context of the document  content
             /// </summary>
-            [FhirElement("encounter", InSummary=true, Order=40)]
+            [FhirElement("encounter", InSummary = true, Order = 40)]
             [References("Encounter")]
             [DataMember]
             public ResourceReference Encounter
@@ -347,8 +345,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Main Clinical Acts Documented
             /// </summary>
-            [FhirElement("event", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("event", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> Event
             {
@@ -361,7 +359,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Time of service that is being documented
             /// </summary>
-            [FhirElement("period", InSummary=true, Order=60)]
+            [FhirElement("period", InSummary = true, Order = 60)]
             [DataMember]
             public Period Period
             {
@@ -374,7 +372,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Kind of facility where patient was seen
             /// </summary>
-            [FhirElement("facilityType", InSummary=true, Order=70)]
+            [FhirElement("facilityType", InSummary = true, Order = 70)]
             [DataMember]
             public CodeableConcept FacilityType
             {
@@ -387,7 +385,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Additional details about where the content was created (e.g. clinical specialty)
             /// </summary>
-            [FhirElement("practiceSetting", InSummary=true, Order=80)]
+            [FhirElement("practiceSetting", InSummary = true, Order = 80)]
             [DataMember]
             public CodeableConcept PracticeSetting
             {
@@ -400,7 +398,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Patient demographics from source
             /// </summary>
-            [FhirElement("sourcePatientInfo", InSummary=true, Order=90)]
+            [FhirElement("sourcePatientInfo", InSummary = true, Order = 90)]
             [References("Patient")]
             [DataMember]
             public ResourceReference SourcePatientInfo
@@ -414,8 +412,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Related identifiers or resources
             /// </summary>
-            [FhirElement("related", InSummary=true, Order=100)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("related", InSummary = true, Order = 100)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<RelatedComponent> Related
             {
@@ -447,7 +445,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContextComponent());
+                return CopyTo(new ContextComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -531,7 +529,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Identifier of related objects or events
             /// </summary>
-            [FhirElement("identifier", InSummary=true, Order=40)]
+            [FhirElement("identifier", InSummary = true, Order = 40)]
             [DataMember]
             public Identifier Identifier
             {
@@ -544,7 +542,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Related Resource
             /// </summary>
-            [FhirElement("ref", InSummary=true, Order=50)]
+            [FhirElement("ref", InSummary = true, Order = 50)]
             [DataMember]
             public ResourceReference Ref
             {
@@ -571,7 +569,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RelatedComponent());
+                return CopyTo(new RelatedComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -628,7 +626,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Master Version Specific Identifier
         /// </summary>
-        [FhirElement("masterIdentifier", InSummary=true, Order=90)]
+        [FhirElement("masterIdentifier", InSummary = true, Order = 90)]
         [DataMember]
         public Identifier MasterIdentifier
         {
@@ -641,8 +639,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Other identifiers for the document
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=100)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 100)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -655,8 +653,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who/what is the subject of the document
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=110)]
-        [References("Patient","Practitioner","Group","Device")]
+        [FhirElement("subject", InSummary = true, Order = 110)]
+        [References("Patient", "Practitioner", "Group", "Device")]
         [DataMember]
         public ResourceReference Subject
         {
@@ -669,8 +667,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Kind of document (LOINC if possible)
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=120)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("type", InSummary = true, Order = 120)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -683,7 +681,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Categorization of document
         /// </summary>
-        [FhirElement("class", InSummary=true, Order=130)]
+        [FhirElement("class", InSummary = true, Order = 130)]
         [DataMember]
         public CodeableConcept Class
         {
@@ -696,9 +694,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who and/or what authored the document
         /// </summary>
-        [FhirElement("author", InSummary=true, Order=140)]
-        [References("Practitioner","Organization","Device","Patient","RelatedPerson")]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("author", InSummary = true, Order = 140)]
+        [References("Practitioner", "Organization", "Device", "Patient", "RelatedPerson")]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Author
         {
@@ -711,7 +709,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Organization which maintains the document
         /// </summary>
-        [FhirElement("custodian", InSummary=true, Order=150)]
+        [FhirElement("custodian", InSummary = true, Order = 150)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Custodian
@@ -725,8 +723,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who/what authenticated the document
         /// </summary>
-        [FhirElement("authenticator", InSummary=true, Order=160)]
-        [References("Practitioner","Organization")]
+        [FhirElement("authenticator", InSummary = true, Order = 160)]
+        [References("Practitioner", "Organization")]
         [DataMember]
         public ResourceReference Authenticator
         {
@@ -739,7 +737,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Document creation time
         /// </summary>
-        [FhirElement("created", InSummary=true, Order=170)]
+        [FhirElement("created", InSummary = true, Order = 170)]
         [DataMember]
         public FhirDateTime CreatedElement
         {
@@ -771,8 +769,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When this document reference created
         /// </summary>
-        [FhirElement("indexed", InSummary=true, Order=180)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("indexed", InSummary = true, Order = 180)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Instant IndexedElement
         {
@@ -804,8 +802,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// current | superseded | entered-in-error
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=190)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 190)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<DocumentReferenceStatus> StatusElement
         {
@@ -837,7 +835,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// preliminary | final | appended | amended | entered-in-error
         /// </summary>
-        [FhirElement("docStatus", InSummary=true, Order=200)]
+        [FhirElement("docStatus", InSummary = true, Order = 200)]
         [DataMember]
         public CodeableConcept DocStatus
         {
@@ -850,8 +848,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Relationships to other documents
         /// </summary>
-        [FhirElement("relatesTo", InSummary=true, Order=210)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("relatesTo", InSummary = true, Order = 210)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<RelatesToComponent> RelatesTo
         {
@@ -864,7 +862,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Human-readable description (title)
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=220)]
+        [FhirElement("description", InSummary = true, Order = 220)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -896,8 +894,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Document security-tags
         /// </summary>
-        [FhirElement("securityLabel", InSummary=true, Order=230)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("securityLabel", InSummary = true, Order = 230)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> SecurityLabel
         {
@@ -910,8 +908,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Document referenced
         /// </summary>
-        [FhirElement("content", InSummary=true, Order=240)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("content", InSummary = true, Order = 240)]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<ContentComponent> Content
         {
@@ -924,7 +922,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Clinical context of document
         /// </summary>
-        [FhirElement("context", InSummary=true, Order=250)]
+        [FhirElement("context", InSummary = true, Order = 250)]
         [DataMember]
         public ContextComponent Context
         {
@@ -967,7 +965,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new DocumentReference());
+            return CopyTo(new DocumentReference());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -165,14 +165,14 @@ namespace Hl7.Fhir.Serialization.Tests
                     throw Error.InvalidOperation("Fix unit test");
             }
 
-            var serializer = new FhirJsonBuilder(new FhirJsonSerializationSettings {  });
+            var serializer = new FhirJsonBuilder(new FhirJsonSerializationSettings { });
             string output = null;
 
             if (nav is ISourceNode isn2) output = isn2.ToJson();
             else if (nav is ITypedElement ien2) output = ien2.ToJson();
             else
                 throw Error.InvalidOperation("Fix unit test");
-            
+
             JsonAssert.AreSame(expected, output);
         }
 
@@ -252,7 +252,7 @@ namespace Hl7.Fhir.Serialization.Tests
             else
                 Assert.AreEqual("1974-12-25", bd.Value);
 
-            
+
 
             if (typed)
             {

@@ -48,10 +48,10 @@ namespace Hl7.Fhir.XPath
         {
             var func = _functions.SingleOrDefault(f => f.Name == name && f.Prefix == prefix);
 
-            if(func != null)
+            if (func != null)
                 return func;
             else
-                throw new InvalidOperationException("Unknown function in XPath: " + name);              
+                throw new InvalidOperationException("Unknown function in XPath: " + name);
         }
 
         public override IXsltContextVariable ResolveVariable(string prefix, string name)
@@ -61,7 +61,8 @@ namespace Hl7.Fhir.XPath
 
         public override bool Whitespace
         {
-            get {
+            get
+            {
                 return true;
             }
         }
@@ -73,10 +74,10 @@ namespace Hl7.Fhir.XPath
         string Prefix { get; }
         string Name { get; }
     }
-   
+
     internal class UpperCaseFunction : CustomXsltFunction
     {
-        public UpperCaseFunction() : base("upper-case", new XPathResultType[1] { XPathResultType.String }, XPathResultType.String) {}
+        public UpperCaseFunction() : base("upper-case", new XPathResultType[1] { XPathResultType.String }, XPathResultType.String) { }
 
         public override object Invoke(XsltContext xsltContext, object[] args, XPathNavigator docContext)
         {
@@ -104,7 +105,7 @@ namespace Hl7.Fhir.XPath
         private List<XPathNavigator> _nodes;
         private int _position = -1;
 
-        
+
         public NodeListIterator(List<XPathNavigator> nodes)
         {
             _nodes = nodes;
@@ -141,7 +142,7 @@ namespace Hl7.Fhir.XPath
 
         public override bool MoveNext()
         {
-            if(_position+1 < _nodes.Count)
+            if (_position + 1 < _nodes.Count)
             {
                 _position++;
                 return true;

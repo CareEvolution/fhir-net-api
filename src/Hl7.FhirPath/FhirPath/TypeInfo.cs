@@ -108,7 +108,7 @@ namespace Hl7.FhirPath
         }
 
         public override int GetHashCode()
-       {
+        {
             return Name.GetHashCode();
         }
 
@@ -127,5 +127,5 @@ namespace Hl7.FhirPath
         {
             return !(a == b);
         }
-    } 
+    }
 }

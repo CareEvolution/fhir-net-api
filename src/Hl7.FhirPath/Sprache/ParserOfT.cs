@@ -44,8 +44,8 @@ namespace Hl7.FhirPath.Sprache
             if (input == null) throw new ArgumentNullException("input");
 
             var result = parser.TryParse(input);
-            
-            if(result.WasSuccessful)
+
+            if (result.WasSuccessful)
                 return result.Value;
 
             throw new ParseException(result.ToString());

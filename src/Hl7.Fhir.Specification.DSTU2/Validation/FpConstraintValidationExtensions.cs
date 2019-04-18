@@ -38,11 +38,11 @@ namespace Hl7.Fhir.Validation
             foreach (var constraintElement in definition.Constraint)
             {
                 bool success = false;
-               
+
                 try
                 {
                     var compiled = getExecutableConstraint(v, outcome, instance, constraintElement);
-                    success = compiled.Predicate(instance, new FhirEvaluationContext(context) { ElementResolver = callExternalResolver } );
+                    success = compiled.Predicate(instance, new FhirEvaluationContext(context) { ElementResolver = callExternalResolver });
                 }
                 catch (Exception e)
                 {

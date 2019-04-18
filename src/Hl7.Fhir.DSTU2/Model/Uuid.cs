@@ -48,7 +48,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public static Uuid Generate()
         {
             var newUuid = "urn:uuid:" + System.Guid.NewGuid().ToString();
-            return new Uuid(newUuid);        
+            return new Uuid(newUuid);
         }
 
         public FhirUri AsUri()

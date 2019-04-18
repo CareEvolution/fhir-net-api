@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Structural Definition
     /// </summary>
-    [FhirType("StructureDefinition", IsResource=true)]
+    [FhirType("StructureDefinition", IsResource = true)]
     [DataContract]
     public partial class StructureDefinition : DomainResource
     {
@@ -128,7 +126,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of a individual to contact
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=40)]
+            [FhirElement("name", InSummary = true, Order = 40)]
             [DataMember]
             public FhirString NameElement
             {
@@ -160,8 +158,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Contact details for individual or publisher
             /// </summary>
-            [FhirElement("telecom", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("telecom", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ContactPoint> Telecom
             {
@@ -188,7 +186,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContactComponent());
+                return CopyTo(new ContactComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -252,8 +250,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Internal id when this mapping is used
             /// </summary>
-            [FhirElement("identity", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("identity", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Id IdentityElement
             {
@@ -285,7 +283,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Identifies what this mapping refers to
             /// </summary>
-            [FhirElement("uri", Order=50)]
+            [FhirElement("uri", Order = 50)]
             [DataMember]
             public FhirUri UriElement
             {
@@ -317,7 +315,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Names what this mapping refers to
             /// </summary>
-            [FhirElement("name", Order=60)]
+            [FhirElement("name", Order = 60)]
             [DataMember]
             public FhirString NameElement
             {
@@ -349,7 +347,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Versions, Issues, Scope limitations etc.
             /// </summary>
-            [FhirElement("comments", Order=70)]
+            [FhirElement("comments", Order = 70)]
             [DataMember]
             public FhirString CommentsElement
             {
@@ -397,7 +395,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new MappingComponent());
+                return CopyTo(new MappingComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -469,8 +467,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Definition of elements in the resource (if no StructureDefinition)
             /// </summary>
-            [FhirElement("element", Order=40)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("element", Order = 40)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<ElementDefinition> Element
             {
@@ -496,7 +494,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SnapshotComponent());
+                return CopyTo(new SnapshotComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -556,8 +554,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Definition of elements in the resource (if no StructureDefinition)
             /// </summary>
-            [FhirElement("element", Order=40)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("element", Order = 40)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<ElementDefinition> Element
             {
@@ -583,7 +581,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new DifferentialComponent());
+                return CopyTo(new DifferentialComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -636,8 +634,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Absolute URL used to reference this StructureDefinition
         /// </summary>
-        [FhirElement("url", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("url", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirUri UrlElement
         {
@@ -669,8 +667,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Other identifiers for the StructureDefinition
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=100)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 100)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -683,7 +681,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Logical id for this version of the StructureDefinition
         /// </summary>
-        [FhirElement("version", InSummary=true, Order=110)]
+        [FhirElement("version", InSummary = true, Order = 110)]
         [DataMember]
         public FhirString VersionElement
         {
@@ -715,8 +713,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Informal name for this StructureDefinition
         /// </summary>
-        [FhirElement("name", InSummary=true, Order=120)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("name", InSummary = true, Order = 120)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirString NameElement
         {
@@ -748,7 +746,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Use this name when displaying the value
         /// </summary>
-        [FhirElement("display", InSummary=true, Order=130)]
+        [FhirElement("display", InSummary = true, Order = 130)]
         [DataMember]
         public FhirString DisplayElement
         {
@@ -780,8 +778,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// draft | active | retired
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=140)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 140)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ConformanceResourceStatus> StatusElement
         {
@@ -813,7 +811,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If for testing purposes, not real usage
         /// </summary>
-        [FhirElement("experimental", InSummary=true, Order=150)]
+        [FhirElement("experimental", InSummary = true, Order = 150)]
         [DataMember]
         public FhirBoolean ExperimentalElement
         {
@@ -845,7 +843,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Name of the publisher (Organization or individual)
         /// </summary>
-        [FhirElement("publisher", InSummary=true, Order=160)]
+        [FhirElement("publisher", InSummary = true, Order = 160)]
         [DataMember]
         public FhirString PublisherElement
         {
@@ -877,8 +875,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contact details of the publisher
         /// </summary>
-        [FhirElement("contact", InSummary=true, Order=170)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("contact", InSummary = true, Order = 170)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactComponent> Contact
         {
@@ -891,7 +889,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Date for this version of the StructureDefinition
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=180)]
+        [FhirElement("date", InSummary = true, Order = 180)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -923,7 +921,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Natural language description of the StructureDefinition
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=190)]
+        [FhirElement("description", InSummary = true, Order = 190)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -955,8 +953,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Content intends to support these contexts
         /// </summary>
-        [FhirElement("useContext", InSummary=true, Order=200)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("useContext", InSummary = true, Order = 200)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> UseContext
         {
@@ -969,7 +967,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Scope and Usage this structure definition is for
         /// </summary>
-        [FhirElement("requirements", Order=210)]
+        [FhirElement("requirements", Order = 210)]
         [DataMember]
         public FhirString RequirementsElement
         {
@@ -1001,7 +999,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
-        [FhirElement("copyright", Order=220)]
+        [FhirElement("copyright", Order = 220)]
         [DataMember]
         public FhirString CopyrightElement
         {
@@ -1033,8 +1031,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Assist with indexing and finding
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=230)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("code", InSummary = true, Order = 230)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Coding> Code
         {
@@ -1047,7 +1045,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// FHIR Version this StructureDefinition targets
         /// </summary>
-        [FhirElement("fhirVersion", InSummary=true, Order=240)]
+        [FhirElement("fhirVersion", InSummary = true, Order = 240)]
         [DataMember]
         public Id FhirVersionElement
         {
@@ -1079,8 +1077,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External specification that the content is mapped to
         /// </summary>
-        [FhirElement("mapping", Order=250)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("mapping", Order = 250)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<MappingComponent> Mapping
         {
@@ -1093,8 +1091,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// datatype | resource | logical
         /// </summary>
-        [FhirElement("kind", InSummary=true, Order=260)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("kind", InSummary = true, Order = 260)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<StructureDefinitionKind> KindElement
         {
@@ -1126,7 +1124,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Any datatype or resource, including abstract ones
         /// </summary>
-        [FhirElement("constrainedType", InSummary=true, Order=270)]
+        [FhirElement("constrainedType", InSummary = true, Order = 270)]
         [DataMember]
         public Code<FHIRDefinedType> ConstrainedTypeElement
         {
@@ -1158,8 +1156,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Whether the structure is abstract
         /// </summary>
-        [FhirElement("abstract", InSummary=true, Order=280)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("abstract", InSummary = true, Order = 280)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirBoolean AbstractElement
         {
@@ -1191,7 +1189,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// resource | datatype | mapping | extension
         /// </summary>
-        [FhirElement("contextType", InSummary=true, Order=290)]
+        [FhirElement("contextType", InSummary = true, Order = 290)]
         [DataMember]
         public Code<ExtensionContext> ContextTypeElement
         {
@@ -1223,8 +1221,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Where the extension can be used in instances
         /// </summary>
-        [FhirElement("context", InSummary=true, Order=300)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("context", InSummary = true, Order = 300)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<FhirString> ContextElement
         {
@@ -1248,7 +1246,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     ContextElement = null;
                 else
-                    ContextElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                    ContextElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                 OnPropertyChanged("Context");
             }
         }
@@ -1256,7 +1254,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Structure that this set of constraints applies to
         /// </summary>
-        [FhirElement("base", InSummary=true, Order=310)]
+        [FhirElement("base", InSummary = true, Order = 310)]
         [DataMember]
         public FhirUri BaseElement
         {
@@ -1288,7 +1286,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Snapshot view of the structure
         /// </summary>
-        [FhirElement("snapshot", Order=320)]
+        [FhirElement("snapshot", Order = 320)]
         [DataMember]
         public SnapshotComponent Snapshot
         {
@@ -1301,7 +1299,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Differential view of the structure
         /// </summary>
-        [FhirElement("differential", Order=330)]
+        [FhirElement("differential", Order = 330)]
         [DataMember]
         public DifferentialComponent Differential
         {
@@ -1478,7 +1476,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new StructureDefinition());
+            return CopyTo(new StructureDefinition());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A request for referral or transfer of care
     /// </summary>
-    [FhirType("ReferralRequest", IsResource=true)]
+    [FhirType("ReferralRequest", IsResource = true)]
     [DataContract]
     public partial class ReferralRequest : DomainResource
     {
@@ -112,8 +110,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// draft | requested | active | cancelled | accepted | rejected | completed
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ReferralStatus> StatusElement
         {
@@ -145,8 +143,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Business identifier
         /// </summary>
-        [FhirElement("identifier", Order=100)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", Order = 100)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -159,7 +157,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Date of creation/activation
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=110)]
+        [FhirElement("date", InSummary = true, Order = 110)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -191,7 +189,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Referral/Transition of care request type
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=120)]
+        [FhirElement("type", InSummary = true, Order = 120)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -204,7 +202,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The clinical specialty (discipline) that the referral is requested for
         /// </summary>
-        [FhirElement("specialty", Order=130)]
+        [FhirElement("specialty", Order = 130)]
         [DataMember]
         public CodeableConcept Specialty
         {
@@ -217,7 +215,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Urgency of referral / transfer of care request
         /// </summary>
-        [FhirElement("priority", InSummary=true, Order=140)]
+        [FhirElement("priority", InSummary = true, Order = 140)]
         [DataMember]
         public CodeableConcept Priority
         {
@@ -230,7 +228,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Patient referred to care or transfer
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=150)]
+        [FhirElement("patient", InSummary = true, Order = 150)]
         [References("Patient")]
         [DataMember]
         public ResourceReference Patient
@@ -244,8 +242,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Requester of referral / transfer of care
         /// </summary>
-        [FhirElement("requester", InSummary=true, Order=160)]
-        [References("Practitioner","Organization","Patient")]
+        [FhirElement("requester", InSummary = true, Order = 160)]
+        [References("Practitioner", "Organization", "Patient")]
         [DataMember]
         public ResourceReference Requester
         {
@@ -258,9 +256,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Receiver of referral / transfer of care request
         /// </summary>
-        [FhirElement("recipient", InSummary=true, Order=170)]
-        [References("Practitioner","Organization")]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("recipient", InSummary = true, Order = 170)]
+        [References("Practitioner", "Organization")]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Recipient
         {
@@ -273,7 +271,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Originating encounter
         /// </summary>
-        [FhirElement("encounter", Order=180)]
+        [FhirElement("encounter", Order = 180)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference Encounter
@@ -287,7 +285,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Date referral/transfer of care request is sent
         /// </summary>
-        [FhirElement("dateSent", InSummary=true, Order=190)]
+        [FhirElement("dateSent", InSummary = true, Order = 190)]
         [DataMember]
         public FhirDateTime DateSentElement
         {
@@ -319,7 +317,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason for referral / transfer of care request
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=200)]
+        [FhirElement("reason", InSummary = true, Order = 200)]
         [DataMember]
         public CodeableConcept Reason
         {
@@ -332,7 +330,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A textual description of the referral
         /// </summary>
-        [FhirElement("description", Order=210)]
+        [FhirElement("description", Order = 210)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -364,8 +362,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Actions requested as part of the referral
         /// </summary>
-        [FhirElement("serviceRequested", InSummary=true, Order=220)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("serviceRequested", InSummary = true, Order = 220)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> ServiceRequested
         {
@@ -378,8 +376,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Additonal information to support referral or transfer of care request
         /// </summary>
-        [FhirElement("supportingInformation", InSummary=true, Order=230)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("supportingInformation", InSummary = true, Order = 230)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> SupportingInformation
         {
@@ -392,7 +390,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Requested service(s) fulfillment time
         /// </summary>
-        [FhirElement("fulfillmentTime", InSummary=true, Order=240)]
+        [FhirElement("fulfillmentTime", InSummary = true, Order = 240)]
         [DataMember]
         public Period FulfillmentTime
         {
@@ -434,7 +432,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new ReferralRequest());
+            return CopyTo(new ReferralRequest());
         }
 
         public override bool Matches(IDeepComparable other)

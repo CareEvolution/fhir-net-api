@@ -169,7 +169,7 @@ namespace Hl7.FhirPath.Sprache
         /// Parse a lowercase letter.
         /// </summary>
         public static readonly Parser<char> Lower = Char(char.IsLower, "lowercase letter");
-        
+
         /// <summary>
         /// Parse an uppercase letter.
         /// </summary>
@@ -221,7 +221,7 @@ namespace Hl7.FhirPath.Sprache
                 return Result.Success<object>(null, i);
             };
         }
- 
+
         /// <summary>
         /// Parse first, and if successful, then parse second.
         /// </summary>
@@ -321,7 +321,7 @@ namespace Hl7.FhirPath.Sprache
             if (parser == null) throw new ArgumentNullException("parser");
 
             return i => parser(i).IfSuccess(s =>
-                s.Remainder.AtEnd 
+                s.Remainder.AtEnd
                     ? s
                     : Result.Failure<T>(
                         s.Remainder,
@@ -419,7 +419,7 @@ namespace Hl7.FhirPath.Sprache
                 {
                     return second(i).IfFailure(sf => DetermineBestError(fr, sf));
                 }
-                
+
                 if (fr.Remainder.Equals(i))
                     return second(i).IfFailure(sf => fr);
 
@@ -457,14 +457,15 @@ namespace Hl7.FhirPath.Sprache
             if (first == null) throw new ArgumentNullException("first");
             if (second == null) throw new ArgumentNullException("second");
 
-            return i => {
+            return i =>
+            {
                 var fr = first(i);
                 if (!fr.WasSuccessful)
                 {
                     // The 'X' part
                     if (!fr.Remainder.Equals(i))
-                        return fr; 
-                    
+                        return fr;
+
                     return second(i).IfFailure(sf => DetermineBestError(fr, sf));
                 }
 
@@ -743,7 +744,7 @@ namespace Hl7.FhirPath.Sprache
         static Parser<string> DecimalWithoutLeadingDigits(CultureInfo ci = null)
         {
             return from nothing in Return("")
-                   // dummy so that CultureInfo.CurrentCulture is evaluated later
+                       // dummy so that CultureInfo.CurrentCulture is evaluated later
                    from dot in String((ci ?? CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator).Text()
                    from fraction in Number
                    select dot + fraction;

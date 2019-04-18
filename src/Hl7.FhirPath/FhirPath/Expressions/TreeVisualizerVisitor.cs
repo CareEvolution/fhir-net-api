@@ -68,7 +68,7 @@ namespace Hl7.FhirPath.Expressions
             append("var {0}".FormatWith(expression.Name));
             appendType(expression);
 
-            return _result;              
+            return _result;
         }
 
         //public override StringBuilder VisitTypeBinaryExpression(TypeBinaryExpression expression)
@@ -97,8 +97,8 @@ namespace Hl7.FhirPath.Expressions
         }
 
         private void incr()
-        {           
-            _indent += 1;        
+        {
+            _indent += 1;
         }
 
         private void decr()

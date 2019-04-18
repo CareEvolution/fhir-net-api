@@ -28,7 +28,7 @@ namespace Hl7.Fhir.Serialization
         private readonly DefaultModelFactory _defaultModelFactory = new DefaultModelFactory();
 
         public ExceptionNotificationHandler ExceptionHandler { get; set; }
-        
+
         /// <summary>
         /// Build a POCO from an ISourceNode.
         /// </summary>

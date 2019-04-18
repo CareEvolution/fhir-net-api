@@ -50,18 +50,18 @@ namespace Hl7.Fhir.Specification.Source
             return pattern;
 
             string convertPathPrefix(string ignore) => ignore.StartsWith("/") || ignore.StartsWith("**/") ? ignore : "**/" + ignore;
-            string convertPathSuffix(string ignore) => !ignore.EndsWith("/")  || ignore.EndsWith("/**") ? ignore : ignore + "**";
+            string convertPathSuffix(string ignore) => !ignore.EndsWith("/") || ignore.EndsWith("/**") ? ignore : ignore + "**";
             string convertToRegEx(string glob) => "^" + glob.Replace("**", "__recglob__").Replace("*", "__glob__")
                             .Replace("__recglob__", @"(.*)").Replace("__glob__", @"([^\/]*)") + "$";
             string escapeRegexChars(string escape) =>
-                            escape.Aggregate("",(s, c) => REGEX_ESCAPED_CHARS.Contains(c) ? s += $"\\{c}" : s += c);
-         }
+                            escape.Aggregate("", (s, c) => REGEX_ESCAPED_CHARS.Contains(c) ? s += $"\\{c}" : s += c);
+        }
 
 
         public bool matchesPattern(string path) => _compiledRegex.IsMatch(path);
 
         public string[] Filter(string baseDirectory, IEnumerable<string> filePaths)
-        {            
+        {
             if (baseDirectory.Last() != Path.DirectorySeparatorChar) baseDirectory += Path.DirectorySeparatorChar;
             var len = baseDirectory.Length;
 
@@ -69,7 +69,7 @@ namespace Hl7.Fhir.Specification.Source
                 .Where(input => input.StartsWith(baseDirectory))
                 .Select(full => convertToUnix(removeBase(full)))
                 .Where(relative => _negate ? !matchesPattern(relative) : matchesPattern(relative))
-                .Select(candidate => addBase(convertToNative(candidate)) )
+                .Select(candidate => addBase(convertToNative(candidate)))
                 .ToArray();
 
             string removeBase(string path) => path.Substring(len - 1);

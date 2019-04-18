@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Process request
     /// </summary>
-    [FhirType("ProcessRequest", IsResource=true)]
+    [FhirType("ProcessRequest", IsResource = true)]
     [DataContract]
     public partial class ProcessRequest : DomainResource
     {
@@ -101,8 +99,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Service instance
             /// </summary>
-            [FhirElement("sequenceLinkId", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("sequenceLinkId", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Integer SequenceLinkIdElement
             {
@@ -147,7 +145,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ItemsComponent());
+                return CopyTo(new ItemsComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -200,8 +198,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// cancel | poll | reprocess | status
         /// </summary>
-        [FhirElement("action", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("action", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ActionList> ActionElement
         {
@@ -233,8 +231,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Business Identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=100)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 100)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -247,7 +245,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Resource version
         /// </summary>
-        [FhirElement("ruleset", InSummary=true, Order=110)]
+        [FhirElement("ruleset", InSummary = true, Order = 110)]
         [DataMember]
         public Coding Ruleset
         {
@@ -260,7 +258,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Original version
         /// </summary>
-        [FhirElement("originalRuleset", InSummary=true, Order=120)]
+        [FhirElement("originalRuleset", InSummary = true, Order = 120)]
         [DataMember]
         public Coding OriginalRuleset
         {
@@ -273,7 +271,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Creation date
         /// </summary>
-        [FhirElement("created", InSummary=true, Order=130)]
+        [FhirElement("created", InSummary = true, Order = 130)]
         [DataMember]
         public FhirDateTime CreatedElement
         {
@@ -305,7 +303,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Target of the request
         /// </summary>
-        [FhirElement("target", InSummary=true, Order=140)]
+        [FhirElement("target", InSummary = true, Order = 140)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Target
@@ -319,7 +317,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Responsible practitioner
         /// </summary>
-        [FhirElement("provider", InSummary=true, Order=150)]
+        [FhirElement("provider", InSummary = true, Order = 150)]
         [References("Practitioner")]
         [DataMember]
         public ResourceReference Provider
@@ -333,7 +331,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Responsible organization
         /// </summary>
-        [FhirElement("organization", InSummary=true, Order=160)]
+        [FhirElement("organization", InSummary = true, Order = 160)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Organization
@@ -347,7 +345,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Request reference
         /// </summary>
-        [FhirElement("request", InSummary=true, Order=170)]
+        [FhirElement("request", InSummary = true, Order = 170)]
         [DataMember]
         public ResourceReference Request
         {
@@ -360,7 +358,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Response reference
         /// </summary>
-        [FhirElement("response", InSummary=true, Order=180)]
+        [FhirElement("response", InSummary = true, Order = 180)]
         [DataMember]
         public ResourceReference Response
         {
@@ -373,7 +371,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Nullify
         /// </summary>
-        [FhirElement("nullify", InSummary=true, Order=190)]
+        [FhirElement("nullify", InSummary = true, Order = 190)]
         [DataMember]
         public FhirBoolean NullifyElement
         {
@@ -405,7 +403,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reference number/string
         /// </summary>
-        [FhirElement("reference", InSummary=true, Order=200)]
+        [FhirElement("reference", InSummary = true, Order = 200)]
         [DataMember]
         public FhirString ReferenceElement
         {
@@ -437,8 +435,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Items to re-adjudicate
         /// </summary>
-        [FhirElement("item", InSummary=true, Order=210)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("item", InSummary = true, Order = 210)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ItemsComponent> Item
         {
@@ -451,8 +449,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Resource type(s) to include
         /// </summary>
-        [FhirElement("include", InSummary=true, Order=220)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("include", InSummary = true, Order = 220)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<FhirString> IncludeElement
         {
@@ -476,7 +474,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     IncludeElement = null;
                 else
-                    IncludeElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                    IncludeElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                 OnPropertyChanged("Include");
             }
         }
@@ -484,8 +482,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Resource type(s) to exclude
         /// </summary>
-        [FhirElement("exclude", InSummary=true, Order=230)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("exclude", InSummary = true, Order = 230)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<FhirString> ExcludeElement
         {
@@ -509,7 +507,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     ExcludeElement = null;
                 else
-                    ExcludeElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                    ExcludeElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                 OnPropertyChanged("Exclude");
             }
         }
@@ -517,7 +515,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Period
         /// </summary>
-        [FhirElement("period", InSummary=true, Order=240)]
+        [FhirElement("period", InSummary = true, Order = 240)]
         [DataMember]
         public Period Period
         {
@@ -559,7 +557,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new ProcessRequest());
+            return CopyTo(new ProcessRequest());
         }
 
         public override bool Matches(IDeepComparable other)

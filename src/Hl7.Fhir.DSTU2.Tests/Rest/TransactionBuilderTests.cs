@@ -67,7 +67,7 @@ namespace Hl7.Fhir.Test
             Bundle bundle = new TransactionBuilder(endpoint).SearchUsingPost(searchParams, resourceType).ToBundle();
             var request = bundle.Entry[0].ToHttpRequestMessage(DSTU2ModelInfo.Instance, endpoint, null, Prefer.ReturnRepresentation, ResourceFormat.Json, true, false);
 
-            Assert.AreEqual(expected, await request.Content.ReadAsStringAsync() );
+            Assert.AreEqual(expected, await request.Content.ReadAsStringAsync());
         }
 
         [TestMethod]
@@ -98,7 +98,7 @@ namespace Hl7.Fhir.Test
             Bundle bundle = new TransactionBuilder(endpoint).SearchUsingPost(searchParams, resourceType).ToBundle();
             var request = bundle.Entry[0].ToHttpRequestMessage(DSTU2ModelInfo.Instance, endpoint, null, Prefer.ReturnRepresentation, ResourceFormat.Json, true, false);
 
-            Assert.AreEqual(expected, await request.Content.ReadAsStringAsync() );
+            Assert.AreEqual(expected, await request.Content.ReadAsStringAsync());
         }
 
         [TestMethod]
@@ -148,7 +148,7 @@ namespace Hl7.Fhir.Test
             SearchParams searchParams = SearchParams.FromUriParamList(parameters);
 
             Bundle bundle = new TransactionBuilder(endpoint).SearchUsingPost(searchParams, resourceType).ToBundle();
-            var request = bundle.Entry[0].ToHttpRequestMessage(DSTU2ModelInfo.Instance, endpoint, null, Prefer.ReturnRepresentation, ResourceFormat.Json, true, false );
+            var request = bundle.Entry[0].ToHttpRequestMessage(DSTU2ModelInfo.Instance, endpoint, null, Prefer.ReturnRepresentation, ResourceFormat.Json, true, false);
 
             string actual = request.RequestUri.AbsoluteUri;
             Assert.AreEqual(expected, actual);

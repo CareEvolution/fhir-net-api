@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace Hl7.FhirPath.Tests 
+namespace Hl7.FhirPath.Tests
 {
     public static class TestData
     {

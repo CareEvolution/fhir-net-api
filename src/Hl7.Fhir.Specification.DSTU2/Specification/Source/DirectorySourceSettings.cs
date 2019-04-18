@@ -324,7 +324,7 @@ namespace Hl7.Fhir.Specification.Source
             set => _jsonParserSettings = value?.Clone() ?? FhirJsonParsingSettings.CreateDefault();
         }
 
-        
+
     }
 
 }

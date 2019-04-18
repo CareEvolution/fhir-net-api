@@ -5,7 +5,7 @@
  * This file is licensed under the BSD 3-Clause license
  * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
- 
+
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Specification.Navigation;
 using Hl7.Fhir.Specification.Source;

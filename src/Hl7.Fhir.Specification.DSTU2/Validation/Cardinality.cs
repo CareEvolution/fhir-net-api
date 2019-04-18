@@ -43,7 +43,7 @@ namespace Hl7.Fhir.Validation
 
         public override string ToString()
         {
-            return (Min?.ToString()??"<-") + ".." + (Max ?? "->");
+            return (Min?.ToString() ?? "<-") + ".." + (Max ?? "->");
         }
     }
 

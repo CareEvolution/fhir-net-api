@@ -57,7 +57,7 @@ namespace Hl7.Fhir.Specification.Tests
             Assert.IsTrue((bool)p.Evaluate(expr));
 
             expr = p.Compile("not(exists(f:childX))");
-            expr.SetContext(mgr);            
+            expr.SetContext(mgr);
             Assert.IsTrue((bool)p.Evaluate(expr));
         }
 
@@ -92,7 +92,7 @@ namespace Hl7.Fhir.Specification.Tests
             }
             catch { }
         }
-        
+
 
         //[TestMethod]
         //public void TestForError()

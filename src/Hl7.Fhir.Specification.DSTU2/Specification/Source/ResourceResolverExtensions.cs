@@ -70,7 +70,7 @@ namespace Hl7.Fhir.Specification.Source
         }
 
 
-        public static IEnumerable<T> FindAll<T>(this IConformanceSource source) where T:Resource
+        public static IEnumerable<T> FindAll<T>(this IConformanceSource source) where T : Resource
         {
             var type = ModelInfo.GetFhirTypeNameForType(typeof(T));
 

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Describes the intended objective(s) for a patient, group or organization
     /// </summary>
-    [FhirType("Goal", IsResource=true)]
+    [FhirType("Goal", IsResource = true)]
     [DataContract]
     public partial class Goal : DomainResource
     {
@@ -131,8 +129,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Code or observation that resulted from goal
             /// </summary>
-            [FhirElement("result", Order=40, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
+            [FhirElement("result", Order = 40, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(CodeableConcept), typeof(ResourceReference))]
             [DataMember]
             public Element Result
             {
@@ -158,7 +156,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new OutcomeComponent());
+                return CopyTo(new OutcomeComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -211,8 +209,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External Ids for this goal
         /// </summary>
-        [FhirElement("identifier", Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -225,8 +223,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who this goal is intended for
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=100)]
-        [References("Patient","Group","Organization")]
+        [FhirElement("subject", InSummary = true, Order = 100)]
+        [References("Patient", "Group", "Organization")]
         [DataMember]
         public ResourceReference Subject
         {
@@ -239,8 +237,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When goal pursuit begins
         /// </summary>
-        [FhirElement("start", InSummary=true, Order=110, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(Date),typeof(CodeableConcept))]
+        [FhirElement("start", InSummary = true, Order = 110, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(Date), typeof(CodeableConcept))]
         [DataMember]
         public Element Start
         {
@@ -253,8 +251,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reach goal on or before
         /// </summary>
-        [FhirElement("target", InSummary=true, Order=120, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(Date),typeof(Duration))]
+        [FhirElement("target", InSummary = true, Order = 120, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(Date), typeof(Duration))]
         [DataMember]
         public Element Target
         {
@@ -267,8 +265,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// E.g. Treatment, dietary, behavioral, etc.
         /// </summary>
-        [FhirElement("category", InSummary=true, Order=130)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("category", InSummary = true, Order = 130)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Category
         {
@@ -281,8 +279,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What's the desired outcome?
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=140)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("description", InSummary = true, Order = 140)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -314,8 +312,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// proposed | planned | accepted | rejected | in-progress | achieved | sustaining | on-hold | cancelled
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=150)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 150)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<GoalStatus> StatusElement
         {
@@ -347,7 +345,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When goal status took effect
         /// </summary>
-        [FhirElement("statusDate", InSummary=true, Order=160)]
+        [FhirElement("statusDate", InSummary = true, Order = 160)]
         [DataMember]
         public Date StatusDateElement
         {
@@ -379,7 +377,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason for current status
         /// </summary>
-        [FhirElement("statusReason", Order=170)]
+        [FhirElement("statusReason", Order = 170)]
         [DataMember]
         public CodeableConcept StatusReason
         {
@@ -392,8 +390,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who's responsible for creating Goal?
         /// </summary>
-        [FhirElement("author", InSummary=true, Order=180)]
-        [References("Patient","Practitioner","RelatedPerson")]
+        [FhirElement("author", InSummary = true, Order = 180)]
+        [References("Patient", "Practitioner", "RelatedPerson")]
         [DataMember]
         public ResourceReference Author
         {
@@ -406,7 +404,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// high | medium |low
         /// </summary>
-        [FhirElement("priority", InSummary=true, Order=190)]
+        [FhirElement("priority", InSummary = true, Order = 190)]
         [DataMember]
         public CodeableConcept Priority
         {
@@ -419,9 +417,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Issues addressed by this goal
         /// </summary>
-        [FhirElement("addresses", Order=200)]
-        [References("Condition","Observation","MedicationStatement","NutritionOrder","ProcedureRequest","RiskAssessment")]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("addresses", Order = 200)]
+        [References("Condition", "Observation", "MedicationStatement", "NutritionOrder", "ProcedureRequest", "RiskAssessment")]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Addresses
         {
@@ -434,8 +432,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Comments about the goal
         /// </summary>
-        [FhirElement("note", Order=210)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("note", Order = 210)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Annotation> Note
         {
@@ -448,8 +446,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What was end result of goal?
         /// </summary>
-        [FhirElement("outcome", Order=220)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("outcome", Order = 220)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<OutcomeComponent> Outcome
         {
@@ -489,7 +487,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Goal());
+            return CopyTo(new Goal());
         }
 
         public override bool Matches(IDeepComparable other)

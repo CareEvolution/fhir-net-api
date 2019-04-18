@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -45,7 +43,7 @@ using Hl7.Fhir.Specification;
 //
 namespace Hl7.Fhir.Model.DSTU2
 {
-    [FhirType("Account", IsResource=true)]
+    [FhirType("Account", IsResource = true)]
     [DataContract]
     public partial class Account : DomainResource
     {
@@ -58,8 +56,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Account number
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -72,7 +70,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Human-readable label
         /// </summary>
-        [FhirElement("name", InSummary=true, Order=100)]
+        [FhirElement("name", InSummary = true, Order = 100)]
         [DataMember]
         public FhirString NameElement
         {
@@ -104,7 +102,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// E.g. patient, expense, depreciation
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=110)]
+        [FhirElement("type", InSummary = true, Order = 110)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -117,7 +115,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// active | inactive
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=120)]
+        [FhirElement("status", InSummary = true, Order = 120)]
         [DataMember]
         public Code StatusElement
         {
@@ -149,7 +147,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Valid from..to
         /// </summary>
-        [FhirElement("activePeriod", InSummary=true, Order=130)]
+        [FhirElement("activePeriod", InSummary = true, Order = 130)]
         [DataMember]
         public Period ActivePeriod
         {
@@ -162,7 +160,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Base currency in which balance is tracked
         /// </summary>
-        [FhirElement("currency", InSummary=true, Order=140)]
+        [FhirElement("currency", InSummary = true, Order = 140)]
         [DataMember]
         public Coding Currency
         {
@@ -175,7 +173,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// How much is in account?
         /// </summary>
-        [FhirElement("balance", InSummary=true, Order=150)]
+        [FhirElement("balance", InSummary = true, Order = 150)]
         [DataMember]
         public Money Balance
         {
@@ -188,7 +186,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Transaction window
         /// </summary>
-        [FhirElement("coveragePeriod", InSummary=true, Order=160)]
+        [FhirElement("coveragePeriod", InSummary = true, Order = 160)]
         [DataMember]
         public Period CoveragePeriod
         {
@@ -201,8 +199,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What is account tied to?
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=170)]
-        [References("Patient","Device","Practitioner","Location","HealthcareService","Organization")]
+        [FhirElement("subject", InSummary = true, Order = 170)]
+        [References("Patient", "Device", "Practitioner", "Location", "HealthcareService", "Organization")]
         [DataMember]
         public ResourceReference Subject
         {
@@ -215,7 +213,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who is responsible?
         /// </summary>
-        [FhirElement("owner", InSummary=true, Order=180)]
+        [FhirElement("owner", InSummary = true, Order = 180)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Owner
@@ -229,7 +227,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Explanation of purpose/use
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=190)]
+        [FhirElement("description", InSummary = true, Order = 190)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -285,7 +283,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Account());
+            return CopyTo(new Account());
         }
 
         public override bool Matches(IDeepComparable other)

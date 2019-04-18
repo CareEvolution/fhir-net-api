@@ -898,7 +898,7 @@ namespace Hl7.Fhir.Specification.Tests
             {
                 //var summaries = dirSource.ListSummaries(ResourceType.StructureDefinition);
                 //summaries = summaries.Where(s => Path.GetFileNameWithoutExtension(s.Origin) == "profiles-others");
-                var path = Path.GetFullPath(Path.Combine("TestData","snapshot-test","WMR","profiles-others.xml"));
+                var path = Path.GetFullPath(Path.Combine("TestData", "snapshot-test", "WMR", "profiles-others.xml"));
                 var summaries = dirSource.ListSummaries(ResourceType.StructureDefinition).FromFile(path);
                 foreach (var summary in summaries)
                 {

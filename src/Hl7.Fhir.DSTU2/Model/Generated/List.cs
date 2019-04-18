@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Information summarized from a list of other resources
     /// </summary>
-    [FhirType("List", IsResource=true)]
+    [FhirType("List", IsResource = true)]
     [DataContract]
     public partial class List : DomainResource
     {
@@ -95,7 +93,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Status/Workflow information about this item
             /// </summary>
-            [FhirElement("flag", Order=40)]
+            [FhirElement("flag", Order = 40)]
             [DataMember]
             public CodeableConcept Flag
             {
@@ -108,7 +106,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// If this item is actually marked as deleted
             /// </summary>
-            [FhirElement("deleted", Order=50)]
+            [FhirElement("deleted", Order = 50)]
             [DataMember]
             public FhirBoolean DeletedElement
             {
@@ -140,7 +138,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// When item added to list
             /// </summary>
-            [FhirElement("date", Order=60)]
+            [FhirElement("date", Order = 60)]
             [DataMember]
             public FhirDateTime DateElement
             {
@@ -172,8 +170,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Actual entry
             /// </summary>
-            [FhirElement("item", Order=70)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("item", Order = 70)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Item
             {
@@ -202,7 +200,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new EntryComponent());
+                return CopyTo(new EntryComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -267,8 +265,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Business identifier
         /// </summary>
-        [FhirElement("identifier", Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -281,7 +279,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Descriptive name for the list
         /// </summary>
-        [FhirElement("title", InSummary=true, Order=100)]
+        [FhirElement("title", InSummary = true, Order = 100)]
         [DataMember]
         public FhirString TitleElement
         {
@@ -313,7 +311,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What the purpose of this list is
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=110)]
+        [FhirElement("code", InSummary = true, Order = 110)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -326,8 +324,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If all resources have the same subject
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=120)]
-        [References("Patient","Group","Device","Location")]
+        [FhirElement("subject", InSummary = true, Order = 120)]
+        [References("Patient", "Group", "Device", "Location")]
         [DataMember]
         public ResourceReference Subject
         {
@@ -340,8 +338,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who and/or what defined the list contents (aka Author)
         /// </summary>
-        [FhirElement("source", InSummary=true, Order=130)]
-        [References("Practitioner","Patient","Device")]
+        [FhirElement("source", InSummary = true, Order = 130)]
+        [References("Practitioner", "Patient", "Device")]
         [DataMember]
         public ResourceReference Source
         {
@@ -354,7 +352,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Context in which list created
         /// </summary>
-        [FhirElement("encounter", Order=140)]
+        [FhirElement("encounter", Order = 140)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference Encounter
@@ -368,8 +366,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// current | retired | entered-in-error
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=150)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 150)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ListStatus> StatusElement
         {
@@ -401,7 +399,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When the list was prepared
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=160)]
+        [FhirElement("date", InSummary = true, Order = 160)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -433,7 +431,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// What order the list has
         /// </summary>
-        [FhirElement("orderedBy", Order=170)]
+        [FhirElement("orderedBy", Order = 170)]
         [DataMember]
         public CodeableConcept OrderedBy
         {
@@ -446,8 +444,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// working | snapshot | changes
         /// </summary>
-        [FhirElement("mode", InSummary=true, Order=180)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("mode", InSummary = true, Order = 180)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ListMode> ModeElement
         {
@@ -479,7 +477,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Comments about the list
         /// </summary>
-        [FhirElement("note", Order=190)]
+        [FhirElement("note", Order = 190)]
         [DataMember]
         public FhirString NoteElement
         {
@@ -511,8 +509,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Entries in the list
         /// </summary>
-        [FhirElement("entry", Order=200)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("entry", Order = 200)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<EntryComponent> Entry
         {
@@ -525,7 +523,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Why list is empty
         /// </summary>
-        [FhirElement("emptyReason", Order=210)]
+        [FhirElement("emptyReason", Order = 210)]
         [DataMember]
         public CodeableConcept EmptyReason
         {
@@ -590,7 +588,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new List());
+            return CopyTo(new List());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -13,9 +13,9 @@ using Hl7.Fhir.Model;
 
 namespace Hl7.Fhir.Tests.Serialization
 {
-   
+
     [TestClass]
-	public class ClassFactoryListTest
+    public class ClassFactoryListTest
     {
         [TestMethod]
         public void FindModelClassFactory()
@@ -41,7 +41,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             facs.Add(new SpecificModelClassFactory());
 
-            Assert.ThrowsException<InvalidOperationException>(() => facs.FindFactory(typeof (GenericModelClass)));
+            Assert.ThrowsException<InvalidOperationException>(() => facs.FindFactory(typeof(GenericModelClass)));
         }
     }
 

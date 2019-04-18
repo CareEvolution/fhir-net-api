@@ -64,5 +64,5 @@ namespace Hl7.Fhir.Model.DSTU2
                 throw Error.NotSupported("Don't know how to handle a ConceptMap with Target of type " + Target.GetType().Name);
         }
     }
-    
+
 }

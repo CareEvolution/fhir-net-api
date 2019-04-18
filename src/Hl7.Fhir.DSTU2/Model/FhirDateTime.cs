@@ -88,7 +88,7 @@ namespace Hl7.Fhir.Model.DSTU2
         [Obsolete("Use ToDateTimeOffset(TimeSpan zone) instead. Obsolete since 2018-11-22")]
         public DateTimeOffset ToDateTimeOffset(TimeSpan? zone = null) =>
             ToDateTimeOffset(zone ?? TimeSpan.Zero);
-        
+
         /// <summary>
         /// Converts this Fhir DateTime as a .NET DateTimeOffset
         /// </summary>

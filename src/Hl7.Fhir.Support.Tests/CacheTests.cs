@@ -48,7 +48,7 @@ namespace Hl7.Fhir.Support.Tests
                  input =>
                  {
                      _cache.GetValue(input);
-                 }, 
+                 },
                  new ExecutionDataflowBlockOptions()
                  {
                      MaxDegreeOfParallelism = 20

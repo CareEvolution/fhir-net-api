@@ -43,7 +43,7 @@ namespace Hl7.Fhir.Serialization.Tests
 
             var m = masker.Descendants().ToList();
             var maskedChildren = masker.Descendants().Count();
-            Assert.AreEqual(8,maskedChildren);
+            Assert.AreEqual(8, maskedChildren);
         }
 
         [TestMethod]
@@ -57,8 +57,8 @@ namespace Hl7.Fhir.Serialization.Tests
             var output = masker.ToXml();
 
             var maskedChildren = masker.Descendants().Count();
-            Assert.AreEqual(nav.Descendants().Count()-3 , maskedChildren);
-        }       
+            Assert.AreEqual(nav.Descendants().Count() - 3, maskedChildren);
+        }
 
         [TestMethod]
         public void SummaryCountUsingStructureDefinitionSummaryProvider()

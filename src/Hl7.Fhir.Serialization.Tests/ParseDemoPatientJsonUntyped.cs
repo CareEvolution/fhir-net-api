@@ -15,8 +15,8 @@ namespace Hl7.Fhir.Serialization.Tests
     [TestClass]
     public class ParseDemoPatientJsonUntyped
     {
-        public ISourceNode getJsonNodeU(string json, FhirJsonParsingSettings settings=null) => 
-            FhirJsonNode.Parse(json, settings:settings);
+        public ISourceNode getJsonNodeU(string json, FhirJsonParsingSettings settings = null) =>
+            FhirJsonNode.Parse(json, settings: settings);
 
         ISourceNode FhirJsonNodeParse(string json, string rootName) =>
                FhirJsonNode.Parse(json, rootName, new FhirJsonParsingSettings() { PermissiveParsing = false });
@@ -60,7 +60,7 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void RoundtripJsonUntyped()
         {
-            ParseDemoPatient.RoundtripJson(jsonText => 
+            ParseDemoPatient.RoundtripJson(jsonText =>
                 getJsonNodeU(jsonText, new FhirJsonParsingSettings { AllowJsonComments = true }));
         }
 
@@ -215,10 +215,10 @@ namespace Hl7.Fhir.Serialization.Tests
                 var dummy = nav.Text;
                 Assert.Fail();
             }
-            catch(FormatException fe)
+            catch (FormatException fe)
             {
                 Assert.IsInstanceOfType(fe.InnerException, typeof(JsonException));
-            }                        
+            }
         }
 
         [TestMethod]

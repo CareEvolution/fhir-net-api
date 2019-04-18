@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A resource that describes a message that is exchanged between systems
     /// </summary>
-    [FhirType("MessageHeader", IsResource=true)]
+    [FhirType("MessageHeader", IsResource = true)]
     [DataContract]
     public partial class MessageHeader : DomainResource
     {
@@ -95,8 +93,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Id of original message
             /// </summary>
-            [FhirElement("identifier", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("identifier", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Id IdentifierElement
             {
@@ -128,8 +126,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// ok | transient-error | fatal-error
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<ResponseType> CodeElement
             {
@@ -161,7 +159,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Specific list of hints/warnings/errors
             /// </summary>
-            [FhirElement("details", InSummary=true, Order=60)]
+            [FhirElement("details", InSummary = true, Order = 60)]
             [References("OperationOutcome")]
             [DataMember]
             public ResourceReference Details
@@ -190,7 +188,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ResponseComponent());
+                return CopyTo(new ResponseComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -258,7 +256,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of system
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=40)]
+            [FhirElement("name", InSummary = true, Order = 40)]
             [DataMember]
             public FhirString NameElement
             {
@@ -290,7 +288,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of software running the system
             /// </summary>
-            [FhirElement("software", InSummary=true, Order=50)]
+            [FhirElement("software", InSummary = true, Order = 50)]
             [DataMember]
             public FhirString SoftwareElement
             {
@@ -322,7 +320,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Version of software running
             /// </summary>
-            [FhirElement("version", InSummary=true, Order=60)]
+            [FhirElement("version", InSummary = true, Order = 60)]
             [DataMember]
             public FhirString VersionElement
             {
@@ -354,7 +352,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Human contact for problems
             /// </summary>
-            [FhirElement("contact", InSummary=true, Order=70)]
+            [FhirElement("contact", InSummary = true, Order = 70)]
             [DataMember]
             public ContactPoint Contact
             {
@@ -367,8 +365,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Actual message source address or id
             /// </summary>
-            [FhirElement("endpoint", InSummary=true, Order=80)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("endpoint", InSummary = true, Order = 80)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri EndpointElement
             {
@@ -417,7 +415,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new MessageSourceComponent());
+                return CopyTo(new MessageSourceComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -493,7 +491,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of system
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=40)]
+            [FhirElement("name", InSummary = true, Order = 40)]
             [DataMember]
             public FhirString NameElement
             {
@@ -525,7 +523,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Particular delivery destination within the destination
             /// </summary>
-            [FhirElement("target", InSummary=true, Order=50)]
+            [FhirElement("target", InSummary = true, Order = 50)]
             [References("Device")]
             [DataMember]
             public ResourceReference Target
@@ -539,8 +537,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Actual destination address or id
             /// </summary>
-            [FhirElement("endpoint", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("endpoint", InSummary = true, Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri EndpointElement
             {
@@ -587,7 +585,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new MessageDestinationComponent());
+                return CopyTo(new MessageDestinationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -648,8 +646,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Time that the message was sent
         /// </summary>
-        [FhirElement("timestamp", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("timestamp", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Instant TimestampElement
         {
@@ -681,8 +679,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Code for the event this message represents
         /// </summary>
-        [FhirElement("event", InSummary=true, Order=100)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("event", InSummary = true, Order = 100)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Coding Event
         {
@@ -695,7 +693,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If this is a reply to prior message
         /// </summary>
-        [FhirElement("response", InSummary=true, Order=110)]
+        [FhirElement("response", InSummary = true, Order = 110)]
         [DataMember]
         public ResponseComponent Response
         {
@@ -708,8 +706,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Message Source Application
         /// </summary>
-        [FhirElement("source", InSummary=true, Order=120)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("source", InSummary = true, Order = 120)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public MessageSourceComponent Source
         {
@@ -722,8 +720,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Message Destination Application(s)
         /// </summary>
-        [FhirElement("destination", InSummary=true, Order=130)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("destination", InSummary = true, Order = 130)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<MessageDestinationComponent> Destination
         {
@@ -736,7 +734,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The source of the data entry
         /// </summary>
-        [FhirElement("enterer", InSummary=true, Order=140)]
+        [FhirElement("enterer", InSummary = true, Order = 140)]
         [References("Practitioner")]
         [DataMember]
         public ResourceReference Enterer
@@ -750,7 +748,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The source of the decision
         /// </summary>
-        [FhirElement("author", InSummary=true, Order=150)]
+        [FhirElement("author", InSummary = true, Order = 150)]
         [References("Practitioner")]
         [DataMember]
         public ResourceReference Author
@@ -764,8 +762,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Intended "real-world" recipient for the data
         /// </summary>
-        [FhirElement("receiver", InSummary=true, Order=160)]
-        [References("Practitioner","Organization")]
+        [FhirElement("receiver", InSummary = true, Order = 160)]
+        [References("Practitioner", "Organization")]
         [DataMember]
         public ResourceReference Receiver
         {
@@ -778,8 +776,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Final responsibility for event
         /// </summary>
-        [FhirElement("responsible", InSummary=true, Order=170)]
-        [References("Practitioner","Organization")]
+        [FhirElement("responsible", InSummary = true, Order = 170)]
+        [References("Practitioner", "Organization")]
         [DataMember]
         public ResourceReference Responsible
         {
@@ -792,7 +790,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Cause of event
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=180)]
+        [FhirElement("reason", InSummary = true, Order = 180)]
         [DataMember]
         public CodeableConcept Reason
         {
@@ -805,8 +803,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The actual content of the message
         /// </summary>
-        [FhirElement("data", InSummary=true, Order=190)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("data", InSummary = true, Order = 190)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Data
         {
@@ -843,7 +841,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new MessageHeader());
+            return CopyTo(new MessageHeader());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A set of resources composed into a single coherent clinical statement with clinical attestation
     /// </summary>
-    [FhirType("Composition", IsResource=true)]
+    [FhirType("Composition", IsResource = true)]
     [DataContract]
     public partial class Composition : DomainResource
     {
@@ -219,8 +217,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// personal | professional | legal | official
             /// </summary>
-            [FhirElement("mode", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("mode", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<Code<CompositionAttestationMode>> ModeElement
             {
@@ -244,7 +242,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         ModeElement = null;
                     else
-                        ModeElement = new List<Code<CompositionAttestationMode>>(value.Select(elem=>new Code<CompositionAttestationMode>(elem)));
+                        ModeElement = new List<Code<CompositionAttestationMode>>(value.Select(elem => new Code<CompositionAttestationMode>(elem)));
                     OnPropertyChanged("Mode");
                 }
             }
@@ -252,7 +250,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// When composition attested
             /// </summary>
-            [FhirElement("time", InSummary=true, Order=50)]
+            [FhirElement("time", InSummary = true, Order = 50)]
             [DataMember]
             public FhirDateTime TimeElement
             {
@@ -284,8 +282,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Who attested the composition
             /// </summary>
-            [FhirElement("party", InSummary=true, Order=60)]
-            [References("Patient","Practitioner","Organization")]
+            [FhirElement("party", InSummary = true, Order = 60)]
+            [References("Patient", "Practitioner", "Organization")]
             [DataMember]
             public ResourceReference Party
             {
@@ -313,7 +311,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AttesterComponent());
+                return CopyTo(new AttesterComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -381,8 +379,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Code(s) that apply to the event being documented
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("code", InSummary = true, Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> Code
             {
@@ -395,7 +393,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The period covered by the documentation
             /// </summary>
-            [FhirElement("period", InSummary=true, Order=50)]
+            [FhirElement("period", InSummary = true, Order = 50)]
             [DataMember]
             public Period Period
             {
@@ -408,8 +406,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The event(s) being documented
             /// </summary>
-            [FhirElement("detail", InSummary=true, Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("detail", InSummary = true, Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> Detail
             {
@@ -437,7 +435,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new EventComponent());
+                return CopyTo(new EventComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -505,7 +503,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Label for section (e.g. for ToC)
             /// </summary>
-            [FhirElement("title", Order=40)]
+            [FhirElement("title", Order = 40)]
             [DataMember]
             public FhirString TitleElement
             {
@@ -537,7 +535,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Classification of section (recommended)
             /// </summary>
-            [FhirElement("code", Order=50)]
+            [FhirElement("code", Order = 50)]
             [DataMember]
             public CodeableConcept Code
             {
@@ -550,7 +548,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Text summary of the section, for human interpretation
             /// </summary>
-            [FhirElement("text", Order=60)]
+            [FhirElement("text", Order = 60)]
             [DataMember]
             public Narrative Text
             {
@@ -563,7 +561,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// working | snapshot | changes
             /// </summary>
-            [FhirElement("mode", InSummary=true, Order=70)]
+            [FhirElement("mode", InSummary = true, Order = 70)]
             [DataMember]
             public Code<ListMode> ModeElement
             {
@@ -595,7 +593,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Order of section entries
             /// </summary>
-            [FhirElement("orderedBy", Order=80)]
+            [FhirElement("orderedBy", Order = 80)]
             [DataMember]
             public CodeableConcept OrderedBy
             {
@@ -608,8 +606,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A reference to data that supports this section
             /// </summary>
-            [FhirElement("entry", Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("entry", Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> Entry
             {
@@ -622,7 +620,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Why the section is empty
             /// </summary>
-            [FhirElement("emptyReason", Order=100)]
+            [FhirElement("emptyReason", Order = 100)]
             [DataMember]
             public CodeableConcept EmptyReason
             {
@@ -635,8 +633,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Nested Section
             /// </summary>
-            [FhirElement("section", Order=110)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("section", Order = 110)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<SectionComponent> Section
             {
@@ -669,7 +667,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SectionComponent());
+                return CopyTo(new SectionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -750,7 +748,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Logical identifier of composition (version-independent)
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
         [DataMember]
         public Identifier Identifier
         {
@@ -763,8 +761,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Composition editing time
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=100)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("date", InSummary = true, Order = 100)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -796,8 +794,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Kind of composition (LOINC if possible)
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("type", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -810,7 +808,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Categorization of Composition
         /// </summary>
-        [FhirElement("class", InSummary=true, Order=120)]
+        [FhirElement("class", InSummary = true, Order = 120)]
         [DataMember]
         public CodeableConcept Class
         {
@@ -823,8 +821,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Human Readable name/title
         /// </summary>
-        [FhirElement("title", InSummary=true, Order=130)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("title", InSummary = true, Order = 130)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirString TitleElement
         {
@@ -856,8 +854,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// preliminary | final | amended | entered-in-error
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=140)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 140)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<CompositionStatus> StatusElement
         {
@@ -889,7 +887,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// As defined by affinity domain
         /// </summary>
-        [FhirElement("confidentiality", InSummary=true, Order=150)]
+        [FhirElement("confidentiality", InSummary = true, Order = 150)]
         [DataMember]
         public Code<v3CodeSystemConfidentiality> ConfidentialityElement
         {
@@ -921,8 +919,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who and/or what the composition is about
         /// </summary>
-        [FhirElement("subject", InSummary=true, Order=160)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("subject", InSummary = true, Order = 160)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Subject
         {
@@ -935,9 +933,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who and/or what authored the composition
         /// </summary>
-        [FhirElement("author", InSummary=true, Order=170)]
-        [References("Practitioner","Device","Patient","RelatedPerson")]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("author", InSummary = true, Order = 170)]
+        [References("Practitioner", "Device", "Patient", "RelatedPerson")]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<ResourceReference> Author
         {
@@ -950,8 +948,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Attests to accuracy of composition
         /// </summary>
-        [FhirElement("attester", InSummary=true, Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("attester", InSummary = true, Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<AttesterComponent> Attester
         {
@@ -964,7 +962,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Organization which maintains the composition
         /// </summary>
-        [FhirElement("custodian", InSummary=true, Order=190)]
+        [FhirElement("custodian", InSummary = true, Order = 190)]
         [References("Organization")]
         [DataMember]
         public ResourceReference Custodian
@@ -978,8 +976,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The clinical service(s) being documented
         /// </summary>
-        [FhirElement("event", InSummary=true, Order=200)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("event", InSummary = true, Order = 200)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<EventComponent> Event
         {
@@ -992,7 +990,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Context of the Composition
         /// </summary>
-        [FhirElement("encounter", InSummary=true, Order=210)]
+        [FhirElement("encounter", InSummary = true, Order = 210)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference Encounter
@@ -1006,8 +1004,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Composition is broken into sections
         /// </summary>
-        [FhirElement("section", Order=220)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("section", Order = 220)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<SectionComponent> Section
         {
@@ -1073,7 +1071,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Composition());
+            return CopyTo(new Composition());
         }
 
         public override bool Matches(IDeepComparable other)

@@ -5,7 +5,7 @@ using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Model
 {
-    public interface IBundle 
+    public interface IBundle
     {
         string TypeLiteral { get; }
         int? Total { get; }

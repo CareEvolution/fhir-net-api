@@ -21,7 +21,7 @@ namespace Hl7.Fhir.Serialization.Tests
     [TestClass]
     public class SerializeDemoPatientJson
     {
-        public ITypedElement getJsonElement(string json, FhirJsonParsingSettings s = null) => 
+        public ITypedElement getJsonElement(string json, FhirJsonParsingSettings s = null) =>
             JsonParsingHelpers.ParseToTypedElement(json, DSTU2ModelInfo.Instance.StructureDefinitionProvider, settings: s);
 
         [TestMethod]
@@ -47,12 +47,12 @@ namespace Hl7.Fhir.Serialization.Tests
             Assert.AreEqual(17, doc.DescendantsAndSelf().Count());
         }
 
-       
+
         [TestMethod]
         public void CanSerializeFromPoco()
         {
             var tp = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.json"));
-            var pser = new FhirJsonParser(DSTU2ModelInfo.Instance, new ParserSettings { DisallowXsiAttributesOnRoot = false } );
+            var pser = new FhirJsonParser(DSTU2ModelInfo.Instance, new ParserSettings { DisallowXsiAttributesOnRoot = false });
             var pat = pser.Parse<Patient>(tp);
 
             var output = pat.ToJson();

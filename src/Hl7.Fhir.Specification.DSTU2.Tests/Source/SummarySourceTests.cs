@@ -137,7 +137,7 @@ namespace Hl7.Fhir.Specification.Tests
                 new DirectorySourceSettings { IncludeSubDirectories = true });
 
             var tasks = new Tasks.Task[threadCount];
-            var results = new(Resource resource, ArtifactSummary summary, int threadId, TimeSpan start, TimeSpan stop)[threadCount];
+            var results = new (Resource resource, ArtifactSummary summary, int threadId, TimeSpan start, TimeSpan stop)[threadCount];
 
             var sw = new Stopwatch();
             sw.Start();

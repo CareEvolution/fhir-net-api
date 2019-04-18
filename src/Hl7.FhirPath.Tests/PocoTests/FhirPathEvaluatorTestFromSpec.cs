@@ -229,7 +229,7 @@ namespace Hl7.FhirPath.Tests
                     runTestItem(item, resource);
                 }
 
-                
+
                 catch (XunitException afe) // (AssertFailedException afe)
                 {
                     output.WriteLine("FAIL: {0} - {1}: {2}", groupName, name, expression);

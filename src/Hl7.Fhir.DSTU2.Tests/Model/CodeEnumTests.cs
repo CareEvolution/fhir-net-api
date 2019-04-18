@@ -21,7 +21,7 @@ using Hl7.Fhir.Model.DSTU2;
 namespace Hl7.Fhir.Tests.Model
 {
     [TestClass]
-	public class CodeEnumTests
+    public class CodeEnumTests
     {
         [TestMethod]
         public void SetValueUpdatesRawValue()

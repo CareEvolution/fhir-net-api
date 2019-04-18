@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A request for a diet, formula or nutritional supplement
     /// </summary>
-    [FhirType("NutritionOrder", IsResource=true)]
+    [FhirType("NutritionOrder", IsResource = true)]
     [DataContract]
     public partial class NutritionOrder : DomainResource
     {
@@ -125,8 +123,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of oral diet or diet restrictions that describe what can be consumed orally
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("type", InSummary = true, Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> Type
             {
@@ -139,8 +137,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Scheduled frequency of diet
             /// </summary>
-            [FhirElement("schedule", Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("schedule", Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Timing> Schedule
             {
@@ -153,8 +151,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Required  nutrient modifications
             /// </summary>
-            [FhirElement("nutrient", Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("nutrient", Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<NutrientComponent> Nutrient
             {
@@ -167,8 +165,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Required  texture modifications
             /// </summary>
-            [FhirElement("texture", Order=70)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("texture", Order = 70)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<TextureComponent> Texture
             {
@@ -181,8 +179,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The required consistency of fluids and liquids provided to the patient
             /// </summary>
-            [FhirElement("fluidConsistencyType", Order=80)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("fluidConsistencyType", Order = 80)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> FluidConsistencyType
             {
@@ -195,7 +193,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Instructions or additional information about the oral diet
             /// </summary>
-            [FhirElement("instruction", InSummary=true, Order=90)]
+            [FhirElement("instruction", InSummary = true, Order = 90)]
             [DataMember]
             public FhirString InstructionElement
             {
@@ -245,7 +243,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new OralDietComponent());
+                return CopyTo(new OralDietComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -325,7 +323,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of nutrient that is being modified
             /// </summary>
-            [FhirElement("modifier", Order=40)]
+            [FhirElement("modifier", Order = 40)]
             [DataMember]
             public CodeableConcept Modifier
             {
@@ -338,7 +336,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Quantity of the specified nutrient
             /// </summary>
-            [FhirElement("amount", Order=50)]
+            [FhirElement("amount", Order = 50)]
             [DataMember]
             public SimpleQuantity Amount
             {
@@ -365,7 +363,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new NutrientComponent());
+                return CopyTo(new NutrientComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -429,7 +427,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Code to indicate how to alter the texture of the foods, e.g. pureed
             /// </summary>
-            [FhirElement("modifier", Order=40)]
+            [FhirElement("modifier", Order = 40)]
             [DataMember]
             public CodeableConcept Modifier
             {
@@ -442,7 +440,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Concepts that are used to identify an entity that is ingested for nutritional purposes
             /// </summary>
-            [FhirElement("foodType", Order=50)]
+            [FhirElement("foodType", Order = 50)]
             [DataMember]
             public CodeableConcept FoodType
             {
@@ -469,7 +467,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new TextureComponent());
+                return CopyTo(new TextureComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -533,7 +531,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of supplement product requested
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=40)]
+            [FhirElement("type", InSummary = true, Order = 40)]
             [DataMember]
             public CodeableConcept Type
             {
@@ -546,7 +544,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Product or brand name of the nutritional supplement
             /// </summary>
-            [FhirElement("productName", Order=50)]
+            [FhirElement("productName", Order = 50)]
             [DataMember]
             public FhirString ProductNameElement
             {
@@ -578,8 +576,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Scheduled frequency of supplement
             /// </summary>
-            [FhirElement("schedule", Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("schedule", Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Timing> Schedule
             {
@@ -592,7 +590,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Amount of the nutritional supplement
             /// </summary>
-            [FhirElement("quantity", Order=70)]
+            [FhirElement("quantity", Order = 70)]
             [DataMember]
             public SimpleQuantity Quantity
             {
@@ -605,7 +603,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Instructions or additional information about the oral supplement
             /// </summary>
-            [FhirElement("instruction", InSummary=true, Order=80)]
+            [FhirElement("instruction", InSummary = true, Order = 80)]
             [DataMember]
             public FhirString InstructionElement
             {
@@ -654,7 +652,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SupplementComponent());
+                return CopyTo(new SupplementComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -730,7 +728,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of enteral or infant formula
             /// </summary>
-            [FhirElement("baseFormulaType", InSummary=true, Order=40)]
+            [FhirElement("baseFormulaType", InSummary = true, Order = 40)]
             [DataMember]
             public CodeableConcept BaseFormulaType
             {
@@ -743,7 +741,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Product or brand name of the enteral or infant formula
             /// </summary>
-            [FhirElement("baseFormulaProductName", Order=50)]
+            [FhirElement("baseFormulaProductName", Order = 50)]
             [DataMember]
             public FhirString BaseFormulaProductNameElement
             {
@@ -775,7 +773,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of modular component to add to the feeding
             /// </summary>
-            [FhirElement("additiveType", Order=60)]
+            [FhirElement("additiveType", Order = 60)]
             [DataMember]
             public CodeableConcept AdditiveType
             {
@@ -788,7 +786,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Product or brand name of the modular additive
             /// </summary>
-            [FhirElement("additiveProductName", Order=70)]
+            [FhirElement("additiveProductName", Order = 70)]
             [DataMember]
             public FhirString AdditiveProductNameElement
             {
@@ -820,7 +818,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Amount of energy per specified volume that is required
             /// </summary>
-            [FhirElement("caloricDensity", Order=80)]
+            [FhirElement("caloricDensity", Order = 80)]
             [DataMember]
             public SimpleQuantity CaloricDensity
             {
@@ -833,7 +831,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// How the formula should enter the patient's gastrointestinal tract
             /// </summary>
-            [FhirElement("routeofAdministration", Order=90)]
+            [FhirElement("routeofAdministration", Order = 90)]
             [DataMember]
             public CodeableConcept RouteofAdministration
             {
@@ -846,8 +844,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Formula feeding instruction as structured data
             /// </summary>
-            [FhirElement("administration", Order=100)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("administration", Order = 100)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<AdministrationComponent> Administration
             {
@@ -860,7 +858,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Upper limit on formula volume per unit of time
             /// </summary>
-            [FhirElement("maxVolumeToDeliver", Order=110)]
+            [FhirElement("maxVolumeToDeliver", Order = 110)]
             [DataMember]
             public SimpleQuantity MaxVolumeToDeliver
             {
@@ -873,7 +871,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Formula feeding instructions expressed as text
             /// </summary>
-            [FhirElement("administrationInstruction", InSummary=true, Order=120)]
+            [FhirElement("administrationInstruction", InSummary = true, Order = 120)]
             [DataMember]
             public FhirString AdministrationInstructionElement
             {
@@ -926,7 +924,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new EnteralFormulaComponent());
+                return CopyTo(new EnteralFormulaComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1018,7 +1016,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Scheduled frequency of enteral feeding
             /// </summary>
-            [FhirElement("schedule", Order=40)]
+            [FhirElement("schedule", Order = 40)]
             [DataMember]
             public Timing Schedule
             {
@@ -1031,7 +1029,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The volume of formula to provide
             /// </summary>
-            [FhirElement("quantity", Order=50)]
+            [FhirElement("quantity", Order = 50)]
             [DataMember]
             public SimpleQuantity Quantity
             {
@@ -1044,8 +1042,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Speed with which the formula is provided per period of time
             /// </summary>
-            [FhirElement("rate", Order=60, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(SimpleQuantity),typeof(Ratio))]
+            [FhirElement("rate", Order = 60, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(SimpleQuantity), typeof(Ratio))]
             [DataMember]
             public Element Rate
             {
@@ -1073,7 +1071,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AdministrationComponent());
+                return CopyTo(new AdministrationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1134,9 +1132,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The person who requires the diet, formula or nutritional supplement
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=90)]
+        [FhirElement("patient", InSummary = true, Order = 90)]
         [References("Patient")]
-        [Cardinality(Min=1,Max=1)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Patient
         {
@@ -1149,7 +1147,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who ordered the diet, formula or nutritional supplement
         /// </summary>
-        [FhirElement("orderer", InSummary=true, Order=100)]
+        [FhirElement("orderer", InSummary = true, Order = 100)]
         [References("Practitioner")]
         [DataMember]
         public ResourceReference Orderer
@@ -1163,8 +1161,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Identifiers assigned to this order
         /// </summary>
-        [FhirElement("identifier", Order=110)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", Order = 110)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -1177,7 +1175,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The encounter associated with this nutrition order
         /// </summary>
-        [FhirElement("encounter", Order=120)]
+        [FhirElement("encounter", Order = 120)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference Encounter
@@ -1191,8 +1189,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Date and time the nutrition order was requested
         /// </summary>
-        [FhirElement("dateTime", InSummary=true, Order=130)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("dateTime", InSummary = true, Order = 130)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirDateTime DateTimeElement
         {
@@ -1224,7 +1222,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// proposed | draft | planned | requested | active | on-hold | completed | cancelled
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=140)]
+        [FhirElement("status", InSummary = true, Order = 140)]
         [DataMember]
         public Code<NutritionOrderStatus> StatusElement
         {
@@ -1256,9 +1254,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// List of the patient's food and nutrition-related allergies and intolerances
         /// </summary>
-        [FhirElement("allergyIntolerance", Order=150)]
+        [FhirElement("allergyIntolerance", Order = 150)]
         [References("AllergyIntolerance")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> AllergyIntolerance
         {
@@ -1271,8 +1269,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Order-specific modifier about the type of food that should be given
         /// </summary>
-        [FhirElement("foodPreferenceModifier", Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("foodPreferenceModifier", Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> FoodPreferenceModifier
         {
@@ -1285,8 +1283,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Order-specific modifier about the type of food that should not be given
         /// </summary>
-        [FhirElement("excludeFoodModifier", Order=170)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("excludeFoodModifier", Order = 170)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> ExcludeFoodModifier
         {
@@ -1299,7 +1297,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Oral diet components
         /// </summary>
-        [FhirElement("oralDiet", Order=180)]
+        [FhirElement("oralDiet", Order = 180)]
         [DataMember]
         public OralDietComponent OralDiet
         {
@@ -1312,8 +1310,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Supplement components
         /// </summary>
-        [FhirElement("supplement", Order=190)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("supplement", Order = 190)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<SupplementComponent> Supplement
         {
@@ -1326,7 +1324,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Enteral formula components
         /// </summary>
-        [FhirElement("enteralFormula", Order=200)]
+        [FhirElement("enteralFormula", Order = 200)]
         [DataMember]
         public EnteralFormulaComponent EnteralFormula
         {
@@ -1380,7 +1378,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new NutritionOrder());
+            return CopyTo(new NutritionOrder());
         }
 
         public override bool Matches(IDeepComparable other)

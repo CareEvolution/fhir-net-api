@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -137,7 +135,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// phone | fax | email | pager | other
         /// </summary>
-        [FhirElement("system", InSummary=true, Order=30)]
+        [FhirElement("system", InSummary = true, Order = 30)]
         [DataMember]
         public Code<ContactPointSystem> SystemElement
         {
@@ -169,7 +167,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The actual contact point details
         /// </summary>
-        [FhirElement("value", InSummary=true, Order=40)]
+        [FhirElement("value", InSummary = true, Order = 40)]
         [DataMember]
         public FhirString ValueElement
         {
@@ -201,7 +199,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// home | work | temp | old | mobile - purpose of this contact point
         /// </summary>
-        [FhirElement("use", InSummary=true, Order=50)]
+        [FhirElement("use", InSummary = true, Order = 50)]
         [DataMember]
         public Code<ContactPointUse> UseElement
         {
@@ -233,7 +231,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Specify preferred order of use (1 = highest)
         /// </summary>
-        [FhirElement("rank", InSummary=true, Order=60)]
+        [FhirElement("rank", InSummary = true, Order = 60)]
         [DataMember]
         public PositiveInt RankElement
         {
@@ -265,7 +263,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Time period when the contact point was/is in use
         /// </summary>
-        [FhirElement("period", InSummary=true, Order=70)]
+        [FhirElement("period", InSummary = true, Order = 70)]
         [DataMember]
         public Period Period
         {
@@ -307,7 +305,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new ContactPoint());
+            return CopyTo(new ContactPoint());
         }
 
         public override bool Matches(IDeepComparable other)

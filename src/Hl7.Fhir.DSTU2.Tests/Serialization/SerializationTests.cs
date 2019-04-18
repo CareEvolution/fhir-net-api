@@ -59,9 +59,9 @@ namespace Hl7.Fhir.Tests.Serialization
         public void ParsePatientXmlNullType()
         {
             string xmlPacientTest = TestDataHelper.ReadTestData("TestPatient.xml");
-            
+
             var poco = new FhirXmlParser(DSTU2ModelInfo.Instance).Parse(xmlPacientTest);
-            
+
             Assert.AreEqual(((Patient)poco).Id, "pat1");
             Assert.AreEqual(((Patient)poco).Contained.First().Id, "1");
             Assert.AreEqual(((Patient)poco).Name.First().Family.First(), "Donald");
@@ -711,18 +711,18 @@ namespace Hl7.Fhir.Tests.Serialization
         public void DateTimeOffsetAccuracyTest()
         {
             var patient = new Patient { Meta = new Meta { LastUpdated = DateTimeOffset.UtcNow } };
-            var json = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(patient); 
+            var json = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(patient);
             var res = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Patient>(json);
             Assert.IsTrue(patient.IsExactly(res), "1");
 
             // Is the parsing still correct without milliseconds?
-            patient = new Patient { Meta = new Meta { LastUpdated = new DateTimeOffset(2018, 8, 13, 13, 41, 56, TimeSpan.Zero)} };
+            patient = new Patient { Meta = new Meta { LastUpdated = new DateTimeOffset(2018, 8, 13, 13, 41, 56, TimeSpan.Zero) } };
             json = "{\"resourceType\":\"Patient\",\"meta\":{\"lastUpdated\":\"2018-08-13T13:41:56+00:00\"}}";
             res = new FhirJsonParser(DSTU2ModelInfo.Instance).Parse<Patient>(json);
             Assert.IsTrue(patient.IsExactly(res), "2");
 
             // Is the serialization still correct without milliseconds?
-            var json2 = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(patient); 
+            var json2 = new FhirJsonSerializer(DSTU2ModelInfo.Instance).SerializeToString(patient);
             Assert.AreEqual(json, json2, "3");
 
             // Is the parsing still correct with a few milliseconds and TimeZone?

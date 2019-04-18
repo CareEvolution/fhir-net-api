@@ -70,21 +70,21 @@ namespace Hl7.Fhir.Utility
 #endif
         }
 
-//        public static PropertyInfo FindPublicProperty(Type t, string name)
-//        {
-//            if (t == null) throw Error.ArgumentNull("t");
-//            if (name == null) throw Error.ArgumentNull("name");
+        //        public static PropertyInfo FindPublicProperty(Type t, string name)
+        //        {
+        //            if (t == null) throw Error.ArgumentNull("t");
+        //            if (name == null) throw Error.ArgumentNull("name");
 
-//            return t.GetProperty(name, BindingFlags.Instance | BindingFlags.Public);
-//        }
+        //            return t.GetProperty(name, BindingFlags.Instance | BindingFlags.Public);
+        //        }
 
-//        internal static MethodInfo FindPublicStaticMethod(Type t, string name, params Type[] arguments)
-//        {
-//            if (t == null) throw Error.ArgumentNull("t");
-//            if (name == null) throw Error.ArgumentNull("name");
+        //        internal static MethodInfo FindPublicStaticMethod(Type t, string name, params Type[] arguments)
+        //        {
+        //            if (t == null) throw Error.ArgumentNull("t");
+        //            if (name == null) throw Error.ArgumentNull("name");
 
-//            return t.GetMethod(name, arguments);
-//        }
+        //            return t.GetMethod(name, arguments);
+        //        }
 
         public static bool HasDefaultPublicConstructor(Type t)
         {
@@ -146,7 +146,7 @@ namespace Hl7.Fhir.Utility
 
         public static bool IsOpenGenericTypeDefinition(Type type)
         {
-           return type.GetTypeInfo().IsGenericTypeDefinition;
+            return type.GetTypeInfo().IsGenericTypeDefinition;
         }
 
         public static bool IsConstructedFromGenericTypeDefinition(Type type, Type genericBase)
@@ -195,7 +195,7 @@ namespace Hl7.Fhir.Utility
             if (!genericInterfaceDefinition.GetTypeInfo().IsInterface || !genericInterfaceDefinition.GetTypeInfo().IsGenericTypeDefinition)
                 throw Error.Argument("genericInterfaceDefinition", "'{0}' is not a generic interface definition.".FormatWith(genericInterfaceDefinition.Name));
 
-           if (type.GetTypeInfo().IsInterface)
+            if (type.GetTypeInfo().IsInterface)
             {
                 if (type.GetTypeInfo().IsGenericType)
                 {
@@ -229,9 +229,9 @@ namespace Hl7.Fhir.Utility
 
         #region << Extension methods to make the handling of PCL easier >>
 
-       public static bool IsEnum(this Type t)
+        public static bool IsEnum(this Type t)
         {
-			return t.GetTypeInfo().IsEnum;
+            return t.GetTypeInfo().IsEnum;
         }
         #endregion
 
@@ -264,9 +264,9 @@ namespace Hl7.Fhir.Utility
         public static string PrettyTypeName(Type t)
         {
             // http://stackoverflow.com/questions/1533115/get-generictype-name-in-good-format-using-reflection-on-c-sharp#answer-25287378 
-            return t.GetTypeInfo().IsGenericType ? string.Format( 
-                "{0}<{1}>", t.Name.Substring(0, t.Name.LastIndexOf("`", StringComparison.CurrentCulture)), 
-                string.Join(", ", t.GetTypeInfo().GenericTypeParameters.ToList().Select(PrettyTypeName))) 
+            return t.GetTypeInfo().IsGenericType ? string.Format(
+                "{0}<{1}>", t.Name.Substring(0, t.Name.LastIndexOf("`", StringComparison.CurrentCulture)),
+                string.Join(", ", t.GetTypeInfo().GenericTypeParameters.ToList().Select(PrettyTypeName)))
             : t.Name;
         }
     }

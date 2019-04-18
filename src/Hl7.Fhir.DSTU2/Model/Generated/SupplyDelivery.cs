@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Delivery of Supply
     /// </summary>
-    [FhirType("SupplyDelivery", IsResource=true)]
+    [FhirType("SupplyDelivery", IsResource = true)]
     [DataContract]
     public partial class SupplyDelivery : DomainResource
     {
@@ -88,7 +86,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
         [DataMember]
         public Identifier Identifier
         {
@@ -101,7 +99,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// in-progress | completed | abandoned
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=100)]
+        [FhirElement("status", InSummary = true, Order = 100)]
         [DataMember]
         public Code<SupplyDeliveryStatus> StatusElement
         {
@@ -133,7 +131,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Patient for whom the item is supplied
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=110)]
+        [FhirElement("patient", InSummary = true, Order = 110)]
         [References("Patient")]
         [DataMember]
         public ResourceReference Patient
@@ -147,7 +145,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Category of dispense event
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=120)]
+        [FhirElement("type", InSummary = true, Order = 120)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -160,7 +158,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Amount dispensed
         /// </summary>
-        [FhirElement("quantity", InSummary=true, Order=130)]
+        [FhirElement("quantity", InSummary = true, Order = 130)]
         [DataMember]
         public SimpleQuantity Quantity
         {
@@ -173,8 +171,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Medication, Substance, or Device supplied
         /// </summary>
-        [FhirElement("suppliedItem", InSummary=true, Order=140)]
-        [References("Medication","Substance","Device")]
+        [FhirElement("suppliedItem", InSummary = true, Order = 140)]
+        [References("Medication", "Substance", "Device")]
         [DataMember]
         public ResourceReference SuppliedItem
         {
@@ -187,7 +185,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Dispenser
         /// </summary>
-        [FhirElement("supplier", InSummary=true, Order=150)]
+        [FhirElement("supplier", InSummary = true, Order = 150)]
         [References("Practitioner")]
         [DataMember]
         public ResourceReference Supplier
@@ -201,7 +199,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Dispensing time
         /// </summary>
-        [FhirElement("whenPrepared", InSummary=true, Order=160)]
+        [FhirElement("whenPrepared", InSummary = true, Order = 160)]
         [DataMember]
         public Period WhenPrepared
         {
@@ -214,7 +212,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Handover time
         /// </summary>
-        [FhirElement("time", InSummary=true, Order=170)]
+        [FhirElement("time", InSummary = true, Order = 170)]
         [DataMember]
         public FhirDateTime TimeElement
         {
@@ -246,7 +244,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Where the Supply was sent
         /// </summary>
-        [FhirElement("destination", InSummary=true, Order=180)]
+        [FhirElement("destination", InSummary = true, Order = 180)]
         [References("Location")]
         [DataMember]
         public ResourceReference Destination
@@ -260,9 +258,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who collected the Supply
         /// </summary>
-        [FhirElement("receiver", InSummary=true, Order=190)]
+        [FhirElement("receiver", InSummary = true, Order = 190)]
         [References("Practitioner")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Receiver
         {
@@ -299,7 +297,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new SupplyDelivery());
+            return CopyTo(new SupplyDelivery());
         }
 
         public override bool Matches(IDeepComparable other)

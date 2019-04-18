@@ -115,7 +115,7 @@ namespace Hl7.Fhir.Specification.Summary
             var values = new List<string>();
             foreach (var elementNode in nav.Children(element))
             {
-                foreach(var childNode in elementNode.Children(childElement))
+                foreach (var childNode in elementNode.Children(childElement))
                 {
                     HarvestValue(childNode, values);
                 }
@@ -136,10 +136,10 @@ namespace Hl7.Fhir.Specification.Summary
         {
             const string extension = "extension";
 
-            foreach(var child in nav.Children(extension))
+            foreach (var child in nav.Children(extension))
             {
                 var url = child.Children("url").FirstOrDefault();
-                if(url != null)
+                if (url != null)
                 {
                     extensionValueHarvester(child, properties, url.Text);
                 }

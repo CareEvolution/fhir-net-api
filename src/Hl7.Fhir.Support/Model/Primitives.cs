@@ -16,7 +16,7 @@ namespace Hl7.Fhir.Support.Model
                  "base64Binary", "xhtml" };
 
         public static bool IsPrimitive(string typeName) => Char.IsLower(typeName[0]);
-            // PRIMITIVE_TYPES.Contains(typeName);
+        // PRIMITIVE_TYPES.Contains(typeName);
 
         public static Type GetNativeRepresentation(string typeName)
         {

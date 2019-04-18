@@ -40,7 +40,7 @@ namespace Hl7.Fhir.Test
                 Assert.Fail();
             }
             catch
-            { }        
-        }    
+            { }
+        }
     }
 }

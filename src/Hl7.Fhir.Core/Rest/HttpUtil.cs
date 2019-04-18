@@ -26,7 +26,7 @@ using System.Xml.Linq;
 
 namespace Hl7.Fhir.Rest
 {
-	/*
+    /*
 	 * Brian 16 Dec 2014:
 	 *		Removed the Category in the HTML Header as we don't do this anymore for DSTU2
 	 *		Implement everything using the native .net async patterns
@@ -139,7 +139,7 @@ namespace Hl7.Fhir.Rest
 
             if (me.IsAbsoluteUri)
             {
-                if (other.Authority.ToLower() != me.Authority.ToLower()) 
+                if (other.Authority.ToLower() != me.Authority.ToLower())
                     return false;
             }
 
@@ -149,11 +149,11 @@ namespace Hl7.Fhir.Rest
             var otherLength = otherSegments.Length;
             var meLength = meSegments.Length;
 
-            if (meSegments.Length < otherSegments.Length) 
+            if (meSegments.Length < otherSegments.Length)
                 return false;
             for (int index = 0; index < otherLength; index++)
             {
-                if (otherSegments[index].TrimEnd('/') != meSegments[index].TrimEnd('/')) 
+                if (otherSegments[index].TrimEnd('/') != meSegments[index].TrimEnd('/'))
                     return false;
             }
 

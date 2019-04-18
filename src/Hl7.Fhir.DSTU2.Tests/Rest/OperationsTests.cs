@@ -25,18 +25,18 @@ namespace Hl7.Fhir.Tests.Rest
     {
         string testEndpoint = FhirClientTests.testEndpoint.OriginalString;
 
-        [TestMethod] 
+        [TestMethod]
         [TestCategory("IntegrationTest")]
         public void InvokeTestPatientGetEverything()
         {
             var client = new FhirClient(testEndpoint);
-            var start = new FhirDateTime(2014,11,1);
-            var end = new FhirDateTime(2015,1,1);
+            var start = new FhirDateTime(2014, 11, 1);
+            var end = new FhirDateTime(2015, 1, 1);
             var par = new Parameters().Add("start", start).Add("end", end);
             var bundle = (Bundle)client.InstanceOperation(ResourceIdentity.Build("Patient", "example"), "everything", par);
             Assert.IsTrue(bundle.Entry.Any());
 
-            var bundle2 = client.FetchPatientRecord(ResourceIdentity.Build("Patient","example"), start, end);
+            var bundle2 = client.FetchPatientRecord(ResourceIdentity.Build("Patient", "example"), start, end);
             Assert.IsTrue(bundle2.Entry.Any());
         }
 
@@ -45,7 +45,7 @@ namespace Hl7.Fhir.Tests.Rest
         public void InvokeExpandExistingValueSet()
         {
             var client = new FhirClient(FhirClientTests.TerminologyEndpoint);
-            var vs = client.ExpandValueSet(ResourceIdentity.Build("ValueSet","administrative-gender"));            
+            var vs = client.ExpandValueSet(ResourceIdentity.Build("ValueSet", "administrative-gender"));
             Assert.IsTrue(vs.Expansion.Contains.Any());
         }
 
@@ -63,7 +63,7 @@ namespace Hl7.Fhir.Tests.Rest
             Assert.IsTrue(vsX.Expansion.Contains.Any());
         }
 
-  
+
         /// <summary>
         /// http://hl7.org/fhir/valueset-operations.html#lookup
         /// </summary>
@@ -77,7 +77,7 @@ namespace Hl7.Fhir.Tests.Rest
             var expansion = client.ConceptLookup(coding: coding);
 
             // Assert.AreEqual("AdministrativeGender", expansion.GetSingleValue<FhirString>("name").Value); // Returns empty currently on Grahame's server
-            Assert.AreEqual("Male", expansion.GetSingleValue<FhirString>("display").Value);               
+            Assert.AreEqual("Male", expansion.GetSingleValue<FhirString>("display").Value);
         }
 
         [TestMethod]
@@ -109,7 +109,7 @@ namespace Hl7.Fhir.Tests.Rest
             var client = new FhirClient(FhirClientTests.TerminologyEndpoint);
             var coding = new Coding("http://snomed.info/sct", "4322002");
 
-            var result = client.ValidateCode(identifier: new FhirUri("http://hl7.org/fhir/ValueSet/c80-facilitycodes"), 
+            var result = client.ValidateCode(identifier: new FhirUri("http://hl7.org/fhir/ValueSet/c80-facilitycodes"),
                   coding: coding, @abstract: new FhirBoolean(false));
             Assert.IsTrue(result.Result?.Value == true);
         }
@@ -143,7 +143,7 @@ namespace Hl7.Fhir.Tests.Rest
                     new FhirUri("http://hl7.org/fhir/StructureDefinition/uslab-patient"));
                 Assert.Fail("Should have resulted in 400");
             }
-            catch(FhirOperationException fe)
+            catch (FhirOperationException fe)
             {
                 Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, fe.Status);
                 Assert.IsTrue(fe.Outcome.Issue.Where(i => i.Severity == CommonIssueSeverity.Error).Any());

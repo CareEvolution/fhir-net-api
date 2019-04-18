@@ -39,7 +39,7 @@ namespace Hl7.Fhir.ElementModel.Tests
         {
             var _sdsProvider = DSTU2ModelInfo.Instance.StructureDefinitionProvider;
             var patientJson = "{\"resourceType\":\"Patient\", \"active\":\"true\"}";
-            var patient  = FhirJsonNode.Parse(patientJson);
+            var patient = FhirJsonNode.Parse(patientJson);
             var typedPatient = patient.ToTypedElement(_sdsProvider, "Patient");
             var sourceNode = typedPatient.ToSourceNode();
 
@@ -55,7 +55,7 @@ namespace Hl7.Fhir.ElementModel.Tests
 
             var result3 = sourceNode.Annotation<IResourceTypeSupplier>();
             Assert.IsNotNull(result3);
-            Assert.AreEqual(typeof(FhirJsonNode), result3.GetType()); 
+            Assert.AreEqual(typeof(FhirJsonNode), result3.GetType());
         }
     }
 }

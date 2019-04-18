@@ -125,7 +125,7 @@ namespace Hl7.Fhir.Specification.Source
         {
             ContentDirectory = contentDirectory ?? throw Error.ArgumentNull(nameof(contentDirectory));
             // [WMR 20171023] Clone specified settings to prevent shared state
-            _settings = settings != null 
+            _settings = settings != null
                 ? (cloneSettings ? new DirectorySourceSettings(settings) : settings)
                 : DirectorySourceSettings.CreateDefault();
             _summaryGenerator = new ArtifactSummaryGenerator(_settings.ExcludeSummariesForUnknownArtifacts);
@@ -361,7 +361,8 @@ namespace Hl7.Fhir.Specification.Source
         public bool ExcludeSummariesForUnknownArtifacts
         {
             get { return _settings.ExcludeSummariesForUnknownArtifacts; }
-            set {
+            set
+            {
                 _settings.ExcludeSummariesForUnknownArtifacts = value;
                 _summaryGenerator.ExcludeSummariesForUnknownArtifacts = value;
                 Refresh();

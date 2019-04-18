@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Hl7.Fhir.Utility
 {
-    internal class CacheItem<V> 
+    internal class CacheItem<V>
     {
         public DateTimeOffset LastAccessed { get; private set; } = DateTimeOffset.Now;
 
-        private V  _value;
+        private V _value;
         internal V Value
         {
             get
@@ -61,7 +61,7 @@ namespace Hl7.Fhir.Utility
 
         public Func<K, V> Retrieve { get; }
 
-        public Cache(Func<K, V> retrieveFunction) : this(retrieveFunction, CacheSettings.CreateDefault())  { }
+        public Cache(Func<K, V> retrieveFunction) : this(retrieveFunction, CacheSettings.CreateDefault()) { }
 
         public Cache(Func<K, V> retrieveFunction, CacheSettings settings)
         {

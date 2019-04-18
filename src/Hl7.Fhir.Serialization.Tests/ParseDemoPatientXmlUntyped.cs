@@ -108,7 +108,7 @@ namespace Hl7.Fhir.Serialization.Tests
             assertAnElement(children[0]);
             assertAnElementWithValueAndChildren(children[1]);
             assertDiv(children[2]);
-   
+
             void assertAnElement(ISourceNode cn)
             {
                 Assert.AreEqual("anElement", cn.Name);
@@ -135,7 +135,7 @@ namespace Hl7.Fhir.Serialization.Tests
                 Assert.IsTrue(mylittledetails.NodeText.Contains("Is Merged"));
 
                 var cnc = cn.Children().ToList();
-                Assert.AreEqual(3,cnc.Count);
+                Assert.AreEqual(3, cnc.Count);
                 firstChild(cnc[0]);
                 secondChild(cnc[1]);
                 thirdChild(cnc[2]);

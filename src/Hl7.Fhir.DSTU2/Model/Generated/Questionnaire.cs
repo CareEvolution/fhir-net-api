@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A structured set of questions
     /// </summary>
-    [FhirType("Questionnaire", IsResource=true)]
+    [FhirType("Questionnaire", IsResource = true)]
     [DataContract]
     public partial class Questionnaire : DomainResource
     {
@@ -194,7 +192,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// To link questionnaire with questionnaire response
             /// </summary>
-            [FhirElement("linkId", Order=40)]
+            [FhirElement("linkId", Order = 40)]
             [DataMember]
             public FhirString LinkIdElement
             {
@@ -226,7 +224,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name to be displayed for group
             /// </summary>
-            [FhirElement("title", InSummary=true, Order=50)]
+            [FhirElement("title", InSummary = true, Order = 50)]
             [DataMember]
             public FhirString TitleElement
             {
@@ -258,8 +256,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Concept that represents this section in a questionnaire
             /// </summary>
-            [FhirElement("concept", InSummary=true, Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("concept", InSummary = true, Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> Concept
             {
@@ -272,7 +270,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Additional text for the group
             /// </summary>
-            [FhirElement("text", Order=70)]
+            [FhirElement("text", Order = 70)]
             [DataMember]
             public FhirString TextElement
             {
@@ -304,7 +302,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether the group must be included in data results
             /// </summary>
-            [FhirElement("required", Order=80)]
+            [FhirElement("required", Order = 80)]
             [DataMember]
             public FhirBoolean RequiredElement
             {
@@ -336,7 +334,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether the group may repeat
             /// </summary>
-            [FhirElement("repeats", Order=90)]
+            [FhirElement("repeats", Order = 90)]
             [DataMember]
             public FhirBoolean RepeatsElement
             {
@@ -368,8 +366,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Nested questionnaire group
             /// </summary>
-            [FhirElement("group", Order=100)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("group", Order = 100)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<GroupComponent> Group
             {
@@ -382,8 +380,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Questions in this group
             /// </summary>
-            [FhirElement("question", Order=110)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("question", Order = 110)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<QuestionComponent> Question
             {
@@ -416,7 +414,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new GroupComponent());
+                return CopyTo(new GroupComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -504,7 +502,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// To link questionnaire with questionnaire response
             /// </summary>
-            [FhirElement("linkId", Order=40)]
+            [FhirElement("linkId", Order = 40)]
             [DataMember]
             public FhirString LinkIdElement
             {
@@ -536,8 +534,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Concept that represents this question on a questionnaire
             /// </summary>
-            [FhirElement("concept", Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("concept", Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> Concept
             {
@@ -550,7 +548,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Text of the question as it is shown to the user
             /// </summary>
-            [FhirElement("text", Order=60)]
+            [FhirElement("text", Order = 60)]
             [DataMember]
             public FhirString TextElement
             {
@@ -582,7 +580,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// boolean | decimal | integer | date | dateTime +
             /// </summary>
-            [FhirElement("type", Order=70)]
+            [FhirElement("type", Order = 70)]
             [DataMember]
             public Code<AnswerFormat> TypeElement
             {
@@ -614,7 +612,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether the question must be answered in data results
             /// </summary>
-            [FhirElement("required", Order=80)]
+            [FhirElement("required", Order = 80)]
             [DataMember]
             public FhirBoolean RequiredElement
             {
@@ -646,7 +644,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether the question  can have multiple answers
             /// </summary>
-            [FhirElement("repeats", Order=90)]
+            [FhirElement("repeats", Order = 90)]
             [DataMember]
             public FhirBoolean RepeatsElement
             {
@@ -678,7 +676,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Valueset containing permitted answers
             /// </summary>
-            [FhirElement("options", Order=100)]
+            [FhirElement("options", Order = 100)]
             [References("ValueSet")]
             [DataMember]
             public ResourceReference Options
@@ -692,8 +690,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Permitted answer
             /// </summary>
-            [FhirElement("option", Order=110)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("option", Order = 110)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Coding> Option
             {
@@ -706,8 +704,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Nested questionnaire group
             /// </summary>
-            [FhirElement("group", Order=120)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("group", Order = 120)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<GroupComponent> Group
             {
@@ -741,7 +739,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new QuestionComponent());
+                return CopyTo(new QuestionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -826,8 +824,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External identifiers for this questionnaire
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -840,7 +838,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Logical identifier for this version of Questionnaire
         /// </summary>
-        [FhirElement("version", InSummary=true, Order=100)]
+        [FhirElement("version", InSummary = true, Order = 100)]
         [DataMember]
         public FhirString VersionElement
         {
@@ -872,8 +870,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// draft | published | retired
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<QuestionnaireStatus> StatusElement
         {
@@ -905,7 +903,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Date this version was authored
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=120)]
+        [FhirElement("date", InSummary = true, Order = 120)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -937,7 +935,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Organization/individual who designed the questionnaire
         /// </summary>
-        [FhirElement("publisher", InSummary=true, Order=130)]
+        [FhirElement("publisher", InSummary = true, Order = 130)]
         [DataMember]
         public FhirString PublisherElement
         {
@@ -969,8 +967,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contact information of the publisher
         /// </summary>
-        [FhirElement("telecom", InSummary=true, Order=140)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("telecom", InSummary = true, Order = 140)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactPoint> Telecom
         {
@@ -983,8 +981,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Resource that can be subject of QuestionnaireResponse
         /// </summary>
-        [FhirElement("subjectType", InSummary=true, Order=150)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("subjectType", InSummary = true, Order = 150)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Code<ResourceType>> SubjectTypeElement
         {
@@ -1008,7 +1006,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     SubjectTypeElement = null;
                 else
-                    SubjectTypeElement = new List<Code<ResourceType>>(value.Select(elem=>new Code<ResourceType>(elem)));
+                    SubjectTypeElement = new List<Code<ResourceType>>(value.Select(elem => new Code<ResourceType>(elem)));
                 OnPropertyChanged("SubjectType");
             }
         }
@@ -1016,8 +1014,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Grouped questions
         /// </summary>
-        [FhirElement("group", InSummary=true, Order=160)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("group", InSummary = true, Order = 160)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public GroupComponent Group
         {
@@ -1097,7 +1095,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Questionnaire());
+            return CopyTo(new Questionnaire());
         }
 
         public override bool Matches(IDeepComparable other)

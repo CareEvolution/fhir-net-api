@@ -229,7 +229,7 @@ namespace Hl7.Fhir.Test
             id = new ResourceIdentity("http://localhost/services/fhir/v012/Patient/3/_history/50");
             Assert.IsTrue(id.IsTargetOf("http://localhost/services/fhir/v012/Patient/3"));
             Assert.IsTrue(id.IsTargetOf("Patient/3/_history/50"));
-            
+
             id = new ResourceIdentity("Patient/3");
             Assert.IsFalse(id.IsTargetOf("http://localhost/services/fhir/v012/Patient/3"));
             Assert.IsTrue(id.IsTargetOf("Patient/3"));

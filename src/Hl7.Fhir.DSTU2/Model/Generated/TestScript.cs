@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Describes a set of tests
     /// </summary>
-    [FhirType("TestScript", IsResource=true)]
+    [FhirType("TestScript", IsResource = true)]
     [DataContract]
     public partial class TestScript : DomainResource
     {
@@ -264,7 +262,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of a individual to contact
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=40)]
+            [FhirElement("name", InSummary = true, Order = 40)]
             [DataMember]
             public FhirString NameElement
             {
@@ -296,8 +294,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Contact details for individual or publisher
             /// </summary>
-            [FhirElement("telecom", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("telecom", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ContactPoint> Telecom
             {
@@ -324,7 +322,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContactComponent());
+                return CopyTo(new ContactComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -388,8 +386,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Links to the FHIR specification
             /// </summary>
-            [FhirElement("link", Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("link", Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<LinkComponent> Link
             {
@@ -402,8 +400,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Capabilities  that are assumed to function correctly on the FHIR server being tested
             /// </summary>
-            [FhirElement("capability", Order=50)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("capability", Order = 50)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<CapabilityComponent> Capability
             {
@@ -430,7 +428,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new MetadataComponent());
+                return CopyTo(new MetadataComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -494,8 +492,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// URL to the specification
             /// </summary>
-            [FhirElement("url", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("url", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri UrlElement
             {
@@ -527,7 +525,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Short description
             /// </summary>
-            [FhirElement("description", Order=50)]
+            [FhirElement("description", Order = 50)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -573,7 +571,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new LinkComponent());
+                return CopyTo(new LinkComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -637,7 +635,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Are the capabilities required?
             /// </summary>
-            [FhirElement("required", Order=40)]
+            [FhirElement("required", Order = 40)]
             [DataMember]
             public FhirBoolean RequiredElement
             {
@@ -669,7 +667,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Are the capabilities validated?
             /// </summary>
-            [FhirElement("validated", Order=50)]
+            [FhirElement("validated", Order = 50)]
             [DataMember]
             public FhirBoolean ValidatedElement
             {
@@ -701,7 +699,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The expected capabilities of the server
             /// </summary>
-            [FhirElement("description", Order=60)]
+            [FhirElement("description", Order = 60)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -733,7 +731,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Which server these requirements apply to
             /// </summary>
-            [FhirElement("destination", Order=70)]
+            [FhirElement("destination", Order = 70)]
             [DataMember]
             public Integer DestinationElement
             {
@@ -765,8 +763,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Links to the FHIR specification
             /// </summary>
-            [FhirElement("link", Order=80)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("link", Order = 80)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirUri> LinkElement
             {
@@ -790,7 +788,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         LinkElement = null;
                     else
-                        LinkElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
+                        LinkElement = new List<FhirUri>(value.Select(elem => new FhirUri(elem)));
                     OnPropertyChanged("Link");
                 }
             }
@@ -798,9 +796,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Required Conformance
             /// </summary>
-            [FhirElement("conformance", Order=90)]
+            [FhirElement("conformance", Order = 90)]
             [References("Conformance")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Conformance
             {
@@ -831,7 +829,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new CapabilityComponent());
+                return CopyTo(new CapabilityComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -911,7 +909,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether or not to implicitly create the fixture during setup
             /// </summary>
-            [FhirElement("autocreate", Order=40)]
+            [FhirElement("autocreate", Order = 40)]
             [DataMember]
             public FhirBoolean AutocreateElement
             {
@@ -943,7 +941,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether or not to implicitly delete the fixture during teardown
             /// </summary>
-            [FhirElement("autodelete", Order=50)]
+            [FhirElement("autodelete", Order = 50)]
             [DataMember]
             public FhirBoolean AutodeleteElement
             {
@@ -975,7 +973,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reference of the resource
             /// </summary>
-            [FhirElement("resource", Order=60)]
+            [FhirElement("resource", Order = 60)]
             [DataMember]
             public ResourceReference Resource
             {
@@ -1003,7 +1001,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new FixtureComponent());
+                return CopyTo(new FixtureComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1071,8 +1069,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Descriptive name for this variable
             /// </summary>
-            [FhirElement("name", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("name", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString NameElement
             {
@@ -1104,7 +1102,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// HTTP header field name for source
             /// </summary>
-            [FhirElement("headerField", Order=50)]
+            [FhirElement("headerField", Order = 50)]
             [DataMember]
             public FhirString HeaderFieldElement
             {
@@ -1136,7 +1134,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// XPath or JSONPath against the fixture body
             /// </summary>
-            [FhirElement("path", Order=60)]
+            [FhirElement("path", Order = 60)]
             [DataMember]
             public FhirString PathElement
             {
@@ -1168,7 +1166,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Fixture Id of source expression or headerField within this variable
             /// </summary>
-            [FhirElement("sourceId", Order=70)]
+            [FhirElement("sourceId", Order = 70)]
             [DataMember]
             public Id SourceIdElement
             {
@@ -1216,7 +1214,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new VariableComponent());
+                return CopyTo(new VariableComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1288,7 +1286,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Capabilities  that are assumed to function correctly on the FHIR server being tested
             /// </summary>
-            [FhirElement("metadata", Order=40)]
+            [FhirElement("metadata", Order = 40)]
             [DataMember]
             public MetadataComponent Metadata
             {
@@ -1301,8 +1299,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A setup operation or assert to perform
             /// </summary>
-            [FhirElement("action", Order=50)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("action", Order = 50)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<SetupActionComponent> Action
             {
@@ -1329,7 +1327,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SetupComponent());
+                return CopyTo(new SetupComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1393,7 +1391,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The setup operation to perform
             /// </summary>
-            [FhirElement("operation", Order=40)]
+            [FhirElement("operation", Order = 40)]
             [DataMember]
             public OperationComponent Operation
             {
@@ -1406,7 +1404,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The assertion to perform
             /// </summary>
-            [FhirElement("assert", Order=50)]
+            [FhirElement("assert", Order = 50)]
             [DataMember]
             public AssertComponent Assert
             {
@@ -1433,7 +1431,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new SetupActionComponent());
+                return CopyTo(new SetupActionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1497,7 +1495,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The setup operation type that will be executed
             /// </summary>
-            [FhirElement("type", Order=40)]
+            [FhirElement("type", Order = 40)]
             [DataMember]
             public Coding Type
             {
@@ -1510,7 +1508,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Resource type
             /// </summary>
-            [FhirElement("resource", Order=50)]
+            [FhirElement("resource", Order = 50)]
             [DataMember]
             public Code<FHIRDefinedType> ResourceElement
             {
@@ -1542,7 +1540,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Tracking/logging operation label
             /// </summary>
-            [FhirElement("label", Order=60)]
+            [FhirElement("label", Order = 60)]
             [DataMember]
             public FhirString LabelElement
             {
@@ -1574,7 +1572,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Tracking/reporting operation description
             /// </summary>
-            [FhirElement("description", Order=70)]
+            [FhirElement("description", Order = 70)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -1606,7 +1604,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// xml | json
             /// </summary>
-            [FhirElement("accept", Order=80)]
+            [FhirElement("accept", Order = 80)]
             [DataMember]
             public Code<ContentType> AcceptElement
             {
@@ -1638,7 +1636,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// xml | json
             /// </summary>
-            [FhirElement("contentType", Order=90)]
+            [FhirElement("contentType", Order = 90)]
             [DataMember]
             public Code<ContentType> ContentTypeElement
             {
@@ -1670,7 +1668,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Which server to perform the operation on
             /// </summary>
-            [FhirElement("destination", Order=100)]
+            [FhirElement("destination", Order = 100)]
             [DataMember]
             public Integer DestinationElement
             {
@@ -1702,7 +1700,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Whether or not to send the request url in encoded format
             /// </summary>
-            [FhirElement("encodeRequestUrl", Order=110)]
+            [FhirElement("encodeRequestUrl", Order = 110)]
             [DataMember]
             public FhirBoolean EncodeRequestUrlElement
             {
@@ -1734,7 +1732,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Explicitly defined path parameters
             /// </summary>
-            [FhirElement("params", Order=120)]
+            [FhirElement("params", Order = 120)]
             [DataMember]
             public FhirString ParamsElement
             {
@@ -1766,8 +1764,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Each operation can have one ore more header elements
             /// </summary>
-            [FhirElement("requestHeader", Order=130)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("requestHeader", Order = 130)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<RequestHeaderComponent> RequestHeader
             {
@@ -1780,7 +1778,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Fixture Id of mapped response
             /// </summary>
-            [FhirElement("responseId", Order=140)]
+            [FhirElement("responseId", Order = 140)]
             [DataMember]
             public Id ResponseIdElement
             {
@@ -1812,7 +1810,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Fixture Id of body for PUT and POST requests
             /// </summary>
-            [FhirElement("sourceId", Order=150)]
+            [FhirElement("sourceId", Order = 150)]
             [DataMember]
             public Id SourceIdElement
             {
@@ -1844,7 +1842,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Id of fixture used for extracting the [id],  [type], and [vid] for GET requests
             /// </summary>
-            [FhirElement("targetId", Order=160)]
+            [FhirElement("targetId", Order = 160)]
             [DataMember]
             public Id TargetIdElement
             {
@@ -1876,7 +1874,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Request URL
             /// </summary>
-            [FhirElement("url", Order=170)]
+            [FhirElement("url", Order = 170)]
             [DataMember]
             public FhirString UrlElement
             {
@@ -1934,7 +1932,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new OperationComponent());
+                return CopyTo(new OperationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2046,8 +2044,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// HTTP header field name
             /// </summary>
-            [FhirElement("field", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("field", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString FieldElement
             {
@@ -2079,8 +2077,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// HTTP headerfield value
             /// </summary>
-            [FhirElement("value", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("value", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString ValueElement
             {
@@ -2126,7 +2124,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RequestHeaderComponent());
+                return CopyTo(new RequestHeaderComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2190,7 +2188,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Tracking/logging assertion label
             /// </summary>
-            [FhirElement("label", Order=40)]
+            [FhirElement("label", Order = 40)]
             [DataMember]
             public FhirString LabelElement
             {
@@ -2222,7 +2220,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Tracking/reporting assertion description
             /// </summary>
-            [FhirElement("description", Order=50)]
+            [FhirElement("description", Order = 50)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -2254,7 +2252,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// response | request
             /// </summary>
-            [FhirElement("direction", Order=60)]
+            [FhirElement("direction", Order = 60)]
             [DataMember]
             public Code<AssertionDirectionType> DirectionElement
             {
@@ -2286,7 +2284,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Id of fixture used to compare the "sourceId/path" evaluations to
             /// </summary>
-            [FhirElement("compareToSourceId", Order=70)]
+            [FhirElement("compareToSourceId", Order = 70)]
             [DataMember]
             public FhirString CompareToSourceIdElement
             {
@@ -2318,7 +2316,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// XPath or JSONPath expression against fixture used to compare the "sourceId/path" evaluations to
             /// </summary>
-            [FhirElement("compareToSourcePath", Order=80)]
+            [FhirElement("compareToSourcePath", Order = 80)]
             [DataMember]
             public FhirString CompareToSourcePathElement
             {
@@ -2350,7 +2348,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// xml | json
             /// </summary>
-            [FhirElement("contentType", Order=90)]
+            [FhirElement("contentType", Order = 90)]
             [DataMember]
             public Code<ContentType> ContentTypeElement
             {
@@ -2382,7 +2380,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// HTTP header field name
             /// </summary>
-            [FhirElement("headerField", Order=100)]
+            [FhirElement("headerField", Order = 100)]
             [DataMember]
             public FhirString HeaderFieldElement
             {
@@ -2414,7 +2412,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Fixture Id of minimum content resource
             /// </summary>
-            [FhirElement("minimumId", Order=110)]
+            [FhirElement("minimumId", Order = 110)]
             [DataMember]
             public FhirString MinimumIdElement
             {
@@ -2446,7 +2444,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Perform validation on navigation links?
             /// </summary>
-            [FhirElement("navigationLinks", Order=120)]
+            [FhirElement("navigationLinks", Order = 120)]
             [DataMember]
             public FhirBoolean NavigationLinksElement
             {
@@ -2478,7 +2476,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// equals | notEquals | in | notIn | greaterThan | lessThan | empty | notEmpty | contains | notContains
             /// </summary>
-            [FhirElement("operator", Order=130)]
+            [FhirElement("operator", Order = 130)]
             [DataMember]
             public Code<AssertionOperatorType> OperatorElement
             {
@@ -2510,7 +2508,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// XPath or JSONPath expression
             /// </summary>
-            [FhirElement("path", Order=140)]
+            [FhirElement("path", Order = 140)]
             [DataMember]
             public FhirString PathElement
             {
@@ -2542,7 +2540,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Resource type
             /// </summary>
-            [FhirElement("resource", Order=150)]
+            [FhirElement("resource", Order = 150)]
             [DataMember]
             public Code<FHIRDefinedType> ResourceElement
             {
@@ -2574,7 +2572,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable
             /// </summary>
-            [FhirElement("response", Order=160)]
+            [FhirElement("response", Order = 160)]
             [DataMember]
             public Code<AssertionResponseTypes> ResponseElement
             {
@@ -2606,7 +2604,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// HTTP response code to test
             /// </summary>
-            [FhirElement("responseCode", Order=170)]
+            [FhirElement("responseCode", Order = 170)]
             [DataMember]
             public FhirString ResponseCodeElement
             {
@@ -2638,7 +2636,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Fixture Id of source expression or headerField
             /// </summary>
-            [FhirElement("sourceId", Order=180)]
+            [FhirElement("sourceId", Order = 180)]
             [DataMember]
             public Id SourceIdElement
             {
@@ -2670,7 +2668,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Profile Id of validation profile reference
             /// </summary>
-            [FhirElement("validateProfileId", Order=190)]
+            [FhirElement("validateProfileId", Order = 190)]
             [DataMember]
             public Id ValidateProfileIdElement
             {
@@ -2702,7 +2700,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The value to compare to
             /// </summary>
-            [FhirElement("value", Order=200)]
+            [FhirElement("value", Order = 200)]
             [DataMember]
             public FhirString ValueElement
             {
@@ -2734,7 +2732,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Will this assert produce a warning only on error?
             /// </summary>
-            [FhirElement("warningOnly", Order=210)]
+            [FhirElement("warningOnly", Order = 210)]
             [DataMember]
             public FhirBoolean WarningOnlyElement
             {
@@ -2796,7 +2794,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AssertComponent());
+                return CopyTo(new AssertComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2924,7 +2922,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Tracking/logging name of this test
             /// </summary>
-            [FhirElement("name", Order=40)]
+            [FhirElement("name", Order = 40)]
             [DataMember]
             public FhirString NameElement
             {
@@ -2956,7 +2954,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Tracking/reporting short description of the test
             /// </summary>
-            [FhirElement("description", Order=50)]
+            [FhirElement("description", Order = 50)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -2988,7 +2986,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Capabilities  that are expected to function correctly on the FHIR server being tested
             /// </summary>
-            [FhirElement("metadata", Order=60)]
+            [FhirElement("metadata", Order = 60)]
             [DataMember]
             public MetadataComponent Metadata
             {
@@ -3001,8 +2999,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A test operation or assert to perform
             /// </summary>
-            [FhirElement("action", Order=70)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("action", Order = 70)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<TestActionComponent> Action
             {
@@ -3031,7 +3029,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new TestComponent());
+                return CopyTo(new TestComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -3103,7 +3101,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The setup operation to perform
             /// </summary>
-            [FhirElement("operation", Order=40)]
+            [FhirElement("operation", Order = 40)]
             [DataMember]
             public OperationComponent Operation
             {
@@ -3116,7 +3114,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The setup assertion to perform
             /// </summary>
-            [FhirElement("assert", Order=50)]
+            [FhirElement("assert", Order = 50)]
             [DataMember]
             public AssertComponent Assert
             {
@@ -3143,7 +3141,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new TestActionComponent());
+                return CopyTo(new TestActionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -3207,8 +3205,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// One or more teardown operations to perform
             /// </summary>
-            [FhirElement("action", Order=40)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("action", Order = 40)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<TearDownActionComponent> Action
             {
@@ -3234,7 +3232,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new TeardownComponent());
+                return CopyTo(new TeardownComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -3294,7 +3292,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The teardown operation to perform
             /// </summary>
-            [FhirElement("operation", Order=40)]
+            [FhirElement("operation", Order = 40)]
             [DataMember]
             public OperationComponent Operation
             {
@@ -3320,7 +3318,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new TearDownActionComponent());
+                return CopyTo(new TearDownActionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -3373,8 +3371,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Absolute URL used to reference this TestScript
         /// </summary>
-        [FhirElement("url", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("url", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirUri UrlElement
         {
@@ -3406,7 +3404,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Logical id for this version of the TestScript
         /// </summary>
-        [FhirElement("version", InSummary=true, Order=100)]
+        [FhirElement("version", InSummary = true, Order = 100)]
         [DataMember]
         public FhirString VersionElement
         {
@@ -3438,8 +3436,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Informal name for this TestScript
         /// </summary>
-        [FhirElement("name", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("name", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirString NameElement
         {
@@ -3471,8 +3469,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// draft | active | retired
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=120)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 120)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ConformanceResourceStatus> StatusElement
         {
@@ -3504,7 +3502,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=130)]
+        [FhirElement("identifier", InSummary = true, Order = 130)]
         [DataMember]
         public Identifier Identifier
         {
@@ -3517,7 +3515,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If for testing purposes, not real usage
         /// </summary>
-        [FhirElement("experimental", InSummary=true, Order=140)]
+        [FhirElement("experimental", InSummary = true, Order = 140)]
         [DataMember]
         public FhirBoolean ExperimentalElement
         {
@@ -3549,7 +3547,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Name of the publisher (Organization or individual)
         /// </summary>
-        [FhirElement("publisher", InSummary=true, Order=150)]
+        [FhirElement("publisher", InSummary = true, Order = 150)]
         [DataMember]
         public FhirString PublisherElement
         {
@@ -3581,8 +3579,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contact details of the publisher
         /// </summary>
-        [FhirElement("contact", InSummary=true, Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("contact", InSummary = true, Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactComponent> Contact
         {
@@ -3595,7 +3593,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Date for this version of the TestScript
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=170)]
+        [FhirElement("date", InSummary = true, Order = 170)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -3627,7 +3625,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Natural language description of the TestScript
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=180)]
+        [FhirElement("description", InSummary = true, Order = 180)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -3659,8 +3657,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Content intends to support these contexts
         /// </summary>
-        [FhirElement("useContext", InSummary=true, Order=190)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("useContext", InSummary = true, Order = 190)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> UseContext
         {
@@ -3673,7 +3671,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Scope and Usage this Test Script is for
         /// </summary>
-        [FhirElement("requirements", Order=200)]
+        [FhirElement("requirements", Order = 200)]
         [DataMember]
         public FhirString RequirementsElement
         {
@@ -3705,7 +3703,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
-        [FhirElement("copyright", Order=210)]
+        [FhirElement("copyright", Order = 210)]
         [DataMember]
         public FhirString CopyrightElement
         {
@@ -3737,7 +3735,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Required capability that is assumed to function correctly on the FHIR server being tested
         /// </summary>
-        [FhirElement("metadata", Order=220)]
+        [FhirElement("metadata", Order = 220)]
         [DataMember]
         public MetadataComponent Metadata
         {
@@ -3750,7 +3748,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Whether or not the tests apply to more than one FHIR server
         /// </summary>
-        [FhirElement("multiserver", Order=230)]
+        [FhirElement("multiserver", Order = 230)]
         [DataMember]
         public FhirBoolean MultiserverElement
         {
@@ -3782,8 +3780,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Fixture in the test script - by reference (uri)
         /// </summary>
-        [FhirElement("fixture", Order=240)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("fixture", Order = 240)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<FixtureComponent> Fixture
         {
@@ -3796,8 +3794,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reference of the validation profile
         /// </summary>
-        [FhirElement("profile", Order=250)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("profile", Order = 250)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Profile
         {
@@ -3810,8 +3808,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Placeholder for evaluated elements
         /// </summary>
-        [FhirElement("variable", Order=260)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("variable", Order = 260)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<VariableComponent> Variable
         {
@@ -3824,7 +3822,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A series of required setup operations before tests are executed
         /// </summary>
-        [FhirElement("setup", Order=270)]
+        [FhirElement("setup", Order = 270)]
         [DataMember]
         public SetupComponent Setup
         {
@@ -3837,8 +3835,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A test in this script
         /// </summary>
-        [FhirElement("test", Order=280)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("test", Order = 280)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<TestComponent> Test
         {
@@ -3851,7 +3849,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// A series of required clean up steps
         /// </summary>
-        [FhirElement("teardown", Order=290)]
+        [FhirElement("teardown", Order = 290)]
         [DataMember]
         public TeardownComponent Teardown
         {
@@ -4044,7 +4042,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new TestScript());
+            return CopyTo(new TestScript());
         }
 
         public override bool Matches(IDeepComparable other)

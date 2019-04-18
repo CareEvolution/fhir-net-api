@@ -30,7 +30,7 @@ namespace Hl7.Fhir.XPath
         }
 
         public string Prefix { get; private set; }
-        public string Name{ get; private set; }
+        public string Name { get; private set; }
         public System.Xml.XPath.XPathResultType[] ArgTypes { get; private set; }
         public XPathResultType ReturnType { get; private set; }
         public InvokedFunction Function { get; private set; }
@@ -52,5 +52,5 @@ namespace Hl7.Fhir.XPath
             else
                 throw new NotImplementedException("Custom function not implemented. Supply a lamba, or override Invoke()");
         }
-    }   
+    }
 }

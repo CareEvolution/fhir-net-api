@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Prescription for vision correction products for a patient
     /// </summary>
-    [FhirType("VisionPrescription", IsResource=true)]
+    [FhirType("VisionPrescription", IsResource = true)]
     [DataContract]
     public partial class VisionPrescription : DomainResource
     {
@@ -122,8 +120,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Product to be supplied
             /// </summary>
-            [FhirElement("product", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("product", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Product
             {
@@ -136,7 +134,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// right | left
             /// </summary>
-            [FhirElement("eye", InSummary=true, Order=50)]
+            [FhirElement("eye", InSummary = true, Order = 50)]
             [DataMember]
             public Code<VisionEyes> EyeElement
             {
@@ -168,7 +166,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Lens sphere
             /// </summary>
-            [FhirElement("sphere", InSummary=true, Order=60)]
+            [FhirElement("sphere", InSummary = true, Order = 60)]
             [DataMember]
             public FhirDecimal SphereElement
             {
@@ -200,7 +198,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Lens cylinder
             /// </summary>
-            [FhirElement("cylinder", InSummary=true, Order=70)]
+            [FhirElement("cylinder", InSummary = true, Order = 70)]
             [DataMember]
             public FhirDecimal CylinderElement
             {
@@ -232,7 +230,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Lens axis
             /// </summary>
-            [FhirElement("axis", InSummary=true, Order=80)]
+            [FhirElement("axis", InSummary = true, Order = 80)]
             [DataMember]
             public Integer AxisElement
             {
@@ -264,7 +262,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Lens prism
             /// </summary>
-            [FhirElement("prism", InSummary=true, Order=90)]
+            [FhirElement("prism", InSummary = true, Order = 90)]
             [DataMember]
             public FhirDecimal PrismElement
             {
@@ -296,7 +294,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// up | down | in | out
             /// </summary>
-            [FhirElement("base", InSummary=true, Order=100)]
+            [FhirElement("base", InSummary = true, Order = 100)]
             [DataMember]
             public Code<VisionBase> BaseElement
             {
@@ -328,7 +326,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Lens add
             /// </summary>
-            [FhirElement("add", InSummary=true, Order=110)]
+            [FhirElement("add", InSummary = true, Order = 110)]
             [DataMember]
             public FhirDecimal AddElement
             {
@@ -360,7 +358,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Contact lens power
             /// </summary>
-            [FhirElement("power", InSummary=true, Order=120)]
+            [FhirElement("power", InSummary = true, Order = 120)]
             [DataMember]
             public FhirDecimal PowerElement
             {
@@ -392,7 +390,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Contact lens back curvature
             /// </summary>
-            [FhirElement("backCurve", InSummary=true, Order=130)]
+            [FhirElement("backCurve", InSummary = true, Order = 130)]
             [DataMember]
             public FhirDecimal BackCurveElement
             {
@@ -424,7 +422,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Contact lens diameter
             /// </summary>
-            [FhirElement("diameter", InSummary=true, Order=140)]
+            [FhirElement("diameter", InSummary = true, Order = 140)]
             [DataMember]
             public FhirDecimal DiameterElement
             {
@@ -456,7 +454,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Lens wear duration
             /// </summary>
-            [FhirElement("duration", InSummary=true, Order=150)]
+            [FhirElement("duration", InSummary = true, Order = 150)]
             [DataMember]
             public SimpleQuantity Duration
             {
@@ -469,7 +467,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Lens add
             /// </summary>
-            [FhirElement("color", InSummary=true, Order=160)]
+            [FhirElement("color", InSummary = true, Order = 160)]
             [DataMember]
             public FhirString ColorElement
             {
@@ -501,7 +499,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Lens add
             /// </summary>
-            [FhirElement("brand", InSummary=true, Order=170)]
+            [FhirElement("brand", InSummary = true, Order = 170)]
             [DataMember]
             public FhirString BrandElement
             {
@@ -533,7 +531,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Notes for coatings
             /// </summary>
-            [FhirElement("notes", InSummary=true, Order=180)]
+            [FhirElement("notes", InSummary = true, Order = 180)]
             [DataMember]
             public FhirString NotesElement
             {
@@ -592,7 +590,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new DispenseComponent());
+                return CopyTo(new DispenseComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -701,8 +699,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Business identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -715,7 +713,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When prescription was authorized
         /// </summary>
-        [FhirElement("dateWritten", InSummary=true, Order=100)]
+        [FhirElement("dateWritten", InSummary = true, Order = 100)]
         [DataMember]
         public FhirDateTime DateWrittenElement
         {
@@ -747,7 +745,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who prescription is for
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=110)]
+        [FhirElement("patient", InSummary = true, Order = 110)]
         [References("Patient")]
         [DataMember]
         public ResourceReference Patient
@@ -761,7 +759,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who authorizes the vision product
         /// </summary>
-        [FhirElement("prescriber", InSummary=true, Order=120)]
+        [FhirElement("prescriber", InSummary = true, Order = 120)]
         [References("Practitioner")]
         [DataMember]
         public ResourceReference Prescriber
@@ -775,7 +773,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Created during encounter / admission / stay
         /// </summary>
-        [FhirElement("encounter", InSummary=true, Order=130)]
+        [FhirElement("encounter", InSummary = true, Order = 130)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference Encounter
@@ -789,8 +787,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason or indication for writing the prescription
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=140, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
+        [FhirElement("reason", InSummary = true, Order = 140, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(CodeableConcept), typeof(ResourceReference))]
         [DataMember]
         public Element Reason
         {
@@ -803,8 +801,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Vision supply authorization
         /// </summary>
-        [FhirElement("dispense", InSummary=true, Order=150)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("dispense", InSummary = true, Order = 150)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<DispenseComponent> Dispense
         {
@@ -837,7 +835,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new VisionPrescription());
+            return CopyTo(new VisionPrescription());
         }
 
         public override bool Matches(IDeepComparable other)

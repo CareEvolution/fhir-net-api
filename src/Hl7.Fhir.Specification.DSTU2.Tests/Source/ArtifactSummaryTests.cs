@@ -68,7 +68,7 @@ namespace Hl7.Fhir.Specification.Tests
         [TestMethod]
         public void TestValueSetXmlSummary()
         {
-            string path =  Path.Combine("TestData", "validation", "SectionTitles.valueset.xml");
+            string path = Path.Combine("TestData", "validation", "SectionTitles.valueset.xml");
             const string url = "http://example.org/ValueSet/SectionTitles";
             var summary = assertSummary(path);
 

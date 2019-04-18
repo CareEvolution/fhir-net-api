@@ -45,7 +45,7 @@ namespace Hl7.Fhir.XPath
                 return _children;
             }
         }
- 
+
         public NavigatorState Copy()
         {
             var result = new NavigatorState();
@@ -64,7 +64,7 @@ namespace Hl7.Fhir.XPath
             var result = new StringBuilder();
 
             result.Append(Element.Name);
-            if(ChildPos != null) result.AppendFormat("[At Child {0}]", ChildPos.Value);
+            if (ChildPos != null) result.AppendFormat("[At Child {0}]", ChildPos.Value);
             if (AttributePos != null) result.AppendFormat("[At Attr {0}]", AttributePos.Value);
             if (NamespacePos != null) result.AppendFormat("[At Nspc {0}]", NamespacePos.Value);
             return result.ToString();
@@ -83,7 +83,7 @@ namespace Hl7.Fhir.XPath
 
         public int GetHashCode(NavigatorState obj)
         {
-            if(obj == null) return 0;
+            if (obj == null) return 0;
 
             return obj.Element.Name.GetHashCode() ^
                 obj.ChildPos ?? 0 ^

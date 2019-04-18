@@ -52,11 +52,11 @@ namespace Hl7.Fhir.Introspection
             // second pass to pick up closed form generics from property mappings
             foreach (var classMapping in _classMappingsByType.Values.ToArray())
             {
-                foreach(var propertyMapping in classMapping.PropertyMappings.Where(pm => !pm.RepresentsValueElement))
+                foreach (var propertyMapping in classMapping.PropertyMappings.Where(pm => !pm.RepresentsValueElement))
                 {
                     if (!propertyMapping.IsBackboneElement)
                     {
-                        foreach(var type in propertyMapping.FhirType)
+                        foreach (var type in propertyMapping.FhirType)
                         {
                             ImportType(type);
                         }

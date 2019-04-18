@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// The details of a healthcare service available at a location
     /// </summary>
-    [FhirType("HealthcareService", IsResource=true)]
+    [FhirType("HealthcareService", IsResource = true)]
     [DataContract]
     public partial class HealthcareService : DomainResource
     {
@@ -119,8 +117,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of service delivered or performed
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept Type
             {
@@ -133,8 +131,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Specialties handled by the Service Site
             /// </summary>
-            [FhirElement("specialty", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("specialty", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> Specialty
             {
@@ -161,7 +159,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ServiceTypeComponent());
+                return CopyTo(new ServiceTypeComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -225,8 +223,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// mon | tue | wed | thu | fri | sat | sun
             /// </summary>
-            [FhirElement("daysOfWeek", Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("daysOfWeek", Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<Code<DaysOfWeek>> DaysOfWeekElement
             {
@@ -250,7 +248,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         DaysOfWeekElement = null;
                     else
-                        DaysOfWeekElement = new List<Code<DaysOfWeek>>(value.Select(elem=>new Code<DaysOfWeek>(elem)));
+                        DaysOfWeekElement = new List<Code<DaysOfWeek>>(value.Select(elem => new Code<DaysOfWeek>(elem)));
                     OnPropertyChanged("DaysOfWeek");
                 }
             }
@@ -258,7 +256,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Always available? e.g. 24 hour service
             /// </summary>
-            [FhirElement("allDay", Order=50)]
+            [FhirElement("allDay", Order = 50)]
             [DataMember]
             public FhirBoolean AllDayElement
             {
@@ -290,7 +288,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Opening time of day (ignored if allDay = true)
             /// </summary>
-            [FhirElement("availableStartTime", Order=60)]
+            [FhirElement("availableStartTime", Order = 60)]
             [DataMember]
             public Time AvailableStartTimeElement
             {
@@ -322,7 +320,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Closing time of day (ignored if allDay = true)
             /// </summary>
-            [FhirElement("availableEndTime", Order=70)]
+            [FhirElement("availableEndTime", Order = 70)]
             [DataMember]
             public Time AvailableEndTimeElement
             {
@@ -370,7 +368,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AvailableTimeComponent());
+                return CopyTo(new AvailableTimeComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -442,8 +440,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reason presented to the user explaining why time not available
             /// </summary>
-            [FhirElement("description", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("description", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -475,7 +473,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Service not availablefrom this date
             /// </summary>
-            [FhirElement("during", Order=50)]
+            [FhirElement("during", Order = 50)]
             [DataMember]
             public Period During
             {
@@ -502,7 +500,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new NotAvailableComponent());
+                return CopyTo(new NotAvailableComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -559,8 +557,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// External identifiers for this item
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -573,7 +571,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Organization that provides this service
         /// </summary>
-        [FhirElement("providedBy", InSummary=true, Order=100)]
+        [FhirElement("providedBy", InSummary = true, Order = 100)]
         [References("Organization")]
         [DataMember]
         public ResourceReference ProvidedBy
@@ -587,7 +585,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Broad category of service being performed or delivered
         /// </summary>
-        [FhirElement("serviceCategory", InSummary=true, Order=110)]
+        [FhirElement("serviceCategory", InSummary = true, Order = 110)]
         [DataMember]
         public CodeableConcept ServiceCategory
         {
@@ -600,8 +598,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Specific service delivered or performed
         /// </summary>
-        [FhirElement("serviceType", InSummary=true, Order=120)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("serviceType", InSummary = true, Order = 120)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ServiceTypeComponent> ServiceType
         {
@@ -614,9 +612,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Location where service may be provided
         /// </summary>
-        [FhirElement("location", InSummary=true, Order=130)]
+        [FhirElement("location", InSummary = true, Order = 130)]
         [References("Location")]
-        [Cardinality(Min=1,Max=1)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Location
         {
@@ -629,7 +627,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Description of service as presented to a consumer while searching
         /// </summary>
-        [FhirElement("serviceName", InSummary=true, Order=140)]
+        [FhirElement("serviceName", InSummary = true, Order = 140)]
         [DataMember]
         public FhirString ServiceNameElement
         {
@@ -661,7 +659,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Additional description and/or any specific issues not covered elsewhere
         /// </summary>
-        [FhirElement("comment", InSummary=true, Order=150)]
+        [FhirElement("comment", InSummary = true, Order = 150)]
         [DataMember]
         public FhirString CommentElement
         {
@@ -693,7 +691,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Extra details about the service that can't be placed in the other fields
         /// </summary>
-        [FhirElement("extraDetails", Order=160)]
+        [FhirElement("extraDetails", Order = 160)]
         [DataMember]
         public FhirString ExtraDetailsElement
         {
@@ -725,7 +723,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Facilitates quick identification of the service
         /// </summary>
-        [FhirElement("photo", InSummary=true, Order=170)]
+        [FhirElement("photo", InSummary = true, Order = 170)]
         [DataMember]
         public Attachment Photo
         {
@@ -738,8 +736,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contacts related to the healthcare service
         /// </summary>
-        [FhirElement("telecom", Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("telecom", Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactPoint> Telecom
         {
@@ -752,9 +750,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Location(s) service is inteded for/available to
         /// </summary>
-        [FhirElement("coverageArea", Order=190)]
+        [FhirElement("coverageArea", Order = 190)]
         [References("Location")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> CoverageArea
         {
@@ -767,8 +765,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Conditions under which service is available/offered
         /// </summary>
-        [FhirElement("serviceProvisionCode", Order=200)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("serviceProvisionCode", Order = 200)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> ServiceProvisionCode
         {
@@ -781,7 +779,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Specific eligibility requirements required to use the service
         /// </summary>
-        [FhirElement("eligibility", Order=210)]
+        [FhirElement("eligibility", Order = 210)]
         [DataMember]
         public CodeableConcept Eligibility
         {
@@ -794,7 +792,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Describes the eligibility conditions for the service
         /// </summary>
-        [FhirElement("eligibilityNote", Order=220)]
+        [FhirElement("eligibilityNote", Order = 220)]
         [DataMember]
         public FhirString EligibilityNoteElement
         {
@@ -826,8 +824,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Program Names that categorize the service
         /// </summary>
-        [FhirElement("programName", Order=230)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("programName", Order = 230)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<FhirString> ProgramNameElement
         {
@@ -851,7 +849,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     ProgramNameElement = null;
                 else
-                    ProgramNameElement = new List<FhirString>(value.Select(elem=>new FhirString(elem)));
+                    ProgramNameElement = new List<FhirString>(value.Select(elem => new FhirString(elem)));
                 OnPropertyChanged("ProgramName");
             }
         }
@@ -859,8 +857,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Collection of characteristics (attributes)
         /// </summary>
-        [FhirElement("characteristic", Order=240)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("characteristic", Order = 240)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Characteristic
         {
@@ -873,8 +871,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Ways that the service accepts referrals
         /// </summary>
-        [FhirElement("referralMethod", Order=250)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("referralMethod", Order = 250)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> ReferralMethod
         {
@@ -887,7 +885,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// PKI Public keys to support secure communications
         /// </summary>
-        [FhirElement("publicKey", Order=260)]
+        [FhirElement("publicKey", Order = 260)]
         [DataMember]
         public FhirString PublicKeyElement
         {
@@ -919,7 +917,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If an appointment is required for access to this service
         /// </summary>
-        [FhirElement("appointmentRequired", Order=270)]
+        [FhirElement("appointmentRequired", Order = 270)]
         [DataMember]
         public FhirBoolean AppointmentRequiredElement
         {
@@ -951,8 +949,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Times the Service Site is available
         /// </summary>
-        [FhirElement("availableTime", Order=280)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("availableTime", Order = 280)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<AvailableTimeComponent> AvailableTime
         {
@@ -965,8 +963,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Not available during this time due to provided reason
         /// </summary>
-        [FhirElement("notAvailable", Order=290)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("notAvailable", Order = 290)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<NotAvailableComponent> NotAvailable
         {
@@ -979,7 +977,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Description of availability exceptions
         /// </summary>
-        [FhirElement("availabilityExceptions", Order=300)]
+        [FhirElement("availabilityExceptions", Order = 300)]
         [DataMember]
         public FhirString AvailabilityExceptionsElement
         {
@@ -1046,7 +1044,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new HealthcareService());
+            return CopyTo(new HealthcareService());
         }
 
         public override bool Matches(IDeepComparable other)

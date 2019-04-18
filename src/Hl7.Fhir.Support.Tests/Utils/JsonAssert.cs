@@ -44,7 +44,7 @@ namespace Hl7.Fhir.Tests
                             throw new AssertFailedException($"Expected element '{exP.Name}', actual '{acP.Name}' at '{exP.Path}'");
                         AreSame(exP.Value, acP.Value);
                         return;
-                    }             
+                    }
                 case JContainer exC:
                     {
                         JContainer acC = (JContainer)actual;
@@ -61,7 +61,7 @@ namespace Hl7.Fhir.Tests
                 if (t is JProperty p)
                 {
                     if (p.Name == "fhir_comments") return false;
-                    if(p.Name.StartsWith("_") && p.Value is JObject jo)
+                    if (p.Name.StartsWith("_") && p.Value is JObject jo)
                     {
                         if (jo.Count == 1 && jo.ContainsKey("fhir_comments")) return false;
                     }
@@ -74,7 +74,7 @@ namespace Hl7.Fhir.Tests
             var expecteds = expected.Children().Where(c => isRelevant(c));
             var actuals = actual.Children().Where(c => isRelevant(c));
 
-            if(expecteds.First().Type == JTokenType.Property)
+            if (expecteds.First().Type == JTokenType.Property)
             {
                 expecteds = expecteds.OrderBy(p => ((JProperty)p).Name);
                 actuals = actuals.Cast<JProperty>().OrderBy(p => p.Name);
@@ -100,7 +100,7 @@ namespace Hl7.Fhir.Tests
             if (exp == null && act == null) return;
             else if (exp != null && act != null)
             {
-                if(exp.GetType() != act.GetType())
+                if (exp.GetType() != act.GetType())
                     throw new AssertFailedException($"The types of the values are not the same at '{path}'");
 
                 object expected = exp;
@@ -114,7 +114,7 @@ namespace Hl7.Fhir.Tests
                         return;
                     }
 
-                        var actS = (string)act;
+                    var actS = (string)act;
                     // Hack for timestamps, binaries and narrative html
                     if (expS.EndsWith("+00:00")) expS = expS.Replace("+00:00", "Z");
                     if (actS.EndsWith("+00:00")) actS = actS.Replace("+00:00", "Z");
@@ -131,7 +131,7 @@ namespace Hl7.Fhir.Tests
                     actual = actS.Trim();
                 }
 
-                if (!Object.Equals(expected,actual))
+                if (!Object.Equals(expected, actual))
                 {
                     throw new AssertFailedException($"Values are not equal at '{path}', expected '{expected}', actual '{actual}'");
                 }

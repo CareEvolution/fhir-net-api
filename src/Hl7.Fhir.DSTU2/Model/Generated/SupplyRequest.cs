@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Request for a medication, substance or device
     /// </summary>
-    [FhirType("SupplyRequest", IsResource=true)]
+    [FhirType("SupplyRequest", IsResource = true)]
     [DataContract]
     public partial class SupplyRequest : DomainResource
     {
@@ -101,7 +99,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Fulfilment code
             /// </summary>
-            [FhirElement("code", InSummary=true, Order=40)]
+            [FhirElement("code", InSummary = true, Order = 40)]
             [DataMember]
             public CodeableConcept Code
             {
@@ -114,7 +112,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Formal fulfillment schedule
             /// </summary>
-            [FhirElement("schedule", InSummary=true, Order=50)]
+            [FhirElement("schedule", InSummary = true, Order = 50)]
             [DataMember]
             public Timing Schedule
             {
@@ -141,7 +139,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new WhenComponent());
+                return CopyTo(new WhenComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -198,7 +196,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Patient for whom the item is supplied
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=90)]
+        [FhirElement("patient", InSummary = true, Order = 90)]
         [References("Patient")]
         [DataMember]
         public ResourceReference Patient
@@ -212,8 +210,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who initiated this order
         /// </summary>
-        [FhirElement("source", InSummary=true, Order=100)]
-        [References("Practitioner","Organization","Patient")]
+        [FhirElement("source", InSummary = true, Order = 100)]
+        [References("Practitioner", "Organization", "Patient")]
         [DataMember]
         public ResourceReference Source
         {
@@ -226,7 +224,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When the request was made
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=110)]
+        [FhirElement("date", InSummary = true, Order = 110)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -258,7 +256,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unique identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=120)]
+        [FhirElement("identifier", InSummary = true, Order = 120)]
         [DataMember]
         public Identifier Identifier
         {
@@ -271,7 +269,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// requested | completed | failed | cancelled
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=130)]
+        [FhirElement("status", InSummary = true, Order = 130)]
         [DataMember]
         public Code<SupplyRequestStatus> StatusElement
         {
@@ -303,7 +301,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The kind of supply (central, non-stock, etc.)
         /// </summary>
-        [FhirElement("kind", InSummary=true, Order=140)]
+        [FhirElement("kind", InSummary = true, Order = 140)]
         [DataMember]
         public CodeableConcept Kind
         {
@@ -316,8 +314,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Medication, Substance, or Device requested to be supplied
         /// </summary>
-        [FhirElement("orderedItem", InSummary=true, Order=150)]
-        [References("Medication","Substance","Device")]
+        [FhirElement("orderedItem", InSummary = true, Order = 150)]
+        [References("Medication", "Substance", "Device")]
         [DataMember]
         public ResourceReference OrderedItem
         {
@@ -330,9 +328,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who is intended to fulfill the request
         /// </summary>
-        [FhirElement("supplier", InSummary=true, Order=160)]
+        [FhirElement("supplier", InSummary = true, Order = 160)]
         [References("Organization")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Supplier
         {
@@ -345,8 +343,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Why the supply item was requested
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=170, Choice=ChoiceType.DatatypeChoice)]
-        [AllowedTypes(typeof(CodeableConcept),typeof(ResourceReference))]
+        [FhirElement("reason", InSummary = true, Order = 170, Choice = ChoiceType.DatatypeChoice)]
+        [AllowedTypes(typeof(CodeableConcept), typeof(ResourceReference))]
         [DataMember]
         public Element Reason
         {
@@ -359,7 +357,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When the request should be fulfilled
         /// </summary>
-        [FhirElement("when", InSummary=true, Order=180)]
+        [FhirElement("when", InSummary = true, Order = 180)]
         [DataMember]
         public WhenComponent When
         {
@@ -395,7 +393,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new SupplyRequest());
+            return CopyTo(new SupplyRequest());
         }
 
         public override bool Matches(IDeepComparable other)

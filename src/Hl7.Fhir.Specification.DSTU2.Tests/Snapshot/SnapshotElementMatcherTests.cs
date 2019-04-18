@@ -27,7 +27,7 @@ namespace Hl7.Fhir.Specification.Tests
         [TestInitialize]
         public void Setup()
         {
-            var dirSource = new DirectorySource("TestData/snapshot-test", new DirectorySourceSettings { IncludeSubDirectories = true } );
+            var dirSource = new DirectorySource("TestData/snapshot-test", new DirectorySourceSettings { IncludeSubDirectories = true });
             _testResolver = new CachedResolver(dirSource);
         }
 
@@ -762,7 +762,7 @@ namespace Hl7.Fhir.Specification.Tests
             };
             var userProfile = (StructureDefinition)baseProfile.DeepCopy();
             // Remove slice entry from diff
-            userProfile.Differential.Element.RemoveAt(1); 
+            userProfile.Differential.Element.RemoveAt(1);
             userProfile.Differential.Element[1].Min = 1;
 
             var snapNav = ElementDefinitionNavigator.ForDifferential(baseProfile);

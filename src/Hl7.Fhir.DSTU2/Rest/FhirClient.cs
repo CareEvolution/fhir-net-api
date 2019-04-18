@@ -21,7 +21,7 @@ using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Rest.DSTU2
 {
-    public partial class FhirClient : IDisposable, IFhirClient<Resource,Bundle,Conformance>
+    public partial class FhirClient : IDisposable, IFhirClient<Resource, Bundle, Conformance>
     {
         /// <summary>
         /// Creates a new client using a default endpoint

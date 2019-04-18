@@ -172,7 +172,7 @@ namespace Hl7.Fhir.ElementModel
             else
             {
                 var hit = dis.TryGetBySuffixedName(name, out var info);
-                childSet = hit && info.IsChoiceElement ? 
+                childSet = hit && info.IsChoiceElement ?
                     parent.Children(name + "*") :
                     parent.Children(name);
             }
@@ -183,8 +183,8 @@ namespace Hl7.Fhir.ElementModel
             foreach (var scan in childSet)
             {
                 var hit = dis.TryGetBySuffixedName(scan.Name, out var info);
-                NavigatorPosition match = info == null ? 
-                    new NavigatorPosition(scan, null, scan.Name, null) : 
+                NavigatorPosition match = info == null ?
+                    new NavigatorPosition(scan, null, scan.Name, null) :
                     deriveInstanceType(scan, info);
 
                 // If we found a type, but we don't know about the specific child, complain

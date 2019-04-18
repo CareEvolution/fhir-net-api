@@ -5,7 +5,7 @@
  * This file is licensed under the BSD 3-Clause license
  * available at https://github.com/FirelyTeam/fhir-net-api/blob/master/LICENSE
  */
- 
+
 using Hl7.Fhir.ElementModel;
 using System;
 using System.Collections.Generic;

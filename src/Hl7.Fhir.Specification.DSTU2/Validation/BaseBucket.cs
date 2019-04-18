@@ -22,7 +22,7 @@ namespace Hl7.Fhir.Validation
         public IList<ITypedElement> Members { get; private set; } = new List<ITypedElement>();
 
         public abstract bool Add(ITypedElement instance);
-  
+
         public virtual OperationOutcome Validate(Validator validator, ITypedElement errorLocation)
         {
             var outcome = new OperationOutcome();

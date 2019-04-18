@@ -11,7 +11,7 @@ using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.ElementModel
 {
-    internal class NavigatorPosition 
+    internal class NavigatorPosition
     {
         public readonly ISourceNode Node;
         public readonly IElementDefinitionSummary SerializationInfo;
@@ -37,6 +37,6 @@ namespace Hl7.Fhir.ElementModel
             return new NavigatorPosition(element, rootElement, elementName, elementType?.TypeName);
         }
 
-        public bool IsTracking => SerializationInfo != null;       
+        public bool IsTracking => SerializationInfo != null;
     }
 }

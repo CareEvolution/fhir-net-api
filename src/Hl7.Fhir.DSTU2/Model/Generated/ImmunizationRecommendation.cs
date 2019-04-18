@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Guidance or advice relating to an immunization
     /// </summary>
-    [FhirType("ImmunizationRecommendation", IsResource=true)]
+    [FhirType("ImmunizationRecommendation", IsResource = true)]
     [DataContract]
     public partial class ImmunizationRecommendation : DomainResource
     {
@@ -68,8 +66,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Date recommendation created
             /// </summary>
-            [FhirElement("date", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("date", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirDateTime DateElement
             {
@@ -101,8 +99,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Vaccine recommendation applies to
             /// </summary>
-            [FhirElement("vaccineCode", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("vaccineCode", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept VaccineCode
             {
@@ -115,7 +113,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Recommended dose number
             /// </summary>
-            [FhirElement("doseNumber", InSummary=true, Order=60)]
+            [FhirElement("doseNumber", InSummary = true, Order = 60)]
             [DataMember]
             public PositiveInt DoseNumberElement
             {
@@ -147,8 +145,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Vaccine administration status
             /// </summary>
-            [FhirElement("forecastStatus", InSummary=true, Order=70)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("forecastStatus", InSummary = true, Order = 70)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept ForecastStatus
             {
@@ -161,8 +159,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Dates governing proposed immunization
             /// </summary>
-            [FhirElement("dateCriterion", Order=80)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("dateCriterion", Order = 80)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<DateCriterionComponent> DateCriterion
             {
@@ -175,7 +173,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Protocol used by recommendation
             /// </summary>
-            [FhirElement("protocol", Order=90)]
+            [FhirElement("protocol", Order = 90)]
             [DataMember]
             public ProtocolComponent Protocol
             {
@@ -188,9 +186,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Past immunizations supporting recommendation
             /// </summary>
-            [FhirElement("supportingImmunization", Order=100)]
+            [FhirElement("supportingImmunization", Order = 100)]
             [References("Immunization")]
-            [Cardinality(Min=0,Max=-1)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> SupportingImmunization
             {
@@ -203,9 +201,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Patient observations supporting recommendation
             /// </summary>
-            [FhirElement("supportingPatientInformation", Order=110)]
-            [References("Observation","AllergyIntolerance")]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("supportingPatientInformation", Order = 110)]
+            [References("Observation", "AllergyIntolerance")]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> SupportingPatientInformation
             {
@@ -238,7 +236,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RecommendationComponent());
+                return CopyTo(new RecommendationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -326,8 +324,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of date
             /// </summary>
-            [FhirElement("code", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept Code
             {
@@ -340,8 +338,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Recommended date
             /// </summary>
-            [FhirElement("value", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("value", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirDateTime ValueElement
             {
@@ -387,7 +385,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new DateCriterionComponent());
+                return CopyTo(new DateCriterionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -451,7 +449,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Dose number within sequence
             /// </summary>
-            [FhirElement("doseSequence", Order=40)]
+            [FhirElement("doseSequence", Order = 40)]
             [DataMember]
             public Integer DoseSequenceElement
             {
@@ -483,7 +481,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Protocol details
             /// </summary>
-            [FhirElement("description", Order=50)]
+            [FhirElement("description", Order = 50)]
             [DataMember]
             public FhirString DescriptionElement
             {
@@ -515,7 +513,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Who is responsible for protocol
             /// </summary>
-            [FhirElement("authority", Order=60)]
+            [FhirElement("authority", Order = 60)]
             [References("Organization")]
             [DataMember]
             public ResourceReference Authority
@@ -529,7 +527,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of vaccination series
             /// </summary>
-            [FhirElement("series", Order=70)]
+            [FhirElement("series", Order = 70)]
             [DataMember]
             public FhirString SeriesElement
             {
@@ -577,7 +575,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ProtocolComponent());
+                return CopyTo(new ProtocolComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -642,8 +640,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Business identifier
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -656,9 +654,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who this profile is for
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=100)]
+        [FhirElement("patient", InSummary = true, Order = 100)]
         [References("Patient")]
-        [Cardinality(Min=1,Max=1)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public ResourceReference Patient
         {
@@ -671,8 +669,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Vaccine administration recommendations
         /// </summary>
-        [FhirElement("recommendation", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("recommendation", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<RecommendationComponent> Recommendation
         {
@@ -701,7 +699,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new ImmunizationRecommendation());
+            return CopyTo(new ImmunizationRecommendation());
         }
 
         public override bool Matches(IDeepComparable other)

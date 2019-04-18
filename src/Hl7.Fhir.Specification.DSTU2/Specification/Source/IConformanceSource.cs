@@ -37,7 +37,7 @@ namespace Hl7.Fhir.Specification.Source
         /// <param name="targetUri">An uri that is either the target uri, target ValueSet system or target StructureDefinition canonical url for the map.</param>
         /// <returns></returns>
         /// <remarks>Either sourceUri may be null, or targetUri, but not both</remarks>
-        IEnumerable<ConceptMap> FindConceptMaps(string sourceUri=null, string targetUri=null);
+        IEnumerable<ConceptMap> FindConceptMaps(string sourceUri = null, string targetUri = null);
 
         /// <summary>
         /// Finds a NamingSystem resource by matching any of a system's UniqueIds

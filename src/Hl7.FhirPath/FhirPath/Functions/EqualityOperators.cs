@@ -69,7 +69,7 @@ namespace Hl7.FhirPath.Functions
                 var childrenL = left.Children();
                 var childrenR = right.Children();
 
-                return childrenL.IsEqualTo(childrenR, compareNames:true);    // NOTE: Assumes null will never be returned when any() children exist
+                return childrenL.IsEqualTo(childrenR, compareNames: true);    // NOTE: Assumes null will never be returned when any() children exist
             }
             else
             {
@@ -79,7 +79,7 @@ namespace Hl7.FhirPath.Functions
         }
 
 
-    
+
 
         public static bool IsEquivalentTo(this IEnumerable<ITypedElement> left, IEnumerable<ITypedElement> right, bool compareNames = false)
         {

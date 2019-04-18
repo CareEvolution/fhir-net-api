@@ -37,7 +37,7 @@ namespace Hl7.FhirPath.Expressions
             var newCtx = context.Nest(focus);
 
             actualArgs.AddRange(args.Skip(1).Select(a => a(newCtx, InvokeeFactory.EmptyArgs)));
-            if (actualArgs.Any(aa=>!aa.Any())) return FhirValueList.Empty;
+            if (actualArgs.Any(aa => !aa.Any())) return FhirValueList.Empty;
 
             var entry = _scope.DynamicGet(_name, actualArgs);
 
@@ -73,14 +73,14 @@ namespace Hl7.FhirPath.Expressions
                 return "(no signature)";
 
             result = "on focus of type '{0}'".FormatWith(Typecasts.ReadableFhirPathName(arguments.First().GetType()));
-            
-            if(arguments.Skip(1).Any())
+
+            if (arguments.Skip(1).Any())
             {
                 result = "with parameters of type '{0}' "
                         .FormatWith(String.Join(",", arguments.Skip(1).Select(a => Typecasts.ReadableFhirPathName(a.GetType()))), result);
             }
 
             return "Function cannot be called " + result;
-        }     
+        }
     }
 }

@@ -42,5 +42,5 @@ namespace Hl7.Fhir.Introspection
         {
             // This attribute is just a marker, no functionality or data
         }
-    } 
+    }
 }

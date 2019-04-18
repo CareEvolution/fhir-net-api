@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// A set of codes drawn from one or more code systems
     /// </summary>
-    [FhirType("ValueSet", IsResource=true)]
+    [FhirType("ValueSet", IsResource = true)]
     [DataContract]
     public partial class ValueSet : DomainResource
     {
@@ -113,7 +111,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name of an individual to contact
             /// </summary>
-            [FhirElement("name", InSummary=true, Order=40)]
+            [FhirElement("name", InSummary = true, Order = 40)]
             [DataMember]
             public FhirString NameElement
             {
@@ -145,8 +143,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Contact details for individual or publisher
             /// </summary>
-            [FhirElement("telecom", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("telecom", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ContactPoint> Telecom
             {
@@ -173,7 +171,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContactComponent());
+                return CopyTo(new ContactComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -237,8 +235,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// URI to identify the code system (e.g. in Coding.system)
             /// </summary>
-            [FhirElement("system", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("system", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri SystemElement
             {
@@ -270,7 +268,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Version (for use in Coding.version)
             /// </summary>
-            [FhirElement("version", InSummary=true, Order=50)]
+            [FhirElement("version", InSummary = true, Order = 50)]
             [DataMember]
             public FhirString VersionElement
             {
@@ -302,7 +300,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// If code comparison is case sensitive
             /// </summary>
-            [FhirElement("caseSensitive", InSummary=true, Order=60)]
+            [FhirElement("caseSensitive", InSummary = true, Order = 60)]
             [DataMember]
             public FhirBoolean CaseSensitiveElement
             {
@@ -334,8 +332,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Concepts in the code system
             /// </summary>
-            [FhirElement("concept", Order=70)]
-            [Cardinality(Min=1,Max=-1)]
+            [FhirElement("concept", Order = 70)]
+            [Cardinality(Min = 1, Max = -1)]
             [DataMember]
             public List<ConceptDefinitionComponent> Concept
             {
@@ -364,7 +362,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new CodeSystemComponent());
+                return CopyTo(new CodeSystemComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -436,8 +434,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Code that identifies concept
             /// </summary>
-            [FhirElement("code", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code CodeElement
             {
@@ -469,7 +467,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// If this code is not for use as a real concept
             /// </summary>
-            [FhirElement("abstract", Order=50)]
+            [FhirElement("abstract", Order = 50)]
             [DataMember]
             public FhirBoolean AbstractElement
             {
@@ -501,7 +499,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Text to display to the user
             /// </summary>
-            [FhirElement("display", Order=60)]
+            [FhirElement("display", Order = 60)]
             [DataMember]
             public FhirString DisplayElement
             {
@@ -533,7 +531,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Formal definition
             /// </summary>
-            [FhirElement("definition", Order=70)]
+            [FhirElement("definition", Order = 70)]
             [DataMember]
             public FhirString DefinitionElement
             {
@@ -565,8 +563,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Additional representations for the concept
             /// </summary>
-            [FhirElement("designation", Order=80)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("designation", Order = 80)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<DesignationComponent> Designation
             {
@@ -579,8 +577,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Child Concepts (is-a/contains/categorizes)
             /// </summary>
-            [FhirElement("concept", Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("concept", Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ConceptDefinitionComponent> Concept
             {
@@ -611,7 +609,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ConceptDefinitionComponent());
+                return CopyTo(new ConceptDefinitionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -691,7 +689,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Human language of the designation
             /// </summary>
-            [FhirElement("language", Order=40)]
+            [FhirElement("language", Order = 40)]
             [DataMember]
             public Code LanguageElement
             {
@@ -723,7 +721,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Details how this designation would be used
             /// </summary>
-            [FhirElement("use", Order=50)]
+            [FhirElement("use", Order = 50)]
             [DataMember]
             public Coding Use
             {
@@ -736,8 +734,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The text value for this designation
             /// </summary>
-            [FhirElement("value", Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("value", Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString ValueElement
             {
@@ -784,7 +782,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new DesignationComponent());
+                return CopyTo(new DesignationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -852,8 +850,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Import the contents of another value set
             /// </summary>
-            [FhirElement("import", InSummary=true, Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("import", InSummary = true, Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FhirUri> ImportElement
             {
@@ -877,7 +875,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if (value == null)
                         ImportElement = null;
                     else
-                        ImportElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
+                        ImportElement = new List<FhirUri>(value.Select(elem => new FhirUri(elem)));
                     OnPropertyChanged("Import");
                 }
             }
@@ -885,8 +883,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Include one or more codes from a code system
             /// </summary>
-            [FhirElement("include", InSummary=true, Order=50)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("include", InSummary = true, Order = 50)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ConceptSetComponent> Include
             {
@@ -899,8 +897,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Explicitly exclude codes
             /// </summary>
-            [FhirElement("exclude", Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("exclude", Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ConceptSetComponent> Exclude
             {
@@ -928,7 +926,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ComposeComponent());
+                return CopyTo(new ComposeComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -996,8 +994,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The system the codes come from
             /// </summary>
-            [FhirElement("system", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("system", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri SystemElement
             {
@@ -1029,7 +1027,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Specific version of the code system referred to
             /// </summary>
-            [FhirElement("version", InSummary=true, Order=50)]
+            [FhirElement("version", InSummary = true, Order = 50)]
             [DataMember]
             public FhirString VersionElement
             {
@@ -1061,8 +1059,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A concept defined in the system
             /// </summary>
-            [FhirElement("concept", Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("concept", Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ConceptReferenceComponent> Concept
             {
@@ -1075,8 +1073,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Select codes/concepts by their properties (including relationships)
             /// </summary>
-            [FhirElement("filter", Order=70)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("filter", Order = 70)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<FilterComponent> Filter
             {
@@ -1105,7 +1103,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ConceptSetComponent());
+                return CopyTo(new ConceptSetComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1177,8 +1175,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Code or expression from system
             /// </summary>
-            [FhirElement("code", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code CodeElement
             {
@@ -1210,7 +1208,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Test to display for this code for this value set
             /// </summary>
-            [FhirElement("display", Order=50)]
+            [FhirElement("display", Order = 50)]
             [DataMember]
             public FhirString DisplayElement
             {
@@ -1242,8 +1240,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Additional representations for this valueset
             /// </summary>
-            [FhirElement("designation", Order=60)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("designation", Order = 60)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<DesignationComponent> Designation
             {
@@ -1271,7 +1269,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ConceptReferenceComponent());
+                return CopyTo(new ConceptReferenceComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1339,8 +1337,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// A property defined by the code system
             /// </summary>
-            [FhirElement("property", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("property", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code PropertyElement
             {
@@ -1372,8 +1370,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// = | is-a | is-not-a | regex | in | not-in
             /// </summary>
-            [FhirElement("op", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("op", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<FilterOperator> OpElement
             {
@@ -1405,8 +1403,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Code from the system, or regex criteria
             /// </summary>
-            [FhirElement("value", Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("value", Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code ValueElement
             {
@@ -1453,7 +1451,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new FilterComponent());
+                return CopyTo(new FilterComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1521,8 +1519,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Uniquely identifies this expansion
             /// </summary>
-            [FhirElement("identifier", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("identifier", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri IdentifierElement
             {
@@ -1554,8 +1552,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Time ValueSet expansion happened
             /// </summary>
-            [FhirElement("timestamp", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("timestamp", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirDateTime TimestampElement
             {
@@ -1587,7 +1585,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Total number of codes in the expansion
             /// </summary>
-            [FhirElement("total", Order=60)]
+            [FhirElement("total", Order = 60)]
             [DataMember]
             public Integer TotalElement
             {
@@ -1619,7 +1617,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Offset at which this resource starts
             /// </summary>
-            [FhirElement("offset", Order=70)]
+            [FhirElement("offset", Order = 70)]
             [DataMember]
             public Integer OffsetElement
             {
@@ -1651,8 +1649,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Parameter that controlled the expansion process
             /// </summary>
-            [FhirElement("parameter", Order=80)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("parameter", Order = 80)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ParameterComponent> Parameter
             {
@@ -1665,8 +1663,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Codes in the value set
             /// </summary>
-            [FhirElement("contains", Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("contains", Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ContainsComponent> Contains
             {
@@ -1697,7 +1695,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ExpansionComponent());
+                return CopyTo(new ExpansionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1777,8 +1775,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Name as assigned by the server
             /// </summary>
-            [FhirElement("name", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("name", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirString NameElement
             {
@@ -1810,8 +1808,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Value of the named parameter
             /// </summary>
-            [FhirElement("value", Order=50, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(FhirString),typeof(FhirBoolean),typeof(Integer),typeof(FhirDecimal),typeof(FhirUri),typeof(Code))]
+            [FhirElement("value", Order = 50, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(FhirString), typeof(FhirBoolean), typeof(Integer), typeof(FhirDecimal), typeof(FhirUri), typeof(Code))]
             [DataMember]
             public Element Value
             {
@@ -1838,7 +1836,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ParameterComponent());
+                return CopyTo(new ParameterComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -1902,7 +1900,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// System value for the code
             /// </summary>
-            [FhirElement("system", Order=40)]
+            [FhirElement("system", Order = 40)]
             [DataMember]
             public FhirUri SystemElement
             {
@@ -1934,7 +1932,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// If user cannot select this entry
             /// </summary>
-            [FhirElement("abstract", Order=50)]
+            [FhirElement("abstract", Order = 50)]
             [DataMember]
             public FhirBoolean AbstractElement
             {
@@ -1966,7 +1964,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Version in which this code/display is defined
             /// </summary>
-            [FhirElement("version", Order=60)]
+            [FhirElement("version", Order = 60)]
             [DataMember]
             public FhirString VersionElement
             {
@@ -1998,7 +1996,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Code - if blank, this is not a selectable code
             /// </summary>
-            [FhirElement("code", Order=70)]
+            [FhirElement("code", Order = 70)]
             [DataMember]
             public Code CodeElement
             {
@@ -2030,7 +2028,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// User display for the concept
             /// </summary>
-            [FhirElement("display", Order=80)]
+            [FhirElement("display", Order = 80)]
             [DataMember]
             public FhirString DisplayElement
             {
@@ -2062,8 +2060,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Codes contained under this entry
             /// </summary>
-            [FhirElement("contains", Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("contains", Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ContainsComponent> Contains
             {
@@ -2094,7 +2092,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ContainsComponent());
+                return CopyTo(new ContainsComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -2167,7 +2165,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Globally unique logical identifier for  value set
         /// </summary>
-        [FhirElement("url", InSummary=true, Order=90)]
+        [FhirElement("url", InSummary = true, Order = 90)]
         [DataMember]
         public FhirUri UrlElement
         {
@@ -2199,7 +2197,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Additional identifier for the value set (e.g. HL7 v2 / CDA)
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=100)]
+        [FhirElement("identifier", InSummary = true, Order = 100)]
         [DataMember]
         public Identifier Identifier
         {
@@ -2212,7 +2210,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Logical identifier for this version of the value set
         /// </summary>
-        [FhirElement("version", InSummary=true, Order=110)]
+        [FhirElement("version", InSummary = true, Order = 110)]
         [DataMember]
         public FhirString VersionElement
         {
@@ -2244,7 +2242,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Informal name for this value set
         /// </summary>
-        [FhirElement("name", InSummary=true, Order=120)]
+        [FhirElement("name", InSummary = true, Order = 120)]
         [DataMember]
         public FhirString NameElement
         {
@@ -2276,8 +2274,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// draft | active | retired
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=130)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 130)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<ConformanceResourceStatus> StatusElement
         {
@@ -2309,7 +2307,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// If for testing purposes, not real usage
         /// </summary>
-        [FhirElement("experimental", InSummary=true, Order=140)]
+        [FhirElement("experimental", InSummary = true, Order = 140)]
         [DataMember]
         public FhirBoolean ExperimentalElement
         {
@@ -2341,7 +2339,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Name of the publisher (organization or individual)
         /// </summary>
-        [FhirElement("publisher", InSummary=true, Order=150)]
+        [FhirElement("publisher", InSummary = true, Order = 150)]
         [DataMember]
         public FhirString PublisherElement
         {
@@ -2373,8 +2371,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contact details of the publisher
         /// </summary>
-        [FhirElement("contact", InSummary=true, Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("contact", InSummary = true, Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactComponent> Contact
         {
@@ -2387,7 +2385,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Date for given status
         /// </summary>
-        [FhirElement("date", InSummary=true, Order=170)]
+        [FhirElement("date", InSummary = true, Order = 170)]
         [DataMember]
         public FhirDateTime DateElement
         {
@@ -2419,7 +2417,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Fixed date for all referenced code systems and value sets
         /// </summary>
-        [FhirElement("lockedDate", InSummary=true, Order=180)]
+        [FhirElement("lockedDate", InSummary = true, Order = 180)]
         [DataMember]
         public Date LockedDateElement
         {
@@ -2451,7 +2449,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Human language description of the value set
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=190)]
+        [FhirElement("description", InSummary = true, Order = 190)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -2483,8 +2481,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Content intends to support these contexts
         /// </summary>
-        [FhirElement("useContext", InSummary=true, Order=200)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("useContext", InSummary = true, Order = 200)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> UseContext
         {
@@ -2497,7 +2495,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Indicates whether or not any change to the content logical definition may occur
         /// </summary>
-        [FhirElement("immutable", InSummary=true, Order=210)]
+        [FhirElement("immutable", InSummary = true, Order = 210)]
         [DataMember]
         public FhirBoolean ImmutableElement
         {
@@ -2529,7 +2527,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Why needed
         /// </summary>
-        [FhirElement("requirements", Order=220)]
+        [FhirElement("requirements", Order = 220)]
         [DataMember]
         public FhirString RequirementsElement
         {
@@ -2561,7 +2559,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Use and/or publishing restrictions
         /// </summary>
-        [FhirElement("copyright", Order=230)]
+        [FhirElement("copyright", Order = 230)]
         [DataMember]
         public FhirString CopyrightElement
         {
@@ -2593,7 +2591,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Whether this is intended to be used with an extensible binding
         /// </summary>
-        [FhirElement("extensible", InSummary=true, Order=240)]
+        [FhirElement("extensible", InSummary = true, Order = 240)]
         [DataMember]
         public FhirBoolean ExtensibleElement
         {
@@ -2625,7 +2623,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// An inline code system, which is part of this value set
         /// </summary>
-        [FhirElement("codeSystem", InSummary=true, Order=250)]
+        [FhirElement("codeSystem", InSummary = true, Order = 250)]
         [DataMember]
         public CodeSystemComponent CodeSystem
         {
@@ -2638,7 +2636,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When value set includes codes from elsewhere
         /// </summary>
-        [FhirElement("compose", Order=260)]
+        [FhirElement("compose", Order = 260)]
         [DataMember]
         public ComposeComponent Compose
         {
@@ -2651,7 +2649,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Used when the value set is "expanded"
         /// </summary>
-        [FhirElement("expansion", Order=270)]
+        [FhirElement("expansion", Order = 270)]
         [DataMember]
         public ExpansionComponent Expansion
         {
@@ -2802,7 +2800,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new ValueSet());
+            return CopyTo(new ValueSet());
         }
 
         public override bool Matches(IDeepComparable other)

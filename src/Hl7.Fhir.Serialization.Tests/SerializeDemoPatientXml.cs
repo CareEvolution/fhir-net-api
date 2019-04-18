@@ -80,7 +80,7 @@ namespace Hl7.Fhir.Serialization.Tests
             var tpXml = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.xml"));
             var tpJson = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.json"));
             // If on a Unix platform replace \\r\\n in json strings to \\n.
-            if(Environment.NewLine == "\n")
+            if (Environment.NewLine == "\n")
                 tpJson = tpJson.Replace(@"\r\n", @"\n");
             var pat = (new FhirXmlParser(DSTU2ModelInfo.Instance)).Parse<Patient>(tpXml);
 

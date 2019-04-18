@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// An interaction during which services are provided to the patient
     /// </summary>
-    [FhirType("Encounter", IsResource=true)]
+    [FhirType("Encounter", IsResource = true)]
     [DataContract]
     public partial class Encounter : DomainResource
     {
@@ -211,8 +209,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// planned | arrived | in-progress | onleave | finished | cancelled
             /// </summary>
-            [FhirElement("status", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("status", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<EncounterState> StatusElement
             {
@@ -244,8 +242,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The time that the episode was in the specified status
             /// </summary>
-            [FhirElement("period", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("period", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Period Period
             {
@@ -272,7 +270,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new StatusHistoryComponent());
+                return CopyTo(new StatusHistoryComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -336,8 +334,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Role of participant in encounter
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=40)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("type", InSummary = true, Order = 40)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> Type
             {
@@ -350,7 +348,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Period of time during the encounter participant was present
             /// </summary>
-            [FhirElement("period", Order=50)]
+            [FhirElement("period", Order = 50)]
             [DataMember]
             public Period Period
             {
@@ -363,8 +361,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Persons involved in the encounter other than the patient
             /// </summary>
-            [FhirElement("individual", InSummary=true, Order=60)]
-            [References("Practitioner","RelatedPerson")]
+            [FhirElement("individual", InSummary = true, Order = 60)]
+            [References("Practitioner", "RelatedPerson")]
             [DataMember]
             public ResourceReference Individual
             {
@@ -392,7 +390,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new ParticipantComponent());
+                return CopyTo(new ParticipantComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -460,7 +458,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Pre-admission identifier
             /// </summary>
-            [FhirElement("preAdmissionIdentifier", Order=40)]
+            [FhirElement("preAdmissionIdentifier", Order = 40)]
             [DataMember]
             public Identifier PreAdmissionIdentifier
             {
@@ -473,7 +471,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The location from which the patient came before admission
             /// </summary>
-            [FhirElement("origin", Order=50)]
+            [FhirElement("origin", Order = 50)]
             [References("Location")]
             [DataMember]
             public ResourceReference Origin
@@ -487,7 +485,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// From where patient was admitted (physician referral, transfer)
             /// </summary>
-            [FhirElement("admitSource", Order=60)]
+            [FhirElement("admitSource", Order = 60)]
             [DataMember]
             public CodeableConcept AdmitSource
             {
@@ -500,9 +498,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The admitting diagnosis as reported by admitting practitioner
             /// </summary>
-            [FhirElement("admittingDiagnosis", Order=70)]
+            [FhirElement("admittingDiagnosis", Order = 70)]
             [References("Condition")]
-            [Cardinality(Min=0,Max=-1)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> AdmittingDiagnosis
             {
@@ -515,7 +513,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission
             /// </summary>
-            [FhirElement("reAdmission", Order=80)]
+            [FhirElement("reAdmission", Order = 80)]
             [DataMember]
             public CodeableConcept ReAdmission
             {
@@ -528,8 +526,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Diet preferences reported by the patient
             /// </summary>
-            [FhirElement("dietPreference", Order=90)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("dietPreference", Order = 90)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> DietPreference
             {
@@ -542,8 +540,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Special courtesies (VIP, board member)
             /// </summary>
-            [FhirElement("specialCourtesy", Order=100)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("specialCourtesy", Order = 100)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> SpecialCourtesy
             {
@@ -556,8 +554,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Wheelchair, translator, stretcher, etc.
             /// </summary>
-            [FhirElement("specialArrangement", Order=110)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("specialArrangement", Order = 110)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<CodeableConcept> SpecialArrangement
             {
@@ -570,7 +568,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Location to which the patient is discharged
             /// </summary>
-            [FhirElement("destination", Order=120)]
+            [FhirElement("destination", Order = 120)]
             [References("Location")]
             [DataMember]
             public ResourceReference Destination
@@ -584,7 +582,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Category or kind of location after discharge
             /// </summary>
-            [FhirElement("dischargeDisposition", Order=130)]
+            [FhirElement("dischargeDisposition", Order = 130)]
             [DataMember]
             public CodeableConcept DischargeDisposition
             {
@@ -597,9 +595,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete
             /// </summary>
-            [FhirElement("dischargeDiagnosis", Order=140)]
+            [FhirElement("dischargeDiagnosis", Order = 140)]
             [References("Condition")]
-            [Cardinality(Min=0,Max=-1)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<ResourceReference> DischargeDiagnosis
             {
@@ -635,7 +633,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new HospitalizationComponent());
+                return CopyTo(new HospitalizationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -735,9 +733,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Location the encounter takes place
             /// </summary>
-            [FhirElement("location", Order=40)]
+            [FhirElement("location", Order = 40)]
             [References("Location")]
-            [Cardinality(Min=1,Max=1)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Location
             {
@@ -750,7 +748,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// planned | active | reserved | completed
             /// </summary>
-            [FhirElement("status", Order=50)]
+            [FhirElement("status", Order = 50)]
             [DataMember]
             public Code<EncounterLocationStatus> StatusElement
             {
@@ -782,7 +780,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Time period during which the patient was present at the location
             /// </summary>
-            [FhirElement("period", Order=60)]
+            [FhirElement("period", Order = 60)]
             [DataMember]
             public Period Period
             {
@@ -810,7 +808,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new LocationComponent());
+                return CopyTo(new LocationComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -871,8 +869,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Identifier(s) by which this encounter is known
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -885,8 +883,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// planned | arrived | in-progress | onleave | finished | cancelled
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=100)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("status", InSummary = true, Order = 100)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<EncounterState> StatusElement
         {
@@ -918,8 +916,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// List of past encounter statuses
         /// </summary>
-        [FhirElement("statusHistory", Order=110)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("statusHistory", Order = 110)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<StatusHistoryComponent> StatusHistory
         {
@@ -932,7 +930,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// inpatient | outpatient | ambulatory | emergency +
         /// </summary>
-        [FhirElement("class", InSummary=true, Order=120)]
+        [FhirElement("class", InSummary = true, Order = 120)]
         [DataMember]
         public Code<EncounterClass> ClassElement
         {
@@ -964,8 +962,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Specific type of encounter
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=130)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("type", InSummary = true, Order = 130)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Type
         {
@@ -978,7 +976,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Indicates the urgency of the encounter
         /// </summary>
-        [FhirElement("priority", Order=140)]
+        [FhirElement("priority", Order = 140)]
         [DataMember]
         public CodeableConcept Priority
         {
@@ -991,7 +989,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The patient present at the encounter
         /// </summary>
-        [FhirElement("patient", InSummary=true, Order=150)]
+        [FhirElement("patient", InSummary = true, Order = 150)]
         [References("Patient")]
         [DataMember]
         public ResourceReference Patient
@@ -1005,9 +1003,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Episode(s) of care that this encounter should be recorded against
         /// </summary>
-        [FhirElement("episodeOfCare", InSummary=true, Order=160)]
+        [FhirElement("episodeOfCare", InSummary = true, Order = 160)]
         [References("EpisodeOfCare")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> EpisodeOfCare
         {
@@ -1020,9 +1018,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The ReferralRequest that initiated this encounter
         /// </summary>
-        [FhirElement("incomingReferral", Order=170)]
+        [FhirElement("incomingReferral", Order = 170)]
         [References("ReferralRequest")]
-        [Cardinality(Min=0,Max=-1)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> IncomingReferral
         {
@@ -1035,8 +1033,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// List of participants involved in the encounter
         /// </summary>
-        [FhirElement("participant", InSummary=true, Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("participant", InSummary = true, Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ParticipantComponent> Participant
         {
@@ -1049,7 +1047,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The appointment that scheduled this encounter
         /// </summary>
-        [FhirElement("appointment", InSummary=true, Order=190)]
+        [FhirElement("appointment", InSummary = true, Order = 190)]
         [References("Appointment")]
         [DataMember]
         public ResourceReference Appointment
@@ -1063,7 +1061,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The start and end time of the encounter
         /// </summary>
-        [FhirElement("period", Order=200)]
+        [FhirElement("period", Order = 200)]
         [DataMember]
         public Period Period
         {
@@ -1076,7 +1074,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Quantity of time the encounter lasted (less time absent)
         /// </summary>
-        [FhirElement("length", Order=210)]
+        [FhirElement("length", Order = 210)]
         [DataMember]
         public Duration Length
         {
@@ -1089,8 +1087,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason the encounter takes place (code)
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=220)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("reason", InSummary = true, Order = 220)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Reason
         {
@@ -1103,9 +1101,9 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason the encounter takes place (resource)
         /// </summary>
-        [FhirElement("indication", Order=230)]
-        [References("Condition","Procedure")]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("indication", Order = 230)]
+        [References("Condition", "Procedure")]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ResourceReference> Indication
         {
@@ -1118,7 +1116,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Details about the admission to a healthcare service
         /// </summary>
-        [FhirElement("hospitalization", Order=240)]
+        [FhirElement("hospitalization", Order = 240)]
         [DataMember]
         public HospitalizationComponent Hospitalization
         {
@@ -1131,8 +1129,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// List of locations where the patient has been
         /// </summary>
-        [FhirElement("location", Order=250)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("location", Order = 250)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<LocationComponent> Location
         {
@@ -1145,7 +1143,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The custodian organization of this Encounter record
         /// </summary>
-        [FhirElement("serviceProvider", Order=260)]
+        [FhirElement("serviceProvider", Order = 260)]
         [References("Organization")]
         [DataMember]
         public ResourceReference ServiceProvider
@@ -1159,7 +1157,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Another Encounter this encounter is part of
         /// </summary>
-        [FhirElement("partOf", Order=270)]
+        [FhirElement("partOf", Order = 270)]
         [References("Encounter")]
         [DataMember]
         public ResourceReference PartOf
@@ -1205,7 +1203,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Encounter());
+            return CopyTo(new Encounter());
         }
 
         public override bool Matches(IDeepComparable other)

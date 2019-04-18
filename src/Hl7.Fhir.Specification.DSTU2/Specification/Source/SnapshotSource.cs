@@ -55,7 +55,7 @@ namespace Hl7.Fhir.Specification.Source
 
         /// <summary>Creates a new instance of the <see cref="SnapshotSource"/> for the specified internal resolver.</summary>
         /// <param name="source">An internal <see cref="IResourceResolver"/> instance. The implementation should be idempotent (i.e. cached), so the generated snapshots are persisted in memory.</param>
-        public SnapshotSource(IResourceResolver source) 
+        public SnapshotSource(IResourceResolver source)
             : this(source, SnapshotGeneratorSettings.CreateDefault()) { }
 
         /// <summary>Returns a reference to the internal artifact source, as specified in the constructor.</summary>

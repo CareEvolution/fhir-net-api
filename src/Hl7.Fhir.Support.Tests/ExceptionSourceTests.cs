@@ -41,7 +41,7 @@ namespace Hl7.Fhir.Support.Tests
                 src.Test("Fail!!!!");
                 Assert.Fail("Should have thrown");
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 // ok!
             }
@@ -62,7 +62,7 @@ namespace Hl7.Fhir.Support.Tests
 
             string intercepted = null;
 
-            using (src.Catch((_,args) => intercepted = args.Message))
+            using (src.Catch((_, args) => intercepted = args.Message))
             {
                 src.Test("Intercepted-true");
             }
@@ -88,7 +88,7 @@ namespace Hl7.Fhir.Support.Tests
 
             string intercepted = null;
 
-            using (src.Catch((_,args) => intercepted = args.Message))
+            using (src.Catch((_, args) => intercepted = args.Message))
             {
                 src.Test("Intercepted-true");
             }

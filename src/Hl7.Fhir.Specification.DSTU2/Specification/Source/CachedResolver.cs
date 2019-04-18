@@ -176,13 +176,13 @@ namespace Hl7.Fhir.Specification.Source
 
         private class Cache<T>
         {
-            readonly Func<string,T> _onCacheMiss;
+            readonly Func<string, T> _onCacheMiss;
             readonly int _duration;
 
             readonly Object _getLock = new Object();
             readonly Dictionary<string, CacheEntry<T>> _cache = new Dictionary<string, CacheEntry<T>>();
 
-            public Cache(Func<string,T> onCacheMiss, int duration)
+            public Cache(Func<string, T> onCacheMiss, int duration)
             {
                 _onCacheMiss = onCacheMiss;
                 _duration = duration;

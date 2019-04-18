@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public HumanName AndFamily(string family)
         {
-            if(this.FamilyElement == null) this.FamilyElement = new List<FhirString>();
+            if (this.FamilyElement == null) this.FamilyElement = new List<FhirString>();
             this.FamilyElement.Add(new FhirString(family));
 
             return this;
@@ -77,7 +77,7 @@ namespace Hl7.Fhir.Model.DSTU2
         {
             if (!String.IsNullOrEmpty(Text))
                 return String.Format("Text=\"{0}\"", Text);
-            return string.Join(", ", string.Join(", ", Line.ToArray()), 
+            return string.Join(", ", string.Join(", ", Line.ToArray()),
                 City, State, PostalCode, Country)
                 + (Use.HasValue ? " Use=\"" + Use.Value + "\"" : "")
                 + (Type.HasValue ? " Type=\"" + Type.Value + "\"" : "");
@@ -171,7 +171,7 @@ namespace Hl7.Fhir.Model.DSTU2
         {
             this.System = system;
             this.Value = value;
-        }        
+        }
     }
 
     [System.Diagnostics.DebuggerDisplay(@"\{{DebuggerDisplay,nq}}")] // http://blogs.msdn.com/b/jaredpar/archive/2011/03/18/debuggerdisplay-attribute-best-practices.aspx
@@ -211,7 +211,7 @@ namespace Hl7.Fhir.Model.DSTU2
         {
         }
 
-        public Quantity(decimal value, string unit, string system= "http://unitsofmeasure.org")
+        public Quantity(decimal value, string unit, string system = "http://unitsofmeasure.org")
         {
             Value = value;
             Unit = unit;

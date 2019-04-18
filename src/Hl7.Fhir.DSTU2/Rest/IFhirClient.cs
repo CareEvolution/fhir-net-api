@@ -6,7 +6,7 @@ using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Rest
 {
-    public interface IFhirClient<TResourceBase,TBundle,TConformance>
+    public interface IFhirClient<TResourceBase, TBundle, TConformance>
         where TBundle : TResourceBase
         where TConformance : TResourceBase
     {

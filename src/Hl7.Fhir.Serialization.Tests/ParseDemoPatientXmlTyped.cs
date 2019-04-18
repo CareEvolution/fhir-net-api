@@ -17,14 +17,14 @@ namespace Hl7.Fhir.Serialization.Tests
     [TestClass]
     public class ParseDemoPatientXmlTyped
     {
-        public ITypedElement getXmlNode(string xml, FhirXmlParsingSettings settings = null, TypedElementSettings tnSettings=null)
+        public ITypedElement getXmlNode(string xml, FhirXmlParsingSettings settings = null, TypedElementSettings tnSettings = null)
         {
             settings = settings ?? FhirXmlParsingSettings.CreateDefault();
             settings.PermissiveParsing = false;
 
             return XmlParsingHelpers.ParseToTypedElement(xml, DSTU2ModelInfo.Instance.StructureDefinitionProvider, settings, tnSettings);
         }
-            
+
 
         // This test should resurface once you read this through a validating reader navigator (or somesuch)
         [TestMethod]
@@ -68,7 +68,7 @@ namespace Hl7.Fhir.Serialization.Tests
             var tpXml = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.xml"));
             var tpJson = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.json"));
             // If on a Unix platform replace \\r\\n in json strings to \\n.
-            if(Environment.NewLine == "\n")
+            if (Environment.NewLine == "\n")
                 tpJson = tpJson.Replace(@"\r\n", @"\n");
             var navXml = getXmlNode(tpXml);
             var navJson = JsonParsingHelpers.ParseToTypedElement(tpJson, DSTU2ModelInfo.Instance.StructureDefinitionProvider);

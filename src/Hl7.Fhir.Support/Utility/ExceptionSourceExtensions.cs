@@ -44,7 +44,7 @@ namespace Hl7.Fhir.Utility
         ///      var children = source.Children();
         /// }
         /// </code></example>
-        public static IDisposable Catch(this IExceptionSource source, ExceptionNotificationHandler handler, bool forward = false) => 
+        public static IDisposable Catch(this IExceptionSource source, ExceptionNotificationHandler handler, bool forward = false) =>
             new ExceptionInterceptor(source, handler, forward);
 
         private class ExceptionInterceptor : IDisposable

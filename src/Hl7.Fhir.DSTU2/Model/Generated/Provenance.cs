@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Who, What, When for a set of resources
     /// </summary>
-    [FhirType("Provenance", IsResource=true)]
+    [FhirType("Provenance", IsResource = true)]
     [DataContract]
     public partial class Provenance : DomainResource
     {
@@ -101,8 +99,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// What the agents involvement was
             /// </summary>
-            [FhirElement("role", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("role", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Role
             {
@@ -115,8 +113,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Individual, device or organization playing role
             /// </summary>
-            [FhirElement("actor", InSummary=true, Order=50)]
-            [References("Practitioner","RelatedPerson","Patient","Device","Organization")]
+            [FhirElement("actor", InSummary = true, Order = 50)]
+            [References("Practitioner", "RelatedPerson", "Patient", "Device", "Organization")]
             [DataMember]
             public ResourceReference Actor
             {
@@ -129,7 +127,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Authorization-system identifier for the agent
             /// </summary>
-            [FhirElement("userId", InSummary=true, Order=60)]
+            [FhirElement("userId", InSummary = true, Order = 60)]
             [DataMember]
             public Identifier UserId
             {
@@ -142,8 +140,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Track delegation between agents
             /// </summary>
-            [FhirElement("relatedAgent", InSummary=true, Order=70)]
-            [Cardinality(Min=0,Max=-1)]
+            [FhirElement("relatedAgent", InSummary = true, Order = 70)]
+            [Cardinality(Min = 0, Max = -1)]
             [DataMember]
             public List<RelatedAgentComponent> RelatedAgent
             {
@@ -172,7 +170,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new AgentComponent());
+                return CopyTo(new AgentComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -244,8 +242,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Type of relationship between agents
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept Type
             {
@@ -258,8 +256,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reference to other agent in this resource by identifier
             /// </summary>
-            [FhirElement("target", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("target", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri TargetElement
             {
@@ -305,7 +303,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RelatedAgentComponent());
+                return CopyTo(new RelatedAgentComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -369,8 +367,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// derivation | revision | quotation | source
             /// </summary>
-            [FhirElement("role", InSummary=true, Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("role", InSummary = true, Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Code<ProvenanceEntityRole> RoleElement
             {
@@ -402,8 +400,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// The type of resource in this entity
             /// </summary>
-            [FhirElement("type", InSummary=true, Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("type", InSummary = true, Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Coding Type
             {
@@ -416,8 +414,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Identity of entity
             /// </summary>
-            [FhirElement("reference", InSummary=true, Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("reference", InSummary = true, Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirUri ReferenceElement
             {
@@ -449,7 +447,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Human description of entity
             /// </summary>
-            [FhirElement("display", InSummary=true, Order=70)]
+            [FhirElement("display", InSummary = true, Order = 70)]
             [DataMember]
             public FhirString DisplayElement
             {
@@ -481,7 +479,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Entity is attributed to this agent
             /// </summary>
-            [FhirElement("agent", InSummary=true, Order=80)]
+            [FhirElement("agent", InSummary = true, Order = 80)]
             [DataMember]
             public AgentComponent Agent
             {
@@ -511,7 +509,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new EntityComponent());
+                return CopyTo(new EntityComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -580,8 +578,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Target Reference(s) (usually version specific)
         /// </summary>
-        [FhirElement("target", InSummary=true, Order=90)]
-        [Cardinality(Min=1,Max=-1)]
+        [FhirElement("target", InSummary = true, Order = 90)]
+        [Cardinality(Min = 1, Max = -1)]
         [DataMember]
         public List<ResourceReference> Target
         {
@@ -594,7 +592,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When the activity occurred
         /// </summary>
-        [FhirElement("period", InSummary=true, Order=100)]
+        [FhirElement("period", InSummary = true, Order = 100)]
         [DataMember]
         public Period Period
         {
@@ -607,8 +605,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When the activity was recorded / updated
         /// </summary>
-        [FhirElement("recorded", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("recorded", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Instant RecordedElement
         {
@@ -640,8 +638,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Reason the activity is occurring
         /// </summary>
-        [FhirElement("reason", InSummary=true, Order=120)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("reason", InSummary = true, Order = 120)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CodeableConcept> Reason
         {
@@ -654,7 +652,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Activity that occurred
         /// </summary>
-        [FhirElement("activity", InSummary=true, Order=130)]
+        [FhirElement("activity", InSummary = true, Order = 130)]
         [DataMember]
         public CodeableConcept Activity
         {
@@ -667,7 +665,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Where the activity occurred, if relevant
         /// </summary>
-        [FhirElement("location", InSummary=true, Order=140)]
+        [FhirElement("location", InSummary = true, Order = 140)]
         [References("Location")]
         [DataMember]
         public ResourceReference Location
@@ -681,8 +679,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Policy or plan the activity was defined by
         /// </summary>
-        [FhirElement("policy", InSummary=true, Order=150)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("policy", InSummary = true, Order = 150)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<FhirUri> PolicyElement
         {
@@ -706,7 +704,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     PolicyElement = null;
                 else
-                    PolicyElement = new List<FhirUri>(value.Select(elem=>new FhirUri(elem)));
+                    PolicyElement = new List<FhirUri>(value.Select(elem => new FhirUri(elem)));
                 OnPropertyChanged("Policy");
             }
         }
@@ -714,8 +712,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Agents involved in creating resource
         /// </summary>
-        [FhirElement("agent", InSummary=true, Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("agent", InSummary = true, Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<AgentComponent> Agent
         {
@@ -728,8 +726,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// An entity used in this activity
         /// </summary>
-        [FhirElement("entity", InSummary=true, Order=170)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("entity", InSummary = true, Order = 170)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<EntityComponent> Entity
         {
@@ -742,8 +740,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Signature on target
         /// </summary>
-        [FhirElement("signature", InSummary=true, Order=180)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("signature", InSummary = true, Order = 180)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Signature> Signature
         {
@@ -779,7 +777,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Provenance());
+            return CopyTo(new Provenance());
         }
 
         public override bool Matches(IDeepComparable other)

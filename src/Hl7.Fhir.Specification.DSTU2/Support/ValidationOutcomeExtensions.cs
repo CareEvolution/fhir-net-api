@@ -49,7 +49,7 @@ namespace Hl7.Fhir.Support
         public static Stopwatch OUTCOME_INCLUDE_TIMER = new Stopwatch();
 
         public static void Include(this OperationOutcome outcome, OperationOutcome other)
-        {               
+        {
             foreach (var issue in other.Issue)
             {
                 // var myIssue = (OperationOutcome.IssueComponent)issue.DeepCopy();
@@ -80,7 +80,7 @@ namespace Hl7.Fhir.Support
         }
 
         public static IEnumerable<OperationOutcome.IssueComponent> Where(this OperationOutcome outcome,
-                OperationOutcome.IssueSeverity? severity=null, OperationOutcome.IssueType? type=null, int? issueCode = null)
+                OperationOutcome.IssueSeverity? severity = null, OperationOutcome.IssueType? type = null, int? issueCode = null)
         {
             IEnumerable<OperationOutcome.IssueComponent> result = outcome.Issue;
 

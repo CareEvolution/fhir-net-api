@@ -42,7 +42,7 @@ namespace Hl7.Fhir.Utility
         private readonly string _system;
 
         // This is a positional argument
-        public EnumLiteralAttribute(string literal, string system=null)
+        public EnumLiteralAttribute(string literal, string system = null)
         {
             _literal = literal;
             _system = system;

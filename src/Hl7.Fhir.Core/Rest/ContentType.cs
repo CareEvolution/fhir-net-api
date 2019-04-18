@@ -162,18 +162,18 @@ namespace Hl7.Fhir.Rest
             {
                 return mediaHeaderValue;
             }
-        #endif
+#endif
         }
 
         public static string GetCharSetFromHeaderValue(string mediaHeaderValue)
-                {
-        #if NETSTANDARD1_1
+        {
+#if NETSTANDARD1_1
                     System.Net.Http.Headers.MediaTypeHeaderValue.TryParse(mediaHeaderValue, out System.Net.Http.Headers.MediaTypeHeaderValue headerValue);
                     return headerValue.CharSet;
-        #else
-                    var ct = new System.Net.Mime.ContentType(mediaHeaderValue);
-                    return ct.CharSet;
-        #endif
-                }
-         }
+#else
+            var ct = new System.Net.Mime.ContentType(mediaHeaderValue);
+            return ct.CharSet;
+#endif
+        }
+    }
 }

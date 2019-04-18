@@ -64,7 +64,7 @@ namespace Hl7.Fhir.Support.Tests.Utils
             var sw = new Stopwatch();
             sw.Start();
 
-            for(var i=0; i < 10000; i++)
+            for (var i = 0; i < 10000; i++)
                 EnumUtility.ParseLiteral<AdministrativeGender>("male");
 
             sw.Stop();
@@ -80,7 +80,7 @@ namespace Hl7.Fhir.Support.Tests.Utils
             Assert.IsNull(EnumUtility.ParseLiteral<AdministrativeGender>("maleX"));
             Assert.AreEqual(X.a, EnumUtility.ParseLiteral<X>("a"));
 
-            Assert.AreEqual("Male",AdministrativeGender.Male.GetDocumentation());
+            Assert.AreEqual("Male", AdministrativeGender.Male.GetDocumentation());
             Assert.AreEqual("a", X.a.GetDocumentation()); // default documentation = name of item
         }
 

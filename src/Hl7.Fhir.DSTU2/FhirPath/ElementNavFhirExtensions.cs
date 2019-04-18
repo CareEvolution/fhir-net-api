@@ -79,7 +79,7 @@ namespace Hl7.Fhir.FhirPath.DSTU2
             return true;
         }
 
-       
+
     }
 }
 

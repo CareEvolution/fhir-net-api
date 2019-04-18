@@ -23,14 +23,14 @@ namespace Hl7.FhirPath
     public class FhirPathCompiler
     {
         private static Lazy<SymbolTable> _defaultSymbolTable = new Lazy<SymbolTable>(() => new SymbolTable().AddStandardFP());
-        
+
         public static void SetDefaultSymbolTable(Lazy<SymbolTable> st)
         {
             _defaultSymbolTable = st;
         }
 
         public static SymbolTable DefaultSymbolTable
-        { 
+        {
             get { return _defaultSymbolTable.Value; }
         }
 
@@ -46,7 +46,7 @@ namespace Hl7.FhirPath
         }
 
         public Expression Parse(string expression)
-        {         
+        {
             var parse = Grammar.Expression.End().TryParse(expression);
 
             if (parse.WasSuccessful)
@@ -55,7 +55,7 @@ namespace Hl7.FhirPath
             }
             else
             {
-               throw new FormatException("Compilation failed: " + parse.ToString());
+                throw new FormatException("Compilation failed: " + parse.ToString());
             }
         }
 

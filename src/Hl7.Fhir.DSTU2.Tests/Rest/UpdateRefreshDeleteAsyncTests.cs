@@ -57,10 +57,10 @@ namespace Hl7.Fhir.Core.AsyncTests
 
             // VERIFY //
             Assert.ThrowsException<FhirOperationException>(act, "the patient is no longer on the server");
-            
-            
+
+
             Console.WriteLine("Test Completed");
         }
-        
+
     }
 }

@@ -18,8 +18,8 @@ using System.Xml.Linq;
 namespace Hl7.Fhir.Serialization
 {
     public partial class FhirXmlNode : ISourceNode, IResourceTypeSupplier, IAnnotated, IExceptionSource
-    {  
-        internal FhirXmlNode(XObject node, FhirXmlParsingSettings settings) 
+    {
+        internal FhirXmlNode(XObject node, FhirXmlParsingSettings settings)
         {
             Current = node;
             Location = Name;
@@ -159,7 +159,7 @@ namespace Hl7.Fhir.Serialization
                 yield break;
             }
 
-            foreach(var child in enumerateChildren(firstChild, name)) yield return child;
+            foreach (var child in enumerateChildren(firstChild, name)) yield return child;
         }
 
         private IEnumerable<FhirXmlNode> enumerateChildren(XObject first, string name = null)
@@ -172,14 +172,14 @@ namespace Hl7.Fhir.Serialization
             do
             {
                 if (!PermissiveParsing) verifyXObject(scan, AllowedExternalNamespaces, this, this);
-                
+
                 if (scan.Name() != "value")
                 {
                     var scanName = scan.Name().LocalName;
                     bool isMatch = scanName.MatchesPrefix(name);
 
                     if (isMatch)
-                    {                        
+                    {
                         if (_names.ContainsKey(scanName))
                         {
                             _names[scanName] += 1;
@@ -328,7 +328,7 @@ namespace Hl7.Fhir.Serialization
             ies.NotifyOrThrow(source, ExceptionNotification.Error(Error.Format("Parser: " + message, lineNumber, linePosition)));
         }
 
-        private static (int lineNumber, int linePosition) getPosition(XObject node) => 
+        private static (int lineNumber, int linePosition) getPosition(XObject node) =>
             node is IXmlLineInfo xli ? (xli.LineNumber, xli.LinePosition) : (-1, -1);
 
         private static bool verifyContained(XElement contained, IExceptionSource ies, bool permissive)

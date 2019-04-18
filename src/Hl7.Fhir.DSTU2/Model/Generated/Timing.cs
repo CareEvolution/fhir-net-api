@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -210,8 +208,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Length/Range of lengths, or (Start and/or end) limits
             /// </summary>
-            [FhirElement("bounds", InSummary=true, Order=40, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(Duration),typeof(Range),typeof(Period))]
+            [FhirElement("bounds", InSummary = true, Order = 40, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(Duration), typeof(Range), typeof(Period))]
             [DataMember]
             public Element Bounds
             {
@@ -224,7 +222,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Number of times to repeat
             /// </summary>
-            [FhirElement("count", InSummary=true, Order=50)]
+            [FhirElement("count", InSummary = true, Order = 50)]
             [DataMember]
             public Integer CountElement
             {
@@ -256,7 +254,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// How long when it happens
             /// </summary>
-            [FhirElement("duration", InSummary=true, Order=60)]
+            [FhirElement("duration", InSummary = true, Order = 60)]
             [DataMember]
             public FhirDecimal DurationElement
             {
@@ -288,7 +286,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// How long when it happens (Max)
             /// </summary>
-            [FhirElement("durationMax", InSummary=true, Order=70)]
+            [FhirElement("durationMax", InSummary = true, Order = 70)]
             [DataMember]
             public FhirDecimal DurationMaxElement
             {
@@ -320,7 +318,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// s | min | h | d | wk | mo | a - unit of time (UCUM)
             /// </summary>
-            [FhirElement("durationUnits", InSummary=true, Order=80)]
+            [FhirElement("durationUnits", InSummary = true, Order = 80)]
             [DataMember]
             public Code<UnitsOfTime> DurationUnitsElement
             {
@@ -352,7 +350,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Event occurs frequency times per period
             /// </summary>
-            [FhirElement("frequency", InSummary=true, Order=90)]
+            [FhirElement("frequency", InSummary = true, Order = 90)]
             [DataMember]
             public Integer FrequencyElement
             {
@@ -384,7 +382,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Event occurs up to frequencyMax times per period
             /// </summary>
-            [FhirElement("frequencyMax", InSummary=true, Order=100)]
+            [FhirElement("frequencyMax", InSummary = true, Order = 100)]
             [DataMember]
             public Integer FrequencyMaxElement
             {
@@ -416,7 +414,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Event occurs frequency times per period
             /// </summary>
-            [FhirElement("period", InSummary=true, Order=110)]
+            [FhirElement("period", InSummary = true, Order = 110)]
             [DataMember]
             public FhirDecimal PeriodElement
             {
@@ -448,7 +446,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Upper limit of period (3-4 hours)
             /// </summary>
-            [FhirElement("periodMax", InSummary=true, Order=120)]
+            [FhirElement("periodMax", InSummary = true, Order = 120)]
             [DataMember]
             public FhirDecimal PeriodMaxElement
             {
@@ -480,7 +478,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// s | min | h | d | wk | mo | a - unit of time (UCUM)
             /// </summary>
-            [FhirElement("periodUnits", InSummary=true, Order=130)]
+            [FhirElement("periodUnits", InSummary = true, Order = 130)]
             [DataMember]
             public Code<UnitsOfTime> PeriodUnitsElement
             {
@@ -512,7 +510,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Regular life events the event is tied to
             /// </summary>
-            [FhirElement("when", InSummary=true, Order=140)]
+            [FhirElement("when", InSummary = true, Order = 140)]
             [DataMember]
             public Code<EventTiming> WhenElement
             {
@@ -567,7 +565,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new RepeatComponent());
+                return CopyTo(new RepeatComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -660,8 +658,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When the event occurs
         /// </summary>
-        [FhirElement("event", InSummary=true, Order=30)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("event", InSummary = true, Order = 30)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<FhirDateTime> EventElement
         {
@@ -685,7 +683,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if (value == null)
                     EventElement = null;
                 else
-                    EventElement = new List<FhirDateTime>(value.Select(elem=>new FhirDateTime(elem)));
+                    EventElement = new List<FhirDateTime>(value.Select(elem => new FhirDateTime(elem)));
                 OnPropertyChanged("Event");
             }
         }
@@ -693,7 +691,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// When the event is to occur
         /// </summary>
-        [FhirElement("repeat", InSummary=true, Order=40)]
+        [FhirElement("repeat", InSummary = true, Order = 40)]
         [DataMember]
         public RepeatComponent Repeat
         {
@@ -706,7 +704,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// QD | QOD | Q4H | Q6H | BID | TID | QID | AM | PM +
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=50)]
+        [FhirElement("code", InSummary = true, Order = 50)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -800,7 +798,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Timing());
+            return CopyTo(new Timing());
         }
 
         public override bool Matches(IDeepComparable other)

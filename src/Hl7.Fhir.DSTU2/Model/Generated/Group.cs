@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Group of multiple entities
     /// </summary>
-    [FhirType("Group", IsResource=true)]
+    [FhirType("Group", IsResource = true)]
     [DataContract]
     public partial class Group : DomainResource
     {
@@ -113,8 +111,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Kind of characteristic
             /// </summary>
-            [FhirElement("code", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("code", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public CodeableConcept Code
             {
@@ -127,9 +125,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Value held by characteristic
             /// </summary>
-            [FhirElement("value", Order=50, Choice=ChoiceType.DatatypeChoice)]
-            [AllowedTypes(typeof(CodeableConcept),typeof(FhirBoolean),typeof(Quantity),typeof(Range))]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("value", Order = 50, Choice = ChoiceType.DatatypeChoice)]
+            [AllowedTypes(typeof(CodeableConcept), typeof(FhirBoolean), typeof(Quantity), typeof(Range))]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public Element Value
             {
@@ -142,8 +140,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Group includes or excludes
             /// </summary>
-            [FhirElement("exclude", Order=60)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("exclude", Order = 60)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirBoolean ExcludeElement
             {
@@ -175,7 +173,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Period over which characteristic is tested
             /// </summary>
-            [FhirElement("period", Order=70)]
+            [FhirElement("period", Order = 70)]
             [DataMember]
             public Period Period
             {
@@ -204,7 +202,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new CharacteristicComponent());
+                return CopyTo(new CharacteristicComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -276,9 +274,9 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Reference to the group member
             /// </summary>
-            [FhirElement("entity", Order=40)]
-            [References("Patient","Practitioner","Device","Medication","Substance")]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("entity", Order = 40)]
+            [References("Patient", "Practitioner", "Device", "Medication", "Substance")]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public ResourceReference Entity
             {
@@ -291,7 +289,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Period member belonged to the group
             /// </summary>
-            [FhirElement("period", Order=50)]
+            [FhirElement("period", Order = 50)]
             [DataMember]
             public Period Period
             {
@@ -304,7 +302,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// If member is no longer in group
             /// </summary>
-            [FhirElement("inactive", Order=60)]
+            [FhirElement("inactive", Order = 60)]
             [DataMember]
             public FhirBoolean InactiveElement
             {
@@ -351,7 +349,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new MemberComponent());
+                return CopyTo(new MemberComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -412,8 +410,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unique id
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -426,8 +424,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// person | animal | practitioner | device | medication | substance
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=100)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("type", InSummary = true, Order = 100)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public Code<GroupType> TypeElement
         {
@@ -459,8 +457,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Descriptive or actual
         /// </summary>
-        [FhirElement("actual", InSummary=true, Order=110)]
-        [Cardinality(Min=1,Max=1)]
+        [FhirElement("actual", InSummary = true, Order = 110)]
+        [Cardinality(Min = 1, Max = 1)]
         [DataMember]
         public FhirBoolean ActualElement
         {
@@ -492,7 +490,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Kind of Group members
         /// </summary>
-        [FhirElement("code", InSummary=true, Order=120)]
+        [FhirElement("code", InSummary = true, Order = 120)]
         [DataMember]
         public CodeableConcept Code
         {
@@ -505,7 +503,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Label for Group
         /// </summary>
-        [FhirElement("name", InSummary=true, Order=130)]
+        [FhirElement("name", InSummary = true, Order = 130)]
         [DataMember]
         public FhirString NameElement
         {
@@ -537,7 +535,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Number of members
         /// </summary>
-        [FhirElement("quantity", InSummary=true, Order=140)]
+        [FhirElement("quantity", InSummary = true, Order = 140)]
         [DataMember]
         public UnsignedInt QuantityElement
         {
@@ -569,8 +567,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Trait of group members
         /// </summary>
-        [FhirElement("characteristic", Order=150)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("characteristic", Order = 150)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<CharacteristicComponent> Characteristic
         {
@@ -583,8 +581,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Who or what is in group
         /// </summary>
-        [FhirElement("member", Order=160)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("member", Order = 160)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<MemberComponent> Member
         {
@@ -634,7 +632,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Group());
+            return CopyTo(new Group());
         }
 
         public override bool Matches(IDeepComparable other)

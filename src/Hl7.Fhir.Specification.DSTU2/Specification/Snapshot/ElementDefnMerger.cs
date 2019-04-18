@@ -121,7 +121,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                 snap.Example = mergeComplexAttribute(snap.Example, diff.Example);
                 snap.MinValue = mergeComplexAttribute(snap.MinValue, diff.MinValue);
                 snap.MaxValue = mergeComplexAttribute(snap.MaxValue, diff.MaxValue);
-                
+
                 // [WMR 20160909] merge defaultValue and meaningWhenMissing, to handle core definitions; validator can detect invalid constraints
                 snap.DefaultValue = mergeComplexAttribute(snap.DefaultValue, diff.DefaultValue);
                 snap.MeaningWhenMissingElement = mergePrimitiveAttribute(snap.MeaningWhenMissingElement, diff.MeaningWhenMissingElement);
@@ -184,7 +184,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                 // if (!diff.IsNullOrEmpty() && !diff.IsExactly(snap))
                 // if (!diff.IsNullOrEmpty() && (snap == null || !diff.IsExactly(snap)))
                 if (!diff.IsNullOrEmpty() && (snap.IsNullOrEmpty() || !diff.IsExactly(snap)))
-                    {
+                {
                     var result = (T)diff.DeepCopy();
 
                     if (allowAppend && diff.ObjectValue is string)
@@ -266,7 +266,7 @@ namespace Hl7.Fhir.Specification.Snapshot
                 if (!diff.IsNullOrEmpty() && !diff.IsExactly(snap))
                 {
                     var result = snap == null ? new List<T>() : new List<T>(snap.DeepCopy());
-                    
+
                     // Just add new elements to the result, never replace existing ones
                     foreach (var element in diff)
                     {

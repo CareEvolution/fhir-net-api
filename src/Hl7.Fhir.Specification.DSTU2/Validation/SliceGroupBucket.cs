@@ -71,7 +71,7 @@ namespace Hl7.Fhir.Validation
 
     internal class SliceGroupBucket : IBucket
     {
-        internal SliceGroupBucket(ElementDefinition.SlicingComponent slicing, IBucket main, List<IBucket> subs)                
+        internal SliceGroupBucket(ElementDefinition.SlicingComponent slicing, IBucket main, List<IBucket> subs)
         {
             if (slicing == null) throw Error.ArgumentNull(nameof(slicing));
 
@@ -106,12 +106,12 @@ namespace Hl7.Fhir.Validation
             var openTailInUse = false;
 
             // Go over the elements in the instance, in order
-            foreach(var candidate in Entry.Members)
+            foreach (var candidate in Entry.Members)
             {
                 bool hasSucceeded = false;
 
                 // Try to find the child slice that this element matches
-                for(var sliceNumber = 0; sliceNumber < ChildSlices.Count; sliceNumber++)
+                for (var sliceNumber = 0; sliceNumber < ChildSlices.Count; sliceNumber++)
                 {
                     var sliceName = ChildSlices[sliceNumber].Name;
                     var success = ChildSlices[sliceNumber].Add(candidate);
@@ -122,9 +122,9 @@ namespace Hl7.Fhir.Validation
                         // this is not allowed
                         if (sliceNumber < lastMatchingSlice && Ordered)
                             validator.Trace(outcome, $"Element matches slice '{sliceName}', but this " +
-                                $"is out of order for group '{Name}', since a previous element already matched slice '{ChildSlices[lastMatchingSlice].Name}'", 
+                                $"is out of order for group '{Name}', since a previous element already matched slice '{ChildSlices[lastMatchingSlice].Name}'",
                             Issue.CONTENT_ELEMENT_SLICING_OUT_OF_ORDER, candidate);
-                        else 
+                        else
                             lastMatchingSlice = sliceNumber;
 
                         if (openTailInUse)
@@ -162,13 +162,13 @@ namespace Hl7.Fhir.Validation
                 {
                     // Only add the issue from the slice outcome if the entry validation did not already catch
                     // the same issue, otherwise the users will see it twice.
-                    if(!outcome.Issue.Exists(i => i.Location.First() == issue.Location.First() && i.Details.Text == issue.Details.Text))
+                    if (!outcome.Issue.Exists(i => i.Location.First() == issue.Location.First() && i.Details.Text == issue.Details.Text))
                         outcome.AddIssue(issue);
                 }
             }
 
             return outcome;
-        }    
+        }
     }
 
 }

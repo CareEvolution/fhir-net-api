@@ -27,7 +27,7 @@ namespace Hl7.Fhir.Serialization
         public bool Pretty { get; set; } // = false;
 
         /// <summary>Default constructor. Creates a new <see cref="FhirJsonSerializationSettings"/> instance with default property values.</summary>
-        public FhirJsonSerializationSettings() {  }
+        public FhirJsonSerializationSettings() { }
 
         /// <summary>Clone constructor. Generates a new <see cref="FhirJsonSerializationSettings"/> instance initialized from the state of the specified instance.</summary>
         /// <exception cref="ArgumentNullException">The specified argument is <c>null</c>.</exception>

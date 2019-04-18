@@ -6,7 +6,7 @@
  * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
- using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Hl7.Fhir.Specification;
@@ -36,7 +36,7 @@ namespace Hl7.Fhir.ElementModel.Adapters
 
         public string Name => Current.Name;
 
-        public string InstanceType => Current.GetResourceTypeIndicator(); 
+        public string InstanceType => Current.GetResourceTypeIndicator();
 
         public object Value => Current.Text;
 

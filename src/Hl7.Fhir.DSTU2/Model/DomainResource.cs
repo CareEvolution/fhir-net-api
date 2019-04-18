@@ -88,8 +88,8 @@ namespace Hl7.Fhir.Model.DSTU2
 
             return FindContainedResource(new ResourceReference(reference));
         }
-            
-        
+
+
 
     }
 }

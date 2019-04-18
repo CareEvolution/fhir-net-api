@@ -57,7 +57,7 @@ namespace Hl7.Fhir.Specification.Source
 
             var version = values.Length == 2 ? values[1] : string.Empty;
 
-            return summaries.ConformanceResources().Where(r => r.GetConformanceCanonicalUrl() == values[0] && 
+            return summaries.ConformanceResources().Where(r => r.GetConformanceCanonicalUrl() == values[0] &&
                                                                (string.IsNullOrEmpty(version) || r.GetConformanceVersion() == version));
         }
 

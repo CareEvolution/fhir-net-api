@@ -42,7 +42,7 @@ namespace Hl7.Fhir.Model
 
     public static class ListCopyExtensions
     {
-        public static IEnumerable<T> DeepCopy<T>(this IEnumerable<T> source) where T : IDeepCopyable 
+        public static IEnumerable<T> DeepCopy<T>(this IEnumerable<T> source) where T : IDeepCopyable
         {
             return source.Select(item => item != null ? (T)item.DeepCopy() : default(T)).ToList();
         }

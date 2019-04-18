@@ -289,7 +289,7 @@ namespace Hl7.Fhir.Tests.Rest
             FhirClient client = new FhirClient(testEndpoint);
             var result = client.Search<Patient>(new string[] { "test" });
         }
-        
+
 #if NO_ASYNC_ANYMORE
         [TestMethod, TestCategory("FhirClient")]
         public void SearchAsync()

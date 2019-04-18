@@ -72,7 +72,7 @@ namespace Hl7.FhirPath.Expressions
             //if (to == typeof(bool)) return any2bool;
             if (to == typeof(ITypedElement) && (!from.CanBeTreatedAsType(typeof(IEnumerable<ITypedElement>)))) return any2ValueProvider;
             if (to == typeof(IEnumerable<ITypedElement>)) return any2List;
-             
+
             if (from == typeof(long) && (to == typeof(decimal) || to == typeof(decimal?))) return makeNativeCast(typeof(decimal));
             if (from == typeof(long?) && to == typeof(decimal?)) return makeNativeCast(typeof(decimal?));
             return null;
@@ -114,7 +114,7 @@ namespace Hl7.FhirPath.Expressions
             if (from == null)
                 return to.IsNullable();
 
-            return getImplicitCast(from.GetType(),to) != null;
+            return getImplicitCast(from.GetType(), to) != null;
         }
 
         public static bool CanCastTo(Type from, Type to)
@@ -159,13 +159,13 @@ namespace Hl7.FhirPath.Expressions
                 return null;
             else
                 throw new InvalidCastException("Cannot cast a null value to non-nullable type '{0}'".FormatWith(to.Name));
-        }                  
+        }
 
         public static bool IsNullable(this Type t)
         {
-           if (!t.IsAValueType()) return true; // ref-type
-           if (Nullable.GetUnderlyingType(t) != null) return true; // Nullable<T>
-           return false; // value-type
+            if (!t.IsAValueType()) return true; // ref-type
+            if (Nullable.GetUnderlyingType(t) != null) return true; // Nullable<T>
+            return false; // value-type
         }
 
         public static string ReadableFhirPathName(Type t)

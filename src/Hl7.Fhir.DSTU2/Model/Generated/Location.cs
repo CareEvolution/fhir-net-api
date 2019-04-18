@@ -11,31 +11,29 @@ using Hl7.Fhir.Specification;
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
-  
-  Redistribution and use in source and binary forms, with or without modification, 
+
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
   
-   * Redistributions of source code must retain the above copyright notice, this 
+   * Redistributions of source code must retain the above copyright notice, this
      list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above copyright notice, 
-     this list of conditions and the following disclaimer in the documentation 
+   * Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of HL7 nor the names of its contributors may be used to 
-     endorse or promote products derived from this software without specific 
+   * Neither the name of HL7 nor the names of its contributors may be used to
+     endorse or promote products derived from this software without specific
      prior written permission.
   
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
-  
-
 */
 
 #pragma warning disable 1591 // suppress XML summary warnings
@@ -48,7 +46,7 @@ namespace Hl7.Fhir.Model.DSTU2
     /// <summary>
     /// Details and position information for a physical place
     /// </summary>
-    [FhirType("Location", IsResource=true)]
+    [FhirType("Location", IsResource = true)]
     [DataContract]
     public partial class Location : DomainResource
     {
@@ -116,8 +114,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Longitude with WGS84 datum
             /// </summary>
-            [FhirElement("longitude", Order=40)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("longitude", Order = 40)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirDecimal LongitudeElement
             {
@@ -149,8 +147,8 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Latitude with WGS84 datum
             /// </summary>
-            [FhirElement("latitude", Order=50)]
-            [Cardinality(Min=1,Max=1)]
+            [FhirElement("latitude", Order = 50)]
+            [Cardinality(Min = 1, Max = 1)]
             [DataMember]
             public FhirDecimal LatitudeElement
             {
@@ -182,7 +180,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// <summary>
             /// Altitude with WGS84 datum
             /// </summary>
-            [FhirElement("altitude", Order=60)]
+            [FhirElement("altitude", Order = 60)]
             [DataMember]
             public FhirDecimal AltitudeElement
             {
@@ -229,7 +227,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
             public override IDeepCopyable DeepCopy()
             {
-                 return CopyTo(new PositionComponent());
+                return CopyTo(new PositionComponent());
             }
 
             public override bool Matches(IDeepComparable other)
@@ -290,8 +288,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Unique code or number identifying the location to its users
         /// </summary>
-        [FhirElement("identifier", InSummary=true, Order=90)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("identifier", InSummary = true, Order = 90)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<Identifier> Identifier
         {
@@ -304,7 +302,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// active | suspended | inactive
         /// </summary>
-        [FhirElement("status", InSummary=true, Order=100)]
+        [FhirElement("status", InSummary = true, Order = 100)]
         [DataMember]
         public Code<LocationStatus> StatusElement
         {
@@ -336,7 +334,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Name of the location as used by humans
         /// </summary>
-        [FhirElement("name", InSummary=true, Order=110)]
+        [FhirElement("name", InSummary = true, Order = 110)]
         [DataMember]
         public FhirString NameElement
         {
@@ -368,7 +366,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Description of the location
         /// </summary>
-        [FhirElement("description", InSummary=true, Order=120)]
+        [FhirElement("description", InSummary = true, Order = 120)]
         [DataMember]
         public FhirString DescriptionElement
         {
@@ -400,7 +398,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// instance | kind
         /// </summary>
-        [FhirElement("mode", InSummary=true, Order=130)]
+        [FhirElement("mode", InSummary = true, Order = 130)]
         [DataMember]
         public Code<LocationMode> ModeElement
         {
@@ -432,7 +430,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Type of function performed
         /// </summary>
-        [FhirElement("type", InSummary=true, Order=140)]
+        [FhirElement("type", InSummary = true, Order = 140)]
         [DataMember]
         public CodeableConcept Type
         {
@@ -445,8 +443,8 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Contact details of the location
         /// </summary>
-        [FhirElement("telecom", Order=150)]
-        [Cardinality(Min=0,Max=-1)]
+        [FhirElement("telecom", Order = 150)]
+        [Cardinality(Min = 0, Max = -1)]
         [DataMember]
         public List<ContactPoint> Telecom
         {
@@ -459,7 +457,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Physical location
         /// </summary>
-        [FhirElement("address", Order=160)]
+        [FhirElement("address", Order = 160)]
         [DataMember]
         public Address Address
         {
@@ -472,7 +470,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Physical form of the location
         /// </summary>
-        [FhirElement("physicalType", InSummary=true, Order=170)]
+        [FhirElement("physicalType", InSummary = true, Order = 170)]
         [DataMember]
         public CodeableConcept PhysicalType
         {
@@ -485,7 +483,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// The absolute geographic location
         /// </summary>
-        [FhirElement("position", Order=180)]
+        [FhirElement("position", Order = 180)]
         [DataMember]
         public PositionComponent Position
         {
@@ -498,7 +496,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Organization responsible for provisioning and upkeep
         /// </summary>
-        [FhirElement("managingOrganization", InSummary=true, Order=190)]
+        [FhirElement("managingOrganization", InSummary = true, Order = 190)]
         [References("Organization")]
         [DataMember]
         public ResourceReference ManagingOrganization
@@ -512,7 +510,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// <summary>
         /// Another Location this one is physically part of
         /// </summary>
-        [FhirElement("partOf", Order=200)]
+        [FhirElement("partOf", Order = 200)]
         [References("Location")]
         [DataMember]
         public ResourceReference PartOf
@@ -551,7 +549,7 @@ namespace Hl7.Fhir.Model.DSTU2
 
         public override IDeepCopyable DeepCopy()
         {
-             return CopyTo(new Location());
+            return CopyTo(new Location());
         }
 
         public override bool Matches(IDeepComparable other)

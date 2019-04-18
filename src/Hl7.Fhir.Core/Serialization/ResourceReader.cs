@@ -29,7 +29,7 @@ namespace Hl7.Fhir.Serialization
 
         public Base Deserialize(Base existing = null)
         {
-            if(_reader.InstanceType is null)
+            if (_reader.InstanceType is null)
                 ComplexTypeReader.RaiseFormatError(
                     "Underlying data source was not able to provide the actual instance type of the resource.", _reader.Location);
 
@@ -37,7 +37,7 @@ namespace Hl7.Fhir.Serialization
 
             if (mapping == null)
                 ComplexTypeReader.RaiseFormatError($"Asked to deserialize unknown resource '{_reader.InstanceType}'", _reader.Location);
-             
+
             // Delegate the actual work to the ComplexTypeReader, since
             // the serialization of Resources and ComplexTypes are virtually the same
             var cplxReader = new ComplexTypeReader(_modelInfo, _reader, Settings);

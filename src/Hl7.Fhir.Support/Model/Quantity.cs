@@ -33,7 +33,7 @@ namespace Hl7.Fhir.Model.Primitives
 
         public static bool operator <(Quantity a, Quantity b)
         {
-            enforceSameUnits(a,b);
+            enforceSameUnits(a, b);
 
             return a.Value < b.Value;
         }

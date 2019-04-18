@@ -136,20 +136,20 @@ namespace Hl7.Fhir.Specification.Tests
 
             var telecoms = pnode.Children("telecom").Cast<ScopedNode>();
 
-            foreach(var telecom in telecoms)
+            foreach (var telecom in telecoms)
                 Assert.True(s.Add(telecom));
 
             var outcome = s.Validate(_validator, pnode);
             Assert.True(outcome.Success);
             Assert.Equal(0, outcome.Warnings);
-            
+
             Assert.Equal("+31-6-39015765", s.ChildSlices[0].Members.Single().Children("value").Single().Value);
 
             var emailBucket = s.ChildSlices[1] as SliceGroupBucket;
             Assert.Equal("e.kramer@furore.com", emailBucket.Members.Single().Children("value").Single().Value);
             Assert.False(emailBucket.ChildSlices[0].Members.Any());
             Assert.Equal("e.kramer@furore.com", emailBucket.ChildSlices[1].Members.Single().Children("value").Single().Value);
-           
+
             var otherBucket = s.ChildSlices[2] as SliceGroupBucket;
             Assert.Equal("http://nu.nl", otherBucket.ChildSlices[0].Members.Single().Children("value").Single().Value);
             Assert.False(otherBucket.ChildSlices[1].Members.Any());
