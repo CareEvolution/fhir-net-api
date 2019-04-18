@@ -228,7 +228,7 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 foreach (var item in base.NamedChildren) yield return item;
                 if (StatusElement != null) yield return new ElementValue("status", StatusElement);
-                if (Div != null) yield return new ElementValue("div", Div);
+                if (Div != null) yield return new ElementValue("div", new FhirString(Div));                
             }
         }
 

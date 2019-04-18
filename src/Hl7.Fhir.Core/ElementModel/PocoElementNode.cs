@@ -18,79 +18,79 @@ namespace Hl7.Fhir.ElementModel
 {
     internal class PocoElementNode : ITypedElement, IAnnotated, IExceptionSource, IShortPathGenerator, IFhirValueProvider, IResourceTypeSupplier
     {
-        public readonly object Current;
+        public readonly Base Current;
         public readonly PocoStructureDefinitionSummaryProvider Provider;
-        public readonly IElementDefinitionSummary DefinitionSummary;
-        public readonly int ArrayIndex;
+        private readonly IStructureDefinitionSummary _structureDefinition;
 
         public ExceptionNotificationHandler ExceptionHandler { get; set; }
 
-        internal PocoElementNode(Base parent, PocoStructureDefinitionSummaryProvider provider, string rootName = null)
+        internal PocoElementNode(Base root, PocoStructureDefinitionSummaryProvider provider, string rootName = null)
         {
-            Current = parent;
-            InstanceType = parent.TypeName;
-            var typeInfo = provider.Provide(parent.GetType());
-            Definition = ElementDefinitionSummary.ForRoot(rootName ?? parent.TypeName, typeInfo);
+            Current = root;
+            Provider = provider;
+            _structureDefinition = provider.Provide(root.GetType());
+            InstanceType = InstanceType = provider.IsProfiledQuantity(root.TypeName) ? "Quantity" : root.TypeName;
+            Definition = ElementDefinitionSummary.ForRoot(rootName ?? root.TypeName, _structureDefinition);
+
             Location = InstanceType;
             ShortPath = InstanceType;
-            ArrayIndex = 0;
-            Provider = provider;
         }
 
-        private PocoElementNode(object instance, PocoElementNode parent, string location, string shortPath, int arrayIndex,
-            IElementDefinitionSummary summary)
+        private PocoElementNode(Base instance, PocoElementNode parent, IElementDefinitionSummary definition, string location, string shortPath)
         {
             Current = instance;
-            InstanceType = determineInstanceType(parent.Provider, instance, summary);
             Provider = parent.Provider;
+            _structureDefinition = parent.Provider.Provide(instance.GetType());
+            InstanceType = determineInstanceType(Current, definition);
+            Definition = definition ?? throw Error.ArgumentNull(nameof(definition));
+
             ExceptionHandler = parent.ExceptionHandler;
-            Definition = summary;
             Location = location;
             ShortPath = shortPath;
-            ArrayIndex = arrayIndex;
-            Provider = parent.Provider;
+        }
+
+        private string determineInstanceType(object instance, IElementDefinitionSummary summary)
+        {
+            var typeName = !summary.IsChoiceElement && !summary.IsResource ?
+                        summary.Type.Single().GetTypeName() : ((Base)instance).TypeName;
+
+            return Provider.IsProfiledQuantity(typeName) ? "Quantity" : typeName;
         }
 
         public IElementDefinitionSummary Definition { get; private set; }
 
         public string ShortPath { get; private set; }
 
-        private IStructureDefinitionSummary down() =>
-            // If this is a backbone element, the child type is the nested complex type
-            Definition.Type[0] is IStructureDefinitionSummary be ?
-                    be :
-                    Provider.Provide(InstanceType);
-
-
         public IEnumerable<ITypedElement> Children(string name)
         {
             if (!(Current is Base parentBase)) yield break;
 
             var children = parentBase.NamedChildren;
-
             string oldElementName = null;
             int arrayIndex = 0;
-            var childElementDefinitions = down().Elements;
 
             foreach (var child in children)
             {
                 if (name == null || child.ElementName == name)
                 {
-                    var mySummary = childElementDefinitions.Single(c => c.ElementName == child.ElementName);
+                    var childElementDef = _structureDefinition.Elements.FirstOrDefault(s => s.ElementName == child.ElementName);
 
-                    if (!mySummary.IsCollection || oldElementName != child.ElementName)
+                    if (oldElementName != child.ElementName)
                         arrayIndex = 0;
                     else
                         arrayIndex += 1;
 
-                    var location = Location == null ? child.ElementName :
-                                $"{Location}.{child.ElementName}[{arrayIndex}]";
-                    var shortPath = ShortPath == null ? child.ElementName :
-                        (mySummary.IsCollection ?
+                    var location = Location == null
+                        ? child.ElementName
+                        : $"{Location}.{child.ElementName}[{arrayIndex}]";
+                    var shortPath = ShortPath == null
+                        ? child.ElementName
+                        : (childElementDef.IsCollection ?
                             $"{ShortPath}.{child.ElementName}[{arrayIndex}]" :
                             $"{ShortPath}.{child.ElementName}");
 
-                    yield return new PocoElementNode(child.Value, this, location, shortPath, arrayIndex, mySummary);
+                    yield return new PocoElementNode(child.Value, this, childElementDef,
+                        location, shortPath);
                 }
 
                 oldElementName = child.ElementName;
@@ -106,7 +106,30 @@ namespace Hl7.Fhir.ElementModel
 
         public string Name => Definition.ElementName;
 
+        private object _value = null;
+        private object _objectValue = null;
+
         public object Value
+        {
+            get
+            {
+                if (Current is IPrimitive p && p.ObjectValue != null)
+                {
+                    if (p.ObjectValue != _objectValue)
+                    {
+                        _value = internalValue;
+                        _objectValue = p.ObjectValue;
+                    }
+
+                    return _value;
+                }
+                else
+                    return null;
+            }
+        }
+
+
+        public object internalValue
         {
             get
             {
@@ -114,8 +137,6 @@ namespace Hl7.Fhir.ElementModel
                 {
                     switch (Current)
                     {
-                        case string s:
-                            return s;
                         case IParsedPrimitive p:
                             return p.ParsedValue;
                         case IPrimitive prim:
@@ -134,14 +155,6 @@ namespace Hl7.Fhir.ElementModel
 
 
         public string InstanceType { get; private set; }
-
-        public static string determineInstanceType(PocoStructureDefinitionSummaryProvider provider, object instance, IElementDefinitionSummary summary)
-        {
-            var typeName = !summary.IsChoiceElement && !summary.IsResource ?
-                        summary.Type.Single().GetTypeName() : ((Base)instance).TypeName;
-
-            return provider.IsProfiledQuantity(typeName) ? "Quantity" : typeName;
-        }
 
         public string Location { get; private set; }
 
