@@ -3,6 +3,8 @@ using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model.DSTU2;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Specification.Source;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Hl7.Fhir.Serialization.Tests
@@ -41,7 +43,7 @@ namespace Hl7.Fhir.Serialization.Tests
 
             var m = masker.Descendants().ToList();
             var maskedChildren = masker.Descendants().Count();
-            Assert.AreEqual(8, maskedChildren);
+            Assert.AreEqual(8,maskedChildren);
         }
 
         [TestMethod]
@@ -55,7 +57,22 @@ namespace Hl7.Fhir.Serialization.Tests
             var output = masker.ToXml();
 
             var maskedChildren = masker.Descendants().Count();
-            Assert.AreEqual(nav.Descendants().Count() - 3, maskedChildren);
+            Assert.AreEqual(nav.Descendants().Count()-3 , maskedChildren);
+        }       
+
+        [TestMethod]
+        public void SummaryCountUsingStructureDefinitionSummaryProvider()
+        {
+            var tpXml = File.ReadAllText(Path.Combine("TestData", "mask-text.xml"));
+
+            var nav = new ScopedNode(getXmlNodeSDSP(tpXml));
+            var masker = MaskingNode.ForCount(nav);
+
+            var maskedChildren = masker.Descendants().Count();
+            Assert.AreEqual(maskedChildren, 2);
+
+            ITypedElement getXmlNodeSDSP(string xml, FhirXmlParsingSettings s = null) =>
+                XmlParsingHelpers.ParseToTypedElement(xml, new StructureDefinitionSummaryProvider(ZipSource.CreateValidationSource()), s);
         }
     }
 }

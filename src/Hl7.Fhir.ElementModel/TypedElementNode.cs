@@ -38,7 +38,7 @@ namespace Hl7.Fhir.ElementModel
             if (rootType == null)
             {
                 if (_settings.ErrorMode == TypedElementSettings.TypeErrorMode.Report)
-                    throw Error.Argument(nameof(type), $"Cannot determine the type of the root element at '{element.Location}', " +
+                    throw Error.Format(nameof(type), $"Cannot determine the type of the root element at '{element.Location}', " +
                         $"please supply a type argument.");
                 else
                     return NavigatorPosition.ForRoot(element, null, element.Name);
@@ -49,7 +49,7 @@ namespace Hl7.Fhir.ElementModel
             if (elementType == null)
             {
                 if (_settings.ErrorMode == TypedElementSettings.TypeErrorMode.Report)
-                    throw Error.Argument(nameof(type), $"Cannot locate type information for type '{rootType}'");
+                    throw Error.Format(nameof(type), $"Cannot locate type information for type '{rootType}'");
                 else
                     return NavigatorPosition.ForRoot(element, null, element.Name);
             }
@@ -190,7 +190,7 @@ namespace Hl7.Fhir.ElementModel
                 // If we found a type, but we don't know about the specific child, complain
                 if (dis != ElementDefinitionSummaryCache.Empty && !match.IsTracking)
                 {
-                    raiseTypeError($"Encountered unknown element '{scan.Name}' while parsing", this,
+                    raiseTypeError($"Encountered unknown element '{scan.Name}' at location '{scan.Location}' while parsing", this,
                             warning: _settings.ErrorMode != TypedElementSettings.TypeErrorMode.Report);
 
                     // don't include member, unless we are explicitly told to let it pass
