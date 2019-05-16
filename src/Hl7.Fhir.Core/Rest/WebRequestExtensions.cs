@@ -95,6 +95,7 @@ namespace Hl7.Fhir.Rest
 
         internal static Task<WebResponse> GetResponseAsync(this WebRequest request, TimeSpan timeout)
         {
+#if NETSTANDARD1_1
             return Task.Factory.StartNew<WebResponse>(() =>
             {
                 var t = Task.Factory.FromAsync<WebResponse>(
@@ -136,10 +137,31 @@ namespace Hl7.Fhir.Rest
                 }
                 return t.Result;
             });
+#else
+            var t = Task.Factory.FromAsync<WebResponse>(
+                request.BeginGetResponse,
+                request.EndGetResponse,
+                null);
+
+            return t.ContinueWith(parent =>
+            {
+                if (parent.IsFaulted)
+                {
+                    if (parent.Exception.GetBaseException() is WebException wex)
+                    {
+                        if (!(wex.Response is HttpWebResponse resp))
+                            throw t.Exception.GetBaseException();
+                        return resp;
+                    }
+                    throw t.Exception.GetBaseException();
+                }
+                return parent.Result;
+            });
+#endif
         }
 
 
-		public static WebResponse EndGetResponseNoEx(this WebRequest req, IAsyncResult ar)
+        public static WebResponse EndGetResponseNoEx(this WebRequest req, IAsyncResult ar)
         {
             try
             {
@@ -167,7 +189,7 @@ namespace Hl7.Fhir.Rest
                     {
                         result = req.EndGetResponseNoEx(ar);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         caught = ex;
                     }
