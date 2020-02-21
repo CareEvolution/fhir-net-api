@@ -9,67 +9,79 @@ namespace PerfTest
 {
     class Program
     {
-        static void Main()
+        static async System.Threading.Tasks.Task Main()
         {
-            var xml = File.ReadAllText(@"bundle.xml");
+            var json = File.ReadAllText(@"patient.json");
 
-            const int count = 10_000;
+            //const int count = 10_000;
 
-            var xmlParser = new FhirSerialization.FhirXmlParser(FhirModel.Version.DSTU2);
-            FhirModel2.Bundle bundle = null;
-            var sw = Stopwatch.StartNew();
 
-            for (var i = 0; i < count; i++)
-            {
-                bundle = xmlParser.Parse<FhirModel2.Bundle>(xml);
-            }
-            sw.Stop();
+            var jsonParser = new FhirSerialization.FhirJsonFastParser(FhirModel.Version.DSTU2);
 
-            Console.WriteLine("XML Parse X {1:N0}: {0:N1}ms", sw.ElapsedMilliseconds, count);
+            var patient = await jsonParser.ParseAsync(File.OpenRead("patient.json"), System.Threading.CancellationToken.None);
 
-            if (xml != null) return;
+            Console.WriteLine(patient);
 
-            var watch = Stopwatch.StartNew();
 
-            var jsonSerializer = new FhirSerialization.FhirJsonSerializer(FhirModel.Version.DSTU2);
-            jsonSerializer.SerializeToString(bundle);
-            watch.Restart();
-            for (var i = 0; i < count; i++)
-            {
-                jsonSerializer.SerializeToString(bundle);
-            }
-            watch.Stop();
-            Console.WriteLine("JSON serialize X {1:N0}: {0:N1}ms", watch.ElapsedMilliseconds, count);
+            //var xml = File.ReadAllText(@"bundle.xml");
 
-            var jsonFastSerializer = new FhirSerialization.FhirJsonFastSerializer(FhirModel.Version.DSTU2);
-            jsonFastSerializer.SerializeToString(bundle);
-            watch.Restart();
-            for (var i = 0; i < count; i++)
-            {
-                jsonFastSerializer.SerializeToString(bundle);
-            }
-            watch.Stop();
-            Console.WriteLine("JSON fast serialize X {1:N0}: {0:N1}ms", watch.ElapsedMilliseconds, count);
+            //const int count = 10_000;
 
-            var xmlSerializer = new FhirSerialization.FhirXmlSerializer(FhirModel.Version.DSTU2);
-            xmlSerializer.SerializeToString(bundle);
-            watch.Restart();
-            for (var i = 0; i < count; i++)
-            {
-                xmlSerializer.SerializeToString(bundle);
-            }
-            watch.Stop();
-            Console.WriteLine("XML serialize X {1:N0}: {0:N1}ms", watch.ElapsedMilliseconds, count);
+            //var xmlParser = new FhirSerialization.FhirXmlParser(FhirModel.Version.DSTU2);
+            //FhirModel2.Bundle bundle = null;
+            //var sw = Stopwatch.StartNew();
 
-            var xmlFastSerializer = new FhirSerialization.FhirXmlFastSerializer(FhirModel.Version.DSTU2);
-            xmlFastSerializer.SerializeToString(bundle);
-            watch.Restart();
-            for (var i = 0; i < count; i++)
-            {
-                xmlFastSerializer.SerializeToString(bundle);
-            }
-            watch.Stop();
-            Console.WriteLine("XML fast serialize X {1:N0}: {0:N1}ms", watch.ElapsedMilliseconds, count);
+            //for (var i = 0; i < count; i++)
+            //{
+            //    bundle = xmlParser.Parse<FhirModel2.Bundle>(xml);
+            //}
+            //sw.Stop();
+
+            //Console.WriteLine("XML Parse X {1:N0}: {0:N1}ms", sw.ElapsedMilliseconds, count);
+
+            //if (xml != null) return;
+
+            //var watch = Stopwatch.StartNew();
+
+            //var jsonSerializer = new FhirSerialization.FhirJsonSerializer(FhirModel.Version.DSTU2);
+            //jsonSerializer.SerializeToString(bundle);
+            //watch.Restart();
+            //for (var i = 0; i < count; i++)
+            //{
+            //    jsonSerializer.SerializeToString(bundle);
+            //}
+            //watch.Stop();
+            //Console.WriteLine("JSON serialize X {1:N0}: {0:N1}ms", watch.ElapsedMilliseconds, count);
+
+            //var jsonFastSerializer = new FhirSerialization.FhirJsonFastSerializer(FhirModel.Version.DSTU2);
+            //jsonFastSerializer.SerializeToString(bundle);
+            //watch.Restart();
+            //for (var i = 0; i < count; i++)
+            //{
+            //    jsonFastSerializer.SerializeToString(bundle);
+            //}
+            //watch.Stop();
+            //Console.WriteLine("JSON fast serialize X {1:N0}: {0:N1}ms", watch.ElapsedMilliseconds, count);
+
+            //var xmlSerializer = new FhirSerialization.FhirXmlSerializer(FhirModel.Version.DSTU2);
+            //xmlSerializer.SerializeToString(bundle);
+            //watch.Restart();
+            //for (var i = 0; i < count; i++)
+            //{
+            //    xmlSerializer.SerializeToString(bundle);
+            //}
+            //watch.Stop();
+            //Console.WriteLine("XML serialize X {1:N0}: {0:N1}ms", watch.ElapsedMilliseconds, count);
+
+            //var xmlFastSerializer = new FhirSerialization.FhirXmlFastSerializer(FhirModel.Version.DSTU2);
+            //xmlFastSerializer.SerializeToString(bundle);
+            //watch.Restart();
+            //for (var i = 0; i < count; i++)
+            //{
+            //    xmlFastSerializer.SerializeToString(bundle);
+            //}
+            //watch.Stop();
+            //Console.WriteLine("XML fast serialize X {1:N0}: {0:N1}ms", watch.ElapsedMilliseconds, count);
         }
     }
 

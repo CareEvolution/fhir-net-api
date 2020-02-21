@@ -33,17 +33,17 @@ namespace Hl7.Fhir.Serialization
             {
                 string currentPropertyName = null;
 
-                while(await jsonReader.ReadAsync(cancel))
+                while (await jsonReader.ReadAsync(cancel))
                 {
                     switch (jsonReader.TokenType)
                     {
                         case JsonToken.None:
                             break;
                         case JsonToken.StartObject:
-                            _source.StartElement();
+                            _source.StartElement(currentPropertyName);
                             break;
                         case JsonToken.StartArray:
-                            _source.StartList();
+                            _source.StartList(currentPropertyName);
                             break;
                         case JsonToken.StartConstructor:
                             throw new NotSupportedException();

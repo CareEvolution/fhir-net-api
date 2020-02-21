@@ -272,7 +272,7 @@ using Hl7.Fhir.Utility;
         }
         yield return $"}}";
         yield return string.Empty;
-        yield return $"internal override void Parse(Serialization.ParserSource source)";
+        yield return $"internal override void Parse(Serialization.IParserSource source)";
         yield return $"{{";
         yield return $"    base.Parse(source);";
         foreach (var property in properties)
@@ -2856,7 +2856,14 @@ public class PropertyDetails
 
     public IEnumerable<string> RenderParse()
     {
-        yield return $"{Name} = source.GetProperty<{PropType}>(nameof({Name}));";
+        if (IsMultiCard())
+        {
+            yield return $"{Name} = source.GetList<{PropType}>(\"{FhirName}\");";
+        }
+        else
+        {
+            yield return $"{Name} = source.GetProperty<{PropType}>(\"{FhirName}\");";
+        }
     }
 
     private static string VersionsString(HashSet<string> versions, string ifEmpty = "")
