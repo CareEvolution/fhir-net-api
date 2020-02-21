@@ -13,10 +13,21 @@ namespace PerfTest
         {
             var xml = File.ReadAllText(@"bundle.xml");
 
-            var xmlParser = new FhirSerialization.FhirXmlParser(FhirModel.Version.DSTU2);
-            var bundle = xmlParser.Parse<FhirModel2.Bundle>(xml);
-
             const int count = 10_000;
+
+            var xmlParser = new FhirSerialization.FhirXmlParser(FhirModel.Version.DSTU2);
+            FhirModel2.Bundle bundle = null;
+            var sw = Stopwatch.StartNew();
+
+            for (var i = 0; i < count; i++)
+            {
+                bundle = xmlParser.Parse<FhirModel2.Bundle>(xml);
+            }
+            sw.Stop();
+
+            Console.WriteLine("XML Parse X {1:N0}: {0:N1}ms", sw.ElapsedMilliseconds, count);
+
+            if (xml != null) return;
 
             var watch = Stopwatch.StartNew();
 

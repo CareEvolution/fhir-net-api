@@ -271,6 +271,16 @@ using Hl7.Fhir.Utility;
             yield return $"    sink.End();";
         }
         yield return $"}}";
+        yield return string.Empty;
+        yield return $"internal override void Parse(Serialization.ParserSource source)";
+        yield return $"{{";
+        yield return $"    base.Parse(source);";
+        foreach (var property in properties)
+        {
+            foreach (var line in property.RenderParse()) yield return "    " + line;
+        }
+        yield return $"}}";
+        yield return string.Empty;
     }
 
     /// <summary>
@@ -2842,6 +2852,11 @@ public class PropertyDetails
             }
             yield return $"sink.End();";
         }
+    }
+
+    public IEnumerable<string> RenderParse()
+    {
+        yield return $"{Name} = source.GetProperty<{PropType}>(nameof({Name}));";
     }
 
     private static string VersionsString(HashSet<string> versions, string ifEmpty = "")

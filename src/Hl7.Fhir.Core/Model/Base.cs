@@ -55,6 +55,11 @@ namespace Hl7.Fhir.Model
             // Empty
         }
 
+        internal virtual void Parse(IParserSource source)
+        {
+            // empty
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -76,7 +81,7 @@ namespace Hl7.Fhir.Model
                 if (UserData != null) dest.UserData = new Dictionary<string, object>(UserData);
 #pragma warning restore 618
 
-               // if (FhirComments != null) dest.FhirComments = new List<string>(FhirComments);
+                // if (FhirComments != null) dest.FhirComments = new List<string>(FhirComments);
                 return dest;
             }
             else
@@ -90,7 +95,7 @@ namespace Hl7.Fhir.Model
             return Enumerable.Empty<ValidationResult>();
         }
 
-#region << Annotations and UserData >>
+        #region << Annotations and UserData >>
         private Dictionary<string, object> _userData = new Dictionary<string, object>();
 
         [NotMapped]
@@ -119,7 +124,7 @@ namespace Hl7.Fhir.Model
             annotations.RemoveOfType(type);
         }
 
-#endregion
+        #endregion
 
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(String property)

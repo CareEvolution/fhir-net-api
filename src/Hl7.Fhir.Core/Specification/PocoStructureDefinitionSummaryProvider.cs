@@ -104,7 +104,7 @@ namespace Hl7.Fhir.Specification
     }
 
 
-    internal struct PocoElementSerializationInfo : IElementDefinitionSummary
+    internal class PocoElementSerializationInfo : IElementDefinitionSummary
     {
         private readonly Model.Version _version;
         private readonly PropertyMapping _pm;
