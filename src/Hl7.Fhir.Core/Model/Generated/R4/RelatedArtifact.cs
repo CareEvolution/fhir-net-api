@@ -339,6 +339,35 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("resource", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ResourceElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.RelatedArtifactType>("type", Hl7.Fhir.Model.Version.All);
+            LabelElement = source.GetStringProperty("label", Hl7.Fhir.Model.Version.All);
+            DisplayElement = source.GetStringProperty("display", Hl7.Fhir.Model.Version.All);
+            CitationElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("citation", Hl7.Fhir.Model.Version.All);
+            UrlElement = source.GetProperty<Hl7.Fhir.Model.Url>("url", Hl7.Fhir.Model.Version.All);
+            Document = source.GetProperty<Hl7.Fhir.Model.Attachment>("document", Hl7.Fhir.Model.Version.All);
+            ResourceElement = source.GetProperty<Hl7.Fhir.Model.Canonical>("resource", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RelatedArtifactType>)},
+                {"label", typeof(Hl7.Fhir.Model.FhirString)},
+                {"display", typeof(Hl7.Fhir.Model.FhirString)},
+                {"citation", typeof(Hl7.Fhir.Model.Markdown)},
+                {"url", typeof(Hl7.Fhir.Model.Url)},
+                {"document", typeof(Hl7.Fhir.Model.Attachment)},
+                {"resource", typeof(Hl7.Fhir.Model.Canonical)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

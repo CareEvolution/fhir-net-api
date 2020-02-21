@@ -118,6 +118,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("assurance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AssuranceElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Target = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("target", Hl7.Fhir.Model.Version.All);
+                AssuranceElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.IdentityAssuranceLevel>("assurance", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"target", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"assurance", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.IdentityAssuranceLevel>)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -508,6 +527,41 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Name = source.GetList<Hl7.Fhir.Model.R4.HumanName>("name", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            GenderElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.AdministrativeGender>("gender", Hl7.Fhir.Model.Version.All);
+            BirthDateElement = source.GetDateProperty("birthDate", Hl7.Fhir.Model.Version.All);
+            Address = source.GetList<Hl7.Fhir.Model.Address>("address", Hl7.Fhir.Model.Version.All);
+            Photo = source.GetProperty<Hl7.Fhir.Model.Attachment>("photo", Hl7.Fhir.Model.Version.All);
+            ManagingOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("managingOrganization", Hl7.Fhir.Model.Version.All);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            Link = source.GetList<LinkComponent>("link", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"name", typeof(Hl7.Fhir.Model.R4.HumanName)},
+                {"telecom", typeof(Hl7.Fhir.Model.R4.ContactPoint)},
+                {"gender", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>)},
+                {"birthDate", typeof(Hl7.Fhir.Model.Date)},
+                {"address", typeof(Hl7.Fhir.Model.Address)},
+                {"photo", typeof(Hl7.Fhir.Model.Attachment)},
+                {"managingOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"link", typeof(LinkComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

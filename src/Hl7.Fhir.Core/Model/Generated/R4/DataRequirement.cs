@@ -189,6 +189,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                PathElement = source.GetStringProperty("path", Hl7.Fhir.Model.Version.All);
+                SearchParamElement = source.GetStringProperty("searchParam", Hl7.Fhir.Model.Version.All);
+                ValueSetElement = source.GetProperty<Hl7.Fhir.Model.Canonical>("valueSet", Hl7.Fhir.Model.Version.All);
+                Code = source.GetList<Hl7.Fhir.Model.Coding>("code", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"path", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"searchParam", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"valueSet", typeof(Hl7.Fhir.Model.Canonical)},
+                    {"code", typeof(Hl7.Fhir.Model.Coding)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -368,6 +391,27 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Value?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                PathElement = source.GetStringProperty("path", Hl7.Fhir.Model.Version.All);
+                SearchParamElement = source.GetStringProperty("searchParam", Hl7.Fhir.Model.Version.All);
+                Value = source.GetProperty<Hl7.Fhir.Model.Element>("value", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"path", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"searchParam", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"value", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -528,6 +572,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("direction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); DirectionElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                PathElement = source.GetStringProperty("path", Hl7.Fhir.Model.Version.All);
+                DirectionElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.SortDirection>("direction", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"path", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"direction", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SortDirection>)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -919,6 +982,37 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.FHIRAllTypes>("type", Hl7.Fhir.Model.Version.All);
+            ProfileElement = source.GetList<Hl7.Fhir.Model.Canonical>("profile", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.Element>("subject", Hl7.Fhir.Model.Version.All);
+            MustSupportElement = source.GetStringList("mustSupport", Hl7.Fhir.Model.Version.All);
+            CodeFilter = source.GetList<CodeFilterComponent>("codeFilter", Hl7.Fhir.Model.Version.All);
+            DateFilter = source.GetList<DateFilterComponent>("dateFilter", Hl7.Fhir.Model.Version.All);
+            LimitElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("limit", Hl7.Fhir.Model.Version.All);
+            Sort = source.GetList<SortComponent>("sort", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.FHIRAllTypes>)},
+                {"profile", typeof(Hl7.Fhir.Model.Canonical)},
+                {"subject", typeof(Hl7.Fhir.Model.Element)},
+                {"mustSupport", typeof(Hl7.Fhir.Model.FhirString)},
+                {"codeFilter", typeof(CodeFilterComponent)},
+                {"dateFilter", typeof(DateFilterComponent)},
+                {"limit", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"sort", typeof(SortComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

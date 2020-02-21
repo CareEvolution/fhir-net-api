@@ -173,6 +173,29 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); StatusElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+                Actor = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("actor", Hl7.Fhir.Model.Version.All);
+                RequiredElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ParticipantRequired>("required", Hl7.Fhir.Model.Version.All);
+                StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ParticipationStatus>("status", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"actor", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"required", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipantRequired>)},
+                    {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -905,6 +928,61 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.AppointmentStatus>("status", Hl7.Fhir.Model.Version.All);
+            ServiceCategory = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("serviceCategory", Hl7.Fhir.Model.Version.All);
+            ServiceType = source.GetList<Hl7.Fhir.Model.CodeableConcept>("serviceType", Hl7.Fhir.Model.Version.All);
+            Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>("specialty", Hl7.Fhir.Model.Version.All);
+            AppointmentType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("appointmentType", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reason", Hl7.Fhir.Model.Version.All);
+            Indication = source.GetList<Hl7.Fhir.Model.ResourceReference>("indication", Hl7.Fhir.Model.Version.All);
+            PriorityElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("priority", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>("supportingInformation", Hl7.Fhir.Model.Version.All);
+            StartElement = source.GetProperty<Hl7.Fhir.Model.Instant>("start", Hl7.Fhir.Model.Version.All);
+            EndElement = source.GetProperty<Hl7.Fhir.Model.Instant>("end", Hl7.Fhir.Model.Version.All);
+            MinutesDurationElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("minutesDuration", Hl7.Fhir.Model.Version.All);
+            Slot = source.GetList<Hl7.Fhir.Model.ResourceReference>("slot", Hl7.Fhir.Model.Version.All);
+            CreatedElement = source.GetDateTimeProperty("created", Hl7.Fhir.Model.Version.All);
+            CommentElement = source.GetStringProperty("comment", Hl7.Fhir.Model.Version.All);
+            IncomingReferral = source.GetList<Hl7.Fhir.Model.ResourceReference>("incomingReferral", Hl7.Fhir.Model.Version.All);
+            Participant = source.GetList<ParticipantComponent>("participant", Hl7.Fhir.Model.Version.All);
+            RequestedPeriod = source.GetList<Hl7.Fhir.Model.Period>("requestedPeriod", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AppointmentStatus>)},
+                {"serviceCategory", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"serviceType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"specialty", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"appointmentType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"indication", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"priority", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"supportingInformation", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"start", typeof(Hl7.Fhir.Model.Instant)},
+                {"end", typeof(Hl7.Fhir.Model.Instant)},
+                {"minutesDuration", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"slot", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"created", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"comment", typeof(Hl7.Fhir.Model.FhirString)},
+                {"incomingReferral", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"participant", typeof(ParticipantComponent)},
+                {"requestedPeriod", typeof(Hl7.Fhir.Model.Period)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

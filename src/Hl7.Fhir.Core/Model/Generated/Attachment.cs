@@ -424,6 +424,37 @@ namespace Hl7.Fhir.Model
             sink.Element("creation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CreationElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ContentTypeElement = source.GetCodeProperty("contentType", Hl7.Fhir.Model.Version.All);
+            LanguageElement = source.GetCodeProperty("language", Hl7.Fhir.Model.Version.All);
+            DataElement = source.GetBinaryProperty("data", Hl7.Fhir.Model.Version.All);
+            UrlElement = source.GetProperty<Hl7.Fhir.Model.Url>("url", Hl7.Fhir.Model.Version.All);
+            SizeElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("size", Hl7.Fhir.Model.Version.All);
+            HashElement = source.GetBinaryProperty("hash", Hl7.Fhir.Model.Version.All);
+            TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+            CreationElement = source.GetDateTimeProperty("creation", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"contentType", typeof(Hl7.Fhir.Model.Code)},
+                {"language", typeof(Hl7.Fhir.Model.Code)},
+                {"data", typeof(Hl7.Fhir.Model.Base64Binary)},
+                {"url", typeof(Hl7.Fhir.Model.Url)},
+                {"size", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                {"hash", typeof(Hl7.Fhir.Model.Base64Binary)},
+                {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                {"creation", typeof(Hl7.Fhir.Model.FhirDateTime)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

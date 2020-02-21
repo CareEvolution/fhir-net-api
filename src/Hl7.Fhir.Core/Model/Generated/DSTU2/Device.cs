@@ -572,6 +572,53 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("url", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); UrlElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.DeviceStatus>("status", Hl7.Fhir.Model.Version.All);
+            ManufacturerElement = source.GetStringProperty("manufacturer", Hl7.Fhir.Model.Version.All);
+            ModelElement = source.GetStringProperty("model", Hl7.Fhir.Model.Version.All);
+            VersionElement = source.GetStringProperty("version", Hl7.Fhir.Model.Version.All);
+            ManufactureDateElement = source.GetDateTimeProperty("manufactureDate", Hl7.Fhir.Model.Version.All);
+            ExpiryElement = source.GetDateTimeProperty("expiry", Hl7.Fhir.Model.Version.All);
+            UdiElement = source.GetStringProperty("udi", Hl7.Fhir.Model.Version.All);
+            LotNumberElement = source.GetStringProperty("lotNumber", Hl7.Fhir.Model.Version.All);
+            Owner = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("owner", Hl7.Fhir.Model.Version.All);
+            Location = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("location", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>("contact", Hl7.Fhir.Model.Version.All);
+            UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceStatus>)},
+                {"manufacturer", typeof(Hl7.Fhir.Model.FhirString)},
+                {"model", typeof(Hl7.Fhir.Model.FhirString)},
+                {"version", typeof(Hl7.Fhir.Model.FhirString)},
+                {"manufactureDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"expiry", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"udi", typeof(Hl7.Fhir.Model.FhirString)},
+                {"lotNumber", typeof(Hl7.Fhir.Model.FhirString)},
+                {"owner", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"location", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"contact", typeof(Hl7.Fhir.Model.DSTU2.ContactPoint)},
+                {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

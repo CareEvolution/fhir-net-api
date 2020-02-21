@@ -60,6 +60,8 @@ namespace Hl7.Fhir.Model
             // empty
         }
 
+        internal virtual Type GetPropertyType(string fhirName) => null;
+
         /// <summary>
         /// 
         /// </summary>

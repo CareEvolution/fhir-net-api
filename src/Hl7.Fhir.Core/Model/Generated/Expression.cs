@@ -298,6 +298,31 @@ namespace Hl7.Fhir.Model
             sink.Element("reference", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); ReferenceElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.R4);
+            NameElement = source.GetProperty<Hl7.Fhir.Model.Id>("name", Hl7.Fhir.Model.Version.R4);
+            LanguageElement = source.GetCodeProperty("language", Hl7.Fhir.Model.Version.R4);
+            Expression_Element = source.GetStringProperty("expression", Hl7.Fhir.Model.Version.R4);
+            ReferenceElement = source.GetUriProperty("reference", Hl7.Fhir.Model.Version.R4);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"name", typeof(Hl7.Fhir.Model.Id)},
+                {"language", typeof(Hl7.Fhir.Model.Code)},
+                {"expression", typeof(Hl7.Fhir.Model.FhirString)},
+                {"reference", typeof(Hl7.Fhir.Model.FhirUri)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

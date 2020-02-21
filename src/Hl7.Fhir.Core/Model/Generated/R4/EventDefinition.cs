@@ -964,6 +964,77 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            VersionElement = source.GetStringProperty("version", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+            SubtitleElement = source.GetStringProperty("subtitle", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.PublicationStatus>("status", Hl7.Fhir.Model.Version.All);
+            ExperimentalElement = source.GetBooleanProperty("experimental", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.Element>("subject", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            PublisherElement = source.GetStringProperty("publisher", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>("contact", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("description", Hl7.Fhir.Model.Version.All);
+            UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>("useContext", Hl7.Fhir.Model.Version.All);
+            Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>("jurisdiction", Hl7.Fhir.Model.Version.All);
+            PurposeElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("purpose", Hl7.Fhir.Model.Version.All);
+            UsageElement = source.GetStringProperty("usage", Hl7.Fhir.Model.Version.All);
+            CopyrightElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("copyright", Hl7.Fhir.Model.Version.All);
+            ApprovalDateElement = source.GetDateProperty("approvalDate", Hl7.Fhir.Model.Version.All);
+            LastReviewDateElement = source.GetDateProperty("lastReviewDate", Hl7.Fhir.Model.Version.All);
+            EffectivePeriod = source.GetProperty<Hl7.Fhir.Model.Period>("effectivePeriod", Hl7.Fhir.Model.Version.All);
+            Topic = source.GetList<Hl7.Fhir.Model.CodeableConcept>("topic", Hl7.Fhir.Model.Version.All);
+            Author = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>("author", Hl7.Fhir.Model.Version.All);
+            Editor = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>("editor", Hl7.Fhir.Model.Version.All);
+            Reviewer = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>("reviewer", Hl7.Fhir.Model.Version.All);
+            Endorser = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>("endorser", Hl7.Fhir.Model.Version.All);
+            RelatedArtifact = source.GetList<Hl7.Fhir.Model.R4.RelatedArtifact>("relatedArtifact", Hl7.Fhir.Model.Version.All);
+            Trigger = source.GetList<Hl7.Fhir.Model.R4.TriggerDefinition>("trigger", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"version", typeof(Hl7.Fhir.Model.FhirString)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                {"subtitle", typeof(Hl7.Fhir.Model.FhirString)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>)},
+                {"experimental", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"subject", typeof(Hl7.Fhir.Model.Element)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"publisher", typeof(Hl7.Fhir.Model.FhirString)},
+                {"contact", typeof(Hl7.Fhir.Model.R4.ContactDetail)},
+                {"description", typeof(Hl7.Fhir.Model.Markdown)},
+                {"useContext", typeof(Hl7.Fhir.Model.UsageContext)},
+                {"jurisdiction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"purpose", typeof(Hl7.Fhir.Model.Markdown)},
+                {"usage", typeof(Hl7.Fhir.Model.FhirString)},
+                {"copyright", typeof(Hl7.Fhir.Model.Markdown)},
+                {"approvalDate", typeof(Hl7.Fhir.Model.Date)},
+                {"lastReviewDate", typeof(Hl7.Fhir.Model.Date)},
+                {"effectivePeriod", typeof(Hl7.Fhir.Model.Period)},
+                {"topic", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"author", typeof(Hl7.Fhir.Model.R4.ContactDetail)},
+                {"editor", typeof(Hl7.Fhir.Model.R4.ContactDetail)},
+                {"reviewer", typeof(Hl7.Fhir.Model.R4.ContactDetail)},
+                {"endorser", typeof(Hl7.Fhir.Model.R4.ContactDetail)},
+                {"relatedArtifact", typeof(Hl7.Fhir.Model.R4.RelatedArtifact)},
+                {"trigger", typeof(Hl7.Fhir.Model.R4.TriggerDefinition)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

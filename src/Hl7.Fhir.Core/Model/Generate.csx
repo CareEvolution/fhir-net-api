@@ -262,7 +262,7 @@ using Hl7.Fhir.Utility;
             }
         }
         yield return $"    base.Serialize(sink);";
-        foreach(var property in properties)
+        foreach (var property in properties)
         {
             foreach (var line in property.RenderSerialize()) yield return "    " + line;
         }
@@ -281,6 +281,21 @@ using Hl7.Fhir.Utility;
         }
         yield return $"}}";
         yield return string.Empty;
+        yield return $"internal override Type GetPropertyType(string fhirName)";
+        yield return $"{{";
+        yield return $"    if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;";
+        yield return $"    return base.GetPropertyType(fhirName);";
+        yield return $"}}";
+        yield return string.Empty;
+        yield return $"private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>";
+        yield return $"{{";
+        foreach (var property in properties)
+        {
+            foreach (var line in property.RenderParse()) yield return "        {\"" + property.FhirName + "\", typeof(" + property.PropType + ")},";
+        }
+        yield return $"}};";
+
+
     }
 
     /// <summary>
@@ -356,7 +371,7 @@ using Hl7.Fhir.Utility;
         yield return $"    if (dest != null)";
         yield return $"    {{";
         yield return $"        base.CopyTo(dest);";
-	    foreach (var pd in properties)
+        foreach (var pd in properties)
         {
             if (pd.CardMax == "*")
                 yield return $"        if({pd.Name} != null) dest.{pd.Name} = new List<{pd.ConvertedPropType()}>({pd.Name}.DeepCopy());";
@@ -378,7 +393,7 @@ using Hl7.Fhir.Utility;
         yield return $"    if(otherT == null) return false;";
         yield return string.Empty;
         yield return $"    if(!base.Matches(otherT)) return false;";
-	    foreach (var pd in properties)
+        foreach (var pd in properties)
         {
             if (pd.CardMax == "*")
                 yield return $"    if( !DeepComparable.Matches({pd.Name}, otherT.{pd.Name})) return false;";
@@ -1319,7 +1334,7 @@ public class ResourceDetails
         {
             writer.WriteLine("    ---- Constraints");
             foreach (var constraint in Constraints)
-            { 
+            {
                 writer.WriteLine("        {0} - {1}: {2}, XPath: {3}, Expression: {4}, Versions: {5}", constraint.Key, constraint.Severity, constraint.Human, constraint.XPath, constraint.Expression, string.Join(",", Versions));
             }
         }
@@ -1332,7 +1347,7 @@ public class ResourceDetails
 
         return new ResourceDetails
         {
-            Versions = new List<LoadedVersion>( Versions ),
+            Versions = new List<LoadedVersion>(Versions),
             Name = Name,
             Description = Description,
             FhirName = FhirName,
@@ -1382,7 +1397,7 @@ public class ResourceDetails
         return null;
     }
 
-    public void Simplify( Dictionary<string, Dictionary<string, ResourceDetails>> resourcesByNameByVersion )
+    public void Simplify(Dictionary<string, Dictionary<string, ResourceDetails>> resourcesByNameByVersion)
     {
         PropertyDetails.Simplify(Properties, resourcesByNameByVersion);
         ComponentDetails.Simplify(Components, resourcesByNameByVersion);
@@ -1424,7 +1439,7 @@ public class ResourceDetails
                 string.Empty;
             // If this is just a contraint the FHIR type name used for serialization etc. must be the base type name
             var fhirTypeName = IsConstraint ?
-                BaseType.Split( '.' ).Last() :
+                BaseType.Split('.').Last() :
                 FhirName;
             yield return $"[FhirType({version}, \"{ fhirTypeName }\"{ isResource })]";
         }
@@ -1570,7 +1585,7 @@ public class ResourceDetails
             .Distinct();
     }
 
-    private void FixReferencedTypesFhirVersion(string version, Dictionary<string,ResourceDetails> resourcesByName)
+    private void FixReferencedTypesFhirVersion(string version, Dictionary<string, ResourceDetails> resourcesByName)
     {
         BaseType = StringUtils.FixTypeFhirVersion(BaseType, version, resourcesByName);
         foreach (var prop in GetAllProperties())
@@ -1611,7 +1626,7 @@ public class ResourceDetails
             var enumTypesByValueSetUrl = enumTypesByValueSetUrlByVersion[loadedVersion.Version];
             var resourcesByName = LoadTypes(loadedVersion, enumTypesByValueSetUrl)
                 .Concat(LoadResources(loadedVersion, enumTypesByValueSetUrl))
-                .ToDictionary( res => res.Name );
+                .ToDictionary(res => res.Name);
             resourcesByNameByVersion.Add(loadedVersion.Version, resourcesByName);
         }
         Patch(resourcesByNameByVersion);
@@ -1678,7 +1693,7 @@ public class ResourceDetails
         {
             var property = resourcesByNameByVersion[propertyType[0]][propertyType[1]].GetProperty(propertyType[2]);
             property.PropType = propertyType[3];
-            if (propertyType[4]  != null)
+            if (propertyType[4] != null)
             {
                 property.NativeType = propertyType[4];
             }
@@ -1743,7 +1758,7 @@ public class ResourceDetails
             resource.IsPrimitive = false;
             resource.AbstractType = (e.SelectSingleNode("fhir:abstract[@value='true']", loadedVersion.NSR) != null);
 
-            resource.Properties = GetProperties( resourceName, resourceName, e, loadedVersion.NSR, enumTypesByValueSetUrl );
+            resource.Properties = GetProperties(resourceName, resourceName, e, loadedVersion.NSR, enumTypesByValueSetUrl);
 
             resource.Components = new List<ComponentDetails>();
             foreach (var e2 in e.SelectNodes("fhir:differential/fhir:element[fhir:type/fhir:code/@value = 'BackboneElement']", loadedVersion.NSR).OfType<XmlElement>())
@@ -1923,7 +1938,7 @@ public class ResourceDetails
         }
 
         // DSTU2 has a 'constrainedType' element - that applies also to primitive types though, hence the name of the method...
-        return structureDefinitionElement.SelectSingleNode("fhir:constrainedType", ns) != null; 
+        return structureDefinitionElement.SelectSingleNode("fhir:constrainedType", ns) != null;
     }
 
     private static XmlNode GetBaseTypeNode(XmlElement structureDefinitionElement, XmlNamespaceManager ns)
@@ -2011,7 +2026,7 @@ public class ResourceDetails
                         .ToList();
                     if (versionSpecificReferencedFhirTypes.Any())
                     {
-                        Console.WriteLine("{0} references version-specific types: {1}", name, string.Join(", ",versionSpecificReferencedFhirTypes));
+                        Console.WriteLine("{0} references version-specific types: {1}", name, string.Join(", ", versionSpecificReferencedFhirTypes));
                         merged = false;
                     }
                     else
@@ -2039,7 +2054,7 @@ public class ResourceDetails
             }
         }
         FixFhirTypes(resourcesByNameByVersion, sharedResourcesByName);
-        foreach(var inter in interfaces)
+        foreach (var inter in interfaces)
         {
             inter.FixReferencedFhirTypes(inter.Name, sharedResourcesByName);
         }
@@ -2060,7 +2075,7 @@ public class ResourceDetails
         };
         var interfacePropertiesByFhirName = CreateInterfaceProperties(firstResource.Properties);
         var componentInterfacesByName = new Dictionary<string, Tuple<InterfaceDetails, Dictionary<string, InterfacePropertyDetails>>>();
-        foreach(var firstComponent in firstResource.Components)
+        foreach (var firstComponent in firstResource.Components)
         {
             var componentInterface = new InterfaceDetails
             {
@@ -2069,7 +2084,7 @@ public class ResourceDetails
                 Base = ComputeInterfaceBase(firstComponent.BaseType, false),
             };
             var componentInterfacePropertiesByFhirName = CreateInterfaceProperties(firstComponent.Properties);
-            componentInterfacesByName.Add(firstComponent.Name, Tuple.Create(componentInterface, componentInterfacePropertiesByFhirName) );
+            componentInterfacesByName.Add(firstComponent.Name, Tuple.Create(componentInterface, componentInterfacePropertiesByFhirName));
         }
         foreach (var otherResource in resourcesWithSameName.Skip(1))
         {
@@ -2163,7 +2178,7 @@ public class ResourceDetails
         var result = new List<InterfacePropertyDetails>();
         foreach (var property in properties)
         {
-            if (StringUtils.TryGetModelClassName(property.PropType, out var className ) || componentNames.Contains(property.PropType))
+            if (StringUtils.TryGetModelClassName(property.PropType, out var className) || componentNames.Contains(property.PropType))
             {
                 result.Add(property);
             }
@@ -2196,7 +2211,7 @@ public class ResourceDetails
             }
         }
         interfacePropertiesByFhirName.Clear();
-        foreach(var pair in newInterfacePropertiesByFhirName)
+        foreach (var pair in newInterfacePropertiesByFhirName)
         {
             interfacePropertiesByFhirName.Add(pair.Key, pair.Value);
         }
@@ -2283,7 +2298,7 @@ public class ComponentDetails
             Name = Name,
             BaseType = BaseType,
             Properties = Properties
-                .Select( prop => prop.Clone(version) )
+                .Select(prop => prop.Clone(version))
                 .ToList(),
         };
     }
@@ -2652,7 +2667,7 @@ public class PropertyDetails
         const string prefix = "Hl7.Fhir.Model.";
 
         var allVersions = resourcesByNameByVersion.Keys
-            .Where( v => !string.IsNullOrEmpty( v) )
+            .Where(v => !string.IsNullOrEmpty(v))
             .ToList();
         if (EqualsAnyOrder(allVersions, Versions))
         {
@@ -2727,7 +2742,7 @@ public class PropertyDetails
         foreach (var line in StringUtils.RenderSummary(Summary)) yield return line;
 
         var versionsString = VersionsString(Versions);
-        var versionsAttribute = string.IsNullOrEmpty(versionsString) ? 
+        var versionsAttribute = string.IsNullOrEmpty(versionsString) ?
             string.Empty :
             ", Versions=" + versionsString;
 
@@ -2749,7 +2764,7 @@ public class PropertyDetails
         }
         if (ReferenceTargets.Count > 0)
         {
-            yield return $"[References({ string.Join(",",ReferenceTargets.Select(rt => "\"" + rt + "\"")) })]";
+            yield return $"[References({ string.Join(",", ReferenceTargets.Select(rt => "\"" + rt + "\"")) })]";
         }
         foreach (var pair in AllowedTypesByVersion)
         {
@@ -2793,8 +2808,8 @@ public class PropertyDetails
             yield return "/// <remarks>This uses the native .NET datatype, rather than the FHIR equivalent</remarks>";
             yield return "[NotMapped]";
             yield return "[IgnoreDataMemberAttribute]";
-            var nativeType = IsMultiCard() ? 
-                $"IEnumerable<{ NativeType }>" : 
+            var nativeType = IsMultiCard() ?
+                $"IEnumerable<{ NativeType }>" :
                 NativeType;
             yield return $"public { nativeType  } { NativeName }";
             yield return "{";
@@ -2856,13 +2871,58 @@ public class PropertyDetails
 
     public IEnumerable<string> RenderParse()
     {
+        var elementVersions = VersionsString(Versions, "All");
         if (IsMultiCard())
         {
-            yield return $"{Name} = source.GetList<{PropType}>(\"{FhirName}\");";
+            if (PropType == "Hl7.Fhir.Model.FhirString")
+            {
+                yield return $"{Name} = source.GetStringList(\"{FhirName}\", {elementVersions});";
+            }
+            else
+            {
+                yield return $"{Name} = source.GetList<{PropType}>(\"{FhirName}\", {elementVersions});";
+            }
         }
         else
         {
-            yield return $"{Name} = source.GetProperty<{PropType}>(\"{FhirName}\");";
+            Match match;
+            if (PropType == "Hl7.Fhir.Model.FhirDateTime")
+            {
+                yield return $"{Name} = source.GetDateTimeProperty(\"{FhirName}\", {elementVersions});";
+            }
+            else if (PropType == "Hl7.Fhir.Model.Date")
+            {
+                yield return $"{Name} = source.GetDateProperty(\"{FhirName}\", {elementVersions});";
+            }
+            else if (PropType == "Hl7.Fhir.Model.FhirString")
+            {
+                yield return $"{Name} = source.GetStringProperty(\"{FhirName}\", {elementVersions});";
+            }
+            else if (PropType == "Hl7.Fhir.Model.Code")
+            {
+                yield return $"{Name} = source.GetCodeProperty(\"{FhirName}\", {elementVersions});";
+            }
+            else if (PropType == "Hl7.Fhir.Model.FhirUri")
+            {
+                yield return $"{Name} = source.GetUriProperty(\"{FhirName}\", {elementVersions});";
+            }
+            else if (PropType == "Hl7.Fhir.Model.FhirBoolean")
+            {
+                yield return $"{Name} = source.GetBooleanProperty(\"{FhirName}\", {elementVersions});";
+            }
+            else if (PropType == "Hl7.Fhir.Model.Base64Binary")
+            {
+                yield return $"{Name} = source.GetBinaryProperty(\"{FhirName}\", {elementVersions});";
+            }
+            else if ((match = Regex.Match(PropType, @"^Hl7\.Fhir\.Model\.Code<([^>]+)>$")).Success)
+            {
+                var enumType = match.Groups[1].Value;
+                yield return $"{Name} = source.GetCodeEnumProperty<{enumType}>(\"{FhirName}\", {elementVersions});";
+            }
+            else
+            {
+                yield return $"{Name} = source.GetProperty<{PropType}>(\"{FhirName}\", {elementVersions});";
+            }
         }
     }
 
@@ -3002,7 +3062,7 @@ public class PropertyDetails
     public static string ConvertPropertyType(string propType, XmlElement element, XmlNamespaceManager ns)
     {
         var nativeType = PrimitiveType.Get(propType);
-        if (nativeType != null )
+        if (nativeType != null)
         {
             return "Hl7.Fhir.Model." + nativeType.ClassName;
         }
@@ -3537,8 +3597,8 @@ public class SearchParameter
             // For multi-resources search parameters the description is something like 
             // 'Multiple Resources: &#xD;&#xA;&#xD;&#xA;* [ReferralRequest](referralrequest.html): Who the referral is about&#xD;&#xA;*....'
             var resourceDescription = description
-                .Split( new[] { "\r\n" }, StringSplitOptions.None )
-                .FirstOrDefault( d => d.Contains( $"[{resourceName}]" ) );
+                .Split(new[] { "\r\n" }, StringSplitOptions.None)
+                .FirstOrDefault(d => d.Contains($"[{resourceName}]"));
             if (resourceDescription == null)
             {
                 resourceDescription = string.Empty;
@@ -3550,7 +3610,7 @@ public class SearchParameter
                 {
                     resourceDescription = resourceDescription.Substring(index + 2);
                 }
-                resourceDescription = resourceDescription.Trim(new[] { ' ', '\r', '\n'});
+                resourceDescription = resourceDescription.Trim(new[] { ' ', '\r', '\n' });
             }
             _description = resourceDescription;
         }
@@ -3589,7 +3649,7 @@ public class SearchParameter
             var xpaths = xpath.Split(new char[] { '|', ' ' }, StringSplitOptions.RemoveEmptyEntries);
             var resourceXPaths = xpaths.Where(xp => xp.StartsWith($"f:{resourceName}/")).ToArray();
             _xpath = resourceXPaths.Any() ?
-                string.Join( " | ", resourceXPaths) :
+                string.Join(" | ", resourceXPaths) :
                 xpath;
             var resourceExpressions = expressions.Where(expr => expr.StartsWith($"{resourceName}.")).ToArray();
             if (!resourceExpressions.Any())
@@ -3600,7 +3660,7 @@ public class SearchParameter
             else
             {
                 _path = "\"" + string.Join("\", \"", resourceExpressions) + "\"";
-                _expression = string.Join( " | ", resourceExpressions );
+                _expression = string.Join(" | ", resourceExpressions);
             }
         }
 
@@ -3678,9 +3738,9 @@ valueSetsByUrlByVersion[string.Empty].Add(
         Url = "http://hl7.org/fhir/ValueSet/versions",
         Description = "Supported FHIR versions",
         Values = loadedVersions
-            .Select( (loadedVersion, index) => new ValueSetValue { Code = loadedVersion.Version, Value = (1 << index) })
+            .Select((loadedVersion, index) => new ValueSetValue { Code = loadedVersion.Version, Value = (1 << index) })
             .Concat(new[]{
-                new ValueSetValue { Code = "All", Value = (1 << loadedVersions.Count) - 1 }, 
+                new ValueSetValue { Code = "All", Value = (1 << loadedVersions.Count) - 1 },
                 new ValueSetValue { Code = "None", Value = 0 }
             })
             .ToList()

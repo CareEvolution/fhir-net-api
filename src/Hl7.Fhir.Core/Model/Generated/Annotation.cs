@@ -192,6 +192,27 @@ namespace Hl7.Fhir.Model
             sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.R4, true, false); TextElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Author = source.GetProperty<Hl7.Fhir.Model.Element>("author", Hl7.Fhir.Model.Version.All);
+            TimeElement = source.GetDateTimeProperty("time", Hl7.Fhir.Model.Version.All);
+            TextElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("text", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"author", typeof(Hl7.Fhir.Model.Element)},
+                {"time", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"text", typeof(Hl7.Fhir.Model.Markdown)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

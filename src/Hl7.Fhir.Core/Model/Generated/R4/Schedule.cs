@@ -312,6 +312,37 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("comment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); CommentElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            ServiceCategory = source.GetList<Hl7.Fhir.Model.CodeableConcept>("serviceCategory", Hl7.Fhir.Model.Version.All);
+            ServiceType = source.GetList<Hl7.Fhir.Model.CodeableConcept>("serviceType", Hl7.Fhir.Model.Version.All);
+            Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>("specialty", Hl7.Fhir.Model.Version.All);
+            Actor = source.GetList<Hl7.Fhir.Model.ResourceReference>("actor", Hl7.Fhir.Model.Version.All);
+            PlanningHorizon = source.GetProperty<Hl7.Fhir.Model.Period>("planningHorizon", Hl7.Fhir.Model.Version.All);
+            CommentElement = source.GetStringProperty("comment", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"serviceCategory", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"serviceType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"specialty", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"actor", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"planningHorizon", typeof(Hl7.Fhir.Model.Period)},
+                {"comment", typeof(Hl7.Fhir.Model.FhirString)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

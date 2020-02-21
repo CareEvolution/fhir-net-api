@@ -119,6 +119,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("item", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Item?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                RelationtypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.CatalogEntryRelationType>("relationtype", Hl7.Fhir.Model.Version.All);
+                Item = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("item", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"relationtype", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CatalogEntryRelationType>)},
+                    {"item", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -575,6 +594,47 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            OrderableElement = source.GetBooleanProperty("orderable", Hl7.Fhir.Model.Version.All);
+            ReferencedItem = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("referencedItem", Hl7.Fhir.Model.Version.All);
+            AdditionalIdentifier = source.GetList<Hl7.Fhir.Model.Identifier>("additionalIdentifier", Hl7.Fhir.Model.Version.All);
+            Classification = source.GetList<Hl7.Fhir.Model.CodeableConcept>("classification", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.PublicationStatus>("status", Hl7.Fhir.Model.Version.All);
+            ValidityPeriod = source.GetProperty<Hl7.Fhir.Model.Period>("validityPeriod", Hl7.Fhir.Model.Version.All);
+            ValidToElement = source.GetDateTimeProperty("validTo", Hl7.Fhir.Model.Version.All);
+            LastUpdatedElement = source.GetDateTimeProperty("lastUpdated", Hl7.Fhir.Model.Version.All);
+            AdditionalCharacteristic = source.GetList<Hl7.Fhir.Model.CodeableConcept>("additionalCharacteristic", Hl7.Fhir.Model.Version.All);
+            AdditionalClassification = source.GetList<Hl7.Fhir.Model.CodeableConcept>("additionalClassification", Hl7.Fhir.Model.Version.All);
+            RelatedEntry = source.GetList<RelatedEntryComponent>("relatedEntry", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"orderable", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"referencedItem", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"additionalIdentifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"classification", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>)},
+                {"validityPeriod", typeof(Hl7.Fhir.Model.Period)},
+                {"validTo", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"lastUpdated", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"additionalCharacteristic", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"additionalClassification", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"relatedEntry", typeof(RelatedEntryComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

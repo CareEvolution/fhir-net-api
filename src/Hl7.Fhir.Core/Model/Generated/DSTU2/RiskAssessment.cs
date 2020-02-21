@@ -181,6 +181,31 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("rationale", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); RationaleElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Outcome = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("outcome", Hl7.Fhir.Model.Version.All);
+                Probability = source.GetProperty<Hl7.Fhir.Model.Element>("probability", Hl7.Fhir.Model.Version.All);
+                RelativeRiskElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("relativeRisk", Hl7.Fhir.Model.Version.All);
+                When = source.GetProperty<Hl7.Fhir.Model.Element>("when", Hl7.Fhir.Model.Version.All);
+                RationaleElement = source.GetStringProperty("rationale", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"outcome", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"probability", typeof(Hl7.Fhir.Model.Element)},
+                    {"relativeRisk", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"when", typeof(Hl7.Fhir.Model.Element)},
+                    {"rationale", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -573,6 +598,41 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("mitigation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); MitigationElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            Condition = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("condition", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Performer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("performer", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Method = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("method", Hl7.Fhir.Model.Version.All);
+            Basis = source.GetList<Hl7.Fhir.Model.ResourceReference>("basis", Hl7.Fhir.Model.Version.All);
+            Prediction = source.GetList<PredictionComponent>("prediction", Hl7.Fhir.Model.Version.All);
+            MitigationElement = source.GetStringProperty("mitigation", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"condition", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"performer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"method", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"basis", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"prediction", typeof(PredictionComponent)},
+                {"mitigation", typeof(Hl7.Fhir.Model.FhirString)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -453,6 +453,51 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            RequestIdentifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("requestIdentifier", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Module = source.GetProperty<Hl7.Fhir.Model.Element>("module", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.GuidanceResponseStatus>("status", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            OccurrenceDateTimeElement = source.GetDateTimeProperty("occurrenceDateTime", Hl7.Fhir.Model.Version.All);
+            Performer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("performer", Hl7.Fhir.Model.Version.All);
+            ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reasonCode", Hl7.Fhir.Model.Version.All);
+            ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>("reasonReference", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            EvaluationMessage = source.GetList<Hl7.Fhir.Model.ResourceReference>("evaluationMessage", Hl7.Fhir.Model.Version.All);
+            OutputParameters = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("outputParameters", Hl7.Fhir.Model.Version.All);
+            Result = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("result", Hl7.Fhir.Model.Version.All);
+            DataRequirement = source.GetList<Hl7.Fhir.Model.R4.DataRequirement>("dataRequirement", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"requestIdentifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"module", typeof(Hl7.Fhir.Model.Element)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GuidanceResponseStatus>)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"occurrenceDateTime", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"performer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reasonCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reasonReference", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"evaluationMessage", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"outputParameters", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"result", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"dataRequirement", typeof(Hl7.Fhir.Model.R4.DataRequirement)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

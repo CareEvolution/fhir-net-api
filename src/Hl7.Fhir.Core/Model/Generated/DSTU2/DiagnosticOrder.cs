@@ -169,6 +169,29 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("actor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Actor?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>("status", Hl7.Fhir.Model.Version.All);
+                Description = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("description", Hl7.Fhir.Model.Version.All);
+                DateTimeElement = source.GetDateTimeProperty("dateTime", Hl7.Fhir.Model.Version.All);
+                Actor = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("actor", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>)},
+                    {"description", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"dateTime", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                    {"actor", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -371,6 +394,31 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>("specimen", Hl7.Fhir.Model.Version.All);
+                BodySite = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("bodySite", Hl7.Fhir.Model.Version.All);
+                StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>("status", Hl7.Fhir.Model.Version.All);
+                Event = source.GetList<EventComponent>("event", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"specimen", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"bodySite", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>)},
+                    {"event", typeof(EventComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -801,6 +849,45 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Orderer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("orderer", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reason", Hl7.Fhir.Model.Version.All);
+            SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>("supportingInformation", Hl7.Fhir.Model.Version.All);
+            Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>("specimen", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>("status", Hl7.Fhir.Model.Version.All);
+            PriorityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.DiagnosticOrderPriority>("priority", Hl7.Fhir.Model.Version.All);
+            Event = source.GetList<EventComponent>("event", Hl7.Fhir.Model.Version.All);
+            Item = source.GetList<ItemComponent>("item", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"orderer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"supportingInformation", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"specimen", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>)},
+                {"priority", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderPriority>)},
+                {"event", typeof(EventComponent)},
+                {"item", typeof(ItemComponent)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

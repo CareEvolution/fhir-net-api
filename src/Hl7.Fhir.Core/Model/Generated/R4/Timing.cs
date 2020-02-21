@@ -567,6 +567,51 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("offset", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OffsetElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Bounds = source.GetProperty<Hl7.Fhir.Model.Element>("bounds", Hl7.Fhir.Model.Version.All);
+                CountElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("count", Hl7.Fhir.Model.Version.All);
+                CountMaxElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("countMax", Hl7.Fhir.Model.Version.All);
+                DurationElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("duration", Hl7.Fhir.Model.Version.All);
+                DurationMaxElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("durationMax", Hl7.Fhir.Model.Version.All);
+                DurationUnitElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.UnitsOfTime>("durationUnit", Hl7.Fhir.Model.Version.All);
+                FrequencyElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("frequency", Hl7.Fhir.Model.Version.All);
+                FrequencyMaxElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("frequencyMax", Hl7.Fhir.Model.Version.All);
+                PeriodElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("period", Hl7.Fhir.Model.Version.All);
+                PeriodMaxElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("periodMax", Hl7.Fhir.Model.Version.All);
+                PeriodUnitElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.UnitsOfTime>("periodUnit", Hl7.Fhir.Model.Version.All);
+                DayOfWeekElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>>("dayOfWeek", Hl7.Fhir.Model.Version.All);
+                TimeOfDayElement = source.GetList<Hl7.Fhir.Model.Time>("timeOfDay", Hl7.Fhir.Model.Version.All);
+                WhenElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventTiming>>("when", Hl7.Fhir.Model.Version.All);
+                OffsetElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("offset", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"bounds", typeof(Hl7.Fhir.Model.Element)},
+                    {"count", typeof(Hl7.Fhir.Model.PositiveInt)},
+                    {"countMax", typeof(Hl7.Fhir.Model.PositiveInt)},
+                    {"duration", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"durationMax", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"durationUnit", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>)},
+                    {"frequency", typeof(Hl7.Fhir.Model.PositiveInt)},
+                    {"frequencyMax", typeof(Hl7.Fhir.Model.PositiveInt)},
+                    {"period", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"periodMax", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"periodUnit", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>)},
+                    {"dayOfWeek", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>)},
+                    {"timeOfDay", typeof(Hl7.Fhir.Model.Time)},
+                    {"when", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventTiming>)},
+                    {"offset", typeof(Hl7.Fhir.Model.UnsignedInt)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -906,6 +951,27 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Code?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            EventElement = source.GetList<Hl7.Fhir.Model.FhirDateTime>("event", Hl7.Fhir.Model.Version.All);
+            Repeat = source.GetProperty<RepeatComponent>("repeat", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"event", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"repeat", typeof(RepeatComponent)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -149,6 +149,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -778,6 +799,61 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+            Protocol = source.GetList<Hl7.Fhir.Model.ResourceReference>("protocol", Hl7.Fhir.Model.Version.All);
+            PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>("partOf", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.ResearchStudyStatus>("status", Hl7.Fhir.Model.Version.All);
+            Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>("category", Hl7.Fhir.Model.Version.All);
+            Focus = source.GetList<Hl7.Fhir.Model.CodeableConcept>("focus", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>("contact", Hl7.Fhir.Model.Version.All);
+            RelatedArtifact = source.GetList<Hl7.Fhir.Model.STU3.RelatedArtifact>("relatedArtifact", Hl7.Fhir.Model.Version.All);
+            Keyword = source.GetList<Hl7.Fhir.Model.CodeableConcept>("keyword", Hl7.Fhir.Model.Version.All);
+            Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>("jurisdiction", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("description", Hl7.Fhir.Model.Version.All);
+            Enrollment = source.GetList<Hl7.Fhir.Model.ResourceReference>("enrollment", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Sponsor = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("sponsor", Hl7.Fhir.Model.Version.All);
+            PrincipalInvestigator = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("principalInvestigator", Hl7.Fhir.Model.Version.All);
+            Site = source.GetList<Hl7.Fhir.Model.ResourceReference>("site", Hl7.Fhir.Model.Version.All);
+            ReasonStopped = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("reasonStopped", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            Arm = source.GetList<ArmComponent>("arm", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                {"protocol", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"partOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ResearchStudyStatus>)},
+                {"category", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"focus", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"contact", typeof(Hl7.Fhir.Model.STU3.ContactDetail)},
+                {"relatedArtifact", typeof(Hl7.Fhir.Model.STU3.RelatedArtifact)},
+                {"keyword", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"jurisdiction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"description", typeof(Hl7.Fhir.Model.Markdown)},
+                {"enrollment", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"sponsor", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"principalInvestigator", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"site", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reasonStopped", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"arm", typeof(ArmComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

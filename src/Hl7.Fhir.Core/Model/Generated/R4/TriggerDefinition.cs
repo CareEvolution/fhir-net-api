@@ -264,6 +264,31 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("condition", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Condition?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.TriggerType>("type", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            Timing = source.GetProperty<Hl7.Fhir.Model.Element>("timing", Hl7.Fhir.Model.Version.All);
+            Data = source.GetList<Hl7.Fhir.Model.R4.DataRequirement>("data", Hl7.Fhir.Model.Version.All);
+            Condition = source.GetProperty<Hl7.Fhir.Model.Expression>("condition", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.TriggerType>)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"timing", typeof(Hl7.Fhir.Model.Element)},
+                {"data", typeof(Hl7.Fhir.Model.R4.DataRequirement)},
+                {"condition", typeof(Hl7.Fhir.Model.Expression)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

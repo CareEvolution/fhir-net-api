@@ -117,6 +117,25 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TextElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Type = source.GetProperty<Hl7.Fhir.Model.Coding>("type", Hl7.Fhir.Model.Version.All);
+                TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.Coding)},
+                    {"text", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -527,6 +546,47 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Request = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("request", Hl7.Fhir.Model.Version.All);
+            Outcome = source.GetProperty<Hl7.Fhir.Model.Coding>("outcome", Hl7.Fhir.Model.Version.All);
+            DispositionElement = source.GetStringProperty("disposition", Hl7.Fhir.Model.Version.All);
+            Ruleset = source.GetProperty<Hl7.Fhir.Model.Coding>("ruleset", Hl7.Fhir.Model.Version.All);
+            OriginalRuleset = source.GetProperty<Hl7.Fhir.Model.Coding>("originalRuleset", Hl7.Fhir.Model.Version.All);
+            CreatedElement = source.GetDateTimeProperty("created", Hl7.Fhir.Model.Version.All);
+            Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.All);
+            RequestProvider = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("requestProvider", Hl7.Fhir.Model.Version.All);
+            RequestOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("requestOrganization", Hl7.Fhir.Model.Version.All);
+            Form = source.GetProperty<Hl7.Fhir.Model.Coding>("form", Hl7.Fhir.Model.Version.All);
+            Notes = source.GetList<NotesComponent>("notes", Hl7.Fhir.Model.Version.All);
+            Error = source.GetList<Hl7.Fhir.Model.Coding>("error", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"request", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"outcome", typeof(Hl7.Fhir.Model.Coding)},
+                {"disposition", typeof(Hl7.Fhir.Model.FhirString)},
+                {"ruleset", typeof(Hl7.Fhir.Model.Coding)},
+                {"originalRuleset", typeof(Hl7.Fhir.Model.Coding)},
+                {"created", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"requestProvider", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"requestOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"form", typeof(Hl7.Fhir.Model.Coding)},
+                {"notes", typeof(NotesComponent)},
+                {"error", typeof(Hl7.Fhir.Model.Coding)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -176,6 +176,25 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("content", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); ContentElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ContentTypeElement = source.GetCodeProperty("contentType", Hl7.Fhir.Model.Version.All);
+            ContentElement = source.GetBinaryProperty("content", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"contentType", typeof(Hl7.Fhir.Model.Code)},
+                {"content", typeof(Hl7.Fhir.Model.Base64Binary)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

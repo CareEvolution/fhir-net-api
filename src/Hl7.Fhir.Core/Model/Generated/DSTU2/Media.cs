@@ -481,6 +481,45 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("content", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Content?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DigitalMediaType>("type", Hl7.Fhir.Model.Version.All);
+            Subtype = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("subtype", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Operator = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("operator", Hl7.Fhir.Model.Version.All);
+            View = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("view", Hl7.Fhir.Model.Version.All);
+            DeviceNameElement = source.GetStringProperty("deviceName", Hl7.Fhir.Model.Version.All);
+            HeightElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("height", Hl7.Fhir.Model.Version.All);
+            WidthElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("width", Hl7.Fhir.Model.Version.All);
+            FramesElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("frames", Hl7.Fhir.Model.Version.All);
+            DurationElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("duration", Hl7.Fhir.Model.Version.All);
+            Content = source.GetProperty<Hl7.Fhir.Model.Attachment>("content", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DigitalMediaType>)},
+                {"subtype", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"operator", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"view", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"deviceName", typeof(Hl7.Fhir.Model.FhirString)},
+                {"height", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"width", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"frames", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"duration", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                {"content", typeof(Hl7.Fhir.Model.Attachment)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

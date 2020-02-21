@@ -69,10 +69,13 @@ namespace Hl7.Fhir.Serialization
                         case JsonToken.Float:
                         case JsonToken.Date:
                         case JsonToken.Boolean:
-                            _source.Attribute(currentPropertyName, (bool)jsonReader.Value);
+                            _source.Attribute(currentPropertyName, jsonReader.Value);
                             currentPropertyName = null;
                             break;
                         case JsonToken.Null:
+                            _source.Attribute(currentPropertyName, jsonReader.Value);
+                            currentPropertyName = null;
+                            break;
                         case JsonToken.Undefined:
                             throw new NotSupportedException();
                         case JsonToken.EndObject:

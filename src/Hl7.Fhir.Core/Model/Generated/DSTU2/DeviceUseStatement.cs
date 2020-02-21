@@ -288,6 +288,39 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("timing", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Timing?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            BodySite = source.GetProperty<Hl7.Fhir.Model.Element>("bodySite", Hl7.Fhir.Model.Version.All);
+            WhenUsed = source.GetProperty<Hl7.Fhir.Model.Period>("whenUsed", Hl7.Fhir.Model.Version.All);
+            Device = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("device", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Indication = source.GetList<Hl7.Fhir.Model.CodeableConcept>("indication", Hl7.Fhir.Model.Version.All);
+            NotesElement = source.GetStringList("notes", Hl7.Fhir.Model.Version.All);
+            RecordedOnElement = source.GetDateTimeProperty("recordedOn", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Timing = source.GetProperty<Hl7.Fhir.Model.Element>("timing", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"bodySite", typeof(Hl7.Fhir.Model.Element)},
+                {"whenUsed", typeof(Hl7.Fhir.Model.Period)},
+                {"device", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"indication", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"notes", typeof(Hl7.Fhir.Model.FhirString)},
+                {"recordedOn", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"timing", typeof(Hl7.Fhir.Model.Element)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

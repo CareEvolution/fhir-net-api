@@ -99,6 +99,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("actor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Actor?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Function = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("function", Hl7.Fhir.Model.Version.All);
+                Actor = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("actor", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"function", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"actor", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -866,6 +885,73 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            DefinitionUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>("definitionUri", Hl7.Fhir.Model.Version.All);
+            DefinitionCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>("definitionCanonical", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ChargeItemStatus>("status", Hl7.Fhir.Model.Version.All);
+            PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>("partOf", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Context = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("context", Hl7.Fhir.Model.Version.All);
+            Occurrence = source.GetProperty<Hl7.Fhir.Model.Element>("occurrence", Hl7.Fhir.Model.Version.All);
+            Performer = source.GetList<PerformerComponent>("performer", Hl7.Fhir.Model.Version.All);
+            PerformingOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("performingOrganization", Hl7.Fhir.Model.Version.All);
+            RequestingOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("requestingOrganization", Hl7.Fhir.Model.Version.All);
+            CostCenter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("costCenter", Hl7.Fhir.Model.Version.All);
+            Quantity = source.GetProperty<Hl7.Fhir.Model.Quantity>("quantity", Hl7.Fhir.Model.Version.All);
+            Bodysite = source.GetList<Hl7.Fhir.Model.CodeableConcept>("bodysite", Hl7.Fhir.Model.Version.All);
+            FactorOverrideElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("factorOverride", Hl7.Fhir.Model.Version.All);
+            PriceOverride = source.GetProperty<Hl7.Fhir.Model.R4.Money>("priceOverride", Hl7.Fhir.Model.Version.All);
+            OverrideReasonElement = source.GetStringProperty("overrideReason", Hl7.Fhir.Model.Version.All);
+            Enterer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("enterer", Hl7.Fhir.Model.Version.All);
+            EnteredDateElement = source.GetDateTimeProperty("enteredDate", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reason", Hl7.Fhir.Model.Version.All);
+            Service = source.GetList<Hl7.Fhir.Model.ResourceReference>("service", Hl7.Fhir.Model.Version.All);
+            Product = source.GetProperty<Hl7.Fhir.Model.Element>("product", Hl7.Fhir.Model.Version.All);
+            Account = source.GetList<Hl7.Fhir.Model.ResourceReference>("account", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>("supportingInformation", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"definitionUri", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"definitionCanonical", typeof(Hl7.Fhir.Model.Canonical)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ChargeItemStatus>)},
+                {"partOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"context", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"occurrence", typeof(Hl7.Fhir.Model.Element)},
+                {"performer", typeof(PerformerComponent)},
+                {"performingOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"requestingOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"costCenter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"quantity", typeof(Hl7.Fhir.Model.Quantity)},
+                {"bodysite", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"factorOverride", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                {"priceOverride", typeof(Hl7.Fhir.Model.R4.Money)},
+                {"overrideReason", typeof(Hl7.Fhir.Model.FhirString)},
+                {"enterer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"enteredDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"reason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"service", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"product", typeof(Hl7.Fhir.Model.Element)},
+                {"account", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"supportingInformation", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

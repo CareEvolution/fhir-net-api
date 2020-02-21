@@ -541,6 +541,51 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("notes", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NotesElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Product = source.GetProperty<Hl7.Fhir.Model.Coding>("product", Hl7.Fhir.Model.Version.All);
+                EyeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.VisionEyes>("eye", Hl7.Fhir.Model.Version.All);
+                SphereElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("sphere", Hl7.Fhir.Model.Version.All);
+                CylinderElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("cylinder", Hl7.Fhir.Model.Version.All);
+                AxisElement = source.GetProperty<Hl7.Fhir.Model.Integer>("axis", Hl7.Fhir.Model.Version.All);
+                PrismElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("prism", Hl7.Fhir.Model.Version.All);
+                BaseElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.VisionBase>("base", Hl7.Fhir.Model.Version.All);
+                AddElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("add", Hl7.Fhir.Model.Version.All);
+                PowerElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("power", Hl7.Fhir.Model.Version.All);
+                BackCurveElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("backCurve", Hl7.Fhir.Model.Version.All);
+                DiameterElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("diameter", Hl7.Fhir.Model.Version.All);
+                Duration = source.GetProperty<Hl7.Fhir.Model.SimpleQuantity>("duration", Hl7.Fhir.Model.Version.All);
+                ColorElement = source.GetStringProperty("color", Hl7.Fhir.Model.Version.All);
+                BrandElement = source.GetStringProperty("brand", Hl7.Fhir.Model.Version.All);
+                NotesElement = source.GetStringProperty("notes", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"product", typeof(Hl7.Fhir.Model.Coding)},
+                    {"eye", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionEyes>)},
+                    {"sphere", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"cylinder", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"axis", typeof(Hl7.Fhir.Model.Integer)},
+                    {"prism", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"base", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionBase>)},
+                    {"add", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"power", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"backCurve", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"diameter", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"duration", typeof(Hl7.Fhir.Model.SimpleQuantity)},
+                    {"color", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"brand", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"notes", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -884,6 +929,35 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            DateWrittenElement = source.GetDateTimeProperty("dateWritten", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            Prescriber = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("prescriber", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetProperty<Hl7.Fhir.Model.Element>("reason", Hl7.Fhir.Model.Version.All);
+            Dispense = source.GetList<DispenseComponent>("dispense", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"dateWritten", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"prescriber", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reason", typeof(Hl7.Fhir.Model.Element)},
+                {"dispense", typeof(DispenseComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -116,6 +116,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("preferred", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PreferredElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Language = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("language", Hl7.Fhir.Model.Version.All);
+                PreferredElement = source.GetBooleanProperty("preferred", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"language", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"preferred", typeof(Hl7.Fhir.Model.FhirBoolean)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -550,6 +569,45 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            Relationship = source.GetList<Hl7.Fhir.Model.CodeableConcept>("relationship", Hl7.Fhir.Model.Version.All);
+            Name = source.GetList<Hl7.Fhir.Model.R4.HumanName>("name", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            GenderElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.AdministrativeGender>("gender", Hl7.Fhir.Model.Version.All);
+            BirthDateElement = source.GetDateProperty("birthDate", Hl7.Fhir.Model.Version.All);
+            Address = source.GetList<Hl7.Fhir.Model.Address>("address", Hl7.Fhir.Model.Version.All);
+            Photo = source.GetList<Hl7.Fhir.Model.Attachment>("photo", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Communication = source.GetList<CommunicationComponent>("communication", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"relationship", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"name", typeof(Hl7.Fhir.Model.R4.HumanName)},
+                {"telecom", typeof(Hl7.Fhir.Model.R4.ContactPoint)},
+                {"gender", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>)},
+                {"birthDate", typeof(Hl7.Fhir.Model.Date)},
+                {"address", typeof(Hl7.Fhir.Model.Address)},
+                {"photo", typeof(Hl7.Fhir.Model.Attachment)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"communication", typeof(CommunicationComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

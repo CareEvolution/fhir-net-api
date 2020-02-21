@@ -482,6 +482,51 @@ namespace Hl7.Fhir.Model.STU3
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                LinkIdElement = source.GetStringProperty("linkId", Hl7.Fhir.Model.Version.All);
+                DefinitionElement = source.GetUriProperty("definition", Hl7.Fhir.Model.Version.All);
+                Code = source.GetList<Hl7.Fhir.Model.Coding>("code", Hl7.Fhir.Model.Version.All);
+                PrefixElement = source.GetStringProperty("prefix", Hl7.Fhir.Model.Version.All);
+                TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+                TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.QuestionnaireItemType>("type", Hl7.Fhir.Model.Version.All);
+                EnableWhen = source.GetList<EnableWhenComponent>("enableWhen", Hl7.Fhir.Model.Version.All);
+                RequiredElement = source.GetBooleanProperty("required", Hl7.Fhir.Model.Version.All);
+                RepeatsElement = source.GetBooleanProperty("repeats", Hl7.Fhir.Model.Version.All);
+                ReadOnlyElement = source.GetBooleanProperty("readOnly", Hl7.Fhir.Model.Version.All);
+                MaxLengthElement = source.GetProperty<Hl7.Fhir.Model.Integer>("maxLength", Hl7.Fhir.Model.Version.All);
+                Options = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("options", Hl7.Fhir.Model.Version.All);
+                Option = source.GetList<OptionComponent>("option", Hl7.Fhir.Model.Version.All);
+                Initial = source.GetProperty<Hl7.Fhir.Model.Element>("initial", Hl7.Fhir.Model.Version.All);
+                Item = source.GetList<ItemComponent>("item", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"linkId", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"definition", typeof(Hl7.Fhir.Model.FhirUri)},
+                    {"code", typeof(Hl7.Fhir.Model.Coding)},
+                    {"prefix", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"text", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuestionnaireItemType>)},
+                    {"enableWhen", typeof(EnableWhenComponent)},
+                    {"required", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"repeats", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"readOnly", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"maxLength", typeof(Hl7.Fhir.Model.Integer)},
+                    {"options", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"option", typeof(OptionComponent)},
+                    {"initial", typeof(Hl7.Fhir.Model.Element)},
+                    {"item", typeof(ItemComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -715,6 +760,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("answer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Answer?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                QuestionElement = source.GetStringProperty("question", Hl7.Fhir.Model.Version.All);
+                HasAnswerElement = source.GetBooleanProperty("hasAnswer", Hl7.Fhir.Model.Version.All);
+                Answer = source.GetProperty<Hl7.Fhir.Model.Element>("answer", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"question", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"hasAnswer", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"answer", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -822,6 +888,23 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, true); Value?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Value = source.GetProperty<Hl7.Fhir.Model.Element>("value", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"value", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1702,6 +1785,63 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            VersionElement = source.GetStringProperty("version", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.PublicationStatus>("status", Hl7.Fhir.Model.Version.All);
+            ExperimentalElement = source.GetBooleanProperty("experimental", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            PublisherElement = source.GetStringProperty("publisher", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("description", Hl7.Fhir.Model.Version.All);
+            PurposeElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("purpose", Hl7.Fhir.Model.Version.All);
+            ApprovalDateElement = source.GetDateProperty("approvalDate", Hl7.Fhir.Model.Version.All);
+            LastReviewDateElement = source.GetDateProperty("lastReviewDate", Hl7.Fhir.Model.Version.All);
+            EffectivePeriod = source.GetProperty<Hl7.Fhir.Model.Period>("effectivePeriod", Hl7.Fhir.Model.Version.All);
+            UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>("useContext", Hl7.Fhir.Model.Version.All);
+            Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>("jurisdiction", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>("contact", Hl7.Fhir.Model.Version.All);
+            CopyrightElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("copyright", Hl7.Fhir.Model.Version.All);
+            Code = source.GetList<Hl7.Fhir.Model.Coding>("code", Hl7.Fhir.Model.Version.All);
+            SubjectTypeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>("subjectType", Hl7.Fhir.Model.Version.All);
+            Item = source.GetList<ItemComponent>("item", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"version", typeof(Hl7.Fhir.Model.FhirString)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>)},
+                {"experimental", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"publisher", typeof(Hl7.Fhir.Model.FhirString)},
+                {"description", typeof(Hl7.Fhir.Model.Markdown)},
+                {"purpose", typeof(Hl7.Fhir.Model.Markdown)},
+                {"approvalDate", typeof(Hl7.Fhir.Model.Date)},
+                {"lastReviewDate", typeof(Hl7.Fhir.Model.Date)},
+                {"effectivePeriod", typeof(Hl7.Fhir.Model.Period)},
+                {"useContext", typeof(Hl7.Fhir.Model.UsageContext)},
+                {"jurisdiction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"contact", typeof(Hl7.Fhir.Model.STU3.ContactDetail)},
+                {"copyright", typeof(Hl7.Fhir.Model.Markdown)},
+                {"code", typeof(Hl7.Fhir.Model.Coding)},
+                {"subjectType", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>)},
+                {"item", typeof(ItemComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

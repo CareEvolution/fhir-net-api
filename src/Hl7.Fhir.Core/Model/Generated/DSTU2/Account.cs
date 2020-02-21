@@ -360,6 +360,43 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DescriptionElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeProperty("status", Hl7.Fhir.Model.Version.All);
+            ActivePeriod = source.GetProperty<Hl7.Fhir.Model.Period>("activePeriod", Hl7.Fhir.Model.Version.All);
+            Currency = source.GetProperty<Hl7.Fhir.Model.Coding>("currency", Hl7.Fhir.Model.Version.All);
+            Balance = source.GetProperty<Hl7.Fhir.Model.DSTU2.Money>("balance", Hl7.Fhir.Model.Version.All);
+            CoveragePeriod = source.GetProperty<Hl7.Fhir.Model.Period>("coveragePeriod", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Owner = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("owner", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"status", typeof(Hl7.Fhir.Model.Code)},
+                {"activePeriod", typeof(Hl7.Fhir.Model.Period)},
+                {"currency", typeof(Hl7.Fhir.Model.Coding)},
+                {"balance", typeof(Hl7.Fhir.Model.DSTU2.Money)},
+                {"coveragePeriod", typeof(Hl7.Fhir.Model.Period)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"owner", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -311,6 +311,37 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("consent", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Consent?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.ResearchSubjectStatus>("status", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Study = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("study", Hl7.Fhir.Model.Version.All);
+            Individual = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("individual", Hl7.Fhir.Model.Version.All);
+            AssignedArmElement = source.GetStringProperty("assignedArm", Hl7.Fhir.Model.Version.All);
+            ActualArmElement = source.GetStringProperty("actualArm", Hl7.Fhir.Model.Version.All);
+            Consent = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("consent", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ResearchSubjectStatus>)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"study", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"individual", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"assignedArm", typeof(Hl7.Fhir.Model.FhirString)},
+                {"actualArm", typeof(Hl7.Fhir.Model.FhirString)},
+                {"consent", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -347,6 +347,43 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.SupplyDeliveryStatus>("status", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            Quantity = source.GetProperty<Hl7.Fhir.Model.SimpleQuantity>("quantity", Hl7.Fhir.Model.Version.All);
+            SuppliedItem = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("suppliedItem", Hl7.Fhir.Model.Version.All);
+            Supplier = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("supplier", Hl7.Fhir.Model.Version.All);
+            WhenPrepared = source.GetProperty<Hl7.Fhir.Model.Period>("whenPrepared", Hl7.Fhir.Model.Version.All);
+            TimeElement = source.GetDateTimeProperty("time", Hl7.Fhir.Model.Version.All);
+            Destination = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("destination", Hl7.Fhir.Model.Version.All);
+            Receiver = source.GetList<Hl7.Fhir.Model.ResourceReference>("receiver", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SupplyDeliveryStatus>)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"quantity", typeof(Hl7.Fhir.Model.SimpleQuantity)},
+                {"suppliedItem", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"supplier", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"whenPrepared", typeof(Hl7.Fhir.Model.Period)},
+                {"time", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"destination", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"receiver", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

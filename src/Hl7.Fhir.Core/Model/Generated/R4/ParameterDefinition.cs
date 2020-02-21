@@ -359,6 +359,35 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("profile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ProfileElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            NameElement = source.GetCodeProperty("name", Hl7.Fhir.Model.Version.All);
+            UseElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.OperationParameterUse>("use", Hl7.Fhir.Model.Version.All);
+            MinElement = source.GetProperty<Hl7.Fhir.Model.Integer>("min", Hl7.Fhir.Model.Version.All);
+            MaxElement = source.GetStringProperty("max", Hl7.Fhir.Model.Version.All);
+            DocumentationElement = source.GetStringProperty("documentation", Hl7.Fhir.Model.Version.All);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.FHIRAllTypes>("type", Hl7.Fhir.Model.Version.All);
+            ProfileElement = source.GetProperty<Hl7.Fhir.Model.Canonical>("profile", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"name", typeof(Hl7.Fhir.Model.Code)},
+                {"use", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.OperationParameterUse>)},
+                {"min", typeof(Hl7.Fhir.Model.Integer)},
+                {"max", typeof(Hl7.Fhir.Model.FhirString)},
+                {"documentation", typeof(Hl7.Fhir.Model.FhirString)},
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.FHIRAllTypes>)},
+                {"profile", typeof(Hl7.Fhir.Model.Canonical)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

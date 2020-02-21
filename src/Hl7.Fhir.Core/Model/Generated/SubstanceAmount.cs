@@ -96,6 +96,25 @@ namespace Hl7.Fhir.Model
                 sink.Element("highLimit", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); HighLimit?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                LowLimit = source.GetProperty<Hl7.Fhir.Model.Quantity>("lowLimit", Hl7.Fhir.Model.Version.R4);
+                HighLimit = source.GetProperty<Hl7.Fhir.Model.Quantity>("highLimit", Hl7.Fhir.Model.Version.R4);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"lowLimit", typeof(Hl7.Fhir.Model.Quantity)},
+                    {"highLimit", typeof(Hl7.Fhir.Model.Quantity)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -305,6 +324,29 @@ namespace Hl7.Fhir.Model
             sink.Element("referenceRange", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); ReferenceRange?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Amount = source.GetProperty<Hl7.Fhir.Model.Element>("amount", Hl7.Fhir.Model.Version.R4);
+            AmountType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("amountType", Hl7.Fhir.Model.Version.R4);
+            AmountTextElement = source.GetStringProperty("amountText", Hl7.Fhir.Model.Version.R4);
+            ReferenceRange = source.GetProperty<ReferenceRangeComponent>("referenceRange", Hl7.Fhir.Model.Version.R4);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"amount", typeof(Hl7.Fhir.Model.Element)},
+                {"amountType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"amountText", typeof(Hl7.Fhir.Model.FhirString)},
+                {"referenceRange", typeof(ReferenceRangeComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

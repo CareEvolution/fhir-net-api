@@ -235,6 +235,35 @@ namespace Hl7.Fhir.Model.STU3
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Substance = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("substance", Hl7.Fhir.Model.Version.All);
+                Manifestation = source.GetList<Hl7.Fhir.Model.CodeableConcept>("manifestation", Hl7.Fhir.Model.Version.All);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+                OnsetElement = source.GetDateTimeProperty("onset", Hl7.Fhir.Model.Version.All);
+                SeverityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.AllergyIntoleranceSeverity>("severity", Hl7.Fhir.Model.Version.All);
+                ExposureRoute = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("exposureRoute", Hl7.Fhir.Model.Version.All);
+                Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"substance", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"manifestation", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"onset", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                    {"severity", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AllergyIntoleranceSeverity>)},
+                    {"exposureRoute", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"note", typeof(Hl7.Fhir.Model.Annotation)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -832,6 +861,51 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            ClinicalStatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.AllergyIntoleranceClinicalStatus>("clinicalStatus", Hl7.Fhir.Model.Version.All);
+            VerificationStatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.AllergyIntoleranceVerificationStatus>("verificationStatus", Hl7.Fhir.Model.Version.All);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.AllergyIntoleranceType>("type", Hl7.Fhir.Model.Version.All);
+            CategoryElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AllergyIntoleranceCategory>>("category", Hl7.Fhir.Model.Version.All);
+            CriticalityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.AllergyIntoleranceCriticality>("criticality", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            Onset = source.GetProperty<Hl7.Fhir.Model.Element>("onset", Hl7.Fhir.Model.Version.All);
+            AssertedDateElement = source.GetDateTimeProperty("assertedDate", Hl7.Fhir.Model.Version.All);
+            Recorder = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("recorder", Hl7.Fhir.Model.Version.All);
+            Asserter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("asserter", Hl7.Fhir.Model.Version.All);
+            LastOccurrenceElement = source.GetDateTimeProperty("lastOccurrence", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            Reaction = source.GetList<ReactionComponent>("reaction", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"clinicalStatus", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AllergyIntoleranceClinicalStatus>)},
+                {"verificationStatus", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AllergyIntoleranceVerificationStatus>)},
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AllergyIntoleranceType>)},
+                {"category", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AllergyIntoleranceCategory>)},
+                {"criticality", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AllergyIntoleranceCriticality>)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"onset", typeof(Hl7.Fhir.Model.Element)},
+                {"assertedDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"recorder", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"asserter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"lastOccurrence", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"reaction", typeof(ReactionComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

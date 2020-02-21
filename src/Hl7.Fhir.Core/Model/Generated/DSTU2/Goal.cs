@@ -84,6 +84,23 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("result", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Result?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Result = source.GetProperty<Hl7.Fhir.Model.Element>("result", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"result", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -538,6 +555,49 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Start = source.GetProperty<Hl7.Fhir.Model.Element>("start", Hl7.Fhir.Model.Version.All);
+            Target = source.GetProperty<Hl7.Fhir.Model.Element>("target", Hl7.Fhir.Model.Version.All);
+            Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>("category", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.GoalStatus>("status", Hl7.Fhir.Model.Version.All);
+            StatusDateElement = source.GetDateProperty("statusDate", Hl7.Fhir.Model.Version.All);
+            StatusReason = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("statusReason", Hl7.Fhir.Model.Version.All);
+            Author = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("author", Hl7.Fhir.Model.Version.All);
+            Priority = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("priority", Hl7.Fhir.Model.Version.All);
+            Addresses = source.GetList<Hl7.Fhir.Model.ResourceReference>("addresses", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            Outcome = source.GetList<OutcomeComponent>("outcome", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"start", typeof(Hl7.Fhir.Model.Element)},
+                {"target", typeof(Hl7.Fhir.Model.Element)},
+                {"category", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.GoalStatus>)},
+                {"statusDate", typeof(Hl7.Fhir.Model.Date)},
+                {"statusReason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"author", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"priority", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"addresses", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"outcome", typeof(OutcomeComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -340,6 +340,41 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("paymentStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PaymentStatus?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.FinancialResourceStatusCodes>("status", Hl7.Fhir.Model.Version.All);
+            Request = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("request", Hl7.Fhir.Model.Version.All);
+            Response = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("response", Hl7.Fhir.Model.Version.All);
+            StatusDateElement = source.GetDateProperty("statusDate", Hl7.Fhir.Model.Version.All);
+            CreatedElement = source.GetDateTimeProperty("created", Hl7.Fhir.Model.Version.All);
+            Target = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("target", Hl7.Fhir.Model.Version.All);
+            Provider = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("provider", Hl7.Fhir.Model.Version.All);
+            Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.All);
+            PaymentStatus = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("paymentStatus", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>)},
+                {"request", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"response", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"statusDate", typeof(Hl7.Fhir.Model.Date)},
+                {"created", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"target", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"provider", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"paymentStatus", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

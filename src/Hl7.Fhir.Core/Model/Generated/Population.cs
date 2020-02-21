@@ -171,6 +171,29 @@ namespace Hl7.Fhir.Model
             sink.Element("physiologicalCondition", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); PhysiologicalCondition?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Age = source.GetProperty<Hl7.Fhir.Model.Element>("age", Hl7.Fhir.Model.Version.R4);
+            Gender = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("gender", Hl7.Fhir.Model.Version.R4);
+            Race = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("race", Hl7.Fhir.Model.Version.R4);
+            PhysiologicalCondition = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("physiologicalCondition", Hl7.Fhir.Model.Version.R4);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"age", typeof(Hl7.Fhir.Model.Element)},
+                {"gender", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"race", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"physiologicalCondition", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

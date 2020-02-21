@@ -102,6 +102,23 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("sequenceLinkId", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); SequenceLinkIdElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                SequenceLinkIdElement = source.GetProperty<Hl7.Fhir.Model.Integer>("sequenceLinkId", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"sequenceLinkId", typeof(Hl7.Fhir.Model.Integer)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -630,6 +647,51 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Period?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.FinancialResourceStatusCodes>("status", Hl7.Fhir.Model.Version.All);
+            ActionElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ActionList>("action", Hl7.Fhir.Model.Version.All);
+            Target = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("target", Hl7.Fhir.Model.Version.All);
+            CreatedElement = source.GetDateTimeProperty("created", Hl7.Fhir.Model.Version.All);
+            Provider = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("provider", Hl7.Fhir.Model.Version.All);
+            Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.All);
+            Request = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("request", Hl7.Fhir.Model.Version.All);
+            Response = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("response", Hl7.Fhir.Model.Version.All);
+            NullifyElement = source.GetBooleanProperty("nullify", Hl7.Fhir.Model.Version.All);
+            ReferenceElement = source.GetStringProperty("reference", Hl7.Fhir.Model.Version.All);
+            Item = source.GetList<ItemsComponent>("item", Hl7.Fhir.Model.Version.All);
+            IncludeElement = source.GetStringList("include", Hl7.Fhir.Model.Version.All);
+            ExcludeElement = source.GetStringList("exclude", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>)},
+                {"action", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionList>)},
+                {"target", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"created", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"provider", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"request", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"response", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"nullify", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"reference", typeof(Hl7.Fhir.Model.FhirString)},
+                {"item", typeof(ItemsComponent)},
+                {"include", typeof(Hl7.Fhir.Model.FhirString)},
+                {"exclude", typeof(Hl7.Fhir.Model.FhirString)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -138,6 +138,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("url", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); UrlElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                RelationElement = source.GetStringProperty("relation", Hl7.Fhir.Model.Version.All);
+                UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"relation", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -351,6 +370,33 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("response", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Response?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Link = source.GetList<LinkComponent>("link", Hl7.Fhir.Model.Version.All);
+                FullUrlElement = source.GetUriProperty("fullUrl", Hl7.Fhir.Model.Version.All);
+                Resource = source.GetProperty<Hl7.Fhir.Model.Resource>("resource", Hl7.Fhir.Model.Version.All);
+                Search = source.GetProperty<SearchComponent>("search", Hl7.Fhir.Model.Version.All);
+                Request = source.GetProperty<RequestComponent>("request", Hl7.Fhir.Model.Version.All);
+                Response = source.GetProperty<ResponseComponent>("response", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"link", typeof(LinkComponent)},
+                    {"fullUrl", typeof(Hl7.Fhir.Model.FhirUri)},
+                    {"resource", typeof(Hl7.Fhir.Model.Resource)},
+                    {"search", typeof(SearchComponent)},
+                    {"request", typeof(RequestComponent)},
+                    {"response", typeof(ResponseComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -524,6 +570,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("score", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ScoreElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                ModeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.SearchEntryMode>("mode", Hl7.Fhir.Model.Version.All);
+                ScoreElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("score", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"mode", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchEntryMode>)},
+                    {"score", typeof(Hl7.Fhir.Model.FhirDecimal)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -815,6 +880,33 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("ifNoneExist", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); IfNoneExistElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                MethodElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.HTTPVerb>("method", Hl7.Fhir.Model.Version.All);
+                UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+                IfNoneMatchElement = source.GetStringProperty("ifNoneMatch", Hl7.Fhir.Model.Version.All);
+                IfModifiedSinceElement = source.GetProperty<Hl7.Fhir.Model.Instant>("ifModifiedSince", Hl7.Fhir.Model.Version.All);
+                IfMatchElement = source.GetStringProperty("ifMatch", Hl7.Fhir.Model.Version.All);
+                IfNoneExistElement = source.GetStringProperty("ifNoneExist", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"method", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.HTTPVerb>)},
+                    {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+                    {"ifNoneMatch", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"ifModifiedSince", typeof(Hl7.Fhir.Model.Instant)},
+                    {"ifMatch", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"ifNoneExist", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1073,6 +1165,31 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("outcome", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Outcome?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                StatusElement = source.GetStringProperty("status", Hl7.Fhir.Model.Version.All);
+                LocationElement = source.GetUriProperty("location", Hl7.Fhir.Model.Version.All);
+                EtagElement = source.GetStringProperty("etag", Hl7.Fhir.Model.Version.All);
+                LastModifiedElement = source.GetProperty<Hl7.Fhir.Model.Instant>("lastModified", Hl7.Fhir.Model.Version.All);
+                Outcome = source.GetProperty<Hl7.Fhir.Model.Resource>("outcome", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"status", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"location", typeof(Hl7.Fhir.Model.FhirUri)},
+                    {"etag", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"lastModified", typeof(Hl7.Fhir.Model.Instant)},
+                    {"outcome", typeof(Hl7.Fhir.Model.Resource)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1508,6 +1625,35 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("signature", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Signature?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.BundleType>("type", Hl7.Fhir.Model.Version.All);
+            TimestampElement = source.GetProperty<Hl7.Fhir.Model.Instant>("timestamp", Hl7.Fhir.Model.Version.All);
+            TotalElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("total", Hl7.Fhir.Model.Version.All);
+            Link = source.GetList<LinkComponent>("link", Hl7.Fhir.Model.Version.All);
+            Entry = source.GetList<EntryComponent>("entry", Hl7.Fhir.Model.Version.All);
+            Signature = source.GetProperty<Hl7.Fhir.Model.R4.Signature>("signature", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.BundleType>)},
+                {"timestamp", typeof(Hl7.Fhir.Model.Instant)},
+                {"total", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                {"link", typeof(LinkComponent)},
+                {"entry", typeof(EntryComponent)},
+                {"signature", typeof(Hl7.Fhir.Model.R4.Signature)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

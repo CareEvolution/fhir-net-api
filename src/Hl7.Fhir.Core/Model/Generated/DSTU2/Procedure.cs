@@ -99,6 +99,25 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("role", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Role?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Actor = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("actor", Hl7.Fhir.Model.Version.All);
+                Role = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("role", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"actor", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"role", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -215,6 +234,25 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("manipulated", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Manipulated?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Action = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("action", Hl7.Fhir.Model.Version.All);
+                Manipulated = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("manipulated", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"action", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"manipulated", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -837,6 +875,63 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.ProcedureStatus>("status", Hl7.Fhir.Model.Version.All);
+            Category = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("category", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            NotPerformedElement = source.GetBooleanProperty("notPerformed", Hl7.Fhir.Model.Version.All);
+            ReasonNotPerformed = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reasonNotPerformed", Hl7.Fhir.Model.Version.All);
+            BodySite = source.GetList<Hl7.Fhir.Model.CodeableConcept>("bodySite", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetProperty<Hl7.Fhir.Model.Element>("reason", Hl7.Fhir.Model.Version.All);
+            Performer = source.GetList<PerformerComponent>("performer", Hl7.Fhir.Model.Version.All);
+            Performed = source.GetProperty<Hl7.Fhir.Model.Element>("performed", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Location = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("location", Hl7.Fhir.Model.Version.All);
+            Outcome = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("outcome", Hl7.Fhir.Model.Version.All);
+            Report = source.GetList<Hl7.Fhir.Model.ResourceReference>("report", Hl7.Fhir.Model.Version.All);
+            Complication = source.GetList<Hl7.Fhir.Model.CodeableConcept>("complication", Hl7.Fhir.Model.Version.All);
+            FollowUp = source.GetList<Hl7.Fhir.Model.CodeableConcept>("followUp", Hl7.Fhir.Model.Version.All);
+            Request = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("request", Hl7.Fhir.Model.Version.All);
+            Notes = source.GetList<Hl7.Fhir.Model.Annotation>("notes", Hl7.Fhir.Model.Version.All);
+            FocalDevice = source.GetList<FocalDeviceComponent>("focalDevice", Hl7.Fhir.Model.Version.All);
+            Used = source.GetList<Hl7.Fhir.Model.ResourceReference>("used", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureStatus>)},
+                {"category", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"notPerformed", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"reasonNotPerformed", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"bodySite", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reason", typeof(Hl7.Fhir.Model.Element)},
+                {"performer", typeof(PerformerComponent)},
+                {"performed", typeof(Hl7.Fhir.Model.Element)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"location", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"outcome", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"report", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"complication", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"followUp", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"request", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"notes", typeof(Hl7.Fhir.Model.Annotation)},
+                {"focalDevice", typeof(FocalDeviceComponent)},
+                {"used", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

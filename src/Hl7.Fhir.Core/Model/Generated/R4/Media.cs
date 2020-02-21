@@ -666,6 +666,65 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>("basedOn", Hl7.Fhir.Model.Version.All);
+            PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>("partOf", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.EventStatus>("status", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            Modality = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("modality", Hl7.Fhir.Model.Version.All);
+            View = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("view", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Created = source.GetProperty<Hl7.Fhir.Model.Element>("created", Hl7.Fhir.Model.Version.All);
+            IssuedElement = source.GetProperty<Hl7.Fhir.Model.Instant>("issued", Hl7.Fhir.Model.Version.All);
+            Operator = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("operator", Hl7.Fhir.Model.Version.All);
+            ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reasonCode", Hl7.Fhir.Model.Version.All);
+            BodySite = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("bodySite", Hl7.Fhir.Model.Version.All);
+            DeviceNameElement = source.GetStringProperty("deviceName", Hl7.Fhir.Model.Version.All);
+            Device = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("device", Hl7.Fhir.Model.Version.All);
+            HeightElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("height", Hl7.Fhir.Model.Version.All);
+            WidthElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("width", Hl7.Fhir.Model.Version.All);
+            FramesElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("frames", Hl7.Fhir.Model.Version.All);
+            DurationElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("duration", Hl7.Fhir.Model.Version.All);
+            Content = source.GetProperty<Hl7.Fhir.Model.Attachment>("content", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"basedOn", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"partOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventStatus>)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"modality", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"view", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"created", typeof(Hl7.Fhir.Model.Element)},
+                {"issued", typeof(Hl7.Fhir.Model.Instant)},
+                {"operator", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reasonCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"bodySite", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"deviceName", typeof(Hl7.Fhir.Model.FhirString)},
+                {"device", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"height", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"width", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"frames", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"duration", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                {"content", typeof(Hl7.Fhir.Model.Attachment)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

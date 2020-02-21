@@ -496,6 +496,57 @@ namespace Hl7.Fhir.Model
             sink.Element("benefitSubCategory", Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.None, false, false); BenefitSubCategory?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            Ruleset = source.GetProperty<Hl7.Fhir.Model.Coding>("ruleset", Hl7.Fhir.Model.Version.DSTU2);
+            OriginalRuleset = source.GetProperty<Hl7.Fhir.Model.Coding>("originalRuleset", Hl7.Fhir.Model.Version.DSTU2);
+            CreatedElement = source.GetDateTimeProperty("created", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            Target = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("target", Hl7.Fhir.Model.Version.DSTU2);
+            Provider = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("provider", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.FinancialResourceStatusCodes>("status", Hl7.Fhir.Model.Version.STU3);
+            Priority = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("priority", Hl7.Fhir.Model.Version.STU3);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.STU3);
+            Serviced = source.GetProperty<Hl7.Fhir.Model.Element>("serviced", Hl7.Fhir.Model.Version.STU3);
+            Enterer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("enterer", Hl7.Fhir.Model.Version.STU3);
+            Insurer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("insurer", Hl7.Fhir.Model.Version.STU3);
+            Facility = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("facility", Hl7.Fhir.Model.Version.STU3);
+            Coverage = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("coverage", Hl7.Fhir.Model.Version.STU3);
+            BusinessArrangementElement = source.GetStringProperty("businessArrangement", Hl7.Fhir.Model.Version.STU3);
+            BenefitCategory = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("benefitCategory", Hl7.Fhir.Model.Version.STU3);
+            BenefitSubCategory = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("benefitSubCategory", Hl7.Fhir.Model.Version.STU3);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"ruleset", typeof(Hl7.Fhir.Model.Coding)},
+                {"originalRuleset", typeof(Hl7.Fhir.Model.Coding)},
+                {"created", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"target", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"provider", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>)},
+                {"priority", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"serviced", typeof(Hl7.Fhir.Model.Element)},
+                {"enterer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"insurer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"facility", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"coverage", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"businessArrangement", typeof(Hl7.Fhir.Model.FhirString)},
+                {"benefitCategory", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"benefitSubCategory", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

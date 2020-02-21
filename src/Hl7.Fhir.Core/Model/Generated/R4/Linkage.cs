@@ -119,6 +119,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("resource", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Resource?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.LinkageType>("type", Hl7.Fhir.Model.Version.All);
+                Resource = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("resource", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LinkageType>)},
+                    {"resource", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -337,6 +356,27 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            Author = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("author", Hl7.Fhir.Model.Version.All);
+            Item = source.GetList<ItemComponent>("item", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"author", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"item", typeof(ItemComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

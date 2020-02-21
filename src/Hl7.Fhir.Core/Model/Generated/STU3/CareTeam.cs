@@ -129,6 +129,29 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Period?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Role = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("role", Hl7.Fhir.Model.Version.All);
+                Member = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("member", Hl7.Fhir.Model.Version.All);
+                OnBehalfOf = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("onBehalfOf", Hl7.Fhir.Model.Version.All);
+                Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"role", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"member", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"onBehalfOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"period", typeof(Hl7.Fhir.Model.Period)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -574,6 +597,45 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.CareTeamStatus>("status", Hl7.Fhir.Model.Version.All);
+            Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>("category", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Context = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("context", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Participant = source.GetList<ParticipantComponent>("participant", Hl7.Fhir.Model.Version.All);
+            ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reasonCode", Hl7.Fhir.Model.Version.All);
+            ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>("reasonReference", Hl7.Fhir.Model.Version.All);
+            ManagingOrganization = source.GetList<Hl7.Fhir.Model.ResourceReference>("managingOrganization", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CareTeamStatus>)},
+                {"category", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"context", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"participant", typeof(ParticipantComponent)},
+                {"reasonCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reasonReference", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"managingOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -295,6 +295,37 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                LinkIdElement = source.GetStringProperty("linkId", Hl7.Fhir.Model.Version.All);
+                TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+                Concept = source.GetList<Hl7.Fhir.Model.Coding>("concept", Hl7.Fhir.Model.Version.All);
+                TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+                RequiredElement = source.GetBooleanProperty("required", Hl7.Fhir.Model.Version.All);
+                RepeatsElement = source.GetBooleanProperty("repeats", Hl7.Fhir.Model.Version.All);
+                Group = source.GetList<GroupComponent>("group", Hl7.Fhir.Model.Version.All);
+                Question = source.GetList<QuestionComponent>("question", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"linkId", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"concept", typeof(Hl7.Fhir.Model.Coding)},
+                    {"text", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"required", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"repeats", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"group", typeof(GroupComponent)},
+                    {"question", typeof(QuestionComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -651,6 +682,39 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                LinkIdElement = source.GetStringProperty("linkId", Hl7.Fhir.Model.Version.All);
+                Concept = source.GetList<Hl7.Fhir.Model.Coding>("concept", Hl7.Fhir.Model.Version.All);
+                TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+                TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.AnswerFormat>("type", Hl7.Fhir.Model.Version.All);
+                RequiredElement = source.GetBooleanProperty("required", Hl7.Fhir.Model.Version.All);
+                RepeatsElement = source.GetBooleanProperty("repeats", Hl7.Fhir.Model.Version.All);
+                Options = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("options", Hl7.Fhir.Model.Version.All);
+                Option = source.GetList<Hl7.Fhir.Model.Coding>("option", Hl7.Fhir.Model.Version.All);
+                Group = source.GetList<GroupComponent>("group", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"linkId", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"concept", typeof(Hl7.Fhir.Model.Coding)},
+                    {"text", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AnswerFormat>)},
+                    {"required", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"repeats", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"options", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"option", typeof(Hl7.Fhir.Model.Coding)},
+                    {"group", typeof(GroupComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1101,6 +1165,37 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("group", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Group?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            VersionElement = source.GetStringProperty("version", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.QuestionnaireStatus>("status", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            PublisherElement = source.GetStringProperty("publisher", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            SubjectTypeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>("subjectType", Hl7.Fhir.Model.Version.All);
+            Group = source.GetProperty<GroupComponent>("group", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"version", typeof(Hl7.Fhir.Model.FhirString)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.QuestionnaireStatus>)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"publisher", typeof(Hl7.Fhir.Model.FhirString)},
+                {"telecom", typeof(Hl7.Fhir.Model.DSTU2.ContactPoint)},
+                {"subjectType", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>)},
+                {"group", typeof(GroupComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

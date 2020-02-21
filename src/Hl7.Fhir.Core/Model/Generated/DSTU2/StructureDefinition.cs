@@ -123,6 +123,25 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+                Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"telecom", typeof(Hl7.Fhir.Model.DSTU2.ContactPoint)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -341,6 +360,29 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("comments", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); CommentsElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                IdentityElement = source.GetProperty<Hl7.Fhir.Model.Id>("identity", Hl7.Fhir.Model.Version.All);
+                UriElement = source.GetUriProperty("uri", Hl7.Fhir.Model.Version.All);
+                NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+                CommentsElement = source.GetStringProperty("comments", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"identity", typeof(Hl7.Fhir.Model.Id)},
+                    {"uri", typeof(Hl7.Fhir.Model.FhirUri)},
+                    {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"comments", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -459,6 +501,23 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Element = source.GetList<Hl7.Fhir.Model.DSTU2.ElementDefinition>("element", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"element", typeof(Hl7.Fhir.Model.DSTU2.ElementDefinition)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -562,6 +621,23 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Element = source.GetList<Hl7.Fhir.Model.DSTU2.ElementDefinition>("element", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"element", typeof(Hl7.Fhir.Model.DSTU2.ElementDefinition)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1614,6 +1690,71 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("differential", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Differential?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            VersionElement = source.GetStringProperty("version", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            DisplayElement = source.GetStringProperty("display", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>("status", Hl7.Fhir.Model.Version.All);
+            ExperimentalElement = source.GetBooleanProperty("experimental", Hl7.Fhir.Model.Version.All);
+            PublisherElement = source.GetStringProperty("publisher", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<ContactComponent>("contact", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            UseContext = source.GetList<Hl7.Fhir.Model.CodeableConcept>("useContext", Hl7.Fhir.Model.Version.All);
+            RequirementsElement = source.GetStringProperty("requirements", Hl7.Fhir.Model.Version.All);
+            CopyrightElement = source.GetStringProperty("copyright", Hl7.Fhir.Model.Version.All);
+            Code = source.GetList<Hl7.Fhir.Model.Coding>("code", Hl7.Fhir.Model.Version.All);
+            FhirVersionElement = source.GetProperty<Hl7.Fhir.Model.Id>("fhirVersion", Hl7.Fhir.Model.Version.All);
+            Mapping = source.GetList<MappingComponent>("mapping", Hl7.Fhir.Model.Version.All);
+            KindElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.StructureDefinitionKind>("kind", Hl7.Fhir.Model.Version.All);
+            ConstrainedTypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.FHIRDefinedType>("constrainedType", Hl7.Fhir.Model.Version.All);
+            AbstractElement = source.GetBooleanProperty("abstract", Hl7.Fhir.Model.Version.All);
+            ContextTypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.ExtensionContext>("contextType", Hl7.Fhir.Model.Version.All);
+            ContextElement = source.GetStringList("context", Hl7.Fhir.Model.Version.All);
+            BaseElement = source.GetUriProperty("base", Hl7.Fhir.Model.Version.All);
+            Snapshot = source.GetProperty<SnapshotComponent>("snapshot", Hl7.Fhir.Model.Version.All);
+            Differential = source.GetProperty<DifferentialComponent>("differential", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"version", typeof(Hl7.Fhir.Model.FhirString)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"display", typeof(Hl7.Fhir.Model.FhirString)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>)},
+                {"experimental", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"publisher", typeof(Hl7.Fhir.Model.FhirString)},
+                {"contact", typeof(ContactComponent)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"useContext", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"requirements", typeof(Hl7.Fhir.Model.FhirString)},
+                {"copyright", typeof(Hl7.Fhir.Model.FhirString)},
+                {"code", typeof(Hl7.Fhir.Model.Coding)},
+                {"fhirVersion", typeof(Hl7.Fhir.Model.Id)},
+                {"mapping", typeof(MappingComponent)},
+                {"kind", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.StructureDefinitionKind>)},
+                {"constrainedType", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.FHIRDefinedType>)},
+                {"abstract", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"contextType", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ExtensionContext>)},
+                {"context", typeof(Hl7.Fhir.Model.FhirString)},
+                {"base", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"snapshot", typeof(SnapshotComponent)},
+                {"differential", typeof(DifferentialComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

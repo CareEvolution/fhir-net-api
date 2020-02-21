@@ -325,6 +325,45 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                VaccineCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("vaccineCode", Hl7.Fhir.Model.Version.All);
+                TargetDisease = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("targetDisease", Hl7.Fhir.Model.Version.All);
+                ContraindicatedVaccineCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("contraindicatedVaccineCode", Hl7.Fhir.Model.Version.All);
+                ForecastStatus = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("forecastStatus", Hl7.Fhir.Model.Version.All);
+                ForecastReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>("forecastReason", Hl7.Fhir.Model.Version.All);
+                DateCriterion = source.GetList<DateCriterionComponent>("dateCriterion", Hl7.Fhir.Model.Version.All);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+                SeriesElement = source.GetStringProperty("series", Hl7.Fhir.Model.Version.All);
+                DoseNumber = source.GetProperty<Hl7.Fhir.Model.Element>("doseNumber", Hl7.Fhir.Model.Version.All);
+                SeriesDoses = source.GetProperty<Hl7.Fhir.Model.Element>("seriesDoses", Hl7.Fhir.Model.Version.All);
+                SupportingImmunization = source.GetList<Hl7.Fhir.Model.ResourceReference>("supportingImmunization", Hl7.Fhir.Model.Version.All);
+                SupportingPatientInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>("supportingPatientInformation", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"vaccineCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"targetDisease", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"contraindicatedVaccineCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"forecastStatus", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"forecastReason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"dateCriterion", typeof(DateCriterionComponent)},
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"series", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"doseNumber", typeof(Hl7.Fhir.Model.Element)},
+                    {"seriesDoses", typeof(Hl7.Fhir.Model.Element)},
+                    {"supportingImmunization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"supportingPatientInformation", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -509,6 +548,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); ValueElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                ValueElement = source.GetDateTimeProperty("value", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"value", typeof(Hl7.Fhir.Model.FhirDateTime)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -772,6 +830,31 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            Authority = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("authority", Hl7.Fhir.Model.Version.All);
+            Recommendation = source.GetList<RecommendationComponent>("recommendation", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"authority", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"recommendation", typeof(RecommendationComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

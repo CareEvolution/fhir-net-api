@@ -208,6 +208,29 @@ namespace Hl7.Fhir.Model.STU3
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.SubscriptionChannelType>("type", Hl7.Fhir.Model.Version.All);
+                EndpointElement = source.GetUriProperty("endpoint", Hl7.Fhir.Model.Version.All);
+                PayloadElement = source.GetStringProperty("payload", Hl7.Fhir.Model.Version.All);
+                HeaderElement = source.GetStringList("header", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionChannelType>)},
+                    {"endpoint", typeof(Hl7.Fhir.Model.FhirUri)},
+                    {"payload", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"header", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -596,6 +619,37 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.SubscriptionStatus>("status", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>("contact", Hl7.Fhir.Model.Version.All);
+            EndElement = source.GetProperty<Hl7.Fhir.Model.Instant>("end", Hl7.Fhir.Model.Version.All);
+            ReasonElement = source.GetStringProperty("reason", Hl7.Fhir.Model.Version.All);
+            CriteriaElement = source.GetStringProperty("criteria", Hl7.Fhir.Model.Version.All);
+            ErrorElement = source.GetStringProperty("error", Hl7.Fhir.Model.Version.All);
+            Channel = source.GetProperty<ChannelComponent>("channel", Hl7.Fhir.Model.Version.All);
+            Tag = source.GetList<Hl7.Fhir.Model.Coding>("tag", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionStatus>)},
+                {"contact", typeof(Hl7.Fhir.Model.STU3.ContactPoint)},
+                {"end", typeof(Hl7.Fhir.Model.Instant)},
+                {"reason", typeof(Hl7.Fhir.Model.FhirString)},
+                {"criteria", typeof(Hl7.Fhir.Model.FhirString)},
+                {"error", typeof(Hl7.Fhir.Model.FhirString)},
+                {"channel", typeof(ChannelComponent)},
+                {"tag", typeof(Hl7.Fhir.Model.Coding)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -155,6 +155,31 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("validityPeriod", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ValidityPeriod?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+                Country = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("country", Hl7.Fhir.Model.Version.All);
+                Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>("jurisdiction", Hl7.Fhir.Model.Version.All);
+                LegalStatusOfSupply = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("legalStatusOfSupply", Hl7.Fhir.Model.Version.All);
+                ValidityPeriod = source.GetProperty<Hl7.Fhir.Model.Period>("validityPeriod", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                    {"country", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"jurisdiction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"legalStatusOfSupply", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"validityPeriod", typeof(Hl7.Fhir.Model.Period)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -323,6 +348,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+                Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+                Date = source.GetProperty<Hl7.Fhir.Model.Element>("date", Hl7.Fhir.Model.Version.All);
+                Application = source.GetList<ProcedureComponent>("application", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                    {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"date", typeof(Hl7.Fhir.Model.Element)},
+                    {"application", typeof(ProcedureComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -841,6 +889,53 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("procedure", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Procedure?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Country = source.GetList<Hl7.Fhir.Model.CodeableConcept>("country", Hl7.Fhir.Model.Version.All);
+            Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>("jurisdiction", Hl7.Fhir.Model.Version.All);
+            Status = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("status", Hl7.Fhir.Model.Version.All);
+            StatusDateElement = source.GetDateTimeProperty("statusDate", Hl7.Fhir.Model.Version.All);
+            RestoreDateElement = source.GetDateTimeProperty("restoreDate", Hl7.Fhir.Model.Version.All);
+            ValidityPeriod = source.GetProperty<Hl7.Fhir.Model.Period>("validityPeriod", Hl7.Fhir.Model.Version.All);
+            DataExclusivityPeriod = source.GetProperty<Hl7.Fhir.Model.Period>("dataExclusivityPeriod", Hl7.Fhir.Model.Version.All);
+            DateOfFirstAuthorizationElement = source.GetDateTimeProperty("dateOfFirstAuthorization", Hl7.Fhir.Model.Version.All);
+            InternationalBirthDateElement = source.GetDateTimeProperty("internationalBirthDate", Hl7.Fhir.Model.Version.All);
+            LegalBasis = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("legalBasis", Hl7.Fhir.Model.Version.All);
+            JurisdictionalAuthorization = source.GetList<JurisdictionalAuthorizationComponent>("jurisdictionalAuthorization", Hl7.Fhir.Model.Version.All);
+            Holder = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("holder", Hl7.Fhir.Model.Version.All);
+            Regulator = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("regulator", Hl7.Fhir.Model.Version.All);
+            Procedure = source.GetProperty<ProcedureComponent>("procedure", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"country", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"jurisdiction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"status", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"statusDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"restoreDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"validityPeriod", typeof(Hl7.Fhir.Model.Period)},
+                {"dataExclusivityPeriod", typeof(Hl7.Fhir.Model.Period)},
+                {"dateOfFirstAuthorization", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"internationalBirthDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"legalBasis", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"jurisdictionalAuthorization", typeof(JurisdictionalAuthorizationComponent)},
+                {"holder", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"regulator", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"procedure", typeof(ProcedureComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -208,6 +208,35 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Who = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("who", Hl7.Fhir.Model.Version.All);
+                Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+                CommunicationMethod = source.GetList<Hl7.Fhir.Model.CodeableConcept>("communicationMethod", Hl7.Fhir.Model.Version.All);
+                ValidationStatus = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("validationStatus", Hl7.Fhir.Model.Version.All);
+                ValidationDateElement = source.GetDateTimeProperty("validationDate", Hl7.Fhir.Model.Version.All);
+                CanPushUpdates = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("canPushUpdates", Hl7.Fhir.Model.Version.All);
+                PushTypeAvailable = source.GetList<Hl7.Fhir.Model.CodeableConcept>("pushTypeAvailable", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"who", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"communicationMethod", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"validationStatus", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"validationDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                    {"canPushUpdates", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"pushTypeAvailable", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -493,6 +522,37 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("sourceSignature", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); SourceSignature?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Who = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("who", Hl7.Fhir.Model.Version.All);
+                OnBehalfOf = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("onBehalfOf", Hl7.Fhir.Model.Version.All);
+                CommunicationMethod = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("communicationMethod", Hl7.Fhir.Model.Version.All);
+                DateElement = source.GetDateProperty("date", Hl7.Fhir.Model.Version.All);
+                SourceIdentityCertificateElement = source.GetStringProperty("sourceIdentityCertificate", Hl7.Fhir.Model.Version.All);
+                ProxyIdentityCertificateElement = source.GetStringProperty("proxyIdentityCertificate", Hl7.Fhir.Model.Version.All);
+                ProxySignature = source.GetProperty<Hl7.Fhir.Model.R4.Signature>("proxySignature", Hl7.Fhir.Model.Version.All);
+                SourceSignature = source.GetProperty<Hl7.Fhir.Model.R4.Signature>("sourceSignature", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"who", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"onBehalfOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"communicationMethod", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"date", typeof(Hl7.Fhir.Model.Date)},
+                    {"sourceIdentityCertificate", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"proxyIdentityCertificate", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"proxySignature", typeof(Hl7.Fhir.Model.R4.Signature)},
+                    {"sourceSignature", typeof(Hl7.Fhir.Model.R4.Signature)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -672,6 +732,27 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("attestationSignature", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AttestationSignature?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.All);
+                IdentityCertificateElement = source.GetStringProperty("identityCertificate", Hl7.Fhir.Model.Version.All);
+                AttestationSignature = source.GetProperty<Hl7.Fhir.Model.R4.Signature>("attestationSignature", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"identityCertificate", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"attestationSignature", typeof(Hl7.Fhir.Model.R4.Signature)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1163,6 +1244,49 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Target = source.GetList<Hl7.Fhir.Model.ResourceReference>("target", Hl7.Fhir.Model.Version.All);
+            TargetLocationElement = source.GetStringList("targetLocation", Hl7.Fhir.Model.Version.All);
+            Need = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("need", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.status>("status", Hl7.Fhir.Model.Version.All);
+            StatusDateElement = source.GetDateTimeProperty("statusDate", Hl7.Fhir.Model.Version.All);
+            ValidationType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("validationType", Hl7.Fhir.Model.Version.All);
+            ValidationProcess = source.GetList<Hl7.Fhir.Model.CodeableConcept>("validationProcess", Hl7.Fhir.Model.Version.All);
+            Frequency = source.GetProperty<Hl7.Fhir.Model.R4.Timing>("frequency", Hl7.Fhir.Model.Version.All);
+            LastPerformedElement = source.GetDateTimeProperty("lastPerformed", Hl7.Fhir.Model.Version.All);
+            NextScheduledElement = source.GetDateProperty("nextScheduled", Hl7.Fhir.Model.Version.All);
+            FailureAction = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("failureAction", Hl7.Fhir.Model.Version.All);
+            PrimarySource = source.GetList<PrimarySourceComponent>("primarySource", Hl7.Fhir.Model.Version.All);
+            Attestation = source.GetProperty<AttestationComponent>("attestation", Hl7.Fhir.Model.Version.All);
+            Validator = source.GetList<ValidatorComponent>("validator", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"target", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"targetLocation", typeof(Hl7.Fhir.Model.FhirString)},
+                {"need", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.status>)},
+                {"statusDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"validationType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"validationProcess", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"frequency", typeof(Hl7.Fhir.Model.R4.Timing)},
+                {"lastPerformed", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"nextScheduled", typeof(Hl7.Fhir.Model.Date)},
+                {"failureAction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"primarySource", typeof(PrimarySourceComponent)},
+                {"attestation", typeof(AttestationComponent)},
+                {"validator", typeof(ValidatorComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

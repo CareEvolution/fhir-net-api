@@ -246,6 +246,29 @@ namespace Hl7.Fhir.Model
             }
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Text = source.GetProperty<Hl7.Fhir.Model.Narrative>("text", Hl7.Fhir.Model.Version.All);
+            Contained = source.GetList<Hl7.Fhir.Model.Resource>("contained", Hl7.Fhir.Model.Version.All);
+            Extension = source.GetList<Hl7.Fhir.Model.Extension>("extension", Hl7.Fhir.Model.Version.All);
+            ModifierExtension = source.GetList<Hl7.Fhir.Model.Extension>("modifierExtension", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"text", typeof(Hl7.Fhir.Model.Narrative)},
+                {"contained", typeof(Hl7.Fhir.Model.Resource)},
+                {"extension", typeof(Hl7.Fhir.Model.Extension)},
+                {"modifierExtension", typeof(Hl7.Fhir.Model.Extension)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

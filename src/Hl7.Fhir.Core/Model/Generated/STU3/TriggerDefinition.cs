@@ -210,6 +210,29 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("eventData", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); EventData?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.TriggerType>("type", Hl7.Fhir.Model.Version.All);
+            EventNameElement = source.GetStringProperty("eventName", Hl7.Fhir.Model.Version.All);
+            EventTiming = source.GetProperty<Hl7.Fhir.Model.Element>("eventTiming", Hl7.Fhir.Model.Version.All);
+            EventData = source.GetProperty<Hl7.Fhir.Model.STU3.DataRequirement>("eventData", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.TriggerType>)},
+                {"eventName", typeof(Hl7.Fhir.Model.FhirString)},
+                {"eventTiming", typeof(Hl7.Fhir.Model.Element)},
+                {"eventData", typeof(Hl7.Fhir.Model.STU3.DataRequirement)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

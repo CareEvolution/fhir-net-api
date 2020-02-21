@@ -169,6 +169,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("altitude", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AltitudeElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                LongitudeElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("longitude", Hl7.Fhir.Model.Version.All);
+                LatitudeElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("latitude", Hl7.Fhir.Model.Version.All);
+                AltitudeElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("altitude", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"longitude", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"latitude", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"altitude", typeof(Hl7.Fhir.Model.FhirDecimal)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -682,6 +703,51 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.LocationStatus>("status", Hl7.Fhir.Model.Version.All);
+            OperationalStatus = source.GetProperty<Hl7.Fhir.Model.Coding>("operationalStatus", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            AliasElement = source.GetStringList("alias", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            ModeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.LocationMode>("mode", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            Address = source.GetProperty<Hl7.Fhir.Model.Address>("address", Hl7.Fhir.Model.Version.All);
+            PhysicalType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("physicalType", Hl7.Fhir.Model.Version.All);
+            Position = source.GetProperty<PositionComponent>("position", Hl7.Fhir.Model.Version.All);
+            ManagingOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("managingOrganization", Hl7.Fhir.Model.Version.All);
+            PartOf = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("partOf", Hl7.Fhir.Model.Version.All);
+            Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>("endpoint", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationStatus>)},
+                {"operationalStatus", typeof(Hl7.Fhir.Model.Coding)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"alias", typeof(Hl7.Fhir.Model.FhirString)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"mode", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationMode>)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"telecom", typeof(Hl7.Fhir.Model.STU3.ContactPoint)},
+                {"address", typeof(Hl7.Fhir.Model.Address)},
+                {"physicalType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"position", typeof(PositionComponent)},
+                {"managingOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"partOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"endpoint", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

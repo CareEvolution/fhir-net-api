@@ -214,6 +214,35 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("causalityResult", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CausalityResult?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Instance = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("instance", Hl7.Fhir.Model.Version.All);
+                CausalityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.AdverseEventCausality>("causality", Hl7.Fhir.Model.Version.All);
+                CausalityAssessment = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("causalityAssessment", Hl7.Fhir.Model.Version.All);
+                CausalityProductRelatednessElement = source.GetStringProperty("causalityProductRelatedness", Hl7.Fhir.Model.Version.All);
+                CausalityMethod = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("causalityMethod", Hl7.Fhir.Model.Version.All);
+                CausalityAuthor = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("causalityAuthor", Hl7.Fhir.Model.Version.All);
+                CausalityResult = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("causalityResult", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"instance", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"causality", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AdverseEventCausality>)},
+                    {"causalityAssessment", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"causalityProductRelatedness", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"causalityMethod", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"causalityAuthor", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"causalityResult", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -744,6 +773,53 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            CategoryElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.AdverseEventCategory>("category", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            Reaction = source.GetList<Hl7.Fhir.Model.ResourceReference>("reaction", Hl7.Fhir.Model.Version.All);
+            Location = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("location", Hl7.Fhir.Model.Version.All);
+            Seriousness = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("seriousness", Hl7.Fhir.Model.Version.All);
+            Outcome = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("outcome", Hl7.Fhir.Model.Version.All);
+            Recorder = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("recorder", Hl7.Fhir.Model.Version.All);
+            EventParticipant = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("eventParticipant", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            SuspectEntity = source.GetList<SuspectEntityComponent>("suspectEntity", Hl7.Fhir.Model.Version.All);
+            SubjectMedicalHistory = source.GetList<Hl7.Fhir.Model.ResourceReference>("subjectMedicalHistory", Hl7.Fhir.Model.Version.All);
+            ReferenceDocument = source.GetList<Hl7.Fhir.Model.ResourceReference>("referenceDocument", Hl7.Fhir.Model.Version.All);
+            Study = source.GetList<Hl7.Fhir.Model.ResourceReference>("study", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"category", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AdverseEventCategory>)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"reaction", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"location", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"seriousness", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"outcome", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"recorder", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"eventParticipant", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"suspectEntity", typeof(SuspectEntityComponent)},
+                {"subjectMedicalHistory", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"referenceDocument", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"study", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

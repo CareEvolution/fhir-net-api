@@ -278,6 +278,31 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            SystemElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.ContactPointSystem>("system", Hl7.Fhir.Model.Version.All);
+            ValueElement = source.GetStringProperty("value", Hl7.Fhir.Model.Version.All);
+            UseElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ContactPointUse>("use", Hl7.Fhir.Model.Version.All);
+            RankElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("rank", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"system", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ContactPointSystem>)},
+                {"value", typeof(Hl7.Fhir.Model.FhirString)},
+                {"use", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContactPointUse>)},
+                {"rank", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

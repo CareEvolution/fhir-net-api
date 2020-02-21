@@ -163,6 +163,29 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("item", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Item?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Flag = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("flag", Hl7.Fhir.Model.Version.All);
+                DeletedElement = source.GetBooleanProperty("deleted", Hl7.Fhir.Model.Version.All);
+                DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+                Item = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("item", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"flag", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"deleted", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                    {"item", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -660,6 +683,47 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("emptyReason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); EmptyReason?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Source = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("source", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ListStatus>("status", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            OrderedBy = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("orderedBy", Hl7.Fhir.Model.Version.All);
+            ModeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ListMode>("mode", Hl7.Fhir.Model.Version.All);
+            NoteElement = source.GetStringProperty("note", Hl7.Fhir.Model.Version.All);
+            Entry = source.GetList<EntryComponent>("entry", Hl7.Fhir.Model.Version.All);
+            EmptyReason = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("emptyReason", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"source", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListStatus>)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"orderedBy", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"mode", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListMode>)},
+                {"note", typeof(Hl7.Fhir.Model.FhirString)},
+                {"entry", typeof(EntryComponent)},
+                {"emptyReason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -162,6 +162,25 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"telecom", typeof(Hl7.Fhir.Model.STU3.ContactPoint)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

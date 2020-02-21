@@ -261,6 +261,33 @@ namespace Hl7.Fhir.Model
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                SeverityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.IssueSeverity>("severity", Hl7.Fhir.Model.Version.All);
+                CodeElement = source.GetCodeProperty("code", Hl7.Fhir.Model.Version.All);
+                Details = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("details", Hl7.Fhir.Model.Version.All);
+                DiagnosticsElement = source.GetStringProperty("diagnostics", Hl7.Fhir.Model.Version.All);
+                LocationElement = source.GetStringList("location", Hl7.Fhir.Model.Version.All);
+                ExpressionElement = source.GetStringList("expression", Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"severity", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.IssueSeverity>)},
+                    {"code", typeof(Hl7.Fhir.Model.Code)},
+                    {"details", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"diagnostics", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"location", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"expression", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -422,6 +449,23 @@ namespace Hl7.Fhir.Model
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Issue = source.GetList<IssueComponent>("issue", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"issue", typeof(IssueComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

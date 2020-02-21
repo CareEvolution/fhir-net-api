@@ -221,6 +221,33 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                LinkIdElement = source.GetStringProperty("linkId", Hl7.Fhir.Model.Version.All);
+                TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+                TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+                Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+                Group = source.GetList<GroupComponent>("group", Hl7.Fhir.Model.Version.All);
+                Question = source.GetList<QuestionComponent>("question", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"linkId", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"text", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"group", typeof(GroupComponent)},
+                    {"question", typeof(QuestionComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -412,6 +439,27 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                LinkIdElement = source.GetStringProperty("linkId", Hl7.Fhir.Model.Version.All);
+                TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+                Answer = source.GetList<AnswerComponent>("answer", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"linkId", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"text", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"answer", typeof(AnswerComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -538,6 +586,25 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Value = source.GetProperty<Hl7.Fhir.Model.Element>("value", Hl7.Fhir.Model.Version.All);
+                Group = source.GetList<GroupComponent>("group", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"value", typeof(Hl7.Fhir.Model.Element)},
+                    {"group", typeof(GroupComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -877,6 +944,39 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("group", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Group?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Questionnaire = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("questionnaire", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.QuestionnaireResponseStatus>("status", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Author = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("author", Hl7.Fhir.Model.Version.All);
+            AuthoredElement = source.GetDateTimeProperty("authored", Hl7.Fhir.Model.Version.All);
+            Source = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("source", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Group = source.GetProperty<GroupComponent>("group", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"questionnaire", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.QuestionnaireResponseStatus>)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"author", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"authored", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"source", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"group", typeof(GroupComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

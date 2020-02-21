@@ -136,6 +136,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("expression", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); ExpressionElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                DefinitionElement = source.GetProperty<Hl7.Fhir.Model.Canonical>("definition", Hl7.Fhir.Model.Version.All);
+                ExpressionElement = source.GetStringProperty("expression", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"definition", typeof(Hl7.Fhir.Model.Canonical)},
+                    {"expression", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1206,6 +1225,73 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+            VersionElement = source.GetStringProperty("version", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            DerivedFromElement = source.GetProperty<Hl7.Fhir.Model.Canonical>("derivedFrom", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.PublicationStatus>("status", Hl7.Fhir.Model.Version.All);
+            ExperimentalElement = source.GetBooleanProperty("experimental", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            PublisherElement = source.GetStringProperty("publisher", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>("contact", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("description", Hl7.Fhir.Model.Version.All);
+            UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>("useContext", Hl7.Fhir.Model.Version.All);
+            Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>("jurisdiction", Hl7.Fhir.Model.Version.All);
+            PurposeElement = source.GetProperty<Hl7.Fhir.Model.Markdown>("purpose", Hl7.Fhir.Model.Version.All);
+            CodeElement = source.GetCodeProperty("code", Hl7.Fhir.Model.Version.All);
+            BaseElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>("base", Hl7.Fhir.Model.Version.All);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.SearchParamType>("type", Hl7.Fhir.Model.Version.All);
+            ExpressionElement = source.GetStringProperty("expression", Hl7.Fhir.Model.Version.All);
+            XpathElement = source.GetStringProperty("xpath", Hl7.Fhir.Model.Version.All);
+            XpathUsageElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.XPathUsageType>("xpathUsage", Hl7.Fhir.Model.Version.All);
+            TargetElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>("target", Hl7.Fhir.Model.Version.All);
+            MultipleOrElement = source.GetBooleanProperty("multipleOr", Hl7.Fhir.Model.Version.All);
+            MultipleAndElement = source.GetBooleanProperty("multipleAnd", Hl7.Fhir.Model.Version.All);
+            ComparatorElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchComparator>>("comparator", Hl7.Fhir.Model.Version.All);
+            ModifierElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SearchModifierCode>>("modifier", Hl7.Fhir.Model.Version.All);
+            ChainElement = source.GetStringList("chain", Hl7.Fhir.Model.Version.All);
+            Component = source.GetList<ComponentComponent>("component", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"version", typeof(Hl7.Fhir.Model.FhirString)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"derivedFrom", typeof(Hl7.Fhir.Model.Canonical)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>)},
+                {"experimental", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"publisher", typeof(Hl7.Fhir.Model.FhirString)},
+                {"contact", typeof(Hl7.Fhir.Model.R4.ContactDetail)},
+                {"description", typeof(Hl7.Fhir.Model.Markdown)},
+                {"useContext", typeof(Hl7.Fhir.Model.UsageContext)},
+                {"jurisdiction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"purpose", typeof(Hl7.Fhir.Model.Markdown)},
+                {"code", typeof(Hl7.Fhir.Model.Code)},
+                {"base", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>)},
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>)},
+                {"expression", typeof(Hl7.Fhir.Model.FhirString)},
+                {"xpath", typeof(Hl7.Fhir.Model.FhirString)},
+                {"xpathUsage", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.XPathUsageType>)},
+                {"target", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>)},
+                {"multipleOr", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"multipleAnd", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"comparator", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchComparator>)},
+                {"modifier", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SearchModifierCode>)},
+                {"chain", typeof(Hl7.Fhir.Model.FhirString)},
+                {"component", typeof(ComponentComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

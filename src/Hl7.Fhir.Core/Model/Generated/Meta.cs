@@ -297,6 +297,33 @@ namespace Hl7.Fhir.Model
             sink.Element("source", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); SourceElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            VersionIdElement = source.GetProperty<Hl7.Fhir.Model.Id>("versionId", Hl7.Fhir.Model.Version.All);
+            LastUpdatedElement = source.GetProperty<Hl7.Fhir.Model.Instant>("lastUpdated", Hl7.Fhir.Model.Version.All);
+            ProfileElement = source.GetList<Hl7.Fhir.Model.Canonical>("profile", Hl7.Fhir.Model.Version.All);
+            Security = source.GetList<Hl7.Fhir.Model.Coding>("security", Hl7.Fhir.Model.Version.All);
+            Tag = source.GetList<Hl7.Fhir.Model.Coding>("tag", Hl7.Fhir.Model.Version.All);
+            SourceElement = source.GetUriProperty("source", Hl7.Fhir.Model.Version.R4);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"versionId", typeof(Hl7.Fhir.Model.Id)},
+                {"lastUpdated", typeof(Hl7.Fhir.Model.Instant)},
+                {"profile", typeof(Hl7.Fhir.Model.Canonical)},
+                {"security", typeof(Hl7.Fhir.Model.Coding)},
+                {"tag", typeof(Hl7.Fhir.Model.Coding)},
+                {"source", typeof(Hl7.Fhir.Model.FhirUri)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

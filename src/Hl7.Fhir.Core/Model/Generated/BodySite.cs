@@ -308,6 +308,37 @@ namespace Hl7.Fhir.Model
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            Modifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>("modifier", Hl7.Fhir.Model.Version.DSTU2);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            Image = source.GetList<Hl7.Fhir.Model.Attachment>("image", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.STU3);
+            Qualifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>("qualifier", Hl7.Fhir.Model.Version.STU3);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"modifier", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"image", typeof(Hl7.Fhir.Model.Attachment)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"qualifier", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -313,6 +313,41 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("relationship", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Relationship?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Ruleset = source.GetProperty<Hl7.Fhir.Model.Coding>("ruleset", Hl7.Fhir.Model.Version.All);
+            OriginalRuleset = source.GetProperty<Hl7.Fhir.Model.Coding>("originalRuleset", Hl7.Fhir.Model.Version.All);
+            CreatedElement = source.GetDateTimeProperty("created", Hl7.Fhir.Model.Version.All);
+            Target = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("target", Hl7.Fhir.Model.Version.All);
+            Provider = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("provider", Hl7.Fhir.Model.Version.All);
+            Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Coverage = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("coverage", Hl7.Fhir.Model.Version.All);
+            Relationship = source.GetProperty<Hl7.Fhir.Model.Coding>("relationship", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"ruleset", typeof(Hl7.Fhir.Model.Coding)},
+                {"originalRuleset", typeof(Hl7.Fhir.Model.Coding)},
+                {"created", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"target", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"provider", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"coverage", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"relationship", typeof(Hl7.Fhir.Model.Coding)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

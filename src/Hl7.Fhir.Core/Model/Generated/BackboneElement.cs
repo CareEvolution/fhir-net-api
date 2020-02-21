@@ -114,6 +114,23 @@ namespace Hl7.Fhir.Model
             }
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ModifierExtension = source.GetList<Hl7.Fhir.Model.Extension>("modifierExtension", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"modifierExtension", typeof(Hl7.Fhir.Model.Extension)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

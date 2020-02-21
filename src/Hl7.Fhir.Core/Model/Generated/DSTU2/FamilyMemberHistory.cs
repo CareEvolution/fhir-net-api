@@ -127,6 +127,29 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Note?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Outcome = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("outcome", Hl7.Fhir.Model.Version.All);
+                Onset = source.GetProperty<Hl7.Fhir.Model.Element>("onset", Hl7.Fhir.Model.Version.All);
+                Note = source.GetProperty<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"outcome", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"onset", typeof(Hl7.Fhir.Model.Element)},
+                    {"note", typeof(Hl7.Fhir.Model.Annotation)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -583,6 +606,45 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.FamilyHistoryStatus>("status", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            Relationship = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("relationship", Hl7.Fhir.Model.Version.All);
+            GenderElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.AdministrativeGender>("gender", Hl7.Fhir.Model.Version.All);
+            Born = source.GetProperty<Hl7.Fhir.Model.Element>("born", Hl7.Fhir.Model.Version.All);
+            Age = source.GetProperty<Hl7.Fhir.Model.Element>("age", Hl7.Fhir.Model.Version.All);
+            Deceased = source.GetProperty<Hl7.Fhir.Model.Element>("deceased", Hl7.Fhir.Model.Version.All);
+            Note = source.GetProperty<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            Condition = source.GetList<ConditionComponent>("condition", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FamilyHistoryStatus>)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"relationship", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"gender", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>)},
+                {"born", typeof(Hl7.Fhir.Model.Element)},
+                {"age", typeof(Hl7.Fhir.Model.Element)},
+                {"deceased", typeof(Hl7.Fhir.Model.Element)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"condition", typeof(ConditionComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

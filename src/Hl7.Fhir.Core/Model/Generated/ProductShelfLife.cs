@@ -178,6 +178,29 @@ namespace Hl7.Fhir.Model
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.R4);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.R4);
+            Period = source.GetProperty<Hl7.Fhir.Model.Quantity>("period", Hl7.Fhir.Model.Version.R4);
+            SpecialPrecautionsForStorage = source.GetList<Hl7.Fhir.Model.CodeableConcept>("specialPrecautionsForStorage", Hl7.Fhir.Model.Version.R4);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"period", typeof(Hl7.Fhir.Model.Quantity)},
+                {"specialPrecautionsForStorage", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

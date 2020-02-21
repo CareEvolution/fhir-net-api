@@ -248,6 +248,35 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ManufacturedDoseForm = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("manufacturedDoseForm", Hl7.Fhir.Model.Version.All);
+            UnitOfPresentation = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("unitOfPresentation", Hl7.Fhir.Model.Version.All);
+            Quantity = source.GetProperty<Hl7.Fhir.Model.Quantity>("quantity", Hl7.Fhir.Model.Version.All);
+            Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>("manufacturer", Hl7.Fhir.Model.Version.All);
+            Ingredient = source.GetList<Hl7.Fhir.Model.ResourceReference>("ingredient", Hl7.Fhir.Model.Version.All);
+            PhysicalCharacteristics = source.GetProperty<Hl7.Fhir.Model.ProdCharacteristic>("physicalCharacteristics", Hl7.Fhir.Model.Version.All);
+            OtherCharacteristics = source.GetList<Hl7.Fhir.Model.CodeableConcept>("otherCharacteristics", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"manufacturedDoseForm", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"unitOfPresentation", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"quantity", typeof(Hl7.Fhir.Model.Quantity)},
+                {"manufacturer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"ingredient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"physicalCharacteristics", typeof(Hl7.Fhir.Model.ProdCharacteristic)},
+                {"otherCharacteristics", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

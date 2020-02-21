@@ -476,6 +476,45 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("subClassDisplay", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SubClassDisplayElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                GroupElement = source.GetStringProperty("group", Hl7.Fhir.Model.Version.All);
+                GroupDisplayElement = source.GetStringProperty("groupDisplay", Hl7.Fhir.Model.Version.All);
+                SubGroupElement = source.GetStringProperty("subGroup", Hl7.Fhir.Model.Version.All);
+                SubGroupDisplayElement = source.GetStringProperty("subGroupDisplay", Hl7.Fhir.Model.Version.All);
+                PlanElement = source.GetStringProperty("plan", Hl7.Fhir.Model.Version.All);
+                PlanDisplayElement = source.GetStringProperty("planDisplay", Hl7.Fhir.Model.Version.All);
+                SubPlanElement = source.GetStringProperty("subPlan", Hl7.Fhir.Model.Version.All);
+                SubPlanDisplayElement = source.GetStringProperty("subPlanDisplay", Hl7.Fhir.Model.Version.All);
+                ClassElement = source.GetStringProperty("class", Hl7.Fhir.Model.Version.All);
+                ClassDisplayElement = source.GetStringProperty("classDisplay", Hl7.Fhir.Model.Version.All);
+                SubClassElement = source.GetStringProperty("subClass", Hl7.Fhir.Model.Version.All);
+                SubClassDisplayElement = source.GetStringProperty("subClassDisplay", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"group", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"groupDisplay", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"subGroup", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"subGroupDisplay", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"plan", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"planDisplay", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"subPlan", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"subPlanDisplay", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"class", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"classDisplay", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"subClass", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"subClassDisplay", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1066,6 +1105,53 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.FinancialResourceStatusCodes>("status", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            PolicyHolder = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("policyHolder", Hl7.Fhir.Model.Version.All);
+            Subscriber = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subscriber", Hl7.Fhir.Model.Version.All);
+            SubscriberIdElement = source.GetStringProperty("subscriberId", Hl7.Fhir.Model.Version.All);
+            Beneficiary = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("beneficiary", Hl7.Fhir.Model.Version.All);
+            Relationship = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("relationship", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Payor = source.GetList<Hl7.Fhir.Model.ResourceReference>("payor", Hl7.Fhir.Model.Version.All);
+            Grouping = source.GetProperty<GroupComponent>("grouping", Hl7.Fhir.Model.Version.All);
+            DependentElement = source.GetStringProperty("dependent", Hl7.Fhir.Model.Version.All);
+            SequenceElement = source.GetStringProperty("sequence", Hl7.Fhir.Model.Version.All);
+            OrderElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("order", Hl7.Fhir.Model.Version.All);
+            NetworkElement = source.GetStringProperty("network", Hl7.Fhir.Model.Version.All);
+            Contract = source.GetList<Hl7.Fhir.Model.ResourceReference>("contract", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"policyHolder", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"subscriber", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"subscriberId", typeof(Hl7.Fhir.Model.FhirString)},
+                {"beneficiary", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"relationship", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"payor", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"grouping", typeof(GroupComponent)},
+                {"dependent", typeof(Hl7.Fhir.Model.FhirString)},
+                {"sequence", typeof(Hl7.Fhir.Model.FhirString)},
+                {"order", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"network", typeof(Hl7.Fhir.Model.FhirString)},
+                {"contract", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

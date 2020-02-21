@@ -98,6 +98,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Value?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Value = source.GetProperty<Hl7.Fhir.Model.Element>("value", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"value", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -836,6 +855,69 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>("instantiatesCanonical", Hl7.Fhir.Model.Version.All);
+            InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>("instantiatesUri", Hl7.Fhir.Model.Version.All);
+            BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>("basedOn", Hl7.Fhir.Model.Version.All);
+            PriorRequest = source.GetList<Hl7.Fhir.Model.ResourceReference>("priorRequest", Hl7.Fhir.Model.Version.All);
+            GroupIdentifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("groupIdentifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.RequestStatus>("status", Hl7.Fhir.Model.Version.All);
+            IntentElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.RequestIntent>("intent", Hl7.Fhir.Model.Version.All);
+            PriorityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.RequestPriority>("priority", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.Element>("code", Hl7.Fhir.Model.Version.All);
+            Parameter = source.GetList<ParameterComponent>("parameter", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Occurrence = source.GetProperty<Hl7.Fhir.Model.Element>("occurrence", Hl7.Fhir.Model.Version.All);
+            AuthoredOnElement = source.GetDateTimeProperty("authoredOn", Hl7.Fhir.Model.Version.All);
+            Requester = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("requester", Hl7.Fhir.Model.Version.All);
+            PerformerType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("performerType", Hl7.Fhir.Model.Version.All);
+            Performer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("performer", Hl7.Fhir.Model.Version.All);
+            ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reasonCode", Hl7.Fhir.Model.Version.All);
+            ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>("reasonReference", Hl7.Fhir.Model.Version.All);
+            Insurance = source.GetList<Hl7.Fhir.Model.ResourceReference>("insurance", Hl7.Fhir.Model.Version.All);
+            SupportingInfo = source.GetList<Hl7.Fhir.Model.ResourceReference>("supportingInfo", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            RelevantHistory = source.GetList<Hl7.Fhir.Model.ResourceReference>("relevantHistory", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"instantiatesCanonical", typeof(Hl7.Fhir.Model.Canonical)},
+                {"instantiatesUri", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"basedOn", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"priorRequest", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"groupIdentifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>)},
+                {"intent", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestIntent>)},
+                {"priority", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>)},
+                {"code", typeof(Hl7.Fhir.Model.Element)},
+                {"parameter", typeof(ParameterComponent)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"occurrence", typeof(Hl7.Fhir.Model.Element)},
+                {"authoredOn", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"requester", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"performerType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"performer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reasonCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reasonReference", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"insurance", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"supportingInfo", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"relevantHistory", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

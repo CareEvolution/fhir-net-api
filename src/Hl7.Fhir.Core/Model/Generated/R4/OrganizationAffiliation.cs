@@ -389,6 +389,45 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.All);
+            ParticipatingOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("participatingOrganization", Hl7.Fhir.Model.Version.All);
+            Network = source.GetList<Hl7.Fhir.Model.ResourceReference>("network", Hl7.Fhir.Model.Version.All);
+            Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>("specialty", Hl7.Fhir.Model.Version.All);
+            Location = source.GetList<Hl7.Fhir.Model.ResourceReference>("location", Hl7.Fhir.Model.Version.All);
+            HealthcareService = source.GetList<Hl7.Fhir.Model.ResourceReference>("healthcareService", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>("endpoint", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"participatingOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"network", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"specialty", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"location", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"healthcareService", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"telecom", typeof(Hl7.Fhir.Model.R4.ContactPoint)},
+                {"endpoint", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

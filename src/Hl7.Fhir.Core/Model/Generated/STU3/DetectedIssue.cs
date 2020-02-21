@@ -132,6 +132,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("author", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Author?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Action = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("action", Hl7.Fhir.Model.Version.All);
+                DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+                Author = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("author", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"action", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                    {"author", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -562,6 +583,43 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.ObservationStatus>("status", Hl7.Fhir.Model.Version.All);
+            Category = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("category", Hl7.Fhir.Model.Version.All);
+            SeverityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DetectedIssueSeverity>("severity", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            Author = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("author", Hl7.Fhir.Model.Version.All);
+            Implicated = source.GetList<Hl7.Fhir.Model.ResourceReference>("implicated", Hl7.Fhir.Model.Version.All);
+            DetailElement = source.GetStringProperty("detail", Hl7.Fhir.Model.Version.All);
+            ReferenceElement = source.GetUriProperty("reference", Hl7.Fhir.Model.Version.All);
+            Mitigation = source.GetList<MitigationComponent>("mitigation", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ObservationStatus>)},
+                {"category", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"severity", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DetectedIssueSeverity>)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"author", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"implicated", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"detail", typeof(Hl7.Fhir.Model.FhirString)},
+                {"reference", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"mitigation", typeof(MitigationComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

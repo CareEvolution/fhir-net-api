@@ -113,6 +113,27 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("rate", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Rate?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+                Dose = source.GetProperty<Hl7.Fhir.Model.Element>("dose", Hl7.Fhir.Model.Version.All);
+                Rate = source.GetProperty<Hl7.Fhir.Model.Element>("rate", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"dose", typeof(Hl7.Fhir.Model.Element)},
+                    {"rate", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -542,6 +563,47 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("maxDosePerLifetime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MaxDosePerLifetime?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            SequenceElement = source.GetProperty<Hl7.Fhir.Model.Integer>("sequence", Hl7.Fhir.Model.Version.All);
+            TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+            AdditionalInstruction = source.GetList<Hl7.Fhir.Model.CodeableConcept>("additionalInstruction", Hl7.Fhir.Model.Version.All);
+            PatientInstructionElement = source.GetStringProperty("patientInstruction", Hl7.Fhir.Model.Version.All);
+            Timing = source.GetProperty<Hl7.Fhir.Model.R4.Timing>("timing", Hl7.Fhir.Model.Version.All);
+            AsNeeded = source.GetProperty<Hl7.Fhir.Model.Element>("asNeeded", Hl7.Fhir.Model.Version.All);
+            Site = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("site", Hl7.Fhir.Model.Version.All);
+            Route = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("route", Hl7.Fhir.Model.Version.All);
+            Method = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("method", Hl7.Fhir.Model.Version.All);
+            DoseAndRate = source.GetList<DoseAndRateComponent>("doseAndRate", Hl7.Fhir.Model.Version.All);
+            MaxDosePerPeriod = source.GetProperty<Hl7.Fhir.Model.Ratio>("maxDosePerPeriod", Hl7.Fhir.Model.Version.All);
+            MaxDosePerAdministration = source.GetProperty<Hl7.Fhir.Model.SimpleQuantity>("maxDosePerAdministration", Hl7.Fhir.Model.Version.All);
+            MaxDosePerLifetime = source.GetProperty<Hl7.Fhir.Model.SimpleQuantity>("maxDosePerLifetime", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"sequence", typeof(Hl7.Fhir.Model.Integer)},
+                {"text", typeof(Hl7.Fhir.Model.FhirString)},
+                {"additionalInstruction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"patientInstruction", typeof(Hl7.Fhir.Model.FhirString)},
+                {"timing", typeof(Hl7.Fhir.Model.R4.Timing)},
+                {"asNeeded", typeof(Hl7.Fhir.Model.Element)},
+                {"site", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"route", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"method", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"doseAndRate", typeof(DoseAndRateComponent)},
+                {"maxDosePerPeriod", typeof(Hl7.Fhir.Model.Ratio)},
+                {"maxDosePerAdministration", typeof(Hl7.Fhir.Model.SimpleQuantity)},
+                {"maxDosePerLifetime", typeof(Hl7.Fhir.Model.SimpleQuantity)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

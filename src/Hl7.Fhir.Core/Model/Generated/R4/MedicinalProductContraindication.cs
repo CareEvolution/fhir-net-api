@@ -101,6 +101,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("medication", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, true); Medication?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                TherapyRelationshipType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("therapyRelationshipType", Hl7.Fhir.Model.Version.All);
+                Medication = source.GetProperty<Hl7.Fhir.Model.Element>("medication", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"therapyRelationshipType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"medication", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -376,6 +395,35 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Disease = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("disease", Hl7.Fhir.Model.Version.All);
+            DiseaseStatus = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("diseaseStatus", Hl7.Fhir.Model.Version.All);
+            Comorbidity = source.GetList<Hl7.Fhir.Model.CodeableConcept>("comorbidity", Hl7.Fhir.Model.Version.All);
+            TherapeuticIndication = source.GetList<Hl7.Fhir.Model.ResourceReference>("therapeuticIndication", Hl7.Fhir.Model.Version.All);
+            OtherTherapy = source.GetList<OtherTherapyComponent>("otherTherapy", Hl7.Fhir.Model.Version.All);
+            Population = source.GetList<Hl7.Fhir.Model.Population>("population", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"disease", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"diseaseStatus", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"comorbidity", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"therapeuticIndication", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"otherTherapy", typeof(OtherTherapyComponent)},
+                {"population", typeof(Hl7.Fhir.Model.Population)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

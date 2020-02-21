@@ -504,6 +504,55 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>("basedOn", Hl7.Fhir.Model.Version.All);
+            PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>("partOf", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.MedicationStatementStatus>("status", Hl7.Fhir.Model.Version.All);
+            StatusReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>("statusReason", Hl7.Fhir.Model.Version.All);
+            Category = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("category", Hl7.Fhir.Model.Version.All);
+            Medication = source.GetProperty<Hl7.Fhir.Model.Element>("medication", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Context = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("context", Hl7.Fhir.Model.Version.All);
+            Effective = source.GetProperty<Hl7.Fhir.Model.Element>("effective", Hl7.Fhir.Model.Version.All);
+            DateAssertedElement = source.GetDateTimeProperty("dateAsserted", Hl7.Fhir.Model.Version.All);
+            InformationSource = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("informationSource", Hl7.Fhir.Model.Version.All);
+            DerivedFrom = source.GetList<Hl7.Fhir.Model.ResourceReference>("derivedFrom", Hl7.Fhir.Model.Version.All);
+            ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reasonCode", Hl7.Fhir.Model.Version.All);
+            ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>("reasonReference", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            Dosage = source.GetList<Hl7.Fhir.Model.R4.Dosage>("dosage", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"basedOn", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"partOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationStatementStatus>)},
+                {"statusReason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"category", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"medication", typeof(Hl7.Fhir.Model.Element)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"context", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"effective", typeof(Hl7.Fhir.Model.Element)},
+                {"dateAsserted", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"informationSource", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"derivedFrom", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reasonCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reasonReference", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"dosage", typeof(Hl7.Fhir.Model.R4.Dosage)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

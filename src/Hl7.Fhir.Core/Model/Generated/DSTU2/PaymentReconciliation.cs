@@ -198,6 +198,35 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("amount", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Amount?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Type = source.GetProperty<Hl7.Fhir.Model.Coding>("type", Hl7.Fhir.Model.Version.All);
+                Request = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("request", Hl7.Fhir.Model.Version.All);
+                Responce = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("responce", Hl7.Fhir.Model.Version.All);
+                Submitter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("submitter", Hl7.Fhir.Model.Version.All);
+                Payee = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("payee", Hl7.Fhir.Model.Version.All);
+                DateElement = source.GetDateProperty("date", Hl7.Fhir.Model.Version.All);
+                Amount = source.GetProperty<Hl7.Fhir.Model.DSTU2.Money>("amount", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.Coding)},
+                    {"request", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"responce", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"submitter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"payee", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"date", typeof(Hl7.Fhir.Model.Date)},
+                    {"amount", typeof(Hl7.Fhir.Model.DSTU2.Money)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -357,6 +386,25 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TextElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Type = source.GetProperty<Hl7.Fhir.Model.Coding>("type", Hl7.Fhir.Model.Version.All);
+                TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.Coding)},
+                    {"text", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -827,6 +875,51 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Request = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("request", Hl7.Fhir.Model.Version.All);
+            OutcomeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.RemittanceOutcome>("outcome", Hl7.Fhir.Model.Version.All);
+            DispositionElement = source.GetStringProperty("disposition", Hl7.Fhir.Model.Version.All);
+            Ruleset = source.GetProperty<Hl7.Fhir.Model.Coding>("ruleset", Hl7.Fhir.Model.Version.All);
+            OriginalRuleset = source.GetProperty<Hl7.Fhir.Model.Coding>("originalRuleset", Hl7.Fhir.Model.Version.All);
+            CreatedElement = source.GetDateTimeProperty("created", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.All);
+            RequestProvider = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("requestProvider", Hl7.Fhir.Model.Version.All);
+            RequestOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("requestOrganization", Hl7.Fhir.Model.Version.All);
+            Detail = source.GetList<DetailsComponent>("detail", Hl7.Fhir.Model.Version.All);
+            Form = source.GetProperty<Hl7.Fhir.Model.Coding>("form", Hl7.Fhir.Model.Version.All);
+            Total = source.GetProperty<Hl7.Fhir.Model.DSTU2.Money>("total", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<NotesComponent>("note", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"request", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"outcome", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.RemittanceOutcome>)},
+                {"disposition", typeof(Hl7.Fhir.Model.FhirString)},
+                {"ruleset", typeof(Hl7.Fhir.Model.Coding)},
+                {"originalRuleset", typeof(Hl7.Fhir.Model.Coding)},
+                {"created", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"requestProvider", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"requestOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"detail", typeof(DetailsComponent)},
+                {"form", typeof(Hl7.Fhir.Model.Coding)},
+                {"total", typeof(Hl7.Fhir.Model.DSTU2.Money)},
+                {"note", typeof(NotesComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

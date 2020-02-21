@@ -194,6 +194,33 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("rationale", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); RationaleElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Outcome = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("outcome", Hl7.Fhir.Model.Version.All);
+                Probability = source.GetProperty<Hl7.Fhir.Model.Element>("probability", Hl7.Fhir.Model.Version.All);
+                QualitativeRisk = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("qualitativeRisk", Hl7.Fhir.Model.Version.All);
+                RelativeRiskElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("relativeRisk", Hl7.Fhir.Model.Version.All);
+                When = source.GetProperty<Hl7.Fhir.Model.Element>("when", Hl7.Fhir.Model.Version.All);
+                RationaleElement = source.GetStringProperty("rationale", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"outcome", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"probability", typeof(Hl7.Fhir.Model.Element)},
+                    {"qualitativeRisk", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"relativeRisk", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"when", typeof(Hl7.Fhir.Model.Element)},
+                    {"rationale", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -741,6 +768,55 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            BasedOn = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("basedOn", Hl7.Fhir.Model.Version.All);
+            Parent = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("parent", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.ObservationStatus>("status", Hl7.Fhir.Model.Version.All);
+            Method = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("method", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Occurrence = source.GetProperty<Hl7.Fhir.Model.Element>("occurrence", Hl7.Fhir.Model.Version.All);
+            Condition = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("condition", Hl7.Fhir.Model.Version.All);
+            Performer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("performer", Hl7.Fhir.Model.Version.All);
+            ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("reasonCode", Hl7.Fhir.Model.Version.All);
+            ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>("reasonReference", Hl7.Fhir.Model.Version.All);
+            Basis = source.GetList<Hl7.Fhir.Model.ResourceReference>("basis", Hl7.Fhir.Model.Version.All);
+            Prediction = source.GetList<PredictionComponent>("prediction", Hl7.Fhir.Model.Version.All);
+            MitigationElement = source.GetStringProperty("mitigation", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"basedOn", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"parent", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationStatus>)},
+                {"method", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"occurrence", typeof(Hl7.Fhir.Model.Element)},
+                {"condition", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"performer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reasonCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reasonReference", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"basis", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"prediction", typeof(PredictionComponent)},
+                {"mitigation", typeof(Hl7.Fhir.Model.FhirString)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

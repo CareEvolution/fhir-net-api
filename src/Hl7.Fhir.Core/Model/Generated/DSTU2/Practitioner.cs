@@ -179,6 +179,33 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                ManagingOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("managingOrganization", Hl7.Fhir.Model.Version.All);
+                Role = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("role", Hl7.Fhir.Model.Version.All);
+                Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>("specialty", Hl7.Fhir.Model.Version.All);
+                Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+                Location = source.GetList<Hl7.Fhir.Model.ResourceReference>("location", Hl7.Fhir.Model.Version.All);
+                HealthcareService = source.GetList<Hl7.Fhir.Model.ResourceReference>("healthcareService", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"managingOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"role", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"specialty", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"period", typeof(Hl7.Fhir.Model.Period)},
+                    {"location", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"healthcareService", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -349,6 +376,29 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("issuer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Issuer?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+                Issuer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("issuer", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"period", typeof(Hl7.Fhir.Model.Period)},
+                    {"issuer", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -775,6 +825,43 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            Name = source.GetProperty<Hl7.Fhir.Model.DSTU2.HumanName>("name", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            Address = source.GetList<Hl7.Fhir.Model.Address>("address", Hl7.Fhir.Model.Version.All);
+            GenderElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.AdministrativeGender>("gender", Hl7.Fhir.Model.Version.All);
+            BirthDateElement = source.GetDateProperty("birthDate", Hl7.Fhir.Model.Version.All);
+            Photo = source.GetList<Hl7.Fhir.Model.Attachment>("photo", Hl7.Fhir.Model.Version.All);
+            PractitionerRole = source.GetList<PractitionerRoleComponent>("practitionerRole", Hl7.Fhir.Model.Version.All);
+            Qualification = source.GetList<QualificationComponent>("qualification", Hl7.Fhir.Model.Version.All);
+            Communication = source.GetList<Hl7.Fhir.Model.CodeableConcept>("communication", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"name", typeof(Hl7.Fhir.Model.DSTU2.HumanName)},
+                {"telecom", typeof(Hl7.Fhir.Model.DSTU2.ContactPoint)},
+                {"address", typeof(Hl7.Fhir.Model.Address)},
+                {"gender", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>)},
+                {"birthDate", typeof(Hl7.Fhir.Model.Date)},
+                {"photo", typeof(Hl7.Fhir.Model.Attachment)},
+                {"practitionerRole", typeof(PractitionerRoleComponent)},
+                {"qualification", typeof(QualificationComponent)},
+                {"communication", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

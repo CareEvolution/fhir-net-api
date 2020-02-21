@@ -194,6 +194,25 @@ namespace Hl7.Fhir.Model
             sink.Element("end", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); EndElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            StartElement = source.GetDateTimeProperty("start", Hl7.Fhir.Model.Version.All);
+            EndElement = source.GetDateTimeProperty("end", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"start", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"end", typeof(Hl7.Fhir.Model.FhirDateTime)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

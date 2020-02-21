@@ -170,6 +170,27 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("time", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TimeElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DeviceMetricCalibrationType>("type", Hl7.Fhir.Model.Version.All);
+                StateElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DeviceMetricCalibrationState>("state", Hl7.Fhir.Model.Version.All);
+                TimeElement = source.GetProperty<Hl7.Fhir.Model.Instant>("time", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationType>)},
+                    {"state", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationState>)},
+                    {"time", typeof(Hl7.Fhir.Model.Instant)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -546,6 +567,41 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Unit = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("unit", Hl7.Fhir.Model.Version.All);
+            Source = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("source", Hl7.Fhir.Model.Version.All);
+            Parent = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("parent", Hl7.Fhir.Model.Version.All);
+            OperationalStatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.DeviceMetricOperationalStatus>("operationalStatus", Hl7.Fhir.Model.Version.All);
+            ColorElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DeviceMetricColor>("color", Hl7.Fhir.Model.Version.All);
+            CategoryElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DeviceMetricCategory>("category", Hl7.Fhir.Model.Version.All);
+            MeasurementPeriod = source.GetProperty<Hl7.Fhir.Model.DSTU2.Timing>("measurementPeriod", Hl7.Fhir.Model.Version.All);
+            Calibration = source.GetList<CalibrationComponent>("calibration", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"unit", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"source", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"parent", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"operationalStatus", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceMetricOperationalStatus>)},
+                {"color", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricColor>)},
+                {"category", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCategory>)},
+                {"measurementPeriod", typeof(Hl7.Fhir.Model.DSTU2.Timing)},
+                {"calibration", typeof(CalibrationComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

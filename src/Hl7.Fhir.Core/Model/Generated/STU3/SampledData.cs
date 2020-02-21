@@ -341,6 +341,35 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("data", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); DataElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Origin = source.GetProperty<Hl7.Fhir.Model.SimpleQuantity>("origin", Hl7.Fhir.Model.Version.All);
+            PeriodElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("period", Hl7.Fhir.Model.Version.All);
+            FactorElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("factor", Hl7.Fhir.Model.Version.All);
+            LowerLimitElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("lowerLimit", Hl7.Fhir.Model.Version.All);
+            UpperLimitElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("upperLimit", Hl7.Fhir.Model.Version.All);
+            DimensionsElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("dimensions", Hl7.Fhir.Model.Version.All);
+            DataElement = source.GetStringProperty("data", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"origin", typeof(Hl7.Fhir.Model.SimpleQuantity)},
+                {"period", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                {"factor", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                {"lowerLimit", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                {"upperLimit", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                {"dimensions", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"data", typeof(Hl7.Fhir.Model.FhirString)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -365,6 +365,43 @@ namespace Hl7.Fhir.Model
             sink.Element("scoring", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); Scoring?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Height = source.GetProperty<Hl7.Fhir.Model.Quantity>("height", Hl7.Fhir.Model.Version.R4);
+            Width = source.GetProperty<Hl7.Fhir.Model.Quantity>("width", Hl7.Fhir.Model.Version.R4);
+            Depth = source.GetProperty<Hl7.Fhir.Model.Quantity>("depth", Hl7.Fhir.Model.Version.R4);
+            Weight = source.GetProperty<Hl7.Fhir.Model.Quantity>("weight", Hl7.Fhir.Model.Version.R4);
+            NominalVolume = source.GetProperty<Hl7.Fhir.Model.Quantity>("nominalVolume", Hl7.Fhir.Model.Version.R4);
+            ExternalDiameter = source.GetProperty<Hl7.Fhir.Model.Quantity>("externalDiameter", Hl7.Fhir.Model.Version.R4);
+            ShapeElement = source.GetStringProperty("shape", Hl7.Fhir.Model.Version.R4);
+            ColorElement = source.GetStringList("color", Hl7.Fhir.Model.Version.R4);
+            ImprintElement = source.GetStringList("imprint", Hl7.Fhir.Model.Version.R4);
+            Image = source.GetList<Hl7.Fhir.Model.Attachment>("image", Hl7.Fhir.Model.Version.R4);
+            Scoring = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("scoring", Hl7.Fhir.Model.Version.R4);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"height", typeof(Hl7.Fhir.Model.Quantity)},
+                {"width", typeof(Hl7.Fhir.Model.Quantity)},
+                {"depth", typeof(Hl7.Fhir.Model.Quantity)},
+                {"weight", typeof(Hl7.Fhir.Model.Quantity)},
+                {"nominalVolume", typeof(Hl7.Fhir.Model.Quantity)},
+                {"externalDiameter", typeof(Hl7.Fhir.Model.Quantity)},
+                {"shape", typeof(Hl7.Fhir.Model.FhirString)},
+                {"color", typeof(Hl7.Fhir.Model.FhirString)},
+                {"imprint", typeof(Hl7.Fhir.Model.FhirString)},
+                {"image", typeof(Hl7.Fhir.Model.Attachment)},
+                {"scoring", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -283,6 +283,31 @@ namespace Hl7.Fhir.Model
             sink.Element("userSelected", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); UserSelectedElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            SystemElement = source.GetUriProperty("system", Hl7.Fhir.Model.Version.All);
+            VersionElement = source.GetStringProperty("version", Hl7.Fhir.Model.Version.All);
+            CodeElement = source.GetCodeProperty("code", Hl7.Fhir.Model.Version.All);
+            DisplayElement = source.GetStringProperty("display", Hl7.Fhir.Model.Version.All);
+            UserSelectedElement = source.GetBooleanProperty("userSelected", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"system", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"version", typeof(Hl7.Fhir.Model.FhirString)},
+                {"code", typeof(Hl7.Fhir.Model.Code)},
+                {"display", typeof(Hl7.Fhir.Model.FhirString)},
+                {"userSelected", typeof(Hl7.Fhir.Model.FhirBoolean)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

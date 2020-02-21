@@ -272,6 +272,33 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("blob", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); BlobElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Type = source.GetList<Hl7.Fhir.Model.Coding>("type", Hl7.Fhir.Model.Version.All);
+            WhenElement = source.GetProperty<Hl7.Fhir.Model.Instant>("when", Hl7.Fhir.Model.Version.All);
+            Who = source.GetProperty<Hl7.Fhir.Model.Element>("who", Hl7.Fhir.Model.Version.All);
+            OnBehalfOf = source.GetProperty<Hl7.Fhir.Model.Element>("onBehalfOf", Hl7.Fhir.Model.Version.All);
+            ContentTypeElement = source.GetCodeProperty("contentType", Hl7.Fhir.Model.Version.All);
+            BlobElement = source.GetBinaryProperty("blob", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"type", typeof(Hl7.Fhir.Model.Coding)},
+                {"when", typeof(Hl7.Fhir.Model.Instant)},
+                {"who", typeof(Hl7.Fhir.Model.Element)},
+                {"onBehalfOf", typeof(Hl7.Fhir.Model.Element)},
+                {"contentType", typeof(Hl7.Fhir.Model.Code)},
+                {"blob", typeof(Hl7.Fhir.Model.Base64Binary)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

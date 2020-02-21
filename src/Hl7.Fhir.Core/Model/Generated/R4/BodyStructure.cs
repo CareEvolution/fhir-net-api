@@ -300,6 +300,37 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("patient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Patient?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            Morphology = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("morphology", Hl7.Fhir.Model.Version.All);
+            Location = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("location", Hl7.Fhir.Model.Version.All);
+            LocationQualifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>("locationQualifier", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            Image = source.GetList<Hl7.Fhir.Model.Attachment>("image", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"morphology", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"location", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"locationQualifier", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"image", typeof(Hl7.Fhir.Model.Attachment)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

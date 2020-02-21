@@ -305,6 +305,31 @@ namespace Hl7.Fhir.Model
             sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CodeElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ValueElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("value", Hl7.Fhir.Model.Version.All);
+            ComparatorElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.QuantityComparator>("comparator", Hl7.Fhir.Model.Version.All);
+            UnitElement = source.GetStringProperty("unit", Hl7.Fhir.Model.Version.All);
+            SystemElement = source.GetUriProperty("system", Hl7.Fhir.Model.Version.All);
+            CodeElement = source.GetCodeProperty("code", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"value", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                {"comparator", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuantityComparator>)},
+                {"unit", typeof(Hl7.Fhir.Model.FhirString)},
+                {"system", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"code", typeof(Hl7.Fhir.Model.Code)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

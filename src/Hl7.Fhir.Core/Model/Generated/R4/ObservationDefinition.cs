@@ -162,6 +162,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("decimalPrecision", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DecimalPrecisionElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                CustomaryUnit = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("customaryUnit", Hl7.Fhir.Model.Version.All);
+                Unit = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("unit", Hl7.Fhir.Model.Version.All);
+                ConversionFactorElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("conversionFactor", Hl7.Fhir.Model.Version.All);
+                DecimalPrecisionElement = source.GetProperty<Hl7.Fhir.Model.Integer>("decimalPrecision", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"customaryUnit", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"unit", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"conversionFactor", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                    {"decimalPrecision", typeof(Hl7.Fhir.Model.Integer)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -432,6 +455,37 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("condition", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ConditionElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                CategoryElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.ObservationRangeCategory>("category", Hl7.Fhir.Model.Version.All);
+                Range = source.GetProperty<Hl7.Fhir.Model.Range>("range", Hl7.Fhir.Model.Version.All);
+                Context = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("context", Hl7.Fhir.Model.Version.All);
+                AppliesTo = source.GetList<Hl7.Fhir.Model.CodeableConcept>("appliesTo", Hl7.Fhir.Model.Version.All);
+                GenderElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.AdministrativeGender>("gender", Hl7.Fhir.Model.Version.All);
+                Age = source.GetProperty<Hl7.Fhir.Model.Range>("age", Hl7.Fhir.Model.Version.All);
+                GestationalAge = source.GetProperty<Hl7.Fhir.Model.Range>("gestationalAge", Hl7.Fhir.Model.Version.All);
+                ConditionElement = source.GetStringProperty("condition", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"category", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationRangeCategory>)},
+                    {"range", typeof(Hl7.Fhir.Model.Range)},
+                    {"context", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"appliesTo", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"gender", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>)},
+                    {"age", typeof(Hl7.Fhir.Model.Range)},
+                    {"gestationalAge", typeof(Hl7.Fhir.Model.Range)},
+                    {"condition", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -890,6 +944,47 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("criticalCodedValueSet", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); CriticalCodedValueSet?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>("category", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            PermittedDataTypeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationDataType>>("permittedDataType", Hl7.Fhir.Model.Version.All);
+            MultipleResultsAllowedElement = source.GetBooleanProperty("multipleResultsAllowed", Hl7.Fhir.Model.Version.All);
+            Method = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("method", Hl7.Fhir.Model.Version.All);
+            PreferredReportNameElement = source.GetStringProperty("preferredReportName", Hl7.Fhir.Model.Version.All);
+            QuantitativeDetails = source.GetProperty<QuantitativeDetailsComponent>("quantitativeDetails", Hl7.Fhir.Model.Version.All);
+            QualifiedInterval = source.GetList<QualifiedIntervalComponent>("qualifiedInterval", Hl7.Fhir.Model.Version.All);
+            ValidCodedValueSet = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("validCodedValueSet", Hl7.Fhir.Model.Version.All);
+            NormalCodedValueSet = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("normalCodedValueSet", Hl7.Fhir.Model.Version.All);
+            AbnormalCodedValueSet = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("abnormalCodedValueSet", Hl7.Fhir.Model.Version.All);
+            CriticalCodedValueSet = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("criticalCodedValueSet", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"category", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"permittedDataType", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationDataType>)},
+                {"multipleResultsAllowed", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"method", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"preferredReportName", typeof(Hl7.Fhir.Model.FhirString)},
+                {"quantitativeDetails", typeof(QuantitativeDetailsComponent)},
+                {"qualifiedInterval", typeof(QualifiedIntervalComponent)},
+                {"validCodedValueSet", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"normalCodedValueSet", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"abnormalCodedValueSet", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"criticalCodedValueSet", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

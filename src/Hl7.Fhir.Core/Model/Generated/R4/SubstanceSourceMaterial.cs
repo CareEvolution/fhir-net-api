@@ -117,6 +117,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("materialType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MaterialType?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                FractionElement = source.GetStringProperty("fraction", Hl7.Fhir.Model.Version.All);
+                MaterialType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("materialType", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"fraction", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"materialType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -347,6 +366,37 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("organismGeneral", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OrganismGeneral?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Family = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("family", Hl7.Fhir.Model.Version.All);
+                Genus = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("genus", Hl7.Fhir.Model.Version.All);
+                Species = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("species", Hl7.Fhir.Model.Version.All);
+                IntraspecificType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("intraspecificType", Hl7.Fhir.Model.Version.All);
+                IntraspecificDescriptionElement = source.GetStringProperty("intraspecificDescription", Hl7.Fhir.Model.Version.All);
+                Author = source.GetList<AuthorComponent>("author", Hl7.Fhir.Model.Version.All);
+                Hybrid = source.GetProperty<HybridComponent>("hybrid", Hl7.Fhir.Model.Version.All);
+                OrganismGeneral = source.GetProperty<OrganismGeneralComponent>("organismGeneral", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"family", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"genus", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"species", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"intraspecificType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"intraspecificDescription", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"author", typeof(AuthorComponent)},
+                    {"hybrid", typeof(HybridComponent)},
+                    {"organismGeneral", typeof(OrganismGeneralComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -511,6 +561,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("authorDescription", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); AuthorDescriptionElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                AuthorType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("authorType", Hl7.Fhir.Model.Version.All);
+                AuthorDescriptionElement = source.GetStringProperty("authorDescription", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"authorType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"authorDescription", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -747,6 +816,31 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("hybridType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); HybridType?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                MaternalOrganismIdElement = source.GetStringProperty("maternalOrganismId", Hl7.Fhir.Model.Version.All);
+                MaternalOrganismNameElement = source.GetStringProperty("maternalOrganismName", Hl7.Fhir.Model.Version.All);
+                PaternalOrganismIdElement = source.GetStringProperty("paternalOrganismId", Hl7.Fhir.Model.Version.All);
+                PaternalOrganismNameElement = source.GetStringProperty("paternalOrganismName", Hl7.Fhir.Model.Version.All);
+                HybridType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("hybridType", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"maternalOrganismId", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"maternalOrganismName", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"paternalOrganismId", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"paternalOrganismName", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"hybridType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -907,6 +1001,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("order", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Order?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Kingdom = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("kingdom", Hl7.Fhir.Model.Version.All);
+                Phylum = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("phylum", Hl7.Fhir.Model.Version.All);
+                Class = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("class", Hl7.Fhir.Model.Version.All);
+                Order = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("order", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"kingdom", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"phylum", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"class", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"order", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1032,6 +1149,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("partLocation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PartLocation?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Part = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("part", Hl7.Fhir.Model.Version.All);
+                PartLocation = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("partLocation", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"part", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"partLocation", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1470,6 +1606,47 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            SourceMaterialClass = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("sourceMaterialClass", Hl7.Fhir.Model.Version.All);
+            SourceMaterialType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("sourceMaterialType", Hl7.Fhir.Model.Version.All);
+            SourceMaterialState = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("sourceMaterialState", Hl7.Fhir.Model.Version.All);
+            OrganismId = source.GetProperty<Hl7.Fhir.Model.Identifier>("organismId", Hl7.Fhir.Model.Version.All);
+            OrganismNameElement = source.GetStringProperty("organismName", Hl7.Fhir.Model.Version.All);
+            ParentSubstanceId = source.GetList<Hl7.Fhir.Model.Identifier>("parentSubstanceId", Hl7.Fhir.Model.Version.All);
+            ParentSubstanceNameElement = source.GetStringList("parentSubstanceName", Hl7.Fhir.Model.Version.All);
+            CountryOfOrigin = source.GetList<Hl7.Fhir.Model.CodeableConcept>("countryOfOrigin", Hl7.Fhir.Model.Version.All);
+            GeographicalLocationElement = source.GetStringList("geographicalLocation", Hl7.Fhir.Model.Version.All);
+            DevelopmentStage = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("developmentStage", Hl7.Fhir.Model.Version.All);
+            FractionDescription = source.GetList<FractionDescriptionComponent>("fractionDescription", Hl7.Fhir.Model.Version.All);
+            Organism = source.GetProperty<OrganismComponent>("organism", Hl7.Fhir.Model.Version.All);
+            PartDescription = source.GetList<PartDescriptionComponent>("partDescription", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"sourceMaterialClass", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"sourceMaterialType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"sourceMaterialState", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"organismId", typeof(Hl7.Fhir.Model.Identifier)},
+                {"organismName", typeof(Hl7.Fhir.Model.FhirString)},
+                {"parentSubstanceId", typeof(Hl7.Fhir.Model.Identifier)},
+                {"parentSubstanceName", typeof(Hl7.Fhir.Model.FhirString)},
+                {"countryOfOrigin", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"geographicalLocation", typeof(Hl7.Fhir.Model.FhirString)},
+                {"developmentStage", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"fractionDescription", typeof(FractionDescriptionComponent)},
+                {"organism", typeof(OrganismComponent)},
+                {"partDescription", typeof(PartDescriptionComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

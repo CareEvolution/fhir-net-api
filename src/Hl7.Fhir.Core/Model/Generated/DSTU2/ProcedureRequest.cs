@@ -436,6 +436,49 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("priority", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PriorityElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            BodySite = source.GetList<Hl7.Fhir.Model.CodeableConcept>("bodySite", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetProperty<Hl7.Fhir.Model.Element>("reason", Hl7.Fhir.Model.Version.All);
+            Scheduled = source.GetProperty<Hl7.Fhir.Model.Element>("scheduled", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Performer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("performer", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.ProcedureRequestStatus>("status", Hl7.Fhir.Model.Version.All);
+            Notes = source.GetList<Hl7.Fhir.Model.Annotation>("notes", Hl7.Fhir.Model.Version.All);
+            AsNeeded = source.GetProperty<Hl7.Fhir.Model.Element>("asNeeded", Hl7.Fhir.Model.Version.All);
+            OrderedOnElement = source.GetDateTimeProperty("orderedOn", Hl7.Fhir.Model.Version.All);
+            Orderer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("orderer", Hl7.Fhir.Model.Version.All);
+            PriorityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.ProcedureRequestPriority>("priority", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"bodySite", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reason", typeof(Hl7.Fhir.Model.Element)},
+                {"scheduled", typeof(Hl7.Fhir.Model.Element)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"performer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestStatus>)},
+                {"notes", typeof(Hl7.Fhir.Model.Annotation)},
+                {"asNeeded", typeof(Hl7.Fhir.Model.Element)},
+                {"orderedOn", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"orderer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"priority", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestPriority>)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

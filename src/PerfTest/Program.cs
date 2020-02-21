@@ -11,16 +11,37 @@ namespace PerfTest
     {
         static async System.Threading.Tasks.Task Main()
         {
-            var json = File.ReadAllText(@"patient.json");
+            var bytes = File.ReadAllBytes(@"patient.json");
 
-            //const int count = 10_000;
+            const int count = 10_000;
 
+            var sw = Stopwatch.StartNew();
 
-            var jsonParser = new FhirSerialization.FhirJsonFastParser(FhirModel.Version.DSTU2);
+            for (int i = 0; i < count; i++)
+            {
+                var stream = new MemoryStream(bytes);
+                var jsonParser = new FhirSerialization.FhirJsonFastParser(FhirModel.Version.DSTU2);
+                await jsonParser.ParseAsync(stream, System.Threading.CancellationToken.None);
+            }
+            sw.Stop();
 
-            var patient = await jsonParser.ParseAsync(File.OpenRead("patient.json"), System.Threading.CancellationToken.None);
+            Console.WriteLine("JSON Parse FAST X {1:N0}: {0:N1}ms", sw.ElapsedMilliseconds, count);
 
-            Console.WriteLine(patient);
+            //sw = Stopwatch.StartNew();
+
+            //var slowParser = new FhirSerialization.FhirJsonParser(FhirModel.Version.DSTU2);
+            //for (int i = 0; i < count; i++)
+            //{
+            //    using (var stream = File.OpenRead("patient.json"))
+            //    using (var reader = new StreamReader(stream))
+            //    using (var jsonReader = new Newtonsoft.Json.JsonTextReader(reader))
+            //    {
+            //        slowParser.Parse(jsonReader);
+            //    }
+            //}
+            //sw.Stop();
+
+            //Console.WriteLine("JSON Parse Orig X {1:N0}: {0:N1}ms", sw.ElapsedMilliseconds, count);
 
 
             //var xml = File.ReadAllText(@"bundle.xml");

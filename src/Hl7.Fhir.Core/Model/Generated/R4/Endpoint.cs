@@ -422,6 +422,43 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.EndpointStatus>("status", Hl7.Fhir.Model.Version.All);
+            ConnectionType = source.GetProperty<Hl7.Fhir.Model.Coding>("connectionType", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            ManagingOrganization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("managingOrganization", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>("contact", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            PayloadType = source.GetList<Hl7.Fhir.Model.CodeableConcept>("payloadType", Hl7.Fhir.Model.Version.All);
+            PayloadMimeTypeElement = source.GetList<Hl7.Fhir.Model.Code>("payloadMimeType", Hl7.Fhir.Model.Version.All);
+            AddressElement = source.GetProperty<Hl7.Fhir.Model.Url>("address", Hl7.Fhir.Model.Version.All);
+            HeaderElement = source.GetStringList("header", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.EndpointStatus>)},
+                {"connectionType", typeof(Hl7.Fhir.Model.Coding)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"managingOrganization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"contact", typeof(Hl7.Fhir.Model.R4.ContactPoint)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"payloadType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"payloadMimeType", typeof(Hl7.Fhir.Model.Code)},
+                {"address", typeof(Hl7.Fhir.Model.Url)},
+                {"header", typeof(Hl7.Fhir.Model.FhirString)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

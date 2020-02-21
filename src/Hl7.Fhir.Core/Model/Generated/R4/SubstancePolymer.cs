@@ -104,6 +104,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                RatioType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("ratioType", Hl7.Fhir.Model.Version.All);
+                StartingMaterial = source.GetList<StartingMaterialComponent>("startingMaterial", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"ratioType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"startingMaterial", typeof(StartingMaterialComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -268,6 +287,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("amount", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Amount?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Material = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("material", Hl7.Fhir.Model.Version.All);
+                Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+                IsDefiningElement = source.GetBooleanProperty("isDefining", Hl7.Fhir.Model.Version.All);
+                Amount = source.GetProperty<Hl7.Fhir.Model.SubstanceAmount>("amount", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"material", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"isDefining", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"amount", typeof(Hl7.Fhir.Model.SubstanceAmount)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -467,6 +509,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                NumberOfUnitsElement = source.GetProperty<Hl7.Fhir.Model.Integer>("numberOfUnits", Hl7.Fhir.Model.Version.All);
+                AverageMolecularFormulaElement = source.GetStringProperty("averageMolecularFormula", Hl7.Fhir.Model.Version.All);
+                RepeatUnitAmountType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("repeatUnitAmountType", Hl7.Fhir.Model.Version.All);
+                RepeatUnit = source.GetList<RepeatUnitComponent>("repeatUnit", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"numberOfUnits", typeof(Hl7.Fhir.Model.Integer)},
+                    {"averageMolecularFormula", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"repeatUnitAmountType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"repeatUnit", typeof(RepeatUnitComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -668,6 +733,31 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                OrientationOfPolymerisation = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("orientationOfPolymerisation", Hl7.Fhir.Model.Version.All);
+                RepeatUnitElement = source.GetStringProperty("repeatUnit", Hl7.Fhir.Model.Version.All);
+                Amount = source.GetProperty<Hl7.Fhir.Model.SubstanceAmount>("amount", Hl7.Fhir.Model.Version.All);
+                DegreeOfPolymerisation = source.GetList<DegreeOfPolymerisationComponent>("degreeOfPolymerisation", Hl7.Fhir.Model.Version.All);
+                StructuralRepresentation = source.GetList<StructuralRepresentationComponent>("structuralRepresentation", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"orientationOfPolymerisation", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"repeatUnit", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"amount", typeof(Hl7.Fhir.Model.SubstanceAmount)},
+                    {"degreeOfPolymerisation", typeof(DegreeOfPolymerisationComponent)},
+                    {"structuralRepresentation", typeof(StructuralRepresentationComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -798,6 +888,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("amount", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Amount?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Degree = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("degree", Hl7.Fhir.Model.Version.All);
+                Amount = source.GetProperty<Hl7.Fhir.Model.SubstanceAmount>("amount", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"degree", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"amount", typeof(Hl7.Fhir.Model.SubstanceAmount)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -947,6 +1056,27 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("attachment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Attachment?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+                RepresentationElement = source.GetStringProperty("representation", Hl7.Fhir.Model.Version.All);
+                Attachment = source.GetProperty<Hl7.Fhir.Model.Attachment>("attachment", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"representation", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"attachment", typeof(Hl7.Fhir.Model.Attachment)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1217,6 +1347,33 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Class = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("class", Hl7.Fhir.Model.Version.All);
+            Geometry = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("geometry", Hl7.Fhir.Model.Version.All);
+            CopolymerConnectivity = source.GetList<Hl7.Fhir.Model.CodeableConcept>("copolymerConnectivity", Hl7.Fhir.Model.Version.All);
+            ModificationElement = source.GetStringList("modification", Hl7.Fhir.Model.Version.All);
+            MonomerSet = source.GetList<MonomerSetComponent>("monomerSet", Hl7.Fhir.Model.Version.All);
+            Repeat = source.GetList<RepeatComponent>("repeat", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"class", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"geometry", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"copolymerConnectivity", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"modification", typeof(Hl7.Fhir.Model.FhirString)},
+                {"monomerSet", typeof(MonomerSetComponent)},
+                {"repeat", typeof(RepeatComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

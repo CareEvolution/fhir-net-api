@@ -210,6 +210,31 @@ namespace Hl7.Fhir.Model
             sink.Element("restoreDate", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); RestoreDateElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Country = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("country", Hl7.Fhir.Model.Version.R4);
+            Jurisdiction = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("jurisdiction", Hl7.Fhir.Model.Version.R4);
+            Status = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("status", Hl7.Fhir.Model.Version.R4);
+            DateRange = source.GetProperty<Hl7.Fhir.Model.Period>("dateRange", Hl7.Fhir.Model.Version.R4);
+            RestoreDateElement = source.GetDateTimeProperty("restoreDate", Hl7.Fhir.Model.Version.R4);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"country", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"jurisdiction", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"status", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"dateRange", typeof(Hl7.Fhir.Model.Period)},
+                {"restoreDate", typeof(Hl7.Fhir.Model.FhirDateTime)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -172,6 +172,25 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("currency", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CurrencyElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ValueElement = source.GetProperty<Hl7.Fhir.Model.FhirDecimal>("value", Hl7.Fhir.Model.Version.All);
+            CurrencyElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.Currencies>("currency", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"value", typeof(Hl7.Fhir.Model.FhirDecimal)},
+                {"currency", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.Currencies>)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

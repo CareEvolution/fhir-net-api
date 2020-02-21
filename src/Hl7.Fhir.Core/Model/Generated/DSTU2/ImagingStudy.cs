@@ -378,6 +378,43 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                NumberElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("number", Hl7.Fhir.Model.Version.All);
+                Modality = source.GetProperty<Hl7.Fhir.Model.Coding>("modality", Hl7.Fhir.Model.Version.All);
+                UidElement = source.GetProperty<Hl7.Fhir.Model.Oid>("uid", Hl7.Fhir.Model.Version.All);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+                NumberOfInstancesElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("numberOfInstances", Hl7.Fhir.Model.Version.All);
+                AvailabilityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.InstanceAvailability>("availability", Hl7.Fhir.Model.Version.All);
+                UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+                BodySite = source.GetProperty<Hl7.Fhir.Model.Coding>("bodySite", Hl7.Fhir.Model.Version.All);
+                Laterality = source.GetProperty<Hl7.Fhir.Model.Coding>("laterality", Hl7.Fhir.Model.Version.All);
+                StartedElement = source.GetDateTimeProperty("started", Hl7.Fhir.Model.Version.All);
+                Instance = source.GetList<InstanceComponent>("instance", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"number", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                    {"modality", typeof(Hl7.Fhir.Model.Coding)},
+                    {"uid", typeof(Hl7.Fhir.Model.Oid)},
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"numberOfInstances", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                    {"availability", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>)},
+                    {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+                    {"bodySite", typeof(Hl7.Fhir.Model.Coding)},
+                    {"laterality", typeof(Hl7.Fhir.Model.Coding)},
+                    {"started", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                    {"instance", typeof(InstanceComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -701,6 +738,33 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                NumberElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("number", Hl7.Fhir.Model.Version.All);
+                UidElement = source.GetProperty<Hl7.Fhir.Model.Oid>("uid", Hl7.Fhir.Model.Version.All);
+                SopClassElement = source.GetProperty<Hl7.Fhir.Model.Oid>("sopClass", Hl7.Fhir.Model.Version.All);
+                TypeElement = source.GetStringProperty("type", Hl7.Fhir.Model.Version.All);
+                TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+                Content = source.GetList<Hl7.Fhir.Model.Attachment>("content", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"number", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                    {"uid", typeof(Hl7.Fhir.Model.Oid)},
+                    {"sopClass", typeof(Hl7.Fhir.Model.Oid)},
+                    {"type", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"content", typeof(Hl7.Fhir.Model.Attachment)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1301,6 +1365,53 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            StartedElement = source.GetDateTimeProperty("started", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            UidElement = source.GetProperty<Hl7.Fhir.Model.Oid>("uid", Hl7.Fhir.Model.Version.All);
+            Accession = source.GetProperty<Hl7.Fhir.Model.Identifier>("accession", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Order = source.GetList<Hl7.Fhir.Model.ResourceReference>("order", Hl7.Fhir.Model.Version.All);
+            ModalityList = source.GetList<Hl7.Fhir.Model.Coding>("modalityList", Hl7.Fhir.Model.Version.All);
+            Referrer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("referrer", Hl7.Fhir.Model.Version.All);
+            AvailabilityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.InstanceAvailability>("availability", Hl7.Fhir.Model.Version.All);
+            UrlElement = source.GetUriProperty("url", Hl7.Fhir.Model.Version.All);
+            NumberOfSeriesElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("numberOfSeries", Hl7.Fhir.Model.Version.All);
+            NumberOfInstancesElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("numberOfInstances", Hl7.Fhir.Model.Version.All);
+            Procedure = source.GetList<Hl7.Fhir.Model.ResourceReference>("procedure", Hl7.Fhir.Model.Version.All);
+            Interpreter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("interpreter", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            Series = source.GetList<SeriesComponent>("series", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"started", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"uid", typeof(Hl7.Fhir.Model.Oid)},
+                {"accession", typeof(Hl7.Fhir.Model.Identifier)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"order", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"modalityList", typeof(Hl7.Fhir.Model.Coding)},
+                {"referrer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"availability", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>)},
+                {"url", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"numberOfSeries", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                {"numberOfInstances", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                {"procedure", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"interpreter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"series", typeof(SeriesComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

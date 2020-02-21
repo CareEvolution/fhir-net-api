@@ -99,6 +99,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Status?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Status = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("status", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"status", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -296,6 +315,35 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                FirstDose = source.GetProperty<Hl7.Fhir.Model.Quantity>("firstDose", Hl7.Fhir.Model.Version.All);
+                MaxSingleDose = source.GetProperty<Hl7.Fhir.Model.Quantity>("maxSingleDose", Hl7.Fhir.Model.Version.All);
+                MaxDosePerDay = source.GetProperty<Hl7.Fhir.Model.Quantity>("maxDosePerDay", Hl7.Fhir.Model.Version.All);
+                MaxDosePerTreatmentPeriod = source.GetProperty<Hl7.Fhir.Model.Ratio>("maxDosePerTreatmentPeriod", Hl7.Fhir.Model.Version.All);
+                MaxTreatmentPeriod = source.GetProperty<Hl7.Fhir.Model.R4.Duration>("maxTreatmentPeriod", Hl7.Fhir.Model.Version.All);
+                TargetSpecies = source.GetList<TargetSpeciesComponent>("targetSpecies", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"firstDose", typeof(Hl7.Fhir.Model.Quantity)},
+                    {"maxSingleDose", typeof(Hl7.Fhir.Model.Quantity)},
+                    {"maxDosePerDay", typeof(Hl7.Fhir.Model.Quantity)},
+                    {"maxDosePerTreatmentPeriod", typeof(Hl7.Fhir.Model.Ratio)},
+                    {"maxTreatmentPeriod", typeof(Hl7.Fhir.Model.R4.Duration)},
+                    {"targetSpecies", typeof(TargetSpeciesComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -443,6 +491,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                WithdrawalPeriod = source.GetList<WithdrawalPeriodComponent>("withdrawalPeriod", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"withdrawalPeriod", typeof(WithdrawalPeriodComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -594,6 +661,27 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("supportingInformation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SupportingInformationElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Tissue = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("tissue", Hl7.Fhir.Model.Version.All);
+                Value = source.GetProperty<Hl7.Fhir.Model.Quantity>("value", Hl7.Fhir.Model.Version.All);
+                SupportingInformationElement = source.GetStringProperty("supportingInformation", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"tissue", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"value", typeof(Hl7.Fhir.Model.Quantity)},
+                    {"supportingInformation", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -875,6 +963,35 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            AdministrableDoseForm = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("administrableDoseForm", Hl7.Fhir.Model.Version.All);
+            UnitOfPresentation = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("unitOfPresentation", Hl7.Fhir.Model.Version.All);
+            Ingredient = source.GetList<Hl7.Fhir.Model.ResourceReference>("ingredient", Hl7.Fhir.Model.Version.All);
+            Device = source.GetList<Hl7.Fhir.Model.ResourceReference>("device", Hl7.Fhir.Model.Version.All);
+            Characteristics = source.GetList<CharacteristicsComponent>("characteristics", Hl7.Fhir.Model.Version.All);
+            RouteOfAdministration = source.GetList<RouteOfAdministrationComponent>("routeOfAdministration", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"administrableDoseForm", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"unitOfPresentation", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"ingredient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"device", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"characteristics", typeof(CharacteristicsComponent)},
+                {"routeOfAdministration", typeof(RouteOfAdministrationComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

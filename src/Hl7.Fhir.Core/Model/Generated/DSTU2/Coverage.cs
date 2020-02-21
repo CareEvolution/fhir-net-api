@@ -461,6 +461,49 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Issuer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("issuer", Hl7.Fhir.Model.Version.All);
+            Bin = source.GetProperty<Hl7.Fhir.Model.Identifier>("bin", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.Coding>("type", Hl7.Fhir.Model.Version.All);
+            SubscriberId = source.GetProperty<Hl7.Fhir.Model.Identifier>("subscriberId", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            GroupElement = source.GetStringProperty("group", Hl7.Fhir.Model.Version.All);
+            PlanElement = source.GetStringProperty("plan", Hl7.Fhir.Model.Version.All);
+            SubPlanElement = source.GetStringProperty("subPlan", Hl7.Fhir.Model.Version.All);
+            DependentElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("dependent", Hl7.Fhir.Model.Version.All);
+            SequenceElement = source.GetProperty<Hl7.Fhir.Model.PositiveInt>("sequence", Hl7.Fhir.Model.Version.All);
+            Subscriber = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subscriber", Hl7.Fhir.Model.Version.All);
+            Network = source.GetProperty<Hl7.Fhir.Model.Identifier>("network", Hl7.Fhir.Model.Version.All);
+            Contract = source.GetList<Hl7.Fhir.Model.ResourceReference>("contract", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"issuer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"bin", typeof(Hl7.Fhir.Model.Identifier)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"type", typeof(Hl7.Fhir.Model.Coding)},
+                {"subscriberId", typeof(Hl7.Fhir.Model.Identifier)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"group", typeof(Hl7.Fhir.Model.FhirString)},
+                {"plan", typeof(Hl7.Fhir.Model.FhirString)},
+                {"subPlan", typeof(Hl7.Fhir.Model.FhirString)},
+                {"dependent", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"sequence", typeof(Hl7.Fhir.Model.PositiveInt)},
+                {"subscriber", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"network", typeof(Hl7.Fhir.Model.Identifier)},
+                {"contract", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

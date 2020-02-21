@@ -249,6 +249,29 @@ namespace Hl7.Fhir.Model
             sink.Element("identifier", Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, false, false); Identifier?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ReferenceElement = source.GetStringProperty("reference", Hl7.Fhir.Model.Version.All);
+            DisplayElement = source.GetStringProperty("display", Hl7.Fhir.Model.Version.All);
+            TypeElement = source.GetUriProperty("type", Hl7.Fhir.Model.Version.R4);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"reference", typeof(Hl7.Fhir.Model.FhirString)},
+                {"display", typeof(Hl7.Fhir.Model.FhirString)},
+                {"type", typeof(Hl7.Fhir.Model.FhirUri)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

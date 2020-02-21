@@ -85,6 +85,23 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("item", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, true); Item?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Item = source.GetProperty<Hl7.Fhir.Model.Element>("item", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"item", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -355,6 +372,35 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("management", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Management?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            Interactant = source.GetList<InteractantComponent>("interactant", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            Effect = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("effect", Hl7.Fhir.Model.Version.All);
+            Incidence = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("incidence", Hl7.Fhir.Model.Version.All);
+            Management = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("management", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"interactant", typeof(InteractantComponent)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"effect", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"incidence", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"management", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

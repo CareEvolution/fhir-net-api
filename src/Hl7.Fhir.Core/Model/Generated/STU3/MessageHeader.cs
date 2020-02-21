@@ -153,6 +153,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("endpoint", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); EndpointElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+                Target = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("target", Hl7.Fhir.Model.Version.All);
+                EndpointElement = source.GetUriProperty("endpoint", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"target", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"endpoint", typeof(Hl7.Fhir.Model.FhirUri)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -398,6 +419,31 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("endpoint", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); EndpointElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+                SoftwareElement = source.GetStringProperty("software", Hl7.Fhir.Model.Version.All);
+                VersionElement = source.GetStringProperty("version", Hl7.Fhir.Model.Version.All);
+                Contact = source.GetProperty<Hl7.Fhir.Model.STU3.ContactPoint>("contact", Hl7.Fhir.Model.Version.All);
+                EndpointElement = source.GetUriProperty("endpoint", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"software", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"version", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"contact", typeof(Hl7.Fhir.Model.STU3.ContactPoint)},
+                    {"endpoint", typeof(Hl7.Fhir.Model.FhirUri)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -584,6 +630,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("details", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Details?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                IdentifierElement = source.GetProperty<Hl7.Fhir.Model.Id>("identifier", Hl7.Fhir.Model.Version.All);
+                CodeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ResponseType>("code", Hl7.Fhir.Model.Version.All);
+                Details = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("details", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"identifier", typeof(Hl7.Fhir.Model.Id)},
+                    {"code", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResponseType>)},
+                    {"details", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -970,6 +1037,45 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Event = source.GetProperty<Hl7.Fhir.Model.Coding>("event", Hl7.Fhir.Model.Version.All);
+            Destination = source.GetList<MessageDestinationComponent>("destination", Hl7.Fhir.Model.Version.All);
+            Receiver = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("receiver", Hl7.Fhir.Model.Version.All);
+            Sender = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("sender", Hl7.Fhir.Model.Version.All);
+            TimestampElement = source.GetProperty<Hl7.Fhir.Model.Instant>("timestamp", Hl7.Fhir.Model.Version.All);
+            Enterer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("enterer", Hl7.Fhir.Model.Version.All);
+            Author = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("author", Hl7.Fhir.Model.Version.All);
+            Source = source.GetProperty<MessageSourceComponent>("source", Hl7.Fhir.Model.Version.All);
+            Responsible = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("responsible", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("reason", Hl7.Fhir.Model.Version.All);
+            Response = source.GetProperty<ResponseComponent>("response", Hl7.Fhir.Model.Version.All);
+            Focus = source.GetList<Hl7.Fhir.Model.ResourceReference>("focus", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"event", typeof(Hl7.Fhir.Model.Coding)},
+                {"destination", typeof(MessageDestinationComponent)},
+                {"receiver", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"sender", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"timestamp", typeof(Hl7.Fhir.Model.Instant)},
+                {"enterer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"author", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"source", typeof(MessageSourceComponent)},
+                {"responsible", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"response", typeof(ResponseComponent)},
+                {"focus", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

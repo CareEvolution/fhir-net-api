@@ -452,6 +452,41 @@ namespace Hl7.Fhir.Model
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            UseElement = source.GetCodeProperty("use", Hl7.Fhir.Model.Version.All);
+            TypeElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.AddressType>("type", Hl7.Fhir.Model.Version.All);
+            TextElement = source.GetStringProperty("text", Hl7.Fhir.Model.Version.All);
+            LineElement = source.GetStringList("line", Hl7.Fhir.Model.Version.All);
+            CityElement = source.GetStringProperty("city", Hl7.Fhir.Model.Version.All);
+            DistrictElement = source.GetStringProperty("district", Hl7.Fhir.Model.Version.All);
+            StateElement = source.GetStringProperty("state", Hl7.Fhir.Model.Version.All);
+            PostalCodeElement = source.GetStringProperty("postalCode", Hl7.Fhir.Model.Version.All);
+            CountryElement = source.GetStringProperty("country", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"use", typeof(Hl7.Fhir.Model.Code)},
+                {"type", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AddressType>)},
+                {"text", typeof(Hl7.Fhir.Model.FhirString)},
+                {"line", typeof(Hl7.Fhir.Model.FhirString)},
+                {"city", typeof(Hl7.Fhir.Model.FhirString)},
+                {"district", typeof(Hl7.Fhir.Model.FhirString)},
+                {"state", typeof(Hl7.Fhir.Model.FhirString)},
+                {"postalCode", typeof(Hl7.Fhir.Model.FhirString)},
+                {"country", typeof(Hl7.Fhir.Model.FhirString)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

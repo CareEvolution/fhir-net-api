@@ -203,6 +203,29 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("availableEndTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AvailableEndTimeElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                DaysOfWeekElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>>("daysOfWeek", Hl7.Fhir.Model.Version.All);
+                AllDayElement = source.GetBooleanProperty("allDay", Hl7.Fhir.Model.Version.All);
+                AvailableStartTimeElement = source.GetProperty<Hl7.Fhir.Model.Time>("availableStartTime", Hl7.Fhir.Model.Version.All);
+                AvailableEndTimeElement = source.GetProperty<Hl7.Fhir.Model.Time>("availableEndTime", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"daysOfWeek", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>)},
+                    {"allDay", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"availableStartTime", typeof(Hl7.Fhir.Model.Time)},
+                    {"availableEndTime", typeof(Hl7.Fhir.Model.Time)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -346,6 +369,25 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("during", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); During?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+                During = source.GetProperty<Hl7.Fhir.Model.Period>("during", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"during", typeof(Hl7.Fhir.Model.Period)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -818,6 +860,49 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            Period = source.GetProperty<Hl7.Fhir.Model.Period>("period", Hl7.Fhir.Model.Version.All);
+            Practitioner = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("practitioner", Hl7.Fhir.Model.Version.All);
+            Organization = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("organization", Hl7.Fhir.Model.Version.All);
+            Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>("specialty", Hl7.Fhir.Model.Version.All);
+            Location = source.GetList<Hl7.Fhir.Model.ResourceReference>("location", Hl7.Fhir.Model.Version.All);
+            HealthcareService = source.GetList<Hl7.Fhir.Model.ResourceReference>("healthcareService", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            AvailableTime = source.GetList<AvailableTimeComponent>("availableTime", Hl7.Fhir.Model.Version.All);
+            NotAvailable = source.GetList<NotAvailableComponent>("notAvailable", Hl7.Fhir.Model.Version.All);
+            AvailabilityExceptionsElement = source.GetStringProperty("availabilityExceptions", Hl7.Fhir.Model.Version.All);
+            Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>("endpoint", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"period", typeof(Hl7.Fhir.Model.Period)},
+                {"practitioner", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"organization", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"specialty", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"location", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"healthcareService", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"telecom", typeof(Hl7.Fhir.Model.STU3.ContactPoint)},
+                {"availableTime", typeof(AvailableTimeComponent)},
+                {"notAvailable", typeof(NotAvailableComponent)},
+                {"availabilityExceptions", typeof(Hl7.Fhir.Model.FhirString)},
+                {"endpoint", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -257,6 +257,37 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                SubunitElement = source.GetProperty<Hl7.Fhir.Model.Integer>("subunit", Hl7.Fhir.Model.Version.All);
+                SequenceElement = source.GetStringProperty("sequence", Hl7.Fhir.Model.Version.All);
+                LengthElement = source.GetProperty<Hl7.Fhir.Model.Integer>("length", Hl7.Fhir.Model.Version.All);
+                SequenceAttachment = source.GetProperty<Hl7.Fhir.Model.Attachment>("sequenceAttachment", Hl7.Fhir.Model.Version.All);
+                FivePrime = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("fivePrime", Hl7.Fhir.Model.Version.All);
+                ThreePrime = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("threePrime", Hl7.Fhir.Model.Version.All);
+                Linkage = source.GetList<LinkageComponent>("linkage", Hl7.Fhir.Model.Version.All);
+                Sugar = source.GetList<SugarComponent>("sugar", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"subunit", typeof(Hl7.Fhir.Model.Integer)},
+                    {"sequence", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"length", typeof(Hl7.Fhir.Model.Integer)},
+                    {"sequenceAttachment", typeof(Hl7.Fhir.Model.Attachment)},
+                    {"fivePrime", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"threePrime", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"linkage", typeof(LinkageComponent)},
+                    {"sugar", typeof(SugarComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -489,6 +520,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("residueSite", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ResidueSiteElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                ConnectivityElement = source.GetStringProperty("connectivity", Hl7.Fhir.Model.Version.All);
+                Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+                NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+                ResidueSiteElement = source.GetStringProperty("residueSite", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"connectivity", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                    {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"residueSite", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -667,6 +721,27 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("residueSite", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ResidueSiteElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+                NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+                ResidueSiteElement = source.GetStringProperty("residueSite", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                    {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"residueSite", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -923,6 +998,31 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            SequenceType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("sequenceType", Hl7.Fhir.Model.Version.All);
+            NumberOfSubunitsElement = source.GetProperty<Hl7.Fhir.Model.Integer>("numberOfSubunits", Hl7.Fhir.Model.Version.All);
+            AreaOfHybridisationElement = source.GetStringProperty("areaOfHybridisation", Hl7.Fhir.Model.Version.All);
+            OligoNucleotideType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("oligoNucleotideType", Hl7.Fhir.Model.Version.All);
+            Subunit = source.GetList<SubunitComponent>("subunit", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"sequenceType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"numberOfSubunits", typeof(Hl7.Fhir.Model.Integer)},
+                {"areaOfHybridisation", typeof(Hl7.Fhir.Model.FhirString)},
+                {"oligoNucleotideType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"subunit", typeof(SubunitComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -98,6 +98,25 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("schedule", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Schedule?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Schedule = source.GetProperty<Hl7.Fhir.Model.DSTU2.Timing>("schedule", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"schedule", typeof(Hl7.Fhir.Model.DSTU2.Timing)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -444,6 +463,41 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("when", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); When?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            Source = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("source", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.SupplyRequestStatus>("status", Hl7.Fhir.Model.Version.All);
+            Kind = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("kind", Hl7.Fhir.Model.Version.All);
+            OrderedItem = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("orderedItem", Hl7.Fhir.Model.Version.All);
+            Supplier = source.GetList<Hl7.Fhir.Model.ResourceReference>("supplier", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetProperty<Hl7.Fhir.Model.Element>("reason", Hl7.Fhir.Model.Version.All);
+            When = source.GetProperty<WhenComponent>("when", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"source", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SupplyRequestStatus>)},
+                {"kind", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"orderedItem", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"supplier", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reason", typeof(Hl7.Fhir.Model.Element)},
+                {"when", typeof(WhenComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

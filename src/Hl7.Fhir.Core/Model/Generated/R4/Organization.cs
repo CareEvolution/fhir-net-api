@@ -136,6 +136,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("address", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Address?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Purpose = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("purpose", Hl7.Fhir.Model.Version.All);
+                Name = source.GetProperty<Hl7.Fhir.Model.R4.HumanName>("name", Hl7.Fhir.Model.Version.All);
+                Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+                Address = source.GetProperty<Hl7.Fhir.Model.Address>("address", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"purpose", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"name", typeof(Hl7.Fhir.Model.R4.HumanName)},
+                    {"telecom", typeof(Hl7.Fhir.Model.R4.ContactPoint)},
+                    {"address", typeof(Hl7.Fhir.Model.Address)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -577,6 +600,41 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            ActiveElement = source.GetBooleanProperty("active", Hl7.Fhir.Model.Version.All);
+            Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            NameElement = source.GetStringProperty("name", Hl7.Fhir.Model.Version.All);
+            AliasElement = source.GetStringList("alias", Hl7.Fhir.Model.Version.All);
+            Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>("telecom", Hl7.Fhir.Model.Version.All);
+            Address = source.GetList<Hl7.Fhir.Model.Address>("address", Hl7.Fhir.Model.Version.All);
+            PartOf = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("partOf", Hl7.Fhir.Model.Version.All);
+            Contact = source.GetList<ContactComponent>("contact", Hl7.Fhir.Model.Version.All);
+            Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>("endpoint", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"active", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"name", typeof(Hl7.Fhir.Model.FhirString)},
+                {"alias", typeof(Hl7.Fhir.Model.FhirString)},
+                {"telecom", typeof(Hl7.Fhir.Model.R4.ContactPoint)},
+                {"address", typeof(Hl7.Fhir.Model.Address)},
+                {"partOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"contact", typeof(ContactComponent)},
+                {"endpoint", typeof(Hl7.Fhir.Model.ResourceReference)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

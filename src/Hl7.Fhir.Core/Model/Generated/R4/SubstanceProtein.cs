@@ -283,6 +283,37 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("cTerminalModification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CTerminalModificationElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                SubunitElement = source.GetProperty<Hl7.Fhir.Model.Integer>("subunit", Hl7.Fhir.Model.Version.All);
+                SequenceElement = source.GetStringProperty("sequence", Hl7.Fhir.Model.Version.All);
+                LengthElement = source.GetProperty<Hl7.Fhir.Model.Integer>("length", Hl7.Fhir.Model.Version.All);
+                SequenceAttachment = source.GetProperty<Hl7.Fhir.Model.Attachment>("sequenceAttachment", Hl7.Fhir.Model.Version.All);
+                NTerminalModificationId = source.GetProperty<Hl7.Fhir.Model.Identifier>("nTerminalModificationId", Hl7.Fhir.Model.Version.All);
+                NTerminalModificationElement = source.GetStringProperty("nTerminalModification", Hl7.Fhir.Model.Version.All);
+                CTerminalModificationId = source.GetProperty<Hl7.Fhir.Model.Identifier>("cTerminalModificationId", Hl7.Fhir.Model.Version.All);
+                CTerminalModificationElement = source.GetStringProperty("cTerminalModification", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"subunit", typeof(Hl7.Fhir.Model.Integer)},
+                    {"sequence", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"length", typeof(Hl7.Fhir.Model.Integer)},
+                    {"sequenceAttachment", typeof(Hl7.Fhir.Model.Attachment)},
+                    {"nTerminalModificationId", typeof(Hl7.Fhir.Model.Identifier)},
+                    {"nTerminalModification", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"cTerminalModificationId", typeof(Hl7.Fhir.Model.Identifier)},
+                    {"cTerminalModification", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -549,6 +580,29 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            SequenceType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("sequenceType", Hl7.Fhir.Model.Version.All);
+            NumberOfSubunitsElement = source.GetProperty<Hl7.Fhir.Model.Integer>("numberOfSubunits", Hl7.Fhir.Model.Version.All);
+            DisulfideLinkageElement = source.GetStringList("disulfideLinkage", Hl7.Fhir.Model.Version.All);
+            Subunit = source.GetList<SubunitComponent>("subunit", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"sequenceType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"numberOfSubunits", typeof(Hl7.Fhir.Model.Integer)},
+                {"disulfideLinkage", typeof(Hl7.Fhir.Model.FhirString)},
+                {"subunit", typeof(SubunitComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

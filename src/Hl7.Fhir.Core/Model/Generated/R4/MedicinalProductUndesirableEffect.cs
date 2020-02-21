@@ -203,6 +203,31 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            SymptomConditionEffect = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("symptomConditionEffect", Hl7.Fhir.Model.Version.All);
+            Classification = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("classification", Hl7.Fhir.Model.Version.All);
+            FrequencyOfOccurrence = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("frequencyOfOccurrence", Hl7.Fhir.Model.Version.All);
+            Population = source.GetList<Hl7.Fhir.Model.Population>("population", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"symptomConditionEffect", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"classification", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"frequencyOfOccurrence", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"population", typeof(Hl7.Fhir.Model.Population)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -136,6 +136,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Group = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("group", Hl7.Fhir.Model.Version.All);
+                Confidentiality = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("confidentiality", Hl7.Fhir.Model.Version.All);
+                Strength = source.GetList<StrengthComponent>("strength", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"group", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"confidentiality", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"strength", typeof(StrengthComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -368,6 +391,35 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Presentation = source.GetProperty<Hl7.Fhir.Model.Ratio>("presentation", Hl7.Fhir.Model.Version.All);
+                PresentationLowLimit = source.GetProperty<Hl7.Fhir.Model.Ratio>("presentationLowLimit", Hl7.Fhir.Model.Version.All);
+                Concentration = source.GetProperty<Hl7.Fhir.Model.Ratio>("concentration", Hl7.Fhir.Model.Version.All);
+                ConcentrationLowLimit = source.GetProperty<Hl7.Fhir.Model.Ratio>("concentrationLowLimit", Hl7.Fhir.Model.Version.All);
+                MeasurementPointElement = source.GetStringProperty("measurementPoint", Hl7.Fhir.Model.Version.All);
+                Country = source.GetList<Hl7.Fhir.Model.CodeableConcept>("country", Hl7.Fhir.Model.Version.All);
+                ReferenceStrength = source.GetList<ReferenceStrengthComponent>("referenceStrength", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"presentation", typeof(Hl7.Fhir.Model.Ratio)},
+                    {"presentationLowLimit", typeof(Hl7.Fhir.Model.Ratio)},
+                    {"concentration", typeof(Hl7.Fhir.Model.Ratio)},
+                    {"concentrationLowLimit", typeof(Hl7.Fhir.Model.Ratio)},
+                    {"measurementPoint", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"country", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"referenceStrength", typeof(ReferenceStrengthComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -579,6 +631,31 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Substance = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("substance", Hl7.Fhir.Model.Version.All);
+                Strength = source.GetProperty<Hl7.Fhir.Model.Ratio>("strength", Hl7.Fhir.Model.Version.All);
+                StrengthLowLimit = source.GetProperty<Hl7.Fhir.Model.Ratio>("strengthLowLimit", Hl7.Fhir.Model.Version.All);
+                MeasurementPointElement = source.GetStringProperty("measurementPoint", Hl7.Fhir.Model.Version.All);
+                Country = source.GetList<Hl7.Fhir.Model.CodeableConcept>("country", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"substance", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"strength", typeof(Hl7.Fhir.Model.Ratio)},
+                    {"strengthLowLimit", typeof(Hl7.Fhir.Model.Ratio)},
+                    {"measurementPoint", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"country", typeof(Hl7.Fhir.Model.CodeableConcept)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -716,6 +793,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Strength = source.GetList<StrengthComponent>("strength", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"strength", typeof(StrengthComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -974,6 +1070,33 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("substance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Substance?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Role = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("role", Hl7.Fhir.Model.Version.All);
+            AllergenicIndicatorElement = source.GetBooleanProperty("allergenicIndicator", Hl7.Fhir.Model.Version.All);
+            Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>("manufacturer", Hl7.Fhir.Model.Version.All);
+            SpecifiedSubstance = source.GetList<SpecifiedSubstanceComponent>("specifiedSubstance", Hl7.Fhir.Model.Version.All);
+            Substance = source.GetProperty<SubstanceComponent>("substance", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"role", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"allergenicIndicator", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                {"manufacturer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"specifiedSubstance", typeof(SpecifiedSubstanceComponent)},
+                {"substance", typeof(SubstanceComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

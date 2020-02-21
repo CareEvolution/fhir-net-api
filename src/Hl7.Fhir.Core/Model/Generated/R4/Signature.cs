@@ -307,6 +307,35 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("data", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DataElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Type = source.GetList<Hl7.Fhir.Model.Coding>("type", Hl7.Fhir.Model.Version.All);
+            WhenElement = source.GetProperty<Hl7.Fhir.Model.Instant>("when", Hl7.Fhir.Model.Version.All);
+            Who = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("who", Hl7.Fhir.Model.Version.All);
+            OnBehalfOf = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("onBehalfOf", Hl7.Fhir.Model.Version.All);
+            TargetFormatElement = source.GetCodeProperty("targetFormat", Hl7.Fhir.Model.Version.All);
+            SigFormatElement = source.GetCodeProperty("sigFormat", Hl7.Fhir.Model.Version.All);
+            DataElement = source.GetBinaryProperty("data", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"type", typeof(Hl7.Fhir.Model.Coding)},
+                {"when", typeof(Hl7.Fhir.Model.Instant)},
+                {"who", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"onBehalfOf", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"targetFormat", typeof(Hl7.Fhir.Model.Code)},
+                {"sigFormat", typeof(Hl7.Fhir.Model.Code)},
+                {"data", typeof(Hl7.Fhir.Model.Base64Binary)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

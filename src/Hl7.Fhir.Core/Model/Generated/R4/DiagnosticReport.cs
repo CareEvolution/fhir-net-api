@@ -118,6 +118,25 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("link", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Link?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                CommentElement = source.GetStringProperty("comment", Hl7.Fhir.Model.Version.All);
+                Link = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("link", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"comment", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"link", typeof(Hl7.Fhir.Model.ResourceReference)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -690,6 +709,57 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>("basedOn", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.DiagnosticReportStatus>("status", Hl7.Fhir.Model.Version.All);
+            Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>("category", Hl7.Fhir.Model.Version.All);
+            Code = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            Effective = source.GetProperty<Hl7.Fhir.Model.Element>("effective", Hl7.Fhir.Model.Version.All);
+            IssuedElement = source.GetProperty<Hl7.Fhir.Model.Instant>("issued", Hl7.Fhir.Model.Version.All);
+            Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>("performer", Hl7.Fhir.Model.Version.All);
+            ResultsInterpreter = source.GetList<Hl7.Fhir.Model.ResourceReference>("resultsInterpreter", Hl7.Fhir.Model.Version.All);
+            Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>("specimen", Hl7.Fhir.Model.Version.All);
+            Result = source.GetList<Hl7.Fhir.Model.ResourceReference>("result", Hl7.Fhir.Model.Version.All);
+            ImagingStudy = source.GetList<Hl7.Fhir.Model.ResourceReference>("imagingStudy", Hl7.Fhir.Model.Version.All);
+            Media = source.GetList<MediaComponent>("media", Hl7.Fhir.Model.Version.All);
+            ConclusionElement = source.GetStringProperty("conclusion", Hl7.Fhir.Model.Version.All);
+            ConclusionCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("conclusionCode", Hl7.Fhir.Model.Version.All);
+            PresentedForm = source.GetList<Hl7.Fhir.Model.Attachment>("presentedForm", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"basedOn", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.DiagnosticReportStatus>)},
+                {"category", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"effective", typeof(Hl7.Fhir.Model.Element)},
+                {"issued", typeof(Hl7.Fhir.Model.Instant)},
+                {"performer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"resultsInterpreter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"specimen", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"result", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"imagingStudy", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"media", typeof(MediaComponent)},
+                {"conclusion", typeof(Hl7.Fhir.Model.FhirString)},
+                {"conclusionCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"presentedForm", typeof(Hl7.Fhir.Model.Attachment)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

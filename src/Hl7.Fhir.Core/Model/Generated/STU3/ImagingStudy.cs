@@ -386,6 +386,45 @@ namespace Hl7.Fhir.Model.STU3
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                UidElement = source.GetProperty<Hl7.Fhir.Model.Oid>("uid", Hl7.Fhir.Model.Version.All);
+                NumberElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("number", Hl7.Fhir.Model.Version.All);
+                Modality = source.GetProperty<Hl7.Fhir.Model.Coding>("modality", Hl7.Fhir.Model.Version.All);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+                NumberOfInstancesElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("numberOfInstances", Hl7.Fhir.Model.Version.All);
+                AvailabilityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.InstanceAvailability>("availability", Hl7.Fhir.Model.Version.All);
+                Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>("endpoint", Hl7.Fhir.Model.Version.All);
+                BodySite = source.GetProperty<Hl7.Fhir.Model.Coding>("bodySite", Hl7.Fhir.Model.Version.All);
+                Laterality = source.GetProperty<Hl7.Fhir.Model.Coding>("laterality", Hl7.Fhir.Model.Version.All);
+                StartedElement = source.GetDateTimeProperty("started", Hl7.Fhir.Model.Version.All);
+                Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>("performer", Hl7.Fhir.Model.Version.All);
+                Instance = source.GetList<InstanceComponent>("instance", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"uid", typeof(Hl7.Fhir.Model.Oid)},
+                    {"number", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                    {"modality", typeof(Hl7.Fhir.Model.Coding)},
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"numberOfInstances", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                    {"availability", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>)},
+                    {"endpoint", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"bodySite", typeof(Hl7.Fhir.Model.Coding)},
+                    {"laterality", typeof(Hl7.Fhir.Model.Coding)},
+                    {"started", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                    {"performer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"instance", typeof(InstanceComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -655,6 +694,29 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("title", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); TitleElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                UidElement = source.GetProperty<Hl7.Fhir.Model.Oid>("uid", Hl7.Fhir.Model.Version.All);
+                NumberElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("number", Hl7.Fhir.Model.Version.All);
+                SopClassElement = source.GetProperty<Hl7.Fhir.Model.Oid>("sopClass", Hl7.Fhir.Model.Version.All);
+                TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"uid", typeof(Hl7.Fhir.Model.Oid)},
+                    {"number", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                    {"sopClass", typeof(Hl7.Fhir.Model.Oid)},
+                    {"title", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1298,6 +1360,59 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            UidElement = source.GetProperty<Hl7.Fhir.Model.Oid>("uid", Hl7.Fhir.Model.Version.All);
+            Accession = source.GetProperty<Hl7.Fhir.Model.Identifier>("accession", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            AvailabilityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.InstanceAvailability>("availability", Hl7.Fhir.Model.Version.All);
+            ModalityList = source.GetList<Hl7.Fhir.Model.Coding>("modalityList", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            Context = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("context", Hl7.Fhir.Model.Version.All);
+            StartedElement = source.GetDateTimeProperty("started", Hl7.Fhir.Model.Version.All);
+            BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>("basedOn", Hl7.Fhir.Model.Version.All);
+            Referrer = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("referrer", Hl7.Fhir.Model.Version.All);
+            Interpreter = source.GetList<Hl7.Fhir.Model.ResourceReference>("interpreter", Hl7.Fhir.Model.Version.All);
+            Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>("endpoint", Hl7.Fhir.Model.Version.All);
+            NumberOfSeriesElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("numberOfSeries", Hl7.Fhir.Model.Version.All);
+            NumberOfInstancesElement = source.GetProperty<Hl7.Fhir.Model.UnsignedInt>("numberOfInstances", Hl7.Fhir.Model.Version.All);
+            ProcedureReference = source.GetList<Hl7.Fhir.Model.ResourceReference>("procedureReference", Hl7.Fhir.Model.Version.All);
+            ProcedureCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>("procedureCode", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("reason", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            Series = source.GetList<SeriesComponent>("series", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"uid", typeof(Hl7.Fhir.Model.Oid)},
+                {"accession", typeof(Hl7.Fhir.Model.Identifier)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"availability", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>)},
+                {"modalityList", typeof(Hl7.Fhir.Model.Coding)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"context", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"started", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"basedOn", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"referrer", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"interpreter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"endpoint", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"numberOfSeries", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                {"numberOfInstances", typeof(Hl7.Fhir.Model.UnsignedInt)},
+                {"procedureReference", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"procedureCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"reason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"series", typeof(SeriesComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

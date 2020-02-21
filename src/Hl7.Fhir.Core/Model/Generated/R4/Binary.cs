@@ -192,6 +192,27 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("data", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DataElement?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            ContentTypeElement = source.GetCodeProperty("contentType", Hl7.Fhir.Model.Version.All);
+            SecurityContext = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("securityContext", Hl7.Fhir.Model.Version.All);
+            DataElement = source.GetBinaryProperty("data", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"contentType", typeof(Hl7.Fhir.Model.Code)},
+                {"securityContext", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"data", typeof(Hl7.Fhir.Model.Base64Binary)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

@@ -148,6 +148,25 @@ namespace Hl7.Fhir.Model
             sink.Element("high", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); High?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Low = source.GetProperty<Hl7.Fhir.Model.SimpleQuantity>("low", Hl7.Fhir.Model.Version.All);
+            High = source.GetProperty<Hl7.Fhir.Model.SimpleQuantity>("high", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"low", typeof(Hl7.Fhir.Model.SimpleQuantity)},
+                {"high", typeof(Hl7.Fhir.Model.SimpleQuantity)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

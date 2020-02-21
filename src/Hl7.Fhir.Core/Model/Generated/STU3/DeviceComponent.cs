@@ -132,6 +132,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("productionSpec", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ProductionSpecElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                SpecType = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("specType", Hl7.Fhir.Model.Version.All);
+                ComponentId = source.GetProperty<Hl7.Fhir.Model.Identifier>("componentId", Hl7.Fhir.Model.Version.All);
+                ProductionSpecElement = source.GetStringProperty("productionSpec", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"specType", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"componentId", typeof(Hl7.Fhir.Model.Identifier)},
+                    {"productionSpec", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -491,6 +512,41 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("languageCode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LanguageCode?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            LastSystemChangeElement = source.GetProperty<Hl7.Fhir.Model.Instant>("lastSystemChange", Hl7.Fhir.Model.Version.All);
+            Source = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("source", Hl7.Fhir.Model.Version.All);
+            Parent = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("parent", Hl7.Fhir.Model.Version.All);
+            OperationalStatus = source.GetList<Hl7.Fhir.Model.CodeableConcept>("operationalStatus", Hl7.Fhir.Model.Version.All);
+            ParameterGroup = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("parameterGroup", Hl7.Fhir.Model.Version.All);
+            MeasurementPrincipleElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.MeasmntPrinciple>("measurementPrinciple", Hl7.Fhir.Model.Version.All);
+            ProductionSpecification = source.GetList<ProductionSpecificationComponent>("productionSpecification", Hl7.Fhir.Model.Version.All);
+            LanguageCode = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("languageCode", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"lastSystemChange", typeof(Hl7.Fhir.Model.Instant)},
+                {"source", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"parent", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"operationalStatus", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"parameterGroup", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"measurementPrinciple", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MeasmntPrinciple>)},
+                {"productionSpecification", typeof(ProductionSpecificationComponent)},
+                {"languageCode", typeof(Hl7.Fhir.Model.CodeableConcept)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

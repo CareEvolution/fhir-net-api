@@ -250,6 +250,37 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                IsDerivedElement = source.GetBooleanProperty("isDerived", Hl7.Fhir.Model.Version.All);
+                Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+                PreferenceElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.R4.SpecimenContainedPreference>("preference", Hl7.Fhir.Model.Version.All);
+                Container = source.GetProperty<ContainerComponent>("container", Hl7.Fhir.Model.Version.All);
+                RequirementElement = source.GetStringProperty("requirement", Hl7.Fhir.Model.Version.All);
+                RetentionTime = source.GetProperty<Hl7.Fhir.Model.R4.Duration>("retentionTime", Hl7.Fhir.Model.Version.All);
+                RejectionCriterion = source.GetList<Hl7.Fhir.Model.CodeableConcept>("rejectionCriterion", Hl7.Fhir.Model.Version.All);
+                Handling = source.GetList<HandlingComponent>("handling", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"isDerived", typeof(Hl7.Fhir.Model.FhirBoolean)},
+                    {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"preference", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SpecimenContainedPreference>)},
+                    {"container", typeof(ContainerComponent)},
+                    {"requirement", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"retentionTime", typeof(Hl7.Fhir.Model.R4.Duration)},
+                    {"rejectionCriterion", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"handling", typeof(HandlingComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -523,6 +554,37 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("preparation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PreparationElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Material = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("material", Hl7.Fhir.Model.Version.All);
+                Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+                Cap = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("cap", Hl7.Fhir.Model.Version.All);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+                Capacity = source.GetProperty<Hl7.Fhir.Model.SimpleQuantity>("capacity", Hl7.Fhir.Model.Version.All);
+                MinimumVolume = source.GetProperty<Hl7.Fhir.Model.Element>("minimumVolume", Hl7.Fhir.Model.Version.All);
+                Additive = source.GetList<AdditiveComponent>("additive", Hl7.Fhir.Model.Version.All);
+                PreparationElement = source.GetStringProperty("preparation", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"material", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"cap", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"capacity", typeof(Hl7.Fhir.Model.SimpleQuantity)},
+                    {"minimumVolume", typeof(Hl7.Fhir.Model.Element)},
+                    {"additive", typeof(AdditiveComponent)},
+                    {"preparation", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -655,6 +717,23 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("additive", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, true); Additive?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                Additive = source.GetProperty<Hl7.Fhir.Model.Element>("additive", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"additive", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -810,6 +889,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("instruction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); InstructionElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                TemperatureQualifier = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("temperatureQualifier", Hl7.Fhir.Model.Version.All);
+                TemperatureRange = source.GetProperty<Hl7.Fhir.Model.Range>("temperatureRange", Hl7.Fhir.Model.Version.All);
+                MaxDuration = source.GetProperty<Hl7.Fhir.Model.R4.Duration>("maxDuration", Hl7.Fhir.Model.Version.All);
+                InstructionElement = source.GetStringProperty("instruction", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"temperatureQualifier", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"temperatureRange", typeof(Hl7.Fhir.Model.Range)},
+                    {"maxDuration", typeof(Hl7.Fhir.Model.R4.Duration)},
+                    {"instruction", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1081,6 +1183,33 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            TypeCollected = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("typeCollected", Hl7.Fhir.Model.Version.All);
+            PatientPreparation = source.GetList<Hl7.Fhir.Model.CodeableConcept>("patientPreparation", Hl7.Fhir.Model.Version.All);
+            TimeAspectElement = source.GetStringProperty("timeAspect", Hl7.Fhir.Model.Version.All);
+            Collection = source.GetList<Hl7.Fhir.Model.CodeableConcept>("collection", Hl7.Fhir.Model.Version.All);
+            TypeTested = source.GetList<TypeTestedComponent>("typeTested", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"typeCollected", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"patientPreparation", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"timeAspect", typeof(Hl7.Fhir.Model.FhirString)},
+                {"collection", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"typeTested", typeof(TypeTestedComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

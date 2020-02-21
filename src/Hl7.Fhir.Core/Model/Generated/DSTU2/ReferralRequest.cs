@@ -490,6 +490,53 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("fulfillmentTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); FulfillmentTime?.Serialize(sink);
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.DSTU2.ReferralStatus>("status", Hl7.Fhir.Model.Version.All);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            DateElement = source.GetDateTimeProperty("date", Hl7.Fhir.Model.Version.All);
+            Type = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("type", Hl7.Fhir.Model.Version.All);
+            Specialty = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("specialty", Hl7.Fhir.Model.Version.All);
+            Priority = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("priority", Hl7.Fhir.Model.Version.All);
+            Patient = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("patient", Hl7.Fhir.Model.Version.All);
+            Requester = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("requester", Hl7.Fhir.Model.Version.All);
+            Recipient = source.GetList<Hl7.Fhir.Model.ResourceReference>("recipient", Hl7.Fhir.Model.Version.All);
+            Encounter = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("encounter", Hl7.Fhir.Model.Version.All);
+            DateSentElement = source.GetDateTimeProperty("dateSent", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetProperty<Hl7.Fhir.Model.CodeableConcept>("reason", Hl7.Fhir.Model.Version.All);
+            DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+            ServiceRequested = source.GetList<Hl7.Fhir.Model.CodeableConcept>("serviceRequested", Hl7.Fhir.Model.Version.All);
+            SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>("supportingInformation", Hl7.Fhir.Model.Version.All);
+            FulfillmentTime = source.GetProperty<Hl7.Fhir.Model.Period>("fulfillmentTime", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ReferralStatus>)},
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"date", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"type", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"specialty", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"priority", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"patient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"requester", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"recipient", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"encounter", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"dateSent", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"reason", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                {"serviceRequested", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                {"supportingInformation", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"fulfillmentTime", typeof(Hl7.Fhir.Model.Period)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children

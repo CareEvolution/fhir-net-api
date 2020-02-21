@@ -545,6 +545,57 @@ namespace Hl7.Fhir.Model.STU3
                 sink.End();
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                LabelElement = source.GetStringProperty("label", Hl7.Fhir.Model.Version.All);
+                TitleElement = source.GetStringProperty("title", Hl7.Fhir.Model.Version.All);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+                TextEquivalentElement = source.GetStringProperty("textEquivalent", Hl7.Fhir.Model.Version.All);
+                Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>("code", Hl7.Fhir.Model.Version.All);
+                Documentation = source.GetList<Hl7.Fhir.Model.STU3.RelatedArtifact>("documentation", Hl7.Fhir.Model.Version.All);
+                Condition = source.GetList<ConditionComponent>("condition", Hl7.Fhir.Model.Version.All);
+                RelatedAction = source.GetList<RelatedActionComponent>("relatedAction", Hl7.Fhir.Model.Version.All);
+                Timing = source.GetProperty<Hl7.Fhir.Model.Element>("timing", Hl7.Fhir.Model.Version.All);
+                Participant = source.GetList<Hl7.Fhir.Model.ResourceReference>("participant", Hl7.Fhir.Model.Version.All);
+                Type = source.GetProperty<Hl7.Fhir.Model.Coding>("type", Hl7.Fhir.Model.Version.All);
+                GroupingBehaviorElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ActionGroupingBehavior>("groupingBehavior", Hl7.Fhir.Model.Version.All);
+                SelectionBehaviorElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ActionSelectionBehavior>("selectionBehavior", Hl7.Fhir.Model.Version.All);
+                RequiredBehaviorElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ActionRequiredBehavior>("requiredBehavior", Hl7.Fhir.Model.Version.All);
+                PrecheckBehaviorElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ActionPrecheckBehavior>("precheckBehavior", Hl7.Fhir.Model.Version.All);
+                CardinalityBehaviorElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ActionCardinalityBehavior>("cardinalityBehavior", Hl7.Fhir.Model.Version.All);
+                Resource = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("resource", Hl7.Fhir.Model.Version.All);
+                Action = source.GetList<ActionComponent>("action", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"label", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"title", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"textEquivalent", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"code", typeof(Hl7.Fhir.Model.CodeableConcept)},
+                    {"documentation", typeof(Hl7.Fhir.Model.STU3.RelatedArtifact)},
+                    {"condition", typeof(ConditionComponent)},
+                    {"relatedAction", typeof(RelatedActionComponent)},
+                    {"timing", typeof(Hl7.Fhir.Model.Element)},
+                    {"participant", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"type", typeof(Hl7.Fhir.Model.Coding)},
+                    {"groupingBehavior", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionGroupingBehavior>)},
+                    {"selectionBehavior", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionSelectionBehavior>)},
+                    {"requiredBehavior", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionRequiredBehavior>)},
+                    {"precheckBehavior", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionPrecheckBehavior>)},
+                    {"cardinalityBehavior", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionCardinalityBehavior>)},
+                    {"resource", typeof(Hl7.Fhir.Model.ResourceReference)},
+                    {"action", typeof(ActionComponent)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -843,6 +894,29 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("expression", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ExpressionElement?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                KindElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ActionConditionKind>("kind", Hl7.Fhir.Model.Version.All);
+                DescriptionElement = source.GetStringProperty("description", Hl7.Fhir.Model.Version.All);
+                LanguageElement = source.GetStringProperty("language", Hl7.Fhir.Model.Version.All);
+                ExpressionElement = source.GetStringProperty("expression", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"kind", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionConditionKind>)},
+                    {"description", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"language", typeof(Hl7.Fhir.Model.FhirString)},
+                    {"expression", typeof(Hl7.Fhir.Model.FhirString)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1022,6 +1096,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("offset", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Offset?.Serialize(sink);
                 sink.End();
             }
+            
+            internal override void Parse(Serialization.IParserSource source)
+            {
+                base.Parse(source);
+                ActionIdElement = source.GetProperty<Hl7.Fhir.Model.Id>("actionId", Hl7.Fhir.Model.Version.All);
+                RelationshipElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.ActionRelationshipType>("relationship", Hl7.Fhir.Model.Version.All);
+                Offset = source.GetProperty<Hl7.Fhir.Model.Element>("offset", Hl7.Fhir.Model.Version.All);
+            }
+            
+            internal override Type GetPropertyType(string fhirName)
+            {
+                if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+                return base.GetPropertyType(fhirName);
+            }
+            
+            private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+            {
+                    {"actionId", typeof(Hl7.Fhir.Model.Id)},
+                    {"relationship", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionRelationshipType>)},
+                    {"offset", typeof(Hl7.Fhir.Model.Element)},
+            };
         
             public override IDeepCopyable CopyTo(IDeepCopyable other)
             {
@@ -1547,6 +1642,51 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
             sink.End();
         }
+        
+        internal override void Parse(Serialization.IParserSource source)
+        {
+            base.Parse(source);
+            Identifier = source.GetList<Hl7.Fhir.Model.Identifier>("identifier", Hl7.Fhir.Model.Version.All);
+            Definition = source.GetList<Hl7.Fhir.Model.ResourceReference>("definition", Hl7.Fhir.Model.Version.All);
+            BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>("basedOn", Hl7.Fhir.Model.Version.All);
+            Replaces = source.GetList<Hl7.Fhir.Model.ResourceReference>("replaces", Hl7.Fhir.Model.Version.All);
+            GroupIdentifier = source.GetProperty<Hl7.Fhir.Model.Identifier>("groupIdentifier", Hl7.Fhir.Model.Version.All);
+            StatusElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.RequestStatus>("status", Hl7.Fhir.Model.Version.All);
+            IntentElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.STU3.RequestIntent>("intent", Hl7.Fhir.Model.Version.All);
+            PriorityElement = source.GetCodeEnumProperty<Hl7.Fhir.Model.RequestPriority>("priority", Hl7.Fhir.Model.Version.All);
+            Subject = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("subject", Hl7.Fhir.Model.Version.All);
+            Context = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("context", Hl7.Fhir.Model.Version.All);
+            AuthoredOnElement = source.GetDateTimeProperty("authoredOn", Hl7.Fhir.Model.Version.All);
+            Author = source.GetProperty<Hl7.Fhir.Model.ResourceReference>("author", Hl7.Fhir.Model.Version.All);
+            Reason = source.GetProperty<Hl7.Fhir.Model.Element>("reason", Hl7.Fhir.Model.Version.All);
+            Note = source.GetList<Hl7.Fhir.Model.Annotation>("note", Hl7.Fhir.Model.Version.All);
+            Action = source.GetList<ActionComponent>("action", Hl7.Fhir.Model.Version.All);
+        }
+        
+        internal override Type GetPropertyType(string fhirName)
+        {
+            if(PropertyTypesByFhirName.TryGetValue(fhirName, out var propertyType)) return propertyType;
+            return base.GetPropertyType(fhirName);
+        }
+        
+        private static readonly IReadOnlyDictionary<string, Type> PropertyTypesByFhirName = new Dictionary<string,Type>
+        {
+                {"identifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"definition", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"basedOn", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"replaces", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"groupIdentifier", typeof(Hl7.Fhir.Model.Identifier)},
+                {"status", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestStatus>)},
+                {"intent", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestIntent>)},
+                {"priority", typeof(Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>)},
+                {"subject", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"context", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"authoredOn", typeof(Hl7.Fhir.Model.FhirDateTime)},
+                {"author", typeof(Hl7.Fhir.Model.ResourceReference)},
+                {"reason", typeof(Hl7.Fhir.Model.Element)},
+                {"note", typeof(Hl7.Fhir.Model.Annotation)},
+                {"action", typeof(ActionComponent)},
+        };
     
         [NotMapped]
         public override IEnumerable<Base> Children
