@@ -3633,7 +3633,7 @@ public class SearchParameter
         var target = _targets.Count > 0 ?
             $", Target = new ResourceType[] {{ { string.Join(", ", _targets) } }}" :
             string.Empty;
-        yield return $"new SearchParamDefinition() {{ Resource = \"{ _resourceName }\", Name = \"{ _name }\", Description = { StringUtils.Quote(_description) }, Type = SearchParamType.{ _outputType }, Path = new string[] {{ { _path } }}{ target }{ xpath }{ expression } }}, Url = \"{ _url }\" }},";
+        yield return $"new SearchParamDefinition() {{ Resource = \"{ _resourceName }\", Name = \"{ _name }\", Description = { StringUtils.Quote(_description) }, Type = SearchParamType.{ _outputType }, Path = new string[] {{ { _path } }}{ target }{ xpath }{ expression }, Url = \"{ _url }\" }},";
     }
 }
 
