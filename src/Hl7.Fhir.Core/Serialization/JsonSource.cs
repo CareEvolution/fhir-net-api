@@ -1059,7 +1059,7 @@ namespace Hl7.Fhir.Serialization
 
         private JsonSourceException CreateUnexpectedTokenTypeException(string expected)
         {
-            throw CreateException($"Expected {expected} but found {TokenDescription()}");
+            return CreateException($"Expected {expected} but found {TokenDescription()}");
         }
 
         private JsonSourceException CreateEmptyStringException()
