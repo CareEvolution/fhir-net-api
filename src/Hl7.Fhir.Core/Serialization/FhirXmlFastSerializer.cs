@@ -29,7 +29,8 @@ namespace Hl7.Fhir.Serialization
             if (instance == null) throw new ArgumentNullException(nameof(instance));
             if (writer == null) throw new ArgumentNullException(nameof(writer));
 
-            var serializer = new XmlSerializerSink(writer, Settings.Version, summary, root, elements);
+            var target = new XmlSerializerTarget(writer, root);
+            var serializer = new GenericSerializerSink(target, Settings.Version, summary, elements);
             instance.Serialize(serializer);
         }
     }
