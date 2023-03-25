@@ -25,8 +25,7 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestMethod]
         public void ConfigureFailOnUnknownMember()
         {
-            // Without <active value='true'/> the reource is empty, that is not acceptable (the old parser was ok with it)
-            var xml = "<Patient xmlns='http://hl7.org/fhir'><daytona></daytona><active value='true'/></Patient>";
+            var xml = "<Patient xmlns='http://hl7.org/fhir'><daytona></daytona></Patient>";
             var parser = new FhirXmlParser(Fhir.Model.Version.DSTU2);
 
             try

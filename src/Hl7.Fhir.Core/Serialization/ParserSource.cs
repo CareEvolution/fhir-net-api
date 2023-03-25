@@ -537,11 +537,9 @@ namespace Hl7.Fhir.Serialization
                     // This is slow but it is a very rare case that we want to create directly a data type
                     result = (Base)Activator.CreateInstance(targetType);
                 }
-                if (PopulateBase(result))
-                {
-                    return result;
-                }
-                return null;
+                // We accept root empty element (as we do for JSON because we consider the resourceType property enough to make it non-empty)
+                PopulateBase(result, isPrimitive: false, out var _);
+                return result;
             }
             catch (XmlException xmlException)
             {
@@ -585,19 +583,12 @@ namespace Hl7.Fhir.Serialization
 
         private bool PopulateBase(Base element)
         {
-            var isRoot = _states.Count == 0;
             if (!PopulateBase(element, isPrimitive: false, out var _))
             {
-                if (isRoot || !_settings.PermissiveParsing)
-                {
-                    throw CreateException("Empty elements are not allowed");
-                }
+                ThrowEmptyNotAllowedIfStrictParsing();
                 return false;
             }
-            if (!isRoot)
-            {
-                SetHasNonEmptyElements();
-            }
+            SetHasNonEmptyElements();
             return true;
         }
 
