@@ -348,6 +348,42 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "type":
+                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "schedule":
+                    Schedule = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "freeBusyType":
+                    FreeBusyTypeElement = source.GetCode<Hl7.Fhir.Model.DSTU2.SlotStatus>();
+                    return true;
+                case "start":
+                    StartElement = source.GetInstant();
+                    return true;
+                case "end":
+                    EndElement = source.GetInstant();
+                    return true;
+                case "overbooked":
+                    OverbookedElement = source.GetFhirBoolean();
+                    return true;
+                case "comment":
+                    CommentElement = source.GetFhirString();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

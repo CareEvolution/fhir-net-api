@@ -428,6 +428,67 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "status":
+                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.ImmunizationEvaluationStatusCodes>();
+                    return true;
+                case "patient":
+                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "date":
+                    DateElement = source.GetFhirDateTime();
+                    return true;
+                case "authority":
+                    Authority = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "targetDisease":
+                    TargetDisease = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "immunizationEvent":
+                    ImmunizationEvent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "doseStatus":
+                    DoseStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "doseStatusReason":
+                    DoseStatusReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "description":
+                    DescriptionElement = source.GetFhirString();
+                    return true;
+                case "series":
+                    SeriesElement = source.GetFhirString();
+                    return true;
+                case "doseNumberPositiveInt":
+                    source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
+                    DoseNumber = source.GetPositiveInt();
+                    return true;
+                case "doseNumberString":
+                    source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
+                    DoseNumber = source.GetFhirString();
+                    return true;
+                case "seriesDosesPositiveInt":
+                    source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
+                    SeriesDoses = source.GetPositiveInt();
+                    return true;
+                case "seriesDosesString":
+                    source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
+                    SeriesDoses = source.GetFhirString();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

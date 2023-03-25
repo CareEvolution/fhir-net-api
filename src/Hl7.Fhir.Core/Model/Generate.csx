@@ -286,6 +286,25 @@ using Hl7.Fhir.Utility;
         yield return $"}}";
     }
 
+    public static IEnumerable<string> RenderSetElementFromSource(IEnumerable<PropertyDetails> properties)
+    {
+        yield return $"internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)";
+        yield return $"{{";
+        yield return $"    if (base.SetElementFromSource(elementName, source))";
+        yield return $"    {{";
+        yield return $"        return true;";
+        yield return $"    }}";
+        yield return $"    switch (elementName)";
+        yield return $"    {{";
+        foreach (var property in properties)
+        {
+            foreach (var line in property.RenderSetElement()) yield return "        " + line;
+        }
+        yield return $"    }}";
+        yield return $"    return false;";
+        yield return $"}}";
+    }
+
     public static IEnumerable<string> RenderSetElementFromJson(IEnumerable<PropertyDetails> properties)
     {
         yield return $"internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)";
@@ -1604,6 +1623,8 @@ public class ResourceDetails
                 yield return string.Empty;
                 foreach (var line in StringUtils.RenderSerialize(FhirName, AbstractType, isElement, Properties)) yield return "    " + line;
                 yield return string.Empty;
+                foreach (var line in StringUtils.RenderSetElementFromSource(Properties)) yield return "    " + line;
+                yield return string.Empty;
                 foreach (var line in StringUtils.RenderSetElementFromJson(Properties)) yield return "    " + line;
                 yield return string.Empty;
                 foreach (var line in StringUtils.RenderChildrenMethods(Properties)) yield return "    " + line;
@@ -2419,6 +2440,9 @@ public class ComponentDetails
         foreach (var line in StringUtils.RenderSerialize(Name, false, true, Properties)) yield return "    " + line;
 
         yield return string.Empty;
+        foreach (var line in StringUtils.RenderSetElementFromSource(Properties)) yield return "    " + line;
+
+        yield return string.Empty;
         foreach (var line in StringUtils.RenderSetElementFromJson(Properties)) yield return "    " + line;
 
         yield return string.Empty;
@@ -2917,6 +2941,58 @@ public class PropertyDetails
         }
     }
 
+    public IEnumerable<string> RenderSetElement()
+    {
+        var versionsWhen = VersionsWhen(Versions);
+        if (IsMultiCard())
+        {
+            yield return $"case \"{FhirName}\"{versionsWhen}:";
+            if (PropType == "Hl7.Fhir.Model.Resource")
+            {
+                yield return $"    {Name} = source.GetResourceList();";
+            }
+            else if (NativeType == null)
+            {
+                yield return $"    {Name} = source.GetList<{PropType}>();";
+            }
+            else
+            {
+                var (type, typeArgument) = NoNamespaceSplit(PropType);
+                yield return $"    {Name} = source.Get{type}List{typeArgument}();";
+            }
+            yield return $"    return true;";
+        }
+        else if (PropType == "Hl7.Fhir.Model.Resource")
+        {
+            yield return $"case \"{FhirName}\"{versionsWhen}:";
+            yield return $"    {Name} = source.GetResource();";
+            yield return $"    return true;";
+        }
+        else
+        {
+            var versionsByAllowedType = ComputeVersionsByAllowedType();
+            if (versionsByAllowedType != null && versionsByAllowedType.Any())
+            {
+                foreach (var pair in versionsByAllowedType)
+                {
+                    foreach (var line in RenderSetElementX(pair.Key, pair.Value)) yield return line;
+                }
+            }
+            else if (NativeType == null)
+            {
+                yield return $"case \"{FhirName}\"{versionsWhen}:";
+                yield return $"    {Name} = source.Get<{PropType}>();";
+                yield return $"    return true;";
+            }
+            else
+            {
+                yield return $"case \"{FhirName}\"{versionsWhen}:";
+                yield return $"    {Name} = source.Get{NoNamespace(PropType)}();";
+                yield return $"    return true;";
+            }
+        }
+    }
+
     public IEnumerable<string> RenderSetElementFromJson()
     {
         var versionsWhen = VersionsWhen(Versions);
@@ -2998,6 +3074,54 @@ public class PropertyDetails
             }
         }
         return result;
+    }
+
+    private IEnumerable<string> RenderSetElementX(string type, HashSet<string> versions)
+    {
+        var versionsWhen = VersionsWhen(versions);
+        var fhirType = Globals.FhirDataTypeByCsType[type];
+        var propertyName = FhirName + StringUtils.FirstToUpper(fhirType);
+        yield return $"case \"{propertyName}\"{versionsWhen}:";
+        yield return $"    source.CheckDuplicates<{type}>({Name}, \"{FhirName}\");";
+        if (PrimitiveType.Get(fhirType) == null)
+        {
+            yield return $"    {Name} = source.Get<{type}>();";
+        }
+        else
+        {
+            yield return $"    {Name} = source.Get{NoNamespace(type)}();";
+        }
+        yield return $"    return true;";
+    }
+
+    private string NoNamespace(string typeWithNamespace)
+    {
+        var (type, typeArgument) = NoNamespaceSplit(typeWithNamespace);
+        return type + typeArgument;
+    }
+
+    private (string Type, string TypeArgument) NoNamespaceSplit(string typeWithNamespace)
+    {
+        // type can be "Hl7.Model.FhirString" or "Hl7.Model.Code<Hl7.Model.Status>"
+        var lastDotIndex = -1;
+        var index = 0;
+        for (; index < typeWithNamespace.Length && typeWithNamespace[index] != '<'; index++)
+        {
+            if (typeWithNamespace[index] == '.')
+            {
+                lastDotIndex = index;
+            }
+        }
+        if (lastDotIndex < 0)
+        {
+            return (typeWithNamespace, null);
+        }
+        var typeStartIndex = lastDotIndex + 1;
+        if (index >= typeWithNamespace.Length)
+        {
+            return (typeWithNamespace.Substring(typeStartIndex), null);
+        }
+        return (typeWithNamespace.Substring(typeStartIndex, index - typeStartIndex), typeWithNamespace.Substring(index));
     }
 
     private IEnumerable<string> RenderSetElementXFromJson(string type, HashSet<string> versions)

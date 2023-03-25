@@ -453,6 +453,48 @@ namespace Hl7.Fhir.Model
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "use":
+                    UseElement = source.GetCode();
+                    return true;
+                case "type":
+                    TypeElement = source.GetCode<Hl7.Fhir.Model.AddressType>();
+                    return true;
+                case "text":
+                    TextElement = source.GetFhirString();
+                    return true;
+                case "line":
+                    LineElement = source.GetFhirStringList();
+                    return true;
+                case "city":
+                    CityElement = source.GetFhirString();
+                    return true;
+                case "district":
+                    DistrictElement = source.GetFhirString();
+                    return true;
+                case "state":
+                    StateElement = source.GetFhirString();
+                    return true;
+                case "postalCode":
+                    PostalCodeElement = source.GetFhirString();
+                    return true;
+                case "country":
+                    CountryElement = source.GetFhirString();
+                    return true;
+                case "period":
+                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

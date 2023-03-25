@@ -139,6 +139,24 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
             }
         
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "relation":
+                        RelationElement = source.GetFhirString();
+                        return true;
+                    case "url":
+                        UrlElement = source.GetFhirUri();
+                        return true;
+                }
+                return false;
+            }
+        
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
             {
                 if (base.SetElementFromJson(jsonPropertyName, ref source))
@@ -376,6 +394,36 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
             }
         
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "link":
+                        Link = source.GetList<LinkComponent>();
+                        return true;
+                    case "fullUrl":
+                        FullUrlElement = source.GetFhirUri();
+                        return true;
+                    case "resource":
+                        Resource = source.GetResource();
+                        return true;
+                    case "search":
+                        Search = source.Get<SearchComponent>();
+                        return true;
+                    case "request":
+                        Request = source.Get<RequestComponent>();
+                        return true;
+                    case "response":
+                        Response = source.Get<ResponseComponent>();
+                        return true;
+                }
+                return false;
+            }
+        
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
             {
                 if (base.SetElementFromJson(jsonPropertyName, ref source))
@@ -595,6 +643,24 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("mode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ModeElement?.Serialize(sink);
                 sink.Element("score", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ScoreElement?.Serialize(sink);
                 sink.End();
+            }
+        
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "mode":
+                        ModeElement = source.GetCode<Hl7.Fhir.Model.SearchEntryMode>();
+                        return true;
+                    case "score":
+                        ScoreElement = source.GetFhirDecimal();
+                        return true;
+                }
+                return false;
             }
         
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
@@ -912,6 +978,36 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
             }
         
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "method":
+                        MethodElement = source.GetCode<Hl7.Fhir.Model.HTTPVerb>();
+                        return true;
+                    case "url":
+                        UrlElement = source.GetFhirUri();
+                        return true;
+                    case "ifNoneMatch":
+                        IfNoneMatchElement = source.GetFhirString();
+                        return true;
+                    case "ifModifiedSince":
+                        IfModifiedSinceElement = source.GetInstant();
+                        return true;
+                    case "ifMatch":
+                        IfMatchElement = source.GetFhirString();
+                        return true;
+                    case "ifNoneExist":
+                        IfNoneExistElement = source.GetFhirString();
+                        return true;
+                }
+                return false;
+            }
+        
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
             {
                 if (base.SetElementFromJson(jsonPropertyName, ref source))
@@ -1200,6 +1296,30 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("etag", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); EtagElement?.Serialize(sink);
                 sink.Element("lastModified", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LastModifiedElement?.Serialize(sink);
                 sink.End();
+            }
+        
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "status":
+                        StatusElement = source.GetFhirString();
+                        return true;
+                    case "location":
+                        LocationElement = source.GetFhirUri();
+                        return true;
+                    case "etag":
+                        EtagElement = source.GetFhirString();
+                        return true;
+                    case "lastModified":
+                        LastModifiedElement = source.GetInstant();
+                        return true;
+                }
+                return false;
             }
         
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
@@ -1579,6 +1699,33 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
             sink.Element("signature", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Signature?.Serialize(sink);
             sink.End();
+        }
+    
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "type":
+                    TypeElement = source.GetCode<Hl7.Fhir.Model.BundleType>();
+                    return true;
+                case "total":
+                    TotalElement = source.GetUnsignedInt();
+                    return true;
+                case "link":
+                    Link = source.GetList<LinkComponent>();
+                    return true;
+                case "entry":
+                    Entry = source.GetList<EntryComponent>();
+                    return true;
+                case "signature":
+                    Signature = source.Get<Hl7.Fhir.Model.DSTU2.Signature>();
+                    return true;
+            }
+            return false;
         }
     
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)

@@ -345,6 +345,93 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
             }
         
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "definitionCodeableConcept":
+                        source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Definition, "definition");
+                        Definition = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        return true;
+                    case "definitionCanonical":
+                        source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Definition, "definition");
+                        Definition = source.GetCanonical();
+                        return true;
+                    case "definitionExpression":
+                        source.CheckDuplicates<Hl7.Fhir.Model.Expression>(Definition, "definition");
+                        Definition = source.Get<Hl7.Fhir.Model.Expression>();
+                        return true;
+                    case "definitionDataRequirement":
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.DataRequirement>(Definition, "definition");
+                        Definition = source.Get<Hl7.Fhir.Model.R4.DataRequirement>();
+                        return true;
+                    case "usageContext":
+                        UsageContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
+                        return true;
+                    case "exclude":
+                        ExcludeElement = source.GetFhirBoolean();
+                        return true;
+                    case "unitOfMeasure":
+                        UnitOfMeasure = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        return true;
+                    case "studyEffectiveDescription":
+                        StudyEffectiveDescriptionElement = source.GetFhirString();
+                        return true;
+                    case "studyEffectiveDateTime":
+                        source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(StudyEffective, "studyEffective");
+                        StudyEffective = source.GetFhirDateTime();
+                        return true;
+                    case "studyEffectivePeriod":
+                        source.CheckDuplicates<Hl7.Fhir.Model.Period>(StudyEffective, "studyEffective");
+                        StudyEffective = source.Get<Hl7.Fhir.Model.Period>();
+                        return true;
+                    case "studyEffectiveDuration":
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(StudyEffective, "studyEffective");
+                        StudyEffective = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        return true;
+                    case "studyEffectiveTiming":
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(StudyEffective, "studyEffective");
+                        StudyEffective = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                        return true;
+                    case "studyEffectiveTimeFromStart":
+                        StudyEffectiveTimeFromStart = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        return true;
+                    case "studyEffectiveGroupMeasure":
+                        StudyEffectiveGroupMeasureElement = source.GetCode<Hl7.Fhir.Model.R4.GroupMeasure>();
+                        return true;
+                    case "participantEffectiveDescription":
+                        ParticipantEffectiveDescriptionElement = source.GetFhirString();
+                        return true;
+                    case "participantEffectiveDateTime":
+                        source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(ParticipantEffective, "participantEffective");
+                        ParticipantEffective = source.GetFhirDateTime();
+                        return true;
+                    case "participantEffectivePeriod":
+                        source.CheckDuplicates<Hl7.Fhir.Model.Period>(ParticipantEffective, "participantEffective");
+                        ParticipantEffective = source.Get<Hl7.Fhir.Model.Period>();
+                        return true;
+                    case "participantEffectiveDuration":
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(ParticipantEffective, "participantEffective");
+                        ParticipantEffective = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        return true;
+                    case "participantEffectiveTiming":
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(ParticipantEffective, "participantEffective");
+                        ParticipantEffective = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                        return true;
+                    case "participantEffectiveTimeFromStart":
+                        ParticipantEffectiveTimeFromStart = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        return true;
+                    case "participantEffectiveGroupMeasure":
+                        ParticipantEffectiveGroupMeasureElement = source.GetCode<Hl7.Fhir.Model.R4.GroupMeasure>();
+                        return true;
+                }
+                return false;
+            }
+        
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
             {
                 if (base.SetElementFromJson(jsonPropertyName, ref source))
@@ -1691,6 +1778,122 @@ namespace Hl7.Fhir.Model.R4
             }
             sink.End();
             sink.End();
+        }
+    
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "url":
+                    UrlElement = source.GetFhirUri();
+                    return true;
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "version":
+                    VersionElement = source.GetFhirString();
+                    return true;
+                case "name":
+                    NameElement = source.GetFhirString();
+                    return true;
+                case "title":
+                    TitleElement = source.GetFhirString();
+                    return true;
+                case "shortTitle":
+                    ShortTitleElement = source.GetFhirString();
+                    return true;
+                case "subtitle":
+                    SubtitleElement = source.GetFhirString();
+                    return true;
+                case "status":
+                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    return true;
+                case "experimental":
+                    ExperimentalElement = source.GetFhirBoolean();
+                    return true;
+                case "subjectCodeableConcept":
+                    source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Subject, "subject");
+                    Subject = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "subjectReference":
+                    source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Subject, "subject");
+                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "date":
+                    DateElement = source.GetFhirDateTime();
+                    return true;
+                case "publisher":
+                    PublisherElement = source.GetFhirString();
+                    return true;
+                case "contact":
+                    Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    return true;
+                case "description":
+                    DescriptionElement = source.GetMarkdown();
+                    return true;
+                case "comment":
+                    CommentElement = source.GetFhirStringList();
+                    return true;
+                case "useContext":
+                    UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
+                    return true;
+                case "jurisdiction":
+                    Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "purpose":
+                    PurposeElement = source.GetMarkdown();
+                    return true;
+                case "usage":
+                    UsageElement = source.GetFhirString();
+                    return true;
+                case "copyright":
+                    CopyrightElement = source.GetMarkdown();
+                    return true;
+                case "approvalDate":
+                    ApprovalDateElement = source.GetDate();
+                    return true;
+                case "lastReviewDate":
+                    LastReviewDateElement = source.GetDate();
+                    return true;
+                case "effectivePeriod":
+                    EffectivePeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    return true;
+                case "topic":
+                    Topic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "author":
+                    Author = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    return true;
+                case "editor":
+                    Editor = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    return true;
+                case "reviewer":
+                    Reviewer = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    return true;
+                case "endorser":
+                    Endorser = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    return true;
+                case "relatedArtifact":
+                    RelatedArtifact = source.GetList<Hl7.Fhir.Model.R4.RelatedArtifact>();
+                    return true;
+                case "library":
+                    LibraryElement = source.GetCanonicalList();
+                    return true;
+                case "type":
+                    TypeElement = source.GetCode<Hl7.Fhir.Model.R4.ResearchElementType>();
+                    return true;
+                case "variableType":
+                    VariableTypeElement = source.GetCode<Hl7.Fhir.Model.R4.EvidenceVariableType>();
+                    return true;
+                case "characteristic":
+                    Characteristic = source.GetList<CharacteristicComponent>();
+                    return true;
+            }
+            return false;
         }
     
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)

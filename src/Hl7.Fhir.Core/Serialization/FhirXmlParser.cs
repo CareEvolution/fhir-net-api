@@ -6,10 +6,11 @@
  * available at https://raw.githubusercontent.com/FirelyTeam/fhir-net-api/master/LICENSE
  */
 
-using Hl7.Fhir.Model;
 using System;
+using System.IO;
 using System.Xml;
-
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Utility;
 
 namespace Hl7.Fhir.Serialization
 {
@@ -25,23 +26,23 @@ namespace Hl7.Fhir.Serialization
 
         public T Parse<T>(string xml) where T : Base => (T)Parse(xml, typeof(T));
         
-        private FhirXmlParsingSettings buildNodeSettings(ParserSettings settings) =>
-                new FhirXmlParsingSettings
-                {
-                    DisallowSchemaLocation = Settings.DisallowXsiAttributesOnRoot,
-                    PermissiveParsing = Settings.PermissiveParsing
-                };
-
         public Base Parse(string xml, Type dataType = null)
         {
-            var xmlReader = FhirXmlNode.Parse(xml, buildNodeSettings(Settings));
+            var xmlReader = XmlReader.Create(new StringReader(SerializationUtil.SanitizeXml(xml)));
             return Parse(xmlReader, dataType);
         }
 
         public Base Parse(XmlReader reader, Type dataType = null)
         {
-            var xmlReader = FhirXmlNode.Read(reader, buildNodeSettings(Settings));
-            return Parse(xmlReader, dataType);
+            var source = new ParserSource(SerializationUtil.WrapXmlReader(reader), Settings);
+            try
+            {
+                return source.GetRoot(dataType);
+            }
+            catch (SourceException sourceException)
+            {
+                throw sourceException.ToFormatException();
+            }
         }
     }
 

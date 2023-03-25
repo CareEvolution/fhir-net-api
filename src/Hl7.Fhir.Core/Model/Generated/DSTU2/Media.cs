@@ -482,6 +482,54 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "type":
+                    TypeElement = source.GetCode<Hl7.Fhir.Model.DigitalMediaType>();
+                    return true;
+                case "subtype":
+                    Subtype = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "subject":
+                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "operator":
+                    Operator = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "view":
+                    View = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "deviceName":
+                    DeviceNameElement = source.GetFhirString();
+                    return true;
+                case "height":
+                    HeightElement = source.GetPositiveInt();
+                    return true;
+                case "width":
+                    WidthElement = source.GetPositiveInt();
+                    return true;
+                case "frames":
+                    FramesElement = source.GetPositiveInt();
+                    return true;
+                case "duration":
+                    DurationElement = source.GetUnsignedInt();
+                    return true;
+                case "content":
+                    Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

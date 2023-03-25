@@ -207,6 +207,30 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
             }
         
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "type":
+                        TypeElement = source.GetCode<Hl7.Fhir.Model.SubscriptionChannelType>();
+                        return true;
+                    case "endpoint":
+                        EndpointElement = source.GetFhirUri();
+                        return true;
+                    case "payload":
+                        PayloadElement = source.GetFhirString();
+                        return true;
+                    case "header":
+                        HeaderElement = source.GetFhirString();
+                        return true;
+                }
+                return false;
+            }
+        
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
             {
                 if (base.SetElementFromJson(jsonPropertyName, ref source))
@@ -629,6 +653,42 @@ namespace Hl7.Fhir.Model.DSTU2
             }
             sink.End();
             sink.End();
+        }
+    
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "criteria":
+                    CriteriaElement = source.GetFhirString();
+                    return true;
+                case "contact":
+                    Contact = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
+                    return true;
+                case "reason":
+                    ReasonElement = source.GetFhirString();
+                    return true;
+                case "status":
+                    StatusElement = source.GetCode<Hl7.Fhir.Model.SubscriptionStatus>();
+                    return true;
+                case "error":
+                    ErrorElement = source.GetFhirString();
+                    return true;
+                case "channel":
+                    Channel = source.Get<ChannelComponent>();
+                    return true;
+                case "end":
+                    EndElement = source.GetInstant();
+                    return true;
+                case "tag":
+                    Tag = source.GetList<Hl7.Fhir.Model.Coding>();
+                    return true;
+            }
+            return false;
         }
     
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)

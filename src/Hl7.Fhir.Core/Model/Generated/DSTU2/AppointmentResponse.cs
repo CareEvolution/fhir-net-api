@@ -352,6 +352,42 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "appointment":
+                    Appointment = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "start":
+                    StartElement = source.GetInstant();
+                    return true;
+                case "end":
+                    EndElement = source.GetInstant();
+                    return true;
+                case "participantType":
+                    ParticipantType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "actor":
+                    Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "participantStatus":
+                    ParticipantStatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ParticipantStatus>();
+                    return true;
+                case "comment":
+                    CommentElement = source.GetFhirString();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

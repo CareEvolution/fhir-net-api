@@ -423,6 +423,51 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "status":
+                    StatusElement = source.GetCode<Hl7.Fhir.Model.EndpointStatus>();
+                    return true;
+                case "connectionType":
+                    ConnectionType = source.Get<Hl7.Fhir.Model.Coding>();
+                    return true;
+                case "name":
+                    NameElement = source.GetFhirString();
+                    return true;
+                case "managingOrganization":
+                    ManagingOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "contact":
+                    Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>();
+                    return true;
+                case "period":
+                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    return true;
+                case "payloadType":
+                    PayloadType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "payloadMimeType":
+                    PayloadMimeTypeElement = source.GetCodeList();
+                    return true;
+                case "address":
+                    AddressElement = source.GetFhirUri();
+                    return true;
+                case "header":
+                    HeaderElement = source.GetFhirStringList();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

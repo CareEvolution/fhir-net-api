@@ -423,6 +423,60 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.End();
             }
         
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "boundsQuantity":
+                        source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Duration>(Bounds, "bounds");
+                        Bounds = source.Get<Hl7.Fhir.Model.DSTU2.Duration>();
+                        return true;
+                    case "boundsRange":
+                        source.CheckDuplicates<Hl7.Fhir.Model.Range>(Bounds, "bounds");
+                        Bounds = source.Get<Hl7.Fhir.Model.Range>();
+                        return true;
+                    case "boundsPeriod":
+                        source.CheckDuplicates<Hl7.Fhir.Model.Period>(Bounds, "bounds");
+                        Bounds = source.Get<Hl7.Fhir.Model.Period>();
+                        return true;
+                    case "count":
+                        CountElement = source.GetInteger();
+                        return true;
+                    case "duration":
+                        DurationElement = source.GetFhirDecimal();
+                        return true;
+                    case "durationMax":
+                        DurationMaxElement = source.GetFhirDecimal();
+                        return true;
+                    case "durationUnits":
+                        DurationUnitsElement = source.GetCode<Hl7.Fhir.Model.UnitsOfTime>();
+                        return true;
+                    case "frequency":
+                        FrequencyElement = source.GetInteger();
+                        return true;
+                    case "frequencyMax":
+                        FrequencyMaxElement = source.GetInteger();
+                        return true;
+                    case "period":
+                        PeriodElement = source.GetFhirDecimal();
+                        return true;
+                    case "periodMax":
+                        PeriodMaxElement = source.GetFhirDecimal();
+                        return true;
+                    case "periodUnits":
+                        PeriodUnitsElement = source.GetCode<Hl7.Fhir.Model.UnitsOfTime>();
+                        return true;
+                    case "when":
+                        WhenElement = source.GetCode<Hl7.Fhir.Model.DSTU2.EventTiming>();
+                        return true;
+                }
+                return false;
+            }
+        
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
             {
                 if (base.SetElementFromJson(jsonPropertyName, ref source))
@@ -808,6 +862,27 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("repeat", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Repeat?.Serialize(sink);
             sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Code?.Serialize(sink);
             sink.End();
+        }
+    
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "event":
+                    EventElement = source.GetFhirDateTimeList();
+                    return true;
+                case "repeat":
+                    Repeat = source.Get<RepeatComponent>();
+                    return true;
+                case "code":
+                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+            }
+            return false;
         }
     
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)

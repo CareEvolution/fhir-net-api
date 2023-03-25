@@ -306,6 +306,33 @@ namespace Hl7.Fhir.Model
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "value":
+                    ValueElement = source.GetFhirDecimal();
+                    return true;
+                case "comparator":
+                    ComparatorElement = source.GetCode<Hl7.Fhir.Model.QuantityComparator>();
+                    return true;
+                case "unit":
+                    UnitElement = source.GetFhirString();
+                    return true;
+                case "system":
+                    SystemElement = source.GetFhirUri();
+                    return true;
+                case "code":
+                    CodeElement = source.GetCode();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

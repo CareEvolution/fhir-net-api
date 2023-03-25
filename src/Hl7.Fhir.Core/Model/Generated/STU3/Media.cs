@@ -592,6 +592,77 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "basedOn":
+                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "type":
+                    TypeElement = source.GetCode<Hl7.Fhir.Model.DigitalMediaType>();
+                    return true;
+                case "subtype":
+                    Subtype = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "view":
+                    View = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "subject":
+                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "context":
+                    Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "occurrenceDateTime":
+                    source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
+                    Occurrence = source.GetFhirDateTime();
+                    return true;
+                case "occurrencePeriod":
+                    source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
+                    Occurrence = source.Get<Hl7.Fhir.Model.Period>();
+                    return true;
+                case "operator":
+                    Operator = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "reasonCode":
+                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "bodySite":
+                    BodySite = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "device":
+                    Device = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "height":
+                    HeightElement = source.GetPositiveInt();
+                    return true;
+                case "width":
+                    WidthElement = source.GetPositiveInt();
+                    return true;
+                case "frames":
+                    FramesElement = source.GetPositiveInt();
+                    return true;
+                case "duration":
+                    DurationElement = source.GetUnsignedInt();
+                    return true;
+                case "content":
+                    Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                    return true;
+                case "note":
+                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

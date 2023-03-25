@@ -348,6 +348,39 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "use":
+                    UseElement = source.GetCode<Hl7.Fhir.Model.NameUse>();
+                    return true;
+                case "text":
+                    TextElement = source.GetFhirString();
+                    return true;
+                case "family":
+                    FamilyElement = source.GetFhirString();
+                    return true;
+                case "given":
+                    GivenElement = source.GetFhirStringList();
+                    return true;
+                case "prefix":
+                    PrefixElement = source.GetFhirStringList();
+                    return true;
+                case "suffix":
+                    SuffixElement = source.GetFhirStringList();
+                    return true;
+                case "period":
+                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

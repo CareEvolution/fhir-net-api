@@ -308,6 +308,39 @@ namespace Hl7.Fhir.Model.R4
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "type":
+                    Type = source.GetList<Hl7.Fhir.Model.Coding>();
+                    return true;
+                case "when":
+                    WhenElement = source.GetInstant();
+                    return true;
+                case "who":
+                    Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "onBehalfOf":
+                    OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "targetFormat":
+                    TargetFormatElement = source.GetCode();
+                    return true;
+                case "sigFormat":
+                    SigFormatElement = source.GetCode();
+                    return true;
+                case "data":
+                    DataElement = source.GetBase64Binary();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

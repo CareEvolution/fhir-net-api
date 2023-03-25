@@ -343,6 +343,39 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "origin":
+                    Origin = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                    return true;
+                case "period":
+                    PeriodElement = source.GetFhirDecimal();
+                    return true;
+                case "factor":
+                    FactorElement = source.GetFhirDecimal();
+                    return true;
+                case "lowerLimit":
+                    LowerLimitElement = source.GetFhirDecimal();
+                    return true;
+                case "upperLimit":
+                    UpperLimitElement = source.GetFhirDecimal();
+                    return true;
+                case "dimensions":
+                    DimensionsElement = source.GetPositiveInt();
+                    return true;
+                case "data":
+                    DataElement = source.GetFhirString();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))

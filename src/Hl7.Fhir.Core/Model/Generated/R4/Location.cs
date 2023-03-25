@@ -170,6 +170,27 @@ namespace Hl7.Fhir.Model.R4
                 sink.End();
             }
         
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "longitude":
+                        LongitudeElement = source.GetFhirDecimal();
+                        return true;
+                    case "latitude":
+                        LatitudeElement = source.GetFhirDecimal();
+                        return true;
+                    case "altitude":
+                        AltitudeElement = source.GetFhirDecimal();
+                        return true;
+                }
+                return false;
+            }
+        
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
             {
                 if (base.SetElementFromJson(jsonPropertyName, ref source))
@@ -423,6 +444,30 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("openingTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); OpeningTimeElement?.Serialize(sink);
                 sink.Element("closingTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ClosingTimeElement?.Serialize(sink);
                 sink.End();
+            }
+        
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "daysOfWeek":
+                        DaysOfWeekElement = source.GetCodeList<Hl7.Fhir.Model.DaysOfWeek>();
+                        return true;
+                    case "allDay":
+                        AllDayElement = source.GetFhirBoolean();
+                        return true;
+                    case "openingTime":
+                        OpeningTimeElement = source.GetTime();
+                        return true;
+                    case "closingTime":
+                        ClosingTimeElement = source.GetTime();
+                        return true;
+                }
+                return false;
             }
         
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
@@ -1058,6 +1103,69 @@ namespace Hl7.Fhir.Model.R4
             }
             sink.End();
             sink.End();
+        }
+    
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "status":
+                    StatusElement = source.GetCode<Hl7.Fhir.Model.LocationStatus>();
+                    return true;
+                case "operationalStatus":
+                    OperationalStatus = source.Get<Hl7.Fhir.Model.Coding>();
+                    return true;
+                case "name":
+                    NameElement = source.GetFhirString();
+                    return true;
+                case "alias":
+                    AliasElement = source.GetFhirStringList();
+                    return true;
+                case "description":
+                    DescriptionElement = source.GetFhirString();
+                    return true;
+                case "mode":
+                    ModeElement = source.GetCode<Hl7.Fhir.Model.LocationMode>();
+                    return true;
+                case "type":
+                    Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "telecom":
+                    Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
+                    return true;
+                case "address":
+                    Address = source.Get<Hl7.Fhir.Model.Address>();
+                    return true;
+                case "physicalType":
+                    PhysicalType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "position":
+                    Position = source.Get<PositionComponent>();
+                    return true;
+                case "managingOrganization":
+                    ManagingOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "partOf":
+                    PartOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "hoursOfOperation":
+                    HoursOfOperation = source.GetList<HoursOfOperationComponent>();
+                    return true;
+                case "availabilityExceptions":
+                    AvailabilityExceptionsElement = source.GetFhirString();
+                    return true;
+                case "endpoint":
+                    Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+            }
+            return false;
         }
     
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)

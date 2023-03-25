@@ -204,6 +204,30 @@ namespace Hl7.Fhir.Model.STU3
                 sink.End();
             }
         
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "daysOfWeek":
+                        DaysOfWeekElement = source.GetCodeList<Hl7.Fhir.Model.DaysOfWeek>();
+                        return true;
+                    case "allDay":
+                        AllDayElement = source.GetFhirBoolean();
+                        return true;
+                    case "availableStartTime":
+                        AvailableStartTimeElement = source.GetTime();
+                        return true;
+                    case "availableEndTime":
+                        AvailableEndTimeElement = source.GetTime();
+                        return true;
+                }
+                return false;
+            }
+        
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
             {
                 if (base.SetElementFromJson(jsonPropertyName, ref source))
@@ -397,6 +421,24 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); DescriptionElement?.Serialize(sink);
                 sink.Element("during", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); During?.Serialize(sink);
                 sink.End();
+            }
+        
+            internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+            {
+                if (base.SetElementFromSource(elementName, source))
+                {
+                    return true;
+                }
+                switch (elementName)
+                {
+                    case "description":
+                        DescriptionElement = source.GetFhirString();
+                        return true;
+                    case "during":
+                        During = source.Get<Hl7.Fhir.Model.Period>();
+                        return true;
+                }
+                return false;
             }
         
             internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
@@ -1195,6 +1237,90 @@ namespace Hl7.Fhir.Model.STU3
             }
             sink.End();
             sink.End();
+        }
+    
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "identifier":
+                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    return true;
+                case "active":
+                    ActiveElement = source.GetFhirBoolean();
+                    return true;
+                case "providedBy":
+                    ProvidedBy = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "category":
+                    Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "type":
+                    Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "specialty":
+                    Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "location":
+                    Location = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "name":
+                    NameElement = source.GetFhirString();
+                    return true;
+                case "comment":
+                    CommentElement = source.GetFhirString();
+                    return true;
+                case "extraDetails":
+                    ExtraDetailsElement = source.GetFhirString();
+                    return true;
+                case "photo":
+                    Photo = source.Get<Hl7.Fhir.Model.Attachment>();
+                    return true;
+                case "telecom":
+                    Telecom = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>();
+                    return true;
+                case "coverageArea":
+                    CoverageArea = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+                case "serviceProvisionCode":
+                    ServiceProvisionCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "eligibility":
+                    Eligibility = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "eligibilityNote":
+                    EligibilityNoteElement = source.GetFhirString();
+                    return true;
+                case "programName":
+                    ProgramNameElement = source.GetFhirStringList();
+                    return true;
+                case "characteristic":
+                    Characteristic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "referralMethod":
+                    ReferralMethod = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    return true;
+                case "appointmentRequired":
+                    AppointmentRequiredElement = source.GetFhirBoolean();
+                    return true;
+                case "availableTime":
+                    AvailableTime = source.GetList<AvailableTimeComponent>();
+                    return true;
+                case "notAvailable":
+                    NotAvailable = source.GetList<NotAvailableComponent>();
+                    return true;
+                case "availabilityExceptions":
+                    AvailabilityExceptionsElement = source.GetFhirString();
+                    return true;
+                case "endpoint":
+                    Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    return true;
+            }
+            return false;
         }
     
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)

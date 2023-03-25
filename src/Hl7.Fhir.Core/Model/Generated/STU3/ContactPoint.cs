@@ -279,6 +279,33 @@ namespace Hl7.Fhir.Model.STU3
             sink.End();
         }
     
+        internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
+        {
+            if (base.SetElementFromSource(elementName, source))
+            {
+                return true;
+            }
+            switch (elementName)
+            {
+                case "system":
+                    SystemElement = source.GetCode<Hl7.Fhir.Model.STU3.ContactPointSystem>();
+                    return true;
+                case "value":
+                    ValueElement = source.GetFhirString();
+                    return true;
+                case "use":
+                    UseElement = source.GetCode<Hl7.Fhir.Model.ContactPointUse>();
+                    return true;
+                case "rank":
+                    RankElement = source.GetPositiveInt();
+                    return true;
+                case "period":
+                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    return true;
+            }
+            return false;
+        }
+    
         internal override bool SetElementFromJson(string jsonPropertyName, ref Serialization.JsonSource source)
         {
             if (base.SetElementFromJson(jsonPropertyName, ref source))
