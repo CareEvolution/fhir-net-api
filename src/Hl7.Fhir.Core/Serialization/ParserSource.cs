@@ -37,7 +37,6 @@ namespace Hl7.Fhir.Serialization
 
         public string GetXHtml()
         {
-            // TODO: validation
             SetHasNonEmptyElements();   // At the very list we have the root element
             // We cannot use ReadOuterXml() because we want to convert \n to \r\n
             var stringWriter = new StringWriter(CultureInfo.InvariantCulture);
@@ -51,7 +50,6 @@ namespace Hl7.Fhir.Serialization
             }
             return stringWriter.ToString();
         }
-
 
         public TBase Get<TBase>() where TBase : Base, new()
         {
@@ -70,7 +68,7 @@ namespace Hl7.Fhir.Serialization
             {
                 if (!TryFromBase64String(valueString, out var value))
                 {
-                    ThrowIfStrictParsing($"'\"{SourceHelpers.Truncate(valueString)}\"' is not a valid base64 binary");
+                    ThrowIfStrictParsing($"'{SourceHelpers.Truncate(valueString)}' is not a valid base64 binary");
                 }
                 else
                 {
