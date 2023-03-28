@@ -314,7 +314,7 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "url":
-                    Url = source.GetString();
+                    Url = source.GetExtensionUrl();
                     return true;
                 case "valueBoolean":
                     source.CheckDuplicates<FhirBoolean>(Value, "value");
@@ -589,7 +589,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "url":
-                    Url = source.GetUrl();
+                    Url = source.GetExtensionUrl();
                     return true;
                 case "valueBoolean":
                     source.CheckDuplicates<FhirBoolean>(Value, "value");

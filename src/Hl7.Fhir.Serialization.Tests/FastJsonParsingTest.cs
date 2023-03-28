@@ -921,6 +921,26 @@ namespace Hl7.Fhir.Serialization.Tests
         }
 
         [TestMethod]
+        public void EmptyElementIdTest()
+        {
+            var patientJson = "{\"resourceType\":\"Patient\",\"active\": true,\"_active\": {\"id\": \"\"}}";
+            Throws(
+                () => JsonSerializer.Deserialize<Model.R4.Patient>(
+                    patientJson,
+                    new JsonSerializerOptions().ForFhir(Model.Version.R4)
+                ),
+                "Empty strings are not allowed"
+            );
+            var patient = JsonSerializer.Deserialize<Model.R4.Patient>(
+                patientJson,
+                new JsonSerializerOptions().ForFhir(new ParserSettings(Model.Version.R4) { PermissiveParsing = true })
+            );
+            Assert.IsNotNull(patient.Active);
+            Assert.AreEqual(true, patient.Active.Value);
+            Assert.IsNull(patient.ActiveElement.ElementId);
+        }
+
+        [TestMethod]
         public void ExtensionTest()
         {
             AssertSuccess(

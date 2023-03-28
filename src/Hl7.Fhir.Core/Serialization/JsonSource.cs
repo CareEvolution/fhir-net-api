@@ -70,7 +70,7 @@ namespace Hl7.Fhir.Serialization
             return null;
         }
 
-        public string GetUrl()
+        public string GetExtensionUrl()
         {
             if (TryGetNonEmptyString(out var url))
             {

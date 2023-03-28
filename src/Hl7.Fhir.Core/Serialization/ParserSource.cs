@@ -24,15 +24,14 @@ namespace Hl7.Fhir.Serialization
             return (versions & _settings.Version) != 0;
         }
 
-        public string GetString()
+        public string GetElementId()
         {
-            var result = _reader.Value;
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                return null;
-            }
-            SetHasNonEmptyElements();
-            return result.Trim();
+            return GetNonEmptyString();
+        }
+
+        public string GetExtensionUrl()
+        {
+            return GetNonEmptyString();
         }
 
         public string GetXHtml()
@@ -559,6 +558,21 @@ namespace Hl7.Fhir.Serialization
             {
                 throw CreateException($"Element '{rootName}[x]' must not repeat");
             }
+        }
+
+        private string GetNonEmptyString()
+        {
+            var result = _reader.Value;
+            if (string.IsNullOrWhiteSpace(result))
+            {
+                if (!_settings.PermissiveParsing)
+                {
+                    throw CreateException("Empty strings are not allowed");
+                }
+                return null;
+            }
+            SetHasNonEmptyElements();
+            return result.Trim();
         }
 
         private List<TBase> GetListPrimitive<TBase>(Func<TBase> get) where TBase : Base

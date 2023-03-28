@@ -516,6 +516,62 @@ namespace Hl7.Fhir.Serialization.Tests
         }
 
         [TestMethod]
+        public void EmptyElementId()
+        {
+            var xml = "<Patient xmlns='http://hl7.org/fhir'><active id='' value='true'/></Patient>";
+            Throws<Patient>(
+                xml,
+                "Empty strings are not allowed"
+            );
+            var patient = Parse<Patient>(xml, permissiveParsing: true);
+            Assert.IsNotNull(patient.Active);
+            Assert.AreEqual(true, patient.Active.Value);
+            Assert.IsNull(patient.ActiveElement.ElementId);
+        }
+
+        [TestMethod]
+        public void ExtensionUrl()
+        {
+            AssertSuccess(
+                "<Patient xmlns='http://hl7.org/fhir'><extension url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'><valueCode value='F'/></extension></Patient>",
+                "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex", "F"
+            );
+
+            AssertSuccessAndError(
+                "<Patient xmlns='http://hl7.org/fhir'><extension url='\t\t'/></Patient>",
+                null, null,
+                "Empty strings are not allowed"
+            );
+
+            void AssertSuccessAndError(string patientXml, string expectedUrl, string expectedCode, string expectedErrorMessage)
+            {
+                AssertSuccess(patientXml, expectedUrl, expectedCode, permissiveParsing: true);
+                Throws<Patient>(
+                    patientXml,
+                    expectedErrorMessage
+                );
+            }
+
+            void AssertSuccess(string patientXml, string expectedUrl, string expectedCode, bool permissiveParsing = false)
+            {
+                var patient = Parse<Patient>(
+                    patientXml,
+                    permissiveParsing: permissiveParsing
+                );
+                if (expectedUrl == null && expectedCode == null)
+                {
+                    Assert.AreEqual(0, patient.Extension.Count);
+                }
+                else
+                {
+                    var extension = Single(patient.Extension);
+                    Assert.AreEqual(expectedUrl, extension.Url);
+                    Assert.AreEqual(expectedCode, IsType<Code>(extension.Value).Value);
+                }
+            }
+        }
+
+        [TestMethod]
         public void WhitespaceRoundtrip()
         {
             var markdown = @"# Headline
@@ -870,6 +926,18 @@ This is a list
             };
             var parser = new FhirXmlParser(settings);
             return parser.Parse<TResource>(xml);
+        }
+
+        private static T IsType<T>(object obj)
+        {
+            Assert.IsInstanceOfType(obj, typeof(T));
+            return (T)obj;
+        }
+
+        private static T Single<T>(List<T> objs)
+        {
+            Assert.AreEqual(1, objs.Count);
+            return objs[0];
         }
     }
 }
