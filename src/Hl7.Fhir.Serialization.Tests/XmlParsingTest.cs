@@ -1,18 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
     [TestClass]
     public class XmlParsingTest
     {
-        // TODO: primitive types validation/child elements/empty
-
         [TestMethod]
         public void WrongResourceType()
         {
@@ -515,6 +513,36 @@ namespace Hl7.Fhir.Serialization.Tests
         {
             var parameters = Parse<Parameters>("<Parameters xmlns='http://hl7.org/fhir'><implicitRules value='https://mysite.com/rules'/></Parameters>");
             Assert.AreEqual("https://mysite.com/rules", parameters.ImplicitRules);
+        }
+
+        [TestMethod]
+        public void WhitespaceRoundtrip()
+        {
+            var markdown = @"# Headline
+
+This is the **first** paragraph
+
+This is a list
+
+- first
+
+- second
+
+- third with a [link](http://something.com)";
+
+            var capabilityStatement = new Model.R4.CapabilityStatement
+            {
+                Rest = new List<Model.R4.CapabilityStatement.RestComponent>
+                {
+                    new Model.R4.CapabilityStatement.RestComponent
+                    {
+                        Documentation = markdown
+                    }
+                }
+            };
+            var xml = new FhirXmlFastSerializer(Model.Version.R4).SerializeToString(capabilityStatement);
+            var parsedCapabilityStatement = Parse<Model.R4.CapabilityStatement>(xml, Model.Version.R4);
+            Assert.AreEqual(markdown, parsedCapabilityStatement.Rest[0].Documentation);
         }
 
         private static void PrimitiveString<TResource>(
