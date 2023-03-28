@@ -328,7 +328,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     OriginalRuleset = source.Get<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "target":
                     Target = source.Get<Hl7.Fhir.Model.ResourceReference>();

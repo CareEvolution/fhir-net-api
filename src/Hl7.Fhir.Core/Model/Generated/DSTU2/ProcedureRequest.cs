@@ -467,7 +467,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "scheduledDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Scheduled, "scheduled");
-                    Scheduled = source.GetFhirDateTime();
+                    Scheduled = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "scheduledPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Scheduled, "scheduled");
@@ -484,27 +484,27 @@ namespace Hl7.Fhir.Model.DSTU2
                     Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ProcedureRequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestStatus>>();
                     return true;
                 case "notes":
                     Notes = source.GetList<Hl7.Fhir.Model.Annotation>();
                     return true;
                 case "asNeededBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                    AsNeeded = source.GetFhirBoolean();
+                    AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "asNeededCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
                     AsNeeded = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "orderedOn":
-                    OrderedOnElement = source.GetFhirDateTime();
+                    OrderedOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "orderer":
                     Orderer = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ProcedureRequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestPriority>>();
                     return true;
             }
             return false;

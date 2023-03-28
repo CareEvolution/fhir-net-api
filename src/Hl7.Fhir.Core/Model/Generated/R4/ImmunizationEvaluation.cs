@@ -440,13 +440,13 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.ImmunizationEvaluationStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ImmunizationEvaluationStatusCodes>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "authority":
                     Authority = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -464,26 +464,26 @@ namespace Hl7.Fhir.Model.R4
                     DoseStatusReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "series":
-                    SeriesElement = source.GetFhirString();
+                    SeriesElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "doseNumberPositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
-                    DoseNumber = source.GetPositiveInt();
+                    DoseNumber = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "doseNumberString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
-                    DoseNumber = source.GetFhirString();
+                    DoseNumber = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "seriesDosesPositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
-                    SeriesDoses = source.GetPositiveInt();
+                    SeriesDoses = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "seriesDosesString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
-                    SeriesDoses = source.GetFhirString();
+                    SeriesDoses = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

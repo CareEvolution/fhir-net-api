@@ -555,16 +555,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "label":
-                        LabelElement = source.GetFhirString();
+                        LabelElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "title":
-                        TitleElement = source.GetFhirString();
+                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "textEquivalent":
-                        TextEquivalentElement = source.GetFhirString();
+                        TextEquivalentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "code":
                         Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -580,7 +580,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "timingDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                        Timing = source.GetFhirDateTime();
+                        Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "timingPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Timing, "timing");
@@ -605,19 +605,19 @@ namespace Hl7.Fhir.Model.STU3
                         Type = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "groupingBehavior":
-                        GroupingBehaviorElement = source.GetCode<Hl7.Fhir.Model.ActionGroupingBehavior>();
+                        GroupingBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionGroupingBehavior>>();
                         return true;
                     case "selectionBehavior":
-                        SelectionBehaviorElement = source.GetCode<Hl7.Fhir.Model.ActionSelectionBehavior>();
+                        SelectionBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionSelectionBehavior>>();
                         return true;
                     case "requiredBehavior":
-                        RequiredBehaviorElement = source.GetCode<Hl7.Fhir.Model.ActionRequiredBehavior>();
+                        RequiredBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionRequiredBehavior>>();
                         return true;
                     case "precheckBehavior":
-                        PrecheckBehaviorElement = source.GetCode<Hl7.Fhir.Model.ActionPrecheckBehavior>();
+                        PrecheckBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionPrecheckBehavior>>();
                         return true;
                     case "cardinalityBehavior":
-                        CardinalityBehaviorElement = source.GetCode<Hl7.Fhir.Model.ActionCardinalityBehavior>();
+                        CardinalityBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionCardinalityBehavior>>();
                         return true;
                     case "resource":
                         Resource = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1080,16 +1080,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "kind":
-                        KindElement = source.GetCode<Hl7.Fhir.Model.ActionConditionKind>();
+                        KindElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionConditionKind>>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "language":
-                        LanguageElement = source.GetFhirString();
+                        LanguageElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "expression":
-                        ExpressionElement = source.GetFhirString();
+                        ExpressionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1319,10 +1319,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "actionId":
-                        ActionIdElement = source.GetId();
+                        ActionIdElement = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "relationship":
-                        RelationshipElement = source.GetCode<Hl7.Fhir.Model.ActionRelationshipType>();
+                        RelationshipElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionRelationshipType>>();
                         return true;
                     case "offsetDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Duration>(Offset, "offset");
@@ -1917,13 +1917,13 @@ namespace Hl7.Fhir.Model.STU3
                     GroupIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.RequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestStatus>>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.STU3.RequestIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestIntent>>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.RequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1932,7 +1932,7 @@ namespace Hl7.Fhir.Model.STU3
                     Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.GetFhirDateTime();
+                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "author":
                     Author = source.Get<Hl7.Fhir.Model.ResourceReference>();

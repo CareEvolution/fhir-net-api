@@ -932,7 +932,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "onsetDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Onset, "onset");
-                    Onset = source.GetFhirDateTime();
+                    Onset = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "onsetAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Onset, "onset");
@@ -948,11 +948,11 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "onsetString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Onset, "onset");
-                    Onset = source.GetFhirString();
+                    Onset = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "abatementDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Abatement, "abatement");
-                    Abatement = source.GetFhirDateTime();
+                    Abatement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "abatementAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Abatement, "abatement");
@@ -968,10 +968,10 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "abatementString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Abatement, "abatement");
-                    Abatement = source.GetFhirString();
+                    Abatement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "recordedDate":
-                    RecordedDateElement = source.GetFhirDateTime();
+                    RecordedDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recorder":
                     Recorder = source.Get<Hl7.Fhir.Model.ResourceReference>();

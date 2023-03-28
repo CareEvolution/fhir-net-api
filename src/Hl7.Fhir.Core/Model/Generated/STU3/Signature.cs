@@ -285,11 +285,11 @@ namespace Hl7.Fhir.Model.STU3
                     Type = source.GetList<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "when":
-                    WhenElement = source.GetInstant();
+                    WhenElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "whoUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
-                    Who = source.GetFhirUri();
+                    Who = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "whoReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Who, "who");
@@ -297,17 +297,17 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "onBehalfOfUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(OnBehalfOf, "onBehalfOf");
-                    OnBehalfOf = source.GetFhirUri();
+                    OnBehalfOf = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "onBehalfOfReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(OnBehalfOf, "onBehalfOf");
                     OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "contentType":
-                    ContentTypeElement = source.GetCode();
+                    ContentTypeElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "blob":
-                    BlobElement = source.GetBase64Binary();
+                    BlobElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
             }
             return false;

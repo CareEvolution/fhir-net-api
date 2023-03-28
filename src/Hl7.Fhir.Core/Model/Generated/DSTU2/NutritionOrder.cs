@@ -237,7 +237,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         FluidConsistencyType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "instruction":
-                        InstructionElement = source.GetFhirString();
+                        InstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -837,7 +837,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "productName":
-                        ProductNameElement = source.GetFhirString();
+                        ProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "schedule":
                         Schedule = source.GetList<Hl7.Fhir.Model.DSTU2.Timing>();
@@ -846,7 +846,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "instruction":
-                        InstructionElement = source.GetFhirString();
+                        InstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1206,13 +1206,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         BaseFormulaType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "baseFormulaProductName":
-                        BaseFormulaProductNameElement = source.GetFhirString();
+                        BaseFormulaProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "additiveType":
                         AdditiveType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "additiveProductName":
-                        AdditiveProductNameElement = source.GetFhirString();
+                        AdditiveProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "caloricDensity":
                         CaloricDensity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -1227,7 +1227,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         MaxVolumeToDeliver = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "administrationInstruction":
-                        AdministrationInstructionElement = source.GetFhirString();
+                        AdministrationInstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1969,10 +1969,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "dateTime":
-                    DateTimeElement = source.GetFhirDateTime();
+                    DateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.NutritionOrderStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.NutritionOrderStatus>>();
                     return true;
                 case "allergyIntolerance":
                     AllergyIntolerance = source.GetList<Hl7.Fhir.Model.ResourceReference>();

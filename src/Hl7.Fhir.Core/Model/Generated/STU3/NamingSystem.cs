@@ -226,16 +226,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.NamingSystemIdentifierType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.NamingSystemIdentifierType>>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirString();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "preferred":
-                        PreferredElement = source.GetFhirBoolean();
+                        PreferredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "comment":
-                        CommentElement = source.GetFhirString();
+                        CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "period":
                         Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -888,31 +888,31 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "kind":
-                    KindElement = source.GetCode<Hl7.Fhir.Model.NamingSystemType>();
+                    KindElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.NamingSystemType>>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>();
                     return true;
                 case "responsible":
-                    ResponsibleElement = source.GetFhirString();
+                    ResponsibleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetMarkdown();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "useContext":
                     UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
@@ -921,7 +921,7 @@ namespace Hl7.Fhir.Model.STU3
                     Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "usage":
-                    UsageElement = source.GetFhirString();
+                    UsageElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "uniqueId":
                     UniqueId = source.GetList<UniqueIdComponent>();

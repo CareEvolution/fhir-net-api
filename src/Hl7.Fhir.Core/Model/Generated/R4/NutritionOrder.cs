@@ -237,7 +237,7 @@ namespace Hl7.Fhir.Model.R4
                         FluidConsistencyType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "instruction":
-                        InstructionElement = source.GetFhirString();
+                        InstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -837,7 +837,7 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "productName":
-                        ProductNameElement = source.GetFhirString();
+                        ProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "schedule":
                         Schedule = source.GetList<Hl7.Fhir.Model.R4.Timing>();
@@ -846,7 +846,7 @@ namespace Hl7.Fhir.Model.R4
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "instruction":
-                        InstructionElement = source.GetFhirString();
+                        InstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1206,13 +1206,13 @@ namespace Hl7.Fhir.Model.R4
                         BaseFormulaType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "baseFormulaProductName":
-                        BaseFormulaProductNameElement = source.GetFhirString();
+                        BaseFormulaProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "additiveType":
                         AdditiveType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "additiveProductName":
-                        AdditiveProductNameElement = source.GetFhirString();
+                        AdditiveProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "caloricDensity":
                         CaloricDensity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -1227,7 +1227,7 @@ namespace Hl7.Fhir.Model.R4
                         MaxVolumeToDeliver = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "administrationInstruction":
-                        AdministrationInstructionElement = source.GetFhirString();
+                        AdministrationInstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -2141,19 +2141,19 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetCanonicalList();
+                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetFhirUriList();
+                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "instantiates":
-                    InstantiatesElement = source.GetFhirUriList();
+                    InstantiatesElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.RequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.R4.RequestIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestIntent>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -2162,7 +2162,7 @@ namespace Hl7.Fhir.Model.R4
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "dateTime":
-                    DateTimeElement = source.GetFhirDateTime();
+                    DateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "orderer":
                     Orderer = source.Get<Hl7.Fhir.Model.ResourceReference>();

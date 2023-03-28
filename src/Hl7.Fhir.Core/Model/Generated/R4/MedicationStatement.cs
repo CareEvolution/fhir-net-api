@@ -523,7 +523,7 @@ namespace Hl7.Fhir.Model.R4
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.MedicationStatementStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationStatementStatus>>();
                     return true;
                 case "statusReason":
                     StatusReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -547,14 +547,14 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.GetFhirDateTime();
+                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
                     Effective = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "dateAsserted":
-                    DateAssertedElement = source.GetFhirDateTime();
+                    DateAssertedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "informationSource":
                     InformationSource = source.Get<Hl7.Fhir.Model.ResourceReference>();

@@ -589,46 +589,46 @@ namespace Hl7.Fhir.Model.R4
                         Bounds = source.Get<Hl7.Fhir.Model.Period>();
                         return true;
                     case "count":
-                        CountElement = source.GetPositiveInt();
+                        CountElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "countMax":
-                        CountMaxElement = source.GetPositiveInt();
+                        CountMaxElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "duration":
-                        DurationElement = source.GetFhirDecimal();
+                        DurationElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "durationMax":
-                        DurationMaxElement = source.GetFhirDecimal();
+                        DurationMaxElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "durationUnit":
-                        DurationUnitElement = source.GetCode<Hl7.Fhir.Model.UnitsOfTime>();
+                        DurationUnitElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>>();
                         return true;
                     case "frequency":
-                        FrequencyElement = source.GetPositiveInt();
+                        FrequencyElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "frequencyMax":
-                        FrequencyMaxElement = source.GetPositiveInt();
+                        FrequencyMaxElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "period":
-                        PeriodElement = source.GetFhirDecimal();
+                        PeriodElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "periodMax":
-                        PeriodMaxElement = source.GetFhirDecimal();
+                        PeriodMaxElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "periodUnit":
-                        PeriodUnitElement = source.GetCode<Hl7.Fhir.Model.UnitsOfTime>();
+                        PeriodUnitElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>>();
                         return true;
                     case "dayOfWeek":
-                        DayOfWeekElement = source.GetCodeList<Hl7.Fhir.Model.DaysOfWeek>();
+                        DayOfWeekElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>>();
                         return true;
                     case "timeOfDay":
-                        TimeOfDayElement = source.GetTimeList();
+                        TimeOfDayElement = source.GetList<Hl7.Fhir.Model.Time>();
                         return true;
                     case "when":
-                        WhenElement = source.GetCodeList<Hl7.Fhir.Model.R4.EventTiming>();
+                        WhenElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventTiming>>();
                         return true;
                     case "offset":
-                        OffsetElement = source.GetUnsignedInt();
+                        OffsetElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                 }
                 return false;
@@ -1114,7 +1114,7 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "event":
-                    EventElement = source.GetFhirDateTimeList();
+                    EventElement = source.GetList<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "repeat":
                     Repeat = source.Get<RepeatComponent>();

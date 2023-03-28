@@ -188,10 +188,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "itemSequence":
-                        ItemSequenceElement = source.GetPositiveInt();
+                        ItemSequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "noteNumber":
-                        NoteNumberElement = source.GetPositiveIntList();
+                        NoteNumberElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "adjudication":
                         Adjudication = source.GetList<AdjudicationComponent>();
@@ -444,7 +444,7 @@ namespace Hl7.Fhir.Model.R4
                         Amount = source.Get<Hl7.Fhir.Model.R4.Money>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirDecimal();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                 }
                 return false;
@@ -694,10 +694,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "detailSequence":
-                        DetailSequenceElement = source.GetPositiveInt();
+                        DetailSequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "noteNumber":
-                        NoteNumberElement = source.GetPositiveIntList();
+                        NoteNumberElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "adjudication":
                         Adjudication = source.GetList<AdjudicationComponent>();
@@ -955,10 +955,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "subDetailSequence":
-                        SubDetailSequenceElement = source.GetPositiveInt();
+                        SubDetailSequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "noteNumber":
-                        NoteNumberElement = source.GetPositiveIntList();
+                        NoteNumberElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "adjudication":
                         Adjudication = source.GetList<AdjudicationComponent>();
@@ -1514,13 +1514,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "itemSequence":
-                        ItemSequenceElement = source.GetPositiveIntList();
+                        ItemSequenceElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "detailSequence":
-                        DetailSequenceElement = source.GetPositiveIntList();
+                        DetailSequenceElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "subdetailSequence":
-                        SubdetailSequenceElement = source.GetPositiveIntList();
+                        SubdetailSequenceElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "provider":
                         Provider = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1536,7 +1536,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "servicedDate":
                         source.CheckDuplicates<Hl7.Fhir.Model.Date>(Serviced, "serviced");
-                        Serviced = source.GetDate();
+                        Serviced = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "servicedPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Serviced, "serviced");
@@ -1561,7 +1561,7 @@ namespace Hl7.Fhir.Model.R4
                         UnitPrice = source.Get<Hl7.Fhir.Model.R4.Money>();
                         return true;
                     case "factor":
-                        FactorElement = source.GetFhirDecimal();
+                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "net":
                         Net = source.Get<Hl7.Fhir.Model.R4.Money>();
@@ -1573,7 +1573,7 @@ namespace Hl7.Fhir.Model.R4
                         SubSite = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "noteNumber":
-                        NoteNumberElement = source.GetPositiveIntList();
+                        NoteNumberElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "adjudication":
                         Adjudication = source.GetList<AdjudicationComponent>();
@@ -2102,13 +2102,13 @@ namespace Hl7.Fhir.Model.R4
                         UnitPrice = source.Get<Hl7.Fhir.Model.R4.Money>();
                         return true;
                     case "factor":
-                        FactorElement = source.GetFhirDecimal();
+                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "net":
                         Net = source.Get<Hl7.Fhir.Model.R4.Money>();
                         return true;
                     case "noteNumber":
-                        NoteNumberElement = source.GetPositiveIntList();
+                        NoteNumberElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "adjudication":
                         Adjudication = source.GetList<AdjudicationComponent>();
@@ -2497,13 +2497,13 @@ namespace Hl7.Fhir.Model.R4
                         UnitPrice = source.Get<Hl7.Fhir.Model.R4.Money>();
                         return true;
                     case "factor":
-                        FactorElement = source.GetFhirDecimal();
+                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "net":
                         Net = source.Get<Hl7.Fhir.Model.R4.Money>();
                         return true;
                     case "noteNumber":
-                        NoteNumberElement = source.GetPositiveIntList();
+                        NoteNumberElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "adjudication":
                         Adjudication = source.GetList<AdjudicationComponent>();
@@ -2967,7 +2967,7 @@ namespace Hl7.Fhir.Model.R4
                         AdjustmentReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "date":
-                        DateElement = source.GetDate();
+                        DateElement = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "amount":
                         Amount = source.Get<Hl7.Fhir.Model.R4.Money>();
@@ -3240,13 +3240,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "number":
-                        NumberElement = source.GetPositiveInt();
+                        NumberElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.R4.NoteType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.NoteType>>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "language":
                         Language = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -3526,16 +3526,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "sequence":
-                        SequenceElement = source.GetPositiveInt();
+                        SequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "focal":
-                        FocalElement = source.GetFhirBoolean();
+                        FocalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "coverage":
                         Coverage = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "businessArrangement":
-                        BusinessArrangementElement = source.GetFhirString();
+                        BusinessArrangementElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "claimResponse":
                         ClaimResponse = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -3803,13 +3803,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "itemSequence":
-                        ItemSequenceElement = source.GetPositiveInt();
+                        ItemSequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "detailSequence":
-                        DetailSequenceElement = source.GetPositiveInt();
+                        DetailSequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "subDetailSequence":
-                        SubDetailSequenceElement = source.GetPositiveInt();
+                        SubDetailSequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "code":
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -4643,7 +4643,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -4652,13 +4652,13 @@ namespace Hl7.Fhir.Model.R4
                     SubType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "use":
-                    UseElement = source.GetCode<Hl7.Fhir.Model.R4.Use>();
+                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.Use>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "insurer":
                     Insurer = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -4670,13 +4670,13 @@ namespace Hl7.Fhir.Model.R4
                     Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "outcome":
-                    OutcomeElement = source.GetCode<Hl7.Fhir.Model.R4.ClaimProcessingCodes>();
+                    OutcomeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ClaimProcessingCodes>>();
                     return true;
                 case "disposition":
-                    DispositionElement = source.GetFhirString();
+                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "preAuthRef":
-                    PreAuthRefElement = source.GetFhirString();
+                    PreAuthRefElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "preAuthPeriod":
                     PreAuthPeriod = source.Get<Hl7.Fhir.Model.Period>();

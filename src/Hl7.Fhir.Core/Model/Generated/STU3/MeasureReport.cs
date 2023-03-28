@@ -179,7 +179,7 @@ namespace Hl7.Fhir.Model.STU3
                         Population = source.GetList<PopulationComponent>();
                         return true;
                     case "measureScore":
-                        MeasureScoreElement = source.GetFhirDecimal();
+                        MeasureScoreElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "stratifier":
                         Stratifier = source.GetList<StratifierComponent>();
@@ -422,7 +422,7 @@ namespace Hl7.Fhir.Model.STU3
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "count":
-                        CountElement = source.GetInteger();
+                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "patients":
                         Patients = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -826,13 +826,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "value":
-                        ValueElement = source.GetFhirString();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "population":
                         Population = source.GetList<StratifierGroupPopulationComponent>();
                         return true;
                     case "measureScore":
-                        MeasureScoreElement = source.GetFhirDecimal();
+                        MeasureScoreElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                 }
                 return false;
@@ -1064,7 +1064,7 @@ namespace Hl7.Fhir.Model.STU3
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "count":
-                        CountElement = source.GetInteger();
+                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "patients":
                         Patients = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1492,10 +1492,10 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.MeasureReportStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.MeasureReportStatus>>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.STU3.MeasureReportType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MeasureReportType>>();
                     return true;
                 case "measure":
                     Measure = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1504,7 +1504,7 @@ namespace Hl7.Fhir.Model.STU3
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "reportingOrganization":
                     ReportingOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();

@@ -474,7 +474,7 @@ namespace Hl7.Fhir.Model.R4
                         Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "isActive":
-                        IsActiveElement = source.GetFhirBoolean();
+                        IsActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "strength":
                         Strength = source.Get<Hl7.Fhir.Model.Ratio>();
@@ -677,7 +677,7 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "source":
-                        SourceElement = source.GetFhirString();
+                        SourceElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "cost":
                         Cost = source.Get<Hl7.Fhir.Model.R4.Money>();
@@ -859,7 +859,7 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1428,7 +1428,7 @@ namespace Hl7.Fhir.Model.R4
                         Characteristic = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirStringList();
+                        ValueElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1928,7 +1928,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.GetFhirString();
+                        Value = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(Value, "value");
@@ -1936,7 +1936,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "valueBase64Binary":
                         source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(Value, "value");
-                        Value = source.GetBase64Binary();
+                        Value = source.Get<Hl7.Fhir.Model.Base64Binary>();
                         return true;
                 }
                 return false;
@@ -2359,7 +2359,7 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "allowed":
-                        AllowedElement = source.GetFhirBoolean();
+                        AllowedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                 }
                 return false;
@@ -3522,7 +3522,7 @@ namespace Hl7.Fhir.Model.R4
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.MedicationKnowledgeStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationKnowledgeStatusCodes>>();
                     return true;
                 case "manufacturer":
                     Manufacturer = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -3534,7 +3534,7 @@ namespace Hl7.Fhir.Model.R4
                     Amount = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                     return true;
                 case "synonym":
-                    SynonymElement = source.GetFhirStringList();
+                    SynonymElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "relatedMedicationKnowledge":
                     RelatedMedicationKnowledge = source.GetList<RelatedMedicationKnowledgeComponent>();
@@ -3552,7 +3552,7 @@ namespace Hl7.Fhir.Model.R4
                     Ingredient = source.GetList<IngredientComponent>();
                     return true;
                 case "preparationInstruction":
-                    PreparationInstructionElement = source.GetMarkdown();
+                    PreparationInstructionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "intendedRoute":
                     IntendedRoute = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

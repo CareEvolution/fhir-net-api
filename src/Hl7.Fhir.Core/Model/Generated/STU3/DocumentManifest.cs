@@ -733,7 +733,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DocumentReferenceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentReferenceStatus>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -742,7 +742,7 @@ namespace Hl7.Fhir.Model.STU3
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "author":
                     Author = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -751,10 +751,10 @@ namespace Hl7.Fhir.Model.STU3
                     Recipient = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "source":
-                    SourceElement = source.GetFhirUri();
+                    SourceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "content":
                     Content = source.GetList<ContentComponent>();

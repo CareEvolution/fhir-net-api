@@ -202,7 +202,7 @@ namespace Hl7.Fhir.Model.R4
                         Age = source.Get<Hl7.Fhir.Model.Range>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -471,15 +471,15 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.GetFhirString();
+                        Value = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.GetFhirBoolean();
+                        Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "valueInteger":
                         source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Value, "value");
-                        Value = source.GetInteger();
+                        Value = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "valueRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
@@ -495,11 +495,11 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "valueTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                        Value = source.GetTime();
+                        Value = source.Get<Hl7.Fhir.Model.Time>();
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.GetFhirDateTime();
+                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
@@ -1362,7 +1362,7 @@ namespace Hl7.Fhir.Model.R4
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.ObservationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationStatus>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1381,7 +1381,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.GetFhirDateTime();
+                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
@@ -1393,10 +1393,10 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "effectiveInstant":
                     source.CheckDuplicates<Hl7.Fhir.Model.Instant>(Effective, "effective");
-                    Effective = source.GetInstant();
+                    Effective = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "issued":
-                    IssuedElement = source.GetInstant();
+                    IssuedElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "performer":
                     Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1411,15 +1411,15 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "valueString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                    Value = source.GetFhirString();
+                    Value = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "valueBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                    Value = source.GetFhirBoolean();
+                    Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "valueInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Value, "value");
-                    Value = source.GetInteger();
+                    Value = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "valueRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
@@ -1435,11 +1435,11 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "valueTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                    Value = source.GetTime();
+                    Value = source.Get<Hl7.Fhir.Model.Time>();
                     return true;
                 case "valueDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                    Value = source.GetFhirDateTime();
+                    Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "valuePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");

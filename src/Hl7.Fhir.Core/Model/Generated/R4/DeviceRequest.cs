@@ -124,7 +124,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.GetFhirBoolean();
+                        Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                 }
                 return false;
@@ -915,10 +915,10 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetCanonicalList();
+                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetFhirUriList();
+                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "basedOn":
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -930,13 +930,13 @@ namespace Hl7.Fhir.Model.R4
                     GroupIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.RequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.R4.RequestIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestIntent>>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.RequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
                     return true;
                 case "codeReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Code, "code");
@@ -957,7 +957,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
@@ -968,7 +968,7 @@ namespace Hl7.Fhir.Model.R4
                     Occurrence = source.Get<Hl7.Fhir.Model.R4.Timing>();
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.GetFhirDateTime();
+                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requester":
                     Requester = source.Get<Hl7.Fhir.Model.ResourceReference>();

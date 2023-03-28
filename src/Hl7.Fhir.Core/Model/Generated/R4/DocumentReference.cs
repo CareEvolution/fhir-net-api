@@ -130,7 +130,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode<Hl7.Fhir.Model.DocumentRelationshipType>();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentRelationshipType>>();
                         return true;
                     case "target":
                         Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1176,10 +1176,10 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DocumentReferenceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentReferenceStatus>>();
                     return true;
                 case "docStatus":
-                    DocStatusElement = source.GetCode<Hl7.Fhir.Model.CompositionStatus>();
+                    DocStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompositionStatus>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1191,7 +1191,7 @@ namespace Hl7.Fhir.Model.R4
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetInstant();
+                    DateElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "author":
                     Author = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1206,7 +1206,7 @@ namespace Hl7.Fhir.Model.R4
                     RelatesTo = source.GetList<RelatesToComponent>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "securityLabel":
                     SecurityLabel = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

@@ -349,25 +349,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.RelatedArtifactType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RelatedArtifactType>>();
                     return true;
                 case "label":
-                    LabelElement = source.GetFhirString();
+                    LabelElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "display":
-                    DisplayElement = source.GetFhirString();
+                    DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "citation":
-                    CitationElement = source.GetMarkdown();
+                    CitationElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "url":
-                    UrlElement = source.GetUrl();
+                    UrlElement = source.Get<Hl7.Fhir.Model.Url>();
                     return true;
                 case "document":
                     Document = source.Get<Hl7.Fhir.Model.Attachment>();
                     return true;
                 case "resource":
-                    ResourceElement = source.GetCanonical();
+                    ResourceElement = source.Get<Hl7.Fhir.Model.Canonical>();
                     return true;
             }
             return false;

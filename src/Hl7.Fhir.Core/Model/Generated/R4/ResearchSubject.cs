@@ -324,7 +324,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.ResearchSubjectStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ResearchSubjectStatus>>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -336,10 +336,10 @@ namespace Hl7.Fhir.Model.R4
                     Individual = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "assignedArm":
-                    AssignedArmElement = source.GetFhirString();
+                    AssignedArmElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "actualArm":
-                    ActualArmElement = source.GetFhirString();
+                    ActualArmElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "consent":
                     Consent = source.Get<Hl7.Fhir.Model.ResourceReference>();

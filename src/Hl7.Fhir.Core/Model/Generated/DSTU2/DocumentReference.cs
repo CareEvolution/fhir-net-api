@@ -130,7 +130,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode<Hl7.Fhir.Model.DocumentRelationshipType>();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentRelationshipType>>();
                         return true;
                     case "target":
                         Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1375,13 +1375,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Authenticator = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "indexed":
-                    IndexedElement = source.GetInstant();
+                    IndexedElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DocumentReferenceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentReferenceStatus>>();
                     return true;
                 case "docStatus":
                     DocStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1390,7 +1390,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     RelatesTo = source.GetList<RelatesToComponent>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "securityLabel":
                     SecurityLabel = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

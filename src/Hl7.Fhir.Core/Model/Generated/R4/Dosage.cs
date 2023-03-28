@@ -622,23 +622,23 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "sequence":
-                    SequenceElement = source.GetInteger();
+                    SequenceElement = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "text":
-                    TextElement = source.GetFhirString();
+                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "additionalInstruction":
                     AdditionalInstruction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "patientInstruction":
-                    PatientInstructionElement = source.GetFhirString();
+                    PatientInstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "timing":
                     Timing = source.Get<Hl7.Fhir.Model.R4.Timing>();
                     return true;
                 case "asNeededBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                    AsNeeded = source.GetFhirBoolean();
+                    AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "asNeededCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");

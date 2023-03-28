@@ -607,7 +607,7 @@ namespace Hl7.Fhir.Model.STU3
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.DigitalMediaType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DigitalMediaType>>();
                     return true;
                 case "subtype":
                     Subtype = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -623,7 +623,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
@@ -642,16 +642,16 @@ namespace Hl7.Fhir.Model.STU3
                     Device = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "height":
-                    HeightElement = source.GetPositiveInt();
+                    HeightElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "width":
-                    WidthElement = source.GetPositiveInt();
+                    WidthElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "frames":
-                    FramesElement = source.GetPositiveInt();
+                    FramesElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "duration":
-                    DurationElement = source.GetUnsignedInt();
+                    DurationElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "content":
                     Content = source.Get<Hl7.Fhir.Model.Attachment>();

@@ -353,26 +353,26 @@ namespace Hl7.Fhir.Model.R4
                         DateCriterion = source.GetList<DateCriterionComponent>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "series":
-                        SeriesElement = source.GetFhirString();
+                        SeriesElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "doseNumberPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
-                        DoseNumber = source.GetPositiveInt();
+                        DoseNumber = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "doseNumberString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
-                        DoseNumber = source.GetFhirString();
+                        DoseNumber = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "seriesDosesPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
-                        SeriesDoses = source.GetPositiveInt();
+                        SeriesDoses = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "seriesDosesString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
-                        SeriesDoses = source.GetFhirString();
+                        SeriesDoses = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "supportingImmunization":
                         SupportingImmunization = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -690,7 +690,7 @@ namespace Hl7.Fhir.Model.R4
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirDateTime();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                 }
                 return false;
@@ -995,7 +995,7 @@ namespace Hl7.Fhir.Model.R4
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "authority":
                     Authority = source.Get<Hl7.Fhir.Model.ResourceReference>();

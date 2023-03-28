@@ -470,18 +470,18 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "moduleUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Module, "module");
-                    Module = source.GetFhirUri();
+                    Module = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "moduleCanonical":
                     source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Module, "module");
-                    Module = source.GetCanonical();
+                    Module = source.Get<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "moduleCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Module, "module");
                     Module = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.GuidanceResponseStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GuidanceResponseStatus>>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -490,7 +490,7 @@ namespace Hl7.Fhir.Model.R4
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "occurrenceDateTime":
-                    OccurrenceDateTimeElement = source.GetFhirDateTime();
+                    OccurrenceDateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "performer":
                     Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();

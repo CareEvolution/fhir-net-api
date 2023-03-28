@@ -179,13 +179,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "target":
                         Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "endpoint":
-                        EndpointElement = source.GetUrl();
+                        EndpointElement = source.Get<Hl7.Fhir.Model.Url>();
                         return true;
                     case "receiver":
                         Receiver = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -483,19 +483,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "software":
-                        SoftwareElement = source.GetFhirString();
+                        SoftwareElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "version":
-                        VersionElement = source.GetFhirString();
+                        VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "contact":
                         Contact = source.Get<Hl7.Fhir.Model.R4.ContactPoint>();
                         return true;
                     case "endpoint":
-                        EndpointElement = source.GetUrl();
+                        EndpointElement = source.Get<Hl7.Fhir.Model.Url>();
                         return true;
                 }
                 return false;
@@ -735,10 +735,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        IdentifierElement = source.GetId();
+                        IdentifierElement = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "code":
-                        CodeElement = source.GetCode<Hl7.Fhir.Model.ResponseType>();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResponseType>>();
                         return true;
                     case "details":
                         Details = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1155,7 +1155,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "eventUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Event, "event");
-                    Event = source.GetFhirUri();
+                    Event = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "destination":
                     Destination = source.GetList<MessageDestinationComponent>();
@@ -1185,7 +1185,7 @@ namespace Hl7.Fhir.Model.R4
                     Focus = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "definition":
-                    DefinitionElement = source.GetCanonical();
+                    DefinitionElement = source.Get<Hl7.Fhir.Model.Canonical>();
                     return true;
             }
             return false;

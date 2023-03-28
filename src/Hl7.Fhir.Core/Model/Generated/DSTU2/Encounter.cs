@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.EncounterState>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EncounterState>>();
                         return true;
                     case "period":
                         Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -955,7 +955,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.EncounterLocationStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.EncounterLocationStatus>>();
                         return true;
                     case "period":
                         Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -1573,13 +1573,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.EncounterState>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EncounterState>>();
                     return true;
                 case "statusHistory":
                     StatusHistory = source.GetList<StatusHistoryComponent>();
                     return true;
                 case "class":
-                    ClassElement = source.GetCode<Hl7.Fhir.Model.DSTU2.EncounterClass>();
+                    ClassElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EncounterClass>>();
                     return true;
                 case "type":
                     Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

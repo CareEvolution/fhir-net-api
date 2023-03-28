@@ -251,7 +251,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "additionalInstructions":
                         AdditionalInstructions = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -261,7 +261,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         return true;
                     case "asNeededBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                        AsNeeded = source.GetFhirBoolean();
+                        AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "asNeededCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
@@ -613,7 +613,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
                         return true;
                     case "numberOfRepeatsAllowed":
-                        NumberOfRepeatsAllowedElement = source.GetPositiveInt();
+                        NumberOfRepeatsAllowedElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -1321,13 +1321,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "dateWritten":
-                    DateWrittenElement = source.GetFhirDateTime();
+                    DateWrittenElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.MedicationOrderStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MedicationOrderStatus>>();
                     return true;
                 case "dateEnded":
-                    DateEndedElement = source.GetFhirDateTime();
+                    DateEndedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "reasonEnded":
                     ReasonEnded = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1350,7 +1350,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Reason = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "note":
-                    NoteElement = source.GetFhirString();
+                    NoteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "medicationCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");

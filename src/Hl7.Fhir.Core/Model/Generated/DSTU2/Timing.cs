@@ -444,34 +444,34 @@ namespace Hl7.Fhir.Model.DSTU2
                         Bounds = source.Get<Hl7.Fhir.Model.Period>();
                         return true;
                     case "count":
-                        CountElement = source.GetInteger();
+                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "duration":
-                        DurationElement = source.GetFhirDecimal();
+                        DurationElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "durationMax":
-                        DurationMaxElement = source.GetFhirDecimal();
+                        DurationMaxElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "durationUnits":
-                        DurationUnitsElement = source.GetCode<Hl7.Fhir.Model.UnitsOfTime>();
+                        DurationUnitsElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>>();
                         return true;
                     case "frequency":
-                        FrequencyElement = source.GetInteger();
+                        FrequencyElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "frequencyMax":
-                        FrequencyMaxElement = source.GetInteger();
+                        FrequencyMaxElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "period":
-                        PeriodElement = source.GetFhirDecimal();
+                        PeriodElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "periodMax":
-                        PeriodMaxElement = source.GetFhirDecimal();
+                        PeriodMaxElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "periodUnits":
-                        PeriodUnitsElement = source.GetCode<Hl7.Fhir.Model.UnitsOfTime>();
+                        PeriodUnitsElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>>();
                         return true;
                     case "when":
-                        WhenElement = source.GetCode<Hl7.Fhir.Model.DSTU2.EventTiming>();
+                        WhenElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EventTiming>>();
                         return true;
                 }
                 return false;
@@ -873,7 +873,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "event":
-                    EventElement = source.GetFhirDateTimeList();
+                    EventElement = source.GetList<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "repeat":
                     Repeat = source.Get<RepeatComponent>();

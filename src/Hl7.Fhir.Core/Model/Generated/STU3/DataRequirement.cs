@@ -206,18 +206,18 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.GetFhirString();
+                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueSetString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(ValueSet, "valueSet");
-                        ValueSet = source.GetFhirString();
+                        ValueSet = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueSetReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(ValueSet, "valueSet");
                         ValueSet = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "valueCode":
-                        ValueCodeElement = source.GetCodeList();
+                        ValueCodeElement = source.GetList<Hl7.Fhir.Model.Code>();
                         return true;
                     case "valueCoding":
                         ValueCoding = source.GetList<Hl7.Fhir.Model.Coding>();
@@ -453,11 +453,11 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.GetFhirString();
+                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.GetFhirDateTime();
+                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
@@ -803,13 +803,13 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.STU3.FHIRAllTypes>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>>();
                     return true;
                 case "profile":
-                    ProfileElement = source.GetFhirUriList();
+                    ProfileElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "mustSupport":
-                    MustSupportElement = source.GetFhirStringList();
+                    MustSupportElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "codeFilter":
                     CodeFilter = source.GetList<CodeFilterComponent>();

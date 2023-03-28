@@ -281,19 +281,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         Substance = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "certainty":
-                        CertaintyElement = source.GetCode<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCertainty>();
+                        CertaintyElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCertainty>>();
                         return true;
                     case "manifestation":
                         Manifestation = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "onset":
-                        OnsetElement = source.GetFhirDateTime();
+                        OnsetElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "severity":
-                        SeverityElement = source.GetCode<Hl7.Fhir.Model.AllergyIntoleranceSeverity>();
+                        SeverityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AllergyIntoleranceSeverity>>();
                         return true;
                     case "exposureRoute":
                         ExposureRoute = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -930,10 +930,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "onset":
-                    OnsetElement = source.GetFhirDateTime();
+                    OnsetElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recordedDate":
-                    RecordedDateElement = source.GetFhirDateTime();
+                    RecordedDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recorder":
                     Recorder = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -948,19 +948,19 @@ namespace Hl7.Fhir.Model.DSTU2
                     Substance = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceStatus>>();
                     return true;
                 case "criticality":
-                    CriticalityElement = source.GetCode<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCriticality>();
+                    CriticalityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCriticality>>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.AllergyIntoleranceType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AllergyIntoleranceType>>();
                     return true;
                 case "category":
-                    CategoryElement = source.GetCode<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCategory>();
+                    CategoryElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AllergyIntoleranceCategory>>();
                     return true;
                 case "lastOccurence":
-                    LastOccurenceElement = source.GetFhirDateTime();
+                    LastOccurenceElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "note":
                     Note = source.Get<Hl7.Fhir.Model.Annotation>();

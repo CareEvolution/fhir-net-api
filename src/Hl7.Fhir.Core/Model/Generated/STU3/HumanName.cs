@@ -357,22 +357,22 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.GetCode<Hl7.Fhir.Model.NameUse>();
+                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.NameUse>>();
                     return true;
                 case "text":
-                    TextElement = source.GetFhirString();
+                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "family":
-                    FamilyElement = source.GetFhirString();
+                    FamilyElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "given":
-                    GivenElement = source.GetFhirStringList();
+                    GivenElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "prefix":
-                    PrefixElement = source.GetFhirStringList();
+                    PrefixElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "suffix":
-                    SuffixElement = source.GetFhirStringList();
+                    SuffixElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

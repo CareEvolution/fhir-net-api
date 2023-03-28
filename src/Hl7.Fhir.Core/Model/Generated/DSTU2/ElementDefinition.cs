@@ -216,16 +216,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "discriminator":
-                        DiscriminatorElement = source.GetFhirStringList();
+                        DiscriminatorElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "ordered":
-                        OrderedElement = source.GetFhirBoolean();
+                        OrderedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "rules":
-                        RulesElement = source.GetCode<Hl7.Fhir.Model.SlicingRules>();
+                        RulesElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SlicingRules>>();
                         return true;
                 }
                 return false;
@@ -492,13 +492,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.GetFhirString();
+                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "min":
-                        MinElement = source.GetInteger();
+                        MinElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "max":
-                        MaxElement = source.GetFhirString();
+                        MaxElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -742,13 +742,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode<Hl7.Fhir.Model.DSTU2.FHIRDefinedType>();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.FHIRDefinedType>>();
                         return true;
                     case "profile":
-                        ProfileElement = source.GetFhirUriList();
+                        ProfileElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "aggregation":
-                        AggregationElement = source.GetCodeList<Hl7.Fhir.Model.AggregationMode>();
+                        AggregationElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AggregationMode>>();
                         return true;
                 }
                 return false;
@@ -1077,19 +1077,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "key":
-                        KeyElement = source.GetId();
+                        KeyElement = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "requirements":
-                        RequirementsElement = source.GetFhirString();
+                        RequirementsElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "severity":
-                        SeverityElement = source.GetCode<Hl7.Fhir.Model.ConstraintSeverity>();
+                        SeverityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ConstraintSeverity>>();
                         return true;
                     case "human":
-                        HumanElement = source.GetFhirString();
+                        HumanElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "xpath":
-                        XpathElement = source.GetFhirString();
+                        XpathElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1331,14 +1331,14 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "strength":
-                        StrengthElement = source.GetCode<Hl7.Fhir.Model.BindingStrength>();
+                        StrengthElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.BindingStrength>>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueSetUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(ValueSet, "valueSet");
-                        ValueSet = source.GetFhirUri();
+                        ValueSet = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "valueSetReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(ValueSet, "valueSet");
@@ -1587,13 +1587,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "identity":
-                        IdentityElement = source.GetId();
+                        IdentityElement = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "language":
-                        LanguageElement = source.GetCode();
+                        LanguageElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "map":
-                        MapElement = source.GetFhirString();
+                        MapElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -2833,16 +2833,16 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "path":
-                    PathElement = source.GetFhirString();
+                    PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "representation":
-                    RepresentationElement = source.GetCodeList<Hl7.Fhir.Model.DSTU2.PropertyRepresentation>();
+                    RepresentationElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.PropertyRepresentation>>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "label":
-                    LabelElement = source.GetFhirString();
+                    LabelElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "code":
                     Code = source.GetList<Hl7.Fhir.Model.Coding>();
@@ -2851,25 +2851,25 @@ namespace Hl7.Fhir.Model.DSTU2
                     Slicing = source.Get<SlicingComponent>();
                     return true;
                 case "short":
-                    ShortElement = source.GetFhirString();
+                    ShortElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "definition":
-                    DefinitionElement = source.GetMarkdown();
+                    DefinitionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "comments":
-                    CommentsElement = source.GetMarkdown();
+                    CommentsElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "requirements":
-                    RequirementsElement = source.GetMarkdown();
+                    RequirementsElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "alias":
-                    AliasElement = source.GetFhirStringList();
+                    AliasElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "min":
-                    MinElement = source.GetInteger();
+                    MinElement = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "max":
-                    MaxElement = source.GetFhirString();
+                    MaxElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "base":
                     Base = source.Get<BaseComponent>();
@@ -2878,71 +2878,71 @@ namespace Hl7.Fhir.Model.DSTU2
                     Type = source.GetList<TypeRefComponent>();
                     return true;
                 case "nameReference":
-                    NameReferenceElement = source.GetFhirString();
+                    NameReferenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "defaultValueBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetFhirBoolean();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "defaultValueInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetInteger();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "defaultValueDecimal":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetFhirDecimal();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "defaultValueBase64Binary":
                     source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetBase64Binary();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
                 case "defaultValueInstant":
                     source.CheckDuplicates<Hl7.Fhir.Model.Instant>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetInstant();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "defaultValueString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetFhirString();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "defaultValueUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetFhirUri();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "defaultValueDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetDate();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "defaultValueDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetFhirDateTime();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "defaultValueTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetTime();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Time>();
                     return true;
                 case "defaultValueCode":
                     source.CheckDuplicates<Hl7.Fhir.Model.Code>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetCode();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "defaultValueOid":
                     source.CheckDuplicates<Hl7.Fhir.Model.Oid>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetOid();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Oid>();
                     return true;
                 case "defaultValueId":
                     source.CheckDuplicates<Hl7.Fhir.Model.Id>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetId();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "defaultValueUnsignedInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetUnsignedInt();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "defaultValuePositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetPositiveInt();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "defaultValueMarkdown":
                     source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(DefaultValue, "defaultValue");
-                    DefaultValue = source.GetMarkdown();
+                    DefaultValue = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "defaultValueAnnotation":
                     source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(DefaultValue, "defaultValue");
@@ -3013,71 +3013,71 @@ namespace Hl7.Fhir.Model.DSTU2
                     DefaultValue = source.Get<Hl7.Fhir.Model.Meta>();
                     return true;
                 case "meaningWhenMissing":
-                    MeaningWhenMissingElement = source.GetMarkdown();
+                    MeaningWhenMissingElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "fixedBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Fixed, "fixed");
-                    Fixed = source.GetFhirBoolean();
+                    Fixed = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "fixedInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Fixed, "fixed");
-                    Fixed = source.GetInteger();
+                    Fixed = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "fixedDecimal":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Fixed, "fixed");
-                    Fixed = source.GetFhirDecimal();
+                    Fixed = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "fixedBase64Binary":
                     source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(Fixed, "fixed");
-                    Fixed = source.GetBase64Binary();
+                    Fixed = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
                 case "fixedInstant":
                     source.CheckDuplicates<Hl7.Fhir.Model.Instant>(Fixed, "fixed");
-                    Fixed = source.GetInstant();
+                    Fixed = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "fixedString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Fixed, "fixed");
-                    Fixed = source.GetFhirString();
+                    Fixed = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "fixedUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Fixed, "fixed");
-                    Fixed = source.GetFhirUri();
+                    Fixed = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "fixedDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Fixed, "fixed");
-                    Fixed = source.GetDate();
+                    Fixed = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "fixedDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Fixed, "fixed");
-                    Fixed = source.GetFhirDateTime();
+                    Fixed = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "fixedTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(Fixed, "fixed");
-                    Fixed = source.GetTime();
+                    Fixed = source.Get<Hl7.Fhir.Model.Time>();
                     return true;
                 case "fixedCode":
                     source.CheckDuplicates<Hl7.Fhir.Model.Code>(Fixed, "fixed");
-                    Fixed = source.GetCode();
+                    Fixed = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "fixedOid":
                     source.CheckDuplicates<Hl7.Fhir.Model.Oid>(Fixed, "fixed");
-                    Fixed = source.GetOid();
+                    Fixed = source.Get<Hl7.Fhir.Model.Oid>();
                     return true;
                 case "fixedId":
                     source.CheckDuplicates<Hl7.Fhir.Model.Id>(Fixed, "fixed");
-                    Fixed = source.GetId();
+                    Fixed = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "fixedUnsignedInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Fixed, "fixed");
-                    Fixed = source.GetUnsignedInt();
+                    Fixed = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "fixedPositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(Fixed, "fixed");
-                    Fixed = source.GetPositiveInt();
+                    Fixed = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "fixedMarkdown":
                     source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(Fixed, "fixed");
-                    Fixed = source.GetMarkdown();
+                    Fixed = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "fixedAnnotation":
                     source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Fixed, "fixed");
@@ -3149,67 +3149,67 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "patternBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Pattern, "pattern");
-                    Pattern = source.GetFhirBoolean();
+                    Pattern = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "patternInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Pattern, "pattern");
-                    Pattern = source.GetInteger();
+                    Pattern = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "patternDecimal":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Pattern, "pattern");
-                    Pattern = source.GetFhirDecimal();
+                    Pattern = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "patternBase64Binary":
                     source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(Pattern, "pattern");
-                    Pattern = source.GetBase64Binary();
+                    Pattern = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
                 case "patternInstant":
                     source.CheckDuplicates<Hl7.Fhir.Model.Instant>(Pattern, "pattern");
-                    Pattern = source.GetInstant();
+                    Pattern = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "patternString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Pattern, "pattern");
-                    Pattern = source.GetFhirString();
+                    Pattern = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "patternUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Pattern, "pattern");
-                    Pattern = source.GetFhirUri();
+                    Pattern = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "patternDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Pattern, "pattern");
-                    Pattern = source.GetDate();
+                    Pattern = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "patternDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Pattern, "pattern");
-                    Pattern = source.GetFhirDateTime();
+                    Pattern = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "patternTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(Pattern, "pattern");
-                    Pattern = source.GetTime();
+                    Pattern = source.Get<Hl7.Fhir.Model.Time>();
                     return true;
                 case "patternCode":
                     source.CheckDuplicates<Hl7.Fhir.Model.Code>(Pattern, "pattern");
-                    Pattern = source.GetCode();
+                    Pattern = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "patternOid":
                     source.CheckDuplicates<Hl7.Fhir.Model.Oid>(Pattern, "pattern");
-                    Pattern = source.GetOid();
+                    Pattern = source.Get<Hl7.Fhir.Model.Oid>();
                     return true;
                 case "patternId":
                     source.CheckDuplicates<Hl7.Fhir.Model.Id>(Pattern, "pattern");
-                    Pattern = source.GetId();
+                    Pattern = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "patternUnsignedInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Pattern, "pattern");
-                    Pattern = source.GetUnsignedInt();
+                    Pattern = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "patternPositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(Pattern, "pattern");
-                    Pattern = source.GetPositiveInt();
+                    Pattern = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "patternMarkdown":
                     source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(Pattern, "pattern");
-                    Pattern = source.GetMarkdown();
+                    Pattern = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "patternAnnotation":
                     source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Pattern, "pattern");
@@ -3281,67 +3281,67 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "exampleBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Example, "example");
-                    Example = source.GetFhirBoolean();
+                    Example = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "exampleInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Example, "example");
-                    Example = source.GetInteger();
+                    Example = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "exampleDecimal":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Example, "example");
-                    Example = source.GetFhirDecimal();
+                    Example = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "exampleBase64Binary":
                     source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(Example, "example");
-                    Example = source.GetBase64Binary();
+                    Example = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
                 case "exampleInstant":
                     source.CheckDuplicates<Hl7.Fhir.Model.Instant>(Example, "example");
-                    Example = source.GetInstant();
+                    Example = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "exampleString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Example, "example");
-                    Example = source.GetFhirString();
+                    Example = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "exampleUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Example, "example");
-                    Example = source.GetFhirUri();
+                    Example = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "exampleDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Example, "example");
-                    Example = source.GetDate();
+                    Example = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "exampleDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Example, "example");
-                    Example = source.GetFhirDateTime();
+                    Example = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "exampleTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(Example, "example");
-                    Example = source.GetTime();
+                    Example = source.Get<Hl7.Fhir.Model.Time>();
                     return true;
                 case "exampleCode":
                     source.CheckDuplicates<Hl7.Fhir.Model.Code>(Example, "example");
-                    Example = source.GetCode();
+                    Example = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "exampleOid":
                     source.CheckDuplicates<Hl7.Fhir.Model.Oid>(Example, "example");
-                    Example = source.GetOid();
+                    Example = source.Get<Hl7.Fhir.Model.Oid>();
                     return true;
                 case "exampleId":
                     source.CheckDuplicates<Hl7.Fhir.Model.Id>(Example, "example");
-                    Example = source.GetId();
+                    Example = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "exampleUnsignedInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Example, "example");
-                    Example = source.GetUnsignedInt();
+                    Example = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "examplePositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(Example, "example");
-                    Example = source.GetPositiveInt();
+                    Example = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "exampleMarkdown":
                     source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(Example, "example");
-                    Example = source.GetMarkdown();
+                    Example = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "exampleAnnotation":
                     source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Example, "example");
@@ -3413,67 +3413,67 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "minValueBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(MinValue, "minValue");
-                    MinValue = source.GetFhirBoolean();
+                    MinValue = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "minValueInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(MinValue, "minValue");
-                    MinValue = source.GetInteger();
+                    MinValue = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "minValueDecimal":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(MinValue, "minValue");
-                    MinValue = source.GetFhirDecimal();
+                    MinValue = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "minValueBase64Binary":
                     source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(MinValue, "minValue");
-                    MinValue = source.GetBase64Binary();
+                    MinValue = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
                 case "minValueInstant":
                     source.CheckDuplicates<Hl7.Fhir.Model.Instant>(MinValue, "minValue");
-                    MinValue = source.GetInstant();
+                    MinValue = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "minValueString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(MinValue, "minValue");
-                    MinValue = source.GetFhirString();
+                    MinValue = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "minValueUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(MinValue, "minValue");
-                    MinValue = source.GetFhirUri();
+                    MinValue = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "minValueDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(MinValue, "minValue");
-                    MinValue = source.GetDate();
+                    MinValue = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "minValueDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(MinValue, "minValue");
-                    MinValue = source.GetFhirDateTime();
+                    MinValue = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "minValueTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(MinValue, "minValue");
-                    MinValue = source.GetTime();
+                    MinValue = source.Get<Hl7.Fhir.Model.Time>();
                     return true;
                 case "minValueCode":
                     source.CheckDuplicates<Hl7.Fhir.Model.Code>(MinValue, "minValue");
-                    MinValue = source.GetCode();
+                    MinValue = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "minValueOid":
                     source.CheckDuplicates<Hl7.Fhir.Model.Oid>(MinValue, "minValue");
-                    MinValue = source.GetOid();
+                    MinValue = source.Get<Hl7.Fhir.Model.Oid>();
                     return true;
                 case "minValueId":
                     source.CheckDuplicates<Hl7.Fhir.Model.Id>(MinValue, "minValue");
-                    MinValue = source.GetId();
+                    MinValue = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "minValueUnsignedInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(MinValue, "minValue");
-                    MinValue = source.GetUnsignedInt();
+                    MinValue = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "minValuePositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(MinValue, "minValue");
-                    MinValue = source.GetPositiveInt();
+                    MinValue = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "minValueMarkdown":
                     source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(MinValue, "minValue");
-                    MinValue = source.GetMarkdown();
+                    MinValue = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "minValueAnnotation":
                     source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(MinValue, "minValue");
@@ -3545,67 +3545,67 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "maxValueBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(MaxValue, "maxValue");
-                    MaxValue = source.GetFhirBoolean();
+                    MaxValue = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "maxValueInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(MaxValue, "maxValue");
-                    MaxValue = source.GetInteger();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "maxValueDecimal":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(MaxValue, "maxValue");
-                    MaxValue = source.GetFhirDecimal();
+                    MaxValue = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "maxValueBase64Binary":
                     source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(MaxValue, "maxValue");
-                    MaxValue = source.GetBase64Binary();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
                 case "maxValueInstant":
                     source.CheckDuplicates<Hl7.Fhir.Model.Instant>(MaxValue, "maxValue");
-                    MaxValue = source.GetInstant();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "maxValueString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(MaxValue, "maxValue");
-                    MaxValue = source.GetFhirString();
+                    MaxValue = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "maxValueUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(MaxValue, "maxValue");
-                    MaxValue = source.GetFhirUri();
+                    MaxValue = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "maxValueDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(MaxValue, "maxValue");
-                    MaxValue = source.GetDate();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "maxValueDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(MaxValue, "maxValue");
-                    MaxValue = source.GetFhirDateTime();
+                    MaxValue = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "maxValueTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(MaxValue, "maxValue");
-                    MaxValue = source.GetTime();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Time>();
                     return true;
                 case "maxValueCode":
                     source.CheckDuplicates<Hl7.Fhir.Model.Code>(MaxValue, "maxValue");
-                    MaxValue = source.GetCode();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "maxValueOid":
                     source.CheckDuplicates<Hl7.Fhir.Model.Oid>(MaxValue, "maxValue");
-                    MaxValue = source.GetOid();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Oid>();
                     return true;
                 case "maxValueId":
                     source.CheckDuplicates<Hl7.Fhir.Model.Id>(MaxValue, "maxValue");
-                    MaxValue = source.GetId();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "maxValueUnsignedInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(MaxValue, "maxValue");
-                    MaxValue = source.GetUnsignedInt();
+                    MaxValue = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "maxValuePositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(MaxValue, "maxValue");
-                    MaxValue = source.GetPositiveInt();
+                    MaxValue = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "maxValueMarkdown":
                     source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(MaxValue, "maxValue");
-                    MaxValue = source.GetMarkdown();
+                    MaxValue = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "maxValueAnnotation":
                     source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(MaxValue, "maxValue");
@@ -3676,22 +3676,22 @@ namespace Hl7.Fhir.Model.DSTU2
                     MaxValue = source.Get<Hl7.Fhir.Model.Meta>();
                     return true;
                 case "maxLength":
-                    MaxLengthElement = source.GetInteger();
+                    MaxLengthElement = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "condition":
-                    ConditionElement = source.GetIdList();
+                    ConditionElement = source.GetList<Hl7.Fhir.Model.Id>();
                     return true;
                 case "constraint":
                     Constraint = source.GetList<ConstraintComponent>();
                     return true;
                 case "mustSupport":
-                    MustSupportElement = source.GetFhirBoolean();
+                    MustSupportElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "isModifier":
-                    IsModifierElement = source.GetFhirBoolean();
+                    IsModifierElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "isSummary":
-                    IsSummaryElement = source.GetFhirBoolean();
+                    IsSummaryElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "binding":
                     Binding = source.Get<BindingComponent>();

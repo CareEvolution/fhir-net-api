@@ -1117,10 +1117,10 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetCanonicalList();
+                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetFhirUriList();
+                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "basedOn":
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1129,7 +1129,7 @@ namespace Hl7.Fhir.Model.R4
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.EventStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventStatus>>();
                     return true;
                 case "statusReason":
                     StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1148,7 +1148,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "performedDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Performed, "performed");
-                    Performed = source.GetFhirDateTime();
+                    Performed = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "performedPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Performed, "performed");
@@ -1156,7 +1156,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "performedString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Performed, "performed");
-                    Performed = source.GetFhirString();
+                    Performed = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "performedAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Performed, "performed");

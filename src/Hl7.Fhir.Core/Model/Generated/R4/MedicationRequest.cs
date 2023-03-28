@@ -209,7 +209,7 @@ namespace Hl7.Fhir.Model.R4
                         ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
                         return true;
                     case "numberOfRepeatsAllowed":
-                        NumberOfRepeatsAllowedElement = source.GetUnsignedInt();
+                        NumberOfRepeatsAllowedElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -560,7 +560,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "allowedBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Allowed, "allowed");
-                        Allowed = source.GetFhirBoolean();
+                        Allowed = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "allowedCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Allowed, "allowed");
@@ -1526,26 +1526,26 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.medicationrequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.medicationrequestStatus>>();
                     return true;
                 case "statusReason":
                     StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.R4.medicationRequestIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.medicationRequestIntent>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.RequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
                     return true;
                 case "doNotPerform":
-                    DoNotPerformElement = source.GetFhirBoolean();
+                    DoNotPerformElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reportedBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Reported, "reported");
-                    Reported = source.GetFhirBoolean();
+                    Reported = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reportedReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reported, "reported");
@@ -1569,7 +1569,7 @@ namespace Hl7.Fhir.Model.R4
                     SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.GetFhirDateTime();
+                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requester":
                     Requester = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1590,10 +1590,10 @@ namespace Hl7.Fhir.Model.R4
                     ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetCanonicalList();
+                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetFhirUriList();
+                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "basedOn":
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();

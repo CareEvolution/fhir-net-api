@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.R4.EpisodeOfCareStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EpisodeOfCareStatus>>();
                         return true;
                     case "period":
                         Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -323,7 +323,7 @@ namespace Hl7.Fhir.Model.R4
                         Role = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "rank":
-                        RankElement = source.GetPositiveInt();
+                        RankElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                 }
                 return false;
@@ -773,7 +773,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.EpisodeOfCareStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EpisodeOfCareStatus>>();
                     return true;
                 case "statusHistory":
                     StatusHistory = source.GetList<StatusHistoryComponent>();

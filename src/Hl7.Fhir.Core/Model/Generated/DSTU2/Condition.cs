@@ -886,7 +886,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Asserter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "dateRecorded":
-                    DateRecordedElement = source.GetDate();
+                    DateRecordedElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "code":
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -895,17 +895,17 @@ namespace Hl7.Fhir.Model.DSTU2
                     Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "clinicalStatus":
-                    ClinicalStatusElement = source.GetCode();
+                    ClinicalStatusElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "verificationStatus":
-                    VerificationStatusElement = source.GetCode<Hl7.Fhir.Model.ConditionVerificationStatus>();
+                    VerificationStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ConditionVerificationStatus>>();
                     return true;
                 case "severity":
                     Severity = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "onsetDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Onset, "onset");
-                    Onset = source.GetFhirDateTime();
+                    Onset = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "onsetQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Age>(Onset, "onset");
@@ -921,11 +921,11 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "onsetString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Onset, "onset");
-                    Onset = source.GetFhirString();
+                    Onset = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "abatementDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Abatement, "abatement");
-                    Abatement = source.GetFhirDateTime();
+                    Abatement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "abatementQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Age>(Abatement, "abatement");
@@ -933,7 +933,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "abatementBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Abatement, "abatement");
-                    Abatement = source.GetFhirBoolean();
+                    Abatement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "abatementPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Abatement, "abatement");
@@ -945,7 +945,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "abatementString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Abatement, "abatement");
-                    Abatement = source.GetFhirString();
+                    Abatement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "stage":
                     Stage = source.Get<StageComponent>();
@@ -957,7 +957,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     BodySite = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "notes":
-                    NotesElement = source.GetFhirString();
+                    NotesElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

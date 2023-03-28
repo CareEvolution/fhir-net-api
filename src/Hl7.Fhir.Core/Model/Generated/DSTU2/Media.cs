@@ -491,7 +491,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.DigitalMediaType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DigitalMediaType>>();
                     return true;
                 case "subtype":
                     Subtype = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -509,19 +509,19 @@ namespace Hl7.Fhir.Model.DSTU2
                     View = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "deviceName":
-                    DeviceNameElement = source.GetFhirString();
+                    DeviceNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "height":
-                    HeightElement = source.GetPositiveInt();
+                    HeightElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "width":
-                    WidthElement = source.GetPositiveInt();
+                    WidthElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "frames":
-                    FramesElement = source.GetPositiveInt();
+                    FramesElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "duration":
-                    DurationElement = source.GetUnsignedInt();
+                    DurationElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "content":
                     Content = source.Get<Hl7.Fhir.Model.Attachment>();

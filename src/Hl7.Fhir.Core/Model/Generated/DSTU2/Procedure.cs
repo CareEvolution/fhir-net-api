@@ -925,7 +925,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ProcedureStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureStatus>>();
                     return true;
                 case "category":
                     Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -934,7 +934,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "notPerformed":
-                    NotPerformedElement = source.GetFhirBoolean();
+                    NotPerformedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reasonNotPerformed":
                     ReasonNotPerformed = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -955,7 +955,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "performedDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Performed, "performed");
-                    Performed = source.GetFhirDateTime();
+                    Performed = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "performedPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Performed, "performed");

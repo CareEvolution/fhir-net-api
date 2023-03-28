@@ -483,40 +483,40 @@ namespace Hl7.Fhir.Model.R4
                         Product = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "eye":
-                        EyeElement = source.GetCode<Hl7.Fhir.Model.VisionEyes>();
+                        EyeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionEyes>>();
                         return true;
                     case "sphere":
-                        SphereElement = source.GetFhirDecimal();
+                        SphereElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "cylinder":
-                        CylinderElement = source.GetFhirDecimal();
+                        CylinderElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "axis":
-                        AxisElement = source.GetInteger();
+                        AxisElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "prism":
                         Prism = source.GetList<PrismComponent>();
                         return true;
                     case "add":
-                        AddElement = source.GetFhirDecimal();
+                        AddElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "power":
-                        PowerElement = source.GetFhirDecimal();
+                        PowerElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "backCurve":
-                        BackCurveElement = source.GetFhirDecimal();
+                        BackCurveElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "diameter":
-                        DiameterElement = source.GetFhirDecimal();
+                        DiameterElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "duration":
                         Duration = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "color":
-                        ColorElement = source.GetFhirString();
+                        ColorElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "brand":
-                        BrandElement = source.GetFhirString();
+                        BrandElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "note":
                         Note = source.GetList<Hl7.Fhir.Model.Annotation>();
@@ -849,10 +849,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "amount":
-                        AmountElement = source.GetFhirDecimal();
+                        AmountElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "base":
-                        BaseElement = source.GetCode<Hl7.Fhir.Model.VisionBase>();
+                        BaseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionBase>>();
                         return true;
                 }
                 return false;
@@ -1231,10 +1231,10 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1243,7 +1243,7 @@ namespace Hl7.Fhir.Model.R4
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "dateWritten":
-                    DateWrittenElement = source.GetFhirDateTime();
+                    DateWrittenElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "prescriber":
                     Prescriber = source.Get<Hl7.Fhir.Model.ResourceReference>();

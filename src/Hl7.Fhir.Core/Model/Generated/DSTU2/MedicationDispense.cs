@@ -251,7 +251,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "additionalInstructions":
                         AdditionalInstructions = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -261,7 +261,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         return true;
                     case "asNeededBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                        AsNeeded = source.GetFhirBoolean();
+                        AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "asNeededCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
@@ -1161,7 +1161,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.MedicationDispenseStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MedicationDispenseStatus>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1190,10 +1190,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Medication = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "whenPrepared":
-                    WhenPreparedElement = source.GetFhirDateTime();
+                    WhenPreparedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "whenHandedOver":
-                    WhenHandedOverElement = source.GetFhirDateTime();
+                    WhenHandedOverElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "destination":
                     Destination = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1202,7 +1202,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Receiver = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "note":
-                    NoteElement = source.GetFhirString();
+                    NoteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "dosageInstruction":
                     DosageInstruction = source.GetList<DosageInstructionComponent>();

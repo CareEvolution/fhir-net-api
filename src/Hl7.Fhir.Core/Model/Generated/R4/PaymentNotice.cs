@@ -396,7 +396,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "request":
                     Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -405,7 +405,7 @@ namespace Hl7.Fhir.Model.R4
                     Response = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "provider":
                     Provider = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -414,7 +414,7 @@ namespace Hl7.Fhir.Model.R4
                     Payment = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "paymentDate":
-                    PaymentDateElement = source.GetDate();
+                    PaymentDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "payee":
                     Payee = source.Get<Hl7.Fhir.Model.ResourceReference>();

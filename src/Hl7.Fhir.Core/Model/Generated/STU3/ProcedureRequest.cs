@@ -925,16 +925,16 @@ namespace Hl7.Fhir.Model.STU3
                     Requisition = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.RequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestStatus>>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.STU3.RequestIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestIntent>>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.RequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
                     return true;
                 case "doNotPerform":
-                    DoNotPerformElement = source.GetFhirBoolean();
+                    DoNotPerformElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -950,7 +950,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
@@ -962,14 +962,14 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "asNeededBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                    AsNeeded = source.GetFhirBoolean();
+                    AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "asNeededCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
                     AsNeeded = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.GetFhirDateTime();
+                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requester":
                     Requester = source.Get<RequesterComponent>();

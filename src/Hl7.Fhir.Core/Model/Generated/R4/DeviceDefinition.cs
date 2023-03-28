@@ -180,13 +180,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "deviceIdentifier":
-                        DeviceIdentifierElement = source.GetFhirString();
+                        DeviceIdentifierElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "issuer":
-                        IssuerElement = source.GetFhirUri();
+                        IssuerElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "jurisdiction":
-                        JurisdictionElement = source.GetFhirUri();
+                        JurisdictionElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -389,10 +389,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.R4.DeviceNameType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.DeviceNameType>>();
                         return true;
                 }
                 return false;
@@ -583,10 +583,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "systemType":
-                        SystemTypeElement = source.GetFhirString();
+                        SystemTypeElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "version":
-                        VersionElement = source.GetFhirString();
+                        VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1170,10 +1170,10 @@ namespace Hl7.Fhir.Model.R4
                         Substance = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "alternate":
-                        AlternateElement = source.GetFhirBoolean();
+                        AlternateElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "allergenicIndicator":
-                        AllergenicIndicatorElement = source.GetFhirBoolean();
+                        AllergenicIndicatorElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                 }
                 return false;
@@ -1876,7 +1876,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "manufacturerString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Manufacturer, "manufacturer");
-                    Manufacturer = source.GetFhirString();
+                    Manufacturer = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "manufacturerReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Manufacturer, "manufacturer");
@@ -1886,7 +1886,7 @@ namespace Hl7.Fhir.Model.R4
                     DeviceName = source.GetList<DeviceNameComponent>();
                     return true;
                 case "modelNumber":
-                    ModelNumberElement = source.GetFhirString();
+                    ModelNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1895,7 +1895,7 @@ namespace Hl7.Fhir.Model.R4
                     Specialization = source.GetList<SpecializationComponent>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirStringList();
+                    VersionElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "safety":
                     Safety = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1922,10 +1922,10 @@ namespace Hl7.Fhir.Model.R4
                     Contact = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
                     return true;
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "onlineInformation":
-                    OnlineInformationElement = source.GetFhirUri();
+                    OnlineInformationElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "note":
                     Note = source.GetList<Hl7.Fhir.Model.Annotation>();

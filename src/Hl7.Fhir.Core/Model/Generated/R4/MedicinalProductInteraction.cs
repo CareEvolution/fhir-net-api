@@ -408,7 +408,7 @@ namespace Hl7.Fhir.Model.R4
                     Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "interactant":
                     Interactant = source.GetList<InteractantComponent>();

@@ -182,13 +182,13 @@ namespace Hl7.Fhir.Model
                 switch (elementName)
                 {
                     case "type" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.TestReportParticipantType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.TestReportParticipantType>>();
                         return true;
                     case "uri" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        UriElement = source.GetFhirUri();
+                        UriElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "display" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        DisplayElement = source.GetFhirString();
+                        DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -723,13 +723,13 @@ namespace Hl7.Fhir.Model
                 switch (elementName)
                 {
                     case "result" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        ResultElement = source.GetCode<Hl7.Fhir.Model.TestReportActionResult>();
+                        ResultElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.TestReportActionResult>>();
                         return true;
                     case "message" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        MessageElement = source.GetMarkdown();
+                        MessageElement = source.Get<Hl7.Fhir.Model.Markdown>();
                         return true;
                     case "detail" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        DetailElement = source.GetFhirUri();
+                        DetailElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -967,13 +967,13 @@ namespace Hl7.Fhir.Model
                 switch (elementName)
                 {
                     case "result" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        ResultElement = source.GetCode<Hl7.Fhir.Model.TestReportActionResult>();
+                        ResultElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.TestReportActionResult>>();
                         return true;
                     case "message" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        MessageElement = source.GetMarkdown();
+                        MessageElement = source.Get<Hl7.Fhir.Model.Markdown>();
                         return true;
                     case "detail" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        DetailElement = source.GetFhirString();
+                        DetailElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1197,10 +1197,10 @@ namespace Hl7.Fhir.Model
                 switch (elementName)
                 {
                     case "name" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "description" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "action" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                         Action = source.GetList<TestActionComponent>();
@@ -2180,25 +2180,25 @@ namespace Hl7.Fhir.Model
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "name" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.TestReportStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.TestReportStatus>>();
                     return true;
                 case "testScript" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     TestScript = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "result" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    ResultElement = source.GetCode<Hl7.Fhir.Model.TestReportResult>();
+                    ResultElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.TestReportResult>>();
                     return true;
                 case "score" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    ScoreElement = source.GetFhirDecimal();
+                    ScoreElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "tester" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    TesterElement = source.GetFhirString();
+                    TesterElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "issued" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    IssuedElement = source.GetFhirDateTime();
+                    IssuedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "participant" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     Participant = source.GetList<ParticipantComponent>();

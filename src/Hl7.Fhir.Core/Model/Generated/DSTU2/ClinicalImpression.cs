@@ -302,7 +302,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "cause":
-                        CauseElement = source.GetFhirString();
+                        CauseElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -474,7 +474,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "reason":
-                        ReasonElement = source.GetFhirString();
+                        ReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1100,13 +1100,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Assessor = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ClinicalImpressionStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ClinicalImpressionStatus>>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "previous":
                     Previous = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1126,10 +1126,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Investigations = source.GetList<InvestigationsComponent>();
                     return true;
                 case "protocol":
-                    ProtocolElement = source.GetFhirUri();
+                    ProtocolElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "summary":
-                    SummaryElement = source.GetFhirString();
+                    SummaryElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "finding":
                     Finding = source.GetList<FindingComponent>();
@@ -1141,7 +1141,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     RuledOut = source.GetList<RuledOutComponent>();
                     return true;
                 case "prognosis":
-                    PrognosisElement = source.GetFhirString();
+                    PrognosisElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "plan":
                     Plan = source.GetList<Hl7.Fhir.Model.ResourceReference>();

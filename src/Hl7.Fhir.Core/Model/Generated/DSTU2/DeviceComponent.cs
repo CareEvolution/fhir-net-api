@@ -148,7 +148,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         ComponentId = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "productionSpec":
-                        ProductionSpecElement = source.GetFhirString();
+                        ProductionSpecElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -553,7 +553,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "lastSystemChange":
-                    LastSystemChangeElement = source.GetInstant();
+                    LastSystemChangeElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "source":
                     Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -568,7 +568,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     ParameterGroup = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "measurementPrinciple":
-                    MeasurementPrincipleElement = source.GetCode<Hl7.Fhir.Model.DSTU2.Measmnt_Principle>();
+                    MeasurementPrincipleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.Measmnt_Principle>>();
                     return true;
                 case "productionSpecification":
                     ProductionSpecification = source.GetList<ProductionSpecificationComponent>();

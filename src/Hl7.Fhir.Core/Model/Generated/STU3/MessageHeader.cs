@@ -163,13 +163,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "target":
                         Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "endpoint":
-                        EndpointElement = source.GetFhirUri();
+                        EndpointElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -456,19 +456,19 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "software":
-                        SoftwareElement = source.GetFhirString();
+                        SoftwareElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "version":
-                        VersionElement = source.GetFhirString();
+                        VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "contact":
                         Contact = source.Get<Hl7.Fhir.Model.STU3.ContactPoint>();
                         return true;
                     case "endpoint":
-                        EndpointElement = source.GetFhirUri();
+                        EndpointElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -708,10 +708,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "identifier":
-                        IdentifierElement = source.GetId();
+                        IdentifierElement = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "code":
-                        CodeElement = source.GetCode<Hl7.Fhir.Model.ResponseType>();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResponseType>>();
                         return true;
                     case "details":
                         Details = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1154,7 +1154,7 @@ namespace Hl7.Fhir.Model.STU3
                     Sender = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "timestamp":
-                    TimestampElement = source.GetInstant();
+                    TimestampElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "enterer":
                     Enterer = source.Get<Hl7.Fhir.Model.ResourceReference>();

@@ -360,7 +360,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.SupplyDeliveryStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SupplyDeliveryStatus>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -381,7 +381,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     WhenPrepared = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "time":
-                    TimeElement = source.GetFhirDateTime();
+                    TimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "destination":
                     Destination = source.Get<Hl7.Fhir.Model.ResourceReference>();

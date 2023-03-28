@@ -375,7 +375,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "role":
-                        RoleElement = source.GetCode<Hl7.Fhir.Model.R4.ProvenanceEntityRole>();
+                        RoleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ProvenanceEntityRole>>();
                         return true;
                     case "what":
                         What = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -822,13 +822,13 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "occurredDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurred, "occurred");
-                    Occurred = source.GetFhirDateTime();
+                    Occurred = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recorded":
-                    RecordedElement = source.GetInstant();
+                    RecordedElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "policy":
-                    PolicyElement = source.GetFhirUriList();
+                    PolicyElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "location":
                     Location = source.Get<Hl7.Fhir.Model.ResourceReference>();

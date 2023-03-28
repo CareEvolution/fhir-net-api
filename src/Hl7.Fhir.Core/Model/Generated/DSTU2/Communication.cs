@@ -96,7 +96,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "contentString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Content, "content");
-                        Content = source.GetFhirString();
+                        Content = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
@@ -606,16 +606,16 @@ namespace Hl7.Fhir.Model.DSTU2
                     Medium = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.CommunicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CommunicationStatus>>();
                     return true;
                 case "encounter":
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "sent":
-                    SentElement = source.GetFhirDateTime();
+                    SentElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "received":
-                    ReceivedElement = source.GetFhirDateTime();
+                    ReceivedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "reason":
                     Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

@@ -176,10 +176,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         Flag = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "deleted":
-                        DeletedElement = source.GetFhirBoolean();
+                        DeletedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "date":
-                        DateElement = source.GetFhirDateTime();
+                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "item":
                         Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -727,7 +727,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "title":
-                    TitleElement = source.GetFhirString();
+                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "code":
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -742,19 +742,19 @@ namespace Hl7.Fhir.Model.DSTU2
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.ListStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListStatus>>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "orderedBy":
                     OrderedBy = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "mode":
-                    ModeElement = source.GetCode<Hl7.Fhir.Model.ListMode>();
+                    ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListMode>>();
                     return true;
                 case "note":
-                    NoteElement = source.GetFhirString();
+                    NoteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "entry":
                     Entry = source.GetList<EntryComponent>();

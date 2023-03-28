@@ -96,7 +96,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "contentString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Content, "content");
-                        Content = source.GetFhirString();
+                        Content = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
@@ -609,14 +609,14 @@ namespace Hl7.Fhir.Model.DSTU2
                     Requester = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.CommunicationRequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CommunicationRequestStatus>>();
                     return true;
                 case "encounter":
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "scheduledDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Scheduled, "scheduled");
-                    Scheduled = source.GetFhirDateTime();
+                    Scheduled = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "scheduledPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Scheduled, "scheduled");
@@ -626,7 +626,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "requestedOn":
-                    RequestedOnElement = source.GetFhirDateTime();
+                    RequestedOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();

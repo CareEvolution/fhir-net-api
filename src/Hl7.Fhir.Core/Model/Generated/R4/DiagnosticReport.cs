@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "comment":
-                        CommentElement = source.GetFhirString();
+                        CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "link":
                         Link = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -745,7 +745,7 @@ namespace Hl7.Fhir.Model.R4
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.DiagnosticReportStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.DiagnosticReportStatus>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -761,14 +761,14 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.GetFhirDateTime();
+                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
                     Effective = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "issued":
-                    IssuedElement = source.GetInstant();
+                    IssuedElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "performer":
                     Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -789,7 +789,7 @@ namespace Hl7.Fhir.Model.R4
                     Media = source.GetList<MediaComponent>();
                     return true;
                 case "conclusion":
-                    ConclusionElement = source.GetFhirString();
+                    ConclusionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "conclusionCode":
                     ConclusionCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

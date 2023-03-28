@@ -475,7 +475,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     BodySite = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.DeviceUseRequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceUseRequestStatus>>();
                     return true;
                 case "device":
                     Device = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -490,16 +490,16 @@ namespace Hl7.Fhir.Model.DSTU2
                     Indication = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "notes":
-                    NotesElement = source.GetFhirStringList();
+                    NotesElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "prnReason":
                     PrnReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "orderedOn":
-                    OrderedOnElement = source.GetFhirDateTime();
+                    OrderedOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recordedOn":
-                    RecordedOnElement = source.GetFhirDateTime();
+                    RecordedOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -514,10 +514,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.GetFhirDateTime();
+                    Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.DSTU2.DeviceUseRequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceUseRequestPriority>>();
                     return true;
             }
             return false;

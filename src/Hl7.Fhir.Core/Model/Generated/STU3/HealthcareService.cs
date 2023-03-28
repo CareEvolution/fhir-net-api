@@ -213,16 +213,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "daysOfWeek":
-                        DaysOfWeekElement = source.GetCodeList<Hl7.Fhir.Model.DaysOfWeek>();
+                        DaysOfWeekElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>>();
                         return true;
                     case "allDay":
-                        AllDayElement = source.GetFhirBoolean();
+                        AllDayElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "availableStartTime":
-                        AvailableStartTimeElement = source.GetTime();
+                        AvailableStartTimeElement = source.Get<Hl7.Fhir.Model.Time>();
                         return true;
                     case "availableEndTime":
-                        AvailableEndTimeElement = source.GetTime();
+                        AvailableEndTimeElement = source.Get<Hl7.Fhir.Model.Time>();
                         return true;
                 }
                 return false;
@@ -432,7 +432,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "during":
                         During = source.Get<Hl7.Fhir.Model.Period>();
@@ -1251,7 +1251,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "active":
-                    ActiveElement = source.GetFhirBoolean();
+                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "providedBy":
                     ProvidedBy = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1269,13 +1269,13 @@ namespace Hl7.Fhir.Model.STU3
                     Location = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "extraDetails":
-                    ExtraDetailsElement = source.GetFhirString();
+                    ExtraDetailsElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "photo":
                     Photo = source.Get<Hl7.Fhir.Model.Attachment>();
@@ -1293,10 +1293,10 @@ namespace Hl7.Fhir.Model.STU3
                     Eligibility = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "eligibilityNote":
-                    EligibilityNoteElement = source.GetFhirString();
+                    EligibilityNoteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "programName":
-                    ProgramNameElement = source.GetFhirStringList();
+                    ProgramNameElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "characteristic":
                     Characteristic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1305,7 +1305,7 @@ namespace Hl7.Fhir.Model.STU3
                     ReferralMethod = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "appointmentRequired":
-                    AppointmentRequiredElement = source.GetFhirBoolean();
+                    AppointmentRequiredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "availableTime":
                     AvailableTime = source.GetList<AvailableTimeComponent>();
@@ -1314,7 +1314,7 @@ namespace Hl7.Fhir.Model.STU3
                     NotAvailable = source.GetList<NotAvailableComponent>();
                     return true;
                 case "availabilityExceptions":
-                    AvailabilityExceptionsElement = source.GetFhirString();
+                    AvailabilityExceptionsElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "endpoint":
                     Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();

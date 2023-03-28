@@ -447,7 +447,7 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "requestId":
-                    RequestIdElement = source.GetId();
+                    RequestIdElement = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "identifier":
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
@@ -456,7 +456,7 @@ namespace Hl7.Fhir.Model.STU3
                     Module = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.GuidanceResponseStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GuidanceResponseStatus>>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -465,7 +465,7 @@ namespace Hl7.Fhir.Model.STU3
                     Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "occurrenceDateTime":
-                    OccurrenceDateTimeElement = source.GetFhirDateTime();
+                    OccurrenceDateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "performer":
                     Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();

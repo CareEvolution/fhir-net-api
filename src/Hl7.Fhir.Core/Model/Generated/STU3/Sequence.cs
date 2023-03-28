@@ -299,7 +299,7 @@ namespace Hl7.Fhir.Model.STU3
                         Chromosome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "genomeBuild":
-                        GenomeBuildElement = source.GetFhirString();
+                        GenomeBuildElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "referenceSeqId":
                         ReferenceSeqId = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -308,16 +308,16 @@ namespace Hl7.Fhir.Model.STU3
                         ReferenceSeqPointer = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "referenceSeqString":
-                        ReferenceSeqStringElement = source.GetFhirString();
+                        ReferenceSeqStringElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "strand":
-                        StrandElement = source.GetInteger();
+                        StrandElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "windowStart":
-                        WindowStartElement = source.GetInteger();
+                        WindowStartElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "windowEnd":
-                        WindowEndElement = source.GetInteger();
+                        WindowEndElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                 }
                 return false;
@@ -684,19 +684,19 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "start":
-                        StartElement = source.GetInteger();
+                        StartElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "end":
-                        EndElement = source.GetInteger();
+                        EndElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "observedAllele":
-                        ObservedAlleleElement = source.GetFhirString();
+                        ObservedAlleleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "referenceAllele":
-                        ReferenceAlleleElement = source.GetFhirString();
+                        ReferenceAlleleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "cigar":
-                        CigarElement = source.GetFhirString();
+                        CigarElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "variantPointer":
                         VariantPointer = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1284,16 +1284,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.qualityType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.qualityType>>();
                         return true;
                     case "standardSequence":
                         StandardSequence = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "start":
-                        StartElement = source.GetInteger();
+                        StartElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "end":
-                        EndElement = source.GetInteger();
+                        EndElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "score":
                         Score = source.Get<Hl7.Fhir.Model.Quantity>();
@@ -1302,28 +1302,28 @@ namespace Hl7.Fhir.Model.STU3
                         Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "truthTP":
-                        TruthTPElement = source.GetFhirDecimal();
+                        TruthTPElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "queryTP":
-                        QueryTPElement = source.GetFhirDecimal();
+                        QueryTPElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "truthFN":
-                        TruthFNElement = source.GetFhirDecimal();
+                        TruthFNElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "queryFP":
-                        QueryFPElement = source.GetFhirDecimal();
+                        QueryFPElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "gtFP":
-                        GtFPElement = source.GetFhirDecimal();
+                        GtFPElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "precision":
-                        PrecisionElement = source.GetFhirDecimal();
+                        PrecisionElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "recall":
-                        RecallElement = source.GetFhirDecimal();
+                        RecallElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "fScore":
-                        FScoreElement = source.GetFhirDecimal();
+                        FScoreElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                 }
                 return false;
@@ -1775,22 +1775,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.repositoryType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.repositoryType>>();
                         return true;
                     case "url":
-                        UrlElement = source.GetFhirUri();
+                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "datasetId":
-                        DatasetIdElement = source.GetFhirString();
+                        DatasetIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "variantsetId":
-                        VariantsetIdElement = source.GetFhirString();
+                        VariantsetIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "readsetId":
-                        ReadsetIdElement = source.GetFhirString();
+                        ReadsetIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -2417,10 +2417,10 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "coordinateSystem":
-                    CoordinateSystemElement = source.GetInteger();
+                    CoordinateSystemElement = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -2444,13 +2444,13 @@ namespace Hl7.Fhir.Model.STU3
                     Variant = source.GetList<VariantComponent>();
                     return true;
                 case "observedSeq":
-                    ObservedSeqElement = source.GetFhirString();
+                    ObservedSeqElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "quality":
                     Quality = source.GetList<QualityComponent>();
                     return true;
                 case "readCoverage":
-                    ReadCoverageElement = source.GetInteger();
+                    ReadCoverageElement = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "repository":
                     Repository = source.GetList<RepositoryComponent>();

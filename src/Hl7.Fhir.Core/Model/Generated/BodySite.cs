@@ -330,13 +330,13 @@ namespace Hl7.Fhir.Model
                     Modifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "image" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
                     Image = source.GetList<Hl7.Fhir.Model.Attachment>();
                     return true;
                 case "active" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    ActiveElement = source.GetFhirBoolean();
+                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "qualifier" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     Qualifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

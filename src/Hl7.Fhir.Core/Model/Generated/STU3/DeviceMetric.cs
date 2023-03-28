@@ -180,13 +180,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.DeviceMetricCalibrationType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationType>>();
                         return true;
                     case "state":
-                        StateElement = source.GetCode<Hl7.Fhir.Model.DeviceMetricCalibrationState>();
+                        StateElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationState>>();
                         return true;
                     case "time":
-                        TimeElement = source.GetInstant();
+                        TimeElement = source.Get<Hl7.Fhir.Model.Instant>();
                         return true;
                 }
                 return false;
@@ -622,13 +622,13 @@ namespace Hl7.Fhir.Model.STU3
                     Parent = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "operationalStatus":
-                    OperationalStatusElement = source.GetCode<Hl7.Fhir.Model.STU3.DeviceMetricOperationalStatus>();
+                    OperationalStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.DeviceMetricOperationalStatus>>();
                     return true;
                 case "color":
-                    ColorElement = source.GetCode<Hl7.Fhir.Model.DeviceMetricColor>();
+                    ColorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricColor>>();
                     return true;
                 case "category":
-                    CategoryElement = source.GetCode<Hl7.Fhir.Model.DeviceMetricCategory>();
+                    CategoryElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCategory>>();
                     return true;
                 case "measurementPeriod":
                     MeasurementPeriod = source.Get<Hl7.Fhir.Model.STU3.Timing>();

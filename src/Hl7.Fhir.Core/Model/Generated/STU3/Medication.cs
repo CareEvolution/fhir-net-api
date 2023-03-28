@@ -150,7 +150,7 @@ namespace Hl7.Fhir.Model.STU3
                         Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "isActive":
-                        IsActiveElement = source.GetFhirBoolean();
+                        IsActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "amount":
                         Amount = source.Get<Hl7.Fhir.Model.Ratio>();
@@ -719,10 +719,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "lotNumber":
-                        LotNumberElement = source.GetFhirString();
+                        LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "expirationDate":
-                        ExpirationDateElement = source.GetFhirDateTime();
+                        ExpirationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                 }
                 return false;
@@ -1109,13 +1109,13 @@ namespace Hl7.Fhir.Model.STU3
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.MedicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationStatus>>();
                     return true;
                 case "isBrand":
-                    IsBrandElement = source.GetFhirBoolean();
+                    IsBrandElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "isOverTheCounter":
-                    IsOverTheCounterElement = source.GetFhirBoolean();
+                    IsOverTheCounterElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "manufacturer":
                     Manufacturer = source.Get<Hl7.Fhir.Model.ResourceReference>();

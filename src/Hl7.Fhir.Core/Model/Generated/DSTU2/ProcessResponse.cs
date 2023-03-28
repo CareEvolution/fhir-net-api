@@ -130,7 +130,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Type = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -585,7 +585,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Outcome = source.Get<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "disposition":
-                    DispositionElement = source.GetFhirString();
+                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "ruleset":
                     Ruleset = source.Get<Hl7.Fhir.Model.Coding>();
@@ -594,7 +594,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     OriginalRuleset = source.Get<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "organization":
                     Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();

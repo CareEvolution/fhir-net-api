@@ -96,7 +96,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "contentString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Content, "content");
-                        Content = source.GetFhirString();
+                        Content = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
@@ -870,10 +870,10 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetCanonicalList();
+                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetFhirUriList();
+                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "basedOn":
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -885,7 +885,7 @@ namespace Hl7.Fhir.Model.R4
                     InResponseTo = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.EventStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventStatus>>();
                     return true;
                 case "statusReason":
                     StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -894,7 +894,7 @@ namespace Hl7.Fhir.Model.R4
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.RequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
                     return true;
                 case "medium":
                     Medium = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -912,10 +912,10 @@ namespace Hl7.Fhir.Model.R4
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "sent":
-                    SentElement = source.GetFhirDateTime();
+                    SentElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "received":
-                    ReceivedElement = source.GetFhirDateTime();
+                    ReceivedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recipient":
                     Recipient = source.GetList<Hl7.Fhir.Model.ResourceReference>();

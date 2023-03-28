@@ -339,13 +339,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "date":
-                        DateElement = source.GetFhirDateTime();
+                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "detail":
                         Detail = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "reported":
-                        ReportedElement = source.GetFhirBoolean();
+                        ReportedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                 }
                 return false;
@@ -675,19 +675,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "doseSequence":
-                        DoseSequenceElement = source.GetPositiveInt();
+                        DoseSequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "authority":
                         Authority = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "series":
-                        SeriesElement = source.GetFhirString();
+                        SeriesElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "seriesDoses":
-                        SeriesDosesElement = source.GetPositiveInt();
+                        SeriesDosesElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "targetDisease":
                         TargetDisease = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1467,10 +1467,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.MedicationAdministrationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MedicationAdministrationStatus>>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "vaccineCode":
                     VaccineCode = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1479,10 +1479,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "wasNotGiven":
-                    WasNotGivenElement = source.GetFhirBoolean();
+                    WasNotGivenElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reported":
-                    ReportedElement = source.GetFhirBoolean();
+                    ReportedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "performer":
                     Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1500,10 +1500,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "lotNumber":
-                    LotNumberElement = source.GetFhirString();
+                    LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "expirationDate":
-                    ExpirationDateElement = source.GetDate();
+                    ExpirationDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "site":
                     Site = source.Get<Hl7.Fhir.Model.CodeableConcept>();

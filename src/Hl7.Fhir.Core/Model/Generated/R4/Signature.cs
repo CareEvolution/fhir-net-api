@@ -320,7 +320,7 @@ namespace Hl7.Fhir.Model.R4
                     Type = source.GetList<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "when":
-                    WhenElement = source.GetInstant();
+                    WhenElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "who":
                     Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -329,13 +329,13 @@ namespace Hl7.Fhir.Model.R4
                     OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "targetFormat":
-                    TargetFormatElement = source.GetCode();
+                    TargetFormatElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "sigFormat":
-                    SigFormatElement = source.GetCode();
+                    SigFormatElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "data":
-                    DataElement = source.GetBase64Binary();
+                    DataElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
             }
             return false;

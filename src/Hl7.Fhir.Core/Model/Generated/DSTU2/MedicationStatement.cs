@@ -236,14 +236,14 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "timing":
                         Timing = source.Get<Hl7.Fhir.Model.DSTU2.Timing>();
                         return true;
                     case "asNeededBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                        AsNeeded = source.GetFhirBoolean();
+                        AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "asNeededCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
@@ -884,13 +884,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     InformationSource = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "dateAsserted":
-                    DateAssertedElement = source.GetFhirDateTime();
+                    DateAssertedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.MedicationStatementStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MedicationStatementStatus>>();
                     return true;
                 case "wasNotTaken":
-                    WasNotTakenElement = source.GetFhirBoolean();
+                    WasNotTakenElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reasonNotTaken":
                     ReasonNotTaken = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -905,14 +905,14 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.GetFhirDateTime();
+                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
                     Effective = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "note":
-                    NoteElement = source.GetFhirString();
+                    NoteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "supportingInformation":
                     SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>();

@@ -228,7 +228,7 @@ namespace Hl7.Fhir.Model.R4
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "stereochemistry":
                         Stereochemistry = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -237,7 +237,7 @@ namespace Hl7.Fhir.Model.R4
                         OpticalActivity = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "molecularFormula":
-                        MolecularFormulaElement = source.GetFhirString();
+                        MolecularFormulaElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "amountQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Amount, "amount");
@@ -245,7 +245,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "amountString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                        Amount = source.GetFhirString();
+                        Amount = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -520,7 +520,7 @@ namespace Hl7.Fhir.Model.R4
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "parameters":
-                        ParametersElement = source.GetFhirString();
+                        ParametersElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "definingSubstanceReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(DefiningSubstance, "definingSubstance");
@@ -536,7 +536,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "amountString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                        Amount = source.GetFhirString();
+                        Amount = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -878,10 +878,10 @@ namespace Hl7.Fhir.Model.R4
                         OpticalActivity = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "molecularFormula":
-                        MolecularFormulaElement = source.GetFhirString();
+                        MolecularFormulaElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "molecularFormulaByMoiety":
-                        MolecularFormulaByMoietyElement = source.GetFhirString();
+                        MolecularFormulaByMoietyElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "isotope":
                         Isotope = source.GetList<IsotopeComponent>();
@@ -1559,7 +1559,7 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "representation":
-                        RepresentationElement = source.GetFhirString();
+                        RepresentationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "attachment":
                         Attachment = source.Get<Hl7.Fhir.Model.Attachment>();
@@ -1817,10 +1817,10 @@ namespace Hl7.Fhir.Model.R4
                         Status = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "statusDate":
-                        StatusDateElement = source.GetFhirDateTime();
+                        StatusDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "comment":
-                        CommentElement = source.GetFhirString();
+                        CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "source":
                         Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -2233,7 +2233,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "type":
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -2242,7 +2242,7 @@ namespace Hl7.Fhir.Model.R4
                         Status = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "preferred":
-                        PreferredElement = source.GetFhirBoolean();
+                        PreferredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "language":
                         Language = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -2562,7 +2562,7 @@ namespace Hl7.Fhir.Model.R4
                         Status = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "date":
-                        DateElement = source.GetFhirDateTime();
+                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                 }
                 return false;
@@ -2835,7 +2835,7 @@ namespace Hl7.Fhir.Model.R4
                         Relationship = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "isDefining":
-                        IsDefiningElement = source.GetFhirBoolean();
+                        IsDefiningElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "amountQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Amount, "amount");
@@ -2851,7 +2851,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "amountString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                        Amount = source.GetFhirString();
+                        Amount = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "amountRatioLowLimit":
                         AmountRatioLowLimit = source.Get<Hl7.Fhir.Model.Ratio>();
@@ -3530,13 +3530,13 @@ namespace Hl7.Fhir.Model.R4
                     Domain = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "source":
                     Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "moiety":
                     Moiety = source.GetList<MoietyComponent>();

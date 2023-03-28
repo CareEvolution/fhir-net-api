@@ -148,10 +148,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.GuideDependencyType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GuideDependencyType>>();
                         return true;
                     case "uri":
-                        UriElement = source.GetFhirUri();
+                        UriElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -364,10 +364,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "resource":
                         Resource = source.GetList<ResourceComponent>();
@@ -685,20 +685,20 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "example":
-                        ExampleElement = source.GetFhirBoolean();
+                        ExampleElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "acronym":
-                        AcronymElement = source.GetFhirString();
+                        AcronymElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "sourceUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Source, "source");
-                        Source = source.GetFhirUri();
+                        Source = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "sourceReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Source, "source");
@@ -928,7 +928,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.ResourceType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
                         return true;
                     case "profile":
                         Profile = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1285,22 +1285,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "source":
-                        SourceElement = source.GetFhirUri();
+                        SourceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "title":
-                        TitleElement = source.GetFhirString();
+                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "kind":
-                        KindElement = source.GetCode<Hl7.Fhir.Model.GuidePageKind>();
+                        KindElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GuidePageKind>>();
                         return true;
                     case "type":
-                        TypeElement = source.GetCodeList<Hl7.Fhir.Model.ResourceType>();
+                        TypeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
                         return true;
                     case "package":
-                        PackageElement = source.GetFhirStringList();
+                        PackageElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "format":
-                        FormatElement = source.GetCode();
+                        FormatElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "page":
                         Page = source.GetList<PageComponent>();
@@ -2109,31 +2109,31 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.GetFhirBoolean();
+                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetMarkdown();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "useContext":
                     UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
@@ -2142,10 +2142,10 @@ namespace Hl7.Fhir.Model.STU3
                     Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "copyright":
-                    CopyrightElement = source.GetMarkdown();
+                    CopyrightElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "fhirVersion":
-                    FhirVersionElement = source.GetId();
+                    FhirVersionElement = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "dependency":
                     Dependency = source.GetList<DependencyComponent>();
@@ -2157,7 +2157,7 @@ namespace Hl7.Fhir.Model.STU3
                     Global = source.GetList<GlobalComponent>();
                     return true;
                 case "binary":
-                    BinaryElement = source.GetFhirUriList();
+                    BinaryElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "page":
                     Page = source.Get<PageComponent>();

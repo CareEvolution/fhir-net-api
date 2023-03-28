@@ -183,13 +183,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "system":
-                        SystemElement = source.GetFhirUri();
+                        SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "version":
-                        VersionElement = source.GetFhirString();
+                        VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "mode":
-                        ModeElement = source.GetCode<Hl7.Fhir.Model.STU3.SystemVersionProcessingMode>();
+                        ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.SystemVersionProcessingMode>>();
                         return true;
                 }
                 return false;
@@ -393,10 +393,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "system":
-                        SystemElement = source.GetFhirUri();
+                        SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "version":
-                        VersionElement = source.GetFhirString();
+                        VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -866,7 +866,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "language":
-                        LanguageElement = source.GetCode();
+                        LanguageElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "use":
                         Use = source.Get<Hl7.Fhir.Model.Coding>();
@@ -1185,7 +1185,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "language":
-                        LanguageElement = source.GetCode();
+                        LanguageElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "use":
                         Use = source.Get<Hl7.Fhir.Model.Coding>();
@@ -2109,34 +2109,34 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "identifier":
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.GetFhirBoolean();
+                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetMarkdown();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "useContext":
                     UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
@@ -2151,31 +2151,31 @@ namespace Hl7.Fhir.Model.STU3
                     ExcludedSystem = source.Get<ExcludedSystemComponent>();
                     return true;
                 case "includeDesignations":
-                    IncludeDesignationsElement = source.GetFhirBoolean();
+                    IncludeDesignationsElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "designation":
                     Designation = source.Get<DesignationComponent>();
                     return true;
                 case "includeDefinition":
-                    IncludeDefinitionElement = source.GetFhirBoolean();
+                    IncludeDefinitionElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "activeOnly":
-                    ActiveOnlyElement = source.GetFhirBoolean();
+                    ActiveOnlyElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "excludeNested":
-                    ExcludeNestedElement = source.GetFhirBoolean();
+                    ExcludeNestedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "excludeNotForUI":
-                    ExcludeNotForUIElement = source.GetFhirBoolean();
+                    ExcludeNotForUIElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "excludePostCoordinated":
-                    ExcludePostCoordinatedElement = source.GetFhirBoolean();
+                    ExcludePostCoordinatedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "displayLanguage":
-                    DisplayLanguageElement = source.GetCode();
+                    DisplayLanguageElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "limitedExpansion":
-                    LimitedExpansionElement = source.GetFhirBoolean();
+                    LimitedExpansionElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
             }
             return false;

@@ -168,71 +168,71 @@ namespace Hl7.Fhir.Model
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.GetFhirBoolean();
+                        Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "valueInteger":
                         source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Value, "value");
-                        Value = source.GetInteger();
+                        Value = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "valueDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Value, "value");
-                        Value = source.GetFhirDecimal();
+                        Value = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "valueBase64Binary":
                         source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(Value, "value");
-                        Value = source.GetBase64Binary();
+                        Value = source.Get<Hl7.Fhir.Model.Base64Binary>();
                         return true;
                     case "valueInstant":
                         source.CheckDuplicates<Hl7.Fhir.Model.Instant>(Value, "value");
-                        Value = source.GetInstant();
+                        Value = source.Get<Hl7.Fhir.Model.Instant>();
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.GetFhirString();
+                        Value = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Value, "value");
-                        Value = source.GetFhirUri();
+                        Value = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "valueDate":
                         source.CheckDuplicates<Hl7.Fhir.Model.Date>(Value, "value");
-                        Value = source.GetDate();
+                        Value = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.GetFhirDateTime();
+                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "valueTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                        Value = source.GetTime();
+                        Value = source.Get<Hl7.Fhir.Model.Time>();
                         return true;
                     case "valueCode":
                         source.CheckDuplicates<Hl7.Fhir.Model.Code>(Value, "value");
-                        Value = source.GetCode();
+                        Value = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "valueOid":
                         source.CheckDuplicates<Hl7.Fhir.Model.Oid>(Value, "value");
-                        Value = source.GetOid();
+                        Value = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "valueId":
                         source.CheckDuplicates<Hl7.Fhir.Model.Id>(Value, "value");
-                        Value = source.GetId();
+                        Value = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "valueUnsignedInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Value, "value");
-                        Value = source.GetUnsignedInt();
+                        Value = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "valuePositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(Value, "value");
-                        Value = source.GetPositiveInt();
+                        Value = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "valueMarkdown":
                         source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(Value, "value");
-                        Value = source.GetMarkdown();
+                        Value = source.Get<Hl7.Fhir.Model.Markdown>();
                         return true;
                     case "valueAnnotation":
                         source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Value, "value");
@@ -304,15 +304,15 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "valueCanonical" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Value, "value");
-                        Value = source.GetCanonical();
+                        Value = source.Get<Hl7.Fhir.Model.Canonical>();
                         return true;
                     case "valueUrl" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Url>(Value, "value");
-                        Value = source.GetUrl();
+                        Value = source.Get<Hl7.Fhir.Model.Url>();
                         return true;
                     case "valueUuid" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Uuid>(Value, "value");
-                        Value = source.GetUuid();
+                        Value = source.Get<Hl7.Fhir.Model.Uuid>();
                         return true;
                     case "valueAge" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Value, "value");

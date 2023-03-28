@@ -297,10 +297,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "authority":
-                        AuthorityElement = source.GetFhirUri();
+                        AuthorityElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "uri":
-                        UriElement = source.GetFhirUri();
+                        UriElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -475,7 +475,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "meaning":
-                        MeaningElement = source.GetCode<Hl7.Fhir.Model.ConsentDataMeaning>();
+                        MeaningElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ConsentDataMeaning>>();
                         return true;
                     case "reference":
                         Reference = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -811,7 +811,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.STU3.ConsentExceptType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ConsentExceptType>>();
                         return true;
                     case "period":
                         Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -1260,7 +1260,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "meaning":
-                        MeaningElement = source.GetCode<Hl7.Fhir.Model.ConsentDataMeaning>();
+                        MeaningElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ConsentDataMeaning>>();
                         return true;
                     case "reference":
                         Reference = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1886,7 +1886,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.ConsentState>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ConsentState>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1898,7 +1898,7 @@ namespace Hl7.Fhir.Model.STU3
                     Period = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "dateTime":
-                    DateTimeElement = source.GetFhirDateTime();
+                    DateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "consentingParty":
                     ConsentingParty = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1928,7 +1928,7 @@ namespace Hl7.Fhir.Model.STU3
                     Policy = source.GetList<PolicyComponent>();
                     return true;
                 case "policyRule":
-                    PolicyRuleElement = source.GetFhirUri();
+                    PolicyRuleElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "securityLabel":
                     SecurityLabel = source.GetList<Hl7.Fhir.Model.Coding>();

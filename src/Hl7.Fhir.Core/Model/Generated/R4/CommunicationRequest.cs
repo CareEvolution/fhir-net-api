@@ -96,7 +96,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "contentString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Content, "content");
-                        Content = source.GetFhirString();
+                        Content = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
@@ -815,7 +815,7 @@ namespace Hl7.Fhir.Model.R4
                     GroupIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.RequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>>();
                     return true;
                 case "statusReason":
                     StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -824,10 +824,10 @@ namespace Hl7.Fhir.Model.R4
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.RequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
                     return true;
                 case "doNotPerform":
-                    DoNotPerformElement = source.GetFhirBoolean();
+                    DoNotPerformElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "medium":
                     Medium = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -846,14 +846,14 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
                     Occurrence = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.GetFhirDateTime();
+                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requester":
                     Requester = source.Get<Hl7.Fhir.Model.ResourceReference>();

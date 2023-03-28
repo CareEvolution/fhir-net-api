@@ -223,7 +223,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Payee = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "date":
-                        DateElement = source.GetDate();
+                        DateElement = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "amount":
                         Amount = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
@@ -439,7 +439,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Type = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -951,10 +951,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "outcome":
-                    OutcomeElement = source.GetCode<Hl7.Fhir.Model.DSTU2.RemittanceOutcome>();
+                    OutcomeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.RemittanceOutcome>>();
                     return true;
                 case "disposition":
-                    DispositionElement = source.GetFhirString();
+                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "ruleset":
                     Ruleset = source.Get<Hl7.Fhir.Model.Coding>();
@@ -963,7 +963,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     OriginalRuleset = source.Get<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

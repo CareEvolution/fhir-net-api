@@ -160,13 +160,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "sequence":
-                        SequenceElement = source.GetPositiveInt();
+                        SequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "information":
                         Information = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "appliesToAll":
-                        AppliesToAllElement = source.GetFhirBoolean();
+                        AppliesToAllElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                 }
                 return false;
@@ -381,13 +381,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "focal":
-                        FocalElement = source.GetFhirBoolean();
+                        FocalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "coverage":
                         Coverage = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "businessArrangement":
-                        BusinessArrangementElement = source.GetFhirString();
+                        BusinessArrangementElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -703,7 +703,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "supportingInfoSequence":
-                        SupportingInfoSequenceElement = source.GetPositiveIntList();
+                        SupportingInfoSequenceElement = source.GetList<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "category":
                         Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1452,27 +1452,27 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "priority":
                     Priority = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "purpose":
-                    PurposeElement = source.GetCodeList<Hl7.Fhir.Model.R4.EligibilityRequestPurpose>();
+                    PurposeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EligibilityRequestPurpose>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "servicedDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Serviced, "serviced");
-                    Serviced = source.GetDate();
+                    Serviced = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "servicedPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Serviced, "serviced");
                     Serviced = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "enterer":
                     Enterer = source.Get<Hl7.Fhir.Model.ResourceReference>();

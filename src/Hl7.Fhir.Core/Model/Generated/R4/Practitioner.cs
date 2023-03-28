@@ -618,7 +618,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "active":
-                    ActiveElement = source.GetFhirBoolean();
+                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "name":
                     Name = source.GetList<Hl7.Fhir.Model.R4.HumanName>();
@@ -630,10 +630,10 @@ namespace Hl7.Fhir.Model.R4
                     Address = source.GetList<Hl7.Fhir.Model.Address>();
                     return true;
                 case "gender":
-                    GenderElement = source.GetCode<Hl7.Fhir.Model.AdministrativeGender>();
+                    GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
                     return true;
                 case "birthDate":
-                    BirthDateElement = source.GetDate();
+                    BirthDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "photo":
                     Photo = source.GetList<Hl7.Fhir.Model.Attachment>();

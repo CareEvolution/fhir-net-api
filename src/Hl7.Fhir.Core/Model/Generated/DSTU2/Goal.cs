@@ -595,7 +595,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "startDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Start, "start");
-                    Start = source.GetDate();
+                    Start = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "startCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Start, "start");
@@ -603,7 +603,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "targetDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Target, "target");
-                    Target = source.GetDate();
+                    Target = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "targetQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Duration>(Target, "target");
@@ -613,13 +613,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.GoalStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.GoalStatus>>();
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.GetDate();
+                    StatusDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "statusReason":
                     StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();

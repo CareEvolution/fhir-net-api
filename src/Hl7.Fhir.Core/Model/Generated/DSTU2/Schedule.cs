@@ -243,7 +243,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     PlanningHorizon = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

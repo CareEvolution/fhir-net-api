@@ -260,19 +260,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "isDerived":
-                        IsDerivedElement = source.GetFhirBoolean();
+                        IsDerivedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "type":
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "preference":
-                        PreferenceElement = source.GetCode<Hl7.Fhir.Model.R4.SpecimenContainedPreference>();
+                        PreferenceElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SpecimenContainedPreference>>();
                         return true;
                     case "container":
                         Container = source.Get<ContainerComponent>();
                         return true;
                     case "requirement":
-                        RequirementElement = source.GetFhirString();
+                        RequirementElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "retentionTime":
                         RetentionTime = source.Get<Hl7.Fhir.Model.R4.Duration>();
@@ -641,7 +641,7 @@ namespace Hl7.Fhir.Model.R4
                         Cap = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "capacity":
                         Capacity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -652,13 +652,13 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "minimumVolumeString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(MinimumVolume, "minimumVolume");
-                        MinimumVolume = source.GetFhirString();
+                        MinimumVolume = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "additive":
                         Additive = source.GetList<AdditiveComponent>();
                         return true;
                     case "preparation":
-                        PreparationElement = source.GetFhirString();
+                        PreparationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1075,7 +1075,7 @@ namespace Hl7.Fhir.Model.R4
                         MaxDuration = source.Get<Hl7.Fhir.Model.R4.Duration>();
                         return true;
                     case "instruction":
-                        InstructionElement = source.GetFhirString();
+                        InstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1397,7 +1397,7 @@ namespace Hl7.Fhir.Model.R4
                     PatientPreparation = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "timeAspect":
-                    TimeAspectElement = source.GetFhirString();
+                    TimeAspectElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "collection":
                     Collection = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

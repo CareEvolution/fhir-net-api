@@ -189,10 +189,10 @@ namespace Hl7.Fhir.Model.STU3
                         Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "required":
-                        RequiredElement = source.GetCode<Hl7.Fhir.Model.ParticipantRequired>();
+                        RequiredElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipantRequired>>();
                         return true;
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.ParticipationStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>>();
                         return true;
                 }
                 return false;
@@ -987,7 +987,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.AppointmentStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AppointmentStatus>>();
                     return true;
                 case "serviceCategory":
                     ServiceCategory = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1008,31 +1008,31 @@ namespace Hl7.Fhir.Model.STU3
                     Indication = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetUnsignedInt();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "supportingInformation":
                     SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "start":
-                    StartElement = source.GetInstant();
+                    StartElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "end":
-                    EndElement = source.GetInstant();
+                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "minutesDuration":
-                    MinutesDurationElement = source.GetPositiveInt();
+                    MinutesDurationElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "slot":
                     Slot = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "incomingReferral":
                     IncomingReferral = source.GetList<Hl7.Fhir.Model.ResourceReference>();

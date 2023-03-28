@@ -148,10 +148,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "relation":
-                        RelationElement = source.GetFhirString();
+                        RelationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "url":
-                        UrlElement = source.GetFhirUri();
+                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -406,7 +406,7 @@ namespace Hl7.Fhir.Model.R4
                         Link = source.GetList<LinkComponent>();
                         return true;
                     case "fullUrl":
-                        FullUrlElement = source.GetFhirUri();
+                        FullUrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "resource":
                         Resource = source.GetResource();
@@ -654,10 +654,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "mode":
-                        ModeElement = source.GetCode<Hl7.Fhir.Model.SearchEntryMode>();
+                        ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchEntryMode>>();
                         return true;
                     case "score":
-                        ScoreElement = source.GetFhirDecimal();
+                        ScoreElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                 }
                 return false;
@@ -987,22 +987,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "method":
-                        MethodElement = source.GetCode<Hl7.Fhir.Model.HTTPVerb>();
+                        MethodElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.HTTPVerb>>();
                         return true;
                     case "url":
-                        UrlElement = source.GetFhirUri();
+                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "ifNoneMatch":
-                        IfNoneMatchElement = source.GetFhirString();
+                        IfNoneMatchElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "ifModifiedSince":
-                        IfModifiedSinceElement = source.GetInstant();
+                        IfModifiedSinceElement = source.Get<Hl7.Fhir.Model.Instant>();
                         return true;
                     case "ifMatch":
-                        IfMatchElement = source.GetFhirString();
+                        IfMatchElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "ifNoneExist":
-                        IfNoneExistElement = source.GetFhirString();
+                        IfNoneExistElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1323,16 +1323,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "status":
-                        StatusElement = source.GetFhirString();
+                        StatusElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "location":
-                        LocationElement = source.GetFhirUri();
+                        LocationElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "etag":
-                        EtagElement = source.GetFhirString();
+                        EtagElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "lastModified":
-                        LastModifiedElement = source.GetInstant();
+                        LastModifiedElement = source.Get<Hl7.Fhir.Model.Instant>();
                         return true;
                     case "outcome":
                         Outcome = source.GetResource();
@@ -1827,13 +1827,13 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.BundleType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.BundleType>>();
                     return true;
                 case "timestamp":
-                    TimestampElement = source.GetInstant();
+                    TimestampElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "total":
-                    TotalElement = source.GetUnsignedInt();
+                    TotalElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "link":
                     Link = source.GetList<LinkComponent>();

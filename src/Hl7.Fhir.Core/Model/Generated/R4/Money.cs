@@ -182,10 +182,10 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "value":
-                    ValueElement = source.GetFhirDecimal();
+                    ValueElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "currency":
-                    CurrencyElement = source.GetCode<Hl7.Fhir.Model.R4.Currencies>();
+                    CurrencyElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.Currencies>>();
                     return true;
             }
             return false;

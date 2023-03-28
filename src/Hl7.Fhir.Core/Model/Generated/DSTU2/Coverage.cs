@@ -489,19 +489,19 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "group":
-                    GroupElement = source.GetFhirString();
+                    GroupElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "plan":
-                    PlanElement = source.GetFhirString();
+                    PlanElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "subPlan":
-                    SubPlanElement = source.GetFhirString();
+                    SubPlanElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "dependent":
-                    DependentElement = source.GetPositiveInt();
+                    DependentElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "sequence":
-                    SequenceElement = source.GetPositiveInt();
+                    SequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "subscriber":
                     Subscriber = source.Get<Hl7.Fhir.Model.ResourceReference>();

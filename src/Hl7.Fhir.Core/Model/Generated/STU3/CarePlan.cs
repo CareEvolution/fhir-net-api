@@ -703,13 +703,13 @@ namespace Hl7.Fhir.Model.STU3
                         Goal = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.CarePlanActivityStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.CarePlanActivityStatus>>();
                         return true;
                     case "statusReason":
-                        StatusReasonElement = source.GetFhirString();
+                        StatusReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "prohibited":
-                        ProhibitedElement = source.GetFhirBoolean();
+                        ProhibitedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "scheduledTiming":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Timing>(Scheduled, "scheduled");
@@ -721,7 +721,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "scheduledString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Scheduled, "scheduled");
-                        Scheduled = source.GetFhirString();
+                        Scheduled = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "location":
                         Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -744,7 +744,7 @@ namespace Hl7.Fhir.Model.STU3
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1620,19 +1620,19 @@ namespace Hl7.Fhir.Model.STU3
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.CarePlanStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.CarePlanStatus>>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.CarePlanIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CarePlanIntent>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "title":
-                    TitleElement = source.GetFhirString();
+                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();

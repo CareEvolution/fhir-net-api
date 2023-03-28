@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "fraction":
-                        FractionElement = source.GetFhirString();
+                        FractionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "materialType":
                         MaterialType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -408,7 +408,7 @@ namespace Hl7.Fhir.Model.R4
                         IntraspecificType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "intraspecificDescription":
-                        IntraspecificDescriptionElement = source.GetFhirString();
+                        IntraspecificDescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "author":
                         Author = source.GetList<AuthorComponent>();
@@ -653,7 +653,7 @@ namespace Hl7.Fhir.Model.R4
                         AuthorType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "authorDescription":
-                        AuthorDescriptionElement = source.GetFhirString();
+                        AuthorDescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -925,16 +925,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "maternalOrganismId":
-                        MaternalOrganismIdElement = source.GetFhirString();
+                        MaternalOrganismIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "maternalOrganismName":
-                        MaternalOrganismNameElement = source.GetFhirString();
+                        MaternalOrganismNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "paternalOrganismId":
-                        PaternalOrganismIdElement = source.GetFhirString();
+                        PaternalOrganismIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "paternalOrganismName":
-                        PaternalOrganismNameElement = source.GetFhirString();
+                        PaternalOrganismNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "hybridType":
                         HybridType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1810,19 +1810,19 @@ namespace Hl7.Fhir.Model.R4
                     OrganismId = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "organismName":
-                    OrganismNameElement = source.GetFhirString();
+                    OrganismNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "parentSubstanceId":
                     ParentSubstanceId = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "parentSubstanceName":
-                    ParentSubstanceNameElement = source.GetFhirStringList();
+                    ParentSubstanceNameElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "countryOfOrigin":
                     CountryOfOrigin = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "geographicalLocation":
-                    GeographicalLocationElement = source.GetFhirStringList();
+                    GeographicalLocationElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "developmentStage":
                     DevelopmentStage = source.Get<Hl7.Fhir.Model.CodeableConcept>();

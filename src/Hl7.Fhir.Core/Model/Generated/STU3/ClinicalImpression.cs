@@ -309,7 +309,7 @@ namespace Hl7.Fhir.Model.STU3
                         Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "basis":
-                        BasisElement = source.GetFhirString();
+                        BasisElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -965,13 +965,13 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.ClinicalImpressionStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ClinicalImpressionStatus>>();
                     return true;
                 case "code":
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -981,14 +981,14 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.GetFhirDateTime();
+                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
                     Effective = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "assessor":
                     Assessor = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1003,10 +1003,10 @@ namespace Hl7.Fhir.Model.STU3
                     Investigation = source.GetList<InvestigationComponent>();
                     return true;
                 case "protocol":
-                    ProtocolElement = source.GetFhirUriList();
+                    ProtocolElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "summary":
-                    SummaryElement = source.GetFhirString();
+                    SummaryElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "finding":
                     Finding = source.GetList<FindingComponent>();

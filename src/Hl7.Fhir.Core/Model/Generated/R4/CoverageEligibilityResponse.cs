@@ -165,7 +165,7 @@ namespace Hl7.Fhir.Model.R4
                         Coverage = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "inforce":
-                        InforceElement = source.GetFhirBoolean();
+                        InforceElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "benefitPeriod":
                         BenefitPeriod = source.Get<Hl7.Fhir.Model.Period>();
@@ -646,13 +646,13 @@ namespace Hl7.Fhir.Model.R4
                         Provider = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "excluded":
-                        ExcludedElement = source.GetFhirBoolean();
+                        ExcludedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "network":
                         Network = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -667,13 +667,13 @@ namespace Hl7.Fhir.Model.R4
                         Benefit = source.GetList<BenefitComponent>();
                         return true;
                     case "authorizationRequired":
-                        AuthorizationRequiredElement = source.GetFhirBoolean();
+                        AuthorizationRequiredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "authorizationSupporting":
                         AuthorizationSupporting = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "authorizationUrl":
-                        AuthorizationUrlElement = source.GetFhirUri();
+                        AuthorizationUrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -974,11 +974,11 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "allowedUnsignedInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Allowed, "allowed");
-                        Allowed = source.GetUnsignedInt();
+                        Allowed = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "allowedString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Allowed, "allowed");
-                        Allowed = source.GetFhirString();
+                        Allowed = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "allowedMoney":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Money>(Allowed, "allowed");
@@ -986,11 +986,11 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "usedUnsignedInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Used, "used");
-                        Used = source.GetUnsignedInt();
+                        Used = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "usedString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Used, "used");
-                        Used = source.GetFhirString();
+                        Used = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "usedMoney":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Money>(Used, "used");
@@ -1742,24 +1742,24 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "purpose":
-                    PurposeElement = source.GetCodeList<Hl7.Fhir.Model.R4.EligibilityResponsePurpose>();
+                    PurposeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EligibilityResponsePurpose>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "servicedDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Serviced, "serviced");
-                    Serviced = source.GetDate();
+                    Serviced = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "servicedPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Serviced, "serviced");
                     Serviced = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requestor":
                     Requestor = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1768,10 +1768,10 @@ namespace Hl7.Fhir.Model.R4
                     Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "outcome":
-                    OutcomeElement = source.GetCode<Hl7.Fhir.Model.R4.ClaimProcessingCodes>();
+                    OutcomeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ClaimProcessingCodes>>();
                     return true;
                 case "disposition":
-                    DispositionElement = source.GetFhirString();
+                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "insurer":
                     Insurer = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1780,7 +1780,7 @@ namespace Hl7.Fhir.Model.R4
                     Insurance = source.GetList<InsuranceComponent>();
                     return true;
                 case "preAuthRef":
-                    PreAuthRefElement = source.GetFhirString();
+                    PreAuthRefElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "form":
                     Form = source.Get<Hl7.Fhir.Model.CodeableConcept>();

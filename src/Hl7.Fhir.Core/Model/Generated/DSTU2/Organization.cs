@@ -583,13 +583,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "active":
-                    ActiveElement = source.GetFhirBoolean();
+                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "telecom":
                     Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();

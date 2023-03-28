@@ -232,7 +232,7 @@ namespace Hl7.Fhir.Model
                     DateRange = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "restoreDate" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    RestoreDateElement = source.GetFhirDateTime();
+                    RestoreDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
             }
             return false;

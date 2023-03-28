@@ -741,13 +741,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "kind":
-                        KindElement = source.GetCode<Hl7.Fhir.Model.R4.CarePlanActivityKind>();
+                        KindElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CarePlanActivityKind>>();
                         return true;
                     case "instantiatesCanonical":
-                        InstantiatesCanonicalElement = source.GetCanonicalList();
+                        InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                         return true;
                     case "instantiatesUri":
-                        InstantiatesUriElement = source.GetFhirUriList();
+                        InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "code":
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -762,13 +762,13 @@ namespace Hl7.Fhir.Model.R4
                         Goal = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.R4.CarePlanActivityStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CarePlanActivityStatus>>();
                         return true;
                     case "statusReason":
                         StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "doNotPerform":
-                        DoNotPerformElement = source.GetFhirBoolean();
+                        DoNotPerformElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "scheduledTiming":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Scheduled, "scheduled");
@@ -780,7 +780,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "scheduledString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Scheduled, "scheduled");
-                        Scheduled = source.GetFhirString();
+                        Scheduled = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "location":
                         Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -803,7 +803,7 @@ namespace Hl7.Fhir.Model.R4
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1800,10 +1800,10 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetCanonicalList();
+                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetFhirUriList();
+                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "basedOn":
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1815,19 +1815,19 @@ namespace Hl7.Fhir.Model.R4
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.RequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.CarePlanIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CarePlanIntent>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "title":
-                    TitleElement = source.GetFhirString();
+                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1839,7 +1839,7 @@ namespace Hl7.Fhir.Model.R4
                     Period = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "author":
                     Author = source.Get<Hl7.Fhir.Model.ResourceReference>();

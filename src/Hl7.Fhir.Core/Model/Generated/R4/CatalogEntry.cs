@@ -129,7 +129,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "relationtype":
-                        RelationtypeElement = source.GetCode<Hl7.Fhir.Model.R4.CatalogEntryRelationType>();
+                        RelationtypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CatalogEntryRelationType>>();
                         return true;
                     case "item":
                         Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -630,7 +630,7 @@ namespace Hl7.Fhir.Model.R4
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "orderable":
-                    OrderableElement = source.GetFhirBoolean();
+                    OrderableElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "referencedItem":
                     ReferencedItem = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -642,16 +642,16 @@ namespace Hl7.Fhir.Model.R4
                     Classification = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "validityPeriod":
                     ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "validTo":
-                    ValidToElement = source.GetFhirDateTime();
+                    ValidToElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "lastUpdated":
-                    LastUpdatedElement = source.GetFhirDateTime();
+                    LastUpdatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "additionalCharacteristic":
                     AdditionalCharacteristic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

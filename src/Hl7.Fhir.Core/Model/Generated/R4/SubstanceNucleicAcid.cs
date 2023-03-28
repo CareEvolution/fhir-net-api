@@ -267,13 +267,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "subunit":
-                        SubunitElement = source.GetInteger();
+                        SubunitElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "sequence":
-                        SequenceElement = source.GetFhirString();
+                        SequenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "length":
-                        LengthElement = source.GetInteger();
+                        LengthElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "sequenceAttachment":
                         SequenceAttachment = source.Get<Hl7.Fhir.Model.Attachment>();
@@ -598,16 +598,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "connectivity":
-                        ConnectivityElement = source.GetFhirString();
+                        ConnectivityElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "identifier":
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "residueSite":
-                        ResidueSiteElement = source.GetFhirString();
+                        ResidueSiteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -836,10 +836,10 @@ namespace Hl7.Fhir.Model.R4
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "residueSite":
-                        ResidueSiteElement = source.GetFhirString();
+                        ResidueSiteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1140,10 +1140,10 @@ namespace Hl7.Fhir.Model.R4
                     SequenceType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "numberOfSubunits":
-                    NumberOfSubunitsElement = source.GetInteger();
+                    NumberOfSubunitsElement = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "areaOfHybridisation":
-                    AreaOfHybridisationElement = source.GetFhirString();
+                    AreaOfHybridisationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "oligoNucleotideType":
                     OligoNucleotideType = source.Get<Hl7.Fhir.Model.CodeableConcept>();

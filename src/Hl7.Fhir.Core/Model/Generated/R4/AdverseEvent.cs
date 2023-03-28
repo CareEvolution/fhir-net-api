@@ -335,7 +335,7 @@ namespace Hl7.Fhir.Model.R4
                         Assessment = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "productRelatedness":
-                        ProductRelatednessElement = source.GetFhirString();
+                        ProductRelatednessElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "author":
                         Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1005,7 +1005,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "actuality":
-                    ActualityElement = source.GetCode<Hl7.Fhir.Model.R4.AdverseEventActuality>();
+                    ActualityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AdverseEventActuality>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1020,13 +1020,13 @@ namespace Hl7.Fhir.Model.R4
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "detected":
-                    DetectedElement = source.GetFhirDateTime();
+                    DetectedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recordedDate":
-                    RecordedDateElement = source.GetFhirDateTime();
+                    RecordedDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "resultingCondition":
                     ResultingCondition = source.GetList<Hl7.Fhir.Model.ResourceReference>();

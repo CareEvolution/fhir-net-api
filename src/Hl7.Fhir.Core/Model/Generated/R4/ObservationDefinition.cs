@@ -178,10 +178,10 @@ namespace Hl7.Fhir.Model.R4
                         Unit = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "conversionFactor":
-                        ConversionFactorElement = source.GetFhirDecimal();
+                        ConversionFactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "decimalPrecision":
-                        DecimalPrecisionElement = source.GetInteger();
+                        DecimalPrecisionElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                 }
                 return false;
@@ -496,7 +496,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "category":
-                        CategoryElement = source.GetCode<Hl7.Fhir.Model.R4.ObservationRangeCategory>();
+                        CategoryElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationRangeCategory>>();
                         return true;
                     case "range":
                         Range = source.Get<Hl7.Fhir.Model.Range>();
@@ -508,7 +508,7 @@ namespace Hl7.Fhir.Model.R4
                         AppliesTo = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "gender":
-                        GenderElement = source.GetCode<Hl7.Fhir.Model.AdministrativeGender>();
+                        GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
                         return true;
                     case "age":
                         Age = source.Get<Hl7.Fhir.Model.Range>();
@@ -517,7 +517,7 @@ namespace Hl7.Fhir.Model.R4
                         GestationalAge = source.Get<Hl7.Fhir.Model.Range>();
                         return true;
                     case "condition":
-                        ConditionElement = source.GetFhirString();
+                        ConditionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1059,16 +1059,16 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "permittedDataType":
-                    PermittedDataTypeElement = source.GetCodeList<Hl7.Fhir.Model.R4.ObservationDataType>();
+                    PermittedDataTypeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationDataType>>();
                     return true;
                 case "multipleResultsAllowed":
-                    MultipleResultsAllowedElement = source.GetFhirBoolean();
+                    MultipleResultsAllowedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "method":
                     Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "preferredReportName":
-                    PreferredReportNameElement = source.GetFhirString();
+                    PreferredReportNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "quantitativeDetails":
                     QuantitativeDetails = source.Get<QuantitativeDetailsComponent>();

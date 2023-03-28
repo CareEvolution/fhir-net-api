@@ -335,7 +335,7 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "isDefining":
-                        IsDefiningElement = source.GetFhirBoolean();
+                        IsDefiningElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "amount":
                         Amount = source.Get<Hl7.Fhir.Model.SubstanceAmount>();
@@ -579,10 +579,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "numberOfUnits":
-                        NumberOfUnitsElement = source.GetInteger();
+                        NumberOfUnitsElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "averageMolecularFormula":
-                        AverageMolecularFormulaElement = source.GetFhirString();
+                        AverageMolecularFormulaElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "repeatUnitAmountType":
                         RepeatUnitAmountType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -852,7 +852,7 @@ namespace Hl7.Fhir.Model.R4
                         OrientationOfPolymerisation = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "repeatUnit":
-                        RepeatUnitElement = source.GetFhirString();
+                        RepeatUnitElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "amount":
                         Amount = source.Get<Hl7.Fhir.Model.SubstanceAmount>();
@@ -1242,7 +1242,7 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "representation":
-                        RepresentationElement = source.GetFhirString();
+                        RepresentationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "attachment":
                         Attachment = source.Get<Hl7.Fhir.Model.Attachment>();
@@ -1563,7 +1563,7 @@ namespace Hl7.Fhir.Model.R4
                     CopolymerConnectivity = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "modification":
-                    ModificationElement = source.GetFhirStringList();
+                    ModificationElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "monomerSet":
                     MonomerSet = source.GetList<MonomerSetComponent>();

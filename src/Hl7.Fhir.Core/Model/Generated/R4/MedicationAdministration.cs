@@ -335,7 +335,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "site":
                         Site = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1018,13 +1018,13 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "instantiates":
-                    InstantiatesElement = source.GetFhirUriList();
+                    InstantiatesElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "partOf":
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.MedicationAdministrationStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationAdministrationStatusCodes>>();
                     return true;
                 case "statusReason":
                     StatusReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1051,7 +1051,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.GetFhirDateTime();
+                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");

@@ -219,16 +219,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "operator":
-                        OperatorElement = source.GetCodeList<Hl7.Fhir.Model.R4.FilterOperator>();
+                        OperatorElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.FilterOperator>>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirString();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -528,16 +528,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "uri":
-                        UriElement = source.GetFhirUri();
+                        UriElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.R4.PropertyType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.PropertyType>>();
                         return true;
                 }
                 return false;
@@ -852,13 +852,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "display":
-                        DisplayElement = source.GetFhirString();
+                        DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "definition":
-                        DefinitionElement = source.GetFhirString();
+                        DefinitionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "designation":
                         Designation = source.GetList<DesignationComponent>();
@@ -1128,13 +1128,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "language":
-                        LanguageElement = source.GetCode();
+                        LanguageElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "use":
                         Use = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirString();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1317,11 +1317,11 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "valueCode":
                         source.CheckDuplicates<Hl7.Fhir.Model.Code>(Value, "value");
-                        Value = source.GetCode();
+                        Value = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "valueCoding":
                         source.CheckDuplicates<Hl7.Fhir.Model.Coding>(Value, "value");
@@ -1329,23 +1329,23 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.GetFhirString();
+                        Value = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueInteger":
                         source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Value, "value");
-                        Value = source.GetInteger();
+                        Value = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.GetFhirBoolean();
+                        Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.GetFhirDateTime();
+                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "valueDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Value, "value");
-                        Value = source.GetFhirDecimal();
+                        Value = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                 }
                 return false;
@@ -2454,37 +2454,37 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "identifier":
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "title":
-                    TitleElement = source.GetFhirString();
+                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.GetFhirBoolean();
+                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetMarkdown();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "useContext":
                     UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
@@ -2493,34 +2493,34 @@ namespace Hl7.Fhir.Model.R4
                     Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "purpose":
-                    PurposeElement = source.GetMarkdown();
+                    PurposeElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "copyright":
-                    CopyrightElement = source.GetMarkdown();
+                    CopyrightElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "caseSensitive":
-                    CaseSensitiveElement = source.GetFhirBoolean();
+                    CaseSensitiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "valueSet":
-                    ValueSetElement = source.GetCanonical();
+                    ValueSetElement = source.Get<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "hierarchyMeaning":
-                    HierarchyMeaningElement = source.GetCode<Hl7.Fhir.Model.CodeSystemHierarchyMeaning>();
+                    HierarchyMeaningElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CodeSystemHierarchyMeaning>>();
                     return true;
                 case "compositional":
-                    CompositionalElement = source.GetFhirBoolean();
+                    CompositionalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "versionNeeded":
-                    VersionNeededElement = source.GetFhirBoolean();
+                    VersionNeededElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "content":
-                    ContentElement = source.GetCode<Hl7.Fhir.Model.R4.CodeSystemContentMode>();
+                    ContentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CodeSystemContentMode>>();
                     return true;
                 case "supplements":
-                    SupplementsElement = source.GetCanonical();
+                    SupplementsElement = source.Get<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "count":
-                    CountElement = source.GetUnsignedInt();
+                    CountElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "filter":
                     Filter = source.GetList<FilterComponent>();

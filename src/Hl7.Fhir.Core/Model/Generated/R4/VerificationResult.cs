@@ -230,7 +230,7 @@ namespace Hl7.Fhir.Model.R4
                         ValidationStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "validationDate":
-                        ValidationDateElement = source.GetFhirDateTime();
+                        ValidationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "canPushUpdates":
                         CanPushUpdates = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -602,13 +602,13 @@ namespace Hl7.Fhir.Model.R4
                         CommunicationMethod = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "date":
-                        DateElement = source.GetDate();
+                        DateElement = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "sourceIdentityCertificate":
-                        SourceIdentityCertificateElement = source.GetFhirString();
+                        SourceIdentityCertificateElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "proxyIdentityCertificate":
-                        ProxyIdentityCertificateElement = source.GetFhirString();
+                        ProxyIdentityCertificateElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "proxySignature":
                         ProxySignature = source.Get<Hl7.Fhir.Model.R4.Signature>();
@@ -856,7 +856,7 @@ namespace Hl7.Fhir.Model.R4
                         Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "identityCertificate":
-                        IdentityCertificateElement = source.GetFhirString();
+                        IdentityCertificateElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "attestationSignature":
                         AttestationSignature = source.Get<Hl7.Fhir.Model.R4.Signature>();
@@ -1392,16 +1392,16 @@ namespace Hl7.Fhir.Model.R4
                     Target = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "targetLocation":
-                    TargetLocationElement = source.GetFhirStringList();
+                    TargetLocationElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "need":
                     Need = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.status>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.status>>();
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.GetFhirDateTime();
+                    StatusDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "validationType":
                     ValidationType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1413,10 +1413,10 @@ namespace Hl7.Fhir.Model.R4
                     Frequency = source.Get<Hl7.Fhir.Model.R4.Timing>();
                     return true;
                 case "lastPerformed":
-                    LastPerformedElement = source.GetFhirDateTime();
+                    LastPerformedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "nextScheduled":
-                    NextScheduledElement = source.GetDate();
+                    NextScheduledElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "failureAction":
                     FailureAction = source.Get<Hl7.Fhir.Model.CodeableConcept>();

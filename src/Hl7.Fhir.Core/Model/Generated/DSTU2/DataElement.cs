@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "telecom":
                         Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
@@ -405,16 +405,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "identity":
-                        IdentityElement = source.GetId();
+                        IdentityElement = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "uri":
-                        UriElement = source.GetFhirUri();
+                        UriElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "comments":
-                        CommentsElement = source.GetFhirString();
+                        CommentsElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1076,40 +1076,40 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "identifier":
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>>();
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.GetFhirBoolean();
+                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<ContactComponent>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "useContext":
                     UseContext = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "copyright":
-                    CopyrightElement = source.GetFhirString();
+                    CopyrightElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "stringency":
-                    StringencyElement = source.GetCode<Hl7.Fhir.Model.DataElementStringency>();
+                    StringencyElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DataElementStringency>>();
                     return true;
                 case "mapping":
                     Mapping = source.GetList<MappingComponent>();

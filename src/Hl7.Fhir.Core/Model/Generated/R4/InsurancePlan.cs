@@ -576,7 +576,7 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "requirement":
-                        RequirementElement = source.GetFhirString();
+                        RequirementElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "limit":
                         Limit = source.GetList<LimitComponent>();
@@ -1280,13 +1280,13 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "groupSize":
-                        GroupSizeElement = source.GetPositiveInt();
+                        GroupSizeElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "cost":
                         Cost = source.Get<Hl7.Fhir.Model.R4.Money>();
                         return true;
                     case "comment":
-                        CommentElement = source.GetFhirString();
+                        CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -2402,16 +2402,16 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "type":
                     Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "alias":
-                    AliasElement = source.GetFhirStringList();
+                    AliasElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

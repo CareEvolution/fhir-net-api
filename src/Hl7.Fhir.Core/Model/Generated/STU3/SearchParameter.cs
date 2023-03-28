@@ -132,7 +132,7 @@ namespace Hl7.Fhir.Model.STU3
                         Definition = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "expression":
-                        ExpressionElement = source.GetFhirString();
+                        ExpressionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1158,25 +1158,25 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.GetFhirBoolean();
+                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>();
@@ -1188,43 +1188,43 @@ namespace Hl7.Fhir.Model.STU3
                     Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "purpose":
-                    PurposeElement = source.GetMarkdown();
+                    PurposeElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "code":
-                    CodeElement = source.GetCode();
+                    CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "base":
-                    BaseElement = source.GetCodeList<Hl7.Fhir.Model.ResourceType>();
+                    BaseElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.SearchParamType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>>();
                     return true;
                 case "derivedFrom":
-                    DerivedFromElement = source.GetFhirUri();
+                    DerivedFromElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetMarkdown();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "expression":
-                    ExpressionElement = source.GetFhirString();
+                    ExpressionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "xpath":
-                    XpathElement = source.GetFhirString();
+                    XpathElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "xpathUsage":
-                    XpathUsageElement = source.GetCode<Hl7.Fhir.Model.XPathUsageType>();
+                    XpathUsageElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.XPathUsageType>>();
                     return true;
                 case "target":
-                    TargetElement = source.GetCodeList<Hl7.Fhir.Model.ResourceType>();
+                    TargetElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
                     return true;
                 case "comparator":
-                    ComparatorElement = source.GetCodeList<Hl7.Fhir.Model.SearchComparator>();
+                    ComparatorElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchComparator>>();
                     return true;
                 case "modifier":
-                    ModifierElement = source.GetCodeList<Hl7.Fhir.Model.STU3.SearchModifierCode>();
+                    ModifierElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.SearchModifierCode>>();
                     return true;
                 case "chain":
-                    ChainElement = source.GetFhirStringList();
+                    ChainElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "component":
                     Component = source.GetList<ComponentComponent>();

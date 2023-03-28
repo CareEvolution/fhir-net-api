@@ -209,7 +209,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "probabilityDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Probability, "probability");
-                        Probability = source.GetFhirDecimal();
+                        Probability = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "probabilityRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Probability, "probability");
@@ -219,7 +219,7 @@ namespace Hl7.Fhir.Model.STU3
                         QualitativeRisk = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "relativeRisk":
-                        RelativeRiskElement = source.GetFhirDecimal();
+                        RelativeRiskElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "whenPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(When, "when");
@@ -230,7 +230,7 @@ namespace Hl7.Fhir.Model.STU3
                         When = source.Get<Hl7.Fhir.Model.Range>();
                         return true;
                     case "rationale":
-                        RationaleElement = source.GetFhirString();
+                        RationaleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -827,7 +827,7 @@ namespace Hl7.Fhir.Model.STU3
                     Parent = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.ObservationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ObservationStatus>>();
                     return true;
                 case "method":
                     Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -843,7 +843,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
@@ -870,10 +870,10 @@ namespace Hl7.Fhir.Model.STU3
                     Prediction = source.GetList<PredictionComponent>();
                     return true;
                 case "mitigation":
-                    MitigationElement = source.GetFhirString();
+                    MitigationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

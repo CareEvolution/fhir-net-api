@@ -778,7 +778,7 @@ namespace Hl7.Fhir.Model.R4
                         Value = source.Get<Hl7.Fhir.Model.Quantity>();
                         return true;
                     case "supportingInformation":
-                        SupportingInformationElement = source.GetFhirString();
+                        SupportingInformationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;

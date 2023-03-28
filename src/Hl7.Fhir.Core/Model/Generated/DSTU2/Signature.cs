@@ -269,21 +269,21 @@ namespace Hl7.Fhir.Model.DSTU2
                     Type = source.GetList<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "when":
-                    WhenElement = source.GetInstant();
+                    WhenElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "whoUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
-                    Who = source.GetFhirUri();
+                    Who = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "whoReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Who, "who");
                     Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "contentType":
-                    ContentTypeElement = source.GetCode();
+                    ContentTypeElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "blob":
-                    BlobElement = source.GetBase64Binary();
+                    BlobElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
             }
             return false;

@@ -315,19 +315,19 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "value":
-                    ValueElement = source.GetFhirDecimal();
+                    ValueElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "comparator":
-                    ComparatorElement = source.GetCode<Hl7.Fhir.Model.QuantityComparator>();
+                    ComparatorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuantityComparator>>();
                     return true;
                 case "unit":
-                    UnitElement = source.GetFhirString();
+                    UnitElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "system":
-                    SystemElement = source.GetFhirUri();
+                    SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "code":
-                    CodeElement = source.GetCode();
+                    CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
             }
             return false;

@@ -274,16 +274,16 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.GetCode();
+                    UseElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "system":
-                    SystemElement = source.GetFhirUri();
+                    SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "value":
-                    ValueElement = source.GetFhirString();
+                    ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

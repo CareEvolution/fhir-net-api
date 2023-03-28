@@ -416,7 +416,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "dateDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Date, "date");
-                        Date = source.GetFhirDateTime();
+                        Date = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "application":
                         Application = source.GetList<ProcedureComponent>();
@@ -1015,10 +1015,10 @@ namespace Hl7.Fhir.Model.R4
                     Status = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.GetFhirDateTime();
+                    StatusDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "restoreDate":
-                    RestoreDateElement = source.GetFhirDateTime();
+                    RestoreDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "validityPeriod":
                     ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
@@ -1027,10 +1027,10 @@ namespace Hl7.Fhir.Model.R4
                     DataExclusivityPeriod = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "dateOfFirstAuthorization":
-                    DateOfFirstAuthorizationElement = source.GetFhirDateTime();
+                    DateOfFirstAuthorizationElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "internationalBirthDate":
-                    InternationalBirthDateElement = source.GetFhirDateTime();
+                    InternationalBirthDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "legalBasis":
                     LegalBasis = source.Get<Hl7.Fhir.Model.CodeableConcept>();

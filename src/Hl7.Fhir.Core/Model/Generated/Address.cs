@@ -462,31 +462,31 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.GetCode();
+                    UseElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.AddressType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AddressType>>();
                     return true;
                 case "text":
-                    TextElement = source.GetFhirString();
+                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "line":
-                    LineElement = source.GetFhirStringList();
+                    LineElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "city":
-                    CityElement = source.GetFhirString();
+                    CityElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "district":
-                    DistrictElement = source.GetFhirString();
+                    DistrictElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "state":
-                    StateElement = source.GetFhirString();
+                    StateElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "postalCode":
-                    PostalCodeElement = source.GetFhirString();
+                    PostalCodeElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "country":
-                    CountryElement = source.GetFhirString();
+                    CountryElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

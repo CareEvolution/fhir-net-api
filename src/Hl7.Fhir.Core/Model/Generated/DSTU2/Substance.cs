@@ -145,7 +145,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "expiry":
-                        ExpiryElement = source.GetFhirDateTime();
+                        ExpiryElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -629,7 +629,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "instance":
                     Instance = source.GetList<InstanceComponent>();

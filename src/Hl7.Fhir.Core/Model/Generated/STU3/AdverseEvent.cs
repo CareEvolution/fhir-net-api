@@ -227,13 +227,13 @@ namespace Hl7.Fhir.Model.STU3
                         Instance = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "causality":
-                        CausalityElement = source.GetCode<Hl7.Fhir.Model.STU3.AdverseEventCausality>();
+                        CausalityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AdverseEventCausality>>();
                         return true;
                     case "causalityAssessment":
                         CausalityAssessment = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "causalityProductRelatedness":
-                        CausalityProductRelatednessElement = source.GetFhirString();
+                        CausalityProductRelatednessElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "causalityMethod":
                         CausalityMethod = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -829,7 +829,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "category":
-                    CategoryElement = source.GetCode<Hl7.Fhir.Model.STU3.AdverseEventCategory>();
+                    CategoryElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AdverseEventCategory>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -838,7 +838,7 @@ namespace Hl7.Fhir.Model.STU3
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "reaction":
                     Reaction = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -859,7 +859,7 @@ namespace Hl7.Fhir.Model.STU3
                     EventParticipant = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "suspectEntity":
                     SuspectEntity = source.GetList<SuspectEntityComponent>();

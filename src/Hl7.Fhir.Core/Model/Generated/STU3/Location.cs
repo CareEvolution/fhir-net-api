@@ -179,13 +179,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "longitude":
-                        LongitudeElement = source.GetFhirDecimal();
+                        LongitudeElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "latitude":
-                        LatitudeElement = source.GetFhirDecimal();
+                        LatitudeElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "altitude":
-                        AltitudeElement = source.GetFhirDecimal();
+                        AltitudeElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                 }
                 return false;
@@ -746,22 +746,22 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.LocationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationStatus>>();
                     return true;
                 case "operationalStatus":
                     OperationalStatus = source.Get<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "alias":
-                    AliasElement = source.GetFhirStringList();
+                    AliasElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "mode":
-                    ModeElement = source.GetCode<Hl7.Fhir.Model.LocationMode>();
+                    ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationMode>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();

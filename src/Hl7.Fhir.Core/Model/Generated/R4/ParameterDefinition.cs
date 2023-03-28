@@ -369,25 +369,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "name":
-                    NameElement = source.GetCode();
+                    NameElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "use":
-                    UseElement = source.GetCode<Hl7.Fhir.Model.OperationParameterUse>();
+                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.OperationParameterUse>>();
                     return true;
                 case "min":
-                    MinElement = source.GetInteger();
+                    MinElement = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "max":
-                    MaxElement = source.GetFhirString();
+                    MaxElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "documentation":
-                    DocumentationElement = source.GetFhirString();
+                    DocumentationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.R4.FHIRAllTypes>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.FHIRAllTypes>>();
                     return true;
                 case "profile":
-                    ProfileElement = source.GetCanonical();
+                    ProfileElement = source.Get<Hl7.Fhir.Model.Canonical>();
                     return true;
             }
             return false;

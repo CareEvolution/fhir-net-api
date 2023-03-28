@@ -313,7 +313,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "active":
-                    ActiveElement = source.GetFhirBoolean();
+                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "morphology":
                     Morphology = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -325,7 +325,7 @@ namespace Hl7.Fhir.Model.R4
                     LocationQualifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "image":
                     Image = source.GetList<Hl7.Fhir.Model.Attachment>();

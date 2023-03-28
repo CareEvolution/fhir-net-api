@@ -307,13 +307,13 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "versionId":
-                    VersionIdElement = source.GetId();
+                    VersionIdElement = source.Get<Hl7.Fhir.Model.Id>();
                     return true;
                 case "lastUpdated":
-                    LastUpdatedElement = source.GetInstant();
+                    LastUpdatedElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "profile":
-                    ProfileElement = source.GetCanonicalList();
+                    ProfileElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "security":
                     Security = source.GetList<Hl7.Fhir.Model.Coding>();
@@ -322,7 +322,7 @@ namespace Hl7.Fhir.Model
                     Tag = source.GetList<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "source" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    SourceElement = source.GetFhirUri();
+                    SourceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
             }
             return false;

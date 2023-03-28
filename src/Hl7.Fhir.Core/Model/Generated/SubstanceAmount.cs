@@ -360,13 +360,13 @@ namespace Hl7.Fhir.Model
                     return true;
                 case "amountString" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                    Amount = source.GetFhirString();
+                    Amount = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "amountType" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     AmountType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "amountText" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    AmountTextElement = source.GetFhirString();
+                    AmountTextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "referenceRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     ReferenceRange = source.Get<ReferenceRangeComponent>();

@@ -383,19 +383,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.GetId();
+                        UidElement = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "number":
-                        NumberElement = source.GetUnsignedInt();
+                        NumberElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "modality":
                         Modality = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "numberOfInstances":
-                        NumberOfInstancesElement = source.GetUnsignedInt();
+                        NumberOfInstancesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "endpoint":
                         Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -410,7 +410,7 @@ namespace Hl7.Fhir.Model.R4
                         Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "started":
-                        StartedElement = source.GetFhirDateTime();
+                        StartedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "performer":
                         Performer = source.GetList<PerformerComponent>();
@@ -921,16 +921,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.GetId();
+                        UidElement = source.Get<Hl7.Fhir.Model.Id>();
                         return true;
                     case "sopClass":
                         SopClass = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "number":
-                        NumberElement = source.GetUnsignedInt();
+                        NumberElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "title":
-                        TitleElement = source.GetFhirString();
+                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1637,7 +1637,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.ImagingStudyStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ImagingStudyStatus>>();
                     return true;
                 case "modality":
                     Modality = source.GetList<Hl7.Fhir.Model.Coding>();
@@ -1649,7 +1649,7 @@ namespace Hl7.Fhir.Model.R4
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "started":
-                    StartedElement = source.GetFhirDateTime();
+                    StartedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "basedOn":
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1664,10 +1664,10 @@ namespace Hl7.Fhir.Model.R4
                     Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "numberOfSeries":
-                    NumberOfSeriesElement = source.GetUnsignedInt();
+                    NumberOfSeriesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "numberOfInstances":
-                    NumberOfInstancesElement = source.GetUnsignedInt();
+                    NumberOfInstancesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "procedureReference":
                     ProcedureReference = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1688,7 +1688,7 @@ namespace Hl7.Fhir.Model.R4
                     Note = source.GetList<Hl7.Fhir.Model.Annotation>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "series":
                     Series = source.GetList<SeriesComponent>();

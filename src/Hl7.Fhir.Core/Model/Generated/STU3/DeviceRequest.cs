@@ -776,13 +776,13 @@ namespace Hl7.Fhir.Model.STU3
                     GroupIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.RequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestStatus>>();
                     return true;
                 case "intent":
                     Intent = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.RequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
                     return true;
                 case "codeReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Code, "code");
@@ -800,7 +800,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
@@ -811,7 +811,7 @@ namespace Hl7.Fhir.Model.STU3
                     Occurrence = source.Get<Hl7.Fhir.Model.STU3.Timing>();
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.GetFhirDateTime();
+                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requester":
                     Requester = source.Get<RequesterComponent>();

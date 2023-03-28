@@ -329,7 +329,7 @@ namespace Hl7.Fhir.Model.STU3
                         ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
                         return true;
                     case "numberOfRepeatsAllowed":
-                        NumberOfRepeatsAllowedElement = source.GetPositiveInt();
+                        NumberOfRepeatsAllowedElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -531,7 +531,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "allowed":
-                        AllowedElement = source.GetFhirBoolean();
+                        AllowedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "reason":
                         Reason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1299,16 +1299,16 @@ namespace Hl7.Fhir.Model.STU3
                     GroupIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.MedicationRequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestStatus>>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.STU3.MedicationRequestIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestIntent>>();
                     return true;
                 case "category":
                     Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.STU3.MedicationRequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestPriority>>();
                     return true;
                 case "medicationCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
@@ -1328,7 +1328,7 @@ namespace Hl7.Fhir.Model.STU3
                     SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.GetFhirDateTime();
+                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requester":
                     Requester = source.Get<RequesterComponent>();

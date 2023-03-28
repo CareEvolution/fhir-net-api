@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model
             }
             switch (elementName)
             {
-                case "id":
+                case "@id":
                     ElementId = source.GetElementId();
                     return true;
                 case "extension":

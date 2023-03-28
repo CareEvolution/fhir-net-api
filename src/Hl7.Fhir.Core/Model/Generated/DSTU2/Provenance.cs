@@ -358,7 +358,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "target":
-                        TargetElement = source.GetFhirUri();
+                        TargetElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -614,16 +614,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "role":
-                        RoleElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ProvenanceEntityRole>();
+                        RoleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProvenanceEntityRole>>();
                         return true;
                     case "type":
                         Type = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "reference":
-                        ReferenceElement = source.GetFhirUri();
+                        ReferenceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "display":
-                        DisplayElement = source.GetFhirString();
+                        DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "agent":
                         Agent = source.Get<AgentComponent>();
@@ -1077,7 +1077,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Period = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "recorded":
-                    RecordedElement = source.GetInstant();
+                    RecordedElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "reason":
                     Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1089,7 +1089,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "policy":
-                    PolicyElement = source.GetFhirUriList();
+                    PolicyElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "agent":
                     Agent = source.GetList<AgentComponent>();

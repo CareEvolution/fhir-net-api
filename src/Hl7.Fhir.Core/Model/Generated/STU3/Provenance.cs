@@ -150,7 +150,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "whoUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
-                        Who = source.GetFhirUri();
+                        Who = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "whoReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Who, "who");
@@ -158,7 +158,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "onBehalfOfUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(OnBehalfOf, "onBehalfOf");
-                        OnBehalfOf = source.GetFhirUri();
+                        OnBehalfOf = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "onBehalfOfReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(OnBehalfOf, "onBehalfOf");
@@ -404,11 +404,11 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "role":
-                        RoleElement = source.GetCode<Hl7.Fhir.Model.STU3.ProvenanceEntityRole>();
+                        RoleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ProvenanceEntityRole>>();
                         return true;
                     case "whatUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(What, "what");
-                        What = source.GetFhirUri();
+                        What = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "whatReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(What, "what");
@@ -869,10 +869,10 @@ namespace Hl7.Fhir.Model.STU3
                     Period = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "recorded":
-                    RecordedElement = source.GetInstant();
+                    RecordedElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "policy":
-                    PolicyElement = source.GetFhirUriList();
+                    PolicyElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "location":
                     Location = source.Get<Hl7.Fhir.Model.ResourceReference>();

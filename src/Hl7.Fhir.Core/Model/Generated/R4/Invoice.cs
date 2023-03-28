@@ -300,7 +300,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "sequence":
-                        SequenceElement = source.GetPositiveInt();
+                        SequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "chargeItemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(ChargeItem, "chargeItem");
@@ -555,13 +555,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.R4.InvoicePriceComponentType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.InvoicePriceComponentType>>();
                         return true;
                     case "code":
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "factor":
-                        FactorElement = source.GetFhirDecimal();
+                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "amount":
                         Amount = source.Get<Hl7.Fhir.Model.R4.Money>();
@@ -1132,10 +1132,10 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.InvoiceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.InvoiceStatus>>();
                     return true;
                 case "cancelledReason":
-                    CancelledReasonElement = source.GetFhirString();
+                    CancelledReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1147,7 +1147,7 @@ namespace Hl7.Fhir.Model.R4
                     Recipient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "participant":
                     Participant = source.GetList<ParticipantComponent>();
@@ -1171,7 +1171,7 @@ namespace Hl7.Fhir.Model.R4
                     TotalGross = source.Get<Hl7.Fhir.Model.R4.Money>();
                     return true;
                 case "paymentTerms":
-                    PaymentTermsElement = source.GetMarkdown();
+                    PaymentTermsElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "note":
                     Note = source.GetList<Hl7.Fhir.Model.Annotation>();

@@ -279,16 +279,16 @@ namespace Hl7.Fhir.Model.DSTU2
                         Subtype = source.GetList<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "action":
-                        ActionElement = source.GetCode<Hl7.Fhir.Model.AuditEventAction>();
+                        ActionElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AuditEventAction>>();
                         return true;
                     case "dateTime":
-                        DateTimeElement = source.GetInstant();
+                        DateTimeElement = source.Get<Hl7.Fhir.Model.Instant>();
                         return true;
                     case "outcome":
-                        OutcomeElement = source.GetCode<Hl7.Fhir.Model.AuditEventOutcome>();
+                        OutcomeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AuditEventOutcome>>();
                         return true;
                     case "outcomeDesc":
-                        OutcomeDescElement = source.GetFhirString();
+                        OutcomeDescElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "purposeOfEvent":
                         PurposeOfEvent = source.GetList<Hl7.Fhir.Model.Coding>();
@@ -739,19 +739,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         UserId = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "altId":
-                        AltIdElement = source.GetFhirString();
+                        AltIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "requestor":
-                        RequestorElement = source.GetFhirBoolean();
+                        RequestorElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "location":
                         Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "policy":
-                        PolicyElement = source.GetFhirUriList();
+                        PolicyElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "media":
                         Media = source.Get<Hl7.Fhir.Model.Coding>();
@@ -1050,10 +1050,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "address":
-                        AddressElement = source.GetFhirString();
+                        AddressElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.DSTU2.AuditEventParticipantNetworkType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AuditEventParticipantNetworkType>>();
                         return true;
                 }
                 return false;
@@ -1246,7 +1246,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "site":
-                        SiteElement = source.GetFhirString();
+                        SiteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "identifier":
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
@@ -1627,13 +1627,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         SecurityLabel = source.GetList<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "query":
-                        QueryElement = source.GetBase64Binary();
+                        QueryElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
                         return true;
                     case "detail":
                         Detail = source.GetList<DetailComponent>();
@@ -1913,10 +1913,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetFhirString();
+                        TypeElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "value":
-                        ValueElement = source.GetBase64Binary();
+                        ValueElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
                         return true;
                 }
                 return false;

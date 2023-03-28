@@ -322,7 +322,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "wasSubstituted":
-                        WasSubstitutedElement = source.GetFhirBoolean();
+                        WasSubstitutedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "type":
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1112,7 +1112,7 @@ namespace Hl7.Fhir.Model.STU3
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.MedicationDispenseStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationDispenseStatus>>();
                     return true;
                 case "category":
                     Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1150,10 +1150,10 @@ namespace Hl7.Fhir.Model.STU3
                     DaysSupply = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                     return true;
                 case "whenPrepared":
-                    WhenPreparedElement = source.GetFhirDateTime();
+                    WhenPreparedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "whenHandedOver":
-                    WhenHandedOverElement = source.GetFhirDateTime();
+                    WhenHandedOverElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "destination":
                     Destination = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1174,7 +1174,7 @@ namespace Hl7.Fhir.Model.STU3
                     DetectedIssue = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "notDone":
-                    NotDoneElement = source.GetFhirBoolean();
+                    NotDoneElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "notDoneReasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(NotDoneReason, "notDoneReason");

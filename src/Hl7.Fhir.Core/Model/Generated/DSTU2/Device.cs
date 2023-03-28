@@ -591,28 +591,28 @@ namespace Hl7.Fhir.Model.DSTU2
                     Note = source.GetList<Hl7.Fhir.Model.Annotation>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.DeviceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceStatus>>();
                     return true;
                 case "manufacturer":
-                    ManufacturerElement = source.GetFhirString();
+                    ManufacturerElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "model":
-                    ModelElement = source.GetFhirString();
+                    ModelElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "manufactureDate":
-                    ManufactureDateElement = source.GetFhirDateTime();
+                    ManufactureDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "expiry":
-                    ExpiryElement = source.GetFhirDateTime();
+                    ExpiryElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "udi":
-                    UdiElement = source.GetFhirString();
+                    UdiElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "lotNumber":
-                    LotNumberElement = source.GetFhirString();
+                    LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "owner":
                     Owner = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -627,7 +627,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Contact = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
                     return true;
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
             }
             return false;

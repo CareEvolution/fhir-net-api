@@ -288,7 +288,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FlagStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FlagStatus>>();
                     return true;
                 case "category":
                     Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();

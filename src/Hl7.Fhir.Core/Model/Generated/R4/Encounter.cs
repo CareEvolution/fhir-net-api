@@ -127,7 +127,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.EncounterStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.EncounterStatus>>();
                         return true;
                     case "period":
                         Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -670,7 +670,7 @@ namespace Hl7.Fhir.Model.R4
                         Use = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "rank":
-                        RankElement = source.GetPositiveInt();
+                        RankElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                 }
                 return false;
@@ -1247,7 +1247,7 @@ namespace Hl7.Fhir.Model.R4
                         Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.EncounterLocationStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.EncounterLocationStatus>>();
                         return true;
                     case "physicalType":
                         PhysicalType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1954,7 +1954,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.EncounterStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.EncounterStatus>>();
                     return true;
                 case "statusHistory":
                     StatusHistory = source.GetList<StatusHistoryComponent>();

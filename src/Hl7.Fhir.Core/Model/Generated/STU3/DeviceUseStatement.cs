@@ -368,7 +368,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DeviceUseStatementStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceUseStatementStatus>>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -386,10 +386,10 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.GetFhirDateTime();
+                    Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recordedOn":
-                    RecordedOnElement = source.GetFhirDateTime();
+                    RecordedOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "source":
                     Source = source.Get<Hl7.Fhir.Model.ResourceReference>();

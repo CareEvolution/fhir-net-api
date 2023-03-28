@@ -132,7 +132,7 @@ namespace Hl7.Fhir.Model.STU3
                         Coverage = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "priority":
-                        PriorityElement = source.GetPositiveInt();
+                        PriorityElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                 }
                 return false;
@@ -320,7 +320,7 @@ namespace Hl7.Fhir.Model.STU3
                         Party = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "onHold":
-                        OnHoldElement = source.GetFhirBoolean();
+                        OnHoldElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "period":
                         Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -778,13 +778,13 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.AccountStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AccountStatus>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -805,7 +805,7 @@ namespace Hl7.Fhir.Model.STU3
                     Owner = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "guarantor":
                     Guarantor = source.GetList<GuarantorComponent>();

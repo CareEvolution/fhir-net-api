@@ -313,25 +313,25 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "deviceIdentifier":
-                        DeviceIdentifierElement = source.GetFhirString();
+                        DeviceIdentifierElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "jurisdiction":
-                        JurisdictionElement = source.GetFhirUri();
+                        JurisdictionElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "carrierHRF":
-                        CarrierHRFElement = source.GetFhirString();
+                        CarrierHRFElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "carrierAIDC":
-                        CarrierAIDCElement = source.GetBase64Binary();
+                        CarrierAIDCElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
                         return true;
                     case "issuer":
-                        IssuerElement = source.GetFhirUri();
+                        IssuerElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "entryType":
-                        EntryTypeElement = source.GetCode<Hl7.Fhir.Model.UDIEntryType>();
+                        EntryTypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UDIEntryType>>();
                         return true;
                 }
                 return false;
@@ -1025,28 +1025,28 @@ namespace Hl7.Fhir.Model.STU3
                     Udi = source.Get<UdiComponent>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FHIRDeviceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FHIRDeviceStatus>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "lotNumber":
-                    LotNumberElement = source.GetFhirString();
+                    LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "manufacturer":
-                    ManufacturerElement = source.GetFhirString();
+                    ManufacturerElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "manufactureDate":
-                    ManufactureDateElement = source.GetFhirDateTime();
+                    ManufactureDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "expirationDate":
-                    ExpirationDateElement = source.GetFhirDateTime();
+                    ExpirationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "model":
-                    ModelElement = source.GetFhirString();
+                    ModelElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1061,7 +1061,7 @@ namespace Hl7.Fhir.Model.STU3
                     Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "note":
                     Note = source.GetList<Hl7.Fhir.Model.Annotation>();

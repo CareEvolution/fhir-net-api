@@ -239,7 +239,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetDate();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
             }
             return false;

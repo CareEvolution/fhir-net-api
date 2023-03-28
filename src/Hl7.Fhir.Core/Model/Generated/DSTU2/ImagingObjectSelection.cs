@@ -184,10 +184,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.GetOid();
+                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "url":
-                        UrlElement = source.GetFhirUri();
+                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "imagingStudy":
                         ImagingStudy = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -437,10 +437,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.GetOid();
+                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "url":
-                        UrlElement = source.GetFhirUri();
+                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "instance":
                         Instance = source.GetList<InstanceComponent>();
@@ -716,13 +716,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "sopClass":
-                        SopClassElement = source.GetOid();
+                        SopClassElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "uid":
-                        UidElement = source.GetOid();
+                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "url":
-                        UrlElement = source.GetFhirUri();
+                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "frames":
                         Frames = source.GetList<FramesComponent>();
@@ -955,10 +955,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "frameNumbers":
-                        FrameNumbersElement = source.GetUnsignedIntList();
+                        FrameNumbersElement = source.GetList<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "url":
-                        UrlElement = source.GetFhirUri();
+                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                 }
                 return false;
@@ -1324,7 +1324,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "uid":
-                    UidElement = source.GetOid();
+                    UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1333,13 +1333,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Title = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "author":
                     Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "authoringTime":
-                    AuthoringTimeElement = source.GetFhirDateTime();
+                    AuthoringTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "study":
                     Study = source.GetList<StudyComponent>();

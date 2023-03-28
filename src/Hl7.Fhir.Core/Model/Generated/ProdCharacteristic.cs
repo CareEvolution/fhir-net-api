@@ -393,13 +393,13 @@ namespace Hl7.Fhir.Model
                     ExternalDiameter = source.Get<Hl7.Fhir.Model.Quantity>();
                     return true;
                 case "shape" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ShapeElement = source.GetFhirString();
+                    ShapeElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "color" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ColorElement = source.GetFhirStringList();
+                    ColorElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "imprint" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ImprintElement = source.GetFhirStringList();
+                    ImprintElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "image" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     Image = source.GetList<Hl7.Fhir.Model.Attachment>();

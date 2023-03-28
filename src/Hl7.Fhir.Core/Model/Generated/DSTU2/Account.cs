@@ -373,13 +373,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "activePeriod":
                     ActivePeriod = source.Get<Hl7.Fhir.Model.Period>();
@@ -400,7 +400,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Owner = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

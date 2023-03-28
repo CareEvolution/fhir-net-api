@@ -887,10 +887,10 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "clinicalStatus":
-                    ClinicalStatusElement = source.GetCode<Hl7.Fhir.Model.STU3.ConditionClinicalStatusCodes>();
+                    ClinicalStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ConditionClinicalStatusCodes>>();
                     return true;
                 case "verificationStatus":
-                    VerificationStatusElement = source.GetCode<Hl7.Fhir.Model.ConditionVerificationStatus>();
+                    VerificationStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ConditionVerificationStatus>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -912,7 +912,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "onsetDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Onset, "onset");
-                    Onset = source.GetFhirDateTime();
+                    Onset = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "onsetAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.STU3.Age>(Onset, "onset");
@@ -928,11 +928,11 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "onsetString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Onset, "onset");
-                    Onset = source.GetFhirString();
+                    Onset = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "abatementDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Abatement, "abatement");
-                    Abatement = source.GetFhirDateTime();
+                    Abatement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "abatementAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.STU3.Age>(Abatement, "abatement");
@@ -940,7 +940,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "abatementBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Abatement, "abatement");
-                    Abatement = source.GetFhirBoolean();
+                    Abatement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "abatementPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Abatement, "abatement");
@@ -952,10 +952,10 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "abatementString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Abatement, "abatement");
-                    Abatement = source.GetFhirString();
+                    Abatement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "assertedDate":
-                    AssertedDateElement = source.GetFhirDateTime();
+                    AssertedDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "asserter":
                     Asserter = source.Get<Hl7.Fhir.Model.ResourceReference>();

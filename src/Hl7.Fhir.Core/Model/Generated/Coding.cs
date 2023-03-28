@@ -293,19 +293,19 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "system":
-                    SystemElement = source.GetFhirUri();
+                    SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "code":
-                    CodeElement = source.GetCode();
+                    CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "display":
-                    DisplayElement = source.GetFhirString();
+                    DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "userSelected":
-                    UserSelectedElement = source.GetFhirBoolean();
+                    UserSelectedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
             }
             return false;

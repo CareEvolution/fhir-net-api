@@ -148,7 +148,7 @@ namespace Hl7.Fhir.Model.STU3
                         ComponentId = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "productionSpec":
-                        ProductionSpecElement = source.GetFhirString();
+                        ProductionSpecElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -552,7 +552,7 @@ namespace Hl7.Fhir.Model.STU3
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "lastSystemChange":
-                    LastSystemChangeElement = source.GetInstant();
+                    LastSystemChangeElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "source":
                     Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -567,7 +567,7 @@ namespace Hl7.Fhir.Model.STU3
                     ParameterGroup = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "measurementPrinciple":
-                    MeasurementPrincipleElement = source.GetCode<Hl7.Fhir.Model.STU3.MeasmntPrinciple>();
+                    MeasurementPrincipleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MeasmntPrinciple>>();
                     return true;
                 case "productionSpecification":
                     ProductionSpecification = source.GetList<ProductionSpecificationComponent>();

@@ -265,7 +265,7 @@ namespace Hl7.Fhir.Model.R4
                         Response = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "date":
-                        DateElement = source.GetDate();
+                        DateElement = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "responsible":
                         Responsible = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -525,10 +525,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.R4.NoteType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.NoteType>>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1073,13 +1073,13 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "paymentIssuer":
                     PaymentIssuer = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1091,13 +1091,13 @@ namespace Hl7.Fhir.Model.R4
                     Requestor = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "outcome":
-                    OutcomeElement = source.GetCode<Hl7.Fhir.Model.R4.ClaimProcessingCodes>();
+                    OutcomeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ClaimProcessingCodes>>();
                     return true;
                 case "disposition":
-                    DispositionElement = source.GetFhirString();
+                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "paymentDate":
-                    PaymentDateElement = source.GetDate();
+                    PaymentDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "paymentAmount":
                     PaymentAmount = source.Get<Hl7.Fhir.Model.R4.Money>();

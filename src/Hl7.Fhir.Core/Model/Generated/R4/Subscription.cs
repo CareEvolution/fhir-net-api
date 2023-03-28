@@ -218,16 +218,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.SubscriptionChannelType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionChannelType>>();
                         return true;
                     case "endpoint":
-                        EndpointElement = source.GetUrl();
+                        EndpointElement = source.Get<Hl7.Fhir.Model.Url>();
                         return true;
                     case "payload":
-                        PayloadElement = source.GetCode();
+                        PayloadElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "header":
-                        HeaderElement = source.GetFhirStringList();
+                        HeaderElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -658,22 +658,22 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.SubscriptionStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionStatus>>();
                     return true;
                 case "contact":
                     Contact = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
                     return true;
                 case "end":
-                    EndElement = source.GetInstant();
+                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "reason":
-                    ReasonElement = source.GetFhirString();
+                    ReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "criteria":
-                    CriteriaElement = source.GetFhirString();
+                    CriteriaElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "error":
-                    ErrorElement = source.GetFhirString();
+                    ErrorElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "channel":
                     Channel = source.Get<ChannelComponent>();

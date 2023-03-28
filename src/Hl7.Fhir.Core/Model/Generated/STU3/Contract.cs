@@ -638,7 +638,7 @@ namespace Hl7.Fhir.Model.STU3
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "effectiveTime":
-                        EffectiveTimeElement = source.GetFhirDateTime();
+                        EffectiveTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -647,10 +647,10 @@ namespace Hl7.Fhir.Model.STU3
                         UnitPrice = source.Get<Hl7.Fhir.Model.STU3.Money>();
                         return true;
                     case "factor":
-                        FactorElement = source.GetFhirDecimal();
+                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "points":
-                        PointsElement = source.GetFhirDecimal();
+                        PointsElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "net":
                         Net = source.Get<Hl7.Fhir.Model.STU3.Money>();
@@ -1106,7 +1106,7 @@ namespace Hl7.Fhir.Model.STU3
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "issued":
-                        IssuedElement = source.GetFhirDateTime();
+                        IssuedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "applies":
                         Applies = source.Get<Hl7.Fhir.Model.Period>();
@@ -1133,7 +1133,7 @@ namespace Hl7.Fhir.Model.STU3
                         Agent = source.GetList<TermAgentComponent>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valuedItem":
                         ValuedItem = source.GetList<TermValuedItemComponent>();
@@ -1739,7 +1739,7 @@ namespace Hl7.Fhir.Model.STU3
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "effectiveTime":
-                        EffectiveTimeElement = source.GetFhirDateTime();
+                        EffectiveTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -1748,10 +1748,10 @@ namespace Hl7.Fhir.Model.STU3
                         UnitPrice = source.Get<Hl7.Fhir.Model.STU3.Money>();
                         return true;
                     case "factor":
-                        FactorElement = source.GetFhirDecimal();
+                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "points":
-                        PointsElement = source.GetFhirDecimal();
+                        PointsElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "net":
                         Net = source.Get<Hl7.Fhir.Model.STU3.Money>();
@@ -2929,10 +2929,10 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.ContractResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContractResourceStatusCodes>>();
                     return true;
                 case "issued":
-                    IssuedElement = source.GetFhirDateTime();
+                    IssuedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "applies":
                     Applies = source.Get<Hl7.Fhir.Model.Period>();

@@ -370,10 +370,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
                     return true;
                 case "gender":
-                    GenderElement = source.GetCode<Hl7.Fhir.Model.AdministrativeGender>();
+                    GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
                     return true;
                 case "birthDate":
-                    BirthDateElement = source.GetDate();
+                    BirthDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "address":
                     Address = source.GetList<Hl7.Fhir.Model.Address>();

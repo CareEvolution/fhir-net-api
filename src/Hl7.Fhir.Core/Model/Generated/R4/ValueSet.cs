@@ -193,10 +193,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "lockedDate":
-                        LockedDateElement = source.GetDate();
+                        LockedDateElement = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "inactive":
-                        InactiveElement = source.GetFhirBoolean();
+                        InactiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "include":
                         Include = source.GetList<ConceptSetComponent>();
@@ -512,10 +512,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "system":
-                        SystemElement = source.GetFhirUri();
+                        SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "version":
-                        VersionElement = source.GetFhirString();
+                        VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "concept":
                         Concept = source.GetList<ConceptReferenceComponent>();
@@ -524,7 +524,7 @@ namespace Hl7.Fhir.Model.R4
                         Filter = source.GetList<FilterComponent>();
                         return true;
                     case "valueSet":
-                        ValueSetElement = source.GetCanonicalList();
+                        ValueSetElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                         return true;
                 }
                 return false;
@@ -787,10 +787,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "display":
-                        DisplayElement = source.GetFhirString();
+                        DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "designation":
                         Designation = source.GetList<DesignationComponent>();
@@ -1021,13 +1021,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "language":
-                        LanguageElement = source.GetCode();
+                        LanguageElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "use":
                         Use = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirString();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1264,13 +1264,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "property":
-                        PropertyElement = source.GetCode();
+                        PropertyElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "op":
-                        OpElement = source.GetCode<Hl7.Fhir.Model.R4.FilterOperator>();
+                        OpElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.FilterOperator>>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirString();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1584,16 +1584,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        IdentifierElement = source.GetFhirUri();
+                        IdentifierElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "timestamp":
-                        TimestampElement = source.GetFhirDateTime();
+                        TimestampElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "total":
-                        TotalElement = source.GetInteger();
+                        TotalElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "offset":
-                        OffsetElement = source.GetInteger();
+                        OffsetElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "parameter":
                         Parameter = source.GetList<ParameterComponent>();
@@ -1829,35 +1829,35 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.GetFhirString();
+                        Value = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.GetFhirBoolean();
+                        Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "valueInteger":
                         source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Value, "value");
-                        Value = source.GetInteger();
+                        Value = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "valueDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Value, "value");
-                        Value = source.GetFhirDecimal();
+                        Value = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "valueUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Value, "value");
-                        Value = source.GetFhirUri();
+                        Value = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "valueCode":
                         source.CheckDuplicates<Hl7.Fhir.Model.Code>(Value, "value");
-                        Value = source.GetCode();
+                        Value = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.GetFhirDateTime();
+                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                 }
                 return false;
@@ -2272,22 +2272,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "system":
-                        SystemElement = source.GetFhirUri();
+                        SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "abstract":
-                        AbstractElement = source.GetFhirBoolean();
+                        AbstractElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "inactive":
-                        InactiveElement = source.GetFhirBoolean();
+                        InactiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "version":
-                        VersionElement = source.GetFhirString();
+                        VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "code":
-                        CodeElement = source.GetCode();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "display":
-                        DisplayElement = source.GetFhirString();
+                        DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "designation":
                         Designation = source.GetList<DesignationComponent>();
@@ -3171,37 +3171,37 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "identifier":
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "title":
-                    TitleElement = source.GetFhirString();
+                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.GetFhirBoolean();
+                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetMarkdown();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "useContext":
                     UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
@@ -3210,13 +3210,13 @@ namespace Hl7.Fhir.Model.R4
                     Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "immutable":
-                    ImmutableElement = source.GetFhirBoolean();
+                    ImmutableElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "purpose":
-                    PurposeElement = source.GetMarkdown();
+                    PurposeElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "copyright":
-                    CopyrightElement = source.GetMarkdown();
+                    CopyrightElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "compose":
                     Compose = source.Get<ComposeComponent>();

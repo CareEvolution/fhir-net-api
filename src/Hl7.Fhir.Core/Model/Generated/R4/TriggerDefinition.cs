@@ -274,10 +274,10 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.R4.TriggerType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.TriggerType>>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Timing, "timing");
@@ -289,11 +289,11 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "timingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Timing, "timing");
-                    Timing = source.GetDate();
+                    Timing = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.GetFhirDateTime();
+                    Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "data":
                     Data = source.GetList<Hl7.Fhir.Model.R4.DataRequirement>();

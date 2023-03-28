@@ -313,72 +313,72 @@ namespace Hl7.Fhir.Model
             }
             switch (elementName)
             {
-                case "url":
+                case "@url":
                     Url = source.GetExtensionUrl();
                     return true;
                 case "valueBoolean":
                     source.CheckDuplicates<FhirBoolean>(Value, "value");
-                    Value = source.GetFhirBoolean();
+                    Value = source.Get<FhirBoolean>();
                     return true;
                 case "valueInteger":
                     source.CheckDuplicates<Integer>(Value, "value");
-                    Value = source.GetInteger();
+                    Value = source.Get<Integer>();
                     return true;
                 case "valueDecimal":
                     source.CheckDuplicates<FhirDecimal>(Value, "value");
-                    Value = source.GetFhirDecimal();
+                    Value = source.Get<FhirDecimal>();
                     return true;
                 case "valueBase64Binary":
                     source.CheckDuplicates<Base64Binary>(Value, "value");
-                    Value = source.GetBase64Binary();
+                    Value = source.Get<Base64Binary>();
                     return true;
                 case "valueInstant":
                     source.CheckDuplicates<Instant>(Value, "value");
-                    Value = source.GetInstant();
+                    Value = source.Get<Instant>();
                     return true;
                 case "valueString":
                     source.CheckDuplicates<FhirString>(Value, "value");
-                    Value = source.GetFhirString();
+                    Value = source.Get<FhirString>();
                     return true;
                 case "valueUri":
                     source.CheckDuplicates<FhirUri>(Value, "value");
-                    Value = source.GetFhirUri();
+                    Value = source.Get<FhirUri>();
                     return true;
                 case "valueDate":
                     source.CheckDuplicates<Date>(Value, "value");
-                    Value = source.GetDate();
+                    Value = source.Get<Date>();
                     return true;
                 case "valueDateTime":
                     source.CheckDuplicates<FhirDateTime>(Value, "value");
-                    Value = source.GetFhirDateTime();
+                    Value = source.Get<FhirDateTime>();
                     return true;
                 case "valueTime":
                     source.CheckDuplicates<Time>(Value, "value");
-                    Value = source.GetTime();
+                    Value = source.Get<Time>();
                     return true;
                 case "valueCode":
                     source.CheckDuplicates<Code>(Value, "value");
-                    Value = source.GetCode();
+                    Value = source.Get<Code>();
                     return true;
                 case "valueOid":
                     source.CheckDuplicates<Oid>(Value, "value");
-                    Value = source.GetOid();
+                    Value = source.Get<Oid>();
                     return true;
                 case "valueId":
                     source.CheckDuplicates<Id>(Value, "value");
-                    Value = source.GetId();
+                    Value = source.Get<Id>();
                     return true;
                 case "valueUnsignedInt":
                     source.CheckDuplicates<UnsignedInt>(Value, "value");
-                    Value = source.GetUnsignedInt();
+                    Value = source.Get<UnsignedInt>();
                     return true;
                 case "valuePositiveInt":
                     source.CheckDuplicates<PositiveInt>(Value, "value");
-                    Value = source.GetPositiveInt();
+                    Value = source.Get<PositiveInt>();
                     return true;
                 case "valueMarkdown":
                     source.CheckDuplicates<Markdown>(Value, "value");
-                    Value = source.GetMarkdown();
+                    Value = source.Get<Markdown>();
                     return true;
                 case "valueAnnotation":
                     source.CheckDuplicates<Annotation>(Value, "value");
@@ -450,15 +450,15 @@ namespace Hl7.Fhir.Model
                     return true;
                 case "valueCanonical" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<Canonical>(Value, "value");
-                    Value = source.GetCanonical();
+                    Value = source.Get<Canonical>();
                     return true;
                 case "valueUrl" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<Url>(Value, "value");
-                    Value = source.GetUrl();
+                    Value = source.Get<Url>();
                     return true;
                 case "valueUuid" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<Uuid>(Value, "value");
-                    Value = source.GetUuid();
+                    Value = source.Get<Uuid>();
                     return true;
                 case "valueAge" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Age>(Value, "value");

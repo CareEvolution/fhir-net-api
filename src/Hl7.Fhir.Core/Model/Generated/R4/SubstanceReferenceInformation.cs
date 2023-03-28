@@ -862,7 +862,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "amountString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                        Amount = source.GetFhirString();
+                        Amount = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "amountType":
                         AmountType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1227,7 +1227,7 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "gene":
                     Gene = source.GetList<GeneComponent>();

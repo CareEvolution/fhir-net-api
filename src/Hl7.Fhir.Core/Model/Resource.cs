@@ -280,16 +280,16 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "id":
-                    IdElement = source.GetId();
+                    IdElement = source.Get<Id>();
                     return true;
                 case "meta":
                     Meta = source.Get<Meta>();
                     return true;
                 case "implicitRules":
-                    ImplicitRulesElement = source.GetFhirUri();
+                    ImplicitRulesElement = source.Get<FhirUri>();
                     return true;
                 case "language":
-                    LanguageElement = source.GetCode();
+                    LanguageElement = source.Get<Code>();
                     return true;
             }
             return false;

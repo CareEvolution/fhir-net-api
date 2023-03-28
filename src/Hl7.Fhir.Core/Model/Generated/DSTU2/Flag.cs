@@ -291,7 +291,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FlagStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FlagStatus>>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

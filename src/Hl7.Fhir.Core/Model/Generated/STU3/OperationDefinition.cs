@@ -369,25 +369,25 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetCode();
+                        NameElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "use":
-                        UseElement = source.GetCode<Hl7.Fhir.Model.OperationParameterUse>();
+                        UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.OperationParameterUse>>();
                         return true;
                     case "min":
-                        MinElement = source.GetInteger();
+                        MinElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "max":
-                        MaxElement = source.GetFhirString();
+                        MaxElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "documentation":
-                        DocumentationElement = source.GetFhirString();
+                        DocumentationElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.STU3.FHIRAllTypes>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>>();
                         return true;
                     case "searchType":
-                        SearchTypeElement = source.GetCode<Hl7.Fhir.Model.SearchParamType>();
+                        SearchTypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>>();
                         return true;
                     case "profile":
                         Profile = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -665,11 +665,11 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "strength":
-                        StrengthElement = source.GetCode<Hl7.Fhir.Model.BindingStrength>();
+                        StrengthElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.BindingStrength>>();
                         return true;
                     case "valueSetUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(ValueSet, "valueSet");
-                        ValueSet = source.GetFhirUri();
+                        ValueSet = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "valueSetReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(ValueSet, "valueSet");
@@ -872,10 +872,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "parameterName":
-                        ParameterNameElement = source.GetFhirStringList();
+                        ParameterNameElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "comment":
-                        CommentElement = source.GetFhirString();
+                        CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1848,34 +1848,34 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.PublicationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
                     return true;
                 case "kind":
-                    KindElement = source.GetCode<Hl7.Fhir.Model.OperationKind>();
+                    KindElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.OperationKind>>();
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.GetFhirBoolean();
+                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetMarkdown();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "useContext":
                     UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
@@ -1884,31 +1884,31 @@ namespace Hl7.Fhir.Model.STU3
                     Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "purpose":
-                    PurposeElement = source.GetMarkdown();
+                    PurposeElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
                 case "idempotent":
-                    IdempotentElement = source.GetFhirBoolean();
+                    IdempotentElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "code":
-                    CodeElement = source.GetCode();
+                    CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "base":
                     Base = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "resource":
-                    ResourceElement = source.GetCodeList<Hl7.Fhir.Model.ResourceType>();
+                    ResourceElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
                     return true;
                 case "system":
-                    SystemElement = source.GetFhirBoolean();
+                    SystemElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "type":
-                    TypeElement = source.GetFhirBoolean();
+                    TypeElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "instance":
-                    InstanceElement = source.GetFhirBoolean();
+                    InstanceElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "parameter":
                     Parameter = source.GetList<ParameterComponent>();

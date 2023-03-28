@@ -288,16 +288,16 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "system":
-                    SystemElement = source.GetCode<Hl7.Fhir.Model.STU3.ContactPointSystem>();
+                    SystemElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ContactPointSystem>>();
                     return true;
                 case "value":
-                    ValueElement = source.GetFhirString();
+                    ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "use":
-                    UseElement = source.GetCode<Hl7.Fhir.Model.ContactPointUse>();
+                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContactPointUse>>();
                     return true;
                 case "rank":
-                    RankElement = source.GetPositiveInt();
+                    RankElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

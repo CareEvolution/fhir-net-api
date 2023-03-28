@@ -515,7 +515,7 @@ namespace Hl7.Fhir.Model
                     OriginalRuleset = source.Get<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "created" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "target" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
                     Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -527,7 +527,7 @@ namespace Hl7.Fhir.Model
                     Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "priority" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     Priority = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -537,7 +537,7 @@ namespace Hl7.Fhir.Model
                     return true;
                 case "servicedDate" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Serviced, "serviced");
-                    Serviced = source.GetDate();
+                    Serviced = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "servicedPeriod" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Serviced, "serviced");
@@ -556,7 +556,7 @@ namespace Hl7.Fhir.Model
                     Coverage = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "businessArrangement" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    BusinessArrangementElement = source.GetFhirString();
+                    BusinessArrangementElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "benefitCategory" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     BenefitCategory = source.Get<Hl7.Fhir.Model.CodeableConcept>();

@@ -320,7 +320,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "wasSubstituted":
-                        WasSubstitutedElement = source.GetFhirBoolean();
+                        WasSubstitutedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "type":
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1094,7 +1094,7 @@ namespace Hl7.Fhir.Model.R4
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.MedicationDispenseStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationDispenseStatusCodes>>();
                     return true;
                 case "statusReasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(StatusReason, "statusReason");
@@ -1143,10 +1143,10 @@ namespace Hl7.Fhir.Model.R4
                     DaysSupply = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                     return true;
                 case "whenPrepared":
-                    WhenPreparedElement = source.GetFhirDateTime();
+                    WhenPreparedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "whenHandedOver":
-                    WhenHandedOverElement = source.GetFhirDateTime();
+                    WhenHandedOverElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "destination":
                     Destination = source.Get<Hl7.Fhir.Model.ResourceReference>();

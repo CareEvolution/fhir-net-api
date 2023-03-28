@@ -274,7 +274,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "date":
-                        DateElement = source.GetFhirDateTime();
+                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "vaccineCode":
                         VaccineCode = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -283,7 +283,7 @@ namespace Hl7.Fhir.Model.STU3
                         TargetDisease = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "doseNumber":
-                        DoseNumberElement = source.GetPositiveInt();
+                        DoseNumberElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "forecastStatus":
                         ForecastStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -551,7 +551,7 @@ namespace Hl7.Fhir.Model.STU3
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirDateTime();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                 }
                 return false;
@@ -787,16 +787,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "doseSequence":
-                        DoseSequenceElement = source.GetPositiveInt();
+                        DoseSequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "authority":
                         Authority = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "series":
-                        SeriesElement = source.GetFhirString();
+                        SeriesElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;

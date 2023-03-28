@@ -236,7 +236,7 @@ namespace Hl7.Fhir.Model.STU3
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetDate();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "author":
                     Author = source.Get<Hl7.Fhir.Model.ResourceReference>();

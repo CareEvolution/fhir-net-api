@@ -179,13 +179,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>>();
                         return true;
                     case "description":
                         Description = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "dateTime":
-                        DateTimeElement = source.GetFhirDateTime();
+                        DateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "actor":
                         Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -444,7 +444,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         BodySite = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>>();
                         return true;
                     case "event":
                         Event = source.GetList<EventComponent>();
@@ -961,10 +961,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.DSTU2.DiagnosticOrderPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderPriority>>();
                     return true;
                 case "event":
                     Event = source.GetList<EventComponent>();

@@ -337,7 +337,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "site":
                         Site = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1064,7 +1064,7 @@ namespace Hl7.Fhir.Model.STU3
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.MedicationAdministrationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationAdministrationStatus>>();
                     return true;
                 case "category":
                     Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1088,7 +1088,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.GetFhirDateTime();
+                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
@@ -1098,7 +1098,7 @@ namespace Hl7.Fhir.Model.STU3
                     Performer = source.GetList<PerformerComponent>();
                     return true;
                 case "notGiven":
-                    NotGivenElement = source.GetFhirBoolean();
+                    NotGivenElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reasonNotGiven":
                     ReasonNotGiven = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

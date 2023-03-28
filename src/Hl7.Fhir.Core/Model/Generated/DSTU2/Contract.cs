@@ -439,7 +439,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "effectiveTime":
-                        EffectiveTimeElement = source.GetFhirDateTime();
+                        EffectiveTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -448,10 +448,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         UnitPrice = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
                         return true;
                     case "factor":
-                        FactorElement = source.GetFhirDecimal();
+                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "points":
-                        PointsElement = source.GetFhirDecimal();
+                        PointsElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "net":
                         Net = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
@@ -706,7 +706,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Party = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "signature":
-                        SignatureElement = source.GetFhirString();
+                        SignatureElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1080,7 +1080,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "issued":
-                        IssuedElement = source.GetFhirDateTime();
+                        IssuedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "applies":
                         Applies = source.Get<Hl7.Fhir.Model.Period>();
@@ -1104,7 +1104,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Actor = source.GetList<TermActorComponent>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "valuedItem":
                         ValuedItem = source.GetList<TermValuedItemComponent>();
@@ -1696,7 +1696,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "effectiveTime":
-                        EffectiveTimeElement = source.GetFhirDateTime();
+                        EffectiveTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -1705,10 +1705,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         UnitPrice = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
                         return true;
                     case "factor":
-                        FactorElement = source.GetFhirDecimal();
+                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "points":
-                        PointsElement = source.GetFhirDecimal();
+                        PointsElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                         return true;
                     case "net":
                         Net = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
@@ -2767,7 +2767,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "issued":
-                    IssuedElement = source.GetFhirDateTime();
+                    IssuedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "applies":
                     Applies = source.Get<Hl7.Fhir.Model.Period>();

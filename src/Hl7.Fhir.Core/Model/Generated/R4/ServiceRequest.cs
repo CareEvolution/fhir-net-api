@@ -994,10 +994,10 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetCanonicalList();
+                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetFhirUriList();
+                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "basedOn":
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1009,19 +1009,19 @@ namespace Hl7.Fhir.Model.R4
                     Requisition = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.RequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>>();
                     return true;
                 case "intent":
-                    IntentElement = source.GetCode<Hl7.Fhir.Model.R4.RequestIntent>();
+                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestIntent>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "priority":
-                    PriorityElement = source.GetCode<Hl7.Fhir.Model.RequestPriority>();
+                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
                     return true;
                 case "doNotPerform":
-                    DoNotPerformElement = source.GetFhirBoolean();
+                    DoNotPerformElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "code":
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1049,7 +1049,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
@@ -1061,14 +1061,14 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "asNeededBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                    AsNeeded = source.GetFhirBoolean();
+                    AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "asNeededCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
                     AsNeeded = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.GetFhirDateTime();
+                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requester":
                     Requester = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1107,7 +1107,7 @@ namespace Hl7.Fhir.Model.R4
                     Note = source.GetList<Hl7.Fhir.Model.Annotation>();
                     return true;
                 case "patientInstruction":
-                    PatientInstructionElement = source.GetFhirString();
+                    PatientInstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "relevantHistory":
                     RelevantHistory = source.GetList<Hl7.Fhir.Model.ResourceReference>();

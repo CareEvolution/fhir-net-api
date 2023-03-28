@@ -172,7 +172,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.GetOid();
+                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "imagingStudy":
                         ImagingStudy = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -414,7 +414,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.GetOid();
+                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "endpoint":
                         Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -637,10 +637,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "sopClass":
-                        SopClassElement = source.GetOid();
+                        SopClassElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "uid":
-                        UidElement = source.GetOid();
+                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                 }
                 return false;
@@ -957,13 +957,13 @@ namespace Hl7.Fhir.Model.STU3
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "authoringTime":
-                    AuthoringTimeElement = source.GetFhirDateTime();
+                    AuthoringTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "author":
                     Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "study":
                     Study = source.GetList<StudyComponent>();

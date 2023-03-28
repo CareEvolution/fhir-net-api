@@ -96,7 +96,7 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "contentString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Content, "content");
-                        Content = source.GetFhirString();
+                        Content = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
@@ -800,10 +800,10 @@ namespace Hl7.Fhir.Model.STU3
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.EventStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.EventStatus>>();
                     return true;
                 case "notDone":
-                    NotDoneElement = source.GetFhirBoolean();
+                    NotDoneElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "notDoneReason":
                     NotDoneReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -827,10 +827,10 @@ namespace Hl7.Fhir.Model.STU3
                     Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "sent":
-                    SentElement = source.GetFhirDateTime();
+                    SentElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "received":
-                    ReceivedElement = source.GetFhirDateTime();
+                    ReceivedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "sender":
                     Sender = source.Get<Hl7.Fhir.Model.ResourceReference>();

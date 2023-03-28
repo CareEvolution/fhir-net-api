@@ -396,22 +396,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.GetOid();
+                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "number":
-                        NumberElement = source.GetUnsignedInt();
+                        NumberElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "modality":
                         Modality = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "numberOfInstances":
-                        NumberOfInstancesElement = source.GetUnsignedInt();
+                        NumberOfInstancesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "availability":
-                        AvailabilityElement = source.GetCode<Hl7.Fhir.Model.InstanceAvailability>();
+                        AvailabilityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>>();
                         return true;
                     case "endpoint":
                         Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -423,7 +423,7 @@ namespace Hl7.Fhir.Model.STU3
                         Laterality = source.Get<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "started":
-                        StartedElement = source.GetFhirDateTime();
+                        StartedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "performer":
                         Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -800,16 +800,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.GetOid();
+                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "number":
-                        NumberElement = source.GetUnsignedInt();
+                        NumberElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "sopClass":
-                        SopClassElement = source.GetOid();
+                        SopClassElement = source.Get<Hl7.Fhir.Model.Oid>();
                         return true;
                     case "title":
-                        TitleElement = source.GetFhirString();
+                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1503,7 +1503,7 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "uid":
-                    UidElement = source.GetOid();
+                    UidElement = source.Get<Hl7.Fhir.Model.Oid>();
                     return true;
                 case "accession":
                     Accession = source.Get<Hl7.Fhir.Model.Identifier>();
@@ -1512,7 +1512,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "availability":
-                    AvailabilityElement = source.GetCode<Hl7.Fhir.Model.InstanceAvailability>();
+                    AvailabilityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>>();
                     return true;
                 case "modalityList":
                     ModalityList = source.GetList<Hl7.Fhir.Model.Coding>();
@@ -1524,7 +1524,7 @@ namespace Hl7.Fhir.Model.STU3
                     Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "started":
-                    StartedElement = source.GetFhirDateTime();
+                    StartedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "basedOn":
                     BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1539,10 +1539,10 @@ namespace Hl7.Fhir.Model.STU3
                     Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "numberOfSeries":
-                    NumberOfSeriesElement = source.GetUnsignedInt();
+                    NumberOfSeriesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "numberOfInstances":
-                    NumberOfInstancesElement = source.GetUnsignedInt();
+                    NumberOfInstancesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "procedureReference":
                     ProcedureReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -1554,7 +1554,7 @@ namespace Hl7.Fhir.Model.STU3
                     Reason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "series":
                     Series = source.GetList<SeriesComponent>();

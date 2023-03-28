@@ -267,13 +267,13 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "reference":
-                    ReferenceElement = source.GetFhirString();
+                    ReferenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "display":
-                    DisplayElement = source.GetFhirString();
+                    DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "type" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    TypeElement = source.GetFhirUri();
+                    TypeElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "identifier" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();

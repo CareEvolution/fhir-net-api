@@ -145,7 +145,7 @@ namespace Hl7.Fhir.Model.STU3
                         Action = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "date":
-                        DateElement = source.GetFhirDateTime();
+                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "author":
                         Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -620,19 +620,19 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.ObservationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ObservationStatus>>();
                     return true;
                 case "category":
                     Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "severity":
-                    SeverityElement = source.GetCode<Hl7.Fhir.Model.DetectedIssueSeverity>();
+                    SeverityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DetectedIssueSeverity>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "author":
                     Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -641,10 +641,10 @@ namespace Hl7.Fhir.Model.STU3
                     Implicated = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "detail":
-                    DetailElement = source.GetFhirString();
+                    DetailElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "reference":
-                    ReferenceElement = source.GetFhirUri();
+                    ReferenceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "mitigation":
                     Mitigation = source.GetList<MitigationComponent>();

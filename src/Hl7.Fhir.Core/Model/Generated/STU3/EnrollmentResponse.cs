@@ -338,7 +338,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "request":
                     Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -347,10 +347,10 @@ namespace Hl7.Fhir.Model.STU3
                     Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "disposition":
-                    DispositionElement = source.GetFhirString();
+                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "organization":
                     Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();

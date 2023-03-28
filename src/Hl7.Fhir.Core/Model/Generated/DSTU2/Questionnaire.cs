@@ -305,22 +305,22 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "linkId":
-                        LinkIdElement = source.GetFhirString();
+                        LinkIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "title":
-                        TitleElement = source.GetFhirString();
+                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "concept":
                         Concept = source.GetList<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "required":
-                        RequiredElement = source.GetFhirBoolean();
+                        RequiredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "repeats":
-                        RepeatsElement = source.GetFhirBoolean();
+                        RepeatsElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "group":
                         Group = source.GetList<GroupComponent>();
@@ -769,22 +769,22 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "linkId":
-                        LinkIdElement = source.GetFhirString();
+                        LinkIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "concept":
                         Concept = source.GetList<Hl7.Fhir.Model.Coding>();
                         return true;
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.DSTU2.AnswerFormat>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AnswerFormat>>();
                         return true;
                     case "required":
-                        RequiredElement = source.GetFhirBoolean();
+                        RequiredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "repeats":
-                        RepeatsElement = source.GetFhirBoolean();
+                        RepeatsElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "options":
                         Options = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1336,22 +1336,22 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.QuestionnaireStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.QuestionnaireStatus>>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "telecom":
                     Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
                     return true;
                 case "subjectType":
-                    SubjectTypeElement = source.GetCodeList<Hl7.Fhir.Model.ResourceType>();
+                    SubjectTypeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
                     return true;
                 case "group":
                     Group = source.Get<GroupComponent>();

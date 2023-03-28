@@ -366,19 +366,19 @@ namespace Hl7.Fhir.Model.DSTU2
                     Schedule = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "freeBusyType":
-                    FreeBusyTypeElement = source.GetCode<Hl7.Fhir.Model.DSTU2.SlotStatus>();
+                    FreeBusyTypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SlotStatus>>();
                     return true;
                 case "start":
-                    StartElement = source.GetInstant();
+                    StartElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "end":
-                    EndElement = source.GetInstant();
+                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "overbooked":
-                    OverbookedElement = source.GetFhirBoolean();
+                    OverbookedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

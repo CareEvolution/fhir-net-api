@@ -355,22 +355,22 @@ namespace Hl7.Fhir.Model.DSTU2
                     Origin = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                     return true;
                 case "period":
-                    PeriodElement = source.GetFhirDecimal();
+                    PeriodElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "factor":
-                    FactorElement = source.GetFhirDecimal();
+                    FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "lowerLimit":
-                    LowerLimitElement = source.GetFhirDecimal();
+                    LowerLimitElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "upperLimit":
-                    UpperLimitElement = source.GetFhirDecimal();
+                    UpperLimitElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "dimensions":
-                    DimensionsElement = source.GetPositiveInt();
+                    DimensionsElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "data":
-                    DataElement = source.GetFhirString();
+                    DataElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

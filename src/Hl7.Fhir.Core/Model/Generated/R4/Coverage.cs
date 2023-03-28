@@ -166,10 +166,10 @@ namespace Hl7.Fhir.Model.R4
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "value":
-                        ValueElement = source.GetFhirString();
+                        ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1150,7 +1150,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1162,13 +1162,13 @@ namespace Hl7.Fhir.Model.R4
                     Subscriber = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "subscriberId":
-                    SubscriberIdElement = source.GetFhirString();
+                    SubscriberIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "beneficiary":
                     Beneficiary = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "dependent":
-                    DependentElement = source.GetFhirString();
+                    DependentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "relationship":
                     Relationship = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1183,16 +1183,16 @@ namespace Hl7.Fhir.Model.R4
                     Class = source.GetList<ClassComponent>();
                     return true;
                 case "order":
-                    OrderElement = source.GetPositiveInt();
+                    OrderElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "network":
-                    NetworkElement = source.GetFhirString();
+                    NetworkElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "costToBeneficiary":
                     CostToBeneficiary = source.GetList<CostToBeneficiaryComponent>();
                     return true;
                 case "subrogation":
-                    SubrogationElement = source.GetFhirBoolean();
+                    SubrogationElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "contract":
                     Contract = source.GetList<Hl7.Fhir.Model.ResourceReference>();

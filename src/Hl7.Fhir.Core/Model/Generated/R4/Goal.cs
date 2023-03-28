@@ -141,15 +141,15 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "detailString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Detail, "detail");
-                        Detail = source.GetFhirString();
+                        Detail = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "detailBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Detail, "detail");
-                        Detail = source.GetFhirBoolean();
+                        Detail = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "detailInteger":
                         source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Detail, "detail");
-                        Detail = source.GetInteger();
+                        Detail = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "detailRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Detail, "detail");
@@ -157,7 +157,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "dueDate":
                         source.CheckDuplicates<Hl7.Fhir.Model.Date>(Due, "due");
-                        Due = source.GetDate();
+                        Due = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "dueDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(Due, "due");
@@ -776,7 +776,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "lifecycleStatus":
-                    LifecycleStatusElement = source.GetCode<Hl7.Fhir.Model.R4.GoalLifecycleStatus>();
+                    LifecycleStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.GoalLifecycleStatus>>();
                     return true;
                 case "achievementStatus":
                     AchievementStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -795,7 +795,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "startDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Start, "start");
-                    Start = source.GetDate();
+                    Start = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "startCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Start, "start");
@@ -805,10 +805,10 @@ namespace Hl7.Fhir.Model.R4
                     Target = source.GetList<TargetComponent>();
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.GetDate();
+                    StatusDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "statusReason":
-                    StatusReasonElement = source.GetFhirString();
+                    StatusReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "expressedBy":
                     ExpressedBy = source.Get<Hl7.Fhir.Model.ResourceReference>();

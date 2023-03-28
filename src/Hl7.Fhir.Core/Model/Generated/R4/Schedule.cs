@@ -325,7 +325,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "active":
-                    ActiveElement = source.GetFhirBoolean();
+                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "serviceCategory":
                     ServiceCategory = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -343,7 +343,7 @@ namespace Hl7.Fhir.Model.R4
                     PlanningHorizon = source.Get<Hl7.Fhir.Model.Period>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

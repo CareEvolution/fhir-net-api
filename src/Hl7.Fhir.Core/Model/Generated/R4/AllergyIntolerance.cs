@@ -251,13 +251,13 @@ namespace Hl7.Fhir.Model.R4
                         Manifestation = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "onset":
-                        OnsetElement = source.GetFhirDateTime();
+                        OnsetElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "severity":
-                        SeverityElement = source.GetCode<Hl7.Fhir.Model.AllergyIntoleranceSeverity>();
+                        SeverityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AllergyIntoleranceSeverity>>();
                         return true;
                     case "exposureRoute":
                         ExposureRoute = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -924,13 +924,13 @@ namespace Hl7.Fhir.Model.R4
                     VerificationStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.AllergyIntoleranceType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AllergyIntoleranceType>>();
                     return true;
                 case "category":
-                    CategoryElement = source.GetCodeList<Hl7.Fhir.Model.R4.AllergyIntoleranceCategory>();
+                    CategoryElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AllergyIntoleranceCategory>>();
                     return true;
                 case "criticality":
-                    CriticalityElement = source.GetCode<Hl7.Fhir.Model.R4.AllergyIntoleranceCriticality>();
+                    CriticalityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AllergyIntoleranceCriticality>>();
                     return true;
                 case "code":
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -943,7 +943,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "onsetDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Onset, "onset");
-                    Onset = source.GetFhirDateTime();
+                    Onset = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "onsetAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Onset, "onset");
@@ -959,10 +959,10 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "onsetString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Onset, "onset");
-                    Onset = source.GetFhirString();
+                    Onset = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "recordedDate":
-                    RecordedDateElement = source.GetFhirDateTime();
+                    RecordedDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "recorder":
                     Recorder = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -971,7 +971,7 @@ namespace Hl7.Fhir.Model.R4
                     Asserter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "lastOccurrence":
-                    LastOccurrenceElement = source.GetFhirDateTime();
+                    LastOccurrenceElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "note":
                     Note = source.GetList<Hl7.Fhir.Model.Annotation>();

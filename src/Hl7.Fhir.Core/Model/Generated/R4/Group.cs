@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.GetFhirBoolean();
+                        Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
@@ -181,7 +181,7 @@ namespace Hl7.Fhir.Model.R4
                         Value = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "exclude":
-                        ExcludeElement = source.GetFhirBoolean();
+                        ExcludeElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "period":
                         Period = source.Get<Hl7.Fhir.Model.Period>();
@@ -412,7 +412,7 @@ namespace Hl7.Fhir.Model.R4
                         Period = source.Get<Hl7.Fhir.Model.Period>();
                         return true;
                     case "inactive":
-                        InactiveElement = source.GetFhirBoolean();
+                        InactiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                 }
                 return false;
@@ -894,22 +894,22 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "active":
-                    ActiveElement = source.GetFhirBoolean();
+                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.GroupType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GroupType>>();
                     return true;
                 case "actual":
-                    ActualElement = source.GetFhirBoolean();
+                    ActualElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "code":
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "quantity":
-                    QuantityElement = source.GetUnsignedInt();
+                    QuantityElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                     return true;
                 case "managingEntity":
                     ManagingEntity = source.Get<Hl7.Fhir.Model.ResourceReference>();

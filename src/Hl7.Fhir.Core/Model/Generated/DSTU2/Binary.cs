@@ -186,10 +186,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "contentType":
-                    ContentTypeElement = source.GetCode();
+                    ContentTypeElement = source.Get<Hl7.Fhir.Model.Code>();
                     return true;
                 case "content":
-                    ContentElement = source.GetBase64Binary();
+                    ContentElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
                     return true;
             }
             return false;

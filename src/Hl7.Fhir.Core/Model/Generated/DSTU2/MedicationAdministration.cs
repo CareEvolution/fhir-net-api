@@ -189,7 +189,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "text":
-                        TextElement = source.GetFhirString();
+                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "siteCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Site, "site");
@@ -793,7 +793,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.MedicationAdministrationStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MedicationAdministrationStatus>>();
                     return true;
                 case "patient":
                     Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -808,7 +808,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Prescription = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "wasNotGiven":
-                    WasNotGivenElement = source.GetFhirBoolean();
+                    WasNotGivenElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reasonNotGiven":
                     ReasonNotGiven = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -818,7 +818,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "effectiveTimeDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(EffectiveTime, "effectiveTime");
-                    EffectiveTime = source.GetFhirDateTime();
+                    EffectiveTime = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "effectiveTimePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(EffectiveTime, "effectiveTime");
@@ -836,7 +836,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Device = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "note":
-                    NoteElement = source.GetFhirString();
+                    NoteElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "dosage":
                     Dosage = source.Get<DosageComponent>();

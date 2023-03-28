@@ -363,16 +363,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "documentType":
-                        DocumentTypeElement = source.GetFhirString();
+                        DocumentTypeElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "reference":
-                        ReferenceElement = source.GetFhirUri();
+                        ReferenceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "publicationDate":
-                        PublicationDateElement = source.GetFhirDateTime();
+                        PublicationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "presentationDate":
-                        PresentationDateElement = source.GetFhirDateTime();
+                        PresentationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                 }
                 return false;
@@ -600,13 +600,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "date":
-                        DateElement = source.GetFhirDateTime();
+                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "detail":
                         Detail = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "reported":
-                        ReportedElement = source.GetFhirBoolean();
+                        ReportedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                 }
                 return false;
@@ -840,7 +840,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "series":
-                        SeriesElement = source.GetFhirString();
+                        SeriesElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "authority":
                         Authority = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -850,19 +850,19 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "doseNumberPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
-                        DoseNumber = source.GetPositiveInt();
+                        DoseNumber = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "doseNumberString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
-                        DoseNumber = source.GetFhirString();
+                        DoseNumber = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "seriesDosesPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
-                        SeriesDoses = source.GetPositiveInt();
+                        SeriesDoses = source.Get<Hl7.Fhir.Model.PositiveInt>();
                         return true;
                     case "seriesDosesString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
-                        SeriesDoses = source.GetFhirString();
+                        SeriesDoses = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1776,7 +1776,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.R4.ImmunizationStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ImmunizationStatusCodes>>();
                     return true;
                 case "statusReason":
                     StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1792,17 +1792,17 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrenceString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirString();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "recorded":
-                    RecordedElement = source.GetFhirDateTime();
+                    RecordedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "primarySource":
-                    PrimarySourceElement = source.GetFhirBoolean();
+                    PrimarySourceElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reportOrigin":
                     ReportOrigin = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1814,10 +1814,10 @@ namespace Hl7.Fhir.Model.R4
                     Manufacturer = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "lotNumber":
-                    LotNumberElement = source.GetFhirString();
+                    LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "expirationDate":
-                    ExpirationDateElement = source.GetDate();
+                    ExpirationDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "site":
                     Site = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1841,7 +1841,7 @@ namespace Hl7.Fhir.Model.R4
                     ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "isSubpotent":
-                    IsSubpotentElement = source.GetFhirBoolean();
+                    IsSubpotentElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "subpotentReason":
                     SubpotentReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.GetCode<Hl7.Fhir.Model.DSTU2.CarePlanRelationship>();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanRelationship>>();
                         return true;
                     case "plan":
                         Plan = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -956,13 +956,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         Goal = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "status":
-                        StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.CarePlanActivityStatus>();
+                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanActivityStatus>>();
                         return true;
                     case "statusReason":
                         StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "prohibited":
-                        ProhibitedElement = source.GetFhirBoolean();
+                        ProhibitedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "scheduledTiming":
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Timing>(Scheduled, "scheduled");
@@ -974,7 +974,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         return true;
                     case "scheduledString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Scheduled, "scheduled");
-                        Scheduled = source.GetFhirString();
+                        Scheduled = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "location":
                         Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -997,7 +997,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1729,7 +1729,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.CarePlanStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanStatus>>();
                     return true;
                 case "context":
                     Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1741,13 +1741,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Author = source.GetList<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "modified":
-                    ModifiedElement = source.GetFhirDateTime();
+                    ModifiedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "addresses":
                     Addresses = source.GetList<Hl7.Fhir.Model.ResourceReference>();

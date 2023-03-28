@@ -367,10 +367,10 @@ namespace Hl7.Fhir.Model.STU3
                     Appointment = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "start":
-                    StartElement = source.GetInstant();
+                    StartElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "end":
-                    EndElement = source.GetInstant();
+                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
                     return true;
                 case "participantType":
                     ParticipantType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -379,10 +379,10 @@ namespace Hl7.Fhir.Model.STU3
                     Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "participantStatus":
-                    ParticipantStatusElement = source.GetCode<Hl7.Fhir.Model.ParticipationStatus>();
+                    ParticipantStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>>();
                     return true;
                 case "comment":
-                    CommentElement = source.GetFhirString();
+                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

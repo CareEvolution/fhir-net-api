@@ -485,10 +485,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "lotNumber":
-                        LotNumberElement = source.GetFhirString();
+                        LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "expirationDate":
-                        ExpirationDateElement = source.GetFhirDateTime();
+                        ExpirationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                 }
                 return false;
@@ -1077,7 +1077,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "isBrand":
-                    IsBrandElement = source.GetFhirBoolean();
+                    IsBrandElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "manufacturer":
                     Manufacturer = source.Get<Hl7.Fhir.Model.ResourceReference>();

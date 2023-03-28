@@ -156,7 +156,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "collectedDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Collected, "collected");
-                        Collected = source.GetFhirDateTime();
+                        Collected = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "collectedPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Collected, "collected");
@@ -405,7 +405,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "procedure":
                         Procedure = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -415,7 +415,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "timeDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Time, "time");
-                        Time = source.GetFhirDateTime();
+                        Time = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "timePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Time, "time");
@@ -695,7 +695,7 @@ namespace Hl7.Fhir.Model.STU3
                         Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "type":
                         Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1219,7 +1219,7 @@ namespace Hl7.Fhir.Model.STU3
                     AccessionIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.SpecimenStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SpecimenStatus>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1228,7 +1228,7 @@ namespace Hl7.Fhir.Model.STU3
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "receivedTime":
-                    ReceivedTimeElement = source.GetFhirDateTime();
+                    ReceivedTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "parent":
                     Parent = source.GetList<Hl7.Fhir.Model.ResourceReference>();

@@ -486,40 +486,40 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "group":
-                        GroupElement = source.GetFhirString();
+                        GroupElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "groupDisplay":
-                        GroupDisplayElement = source.GetFhirString();
+                        GroupDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "subGroup":
-                        SubGroupElement = source.GetFhirString();
+                        SubGroupElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "subGroupDisplay":
-                        SubGroupDisplayElement = source.GetFhirString();
+                        SubGroupDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "plan":
-                        PlanElement = source.GetFhirString();
+                        PlanElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "planDisplay":
-                        PlanDisplayElement = source.GetFhirString();
+                        PlanDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "subPlan":
-                        SubPlanElement = source.GetFhirString();
+                        SubPlanElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "subPlanDisplay":
-                        SubPlanDisplayElement = source.GetFhirString();
+                        SubPlanDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "class":
-                        ClassElement = source.GetFhirString();
+                        ClassElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "classDisplay":
-                        ClassDisplayElement = source.GetFhirString();
+                        ClassDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "subClass":
-                        SubClassElement = source.GetFhirString();
+                        SubClassElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "subClassDisplay":
-                        SubClassDisplayElement = source.GetFhirString();
+                        SubClassDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1211,7 +1211,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1223,7 +1223,7 @@ namespace Hl7.Fhir.Model.STU3
                     Subscriber = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "subscriberId":
-                    SubscriberIdElement = source.GetFhirString();
+                    SubscriberIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "beneficiary":
                     Beneficiary = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1241,16 +1241,16 @@ namespace Hl7.Fhir.Model.STU3
                     Grouping = source.Get<GroupComponent>();
                     return true;
                 case "dependent":
-                    DependentElement = source.GetFhirString();
+                    DependentElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "sequence":
-                    SequenceElement = source.GetFhirString();
+                    SequenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "order":
-                    OrderElement = source.GetPositiveInt();
+                    OrderElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
                     return true;
                 case "network":
-                    NetworkElement = source.GetFhirString();
+                    NetworkElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contract":
                     Contract = source.GetList<Hl7.Fhir.Model.ResourceReference>();

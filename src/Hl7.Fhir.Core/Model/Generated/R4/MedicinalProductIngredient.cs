@@ -453,7 +453,7 @@ namespace Hl7.Fhir.Model.R4
                         ConcentrationLowLimit = source.Get<Hl7.Fhir.Model.Ratio>();
                         return true;
                     case "measurementPoint":
-                        MeasurementPointElement = source.GetFhirString();
+                        MeasurementPointElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "country":
                         Country = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -748,7 +748,7 @@ namespace Hl7.Fhir.Model.R4
                         StrengthLowLimit = source.Get<Hl7.Fhir.Model.Ratio>();
                         return true;
                     case "measurementPoint":
-                        MeasurementPointElement = source.GetFhirString();
+                        MeasurementPointElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "country":
                         Country = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -1263,7 +1263,7 @@ namespace Hl7.Fhir.Model.R4
                     Role = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "allergenicIndicator":
-                    AllergenicIndicatorElement = source.GetFhirBoolean();
+                    AllergenicIndicatorElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "manufacturer":
                     Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>();

@@ -172,7 +172,7 @@ namespace Hl7.Fhir.Model
                     Coding = source.GetList<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "text":
-                    TextElement = source.GetFhirString();
+                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
             }
             return false;

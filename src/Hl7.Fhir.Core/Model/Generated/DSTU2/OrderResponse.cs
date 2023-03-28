@@ -315,16 +315,16 @@ namespace Hl7.Fhir.Model.DSTU2
                     Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "who":
                     Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "orderStatus":
-                    OrderStatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.OrderStatus>();
+                    OrderStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.OrderStatus>>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "fulfillment":
                     Fulfillment = source.GetList<Hl7.Fhir.Model.ResourceReference>();

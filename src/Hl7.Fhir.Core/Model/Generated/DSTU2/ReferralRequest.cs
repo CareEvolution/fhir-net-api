@@ -500,13 +500,13 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ReferralStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ReferralStatus>>();
                     return true;
                 case "identifier":
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -530,13 +530,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "dateSent":
-                    DateSentElement = source.GetFhirDateTime();
+                    DateSentElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "reason":
                     Reason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "serviceRequested":
                     ServiceRequested = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

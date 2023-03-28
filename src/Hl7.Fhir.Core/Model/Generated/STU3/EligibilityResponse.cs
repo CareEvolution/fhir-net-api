@@ -473,13 +473,13 @@ namespace Hl7.Fhir.Model.STU3
                         SubCategory = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "excluded":
-                        ExcludedElement = source.GetFhirBoolean();
+                        ExcludedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "description":
-                        DescriptionElement = source.GetFhirString();
+                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "network":
                         Network = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -740,11 +740,11 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "allowedUnsignedInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Allowed, "allowed");
-                        Allowed = source.GetUnsignedInt();
+                        Allowed = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "allowedString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Allowed, "allowed");
-                        Allowed = source.GetFhirString();
+                        Allowed = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "allowedMoney":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Money>(Allowed, "allowed");
@@ -752,7 +752,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "usedUnsignedInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Used, "used");
-                        Used = source.GetUnsignedInt();
+                        Used = source.Get<Hl7.Fhir.Model.UnsignedInt>();
                         return true;
                     case "usedMoney":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Money>(Used, "used");
@@ -1392,10 +1392,10 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "requestProvider":
                     RequestProvider = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1410,13 +1410,13 @@ namespace Hl7.Fhir.Model.STU3
                     Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "disposition":
-                    DispositionElement = source.GetFhirString();
+                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "insurer":
                     Insurer = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "inforce":
-                    InforceElement = source.GetFhirBoolean();
+                    InforceElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "insurance":
                     Insurance = source.GetList<InsuranceComponent>();

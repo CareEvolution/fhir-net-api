@@ -832,10 +832,10 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "definition":
-                    DefinitionElement = source.GetFhirUriList();
+                    DefinitionElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.ChargeItemStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ChargeItemStatus>>();
                     return true;
                 case "partOf":
                     PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
@@ -851,7 +851,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.GetFhirDateTime();
+                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
@@ -877,19 +877,19 @@ namespace Hl7.Fhir.Model.STU3
                     Bodysite = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "factorOverride":
-                    FactorOverrideElement = source.GetFhirDecimal();
+                    FactorOverrideElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
                     return true;
                 case "priceOverride":
                     PriceOverride = source.Get<Hl7.Fhir.Model.STU3.Money>();
                     return true;
                 case "overrideReason":
-                    OverrideReasonElement = source.GetFhirString();
+                    OverrideReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "enterer":
                     Enterer = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "enteredDate":
-                    EnteredDateElement = source.GetFhirDateTime();
+                    EnteredDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "reason":
                     Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();

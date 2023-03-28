@@ -496,13 +496,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "identifier":
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.SupplyRequestStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SupplyRequestStatus>>();
                     return true;
                 case "kind":
                     Kind = source.Get<Hl7.Fhir.Model.CodeableConcept>();

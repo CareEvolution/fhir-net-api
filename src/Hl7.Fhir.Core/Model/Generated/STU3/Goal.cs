@@ -141,7 +141,7 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "dueDate":
                         source.CheckDuplicates<Hl7.Fhir.Model.Date>(Due, "due");
-                        Due = source.GetDate();
+                        Due = source.Get<Hl7.Fhir.Model.Date>();
                         return true;
                     case "dueDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Duration>(Due, "due");
@@ -707,7 +707,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.STU3.GoalStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.GoalStatus>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -723,7 +723,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "startDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Start, "start");
-                    Start = source.GetDate();
+                    Start = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "startCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Start, "start");
@@ -733,10 +733,10 @@ namespace Hl7.Fhir.Model.STU3
                     Target = source.Get<TargetComponent>();
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.GetDate();
+                    StatusDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "statusReason":
-                    StatusReasonElement = source.GetFhirString();
+                    StatusReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "expressedBy":
                     ExpressedBy = source.Get<Hl7.Fhir.Model.ResourceReference>();

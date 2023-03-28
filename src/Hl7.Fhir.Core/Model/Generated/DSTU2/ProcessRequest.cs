@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "sequenceLinkId":
-                        SequenceLinkIdElement = source.GetInteger();
+                        SequenceLinkIdElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                 }
                 return false;
@@ -685,7 +685,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "action":
-                    ActionElement = source.GetCode<Hl7.Fhir.Model.ActionList>();
+                    ActionElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionList>>();
                     return true;
                 case "identifier":
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
@@ -697,7 +697,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     OriginalRuleset = source.Get<Hl7.Fhir.Model.Coding>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "target":
                     Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -715,19 +715,19 @@ namespace Hl7.Fhir.Model.DSTU2
                     Response = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "nullify":
-                    NullifyElement = source.GetFhirBoolean();
+                    NullifyElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reference":
-                    ReferenceElement = source.GetFhirString();
+                    ReferenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "item":
                     Item = source.GetList<ItemsComponent>();
                     return true;
                 case "include":
-                    IncludeElement = source.GetFhirStringList();
+                    IncludeElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "exclude":
-                    ExcludeElement = source.GetFhirStringList();
+                    ExcludeElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

@@ -382,7 +382,7 @@ namespace Hl7.Fhir.Model.R4
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "count":
-                        CountElement = source.GetInteger();
+                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "subjectResults":
                         SubjectResults = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1145,7 +1145,7 @@ namespace Hl7.Fhir.Model.R4
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "count":
-                        CountElement = source.GetInteger();
+                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                     case "subjectResults":
                         SubjectResults = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -1637,19 +1637,19 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.MeasureReportStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.MeasureReportStatus>>();
                     return true;
                 case "type":
-                    TypeElement = source.GetCode<Hl7.Fhir.Model.R4.MeasureReportType>();
+                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MeasureReportType>>();
                     return true;
                 case "measure":
-                    MeasureElement = source.GetCanonical();
+                    MeasureElement = source.Get<Hl7.Fhir.Model.Canonical>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "reporter":
                     Reporter = source.Get<Hl7.Fhir.Model.ResourceReference>();

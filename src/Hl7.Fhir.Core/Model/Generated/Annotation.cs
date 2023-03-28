@@ -207,13 +207,13 @@ namespace Hl7.Fhir.Model
                     return true;
                 case "authorString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Author, "author");
-                    Author = source.GetFhirString();
+                    Author = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "time":
-                    TimeElement = source.GetFhirDateTime();
+                    TimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "text":
-                    TextElement = source.GetMarkdown();
+                    TextElement = source.Get<Hl7.Fhir.Model.Markdown>();
                     return true;
             }
             return false;

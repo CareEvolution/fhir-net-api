@@ -155,7 +155,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "productName":
-                        ProductNameElement = source.GetFhirString();
+                        ProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "namePart":
                         NamePart = source.GetList<NamePartComponent>();
@@ -359,7 +359,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "part":
-                        PartElement = source.GetFhirString();
+                        PartElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "type":
                         Type = source.Get<Hl7.Fhir.Model.Coding>();
@@ -785,7 +785,7 @@ namespace Hl7.Fhir.Model.R4
                         AuthorisationReferenceNumber = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "effectiveDate":
-                        EffectiveDateElement = source.GetFhirDateTime();
+                        EffectiveDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "confidentialityIndicator":
                         ConfidentialityIndicator = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1113,7 +1113,7 @@ namespace Hl7.Fhir.Model.R4
                         Status = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "date":
-                        DateElement = source.GetFhirDateTime();
+                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "species":
                         Species = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1813,7 +1813,7 @@ namespace Hl7.Fhir.Model.R4
                     AdditionalMonitoringIndicator = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "specialMeasures":
-                    SpecialMeasuresElement = source.GetFhirStringList();
+                    SpecialMeasuresElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "paediatricUseIndicator":
                     PaediatricUseIndicator = source.Get<Hl7.Fhir.Model.CodeableConcept>();

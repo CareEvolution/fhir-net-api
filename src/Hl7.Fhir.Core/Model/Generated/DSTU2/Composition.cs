@@ -165,10 +165,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "mode":
-                        ModeElement = source.GetCodeList<Hl7.Fhir.Model.CompositionAttestationMode>();
+                        ModeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompositionAttestationMode>>();
                         return true;
                     case "time":
-                        TimeElement = source.GetFhirDateTime();
+                        TimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "party":
                         Party = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -692,7 +692,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "title":
-                        TitleElement = source.GetFhirString();
+                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "code":
                         Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -701,7 +701,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Text = source.Get<Hl7.Fhir.Model.Narrative>();
                         return true;
                     case "mode":
-                        ModeElement = source.GetCode<Hl7.Fhir.Model.ListMode>();
+                        ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListMode>>();
                         return true;
                     case "orderedBy":
                         OrderedBy = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1332,7 +1332,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "type":
                     Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
@@ -1341,13 +1341,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     Class = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "title":
-                    TitleElement = source.GetFhirString();
+                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.CompositionStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompositionStatus>>();
                     return true;
                 case "confidentiality":
-                    ConfidentialityElement = source.GetCode<Hl7.Fhir.Model.DSTU2.v3CodeSystemConfidentiality>();
+                    ConfidentialityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.v3CodeSystemConfidentiality>>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();

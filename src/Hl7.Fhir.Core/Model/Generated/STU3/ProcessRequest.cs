@@ -112,7 +112,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "sequenceLinkId":
-                        SequenceLinkIdElement = source.GetInteger();
+                        SequenceLinkIdElement = source.Get<Hl7.Fhir.Model.Integer>();
                         return true;
                 }
                 return false;
@@ -676,16 +676,16 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FinancialResourceStatusCodes>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
                     return true;
                 case "action":
-                    ActionElement = source.GetCode<Hl7.Fhir.Model.ActionList>();
+                    ActionElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionList>>();
                     return true;
                 case "target":
                     Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "created":
-                    CreatedElement = source.GetFhirDateTime();
+                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "provider":
                     Provider = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -700,19 +700,19 @@ namespace Hl7.Fhir.Model.STU3
                     Response = source.Get<Hl7.Fhir.Model.ResourceReference>();
                     return true;
                 case "nullify":
-                    NullifyElement = source.GetFhirBoolean();
+                    NullifyElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "reference":
-                    ReferenceElement = source.GetFhirString();
+                    ReferenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "item":
                     Item = source.GetList<ItemsComponent>();
                     return true;
                 case "include":
-                    IncludeElement = source.GetFhirStringList();
+                    IncludeElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "exclude":
-                    ExcludeElement = source.GetFhirStringList();
+                    ExcludeElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "period":
                     Period = source.Get<Hl7.Fhir.Model.Period>();

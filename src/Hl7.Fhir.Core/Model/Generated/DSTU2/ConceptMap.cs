@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.GetFhirString();
+                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "telecom":
                         Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
@@ -361,10 +361,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "codeSystem":
-                        CodeSystemElement = source.GetFhirUri();
+                        CodeSystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "code":
-                        CodeElement = source.GetCode();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "target":
                         Target = source.GetList<TargetElementComponent>();
@@ -693,16 +693,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "codeSystem":
-                        CodeSystemElement = source.GetFhirUri();
+                        CodeSystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "code":
-                        CodeElement = source.GetCode();
+                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
                         return true;
                     case "equivalence":
-                        EquivalenceElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ConceptMapEquivalence>();
+                        EquivalenceElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConceptMapEquivalence>>();
                         return true;
                     case "comments":
-                        CommentsElement = source.GetFhirString();
+                        CommentsElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                     case "dependsOn":
                         DependsOn = source.GetList<OtherElementComponent>();
@@ -990,13 +990,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "element":
-                        ElementElement = source.GetFhirUri();
+                        ElementElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "codeSystem":
-                        CodeSystemElement = source.GetFhirUri();
+                        CodeSystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                         return true;
                     case "code":
-                        CodeElement = source.GetFhirString();
+                        CodeElement = source.Get<Hl7.Fhir.Model.FhirString>();
                         return true;
                 }
                 return false;
@@ -1679,47 +1679,47 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.GetFhirUri();
+                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "identifier":
                     Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "version":
-                    VersionElement = source.GetFhirString();
+                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "name":
-                    NameElement = source.GetFhirString();
+                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>>();
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.GetFhirBoolean();
+                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "publisher":
-                    PublisherElement = source.GetFhirString();
+                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "contact":
                     Contact = source.GetList<ContactComponent>();
                     return true;
                 case "date":
-                    DateElement = source.GetFhirDateTime();
+                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "useContext":
                     UseContext = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "requirements":
-                    RequirementsElement = source.GetFhirString();
+                    RequirementsElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "copyright":
-                    CopyrightElement = source.GetFhirString();
+                    CopyrightElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "sourceUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Source, "source");
-                    Source = source.GetFhirUri();
+                    Source = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "sourceReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Source, "source");
@@ -1727,7 +1727,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "targetUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Target, "target");
-                    Target = source.GetFhirUri();
+                    Target = source.Get<Hl7.Fhir.Model.FhirUri>();
                     return true;
                 case "targetReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Target, "target");

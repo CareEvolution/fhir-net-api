@@ -318,10 +318,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     Indication = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "notes":
-                    NotesElement = source.GetFhirStringList();
+                    NotesElement = source.GetList<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "recordedOn":
-                    RecordedOnElement = source.GetFhirDateTime();
+                    RecordedOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "subject":
                     Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -336,7 +336,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.GetFhirDateTime();
+                    Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
             }
             return false;

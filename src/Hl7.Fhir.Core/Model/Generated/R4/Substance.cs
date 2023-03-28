@@ -145,7 +145,7 @@ namespace Hl7.Fhir.Model.R4
                         Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
                         return true;
                     case "expiry":
-                        ExpiryElement = source.GetFhirDateTime();
+                        ExpiryElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                         return true;
                     case "quantity":
                         Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
@@ -670,7 +670,7 @@ namespace Hl7.Fhir.Model.R4
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "status":
-                    StatusElement = source.GetCode<Hl7.Fhir.Model.FHIRSubstanceStatus>();
+                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FHIRSubstanceStatus>>();
                     return true;
                 case "category":
                     Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
@@ -679,7 +679,7 @@ namespace Hl7.Fhir.Model.R4
                     Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                     return true;
                 case "description":
-                    DescriptionElement = source.GetFhirString();
+                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
                     return true;
                 case "instance":
                     Instance = source.GetList<InstanceComponent>();

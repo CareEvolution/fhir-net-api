@@ -227,7 +227,7 @@ namespace Hl7.Fhir.Model.STU3
                         Address = source.Get<Hl7.Fhir.Model.Address>();
                         return true;
                     case "gender":
-                        GenderElement = source.GetCode<Hl7.Fhir.Model.AdministrativeGender>();
+                        GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
                         return true;
                     case "organization":
                         Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
@@ -641,7 +641,7 @@ namespace Hl7.Fhir.Model.STU3
                         Language = source.Get<Hl7.Fhir.Model.CodeableConcept>();
                         return true;
                     case "preferred":
-                        PreferredElement = source.GetFhirBoolean();
+                        PreferredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                         return true;
                 }
                 return false;
@@ -817,7 +817,7 @@ namespace Hl7.Fhir.Model.STU3
                         Other = source.Get<Hl7.Fhir.Model.ResourceReference>();
                         return true;
                     case "type":
-                        TypeElement = source.GetCode<Hl7.Fhir.Model.STU3.LinkType>();
+                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.LinkType>>();
                         return true;
                 }
                 return false;
@@ -1423,7 +1423,7 @@ namespace Hl7.Fhir.Model.STU3
                     Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
                     return true;
                 case "active":
-                    ActiveElement = source.GetFhirBoolean();
+                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "name":
                     Name = source.GetList<Hl7.Fhir.Model.STU3.HumanName>();
@@ -1432,18 +1432,18 @@ namespace Hl7.Fhir.Model.STU3
                     Telecom = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>();
                     return true;
                 case "gender":
-                    GenderElement = source.GetCode<Hl7.Fhir.Model.AdministrativeGender>();
+                    GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
                     return true;
                 case "birthDate":
-                    BirthDateElement = source.GetDate();
+                    BirthDateElement = source.Get<Hl7.Fhir.Model.Date>();
                     return true;
                 case "deceasedBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Deceased, "deceased");
-                    Deceased = source.GetFhirBoolean();
+                    Deceased = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "deceasedDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Deceased, "deceased");
-                    Deceased = source.GetFhirDateTime();
+                    Deceased = source.Get<Hl7.Fhir.Model.FhirDateTime>();
                     return true;
                 case "address":
                     Address = source.GetList<Hl7.Fhir.Model.Address>();
@@ -1453,11 +1453,11 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "multipleBirthBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(MultipleBirth, "multipleBirth");
-                    MultipleBirth = source.GetFhirBoolean();
+                    MultipleBirth = source.Get<Hl7.Fhir.Model.FhirBoolean>();
                     return true;
                 case "multipleBirthInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(MultipleBirth, "multipleBirth");
-                    MultipleBirth = source.GetInteger();
+                    MultipleBirth = source.Get<Hl7.Fhir.Model.Integer>();
                     return true;
                 case "photo":
                     Photo = source.GetList<Hl7.Fhir.Model.Attachment>();
