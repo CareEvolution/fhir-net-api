@@ -60,9 +60,6 @@ namespace Hl7.Fhir.Serialization.Tests
 
             Throws<Patient>(xml, "Empty elements are not allowed");
 
-            xml = "<Patient xmlns='http://hl7.org/fhir'><contained /><active value='true'/></Patient>";
-            Throws<Patient>(xml, "Empty elements are not allowed");
-
             var patient = Parse<Patient>(xml, permissiveParsing: true);
             Assert.IsNotNull(patient);
             Assert.AreEqual(0, patient.Contained.Count);
@@ -78,6 +75,16 @@ namespace Hl7.Fhir.Serialization.Tests
             Throws<Patient>(xml, "Empty elements are not allowed");
 
             var patient = Parse<Patient>(xml, permissiveParsing: true);
+            Assert.IsNotNull(patient);
+            Assert.AreEqual(0, patient.Contained.Count);
+            Assert.IsNotNull(patient.Active);
+            Assert.IsTrue(patient.Active.Value);
+
+            xml = "<Patient xmlns='http://hl7.org/fhir'><contained></contained><active value='true'/></Patient>";
+
+            Throws<Patient>(xml, "Empty elements are not allowed");
+
+            patient = Parse<Patient>(xml, permissiveParsing: true);
             Assert.IsNotNull(patient);
             Assert.AreEqual(0, patient.Contained.Count);
             Assert.IsNotNull(patient.Active);
@@ -99,7 +106,7 @@ namespace Hl7.Fhir.Serialization.Tests
 
             Throws<Patient>(xml, "Unknown attribute 'value' (at contained[0] line 3, 16)");
 
-            var patient = Parse<Patient>(xml, permissiveParsing: true);
+            var patient = Parse<Patient>(xml, acceptUnknownMembers: true);
             Assert.IsNotNull(patient);
             Assert.AreEqual(1, patient.Contained.Count);
             Assert.IsInstanceOfType(patient.Contained[0], typeof(AllergyIntolerance));

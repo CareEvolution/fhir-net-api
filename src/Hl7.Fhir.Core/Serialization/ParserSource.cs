@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Xml;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 
@@ -11,9 +8,10 @@ namespace Hl7.Fhir.Serialization
 {
     internal class ParserSource
     {
-        public ParserSource(XmlReader reader, ParserSettings settings)
+        public ParserSource(IParserOrigin origin, ParserSettings settings)
         {
-            _reader = reader ?? throw new ArgumentNullException(nameof(reader));
+            _origin = origin ?? throw new ArgumentNullException(nameof(origin));
+            _origin.SetErrorHandler(ErrorHandler);
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));
             _model = ModelInfos.Get(_settings.Version);
             _states = new Stack<State>();
@@ -36,47 +34,22 @@ namespace Hl7.Fhir.Serialization
 
         public string GetXHtml()
         {
-            SetHasNonEmptyElements();   // At the very least we have the root element
-            // We cannot use ReadOuterXml() because we want to convert \n to \r\n
-            var stringWriter = new StringWriter(CultureInfo.InvariantCulture);
-            var settings = new XmlWriterSettings
+            if (!_origin.TryReadXHtml(out var xHtml))
             {
-                OmitXmlDeclaration = true
-            };
-            using (var xmlWriter = XmlWriter.Create(stringWriter, settings))
-            {
-                xmlWriter.WriteNode(_reader, defattr: false);
+                return null;
             }
-            return stringWriter.ToString();
+            SetHasNonEmptyElements();
+            return xHtml;
         }
 
         public byte[] GetBase64BinaryValue()
         {
-            if (!TryGetNonEmptyString(out var valueString))
+            if (!_origin.TryReadBytes(out var value))
             {
-                return null;
-            }
-            if (!TryFromBase64String(valueString, out var value))
-            {
-                ThrowIfStrictParsing($"'{SourceHelpers.Truncate(valueString)}' is not a valid base64 binary");
                 return null;
             }
             SetHasNonEmptyElements();
             return value;
-
-            bool TryFromBase64String(string str, out byte[] bytes)
-            {
-                try
-                {
-                    bytes = Convert.FromBase64String(str);
-                    return true;
-                }
-                catch (FormatException)
-                {
-                    bytes = null;
-                    return false;
-                }
-            }
         }
 
         public string GetCodeValue()
@@ -105,23 +78,12 @@ namespace Hl7.Fhir.Serialization
 
         public bool? GetFhirBooleanValue()
         {
-            if (!TryGetNonEmptyString(out var valueString))
+            if (!_origin.TryReadBoolean(out var value))
             {
                 return null;
             }
-
-            switch (valueString)
-            {
-                case "true":
-                    SetHasNonEmptyElements();
-                    return true;
-                case "false":
-                    SetHasNonEmptyElements();
-                    return false;
-            }
-
-            ThrowIfStrictParsing($"'{valueString}' is not a valid boolean");
-            return null;
+            SetHasNonEmptyElements();
+            return value;
         }
 
         public string GetDateValue()
@@ -157,13 +119,8 @@ namespace Hl7.Fhir.Serialization
 
         public DateTimeOffset? GetInstantValue()
         {
-            if (!TryGetNonEmptyString(out var valueString))
+            if (!_origin.TryReadDateTimeOffset(out var value))
             {
-                return null;
-            }
-            if (!SourceHelpers.TryParseFhirInstant(valueString, out var value))
-            {
-                ThrowIfStrictParsing($"'{valueString}' is not a valid instant");
                 return null;
             }
             SetHasNonEmptyElements();
@@ -222,7 +179,7 @@ namespace Hl7.Fhir.Serialization
 
         public int? GetIntegerValue()
         {
-            if (!TryGetInteger(out var value))
+            if (!_origin.TryReadInteger(out var value))
             {
                 return null;
             }
@@ -232,7 +189,7 @@ namespace Hl7.Fhir.Serialization
 
         public int? GetPositiveIntValue()
         {
-            if (!TryGetInteger(out var value))
+            if (!_origin.TryReadInteger(out var value))
             {
                 return null;
             }
@@ -247,7 +204,7 @@ namespace Hl7.Fhir.Serialization
 
         public int? GetUnsignedIntValue()
         {
-            if (!TryGetInteger(out var value))
+            if (!_origin.TryReadInteger(out var value))
             {
                 return null;
             }
@@ -262,13 +219,8 @@ namespace Hl7.Fhir.Serialization
 
         public decimal? GetFhirDecimalValue()
         {
-            if (!TryGetNonEmptyString(out var valueString))
+            if (!_origin.TryReadDecimal(out var value))
             {
-                return null;
-            }
-            if (!decimal.TryParse(valueString, out var value))
-            {
-                ThrowIfStrictParsing($"'{valueString}' is not a valid decimal");
                 return null;
             }
             SetHasNonEmptyElements();
@@ -299,77 +251,26 @@ namespace Hl7.Fhir.Serialization
 
         public Resource GetResource()
         {
-            // We have: <element><resource> . . .</resource></element>
-
-            if (!_settings.PermissiveParsing && _reader.MoveToFirstAttribute())
+            Resource result = null;
+            foreach (var resourceType in _origin.EnumerateResource())
             {
-                do
+                result = CreateResource(resourceType);
+                if (!PopulateBaseCheckEmpty(result))
                 {
-                    if (string.IsNullOrEmpty(_reader.NamespaceURI) && IsValidAttributeName(_reader.LocalName))
-                    {
-                        throw CreateException($"Unknown attribute '{_reader.LocalName}'");
-                    }
-                } while (_reader.MoveToNextAttribute());
-                _reader.MoveToElement();
+                    result = null;
+                }
             }
-
-            if (_reader.IsEmptyElement)
-            {
-                ThrowEmptyNotAllowedIfStrictParsing();
-                _reader.Skip();
-                return null;
-            }
-
-            _reader.Read();
-
-            if (!MoveToValidElement())
-            {
-                ThrowEmptyNotAllowedIfStrictParsing();
-                _reader.Skip();
-                return null;
-            }
-
-            var resourceType = _reader.LocalName;
-            var result = _model.CreateResource(resourceType)
-                ?? throw CreateUnknownResourceTypeException(resourceType);
-            if (!PopulateBaseCheckEmpty(result))
-            {
-                result = null;
-            }
-
-            // Move after the </element> node
-            while (MoveToValidElement())
-            {
-                ThrowIfStrictParsing($"Unexpected element '{_reader.LocalName}'");
-                _reader.Skip();
-            }
-            _reader.Read();
-
             return result;
         }
 
         public Base GetRoot(Type targetType)
         {
-            try
+            Base result = null;
+            foreach (var resourceType in _origin.EnumerateResource())
             {
-                if (_reader.MoveToContent() != XmlNodeType.Element)
-                {
-                    throw CreateException($"Unexpected {_reader.NodeType} node");
-                }
-
-                Base result;
                 if (targetType == null || targetType.IsAbstract || typeof(Resource).IsAssignableFrom(targetType))
                 {
-                    if (_reader.NamespaceURI != _fhirNamespaceURI)
-                    {
-                        var message = string.IsNullOrEmpty(_reader.NamespaceURI) ?
-                            $"The element '{_reader.LocalName}' has no namespace, expected the HL7 FHIR namespace ({_fhirNamespaceURI})" :
-                            $"The element '{_reader.LocalName}' uses the namespace '{_reader.NamespaceURI}', expected the HL7 FHIR namespace ({_fhirNamespaceURI})";
-                        throw CreateException(message);
-                    }
-                    var resourceType = _reader.LocalName;
-                    result = _model.CreateResource(resourceType)
-                        ?? throw CreateUnknownResourceTypeException(resourceType);
+                    result = CreateResource(resourceType);
                     if (targetType != null && !targetType.IsAssignableFrom(result.GetType()))
                     {
                         var expectedType = _model.GetFhirTypeNameForType(targetType) ?? targetType.Name;
@@ -387,12 +288,8 @@ namespace Hl7.Fhir.Serialization
                 }
                 // We accept root empty element (as we do for JSON because we consider the resourceType property enough to make it non-empty)
                 PopulateBase(result);
-                return result;
             }
-            catch (XmlException xmlException)
-            {
-                throw new SourceException($"Invalid XML: {xmlException.Message}", GetCurrentPath(), xmlException.LineNumber - 1, xmlException.LinePosition - 1);
-            }
+            return result;
         }
 
         public List<Resource> GetResourceList()
@@ -421,24 +318,12 @@ namespace Hl7.Fhir.Serialization
             return result;
         }
 
-        private bool TryGetInteger(out int value)
-        {
-            value = default;
-            if (!TryGetNonEmptyString(out var valueString))
-            {
-                return false;
-            }
-            if (!int.TryParse(valueString, out value))
-            {
-                ThrowIfStrictParsing($"'{valueString}' is not a valid integer");
-                return false;
-            }
-            return true;
-        }
-
         private bool TryGetNonEmptyString(out string value)
         {
-            value = _reader.Value;
+            if (!_origin.TryReadString(out value))
+            {
+                return false;
+            }
             if (string.IsNullOrWhiteSpace(value))
             {
                 if (!_settings.PermissiveParsing)
@@ -447,25 +332,32 @@ namespace Hl7.Fhir.Serialization
                 }
                 return false;
             }
-            value = value.Trim();
             return true;
+        }
+
+        private Resource CreateResource(string resourceType)
+        {
+            if (string.IsNullOrWhiteSpace(resourceType))
+            {
+                throw CreateException($"Missing resource type");
+            }
+            return _model.CreateResource(resourceType)
+                ?? throw CreateException($"Unknown resource type '{resourceType}'");
         }
 
         private List<TBase> GetListPrimitive<TBase>(Func<TBase> get) where TBase : Base
         {
             var result = new List<TBase>();
-            var elementName = _reader.LocalName;
-            var index = 0;
             var currentState = _states.Peek();
-            do
+            foreach (var index in _origin.EnumerateList())
             {
-                currentState.CurrentListIndex = index++;
+                currentState.CurrentListIndex = index;
                 var item = get();
                 if (item != null)
                 {
                     result.Add(item);
                 }
-            } while (MoveToValidElement() && _reader.LocalName == elementName && _reader.NamespaceURI == _fhirNamespaceURI );
+            }
             return result;
         }
 
@@ -484,46 +376,29 @@ namespace Hl7.Fhir.Serialization
         {
             var state = new State();
             _states.Push(state);
-            if (_reader.MoveToFirstAttribute())
+            foreach (var attributeName in _origin.EnumerateAttributes())
             {
-                do
+                var elementName = $"@{attributeName}";
+                if (!SetElementFromSource(elementName))
                 {
-                    if (string.IsNullOrEmpty(_reader.NamespaceURI))
+                    if (!_settings.AcceptUnknownMembers)
                     {
-                        var attributeName = _reader.LocalName;
-                        if (IsValidAttributeName(attributeName))
-                        {
-                            var elementName = $"@{attributeName}";
-                            if (!SetElementFromSource(elementName) && !_settings.AcceptUnknownMembers)
-                            {
-                                throw CreateException($"Unknown attribute '{attributeName}'");
-                            }
-                        }
+                        throw CreateException($"Unknown attribute '{attributeName}'");
                     }
-                    else if (_settings.DisallowXsiAttributesOnRoot && _reader.Depth == 1 && _reader.NamespaceURI == _xsiNamespaceURI)
-                    {
-                        throw CreateException($"The '{_reader.LocalName}' attribute is not allowed");
-
-                    }
-                } while (_reader.MoveToNextAttribute());
-                _reader.MoveToElement();
-            }
-            if (!_reader.IsEmptyElement)
-            {
-                _reader.Read();
-                while (MoveToValidElement())
-                {
-                    if (!SetElementFromSource(_reader.LocalName))
-                    {
-                        if (!_settings.AcceptUnknownMembers)
-                        {
-                            throw CreateException($"Encountered unknown element '{_reader.LocalName}'");
-                        }
-                        _reader.Skip();
-                    }
+                    _origin.Skip();
                 }
             }
-            _reader.Read();
+            foreach (var elementName in _origin.EnumerateElements())
+            {
+                if (!SetElementFromSource(elementName))
+                {
+                    if (!_settings.AcceptUnknownMembers)
+                    {
+                        throw CreateException($"Encountered unknown element '{elementName}'");
+                    }
+                    _origin.Skip();
+                }
+            }
             _states.Pop();
             return state.HasNonEmptyElements;
 
@@ -534,34 +409,29 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        private bool MoveToValidElement()
+        private void ErrorHandler(ParserErrorCategory category, string message, long? lineNumber, long? bytePositionInLine)
         {
-            while (true)
+            if (!IgnoreError())
             {
-                switch (_reader.MoveToContent())
+                throw new SourceException(message, GetCurrentPath(), lineNumber, bytePositionInLine);
+            }
+
+            bool IgnoreError()
+            {
+                switch (category)
                 {
-                    case XmlNodeType.None:
-                    case XmlNodeType.EndElement:
+                    case ParserErrorCategory.InvalidValue:
+                    case ParserErrorCategory.UnexpectedInput:
+                    case ParserErrorCategory.EmptyMember:
+                        return _settings.PermissiveParsing;
+                    case ParserErrorCategory.UnknownMember:
+                        return _settings.AcceptUnknownMembers;
+                    case ParserErrorCategory.MalformedInput:
                         return false;
-                    case XmlNodeType.Element:
-                        if (IsOnValidElement())
-                        {
-                            return true;
-                        }
-                        _reader.Skip();
-                        break;
                     default:
-                        ThrowIfStrictParsing($"Unexpected {_reader.NodeType} node");
-                        _reader.Skip();
-                        break;
+                        throw new ArgumentException($"Unknown or not supported {nameof(ParserErrorCategory)} '{category}'", nameof(category));
                 }
             }
-        }
-
-        private bool IsOnValidElement()
-        {
-            return _reader.NodeType == XmlNodeType.Element
-                && _reader.NamespaceURI == _fhirNamespaceURI || _reader.NamespaceURI == _xhtmlNamespaceURI && _reader.LocalName == "div";
         }
 
         private void ThrowEmptyNotAllowedIfStrictParsing()
@@ -577,42 +447,14 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        private SourceException CreateUnknownResourceTypeException(string resourceType)
-        {
-            return CreateException($"Unknown resource type '{resourceType}'");
-        }
-
         private SourceException CreateException(string message)
         {
-            long? lineNumber = null;
-            long? bytePositionInLine = null;
-            if (_reader is IXmlLineInfo lineInfo && lineInfo.HasLineInfo())
-            {
-                lineNumber = lineInfo.LineNumber - 1;
-                bytePositionInLine = lineInfo.LinePosition - 1;
-            }
-            return new SourceException(message, GetCurrentPath(), lineNumber, bytePositionInLine);
-        }
-
-        private TBase HandleEmpty<TBase>(TBase element, bool hasNonEmptyElements) where TBase : class
-        {
-            if (hasNonEmptyElements)
-            {
-                SetHasNonEmptyElements();
-                return element;
-            }
-            ThrowEmptyNotAllowedIfStrictParsing();
-            return null;
+            return new SourceException(message, GetCurrentPath(), _origin.GetLineNumber(), _origin.GetBytePositionInLine());
         }
 
         private void SetHasNonEmptyElements()
         {
             _states.Peek().HasNonEmptyElements = true;
-        }
-
-        private static bool IsValidAttributeName(string attributeName)
-        {
-            return attributeName != "xmlns";
         }
 
         private string GetCurrentPath()
@@ -645,11 +487,7 @@ namespace Hl7.Fhir.Serialization
             public bool HasNonEmptyElements { get; set; } = false;
         }
 
-        const string _fhirNamespaceURI = "http://hl7.org/fhir";
-        const string _xsiNamespaceURI = "http://www.w3.org/2001/XMLSchema-instance";
-        const string _xhtmlNamespaceURI = "http://www.w3.org/1999/xhtml";
-
-        private readonly XmlReader _reader;
+        private readonly IParserOrigin _origin;
         private readonly ParserSettings _settings;
         private readonly IModelInfo _model;
         private readonly Stack<State> _states;

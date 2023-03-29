@@ -34,7 +34,8 @@ namespace Hl7.Fhir.Serialization
 
         public Base Parse(XmlReader reader, Type dataType = null)
         {
-            var source = new ParserSource(SerializationUtil.WrapXmlReader(reader), Settings);
+            var origin = new XmlParserOrigin(SerializationUtil.WrapXmlReader(reader), Settings.DisallowXsiAttributesOnRoot);
+            var source = new ParserSource(origin, Settings);
             try
             {
                 return source.GetRoot(dataType);
