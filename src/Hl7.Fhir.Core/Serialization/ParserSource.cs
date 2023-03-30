@@ -34,7 +34,7 @@ namespace Hl7.Fhir.Serialization
 
         public string GetXHtml()
         {
-            if (!_origin.TryReadXHtml(out var xHtml))
+            if (!_origin.TryReadXHtmlElement(out var xHtml))
             {
                 return null;
             }
@@ -44,7 +44,7 @@ namespace Hl7.Fhir.Serialization
 
         public byte[] GetBase64BinaryValue()
         {
-            if (!_origin.TryReadBytes(out var value))
+            if (!_origin.TryReadBytesValue(out var value))
             {
                 return null;
             }
@@ -78,7 +78,7 @@ namespace Hl7.Fhir.Serialization
 
         public bool? GetFhirBooleanValue()
         {
-            if (!_origin.TryReadBoolean(out var value))
+            if (!_origin.TryReadBooleanValue(out var value))
             {
                 return null;
             }
@@ -119,7 +119,7 @@ namespace Hl7.Fhir.Serialization
 
         public DateTimeOffset? GetInstantValue()
         {
-            if (!_origin.TryReadDateTimeOffset(out var value))
+            if (!_origin.TryReadDateTimeOffsetValue(out var value))
             {
                 return null;
             }
@@ -179,7 +179,7 @@ namespace Hl7.Fhir.Serialization
 
         public int? GetIntegerValue()
         {
-            if (!_origin.TryReadInteger(out var value))
+            if (!_origin.TryReadIntegerValue(out var value))
             {
                 return null;
             }
@@ -189,7 +189,7 @@ namespace Hl7.Fhir.Serialization
 
         public int? GetPositiveIntValue()
         {
-            if (!_origin.TryReadInteger(out var value))
+            if (!_origin.TryReadIntegerValue(out var value))
             {
                 return null;
             }
@@ -204,7 +204,7 @@ namespace Hl7.Fhir.Serialization
 
         public int? GetUnsignedIntValue()
         {
-            if (!_origin.TryReadInteger(out var value))
+            if (!_origin.TryReadIntegerValue(out var value))
             {
                 return null;
             }
@@ -219,7 +219,7 @@ namespace Hl7.Fhir.Serialization
 
         public decimal? GetFhirDecimalValue()
         {
-            if (!_origin.TryReadDecimal(out var value))
+            if (!_origin.TryReadDecimalValue(out var value))
             {
                 return null;
             }
@@ -320,7 +320,7 @@ namespace Hl7.Fhir.Serialization
 
         private bool TryGetNonEmptyString(out string value)
         {
-            if (!_origin.TryReadString(out value))
+            if (!_origin.TryReadStringValue(out value))
             {
                 return false;
             }

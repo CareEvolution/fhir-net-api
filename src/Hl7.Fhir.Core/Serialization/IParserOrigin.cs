@@ -17,37 +17,37 @@ namespace Hl7.Fhir.Serialization
         /// <summary>
         /// Tries to read a string value. Does not move the current position in the input.
         /// </summary>
-        bool TryReadString(out string value);
+        bool TryReadStringValue(out string value);
 
         /// <summary>
         /// Tries to read a boolean value. Does not move the current position in the input.
         /// </summary>
-        bool TryReadBoolean(out bool value);
+        bool TryReadBooleanValue(out bool value);
 
         /// <summary>
         /// Tries to read an integer value. Does not move the current position in the input.
         /// </summary>
-        bool TryReadInteger(out int value);
+        bool TryReadIntegerValue(out int value);
 
         /// <summary>
         /// Tries to read a decimal value. Does not move the current position in the input.
         /// </summary>
-        bool TryReadDecimal(out decimal value);
+        bool TryReadDecimalValue(out decimal value);
 
         /// <summary>
         /// Tries to read a DateTimeOffset (instant) value. Does not move the current position in the input.
         /// </summary>
-        bool TryReadDateTimeOffset(out DateTimeOffset value);
+        bool TryReadDateTimeOffsetValue(out DateTimeOffset value);
 
         /// <summary>
         /// Tries to read a byte array (binary data) value. Does not move the current position in the input.
         /// </summary>
-        bool TryReadBytes(out byte[] value);
+        bool TryReadBytesValue(out byte[] value);
 
         /// <summary>
         /// Tries to read an XHTML fragment. CAN move the current position in the input past the fragment.
         /// </summary>
-        bool TryReadXHtml(out string value);
+        bool TryReadXHtmlElement(out string value);
 
         /// <summary>
         /// Enumerate the next resource in the input, returning its resource type.

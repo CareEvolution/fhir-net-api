@@ -748,12 +748,12 @@ namespace Hl7.Fhir.Serialization
             // Empty
         }
 
-        public void WriteNamedStringValue(string name, string value)
+        public void WriteAttribute(string name, string value)
         {
             _writer.WriteAttributeString(name, value);
         }
 
-        public void WriteNamedXhtmlValue(string name, string value)
+        public void WriteXhtmlElement(string name, string value)
         {
             if (!value.StartsWith("<"))
             {
@@ -940,7 +940,7 @@ namespace Hl7.Fhir.Serialization
             if (!IsSkipping() && !ShouldSkip(name, elementVersions, summaryVersions, isRequired) && !string.IsNullOrWhiteSpace(value))
             {
                 RenderStates();
-                _target.WriteNamedStringValue(name, value.Trim());
+                _target.WriteAttribute(name, value.Trim());
             }
         }
 
@@ -949,7 +949,7 @@ namespace Hl7.Fhir.Serialization
             if (!IsSkipping() && !ShouldSkip(name, elementVersions, summaryVersions, isRequired) && !string.IsNullOrWhiteSpace(value))
             {
                 RenderStates();
-                _target.WriteNamedXhtmlValue(name, value.Trim());
+                _target.WriteXhtmlElement(name, value.Trim());
             }
         }
 

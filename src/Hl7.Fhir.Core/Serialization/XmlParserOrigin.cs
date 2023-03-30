@@ -21,13 +21,13 @@ namespace Hl7.Fhir.Serialization
             _errorHandler = errorHandler ?? throw new ArgumentNullException(nameof(errorHandler));
         }
 
-        public bool TryReadString(out string value)
+        public bool TryReadStringValue(out string value)
         {
             value = GetTrimmedValue();
             return true;
         }
 
-        public bool TryReadBoolean(out bool value)
+        public bool TryReadBooleanValue(out bool value)
         {
             var valueString = GetTrimmedValue();
             switch (valueString)
@@ -46,7 +46,7 @@ namespace Hl7.Fhir.Serialization
             return true;
         }
 
-        public bool TryReadInteger(out int value)
+        public bool TryReadIntegerValue(out int value)
         {
             var valueString = GetTrimmedValue();
             if (!int.TryParse(valueString, out value))
@@ -57,7 +57,7 @@ namespace Hl7.Fhir.Serialization
             return true;
         }
 
-        public bool TryReadDecimal(out decimal value)
+        public bool TryReadDecimalValue(out decimal value)
         {
             var valueString = GetTrimmedValue();
             if (!decimal.TryParse(valueString, out value))
@@ -68,7 +68,7 @@ namespace Hl7.Fhir.Serialization
             return true;
         }
 
-        public bool TryReadDateTimeOffset(out DateTimeOffset value)
+        public bool TryReadDateTimeOffsetValue(out DateTimeOffset value)
         {
             var valueString = GetTrimmedValue();
             if (!SourceHelpers.TryParseFhirInstant(valueString, out value))
@@ -79,7 +79,7 @@ namespace Hl7.Fhir.Serialization
             return true;
         }
 
-        public bool TryReadBytes(out byte[] value)
+        public bool TryReadBytesValue(out byte[] value)
         {
             var valueString = GetTrimmedValue();
             try
@@ -95,7 +95,7 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        public bool TryReadXHtml(out string value)
+        public bool TryReadXHtmlElement(out string value)
         {
             // We cannot use ReadOuterXml() because we want to convert \n to \r\n
             var stringWriter = new StringWriter(CultureInfo.InvariantCulture);

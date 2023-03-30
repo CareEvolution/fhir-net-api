@@ -61,17 +61,17 @@ namespace Hl7.Fhir.Serialization
         void WriteValue(byte[] bytesValue);
 
         /// <summary>
-        /// Writes the value of special named string elements ('id' and 'url')
+        /// Writes the value of an attribute (element id and extension url)
         /// </summary>
-        /// <param name="name">Elment name</param>
-        /// <param name="value">Element value</param>
-        void WriteNamedStringValue(string name, string value);
+        /// <param name="name">Attribute name</param>
+        /// <param name="value">Attribute value</param>
+        void WriteAttribute(string name, string value);
 
         /// <summary>
         /// Writes the value of XHTML-valued elements ('div')
         /// </summary>
         /// <param name="name">Elment name</param>
         /// <param name="value">Element value</param>
-        void WriteNamedXhtmlValue(string name, string value);
+        void WriteXhtmlElement(string name, string value);
     }
 }
