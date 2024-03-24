@@ -36,9 +36,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Serialization\FhirJsonFastParser.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="Model\Source-DSTU2\expansions.xml" />

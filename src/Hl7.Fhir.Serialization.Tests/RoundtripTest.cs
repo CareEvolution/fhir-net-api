@@ -33,7 +33,7 @@ namespace Hl7.Fhir.Serialization.Tests
         }
     }]
  }";
-            var parser = new FhirJsonParser(Version.DSTU2);
+            var parser = new FhirJsonFastParser(Version.DSTU2);
             var medicationStatement = parser.Parse<Model.DSTU2.MedicationStatement>(medicationStatementJson);
             Assert.IsInstanceOfType(medicationStatement.Dosage[0].Quantity, typeof(SimpleQuantity));
         }
@@ -97,14 +97,14 @@ namespace Hl7.Fhir.Serialization.Tests
 
             var t = new FhirXmlParser(version).Parse<Resource>(original);
 
-            var outputXml = new FhirXmlSerializer(version).SerializeToString(t);
+            var outputXml = new FhirXmlFastSerializer(version).SerializeToString(t);
             XmlAssert.AreSame(filename, original, outputXml);
 
-            var outputJson = new FhirJsonSerializer(version).SerializeToString(t);
-            var t2 = new FhirJsonParser(version).Parse<Resource>(outputJson);
+            var outputJson = new FhirJsonFastSerializer(version).SerializeToString(t);
+            var t2 = new FhirJsonFastParser(version).Parse<Resource>(outputJson);
             Assert.IsTrue(t.IsExactly(t2));
 
-            var outputXml2 = new FhirXmlSerializer(version).SerializeToString(t2);
+            var outputXml2 = new FhirXmlFastSerializer(version).SerializeToString(t2);
             XmlAssert.AreSame(filename, original, outputXml2);
         }
 
@@ -139,7 +139,7 @@ namespace Hl7.Fhir.Serialization.Tests
             XmlAssert.AreSame(filename, original, outputXml);
 
             var outputJson = new FhirJsonFastSerializer(version).SerializeToString(t);
-            var t2 = new FhirJsonParser(version).Parse<Resource>(outputJson);
+            var t2 = new FhirJsonFastParser(version).Parse<Resource>(outputJson);
             Assert.IsTrue(t.IsExactly(t2));
 
             var outputXml2 = new FhirXmlFastSerializer(version).SerializeToString(t2);
@@ -322,7 +322,7 @@ namespace Hl7.Fhir.Serialization.Tests
             else
             {
                 var json = File.ReadAllText(inputFile);
-                var resource = new FhirJsonParser(Version.DSTU2).Parse<Resource>(json);
+                var resource = new FhirJsonFastParser(Version.DSTU2).Parse<Resource>(json);
                 var xml = new FhirXmlFastSerializer(Version.DSTU2).SerializeToString(resource);
                 File.WriteAllText(outputFile, xml);
             }

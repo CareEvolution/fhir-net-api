@@ -106,6 +106,11 @@ namespace Hl7.Fhir.Model.STU3
             return true;
         }
     
+        internal override string GetSerializeType()
+        {
+            return "Age";
+        }
+    
     }
 
 }

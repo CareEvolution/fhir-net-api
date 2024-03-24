@@ -36,8 +36,6 @@ using Hl7.Fhir.Rest;
 using Hl7.FhirPath;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.FhirPath;
-using System.Linq;
 using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Model

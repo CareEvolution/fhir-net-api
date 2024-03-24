@@ -145,6 +145,31 @@ namespace Hl7.Fhir.Serialization
             return null;
         }
 
+        public Base GetDataType(Type targetType)
+        {
+            if (targetType == null) throw new ArgumentNullException(nameof(targetType));
+
+            var dataTypeName = _model.GetFhirTypeNameForType(targetType)
+                ?? throw CreateException($"{targetType} is not a valid data type");
+
+            if (targetType.IsAbstract)
+            {
+                throw CreateException($"Cannot create instances of the abstract data type {dataTypeName}");
+            }
+
+            var result = (Base)Activator.CreateInstance(targetType);
+            var isRoot = !_states.Any();
+            if (PopulateBase(result, isRoot))
+            {
+                if (!isRoot)
+                {
+                    SetHasNonEmptyElements();
+                }
+                return result;
+            }
+            return null;
+        }
+
         public void PopulateListItem(List<Resource> items, int index)
         {
             if (items == null) throw new ArgumentNullException(nameof(items));
@@ -383,23 +408,17 @@ namespace Hl7.Fhir.Serialization
         {
             if (TryGetNonEmptyString(out var code))
             {
-                var codeValue = EnumUtility.ParseLiteral<TEnum>(code);
-                if (codeValue == null)
+                if (!_settings.AllowUnrecognizedEnums && EnumUtility.ParseLiteral<TEnum>(code) == null)
                 {
-                    if (!_settings.AllowUnrecognizedEnums)
-                    {
-                        throw CreateException($"'{code}' is not a valid {EnumUtility.GetName<TEnum>()}");
-                    }
+                    throw CreateException($"'{code}' is not a valid {EnumUtility.GetName<TEnum>()}");
                 }
-                else
+
+                SetHasNonEmptyElements();
+                if (fhirCode == null)
                 {
-                    SetHasNonEmptyElements();
-                    if (fhirCode == null)
-                    {
-                        fhirCode = new Code<TEnum>();
-                    }
-                    fhirCode.Value = codeValue;
+                    fhirCode = new Code<TEnum>();
                 }
+                fhirCode.ObjectValue = code;
             }
             return fhirCode;
         }
@@ -797,13 +816,50 @@ namespace Hl7.Fhir.Serialization
             _states.Pop();
             if (!state.HasNonEmptyElements)
             {
-                if (isRoot || !_settings.PermissiveParsing)
+                if (ShouldThrowEmptyObjectsException(element, isRoot))
                 {
                     throw CreateException("Empty objects are not allowed");
                 }
                 return false;
             }
             return true;
+
+        }
+
+        private bool ShouldThrowEmptyObjectsException(Base element, bool isRoot)
+        {
+            if (isRoot)
+            {
+                return true;
+            }
+
+            if (_settings.PermissiveParsing)
+            {
+                return false;
+            }
+
+            if (!(element is Primitive primitive))
+            {
+                return true;
+            }
+
+            if (primitive.ObjectValue == null)
+            {
+                // Strictly speaking this is wrong: the primitive element could have a value set AFTER the empty 'shadow' object:
+                //
+                //   {
+                //     . . . 
+                //     "_gender":{},
+                //     "gender":"male"
+                //     . . . 
+                //   }
+                //
+                // and in that case we should NOT throw, but it is a rare corner case and very hard to handle
+                //
+                return true;
+            }
+
+            return false;
         }
 
         private bool ShouldSetPrimitiveListItem<TItem>(List<TItem> items, int index) where TItem : Primitive

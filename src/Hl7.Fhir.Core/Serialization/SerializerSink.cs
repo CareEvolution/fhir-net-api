@@ -1,9 +1,10 @@
-﻿using Hl7.Fhir.Model;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text.Json;
 using System.Xml;
+using Hl7.Fhir.Model;
 
 namespace Hl7.Fhir.Serialization
 {
@@ -17,6 +18,7 @@ namespace Hl7.Fhir.Serialization
     {
         public SerializerSink(Model.Version version, Rest.SummaryType summary, IEnumerable<string> elements)
         {
+            if (summary != Rest.SummaryType.False && elements != null) throw new ArgumentException("Must be null when specifying a non-False summary value", nameof(elements));
             _version = version;
             _summary = summary;
             _elements = elements == null ?
@@ -44,7 +46,9 @@ namespace Hl7.Fhir.Serialization
                 var observationValueSystem = _version == Model.Version.DSTU2 || _version == Model.Version.STU3 ?
                     OldObservationValueSystem :
                     ObservationValueSystem;
-                var subsettedMeta = meta ?? new Meta();
+                var subsettedMeta = meta == null ?
+                    new Meta() :
+                    (Meta)meta.DeepCopy();
                 if (!subsettedMeta.Tag.Any(t => t.System == observationValueSystem && t.Code == ObservationValueCodeSubsetted))
                 {
                     var subsettedTag = new Coding(observationValueSystem, ObservationValueCodeSubsetted);
@@ -271,9 +275,12 @@ namespace Hl7.Fhir.Serialization
                 case Rest.SummaryType.Text:
                     return !isRequired
                         && !(name == "id" || name == "meta" || name == "text")
-                        && IsResourceElement();
+                        && IsNonBundleResourceElement();
                 case Rest.SummaryType.Count:
-                    return true;
+                    return !isRequired
+                        && (name != "id")
+                        && IsResourceElement()
+                        && !(name == "total" && IsBundleElement());
                 default:
                     throw new InvalidOperationException($"Unknown or not supported summary type '{_summary}'");
             }
@@ -281,6 +288,18 @@ namespace Hl7.Fhir.Serialization
             bool IsResourceElement() =>
                 _states.Last?.Value is DataTypeState dataTypeState
                 && dataTypeState.Type != null;
+
+            bool IsNonBundleResourceElement()
+            {
+                var resourceOrDataElementType = (_states.Last?.Value as DataTypeState)?.Type;
+                return resourceOrDataElementType != null && resourceOrDataElementType != "Bundle";
+            }
+
+            bool IsBundleElement()
+            {
+                var resourceOrDataElementType = (_states.Last?.Value as DataTypeState)?.Type;
+                return resourceOrDataElementType == "Bundle";
+            }
         }
 
         /// <summary>
@@ -513,11 +532,11 @@ namespace Hl7.Fhir.Serialization
     }
 
     /// <summary>
-    /// Sink generating JSON output - via a JsonWriter
+    /// Sink generating JSON output - via a Utf8JsonWriter
     /// </summary>
     internal class JsonSerializerSink : SerializerSink
     {
-        public JsonSerializerSink(JsonWriter writer, Model.Version version, Rest.SummaryType summary = Rest.SummaryType.False, IEnumerable<string> elements = null) :
+        public JsonSerializerSink(Utf8JsonWriter writer, Model.Version version, Rest.SummaryType summary = Rest.SummaryType.False, IEnumerable<string> elements = null) :
             base(version, summary, elements)
         {
             _nullSink = new NullSerializerSink(version, summary, elements);
@@ -563,11 +582,11 @@ namespace Hl7.Fhir.Serialization
                         RenderStates();
                         if (objectValue == null)
                         {
-                            _writer.WriteNull();
+                            _writer.WriteNullValue();
                         }
                         else
                         {
-                            _writer.WriteValue(objectValue);
+                            WriteValue(objectValue);
                         }
                         if (noElement)
                         {
@@ -593,7 +612,7 @@ namespace Hl7.Fhir.Serialization
                         switch (element)
                         {
                             case ElementHandling.Null:
-                                _writer.WriteNull();
+                                _writer.WriteNullValue();
                                 break;
                             case ElementHandling.Skip:
                                 break;
@@ -635,7 +654,7 @@ namespace Hl7.Fhir.Serialization
                 if (dataTypeState.Type != null)
                 {
                     _writer.WritePropertyName("resourceType");
-                    _writer.WriteValue(dataTypeState.Type);
+                    _writer.WriteStringValue(dataTypeState.Type);
                 }
             }
             else if (state is ListState listState)
@@ -688,7 +707,49 @@ namespace Hl7.Fhir.Serialization
                 RenderStates();
 
                 _writer.WritePropertyName(propertyName);
-                _writer.WriteValue(valueToWrite);
+                WriteValue(valueToWrite);
+            }
+        }
+
+        private void WriteValue(object valueToWrite)
+        {
+            switch (valueToWrite)
+            {
+                case string stringToWrite:
+                    _writer.WriteStringValue(stringToWrite);
+                    break;
+                case bool boolToWrite:
+                    _writer.WriteBooleanValue(boolToWrite);
+                    break;
+                case decimal decimalToWrite:
+                    _writer.WriteNumberValue(decimalToWrite);
+                    break;
+                case int intToWrite:
+                    _writer.WriteNumberValue(intToWrite);
+                    break;
+                case long longToWrite:
+                    _writer.WriteNumberValue(longToWrite);
+                    break;
+                case uint uintToWrite:
+                    _writer.WriteNumberValue(uintToWrite);
+                    break;
+                case ulong ulongToWrite:
+                    _writer.WriteNumberValue(ulongToWrite);
+                    break;
+                case double doubleToWrite:
+                    _writer.WriteNumberValue(doubleToWrite);
+                    break;
+                case float floatToWrite:
+                    _writer.WriteNumberValue(floatToWrite);
+                    break;
+                case byte[] bytesToWrite:
+                    _writer.WriteBase64StringValue(bytesToWrite);
+                    break;
+                case DateTimeOffset dateTimeOffsetToWrite:
+                    _writer.WriteStringValue(dateTimeOffsetToWrite.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz", CultureInfo.InvariantCulture));
+                    break;
+                default:
+                    throw new SerializerSinkException($"Not supported primitive value type {valueToWrite.GetType()}");
             }
         }
 
@@ -699,12 +760,12 @@ namespace Hl7.Fhir.Serialization
             Serialize
         }
 
-        private readonly JsonWriter _writer;
+        private readonly Utf8JsonWriter _writer;
         private readonly NullSerializerSink _nullSink;
     }
 
     /// <summary>
-    /// Serrializer target to use with GenericSerializerSink to generate the standard FHIR XML representation 
+    /// Serializer target to use with GenericSerializerSink to generate the standard FHIR XML representation 
     /// </summary>
     internal class XmlSerializerTarget : ISerializerTarget
     {

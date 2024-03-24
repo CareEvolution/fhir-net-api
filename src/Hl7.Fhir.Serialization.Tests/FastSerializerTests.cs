@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -15,7 +16,7 @@ namespace Hl7.Fhir.Serialization.Tests
         {
             var json = File.ReadAllText(Path.Combine("TestData", "patient.json"), Encoding.UTF8);
 
-            var jsonParser = new FhirJsonParser(Model.Version.DSTU2);
+            var jsonParser = new FhirJsonFastParser(Model.Version.DSTU2);
             var patient = jsonParser.Parse<Model.DSTU2.Patient>(json);
 
             var serializedJson = FastSerializeToJsonString(patient);
@@ -731,7 +732,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void XmlBytes()
         {
             var codeableConcept = new Model.CodeableConcept("http://loinc.org", "11050-2", "Lab result");
-            var expectedBytes = new FhirXmlSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
+            var expectedBytes = new FhirXmlFastSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
             var actualBytes = new FhirXmlFastSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
             Assert.AreEqual(Encoding.UTF8.GetString(expectedBytes), Encoding.UTF8.GetString(actualBytes));
         }
@@ -740,7 +741,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void JsonBytes()
         {
             var codeableConcept = new Model.CodeableConcept("http://loinc.org", "11050-2", "Lab result");
-            var expectedBytes = new FhirJsonSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
+            var expectedBytes = new FhirJsonFastSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
             var actualBytes = new FhirJsonFastSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
             Assert.AreEqual(Encoding.UTF8.GetString(expectedBytes), Encoding.UTF8.GetString(actualBytes));
         }
@@ -811,6 +812,43 @@ namespace Hl7.Fhir.Serialization.Tests
 }";
             serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
             Assert.AreEqual(json, serializedJson);
+        }
+
+        [TestMethod]
+        public void JsonInstant_DifferentLocale()
+        {
+            var savedCulture = CultureInfo.CurrentCulture;
+            CultureInfo.CurrentCulture = new CultureInfo("da"); // Use '.' as the time separator
+            try
+            {
+                var observation = new Model.R4.Observation
+                {
+                    Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
+                };
+
+                var json = @"{
+  ""resourceType"": ""Observation"",
+  ""valueInstant"": ""2019-11-21T13:45:06.567+00:00""
+}";
+                var serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
+                Assert.AreEqual(json, serializedJson);
+
+                observation = new Model.R4.Observation
+                {
+                    Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
+                };
+
+                json = @"{
+  ""resourceType"": ""Observation"",
+  ""valueInstant"": ""2019-11-21T13:45:06-04:00""
+}";
+                serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
+                Assert.AreEqual(json, serializedJson);
+            }
+            finally
+            {
+                CultureInfo.CurrentCulture = savedCulture;
+            }
         }
 
         [TestMethod]
@@ -1027,13 +1065,13 @@ namespace Hl7.Fhir.Serialization.Tests
 
         private static string SerializeToJsonString(Model.Base @base, Rest.SummaryType summary = Rest.SummaryType.False, string[] elements = null)
         {
-            var serializer = new FhirJsonSerializer(new SerializerSettings(Model.Version.DSTU2) { Pretty = true });
+            var serializer = new FhirJsonFastSerializer(new SerializerSettings(Model.Version.DSTU2) { Pretty = true });
             return serializer.SerializeToString(@base, summary, elements);
         }
 
         private static string SerializeToXmlString(Model.Base @base, Model.Version version = Model.Version.DSTU2, Rest.SummaryType summary = Rest.SummaryType.False, string root = null, string[] elements = null)
         {
-            var serializer = new FhirXmlSerializer(new SerializerSettings(version) { Pretty = true });
+            var serializer = new FhirXmlFastSerializer(new SerializerSettings(version) { Pretty = true });
             return serializer.SerializeToString(@base, summary, root, elements);
         }
     }

@@ -1,18 +1,11 @@
 ﻿using Hl7.Fhir.ElementModel;
-using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
-using Hl7.Fhir.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
@@ -50,7 +43,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void CanSerializeFromPoco()
         {
             var tp = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.json"));
-            var pser = new FhirJsonParser(new ParserSettings(Version.DSTU2) { DisallowXsiAttributesOnRoot = false } );
+            var pser = new FhirJsonFastParser(new ParserSettings(Version.DSTU2) { DisallowXsiAttributesOnRoot = false } );
             var pat = pser.Parse<Model.DSTU2.Patient>(tp);
 
             var output = pat.ToJson(Version.DSTU2);
@@ -61,7 +54,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void CanStreamingSerializeFromPoco()
         {
             var tp = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.json"));
-            var pser = new FhirJsonParser(new ParserSettings(Version.DSTU2) { DisallowXsiAttributesOnRoot = false });
+            var pser = new FhirJsonFastParser(new ParserSettings(Version.DSTU2) { DisallowXsiAttributesOnRoot = false });
             var pat = pser.Parse<Model.DSTU2.Patient>(tp);
 
             var output = new FhirJsonFastSerializer(Version.DSTU2).SerializeToString(pat);
@@ -79,10 +72,10 @@ namespace Hl7.Fhir.Serialization.Tests
             var pretty = nav.ToJson(new FhirJsonSerializationSettings { Pretty = true });
             Assert.IsTrue(pretty.Substring(0, 20).Contains('\n'));
 
-            var p = (new FhirJsonParser(Version.DSTU2)).Parse<Model.DSTU2.Patient>(json);
-            output = (new FhirJsonSerializer(new SerializerSettings(Version.DSTU2) { Pretty = false })).SerializeToString(p);
+            var p = (new FhirJsonFastParser(Version.DSTU2)).Parse<Model.DSTU2.Patient>(json);
+            output = (new FhirJsonFastSerializer(new SerializerSettings(Version.DSTU2) { Pretty = false })).SerializeToString(p);
             Assert.IsFalse(output.Substring(0, 20).Contains('\n'));
-            pretty = (new FhirJsonSerializer(new SerializerSettings(Version.DSTU2) { Pretty = true })).SerializeToString(p);
+            pretty = (new FhirJsonFastSerializer(new SerializerSettings(Version.DSTU2) { Pretty = true })).SerializeToString(p);
             Assert.IsTrue(pretty.Substring(0, 20).Contains('\n'));
         }
 
@@ -97,7 +90,7 @@ namespace Hl7.Fhir.Serialization.Tests
             var pretty = nav.ToJson(new FhirJsonSerializationSettings { Pretty = true });
             Assert.IsTrue(pretty.Substring(0, 20).Contains('\n'));
 
-            var p = (new FhirJsonParser(Version.DSTU2)).Parse<Model.DSTU2.Patient>(json);
+            var p = (new FhirJsonFastParser(Version.DSTU2)).Parse<Model.DSTU2.Patient>(json);
             output = (new FhirJsonFastSerializer(new SerializerSettings(Version.DSTU2) { Pretty = false })).SerializeToString(p);
             Assert.IsFalse(output.Substring(0, 20).Contains('\n'));
             pretty = (new FhirJsonFastSerializer(new SerializerSettings(Version.DSTU2) { Pretty = true })).SerializeToString(p);

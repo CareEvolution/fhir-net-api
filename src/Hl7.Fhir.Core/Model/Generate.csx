@@ -261,11 +261,16 @@ using Hl7.Fhir.Utility;
 
     public static IEnumerable<string> RenderSerialize(string type, bool abstractType, bool dataType, IEnumerable<PropertyDetails> properties)
     {
+        var isQuantity = type == "Quantity";
         yield return $"internal override void Serialize(Serialization.SerializerSink sink)";
         yield return $"{{";
         if (!abstractType)
         {
-            if (dataType)
+            if (isQuantity)
+            {
+                yield return $"    sink.BeginDataType(GetSerializeType());";
+            }
+            else if (dataType)
             {
                 yield return $"    sink.BeginDataType(\"{type}\");";
             }
@@ -284,6 +289,14 @@ using Hl7.Fhir.Utility;
             yield return $"    sink.End();";
         }
         yield return $"}}";
+        if (isQuantity)
+        {
+            yield return string.Empty;
+            yield return $"internal virtual string GetSerializeType()";
+            yield return $"{{";
+            yield return $"    return \"{type}\";";
+            yield return $"}}";
+        }
     }
 
     public static IEnumerable<string> RenderPrimitiveSetElementFromSource(string primitiveTypeName)
@@ -1651,6 +1664,14 @@ public class ResourceDetails
                 foreach (var line in StringUtils.RenderSetElementFromJson(Properties)) yield return "    " + line;
                 yield return string.Empty;
                 foreach (var line in StringUtils.RenderChildrenMethods(Properties)) yield return "    " + line;
+            }
+            else if (BaseType.EndsWith(".Quantity") && !IsConstraint)
+            {
+                yield return string.Empty;
+                yield return $"    internal override string GetSerializeType()";
+                yield return $"    {{";
+                yield return $"        return \"{FhirName}\";";
+                yield return $"    }}";
             }
         }
 

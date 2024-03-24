@@ -12,11 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using Hl7.Fhir.Serialization;
-using System.Xml;
 using static Hl7.Fhir.Tests.TestDataHelper;
 using System.Diagnostics;
 
@@ -32,7 +28,7 @@ namespace Hl7.Fhir.Tests.Model
 
             var p = new FhirXmlParser(Fhir.Model.Version.DSTU2).Parse<Patient>(xml);
             var p2 = (Patient)p.DeepCopy();
-            var xml2 = new FhirXmlSerializer(Fhir.Model.Version.DSTU2).SerializeToString(p2);
+            var xml2 = new FhirXmlFastSerializer(Fhir.Model.Version.DSTU2).SerializeToString(p2);
             XmlAssert.AreSame("TestPatient.xml", xml, xml2);
         }
 
@@ -43,7 +39,7 @@ namespace Hl7.Fhir.Tests.Model
 
             var p = new FhirXmlParser(Fhir.Model.Version.DSTU2).Parse<CarePlan>(xml);
             var p2 = (CarePlan)p.DeepCopy();
-            var xml2 = new FhirXmlSerializer(Fhir.Model.Version.DSTU2).SerializeToString(p2);
+            var xml2 = new FhirXmlFastSerializer(Fhir.Model.Version.DSTU2).SerializeToString(p2);
             XmlAssert.AreSame("careplan-example-f201-renal.xml", xml, xml2);
         }
 
