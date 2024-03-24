@@ -3,7 +3,6 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Linq;
 
@@ -24,20 +23,6 @@ namespace Hl7.Fhir.Serialization.Tests
             var output = nav.ToJson();
             JsonAssert.AreSame(json, output);
         }
-
-        [TestMethod]
-        public void TestPruneEmptyNodes()
-        {
-            var tp = File.ReadAllText(Path.Combine("TestData", "test-empty-nodes.json"));
-
-            // Make sure permissive parsing is on - otherwise the parser will complain about all those empty nodes
-            var nav = getJsonElement(tp, new FhirJsonParsingSettings { PermissiveParsing = true });
-
-            var output = nav.ToJson();
-            var doc = JObject.Parse(output);
-            Assert.AreEqual(17, doc.DescendantsAndSelf().Count());
-        }
-
        
         [TestMethod]
         public void CanSerializeFromPoco()

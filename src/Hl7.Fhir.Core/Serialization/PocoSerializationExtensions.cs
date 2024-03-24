@@ -9,8 +9,6 @@
 
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -22,10 +20,6 @@ namespace Hl7.Fhir.Serialization
             source.ToTypedElement(version).ToJson(settings);
         public static byte[] ToJsonBytes(this Base source, Model.Version version, FhirJsonSerializationSettings settings = null) =>
             source.ToTypedElement(version).ToJsonBytes(settings);
-        public static void WriteTo(this Base source, Model.Version version, JsonWriter destination, FhirJsonSerializationSettings settings = null) =>
-            source.ToTypedElement(version).WriteTo(destination, settings);
-        public static JObject ToJObject(this Base source, Model.Version version, FhirJsonSerializationSettings settings = null) =>
-            source.ToTypedElement(version).ToJObject(settings);
 
         public static string ToXml(this Base source, Model.Version version, FhirXmlSerializationSettings settings = null) =>
             source.ToTypedElement(version).ToXml(settings);

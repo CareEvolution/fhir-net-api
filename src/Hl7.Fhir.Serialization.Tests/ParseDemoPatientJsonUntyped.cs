@@ -4,7 +4,6 @@ using Hl7.Fhir.Utility;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-using Newtonsoft.Json;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
@@ -200,21 +199,6 @@ namespace Hl7.Fhir.Serialization.Tests
 
             nav = FhirJsonNodeParse("{ 'a': [null], '_a': [null] }", "test");
             Assert.ThrowsException<FormatException>(() => nav.VisitAll());
-        }
-
-        [TestMethod]
-        public void PreservesParsingExceptionDetails()
-        {
-            try
-            {
-                var nav = FhirJsonNode.Parse("<bla", "test");
-                var dummy = nav.Text;
-                Assert.Fail();
-            }
-            catch(FormatException fe)
-            {
-                Assert.IsInstanceOfType(fe.InnerException, typeof(JsonException));
-            }                        
         }
 
         [TestMethod]

@@ -12,7 +12,6 @@ using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Introspection;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -536,98 +535,6 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(7, root.Elements().Count());
         }
         // #endif
-
-        // [WMR 20180409] NEW: Serialize to JObject
-        [TestMethod]
-        public void TestSerializeToJsonDocument()
-        {
-            // Note: output order is defined by core resource/datatype definitions!
-
-            var patientOne = new Patient
-            {
-                Id = "patient-one",
-                Meta = new Meta { ElementId = "eric-clapton", VersionId = "1234" },
-                Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
-                Active = true,
-                Name = new List<HumanName> { new HumanName { Use = NameUse.Official, Family = new[] { "Clapton" } } },
-                Gender = AdministrativeGender.Male,
-                BirthDate = "2015-07-09",
-            };
-
-            var serializer = FhirDstu2JsonSerializer;
-            var jsonText = serializer.SerializeToString(patientOne);
-            Assert.IsNotNull(jsonText);
-
-            var doc = JObject.Parse(jsonText);
-            Assert.AreEqual(8, doc.Count); // Including resourceType
-
-            JToken assertProperty(JToken t, string expectedName)
-            {
-                Assert.AreEqual(JTokenType.Property, t.Type);
-                var p = t as JProperty;
-                Assert.IsNotNull(p);
-                Assert.AreEqual(expectedName, p.Name);
-                return t;
-            }
-
-            JToken assertValue(JToken t, JTokenType expectedType, object expectedValue)
-            {
-                Assert.AreEqual(expectedType, t.Type);
-                var v = t as JValue;
-                Assert.IsNotNull(v);
-                Assert.AreEqual(expectedValue, v.Value);
-                return t;
-            }
-
-            JToken assertPrimitiveProperty(JToken t, string expectedName, JTokenType expectedType, object expectedValue)
-            {
-                var p = t as JProperty;
-                Assert.IsNotNull(p);
-                Assert.AreEqual(expectedName, p.Name);
-                Assert.AreEqual(expectedType, p.Value.Type);
-                var v = p.Value as JValue;
-                Assert.IsNotNull(v);
-                Assert.AreEqual(expectedValue, v.Value);
-                return t;
-            }
-
-            JToken assertStringProperty(JToken t, string expectedName, object expectedValue)
-                => assertPrimitiveProperty(t, expectedName, JTokenType.String, expectedValue);
-
-            Assert.AreEqual(JTokenType.Property, doc.First.Type);
-            var token = assertStringProperty(doc.First, "resourceType", "Patient");
-            token = assertStringProperty(token.Next, "id", patientOne.Id);
-
-            token = assertProperty(token.Next, "meta");
-            Assert.IsTrue(token.HasValues);
-            var childToken = assertStringProperty(token.Values().First(), "id", patientOne.Meta.ElementId);
-            childToken = assertStringProperty(childToken.Next, "versionId", patientOne.Meta.VersionId);
-
-            token = assertProperty(token.Next, "text");
-            Assert.IsTrue(token.HasValues);
-            childToken = assertStringProperty(token.Values().First(), "status", patientOne.Text.Status.GetLiteral());
-            childToken = assertStringProperty(childToken.Next, "div", patientOne.Text.Div);
-
-            token = assertPrimitiveProperty(token.Next, "active", JTokenType.Boolean, patientOne.Active);
-
-            token = assertProperty(token.Next, "name");
-            var values = token.First;
-            Assert.IsNotNull(values);
-            Assert.AreEqual(JTokenType.Array, values.Type);
-            childToken = values.First;
-            var grandChildToken = assertStringProperty(childToken.First, "use", patientOne.Name[0].Use.GetLiteral());
-
-            grandChildToken = assertProperty(grandChildToken.Next, "family");
-            values = grandChildToken.First;
-            Assert.IsNotNull(values);
-            Assert.AreEqual(JTokenType.Array, values.Type);
-            assertValue(values.First, JTokenType.String, "Clapton");
-
-            token = assertStringProperty(token.Next, "gender", patientOne.Gender.GetLiteral());
-
-            token = assertStringProperty(token.Next, "birthDate", patientOne.BirthDate);
-
-        }
 
         /// <summary>
         /// This test proves issue 583: https://github.com/FirelyTeam/fhir-net-api/issues/583
