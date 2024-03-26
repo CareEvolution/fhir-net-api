@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
-using Hl7.Fhir.Model;
 using FhirModel = Hl7.Fhir.Model;
 using FhirModel4 = Hl7.Fhir.Model.R4;
 using FhirSerialization = Hl7.Fhir.Serialization;
@@ -13,7 +12,7 @@ namespace PerfTest
     {
         static void Main()
         {
-            ParseXml();
+            ParseJson();
         }
 
         static void ParseJson()
@@ -82,35 +81,6 @@ namespace PerfTest
             }
             watch.Stop();
             Console.WriteLine("XML fast serialize: {0:N2}ms", (double)watch.ElapsedMilliseconds / count);
-        }
-
-        static void CreatePatientsDirectly(int count)
-        {
-            var watch = Stopwatch.StartNew();
-
-            for (var i = 0; i < count; i++)
-            {
-               new FhirModel4.Patient();
-            }
-            watch.Stop();
-            Console.WriteLine("Create directly: {0:N2} micros", watch.ElapsedMilliseconds * 1_000.0 / count);
-        }
-
-        static void CreatePatientsIndirectly(int count)
-        {
-            var watch = Stopwatch.StartNew();
-
-            for (var i = 0; i < count; i++)
-            {
-                Create(() => new FhirModel4.Patient());
-            }
-            watch.Stop();
-            Console.WriteLine("Create indirectly: {0:N2} micros", (double)watch.ElapsedMilliseconds * 1_000.0 / count);
-        }
-
-        static T Create<T>(Func<T> create) where T : Base, new()
-        {
-            return create();
         }
     }
 }
