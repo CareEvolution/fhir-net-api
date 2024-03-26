@@ -87,10 +87,6 @@ namespace Hl7.Fhir.Model
                     dest.annotations.AddRange(annotations);
                 }
 
-#pragma warning disable 618, 620
-                if (UserData != null) dest.UserData = new Dictionary<string, object>(UserData);
-#pragma warning restore 618
-
                // if (FhirComments != null) dest.FhirComments = new List<string>(FhirComments);
                 return dest;
             }
@@ -106,16 +102,6 @@ namespace Hl7.Fhir.Model
         }
 
 #region << Annotations and UserData >>
-        private Dictionary<string, object> _userData = new Dictionary<string, object>();
-
-        [NotMapped]
-        [Obsolete("Use the typed interface provided by IAnnotatable instead")]
-        public Dictionary<string, object> UserData
-        {
-            get { return _userData; }
-            private set { _userData = value; }
-        }
-
         private Lazy<List<object>> _annotations = new Lazy<List<object>>(() => new List<object>());
         private List<object> annotations { get { return _annotations.Value; } }
 
