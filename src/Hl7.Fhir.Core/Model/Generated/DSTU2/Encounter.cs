@@ -148,10 +148,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         StatusElement = source.PopulateValue(StatusElement);
                         return true;
                     case "_status":
-                        StatusElement = source.Populate(StatusElement);
+                        StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EncounterState>());
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -326,10 +326,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "individual":
-                        Individual = source.Populate(Individual);
+                        Individual = source.Populate(Individual, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -344,7 +344,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        source.PopulateListItem(Type, index);
+                        source.PopulateListItem(Type, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -686,19 +686,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "preAdmissionIdentifier":
-                        PreAdmissionIdentifier = source.Populate(PreAdmissionIdentifier);
+                        PreAdmissionIdentifier = source.Populate(PreAdmissionIdentifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "origin":
-                        Origin = source.Populate(Origin);
+                        Origin = source.Populate(Origin, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "admitSource":
-                        AdmitSource = source.Populate(AdmitSource);
+                        AdmitSource = source.Populate(AdmitSource, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "admittingDiagnosis":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "reAdmission":
-                        ReAdmission = source.Populate(ReAdmission);
+                        ReAdmission = source.Populate(ReAdmission, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dietPreference":
                         source.SetList(this, jsonPropertyName);
@@ -710,10 +710,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "destination":
-                        Destination = source.Populate(Destination);
+                        Destination = source.Populate(Destination, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "dischargeDisposition":
-                        DischargeDisposition = source.Populate(DischargeDisposition);
+                        DischargeDisposition = source.Populate(DischargeDisposition, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dischargeDiagnosis":
                         source.SetList(this, jsonPropertyName);
@@ -731,19 +731,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "admittingDiagnosis":
-                        source.PopulateListItem(AdmittingDiagnosis, index);
+                        source.PopulateListItem(AdmittingDiagnosis, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "dietPreference":
-                        source.PopulateListItem(DietPreference, index);
+                        source.PopulateListItem(DietPreference, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "specialCourtesy":
-                        source.PopulateListItem(SpecialCourtesy, index);
+                        source.PopulateListItem(SpecialCourtesy, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "specialArrangement":
-                        source.PopulateListItem(SpecialArrangement, index);
+                        source.PopulateListItem(SpecialArrangement, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dischargeDiagnosis":
-                        source.PopulateListItem(DischargeDiagnosis, index);
+                        source.PopulateListItem(DischargeDiagnosis, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -973,16 +973,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "location":
-                        Location = source.Populate(Location);
+                        Location = source.Populate(Location, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "status":
                         StatusElement = source.PopulateValue(StatusElement);
                         return true;
                     case "_status":
-                        StatusElement = source.Populate(StatusElement);
+                        StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.EncounterLocationStatus>());
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -1645,7 +1645,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EncounterState>());
                     return true;
                 case "statusHistory":
                     source.SetList(this, jsonPropertyName);
@@ -1654,16 +1654,16 @@ namespace Hl7.Fhir.Model.DSTU2
                     ClassElement = source.PopulateValue(ClassElement);
                     return true;
                 case "_class":
-                    ClassElement = source.Populate(ClassElement);
+                    ClassElement = source.Populate(ClassElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EncounterClass>());
                     return true;
                 case "type":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "priority":
-                    Priority = source.Populate(Priority);
+                    Priority = source.Populate(Priority, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "episodeOfCare":
                     source.SetList(this, jsonPropertyName);
@@ -1675,13 +1675,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "appointment":
-                    Appointment = source.Populate(Appointment);
+                    Appointment = source.Populate(Appointment, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "length":
-                    Length = source.Populate(Length);
+                    Length = source.Populate(Length, () => new Hl7.Fhir.Model.DSTU2.Duration());
                     return true;
                 case "reason":
                     source.SetList(this, jsonPropertyName);
@@ -1690,16 +1690,16 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "hospitalization":
-                    Hospitalization = source.Populate(Hospitalization);
+                    Hospitalization = source.Populate(Hospitalization, () => new HospitalizationComponent());
                     return true;
                 case "location":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "serviceProvider":
-                    ServiceProvider = source.Populate(ServiceProvider);
+                    ServiceProvider = source.Populate(ServiceProvider, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    PartOf = source.Populate(PartOf);
+                    PartOf = source.Populate(PartOf, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -1714,31 +1714,31 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "statusHistory":
-                    source.PopulateListItem(StatusHistory, index);
+                    source.PopulateListItem(StatusHistory, index, () => new StatusHistoryComponent());
                     return true;
                 case "type":
-                    source.PopulateListItem(Type, index);
+                    source.PopulateListItem(Type, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "episodeOfCare":
-                    source.PopulateListItem(EpisodeOfCare, index);
+                    source.PopulateListItem(EpisodeOfCare, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "incomingReferral":
-                    source.PopulateListItem(IncomingReferral, index);
+                    source.PopulateListItem(IncomingReferral, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "participant":
-                    source.PopulateListItem(Participant, index);
+                    source.PopulateListItem(Participant, index, () => new ParticipantComponent());
                     return true;
                 case "reason":
-                    source.PopulateListItem(Reason, index);
+                    source.PopulateListItem(Reason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "indication":
-                    source.PopulateListItem(Indication, index);
+                    source.PopulateListItem(Indication, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "location":
-                    source.PopulateListItem(Location, index);
+                    source.PopulateListItem(Location, index, () => new LocationComponent());
                     return true;
             }
             return false;

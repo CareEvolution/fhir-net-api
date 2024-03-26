@@ -124,15 +124,15 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_contentString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.FhirString);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.Attachment);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.Attachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.ResourceReference);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -875,16 +875,16 @@ namespace Hl7.Fhir.Model.STU3
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.EventStatus>());
                     return true;
                 case "notDone":
                     NotDoneElement = source.PopulateValue(NotDoneElement);
                     return true;
                 case "_notDone":
-                    NotDoneElement = source.Populate(NotDoneElement);
+                    NotDoneElement = source.Populate(NotDoneElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "notDoneReason":
-                    NotDoneReason = source.Populate(NotDoneReason);
+                    NotDoneReason = source.Populate(NotDoneReason, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "category":
                     source.SetList(this, jsonPropertyName);
@@ -893,7 +893,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "recipient":
                     source.SetList(this, jsonPropertyName);
@@ -902,22 +902,22 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "context":
-                    Context = source.Populate(Context);
+                    Context = source.Populate(Context, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "sent":
                     SentElement = source.PopulateValue(SentElement);
                     return true;
                 case "_sent":
-                    SentElement = source.Populate(SentElement);
+                    SentElement = source.Populate(SentElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "received":
                     ReceivedElement = source.PopulateValue(ReceivedElement);
                     return true;
                 case "_received":
-                    ReceivedElement = source.Populate(ReceivedElement);
+                    ReceivedElement = source.Populate(ReceivedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "sender":
-                    Sender = source.Populate(Sender);
+                    Sender = source.Populate(Sender, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
                     source.SetList(this, jsonPropertyName);
@@ -944,40 +944,40 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "definition":
-                    source.PopulateListItem(Definition, index);
+                    source.PopulateListItem(Definition, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "basedOn":
-                    source.PopulateListItem(BasedOn, index);
+                    source.PopulateListItem(BasedOn, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    source.PopulateListItem(PartOf, index);
+                    source.PopulateListItem(PartOf, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "category":
-                    source.PopulateListItem(Category, index);
+                    source.PopulateListItem(Category, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "medium":
-                    source.PopulateListItem(Medium, index);
+                    source.PopulateListItem(Medium, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "recipient":
-                    source.PopulateListItem(Recipient, index);
+                    source.PopulateListItem(Recipient, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "topic":
-                    source.PopulateListItem(Topic, index);
+                    source.PopulateListItem(Topic, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    source.PopulateListItem(ReasonCode, index);
+                    source.PopulateListItem(ReasonCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    source.PopulateListItem(ReasonReference, index);
+                    source.PopulateListItem(ReasonReference, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "payload":
-                    source.PopulateListItem(Payload, index);
+                    source.PopulateListItem(Payload, index, () => new PayloadComponent());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

@@ -402,40 +402,40 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SupplyDeliveryStatus>());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "quantity":
-                    Quantity = source.Populate(Quantity);
+                    Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
                 case "suppliedItem":
-                    SuppliedItem = source.Populate(SuppliedItem);
+                    SuppliedItem = source.Populate(SuppliedItem, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "supplier":
-                    Supplier = source.Populate(Supplier);
+                    Supplier = source.Populate(Supplier, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "whenPrepared":
-                    WhenPrepared = source.Populate(WhenPrepared);
+                    WhenPrepared = source.Populate(WhenPrepared, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "time":
                     TimeElement = source.PopulateValue(TimeElement);
                     return true;
                 case "_time":
-                    TimeElement = source.Populate(TimeElement);
+                    TimeElement = source.Populate(TimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "destination":
-                    Destination = source.Populate(Destination);
+                    Destination = source.Populate(Destination, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "receiver":
                     source.SetList(this, jsonPropertyName);
@@ -453,7 +453,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "receiver":
-                    source.PopulateListItem(Receiver, index);
+                    source.PopulateListItem(Receiver, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

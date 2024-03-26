@@ -197,22 +197,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "flag":
-                        Flag = source.Populate(Flag);
+                        Flag = source.Populate(Flag, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "deleted":
                         DeletedElement = source.PopulateValue(DeletedElement);
                         return true;
                     case "_deleted":
-                        DeletedElement = source.Populate(DeletedElement);
+                        DeletedElement = source.Populate(DeletedElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "date":
                         DateElement = source.PopulateValue(DateElement);
                         return true;
                     case "_date":
-                        DateElement = source.Populate(DateElement);
+                        DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "item":
-                        Item = source.Populate(Item);
+                        Item = source.Populate(Item, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -768,40 +768,40 @@ namespace Hl7.Fhir.Model.STU3
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListStatus>());
                     return true;
                 case "mode":
                     ModeElement = source.PopulateValue(ModeElement);
                     return true;
                 case "_mode":
-                    ModeElement = source.Populate(ModeElement);
+                    ModeElement = source.Populate(ModeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListMode>());
                     return true;
                 case "title":
                     TitleElement = source.PopulateValue(TitleElement);
                     return true;
                 case "_title":
-                    TitleElement = source.Populate(TitleElement);
+                    TitleElement = source.Populate(TitleElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "source":
-                    Source = source.Populate(Source);
+                    Source = source.Populate(Source, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "orderedBy":
-                    OrderedBy = source.Populate(OrderedBy);
+                    OrderedBy = source.Populate(OrderedBy, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
                     source.SetList(this, jsonPropertyName);
@@ -810,7 +810,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "emptyReason":
-                    EmptyReason = source.Populate(EmptyReason);
+                    EmptyReason = source.Populate(EmptyReason, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;
@@ -825,13 +825,13 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "entry":
-                    source.PopulateListItem(Entry, index);
+                    source.PopulateListItem(Entry, index, () => new EntryComponent());
                     return true;
             }
             return false;

@@ -452,7 +452,7 @@ namespace Hl7.Fhir.Model
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
@@ -460,7 +460,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirBoolean);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirBoolean, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "valueInteger":
                         source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Value, "value");
@@ -468,7 +468,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueInteger":
                         source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Integer);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Integer, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "valueDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Value, "value");
@@ -476,7 +476,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDecimal);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDecimal, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "valueBase64Binary":
                         source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(Value, "value");
@@ -484,7 +484,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueBase64Binary":
                         source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Base64Binary);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Base64Binary, () => new Hl7.Fhir.Model.Base64Binary());
                         return true;
                     case "valueInstant":
                         source.CheckDuplicates<Hl7.Fhir.Model.Instant>(Value, "value");
@@ -492,7 +492,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueInstant":
                         source.CheckDuplicates<Hl7.Fhir.Model.Instant>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Instant);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Instant, () => new Hl7.Fhir.Model.Instant());
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
@@ -500,7 +500,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirString);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Value, "value");
@@ -508,7 +508,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirUri);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirUri, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "valueDate":
                         source.CheckDuplicates<Hl7.Fhir.Model.Date>(Value, "value");
@@ -516,7 +516,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueDate":
                         source.CheckDuplicates<Hl7.Fhir.Model.Date>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Date);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Date, () => new Hl7.Fhir.Model.Date());
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
@@ -524,7 +524,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "valueTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
@@ -532,7 +532,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Time);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Time, () => new Hl7.Fhir.Model.Time());
                         return true;
                     case "valueCode":
                         source.CheckDuplicates<Hl7.Fhir.Model.Code>(Value, "value");
@@ -540,7 +540,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueCode":
                         source.CheckDuplicates<Hl7.Fhir.Model.Code>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Code);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Code, () => new Hl7.Fhir.Model.Code());
                         return true;
                     case "valueOid":
                         source.CheckDuplicates<Hl7.Fhir.Model.Oid>(Value, "value");
@@ -548,7 +548,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueOid":
                         source.CheckDuplicates<Hl7.Fhir.Model.Oid>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Oid);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Oid, () => new Hl7.Fhir.Model.Oid());
                         return true;
                     case "valueId":
                         source.CheckDuplicates<Hl7.Fhir.Model.Id>(Value, "value");
@@ -556,7 +556,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueId":
                         source.CheckDuplicates<Hl7.Fhir.Model.Id>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Id);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Id, () => new Hl7.Fhir.Model.Id());
                         return true;
                     case "valueUnsignedInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Value, "value");
@@ -564,7 +564,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueUnsignedInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.UnsignedInt>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.UnsignedInt);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.UnsignedInt, () => new Hl7.Fhir.Model.UnsignedInt());
                         return true;
                     case "valuePositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(Value, "value");
@@ -572,7 +572,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valuePositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.PositiveInt);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.PositiveInt, () => new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "valueMarkdown":
                         source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(Value, "value");
@@ -580,75 +580,75 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueMarkdown":
                         source.CheckDuplicates<Hl7.Fhir.Model.Markdown>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Markdown);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Markdown, () => new Hl7.Fhir.Model.Markdown());
                         return true;
                     case "valueAnnotation":
                         source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Annotation);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Annotation, () => new Hl7.Fhir.Model.Annotation());
                         return true;
                     case "valueAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Attachment);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Attachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "valueIdentifier":
                         source.CheckDuplicates<Hl7.Fhir.Model.Identifier>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Identifier);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "valueCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueCoding":
                         source.CheckDuplicates<Hl7.Fhir.Model.Coding>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Coding);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Coding, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Quantity);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Quantity, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "valueRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Range);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Period);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "valueRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Ratio);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Ratio, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "valueSampledData" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.SampledData>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.SampledData);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.SampledData, () => new Hl7.Fhir.Model.DSTU2.SampledData());
                         return true;
                     case "valueSignature" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Signature>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.Signature);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.Signature, () => new Hl7.Fhir.Model.DSTU2.Signature());
                         return true;
                     case "valueHumanName" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.HumanName>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.HumanName);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.HumanName, () => new Hl7.Fhir.Model.DSTU2.HumanName());
                         return true;
                     case "valueAddress":
                         source.CheckDuplicates<Hl7.Fhir.Model.Address>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Address);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Address, () => new Hl7.Fhir.Model.Address());
                         return true;
                     case "valueContactPoint" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.ContactPoint>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.ContactPoint);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.ContactPoint, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                         return true;
                     case "valueTiming" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Timing>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.Timing);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.Timing, () => new Hl7.Fhir.Model.DSTU2.Timing());
                         return true;
                     case "valueReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.ResourceReference);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "valueMeta":
                         source.CheckDuplicates<Hl7.Fhir.Model.Meta>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Meta);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Meta, () => new Hl7.Fhir.Model.Meta());
                         return true;
                     case "valueCanonical" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Value, "value");
@@ -656,7 +656,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueCanonical" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Canonical);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Canonical, () => new Hl7.Fhir.Model.Canonical());
                         return true;
                     case "valueUrl" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Url>(Value, "value");
@@ -664,7 +664,7 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueUrl" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Url>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Url);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Url, () => new Hl7.Fhir.Model.Url());
                         return true;
                     case "valueUuid" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Uuid>(Value, "value");
@@ -672,123 +672,123 @@ namespace Hl7.Fhir.Model
                         return true;
                     case "_valueUuid" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Uuid>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Uuid);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Uuid, () => new Hl7.Fhir.Model.Uuid());
                         return true;
                     case "valueAge" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Age);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Age, () => new Hl7.Fhir.Model.R4.Age());
                         return true;
                     case "valueContactPoint" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.ContactPoint>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.ContactPoint);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.ContactPoint, () => new Hl7.Fhir.Model.R4.ContactPoint());
                         return true;
                     case "valueCount" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Count>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Count);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Count, () => new Hl7.Fhir.Model.R4.Count());
                         return true;
                     case "valueDistance" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Distance>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Distance);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Distance, () => new Hl7.Fhir.Model.R4.Distance());
                         return true;
                     case "valueDuration" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Duration);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Duration, () => new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "valueHumanName" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.HumanName>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.HumanName);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.HumanName, () => new Hl7.Fhir.Model.R4.HumanName());
                         return true;
                     case "valueMoney" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Money>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Money);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Money, () => new Hl7.Fhir.Model.R4.Money());
                         return true;
                     case "valueSampledData" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.SampledData>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.SampledData);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.SampledData, () => new Hl7.Fhir.Model.R4.SampledData());
                         return true;
                     case "valueSignature" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Signature>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Signature);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Signature, () => new Hl7.Fhir.Model.R4.Signature());
                         return true;
                     case "valueTiming" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Timing);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Timing, () => new Hl7.Fhir.Model.R4.Timing());
                         return true;
                     case "valueContactDetail" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.ContactDetail>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.ContactDetail);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.ContactDetail, () => new Hl7.Fhir.Model.R4.ContactDetail());
                         return true;
                     case "valueContributor" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Contributor>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Contributor);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Contributor, () => new Hl7.Fhir.Model.R4.Contributor());
                         return true;
                     case "valueDataRequirement" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.DataRequirement>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.DataRequirement);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.DataRequirement, () => new Hl7.Fhir.Model.R4.DataRequirement());
                         return true;
                     case "valueExpression" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.Expression>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Expression);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Expression, () => new Hl7.Fhir.Model.Expression());
                         return true;
                     case "valueParameterDefinition" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.ParameterDefinition>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.ParameterDefinition);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.ParameterDefinition, () => new Hl7.Fhir.Model.R4.ParameterDefinition());
                         return true;
                     case "valueRelatedArtifact" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.RelatedArtifact>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.RelatedArtifact);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.RelatedArtifact, () => new Hl7.Fhir.Model.R4.RelatedArtifact());
                         return true;
                     case "valueTriggerDefinition" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.TriggerDefinition>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.TriggerDefinition);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.TriggerDefinition, () => new Hl7.Fhir.Model.R4.TriggerDefinition());
                         return true;
                     case "valueUsageContext" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.UsageContext>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.UsageContext);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.UsageContext, () => new Hl7.Fhir.Model.UsageContext());
                         return true;
                     case "valueDosage" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Dosage>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Dosage);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.R4.Dosage, () => new Hl7.Fhir.Model.R4.Dosage());
                         return true;
                     case "valueAge" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Age>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Age);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Age, () => new Hl7.Fhir.Model.STU3.Age());
                         return true;
                     case "valueContactPoint" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.ContactPoint>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.ContactPoint);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.ContactPoint, () => new Hl7.Fhir.Model.STU3.ContactPoint());
                         return true;
                     case "valueCount" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Count>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Count);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Count, () => new Hl7.Fhir.Model.STU3.Count());
                         return true;
                     case "valueDistance" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Distance>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Distance);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Distance, () => new Hl7.Fhir.Model.STU3.Distance());
                         return true;
                     case "valueDuration" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Duration>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Duration);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Duration, () => new Hl7.Fhir.Model.STU3.Duration());
                         return true;
                     case "valueHumanName" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.HumanName>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.HumanName);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.HumanName, () => new Hl7.Fhir.Model.STU3.HumanName());
                         return true;
                     case "valueMoney" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Money>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Money);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Money, () => new Hl7.Fhir.Model.STU3.Money());
                         return true;
                     case "valueSampledData" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.SampledData>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.SampledData);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.SampledData, () => new Hl7.Fhir.Model.STU3.SampledData());
                         return true;
                     case "valueSignature" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Signature>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Signature);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Signature, () => new Hl7.Fhir.Model.STU3.Signature());
                         return true;
                     case "valueTiming" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Timing>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Timing);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Timing, () => new Hl7.Fhir.Model.STU3.Timing());
                         return true;
                     case "resource":
                         Resource = source.GetResource();
@@ -809,7 +809,7 @@ namespace Hl7.Fhir.Model
                 switch (jsonPropertyName)
                 {
                     case "part":
-                        source.PopulateListItem(Part, index);
+                        source.PopulateListItem(Part, index, () => new ParameterComponent());
                         return true;
                 }
                 return false;
@@ -1039,7 +1039,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "parameter":
-                    source.PopulateListItem(Parameter, index);
+                    source.PopulateListItem(Parameter, index, () => new ParameterComponent());
                     return true;
             }
             return false;

@@ -533,23 +533,23 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 case "bodySiteCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(BodySite, "bodySite");
-                    BodySite = source.Populate(BodySite as Hl7.Fhir.Model.CodeableConcept);
+                    BodySite = source.Populate(BodySite as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "bodySiteReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(BodySite, "bodySite");
-                    BodySite = source.Populate(BodySite as Hl7.Fhir.Model.ResourceReference);
+                    BodySite = source.Populate(BodySite as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceUseRequestStatus>());
                     return true;
                 case "device":
-                    Device = source.Populate(Device);
+                    Device = source.Populate(Device, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
                     source.SetList(this, jsonPropertyName);
@@ -568,24 +568,24 @@ namespace Hl7.Fhir.Model.DSTU2
                     OrderedOnElement = source.PopulateValue(OrderedOnElement);
                     return true;
                 case "_orderedOn":
-                    OrderedOnElement = source.Populate(OrderedOnElement);
+                    OrderedOnElement = source.Populate(OrderedOnElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recordedOn":
                     RecordedOnElement = source.PopulateValue(RecordedOnElement);
                     return true;
                 case "_recordedOn":
-                    RecordedOnElement = source.Populate(RecordedOnElement);
+                    RecordedOnElement = source.Populate(RecordedOnElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Timing>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.DSTU2.Timing);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.DSTU2.Timing, () => new Hl7.Fhir.Model.DSTU2.Timing());
                     return true;
                 case "timingPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.Period);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
@@ -593,13 +593,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.FhirDateTime);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "priority":
                     PriorityElement = source.PopulateValue(PriorityElement);
                     return true;
                 case "_priority":
-                    PriorityElement = source.Populate(PriorityElement);
+                    PriorityElement = source.Populate(PriorityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceUseRequestPriority>());
                     return true;
             }
             return false;
@@ -614,19 +614,19 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "indication":
-                    source.PopulateListItem(Indication, index);
+                    source.PopulateListItem(Indication, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "notes":
                     source.PopulatePrimitiveListItemValue(NotesElement, index);
                     return true;
                 case "_notes":
-                    source.PopulatePrimitiveListItem(NotesElement, index);
+                    source.PopulatePrimitiveListItem(NotesElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "prnReason":
-                    source.PopulateListItem(PrnReason, index);
+                    source.PopulateListItem(PrnReason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

@@ -170,16 +170,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "role":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "who":
-                        Who = source.Populate(Who);
+                        Who = source.Populate(Who, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onBehalfOf":
-                        OnBehalfOf = source.Populate(OnBehalfOf);
+                        OnBehalfOf = source.Populate(OnBehalfOf, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -194,7 +194,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "role":
-                        source.PopulateListItem(Role, index);
+                        source.PopulateListItem(Role, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -399,10 +399,10 @@ namespace Hl7.Fhir.Model.R4
                         RoleElement = source.PopulateValue(RoleElement);
                         return true;
                     case "_role":
-                        RoleElement = source.Populate(RoleElement);
+                        RoleElement = source.Populate(RoleElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ProvenanceEntityRole>());
                         return true;
                     case "what":
-                        What = source.Populate(What);
+                        What = source.Populate(What, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "agent":
                         source.SetList(this, jsonPropertyName);
@@ -420,7 +420,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "agent":
-                        source.PopulateListItem(Agent, index);
+                        source.PopulateListItem(Agent, index, () => new AgentComponent());
                         return true;
                 }
                 return false;
@@ -865,7 +865,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "occurredPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurred, "occurred");
-                    Occurred = source.Populate(Occurred as Hl7.Fhir.Model.Period);
+                    Occurred = source.Populate(Occurred as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "occurredDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurred, "occurred");
@@ -873,26 +873,26 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_occurredDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurred, "occurred");
-                    Occurred = source.Populate(Occurred as Hl7.Fhir.Model.FhirDateTime);
+                    Occurred = source.Populate(Occurred as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recorded":
                     RecordedElement = source.PopulateValue(RecordedElement);
                     return true;
                 case "_recorded":
-                    RecordedElement = source.Populate(RecordedElement);
+                    RecordedElement = source.Populate(RecordedElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "policy":
                 case "_policy":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "location":
-                    Location = source.Populate(Location);
+                    Location = source.Populate(Location, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reason":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "activity":
-                    Activity = source.Populate(Activity);
+                    Activity = source.Populate(Activity, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "agent":
                     source.SetList(this, jsonPropertyName);
@@ -916,25 +916,25 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "target":
-                    source.PopulateListItem(Target, index);
+                    source.PopulateListItem(Target, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "policy":
                     source.PopulatePrimitiveListItemValue(PolicyElement, index);
                     return true;
                 case "_policy":
-                    source.PopulatePrimitiveListItem(PolicyElement, index);
+                    source.PopulatePrimitiveListItem(PolicyElement, index, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "reason":
-                    source.PopulateListItem(Reason, index);
+                    source.PopulateListItem(Reason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "agent":
-                    source.PopulateListItem(Agent, index);
+                    source.PopulateListItem(Agent, index, () => new AgentComponent());
                     return true;
                 case "entity":
-                    source.PopulateListItem(Entity, index);
+                    source.PopulateListItem(Entity, index, () => new EntityComponent());
                     return true;
                 case "signature":
-                    source.PopulateListItem(Signature, index);
+                    source.PopulateListItem(Signature, index, () => new Hl7.Fhir.Model.R4.Signature());
                     return true;
             }
             return false;

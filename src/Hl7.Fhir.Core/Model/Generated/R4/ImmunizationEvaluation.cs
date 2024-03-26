@@ -504,28 +504,28 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ImmunizationEvaluationStatusCodes>());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "authority":
-                    Authority = source.Populate(Authority);
+                    Authority = source.Populate(Authority, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "targetDisease":
-                    TargetDisease = source.Populate(TargetDisease);
+                    TargetDisease = source.Populate(TargetDisease, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "immunizationEvent":
-                    ImmunizationEvent = source.Populate(ImmunizationEvent);
+                    ImmunizationEvent = source.Populate(ImmunizationEvent, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "doseStatus":
-                    DoseStatus = source.Populate(DoseStatus);
+                    DoseStatus = source.Populate(DoseStatus, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "doseStatusReason":
                     source.SetList(this, jsonPropertyName);
@@ -534,13 +534,13 @@ namespace Hl7.Fhir.Model.R4
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "series":
                     SeriesElement = source.PopulateValue(SeriesElement);
                     return true;
                 case "_series":
-                    SeriesElement = source.Populate(SeriesElement);
+                    SeriesElement = source.Populate(SeriesElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "doseNumberPositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
@@ -548,7 +548,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_doseNumberPositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
-                    DoseNumber = source.Populate(DoseNumber as Hl7.Fhir.Model.PositiveInt);
+                    DoseNumber = source.Populate(DoseNumber as Hl7.Fhir.Model.PositiveInt, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "doseNumberString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
@@ -556,7 +556,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_doseNumberString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
-                    DoseNumber = source.Populate(DoseNumber as Hl7.Fhir.Model.FhirString);
+                    DoseNumber = source.Populate(DoseNumber as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "seriesDosesPositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
@@ -564,7 +564,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_seriesDosesPositiveInt":
                     source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
-                    SeriesDoses = source.Populate(SeriesDoses as Hl7.Fhir.Model.PositiveInt);
+                    SeriesDoses = source.Populate(SeriesDoses as Hl7.Fhir.Model.PositiveInt, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "seriesDosesString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
@@ -572,7 +572,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_seriesDosesString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
-                    SeriesDoses = source.Populate(SeriesDoses as Hl7.Fhir.Model.FhirString);
+                    SeriesDoses = source.Populate(SeriesDoses as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -587,10 +587,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "doseStatusReason":
-                    source.PopulateListItem(DoseStatusReason, index);
+                    source.PopulateListItem(DoseStatusReason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

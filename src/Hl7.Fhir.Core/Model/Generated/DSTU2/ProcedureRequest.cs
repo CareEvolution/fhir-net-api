@@ -522,21 +522,21 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "bodySite":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "reasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Reason, "reason");
-                    Reason = source.Populate(Reason as Hl7.Fhir.Model.CodeableConcept);
+                    Reason = source.Populate(Reason as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reason, "reason");
-                    Reason = source.Populate(Reason as Hl7.Fhir.Model.ResourceReference);
+                    Reason = source.Populate(Reason as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "scheduledDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Scheduled, "scheduled");
@@ -544,27 +544,27 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_scheduledDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Scheduled, "scheduled");
-                    Scheduled = source.Populate(Scheduled as Hl7.Fhir.Model.FhirDateTime);
+                    Scheduled = source.Populate(Scheduled as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "scheduledPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Scheduled, "scheduled");
-                    Scheduled = source.Populate(Scheduled as Hl7.Fhir.Model.Period);
+                    Scheduled = source.Populate(Scheduled as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "scheduledTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Timing>(Scheduled, "scheduled");
-                    Scheduled = source.Populate(Scheduled as Hl7.Fhir.Model.DSTU2.Timing);
+                    Scheduled = source.Populate(Scheduled as Hl7.Fhir.Model.DSTU2.Timing, () => new Hl7.Fhir.Model.DSTU2.Timing());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    Performer = source.Populate(Performer);
+                    Performer = source.Populate(Performer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestStatus>());
                     return true;
                 case "notes":
                     source.SetList(this, jsonPropertyName);
@@ -575,26 +575,26 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_asNeededBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                    AsNeeded = source.Populate(AsNeeded as Hl7.Fhir.Model.FhirBoolean);
+                    AsNeeded = source.Populate(AsNeeded as Hl7.Fhir.Model.FhirBoolean, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "asNeededCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
-                    AsNeeded = source.Populate(AsNeeded as Hl7.Fhir.Model.CodeableConcept);
+                    AsNeeded = source.Populate(AsNeeded as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "orderedOn":
                     OrderedOnElement = source.PopulateValue(OrderedOnElement);
                     return true;
                 case "_orderedOn":
-                    OrderedOnElement = source.Populate(OrderedOnElement);
+                    OrderedOnElement = source.Populate(OrderedOnElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "orderer":
-                    Orderer = source.Populate(Orderer);
+                    Orderer = source.Populate(Orderer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "priority":
                     PriorityElement = source.PopulateValue(PriorityElement);
                     return true;
                 case "_priority":
-                    PriorityElement = source.Populate(PriorityElement);
+                    PriorityElement = source.Populate(PriorityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestPriority>());
                     return true;
             }
             return false;
@@ -609,13 +609,13 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "bodySite":
-                    source.PopulateListItem(BodySite, index);
+                    source.PopulateListItem(BodySite, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "notes":
-                    source.PopulateListItem(Notes, index);
+                    source.PopulateListItem(Notes, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

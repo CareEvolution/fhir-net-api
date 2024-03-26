@@ -197,7 +197,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "population":
                         source.SetList(this, jsonPropertyName);
@@ -206,7 +206,7 @@ namespace Hl7.Fhir.Model.STU3
                         MeasureScoreElement = source.PopulateValue(MeasureScoreElement);
                         return true;
                     case "_measureScore":
-                        MeasureScoreElement = source.Populate(MeasureScoreElement);
+                        MeasureScoreElement = source.Populate(MeasureScoreElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "stratifier":
                         source.SetList(this, jsonPropertyName);
@@ -224,10 +224,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "population":
-                        source.PopulateListItem(Population, index);
+                        source.PopulateListItem(Population, index, () => new PopulationComponent());
                         return true;
                     case "stratifier":
-                        source.PopulateListItem(Stratifier, index);
+                        source.PopulateListItem(Stratifier, index, () => new StratifierComponent());
                         return true;
                 }
                 return false;
@@ -440,19 +440,19 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "count":
                         CountElement = source.PopulateValue(CountElement);
                         return true;
                     case "_count":
-                        CountElement = source.Populate(CountElement);
+                        CountElement = source.Populate(CountElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "patients":
-                        Patients = source.Populate(Patients);
+                        Patients = source.Populate(Patients, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -617,7 +617,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "stratum":
                         source.SetList(this, jsonPropertyName);
@@ -635,7 +635,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "stratum":
-                        source.PopulateListItem(Stratum, index);
+                        source.PopulateListItem(Stratum, index, () => new StratifierGroupComponent());
                         return true;
                 }
                 return false;
@@ -850,7 +850,7 @@ namespace Hl7.Fhir.Model.STU3
                         ValueElement = source.PopulateValue(ValueElement);
                         return true;
                     case "_value":
-                        ValueElement = source.Populate(ValueElement);
+                        ValueElement = source.Populate(ValueElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "population":
                         source.SetList(this, jsonPropertyName);
@@ -859,7 +859,7 @@ namespace Hl7.Fhir.Model.STU3
                         MeasureScoreElement = source.PopulateValue(MeasureScoreElement);
                         return true;
                     case "_measureScore":
-                        MeasureScoreElement = source.Populate(MeasureScoreElement);
+                        MeasureScoreElement = source.Populate(MeasureScoreElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                 }
                 return false;
@@ -874,7 +874,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "population":
-                        source.PopulateListItem(Population, index);
+                        source.PopulateListItem(Population, index, () => new StratifierGroupPopulationComponent());
                         return true;
                 }
                 return false;
@@ -1082,19 +1082,19 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "count":
                         CountElement = source.PopulateValue(CountElement);
                         return true;
                     case "_count":
-                        CountElement = source.Populate(CountElement);
+                        CountElement = source.Populate(CountElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "patients":
-                        Patients = source.Populate(Patients);
+                        Patients = source.Populate(Patients, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -1531,43 +1531,43 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.MeasureReportStatus>());
                     return true;
                 case "type":
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MeasureReportType>());
                     return true;
                 case "measure":
-                    Measure = source.Populate(Measure);
+                    Measure = source.Populate(Measure, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "reportingOrganization":
-                    ReportingOrganization = source.Populate(ReportingOrganization);
+                    ReportingOrganization = source.Populate(ReportingOrganization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "group":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "evaluatedResources":
-                    EvaluatedResources = source.Populate(EvaluatedResources);
+                    EvaluatedResources = source.Populate(EvaluatedResources, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -1582,7 +1582,7 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "group":
-                    source.PopulateListItem(Group, index);
+                    source.PopulateListItem(Group, index, () => new GroupComponent());
                     return true;
             }
             return false;

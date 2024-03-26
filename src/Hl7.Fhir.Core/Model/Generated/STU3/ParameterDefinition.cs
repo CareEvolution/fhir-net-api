@@ -387,40 +387,40 @@ namespace Hl7.Fhir.Model.STU3
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "use":
                     UseElement = source.PopulateValue(UseElement);
                     return true;
                 case "_use":
-                    UseElement = source.Populate(UseElement);
+                    UseElement = source.Populate(UseElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.OperationParameterUse>());
                     return true;
                 case "min":
                     MinElement = source.PopulateValue(MinElement);
                     return true;
                 case "_min":
-                    MinElement = source.Populate(MinElement);
+                    MinElement = source.Populate(MinElement, () => new Hl7.Fhir.Model.Integer());
                     return true;
                 case "max":
                     MaxElement = source.PopulateValue(MaxElement);
                     return true;
                 case "_max":
-                    MaxElement = source.Populate(MaxElement);
+                    MaxElement = source.Populate(MaxElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "documentation":
                     DocumentationElement = source.PopulateValue(DocumentationElement);
                     return true;
                 case "_documentation":
-                    DocumentationElement = source.Populate(DocumentationElement);
+                    DocumentationElement = source.Populate(DocumentationElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type":
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>());
                     return true;
                 case "profile":
-                    Profile = source.Populate(Profile);
+                    Profile = source.Populate(Profile, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

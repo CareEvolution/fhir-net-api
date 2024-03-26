@@ -599,27 +599,27 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationStatementStatus>());
                     return true;
                 case "statusReason":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "category":
-                    Category = source.Populate(Category);
+                    Category = source.Populate(Category, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "medicationCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
-                    Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept);
+                    Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "medicationReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Medication, "medication");
-                    Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference);
+                    Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Populate(Context);
+                    Context = source.Populate(Context, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
@@ -627,20 +627,20 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.Populate(Effective as Hl7.Fhir.Model.FhirDateTime);
+                    Effective = source.Populate(Effective as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
-                    Effective = source.Populate(Effective as Hl7.Fhir.Model.Period);
+                    Effective = source.Populate(Effective as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "dateAsserted":
                     DateAssertedElement = source.PopulateValue(DateAssertedElement);
                     return true;
                 case "_dateAsserted":
-                    DateAssertedElement = source.Populate(DateAssertedElement);
+                    DateAssertedElement = source.Populate(DateAssertedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "informationSource":
-                    InformationSource = source.Populate(InformationSource);
+                    InformationSource = source.Populate(InformationSource, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "derivedFrom":
                     source.SetList(this, jsonPropertyName);
@@ -670,31 +670,31 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    source.PopulateListItem(BasedOn, index);
+                    source.PopulateListItem(BasedOn, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    source.PopulateListItem(PartOf, index);
+                    source.PopulateListItem(PartOf, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "statusReason":
-                    source.PopulateListItem(StatusReason, index);
+                    source.PopulateListItem(StatusReason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "derivedFrom":
-                    source.PopulateListItem(DerivedFrom, index);
+                    source.PopulateListItem(DerivedFrom, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    source.PopulateListItem(ReasonCode, index);
+                    source.PopulateListItem(ReasonCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    source.PopulateListItem(ReasonReference, index);
+                    source.PopulateListItem(ReasonReference, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "dosage":
-                    source.PopulateListItem(Dosage, index);
+                    source.PopulateListItem(Dosage, index, () => new Hl7.Fhir.Model.R4.Dosage());
                     return true;
             }
             return false;

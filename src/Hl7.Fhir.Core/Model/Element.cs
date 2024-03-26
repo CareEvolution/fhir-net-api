@@ -203,7 +203,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "extension":
-                    source.PopulateListItem(Extension, index);
+                    source.PopulateListItem(Extension, index, () => new Extension());
                     return true;
             }
             return false;

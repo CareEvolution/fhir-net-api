@@ -124,10 +124,10 @@ namespace Hl7.Fhir.Model
                 switch (jsonPropertyName)
                 {
                     case "lowLimit" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                        LowLimit = source.Populate(LowLimit);
+                        LowLimit = source.Populate(LowLimit, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "highLimit" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                        HighLimit = source.Populate(HighLimit);
+                        HighLimit = source.Populate(HighLimit, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                 }
                 return false;
@@ -385,11 +385,11 @@ namespace Hl7.Fhir.Model
             {
                 case "amountQuantity" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Amount, "amount");
-                    Amount = source.Populate(Amount as Hl7.Fhir.Model.Quantity);
+                    Amount = source.Populate(Amount as Hl7.Fhir.Model.Quantity, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "amountRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Amount, "amount");
-                    Amount = source.Populate(Amount as Hl7.Fhir.Model.Range);
+                    Amount = source.Populate(Amount as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                     return true;
                 case "amountString" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
@@ -397,19 +397,19 @@ namespace Hl7.Fhir.Model
                     return true;
                 case "_amountString" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                    Amount = source.Populate(Amount as Hl7.Fhir.Model.FhirString);
+                    Amount = source.Populate(Amount as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "amountType" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    AmountType = source.Populate(AmountType);
+                    AmountType = source.Populate(AmountType, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "amountText" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     AmountTextElement = source.PopulateValue(AmountTextElement);
                     return true;
                 case "_amountText" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    AmountTextElement = source.Populate(AmountTextElement);
+                    AmountTextElement = source.Populate(AmountTextElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "referenceRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ReferenceRange = source.Populate(ReferenceRange);
+                    ReferenceRange = source.Populate(ReferenceRange, () => new ReferenceRangeComponent());
                     return true;
             }
             return false;

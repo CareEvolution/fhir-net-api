@@ -251,25 +251,25 @@ namespace Hl7.Fhir.Model.R4
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "name":
-                        Name = source.Populate(Name);
+                        Name = source.Populate(Name, () => new Hl7.Fhir.Model.R4.HumanName());
                         return true;
                     case "telecom":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "address":
-                        Address = source.Populate(Address);
+                        Address = source.Populate(Address, () => new Hl7.Fhir.Model.Address());
                         return true;
                     case "gender":
                         GenderElement = source.PopulateValue(GenderElement);
                         return true;
                     case "_gender":
-                        GenderElement = source.Populate(GenderElement);
+                        GenderElement = source.Populate(GenderElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                         return true;
                     case "organization":
-                        Organization = source.Populate(Organization);
+                        Organization = source.Populate(Organization, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -284,10 +284,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "relationship":
-                        source.PopulateListItem(Relationship, index);
+                        source.PopulateListItem(Relationship, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "telecom":
-                        source.PopulateListItem(Telecom, index);
+                        source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                         return true;
                 }
                 return false;
@@ -478,13 +478,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "language":
-                        Language = source.Populate(Language);
+                        Language = source.Populate(Language, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "preferred":
                         PreferredElement = source.PopulateValue(PreferredElement);
                         return true;
                     case "_preferred":
-                        PreferredElement = source.Populate(PreferredElement);
+                        PreferredElement = source.Populate(PreferredElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                 }
                 return false;
@@ -654,13 +654,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "other":
-                        Other = source.Populate(Other);
+                        Other = source.Populate(Other, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "type":
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.LinkType>());
                         return true;
                 }
                 return false;
@@ -1300,7 +1300,7 @@ namespace Hl7.Fhir.Model.R4
                     ActiveElement = source.PopulateValue(ActiveElement);
                     return true;
                 case "_active":
-                    ActiveElement = source.Populate(ActiveElement);
+                    ActiveElement = source.Populate(ActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "name":
                     source.SetList(this, jsonPropertyName);
@@ -1312,13 +1312,13 @@ namespace Hl7.Fhir.Model.R4
                     GenderElement = source.PopulateValue(GenderElement);
                     return true;
                 case "_gender":
-                    GenderElement = source.Populate(GenderElement);
+                    GenderElement = source.Populate(GenderElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                     return true;
                 case "birthDate":
                     BirthDateElement = source.PopulateValue(BirthDateElement);
                     return true;
                 case "_birthDate":
-                    BirthDateElement = source.Populate(BirthDateElement);
+                    BirthDateElement = source.Populate(BirthDateElement, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "deceasedBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Deceased, "deceased");
@@ -1326,7 +1326,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_deceasedBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Deceased, "deceased");
-                    Deceased = source.Populate(Deceased as Hl7.Fhir.Model.FhirBoolean);
+                    Deceased = source.Populate(Deceased as Hl7.Fhir.Model.FhirBoolean, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "deceasedDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Deceased, "deceased");
@@ -1334,13 +1334,13 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_deceasedDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Deceased, "deceased");
-                    Deceased = source.Populate(Deceased as Hl7.Fhir.Model.FhirDateTime);
+                    Deceased = source.Populate(Deceased as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "address":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "maritalStatus":
-                    MaritalStatus = source.Populate(MaritalStatus);
+                    MaritalStatus = source.Populate(MaritalStatus, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "multipleBirthBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(MultipleBirth, "multipleBirth");
@@ -1348,7 +1348,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_multipleBirthBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(MultipleBirth, "multipleBirth");
-                    MultipleBirth = source.Populate(MultipleBirth as Hl7.Fhir.Model.FhirBoolean);
+                    MultipleBirth = source.Populate(MultipleBirth as Hl7.Fhir.Model.FhirBoolean, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "multipleBirthInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(MultipleBirth, "multipleBirth");
@@ -1356,7 +1356,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_multipleBirthInteger":
                     source.CheckDuplicates<Hl7.Fhir.Model.Integer>(MultipleBirth, "multipleBirth");
-                    MultipleBirth = source.Populate(MultipleBirth as Hl7.Fhir.Model.Integer);
+                    MultipleBirth = source.Populate(MultipleBirth as Hl7.Fhir.Model.Integer, () => new Hl7.Fhir.Model.Integer());
                     return true;
                 case "photo":
                     source.SetList(this, jsonPropertyName);
@@ -1371,7 +1371,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "managingOrganization":
-                    ManagingOrganization = source.Populate(ManagingOrganization);
+                    ManagingOrganization = source.Populate(ManagingOrganization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "link":
                     source.SetList(this, jsonPropertyName);
@@ -1389,31 +1389,31 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "name":
-                    source.PopulateListItem(Name, index);
+                    source.PopulateListItem(Name, index, () => new Hl7.Fhir.Model.R4.HumanName());
                     return true;
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "address":
-                    source.PopulateListItem(Address, index);
+                    source.PopulateListItem(Address, index, () => new Hl7.Fhir.Model.Address());
                     return true;
                 case "photo":
-                    source.PopulateListItem(Photo, index);
+                    source.PopulateListItem(Photo, index, () => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new ContactComponent());
                     return true;
                 case "communication":
-                    source.PopulateListItem(Communication, index);
+                    source.PopulateListItem(Communication, index, () => new CommunicationComponent());
                     return true;
                 case "generalPractitioner":
-                    source.PopulateListItem(GeneralPractitioner, index);
+                    source.PopulateListItem(GeneralPractitioner, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "link":
-                    source.PopulateListItem(Link, index);
+                    source.PopulateListItem(Link, index, () => new LinkComponent());
                     return true;
             }
             return false;

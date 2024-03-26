@@ -356,31 +356,31 @@ namespace Hl7.Fhir.Model.R4
                     WhenElement = source.PopulateValue(WhenElement);
                     return true;
                 case "_when":
-                    WhenElement = source.Populate(WhenElement);
+                    WhenElement = source.Populate(WhenElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "who":
-                    Who = source.Populate(Who);
+                    Who = source.Populate(Who, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "onBehalfOf":
-                    OnBehalfOf = source.Populate(OnBehalfOf);
+                    OnBehalfOf = source.Populate(OnBehalfOf, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "targetFormat":
                     TargetFormatElement = source.PopulateValue(TargetFormatElement);
                     return true;
                 case "_targetFormat":
-                    TargetFormatElement = source.Populate(TargetFormatElement);
+                    TargetFormatElement = source.Populate(TargetFormatElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "sigFormat":
                     SigFormatElement = source.PopulateValue(SigFormatElement);
                     return true;
                 case "_sigFormat":
-                    SigFormatElement = source.Populate(SigFormatElement);
+                    SigFormatElement = source.Populate(SigFormatElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "data":
                     DataElement = source.PopulateValue(DataElement);
                     return true;
                 case "_data":
-                    DataElement = source.Populate(DataElement);
+                    DataElement = source.Populate(DataElement, () => new Hl7.Fhir.Model.Base64Binary());
                     return true;
             }
             return false;
@@ -395,7 +395,7 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "type":
-                    source.PopulateListItem(Type, index);
+                    source.PopulateListItem(Type, index, () => new Hl7.Fhir.Model.Coding());
                     return true;
             }
             return false;

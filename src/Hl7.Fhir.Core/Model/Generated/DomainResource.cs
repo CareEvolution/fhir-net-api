@@ -280,7 +280,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "text":
-                    Text = source.Populate(Text);
+                    Text = source.Populate(Text, () => new Hl7.Fhir.Model.Narrative());
                     return true;
                 case "contained":
                     source.SetList(this, jsonPropertyName);
@@ -307,10 +307,10 @@ namespace Hl7.Fhir.Model
                     source.PopulateListItem(Contained, index);
                     return true;
                 case "extension":
-                    source.PopulateListItem(Extension, index);
+                    source.PopulateListItem(Extension, index, () => new Hl7.Fhir.Model.Extension());
                     return true;
                 case "modifierExtension":
-                    source.PopulateListItem(ModifierExtension, index);
+                    source.PopulateListItem(ModifierExtension, index, () => new Hl7.Fhir.Model.Extension());
                     return true;
             }
             return false;

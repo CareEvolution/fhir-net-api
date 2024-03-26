@@ -211,16 +211,16 @@ namespace Hl7.Fhir.Model.DSTU2
                         UidElement = source.PopulateValue(UidElement);
                         return true;
                     case "_uid":
-                        UidElement = source.Populate(UidElement);
+                        UidElement = source.Populate(UidElement, () => new Hl7.Fhir.Model.Oid());
                         return true;
                     case "url":
                         UrlElement = source.PopulateValue(UrlElement);
                         return true;
                     case "_url":
-                        UrlElement = source.Populate(UrlElement);
+                        UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "imagingStudy":
-                        ImagingStudy = source.Populate(ImagingStudy);
+                        ImagingStudy = source.Populate(ImagingStudy, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "series":
                         source.SetList(this, jsonPropertyName);
@@ -238,7 +238,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "series":
-                        source.PopulateListItem(Series, index);
+                        source.PopulateListItem(Series, index, () => new SeriesComponent());
                         return true;
                 }
                 return false;
@@ -461,13 +461,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         UidElement = source.PopulateValue(UidElement);
                         return true;
                     case "_uid":
-                        UidElement = source.Populate(UidElement);
+                        UidElement = source.Populate(UidElement, () => new Hl7.Fhir.Model.Oid());
                         return true;
                     case "url":
                         UrlElement = source.PopulateValue(UrlElement);
                         return true;
                     case "_url":
-                        UrlElement = source.Populate(UrlElement);
+                        UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "instance":
                         source.SetList(this, jsonPropertyName);
@@ -485,7 +485,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "instance":
-                        source.PopulateListItem(Instance, index);
+                        source.PopulateListItem(Instance, index, () => new InstanceComponent());
                         return true;
                 }
                 return false;
@@ -743,19 +743,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         SopClassElement = source.PopulateValue(SopClassElement);
                         return true;
                     case "_sopClass":
-                        SopClassElement = source.Populate(SopClassElement);
+                        SopClassElement = source.Populate(SopClassElement, () => new Hl7.Fhir.Model.Oid());
                         return true;
                     case "uid":
                         UidElement = source.PopulateValue(UidElement);
                         return true;
                     case "_uid":
-                        UidElement = source.Populate(UidElement);
+                        UidElement = source.Populate(UidElement, () => new Hl7.Fhir.Model.Oid());
                         return true;
                     case "url":
                         UrlElement = source.PopulateValue(UrlElement);
                         return true;
                     case "_url":
-                        UrlElement = source.Populate(UrlElement);
+                        UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "frames":
                         source.SetList(this, jsonPropertyName);
@@ -773,7 +773,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "frames":
-                        source.PopulateListItem(Frames, index);
+                        source.PopulateListItem(Frames, index, () => new FramesComponent());
                         return true;
                 }
                 return false;
@@ -980,7 +980,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         UrlElement = source.PopulateValue(UrlElement);
                         return true;
                     case "_url":
-                        UrlElement = source.Populate(UrlElement);
+                        UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -998,7 +998,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         source.PopulatePrimitiveListItemValue(FrameNumbersElement, index);
                         return true;
                     case "_frameNumbers":
-                        source.PopulatePrimitiveListItem(FrameNumbersElement, index);
+                        source.PopulatePrimitiveListItem(FrameNumbersElement, index, () => new Hl7.Fhir.Model.UnsignedInt());
                         return true;
                 }
                 return false;
@@ -1360,28 +1360,28 @@ namespace Hl7.Fhir.Model.DSTU2
                     UidElement = source.PopulateValue(UidElement);
                     return true;
                 case "_uid":
-                    UidElement = source.Populate(UidElement);
+                    UidElement = source.Populate(UidElement, () => new Hl7.Fhir.Model.Oid());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "title":
-                    Title = source.Populate(Title);
+                    Title = source.Populate(Title, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description":
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "author":
-                    Author = source.Populate(Author);
+                    Author = source.Populate(Author, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authoringTime":
                     AuthoringTimeElement = source.PopulateValue(AuthoringTimeElement);
                     return true;
                 case "_authoringTime":
-                    AuthoringTimeElement = source.Populate(AuthoringTimeElement);
+                    AuthoringTimeElement = source.Populate(AuthoringTimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "study":
                     source.SetList(this, jsonPropertyName);
@@ -1399,7 +1399,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "study":
-                    source.PopulateListItem(Study, index);
+                    source.PopulateListItem(Study, index, () => new StudyComponent());
                     return true;
             }
             return false;

@@ -400,13 +400,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relationship":
-                    Relationship = source.Populate(Relationship);
+                    Relationship = source.Populate(Relationship, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
-                    Name = source.Populate(Name);
+                    Name = source.Populate(Name, () => new Hl7.Fhir.Model.DSTU2.HumanName());
                     return true;
                 case "telecom":
                     source.SetList(this, jsonPropertyName);
@@ -415,13 +415,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     GenderElement = source.PopulateValue(GenderElement);
                     return true;
                 case "_gender":
-                    GenderElement = source.Populate(GenderElement);
+                    GenderElement = source.Populate(GenderElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                     return true;
                 case "birthDate":
                     BirthDateElement = source.PopulateValue(BirthDateElement);
                     return true;
                 case "_birthDate":
-                    BirthDateElement = source.Populate(BirthDateElement);
+                    BirthDateElement = source.Populate(BirthDateElement, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "address":
                     source.SetList(this, jsonPropertyName);
@@ -430,7 +430,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;
@@ -445,16 +445,16 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "address":
-                    source.PopulateListItem(Address, index);
+                    source.PopulateListItem(Address, index, () => new Hl7.Fhir.Model.Address());
                     return true;
                 case "photo":
-                    source.PopulateListItem(Photo, index);
+                    source.PopulateListItem(Photo, index, () => new Hl7.Fhir.Model.Attachment());
                     return true;
             }
             return false;

@@ -352,17 +352,17 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 case "bodySiteCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(BodySite, "bodySite");
-                    BodySite = source.Populate(BodySite as Hl7.Fhir.Model.CodeableConcept);
+                    BodySite = source.Populate(BodySite as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "bodySiteReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(BodySite, "bodySite");
-                    BodySite = source.Populate(BodySite as Hl7.Fhir.Model.ResourceReference);
+                    BodySite = source.Populate(BodySite as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "whenUsed":
-                    WhenUsed = source.Populate(WhenUsed);
+                    WhenUsed = source.Populate(WhenUsed, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "device":
-                    Device = source.Populate(Device);
+                    Device = source.Populate(Device, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
                     source.SetList(this, jsonPropertyName);
@@ -378,18 +378,18 @@ namespace Hl7.Fhir.Model.DSTU2
                     RecordedOnElement = source.PopulateValue(RecordedOnElement);
                     return true;
                 case "_recordedOn":
-                    RecordedOnElement = source.Populate(RecordedOnElement);
+                    RecordedOnElement = source.Populate(RecordedOnElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Timing>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.DSTU2.Timing);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.DSTU2.Timing, () => new Hl7.Fhir.Model.DSTU2.Timing());
                     return true;
                 case "timingPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.Period);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
@@ -397,7 +397,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.FhirDateTime);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;
@@ -412,16 +412,16 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "indication":
-                    source.PopulateListItem(Indication, index);
+                    source.PopulateListItem(Indication, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "notes":
                     source.PopulatePrimitiveListItemValue(NotesElement, index);
                     return true;
                 case "_notes":
-                    source.PopulatePrimitiveListItem(NotesElement, index);
+                    source.PopulatePrimitiveListItem(NotesElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

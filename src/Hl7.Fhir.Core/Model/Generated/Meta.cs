@@ -340,13 +340,13 @@ namespace Hl7.Fhir.Model
                     VersionIdElement = source.PopulateValue(VersionIdElement);
                     return true;
                 case "_versionId":
-                    VersionIdElement = source.Populate(VersionIdElement);
+                    VersionIdElement = source.Populate(VersionIdElement, () => new Hl7.Fhir.Model.Id());
                     return true;
                 case "lastUpdated":
                     LastUpdatedElement = source.PopulateValue(LastUpdatedElement);
                     return true;
                 case "_lastUpdated":
-                    LastUpdatedElement = source.Populate(LastUpdatedElement);
+                    LastUpdatedElement = source.Populate(LastUpdatedElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "profile":
                 case "_profile":
@@ -362,7 +362,7 @@ namespace Hl7.Fhir.Model
                     SourceElement = source.PopulateValue(SourceElement);
                     return true;
                 case "_source" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    SourceElement = source.Populate(SourceElement);
+                    SourceElement = source.Populate(SourceElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
             }
             return false;
@@ -380,13 +380,13 @@ namespace Hl7.Fhir.Model
                     source.PopulatePrimitiveListItemValue(ProfileElement, index);
                     return true;
                 case "_profile":
-                    source.PopulatePrimitiveListItem(ProfileElement, index);
+                    source.PopulatePrimitiveListItem(ProfileElement, index, () => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "security":
-                    source.PopulateListItem(Security, index);
+                    source.PopulateListItem(Security, index, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "tag":
-                    source.PopulateListItem(Tag, index);
+                    source.PopulateListItem(Tag, index, () => new Hl7.Fhir.Model.Coding());
                     return true;
             }
             return false;

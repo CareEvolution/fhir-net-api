@@ -148,10 +148,10 @@ namespace Hl7.Fhir.Model.R4
                         FractionElement = source.PopulateValue(FractionElement);
                         return true;
                     case "_fraction":
-                        FractionElement = source.Populate(FractionElement);
+                        FractionElement = source.Populate(FractionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "materialType":
-                        MaterialType = source.Populate(MaterialType);
+                        MaterialType = source.Populate(MaterialType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -432,31 +432,31 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "family":
-                        Family = source.Populate(Family);
+                        Family = source.Populate(Family, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "genus":
-                        Genus = source.Populate(Genus);
+                        Genus = source.Populate(Genus, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "species":
-                        Species = source.Populate(Species);
+                        Species = source.Populate(Species, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "intraspecificType":
-                        IntraspecificType = source.Populate(IntraspecificType);
+                        IntraspecificType = source.Populate(IntraspecificType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "intraspecificDescription":
                         IntraspecificDescriptionElement = source.PopulateValue(IntraspecificDescriptionElement);
                         return true;
                     case "_intraspecificDescription":
-                        IntraspecificDescriptionElement = source.Populate(IntraspecificDescriptionElement);
+                        IntraspecificDescriptionElement = source.Populate(IntraspecificDescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "author":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "hybrid":
-                        Hybrid = source.Populate(Hybrid);
+                        Hybrid = source.Populate(Hybrid, () => new HybridComponent());
                         return true;
                     case "organismGeneral":
-                        OrganismGeneral = source.Populate(OrganismGeneral);
+                        OrganismGeneral = source.Populate(OrganismGeneral, () => new OrganismGeneralComponent());
                         return true;
                 }
                 return false;
@@ -471,7 +471,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "author":
-                        source.PopulateListItem(Author, index);
+                        source.PopulateListItem(Author, index, () => new AuthorComponent());
                         return true;
                 }
                 return false;
@@ -668,13 +668,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "authorType":
-                        AuthorType = source.Populate(AuthorType);
+                        AuthorType = source.Populate(AuthorType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "authorDescription":
                         AuthorDescriptionElement = source.PopulateValue(AuthorDescriptionElement);
                         return true;
                     case "_authorDescription":
-                        AuthorDescriptionElement = source.Populate(AuthorDescriptionElement);
+                        AuthorDescriptionElement = source.Populate(AuthorDescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -955,28 +955,28 @@ namespace Hl7.Fhir.Model.R4
                         MaternalOrganismIdElement = source.PopulateValue(MaternalOrganismIdElement);
                         return true;
                     case "_maternalOrganismId":
-                        MaternalOrganismIdElement = source.Populate(MaternalOrganismIdElement);
+                        MaternalOrganismIdElement = source.Populate(MaternalOrganismIdElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "maternalOrganismName":
                         MaternalOrganismNameElement = source.PopulateValue(MaternalOrganismNameElement);
                         return true;
                     case "_maternalOrganismName":
-                        MaternalOrganismNameElement = source.Populate(MaternalOrganismNameElement);
+                        MaternalOrganismNameElement = source.Populate(MaternalOrganismNameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "paternalOrganismId":
                         PaternalOrganismIdElement = source.PopulateValue(PaternalOrganismIdElement);
                         return true;
                     case "_paternalOrganismId":
-                        PaternalOrganismIdElement = source.Populate(PaternalOrganismIdElement);
+                        PaternalOrganismIdElement = source.Populate(PaternalOrganismIdElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "paternalOrganismName":
                         PaternalOrganismNameElement = source.PopulateValue(PaternalOrganismNameElement);
                         return true;
                     case "_paternalOrganismName":
-                        PaternalOrganismNameElement = source.Populate(PaternalOrganismNameElement);
+                        PaternalOrganismNameElement = source.Populate(PaternalOrganismNameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "hybridType":
-                        HybridType = source.Populate(HybridType);
+                        HybridType = source.Populate(HybridType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1175,16 +1175,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "kingdom":
-                        Kingdom = source.Populate(Kingdom);
+                        Kingdom = source.Populate(Kingdom, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "phylum":
-                        Phylum = source.Populate(Phylum);
+                        Phylum = source.Populate(Phylum, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "class":
-                        Class = source.Populate(Class);
+                        Class = source.Populate(Class, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "order":
-                        Order = source.Populate(Order);
+                        Order = source.Populate(Order, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1342,10 +1342,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "part":
-                        Part = source.Populate(Part);
+                        Part = source.Populate(Part, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "partLocation":
-                        PartLocation = source.Populate(PartLocation);
+                        PartLocation = source.Populate(PartLocation, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1849,22 +1849,22 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "sourceMaterialClass":
-                    SourceMaterialClass = source.Populate(SourceMaterialClass);
+                    SourceMaterialClass = source.Populate(SourceMaterialClass, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "sourceMaterialType":
-                    SourceMaterialType = source.Populate(SourceMaterialType);
+                    SourceMaterialType = source.Populate(SourceMaterialType, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "sourceMaterialState":
-                    SourceMaterialState = source.Populate(SourceMaterialState);
+                    SourceMaterialState = source.Populate(SourceMaterialState, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "organismId":
-                    OrganismId = source.Populate(OrganismId);
+                    OrganismId = source.Populate(OrganismId, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "organismName":
                     OrganismNameElement = source.PopulateValue(OrganismNameElement);
                     return true;
                 case "_organismName":
-                    OrganismNameElement = source.Populate(OrganismNameElement);
+                    OrganismNameElement = source.Populate(OrganismNameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "parentSubstanceId":
                     source.SetList(this, jsonPropertyName);
@@ -1881,13 +1881,13 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "developmentStage":
-                    DevelopmentStage = source.Populate(DevelopmentStage);
+                    DevelopmentStage = source.Populate(DevelopmentStage, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "fractionDescription":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "organism":
-                    Organism = source.Populate(Organism);
+                    Organism = source.Populate(Organism, () => new OrganismComponent());
                     return true;
                 case "partDescription":
                     source.SetList(this, jsonPropertyName);
@@ -1905,28 +1905,28 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "parentSubstanceId":
-                    source.PopulateListItem(ParentSubstanceId, index);
+                    source.PopulateListItem(ParentSubstanceId, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "parentSubstanceName":
                     source.PopulatePrimitiveListItemValue(ParentSubstanceNameElement, index);
                     return true;
                 case "_parentSubstanceName":
-                    source.PopulatePrimitiveListItem(ParentSubstanceNameElement, index);
+                    source.PopulatePrimitiveListItem(ParentSubstanceNameElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "countryOfOrigin":
-                    source.PopulateListItem(CountryOfOrigin, index);
+                    source.PopulateListItem(CountryOfOrigin, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "geographicalLocation":
                     source.PopulatePrimitiveListItemValue(GeographicalLocationElement, index);
                     return true;
                 case "_geographicalLocation":
-                    source.PopulatePrimitiveListItem(GeographicalLocationElement, index);
+                    source.PopulatePrimitiveListItem(GeographicalLocationElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "fractionDescription":
-                    source.PopulateListItem(FractionDescription, index);
+                    source.PopulateListItem(FractionDescription, index, () => new FractionDescriptionComponent());
                     return true;
                 case "partDescription":
-                    source.PopulateListItem(PartDescription, index);
+                    source.PopulateListItem(PartDescription, index, () => new PartDescriptionComponent());
                     return true;
             }
             return false;

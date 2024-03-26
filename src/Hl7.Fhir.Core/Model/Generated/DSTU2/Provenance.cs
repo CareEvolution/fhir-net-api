@@ -170,13 +170,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "role":
-                        Role = source.Populate(Role);
+                        Role = source.Populate(Role, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "actor":
-                        Actor = source.Populate(Actor);
+                        Actor = source.Populate(Actor, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "userId":
-                        UserId = source.Populate(UserId);
+                        UserId = source.Populate(UserId, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "relatedAgent":
                         source.SetList(this, jsonPropertyName);
@@ -194,7 +194,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "relatedAgent":
-                        source.PopulateListItem(RelatedAgent, index);
+                        source.PopulateListItem(RelatedAgent, index, () => new RelatedAgentComponent());
                         return true;
                 }
                 return false;
@@ -373,13 +373,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "target":
                         TargetElement = source.PopulateValue(TargetElement);
                         return true;
                     case "_target":
-                        TargetElement = source.Populate(TargetElement);
+                        TargetElement = source.Populate(TargetElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -644,25 +644,25 @@ namespace Hl7.Fhir.Model.DSTU2
                         RoleElement = source.PopulateValue(RoleElement);
                         return true;
                     case "_role":
-                        RoleElement = source.Populate(RoleElement);
+                        RoleElement = source.Populate(RoleElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProvenanceEntityRole>());
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "reference":
                         ReferenceElement = source.PopulateValue(ReferenceElement);
                         return true;
                     case "_reference":
-                        ReferenceElement = source.Populate(ReferenceElement);
+                        ReferenceElement = source.Populate(ReferenceElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "display":
                         DisplayElement = source.PopulateValue(DisplayElement);
                         return true;
                     case "_display":
-                        DisplayElement = source.Populate(DisplayElement);
+                        DisplayElement = source.Populate(DisplayElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "agent":
-                        Agent = source.Populate(Agent);
+                        Agent = source.Populate(Agent, () => new AgentComponent());
                         return true;
                 }
                 return false;
@@ -1116,22 +1116,22 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "recorded":
                     RecordedElement = source.PopulateValue(RecordedElement);
                     return true;
                 case "_recorded":
-                    RecordedElement = source.Populate(RecordedElement);
+                    RecordedElement = source.Populate(RecordedElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "reason":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "activity":
-                    Activity = source.Populate(Activity);
+                    Activity = source.Populate(Activity, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "location":
-                    Location = source.Populate(Location);
+                    Location = source.Populate(Location, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "policy":
                 case "_policy":
@@ -1159,25 +1159,25 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "target":
-                    source.PopulateListItem(Target, index);
+                    source.PopulateListItem(Target, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reason":
-                    source.PopulateListItem(Reason, index);
+                    source.PopulateListItem(Reason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "policy":
                     source.PopulatePrimitiveListItemValue(PolicyElement, index);
                     return true;
                 case "_policy":
-                    source.PopulatePrimitiveListItem(PolicyElement, index);
+                    source.PopulatePrimitiveListItem(PolicyElement, index, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "agent":
-                    source.PopulateListItem(Agent, index);
+                    source.PopulateListItem(Agent, index, () => new AgentComponent());
                     return true;
                 case "entity":
-                    source.PopulateListItem(Entity, index);
+                    source.PopulateListItem(Entity, index, () => new EntityComponent());
                     return true;
                 case "signature":
-                    source.PopulateListItem(Signature, index);
+                    source.PopulateListItem(Signature, index, () => new Hl7.Fhir.Model.DSTU2.Signature());
                     return true;
             }
             return false;

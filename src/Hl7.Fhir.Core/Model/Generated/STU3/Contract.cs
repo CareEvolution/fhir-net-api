@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "actor":
-                        Actor = source.Populate(Actor);
+                        Actor = source.Populate(Actor, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "role":
                         source.SetList(this, jsonPropertyName);
@@ -151,7 +151,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "role":
-                        source.PopulateListItem(Role, index);
+                        source.PopulateListItem(Role, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -324,10 +324,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "party":
-                        Party = source.Populate(Party);
+                        Party = source.Populate(Party, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "signature":
                         source.SetList(this, jsonPropertyName);
@@ -345,7 +345,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "signature":
-                        source.PopulateListItem(Signature, index);
+                        source.PopulateListItem(Signature, index, () => new Hl7.Fhir.Model.STU3.Signature());
                         return true;
                 }
                 return false;
@@ -669,41 +669,41 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "entityCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Entity, "entity");
-                        Entity = source.Populate(Entity as Hl7.Fhir.Model.CodeableConcept);
+                        Entity = source.Populate(Entity as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "entityReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Entity, "entity");
-                        Entity = source.Populate(Entity as Hl7.Fhir.Model.ResourceReference);
+                        Entity = source.Populate(Entity as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "effectiveTime":
                         EffectiveTimeElement = source.PopulateValue(EffectiveTimeElement);
                         return true;
                     case "_effectiveTime":
-                        EffectiveTimeElement = source.Populate(EffectiveTimeElement);
+                        EffectiveTimeElement = source.Populate(EffectiveTimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "unitPrice":
-                        UnitPrice = source.Populate(UnitPrice);
+                        UnitPrice = source.Populate(UnitPrice, () => new Hl7.Fhir.Model.STU3.Money());
                         return true;
                     case "factor":
                         FactorElement = source.PopulateValue(FactorElement);
                         return true;
                     case "_factor":
-                        FactorElement = source.Populate(FactorElement);
+                        FactorElement = source.Populate(FactorElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "points":
                         PointsElement = source.PopulateValue(PointsElement);
                         return true;
                     case "_points":
-                        PointsElement = source.Populate(PointsElement);
+                        PointsElement = source.Populate(PointsElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "net":
-                        Net = source.Populate(Net);
+                        Net = source.Populate(Net, () => new Hl7.Fhir.Model.STU3.Money());
                         return true;
                 }
                 return false;
@@ -1154,22 +1154,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "issued":
                         IssuedElement = source.PopulateValue(IssuedElement);
                         return true;
                     case "_issued":
-                        IssuedElement = source.Populate(IssuedElement);
+                        IssuedElement = source.Populate(IssuedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "applies":
-                        Applies = source.Populate(Applies);
+                        Applies = source.Populate(Applies, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "subType":
-                        SubType = source.Populate(SubType);
+                        SubType = source.Populate(SubType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "topic":
                         source.SetList(this, jsonPropertyName);
@@ -1190,7 +1190,7 @@ namespace Hl7.Fhir.Model.STU3
                         TextElement = source.PopulateValue(TextElement);
                         return true;
                     case "_text":
-                        TextElement = source.Populate(TextElement);
+                        TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valuedItem":
                         source.SetList(this, jsonPropertyName);
@@ -1211,25 +1211,25 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "topic":
-                        source.PopulateListItem(Topic, index);
+                        source.PopulateListItem(Topic, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "action":
-                        source.PopulateListItem(Action, index);
+                        source.PopulateListItem(Action, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "actionReason":
-                        source.PopulateListItem(ActionReason, index);
+                        source.PopulateListItem(ActionReason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "securityLabel":
-                        source.PopulateListItem(SecurityLabel, index);
+                        source.PopulateListItem(SecurityLabel, index, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "agent":
-                        source.PopulateListItem(Agent, index);
+                        source.PopulateListItem(Agent, index, () => new TermAgentComponent());
                         return true;
                     case "valuedItem":
-                        source.PopulateListItem(ValuedItem, index);
+                        source.PopulateListItem(ValuedItem, index, () => new TermValuedItemComponent());
                         return true;
                     case "group":
-                        source.PopulateListItem(Group, index);
+                        source.PopulateListItem(Group, index, () => new TermComponent());
                         return true;
                 }
                 return false;
@@ -1439,7 +1439,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "actor":
-                        Actor = source.Populate(Actor);
+                        Actor = source.Populate(Actor, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "role":
                         source.SetList(this, jsonPropertyName);
@@ -1457,7 +1457,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "role":
-                        source.PopulateListItem(Role, index);
+                        source.PopulateListItem(Role, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1770,41 +1770,41 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "entityCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Entity, "entity");
-                        Entity = source.Populate(Entity as Hl7.Fhir.Model.CodeableConcept);
+                        Entity = source.Populate(Entity as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "entityReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Entity, "entity");
-                        Entity = source.Populate(Entity as Hl7.Fhir.Model.ResourceReference);
+                        Entity = source.Populate(Entity as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "effectiveTime":
                         EffectiveTimeElement = source.PopulateValue(EffectiveTimeElement);
                         return true;
                     case "_effectiveTime":
-                        EffectiveTimeElement = source.Populate(EffectiveTimeElement);
+                        EffectiveTimeElement = source.Populate(EffectiveTimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "unitPrice":
-                        UnitPrice = source.Populate(UnitPrice);
+                        UnitPrice = source.Populate(UnitPrice, () => new Hl7.Fhir.Model.STU3.Money());
                         return true;
                     case "factor":
                         FactorElement = source.PopulateValue(FactorElement);
                         return true;
                     case "_factor":
-                        FactorElement = source.Populate(FactorElement);
+                        FactorElement = source.Populate(FactorElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "points":
                         PointsElement = source.PopulateValue(PointsElement);
                         return true;
                     case "_points":
-                        PointsElement = source.Populate(PointsElement);
+                        PointsElement = source.Populate(PointsElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "net":
-                        Net = source.Populate(Net);
+                        Net = source.Populate(Net, () => new Hl7.Fhir.Model.STU3.Money());
                         return true;
                 }
                 return false;
@@ -1972,11 +1972,11 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.Attachment);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.Attachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.ResourceReference);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -2109,11 +2109,11 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.Attachment);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.Attachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.ResourceReference);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -2246,11 +2246,11 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.Attachment);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.Attachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Populate(Content as Hl7.Fhir.Model.ResourceReference);
+                        Content = source.Populate(Content as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -3012,22 +3012,22 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContractResourceStatusCodes>());
                     return true;
                 case "issued":
                     IssuedElement = source.PopulateValue(IssuedElement);
                     return true;
                 case "_issued":
-                    IssuedElement = source.Populate(IssuedElement);
+                    IssuedElement = source.Populate(IssuedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "applies":
-                    Applies = source.Populate(Applies);
+                    Applies = source.Populate(Applies, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "subject":
                     source.SetList(this, jsonPropertyName);
@@ -3042,7 +3042,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subType":
                     source.SetList(this, jsonPropertyName);
@@ -3054,10 +3054,10 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "decisionType":
-                    DecisionType = source.Populate(DecisionType);
+                    DecisionType = source.Populate(DecisionType, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "contentDerivative":
-                    ContentDerivative = source.Populate(ContentDerivative);
+                    ContentDerivative = source.Populate(ContentDerivative, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "securityLabel":
                     source.SetList(this, jsonPropertyName);
@@ -3076,11 +3076,11 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "bindingAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Binding, "binding");
-                    Binding = source.Populate(Binding as Hl7.Fhir.Model.Attachment);
+                    Binding = source.Populate(Binding as Hl7.Fhir.Model.Attachment, () => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "bindingReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Binding, "binding");
-                    Binding = source.Populate(Binding as Hl7.Fhir.Model.ResourceReference);
+                    Binding = source.Populate(Binding as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "friendly":
                     source.SetList(this, jsonPropertyName);
@@ -3104,49 +3104,49 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "subject":
-                    source.PopulateListItem(Subject, index);
+                    source.PopulateListItem(Subject, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "topic":
-                    source.PopulateListItem(Topic, index);
+                    source.PopulateListItem(Topic, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authority":
-                    source.PopulateListItem(Authority, index);
+                    source.PopulateListItem(Authority, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "domain":
-                    source.PopulateListItem(Domain, index);
+                    source.PopulateListItem(Domain, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subType":
-                    source.PopulateListItem(SubType, index);
+                    source.PopulateListItem(SubType, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "action":
-                    source.PopulateListItem(Action, index);
+                    source.PopulateListItem(Action, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actionReason":
-                    source.PopulateListItem(ActionReason, index);
+                    source.PopulateListItem(ActionReason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "securityLabel":
-                    source.PopulateListItem(SecurityLabel, index);
+                    source.PopulateListItem(SecurityLabel, index, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "agent":
-                    source.PopulateListItem(Agent, index);
+                    source.PopulateListItem(Agent, index, () => new AgentComponent());
                     return true;
                 case "signer":
-                    source.PopulateListItem(Signer, index);
+                    source.PopulateListItem(Signer, index, () => new SignatoryComponent());
                     return true;
                 case "valuedItem":
-                    source.PopulateListItem(ValuedItem, index);
+                    source.PopulateListItem(ValuedItem, index, () => new ValuedItemComponent());
                     return true;
                 case "term":
-                    source.PopulateListItem(Term, index);
+                    source.PopulateListItem(Term, index, () => new TermComponent());
                     return true;
                 case "friendly":
-                    source.PopulateListItem(Friendly, index);
+                    source.PopulateListItem(Friendly, index, () => new FriendlyLanguageComponent());
                     return true;
                 case "legal":
-                    source.PopulateListItem(Legal, index);
+                    source.PopulateListItem(Legal, index, () => new LegalLanguageComponent());
                     return true;
                 case "rule":
-                    source.PopulateListItem(Rule, index);
+                    source.PopulateListItem(Rule, index, () => new ComputableLanguageComponent());
                     return true;
             }
             return false;

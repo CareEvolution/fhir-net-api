@@ -188,11 +188,11 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_whoUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
-                        Who = source.Populate(Who as Hl7.Fhir.Model.FhirUri);
+                        Who = source.Populate(Who as Hl7.Fhir.Model.FhirUri, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "whoReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Who, "who");
-                        Who = source.Populate(Who as Hl7.Fhir.Model.ResourceReference);
+                        Who = source.Populate(Who as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onBehalfOfUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(OnBehalfOf, "onBehalfOf");
@@ -200,14 +200,14 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_onBehalfOfUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(OnBehalfOf, "onBehalfOf");
-                        OnBehalfOf = source.Populate(OnBehalfOf as Hl7.Fhir.Model.FhirUri);
+                        OnBehalfOf = source.Populate(OnBehalfOf as Hl7.Fhir.Model.FhirUri, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "onBehalfOfReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(OnBehalfOf, "onBehalfOf");
-                        OnBehalfOf = source.Populate(OnBehalfOf as Hl7.Fhir.Model.ResourceReference);
+                        OnBehalfOf = source.Populate(OnBehalfOf as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "relatedAgentType":
-                        RelatedAgentType = source.Populate(RelatedAgentType);
+                        RelatedAgentType = source.Populate(RelatedAgentType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -222,7 +222,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "role":
-                        source.PopulateListItem(Role, index);
+                        source.PopulateListItem(Role, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -437,7 +437,7 @@ namespace Hl7.Fhir.Model.STU3
                         RoleElement = source.PopulateValue(RoleElement);
                         return true;
                     case "_role":
-                        RoleElement = source.Populate(RoleElement);
+                        RoleElement = source.Populate(RoleElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ProvenanceEntityRole>());
                         return true;
                     case "whatUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(What, "what");
@@ -445,15 +445,15 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_whatUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(What, "what");
-                        What = source.Populate(What as Hl7.Fhir.Model.FhirUri);
+                        What = source.Populate(What as Hl7.Fhir.Model.FhirUri, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "whatReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(What, "what");
-                        What = source.Populate(What as Hl7.Fhir.Model.ResourceReference);
+                        What = source.Populate(What as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "whatIdentifier":
                         source.CheckDuplicates<Hl7.Fhir.Model.Identifier>(What, "what");
-                        What = source.Populate(What as Hl7.Fhir.Model.Identifier);
+                        What = source.Populate(What as Hl7.Fhir.Model.Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "agent":
                         source.SetList(this, jsonPropertyName);
@@ -471,7 +471,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "agent":
-                        source.PopulateListItem(Agent, index);
+                        source.PopulateListItem(Agent, index, () => new AgentComponent());
                         return true;
                 }
                 return false;
@@ -908,26 +908,26 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "recorded":
                     RecordedElement = source.PopulateValue(RecordedElement);
                     return true;
                 case "_recorded":
-                    RecordedElement = source.Populate(RecordedElement);
+                    RecordedElement = source.Populate(RecordedElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "policy":
                 case "_policy":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "location":
-                    Location = source.Populate(Location);
+                    Location = source.Populate(Location, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reason":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "activity":
-                    Activity = source.Populate(Activity);
+                    Activity = source.Populate(Activity, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "agent":
                     source.SetList(this, jsonPropertyName);
@@ -951,25 +951,25 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "target":
-                    source.PopulateListItem(Target, index);
+                    source.PopulateListItem(Target, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "policy":
                     source.PopulatePrimitiveListItemValue(PolicyElement, index);
                     return true;
                 case "_policy":
-                    source.PopulatePrimitiveListItem(PolicyElement, index);
+                    source.PopulatePrimitiveListItem(PolicyElement, index, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "reason":
-                    source.PopulateListItem(Reason, index);
+                    source.PopulateListItem(Reason, index, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "agent":
-                    source.PopulateListItem(Agent, index);
+                    source.PopulateListItem(Agent, index, () => new AgentComponent());
                     return true;
                 case "entity":
-                    source.PopulateListItem(Entity, index);
+                    source.PopulateListItem(Entity, index, () => new EntityComponent());
                     return true;
                 case "signature":
-                    source.PopulateListItem(Signature, index);
+                    source.PopulateListItem(Signature, index, () => new Hl7.Fhir.Model.STU3.Signature());
                     return true;
             }
             return false;

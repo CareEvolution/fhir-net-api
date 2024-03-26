@@ -232,32 +232,32 @@ namespace Hl7.Fhir.Model.DSTU2
                         TextElement = source.PopulateValue(TextElement);
                         return true;
                     case "_text":
-                        TextElement = source.Populate(TextElement);
+                        TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "siteCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Site, "site");
-                        Site = source.Populate(Site as Hl7.Fhir.Model.CodeableConcept);
+                        Site = source.Populate(Site as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "siteReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Site, "site");
-                        Site = source.Populate(Site as Hl7.Fhir.Model.ResourceReference);
+                        Site = source.Populate(Site as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "route":
-                        Route = source.Populate(Route);
+                        Route = source.Populate(Route, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "method":
-                        Method = source.Populate(Method);
+                        Method = source.Populate(Method, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "rateRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Rate, "rate");
-                        Rate = source.Populate(Rate as Hl7.Fhir.Model.Ratio);
+                        Rate = source.Populate(Rate as Hl7.Fhir.Model.Ratio, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "rateRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Rate, "rate");
-                        Rate = source.Populate(Rate as Hl7.Fhir.Model.Range);
+                        Rate = source.Populate(Rate as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                 }
                 return false;
@@ -860,25 +860,25 @@ namespace Hl7.Fhir.Model.DSTU2
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MedicationAdministrationStatus>());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "practitioner":
-                    Practitioner = source.Populate(Practitioner);
+                    Practitioner = source.Populate(Practitioner, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "prescription":
-                    Prescription = source.Populate(Prescription);
+                    Prescription = source.Populate(Prescription, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "wasNotGiven":
                     WasNotGivenElement = source.PopulateValue(WasNotGivenElement);
                     return true;
                 case "_wasNotGiven":
-                    WasNotGivenElement = source.Populate(WasNotGivenElement);
+                    WasNotGivenElement = source.Populate(WasNotGivenElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "reasonNotGiven":
                     source.SetList(this, jsonPropertyName);
@@ -892,19 +892,19 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_effectiveTimeDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(EffectiveTime, "effectiveTime");
-                    EffectiveTime = source.Populate(EffectiveTime as Hl7.Fhir.Model.FhirDateTime);
+                    EffectiveTime = source.Populate(EffectiveTime as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "effectiveTimePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(EffectiveTime, "effectiveTime");
-                    EffectiveTime = source.Populate(EffectiveTime as Hl7.Fhir.Model.Period);
+                    EffectiveTime = source.Populate(EffectiveTime as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "medicationCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
-                    Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept);
+                    Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "medicationReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Medication, "medication");
-                    Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference);
+                    Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
                     source.SetList(this, jsonPropertyName);
@@ -913,10 +913,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     NoteElement = source.PopulateValue(NoteElement);
                     return true;
                 case "_note":
-                    NoteElement = source.Populate(NoteElement);
+                    NoteElement = source.Populate(NoteElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "dosage":
-                    Dosage = source.Populate(Dosage);
+                    Dosage = source.Populate(Dosage, () => new DosageComponent());
                     return true;
             }
             return false;
@@ -931,16 +931,16 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "reasonNotGiven":
-                    source.PopulateListItem(ReasonNotGiven, index);
+                    source.PopulateListItem(ReasonNotGiven, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonGiven":
-                    source.PopulateListItem(ReasonGiven, index);
+                    source.PopulateListItem(ReasonGiven, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "device":
-                    source.PopulateListItem(Device, index);
+                    source.PopulateListItem(Device, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

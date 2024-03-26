@@ -338,31 +338,31 @@ namespace Hl7.Fhir.Model
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.Id());
                     return true;
                 case "language" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     LanguageElement = source.PopulateValue(LanguageElement);
                     return true;
                 case "_language" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    LanguageElement = source.Populate(LanguageElement);
+                    LanguageElement = source.Populate(LanguageElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "expression" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     Expression_Element = source.PopulateValue(Expression_Element);
                     return true;
                 case "_expression" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Expression_Element = source.Populate(Expression_Element);
+                    Expression_Element = source.Populate(Expression_Element, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "reference" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     ReferenceElement = source.PopulateValue(ReferenceElement);
                     return true;
                 case "_reference" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ReferenceElement = source.Populate(ReferenceElement);
+                    ReferenceElement = source.Populate(ReferenceElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
             }
             return false;

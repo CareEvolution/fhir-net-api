@@ -163,16 +163,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "expiry":
                         ExpiryElement = source.PopulateValue(ExpiryElement);
                         return true;
                     case "_expiry":
-                        ExpiryElement = source.Populate(ExpiryElement);
+                        ExpiryElement = source.Populate(ExpiryElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                 }
                 return false;
@@ -332,15 +332,15 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "substanceCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Substance, "substance");
-                        Substance = source.Populate(Substance as Hl7.Fhir.Model.CodeableConcept);
+                        Substance = source.Populate(Substance as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "substanceReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Substance, "substance");
-                        Substance = source.Populate(Substance as Hl7.Fhir.Model.ResourceReference);
+                        Substance = source.Populate(Substance as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -706,19 +706,19 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FHIRSubstanceStatus>());
                     return true;
                 case "category":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description":
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "instance":
                     source.SetList(this, jsonPropertyName);
@@ -739,16 +739,16 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "category":
-                    source.PopulateListItem(Category, index);
+                    source.PopulateListItem(Category, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "instance":
-                    source.PopulateListItem(Instance, index);
+                    source.PopulateListItem(Instance, index, () => new InstanceComponent());
                     return true;
                 case "ingredient":
-                    source.PopulateListItem(Ingredient, index);
+                    source.PopulateListItem(Ingredient, index, () => new IngredientComponent());
                     return true;
             }
             return false;

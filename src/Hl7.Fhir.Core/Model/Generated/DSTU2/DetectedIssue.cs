@@ -163,16 +163,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "action":
-                        Action = source.Populate(Action);
+                        Action = source.Populate(Action, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "date":
                         DateElement = source.PopulateValue(DateElement);
                         return true;
                     case "_date":
-                        DateElement = source.Populate(DateElement);
+                        DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "author":
-                        Author = source.Populate(Author);
+                        Author = source.Populate(Author, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -621,16 +621,16 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "category":
-                    Category = source.Populate(Category);
+                    Category = source.Populate(Category, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "severity":
                     SeverityElement = source.PopulateValue(SeverityElement);
                     return true;
                 case "_severity":
-                    SeverityElement = source.Populate(SeverityElement);
+                    SeverityElement = source.Populate(SeverityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DetectedIssueSeverity>());
                     return true;
                 case "implicated":
                     source.SetList(this, jsonPropertyName);
@@ -639,25 +639,25 @@ namespace Hl7.Fhir.Model.DSTU2
                     DetailElement = source.PopulateValue(DetailElement);
                     return true;
                 case "_detail":
-                    DetailElement = source.Populate(DetailElement);
+                    DetailElement = source.Populate(DetailElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "author":
-                    Author = source.Populate(Author);
+                    Author = source.Populate(Author, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "reference":
                     ReferenceElement = source.PopulateValue(ReferenceElement);
                     return true;
                 case "_reference":
-                    ReferenceElement = source.Populate(ReferenceElement);
+                    ReferenceElement = source.Populate(ReferenceElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "mitigation":
                     source.SetList(this, jsonPropertyName);
@@ -675,10 +675,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "implicated":
-                    source.PopulateListItem(Implicated, index);
+                    source.PopulateListItem(Implicated, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "mitigation":
-                    source.PopulateListItem(Mitigation, index);
+                    source.PopulateListItem(Mitigation, index, () => new MitigationComponent());
                     return true;
             }
             return false;

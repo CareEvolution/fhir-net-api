@@ -147,13 +147,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "coverage":
-                        Coverage = source.Populate(Coverage);
+                        Coverage = source.Populate(Coverage, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "priority":
                         PriorityElement = source.PopulateValue(PriorityElement);
                         return true;
                     case "_priority":
-                        PriorityElement = source.Populate(PriorityElement);
+                        PriorityElement = source.Populate(PriorityElement, () => new Hl7.Fhir.Model.PositiveInt());
                         return true;
                 }
                 return false;
@@ -338,16 +338,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "party":
-                        Party = source.Populate(Party);
+                        Party = source.Populate(Party, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onHold":
                         OnHoldElement = source.PopulateValue(OnHoldElement);
                         return true;
                     case "_onHold":
-                        OnHoldElement = source.Populate(OnHoldElement);
+                        OnHoldElement = source.Populate(OnHoldElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -817,40 +817,40 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AccountStatus>());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subject":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "servicePeriod":
-                    ServicePeriod = source.Populate(ServicePeriod);
+                    ServicePeriod = source.Populate(ServicePeriod, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "coverage":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "owner":
-                    Owner = source.Populate(Owner);
+                    Owner = source.Populate(Owner, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "guarantor":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "partOf":
-                    PartOf = source.Populate(PartOf);
+                    PartOf = source.Populate(PartOf, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -865,16 +865,16 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    source.PopulateListItem(Subject, index);
+                    source.PopulateListItem(Subject, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "coverage":
-                    source.PopulateListItem(Coverage, index);
+                    source.PopulateListItem(Coverage, index, () => new CoverageComponent());
                     return true;
                 case "guarantor":
-                    source.PopulateListItem(Guarantor, index);
+                    source.PopulateListItem(Guarantor, index, () => new GuarantorComponent());
                     return true;
             }
             return false;

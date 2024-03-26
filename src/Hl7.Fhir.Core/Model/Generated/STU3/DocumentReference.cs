@@ -151,10 +151,10 @@ namespace Hl7.Fhir.Model.STU3
                         CodeElement = source.PopulateValue(CodeElement);
                         return true;
                     case "_code":
-                        CodeElement = source.Populate(CodeElement);
+                        CodeElement = source.Populate(CodeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentRelationshipType>());
                         return true;
                     case "target":
-                        Target = source.Populate(Target);
+                        Target = source.Populate(Target, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -303,10 +303,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "attachment":
-                        Attachment = source.Populate(Attachment);
+                        Attachment = source.Populate(Attachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "format":
-                        Format = source.Populate(Format);
+                        Format = source.Populate(Format, () => new Hl7.Fhir.Model.Coding());
                         return true;
                 }
                 return false;
@@ -558,22 +558,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "encounter":
-                        Encounter = source.Populate(Encounter);
+                        Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "event":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "facilityType":
-                        FacilityType = source.Populate(FacilityType);
+                        FacilityType = source.Populate(FacilityType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "practiceSetting":
-                        PracticeSetting = source.Populate(PracticeSetting);
+                        PracticeSetting = source.Populate(PracticeSetting, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "sourcePatientInfo":
-                        SourcePatientInfo = source.Populate(SourcePatientInfo);
+                        SourcePatientInfo = source.Populate(SourcePatientInfo, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "related":
                         source.SetList(this, jsonPropertyName);
@@ -591,10 +591,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "event":
-                        source.PopulateListItem(Event, index);
+                        source.PopulateListItem(Event, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "related":
-                        source.PopulateListItem(Related, index);
+                        source.PopulateListItem(Related, index, () => new RelatedComponent());
                         return true;
                 }
                 return false;
@@ -767,10 +767,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "ref":
-                        Ref = source.Populate(Ref);
+                        Ref = source.Populate(Ref, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -1412,7 +1412,7 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "masterIdentifier":
-                    MasterIdentifier = source.Populate(MasterIdentifier);
+                    MasterIdentifier = source.Populate(MasterIdentifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "identifier":
                     source.SetList(this, jsonPropertyName);
@@ -1421,43 +1421,43 @@ namespace Hl7.Fhir.Model.STU3
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentReferenceStatus>());
                     return true;
                 case "docStatus":
                     DocStatusElement = source.PopulateValue(DocStatusElement);
                     return true;
                 case "_docStatus":
-                    DocStatusElement = source.Populate(DocStatusElement);
+                    DocStatusElement = source.Populate(DocStatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompositionStatus>());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "class":
-                    Class = source.Populate(Class);
+                    Class = source.Populate(Class, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "created":
                     CreatedElement = source.PopulateValue(CreatedElement);
                     return true;
                 case "_created":
-                    CreatedElement = source.Populate(CreatedElement);
+                    CreatedElement = source.Populate(CreatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "indexed":
                     IndexedElement = source.PopulateValue(IndexedElement);
                     return true;
                 case "_indexed":
-                    IndexedElement = source.Populate(IndexedElement);
+                    IndexedElement = source.Populate(IndexedElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "author":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "authenticator":
-                    Authenticator = source.Populate(Authenticator);
+                    Authenticator = source.Populate(Authenticator, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "custodian":
-                    Custodian = source.Populate(Custodian);
+                    Custodian = source.Populate(Custodian, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relatesTo":
                     source.SetList(this, jsonPropertyName);
@@ -1466,7 +1466,7 @@ namespace Hl7.Fhir.Model.STU3
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "securityLabel":
                     source.SetList(this, jsonPropertyName);
@@ -1475,7 +1475,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "context":
-                    Context = source.Populate(Context);
+                    Context = source.Populate(Context, () => new ContextComponent());
                     return true;
             }
             return false;
@@ -1490,19 +1490,19 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "author":
-                    source.PopulateListItem(Author, index);
+                    source.PopulateListItem(Author, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relatesTo":
-                    source.PopulateListItem(RelatesTo, index);
+                    source.PopulateListItem(RelatesTo, index, () => new RelatesToComponent());
                     return true;
                 case "securityLabel":
-                    source.PopulateListItem(SecurityLabel, index);
+                    source.PopulateListItem(SecurityLabel, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "content":
-                    source.PopulateListItem(Content, index);
+                    source.PopulateListItem(Content, index, () => new ContentComponent());
                     return true;
             }
             return false;

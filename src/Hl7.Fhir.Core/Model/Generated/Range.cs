@@ -176,10 +176,10 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "low":
-                    Low = source.Populate(Low);
+                    Low = source.Populate(Low, () => new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
                 case "high":
-                    High = source.Populate(High);
+                    High = source.Populate(High, () => new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
             }
             return false;

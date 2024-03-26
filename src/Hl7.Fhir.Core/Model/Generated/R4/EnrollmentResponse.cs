@@ -377,34 +377,34 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "request":
-                    Request = source.Populate(Request);
+                    Request = source.Populate(Request, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outcome":
                     OutcomeElement = source.PopulateValue(OutcomeElement);
                     return true;
                 case "_outcome":
-                    OutcomeElement = source.Populate(OutcomeElement);
+                    OutcomeElement = source.Populate(OutcomeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ClaimProcessingCodes>());
                     return true;
                 case "disposition":
                     DispositionElement = source.PopulateValue(DispositionElement);
                     return true;
                 case "_disposition":
-                    DispositionElement = source.Populate(DispositionElement);
+                    DispositionElement = source.Populate(DispositionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "created":
                     CreatedElement = source.PopulateValue(CreatedElement);
                     return true;
                 case "_created":
-                    CreatedElement = source.Populate(CreatedElement);
+                    CreatedElement = source.Populate(CreatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "organization":
-                    Organization = source.Populate(Organization);
+                    Organization = source.Populate(Organization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requestProvider":
-                    RequestProvider = source.Populate(RequestProvider);
+                    RequestProvider = source.Populate(RequestProvider, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -419,7 +419,7 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
             }
             return false;

@@ -150,10 +150,10 @@ namespace Hl7.Fhir.Model.STU3
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LinkageType>());
                         return true;
                     case "resource":
-                        Resource = source.Populate(Resource);
+                        Resource = source.Populate(Resource, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -410,10 +410,10 @@ namespace Hl7.Fhir.Model.STU3
                     ActiveElement = source.PopulateValue(ActiveElement);
                     return true;
                 case "_active":
-                    ActiveElement = source.Populate(ActiveElement);
+                    ActiveElement = source.Populate(ActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "author":
-                    Author = source.Populate(Author);
+                    Author = source.Populate(Author, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "item":
                     source.SetList(this, jsonPropertyName);
@@ -431,7 +431,7 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "item":
-                    source.PopulateListItem(Item, index);
+                    source.PopulateListItem(Item, index, () => new ItemComponent());
                     return true;
             }
             return false;

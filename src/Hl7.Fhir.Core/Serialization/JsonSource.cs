@@ -181,11 +181,11 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        public void PopulateListItem<TItem>(List<TItem> items, int index) where TItem : Base, new()
+        public void PopulateListItem<TItem>(List<TItem> items, int index, Func<TItem> createItem) where TItem : Base
         {
             if (items == null) throw new ArgumentNullException(nameof(items));
             if (index != items.Count) throw new ArgumentOutOfRangeException(nameof(index));
-            var item = Populate((TItem)null);
+            var item = Populate((TItem)null, createItem);
             if (item != null)
             {
                 items.Add(item);
@@ -352,11 +352,11 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        public void PopulatePrimitiveListItem<TItem>(List<TItem> items, int index) where TItem : Primitive, new()
+        public void PopulatePrimitiveListItem<TItem>(List<TItem> items, int index, Func<TItem> createItem) where TItem : Primitive, new()
         {
             if (ShouldSetPrimitiveListItem(items, index))
             {
-                SetPrimitiveListItem(items, index, Populate(items[index]));
+                SetPrimitiveListItem(items, index, Populate(items[index], createItem));
             }
         }
 
@@ -718,9 +718,9 @@ namespace Hl7.Fhir.Serialization
             return fhirId;
         }
 
-        public T Populate<T>(T element) where T: Base, new()
+        public T Populate<T>(T element, Func<T> create) where T: Base
         {
-            var elementToPopulate = element ?? new T();
+            var elementToPopulate = element ?? create();
             if (PopulateBase(elementToPopulate, isRoot: false))
             {
                 SetHasNonEmptyElements();

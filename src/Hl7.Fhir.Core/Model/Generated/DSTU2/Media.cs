@@ -542,55 +542,55 @@ namespace Hl7.Fhir.Model.DSTU2
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DigitalMediaType>());
                     return true;
                 case "subtype":
-                    Subtype = source.Populate(Subtype);
+                    Subtype = source.Populate(Subtype, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "operator":
-                    Operator = source.Populate(Operator);
+                    Operator = source.Populate(Operator, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "view":
-                    View = source.Populate(View);
+                    View = source.Populate(View, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "deviceName":
                     DeviceNameElement = source.PopulateValue(DeviceNameElement);
                     return true;
                 case "_deviceName":
-                    DeviceNameElement = source.Populate(DeviceNameElement);
+                    DeviceNameElement = source.Populate(DeviceNameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "height":
                     HeightElement = source.PopulateValue(HeightElement);
                     return true;
                 case "_height":
-                    HeightElement = source.Populate(HeightElement);
+                    HeightElement = source.Populate(HeightElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "width":
                     WidthElement = source.PopulateValue(WidthElement);
                     return true;
                 case "_width":
-                    WidthElement = source.Populate(WidthElement);
+                    WidthElement = source.Populate(WidthElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "frames":
                     FramesElement = source.PopulateValue(FramesElement);
                     return true;
                 case "_frames":
-                    FramesElement = source.Populate(FramesElement);
+                    FramesElement = source.Populate(FramesElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "duration":
                     DurationElement = source.PopulateValue(DurationElement);
                     return true;
                 case "_duration":
-                    DurationElement = source.Populate(DurationElement);
+                    DurationElement = source.Populate(DurationElement, () => new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "content":
-                    Content = source.Populate(Content);
+                    Content = source.Populate(Content, () => new Hl7.Fhir.Model.Attachment());
                     return true;
             }
             return false;
@@ -605,7 +605,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
             }
             return false;

@@ -226,7 +226,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "collector":
-                        Collector = source.Populate(Collector);
+                        Collector = source.Populate(Collector, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "collectedDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Collected, "collected");
@@ -234,31 +234,31 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_collectedDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Collected, "collected");
-                        Collected = source.Populate(Collected as Hl7.Fhir.Model.FhirDateTime);
+                        Collected = source.Populate(Collected as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "collectedPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Collected, "collected");
-                        Collected = source.Populate(Collected as Hl7.Fhir.Model.Period);
+                        Collected = source.Populate(Collected as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "duration":
-                        Duration = source.Populate(Duration);
+                        Duration = source.Populate(Duration, () => new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "method":
-                        Method = source.Populate(Method);
+                        Method = source.Populate(Method, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "bodySite":
-                        BodySite = source.Populate(BodySite);
+                        BodySite = source.Populate(BodySite, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "fastingStatusCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(FastingStatus, "fastingStatus");
-                        FastingStatus = source.Populate(FastingStatus as Hl7.Fhir.Model.CodeableConcept);
+                        FastingStatus = source.Populate(FastingStatus as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "fastingStatusDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(FastingStatus, "fastingStatus");
-                        FastingStatus = source.Populate(FastingStatus as Hl7.Fhir.Model.R4.Duration);
+                        FastingStatus = source.Populate(FastingStatus as Hl7.Fhir.Model.R4.Duration, () => new Hl7.Fhir.Model.R4.Duration());
                         return true;
                 }
                 return false;
@@ -500,10 +500,10 @@ namespace Hl7.Fhir.Model.R4
                         DescriptionElement = source.PopulateValue(DescriptionElement);
                         return true;
                     case "_description":
-                        DescriptionElement = source.Populate(DescriptionElement);
+                        DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "procedure":
-                        Procedure = source.Populate(Procedure);
+                        Procedure = source.Populate(Procedure, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "additive":
                         source.SetList(this, jsonPropertyName);
@@ -514,11 +514,11 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_timeDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Time, "time");
-                        Time = source.Populate(Time as Hl7.Fhir.Model.FhirDateTime);
+                        Time = source.Populate(Time as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "timePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Time, "time");
-                        Time = source.Populate(Time as Hl7.Fhir.Model.Period);
+                        Time = source.Populate(Time as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -533,7 +533,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "additive":
-                        source.PopulateListItem(Additive, index);
+                        source.PopulateListItem(Additive, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -796,24 +796,24 @@ namespace Hl7.Fhir.Model.R4
                         DescriptionElement = source.PopulateValue(DescriptionElement);
                         return true;
                     case "_description":
-                        DescriptionElement = source.Populate(DescriptionElement);
+                        DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "capacity":
-                        Capacity = source.Populate(Capacity);
+                        Capacity = source.Populate(Capacity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "specimenQuantity":
-                        SpecimenQuantity = source.Populate(SpecimenQuantity);
+                        SpecimenQuantity = source.Populate(SpecimenQuantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "additiveCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Additive, "additive");
-                        Additive = source.Populate(Additive as Hl7.Fhir.Model.CodeableConcept);
+                        Additive = source.Populate(Additive as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "additiveReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Additive, "additive");
-                        Additive = source.Populate(Additive as Hl7.Fhir.Model.ResourceReference);
+                        Additive = source.Populate(Additive as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -828,7 +828,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        source.PopulateListItem(Identifier, index);
+                        source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                 }
                 return false;
@@ -1353,25 +1353,25 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "accessionIdentifier":
-                    AccessionIdentifier = source.Populate(AccessionIdentifier);
+                    AccessionIdentifier = source.Populate(AccessionIdentifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SpecimenStatus>());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "receivedTime":
                     ReceivedTimeElement = source.PopulateValue(ReceivedTimeElement);
                     return true;
                 case "_receivedTime":
-                    ReceivedTimeElement = source.Populate(ReceivedTimeElement);
+                    ReceivedTimeElement = source.Populate(ReceivedTimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "parent":
                     source.SetList(this, jsonPropertyName);
@@ -1380,7 +1380,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "collection":
-                    Collection = source.Populate(Collection);
+                    Collection = source.Populate(Collection, () => new CollectionComponent());
                     return true;
                 case "processing":
                     source.SetList(this, jsonPropertyName);
@@ -1407,25 +1407,25 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "parent":
-                    source.PopulateListItem(Parent, index);
+                    source.PopulateListItem(Parent, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "request":
-                    source.PopulateListItem(Request, index);
+                    source.PopulateListItem(Request, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "processing":
-                    source.PopulateListItem(Processing, index);
+                    source.PopulateListItem(Processing, index, () => new ProcessingComponent());
                     return true;
                 case "container":
-                    source.PopulateListItem(Container, index);
+                    source.PopulateListItem(Container, index, () => new ContainerComponent());
                     return true;
                 case "condition":
-                    source.PopulateListItem(Condition, index);
+                    source.PopulateListItem(Condition, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

@@ -350,31 +350,31 @@ namespace Hl7.Fhir.Model
                     ValueElement = source.PopulateValue(ValueElement);
                     return true;
                 case "_value":
-                    ValueElement = source.Populate(ValueElement);
+                    ValueElement = source.Populate(ValueElement, () => new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "comparator":
                     ComparatorElement = source.PopulateValue(ComparatorElement);
                     return true;
                 case "_comparator":
-                    ComparatorElement = source.Populate(ComparatorElement);
+                    ComparatorElement = source.Populate(ComparatorElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuantityComparator>());
                     return true;
                 case "unit":
                     UnitElement = source.PopulateValue(UnitElement);
                     return true;
                 case "_unit":
-                    UnitElement = source.Populate(UnitElement);
+                    UnitElement = source.Populate(UnitElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "system":
                     SystemElement = source.PopulateValue(SystemElement);
                     return true;
                 case "_system":
-                    SystemElement = source.Populate(SystemElement);
+                    SystemElement = source.Populate(SystemElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "code":
                     CodeElement = source.PopulateValue(CodeElement);
                     return true;
                 case "_code":
-                    CodeElement = source.Populate(CodeElement);
+                    CodeElement = source.Populate(CodeElement, () => new Hl7.Fhir.Model.Code());
                     return true;
             }
             return false;

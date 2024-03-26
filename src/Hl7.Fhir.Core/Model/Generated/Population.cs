@@ -211,20 +211,20 @@ namespace Hl7.Fhir.Model
             {
                 case "ageRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Age, "age");
-                    Age = source.Populate(Age as Hl7.Fhir.Model.Range);
+                    Age = source.Populate(Age as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                     return true;
                 case "ageCodeableConcept" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Age, "age");
-                    Age = source.Populate(Age as Hl7.Fhir.Model.CodeableConcept);
+                    Age = source.Populate(Age as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "gender" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Gender = source.Populate(Gender);
+                    Gender = source.Populate(Gender, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "race" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Race = source.Populate(Race);
+                    Race = source.Populate(Race, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "physiologicalCondition" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    PhysiologicalCondition = source.Populate(PhysiologicalCondition);
+                    PhysiologicalCondition = source.Populate(PhysiologicalCondition, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

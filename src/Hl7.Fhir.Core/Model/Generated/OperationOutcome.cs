@@ -304,22 +304,22 @@ namespace Hl7.Fhir.Model
                         SeverityElement = source.PopulateValue(SeverityElement);
                         return true;
                     case "_severity":
-                        SeverityElement = source.Populate(SeverityElement);
+                        SeverityElement = source.Populate(SeverityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.IssueSeverity>());
                         return true;
                     case "code":
                         CodeElement = source.PopulateValue(CodeElement);
                         return true;
                     case "_code":
-                        CodeElement = source.Populate(CodeElement);
+                        CodeElement = source.Populate(CodeElement, () => new Hl7.Fhir.Model.Code());
                         return true;
                     case "details":
-                        Details = source.Populate(Details);
+                        Details = source.Populate(Details, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "diagnostics":
                         DiagnosticsElement = source.PopulateValue(DiagnosticsElement);
                         return true;
                     case "_diagnostics":
-                        DiagnosticsElement = source.Populate(DiagnosticsElement);
+                        DiagnosticsElement = source.Populate(DiagnosticsElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "location":
                     case "_location":
@@ -345,13 +345,13 @@ namespace Hl7.Fhir.Model
                         source.PopulatePrimitiveListItemValue(LocationElement, index);
                         return true;
                     case "_location":
-                        source.PopulatePrimitiveListItem(LocationElement, index);
+                        source.PopulatePrimitiveListItem(LocationElement, index, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "expression" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                         source.PopulatePrimitiveListItemValue(ExpressionElement, index);
                         return true;
                     case "_expression" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        source.PopulatePrimitiveListItem(ExpressionElement, index);
+                        source.PopulatePrimitiveListItem(ExpressionElement, index, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -557,7 +557,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "issue":
-                    source.PopulateListItem(Issue, index);
+                    source.PopulateListItem(Issue, index, () => new IssueComponent());
                     return true;
             }
             return false;

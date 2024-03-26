@@ -771,22 +771,22 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventStatus>());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "modality":
-                    Modality = source.Populate(Modality);
+                    Modality = source.Populate(Modality, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "view":
-                    View = source.Populate(View);
+                    View = source.Populate(View, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "createdDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Created, "created");
@@ -794,62 +794,62 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_createdDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Created, "created");
-                    Created = source.Populate(Created as Hl7.Fhir.Model.FhirDateTime);
+                    Created = source.Populate(Created as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "createdPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Created, "created");
-                    Created = source.Populate(Created as Hl7.Fhir.Model.Period);
+                    Created = source.Populate(Created as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "issued":
                     IssuedElement = source.PopulateValue(IssuedElement);
                     return true;
                 case "_issued":
-                    IssuedElement = source.Populate(IssuedElement);
+                    IssuedElement = source.Populate(IssuedElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "operator":
-                    Operator = source.Populate(Operator);
+                    Operator = source.Populate(Operator, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "bodySite":
-                    BodySite = source.Populate(BodySite);
+                    BodySite = source.Populate(BodySite, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "deviceName":
                     DeviceNameElement = source.PopulateValue(DeviceNameElement);
                     return true;
                 case "_deviceName":
-                    DeviceNameElement = source.Populate(DeviceNameElement);
+                    DeviceNameElement = source.Populate(DeviceNameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "device":
-                    Device = source.Populate(Device);
+                    Device = source.Populate(Device, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "height":
                     HeightElement = source.PopulateValue(HeightElement);
                     return true;
                 case "_height":
-                    HeightElement = source.Populate(HeightElement);
+                    HeightElement = source.Populate(HeightElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "width":
                     WidthElement = source.PopulateValue(WidthElement);
                     return true;
                 case "_width":
-                    WidthElement = source.Populate(WidthElement);
+                    WidthElement = source.Populate(WidthElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "frames":
                     FramesElement = source.PopulateValue(FramesElement);
                     return true;
                 case "_frames":
-                    FramesElement = source.Populate(FramesElement);
+                    FramesElement = source.Populate(FramesElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "duration":
                     DurationElement = source.PopulateValue(DurationElement);
                     return true;
                 case "_duration":
-                    DurationElement = source.Populate(DurationElement);
+                    DurationElement = source.Populate(DurationElement, () => new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "content":
-                    Content = source.Populate(Content);
+                    Content = source.Populate(Content, () => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "note":
                     source.SetList(this, jsonPropertyName);
@@ -867,19 +867,19 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    source.PopulateListItem(BasedOn, index);
+                    source.PopulateListItem(BasedOn, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    source.PopulateListItem(PartOf, index);
+                    source.PopulateListItem(PartOf, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    source.PopulateListItem(ReasonCode, index);
+                    source.PopulateListItem(ReasonCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

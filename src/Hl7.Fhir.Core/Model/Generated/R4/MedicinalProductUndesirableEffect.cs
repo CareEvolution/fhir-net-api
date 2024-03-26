@@ -243,13 +243,13 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "symptomConditionEffect":
-                    SymptomConditionEffect = source.Populate(SymptomConditionEffect);
+                    SymptomConditionEffect = source.Populate(SymptomConditionEffect, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "classification":
-                    Classification = source.Populate(Classification);
+                    Classification = source.Populate(Classification, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "frequencyOfOccurrence":
-                    FrequencyOfOccurrence = source.Populate(FrequencyOfOccurrence);
+                    FrequencyOfOccurrence = source.Populate(FrequencyOfOccurrence, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "population":
                     source.SetList(this, jsonPropertyName);
@@ -267,10 +267,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "subject":
-                    source.PopulateListItem(Subject, index);
+                    source.PopulateListItem(Subject, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "population":
-                    source.PopulateListItem(Population, index);
+                    source.PopulateListItem(Population, index, () => new Hl7.Fhir.Model.Population());
                     return true;
             }
             return false;

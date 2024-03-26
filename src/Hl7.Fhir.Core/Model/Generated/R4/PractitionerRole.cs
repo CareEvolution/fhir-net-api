@@ -244,19 +244,19 @@ namespace Hl7.Fhir.Model.R4
                         AllDayElement = source.PopulateValue(AllDayElement);
                         return true;
                     case "_allDay":
-                        AllDayElement = source.Populate(AllDayElement);
+                        AllDayElement = source.Populate(AllDayElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "availableStartTime":
                         AvailableStartTimeElement = source.PopulateValue(AvailableStartTimeElement);
                         return true;
                     case "_availableStartTime":
-                        AvailableStartTimeElement = source.Populate(AvailableStartTimeElement);
+                        AvailableStartTimeElement = source.Populate(AvailableStartTimeElement, () => new Hl7.Fhir.Model.Time());
                         return true;
                     case "availableEndTime":
                         AvailableEndTimeElement = source.PopulateValue(AvailableEndTimeElement);
                         return true;
                     case "_availableEndTime":
-                        AvailableEndTimeElement = source.Populate(AvailableEndTimeElement);
+                        AvailableEndTimeElement = source.Populate(AvailableEndTimeElement, () => new Hl7.Fhir.Model.Time());
                         return true;
                 }
                 return false;
@@ -274,7 +274,7 @@ namespace Hl7.Fhir.Model.R4
                         source.PopulatePrimitiveListItemValue(DaysOfWeekElement, index);
                         return true;
                     case "_daysOfWeek":
-                        source.PopulatePrimitiveListItem(DaysOfWeekElement, index);
+                        source.PopulatePrimitiveListItem(DaysOfWeekElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>());
                         return true;
                 }
                 return false;
@@ -453,10 +453,10 @@ namespace Hl7.Fhir.Model.R4
                         DescriptionElement = source.PopulateValue(DescriptionElement);
                         return true;
                     case "_description":
-                        DescriptionElement = source.Populate(DescriptionElement);
+                        DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "during":
-                        During = source.Populate(During);
+                        During = source.Populate(During, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -1003,16 +1003,16 @@ namespace Hl7.Fhir.Model.R4
                     ActiveElement = source.PopulateValue(ActiveElement);
                     return true;
                 case "_active":
-                    ActiveElement = source.Populate(ActiveElement);
+                    ActiveElement = source.Populate(ActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "practitioner":
-                    Practitioner = source.Populate(Practitioner);
+                    Practitioner = source.Populate(Practitioner, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "organization":
-                    Organization = source.Populate(Organization);
+                    Organization = source.Populate(Organization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "code":
                     source.SetList(this, jsonPropertyName);
@@ -1039,7 +1039,7 @@ namespace Hl7.Fhir.Model.R4
                     AvailabilityExceptionsElement = source.PopulateValue(AvailabilityExceptionsElement);
                     return true;
                 case "_availabilityExceptions":
-                    AvailabilityExceptionsElement = source.Populate(AvailabilityExceptionsElement);
+                    AvailabilityExceptionsElement = source.Populate(AvailabilityExceptionsElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "endpoint":
                     source.SetList(this, jsonPropertyName);
@@ -1057,31 +1057,31 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "code":
-                    source.PopulateListItem(Code, index);
+                    source.PopulateListItem(Code, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    source.PopulateListItem(Specialty, index);
+                    source.PopulateListItem(Specialty, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "location":
-                    source.PopulateListItem(Location, index);
+                    source.PopulateListItem(Location, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "healthcareService":
-                    source.PopulateListItem(HealthcareService, index);
+                    source.PopulateListItem(HealthcareService, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "availableTime":
-                    source.PopulateListItem(AvailableTime, index);
+                    source.PopulateListItem(AvailableTime, index, () => new AvailableTimeComponent());
                     return true;
                 case "notAvailable":
-                    source.PopulateListItem(NotAvailable, index);
+                    source.PopulateListItem(NotAvailable, index, () => new NotAvailableComponent());
                     return true;
                 case "endpoint":
-                    source.PopulateListItem(Endpoint, index);
+                    source.PopulateListItem(Endpoint, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

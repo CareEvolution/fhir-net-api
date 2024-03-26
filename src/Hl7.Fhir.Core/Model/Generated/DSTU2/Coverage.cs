@@ -525,19 +525,19 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "issuer":
-                    Issuer = source.Populate(Issuer);
+                    Issuer = source.Populate(Issuer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "bin":
-                    Bin = source.Populate(Bin);
+                    Bin = source.Populate(Bin, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "subscriberId":
-                    SubscriberId = source.Populate(SubscriberId);
+                    SubscriberId = source.Populate(SubscriberId, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "identifier":
                     source.SetList(this, jsonPropertyName);
@@ -546,37 +546,37 @@ namespace Hl7.Fhir.Model.DSTU2
                     GroupElement = source.PopulateValue(GroupElement);
                     return true;
                 case "_group":
-                    GroupElement = source.Populate(GroupElement);
+                    GroupElement = source.Populate(GroupElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "plan":
                     PlanElement = source.PopulateValue(PlanElement);
                     return true;
                 case "_plan":
-                    PlanElement = source.Populate(PlanElement);
+                    PlanElement = source.Populate(PlanElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subPlan":
                     SubPlanElement = source.PopulateValue(SubPlanElement);
                     return true;
                 case "_subPlan":
-                    SubPlanElement = source.Populate(SubPlanElement);
+                    SubPlanElement = source.Populate(SubPlanElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "dependent":
                     DependentElement = source.PopulateValue(DependentElement);
                     return true;
                 case "_dependent":
-                    DependentElement = source.Populate(DependentElement);
+                    DependentElement = source.Populate(DependentElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "sequence":
                     SequenceElement = source.PopulateValue(SequenceElement);
                     return true;
                 case "_sequence":
-                    SequenceElement = source.Populate(SequenceElement);
+                    SequenceElement = source.Populate(SequenceElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "subscriber":
-                    Subscriber = source.Populate(Subscriber);
+                    Subscriber = source.Populate(Subscriber, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "network":
-                    Network = source.Populate(Network);
+                    Network = source.Populate(Network, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "contract":
                     source.SetList(this, jsonPropertyName);
@@ -594,10 +594,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "contract":
-                    source.PopulateListItem(Contract, index);
+                    source.PopulateListItem(Contract, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

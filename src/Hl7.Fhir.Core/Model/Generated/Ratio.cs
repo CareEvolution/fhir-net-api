@@ -184,10 +184,10 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "numerator":
-                    Numerator = source.Populate(Numerator);
+                    Numerator = source.Populate(Numerator, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "denominator":
-                    Denominator = source.Populate(Denominator);
+                    Denominator = source.Populate(Denominator, () => new Hl7.Fhir.Model.Quantity());
                     return true;
             }
             return false;

@@ -154,7 +154,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "modifierExtension":
-                    source.PopulateListItem(ModifierExtension, index);
+                    source.PopulateListItem(ModifierExtension, index, () => new Hl7.Fhir.Model.Extension());
                     return true;
             }
             return false;

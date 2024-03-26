@@ -241,7 +241,7 @@ namespace Hl7.Fhir.Model.STU3
                         PathElement = source.PopulateValue(PathElement);
                         return true;
                     case "_path":
-                        PathElement = source.Populate(PathElement);
+                        PathElement = source.Populate(PathElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueSetString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(ValueSet, "valueSet");
@@ -249,11 +249,11 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_valueSetString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(ValueSet, "valueSet");
-                        ValueSet = source.Populate(ValueSet as Hl7.Fhir.Model.FhirString);
+                        ValueSet = source.Populate(ValueSet as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueSetReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(ValueSet, "valueSet");
-                        ValueSet = source.Populate(ValueSet as Hl7.Fhir.Model.ResourceReference);
+                        ValueSet = source.Populate(ValueSet as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "valueCode":
                     case "_valueCode":
@@ -281,13 +281,13 @@ namespace Hl7.Fhir.Model.STU3
                         source.PopulatePrimitiveListItemValue(ValueCodeElement, index);
                         return true;
                     case "_valueCode":
-                        source.PopulatePrimitiveListItem(ValueCodeElement, index);
+                        source.PopulatePrimitiveListItem(ValueCodeElement, index, () => new Hl7.Fhir.Model.Code());
                         return true;
                     case "valueCoding":
-                        source.PopulateListItem(ValueCoding, index);
+                        source.PopulateListItem(ValueCoding, index, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "valueCodeableConcept":
-                        source.PopulateListItem(ValueCodeableConcept, index);
+                        source.PopulateListItem(ValueCodeableConcept, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -483,7 +483,7 @@ namespace Hl7.Fhir.Model.STU3
                         PathElement = source.PopulateValue(PathElement);
                         return true;
                     case "_path":
-                        PathElement = source.Populate(PathElement);
+                        PathElement = source.Populate(PathElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
@@ -491,15 +491,15 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Period);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "valueDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Duration>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Duration);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Duration, () => new Hl7.Fhir.Model.STU3.Duration());
                         return true;
                 }
                 return false;
@@ -833,7 +833,7 @@ namespace Hl7.Fhir.Model.STU3
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>());
                     return true;
                 case "profile":
                 case "_profile":
@@ -865,19 +865,19 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulatePrimitiveListItemValue(ProfileElement, index);
                     return true;
                 case "_profile":
-                    source.PopulatePrimitiveListItem(ProfileElement, index);
+                    source.PopulatePrimitiveListItem(ProfileElement, index, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "mustSupport":
                     source.PopulatePrimitiveListItemValue(MustSupportElement, index);
                     return true;
                 case "_mustSupport":
-                    source.PopulatePrimitiveListItem(MustSupportElement, index);
+                    source.PopulatePrimitiveListItem(MustSupportElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "codeFilter":
-                    source.PopulateListItem(CodeFilter, index);
+                    source.PopulateListItem(CodeFilter, index, () => new CodeFilterComponent());
                     return true;
                 case "dateFilter":
-                    source.PopulateListItem(DateFilter, index);
+                    source.PopulateListItem(DateFilter, index, () => new DateFilterComponent());
                     return true;
             }
             return false;

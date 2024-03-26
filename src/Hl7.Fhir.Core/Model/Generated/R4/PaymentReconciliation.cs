@@ -289,37 +289,37 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "predecessor":
-                        Predecessor = source.Populate(Predecessor);
+                        Predecessor = source.Populate(Predecessor, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "request":
-                        Request = source.Populate(Request);
+                        Request = source.Populate(Request, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "submitter":
-                        Submitter = source.Populate(Submitter);
+                        Submitter = source.Populate(Submitter, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "response":
-                        Response = source.Populate(Response);
+                        Response = source.Populate(Response, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "date":
                         DateElement = source.PopulateValue(DateElement);
                         return true;
                     case "_date":
-                        DateElement = source.Populate(DateElement);
+                        DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.Date());
                         return true;
                     case "responsible":
-                        Responsible = source.Populate(Responsible);
+                        Responsible = source.Populate(Responsible, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "payee":
-                        Payee = source.Populate(Payee);
+                        Payee = source.Populate(Payee, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "amount":
-                        Amount = source.Populate(Amount);
+                        Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.R4.Money());
                         return true;
                 }
                 return false;
@@ -546,13 +546,13 @@ namespace Hl7.Fhir.Model.R4
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.NoteType>());
                         return true;
                     case "text":
                         TextElement = source.PopulateValue(TextElement);
                         return true;
                     case "_text":
-                        TextElement = source.Populate(TextElement);
+                        TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1133,55 +1133,55 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "created":
                     CreatedElement = source.PopulateValue(CreatedElement);
                     return true;
                 case "_created":
-                    CreatedElement = source.Populate(CreatedElement);
+                    CreatedElement = source.Populate(CreatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "paymentIssuer":
-                    PaymentIssuer = source.Populate(PaymentIssuer);
+                    PaymentIssuer = source.Populate(PaymentIssuer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "request":
-                    Request = source.Populate(Request);
+                    Request = source.Populate(Request, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requestor":
-                    Requestor = source.Populate(Requestor);
+                    Requestor = source.Populate(Requestor, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outcome":
                     OutcomeElement = source.PopulateValue(OutcomeElement);
                     return true;
                 case "_outcome":
-                    OutcomeElement = source.Populate(OutcomeElement);
+                    OutcomeElement = source.Populate(OutcomeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ClaimProcessingCodes>());
                     return true;
                 case "disposition":
                     DispositionElement = source.PopulateValue(DispositionElement);
                     return true;
                 case "_disposition":
-                    DispositionElement = source.Populate(DispositionElement);
+                    DispositionElement = source.Populate(DispositionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "paymentDate":
                     PaymentDateElement = source.PopulateValue(PaymentDateElement);
                     return true;
                 case "_paymentDate":
-                    PaymentDateElement = source.Populate(PaymentDateElement);
+                    PaymentDateElement = source.Populate(PaymentDateElement, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "paymentAmount":
-                    PaymentAmount = source.Populate(PaymentAmount);
+                    PaymentAmount = source.Populate(PaymentAmount, () => new Hl7.Fhir.Model.R4.Money());
                     return true;
                 case "paymentIdentifier":
-                    PaymentIdentifier = source.Populate(PaymentIdentifier);
+                    PaymentIdentifier = source.Populate(PaymentIdentifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "detail":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "formCode":
-                    FormCode = source.Populate(FormCode);
+                    FormCode = source.Populate(FormCode, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "processNote":
                     source.SetList(this, jsonPropertyName);
@@ -1199,13 +1199,13 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "detail":
-                    source.PopulateListItem(Detail, index);
+                    source.PopulateListItem(Detail, index, () => new DetailsComponent());
                     return true;
                 case "processNote":
-                    source.PopulateListItem(ProcessNote, index);
+                    source.PopulateListItem(ProcessNote, index, () => new NotesComponent());
                     return true;
             }
             return false;

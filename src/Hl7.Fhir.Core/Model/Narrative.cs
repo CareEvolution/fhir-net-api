@@ -244,7 +244,7 @@ namespace Hl7.Fhir.Model
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Code<NarrativeStatus>());
                     return true;
                 case "div":
                     Div = source.GetXHtml();

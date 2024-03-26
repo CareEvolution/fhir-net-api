@@ -580,37 +580,37 @@ namespace Hl7.Fhir.Model
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "ruleset" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
-                    Ruleset = source.Populate(Ruleset);
+                    Ruleset = source.Populate(Ruleset, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "originalRuleset" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
-                    OriginalRuleset = source.Populate(OriginalRuleset);
+                    OriginalRuleset = source.Populate(OriginalRuleset, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "created" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
                     CreatedElement = source.PopulateValue(CreatedElement);
                     return true;
                 case "_created" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    CreatedElement = source.Populate(CreatedElement);
+                    CreatedElement = source.Populate(CreatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "target" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
-                    Target = source.Populate(Target);
+                    Target = source.Populate(Target, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "provider" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    Provider = source.Populate(Provider);
+                    Provider = source.Populate(Provider, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "organization" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    Organization = source.Populate(Organization);
+                    Organization = source.Populate(Organization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "priority" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    Priority = source.Populate(Priority);
+                    Priority = source.Populate(Priority, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "patient" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "servicedDate" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Serviced, "serviced");
@@ -618,35 +618,35 @@ namespace Hl7.Fhir.Model
                     return true;
                 case "_servicedDate" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Serviced, "serviced");
-                    Serviced = source.Populate(Serviced as Hl7.Fhir.Model.Date);
+                    Serviced = source.Populate(Serviced as Hl7.Fhir.Model.Date, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "servicedPeriod" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Serviced, "serviced");
-                    Serviced = source.Populate(Serviced as Hl7.Fhir.Model.Period);
+                    Serviced = source.Populate(Serviced as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "enterer" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    Enterer = source.Populate(Enterer);
+                    Enterer = source.Populate(Enterer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "insurer" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    Insurer = source.Populate(Insurer);
+                    Insurer = source.Populate(Insurer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "facility" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    Facility = source.Populate(Facility);
+                    Facility = source.Populate(Facility, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "coverage" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    Coverage = source.Populate(Coverage);
+                    Coverage = source.Populate(Coverage, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "businessArrangement" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
                     BusinessArrangementElement = source.PopulateValue(BusinessArrangementElement);
                     return true;
                 case "_businessArrangement" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    BusinessArrangementElement = source.Populate(BusinessArrangementElement);
+                    BusinessArrangementElement = source.Populate(BusinessArrangementElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "benefitCategory" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    BenefitCategory = source.Populate(BenefitCategory);
+                    BenefitCategory = source.Populate(BenefitCategory, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "benefitSubCategory" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    BenefitSubCategory = source.Populate(BenefitSubCategory);
+                    BenefitSubCategory = source.Populate(BenefitSubCategory, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;
@@ -661,7 +661,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "identifier" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
             }
             return false;

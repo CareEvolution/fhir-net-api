@@ -164,16 +164,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "purpose":
-                        Purpose = source.Populate(Purpose);
+                        Purpose = source.Populate(Purpose, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "name":
-                        Name = source.Populate(Name);
+                        Name = source.Populate(Name, () => new Hl7.Fhir.Model.R4.HumanName());
                         return true;
                     case "telecom":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "address":
-                        Address = source.Populate(Address);
+                        Address = source.Populate(Address, () => new Hl7.Fhir.Model.Address());
                         return true;
                 }
                 return false;
@@ -188,7 +188,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "telecom":
-                        source.PopulateListItem(Telecom, index);
+                        source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                         return true;
                 }
                 return false;
@@ -376,7 +376,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "network":
                         source.SetList(this, jsonPropertyName);
@@ -397,10 +397,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "network":
-                        source.PopulateListItem(Network, index);
+                        source.PopulateListItem(Network, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "benefit":
-                        source.PopulateListItem(Benefit, index);
+                        source.PopulateListItem(Benefit, index, () => new CoverageBenefitComponent());
                         return true;
                 }
                 return false;
@@ -594,13 +594,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "requirement":
                         RequirementElement = source.PopulateValue(RequirementElement);
                         return true;
                     case "_requirement":
-                        RequirementElement = source.Populate(RequirementElement);
+                        RequirementElement = source.Populate(RequirementElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "limit":
                         source.SetList(this, jsonPropertyName);
@@ -618,7 +618,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "limit":
-                        source.PopulateListItem(Limit, index);
+                        source.PopulateListItem(Limit, index, () => new LimitComponent());
                         return true;
                 }
                 return false;
@@ -769,10 +769,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "value":
-                        Value = source.Populate(Value);
+                        Value = source.Populate(Value, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1024,7 +1024,7 @@ namespace Hl7.Fhir.Model.R4
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "coverageArea":
                         source.SetList(this, jsonPropertyName);
@@ -1051,19 +1051,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        source.PopulateListItem(Identifier, index);
+                        source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "coverageArea":
-                        source.PopulateListItem(CoverageArea, index);
+                        source.PopulateListItem(CoverageArea, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "network":
-                        source.PopulateListItem(Network, index);
+                        source.PopulateListItem(Network, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "generalCost":
-                        source.PopulateListItem(GeneralCost, index);
+                        source.PopulateListItem(GeneralCost, index, () => new GeneralCostComponent());
                         return true;
                     case "specificCost":
-                        source.PopulateListItem(SpecificCost, index);
+                        source.PopulateListItem(SpecificCost, index, () => new SpecificCostComponent());
                         return true;
                 }
                 return false;
@@ -1301,22 +1301,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "groupSize":
                         GroupSizeElement = source.PopulateValue(GroupSizeElement);
                         return true;
                     case "_groupSize":
-                        GroupSizeElement = source.Populate(GroupSizeElement);
+                        GroupSizeElement = source.Populate(GroupSizeElement, () => new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "cost":
-                        Cost = source.Populate(Cost);
+                        Cost = source.Populate(Cost, () => new Hl7.Fhir.Model.R4.Money());
                         return true;
                     case "comment":
                         CommentElement = source.PopulateValue(CommentElement);
                         return true;
                     case "_comment":
-                        CommentElement = source.Populate(CommentElement);
+                        CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1479,7 +1479,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "category":
-                        Category = source.Populate(Category);
+                        Category = source.Populate(Category, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "benefit":
                         source.SetList(this, jsonPropertyName);
@@ -1497,7 +1497,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "benefit":
-                        source.PopulateListItem(Benefit, index);
+                        source.PopulateListItem(Benefit, index, () => new PlanBenefitComponent());
                         return true;
                 }
                 return false;
@@ -1650,7 +1650,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "cost":
                         source.SetList(this, jsonPropertyName);
@@ -1668,7 +1668,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "cost":
-                        source.PopulateListItem(Cost, index);
+                        source.PopulateListItem(Cost, index, () => new CostComponent());
                         return true;
                 }
                 return false;
@@ -1855,16 +1855,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "applicability":
-                        Applicability = source.Populate(Applicability);
+                        Applicability = source.Populate(Applicability, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "qualifiers":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "value":
-                        Value = source.Populate(Value);
+                        Value = source.Populate(Value, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                 }
                 return false;
@@ -1879,7 +1879,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "qualifiers":
-                        source.PopulateListItem(Qualifiers, index);
+                        source.PopulateListItem(Qualifiers, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -2459,7 +2459,7 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "type":
                     source.SetList(this, jsonPropertyName);
@@ -2468,20 +2468,20 @@ namespace Hl7.Fhir.Model.R4
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "alias":
                 case "_alias":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "ownedBy":
-                    OwnedBy = source.Populate(OwnedBy);
+                    OwnedBy = source.Populate(OwnedBy, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "administeredBy":
-                    AdministeredBy = source.Populate(AdministeredBy);
+                    AdministeredBy = source.Populate(AdministeredBy, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "coverageArea":
                     source.SetList(this, jsonPropertyName);
@@ -2514,34 +2514,34 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    source.PopulateListItem(Type, index);
+                    source.PopulateListItem(Type, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "alias":
                     source.PopulatePrimitiveListItemValue(AliasElement, index);
                     return true;
                 case "_alias":
-                    source.PopulatePrimitiveListItem(AliasElement, index);
+                    source.PopulatePrimitiveListItem(AliasElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "coverageArea":
-                    source.PopulateListItem(CoverageArea, index);
+                    source.PopulateListItem(CoverageArea, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new ContactComponent());
                     return true;
                 case "endpoint":
-                    source.PopulateListItem(Endpoint, index);
+                    source.PopulateListItem(Endpoint, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "network":
-                    source.PopulateListItem(Network, index);
+                    source.PopulateListItem(Network, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "coverage":
-                    source.PopulateListItem(Coverage, index);
+                    source.PopulateListItem(Coverage, index, () => new CoverageComponent());
                     return true;
                 case "plan":
-                    source.PopulateListItem(Plan, index);
+                    source.PopulateListItem(Plan, index, () => new PlanComponent());
                     return true;
             }
             return false;

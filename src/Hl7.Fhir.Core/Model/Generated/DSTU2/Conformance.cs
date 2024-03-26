@@ -154,7 +154,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "telecom":
                         source.SetList(this, jsonPropertyName);
@@ -172,7 +172,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "telecom":
-                        source.PopulateListItem(Telecom, index);
+                        source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                         return true;
                 }
                 return false;
@@ -399,19 +399,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "version":
                         VersionElement = source.PopulateValue(VersionElement);
                         return true;
                     case "_version":
-                        VersionElement = source.Populate(VersionElement);
+                        VersionElement = source.Populate(VersionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "releaseDate":
                         ReleaseDateElement = source.PopulateValue(ReleaseDateElement);
                         return true;
                     case "_releaseDate":
-                        ReleaseDateElement = source.Populate(ReleaseDateElement);
+                        ReleaseDateElement = source.Populate(ReleaseDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                 }
                 return false;
@@ -606,13 +606,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         DescriptionElement = source.PopulateValue(DescriptionElement);
                         return true;
                     case "_description":
-                        DescriptionElement = source.Populate(DescriptionElement);
+                        DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "url":
                         UrlElement = source.PopulateValue(UrlElement);
                         return true;
                     case "_url":
-                        UrlElement = source.Populate(UrlElement);
+                        UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -986,16 +986,16 @@ namespace Hl7.Fhir.Model.DSTU2
                         ModeElement = source.PopulateValue(ModeElement);
                         return true;
                     case "_mode":
-                        ModeElement = source.Populate(ModeElement);
+                        ModeElement = source.Populate(ModeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.RestfulConformanceMode>());
                         return true;
                     case "documentation":
                         DocumentationElement = source.PopulateValue(DocumentationElement);
                         return true;
                     case "_documentation":
-                        DocumentationElement = source.Populate(DocumentationElement);
+                        DocumentationElement = source.Populate(DocumentationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "security":
-                        Security = source.Populate(Security);
+                        Security = source.Populate(Security, () => new SecurityComponent());
                         return true;
                     case "resource":
                         source.SetList(this, jsonPropertyName);
@@ -1007,7 +1007,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         TransactionModeElement = source.PopulateValue(TransactionModeElement);
                         return true;
                     case "_transactionMode":
-                        TransactionModeElement = source.Populate(TransactionModeElement);
+                        TransactionModeElement = source.Populate(TransactionModeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.TransactionMode>());
                         return true;
                     case "searchParam":
                         source.SetList(this, jsonPropertyName);
@@ -1032,22 +1032,22 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "resource":
-                        source.PopulateListItem(Resource, index);
+                        source.PopulateListItem(Resource, index, () => new ResourceComponent());
                         return true;
                     case "interaction":
-                        source.PopulateListItem(Interaction, index);
+                        source.PopulateListItem(Interaction, index, () => new SystemInteractionComponent());
                         return true;
                     case "searchParam":
-                        source.PopulateListItem(SearchParam, index);
+                        source.PopulateListItem(SearchParam, index, () => new SearchParamComponent());
                         return true;
                     case "operation":
-                        source.PopulateListItem(Operation, index);
+                        source.PopulateListItem(Operation, index, () => new OperationComponent());
                         return true;
                     case "compartment":
                         source.PopulatePrimitiveListItemValue(CompartmentElement, index);
                         return true;
                     case "_compartment":
-                        source.PopulatePrimitiveListItem(CompartmentElement, index);
+                        source.PopulatePrimitiveListItem(CompartmentElement, index, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -1315,7 +1315,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         CorsElement = source.PopulateValue(CorsElement);
                         return true;
                     case "_cors":
-                        CorsElement = source.Populate(CorsElement);
+                        CorsElement = source.Populate(CorsElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "service":
                         source.SetList(this, jsonPropertyName);
@@ -1324,7 +1324,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         DescriptionElement = source.PopulateValue(DescriptionElement);
                         return true;
                     case "_description":
-                        DescriptionElement = source.Populate(DescriptionElement);
+                        DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "certificate":
                         source.SetList(this, jsonPropertyName);
@@ -1342,10 +1342,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "service":
-                        source.PopulateListItem(Service, index);
+                        source.PopulateListItem(Service, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "certificate":
-                        source.PopulateListItem(Certificate, index);
+                        source.PopulateListItem(Certificate, index, () => new CertificateComponent());
                         return true;
                 }
                 return false;
@@ -1542,13 +1542,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code());
                         return true;
                     case "blob":
                         BlobElement = source.PopulateValue(BlobElement);
                         return true;
                     case "_blob":
-                        BlobElement = source.Populate(BlobElement);
+                        BlobElement = source.Populate(BlobElement, () => new Hl7.Fhir.Model.Base64Binary());
                         return true;
                 }
                 return false;
@@ -2060,10 +2060,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                         return true;
                     case "profile":
-                        Profile = source.Populate(Profile);
+                        Profile = source.Populate(Profile, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "interaction":
                         source.SetList(this, jsonPropertyName);
@@ -2072,37 +2072,37 @@ namespace Hl7.Fhir.Model.DSTU2
                         VersioningElement = source.PopulateValue(VersioningElement);
                         return true;
                     case "_versioning":
-                        VersioningElement = source.Populate(VersioningElement);
+                        VersioningElement = source.Populate(VersioningElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceVersionPolicy>());
                         return true;
                     case "readHistory":
                         ReadHistoryElement = source.PopulateValue(ReadHistoryElement);
                         return true;
                     case "_readHistory":
-                        ReadHistoryElement = source.Populate(ReadHistoryElement);
+                        ReadHistoryElement = source.Populate(ReadHistoryElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "updateCreate":
                         UpdateCreateElement = source.PopulateValue(UpdateCreateElement);
                         return true;
                     case "_updateCreate":
-                        UpdateCreateElement = source.Populate(UpdateCreateElement);
+                        UpdateCreateElement = source.Populate(UpdateCreateElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "conditionalCreate":
                         ConditionalCreateElement = source.PopulateValue(ConditionalCreateElement);
                         return true;
                     case "_conditionalCreate":
-                        ConditionalCreateElement = source.Populate(ConditionalCreateElement);
+                        ConditionalCreateElement = source.Populate(ConditionalCreateElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "conditionalUpdate":
                         ConditionalUpdateElement = source.PopulateValue(ConditionalUpdateElement);
                         return true;
                     case "_conditionalUpdate":
-                        ConditionalUpdateElement = source.Populate(ConditionalUpdateElement);
+                        ConditionalUpdateElement = source.Populate(ConditionalUpdateElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "conditionalDelete":
                         ConditionalDeleteElement = source.PopulateValue(ConditionalDeleteElement);
                         return true;
                     case "_conditionalDelete":
-                        ConditionalDeleteElement = source.Populate(ConditionalDeleteElement);
+                        ConditionalDeleteElement = source.Populate(ConditionalDeleteElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ConditionalDeleteStatus>());
                         return true;
                     case "searchInclude":
                     case "_searchInclude":
@@ -2128,22 +2128,22 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "interaction":
-                        source.PopulateListItem(Interaction, index);
+                        source.PopulateListItem(Interaction, index, () => new ResourceInteractionComponent());
                         return true;
                     case "searchInclude":
                         source.PopulatePrimitiveListItemValue(SearchIncludeElement, index);
                         return true;
                     case "_searchInclude":
-                        source.PopulatePrimitiveListItem(SearchIncludeElement, index);
+                        source.PopulatePrimitiveListItem(SearchIncludeElement, index, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "searchRevInclude":
                         source.PopulatePrimitiveListItemValue(SearchRevIncludeElement, index);
                         return true;
                     case "_searchRevInclude":
-                        source.PopulatePrimitiveListItem(SearchRevIncludeElement, index);
+                        source.PopulatePrimitiveListItem(SearchRevIncludeElement, index, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "searchParam":
-                        source.PopulateListItem(SearchParam, index);
+                        source.PopulateListItem(SearchParam, index, () => new SearchParamComponent());
                         return true;
                 }
                 return false;
@@ -2381,13 +2381,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         CodeElement = source.PopulateValue(CodeElement);
                         return true;
                     case "_code":
-                        CodeElement = source.Populate(CodeElement);
+                        CodeElement = source.Populate(CodeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.TypeRestfulInteraction>());
                         return true;
                     case "documentation":
                         DocumentationElement = source.PopulateValue(DocumentationElement);
                         return true;
                     case "_documentation":
-                        DocumentationElement = source.Populate(DocumentationElement);
+                        DocumentationElement = source.Populate(DocumentationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -2765,25 +2765,25 @@ namespace Hl7.Fhir.Model.DSTU2
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "definition":
                         DefinitionElement = source.PopulateValue(DefinitionElement);
                         return true;
                     case "_definition":
-                        DefinitionElement = source.Populate(DefinitionElement);
+                        DefinitionElement = source.Populate(DefinitionElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "type":
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>());
                         return true;
                     case "documentation":
                         DocumentationElement = source.PopulateValue(DocumentationElement);
                         return true;
                     case "_documentation":
-                        DocumentationElement = source.Populate(DocumentationElement);
+                        DocumentationElement = source.Populate(DocumentationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "target":
                     case "_target":
@@ -2813,19 +2813,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         source.PopulatePrimitiveListItemValue(TargetElement, index);
                         return true;
                     case "_target":
-                        source.PopulatePrimitiveListItem(TargetElement, index);
+                        source.PopulatePrimitiveListItem(TargetElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                         return true;
                     case "modifier":
                         source.PopulatePrimitiveListItemValue(ModifierElement, index);
                         return true;
                     case "_modifier":
-                        source.PopulatePrimitiveListItem(ModifierElement, index);
+                        source.PopulatePrimitiveListItem(ModifierElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SearchModifierCode>());
                         return true;
                     case "chain":
                         source.PopulatePrimitiveListItemValue(ChainElement, index);
                         return true;
                     case "_chain":
-                        source.PopulatePrimitiveListItem(ChainElement, index);
+                        source.PopulatePrimitiveListItem(ChainElement, index, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -3038,13 +3038,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         CodeElement = source.PopulateValue(CodeElement);
                         return true;
                     case "_code":
-                        CodeElement = source.Populate(CodeElement);
+                        CodeElement = source.Populate(CodeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SystemRestfulInteraction>());
                         return true;
                     case "documentation":
                         DocumentationElement = source.PopulateValue(DocumentationElement);
                         return true;
                     case "_documentation":
-                        DocumentationElement = source.Populate(DocumentationElement);
+                        DocumentationElement = source.Populate(DocumentationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -3216,10 +3216,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "definition":
-                        Definition = source.Populate(Definition);
+                        Definition = source.Populate(Definition, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -3455,13 +3455,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         ReliableCacheElement = source.PopulateValue(ReliableCacheElement);
                         return true;
                     case "_reliableCache":
-                        ReliableCacheElement = source.Populate(ReliableCacheElement);
+                        ReliableCacheElement = source.Populate(ReliableCacheElement, () => new Hl7.Fhir.Model.UnsignedInt());
                         return true;
                     case "documentation":
                         DocumentationElement = source.PopulateValue(DocumentationElement);
                         return true;
                     case "_documentation":
-                        DocumentationElement = source.Populate(DocumentationElement);
+                        DocumentationElement = source.Populate(DocumentationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "event":
                         source.SetList(this, jsonPropertyName);
@@ -3479,10 +3479,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "endpoint":
-                        source.PopulateListItem(Endpoint, index);
+                        source.PopulateListItem(Endpoint, index, () => new EndpointComponent());
                         return true;
                     case "event":
-                        source.PopulateListItem(Event, index);
+                        source.PopulateListItem(Event, index, () => new EventComponent());
                         return true;
                 }
                 return false;
@@ -3659,13 +3659,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "protocol":
-                        Protocol = source.Populate(Protocol);
+                        Protocol = source.Populate(Protocol, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "address":
                         AddressElement = source.PopulateValue(AddressElement);
                         return true;
                     case "_address":
-                        AddressElement = source.Populate(AddressElement);
+                        AddressElement = source.Populate(AddressElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -3981,37 +3981,37 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "category":
                         CategoryElement = source.PopulateValue(CategoryElement);
                         return true;
                     case "_category":
-                        CategoryElement = source.Populate(CategoryElement);
+                        CategoryElement = source.Populate(CategoryElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MessageSignificanceCategory>());
                         return true;
                     case "mode":
                         ModeElement = source.PopulateValue(ModeElement);
                         return true;
                     case "_mode":
-                        ModeElement = source.Populate(ModeElement);
+                        ModeElement = source.Populate(ModeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConformanceEventMode>());
                         return true;
                     case "focus":
                         FocusElement = source.PopulateValue(FocusElement);
                         return true;
                     case "_focus":
-                        FocusElement = source.Populate(FocusElement);
+                        FocusElement = source.Populate(FocusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                         return true;
                     case "request":
-                        Request = source.Populate(Request);
+                        Request = source.Populate(Request, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "response":
-                        Response = source.Populate(Response);
+                        Response = source.Populate(Response, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "documentation":
                         DocumentationElement = source.PopulateValue(DocumentationElement);
                         return true;
                     case "_documentation":
-                        DocumentationElement = source.Populate(DocumentationElement);
+                        DocumentationElement = source.Populate(DocumentationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -4244,16 +4244,16 @@ namespace Hl7.Fhir.Model.DSTU2
                         ModeElement = source.PopulateValue(ModeElement);
                         return true;
                     case "_mode":
-                        ModeElement = source.Populate(ModeElement);
+                        ModeElement = source.Populate(ModeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentMode>());
                         return true;
                     case "documentation":
                         DocumentationElement = source.PopulateValue(DocumentationElement);
                         return true;
                     case "_documentation":
-                        DocumentationElement = source.Populate(DocumentationElement);
+                        DocumentationElement = source.Populate(DocumentationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "profile":
-                        Profile = source.Populate(Profile);
+                        Profile = source.Populate(Profile, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -5236,37 +5236,37 @@ namespace Hl7.Fhir.Model.DSTU2
                     UrlElement = source.PopulateValue(UrlElement);
                     return true;
                 case "_url":
-                    UrlElement = source.Populate(UrlElement);
+                    UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "version":
                     VersionElement = source.PopulateValue(VersionElement);
                     return true;
                 case "_version":
-                    VersionElement = source.Populate(VersionElement);
+                    VersionElement = source.Populate(VersionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>());
                     return true;
                 case "experimental":
                     ExperimentalElement = source.PopulateValue(ExperimentalElement);
                     return true;
                 case "_experimental":
-                    ExperimentalElement = source.Populate(ExperimentalElement);
+                    ExperimentalElement = source.Populate(ExperimentalElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "publisher":
                     PublisherElement = source.PopulateValue(PublisherElement);
                     return true;
                 case "_publisher":
-                    PublisherElement = source.Populate(PublisherElement);
+                    PublisherElement = source.Populate(PublisherElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
                     source.SetList(this, jsonPropertyName);
@@ -5275,49 +5275,49 @@ namespace Hl7.Fhir.Model.DSTU2
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "description":
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "requirements":
                     RequirementsElement = source.PopulateValue(RequirementsElement);
                     return true;
                 case "_requirements":
-                    RequirementsElement = source.Populate(RequirementsElement);
+                    RequirementsElement = source.Populate(RequirementsElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "copyright":
                     CopyrightElement = source.PopulateValue(CopyrightElement);
                     return true;
                 case "_copyright":
-                    CopyrightElement = source.Populate(CopyrightElement);
+                    CopyrightElement = source.Populate(CopyrightElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "kind":
                     KindElement = source.PopulateValue(KindElement);
                     return true;
                 case "_kind":
-                    KindElement = source.Populate(KindElement);
+                    KindElement = source.Populate(KindElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConformanceStatementKind>());
                     return true;
                 case "software":
-                    Software = source.Populate(Software);
+                    Software = source.Populate(Software, () => new SoftwareComponent());
                     return true;
                 case "implementation":
-                    Implementation = source.Populate(Implementation);
+                    Implementation = source.Populate(Implementation, () => new ImplementationComponent());
                     return true;
                 case "fhirVersion":
                     FhirVersionElement = source.PopulateValue(FhirVersionElement);
                     return true;
                 case "_fhirVersion":
-                    FhirVersionElement = source.Populate(FhirVersionElement);
+                    FhirVersionElement = source.Populate(FhirVersionElement, () => new Hl7.Fhir.Model.Id());
                     return true;
                 case "acceptUnknown":
                     AcceptUnknownElement = source.PopulateValue(AcceptUnknownElement);
                     return true;
                 case "_acceptUnknown":
-                    AcceptUnknownElement = source.Populate(AcceptUnknownElement);
+                    AcceptUnknownElement = source.Populate(AcceptUnknownElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnknownContentCode>());
                     return true;
                 case "format":
                 case "_format":
@@ -5348,25 +5348,25 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new ContactComponent());
                     return true;
                 case "format":
                     source.PopulatePrimitiveListItemValue(FormatElement, index);
                     return true;
                 case "_format":
-                    source.PopulatePrimitiveListItem(FormatElement, index);
+                    source.PopulatePrimitiveListItem(FormatElement, index, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "profile":
-                    source.PopulateListItem(Profile, index);
+                    source.PopulateListItem(Profile, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "rest":
-                    source.PopulateListItem(Rest, index);
+                    source.PopulateListItem(Rest, index, () => new RestComponent());
                     return true;
                 case "messaging":
-                    source.PopulateListItem(Messaging, index);
+                    source.PopulateListItem(Messaging, index, () => new MessagingComponent());
                     return true;
                 case "document":
-                    source.PopulateListItem(Document, index);
+                    source.PopulateListItem(Document, index, () => new DocumentComponent());
                     return true;
             }
             return false;

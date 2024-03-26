@@ -534,31 +534,31 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "product":
-                        Product = source.Populate(Product);
+                        Product = source.Populate(Product, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "eye":
                         EyeElement = source.PopulateValue(EyeElement);
                         return true;
                     case "_eye":
-                        EyeElement = source.Populate(EyeElement);
+                        EyeElement = source.Populate(EyeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionEyes>());
                         return true;
                     case "sphere":
                         SphereElement = source.PopulateValue(SphereElement);
                         return true;
                     case "_sphere":
-                        SphereElement = source.Populate(SphereElement);
+                        SphereElement = source.Populate(SphereElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "cylinder":
                         CylinderElement = source.PopulateValue(CylinderElement);
                         return true;
                     case "_cylinder":
-                        CylinderElement = source.Populate(CylinderElement);
+                        CylinderElement = source.Populate(CylinderElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "axis":
                         AxisElement = source.PopulateValue(AxisElement);
                         return true;
                     case "_axis":
-                        AxisElement = source.Populate(AxisElement);
+                        AxisElement = source.Populate(AxisElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "prism":
                         source.SetList(this, jsonPropertyName);
@@ -567,40 +567,40 @@ namespace Hl7.Fhir.Model.R4
                         AddElement = source.PopulateValue(AddElement);
                         return true;
                     case "_add":
-                        AddElement = source.Populate(AddElement);
+                        AddElement = source.Populate(AddElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "power":
                         PowerElement = source.PopulateValue(PowerElement);
                         return true;
                     case "_power":
-                        PowerElement = source.Populate(PowerElement);
+                        PowerElement = source.Populate(PowerElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "backCurve":
                         BackCurveElement = source.PopulateValue(BackCurveElement);
                         return true;
                     case "_backCurve":
-                        BackCurveElement = source.Populate(BackCurveElement);
+                        BackCurveElement = source.Populate(BackCurveElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "diameter":
                         DiameterElement = source.PopulateValue(DiameterElement);
                         return true;
                     case "_diameter":
-                        DiameterElement = source.Populate(DiameterElement);
+                        DiameterElement = source.Populate(DiameterElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "duration":
-                        Duration = source.Populate(Duration);
+                        Duration = source.Populate(Duration, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "color":
                         ColorElement = source.PopulateValue(ColorElement);
                         return true;
                     case "_color":
-                        ColorElement = source.Populate(ColorElement);
+                        ColorElement = source.Populate(ColorElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "brand":
                         BrandElement = source.PopulateValue(BrandElement);
                         return true;
                     case "_brand":
-                        BrandElement = source.Populate(BrandElement);
+                        BrandElement = source.Populate(BrandElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
                         source.SetList(this, jsonPropertyName);
@@ -618,10 +618,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "prism":
-                        source.PopulateListItem(Prism, index);
+                        source.PopulateListItem(Prism, index, () => new PrismComponent());
                         return true;
                     case "note":
-                        source.PopulateListItem(Note, index);
+                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                         return true;
                 }
                 return false;
@@ -870,13 +870,13 @@ namespace Hl7.Fhir.Model.R4
                         AmountElement = source.PopulateValue(AmountElement);
                         return true;
                     case "_amount":
-                        AmountElement = source.Populate(AmountElement);
+                        AmountElement = source.Populate(AmountElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "base":
                         BaseElement = source.PopulateValue(BaseElement);
                         return true;
                     case "_base":
-                        BaseElement = source.Populate(BaseElement);
+                        BaseElement = source.Populate(BaseElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionBase>());
                         return true;
                 }
                 return false;
@@ -1270,28 +1270,28 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "created":
                     CreatedElement = source.PopulateValue(CreatedElement);
                     return true;
                 case "_created":
-                    CreatedElement = source.Populate(CreatedElement);
+                    CreatedElement = source.Populate(CreatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dateWritten":
                     DateWrittenElement = source.PopulateValue(DateWrittenElement);
                     return true;
                 case "_dateWritten":
-                    DateWrittenElement = source.Populate(DateWrittenElement);
+                    DateWrittenElement = source.Populate(DateWrittenElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "prescriber":
-                    Prescriber = source.Populate(Prescriber);
+                    Prescriber = source.Populate(Prescriber, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "lensSpecification":
                     source.SetList(this, jsonPropertyName);
@@ -1309,10 +1309,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "lensSpecification":
-                    source.PopulateListItem(LensSpecification, index);
+                    source.PopulateListItem(LensSpecification, index, () => new LensSpecificationComponent());
                     return true;
             }
             return false;

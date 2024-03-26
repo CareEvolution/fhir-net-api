@@ -352,13 +352,13 @@ namespace Hl7.Fhir.Model.R4
                     ActiveElement = source.PopulateValue(ActiveElement);
                     return true;
                 case "_active":
-                    ActiveElement = source.Populate(ActiveElement);
+                    ActiveElement = source.Populate(ActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "morphology":
-                    Morphology = source.Populate(Morphology);
+                    Morphology = source.Populate(Morphology, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "location":
-                    Location = source.Populate(Location);
+                    Location = source.Populate(Location, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "locationQualifier":
                     source.SetList(this, jsonPropertyName);
@@ -367,13 +367,13 @@ namespace Hl7.Fhir.Model.R4
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "image":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -388,13 +388,13 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "locationQualifier":
-                    source.PopulateListItem(LocationQualifier, index);
+                    source.PopulateListItem(LocationQualifier, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "image":
-                    source.PopulateListItem(Image, index);
+                    source.PopulateListItem(Image, index, () => new Hl7.Fhir.Model.Attachment());
                     return true;
             }
             return false;

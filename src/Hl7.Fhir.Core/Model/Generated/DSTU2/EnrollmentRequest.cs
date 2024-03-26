@@ -368,34 +368,34 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "ruleset":
-                    Ruleset = source.Populate(Ruleset);
+                    Ruleset = source.Populate(Ruleset, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "originalRuleset":
-                    OriginalRuleset = source.Populate(OriginalRuleset);
+                    OriginalRuleset = source.Populate(OriginalRuleset, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "created":
                     CreatedElement = source.PopulateValue(CreatedElement);
                     return true;
                 case "_created":
-                    CreatedElement = source.Populate(CreatedElement);
+                    CreatedElement = source.Populate(CreatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "target":
-                    Target = source.Populate(Target);
+                    Target = source.Populate(Target, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "provider":
-                    Provider = source.Populate(Provider);
+                    Provider = source.Populate(Provider, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "organization":
-                    Organization = source.Populate(Organization);
+                    Organization = source.Populate(Organization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "coverage":
-                    Coverage = source.Populate(Coverage);
+                    Coverage = source.Populate(Coverage, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relationship":
-                    Relationship = source.Populate(Relationship);
+                    Relationship = source.Populate(Relationship, () => new Hl7.Fhir.Model.Coding());
                     return true;
             }
             return false;
@@ -410,7 +410,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
             }
             return false;

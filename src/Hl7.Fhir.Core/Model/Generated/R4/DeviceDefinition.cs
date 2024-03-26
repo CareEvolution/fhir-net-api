@@ -204,19 +204,19 @@ namespace Hl7.Fhir.Model.R4
                         DeviceIdentifierElement = source.PopulateValue(DeviceIdentifierElement);
                         return true;
                     case "_deviceIdentifier":
-                        DeviceIdentifierElement = source.Populate(DeviceIdentifierElement);
+                        DeviceIdentifierElement = source.Populate(DeviceIdentifierElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "issuer":
                         IssuerElement = source.PopulateValue(IssuerElement);
                         return true;
                     case "_issuer":
-                        IssuerElement = source.Populate(IssuerElement);
+                        IssuerElement = source.Populate(IssuerElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "jurisdiction":
                         JurisdictionElement = source.PopulateValue(JurisdictionElement);
                         return true;
                     case "_jurisdiction":
-                        JurisdictionElement = source.Populate(JurisdictionElement);
+                        JurisdictionElement = source.Populate(JurisdictionElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -410,13 +410,13 @@ namespace Hl7.Fhir.Model.R4
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "type":
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.DeviceNameType>());
                         return true;
                 }
                 return false;
@@ -604,13 +604,13 @@ namespace Hl7.Fhir.Model.R4
                         SystemTypeElement = source.PopulateValue(SystemTypeElement);
                         return true;
                     case "_systemType":
-                        SystemTypeElement = source.Populate(SystemTypeElement);
+                        SystemTypeElement = source.Populate(SystemTypeElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "version":
                         VersionElement = source.PopulateValue(VersionElement);
                         return true;
                     case "_version":
-                        VersionElement = source.Populate(VersionElement);
+                        VersionElement = source.Populate(VersionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -763,7 +763,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "description":
                         source.SetList(this, jsonPropertyName);
@@ -781,7 +781,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "description":
-                        source.PopulateListItem(Description, index);
+                        source.PopulateListItem(Description, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -957,7 +957,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueQuantity":
                         source.SetList(this, jsonPropertyName);
@@ -978,10 +978,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "valueQuantity":
-                        source.PopulateListItem(ValueQuantity, index);
+                        source.PopulateListItem(ValueQuantity, index, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "valueCode":
-                        source.PopulateListItem(ValueCode, index);
+                        source.PopulateListItem(ValueCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1188,19 +1188,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "substance":
-                        Substance = source.Populate(Substance);
+                        Substance = source.Populate(Substance, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "alternate":
                         AlternateElement = source.PopulateValue(AlternateElement);
                         return true;
                     case "_alternate":
-                        AlternateElement = source.Populate(AlternateElement);
+                        AlternateElement = source.Populate(AlternateElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "allergenicIndicator":
                         AllergenicIndicatorElement = source.PopulateValue(AllergenicIndicatorElement);
                         return true;
                     case "_allergenicIndicator":
-                        AllergenicIndicatorElement = source.Populate(AllergenicIndicatorElement);
+                        AllergenicIndicatorElement = source.Populate(AllergenicIndicatorElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                 }
                 return false;
@@ -1963,11 +1963,11 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_manufacturerString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Manufacturer, "manufacturer");
-                    Manufacturer = source.Populate(Manufacturer as Hl7.Fhir.Model.FhirString);
+                    Manufacturer = source.Populate(Manufacturer as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "manufacturerReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Manufacturer, "manufacturer");
-                    Manufacturer = source.Populate(Manufacturer as Hl7.Fhir.Model.ResourceReference);
+                    Manufacturer = source.Populate(Manufacturer as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "deviceName":
                     source.SetList(this, jsonPropertyName);
@@ -1976,10 +1976,10 @@ namespace Hl7.Fhir.Model.R4
                     ModelNumberElement = source.PopulateValue(ModelNumberElement);
                     return true;
                 case "_modelNumber":
-                    ModelNumberElement = source.Populate(ModelNumberElement);
+                    ModelNumberElement = source.Populate(ModelNumberElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialization":
                     source.SetList(this, jsonPropertyName);
@@ -1995,7 +1995,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "physicalCharacteristics":
-                    PhysicalCharacteristics = source.Populate(PhysicalCharacteristics);
+                    PhysicalCharacteristics = source.Populate(PhysicalCharacteristics, () => new Hl7.Fhir.Model.ProdCharacteristic());
                     return true;
                 case "languageCode":
                     source.SetList(this, jsonPropertyName);
@@ -2007,7 +2007,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "owner":
-                    Owner = source.Populate(Owner);
+                    Owner = source.Populate(Owner, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
                     source.SetList(this, jsonPropertyName);
@@ -2016,22 +2016,22 @@ namespace Hl7.Fhir.Model.R4
                     UrlElement = source.PopulateValue(UrlElement);
                     return true;
                 case "_url":
-                    UrlElement = source.Populate(UrlElement);
+                    UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "onlineInformation":
                     OnlineInformationElement = source.PopulateValue(OnlineInformationElement);
                     return true;
                 case "_onlineInformation":
-                    OnlineInformationElement = source.Populate(OnlineInformationElement);
+                    OnlineInformationElement = source.Populate(OnlineInformationElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "note":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "quantity":
-                    Quantity = source.Populate(Quantity);
+                    Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "parentDevice":
-                    ParentDevice = source.Populate(ParentDevice);
+                    ParentDevice = source.Populate(ParentDevice, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "material":
                     source.SetList(this, jsonPropertyName);
@@ -2049,46 +2049,46 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "udiDeviceIdentifier":
-                    source.PopulateListItem(UdiDeviceIdentifier, index);
+                    source.PopulateListItem(UdiDeviceIdentifier, index, () => new UdiDeviceIdentifierComponent());
                     return true;
                 case "deviceName":
-                    source.PopulateListItem(DeviceName, index);
+                    source.PopulateListItem(DeviceName, index, () => new DeviceNameComponent());
                     return true;
                 case "specialization":
-                    source.PopulateListItem(Specialization, index);
+                    source.PopulateListItem(Specialization, index, () => new SpecializationComponent());
                     return true;
                 case "version":
                     source.PopulatePrimitiveListItemValue(VersionElement, index);
                     return true;
                 case "_version":
-                    source.PopulatePrimitiveListItem(VersionElement, index);
+                    source.PopulatePrimitiveListItem(VersionElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "safety":
-                    source.PopulateListItem(Safety, index);
+                    source.PopulateListItem(Safety, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "shelfLifeStorage":
-                    source.PopulateListItem(ShelfLifeStorage, index);
+                    source.PopulateListItem(ShelfLifeStorage, index, () => new Hl7.Fhir.Model.ProductShelfLife());
                     return true;
                 case "languageCode":
-                    source.PopulateListItem(LanguageCode, index);
+                    source.PopulateListItem(LanguageCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "capability":
-                    source.PopulateListItem(Capability, index);
+                    source.PopulateListItem(Capability, index, () => new CapabilityComponent());
                     return true;
                 case "property":
-                    source.PopulateListItem(Property, index);
+                    source.PopulateListItem(Property, index, () => new PropertyComponent());
                     return true;
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "material":
-                    source.PopulateListItem(Material, index);
+                    source.PopulateListItem(Material, index, () => new MaterialComponent());
                     return true;
             }
             return false;

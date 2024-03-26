@@ -169,20 +169,20 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Populate(Item as Hl7.Fhir.Model.CodeableConcept);
+                        Item = source.Populate(Item as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Populate(Item as Hl7.Fhir.Model.ResourceReference);
+                        Item = source.Populate(Item as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "isActive":
                         IsActiveElement = source.PopulateValue(IsActiveElement);
                         return true;
                     case "_isActive":
-                        IsActiveElement = source.Populate(IsActiveElement);
+                        IsActiveElement = source.Populate(IsActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "amount":
-                        Amount = source.Populate(Amount);
+                        Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                 }
                 return false;
@@ -362,7 +362,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "container":
-                        Container = source.Populate(Container);
+                        Container = source.Populate(Container, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "content":
                         source.SetList(this, jsonPropertyName);
@@ -383,10 +383,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "content":
-                        source.PopulateListItem(Content, index);
+                        source.PopulateListItem(Content, index, () => new ContentComponent());
                         return true;
                     case "batch":
-                        source.PopulateListItem(Batch, index);
+                        source.PopulateListItem(Batch, index, () => new BatchComponent());
                         return true;
                 }
                 return false;
@@ -546,14 +546,14 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Populate(Item as Hl7.Fhir.Model.CodeableConcept);
+                        Item = source.Populate(Item as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Populate(Item as Hl7.Fhir.Model.ResourceReference);
+                        Item = source.Populate(Item as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "amount":
-                        Amount = source.Populate(Amount);
+                        Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                 }
                 return false;
@@ -740,13 +740,13 @@ namespace Hl7.Fhir.Model.STU3
                         LotNumberElement = source.PopulateValue(LotNumberElement);
                         return true;
                     case "_lotNumber":
-                        LotNumberElement = source.Populate(LotNumberElement);
+                        LotNumberElement = source.Populate(LotNumberElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "expirationDate":
                         ExpirationDateElement = source.PopulateValue(ExpirationDateElement);
                         return true;
                     case "_expirationDate":
-                        ExpirationDateElement = source.Populate(ExpirationDateElement);
+                        ExpirationDateElement = source.Populate(ExpirationDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                 }
                 return false;
@@ -1145,37 +1145,37 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationStatus>());
                     return true;
                 case "isBrand":
                     IsBrandElement = source.PopulateValue(IsBrandElement);
                     return true;
                 case "_isBrand":
-                    IsBrandElement = source.Populate(IsBrandElement);
+                    IsBrandElement = source.Populate(IsBrandElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "isOverTheCounter":
                     IsOverTheCounterElement = source.PopulateValue(IsOverTheCounterElement);
                     return true;
                 case "_isOverTheCounter":
-                    IsOverTheCounterElement = source.Populate(IsOverTheCounterElement);
+                    IsOverTheCounterElement = source.Populate(IsOverTheCounterElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.Populate(Manufacturer);
+                    Manufacturer = source.Populate(Manufacturer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "form":
-                    Form = source.Populate(Form);
+                    Form = source.Populate(Form, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "ingredient":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "package":
-                    Package = source.Populate(Package);
+                    Package = source.Populate(Package, () => new PackageComponent());
                     return true;
                 case "image":
                     source.SetList(this, jsonPropertyName);
@@ -1193,10 +1193,10 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "ingredient":
-                    source.PopulateListItem(Ingredient, index);
+                    source.PopulateListItem(Ingredient, index, () => new IngredientComponent());
                     return true;
                 case "image":
-                    source.PopulateListItem(Image, index);
+                    source.PopulateListItem(Image, index, () => new Hl7.Fhir.Model.Attachment());
                     return true;
             }
             return false;

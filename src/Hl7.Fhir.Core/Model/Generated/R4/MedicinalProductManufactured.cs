@@ -291,13 +291,13 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "manufacturedDoseForm":
-                    ManufacturedDoseForm = source.Populate(ManufacturedDoseForm);
+                    ManufacturedDoseForm = source.Populate(ManufacturedDoseForm, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "unitOfPresentation":
-                    UnitOfPresentation = source.Populate(UnitOfPresentation);
+                    UnitOfPresentation = source.Populate(UnitOfPresentation, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "quantity":
-                    Quantity = source.Populate(Quantity);
+                    Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "manufacturer":
                     source.SetList(this, jsonPropertyName);
@@ -306,7 +306,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "physicalCharacteristics":
-                    PhysicalCharacteristics = source.Populate(PhysicalCharacteristics);
+                    PhysicalCharacteristics = source.Populate(PhysicalCharacteristics, () => new Hl7.Fhir.Model.ProdCharacteristic());
                     return true;
                 case "otherCharacteristics":
                     source.SetList(this, jsonPropertyName);
@@ -324,13 +324,13 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "manufacturer":
-                    source.PopulateListItem(Manufacturer, index);
+                    source.PopulateListItem(Manufacturer, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "ingredient":
-                    source.PopulateListItem(Ingredient, index);
+                    source.PopulateListItem(Ingredient, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "otherCharacteristics":
-                    source.PopulateListItem(OtherCharacteristics, index);
+                    source.PopulateListItem(OtherCharacteristics, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

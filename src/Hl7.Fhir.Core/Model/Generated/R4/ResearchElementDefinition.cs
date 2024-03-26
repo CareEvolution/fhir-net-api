@@ -442,7 +442,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "definitionCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Definition, "definition");
-                        Definition = source.Populate(Definition as Hl7.Fhir.Model.CodeableConcept);
+                        Definition = source.Populate(Definition as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "definitionCanonical":
                         source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Definition, "definition");
@@ -450,15 +450,15 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_definitionCanonical":
                         source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Definition, "definition");
-                        Definition = source.Populate(Definition as Hl7.Fhir.Model.Canonical);
+                        Definition = source.Populate(Definition as Hl7.Fhir.Model.Canonical, () => new Hl7.Fhir.Model.Canonical());
                         return true;
                     case "definitionExpression":
                         source.CheckDuplicates<Hl7.Fhir.Model.Expression>(Definition, "definition");
-                        Definition = source.Populate(Definition as Hl7.Fhir.Model.Expression);
+                        Definition = source.Populate(Definition as Hl7.Fhir.Model.Expression, () => new Hl7.Fhir.Model.Expression());
                         return true;
                     case "definitionDataRequirement":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.DataRequirement>(Definition, "definition");
-                        Definition = source.Populate(Definition as Hl7.Fhir.Model.R4.DataRequirement);
+                        Definition = source.Populate(Definition as Hl7.Fhir.Model.R4.DataRequirement, () => new Hl7.Fhir.Model.R4.DataRequirement());
                         return true;
                     case "usageContext":
                         source.SetList(this, jsonPropertyName);
@@ -467,16 +467,16 @@ namespace Hl7.Fhir.Model.R4
                         ExcludeElement = source.PopulateValue(ExcludeElement);
                         return true;
                     case "_exclude":
-                        ExcludeElement = source.Populate(ExcludeElement);
+                        ExcludeElement = source.Populate(ExcludeElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "unitOfMeasure":
-                        UnitOfMeasure = source.Populate(UnitOfMeasure);
+                        UnitOfMeasure = source.Populate(UnitOfMeasure, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "studyEffectiveDescription":
                         StudyEffectiveDescriptionElement = source.PopulateValue(StudyEffectiveDescriptionElement);
                         return true;
                     case "_studyEffectiveDescription":
-                        StudyEffectiveDescriptionElement = source.Populate(StudyEffectiveDescriptionElement);
+                        StudyEffectiveDescriptionElement = source.Populate(StudyEffectiveDescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "studyEffectiveDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(StudyEffective, "studyEffective");
@@ -484,34 +484,34 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_studyEffectiveDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(StudyEffective, "studyEffective");
-                        StudyEffective = source.Populate(StudyEffective as Hl7.Fhir.Model.FhirDateTime);
+                        StudyEffective = source.Populate(StudyEffective as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "studyEffectivePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(StudyEffective, "studyEffective");
-                        StudyEffective = source.Populate(StudyEffective as Hl7.Fhir.Model.Period);
+                        StudyEffective = source.Populate(StudyEffective as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "studyEffectiveDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(StudyEffective, "studyEffective");
-                        StudyEffective = source.Populate(StudyEffective as Hl7.Fhir.Model.R4.Duration);
+                        StudyEffective = source.Populate(StudyEffective as Hl7.Fhir.Model.R4.Duration, () => new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "studyEffectiveTiming":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(StudyEffective, "studyEffective");
-                        StudyEffective = source.Populate(StudyEffective as Hl7.Fhir.Model.R4.Timing);
+                        StudyEffective = source.Populate(StudyEffective as Hl7.Fhir.Model.R4.Timing, () => new Hl7.Fhir.Model.R4.Timing());
                         return true;
                     case "studyEffectiveTimeFromStart":
-                        StudyEffectiveTimeFromStart = source.Populate(StudyEffectiveTimeFromStart);
+                        StudyEffectiveTimeFromStart = source.Populate(StudyEffectiveTimeFromStart, () => new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "studyEffectiveGroupMeasure":
                         StudyEffectiveGroupMeasureElement = source.PopulateValue(StudyEffectiveGroupMeasureElement);
                         return true;
                     case "_studyEffectiveGroupMeasure":
-                        StudyEffectiveGroupMeasureElement = source.Populate(StudyEffectiveGroupMeasureElement);
+                        StudyEffectiveGroupMeasureElement = source.Populate(StudyEffectiveGroupMeasureElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.GroupMeasure>());
                         return true;
                     case "participantEffectiveDescription":
                         ParticipantEffectiveDescriptionElement = source.PopulateValue(ParticipantEffectiveDescriptionElement);
                         return true;
                     case "_participantEffectiveDescription":
-                        ParticipantEffectiveDescriptionElement = source.Populate(ParticipantEffectiveDescriptionElement);
+                        ParticipantEffectiveDescriptionElement = source.Populate(ParticipantEffectiveDescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "participantEffectiveDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(ParticipantEffective, "participantEffective");
@@ -519,28 +519,28 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_participantEffectiveDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(ParticipantEffective, "participantEffective");
-                        ParticipantEffective = source.Populate(ParticipantEffective as Hl7.Fhir.Model.FhirDateTime);
+                        ParticipantEffective = source.Populate(ParticipantEffective as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "participantEffectivePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(ParticipantEffective, "participantEffective");
-                        ParticipantEffective = source.Populate(ParticipantEffective as Hl7.Fhir.Model.Period);
+                        ParticipantEffective = source.Populate(ParticipantEffective as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "participantEffectiveDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(ParticipantEffective, "participantEffective");
-                        ParticipantEffective = source.Populate(ParticipantEffective as Hl7.Fhir.Model.R4.Duration);
+                        ParticipantEffective = source.Populate(ParticipantEffective as Hl7.Fhir.Model.R4.Duration, () => new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "participantEffectiveTiming":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(ParticipantEffective, "participantEffective");
-                        ParticipantEffective = source.Populate(ParticipantEffective as Hl7.Fhir.Model.R4.Timing);
+                        ParticipantEffective = source.Populate(ParticipantEffective as Hl7.Fhir.Model.R4.Timing, () => new Hl7.Fhir.Model.R4.Timing());
                         return true;
                     case "participantEffectiveTimeFromStart":
-                        ParticipantEffectiveTimeFromStart = source.Populate(ParticipantEffectiveTimeFromStart);
+                        ParticipantEffectiveTimeFromStart = source.Populate(ParticipantEffectiveTimeFromStart, () => new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "participantEffectiveGroupMeasure":
                         ParticipantEffectiveGroupMeasureElement = source.PopulateValue(ParticipantEffectiveGroupMeasureElement);
                         return true;
                     case "_participantEffectiveGroupMeasure":
-                        ParticipantEffectiveGroupMeasureElement = source.Populate(ParticipantEffectiveGroupMeasureElement);
+                        ParticipantEffectiveGroupMeasureElement = source.Populate(ParticipantEffectiveGroupMeasureElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.GroupMeasure>());
                         return true;
                 }
                 return false;
@@ -555,7 +555,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "usageContext":
-                        source.PopulateListItem(UsageContext, index);
+                        source.PopulateListItem(UsageContext, index, () => new Hl7.Fhir.Model.UsageContext());
                         return true;
                 }
                 return false;
@@ -1908,7 +1908,7 @@ namespace Hl7.Fhir.Model.R4
                     UrlElement = source.PopulateValue(UrlElement);
                     return true;
                 case "_url":
-                    UrlElement = source.Populate(UrlElement);
+                    UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "identifier":
                     source.SetList(this, jsonPropertyName);
@@ -1917,63 +1917,63 @@ namespace Hl7.Fhir.Model.R4
                     VersionElement = source.PopulateValue(VersionElement);
                     return true;
                 case "_version":
-                    VersionElement = source.Populate(VersionElement);
+                    VersionElement = source.Populate(VersionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "title":
                     TitleElement = source.PopulateValue(TitleElement);
                     return true;
                 case "_title":
-                    TitleElement = source.Populate(TitleElement);
+                    TitleElement = source.Populate(TitleElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "shortTitle":
                     ShortTitleElement = source.PopulateValue(ShortTitleElement);
                     return true;
                 case "_shortTitle":
-                    ShortTitleElement = source.Populate(ShortTitleElement);
+                    ShortTitleElement = source.Populate(ShortTitleElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subtitle":
                     SubtitleElement = source.PopulateValue(SubtitleElement);
                     return true;
                 case "_subtitle":
-                    SubtitleElement = source.Populate(SubtitleElement);
+                    SubtitleElement = source.Populate(SubtitleElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "experimental":
                     ExperimentalElement = source.PopulateValue(ExperimentalElement);
                     return true;
                 case "_experimental":
-                    ExperimentalElement = source.Populate(ExperimentalElement);
+                    ExperimentalElement = source.Populate(ExperimentalElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "subjectCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Subject, "subject");
-                    Subject = source.Populate(Subject as Hl7.Fhir.Model.CodeableConcept);
+                    Subject = source.Populate(Subject as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subjectReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Subject, "subject");
-                    Subject = source.Populate(Subject as Hl7.Fhir.Model.ResourceReference);
+                    Subject = source.Populate(Subject as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "publisher":
                     PublisherElement = source.PopulateValue(PublisherElement);
                     return true;
                 case "_publisher":
-                    PublisherElement = source.Populate(PublisherElement);
+                    PublisherElement = source.Populate(PublisherElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
                     source.SetList(this, jsonPropertyName);
@@ -1982,7 +1982,7 @@ namespace Hl7.Fhir.Model.R4
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "comment":
                 case "_comment":
@@ -1998,34 +1998,34 @@ namespace Hl7.Fhir.Model.R4
                     PurposeElement = source.PopulateValue(PurposeElement);
                     return true;
                 case "_purpose":
-                    PurposeElement = source.Populate(PurposeElement);
+                    PurposeElement = source.Populate(PurposeElement, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "usage":
                     UsageElement = source.PopulateValue(UsageElement);
                     return true;
                 case "_usage":
-                    UsageElement = source.Populate(UsageElement);
+                    UsageElement = source.Populate(UsageElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "copyright":
                     CopyrightElement = source.PopulateValue(CopyrightElement);
                     return true;
                 case "_copyright":
-                    CopyrightElement = source.Populate(CopyrightElement);
+                    CopyrightElement = source.Populate(CopyrightElement, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "approvalDate":
                     ApprovalDateElement = source.PopulateValue(ApprovalDateElement);
                     return true;
                 case "_approvalDate":
-                    ApprovalDateElement = source.Populate(ApprovalDateElement);
+                    ApprovalDateElement = source.Populate(ApprovalDateElement, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "lastReviewDate":
                     LastReviewDateElement = source.PopulateValue(LastReviewDateElement);
                     return true;
                 case "_lastReviewDate":
-                    LastReviewDateElement = source.Populate(LastReviewDateElement);
+                    LastReviewDateElement = source.Populate(LastReviewDateElement, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "effectivePeriod":
-                    EffectivePeriod = source.Populate(EffectivePeriod);
+                    EffectivePeriod = source.Populate(EffectivePeriod, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "topic":
                     source.SetList(this, jsonPropertyName);
@@ -2053,13 +2053,13 @@ namespace Hl7.Fhir.Model.R4
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ResearchElementType>());
                     return true;
                 case "variableType":
                     VariableTypeElement = source.PopulateValue(VariableTypeElement);
                     return true;
                 case "_variableType":
-                    VariableTypeElement = source.Populate(VariableTypeElement);
+                    VariableTypeElement = source.Populate(VariableTypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EvidenceVariableType>());
                     return true;
                 case "characteristic":
                     source.SetList(this, jsonPropertyName);
@@ -2077,49 +2077,49 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "comment":
                     source.PopulatePrimitiveListItemValue(CommentElement, index);
                     return true;
                 case "_comment":
-                    source.PopulatePrimitiveListItem(CommentElement, index);
+                    source.PopulatePrimitiveListItem(CommentElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "useContext":
-                    source.PopulateListItem(UseContext, index);
+                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.UsageContext());
                     return true;
                 case "jurisdiction":
-                    source.PopulateListItem(Jurisdiction, index);
+                    source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "topic":
-                    source.PopulateListItem(Topic, index);
+                    source.PopulateListItem(Topic, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "author":
-                    source.PopulateListItem(Author, index);
+                    source.PopulateListItem(Author, index, () => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "editor":
-                    source.PopulateListItem(Editor, index);
+                    source.PopulateListItem(Editor, index, () => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "reviewer":
-                    source.PopulateListItem(Reviewer, index);
+                    source.PopulateListItem(Reviewer, index, () => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "endorser":
-                    source.PopulateListItem(Endorser, index);
+                    source.PopulateListItem(Endorser, index, () => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "relatedArtifact":
-                    source.PopulateListItem(RelatedArtifact, index);
+                    source.PopulateListItem(RelatedArtifact, index, () => new Hl7.Fhir.Model.R4.RelatedArtifact());
                     return true;
                 case "library":
                     source.PopulatePrimitiveListItemValue(LibraryElement, index);
                     return true;
                 case "_library":
-                    source.PopulatePrimitiveListItem(LibraryElement, index);
+                    source.PopulatePrimitiveListItem(LibraryElement, index, () => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "characteristic":
-                    source.PopulateListItem(Characteristic, index);
+                    source.PopulateListItem(Characteristic, index, () => new CharacteristicComponent());
                     return true;
             }
             return false;

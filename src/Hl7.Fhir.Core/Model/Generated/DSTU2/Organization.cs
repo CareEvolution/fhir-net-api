@@ -170,16 +170,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "purpose":
-                        Purpose = source.Populate(Purpose);
+                        Purpose = source.Populate(Purpose, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "name":
-                        Name = source.Populate(Name);
+                        Name = source.Populate(Name, () => new Hl7.Fhir.Model.DSTU2.HumanName());
                         return true;
                     case "telecom":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "address":
-                        Address = source.Populate(Address);
+                        Address = source.Populate(Address, () => new Hl7.Fhir.Model.Address());
                         return true;
                 }
                 return false;
@@ -194,7 +194,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "telecom":
-                        source.PopulateListItem(Telecom, index);
+                        source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                         return true;
                 }
                 return false;
@@ -622,16 +622,16 @@ namespace Hl7.Fhir.Model.DSTU2
                     ActiveElement = source.PopulateValue(ActiveElement);
                     return true;
                 case "_active":
-                    ActiveElement = source.Populate(ActiveElement);
+                    ActiveElement = source.Populate(ActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "telecom":
                     source.SetList(this, jsonPropertyName);
@@ -640,7 +640,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "partOf":
-                    PartOf = source.Populate(PartOf);
+                    PartOf = source.Populate(PartOf, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
                     source.SetList(this, jsonPropertyName);
@@ -658,16 +658,16 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "address":
-                    source.PopulateListItem(Address, index);
+                    source.PopulateListItem(Address, index, () => new Hl7.Fhir.Model.Address());
                     return true;
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new ContactComponent());
                     return true;
             }
             return false;

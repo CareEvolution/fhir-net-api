@@ -134,15 +134,15 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "therapyRelationshipType":
-                        TherapyRelationshipType = source.Populate(TherapyRelationshipType);
+                        TherapyRelationshipType = source.Populate(TherapyRelationshipType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "medicationCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
-                        Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept);
+                        Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "medicationReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Medication, "medication");
-                        Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference);
+                        Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -510,19 +510,19 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "diseaseSymptomProcedure":
-                    DiseaseSymptomProcedure = source.Populate(DiseaseSymptomProcedure);
+                    DiseaseSymptomProcedure = source.Populate(DiseaseSymptomProcedure, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "diseaseStatus":
-                    DiseaseStatus = source.Populate(DiseaseStatus);
+                    DiseaseStatus = source.Populate(DiseaseStatus, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "comorbidity":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "intendedEffect":
-                    IntendedEffect = source.Populate(IntendedEffect);
+                    IntendedEffect = source.Populate(IntendedEffect, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "duration":
-                    Duration = source.Populate(Duration);
+                    Duration = source.Populate(Duration, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "otherTherapy":
                     source.SetList(this, jsonPropertyName);
@@ -546,19 +546,19 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "subject":
-                    source.PopulateListItem(Subject, index);
+                    source.PopulateListItem(Subject, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "comorbidity":
-                    source.PopulateListItem(Comorbidity, index);
+                    source.PopulateListItem(Comorbidity, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "otherTherapy":
-                    source.PopulateListItem(OtherTherapy, index);
+                    source.PopulateListItem(OtherTherapy, index, () => new OtherTherapyComponent());
                     return true;
                 case "undesirableEffect":
-                    source.PopulateListItem(UndesirableEffect, index);
+                    source.PopulateListItem(UndesirableEffect, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "population":
-                    source.PopulateListItem(Population, index);
+                    source.PopulateListItem(Population, index, () => new Hl7.Fhir.Model.Population());
                     return true;
             }
             return false;

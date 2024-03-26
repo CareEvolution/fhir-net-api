@@ -203,13 +203,13 @@ namespace Hl7.Fhir.Model.R4
                     ValueElement = source.PopulateValue(ValueElement);
                     return true;
                 case "_value":
-                    ValueElement = source.Populate(ValueElement);
+                    ValueElement = source.Populate(ValueElement, () => new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "currency":
                     CurrencyElement = source.PopulateValue(CurrencyElement);
                     return true;
                 case "_currency":
-                    CurrencyElement = source.Populate(CurrencyElement);
+                    CurrencyElement = source.Populate(CurrencyElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.Currencies>());
                     return true;
             }
             return false;

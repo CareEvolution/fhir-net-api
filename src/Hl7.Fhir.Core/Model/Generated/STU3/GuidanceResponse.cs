@@ -509,42 +509,42 @@ namespace Hl7.Fhir.Model.STU3
                     RequestIdElement = source.PopulateValue(RequestIdElement);
                     return true;
                 case "_requestId":
-                    RequestIdElement = source.Populate(RequestIdElement);
+                    RequestIdElement = source.Populate(RequestIdElement, () => new Hl7.Fhir.Model.Id());
                     return true;
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "module":
-                    Module = source.Populate(Module);
+                    Module = source.Populate(Module, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GuidanceResponseStatus>());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Populate(Context);
+                    Context = source.Populate(Context, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "occurrenceDateTime":
                     OccurrenceDateTimeElement = source.PopulateValue(OccurrenceDateTimeElement);
                     return true;
                 case "_occurrenceDateTime":
-                    OccurrenceDateTimeElement = source.Populate(OccurrenceDateTimeElement);
+                    OccurrenceDateTimeElement = source.Populate(OccurrenceDateTimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "performer":
-                    Performer = source.Populate(Performer);
+                    Performer = source.Populate(Performer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Reason, "reason");
-                    Reason = source.Populate(Reason as Hl7.Fhir.Model.CodeableConcept);
+                    Reason = source.Populate(Reason as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reason, "reason");
-                    Reason = source.Populate(Reason as Hl7.Fhir.Model.ResourceReference);
+                    Reason = source.Populate(Reason as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
                     source.SetList(this, jsonPropertyName);
@@ -553,10 +553,10 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "outputParameters":
-                    OutputParameters = source.Populate(OutputParameters);
+                    OutputParameters = source.Populate(OutputParameters, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "result":
-                    Result = source.Populate(Result);
+                    Result = source.Populate(Result, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dataRequirement":
                     source.SetList(this, jsonPropertyName);
@@ -574,13 +574,13 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "evaluationMessage":
-                    source.PopulateListItem(EvaluationMessage, index);
+                    source.PopulateListItem(EvaluationMessage, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dataRequirement":
-                    source.PopulateListItem(DataRequirement, index);
+                    source.PopulateListItem(DataRequirement, index, () => new Hl7.Fhir.Model.STU3.DataRequirement());
                     return true;
             }
             return false;

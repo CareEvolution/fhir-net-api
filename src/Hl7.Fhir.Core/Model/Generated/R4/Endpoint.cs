@@ -483,25 +483,25 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.EndpointStatus>());
                     return true;
                 case "connectionType":
-                    ConnectionType = source.Populate(ConnectionType);
+                    ConnectionType = source.Populate(ConnectionType, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "managingOrganization":
-                    ManagingOrganization = source.Populate(ManagingOrganization);
+                    ManagingOrganization = source.Populate(ManagingOrganization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "payloadType":
                     source.SetList(this, jsonPropertyName);
@@ -514,7 +514,7 @@ namespace Hl7.Fhir.Model.R4
                     AddressElement = source.PopulateValue(AddressElement);
                     return true;
                 case "_address":
-                    AddressElement = source.Populate(AddressElement);
+                    AddressElement = source.Populate(AddressElement, () => new Hl7.Fhir.Model.Url());
                     return true;
                 case "header":
                 case "_header":
@@ -533,25 +533,25 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "payloadType":
-                    source.PopulateListItem(PayloadType, index);
+                    source.PopulateListItem(PayloadType, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "payloadMimeType":
                     source.PopulatePrimitiveListItemValue(PayloadMimeTypeElement, index);
                     return true;
                 case "_payloadMimeType":
-                    source.PopulatePrimitiveListItem(PayloadMimeTypeElement, index);
+                    source.PopulatePrimitiveListItem(PayloadMimeTypeElement, index, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "header":
                     source.PopulatePrimitiveListItemValue(HeaderElement, index);
                     return true;
                 case "_header":
-                    source.PopulatePrimitiveListItem(HeaderElement, index);
+                    source.PopulatePrimitiveListItem(HeaderElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

@@ -127,10 +127,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "status":
-                        Status = source.Populate(Status);
+                        Status = source.Populate(Status, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -375,22 +375,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "firstDose":
-                        FirstDose = source.Populate(FirstDose);
+                        FirstDose = source.Populate(FirstDose, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "maxSingleDose":
-                        MaxSingleDose = source.Populate(MaxSingleDose);
+                        MaxSingleDose = source.Populate(MaxSingleDose, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "maxDosePerDay":
-                        MaxDosePerDay = source.Populate(MaxDosePerDay);
+                        MaxDosePerDay = source.Populate(MaxDosePerDay, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "maxDosePerTreatmentPeriod":
-                        MaxDosePerTreatmentPeriod = source.Populate(MaxDosePerTreatmentPeriod);
+                        MaxDosePerTreatmentPeriod = source.Populate(MaxDosePerTreatmentPeriod, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "maxTreatmentPeriod":
-                        MaxTreatmentPeriod = source.Populate(MaxTreatmentPeriod);
+                        MaxTreatmentPeriod = source.Populate(MaxTreatmentPeriod, () => new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "targetSpecies":
                         source.SetList(this, jsonPropertyName);
@@ -408,7 +408,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "targetSpecies":
-                        source.PopulateListItem(TargetSpecies, index);
+                        source.PopulateListItem(TargetSpecies, index, () => new TargetSpeciesComponent());
                         return true;
                 }
                 return false;
@@ -588,7 +588,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "withdrawalPeriod":
                         source.SetList(this, jsonPropertyName);
@@ -606,7 +606,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "withdrawalPeriod":
-                        source.PopulateListItem(WithdrawalPeriod, index);
+                        source.PopulateListItem(WithdrawalPeriod, index, () => new WithdrawalPeriodComponent());
                         return true;
                 }
                 return false;
@@ -793,16 +793,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "tissue":
-                        Tissue = source.Populate(Tissue);
+                        Tissue = source.Populate(Tissue, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "value":
-                        Value = source.Populate(Value);
+                        Value = source.Populate(Value, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "supportingInformation":
                         SupportingInformationElement = source.PopulateValue(SupportingInformationElement);
                         return true;
                     case "_supportingInformation":
-                        SupportingInformationElement = source.Populate(SupportingInformationElement);
+                        SupportingInformationElement = source.Populate(SupportingInformationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1134,10 +1134,10 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "administrableDoseForm":
-                    AdministrableDoseForm = source.Populate(AdministrableDoseForm);
+                    AdministrableDoseForm = source.Populate(AdministrableDoseForm, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "unitOfPresentation":
-                    UnitOfPresentation = source.Populate(UnitOfPresentation);
+                    UnitOfPresentation = source.Populate(UnitOfPresentation, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "ingredient":
                     source.SetList(this, jsonPropertyName);
@@ -1164,19 +1164,19 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "ingredient":
-                    source.PopulateListItem(Ingredient, index);
+                    source.PopulateListItem(Ingredient, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
-                    source.PopulateListItem(Device, index);
+                    source.PopulateListItem(Device, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "characteristics":
-                    source.PopulateListItem(Characteristics, index);
+                    source.PopulateListItem(Characteristics, index, () => new CharacteristicsComponent());
                     return true;
                 case "routeOfAdministration":
-                    source.PopulateListItem(RouteOfAdministration, index);
+                    source.PopulateListItem(RouteOfAdministration, index, () => new RouteOfAdministrationComponent());
                     return true;
             }
             return false;

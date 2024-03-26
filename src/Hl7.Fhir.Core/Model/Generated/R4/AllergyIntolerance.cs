@@ -278,7 +278,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "substance":
-                        Substance = source.Populate(Substance);
+                        Substance = source.Populate(Substance, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "manifestation":
                         source.SetList(this, jsonPropertyName);
@@ -287,22 +287,22 @@ namespace Hl7.Fhir.Model.R4
                         DescriptionElement = source.PopulateValue(DescriptionElement);
                         return true;
                     case "_description":
-                        DescriptionElement = source.Populate(DescriptionElement);
+                        DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "onset":
                         OnsetElement = source.PopulateValue(OnsetElement);
                         return true;
                     case "_onset":
-                        OnsetElement = source.Populate(OnsetElement);
+                        OnsetElement = source.Populate(OnsetElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "severity":
                         SeverityElement = source.PopulateValue(SeverityElement);
                         return true;
                     case "_severity":
-                        SeverityElement = source.Populate(SeverityElement);
+                        SeverityElement = source.Populate(SeverityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AllergyIntoleranceSeverity>());
                         return true;
                     case "exposureRoute":
-                        ExposureRoute = source.Populate(ExposureRoute);
+                        ExposureRoute = source.Populate(ExposureRoute, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "note":
                         source.SetList(this, jsonPropertyName);
@@ -320,10 +320,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "manifestation":
-                        source.PopulateListItem(Manifestation, index);
+                        source.PopulateListItem(Manifestation, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "note":
-                        source.PopulateListItem(Note, index);
+                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                         return true;
                 }
                 return false;
@@ -995,16 +995,16 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "clinicalStatus":
-                    ClinicalStatus = source.Populate(ClinicalStatus);
+                    ClinicalStatus = source.Populate(ClinicalStatus, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "verificationStatus":
-                    VerificationStatus = source.Populate(VerificationStatus);
+                    VerificationStatus = source.Populate(VerificationStatus, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "type":
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AllergyIntoleranceType>());
                     return true;
                 case "category":
                 case "_category":
@@ -1014,16 +1014,16 @@ namespace Hl7.Fhir.Model.R4
                     CriticalityElement = source.PopulateValue(CriticalityElement);
                     return true;
                 case "_criticality":
-                    CriticalityElement = source.Populate(CriticalityElement);
+                    CriticalityElement = source.Populate(CriticalityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AllergyIntoleranceCriticality>());
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "onsetDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Onset, "onset");
@@ -1031,19 +1031,19 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_onsetDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Onset, "onset");
-                    Onset = source.Populate(Onset as Hl7.Fhir.Model.FhirDateTime);
+                    Onset = source.Populate(Onset as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "onsetAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Onset, "onset");
-                    Onset = source.Populate(Onset as Hl7.Fhir.Model.R4.Age);
+                    Onset = source.Populate(Onset as Hl7.Fhir.Model.R4.Age, () => new Hl7.Fhir.Model.R4.Age());
                     return true;
                 case "onsetPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Onset, "onset");
-                    Onset = source.Populate(Onset as Hl7.Fhir.Model.Period);
+                    Onset = source.Populate(Onset as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "onsetRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Onset, "onset");
-                    Onset = source.Populate(Onset as Hl7.Fhir.Model.Range);
+                    Onset = source.Populate(Onset as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                     return true;
                 case "onsetString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Onset, "onset");
@@ -1051,25 +1051,25 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_onsetString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Onset, "onset");
-                    Onset = source.Populate(Onset as Hl7.Fhir.Model.FhirString);
+                    Onset = source.Populate(Onset as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "recordedDate":
                     RecordedDateElement = source.PopulateValue(RecordedDateElement);
                     return true;
                 case "_recordedDate":
-                    RecordedDateElement = source.Populate(RecordedDateElement);
+                    RecordedDateElement = source.Populate(RecordedDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recorder":
-                    Recorder = source.Populate(Recorder);
+                    Recorder = source.Populate(Recorder, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "asserter":
-                    Asserter = source.Populate(Asserter);
+                    Asserter = source.Populate(Asserter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "lastOccurrence":
                     LastOccurrenceElement = source.PopulateValue(LastOccurrenceElement);
                     return true;
                 case "_lastOccurrence":
-                    LastOccurrenceElement = source.Populate(LastOccurrenceElement);
+                    LastOccurrenceElement = source.Populate(LastOccurrenceElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "note":
                     source.SetList(this, jsonPropertyName);
@@ -1090,19 +1090,19 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "category":
                     source.PopulatePrimitiveListItemValue(CategoryElement, index);
                     return true;
                 case "_category":
-                    source.PopulatePrimitiveListItem(CategoryElement, index);
+                    source.PopulatePrimitiveListItem(CategoryElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AllergyIntoleranceCategory>());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "reaction":
-                    source.PopulateListItem(Reaction, index);
+                    source.PopulateListItem(Reaction, index, () => new ReactionComponent());
                     return true;
             }
             return false;

@@ -206,19 +206,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         StatusElement = source.PopulateValue(StatusElement);
                         return true;
                     case "_status":
-                        StatusElement = source.Populate(StatusElement);
+                        StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>());
                         return true;
                     case "description":
-                        Description = source.Populate(Description);
+                        Description = source.Populate(Description, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dateTime":
                         DateTimeElement = source.PopulateValue(DateTimeElement);
                         return true;
                     case "_dateTime":
-                        DateTimeElement = source.Populate(DateTimeElement);
+                        DateTimeElement = source.Populate(DateTimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "actor":
-                        Actor = source.Populate(Actor);
+                        Actor = source.Populate(Actor, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -462,19 +462,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "specimen":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "bodySite":
-                        BodySite = source.Populate(BodySite);
+                        BodySite = source.Populate(BodySite, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "status":
                         StatusElement = source.PopulateValue(StatusElement);
                         return true;
                     case "_status":
-                        StatusElement = source.Populate(StatusElement);
+                        StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>());
                         return true;
                     case "event":
                         source.SetList(this, jsonPropertyName);
@@ -492,10 +492,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "specimen":
-                        source.PopulateListItem(Specimen, index);
+                        source.PopulateListItem(Specimen, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "event":
-                        source.PopulateListItem(Event, index);
+                        source.PopulateListItem(Event, index, () => new EventComponent());
                         return true;
                 }
                 return false;
@@ -988,16 +988,16 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "orderer":
-                    Orderer = source.Populate(Orderer);
+                    Orderer = source.Populate(Orderer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reason":
                     source.SetList(this, jsonPropertyName);
@@ -1012,13 +1012,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>());
                     return true;
                 case "priority":
                     PriorityElement = source.PopulateValue(PriorityElement);
                     return true;
                 case "_priority":
-                    PriorityElement = source.Populate(PriorityElement);
+                    PriorityElement = source.Populate(PriorityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderPriority>());
                     return true;
                 case "event":
                     source.SetList(this, jsonPropertyName);
@@ -1042,25 +1042,25 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "reason":
-                    source.PopulateListItem(Reason, index);
+                    source.PopulateListItem(Reason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "supportingInformation":
-                    source.PopulateListItem(SupportingInformation, index);
+                    source.PopulateListItem(SupportingInformation, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "specimen":
-                    source.PopulateListItem(Specimen, index);
+                    source.PopulateListItem(Specimen, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "event":
-                    source.PopulateListItem(Event, index);
+                    source.PopulateListItem(Event, index, () => new EventComponent());
                     return true;
                 case "item":
-                    source.PopulateListItem(Item, index);
+                    source.PopulateListItem(Item, index, () => new ItemComponent());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

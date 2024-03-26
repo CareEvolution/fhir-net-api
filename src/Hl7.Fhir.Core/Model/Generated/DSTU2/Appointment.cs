@@ -210,19 +210,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "actor":
-                        Actor = source.Populate(Actor);
+                        Actor = source.Populate(Actor, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "required":
                         RequiredElement = source.PopulateValue(RequiredElement);
                         return true;
                     case "_required":
-                        RequiredElement = source.Populate(RequiredElement);
+                        RequiredElement = source.Populate(RequiredElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipantRequired>());
                         return true;
                     case "status":
                         StatusElement = source.PopulateValue(StatusElement);
                         return true;
                     case "_status":
-                        StatusElement = source.Populate(StatusElement);
+                        StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>());
                         return true;
                 }
                 return false;
@@ -237,7 +237,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        source.PopulateListItem(Type, index);
+                        source.PopulateListItem(Type, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -834,43 +834,43 @@ namespace Hl7.Fhir.Model.DSTU2
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AppointmentStatus>());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reason":
-                    Reason = source.Populate(Reason);
+                    Reason = source.Populate(Reason, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "priority":
                     PriorityElement = source.PopulateValue(PriorityElement);
                     return true;
                 case "_priority":
-                    PriorityElement = source.Populate(PriorityElement);
+                    PriorityElement = source.Populate(PriorityElement, () => new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "description":
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "start":
                     StartElement = source.PopulateValue(StartElement);
                     return true;
                 case "_start":
-                    StartElement = source.Populate(StartElement);
+                    StartElement = source.Populate(StartElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "end":
                     EndElement = source.PopulateValue(EndElement);
                     return true;
                 case "_end":
-                    EndElement = source.Populate(EndElement);
+                    EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "minutesDuration":
                     MinutesDurationElement = source.PopulateValue(MinutesDurationElement);
                     return true;
                 case "_minutesDuration":
-                    MinutesDurationElement = source.Populate(MinutesDurationElement);
+                    MinutesDurationElement = source.Populate(MinutesDurationElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "slot":
                     source.SetList(this, jsonPropertyName);
@@ -879,7 +879,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     CommentElement = source.PopulateValue(CommentElement);
                     return true;
                 case "_comment":
-                    CommentElement = source.Populate(CommentElement);
+                    CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "participant":
                     source.SetList(this, jsonPropertyName);
@@ -897,13 +897,13 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "slot":
-                    source.PopulateListItem(Slot, index);
+                    source.PopulateListItem(Slot, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "participant":
-                    source.PopulateListItem(Participant, index);
+                    source.PopulateListItem(Participant, index, () => new ParticipantComponent());
                     return true;
             }
             return false;

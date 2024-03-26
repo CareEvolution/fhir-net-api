@@ -294,22 +294,22 @@ namespace Hl7.Fhir.Model
                     ReferenceElement = source.PopulateValue(ReferenceElement);
                     return true;
                 case "_reference":
-                    ReferenceElement = source.Populate(ReferenceElement);
+                    ReferenceElement = source.Populate(ReferenceElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "display":
                     DisplayElement = source.PopulateValue(DisplayElement);
                     return true;
                 case "_display":
-                    DisplayElement = source.Populate(DisplayElement);
+                    DisplayElement = source.Populate(DisplayElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "identifier" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
             }
             return false;

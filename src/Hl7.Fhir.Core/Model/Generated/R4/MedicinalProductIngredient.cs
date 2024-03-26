@@ -170,13 +170,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "group":
-                        Group = source.Populate(Group);
+                        Group = source.Populate(Group, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "confidentiality":
-                        Confidentiality = source.Populate(Confidentiality);
+                        Confidentiality = source.Populate(Confidentiality, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "strength":
                         source.SetList(this, jsonPropertyName);
@@ -194,7 +194,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "strength":
-                        source.PopulateListItem(Strength, index);
+                        source.PopulateListItem(Strength, index, () => new StrengthComponent());
                         return true;
                 }
                 return false;
@@ -474,22 +474,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "presentation":
-                        Presentation = source.Populate(Presentation);
+                        Presentation = source.Populate(Presentation, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "presentationLowLimit":
-                        PresentationLowLimit = source.Populate(PresentationLowLimit);
+                        PresentationLowLimit = source.Populate(PresentationLowLimit, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "concentration":
-                        Concentration = source.Populate(Concentration);
+                        Concentration = source.Populate(Concentration, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "concentrationLowLimit":
-                        ConcentrationLowLimit = source.Populate(ConcentrationLowLimit);
+                        ConcentrationLowLimit = source.Populate(ConcentrationLowLimit, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "measurementPoint":
                         MeasurementPointElement = source.PopulateValue(MeasurementPointElement);
                         return true;
                     case "_measurementPoint":
-                        MeasurementPointElement = source.Populate(MeasurementPointElement);
+                        MeasurementPointElement = source.Populate(MeasurementPointElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "country":
                         source.SetList(this, jsonPropertyName);
@@ -510,10 +510,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "country":
-                        source.PopulateListItem(Country, index);
+                        source.PopulateListItem(Country, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "referenceStrength":
-                        source.PopulateListItem(ReferenceStrength, index);
+                        source.PopulateListItem(ReferenceStrength, index, () => new ReferenceStrengthComponent());
                         return true;
                 }
                 return false;
@@ -766,19 +766,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "substance":
-                        Substance = source.Populate(Substance);
+                        Substance = source.Populate(Substance, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "strength":
-                        Strength = source.Populate(Strength);
+                        Strength = source.Populate(Strength, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "strengthLowLimit":
-                        StrengthLowLimit = source.Populate(StrengthLowLimit);
+                        StrengthLowLimit = source.Populate(StrengthLowLimit, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "measurementPoint":
                         MeasurementPointElement = source.PopulateValue(MeasurementPointElement);
                         return true;
                     case "_measurementPoint":
-                        MeasurementPointElement = source.Populate(MeasurementPointElement);
+                        MeasurementPointElement = source.Populate(MeasurementPointElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "country":
                         source.SetList(this, jsonPropertyName);
@@ -796,7 +796,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "country":
-                        source.PopulateListItem(Country, index);
+                        source.PopulateListItem(Country, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -966,7 +966,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "strength":
                         source.SetList(this, jsonPropertyName);
@@ -984,7 +984,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "strength":
-                        source.PopulateListItem(Strength, index);
+                        source.PopulateListItem(Strength, index, () => new StrengthComponent());
                         return true;
                 }
                 return false;
@@ -1287,16 +1287,16 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "role":
-                    Role = source.Populate(Role);
+                    Role = source.Populate(Role, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "allergenicIndicator":
                     AllergenicIndicatorElement = source.PopulateValue(AllergenicIndicatorElement);
                     return true;
                 case "_allergenicIndicator":
-                    AllergenicIndicatorElement = source.Populate(AllergenicIndicatorElement);
+                    AllergenicIndicatorElement = source.Populate(AllergenicIndicatorElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "manufacturer":
                     source.SetList(this, jsonPropertyName);
@@ -1305,7 +1305,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "substance":
-                    Substance = source.Populate(Substance);
+                    Substance = source.Populate(Substance, () => new SubstanceComponent());
                     return true;
             }
             return false;
@@ -1320,10 +1320,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "manufacturer":
-                    source.PopulateListItem(Manufacturer, index);
+                    source.PopulateListItem(Manufacturer, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "specifiedSubstance":
-                    source.PopulateListItem(SpecifiedSubstance, index);
+                    source.PopulateListItem(SpecifiedSubstance, index, () => new SpecifiedSubstanceComponent());
                     return true;
             }
             return false;

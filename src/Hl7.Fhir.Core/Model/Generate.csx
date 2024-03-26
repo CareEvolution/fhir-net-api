@@ -3063,13 +3063,13 @@ public class PropertyDetails
             {
                 foreach (var pair in versionsByAllowedType)
                 {
-                    foreach (var line in RenderSetElementXFromJson(pair.Key, pair.Value)) yield return line;
+                    foreach (var line in RenderSetVersionSpecificElementFromJson(pair.Key, pair.Value)) yield return line;
                 }
             }
             else if (NativeType == null)
             {
                 yield return $"case \"{FhirName}\"{versionsWhen}:";
-                yield return $"    {Name} = source.Populate({Name});";
+                yield return $"    {Name} = source.Populate({Name}, () => new {PropType}());";
                 yield return $"    return true;";
             }
             else
@@ -3078,7 +3078,7 @@ public class PropertyDetails
                 yield return $"    {Name} = source.PopulateValue({Name});";
                 yield return $"    return true;";
                 yield return $"case \"_{FhirName}\"{versionsWhen}:";
-                yield return $"    {Name} = source.Populate({Name});";
+                yield return $"    {Name} = source.Populate({Name}, () => new {PropType}());";
                 yield return $"    return true;";
             }
         }
@@ -3131,7 +3131,7 @@ public class PropertyDetails
         yield return $"    return true;";
     }
 
-    private IEnumerable<string> RenderSetElementXFromJson(string type, HashSet<string> versions)
+    private IEnumerable<string> RenderSetVersionSpecificElementFromJson(string type, HashSet<string> versions)
     {
         var versionsWhen = VersionsWhen(versions);
         var fhirType = Globals.FhirDataTypeByCsType[type];
@@ -3140,7 +3140,7 @@ public class PropertyDetails
         if (PrimitiveType.Get(fhirType) == null)
         {
             yield return $"    source.CheckDuplicates<{type}>({Name}, \"{FhirName}\");";
-            yield return $"    {Name} = source.Populate({Name} as {type});";
+            yield return $"    {Name} = source.Populate({Name} as {type}, () => new {type}());";
             yield return $"    return true;";
         }
         else
@@ -3150,7 +3150,7 @@ public class PropertyDetails
             yield return $"    return true;";
             yield return $"case \"_{propertyName}\"{versionsWhen}:";
             yield return $"    source.CheckDuplicates<{type}>({Name}, \"{FhirName}\");";
-            yield return $"    {Name} = source.Populate({Name} as {type});";
+            yield return $"    {Name} = source.Populate({Name} as {type}, () => new {type}());";
             yield return $"    return true;";
 
         }
@@ -3162,7 +3162,14 @@ public class PropertyDetails
         yield return $"case \"{FhirName}\"{versionsWhen}:";
         if (NativeType == null)
         {
-            yield return $"    source.PopulateListItem({Name}, index);";
+            if (PropType == "Hl7.Fhir.Model.Resource")
+            {
+                yield return $"    source.PopulateListItem({Name}, index);";
+            }
+            else
+            {
+                yield return $"    source.PopulateListItem({Name}, index, () => new {PropType}());";
+            }
             yield return $"    return true;";
         }
         else
@@ -3170,7 +3177,7 @@ public class PropertyDetails
             yield return $"    source.PopulatePrimitiveListItemValue({Name}, index);";
             yield return $"    return true;";
             yield return $"case \"_{FhirName}\"{versionsWhen}:";
-            yield return $"    source.PopulatePrimitiveListItem({Name}, index);";
+            yield return $"    source.PopulatePrimitiveListItem({Name}, index, () => new {PropType}());";
             yield return $"    return true;";
 
         }

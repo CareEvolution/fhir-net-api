@@ -270,7 +270,7 @@ namespace Hl7.Fhir.Model.R4
                         InstructionElement = source.PopulateValue(InstructionElement);
                         return true;
                     case "_instruction":
-                        InstructionElement = source.Populate(InstructionElement);
+                        InstructionElement = source.Populate(InstructionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -285,19 +285,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        source.PopulateListItem(Type, index);
+                        source.PopulateListItem(Type, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "schedule":
-                        source.PopulateListItem(Schedule, index);
+                        source.PopulateListItem(Schedule, index, () => new Hl7.Fhir.Model.R4.Timing());
                         return true;
                     case "nutrient":
-                        source.PopulateListItem(Nutrient, index);
+                        source.PopulateListItem(Nutrient, index, () => new NutrientComponent());
                         return true;
                     case "texture":
-                        source.PopulateListItem(Texture, index);
+                        source.PopulateListItem(Texture, index, () => new TextureComponent());
                         return true;
                     case "fluidConsistencyType":
-                        source.PopulateListItem(FluidConsistencyType, index);
+                        source.PopulateListItem(FluidConsistencyType, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -463,10 +463,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "modifier":
-                        Modifier = source.Populate(Modifier);
+                        Modifier = source.Populate(Modifier, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "amount":
-                        Amount = source.Populate(Amount);
+                        Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                 }
                 return false;
@@ -612,10 +612,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "modifier":
-                        Modifier = source.Populate(Modifier);
+                        Modifier = source.Populate(Modifier, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "foodType":
-                        FoodType = source.Populate(FoodType);
+                        FoodType = source.Populate(FoodType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -861,25 +861,25 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "productName":
                         ProductNameElement = source.PopulateValue(ProductNameElement);
                         return true;
                     case "_productName":
-                        ProductNameElement = source.Populate(ProductNameElement);
+                        ProductNameElement = source.Populate(ProductNameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "schedule":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "instruction":
                         InstructionElement = source.PopulateValue(InstructionElement);
                         return true;
                     case "_instruction":
-                        InstructionElement = source.Populate(InstructionElement);
+                        InstructionElement = source.Populate(InstructionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -894,7 +894,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "schedule":
-                        source.PopulateListItem(Schedule, index);
+                        source.PopulateListItem(Schedule, index, () => new Hl7.Fhir.Model.R4.Timing());
                         return true;
                 }
                 return false;
@@ -1242,40 +1242,40 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "baseFormulaType":
-                        BaseFormulaType = source.Populate(BaseFormulaType);
+                        BaseFormulaType = source.Populate(BaseFormulaType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "baseFormulaProductName":
                         BaseFormulaProductNameElement = source.PopulateValue(BaseFormulaProductNameElement);
                         return true;
                     case "_baseFormulaProductName":
-                        BaseFormulaProductNameElement = source.Populate(BaseFormulaProductNameElement);
+                        BaseFormulaProductNameElement = source.Populate(BaseFormulaProductNameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "additiveType":
-                        AdditiveType = source.Populate(AdditiveType);
+                        AdditiveType = source.Populate(AdditiveType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "additiveProductName":
                         AdditiveProductNameElement = source.PopulateValue(AdditiveProductNameElement);
                         return true;
                     case "_additiveProductName":
-                        AdditiveProductNameElement = source.Populate(AdditiveProductNameElement);
+                        AdditiveProductNameElement = source.Populate(AdditiveProductNameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "caloricDensity":
-                        CaloricDensity = source.Populate(CaloricDensity);
+                        CaloricDensity = source.Populate(CaloricDensity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "routeofAdministration":
-                        RouteofAdministration = source.Populate(RouteofAdministration);
+                        RouteofAdministration = source.Populate(RouteofAdministration, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "administration":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "maxVolumeToDeliver":
-                        MaxVolumeToDeliver = source.Populate(MaxVolumeToDeliver);
+                        MaxVolumeToDeliver = source.Populate(MaxVolumeToDeliver, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "administrationInstruction":
                         AdministrationInstructionElement = source.PopulateValue(AdministrationInstructionElement);
                         return true;
                     case "_administrationInstruction":
-                        AdministrationInstructionElement = source.Populate(AdministrationInstructionElement);
+                        AdministrationInstructionElement = source.Populate(AdministrationInstructionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1290,7 +1290,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "administration":
-                        source.PopulateListItem(Administration, index);
+                        source.PopulateListItem(Administration, index, () => new AdministrationComponent());
                         return true;
                 }
                 return false;
@@ -1498,18 +1498,18 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "schedule":
-                        Schedule = source.Populate(Schedule);
+                        Schedule = source.Populate(Schedule, () => new Hl7.Fhir.Model.R4.Timing());
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "rateQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(Rate, "rate");
-                        Rate = source.Populate(Rate as Hl7.Fhir.Model.SimpleQuantity);
+                        Rate = source.Populate(Rate as Hl7.Fhir.Model.SimpleQuantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "rateRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Rate, "rate");
-                        Rate = source.Populate(Rate as Hl7.Fhir.Model.Ratio);
+                        Rate = source.Populate(Rate as Hl7.Fhir.Model.Ratio, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                 }
                 return false;
@@ -2219,28 +2219,28 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>());
                     return true;
                 case "intent":
                     IntentElement = source.PopulateValue(IntentElement);
                     return true;
                 case "_intent":
-                    IntentElement = source.Populate(IntentElement);
+                    IntentElement = source.Populate(IntentElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestIntent>());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dateTime":
                     DateTimeElement = source.PopulateValue(DateTimeElement);
                     return true;
                 case "_dateTime":
-                    DateTimeElement = source.Populate(DateTimeElement);
+                    DateTimeElement = source.Populate(DateTimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "orderer":
-                    Orderer = source.Populate(Orderer);
+                    Orderer = source.Populate(Orderer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "allergyIntolerance":
                     source.SetList(this, jsonPropertyName);
@@ -2252,13 +2252,13 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "oralDiet":
-                    OralDiet = source.Populate(OralDiet);
+                    OralDiet = source.Populate(OralDiet, () => new OralDietComponent());
                     return true;
                 case "supplement":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "enteralFormula":
-                    EnteralFormula = source.Populate(EnteralFormula);
+                    EnteralFormula = source.Populate(EnteralFormula, () => new EnteralFormulaComponent());
                     return true;
                 case "note":
                     source.SetList(this, jsonPropertyName);
@@ -2276,40 +2276,40 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "instantiatesCanonical":
                     source.PopulatePrimitiveListItemValue(InstantiatesCanonicalElement, index);
                     return true;
                 case "_instantiatesCanonical":
-                    source.PopulatePrimitiveListItem(InstantiatesCanonicalElement, index);
+                    source.PopulatePrimitiveListItem(InstantiatesCanonicalElement, index, () => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "instantiatesUri":
                     source.PopulatePrimitiveListItemValue(InstantiatesUriElement, index);
                     return true;
                 case "_instantiatesUri":
-                    source.PopulatePrimitiveListItem(InstantiatesUriElement, index);
+                    source.PopulatePrimitiveListItem(InstantiatesUriElement, index, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "instantiates":
                     source.PopulatePrimitiveListItemValue(InstantiatesElement, index);
                     return true;
                 case "_instantiates":
-                    source.PopulatePrimitiveListItem(InstantiatesElement, index);
+                    source.PopulatePrimitiveListItem(InstantiatesElement, index, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "allergyIntolerance":
-                    source.PopulateListItem(AllergyIntolerance, index);
+                    source.PopulateListItem(AllergyIntolerance, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "foodPreferenceModifier":
-                    source.PopulateListItem(FoodPreferenceModifier, index);
+                    source.PopulateListItem(FoodPreferenceModifier, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "excludeFoodModifier":
-                    source.PopulateListItem(ExcludeFoodModifier, index);
+                    source.PopulateListItem(ExcludeFoodModifier, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "supplement":
-                    source.PopulateListItem(Supplement, index);
+                    source.PopulateListItem(Supplement, index, () => new SupplementComponent());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

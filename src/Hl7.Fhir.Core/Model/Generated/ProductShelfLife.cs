@@ -212,13 +212,13 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "identifier" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "period" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "specialPrecautionsForStorage" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.SetList(this, jsonPropertyName);
@@ -236,7 +236,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "specialPrecautionsForStorage" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    source.PopulateListItem(SpecialPrecautionsForStorage, index);
+                    source.PopulateListItem(SpecialPrecautionsForStorage, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

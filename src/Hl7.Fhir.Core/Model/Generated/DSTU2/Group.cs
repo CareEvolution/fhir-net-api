@@ -195,11 +195,11 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
@@ -207,24 +207,24 @@ namespace Hl7.Fhir.Model.DSTU2
                         return true;
                     case "_valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirBoolean);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirBoolean, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Quantity);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Quantity, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "valueRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Range);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "exclude":
                         ExcludeElement = source.PopulateValue(ExcludeElement);
                         return true;
                     case "_exclude":
-                        ExcludeElement = source.Populate(ExcludeElement);
+                        ExcludeElement = source.Populate(ExcludeElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -419,16 +419,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "entity":
-                        Entity = source.Populate(Entity);
+                        Entity = source.Populate(Entity, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "inactive":
                         InactiveElement = source.PopulateValue(InactiveElement);
                         return true;
                     case "_inactive":
-                        InactiveElement = source.Populate(InactiveElement);
+                        InactiveElement = source.Populate(InactiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                 }
                 return false;
@@ -869,28 +869,28 @@ namespace Hl7.Fhir.Model.DSTU2
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GroupType>());
                     return true;
                 case "actual":
                     ActualElement = source.PopulateValue(ActualElement);
                     return true;
                 case "_actual":
-                    ActualElement = source.Populate(ActualElement);
+                    ActualElement = source.Populate(ActualElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "quantity":
                     QuantityElement = source.PopulateValue(QuantityElement);
                     return true;
                 case "_quantity":
-                    QuantityElement = source.Populate(QuantityElement);
+                    QuantityElement = source.Populate(QuantityElement, () => new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "characteristic":
                     source.SetList(this, jsonPropertyName);
@@ -911,13 +911,13 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "characteristic":
-                    source.PopulateListItem(Characteristic, index);
+                    source.PopulateListItem(Characteristic, index, () => new CharacteristicComponent());
                     return true;
                 case "member":
-                    source.PopulateListItem(Member, index);
+                    source.PopulateListItem(Member, index, () => new MemberComponent());
                     return true;
             }
             return false;

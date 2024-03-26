@@ -247,22 +247,22 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "country" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Country = source.Populate(Country);
+                    Country = source.Populate(Country, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "jurisdiction" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Jurisdiction = source.Populate(Jurisdiction);
+                    Jurisdiction = source.Populate(Jurisdiction, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Status = source.Populate(Status);
+                    Status = source.Populate(Status, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "dateRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    DateRange = source.Populate(DateRange);
+                    DateRange = source.Populate(DateRange, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "restoreDate" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     RestoreDateElement = source.PopulateValue(RestoreDateElement);
                     return true;
                 case "_restoreDate" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    RestoreDateElement = source.Populate(RestoreDateElement);
+                    RestoreDateElement = source.Populate(RestoreDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;

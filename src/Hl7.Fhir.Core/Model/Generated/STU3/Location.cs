@@ -203,19 +203,19 @@ namespace Hl7.Fhir.Model.STU3
                         LongitudeElement = source.PopulateValue(LongitudeElement);
                         return true;
                     case "_longitude":
-                        LongitudeElement = source.Populate(LongitudeElement);
+                        LongitudeElement = source.Populate(LongitudeElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "latitude":
                         LatitudeElement = source.PopulateValue(LatitudeElement);
                         return true;
                     case "_latitude":
-                        LatitudeElement = source.Populate(LatitudeElement);
+                        LatitudeElement = source.Populate(LatitudeElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "altitude":
                         AltitudeElement = source.PopulateValue(AltitudeElement);
                         return true;
                     case "_altitude":
-                        AltitudeElement = source.Populate(AltitudeElement);
+                        AltitudeElement = source.Populate(AltitudeElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                 }
                 return false;
@@ -806,16 +806,16 @@ namespace Hl7.Fhir.Model.STU3
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationStatus>());
                     return true;
                 case "operationalStatus":
-                    OperationalStatus = source.Populate(OperationalStatus);
+                    OperationalStatus = source.Populate(OperationalStatus, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "alias":
                 case "_alias":
@@ -825,34 +825,34 @@ namespace Hl7.Fhir.Model.STU3
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "mode":
                     ModeElement = source.PopulateValue(ModeElement);
                     return true;
                 case "_mode":
-                    ModeElement = source.Populate(ModeElement);
+                    ModeElement = source.Populate(ModeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationMode>());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "telecom":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "address":
-                    Address = source.Populate(Address);
+                    Address = source.Populate(Address, () => new Hl7.Fhir.Model.Address());
                     return true;
                 case "physicalType":
-                    PhysicalType = source.Populate(PhysicalType);
+                    PhysicalType = source.Populate(PhysicalType, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "position":
-                    Position = source.Populate(Position);
+                    Position = source.Populate(Position, () => new PositionComponent());
                     return true;
                 case "managingOrganization":
-                    ManagingOrganization = source.Populate(ManagingOrganization);
+                    ManagingOrganization = source.Populate(ManagingOrganization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    PartOf = source.Populate(PartOf);
+                    PartOf = source.Populate(PartOf, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "endpoint":
                     source.SetList(this, jsonPropertyName);
@@ -870,19 +870,19 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "alias":
                     source.PopulatePrimitiveListItemValue(AliasElement, index);
                     return true;
                 case "_alias":
-                    source.PopulatePrimitiveListItem(AliasElement, index);
+                    source.PopulatePrimitiveListItem(AliasElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.STU3.ContactPoint());
                     return true;
                 case "endpoint":
-                    source.PopulateListItem(Endpoint, index);
+                    source.PopulateListItem(Endpoint, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

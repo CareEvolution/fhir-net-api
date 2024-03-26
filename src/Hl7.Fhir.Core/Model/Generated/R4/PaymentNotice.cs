@@ -447,43 +447,43 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "request":
-                    Request = source.Populate(Request);
+                    Request = source.Populate(Request, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "response":
-                    Response = source.Populate(Response);
+                    Response = source.Populate(Response, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "created":
                     CreatedElement = source.PopulateValue(CreatedElement);
                     return true;
                 case "_created":
-                    CreatedElement = source.Populate(CreatedElement);
+                    CreatedElement = source.Populate(CreatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "provider":
-                    Provider = source.Populate(Provider);
+                    Provider = source.Populate(Provider, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "payment":
-                    Payment = source.Populate(Payment);
+                    Payment = source.Populate(Payment, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "paymentDate":
                     PaymentDateElement = source.PopulateValue(PaymentDateElement);
                     return true;
                 case "_paymentDate":
-                    PaymentDateElement = source.Populate(PaymentDateElement);
+                    PaymentDateElement = source.Populate(PaymentDateElement, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "payee":
-                    Payee = source.Populate(Payee);
+                    Payee = source.Populate(Payee, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "recipient":
-                    Recipient = source.Populate(Recipient);
+                    Recipient = source.Populate(Recipient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "amount":
-                    Amount = source.Populate(Amount);
+                    Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.R4.Money());
                     return true;
                 case "paymentStatus":
-                    PaymentStatus = source.Populate(PaymentStatus);
+                    PaymentStatus = source.Populate(PaymentStatus, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;
@@ -498,7 +498,7 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
             }
             return false;

@@ -226,16 +226,16 @@ namespace Hl7.Fhir.Model.R4
                     ContentTypeElement = source.PopulateValue(ContentTypeElement);
                     return true;
                 case "_contentType":
-                    ContentTypeElement = source.Populate(ContentTypeElement);
+                    ContentTypeElement = source.Populate(ContentTypeElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "securityContext":
-                    SecurityContext = source.Populate(SecurityContext);
+                    SecurityContext = source.Populate(SecurityContext, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "data":
                     DataElement = source.PopulateValue(DataElement);
                     return true;
                 case "_data":
-                    DataElement = source.Populate(DataElement);
+                    DataElement = source.Populate(DataElement, () => new Hl7.Fhir.Model.Base64Binary());
                     return true;
             }
             return false;
