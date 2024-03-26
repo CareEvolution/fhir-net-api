@@ -372,7 +372,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Quantity
         {
             get { return _Quantity; }
-            set { _Quantity = value; OnPropertyChanged("Quantity"); }
+            set { _Quantity = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Quantity"); }
         }
         
         private Hl7.Fhir.Model.Element _Quantity;
@@ -418,7 +418,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Occurrence
         {
             get { return _Occurrence; }
-            set { _Occurrence = value; OnPropertyChanged("Occurrence"); }
+            set { _Occurrence = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.R4.Timing)); OnPropertyChanged("Occurrence"); }
         }
         
         private Hl7.Fhir.Model.Element _Occurrence;
@@ -433,7 +433,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element AsNeeded
         {
             get { return _AsNeeded; }
-            set { _AsNeeded = value; OnPropertyChanged("AsNeeded"); }
+            set { _AsNeeded = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("AsNeeded"); }
         }
         
         private Hl7.Fhir.Model.Element _AsNeeded;

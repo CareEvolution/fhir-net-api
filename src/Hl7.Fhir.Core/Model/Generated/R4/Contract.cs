@@ -455,7 +455,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Topic
             {
                 get { return _Topic; }
-                set { _Topic = value; OnPropertyChanged("Topic"); }
+                set { _Topic = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Topic"); }
             }
             
             private Hl7.Fhir.Model.Element _Topic;
@@ -1813,7 +1813,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Value
             {
                 get { return _Value; }
-                set { _Value = value; OnPropertyChanged("Value"); }
+                set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Value"); }
             }
             
             private Hl7.Fhir.Model.Element _Value;
@@ -2953,7 +2953,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Entity
             {
                 get { return _Entity; }
-                set { _Entity = value; OnPropertyChanged("Entity"); }
+                set { _Entity = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Entity"); }
             }
             
             private Hl7.Fhir.Model.Element _Entity;
@@ -3767,7 +3767,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Occurrence
             {
                 get { return _Occurrence; }
-                set { _Occurrence = value; OnPropertyChanged("Occurrence"); }
+                set { _Occurrence = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.R4.Timing)); OnPropertyChanged("Occurrence"); }
             }
             
             private Hl7.Fhir.Model.Element _Occurrence;
@@ -4920,7 +4920,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Content
             {
                 get { return _Content; }
-                set { _Content = value; OnPropertyChanged("Content"); }
+                set { _Content = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Content"); }
             }
             
             private Hl7.Fhir.Model.Element _Content;
@@ -5057,7 +5057,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Content
             {
                 get { return _Content; }
-                set { _Content = value; OnPropertyChanged("Content"); }
+                set { _Content = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Content"); }
             }
             
             private Hl7.Fhir.Model.Element _Content;
@@ -5194,7 +5194,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Content
             {
                 get { return _Content; }
-                set { _Content = value; OnPropertyChanged("Content"); }
+                set { _Content = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Content"); }
             }
             
             private Hl7.Fhir.Model.Element _Content;
@@ -5806,7 +5806,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Topic
         {
             get { return _Topic; }
-            set { _Topic = value; OnPropertyChanged("Topic"); }
+            set { _Topic = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Topic"); }
         }
         
         private Hl7.Fhir.Model.Element _Topic;
@@ -5963,7 +5963,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element LegallyBinding
         {
             get { return _LegallyBinding; }
-            set { _LegallyBinding = value; OnPropertyChanged("LegallyBinding"); }
+            set { _LegallyBinding = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("LegallyBinding"); }
         }
         
         private Hl7.Fhir.Model.Element _LegallyBinding;

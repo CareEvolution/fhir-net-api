@@ -104,7 +104,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element ValueSet
             {
                 get { return _ValueSet; }
-                set { _ValueSet = value; OnPropertyChanged("ValueSet"); }
+                set { _ValueSet = CheckType(value, typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("ValueSet"); }
             }
             
             private Hl7.Fhir.Model.Element _ValueSet;
@@ -430,7 +430,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Value
             {
                 get { return _Value; }
-                set { _Value = value; OnPropertyChanged("Value"); }
+                set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.STU3.Duration)); OnPropertyChanged("Value"); }
             }
             
             private Hl7.Fhir.Model.Element _Value;

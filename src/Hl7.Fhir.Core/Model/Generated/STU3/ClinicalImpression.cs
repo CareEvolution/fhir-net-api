@@ -246,7 +246,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Item
             {
                 get { return _Item; }
-                set { _Item = value; OnPropertyChanged("Item"); }
+                set { _Item = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Item"); }
             }
             
             private Hl7.Fhir.Model.Element _Item;
@@ -552,7 +552,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Effective
         {
             get { return _Effective; }
-            set { _Effective = value; OnPropertyChanged("Effective"); }
+            set { _Effective = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Effective"); }
         }
         
         private Hl7.Fhir.Model.Element _Effective;

@@ -327,7 +327,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Target
             {
                 get { return _Target; }
-                set { _Target = value; OnPropertyChanged("Target"); }
+                set { _Target = CheckType(value, typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Target"); }
             }
             
             private Hl7.Fhir.Model.Element _Target;

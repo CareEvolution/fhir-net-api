@@ -408,7 +408,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Detail
             {
                 get { return _Detail; }
-                set { _Detail = value; OnPropertyChanged("Detail"); }
+                set { _Detail = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Detail"); }
             }
             
             private Hl7.Fhir.Model.Element _Detail;
@@ -848,7 +848,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Subject
             {
                 get { return _Subject; }
-                set { _Subject = value; OnPropertyChanged("Subject"); }
+                set { _Subject = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Subject"); }
             }
             
             private Hl7.Fhir.Model.Element _Subject;
@@ -933,7 +933,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Timing
             {
                 get { return _Timing; }
-                set { _Timing = value; OnPropertyChanged("Timing"); }
+                set { _Timing = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.R4.Age), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.R4.Timing)); OnPropertyChanged("Timing"); }
             }
             
             private Hl7.Fhir.Model.Element _Timing;
@@ -1135,7 +1135,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Definition
             {
                 get { return _Definition; }
-                set { _Definition = value; OnPropertyChanged("Definition"); }
+                set { _Definition = CheckType(value, typeof(Hl7.Fhir.Model.Canonical), typeof(Hl7.Fhir.Model.FhirUri)); OnPropertyChanged("Definition"); }
             }
             
             private Hl7.Fhir.Model.Element _Definition;
@@ -2087,7 +2087,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Offset
             {
                 get { return _Offset; }
-                set { _Offset = value; OnPropertyChanged("Offset"); }
+                set { _Offset = CheckType(value, typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Offset"); }
             }
             
             private Hl7.Fhir.Model.Element _Offset;
@@ -2861,7 +2861,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Subject
         {
             get { return _Subject; }
-            set { _Subject = value; OnPropertyChanged("Subject"); }
+            set { _Subject = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Subject"); }
         }
         
         private Hl7.Fhir.Model.Element _Subject;

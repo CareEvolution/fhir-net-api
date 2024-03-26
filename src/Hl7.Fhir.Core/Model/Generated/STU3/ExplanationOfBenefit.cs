@@ -484,7 +484,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Timing
             {
                 get { return _Timing; }
-                set { _Timing = value; OnPropertyChanged("Timing"); }
+                set { _Timing = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Timing"); }
             }
             
             private Hl7.Fhir.Model.Element _Timing;
@@ -499,7 +499,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Value
             {
                 get { return _Value; }
-                set { _Value = value; OnPropertyChanged("Value"); }
+                set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Value"); }
             }
             
             private Hl7.Fhir.Model.Element _Value;
@@ -1051,7 +1051,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Diagnosis
             {
                 get { return _Diagnosis; }
-                set { _Diagnosis = value; OnPropertyChanged("Diagnosis"); }
+                set { _Diagnosis = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Diagnosis"); }
             }
             
             private Hl7.Fhir.Model.Element _Diagnosis;
@@ -1339,7 +1339,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Procedure
             {
                 get { return _Procedure; }
-                set { _Procedure = value; OnPropertyChanged("Procedure"); }
+                set { _Procedure = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Procedure"); }
             }
             
             private Hl7.Fhir.Model.Element _Procedure;
@@ -1742,7 +1742,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Location
             {
                 get { return _Location; }
-                set { _Location = value; OnPropertyChanged("Location"); }
+                set { _Location = CheckType(value, typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Location"); }
             }
             
             private Hl7.Fhir.Model.Element _Location;
@@ -2137,7 +2137,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Serviced
             {
                 get { return _Serviced; }
-                set { _Serviced = value; OnPropertyChanged("Serviced"); }
+                set { _Serviced = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Serviced"); }
             }
             
             private Hl7.Fhir.Model.Element _Serviced;
@@ -2152,7 +2152,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Location
             {
                 get { return _Location; }
-                set { _Location = value; OnPropertyChanged("Location"); }
+                set { _Location = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Location"); }
             }
             
             private Hl7.Fhir.Model.Element _Location;
@@ -5982,7 +5982,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Allowed
             {
                 get { return _Allowed; }
-                set { _Allowed = value; OnPropertyChanged("Allowed"); }
+                set { _Allowed = CheckType(value, typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.STU3.Money)); OnPropertyChanged("Allowed"); }
             }
             
             private Hl7.Fhir.Model.Element _Allowed;
@@ -5997,7 +5997,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Used
             {
                 get { return _Used; }
-                set { _Used = value; OnPropertyChanged("Used"); }
+                set { _Used = CheckType(value, typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.STU3.Money)); OnPropertyChanged("Used"); }
             }
             
             private Hl7.Fhir.Model.Element _Used;

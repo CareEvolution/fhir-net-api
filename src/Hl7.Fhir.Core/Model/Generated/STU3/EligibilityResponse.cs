@@ -697,7 +697,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Allowed
             {
                 get { return _Allowed; }
-                set { _Allowed = value; OnPropertyChanged("Allowed"); }
+                set { _Allowed = CheckType(value, typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.STU3.Money)); OnPropertyChanged("Allowed"); }
             }
             
             private Hl7.Fhir.Model.Element _Allowed;
@@ -712,7 +712,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Used
             {
                 get { return _Used; }
-                set { _Used = value; OnPropertyChanged("Used"); }
+                set { _Used = CheckType(value, typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.STU3.Money)); OnPropertyChanged("Used"); }
             }
             
             private Hl7.Fhir.Model.Element _Used;

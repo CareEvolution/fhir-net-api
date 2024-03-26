@@ -130,7 +130,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Timing
         {
             get { return _Timing; }
-            set { _Timing = value; OnPropertyChanged("Timing"); }
+            set { _Timing = CheckType(value, typeof(Hl7.Fhir.Model.R4.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("Timing"); }
         }
         
         private Hl7.Fhir.Model.Element _Timing;

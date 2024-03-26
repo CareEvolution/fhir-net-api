@@ -251,7 +251,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Entity
             {
                 get { return _Entity; }
-                set { _Entity = value; OnPropertyChanged("Entity"); }
+                set { _Entity = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Entity"); }
             }
             
             private Hl7.Fhir.Model.Element _Entity;
@@ -1508,7 +1508,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Entity
             {
                 get { return _Entity; }
-                set { _Entity = value; OnPropertyChanged("Entity"); }
+                set { _Entity = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Entity"); }
             }
             
             private Hl7.Fhir.Model.Element _Entity;
@@ -1886,7 +1886,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Content
             {
                 get { return _Content; }
-                set { _Content = value; OnPropertyChanged("Content"); }
+                set { _Content = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Content"); }
             }
             
             private Hl7.Fhir.Model.Element _Content;
@@ -2023,7 +2023,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Content
             {
                 get { return _Content; }
-                set { _Content = value; OnPropertyChanged("Content"); }
+                set { _Content = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Content"); }
             }
             
             private Hl7.Fhir.Model.Element _Content;
@@ -2160,7 +2160,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Content
             {
                 get { return _Content; }
-                set { _Content = value; OnPropertyChanged("Content"); }
+                set { _Content = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Content"); }
             }
             
             private Hl7.Fhir.Model.Element _Content;
@@ -2525,7 +2525,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Binding
         {
             get { return _Binding; }
-            set { _Binding = value; OnPropertyChanged("Binding"); }
+            set { _Binding = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Binding"); }
         }
         
         private Hl7.Fhir.Model.Element _Binding;

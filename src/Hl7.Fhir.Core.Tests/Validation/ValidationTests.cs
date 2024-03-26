@@ -84,20 +84,6 @@ namespace Hl7.Fhir.Tests.Validation
             Assert.IsTrue(Uri.Equals(new Uri("http://nu.nl"), new Uri("http://nu.nl")));
         }
 
-   
-
-        [TestMethod]
-        public void TestAllowedChoices()
-        {
-            Patient p = new Patient();
-
-            p.Deceased = new FhirBoolean(true);
-            DotNetAttributeValidation.Validate(Fhir.Model.Version.DSTU2, p);
-
-            // Deceased can either be boolean or dateTime, not FhirUri
-            p.Deceased = new FhirUri();
-            validateErrorOrFail(p);
-        }
 
 
         [TestMethod]
@@ -130,20 +116,6 @@ namespace Hl7.Fhir.Tests.Validation
             p.Identifier.Add(null);
 
             validateErrorOrFail(p);
-        }
-
-        [TestMethod]
-        public void ContainedResourcesAreValidatedToo()
-        {
-            Patient p = new Patient();
-            // Deceased can either be boolean or dateTime, not FhirUri
-            p.Deceased = new FhirUri();
-
-            var pr = new Patient();
-            pr.Contained = new List<Resource> { p };
-
-            validateErrorOrFail(pr,true);
-            DotNetAttributeValidation.Validate(Fhir.Model.Version.DSTU2, pr);
         }
 
         [TestMethod]

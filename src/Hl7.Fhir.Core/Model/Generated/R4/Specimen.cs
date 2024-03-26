@@ -87,7 +87,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Collected
             {
                 get { return _Collected; }
-                set { _Collected = value; OnPropertyChanged("Collected"); }
+                set { _Collected = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Collected"); }
             }
             
             private Hl7.Fhir.Model.Element _Collected;
@@ -155,7 +155,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element FastingStatus
             {
                 get { return _FastingStatus; }
-                set { _FastingStatus = value; OnPropertyChanged("FastingStatus"); }
+                set { _FastingStatus = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.R4.Duration)); OnPropertyChanged("FastingStatus"); }
             }
             
             private Hl7.Fhir.Model.Element _FastingStatus;
@@ -438,7 +438,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Time
             {
                 get { return _Time; }
-                set { _Time = value; OnPropertyChanged("Time"); }
+                set { _Time = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Time"); }
             }
             
             private Hl7.Fhir.Model.Element _Time;
@@ -723,7 +723,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Additive
             {
                 get { return _Additive; }
-                set { _Additive = value; OnPropertyChanged("Additive"); }
+                set { _Additive = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Additive"); }
             }
             
             private Hl7.Fhir.Model.Element _Additive;

@@ -85,7 +85,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Probability
             {
                 get { return _Probability; }
-                set { _Probability = value; OnPropertyChanged("Probability"); }
+                set { _Probability = CheckType(value, typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Probability"); }
             }
             
             private Hl7.Fhir.Model.Element _Probability;
@@ -145,7 +145,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element When
             {
                 get { return _When; }
-                set { _When = value; OnPropertyChanged("When"); }
+                set { _When = CheckType(value, typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("When"); }
             }
             
             private Hl7.Fhir.Model.Element _When;
@@ -523,7 +523,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Occurrence
         {
             get { return _Occurrence; }
-            set { _Occurrence = value; OnPropertyChanged("Occurrence"); }
+            set { _Occurrence = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Occurrence"); }
         }
         
         private Hl7.Fhir.Model.Element _Occurrence;

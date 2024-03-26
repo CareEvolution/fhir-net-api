@@ -1448,7 +1448,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Rate
             {
                 get { return _Rate; }
-                set { _Rate = value; OnPropertyChanged("Rate"); }
+                set { _Rate = CheckType(value, typeof(Hl7.Fhir.Model.SimpleQuantity), typeof(Hl7.Fhir.Model.Ratio)); OnPropertyChanged("Rate"); }
             }
             
             private Hl7.Fhir.Model.Element _Rate;

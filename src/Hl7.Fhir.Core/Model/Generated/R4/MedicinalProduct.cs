@@ -999,7 +999,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Indication
             {
                 get { return _Indication; }
-                set { _Indication = value; OnPropertyChanged("Indication"); }
+                set { _Indication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Indication"); }
             }
             
             private Hl7.Fhir.Model.Element _Indication;

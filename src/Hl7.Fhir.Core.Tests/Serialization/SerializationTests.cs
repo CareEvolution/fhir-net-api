@@ -358,19 +358,9 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestMethod]
         public void TestParseUnkownPolymorphPropertyInJson()
         {
-            var dec6 = 6m;
-            var ext = new FhirDecimal(dec6);
-            var obs = new Observation{ Value = new FhirDecimal(dec6) };
-            var json = FhirDstu2JsonSerializer.SerializeToString(obs);
-            try
-            {
-                var obs2 = FhirDstu2JsonParser.Parse<Observation>(json);
-                Assert.Fail("valueDecimal is not a known type for Observation");
-            }
-            catch (FormatException)
-            {
-
-            }
+            var json = @"{""resourceType"":""Observation"", ""valueDecimal"": 6}";
+            var formatException = Assert.ThrowsException<FormatException>(() => FhirDstu2JsonParser.Parse<Observation>(json));
+            Assert.IsTrue(formatException.Message.Contains("Unrecognized element 'valueDecimal'"), $"Unexpected message<{formatException.Message}>");
         }
 
         [TestMethod]

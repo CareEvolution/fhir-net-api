@@ -310,7 +310,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Rate
             {
                 get { return _Rate; }
-                set { _Rate = value; OnPropertyChanged("Rate"); }
+                set { _Rate = CheckType(value, typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.SimpleQuantity)); OnPropertyChanged("Rate"); }
             }
             
             private Hl7.Fhir.Model.Element _Rate;
@@ -599,7 +599,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Medication
         {
             get { return _Medication; }
-            set { _Medication = value; OnPropertyChanged("Medication"); }
+            set { _Medication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Medication"); }
         }
         
         private Hl7.Fhir.Model.Element _Medication;
@@ -660,7 +660,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Effective
         {
             get { return _Effective; }
-            set { _Effective = value; OnPropertyChanged("Effective"); }
+            set { _Effective = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Effective"); }
         }
         
         private Hl7.Fhir.Model.Element _Effective;

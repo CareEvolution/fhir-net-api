@@ -557,7 +557,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Identified
         {
             get { return _Identified; }
-            set { _Identified = value; OnPropertyChanged("Identified"); }
+            set { _Identified = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Identified"); }
         }
         
         private Hl7.Fhir.Model.Element _Identified;

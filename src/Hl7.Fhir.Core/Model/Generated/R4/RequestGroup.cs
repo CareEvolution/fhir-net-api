@@ -302,7 +302,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Timing
             {
                 get { return _Timing; }
-                set { _Timing = value; OnPropertyChanged("Timing"); }
+                set { _Timing = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.R4.Age), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.R4.Timing)); OnPropertyChanged("Timing"); }
             }
             
             private Hl7.Fhir.Model.Element _Timing;
@@ -1234,7 +1234,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Offset
             {
                 get { return _Offset; }
-                set { _Offset = value; OnPropertyChanged("Offset"); }
+                set { _Offset = CheckType(value, typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Offset"); }
             }
             
             private Hl7.Fhir.Model.Element _Offset;

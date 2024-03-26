@@ -73,7 +73,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element P
             {
                 get { return _P; }
-                set { _P = value; OnPropertyChanged("P"); }
+                set { _P = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("P"); }
             }
             
             private Hl7.Fhir.Model.Element _P;

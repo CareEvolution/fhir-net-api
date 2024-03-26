@@ -1263,7 +1263,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Serviced
             {
                 get { return _Serviced; }
-                set { _Serviced = value; OnPropertyChanged("Serviced"); }
+                set { _Serviced = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Serviced"); }
             }
             
             private Hl7.Fhir.Model.Element _Serviced;
@@ -1278,7 +1278,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Location
             {
                 get { return _Location; }
-                set { _Location = value; OnPropertyChanged("Location"); }
+                set { _Location = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Location"); }
             }
             
             private Hl7.Fhir.Model.Element _Location;

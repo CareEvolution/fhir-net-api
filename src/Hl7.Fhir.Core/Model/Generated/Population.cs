@@ -63,7 +63,7 @@ namespace Hl7.Fhir.Model
         public Hl7.Fhir.Model.Element Age
         {
             get { return _Age; }
-            set { _Age = value; OnPropertyChanged("Age"); }
+            set { _Age = CheckType(value, typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Age"); }
         }
         
         private Hl7.Fhir.Model.Element _Age;

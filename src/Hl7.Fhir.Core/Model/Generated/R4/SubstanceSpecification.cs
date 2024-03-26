@@ -194,7 +194,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Amount
             {
                 get { return _Amount; }
-                set { _Amount = value; OnPropertyChanged("Amount"); }
+                set { _Amount = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Amount"); }
             }
             
             private Hl7.Fhir.Model.Element _Amount;
@@ -473,7 +473,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element DefiningSubstance
             {
                 get { return _DefiningSubstance; }
-                set { _DefiningSubstance = value; OnPropertyChanged("DefiningSubstance"); }
+                set { _DefiningSubstance = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("DefiningSubstance"); }
             }
             
             private Hl7.Fhir.Model.Element _DefiningSubstance;
@@ -488,7 +488,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Amount
             {
                 get { return _Amount; }
-                set { _Amount = value; OnPropertyChanged("Amount"); }
+                set { _Amount = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Amount"); }
             }
             
             private Hl7.Fhir.Model.Element _Amount;
@@ -2685,7 +2685,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Substance
             {
                 get { return _Substance; }
-                set { _Substance = value; OnPropertyChanged("Substance"); }
+                set { _Substance = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Substance"); }
             }
             
             private Hl7.Fhir.Model.Element _Substance;
@@ -2747,7 +2747,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Amount
             {
                 get { return _Amount; }
-                set { _Amount = value; OnPropertyChanged("Amount"); }
+                set { _Amount = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Amount"); }
             }
             
             private Hl7.Fhir.Model.Element _Amount;

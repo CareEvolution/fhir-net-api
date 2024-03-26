@@ -126,7 +126,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Reason
         {
             get { return _Reason; }
-            set { _Reason = value; OnPropertyChanged("Reason"); }
+            set { _Reason = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Reason"); }
         }
         
         private Hl7.Fhir.Model.Element _Reason;
@@ -141,7 +141,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Scheduled
         {
             get { return _Scheduled; }
-            set { _Scheduled = value; OnPropertyChanged("Scheduled"); }
+            set { _Scheduled = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.DSTU2.Timing)); OnPropertyChanged("Scheduled"); }
         }
         
         private Hl7.Fhir.Model.Element _Scheduled;
@@ -234,7 +234,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element AsNeeded
         {
             get { return _AsNeeded; }
-            set { _AsNeeded = value; OnPropertyChanged("AsNeeded"); }
+            set { _AsNeeded = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("AsNeeded"); }
         }
         
         private Hl7.Fhir.Model.Element _AsNeeded;

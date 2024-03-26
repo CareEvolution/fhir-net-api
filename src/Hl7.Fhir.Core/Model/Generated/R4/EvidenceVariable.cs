@@ -105,7 +105,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Definition
             {
                 get { return _Definition; }
-                set { _Definition = value; OnPropertyChanged("Definition"); }
+                set { _Definition = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Canonical), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Expression), typeof(Hl7.Fhir.Model.R4.DataRequirement), typeof(Hl7.Fhir.Model.R4.TriggerDefinition)); OnPropertyChanged("Definition"); }
             }
             
             private Hl7.Fhir.Model.Element _Definition;
@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element ParticipantEffective
             {
                 get { return _ParticipantEffective; }
-                set { _ParticipantEffective = value; OnPropertyChanged("ParticipantEffective"); }
+                set { _ParticipantEffective = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.R4.Timing)); OnPropertyChanged("ParticipantEffective"); }
             }
             
             private Hl7.Fhir.Model.Element _ParticipantEffective;

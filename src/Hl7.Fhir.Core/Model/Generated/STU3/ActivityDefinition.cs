@@ -1174,7 +1174,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Timing
         {
             get { return _Timing; }
-            set { _Timing = value; OnPropertyChanged("Timing"); }
+            set { _Timing = CheckType(value, typeof(Hl7.Fhir.Model.STU3.Timing), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Timing"); }
         }
         
         private Hl7.Fhir.Model.Element _Timing;
@@ -1218,7 +1218,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Product
         {
             get { return _Product; }
-            set { _Product = value; OnPropertyChanged("Product"); }
+            set { _Product = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Product"); }
         }
         
         private Hl7.Fhir.Model.Element _Product;

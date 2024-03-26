@@ -73,7 +73,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Content
             {
                 get { return _Content; }
-                set { _Content = value; OnPropertyChanged("Content"); }
+                set { _Content = CheckType(value, typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Content"); }
             }
             
             private Hl7.Fhir.Model.Element _Content;
@@ -370,7 +370,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Scheduled
         {
             get { return _Scheduled; }
-            set { _Scheduled = value; OnPropertyChanged("Scheduled"); }
+            set { _Scheduled = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Scheduled"); }
         }
         
         private Hl7.Fhir.Model.Element _Scheduled;

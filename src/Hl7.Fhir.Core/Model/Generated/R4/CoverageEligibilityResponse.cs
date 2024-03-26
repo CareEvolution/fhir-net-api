@@ -931,7 +931,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Allowed
             {
                 get { return _Allowed; }
-                set { _Allowed = value; OnPropertyChanged("Allowed"); }
+                set { _Allowed = CheckType(value, typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.R4.Money)); OnPropertyChanged("Allowed"); }
             }
             
             private Hl7.Fhir.Model.Element _Allowed;
@@ -946,7 +946,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Used
             {
                 get { return _Used; }
-                set { _Used = value; OnPropertyChanged("Used"); }
+                set { _Used = CheckType(value, typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.R4.Money)); OnPropertyChanged("Used"); }
             }
             
             private Hl7.Fhir.Model.Element _Used;
@@ -1364,7 +1364,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Serviced
         {
             get { return _Serviced; }
-            set { _Serviced = value; OnPropertyChanged("Serviced"); }
+            set { _Serviced = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Serviced"); }
         }
         
         private Hl7.Fhir.Model.Element _Serviced;

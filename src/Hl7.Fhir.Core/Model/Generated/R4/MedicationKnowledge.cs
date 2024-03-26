@@ -397,7 +397,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Item
             {
                 get { return _Item; }
-                set { _Item = value; OnPropertyChanged("Item"); }
+                set { _Item = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Item"); }
             }
             
             private Hl7.Fhir.Model.Element _Item;
@@ -988,7 +988,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Indication
             {
                 get { return _Indication; }
-                set { _Indication = value; OnPropertyChanged("Indication"); }
+                set { _Indication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Indication"); }
             }
             
             private Hl7.Fhir.Model.Element _Indication;
@@ -1362,7 +1362,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Characteristic
             {
                 get { return _Characteristic; }
-                set { _Characteristic = value; OnPropertyChanged("Characteristic"); }
+                set { _Characteristic = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.SimpleQuantity)); OnPropertyChanged("Characteristic"); }
             }
             
             private Hl7.Fhir.Model.Element _Characteristic;
@@ -1897,7 +1897,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Value
             {
                 get { return _Value; }
-                set { _Value = value; OnPropertyChanged("Value"); }
+                set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.SimpleQuantity), typeof(Hl7.Fhir.Model.Base64Binary)); OnPropertyChanged("Value"); }
             }
             
             private Hl7.Fhir.Model.Element _Value;

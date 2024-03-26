@@ -576,7 +576,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Onset
         {
             get { return _Onset; }
-            set { _Onset = value; OnPropertyChanged("Onset"); }
+            set { _Onset = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.R4.Age), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Onset"); }
         }
         
         private Hl7.Fhir.Model.Element _Onset;
@@ -591,7 +591,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Abatement
         {
             get { return _Abatement; }
-            set { _Abatement = value; OnPropertyChanged("Abatement"); }
+            set { _Abatement = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.R4.Age), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Abatement"); }
         }
         
         private Hl7.Fhir.Model.Element _Abatement;

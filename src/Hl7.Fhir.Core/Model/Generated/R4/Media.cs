@@ -217,7 +217,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Created
         {
             get { return _Created; }
-            set { _Created = value; OnPropertyChanged("Created"); }
+            set { _Created = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Created"); }
         }
         
         private Hl7.Fhir.Model.Element _Created;

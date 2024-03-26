@@ -343,7 +343,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Subject
         {
             get { return _Subject; }
-            set { _Subject = value; OnPropertyChanged("Subject"); }
+            set { _Subject = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Subject"); }
         }
         
         private Hl7.Fhir.Model.Element _Subject;

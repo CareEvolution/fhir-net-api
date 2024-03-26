@@ -643,7 +643,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Source
             {
                 get { return _Source; }
-                set { _Source = value; OnPropertyChanged("Source"); }
+                set { _Source = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Source"); }
             }
             
             private Hl7.Fhir.Model.Element _Source;

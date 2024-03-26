@@ -360,7 +360,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Date
             {
                 get { return _Date; }
-                set { _Date = value; OnPropertyChanged("Date"); }
+                set { _Date = CheckType(value, typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("Date"); }
             }
             
             private Hl7.Fhir.Model.Element _Date;

@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Who
         {
             get { return _Who; }
-            set { _Who = value; OnPropertyChanged("Who"); }
+            set { _Who = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Who"); }
         }
         
         private Hl7.Fhir.Model.Element _Who;
@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element OnBehalfOf
         {
             get { return _OnBehalfOf; }
-            set { _OnBehalfOf = value; OnPropertyChanged("OnBehalfOf"); }
+            set { _OnBehalfOf = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("OnBehalfOf"); }
         }
         
         private Hl7.Fhir.Model.Element _OnBehalfOf;

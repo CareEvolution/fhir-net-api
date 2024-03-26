@@ -1459,7 +1459,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Source
         {
             get { return _Source; }
-            set { _Source = value; OnPropertyChanged("Source"); }
+            set { _Source = CheckType(value, typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Source"); }
         }
         
         private Hl7.Fhir.Model.Element _Source;

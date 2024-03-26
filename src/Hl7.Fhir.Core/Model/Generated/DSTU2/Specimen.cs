@@ -120,7 +120,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Collected
             {
                 get { return _Collected; }
-                set { _Collected = value; OnPropertyChanged("Collected"); }
+                set { _Collected = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Collected"); }
             }
             
             private Hl7.Fhir.Model.Element _Collected;
@@ -685,7 +685,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Additive
             {
                 get { return _Additive; }
-                set { _Additive = value; OnPropertyChanged("Additive"); }
+                set { _Additive = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Additive"); }
             }
             
             private Hl7.Fhir.Model.Element _Additive;

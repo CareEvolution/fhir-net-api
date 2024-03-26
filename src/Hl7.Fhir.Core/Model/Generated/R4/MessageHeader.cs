@@ -870,7 +870,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Event
         {
             get { return _Event; }
-            set { _Event = value; OnPropertyChanged("Event"); }
+            set { _Event = CheckType(value, typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.FhirUri)); OnPropertyChanged("Event"); }
         }
         
         private Hl7.Fhir.Model.Element _Event;

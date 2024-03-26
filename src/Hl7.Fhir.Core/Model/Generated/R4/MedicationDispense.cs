@@ -538,7 +538,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element StatusReason
         {
             get { return _StatusReason; }
-            set { _StatusReason = value; OnPropertyChanged("StatusReason"); }
+            set { _StatusReason = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("StatusReason"); }
         }
         
         private Hl7.Fhir.Model.Element _StatusReason;
@@ -567,7 +567,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Medication
         {
             get { return _Medication; }
-            set { _Medication = value; OnPropertyChanged("Medication"); }
+            set { _Medication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Medication"); }
         }
         
         private Hl7.Fhir.Model.Element _Medication;

@@ -102,7 +102,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Collected
             {
                 get { return _Collected; }
-                set { _Collected = value; OnPropertyChanged("Collected"); }
+                set { _Collected = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Collected"); }
             }
             
             private Hl7.Fhir.Model.Element _Collected;
@@ -326,7 +326,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Time
             {
                 get { return _Time; }
-                set { _Time = value; OnPropertyChanged("Time"); }
+                set { _Time = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Time"); }
             }
             
             private Hl7.Fhir.Model.Element _Time;
@@ -537,7 +537,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Time
             {
                 get { return _Time; }
-                set { _Time = value; OnPropertyChanged("Time"); }
+                set { _Time = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Time"); }
             }
             
             private Hl7.Fhir.Model.Element _Time;

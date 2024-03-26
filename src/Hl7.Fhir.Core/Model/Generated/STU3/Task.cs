@@ -460,7 +460,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Value
             {
                 get { return _Value; }
-                set { _Value = value; OnPropertyChanged("Value"); }
+                set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.STU3.Age), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.STU3.ContactPoint), typeof(Hl7.Fhir.Model.STU3.Count), typeof(Hl7.Fhir.Model.STU3.Distance), typeof(Hl7.Fhir.Model.STU3.Duration), typeof(Hl7.Fhir.Model.STU3.HumanName), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.STU3.Money), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.STU3.SampledData), typeof(Hl7.Fhir.Model.STU3.Signature), typeof(Hl7.Fhir.Model.STU3.Timing), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("Value"); }
             }
             
             private Hl7.Fhir.Model.Element _Value;
@@ -975,7 +975,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Value
             {
                 get { return _Value; }
-                set { _Value = value; OnPropertyChanged("Value"); }
+                set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.STU3.Age), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.STU3.ContactPoint), typeof(Hl7.Fhir.Model.STU3.Count), typeof(Hl7.Fhir.Model.STU3.Distance), typeof(Hl7.Fhir.Model.STU3.Duration), typeof(Hl7.Fhir.Model.STU3.HumanName), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.STU3.Money), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.STU3.SampledData), typeof(Hl7.Fhir.Model.STU3.Signature), typeof(Hl7.Fhir.Model.STU3.Timing), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("Value"); }
             }
             
             private Hl7.Fhir.Model.Element _Value;
@@ -1491,7 +1491,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Definition
         {
             get { return _Definition; }
-            set { _Definition = value; OnPropertyChanged("Definition"); }
+            set { _Definition = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Definition"); }
         }
         
         private Hl7.Fhir.Model.Element _Definition;

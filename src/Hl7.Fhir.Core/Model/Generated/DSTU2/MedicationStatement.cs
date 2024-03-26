@@ -119,7 +119,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element AsNeeded
             {
                 get { return _AsNeeded; }
-                set { _AsNeeded = value; OnPropertyChanged("AsNeeded"); }
+                set { _AsNeeded = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("AsNeeded"); }
             }
             
             private Hl7.Fhir.Model.Element _AsNeeded;
@@ -134,7 +134,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Site
             {
                 get { return _Site; }
-                set { _Site = value; OnPropertyChanged("Site"); }
+                set { _Site = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Site"); }
             }
             
             private Hl7.Fhir.Model.Element _Site;
@@ -177,7 +177,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Quantity
             {
                 get { return _Quantity; }
-                set { _Quantity = value; OnPropertyChanged("Quantity"); }
+                set { _Quantity = CheckType(value, typeof(Hl7.Fhir.Model.SimpleQuantity), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Quantity"); }
             }
             
             private Hl7.Fhir.Model.Element _Quantity;
@@ -192,7 +192,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Rate
             {
                 get { return _Rate; }
-                set { _Rate = value; OnPropertyChanged("Rate"); }
+                set { _Rate = CheckType(value, typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Rate"); }
             }
             
             private Hl7.Fhir.Model.Element _Rate;
@@ -623,7 +623,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element ReasonForUse
         {
             get { return _ReasonForUse; }
-            set { _ReasonForUse = value; OnPropertyChanged("ReasonForUse"); }
+            set { _ReasonForUse = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("ReasonForUse"); }
         }
         
         private Hl7.Fhir.Model.Element _ReasonForUse;
@@ -638,7 +638,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Effective
         {
             get { return _Effective; }
-            set { _Effective = value; OnPropertyChanged("Effective"); }
+            set { _Effective = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Effective"); }
         }
         
         private Hl7.Fhir.Model.Element _Effective;
@@ -702,7 +702,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Medication
         {
             get { return _Medication; }
-            set { _Medication = value; OnPropertyChanged("Medication"); }
+            set { _Medication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Medication"); }
         }
         
         private Hl7.Fhir.Model.Element _Medication;

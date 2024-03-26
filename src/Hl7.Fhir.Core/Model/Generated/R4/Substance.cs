@@ -286,7 +286,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Substance
             {
                 get { return _Substance; }
-                set { _Substance = value; OnPropertyChanged("Substance"); }
+                set { _Substance = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Substance"); }
             }
             
             private Hl7.Fhir.Model.Element _Substance;

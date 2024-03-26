@@ -1320,7 +1320,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Manufacturer
         {
             get { return _Manufacturer; }
-            set { _Manufacturer = value; OnPropertyChanged("Manufacturer"); }
+            set { _Manufacturer = CheckType(value, typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Manufacturer"); }
         }
         
         private Hl7.Fhir.Model.Element _Manufacturer;

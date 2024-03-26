@@ -934,7 +934,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Diagnosis
             {
                 get { return _Diagnosis; }
-                set { _Diagnosis = value; OnPropertyChanged("Diagnosis"); }
+                set { _Diagnosis = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Diagnosis"); }
             }
             
             private Hl7.Fhir.Model.Element _Diagnosis;
@@ -1174,7 +1174,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Serviced
         {
             get { return _Serviced; }
-            set { _Serviced = value; OnPropertyChanged("Serviced"); }
+            set { _Serviced = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Serviced"); }
         }
         
         private Hl7.Fhir.Model.Element _Serviced;

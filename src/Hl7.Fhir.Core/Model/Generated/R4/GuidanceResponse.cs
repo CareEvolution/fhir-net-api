@@ -98,7 +98,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Module
         {
             get { return _Module; }
-            set { _Module = value; OnPropertyChanged("Module"); }
+            set { _Module = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Canonical), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Module"); }
         }
         
         private Hl7.Fhir.Model.Element _Module;

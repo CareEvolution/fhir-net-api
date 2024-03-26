@@ -1090,7 +1090,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Example
             {
                 get { return _Example; }
-                set { _Example = value; OnPropertyChanged("Example"); }
+                set { _Example = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Canonical)); OnPropertyChanged("Example"); }
             }
             
             private Hl7.Fhir.Model.Element _Example;
@@ -1360,7 +1360,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Name
             {
                 get { return _Name; }
-                set { _Name = value; OnPropertyChanged("Name"); }
+                set { _Name = CheckType(value, typeof(Hl7.Fhir.Model.Url), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Name"); }
             }
             
             private Hl7.Fhir.Model.Element _Name;
@@ -2430,7 +2430,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Example
             {
                 get { return _Example; }
-                set { _Example = value; OnPropertyChanged("Example"); }
+                set { _Example = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Canonical)); OnPropertyChanged("Example"); }
             }
             
             private Hl7.Fhir.Model.Element _Example;

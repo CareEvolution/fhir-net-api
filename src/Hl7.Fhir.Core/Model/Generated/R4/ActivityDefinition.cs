@@ -671,7 +671,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Subject
         {
             get { return _Subject; }
-            set { _Subject = value; OnPropertyChanged("Subject"); }
+            set { _Subject = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Subject"); }
         }
         
         private Hl7.Fhir.Model.Element _Subject;
@@ -1297,7 +1297,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Timing
         {
             get { return _Timing; }
-            set { _Timing = value; OnPropertyChanged("Timing"); }
+            set { _Timing = CheckType(value, typeof(Hl7.Fhir.Model.R4.Timing), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.R4.Age), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.R4.Duration)); OnPropertyChanged("Timing"); }
         }
         
         private Hl7.Fhir.Model.Element _Timing;
@@ -1341,7 +1341,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Product
         {
             get { return _Product; }
-            set { _Product = value; OnPropertyChanged("Product"); }
+            set { _Product = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Product"); }
         }
         
         private Hl7.Fhir.Model.Element _Product;

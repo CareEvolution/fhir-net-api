@@ -130,7 +130,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element EventTiming
         {
             get { return _EventTiming; }
-            set { _EventTiming = value; OnPropertyChanged("EventTiming"); }
+            set { _EventTiming = CheckType(value, typeof(Hl7.Fhir.Model.STU3.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("EventTiming"); }
         }
         
         private Hl7.Fhir.Model.Element _EventTiming;

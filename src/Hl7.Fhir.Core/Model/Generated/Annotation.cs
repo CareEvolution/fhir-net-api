@@ -63,7 +63,7 @@ namespace Hl7.Fhir.Model
         public Hl7.Fhir.Model.Element Author
         {
             get { return _Author; }
-            set { _Author = value; OnPropertyChanged("Author"); }
+            set { _Author = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Author"); }
         }
         
         private Hl7.Fhir.Model.Element _Author;

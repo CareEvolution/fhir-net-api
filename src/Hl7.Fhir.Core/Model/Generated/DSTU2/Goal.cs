@@ -72,7 +72,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Result
             {
                 get { return _Result; }
-                set { _Result = value; OnPropertyChanged("Result"); }
+                set { _Result = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Result"); }
             }
             
             private Hl7.Fhir.Model.Element _Result;
@@ -230,7 +230,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Start
         {
             get { return _Start; }
-            set { _Start = value; OnPropertyChanged("Start"); }
+            set { _Start = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Start"); }
         }
         
         private Hl7.Fhir.Model.Element _Start;
@@ -245,7 +245,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Target
         {
             get { return _Target; }
-            set { _Target = value; OnPropertyChanged("Target"); }
+            set { _Target = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.DSTU2.Duration)); OnPropertyChanged("Target"); }
         }
         
         private Hl7.Fhir.Model.Element _Target;

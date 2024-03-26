@@ -794,7 +794,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element DoseNumber
             {
                 get { return _DoseNumber; }
-                set { _DoseNumber = value; OnPropertyChanged("DoseNumber"); }
+                set { _DoseNumber = CheckType(value, typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("DoseNumber"); }
             }
             
             private Hl7.Fhir.Model.Element _DoseNumber;
@@ -809,7 +809,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element SeriesDoses
             {
                 get { return _SeriesDoses; }
-                set { _SeriesDoses = value; OnPropertyChanged("SeriesDoses"); }
+                set { _SeriesDoses = CheckType(value, typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("SeriesDoses"); }
             }
             
             private Hl7.Fhir.Model.Element _SeriesDoses;
@@ -1146,7 +1146,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Occurrence
         {
             get { return _Occurrence; }
-            set { _Occurrence = value; OnPropertyChanged("Occurrence"); }
+            set { _Occurrence = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Occurrence"); }
         }
         
         private Hl7.Fhir.Model.Element _Occurrence;

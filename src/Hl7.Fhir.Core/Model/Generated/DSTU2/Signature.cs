@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Who
         {
             get { return _Who; }
-            set { _Who = value; OnPropertyChanged("Who"); }
+            set { _Who = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Who"); }
         }
         
         private Hl7.Fhir.Model.Element _Who;

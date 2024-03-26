@@ -99,7 +99,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Onset
             {
                 get { return _Onset; }
-                set { _Onset = value; OnPropertyChanged("Onset"); }
+                set { _Onset = CheckType(value, typeof(Hl7.Fhir.Model.STU3.Age), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Onset"); }
             }
             
             private Hl7.Fhir.Model.Element _Onset;
@@ -563,7 +563,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Born
         {
             get { return _Born; }
-            set { _Born = value; OnPropertyChanged("Born"); }
+            set { _Born = CheckType(value, typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Born"); }
         }
         
         private Hl7.Fhir.Model.Element _Born;
@@ -578,7 +578,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Age
         {
             get { return _Age; }
-            set { _Age = value; OnPropertyChanged("Age"); }
+            set { _Age = CheckType(value, typeof(Hl7.Fhir.Model.STU3.Age), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Age"); }
         }
         
         private Hl7.Fhir.Model.Element _Age;
@@ -626,7 +626,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Deceased
         {
             get { return _Deceased; }
-            set { _Deceased = value; OnPropertyChanged("Deceased"); }
+            set { _Deceased = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.STU3.Age), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Deceased"); }
         }
         
         private Hl7.Fhir.Model.Element _Deceased;

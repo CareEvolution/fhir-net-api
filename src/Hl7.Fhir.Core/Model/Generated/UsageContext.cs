@@ -80,7 +80,7 @@ namespace Hl7.Fhir.Model
         public Hl7.Fhir.Model.Element Value
         {
             get { return _Value; }
-            set { _Value = value; OnPropertyChanged("Value"); }
+            set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Value"); }
         }
         
         private Hl7.Fhir.Model.Element _Value;

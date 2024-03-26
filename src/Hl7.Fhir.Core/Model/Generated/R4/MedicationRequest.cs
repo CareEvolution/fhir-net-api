@@ -523,7 +523,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Allowed
             {
                 get { return _Allowed; }
-                set { _Allowed = value; OnPropertyChanged("Allowed"); }
+                set { _Allowed = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Allowed"); }
             }
             
             private Hl7.Fhir.Model.Element _Allowed;
@@ -865,7 +865,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Reported
         {
             get { return _Reported; }
-            set { _Reported = value; OnPropertyChanged("Reported"); }
+            set { _Reported = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Reported"); }
         }
         
         private Hl7.Fhir.Model.Element _Reported;
@@ -881,7 +881,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Medication
         {
             get { return _Medication; }
-            set { _Medication = value; OnPropertyChanged("Medication"); }
+            set { _Medication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Medication"); }
         }
         
         private Hl7.Fhir.Model.Element _Medication;

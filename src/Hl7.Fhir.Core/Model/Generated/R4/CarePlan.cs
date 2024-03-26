@@ -575,7 +575,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Scheduled
             {
                 get { return _Scheduled; }
-                set { _Scheduled = value; OnPropertyChanged("Scheduled"); }
+                set { _Scheduled = CheckType(value, typeof(Hl7.Fhir.Model.R4.Timing), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Scheduled"); }
             }
             
             private Hl7.Fhir.Model.Element _Scheduled;
@@ -621,7 +621,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Product
             {
                 get { return _Product; }
-                set { _Product = value; OnPropertyChanged("Product"); }
+                set { _Product = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Product"); }
             }
             
             private Hl7.Fhir.Model.Element _Product;

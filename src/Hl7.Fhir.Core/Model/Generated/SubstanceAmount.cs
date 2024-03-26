@@ -214,7 +214,7 @@ namespace Hl7.Fhir.Model
         public Hl7.Fhir.Model.Element Amount
         {
             get { return _Amount; }
-            set { _Amount = value; OnPropertyChanged("Amount"); }
+            set { _Amount = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Amount"); }
         }
         
         private Hl7.Fhir.Model.Element _Amount;

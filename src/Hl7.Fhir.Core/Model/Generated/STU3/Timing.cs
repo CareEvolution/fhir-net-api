@@ -70,7 +70,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Bounds
             {
                 get { return _Bounds; }
-                set { _Bounds = value; OnPropertyChanged("Bounds"); }
+                set { _Bounds = CheckType(value, typeof(Hl7.Fhir.Model.STU3.Duration), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Bounds"); }
             }
             
             private Hl7.Fhir.Model.Element _Bounds;

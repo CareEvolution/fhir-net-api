@@ -2035,7 +2035,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Source
         {
             get { return _Source; }
-            set { _Source = value; OnPropertyChanged("Source"); }
+            set { _Source = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Source"); }
         }
         
         private Hl7.Fhir.Model.Element _Source;
@@ -2050,7 +2050,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Target
         {
             get { return _Target; }
-            set { _Target = value; OnPropertyChanged("Target"); }
+            set { _Target = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Target"); }
         }
         
         private Hl7.Fhir.Model.Element _Target;

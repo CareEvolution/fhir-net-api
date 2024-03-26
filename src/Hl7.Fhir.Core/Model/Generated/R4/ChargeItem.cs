@@ -397,7 +397,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Occurrence
         {
             get { return _Occurrence; }
-            set { _Occurrence = value; OnPropertyChanged("Occurrence"); }
+            set { _Occurrence = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.R4.Timing)); OnPropertyChanged("Occurrence"); }
         }
         
         private Hl7.Fhir.Model.Element _Occurrence;
@@ -655,7 +655,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Product
         {
             get { return _Product; }
-            set { _Product = value; OnPropertyChanged("Product"); }
+            set { _Product = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Product"); }
         }
         
         private Hl7.Fhir.Model.Element _Product;

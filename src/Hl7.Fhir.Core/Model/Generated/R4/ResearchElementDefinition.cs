@@ -73,7 +73,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Definition
             {
                 get { return _Definition; }
-                set { _Definition = value; OnPropertyChanged("Definition"); }
+                set { _Definition = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Canonical), typeof(Hl7.Fhir.Model.Expression), typeof(Hl7.Fhir.Model.R4.DataRequirement)); OnPropertyChanged("Definition"); }
             }
             
             private Hl7.Fhir.Model.Element _Definition;
@@ -179,7 +179,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element StudyEffective
             {
                 get { return _StudyEffective; }
-                set { _StudyEffective = value; OnPropertyChanged("StudyEffective"); }
+                set { _StudyEffective = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.R4.Timing)); OnPropertyChanged("StudyEffective"); }
             }
             
             private Hl7.Fhir.Model.Element _StudyEffective;
@@ -271,7 +271,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element ParticipantEffective
             {
                 get { return _ParticipantEffective; }
-                set { _ParticipantEffective = value; OnPropertyChanged("ParticipantEffective"); }
+                set { _ParticipantEffective = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.R4.Timing)); OnPropertyChanged("ParticipantEffective"); }
             }
             
             private Hl7.Fhir.Model.Element _ParticipantEffective;
@@ -971,7 +971,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Subject
         {
             get { return _Subject; }
-            set { _Subject = value; OnPropertyChanged("Subject"); }
+            set { _Subject = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Subject"); }
         }
         
         private Hl7.Fhir.Model.Element _Subject;

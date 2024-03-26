@@ -552,7 +552,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element MinimumVolume
             {
                 get { return _MinimumVolume; }
-                set { _MinimumVolume = value; OnPropertyChanged("MinimumVolume"); }
+                set { _MinimumVolume = CheckType(value, typeof(Hl7.Fhir.Model.SimpleQuantity), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("MinimumVolume"); }
             }
             
             private Hl7.Fhir.Model.Element _MinimumVolume;
@@ -849,7 +849,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Additive
             {
                 get { return _Additive; }
-                set { _Additive = value; OnPropertyChanged("Additive"); }
+                set { _Additive = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Additive"); }
             }
             
             private Hl7.Fhir.Model.Element _Additive;

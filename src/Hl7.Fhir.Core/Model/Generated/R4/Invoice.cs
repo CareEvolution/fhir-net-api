@@ -257,7 +257,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element ChargeItem
             {
                 get { return _ChargeItem; }
-                set { _ChargeItem = value; OnPropertyChanged("ChargeItem"); }
+                set { _ChargeItem = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("ChargeItem"); }
             }
             
             private Hl7.Fhir.Model.Element _ChargeItem;

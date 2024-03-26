@@ -536,7 +536,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Occurred
         {
             get { return _Occurred; }
-            set { _Occurred = value; OnPropertyChanged("Occurred"); }
+            set { _Occurred = CheckType(value, typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("Occurred"); }
         }
         
         private Hl7.Fhir.Model.Element _Occurred;

@@ -86,7 +86,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Detail
             {
                 get { return _Detail; }
-                set { _Detail = value; OnPropertyChanged("Detail"); }
+                set { _Detail = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.Ratio)); OnPropertyChanged("Detail"); }
             }
             
             private Hl7.Fhir.Model.Element _Detail;
@@ -101,7 +101,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Due
             {
                 get { return _Due; }
-                set { _Due = value; OnPropertyChanged("Due"); }
+                set { _Due = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.R4.Duration)); OnPropertyChanged("Due"); }
             }
             
             private Hl7.Fhir.Model.Element _Due;
@@ -442,7 +442,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Start
         {
             get { return _Start; }
-            set { _Start = value; OnPropertyChanged("Start"); }
+            set { _Start = CheckType(value, typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Start"); }
         }
         
         private Hl7.Fhir.Model.Element _Start;

@@ -86,7 +86,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Probability
             {
                 get { return _Probability; }
-                set { _Probability = value; OnPropertyChanged("Probability"); }
+                set { _Probability = CheckType(value, typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Probability"); }
             }
             
             private Hl7.Fhir.Model.Element _Probability;
@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element When
             {
                 get { return _When; }
-                set { _When = value; OnPropertyChanged("When"); }
+                set { _When = CheckType(value, typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("When"); }
             }
             
             private Hl7.Fhir.Model.Element _When;

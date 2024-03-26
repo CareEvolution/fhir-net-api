@@ -789,28 +789,28 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void JsonInstant()
         {
-            var observation = new Model.R4.Observation
+            var diagnosticReport = new Model.R4.DiagnosticReport
             {
-                Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
+                IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
             };
 
             var json = @"{
-  ""resourceType"": ""Observation"",
-  ""valueInstant"": ""2019-11-21T13:45:06.567+00:00""
+  ""resourceType"": ""DiagnosticReport"",
+  ""issued"": ""2019-11-21T13:45:06.567+00:00""
 }";
-            var serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
+            var serializedJson = FastSerializeToJsonString(diagnosticReport, Model.Version.R4);
             Assert.AreEqual(json, serializedJson);
 
-            observation = new Model.R4.Observation
+            diagnosticReport = new Model.R4.DiagnosticReport
             {
-                Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
+                IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
             };
 
             json = @"{
-  ""resourceType"": ""Observation"",
-  ""valueInstant"": ""2019-11-21T13:45:06-04:00""
+  ""resourceType"": ""DiagnosticReport"",
+  ""issued"": ""2019-11-21T13:45:06-04:00""
 }";
-            serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
+            serializedJson = FastSerializeToJsonString(diagnosticReport, Model.Version.R4);
             Assert.AreEqual(json, serializedJson);
         }
 
@@ -821,28 +821,28 @@ namespace Hl7.Fhir.Serialization.Tests
             CultureInfo.CurrentCulture = new CultureInfo("da"); // Use '.' as the time separator
             try
             {
-                var observation = new Model.R4.Observation
+                var diagnosticReport = new Model.R4.DiagnosticReport
                 {
-                    Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
+                    IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
                 };
 
                 var json = @"{
-  ""resourceType"": ""Observation"",
-  ""valueInstant"": ""2019-11-21T13:45:06.567+00:00""
+  ""resourceType"": ""DiagnosticReport"",
+  ""issued"": ""2019-11-21T13:45:06.567+00:00""
 }";
-                var serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
+                var serializedJson = FastSerializeToJsonString(diagnosticReport, Model.Version.R4);
                 Assert.AreEqual(json, serializedJson);
 
-                observation = new Model.R4.Observation
+                diagnosticReport = new Model.R4.DiagnosticReport
                 {
-                    Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
+                    IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
                 };
 
                 json = @"{
-  ""resourceType"": ""Observation"",
-  ""valueInstant"": ""2019-11-21T13:45:06-04:00""
+  ""resourceType"": ""DiagnosticReport"",
+  ""issued"": ""2019-11-21T13:45:06-04:00""
 }";
-                serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
+                serializedJson = FastSerializeToJsonString(diagnosticReport, Model.Version.R4);
                 Assert.AreEqual(json, serializedJson);
             }
             finally
@@ -888,26 +888,26 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void XmlInstant()
         {
-            var observation = new Model.R4.Observation
+            var diagnosticReport = new Model.R4.DiagnosticReport
             {
-                Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
+                IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
             };
 
-            var xml = @"<Observation xmlns=""http://hl7.org/fhir"">
-  <valueInstant value=""2019-11-21T13:45:06.567Z"" />
-</Observation>";
-            var serializedXml = FastSerializeToXmlString(observation, Model.Version.R4);
+            var xml = @"<DiagnosticReport xmlns=""http://hl7.org/fhir"">
+  <issued value=""2019-11-21T13:45:06.567Z"" />
+</DiagnosticReport>";
+            var serializedXml = FastSerializeToXmlString(diagnosticReport, Model.Version.R4);
             Assert.AreEqual(xml, serializedXml);
 
-            observation = new Model.R4.Observation
+            diagnosticReport = new Model.R4.DiagnosticReport
             {
-                Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
+                IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
             };
 
-            xml = @"<Observation xmlns=""http://hl7.org/fhir"">
-  <valueInstant value=""2019-11-21T13:45:06-04:00"" />
-</Observation>";
-            serializedXml = FastSerializeToXmlString(observation, Model.Version.R4);
+            xml = @"<DiagnosticReport xmlns=""http://hl7.org/fhir"">
+  <issued value=""2019-11-21T13:45:06-04:00"" />
+</DiagnosticReport>";
+            serializedXml = FastSerializeToXmlString(diagnosticReport, Model.Version.R4);
             Assert.AreEqual(xml, serializedXml);
         }
 

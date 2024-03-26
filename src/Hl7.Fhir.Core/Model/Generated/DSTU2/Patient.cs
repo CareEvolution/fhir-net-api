@@ -1083,7 +1083,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Deceased
         {
             get { return _Deceased; }
-            set { _Deceased = value; OnPropertyChanged("Deceased"); }
+            set { _Deceased = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("Deceased"); }
         }
         
         private Hl7.Fhir.Model.Element _Deceased;
@@ -1126,7 +1126,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element MultipleBirth
         {
             get { return _MultipleBirth; }
-            set { _MultipleBirth = value; OnPropertyChanged("MultipleBirth"); }
+            set { _MultipleBirth = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer)); OnPropertyChanged("MultipleBirth"); }
         }
         
         private Hl7.Fhir.Model.Element _MultipleBirth;

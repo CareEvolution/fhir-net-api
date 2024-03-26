@@ -747,7 +747,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Trigger
         {
             get { return _Trigger; }
-            set { _Trigger = value; OnPropertyChanged("Trigger"); }
+            set { _Trigger = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Trigger"); }
         }
         
         private Hl7.Fhir.Model.Element _Trigger;

@@ -142,6 +142,15 @@ namespace Hl7.Fhir.Model
             PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(property));
         }
 
+        protected static Element CheckType(Element value, params Type[] allowedTypes)
+        {
+            if (value != null && !allowedTypes.Contains(value.GetType()))
+            {
+                var allowedTypeNames = string.Join( ", ", allowedTypes.Select(x => x.Name));
+                throw new InvalidOperationException($"Elements of type {value.GetType().Name} are not allowed - allowed types: {allowedTypeNames}");
+            }
+            return value;
+        }
 
         public abstract string TypeName { get; }
 

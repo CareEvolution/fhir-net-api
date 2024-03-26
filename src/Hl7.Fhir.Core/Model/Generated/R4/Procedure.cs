@@ -625,7 +625,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Performed
         {
             get { return _Performed; }
-            set { _Performed = value; OnPropertyChanged("Performed"); }
+            set { _Performed = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.R4.Age), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Performed"); }
         }
         
         private Hl7.Fhir.Model.Element _Performed;

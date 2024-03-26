@@ -2882,10 +2882,12 @@ public class PropertyDetails
         {
             yield return $"[References({ string.Join(",", ReferenceTargets.Select(rt => "\"" + rt + "\"")) })]";
         }
+        var allowedTypes = new HashSet<string>();
         foreach (var pair in AllowedTypesByVersion)
         {
             if (pair.Value.Count > 0)
             {
+                allowedTypes.UnionWith(pair.Value);
                 var types = string.Join(",", pair.Value.Select(at => "typeof(" + at + ")"));
                 if (string.IsNullOrEmpty(pair.Key))
                 {
@@ -2912,7 +2914,16 @@ public class PropertyDetails
         {
             yield return $"    get {{ return _{ Name }; }}";
         }
-        yield return $"    set {{ _{ Name } = value; OnPropertyChanged(\"{ Name }\"); }}";
+        if (allowedTypes.Count == 0
+            || (allowedTypes.Count == 1 && allowedTypes.Single().EndsWith( ".Resource") ) )
+        {
+            yield return $"    set {{ _{Name} = value; OnPropertyChanged(\"{Name}\"); }}";
+        }
+        else
+        {
+            var types = string.Join(", ", allowedTypes.Select(at => "typeof(" + at + ")"));
+            yield return $"    set {{ _{Name} = CheckType(value, {types}); OnPropertyChanged(\"{Name}\"); }}";
+        }
         yield return "}";
         yield return string.Empty;
         yield return $"private { ConvertedPropTypeWithCard() } _{ Name };";
@@ -3014,7 +3025,7 @@ public class PropertyDetails
             {
                 foreach (var pair in versionsByAllowedType)
                 {
-                    foreach (var line in RenderSetElementX(pair.Key, pair.Value)) yield return line;
+                    foreach (var line in RenderSetVersionSpecificElement(pair.Key, pair.Value)) yield return line;
                 }
             }
             else
@@ -3109,7 +3120,7 @@ public class PropertyDetails
         return result;
     }
 
-    private IEnumerable<string> RenderSetElementX(string type, HashSet<string> versions)
+    private IEnumerable<string> RenderSetVersionSpecificElement(string type, HashSet<string> versions)
     {
         var versionsWhen = VersionsWhen(versions);
         var fhirType = Globals.FhirDataTypeByCsType[type];
