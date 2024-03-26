@@ -109,10 +109,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "outerPackaging":
-                        OuterPackaging = source.Get<Hl7.Fhir.Model.Identifier>();
+                        OuterPackaging = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "immediatePackaging":
-                        ImmediatePackaging = source.Get<Hl7.Fhir.Model.Identifier>();
+                        ImmediatePackaging = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                 }
                 return false;
@@ -469,40 +469,40 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "material":
-                        Material = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Material = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "alternateMaterial":
-                        AlternateMaterial = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        AlternateMaterial = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "device":
-                        Device = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Device = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "manufacturedItem":
-                        ManufacturedItem = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        ManufacturedItem = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "packageItem":
-                        PackageItem = source.GetList<PackageItemComponent>();
+                        PackageItem = source.GetList(() => new PackageItemComponent());
                         return true;
                     case "physicalCharacteristics":
-                        PhysicalCharacteristics = source.Get<Hl7.Fhir.Model.ProdCharacteristic>();
+                        PhysicalCharacteristics = source.Populate(new Hl7.Fhir.Model.ProdCharacteristic());
                         return true;
                     case "otherCharacteristics":
-                        OtherCharacteristics = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        OtherCharacteristics = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "shelfLifeStorage":
-                        ShelfLifeStorage = source.GetList<Hl7.Fhir.Model.ProductShelfLife>();
+                        ShelfLifeStorage = source.GetList(() => new Hl7.Fhir.Model.ProductShelfLife());
                         return true;
                     case "manufacturer":
-                        Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Manufacturer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -991,31 +991,31 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "legalStatusOfSupply":
-                    LegalStatusOfSupply = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    LegalStatusOfSupply = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "marketingStatus":
-                    MarketingStatus = source.GetList<Hl7.Fhir.Model.MarketingStatus>();
+                    MarketingStatus = source.GetList(() => new Hl7.Fhir.Model.MarketingStatus());
                     return true;
                 case "marketingAuthorization":
-                    MarketingAuthorization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    MarketingAuthorization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Manufacturer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "batchIdentifier":
-                    BatchIdentifier = source.GetList<BatchIdentifierComponent>();
+                    BatchIdentifier = source.GetList(() => new BatchIdentifierComponent());
                     return true;
                 case "packageItem":
-                    PackageItem = source.GetList<PackageItemComponent>();
+                    PackageItem = source.GetList(() => new PackageItemComponent());
                     return true;
             }
             return false;

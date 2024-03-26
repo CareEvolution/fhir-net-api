@@ -266,24 +266,24 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "type":
-                    Type = source.GetList<Hl7.Fhir.Model.Coding>();
+                    Type = source.GetList(() => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "when":
-                    WhenElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    WhenElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "whoUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
-                    Who = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    Who = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "whoReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Who, "who");
-                    Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Who = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contentType":
-                    ContentTypeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    ContentTypeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "blob":
-                    BlobElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                    BlobElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                     return true;
             }
             return false;

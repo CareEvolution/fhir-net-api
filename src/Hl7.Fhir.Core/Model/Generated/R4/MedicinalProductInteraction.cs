@@ -96,11 +96,11 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Item = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -405,25 +405,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "subject":
-                    Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "interactant":
-                    Interactant = source.GetList<InteractantComponent>();
+                    Interactant = source.GetList(() => new InteractantComponent());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "effect":
-                    Effect = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Effect = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "incidence":
-                    Incidence = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Incidence = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "management":
-                    Management = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Management = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

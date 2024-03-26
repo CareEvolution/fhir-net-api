@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Runtime;
 using System.Xml;
 
 namespace Hl7.Fhir.Serialization

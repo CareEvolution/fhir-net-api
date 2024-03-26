@@ -172,16 +172,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "imagingStudy":
-                        ImagingStudy = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        ImagingStudy = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "endpoint":
-                        Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Endpoint = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "series":
-                        Series = source.GetList<SeriesComponent>();
+                        Series = source.GetList(() => new SeriesComponent());
                         return true;
                 }
                 return false;
@@ -414,13 +414,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "endpoint":
-                        Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Endpoint = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "instance":
-                        Instance = source.GetList<InstanceComponent>();
+                        Instance = source.GetList(() => new InstanceComponent());
                         return true;
                 }
                 return false;
@@ -637,10 +637,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "sopClass":
-                        SopClassElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        SopClassElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "uid":
-                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                 }
                 return false;
@@ -951,22 +951,22 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authoringTime":
-                    AuthoringTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    AuthoringTimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "author":
-                    Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Author = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "study":
-                    Study = source.GetList<StudyComponent>();
+                    Study = source.GetList(() => new StudyComponent());
                     return true;
             }
             return false;

@@ -146,16 +146,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "role":
-                        Role = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "who":
-                        Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Who = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onBehalfOf":
-                        OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        OnBehalfOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -375,13 +375,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "role":
-                        RoleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ProvenanceEntityRole>>();
+                        RoleElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ProvenanceEntityRole>());
                         return true;
                     case "what":
-                        What = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        What = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "agent":
-                        Agent = source.GetList<AgentComponent>();
+                        Agent = source.GetList(() => new AgentComponent());
                         return true;
                 }
                 return false;
@@ -814,39 +814,39 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "target":
-                    Target = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Target = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "occurredPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurred, "occurred");
-                    Occurred = source.Get<Hl7.Fhir.Model.Period>();
+                    Occurred = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "occurredDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurred, "occurred");
-                    Occurred = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Occurred = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recorded":
-                    RecordedElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    RecordedElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "policy":
-                    PolicyElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
+                    PolicyElement = source.GetList(() => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reason":
-                    Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "activity":
-                    Activity = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Activity = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "agent":
-                    Agent = source.GetList<AgentComponent>();
+                    Agent = source.GetList(() => new AgentComponent());
                     return true;
                 case "entity":
-                    Entity = source.GetList<EntityComponent>();
+                    Entity = source.GetList(() => new EntityComponent());
                     return true;
                 case "signature":
-                    Signature = source.GetList<Hl7.Fhir.Model.R4.Signature>();
+                    Signature = source.GetList(() => new Hl7.Fhir.Model.R4.Signature());
                     return true;
             }
             return false;

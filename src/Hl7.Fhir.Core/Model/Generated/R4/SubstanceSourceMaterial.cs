@@ -127,10 +127,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "fraction":
-                        FractionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        FractionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "materialType":
-                        MaterialType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        MaterialType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -396,28 +396,28 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "family":
-                        Family = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Family = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "genus":
-                        Genus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Genus = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "species":
-                        Species = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Species = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "intraspecificType":
-                        IntraspecificType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        IntraspecificType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "intraspecificDescription":
-                        IntraspecificDescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        IntraspecificDescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "author":
-                        Author = source.GetList<AuthorComponent>();
+                        Author = source.GetList(() => new AuthorComponent());
                         return true;
                     case "hybrid":
-                        Hybrid = source.Get<HybridComponent>();
+                        Hybrid = source.Populate(new HybridComponent());
                         return true;
                     case "organismGeneral":
-                        OrganismGeneral = source.Get<OrganismGeneralComponent>();
+                        OrganismGeneral = source.Populate(new OrganismGeneralComponent());
                         return true;
                 }
                 return false;
@@ -650,10 +650,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "authorType":
-                        AuthorType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        AuthorType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "authorDescription":
-                        AuthorDescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        AuthorDescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -925,19 +925,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "maternalOrganismId":
-                        MaternalOrganismIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        MaternalOrganismIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "maternalOrganismName":
-                        MaternalOrganismNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        MaternalOrganismNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "paternalOrganismId":
-                        PaternalOrganismIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PaternalOrganismIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "paternalOrganismName":
-                        PaternalOrganismNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PaternalOrganismNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "hybridType":
-                        HybridType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        HybridType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1151,16 +1151,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "kingdom":
-                        Kingdom = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Kingdom = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "phylum":
-                        Phylum = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Phylum = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "class":
-                        Class = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Class = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "order":
-                        Order = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Order = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1324,10 +1324,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "part":
-                        Part = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Part = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "partLocation":
-                        PartLocation = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        PartLocation = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1798,43 +1798,43 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "sourceMaterialClass":
-                    SourceMaterialClass = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    SourceMaterialClass = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "sourceMaterialType":
-                    SourceMaterialType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    SourceMaterialType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "sourceMaterialState":
-                    SourceMaterialState = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    SourceMaterialState = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "organismId":
-                    OrganismId = source.Get<Hl7.Fhir.Model.Identifier>();
+                    OrganismId = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "organismName":
-                    OrganismNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    OrganismNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "parentSubstanceId":
-                    ParentSubstanceId = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    ParentSubstanceId = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "parentSubstanceName":
-                    ParentSubstanceNameElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    ParentSubstanceNameElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "countryOfOrigin":
-                    CountryOfOrigin = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    CountryOfOrigin = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "geographicalLocation":
-                    GeographicalLocationElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    GeographicalLocationElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "developmentStage":
-                    DevelopmentStage = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    DevelopmentStage = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "fractionDescription":
-                    FractionDescription = source.GetList<FractionDescriptionComponent>();
+                    FractionDescription = source.GetList(() => new FractionDescriptionComponent());
                     return true;
                 case "organism":
-                    Organism = source.Get<OrganismComponent>();
+                    Organism = source.Populate(new OrganismComponent());
                     return true;
                 case "partDescription":
-                    PartDescription = source.GetList<PartDescriptionComponent>();
+                    PartDescription = source.GetList(() => new PartDescriptionComponent());
                     return true;
             }
             return false;

@@ -158,33 +158,33 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Value = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "valueRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Range>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "valueReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Value = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "exclude":
-                        ExcludeElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        ExcludeElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "period":
-                        Period = source.Get<Hl7.Fhir.Model.Period>();
+                        Period = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -406,13 +406,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "entity":
-                        Entity = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Entity = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "period":
-                        Period = source.Get<Hl7.Fhir.Model.Period>();
+                        Period = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "inactive":
-                        InactiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        InactiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                 }
                 return false;
@@ -891,34 +891,34 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GroupType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GroupType>());
                     return true;
                 case "actual":
-                    ActualElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActualElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "quantity":
-                    QuantityElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                    QuantityElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "managingEntity":
-                    ManagingEntity = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ManagingEntity = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "characteristic":
-                    Characteristic = source.GetList<CharacteristicComponent>();
+                    Characteristic = source.GetList(() => new CharacteristicComponent());
                     return true;
                 case "member":
-                    Member = source.GetList<MemberComponent>();
+                    Member = source.GetList(() => new MemberComponent());
                     return true;
             }
             return false;

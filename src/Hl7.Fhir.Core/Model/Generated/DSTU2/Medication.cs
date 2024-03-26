@@ -129,13 +129,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "form":
-                        Form = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Form = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "ingredient":
-                        Ingredient = source.GetList<IngredientComponent>();
+                        Ingredient = source.GetList(() => new IngredientComponent());
                         return true;
                     case "batch":
-                        Batch = source.GetList<BatchComponent>();
+                        Batch = source.GetList(() => new BatchComponent());
                         return true;
                 }
                 return false;
@@ -310,10 +310,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "item":
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "amount":
-                        Amount = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                 }
                 return false;
@@ -485,10 +485,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "lotNumber":
-                        LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        LotNumberElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "expirationDate":
-                        ExpirationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        ExpirationDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                 }
                 return false;
@@ -646,10 +646,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "container":
-                        Container = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Container = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "content":
-                        Content = source.GetList<ContentComponent>();
+                        Content = source.GetList(() => new ContentComponent());
                         return true;
                 }
                 return false;
@@ -813,10 +813,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "item":
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "amount":
-                        Amount = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                 }
                 return false;
@@ -1074,19 +1074,19 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "isBrand":
-                    IsBrandElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    IsBrandElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Manufacturer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "product":
-                    Product = source.Get<ProductComponent>();
+                    Product = source.Populate(new ProductComponent());
                     return true;
                 case "package":
-                    Package = source.Get<PackageComponent>();
+                    Package = source.Populate(new PackageComponent());
                     return true;
             }
             return false;

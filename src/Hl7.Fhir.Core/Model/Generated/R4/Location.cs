@@ -179,13 +179,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "longitude":
-                        LongitudeElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        LongitudeElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "latitude":
-                        LatitudeElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        LatitudeElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "altitude":
-                        AltitudeElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        AltitudeElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                 }
                 return false;
@@ -455,16 +455,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "daysOfWeek":
-                        DaysOfWeekElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>>();
+                        DaysOfWeekElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>());
                         return true;
                     case "allDay":
-                        AllDayElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        AllDayElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "openingTime":
-                        OpeningTimeElement = source.Get<Hl7.Fhir.Model.Time>();
+                        OpeningTimeElement = source.Populate(new Hl7.Fhir.Model.Time());
                         return true;
                     case "closingTime":
-                        ClosingTimeElement = source.Get<Hl7.Fhir.Model.Time>();
+                        ClosingTimeElement = source.Populate(new Hl7.Fhir.Model.Time());
                         return true;
                 }
                 return false;
@@ -1114,55 +1114,55 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationStatus>());
                     return true;
                 case "operationalStatus":
-                    OperationalStatus = source.Get<Hl7.Fhir.Model.Coding>();
+                    OperationalStatus = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "alias":
-                    AliasElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    AliasElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "mode":
-                    ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationMode>>();
+                    ModeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.LocationMode>());
                     return true;
                 case "type":
-                    Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "address":
-                    Address = source.Get<Hl7.Fhir.Model.Address>();
+                    Address = source.Populate(new Hl7.Fhir.Model.Address());
                     return true;
                 case "physicalType":
-                    PhysicalType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    PhysicalType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "position":
-                    Position = source.Get<PositionComponent>();
+                    Position = source.Populate(new PositionComponent());
                     return true;
                 case "managingOrganization":
-                    ManagingOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ManagingOrganization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    PartOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    PartOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "hoursOfOperation":
-                    HoursOfOperation = source.GetList<HoursOfOperationComponent>();
+                    HoursOfOperation = source.GetList(() => new HoursOfOperationComponent());
                     return true;
                 case "availabilityExceptions":
-                    AvailabilityExceptionsElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    AvailabilityExceptionsElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "endpoint":
-                    Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Endpoint = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

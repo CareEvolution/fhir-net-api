@@ -201,25 +201,25 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "category":
-                        Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Category = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "description":
-                        Description = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Description = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "priority":
-                        Priority = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Priority = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "start":
-                        Start = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Start = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "addresses":
-                        Addresses = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Addresses = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "documentation":
-                        Documentation = source.GetList<Hl7.Fhir.Model.R4.RelatedArtifact>();
+                        Documentation = source.GetList(() => new Hl7.Fhir.Model.R4.RelatedArtifact());
                         return true;
                     case "target":
-                        Target = source.GetList<TargetComponent>();
+                        Target = source.GetList(() => new TargetComponent());
                         return true;
                 }
                 return false;
@@ -445,22 +445,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "measure":
-                        Measure = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Measure = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "detailQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Detail, "detail");
-                        Detail = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Detail = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "detailRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Detail, "detail");
-                        Detail = source.Get<Hl7.Fhir.Model.Range>();
+                        Detail = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "detailCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Detail, "detail");
-                        Detail = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Detail = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "due":
-                        Due = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        Due = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                 }
                 return false;
@@ -1300,116 +1300,116 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "prefix":
-                        PrefixElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PrefixElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "title":
-                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "textEquivalent":
-                        TextEquivalentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextEquivalentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "priority":
-                        PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
+                        PriorityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>());
                         return true;
                     case "code":
-                        Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "reason":
-                        Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Reason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "documentation":
-                        Documentation = source.GetList<Hl7.Fhir.Model.R4.RelatedArtifact>();
+                        Documentation = source.GetList(() => new Hl7.Fhir.Model.R4.RelatedArtifact());
                         return true;
                     case "goalId":
-                        GoalIdElement = source.GetList<Hl7.Fhir.Model.Id>();
+                        GoalIdElement = source.GetList(() => new Hl7.Fhir.Model.Id());
                         return true;
                     case "subjectCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Subject, "subject");
-                        Subject = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Subject = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "subjectReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Subject, "subject");
-                        Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "trigger":
-                        Trigger = source.GetList<Hl7.Fhir.Model.R4.TriggerDefinition>();
+                        Trigger = source.GetList(() => new Hl7.Fhir.Model.R4.TriggerDefinition());
                         return true;
                     case "condition":
-                        Condition = source.GetList<ConditionComponent>();
+                        Condition = source.GetList(() => new ConditionComponent());
                         return true;
                     case "input":
-                        Input = source.GetList<Hl7.Fhir.Model.R4.DataRequirement>();
+                        Input = source.GetList(() => new Hl7.Fhir.Model.R4.DataRequirement());
                         return true;
                     case "output":
-                        Output = source.GetList<Hl7.Fhir.Model.R4.DataRequirement>();
+                        Output = source.GetList(() => new Hl7.Fhir.Model.R4.DataRequirement());
                         return true;
                     case "relatedAction":
-                        RelatedAction = source.GetList<RelatedActionComponent>();
+                        RelatedAction = source.GetList(() => new RelatedActionComponent());
                         return true;
                     case "timingDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                        Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        Timing = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "timingAge":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Timing, "timing");
-                        Timing = source.Get<Hl7.Fhir.Model.R4.Age>();
+                        Timing = source.Populate(new Hl7.Fhir.Model.R4.Age());
                         return true;
                     case "timingPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Timing, "timing");
-                        Timing = source.Get<Hl7.Fhir.Model.Period>();
+                        Timing = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "timingDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(Timing, "timing");
-                        Timing = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        Timing = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "timingRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Timing, "timing");
-                        Timing = source.Get<Hl7.Fhir.Model.Range>();
+                        Timing = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "timingTiming":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Timing, "timing");
-                        Timing = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                        Timing = source.Populate(new Hl7.Fhir.Model.R4.Timing());
                         return true;
                     case "participant":
-                        Participant = source.GetList<ParticipantComponent>();
+                        Participant = source.GetList(() => new ParticipantComponent());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "groupingBehavior":
-                        GroupingBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionGroupingBehavior>>();
+                        GroupingBehaviorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionGroupingBehavior>());
                         return true;
                     case "selectionBehavior":
-                        SelectionBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionSelectionBehavior>>();
+                        SelectionBehaviorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionSelectionBehavior>());
                         return true;
                     case "requiredBehavior":
-                        RequiredBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionRequiredBehavior>>();
+                        RequiredBehaviorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionRequiredBehavior>());
                         return true;
                     case "precheckBehavior":
-                        PrecheckBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionPrecheckBehavior>>();
+                        PrecheckBehaviorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionPrecheckBehavior>());
                         return true;
                     case "cardinalityBehavior":
-                        CardinalityBehaviorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionCardinalityBehavior>>();
+                        CardinalityBehaviorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionCardinalityBehavior>());
                         return true;
                     case "definitionCanonical":
                         source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Definition, "definition");
-                        Definition = source.Get<Hl7.Fhir.Model.Canonical>();
+                        Definition = source.Populate(new Hl7.Fhir.Model.Canonical());
                         return true;
                     case "definitionUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Definition, "definition");
-                        Definition = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        Definition = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "transform":
-                        TransformElement = source.Get<Hl7.Fhir.Model.Canonical>();
+                        TransformElement = source.Populate(new Hl7.Fhir.Model.Canonical());
                         return true;
                     case "dynamicValue":
-                        DynamicValue = source.GetList<DynamicValueComponent>();
+                        DynamicValue = source.GetList(() => new DynamicValueComponent());
                         return true;
                     case "action":
-                        Action = source.GetList<ActionComponent>();
+                        Action = source.GetList(() => new ActionComponent());
                         return true;
                 }
                 return false;
@@ -1903,10 +1903,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "kind":
-                        KindElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionConditionKind>>();
+                        KindElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionConditionKind>());
                         return true;
                     case "expression":
-                        Expression = source.Get<Hl7.Fhir.Model.Expression>();
+                        Expression = source.Populate(new Hl7.Fhir.Model.Expression());
                         return true;
                 }
                 return false;
@@ -2111,18 +2111,18 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "actionId":
-                        ActionIdElement = source.Get<Hl7.Fhir.Model.Id>();
+                        ActionIdElement = source.Populate(new Hl7.Fhir.Model.Id());
                         return true;
                     case "relationship":
-                        RelationshipElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionRelationshipType>>();
+                        RelationshipElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionRelationshipType>());
                         return true;
                     case "offsetDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(Offset, "offset");
-                        Offset = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        Offset = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "offsetRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Offset, "offset");
-                        Offset = source.Get<Hl7.Fhir.Model.Range>();
+                        Offset = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                 }
                 return false;
@@ -2307,10 +2307,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ActionParticipantType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ActionParticipantType>());
                         return true;
                     case "role":
-                        Role = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -2478,10 +2478,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PathElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "expression":
-                        Expression = source.Get<Hl7.Fhir.Model.Expression>();
+                        Expression = source.Populate(new Hl7.Fhir.Model.Expression());
                         return true;
                 }
                 return false;
@@ -3588,102 +3588,102 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "version":
-                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    VersionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "title":
-                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subtitle":
-                    SubtitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    SubtitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ExperimentalElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "subjectCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Subject, "subject");
-                    Subject = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subjectReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Subject, "subject");
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "publisher":
-                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PublisherElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
                     return true;
                 case "jurisdiction":
-                    Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "purpose":
-                    PurposeElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    PurposeElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "usage":
-                    UsageElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    UsageElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "copyright":
-                    CopyrightElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    CopyrightElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "approvalDate":
-                    ApprovalDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    ApprovalDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "lastReviewDate":
-                    LastReviewDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    LastReviewDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "effectivePeriod":
-                    EffectivePeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    EffectivePeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "topic":
-                    Topic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Topic = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "author":
-                    Author = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Author = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "editor":
-                    Editor = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Editor = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "reviewer":
-                    Reviewer = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Reviewer = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "endorser":
-                    Endorser = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Endorser = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "relatedArtifact":
-                    RelatedArtifact = source.GetList<Hl7.Fhir.Model.R4.RelatedArtifact>();
+                    RelatedArtifact = source.GetList(() => new Hl7.Fhir.Model.R4.RelatedArtifact());
                     return true;
                 case "library":
-                    LibraryElement = source.GetList<Hl7.Fhir.Model.Canonical>();
+                    LibraryElement = source.GetList(() => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "goal":
-                    Goal = source.GetList<GoalComponent>();
+                    Goal = source.GetList(() => new GoalComponent());
                     return true;
                 case "action":
-                    Action = source.GetList<ActionComponent>();
+                    Action = source.GetList(() => new ActionComponent());
                     return true;
             }
             return false;

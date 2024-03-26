@@ -370,37 +370,37 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "activePeriod":
-                    ActivePeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    ActivePeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "currency":
-                    Currency = source.Get<Hl7.Fhir.Model.Coding>();
+                    Currency = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "balance":
-                    Balance = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
+                    Balance = source.Populate(new Hl7.Fhir.Model.DSTU2.Money());
                     return true;
                 case "coveragePeriod":
-                    CoveragePeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    CoveragePeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "owner":
-                    Owner = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Owner = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

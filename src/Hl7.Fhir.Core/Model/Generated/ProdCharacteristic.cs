@@ -375,37 +375,37 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "height" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Height = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Height = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "width" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Width = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Width = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "depth" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Depth = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Depth = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "weight" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Weight = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Weight = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "nominalVolume" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    NominalVolume = source.Get<Hl7.Fhir.Model.Quantity>();
+                    NominalVolume = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "externalDiameter" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ExternalDiameter = source.Get<Hl7.Fhir.Model.Quantity>();
+                    ExternalDiameter = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "shape" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ShapeElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ShapeElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "color" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ColorElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    ColorElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "imprint" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ImprintElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    ImprintElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "image" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Image = source.GetList<Hl7.Fhir.Model.Attachment>();
+                    Image = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "scoring" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Scoring = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Scoring = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

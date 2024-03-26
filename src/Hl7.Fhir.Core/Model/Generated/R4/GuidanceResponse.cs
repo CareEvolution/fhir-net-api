@@ -463,58 +463,58 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "requestIdentifier":
-                    RequestIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    RequestIdentifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "moduleUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Module, "module");
-                    Module = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    Module = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "moduleCanonical":
                     source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Module, "module");
-                    Module = source.Get<Hl7.Fhir.Model.Canonical>();
+                    Module = source.Populate(new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "moduleCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Module, "module");
-                    Module = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Module = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GuidanceResponseStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.GuidanceResponseStatus>());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "occurrenceDateTime":
-                    OccurrenceDateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    OccurrenceDateTimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "performer":
-                    Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Performer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "evaluationMessage":
-                    EvaluationMessage = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    EvaluationMessage = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outputParameters":
-                    OutputParameters = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    OutputParameters = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "result":
-                    Result = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Result = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dataRequirement":
-                    DataRequirement = source.GetList<Hl7.Fhir.Model.R4.DataRequirement>();
+                    DataRequirement = source.GetList(() => new Hl7.Fhir.Model.R4.DataRequirement());
                     return true;
             }
             return false;

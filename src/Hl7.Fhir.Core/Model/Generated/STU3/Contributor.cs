@@ -211,13 +211,13 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContributorType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContributorType>());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.STU3.ContactDetail());
                     return true;
             }
             return false;

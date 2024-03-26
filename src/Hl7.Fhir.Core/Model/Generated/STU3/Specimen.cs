@@ -152,24 +152,24 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "collector":
-                        Collector = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Collector = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "collectedDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Collected, "collected");
-                        Collected = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        Collected = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "collectedPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Collected, "collected");
-                        Collected = source.Get<Hl7.Fhir.Model.Period>();
+                        Collected = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "method":
-                        Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "bodySite":
-                        BodySite = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        BodySite = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -405,21 +405,21 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "procedure":
-                        Procedure = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Procedure = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "additive":
-                        Additive = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Additive = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "timeDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Time, "time");
-                        Time = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        Time = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "timePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Time, "time");
-                        Time = source.Get<Hl7.Fhir.Model.Period>();
+                        Time = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -692,27 +692,27 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "capacity":
-                        Capacity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Capacity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "specimenQuantity":
-                        SpecimenQuantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        SpecimenQuantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "additiveCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Additive, "additive");
-                        Additive = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Additive = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "additiveReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Additive, "additive");
-                        Additive = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Additive = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -1213,40 +1213,40 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "accessionIdentifier":
-                    AccessionIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    AccessionIdentifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SpecimenStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SpecimenStatus>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "receivedTime":
-                    ReceivedTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    ReceivedTimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "parent":
-                    Parent = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Parent = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "request":
-                    Request = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "collection":
-                    Collection = source.Get<CollectionComponent>();
+                    Collection = source.Populate(new CollectionComponent());
                     return true;
                 case "processing":
-                    Processing = source.GetList<ProcessingComponent>();
+                    Processing = source.GetList(() => new ProcessingComponent());
                     return true;
                 case "container":
-                    Container = source.GetList<ContainerComponent>();
+                    Container = source.GetList(() => new ContainerComponent());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

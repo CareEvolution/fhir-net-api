@@ -154,16 +154,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "population":
-                        Population = source.GetList<PopulationComponent>();
+                        Population = source.GetList(() => new PopulationComponent());
                         return true;
                     case "measureScore":
-                        MeasureScore = source.Get<Hl7.Fhir.Model.Quantity>();
+                        MeasureScore = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "stratifier":
-                        Stratifier = source.GetList<StratifierComponent>();
+                        Stratifier = source.GetList(() => new StratifierComponent());
                         return true;
                 }
                 return false;
@@ -379,13 +379,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "count":
-                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        CountElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "subjectResults":
-                        SubjectResults = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        SubjectResults = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -557,10 +557,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "stratum":
-                        Stratum = source.GetList<StratifierGroupComponent>();
+                        Stratum = source.GetList(() => new StratifierGroupComponent());
                         return true;
                 }
                 return false;
@@ -767,16 +767,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "value":
-                        Value = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Value = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "component":
-                        Component = source.GetList<ComponentComponent>();
+                        Component = source.GetList(() => new ComponentComponent());
                         return true;
                     case "population":
-                        Population = source.GetList<StratifierGroupPopulationComponent>();
+                        Population = source.GetList(() => new StratifierGroupPopulationComponent());
                         return true;
                     case "measureScore":
-                        MeasureScore = source.Get<Hl7.Fhir.Model.Quantity>();
+                        MeasureScore = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                 }
                 return false;
@@ -958,10 +958,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "value":
-                        Value = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Value = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1142,13 +1142,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "count":
-                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        CountElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "subjectResults":
-                        SubjectResults = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        SubjectResults = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -1634,37 +1634,37 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.MeasureReportStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.MeasureReportStatus>());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MeasureReportType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MeasureReportType>());
                     return true;
                 case "measure":
-                    MeasureElement = source.Get<Hl7.Fhir.Model.Canonical>();
+                    MeasureElement = source.Populate(new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "reporter":
-                    Reporter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Reporter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "improvementNotation":
-                    ImprovementNotation = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ImprovementNotation = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "group":
-                    Group = source.GetList<GroupComponent>();
+                    Group = source.GetList(() => new GroupComponent());
                     return true;
                 case "evaluatedResource":
-                    EvaluatedResource = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    EvaluatedResource = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

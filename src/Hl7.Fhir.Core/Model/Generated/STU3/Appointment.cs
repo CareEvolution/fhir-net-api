@@ -183,16 +183,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "actor":
-                        Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Actor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "required":
-                        RequiredElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipantRequired>>();
+                        RequiredElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipantRequired>());
                         return true;
                     case "status":
-                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>>();
+                        StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>());
                         return true;
                 }
                 return false;
@@ -984,64 +984,64 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AppointmentStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AppointmentStatus>());
                     return true;
                 case "serviceCategory":
-                    ServiceCategory = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceCategory = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
-                    ServiceType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Specialty = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "appointmentType":
-                    AppointmentType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    AppointmentType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reason":
-                    Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "indication":
-                    Indication = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Indication = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "priority":
-                    PriorityElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                    PriorityElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "supportingInformation":
-                    SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    SupportingInformation = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "start":
-                    StartElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    StartElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "end":
-                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    EndElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "minutesDuration":
-                    MinutesDurationElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    MinutesDurationElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "slot":
-                    Slot = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Slot = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "created":
-                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "incomingReferral":
-                    IncomingReferral = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    IncomingReferral = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "participant":
-                    Participant = source.GetList<ParticipantComponent>();
+                    Participant = source.GetList(() => new ParticipantComponent());
                     return true;
                 case "requestedPeriod":
-                    RequestedPeriod = source.GetList<Hl7.Fhir.Model.Period>();
+                    RequestedPeriod = source.GetList(() => new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;

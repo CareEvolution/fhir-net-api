@@ -322,28 +322,28 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "serviceCategory":
-                    ServiceCategory = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceCategory = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
-                    ServiceType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Specialty = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actor":
-                    Actor = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Actor = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "planningHorizon":
-                    PlanningHorizon = source.Get<Hl7.Fhir.Model.Period>();
+                    PlanningHorizon = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

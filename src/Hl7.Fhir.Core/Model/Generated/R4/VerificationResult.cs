@@ -218,25 +218,25 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "who":
-                        Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Who = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "type":
-                        Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "communicationMethod":
-                        CommunicationMethod = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        CommunicationMethod = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "validationStatus":
-                        ValidationStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        ValidationStatus = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "validationDate":
-                        ValidationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        ValidationDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "canPushUpdates":
-                        CanPushUpdates = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        CanPushUpdates = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "pushTypeAvailable":
-                        PushTypeAvailable = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        PushTypeAvailable = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -593,28 +593,28 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "who":
-                        Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Who = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onBehalfOf":
-                        OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        OnBehalfOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "communicationMethod":
-                        CommunicationMethod = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        CommunicationMethod = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "date":
-                        DateElement = source.Get<Hl7.Fhir.Model.Date>();
+                        DateElement = source.Populate(new Hl7.Fhir.Model.Date());
                         return true;
                     case "sourceIdentityCertificate":
-                        SourceIdentityCertificateElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SourceIdentityCertificateElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "proxyIdentityCertificate":
-                        ProxyIdentityCertificateElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ProxyIdentityCertificateElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "proxySignature":
-                        ProxySignature = source.Get<Hl7.Fhir.Model.R4.Signature>();
+                        ProxySignature = source.Populate(new Hl7.Fhir.Model.R4.Signature());
                         return true;
                     case "sourceSignature":
-                        SourceSignature = source.Get<Hl7.Fhir.Model.R4.Signature>();
+                        SourceSignature = source.Populate(new Hl7.Fhir.Model.R4.Signature());
                         return true;
                 }
                 return false;
@@ -853,13 +853,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "organization":
-                        Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Organization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "identityCertificate":
-                        IdentityCertificateElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        IdentityCertificateElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "attestationSignature":
-                        AttestationSignature = source.Get<Hl7.Fhir.Model.R4.Signature>();
+                        AttestationSignature = source.Populate(new Hl7.Fhir.Model.R4.Signature());
                         return true;
                 }
                 return false;
@@ -1389,46 +1389,46 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "target":
-                    Target = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Target = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "targetLocation":
-                    TargetLocationElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    TargetLocationElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "need":
-                    Need = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Need = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.status>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.status>());
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    StatusDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "validationType":
-                    ValidationType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ValidationType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "validationProcess":
-                    ValidationProcess = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ValidationProcess = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "frequency":
-                    Frequency = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                    Frequency = source.Populate(new Hl7.Fhir.Model.R4.Timing());
                     return true;
                 case "lastPerformed":
-                    LastPerformedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    LastPerformedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "nextScheduled":
-                    NextScheduledElement = source.Get<Hl7.Fhir.Model.Date>();
+                    NextScheduledElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "failureAction":
-                    FailureAction = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    FailureAction = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "primarySource":
-                    PrimarySource = source.GetList<PrimarySourceComponent>();
+                    PrimarySource = source.GetList(() => new PrimarySourceComponent());
                     return true;
                 case "attestation":
-                    Attestation = source.Get<AttestationComponent>();
+                    Attestation = source.Populate(new AttestationComponent());
                     return true;
                 case "validator":
-                    Validator = source.GetList<ValidatorComponent>();
+                    Validator = source.GetList(() => new ValidatorComponent());
                     return true;
             }
             return false;

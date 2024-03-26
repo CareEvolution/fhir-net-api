@@ -130,13 +130,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "geneSequenceOrigin":
-                        GeneSequenceOrigin = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        GeneSequenceOrigin = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "gene":
-                        Gene = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Gene = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -329,13 +329,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "element":
-                        Element = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Element = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "source":
-                        Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -549,16 +549,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "domain":
-                        Domain = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Domain = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "classification":
-                        Classification = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Classification = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "subtype":
-                        Subtype = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Subtype = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -838,37 +838,37 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "target":
-                        Target = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Target = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "interaction":
-                        Interaction = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Interaction = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "organism":
-                        Organism = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Organism = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "organismType":
-                        OrganismType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        OrganismType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "amountQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Amount, "amount");
-                        Amount = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "amountRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Amount, "amount");
-                        Amount = source.Get<Hl7.Fhir.Model.Range>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "amountString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                        Amount = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "amountType":
-                        AmountType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        AmountType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -1227,19 +1227,19 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "gene":
-                    Gene = source.GetList<GeneComponent>();
+                    Gene = source.GetList(() => new GeneComponent());
                     return true;
                 case "geneElement":
-                    GeneElement = source.GetList<GeneElementComponent>();
+                    GeneElement = source.GetList(() => new GeneElementComponent());
                     return true;
                 case "classification":
-                    Classification = source.GetList<ClassificationComponent>();
+                    Classification = source.GetList(() => new ClassificationComponent());
                     return true;
                 case "target":
-                    Target = source.GetList<TargetComponent>();
+                    Target = source.GetList(() => new TargetComponent());
                     return true;
             }
             return false;

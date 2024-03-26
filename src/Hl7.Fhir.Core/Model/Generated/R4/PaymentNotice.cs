@@ -393,40 +393,40 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "request":
-                    Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "response":
-                    Response = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Response = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "created":
-                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "provider":
-                    Provider = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Provider = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "payment":
-                    Payment = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Payment = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "paymentDate":
-                    PaymentDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    PaymentDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "payee":
-                    Payee = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Payee = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "recipient":
-                    Recipient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Recipient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "amount":
-                    Amount = source.Get<Hl7.Fhir.Model.R4.Money>();
+                    Amount = source.Populate(new Hl7.Fhir.Model.R4.Money());
                     return true;
                 case "paymentStatus":
-                    PaymentStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    PaymentStatus = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

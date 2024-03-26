@@ -125,10 +125,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -592,43 +592,43 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "created":
-                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "organization":
-                    Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Organization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "request":
-                    Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outcome":
-                    Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Outcome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "disposition":
-                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DispositionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "requestProvider":
-                    RequestProvider = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    RequestProvider = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requestOrganization":
-                    RequestOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    RequestOrganization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "form":
-                    Form = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Form = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "processNote":
-                    ProcessNote = source.GetList<ProcessNoteComponent>();
+                    ProcessNote = source.GetList(() => new ProcessNoteComponent());
                     return true;
                 case "error":
-                    Error = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Error = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "communicationRequest":
-                    CommunicationRequest = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    CommunicationRequest = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

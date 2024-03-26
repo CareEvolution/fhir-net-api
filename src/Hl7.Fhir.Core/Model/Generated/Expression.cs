@@ -308,19 +308,19 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "description" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    NameElement = source.Get<Hl7.Fhir.Model.Id>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.Id());
                     return true;
                 case "language" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    LanguageElement = source.Get<Hl7.Fhir.Model.Code>();
+                    LanguageElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "expression" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Expression_Element = source.Get<Hl7.Fhir.Model.FhirString>();
+                    Expression_Element = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "reference" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ReferenceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    ReferenceElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
             }
             return false;

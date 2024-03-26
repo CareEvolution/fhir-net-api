@@ -142,13 +142,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "expiry":
-                        ExpiryElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        ExpiryElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                 }
                 return false;
@@ -309,10 +309,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "substance":
-                        Substance = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Substance = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -620,22 +620,22 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "instance":
-                    Instance = source.GetList<InstanceComponent>();
+                    Instance = source.GetList(() => new InstanceComponent());
                     return true;
                 case "ingredient":
-                    Ingredient = source.GetList<IngredientComponent>();
+                    Ingredient = source.GetList(() => new IngredientComponent());
                     return true;
             }
             return false;

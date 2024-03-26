@@ -321,28 +321,28 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ResearchSubjectStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ResearchSubjectStatus>());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "study":
-                    Study = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Study = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "individual":
-                    Individual = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Individual = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "assignedArm":
-                    AssignedArmElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    AssignedArmElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "actualArm":
-                    ActualArmElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ActualArmElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "consent":
-                    Consent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Consent = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

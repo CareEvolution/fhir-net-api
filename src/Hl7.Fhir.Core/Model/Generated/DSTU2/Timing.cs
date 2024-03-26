@@ -433,45 +433,45 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "boundsQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Duration>(Bounds, "bounds");
-                        Bounds = source.Get<Hl7.Fhir.Model.DSTU2.Duration>();
+                        Bounds = source.Populate(new Hl7.Fhir.Model.DSTU2.Duration());
                         return true;
                     case "boundsRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Bounds, "bounds");
-                        Bounds = source.Get<Hl7.Fhir.Model.Range>();
+                        Bounds = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "boundsPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Bounds, "bounds");
-                        Bounds = source.Get<Hl7.Fhir.Model.Period>();
+                        Bounds = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "count":
-                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        CountElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "duration":
-                        DurationElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        DurationElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "durationMax":
-                        DurationMaxElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        DurationMaxElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "durationUnits":
-                        DurationUnitsElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>>();
+                        DurationUnitsElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>());
                         return true;
                     case "frequency":
-                        FrequencyElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        FrequencyElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "frequencyMax":
-                        FrequencyMaxElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        FrequencyMaxElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "period":
-                        PeriodElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PeriodElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "periodMax":
-                        PeriodMaxElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PeriodMaxElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "periodUnits":
-                        PeriodUnitsElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>>();
+                        PeriodUnitsElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>());
                         return true;
                     case "when":
-                        WhenElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EventTiming>>();
+                        WhenElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.EventTiming>());
                         return true;
                 }
                 return false;
@@ -873,13 +873,13 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "event":
-                    EventElement = source.GetList<Hl7.Fhir.Model.FhirDateTime>();
+                    EventElement = source.GetList(() => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "repeat":
-                    Repeat = source.Get<RepeatComponent>();
+                    Repeat = source.Populate(new RepeatComponent());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

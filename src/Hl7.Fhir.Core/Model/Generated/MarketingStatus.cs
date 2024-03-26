@@ -220,19 +220,19 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "country" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Country = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Country = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "jurisdiction" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Jurisdiction = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Jurisdiction = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Status = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Status = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "dateRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    DateRange = source.Get<Hl7.Fhir.Model.Period>();
+                    DateRange = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "restoreDate" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    RestoreDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    RestoreDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;

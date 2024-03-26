@@ -188,16 +188,16 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "identifier" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "period" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    Period = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "specialPrecautionsForStorage" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    SpecialPrecautionsForStorage = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    SpecialPrecautionsForStorage = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

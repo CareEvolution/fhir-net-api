@@ -176,32 +176,32 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "outcome":
-                        Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Outcome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "contributedToDeath":
-                        ContributedToDeathElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        ContributedToDeathElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "onsetAge":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Onset, "onset");
-                        Onset = source.Get<Hl7.Fhir.Model.R4.Age>();
+                        Onset = source.Populate(new Hl7.Fhir.Model.R4.Age());
                         return true;
                     case "onsetRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Onset, "onset");
-                        Onset = source.Get<Hl7.Fhir.Model.Range>();
+                        Onset = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "onsetPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Onset, "onset");
-                        Onset = source.Get<Hl7.Fhir.Model.Period>();
+                        Onset = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "onsetString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Onset, "onset");
-                        Onset = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Onset = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                         return true;
                 }
                 return false;
@@ -919,93 +919,93 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
+                    InstantiatesCanonicalElement = source.GetList(() => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
+                    InstantiatesUriElement = source.GetList(() => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FamilyHistoryStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FamilyHistoryStatus>());
                     return true;
                 case "dataAbsentReason":
-                    DataAbsentReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    DataAbsentReason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "relationship":
-                    Relationship = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Relationship = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "sex":
-                    Sex = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Sex = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "bornPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Born, "born");
-                    Born = source.Get<Hl7.Fhir.Model.Period>();
+                    Born = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "bornDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Born, "born");
-                    Born = source.Get<Hl7.Fhir.Model.Date>();
+                    Born = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "bornString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Born, "born");
-                    Born = source.Get<Hl7.Fhir.Model.FhirString>();
+                    Born = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "ageAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Age, "age");
-                    Age = source.Get<Hl7.Fhir.Model.R4.Age>();
+                    Age = source.Populate(new Hl7.Fhir.Model.R4.Age());
                     return true;
                 case "ageRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Age, "age");
-                    Age = source.Get<Hl7.Fhir.Model.Range>();
+                    Age = source.Populate(new Hl7.Fhir.Model.Range());
                     return true;
                 case "ageString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Age, "age");
-                    Age = source.Get<Hl7.Fhir.Model.FhirString>();
+                    Age = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "estimatedAge":
-                    EstimatedAgeElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    EstimatedAgeElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "deceasedBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Deceased, "deceased");
-                    Deceased = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    Deceased = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "deceasedAge":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Age>(Deceased, "deceased");
-                    Deceased = source.Get<Hl7.Fhir.Model.R4.Age>();
+                    Deceased = source.Populate(new Hl7.Fhir.Model.R4.Age());
                     return true;
                 case "deceasedRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Deceased, "deceased");
-                    Deceased = source.Get<Hl7.Fhir.Model.Range>();
+                    Deceased = source.Populate(new Hl7.Fhir.Model.Range());
                     return true;
                 case "deceasedDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Deceased, "deceased");
-                    Deceased = source.Get<Hl7.Fhir.Model.Date>();
+                    Deceased = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "deceasedString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Deceased, "deceased");
-                    Deceased = source.Get<Hl7.Fhir.Model.FhirString>();
+                    Deceased = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "reasonCode":
-                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "condition":
-                    Condition = source.GetList<ConditionComponent>();
+                    Condition = source.GetList(() => new ConditionComponent());
                     return true;
             }
             return false;

@@ -274,22 +274,22 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "system":
-                    SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    SystemElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "value":
-                    ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ValueElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "assigner":
-                    Assigner = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Assigner = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

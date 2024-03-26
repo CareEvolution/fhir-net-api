@@ -129,10 +129,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "coverage":
-                        Coverage = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Coverage = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "priority":
-                        PriorityElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                        PriorityElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                         return true;
                 }
                 return false;
@@ -317,13 +317,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "party":
-                        Party = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Party = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onHold":
-                        OnHoldElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        OnHoldElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "period":
-                        Period = source.Get<Hl7.Fhir.Model.Period>();
+                        Period = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -775,40 +775,40 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AccountStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AccountStatus>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "active":
-                    Active = source.Get<Hl7.Fhir.Model.Period>();
+                    Active = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "balance":
-                    Balance = source.Get<Hl7.Fhir.Model.STU3.Money>();
+                    Balance = source.Populate(new Hl7.Fhir.Model.STU3.Money());
                     return true;
                 case "coverage":
-                    Coverage = source.GetList<CoverageComponent>();
+                    Coverage = source.GetList(() => new CoverageComponent());
                     return true;
                 case "owner":
-                    Owner = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Owner = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "guarantor":
-                    Guarantor = source.GetList<GuarantorComponent>();
+                    Guarantor = source.GetList(() => new GuarantorComponent());
                     return true;
             }
             return false;

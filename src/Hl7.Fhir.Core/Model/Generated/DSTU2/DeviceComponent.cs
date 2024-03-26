@@ -142,13 +142,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "specType":
-                        SpecType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        SpecType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "componentId":
-                        ComponentId = source.Get<Hl7.Fhir.Model.Identifier>();
+                        ComponentId = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "productionSpec":
-                        ProductionSpecElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ProductionSpecElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -547,34 +547,34 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "lastSystemChange":
-                    LastSystemChangeElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    LastSystemChangeElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "source":
-                    Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Parent = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "operationalStatus":
-                    OperationalStatus = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    OperationalStatus = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "parameterGroup":
-                    ParameterGroup = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ParameterGroup = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "measurementPrinciple":
-                    MeasurementPrincipleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.Measmnt_Principle>>();
+                    MeasurementPrincipleElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.Measmnt_Principle>());
                     return true;
                 case "productionSpecification":
-                    ProductionSpecification = source.GetList<ProductionSpecificationComponent>();
+                    ProductionSpecification = source.GetList(() => new ProductionSpecificationComponent());
                     return true;
                 case "languageCode":
-                    LanguageCode = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    LanguageCode = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

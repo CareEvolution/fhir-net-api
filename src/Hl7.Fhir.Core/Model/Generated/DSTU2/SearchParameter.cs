@@ -133,10 +133,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "telecom":
-                        Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
+                        Telecom = source.GetList(() => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                         return true;
                 }
                 return false;
@@ -869,49 +869,49 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ConformanceResourceStatus>());
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ExperimentalElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "publisher":
-                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PublisherElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
-                    Contact = source.GetList<ContactComponent>();
+                    Contact = source.GetList(() => new ContactComponent());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "requirements":
-                    RequirementsElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    RequirementsElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "code":
-                    CodeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    CodeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "base":
-                    BaseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
+                    BaseElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "xpath":
-                    XpathElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    XpathElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "xpathUsage":
-                    XpathUsageElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.XPathUsageType>>();
+                    XpathUsageElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.XPathUsageType>());
                     return true;
                 case "target":
-                    TargetElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
+                    TargetElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                     return true;
             }
             return false;

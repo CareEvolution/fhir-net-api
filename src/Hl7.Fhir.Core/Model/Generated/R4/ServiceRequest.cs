@@ -991,126 +991,126 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
+                    InstantiatesCanonicalElement = source.GetList(() => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
+                    InstantiatesUriElement = source.GetList(() => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "replaces":
-                    Replaces = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Replaces = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requisition":
-                    Requisition = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Requisition = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestStatus>());
                     return true;
                 case "intent":
-                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestIntent>>();
+                    IntentElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.RequestIntent>());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "priority":
-                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
+                    PriorityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>());
                     return true;
                 case "doNotPerform":
-                    DoNotPerformElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    DoNotPerformElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "orderDetail":
-                    OrderDetail = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    OrderDetail = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "quantityQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Quantity, "quantity");
-                    Quantity = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Quantity = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "quantityRatio":
                     source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Quantity, "quantity");
-                    Quantity = source.Get<Hl7.Fhir.Model.Ratio>();
+                    Quantity = source.Populate(new Hl7.Fhir.Model.Ratio());
                     return true;
                 case "quantityRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Quantity, "quantity");
-                    Quantity = source.Get<Hl7.Fhir.Model.Range>();
+                    Quantity = source.Populate(new Hl7.Fhir.Model.Range());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.Period>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "occurrenceTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.R4.Timing());
                     return true;
                 case "asNeededBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                    AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    AsNeeded = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "asNeededCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
-                    AsNeeded = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    AsNeeded = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    AuthoredOnElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "requester":
-                    Requester = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Requester = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performerType":
-                    PerformerType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    PerformerType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "performer":
-                    Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Performer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "locationCode":
-                    LocationCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    LocationCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "locationReference":
-                    LocationReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    LocationReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "insurance":
-                    Insurance = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Insurance = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "supportingInfo":
-                    SupportingInfo = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    SupportingInfo = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "specimen":
-                    Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Specimen = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "bodySite":
-                    BodySite = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    BodySite = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "patientInstruction":
-                    PatientInstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PatientInstructionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "relevantHistory":
-                    RelevantHistory = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    RelevantHistory = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

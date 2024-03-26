@@ -115,10 +115,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "reference":
-                        Reference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Reference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -281,10 +281,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -467,17 +467,17 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Item = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "isActive":
-                        IsActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        IsActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "strength":
-                        Strength = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Strength = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                 }
                 return false;
@@ -674,13 +674,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        SourceElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SourceElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "cost":
-                        Cost = source.Get<Hl7.Fhir.Model.R4.Money>();
+                        Cost = source.Populate(new Hl7.Fhir.Model.R4.Money());
                         return true;
                 }
                 return false;
@@ -856,10 +856,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "name":
-                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1036,18 +1036,18 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "dosage":
-                        Dosage = source.GetList<DosageComponent>();
+                        Dosage = source.GetList(() => new DosageComponent());
                         return true;
                     case "indicationCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Indication, "indication");
-                        Indication = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Indication = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "indicationReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Indication, "indication");
-                        Indication = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Indication = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "patientCharacteristics":
-                        PatientCharacteristics = source.GetList<PatientCharacteristicsComponent>();
+                        PatientCharacteristics = source.GetList(() => new PatientCharacteristicsComponent());
                         return true;
                 }
                 return false;
@@ -1231,10 +1231,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dosage":
-                        Dosage = source.GetList<Hl7.Fhir.Model.R4.Dosage>();
+                        Dosage = source.GetList(() => new Hl7.Fhir.Model.R4.Dosage());
                         return true;
                 }
                 return false;
@@ -1421,14 +1421,14 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "characteristicCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Characteristic, "characteristic");
-                        Characteristic = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Characteristic = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "characteristicQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(Characteristic, "characteristic");
-                        Characteristic = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Characteristic = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "value":
-                        ValueElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                        ValueElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1605,10 +1605,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "classification":
-                        Classification = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Classification = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1769,10 +1769,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                 }
                 return false;
@@ -1920,23 +1920,23 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Value = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Value = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "valueBase64Binary":
                         source.CheckDuplicates<Hl7.Fhir.Model.Base64Binary>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                         return true;
                 }
                 return false;
@@ -2146,16 +2146,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "regulatoryAuthority":
-                        RegulatoryAuthority = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        RegulatoryAuthority = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "substitution":
-                        Substitution = source.GetList<SubstitutionComponent>();
+                        Substitution = source.GetList(() => new SubstitutionComponent());
                         return true;
                     case "schedule":
-                        Schedule = source.GetList<ScheduleComponent>();
+                        Schedule = source.GetList(() => new ScheduleComponent());
                         return true;
                     case "maxDispense":
-                        MaxDispense = source.Get<MaxDispenseComponent>();
+                        MaxDispense = source.Populate(new MaxDispenseComponent());
                         return true;
                 }
                 return false;
@@ -2356,10 +2356,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "allowed":
-                        AllowedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        AllowedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                 }
                 return false;
@@ -2495,7 +2495,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "schedule":
-                        Schedule = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Schedule = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -2634,10 +2634,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "period":
-                        Period = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        Period = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                 }
                 return false;
@@ -2809,13 +2809,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "areaUnderCurve":
-                        AreaUnderCurve = source.GetList<Hl7.Fhir.Model.SimpleQuantity>();
+                        AreaUnderCurve = source.GetList(() => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "lethalDose50":
-                        LethalDose50 = source.GetList<Hl7.Fhir.Model.SimpleQuantity>();
+                        LethalDose50 = source.GetList(() => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "halfLifePeriod":
-                        HalfLifePeriod = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        HalfLifePeriod = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                 }
                 return false;
@@ -3519,70 +3519,70 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationKnowledgeStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationKnowledgeStatusCodes>());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Manufacturer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "doseForm":
-                    DoseForm = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    DoseForm = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "amount":
-                    Amount = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                    Amount = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
                 case "synonym":
-                    SynonymElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    SynonymElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "relatedMedicationKnowledge":
-                    RelatedMedicationKnowledge = source.GetList<RelatedMedicationKnowledgeComponent>();
+                    RelatedMedicationKnowledge = source.GetList(() => new RelatedMedicationKnowledgeComponent());
                     return true;
                 case "associatedMedication":
-                    AssociatedMedication = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    AssociatedMedication = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "productType":
-                    ProductType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ProductType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "monograph":
-                    Monograph = source.GetList<MonographComponent>();
+                    Monograph = source.GetList(() => new MonographComponent());
                     return true;
                 case "ingredient":
-                    Ingredient = source.GetList<IngredientComponent>();
+                    Ingredient = source.GetList(() => new IngredientComponent());
                     return true;
                 case "preparationInstruction":
-                    PreparationInstructionElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    PreparationInstructionElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "intendedRoute":
-                    IntendedRoute = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    IntendedRoute = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "cost":
-                    Cost = source.GetList<CostComponent>();
+                    Cost = source.GetList(() => new CostComponent());
                     return true;
                 case "monitoringProgram":
-                    MonitoringProgram = source.GetList<MonitoringProgramComponent>();
+                    MonitoringProgram = source.GetList(() => new MonitoringProgramComponent());
                     return true;
                 case "administrationGuidelines":
-                    AdministrationGuidelines = source.GetList<AdministrationGuidelinesComponent>();
+                    AdministrationGuidelines = source.GetList(() => new AdministrationGuidelinesComponent());
                     return true;
                 case "medicineClassification":
-                    MedicineClassification = source.GetList<MedicineClassificationComponent>();
+                    MedicineClassification = source.GetList(() => new MedicineClassificationComponent());
                     return true;
                 case "packaging":
-                    Packaging = source.Get<PackagingComponent>();
+                    Packaging = source.Populate(new PackagingComponent());
                     return true;
                 case "drugCharacteristic":
-                    DrugCharacteristic = source.GetList<DrugCharacteristicComponent>();
+                    DrugCharacteristic = source.GetList(() => new DrugCharacteristicComponent());
                     return true;
                 case "contraindication":
-                    Contraindication = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Contraindication = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "regulatory":
-                    Regulatory = source.GetList<RegulatoryComponent>();
+                    Regulatory = source.GetList(() => new RegulatoryComponent());
                     return true;
                 case "kinetics":
-                    Kinetics = source.GetList<KineticsComponent>();
+                    Kinetics = source.GetList(() => new KineticsComponent());
                     return true;
             }
             return false;

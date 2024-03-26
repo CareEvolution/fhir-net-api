@@ -126,10 +126,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "language":
-                        Language = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Language = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "preferred":
-                        PreferredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        PreferredElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                 }
                 return false;
@@ -599,40 +599,40 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relationship":
-                    Relationship = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Relationship = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
-                    Name = source.GetList<Hl7.Fhir.Model.R4.HumanName>();
+                    Name = source.GetList(() => new Hl7.Fhir.Model.R4.HumanName());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "gender":
-                    GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
+                    GenderElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                     return true;
                 case "birthDate":
-                    BirthDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    BirthDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "address":
-                    Address = source.GetList<Hl7.Fhir.Model.Address>();
+                    Address = source.GetList(() => new Hl7.Fhir.Model.Address());
                     return true;
                 case "photo":
-                    Photo = source.GetList<Hl7.Fhir.Model.Attachment>();
+                    Photo = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "communication":
-                    Communication = source.GetList<CommunicationComponent>();
+                    Communication = source.GetList(() => new CommunicationComponent());
                     return true;
             }
             return false;

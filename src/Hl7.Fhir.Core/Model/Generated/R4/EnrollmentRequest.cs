@@ -282,25 +282,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "created":
-                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "insurer":
-                    Insurer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Insurer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "provider":
-                    Provider = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Provider = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "candidate":
-                    Candidate = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Candidate = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "coverage":
-                    Coverage = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Coverage = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

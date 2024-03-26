@@ -357,25 +357,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.NameUse>>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.NameUse>());
                     return true;
                 case "text":
-                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "family":
-                    FamilyElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    FamilyElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "given":
-                    GivenElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    GivenElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "prefix":
-                    PrefixElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    PrefixElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "suffix":
-                    SuffixElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    SuffixElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;

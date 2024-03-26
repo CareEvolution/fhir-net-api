@@ -318,263 +318,263 @@ namespace Hl7.Fhir.Model
                     return true;
                 case "valueBoolean":
                     source.CheckDuplicates<FhirBoolean>(Value, "value");
-                    Value = source.Get<FhirBoolean>();
+                    Value = source.Populate(new FhirBoolean());
                     return true;
                 case "valueInteger":
                     source.CheckDuplicates<Integer>(Value, "value");
-                    Value = source.Get<Integer>();
+                    Value = source.Populate(new Integer());
                     return true;
                 case "valueDecimal":
                     source.CheckDuplicates<FhirDecimal>(Value, "value");
-                    Value = source.Get<FhirDecimal>();
+                    Value = source.Populate(new FhirDecimal());
                     return true;
                 case "valueBase64Binary":
                     source.CheckDuplicates<Base64Binary>(Value, "value");
-                    Value = source.Get<Base64Binary>();
+                    Value = source.Populate(new Base64Binary());
                     return true;
                 case "valueInstant":
                     source.CheckDuplicates<Instant>(Value, "value");
-                    Value = source.Get<Instant>();
+                    Value = source.Populate(new Instant());
                     return true;
                 case "valueString":
                     source.CheckDuplicates<FhirString>(Value, "value");
-                    Value = source.Get<FhirString>();
+                    Value = source.Populate(new FhirString());
                     return true;
                 case "valueUri":
                     source.CheckDuplicates<FhirUri>(Value, "value");
-                    Value = source.Get<FhirUri>();
+                    Value = source.Populate(new FhirUri());  
                     return true;
                 case "valueDate":
                     source.CheckDuplicates<Date>(Value, "value");
-                    Value = source.Get<Date>();
+                    Value = source.Populate(new Date());
                     return true;
                 case "valueDateTime":
                     source.CheckDuplicates<FhirDateTime>(Value, "value");
-                    Value = source.Get<FhirDateTime>();
+                    Value = source.Populate(new FhirDateTime());
                     return true;
                 case "valueTime":
                     source.CheckDuplicates<Time>(Value, "value");
-                    Value = source.Get<Time>();
+                    Value = source.Populate(new Time());
                     return true;
                 case "valueCode":
                     source.CheckDuplicates<Code>(Value, "value");
-                    Value = source.Get<Code>();
+                    Value = source.Populate(new Code());
                     return true;
                 case "valueOid":
                     source.CheckDuplicates<Oid>(Value, "value");
-                    Value = source.Get<Oid>();
+                    Value = source.Populate(new Oid());
                     return true;
                 case "valueId":
                     source.CheckDuplicates<Id>(Value, "value");
-                    Value = source.Get<Id>();
+                    Value = source.Populate(new Id());
                     return true;
                 case "valueUnsignedInt":
                     source.CheckDuplicates<UnsignedInt>(Value, "value");
-                    Value = source.Get<UnsignedInt>();
+                    Value = source.Populate(new UnsignedInt());
                     return true;
                 case "valuePositiveInt":
                     source.CheckDuplicates<PositiveInt>(Value, "value");
-                    Value = source.Get<PositiveInt>();
+                    Value = source.Populate(new PositiveInt());
                     return true;
                 case "valueMarkdown":
                     source.CheckDuplicates<Markdown>(Value, "value");
-                    Value = source.Get<Markdown>();
+                    Value = source.Populate(new Markdown());
                     return true;
                 case "valueAnnotation":
                     source.CheckDuplicates<Annotation>(Value, "value");
-                    Value = source.Get<Annotation>();
+                    Value = source.Populate(new Annotation());
                     return true;
                 case "valueAttachment":
                     source.CheckDuplicates<Attachment>(Value, "value");
-                    Value = source.Get<Attachment>();
+                    Value = source.Populate(new Attachment());
                     return true;
                 case "valueIdentifier":
                     source.CheckDuplicates<Identifier>(Value, "value");
-                    Value = source.Get<Identifier>();
+                    Value = source.Populate(new Identifier());
                     return true;
                 case "valueCodeableConcept":
                     source.CheckDuplicates<CodeableConcept>(Value, "value");
-                    Value = source.Get<CodeableConcept>();
+                    Value = source.Populate(new CodeableConcept());
                     return true;
                 case "valueCoding":
                     source.CheckDuplicates<Coding>(Value, "value");
-                    Value = source.Get<Coding>();
+                    Value = source.Populate(new Coding());
                     return true;
                 case "valueQuantity":
                     source.CheckDuplicates<Quantity>(Value, "value");
-                    Value = source.Get<Quantity>();
+                    Value = source.Populate(new Quantity());
                     return true;
                 case "valueRange":
                     source.CheckDuplicates<Range>(Value, "value");
-                    Value = source.Get<Range>();
+                    Value = source.Populate(new Range());
                     return true;
                 case "valuePeriod":
                     source.CheckDuplicates<Period>(Value, "value");
-                    Value = source.Get<Period>();
+                    Value = source.Populate(new Period());
                     return true;
                 case "valueRatio":
                     source.CheckDuplicates<Ratio>(Value, "value");
-                    Value = source.Get<Ratio>();
+                    Value = source.Populate(new Ratio());
                     return true;
                 case "valueSampledData" when source.IsVersion(Version.DSTU2):
                     source.CheckDuplicates<DSTU2.SampledData>(Value, "value");
-                    Value = source.Get<DSTU2.SampledData>();
+                    Value = source.Populate(new DSTU2.SampledData());
                     return true;
                 case "valueSignature" when source.IsVersion(Version.DSTU2):
                     source.CheckDuplicates<DSTU2.Signature>(Value, "value");
-                    Value = source.Get<DSTU2.Signature>();
+                    Value = source.Populate(new DSTU2.Signature());
                     return true;
                 case "valueHumanName" when source.IsVersion(Version.DSTU2):
                     source.CheckDuplicates<DSTU2.HumanName>(Value, "value");
-                    Value = source.Get<DSTU2.HumanName>();
+                    Value = source.Populate(new DSTU2.HumanName());
                     return true;
                 case "valueAddress":
                     source.CheckDuplicates<Address>(Value, "value");
-                    Value = source.Get<Address>();
+                    Value = source.Populate(new Address());
                     return true;
                 case "valueContactPoint" when source.IsVersion(Version.DSTU2):
                     source.CheckDuplicates<DSTU2.ContactPoint>(Value, "value");
-                    Value = source.Get<DSTU2.ContactPoint>();
+                    Value = source.Populate(new DSTU2.ContactPoint());
                     return true;
                 case "valueTiming" when source.IsVersion(Version.DSTU2):
                     source.CheckDuplicates<DSTU2.Timing>(Value, "value");
-                    Value = source.Get<DSTU2.Timing>();
+                    Value = source.Populate(new DSTU2.Timing());
                     return true;
                 case "valueReference":
                     source.CheckDuplicates<ResourceReference>(Value, "value");
-                    Value = source.Get<ResourceReference>();
+                    Value = source.Populate(new ResourceReference());
                     return true;
                 case "valueMeta":
                     source.CheckDuplicates<Meta>(Value, "value");
-                    Value = source.Get<Meta>();
+                    Value = source.Populate(new Meta());
                     return true;
                 case "valueCanonical" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<Canonical>(Value, "value");
-                    Value = source.Get<Canonical>();
+                    Value = source.Populate(new Canonical());
                     return true;
                 case "valueUrl" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<Url>(Value, "value");
-                    Value = source.Get<Url>();
+                    Value = source.Populate(new Url());
                     return true;
                 case "valueUuid" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<Uuid>(Value, "value");
-                    Value = source.Get<Uuid>();
+                    Value = source.Populate(new Uuid());
                     return true;
                 case "valueAge" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Age>(Value, "value");
-                    Value = source.Get<R4.Age>();
+                    Value = source.Populate(new R4.Age());
                     return true;
                 case "valueContactPoint" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.ContactPoint>(Value, "value");
-                    Value = source.Get<R4.ContactPoint>();
+                    Value = source.Populate(new R4.ContactPoint());
                     return true;
                 case "valueCount" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Count>(Value, "value");
-                    Value = source.Get<R4.Count>();
+                    Value = source.Populate(new R4.Count());
                     return true;
                 case "valueDistance" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Distance>(Value, "value");
-                    Value = source.Get<R4.Distance>();
+                    Value = source.Populate(new R4.Distance());
                     return true;
                 case "valueDuration" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Duration>(Value, "value");
-                    Value = source.Get<R4.Duration>();
+                    Value = source.Populate(new R4.Duration());
                     return true;
                 case "valueHumanName" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.HumanName>(Value, "value");
-                    Value = source.Get<R4.HumanName>();
+                    Value = source.Populate(new R4.HumanName());
                     return true;
                 case "valueMoney" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Money>(Value, "value");
-                    Value = source.Get<R4.Money>();
+                    Value = source.Populate(new R4.Money());
                     return true;
                 case "valueSampledData" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.SampledData>(Value, "value");
-                    Value = source.Get<R4.SampledData>();
+                    Value = source.Populate(new R4.SampledData());
                     return true;
                 case "valueSignature" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Signature>(Value, "value");
-                    Value = source.Get<R4.Signature>();
+                    Value = source.Populate(new R4.Signature());
                     return true;
                 case "valueTiming" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Timing>(Value, "value");
-                    Value = source.Get<R4.Timing>();
+                    Value = source.Populate(new R4.Timing());
                     return true;
                 case "valueContactDetail" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.ContactDetail>(Value, "value");
-                    Value = source.Get<R4.ContactDetail>();
+                    Value = source.Populate(new R4.ContactDetail());
                     return true;
                 case "valueContributor" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Contributor>(Value, "value");
-                    Value = source.Get<R4.Contributor>();
+                    Value = source.Populate(new R4.Contributor());
                     return true;
                 case "valueDataRequirement" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.DataRequirement>(Value, "value");
-                    Value = source.Get<R4.DataRequirement>();
+                    Value = source.Populate(new R4.DataRequirement());
                     return true;
                 case "valueExpression" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<Expression>(Value, "value");
-                    Value = source.Get<Expression>();
+                    Value = source.Populate(new Expression());
                     return true;
                 case "valueParameterDefinition" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.ParameterDefinition>(Value, "value");
-                    Value = source.Get<R4.ParameterDefinition>();
+                    Value = source.Populate(new R4.ParameterDefinition());
                     return true;
                 case "valueRelatedArtifact" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.RelatedArtifact>(Value, "value");
-                    Value = source.Get<R4.RelatedArtifact>();
+                    Value = source.Populate(new R4.RelatedArtifact());
                     return true;
                 case "valueTriggerDefinition" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.TriggerDefinition>(Value, "value");
-                    Value = source.Get<R4.TriggerDefinition>();
+                    Value = source.Populate(new R4.TriggerDefinition());
                     return true;
                 case "valueUsageContext" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<UsageContext>(Value, "value");
-                    Value = source.Get<UsageContext>();
+                    Value = source.Populate(new UsageContext());
                     return true;
                 case "valueDosage" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Dosage>(Value, "value");
-                    Value = source.Get<R4.Dosage>();
+                    Value = source.Populate(new R4.Dosage());
                     return true;
                 case "valueAge" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.Age>(Value, "value");
-                    Value = source.Get<STU3.Age>();
+                    Value = source.Populate(new STU3.Age());
                     return true;
                 case "valueContactPoint" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.ContactPoint>(Value, "value");
-                    Value = source.Get<STU3.ContactPoint>();
+                    Value = source.Populate(new STU3.ContactPoint());
                     return true;
                 case "valueCount" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.Count>(Value, "value");
-                    Value = source.Get<STU3.Count>();
+                    Value = source.Populate(new STU3.Count());
                     return true;
                 case "valueDistance" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.Distance>(Value, "value");
-                    Value = source.Get<STU3.Distance>();
+                    Value = source.Populate(new STU3.Distance());
                     return true;
                 case "valueDuration" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.Duration>(Value, "value");
-                    Value = source.Get<STU3.Duration>();
+                    Value = source.Populate(new STU3.Duration());
                     return true;
                 case "valueHumanName" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.HumanName>(Value, "value");
-                    Value = source.Get<STU3.HumanName>();
+                    Value = source.Populate(new STU3.HumanName());
                     return true;
                 case "valueMoney" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.Money>(Value, "value");
-                    Value = source.Get<STU3.Money>();
+                    Value = source.Populate(new STU3.Money());
                     return true;
                 case "valueSampledData" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.SampledData>(Value, "value");
-                    Value = source.Get<STU3.SampledData>();
+                    Value = source.Populate(new STU3.SampledData());
                     return true;
                 case "valueSignature" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.Signature>(Value, "value");
-                    Value = source.Get<STU3.Signature>();
+                    Value = source.Populate(new STU3.Signature());
                     return true;
                 case "valueTiming" when source.IsVersion(Version.STU3):
                     source.CheckDuplicates<STU3.Timing>(Value, "value");
-                    Value = source.Get<STU3.Timing>();
+                    Value = source.Populate(new STU3.Timing());
                     return true;
             }
             return false;

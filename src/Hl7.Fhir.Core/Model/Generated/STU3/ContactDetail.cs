@@ -172,10 +172,10 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.STU3.ContactPoint());
                     return true;
             }
             return false;

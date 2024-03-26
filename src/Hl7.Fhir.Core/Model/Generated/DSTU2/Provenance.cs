@@ -146,16 +146,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "role":
-                        Role = source.Get<Hl7.Fhir.Model.Coding>();
+                        Role = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "actor":
-                        Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Actor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "userId":
-                        UserId = source.Get<Hl7.Fhir.Model.Identifier>();
+                        UserId = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "relatedAgent":
-                        RelatedAgent = source.GetList<RelatedAgentComponent>();
+                        RelatedAgent = source.GetList(() => new RelatedAgentComponent());
                         return true;
                 }
                 return false;
@@ -355,10 +355,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "target":
-                        TargetElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        TargetElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -614,19 +614,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "role":
-                        RoleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProvenanceEntityRole>>();
+                        RoleElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProvenanceEntityRole>());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.Coding>();
+                        Type = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "reference":
-                        ReferenceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        ReferenceElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "display":
-                        DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DisplayElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "agent":
-                        Agent = source.Get<AgentComponent>();
+                        Agent = source.Populate(new AgentComponent());
                         return true;
                 }
                 return false;
@@ -1071,34 +1071,34 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "target":
-                    Target = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Target = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "recorded":
-                    RecordedElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    RecordedElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "reason":
-                    Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "activity":
-                    Activity = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Activity = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "policy":
-                    PolicyElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
+                    PolicyElement = source.GetList(() => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "agent":
-                    Agent = source.GetList<AgentComponent>();
+                    Agent = source.GetList(() => new AgentComponent());
                     return true;
                 case "entity":
-                    Entity = source.GetList<EntityComponent>();
+                    Entity = source.GetList(() => new EntityComponent());
                     return true;
                 case "signature":
-                    Signature = source.GetList<Hl7.Fhir.Model.DSTU2.Signature>();
+                    Signature = source.GetList(() => new Hl7.Fhir.Model.DSTU2.Signature());
                     return true;
             }
             return false;

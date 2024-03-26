@@ -180,13 +180,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "deviceIdentifier":
-                        DeviceIdentifierElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DeviceIdentifierElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "issuer":
-                        IssuerElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        IssuerElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "jurisdiction":
-                        JurisdictionElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        JurisdictionElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -389,10 +389,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "name":
-                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.DeviceNameType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.DeviceNameType>());
                         return true;
                 }
                 return false;
@@ -583,10 +583,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "systemType":
-                        SystemTypeElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SystemTypeElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "version":
-                        VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        VersionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -745,10 +745,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "description":
-                        Description = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Description = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -936,13 +936,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueQuantity":
-                        ValueQuantity = source.GetList<Hl7.Fhir.Model.Quantity>();
+                        ValueQuantity = source.GetList(() => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "valueCode":
-                        ValueCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        ValueCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1167,13 +1167,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "substance":
-                        Substance = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Substance = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "alternate":
-                        AlternateElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        AlternateElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "allergenicIndicator":
-                        AllergenicIndicatorElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        AllergenicIndicatorElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                 }
                 return false;
@@ -1869,75 +1869,75 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "udiDeviceIdentifier":
-                    UdiDeviceIdentifier = source.GetList<UdiDeviceIdentifierComponent>();
+                    UdiDeviceIdentifier = source.GetList(() => new UdiDeviceIdentifierComponent());
                     return true;
                 case "manufacturerString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Manufacturer, "manufacturer");
-                    Manufacturer = source.Get<Hl7.Fhir.Model.FhirString>();
+                    Manufacturer = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "manufacturerReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Manufacturer, "manufacturer");
-                    Manufacturer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Manufacturer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "deviceName":
-                    DeviceName = source.GetList<DeviceNameComponent>();
+                    DeviceName = source.GetList(() => new DeviceNameComponent());
                     return true;
                 case "modelNumber":
-                    ModelNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ModelNumberElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialization":
-                    Specialization = source.GetList<SpecializationComponent>();
+                    Specialization = source.GetList(() => new SpecializationComponent());
                     return true;
                 case "version":
-                    VersionElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    VersionElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "safety":
-                    Safety = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Safety = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "shelfLifeStorage":
-                    ShelfLifeStorage = source.GetList<Hl7.Fhir.Model.ProductShelfLife>();
+                    ShelfLifeStorage = source.GetList(() => new Hl7.Fhir.Model.ProductShelfLife());
                     return true;
                 case "physicalCharacteristics":
-                    PhysicalCharacteristics = source.Get<Hl7.Fhir.Model.ProdCharacteristic>();
+                    PhysicalCharacteristics = source.Populate(new Hl7.Fhir.Model.ProdCharacteristic());
                     return true;
                 case "languageCode":
-                    LanguageCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    LanguageCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "capability":
-                    Capability = source.GetList<CapabilityComponent>();
+                    Capability = source.GetList(() => new CapabilityComponent());
                     return true;
                 case "property":
-                    Property = source.GetList<PropertyComponent>();
+                    Property = source.GetList(() => new PropertyComponent());
                     return true;
                 case "owner":
-                    Owner = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Owner = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "onlineInformation":
-                    OnlineInformationElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    OnlineInformationElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "quantity":
-                    Quantity = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Quantity = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "parentDevice":
-                    ParentDevice = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ParentDevice = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "material":
-                    Material = source.GetList<MaterialComponent>();
+                    Material = source.GetList(() => new MaterialComponent());
                     return true;
             }
             return false;

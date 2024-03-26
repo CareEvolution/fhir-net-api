@@ -317,25 +317,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "type":
-                    Type = source.GetList<Hl7.Fhir.Model.Coding>();
+                    Type = source.GetList(() => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "when":
-                    WhenElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    WhenElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "who":
-                    Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Who = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "onBehalfOf":
-                    OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    OnBehalfOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "targetFormat":
-                    TargetFormatElement = source.Get<Hl7.Fhir.Model.Code>();
+                    TargetFormatElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "sigFormat":
-                    SigFormatElement = source.Get<Hl7.Fhir.Model.Code>();
+                    SigFormatElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "data":
-                    DataElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                    DataElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                     return true;
             }
             return false;

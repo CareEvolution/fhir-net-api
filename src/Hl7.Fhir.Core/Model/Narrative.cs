@@ -223,7 +223,7 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "status":
-                    StatusElement = source.Get<Code<NarrativeStatus>>();
+                    StatusElement = source.Populate(new Code<NarrativeStatus>());
                     return true;
                 case "div":
                     Div = source.GetXHtml();

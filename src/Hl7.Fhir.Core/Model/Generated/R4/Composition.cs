@@ -161,13 +161,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "mode":
-                        ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompositionAttestationMode>>();
+                        ModeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompositionAttestationMode>());
                         return true;
                     case "time":
-                        TimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        TimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "party":
-                        Party = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Party = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -350,15 +350,15 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentRelationshipType>>();
+                        CodeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DocumentRelationshipType>());
                         return true;
                     case "targetIdentifier":
                         source.CheckDuplicates<Hl7.Fhir.Model.Identifier>(Target, "target");
-                        Target = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Target = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "targetReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Target, "target");
-                        Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Target = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -541,13 +541,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "period":
-                        Period = source.Get<Hl7.Fhir.Model.Period>();
+                        Period = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "detail":
-                        Detail = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Detail = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -892,34 +892,34 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "title":
-                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "author":
-                        Author = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Author = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "focus":
-                        Focus = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Focus = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "text":
-                        Text = source.Get<Hl7.Fhir.Model.Narrative>();
+                        Text = source.Populate(new Hl7.Fhir.Model.Narrative());
                         return true;
                     case "mode":
-                        ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListMode>>();
+                        ModeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListMode>());
                         return true;
                     case "orderedBy":
-                        OrderedBy = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        OrderedBy = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "entry":
-                        Entry = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Entry = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "emptyReason":
-                        EmptyReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        EmptyReason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "section":
-                        Section = source.GetList<SectionComponent>();
+                        Section = source.GetList(() => new SectionComponent());
                         return true;
                 }
                 return false;
@@ -1581,49 +1581,49 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompositionStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompositionStatus>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "author":
-                    Author = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Author = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "title":
-                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "confidentiality":
-                    ConfidentialityElement = source.Get<Hl7.Fhir.Model.Code>();
+                    ConfidentialityElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "attester":
-                    Attester = source.GetList<AttesterComponent>();
+                    Attester = source.GetList(() => new AttesterComponent());
                     return true;
                 case "custodian":
-                    Custodian = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Custodian = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relatesTo":
-                    RelatesTo = source.GetList<RelatesToComponent>();
+                    RelatesTo = source.GetList(() => new RelatesToComponent());
                     return true;
                 case "event":
-                    Event = source.GetList<EventComponent>();
+                    Event = source.GetList(() => new EventComponent());
                     return true;
                 case "section":
-                    Section = source.GetList<SectionComponent>();
+                    Section = source.GetList(() => new SectionComponent());
                     return true;
             }
             return false;

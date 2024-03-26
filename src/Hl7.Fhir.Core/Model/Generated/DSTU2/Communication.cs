@@ -96,15 +96,15 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "contentString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Content = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                        Content = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Content = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -588,43 +588,43 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "category":
-                    Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "sender":
-                    Sender = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Sender = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "recipient":
-                    Recipient = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Recipient = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "payload":
-                    Payload = source.GetList<PayloadComponent>();
+                    Payload = source.GetList(() => new PayloadComponent());
                     return true;
                 case "medium":
-                    Medium = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Medium = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CommunicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CommunicationStatus>());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "sent":
-                    SentElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    SentElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "received":
-                    ReceivedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    ReceivedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "reason":
-                    Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requestDetail":
-                    RequestDetail = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    RequestDetail = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

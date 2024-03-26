@@ -351,25 +351,25 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "origin":
-                    Origin = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                    Origin = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
                 case "period":
-                    PeriodElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    PeriodElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "factor":
-                    FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    FactorElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "lowerLimit":
-                    LowerLimitElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    LowerLimitElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "upperLimit":
-                    UpperLimitElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    UpperLimitElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "dimensions":
-                    DimensionsElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    DimensionsElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "data":
-                    DataElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DataElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

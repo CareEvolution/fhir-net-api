@@ -351,25 +351,25 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.Code>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.OperationParameterUse>>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.OperationParameterUse>());
                     return true;
                 case "min":
-                    MinElement = source.Get<Hl7.Fhir.Model.Integer>();
+                    MinElement = source.Populate(new Hl7.Fhir.Model.Integer());
                     return true;
                 case "max":
-                    MaxElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    MaxElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "documentation":
-                    DocumentationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DocumentationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>());
                     return true;
                 case "profile":
-                    Profile = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Profile = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

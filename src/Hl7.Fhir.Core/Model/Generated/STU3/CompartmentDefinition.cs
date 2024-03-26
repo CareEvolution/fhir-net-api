@@ -183,13 +183,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
+                        CodeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                         return true;
                     case "param":
-                        ParamElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                        ParamElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "documentation":
-                        DocumentationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DocumentationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -884,49 +884,49 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "title":
-                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ExperimentalElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "publisher":
-                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PublisherElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactDetail>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.STU3.ContactDetail());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "purpose":
-                    PurposeElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    PurposeElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
                     return true;
                 case "jurisdiction":
-                    Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompartmentType>>();
+                    CodeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.CompartmentType>());
                     return true;
                 case "search":
-                    SearchElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    SearchElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "resource":
-                    Resource = source.GetList<ResourceComponent>();
+                    Resource = source.GetList(() => new ResourceComponent());
                     return true;
             }
             return false;

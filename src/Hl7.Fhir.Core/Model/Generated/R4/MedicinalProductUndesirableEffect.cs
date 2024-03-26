@@ -213,19 +213,19 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "subject":
-                    Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "symptomConditionEffect":
-                    SymptomConditionEffect = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    SymptomConditionEffect = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "classification":
-                    Classification = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Classification = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "frequencyOfOccurrence":
-                    FrequencyOfOccurrence = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    FrequencyOfOccurrence = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "population":
-                    Population = source.GetList<Hl7.Fhir.Model.Population>();
+                    Population = source.GetList(() => new Hl7.Fhir.Model.Population());
                     return true;
             }
             return false;

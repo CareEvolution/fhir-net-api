@@ -95,11 +95,11 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "resultCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Result, "result");
-                        Result = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Result = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "resultReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Result, "result");
-                        Result = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Result = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -588,56 +588,56 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "startDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Start, "start");
-                    Start = source.Get<Hl7.Fhir.Model.Date>();
+                    Start = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "startCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Start, "start");
-                    Start = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Start = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "targetDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Target, "target");
-                    Target = source.Get<Hl7.Fhir.Model.Date>();
+                    Target = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "targetQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Duration>(Target, "target");
-                    Target = source.Get<Hl7.Fhir.Model.DSTU2.Duration>();
+                    Target = source.Populate(new Hl7.Fhir.Model.DSTU2.Duration());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.GoalStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.GoalStatus>());
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    StatusDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "statusReason":
-                    StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    StatusReason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "author":
-                    Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Author = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "priority":
-                    Priority = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Priority = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "addresses":
-                    Addresses = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Addresses = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "outcome":
-                    Outcome = source.GetList<OutcomeComponent>();
+                    Outcome = source.GetList(() => new OutcomeComponent());
                     return true;
             }
             return false;

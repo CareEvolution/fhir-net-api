@@ -350,34 +350,34 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "request":
-                    Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "response":
-                    Response = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Response = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    StatusDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "created":
-                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "target":
-                    Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Target = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "provider":
-                    Provider = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Provider = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "organization":
-                    Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Organization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "paymentStatus":
-                    PaymentStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    PaymentStatus = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

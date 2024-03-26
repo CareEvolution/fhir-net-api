@@ -111,10 +111,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "agent":
-                        Agent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Agent = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onBehalfOf":
-                        OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        OnBehalfOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -865,78 +865,78 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "definition":
-                    Definition = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Definition = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "replaces":
-                    Replaces = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Replaces = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "groupIdentifier":
-                    GroupIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    GroupIdentifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestStatus>());
                     return true;
                 case "intent":
-                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestIntent>>();
+                    IntentElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.RequestIntent>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "priority":
-                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
+                    PriorityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>());
                     return true;
                 case "serviceRequested":
-                    ServiceRequested = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceRequested = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Context = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.Period>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    AuthoredOnElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "requester":
-                    Requester = source.Get<RequesterComponent>();
+                    Requester = source.Populate(new RequesterComponent());
                     return true;
                 case "specialty":
-                    Specialty = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Specialty = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "recipient":
-                    Recipient = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Recipient = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "supportingInfo":
-                    SupportingInfo = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    SupportingInfo = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "relevantHistory":
-                    RelevantHistory = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    RelevantHistory = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

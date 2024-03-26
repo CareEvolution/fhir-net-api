@@ -123,27 +123,27 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "doseRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Dose, "dose");
-                        Dose = source.Get<Hl7.Fhir.Model.Range>();
+                        Dose = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "doseQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(Dose, "dose");
-                        Dose = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Dose = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "rateRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Rate, "rate");
-                        Rate = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Rate = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "rateRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Rate, "rate");
-                        Rate = source.Get<Hl7.Fhir.Model.Range>();
+                        Rate = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "rateQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(Rate, "rate");
-                        Rate = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Rate = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                 }
                 return false;
@@ -622,48 +622,48 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "sequence":
-                    SequenceElement = source.Get<Hl7.Fhir.Model.Integer>();
+                    SequenceElement = source.Populate(new Hl7.Fhir.Model.Integer());
                     return true;
                 case "text":
-                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "additionalInstruction":
-                    AdditionalInstruction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    AdditionalInstruction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "patientInstruction":
-                    PatientInstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PatientInstructionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "timing":
-                    Timing = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.R4.Timing());
                     return true;
                 case "asNeededBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
-                    AsNeeded = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    AsNeeded = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "asNeededCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(AsNeeded, "asNeeded");
-                    AsNeeded = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    AsNeeded = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "site":
-                    Site = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Site = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "route":
-                    Route = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Route = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "method":
-                    Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "doseAndRate":
-                    DoseAndRate = source.GetList<DoseAndRateComponent>();
+                    DoseAndRate = source.GetList(() => new DoseAndRateComponent());
                     return true;
                 case "maxDosePerPeriod":
-                    MaxDosePerPeriod = source.Get<Hl7.Fhir.Model.Ratio>();
+                    MaxDosePerPeriod = source.Populate(new Hl7.Fhir.Model.Ratio());
                     return true;
                 case "maxDosePerAdministration":
-                    MaxDosePerAdministration = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                    MaxDosePerAdministration = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
                 case "maxDosePerLifetime":
-                    MaxDosePerLifetime = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                    MaxDosePerLifetime = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
             }
             return false;

@@ -434,28 +434,28 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "contentType":
-                    ContentTypeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    ContentTypeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "language":
-                    LanguageElement = source.Get<Hl7.Fhir.Model.Code>();
+                    LanguageElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "data":
-                    DataElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                    DataElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                     return true;
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.Url>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.Url());
                     return true;
                 case "size":
-                    SizeElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                    SizeElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "hash":
-                    HashElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                    HashElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                     return true;
                 case "title":
-                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "creation":
-                    CreationElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreationElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;

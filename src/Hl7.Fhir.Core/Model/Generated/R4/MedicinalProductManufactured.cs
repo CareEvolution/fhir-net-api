@@ -258,25 +258,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "manufacturedDoseForm":
-                    ManufacturedDoseForm = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ManufacturedDoseForm = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "unitOfPresentation":
-                    UnitOfPresentation = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    UnitOfPresentation = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "quantity":
-                    Quantity = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Quantity = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Manufacturer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "ingredient":
-                    Ingredient = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Ingredient = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "physicalCharacteristics":
-                    PhysicalCharacteristics = source.Get<Hl7.Fhir.Model.ProdCharacteristic>();
+                    PhysicalCharacteristics = source.Populate(new Hl7.Fhir.Model.ProdCharacteristic());
                     return true;
                 case "otherCharacteristics":
-                    OtherCharacteristics = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    OtherCharacteristics = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

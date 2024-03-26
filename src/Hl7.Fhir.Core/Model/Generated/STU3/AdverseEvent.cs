@@ -224,25 +224,25 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "instance":
-                        Instance = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Instance = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "causality":
-                        CausalityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AdverseEventCausality>>();
+                        CausalityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AdverseEventCausality>());
                         return true;
                     case "causalityAssessment":
-                        CausalityAssessment = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        CausalityAssessment = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "causalityProductRelatedness":
-                        CausalityProductRelatednessElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        CausalityProductRelatednessElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "causalityMethod":
-                        CausalityMethod = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        CausalityMethod = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "causalityAuthor":
-                        CausalityAuthor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        CausalityAuthor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "causalityResult":
-                        CausalityResult = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        CausalityResult = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -826,52 +826,52 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "category":
-                    CategoryElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AdverseEventCategory>>();
+                    CategoryElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AdverseEventCategory>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "reaction":
-                    Reaction = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Reaction = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "seriousness":
-                    Seriousness = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Seriousness = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "outcome":
-                    Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Outcome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "recorder":
-                    Recorder = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Recorder = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "eventParticipant":
-                    EventParticipant = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    EventParticipant = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "suspectEntity":
-                    SuspectEntity = source.GetList<SuspectEntityComponent>();
+                    SuspectEntity = source.GetList(() => new SuspectEntityComponent());
                     return true;
                 case "subjectMedicalHistory":
-                    SubjectMedicalHistory = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    SubjectMedicalHistory = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "referenceDocument":
-                    ReferenceDocument = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReferenceDocument = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "study":
-                    Study = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Study = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

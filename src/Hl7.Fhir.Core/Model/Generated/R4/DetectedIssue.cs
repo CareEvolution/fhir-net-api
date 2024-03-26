@@ -118,10 +118,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "detail":
-                        Detail = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Detail = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -321,13 +321,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "action":
-                        Action = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Action = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "date":
-                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "author":
-                        Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Author = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -807,45 +807,45 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationStatus>());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "severity":
-                    SeverityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DetectedIssueSeverity>>();
+                    SeverityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DetectedIssueSeverity>());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifiedDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Identified, "identified");
-                    Identified = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Identified = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "identifiedPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Identified, "identified");
-                    Identified = source.Get<Hl7.Fhir.Model.Period>();
+                    Identified = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "author":
-                    Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Author = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "implicated":
-                    Implicated = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Implicated = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "evidence":
-                    Evidence = source.GetList<EvidenceComponent>();
+                    Evidence = source.GetList(() => new EvidenceComponent());
                     return true;
                 case "detail":
-                    DetailElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DetailElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "reference":
-                    ReferenceElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    ReferenceElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "mitigation":
-                    Mitigation = source.GetList<MitigationComponent>();
+                    Mitigation = source.GetList(() => new MitigationComponent());
                     return true;
             }
             return false;

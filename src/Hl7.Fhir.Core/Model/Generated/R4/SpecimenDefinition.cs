@@ -260,28 +260,28 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "isDerived":
-                        IsDerivedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        IsDerivedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "preference":
-                        PreferenceElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SpecimenContainedPreference>>();
+                        PreferenceElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SpecimenContainedPreference>());
                         return true;
                     case "container":
-                        Container = source.Get<ContainerComponent>();
+                        Container = source.Populate(new ContainerComponent());
                         return true;
                     case "requirement":
-                        RequirementElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        RequirementElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "retentionTime":
-                        RetentionTime = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        RetentionTime = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "rejectionCriterion":
-                        RejectionCriterion = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        RejectionCriterion = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "handling":
-                        Handling = source.GetList<HandlingComponent>();
+                        Handling = source.GetList(() => new HandlingComponent());
                         return true;
                 }
                 return false;
@@ -632,33 +632,33 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "material":
-                        Material = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Material = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "cap":
-                        Cap = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Cap = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "capacity":
-                        Capacity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Capacity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "minimumVolumeQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(MinimumVolume, "minimumVolume");
-                        MinimumVolume = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        MinimumVolume = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "minimumVolumeString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(MinimumVolume, "minimumVolume");
-                        MinimumVolume = source.Get<Hl7.Fhir.Model.FhirString>();
+                        MinimumVolume = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "additive":
-                        Additive = source.GetList<AdditiveComponent>();
+                        Additive = source.GetList(() => new AdditiveComponent());
                         return true;
                     case "preparation":
-                        PreparationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PreparationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -872,11 +872,11 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "additiveCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Additive, "additive");
-                        Additive = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Additive = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "additiveReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Additive, "additive");
-                        Additive = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Additive = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -1066,16 +1066,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "temperatureQualifier":
-                        TemperatureQualifier = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        TemperatureQualifier = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "temperatureRange":
-                        TemperatureRange = source.Get<Hl7.Fhir.Model.Range>();
+                        TemperatureRange = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "maxDuration":
-                        MaxDuration = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        MaxDuration = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "instruction":
-                        InstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        InstructionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1388,22 +1388,22 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "typeCollected":
-                    TypeCollected = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    TypeCollected = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "patientPreparation":
-                    PatientPreparation = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    PatientPreparation = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "timeAspect":
-                    TimeAspectElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TimeAspectElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "collection":
-                    Collection = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Collection = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "typeTested":
-                    TypeTested = source.GetList<TypeTestedComponent>();
+                    TypeTested = source.GetList(() => new TypeTestedComponent());
                     return true;
             }
             return false;

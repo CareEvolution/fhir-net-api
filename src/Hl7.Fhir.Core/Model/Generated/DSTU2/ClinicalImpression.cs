@@ -115,10 +115,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "item":
-                        Item = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -299,10 +299,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "item":
-                        Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Item = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "cause":
-                        CauseElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        CauseElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -471,10 +471,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "item":
-                        Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Item = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "reason":
-                        ReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ReasonElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1094,60 +1094,60 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "assessor":
-                    Assessor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Assessor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ClinicalImpressionStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ClinicalImpressionStatus>());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "previous":
-                    Previous = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Previous = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "problem":
-                    Problem = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Problem = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "triggerCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Trigger, "trigger");
-                    Trigger = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Trigger = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "triggerReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Trigger, "trigger");
-                    Trigger = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Trigger = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "investigations":
-                    Investigations = source.GetList<InvestigationsComponent>();
+                    Investigations = source.GetList(() => new InvestigationsComponent());
                     return true;
                 case "protocol":
-                    ProtocolElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    ProtocolElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "summary":
-                    SummaryElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    SummaryElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "finding":
-                    Finding = source.GetList<FindingComponent>();
+                    Finding = source.GetList(() => new FindingComponent());
                     return true;
                 case "resolved":
-                    Resolved = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Resolved = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "ruledOut":
-                    RuledOut = source.GetList<RuledOutComponent>();
+                    RuledOut = source.GetList(() => new RuledOutComponent());
                     return true;
                 case "prognosis":
-                    PrognosisElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PrognosisElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "plan":
-                    Plan = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Plan = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "action":
-                    Action = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Action = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

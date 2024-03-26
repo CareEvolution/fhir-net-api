@@ -184,16 +184,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "url":
-                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "imagingStudy":
-                        ImagingStudy = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        ImagingStudy = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "series":
-                        Series = source.GetList<SeriesComponent>();
+                        Series = source.GetList(() => new SeriesComponent());
                         return true;
                 }
                 return false;
@@ -437,13 +437,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "uid":
-                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "url":
-                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "instance":
-                        Instance = source.GetList<InstanceComponent>();
+                        Instance = source.GetList(() => new InstanceComponent());
                         return true;
                 }
                 return false;
@@ -716,16 +716,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "sopClass":
-                        SopClassElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        SopClassElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "uid":
-                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "url":
-                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "frames":
-                        Frames = source.GetList<FramesComponent>();
+                        Frames = source.GetList(() => new FramesComponent());
                         return true;
                 }
                 return false;
@@ -955,10 +955,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "frameNumbers":
-                        FrameNumbersElement = source.GetList<Hl7.Fhir.Model.UnsignedInt>();
+                        FrameNumbersElement = source.GetList(() => new Hl7.Fhir.Model.UnsignedInt());
                         return true;
                     case "url":
-                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -1324,25 +1324,25 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "uid":
-                    UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                    UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "title":
-                    Title = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Title = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "author":
-                    Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Author = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authoringTime":
-                    AuthoringTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    AuthoringTimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "study":
-                    Study = source.GetList<StudyComponent>();
+                    Study = source.GetList(() => new StudyComponent());
                     return true;
             }
             return false;

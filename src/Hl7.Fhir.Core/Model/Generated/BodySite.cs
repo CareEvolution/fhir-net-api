@@ -318,28 +318,28 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "patient" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "code" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "modifier" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2):
-                    Modifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Modifier = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "image" when source.IsVersion(Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3):
-                    Image = source.GetList<Hl7.Fhir.Model.Attachment>();
+                    Image = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "active" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "qualifier" when source.IsVersion(Hl7.Fhir.Model.Version.STU3):
-                    Qualifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Qualifier = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

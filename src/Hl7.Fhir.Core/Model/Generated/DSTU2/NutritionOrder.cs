@@ -222,22 +222,22 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "schedule":
-                        Schedule = source.GetList<Hl7.Fhir.Model.DSTU2.Timing>();
+                        Schedule = source.GetList(() => new Hl7.Fhir.Model.DSTU2.Timing());
                         return true;
                     case "nutrient":
-                        Nutrient = source.GetList<NutrientComponent>();
+                        Nutrient = source.GetList(() => new NutrientComponent());
                         return true;
                     case "texture":
-                        Texture = source.GetList<TextureComponent>();
+                        Texture = source.GetList(() => new TextureComponent());
                         return true;
                     case "fluidConsistencyType":
-                        FluidConsistencyType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        FluidConsistencyType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "instruction":
-                        InstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        InstructionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -445,10 +445,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "modifier":
-                        Modifier = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Modifier = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "amount":
-                        Amount = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                 }
                 return false;
@@ -594,10 +594,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "modifier":
-                        Modifier = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Modifier = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "foodType":
-                        FoodType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        FoodType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -834,19 +834,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "productName":
-                        ProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ProductNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "schedule":
-                        Schedule = source.GetList<Hl7.Fhir.Model.DSTU2.Timing>();
+                        Schedule = source.GetList(() => new Hl7.Fhir.Model.DSTU2.Timing());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "instruction":
-                        InstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        InstructionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1203,31 +1203,31 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "baseFormulaType":
-                        BaseFormulaType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        BaseFormulaType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "baseFormulaProductName":
-                        BaseFormulaProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        BaseFormulaProductNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "additiveType":
-                        AdditiveType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        AdditiveType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "additiveProductName":
-                        AdditiveProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        AdditiveProductNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "caloricDensity":
-                        CaloricDensity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        CaloricDensity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "routeofAdministration":
-                        RouteofAdministration = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        RouteofAdministration = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "administration":
-                        Administration = source.GetList<AdministrationComponent>();
+                        Administration = source.GetList(() => new AdministrationComponent());
                         return true;
                     case "maxVolumeToDeliver":
-                        MaxVolumeToDeliver = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        MaxVolumeToDeliver = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "administrationInstruction":
-                        AdministrationInstructionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        AdministrationInstructionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1472,18 +1472,18 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "schedule":
-                        Schedule = source.Get<Hl7.Fhir.Model.DSTU2.Timing>();
+                        Schedule = source.Populate(new Hl7.Fhir.Model.DSTU2.Timing());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "rateQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(Rate, "rate");
-                        Rate = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Rate = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "rateRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Rate, "rate");
-                        Rate = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Rate = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                 }
                 return false;
@@ -1957,40 +1957,40 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "orderer":
-                    Orderer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Orderer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dateTime":
-                    DateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateTimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.NutritionOrderStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.NutritionOrderStatus>());
                     return true;
                 case "allergyIntolerance":
-                    AllergyIntolerance = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    AllergyIntolerance = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "foodPreferenceModifier":
-                    FoodPreferenceModifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    FoodPreferenceModifier = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "excludeFoodModifier":
-                    ExcludeFoodModifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ExcludeFoodModifier = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "oralDiet":
-                    OralDiet = source.Get<OralDietComponent>();
+                    OralDiet = source.Populate(new OralDietComponent());
                     return true;
                 case "supplement":
-                    Supplement = source.GetList<SupplementComponent>();
+                    Supplement = source.GetList(() => new SupplementComponent());
                     return true;
                 case "enteralFormula":
-                    EnteralFormula = source.Get<EnteralFormulaComponent>();
+                    EnteralFormula = source.Populate(new EnteralFormulaComponent());
                     return true;
             }
             return false;

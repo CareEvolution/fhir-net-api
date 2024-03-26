@@ -288,19 +288,19 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "system":
-                    SystemElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ContactPointSystem>>();
+                    SystemElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ContactPointSystem>());
                     return true;
                 case "value":
-                    ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ValueElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContactPointUse>>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContactPointUse>());
                     return true;
                 case "rank":
-                    RankElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    RankElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;

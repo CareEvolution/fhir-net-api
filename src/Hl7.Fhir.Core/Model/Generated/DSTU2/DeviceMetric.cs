@@ -180,13 +180,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationType>());
                         return true;
                     case "state":
-                        StateElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationState>>();
+                        StateElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationState>());
                         return true;
                     case "time":
-                        TimeElement = source.Get<Hl7.Fhir.Model.Instant>();
+                        TimeElement = source.Populate(new Hl7.Fhir.Model.Instant());
                         return true;
                 }
                 return false;
@@ -607,34 +607,34 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "unit":
-                    Unit = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Unit = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "source":
-                    Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Parent = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "operationalStatus":
-                    OperationalStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceMetricOperationalStatus>>();
+                    OperationalStatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceMetricOperationalStatus>());
                     return true;
                 case "color":
-                    ColorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricColor>>();
+                    ColorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricColor>());
                     return true;
                 case "category":
-                    CategoryElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCategory>>();
+                    CategoryElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCategory>());
                     return true;
                 case "measurementPeriod":
-                    MeasurementPeriod = source.Get<Hl7.Fhir.Model.DSTU2.Timing>();
+                    MeasurementPeriod = source.Populate(new Hl7.Fhir.Model.DSTU2.Timing());
                     return true;
                 case "calibration":
-                    Calibration = source.GetList<CalibrationComponent>();
+                    Calibration = source.GetList(() => new CalibrationComponent());
                     return true;
             }
             return false;

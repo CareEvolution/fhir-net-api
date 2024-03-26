@@ -177,13 +177,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "numberOfStudies":
-                        NumberOfStudiesElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        NumberOfStudiesElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "numberOfParticipants":
-                        NumberOfParticipantsElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        NumberOfParticipantsElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -415,16 +415,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "exposureState":
-                        ExposureStateElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ExposureState>>();
+                        ExposureStateElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ExposureState>());
                         return true;
                     case "variantState":
-                        VariantState = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        VariantState = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "riskEvidenceSynthesis":
-                        RiskEvidenceSynthesis = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        RiskEvidenceSynthesis = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -692,22 +692,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "variantState":
-                        VariantState = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        VariantState = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "value":
-                        ValueElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        ValueElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "unitOfMeasure":
-                        UnitOfMeasure = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        UnitOfMeasure = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "precisionEstimate":
-                        PrecisionEstimate = source.GetList<PrecisionEstimateComponent>();
+                        PrecisionEstimate = source.GetList(() => new PrecisionEstimateComponent());
                         return true;
                 }
                 return false;
@@ -991,16 +991,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "level":
-                        LevelElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        LevelElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "from":
-                        FromElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        FromElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "to":
-                        ToElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        ToElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                 }
                 return false;
@@ -1203,13 +1203,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "rating":
-                        Rating = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Rating = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "note":
-                        Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                         return true;
                     case "certaintySubcomponent":
-                        CertaintySubcomponent = source.GetList<CertaintySubcomponentComponent>();
+                        CertaintySubcomponent = source.GetList(() => new CertaintySubcomponentComponent());
                         return true;
                 }
                 return false;
@@ -1410,13 +1410,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "rating":
-                        Rating = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Rating = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "note":
-                        Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                         return true;
                 }
                 return false;
@@ -2491,103 +2491,103 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "version":
-                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    VersionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "title":
-                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "publisher":
-                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PublisherElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
                     return true;
                 case "jurisdiction":
-                    Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "copyright":
-                    CopyrightElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    CopyrightElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "approvalDate":
-                    ApprovalDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    ApprovalDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "lastReviewDate":
-                    LastReviewDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    LastReviewDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "effectivePeriod":
-                    EffectivePeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    EffectivePeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "topic":
-                    Topic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Topic = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "author":
-                    Author = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Author = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "editor":
-                    Editor = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Editor = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "reviewer":
-                    Reviewer = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Reviewer = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "endorser":
-                    Endorser = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Endorser = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "relatedArtifact":
-                    RelatedArtifact = source.GetList<Hl7.Fhir.Model.R4.RelatedArtifact>();
+                    RelatedArtifact = source.GetList(() => new Hl7.Fhir.Model.R4.RelatedArtifact());
                     return true;
                 case "synthesisType":
-                    SynthesisType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    SynthesisType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "studyType":
-                    StudyType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    StudyType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "population":
-                    Population = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Population = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "exposure":
-                    Exposure = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Exposure = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "exposureAlternative":
-                    ExposureAlternative = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ExposureAlternative = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outcome":
-                    Outcome = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Outcome = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "sampleSize":
-                    SampleSize = source.Get<SampleSizeComponent>();
+                    SampleSize = source.Populate(new SampleSizeComponent());
                     return true;
                 case "resultsByExposure":
-                    ResultsByExposure = source.GetList<ResultsByExposureComponent>();
+                    ResultsByExposure = source.GetList(() => new ResultsByExposureComponent());
                     return true;
                 case "effectEstimate":
-                    EffectEstimate = source.GetList<EffectEstimateComponent>();
+                    EffectEstimate = source.GetList(() => new EffectEstimateComponent());
                     return true;
                 case "certainty":
-                    Certainty = source.GetList<CertaintyComponent>();
+                    Certainty = source.GetList(() => new CertaintyComponent());
                     return true;
             }
             return false;

@@ -115,10 +115,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "entity":
-                        Entity = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Entity = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "role":
-                        Role = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -429,32 +429,32 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "entityCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Entity, "entity");
-                        Entity = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Entity = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "entityReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Entity, "entity");
-                        Entity = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Entity = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "identifier":
-                        Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "effectiveTime":
-                        EffectiveTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        EffectiveTimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "unitPrice":
-                        UnitPrice = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
+                        UnitPrice = source.Populate(new Hl7.Fhir.Model.DSTU2.Money());
                         return true;
                     case "factor":
-                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        FactorElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "points":
-                        PointsElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PointsElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "net":
-                        Net = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
+                        Net = source.Populate(new Hl7.Fhir.Model.DSTU2.Money());
                         return true;
                 }
                 return false;
@@ -700,13 +700,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.Coding>();
+                        Type = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "party":
-                        Party = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Party = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "signature":
-                        SignatureElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SignatureElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1077,40 +1077,40 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "issued":
-                        IssuedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        IssuedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "applies":
-                        Applies = source.Get<Hl7.Fhir.Model.Period>();
+                        Applies = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "subType":
-                        SubType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        SubType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "subject":
-                        Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "action":
-                        Action = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Action = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "actionReason":
-                        ActionReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        ActionReason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "actor":
-                        Actor = source.GetList<TermActorComponent>();
+                        Actor = source.GetList(() => new TermActorComponent());
                         return true;
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valuedItem":
-                        ValuedItem = source.GetList<TermValuedItemComponent>();
+                        ValuedItem = source.GetList(() => new TermValuedItemComponent());
                         return true;
                     case "group":
-                        Group = source.GetList<TermComponent>();
+                        Group = source.GetList(() => new TermComponent());
                         return true;
                 }
                 return false;
@@ -1378,10 +1378,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "entity":
-                        Entity = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Entity = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "role":
-                        Role = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1686,32 +1686,32 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "entityCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Entity, "entity");
-                        Entity = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Entity = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "entityReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Entity, "entity");
-                        Entity = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Entity = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "identifier":
-                        Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "effectiveTime":
-                        EffectiveTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        EffectiveTimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "unitPrice":
-                        UnitPrice = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
+                        UnitPrice = source.Populate(new Hl7.Fhir.Model.DSTU2.Money());
                         return true;
                     case "factor":
-                        FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        FactorElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "points":
-                        PointsElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PointsElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "net":
-                        Net = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
+                        Net = source.Populate(new Hl7.Fhir.Model.DSTU2.Money());
                         return true;
                 }
                 return false;
@@ -1909,11 +1909,11 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                        Content = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Content = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -2046,11 +2046,11 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                        Content = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Content = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -2183,11 +2183,11 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                        Content = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Content = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -2764,63 +2764,63 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "issued":
-                    IssuedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    IssuedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "applies":
-                    Applies = source.Get<Hl7.Fhir.Model.Period>();
+                    Applies = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "subject":
-                    Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authority":
-                    Authority = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Authority = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "domain":
-                    Domain = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Domain = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subType":
-                    SubType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    SubType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "action":
-                    Action = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Action = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actionReason":
-                    ActionReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ActionReason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actor":
-                    Actor = source.GetList<ActorComponent>();
+                    Actor = source.GetList(() => new ActorComponent());
                     return true;
                 case "valuedItem":
-                    ValuedItem = source.GetList<ValuedItemComponent>();
+                    ValuedItem = source.GetList(() => new ValuedItemComponent());
                     return true;
                 case "signer":
-                    Signer = source.GetList<SignatoryComponent>();
+                    Signer = source.GetList(() => new SignatoryComponent());
                     return true;
                 case "term":
-                    Term = source.GetList<TermComponent>();
+                    Term = source.GetList(() => new TermComponent());
                     return true;
                 case "bindingAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Binding, "binding");
-                    Binding = source.Get<Hl7.Fhir.Model.Attachment>();
+                    Binding = source.Populate(new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "bindingReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Binding, "binding");
-                    Binding = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Binding = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "friendly":
-                    Friendly = source.GetList<FriendlyLanguageComponent>();
+                    Friendly = source.GetList(() => new FriendlyLanguageComponent());
                     return true;
                 case "legal":
-                    Legal = source.GetList<LegalLanguageComponent>();
+                    Legal = source.GetList(() => new LegalLanguageComponent());
                     return true;
                 case "rule":
-                    Rule = source.GetList<ComputableLanguageComponent>();
+                    Rule = source.GetList(() => new ComputableLanguageComponent());
                     return true;
             }
             return false;

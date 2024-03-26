@@ -108,15 +108,15 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Item = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -510,46 +510,46 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    PartOf = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.SupplyDeliveryStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.SupplyDeliveryStatus>());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "suppliedItem":
-                    SuppliedItem = source.Get<SuppliedItemComponent>();
+                    SuppliedItem = source.Populate(new SuppliedItemComponent());
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.Period>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "occurrenceTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.STU3.Timing>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.STU3.Timing>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.STU3.Timing());
                     return true;
                 case "supplier":
-                    Supplier = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Supplier = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "destination":
-                    Destination = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Destination = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "receiver":
-                    Receiver = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Receiver = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

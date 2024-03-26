@@ -3008,7 +3008,7 @@ public class PropertyDetails
             }
             else
             {
-                yield return $"    {Name} = source.GetList<{PropType}>();";
+                yield return $"    {Name} = source.GetList(() => new {PropType}());";
             }
             yield return $"    return true;";
         }
@@ -3031,7 +3031,7 @@ public class PropertyDetails
             else
             {
                 yield return $"case \"{FhirName}\"{versionsWhen}:";
-                yield return $"    {Name} = source.Get<{PropType}>();";
+                yield return $"    {Name} = source.Populate(new {PropType}());";
                 yield return $"    return true;";
             }
         }
@@ -3127,7 +3127,7 @@ public class PropertyDetails
         var propertyName = FhirName + StringUtils.FirstToUpper(fhirType);
         yield return $"case \"{propertyName}\"{versionsWhen}:";
         yield return $"    source.CheckDuplicates<{type}>({Name}, \"{FhirName}\");";
-        yield return $"    {Name} = source.Get<{type}>();";
+        yield return $"    {Name} = source.Populate(new {type}());";
         yield return $"    return true;";
     }
 

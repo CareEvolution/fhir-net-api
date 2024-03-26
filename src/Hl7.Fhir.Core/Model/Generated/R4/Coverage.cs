@@ -163,13 +163,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "value":
-                        ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ValueElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "name":
-                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -353,18 +353,18 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.SimpleQuantity>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Value = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "valueMoney":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Money>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.R4.Money>();
+                        Value = source.Populate(new Hl7.Fhir.Model.R4.Money());
                         return true;
                     case "exception":
-                        Exception = source.GetList<ExemptionComponent>();
+                        Exception = source.GetList(() => new ExemptionComponent());
                         return true;
                 }
                 return false;
@@ -541,10 +541,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "period":
-                        Period = source.Get<Hl7.Fhir.Model.Period>();
+                        Period = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -1147,55 +1147,55 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "policyHolder":
-                    PolicyHolder = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    PolicyHolder = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subscriber":
-                    Subscriber = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subscriber = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subscriberId":
-                    SubscriberIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    SubscriberIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "beneficiary":
-                    Beneficiary = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Beneficiary = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dependent":
-                    DependentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DependentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "relationship":
-                    Relationship = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Relationship = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "payor":
-                    Payor = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Payor = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "class":
-                    Class = source.GetList<ClassComponent>();
+                    Class = source.GetList(() => new ClassComponent());
                     return true;
                 case "order":
-                    OrderElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    OrderElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "network":
-                    NetworkElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NetworkElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "costToBeneficiary":
-                    CostToBeneficiary = source.GetList<CostToBeneficiaryComponent>();
+                    CostToBeneficiary = source.GetList(() => new CostToBeneficiaryComponent());
                     return true;
                 case "subrogation":
-                    SubrogationElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    SubrogationElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "contract":
-                    Contract = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Contract = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

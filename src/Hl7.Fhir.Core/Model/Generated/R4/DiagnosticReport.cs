@@ -128,10 +128,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "comment":
-                        CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "link":
-                        Link = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Link = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -739,63 +739,63 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.DiagnosticReportStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.DiagnosticReportStatus>());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Effective = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
-                    Effective = source.Get<Hl7.Fhir.Model.Period>();
+                    Effective = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "issued":
-                    IssuedElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    IssuedElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "performer":
-                    Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Performer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "resultsInterpreter":
-                    ResultsInterpreter = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ResultsInterpreter = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "specimen":
-                    Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Specimen = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "result":
-                    Result = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Result = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "imagingStudy":
-                    ImagingStudy = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ImagingStudy = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "media":
-                    Media = source.GetList<MediaComponent>();
+                    Media = source.GetList(() => new MediaComponent());
                     return true;
                 case "conclusion":
-                    ConclusionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ConclusionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "conclusionCode":
-                    ConclusionCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ConclusionCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "presentedForm":
-                    PresentedForm = source.GetList<Hl7.Fhir.Model.Attachment>();
+                    PresentedForm = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                     return true;
             }
             return false;

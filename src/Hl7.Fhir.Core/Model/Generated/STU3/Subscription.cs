@@ -218,16 +218,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionChannelType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionChannelType>());
                         return true;
                     case "endpoint":
-                        EndpointElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        EndpointElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "payload":
-                        PayloadElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PayloadElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "header":
-                        HeaderElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                        HeaderElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -682,28 +682,28 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionStatus>());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.STU3.ContactPoint());
                     return true;
                 case "end":
-                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    EndElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "reason":
-                    ReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ReasonElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "criteria":
-                    CriteriaElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CriteriaElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "error":
-                    ErrorElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ErrorElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "channel":
-                    Channel = source.Get<ChannelComponent>();
+                    Channel = source.Populate(new ChannelComponent());
                     return true;
                 case "tag":
-                    Tag = source.GetList<Hl7.Fhir.Model.Coding>();
+                    Tag = source.GetList(() => new Hl7.Fhir.Model.Coding());
                     return true;
             }
             return false;

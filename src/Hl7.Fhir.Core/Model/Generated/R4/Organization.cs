@@ -146,16 +146,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "purpose":
-                        Purpose = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Purpose = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "name":
-                        Name = source.Get<Hl7.Fhir.Model.R4.HumanName>();
+                        Name = source.Populate(new Hl7.Fhir.Model.R4.HumanName());
                         return true;
                     case "telecom":
-                        Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
+                        Telecom = source.GetList(() => new Hl7.Fhir.Model.R4.ContactPoint());
                         return true;
                     case "address":
-                        Address = source.Get<Hl7.Fhir.Model.Address>();
+                        Address = source.Populate(new Hl7.Fhir.Model.Address());
                         return true;
                 }
                 return false;
@@ -650,34 +650,34 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "type":
-                    Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "alias":
-                    AliasElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    AliasElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "address":
-                    Address = source.GetList<Hl7.Fhir.Model.Address>();
+                    Address = source.GetList(() => new Hl7.Fhir.Model.Address());
                     return true;
                 case "partOf":
-                    PartOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    PartOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
-                    Contact = source.GetList<ContactComponent>();
+                    Contact = source.GetList(() => new ContactComponent());
                     return true;
                 case "endpoint":
-                    Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Endpoint = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

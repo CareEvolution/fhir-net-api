@@ -232,22 +232,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "linkId":
-                        LinkIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        LinkIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "definition":
-                        DefinitionElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        DefinitionElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subject":
-                        Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "answer":
-                        Answer = source.GetList<AnswerComponent>();
+                        Answer = source.GetList(() => new AnswerComponent());
                         return true;
                     case "item":
-                        Item = source.GetList<ItemComponent>();
+                        Item = source.GetList(() => new ItemComponent());
                         return true;
                 }
                 return false;
@@ -461,54 +461,54 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "valueBoolean":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "valueDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "valueInteger":
                         source.CheckDuplicates<Hl7.Fhir.Model.Integer>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Integer>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "valueDate":
                         source.CheckDuplicates<Hl7.Fhir.Model.Date>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Date>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Date());
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "valueTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Time>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Time());
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "valueAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Attachment>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "valueCoding":
                         source.CheckDuplicates<Hl7.Fhir.Model.Coding>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Coding>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "valueReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Value = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "item":
-                        Item = source.GetList<ItemComponent>();
+                        Item = source.GetList(() => new ItemComponent());
                         return true;
                 }
                 return false;
@@ -1028,37 +1028,37 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Parent = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "questionnaire":
-                    Questionnaire = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Questionnaire = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.QuestionnaireResponseStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.QuestionnaireResponseStatus>());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Context = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authored":
-                    AuthoredElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    AuthoredElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "author":
-                    Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Author = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "source":
-                    Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "item":
-                    Item = source.GetList<ItemComponent>();
+                    Item = source.GetList(() => new ItemComponent());
                     return true;
             }
             return false;

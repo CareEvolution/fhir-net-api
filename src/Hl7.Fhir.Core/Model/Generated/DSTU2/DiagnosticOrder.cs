@@ -179,16 +179,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "status":
-                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>>();
+                        StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>());
                         return true;
                     case "description":
-                        Description = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Description = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dateTime":
-                        DateTimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        DateTimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "actor":
-                        Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Actor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -435,19 +435,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "specimen":
-                        Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Specimen = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "bodySite":
-                        BodySite = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        BodySite = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "status":
-                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>>();
+                        StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>());
                         return true;
                     case "event":
-                        Event = source.GetList<EventComponent>();
+                        Event = source.GetList(() => new EventComponent());
                         return true;
                 }
                 return false;
@@ -940,40 +940,40 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "orderer":
-                    Orderer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Orderer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reason":
-                    Reason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "supportingInformation":
-                    SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    SupportingInformation = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "specimen":
-                    Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Specimen = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderStatus>());
                     return true;
                 case "priority":
-                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderPriority>>();
+                    PriorityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DiagnosticOrderPriority>());
                     return true;
                 case "event":
-                    Event = source.GetList<EventComponent>();
+                    Event = source.GetList(() => new EventComponent());
                     return true;
                 case "item":
-                    Item = source.GetList<ItemComponent>();
+                    Item = source.GetList(() => new ItemComponent());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

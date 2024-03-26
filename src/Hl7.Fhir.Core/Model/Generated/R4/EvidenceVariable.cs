@@ -244,59 +244,59 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "definitionReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Definition, "definition");
-                        Definition = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Definition = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "definitionCanonical":
                         source.CheckDuplicates<Hl7.Fhir.Model.Canonical>(Definition, "definition");
-                        Definition = source.Get<Hl7.Fhir.Model.Canonical>();
+                        Definition = source.Populate(new Hl7.Fhir.Model.Canonical());
                         return true;
                     case "definitionCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Definition, "definition");
-                        Definition = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Definition = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "definitionExpression":
                         source.CheckDuplicates<Hl7.Fhir.Model.Expression>(Definition, "definition");
-                        Definition = source.Get<Hl7.Fhir.Model.Expression>();
+                        Definition = source.Populate(new Hl7.Fhir.Model.Expression());
                         return true;
                     case "definitionDataRequirement":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.DataRequirement>(Definition, "definition");
-                        Definition = source.Get<Hl7.Fhir.Model.R4.DataRequirement>();
+                        Definition = source.Populate(new Hl7.Fhir.Model.R4.DataRequirement());
                         return true;
                     case "definitionTriggerDefinition":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.TriggerDefinition>(Definition, "definition");
-                        Definition = source.Get<Hl7.Fhir.Model.R4.TriggerDefinition>();
+                        Definition = source.Populate(new Hl7.Fhir.Model.R4.TriggerDefinition());
                         return true;
                     case "usageContext":
-                        UsageContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
+                        UsageContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
                         return true;
                     case "exclude":
-                        ExcludeElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        ExcludeElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "participantEffectiveDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(ParticipantEffective, "participantEffective");
-                        ParticipantEffective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        ParticipantEffective = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "participantEffectivePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(ParticipantEffective, "participantEffective");
-                        ParticipantEffective = source.Get<Hl7.Fhir.Model.Period>();
+                        ParticipantEffective = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "participantEffectiveDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(ParticipantEffective, "participantEffective");
-                        ParticipantEffective = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        ParticipantEffective = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "participantEffectiveTiming":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(ParticipantEffective, "participantEffective");
-                        ParticipantEffective = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                        ParticipantEffective = source.Populate(new Hl7.Fhir.Model.R4.Timing());
                         return true;
                     case "timeFromStart":
-                        TimeFromStart = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        TimeFromStart = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                     case "groupMeasure":
-                        GroupMeasureElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.GroupMeasure>>();
+                        GroupMeasureElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.GroupMeasure>());
                         return true;
                 }
                 return false;
@@ -1384,85 +1384,85 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "version":
-                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    VersionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "title":
-                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "shortTitle":
-                    ShortTitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ShortTitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subtitle":
-                    SubtitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    SubtitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "publisher":
-                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PublisherElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
                     return true;
                 case "jurisdiction":
-                    Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "copyright":
-                    CopyrightElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    CopyrightElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "approvalDate":
-                    ApprovalDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    ApprovalDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "lastReviewDate":
-                    LastReviewDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    LastReviewDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "effectivePeriod":
-                    EffectivePeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    EffectivePeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "topic":
-                    Topic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Topic = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "author":
-                    Author = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Author = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "editor":
-                    Editor = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Editor = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "reviewer":
-                    Reviewer = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Reviewer = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "endorser":
-                    Endorser = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Endorser = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "relatedArtifact":
-                    RelatedArtifact = source.GetList<Hl7.Fhir.Model.R4.RelatedArtifact>();
+                    RelatedArtifact = source.GetList(() => new Hl7.Fhir.Model.R4.RelatedArtifact());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EvidenceVariableType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EvidenceVariableType>());
                     return true;
                 case "characteristic":
-                    Characteristic = source.GetList<CharacteristicComponent>();
+                    Characteristic = source.GetList(() => new CharacteristicComponent());
                     return true;
             }
             return false;

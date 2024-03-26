@@ -320,19 +320,19 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "value":
-                    ValueElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    ValueElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "comparator":
-                    ComparatorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuantityComparator>>();
+                    ComparatorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuantityComparator>());
                     return true;
                 case "unit":
-                    UnitElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    UnitElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "system":
-                    SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    SystemElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "code":
-                    CodeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    CodeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
             }
             return false;

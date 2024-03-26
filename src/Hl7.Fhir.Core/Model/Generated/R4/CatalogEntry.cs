@@ -129,10 +129,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "relationtype":
-                        RelationtypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CatalogEntryRelationType>>();
+                        RelationtypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CatalogEntryRelationType>());
                         return true;
                     case "item":
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -624,43 +624,43 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "orderable":
-                    OrderableElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    OrderableElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "referencedItem":
-                    ReferencedItem = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ReferencedItem = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "additionalIdentifier":
-                    AdditionalIdentifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    AdditionalIdentifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "classification":
-                    Classification = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Classification = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "validityPeriod":
-                    ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    ValidityPeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "validTo":
-                    ValidToElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    ValidToElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "lastUpdated":
-                    LastUpdatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    LastUpdatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "additionalCharacteristic":
-                    AdditionalCharacteristic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    AdditionalCharacteristic = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "additionalClassification":
-                    AdditionalClassification = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    AdditionalClassification = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "relatedEntry":
-                    RelatedEntry = source.GetList<RelatedEntryComponent>();
+                    RelatedEntry = source.GetList(() => new RelatedEntryComponent());
                     return true;
             }
             return false;

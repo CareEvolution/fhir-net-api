@@ -424,37 +424,37 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "serviceCategory":
-                    ServiceCategory = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceCategory = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
-                    ServiceType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Specialty = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "appointmentType":
-                    AppointmentType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    AppointmentType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "schedule":
-                    Schedule = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Schedule = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.SlotStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.SlotStatus>());
                     return true;
                 case "start":
-                    StartElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    StartElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "end":
-                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    EndElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "overbooked":
-                    OverbookedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    OverbookedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

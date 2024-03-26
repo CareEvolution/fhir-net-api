@@ -96,15 +96,15 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "contentString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Content = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "contentAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                        Content = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "contentReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Content, "content");
-                        Content = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Content = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -867,73 +867,73 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "instantiatesCanonical":
-                    InstantiatesCanonicalElement = source.GetList<Hl7.Fhir.Model.Canonical>();
+                    InstantiatesCanonicalElement = source.GetList(() => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "instantiatesUri":
-                    InstantiatesUriElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
+                    InstantiatesUriElement = source.GetList(() => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    PartOf = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "inResponseTo":
-                    InResponseTo = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    InResponseTo = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventStatus>());
                     return true;
                 case "statusReason":
-                    StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    StatusReason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "priority":
-                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>>();
+                    PriorityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RequestPriority>());
                     return true;
                 case "medium":
-                    Medium = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Medium = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "topic":
-                    Topic = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Topic = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "about":
-                    About = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    About = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "sent":
-                    SentElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    SentElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "received":
-                    ReceivedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    ReceivedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recipient":
-                    Recipient = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Recipient = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "sender":
-                    Sender = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Sender = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "payload":
-                    Payload = source.GetList<PayloadComponent>();
+                    Payload = source.GetList(() => new PayloadComponent());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

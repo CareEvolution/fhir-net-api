@@ -355,34 +355,34 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relationship":
-                    Relationship = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Relationship = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
-                    Name = source.Get<Hl7.Fhir.Model.DSTU2.HumanName>();
+                    Name = source.Populate(new Hl7.Fhir.Model.DSTU2.HumanName());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "gender":
-                    GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
+                    GenderElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                     return true;
                 case "birthDate":
-                    BirthDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    BirthDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "address":
-                    Address = source.GetList<Hl7.Fhir.Model.Address>();
+                    Address = source.GetList(() => new Hl7.Fhir.Model.Address());
                     return true;
                 case "photo":
-                    Photo = source.GetList<Hl7.Fhir.Model.Attachment>();
+                    Photo = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;

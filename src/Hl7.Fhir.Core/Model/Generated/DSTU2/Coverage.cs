@@ -471,46 +471,46 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "issuer":
-                    Issuer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Issuer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "bin":
-                    Bin = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Bin = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.Coding>();
+                    Type = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "subscriberId":
-                    SubscriberId = source.Get<Hl7.Fhir.Model.Identifier>();
+                    SubscriberId = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "group":
-                    GroupElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    GroupElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "plan":
-                    PlanElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PlanElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subPlan":
-                    SubPlanElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    SubPlanElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "dependent":
-                    DependentElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    DependentElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "sequence":
-                    SequenceElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    SequenceElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "subscriber":
-                    Subscriber = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subscriber = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "network":
-                    Network = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Network = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "contract":
-                    Contract = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Contract = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

@@ -128,10 +128,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "code":
-                        CodeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanRelationship>>();
+                        CodeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanRelationship>());
                         return true;
                     case "plan":
-                        Plan = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Plan = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -282,10 +282,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "role":
-                        Role = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "member":
-                        Member = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Member = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -476,16 +476,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "actionResulting":
-                        ActionResulting = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        ActionResulting = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "progress":
-                        Progress = source.GetList<Hl7.Fhir.Model.Annotation>();
+                        Progress = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                         return true;
                     case "reference":
-                        Reference = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Reference = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "detail":
-                        Detail = source.Get<DetailComponent>();
+                        Detail = source.Populate(new DetailComponent());
                         return true;
                 }
                 return false;
@@ -941,63 +941,63 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "category":
-                        Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Category = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "reasonCode":
-                        ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "reasonReference":
-                        ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "goal":
-                        Goal = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Goal = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "status":
-                        StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanActivityStatus>>();
+                        StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanActivityStatus>());
                         return true;
                     case "statusReason":
-                        StatusReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        StatusReason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "prohibited":
-                        ProhibitedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        ProhibitedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "scheduledTiming":
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Timing>(Scheduled, "scheduled");
-                        Scheduled = source.Get<Hl7.Fhir.Model.DSTU2.Timing>();
+                        Scheduled = source.Populate(new Hl7.Fhir.Model.DSTU2.Timing());
                         return true;
                     case "scheduledPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Scheduled, "scheduled");
-                        Scheduled = source.Get<Hl7.Fhir.Model.Period>();
+                        Scheduled = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "scheduledString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Scheduled, "scheduled");
-                        Scheduled = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Scheduled = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "location":
-                        Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "performer":
-                        Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Performer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "productCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Product, "product");
-                        Product = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Product = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "productReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Product, "product");
-                        Product = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Product = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "dailyAmount":
-                        DailyAmount = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        DailyAmount = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1723,52 +1723,52 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.CarePlanStatus>());
                     return true;
                 case "context":
-                    Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Context = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "author":
-                    Author = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Author = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "modified":
-                    ModifiedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    ModifiedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "addresses":
-                    Addresses = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Addresses = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "support":
-                    Support = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Support = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relatedPlan":
-                    RelatedPlan = source.GetList<RelatedPlanComponent>();
+                    RelatedPlan = source.GetList(() => new RelatedPlanComponent());
                     return true;
                 case "participant":
-                    Participant = source.GetList<ParticipantComponent>();
+                    Participant = source.GetList(() => new ParticipantComponent());
                     return true;
                 case "goal":
-                    Goal = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Goal = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "activity":
-                    Activity = source.GetList<ActivityComponent>();
+                    Activity = source.GetList(() => new ActivityComponent());
                     return true;
                 case "note":
-                    Note = source.Get<Hl7.Fhir.Model.Annotation>();
+                    Note = source.Populate(new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

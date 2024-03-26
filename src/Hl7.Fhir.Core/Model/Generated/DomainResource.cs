@@ -256,16 +256,16 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "text":
-                    Text = source.Get<Hl7.Fhir.Model.Narrative>();
+                    Text = source.Populate(new Hl7.Fhir.Model.Narrative());
                     return true;
                 case "contained":
                     Contained = source.GetResourceList();
                     return true;
                 case "extension":
-                    Extension = source.GetList<Hl7.Fhir.Model.Extension>();
+                    Extension = source.GetList(() => new Hl7.Fhir.Model.Extension());
                     return true;
                 case "modifierExtension":
-                    ModifierExtension = source.GetList<Hl7.Fhir.Model.Extension>();
+                    ModifierExtension = source.GetList(() => new Hl7.Fhir.Model.Extension());
                     return true;
             }
             return false;

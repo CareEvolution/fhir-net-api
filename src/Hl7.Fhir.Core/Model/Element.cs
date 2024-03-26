@@ -170,7 +170,7 @@ namespace Hl7.Fhir.Model
                     ElementId = source.GetElementId();
                     return true;
                 case "extension":
-                    Extension = source.GetList<Extension>();
+                    Extension = source.GetList(() => new Extension());
                     return true;
             }
             return false;

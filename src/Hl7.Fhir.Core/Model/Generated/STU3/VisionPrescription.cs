@@ -522,49 +522,49 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "product":
-                        Product = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Product = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "eye":
-                        EyeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionEyes>>();
+                        EyeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionEyes>());
                         return true;
                     case "sphere":
-                        SphereElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        SphereElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "cylinder":
-                        CylinderElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        CylinderElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "axis":
-                        AxisElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        AxisElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "prism":
-                        PrismElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PrismElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "base":
-                        BaseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionBase>>();
+                        BaseElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VisionBase>());
                         return true;
                     case "add":
-                        AddElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        AddElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "power":
-                        PowerElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PowerElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "backCurve":
-                        BackCurveElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        BackCurveElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "diameter":
-                        DiameterElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        DiameterElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "duration":
-                        Duration = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Duration = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "color":
-                        ColorElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ColorElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "brand":
-                        BrandElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        BrandElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                         return true;
                 }
                 return false;
@@ -1064,33 +1064,33 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dateWritten":
-                    DateWrittenElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateWrittenElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "prescriber":
-                    Prescriber = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Prescriber = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Reason, "reason");
-                    Reason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reason, "reason");
-                    Reason = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Reason = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "dispense":
-                    Dispense = source.GetList<DispenseComponent>();
+                    Dispense = source.GetList(() => new DispenseComponent());
                     return true;
             }
             return false;

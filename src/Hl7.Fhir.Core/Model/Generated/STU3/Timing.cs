@@ -578,57 +578,57 @@ namespace Hl7.Fhir.Model.STU3
                 {
                     case "boundsDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Duration>(Bounds, "bounds");
-                        Bounds = source.Get<Hl7.Fhir.Model.STU3.Duration>();
+                        Bounds = source.Populate(new Hl7.Fhir.Model.STU3.Duration());
                         return true;
                     case "boundsRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Bounds, "bounds");
-                        Bounds = source.Get<Hl7.Fhir.Model.Range>();
+                        Bounds = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "boundsPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Bounds, "bounds");
-                        Bounds = source.Get<Hl7.Fhir.Model.Period>();
+                        Bounds = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "count":
-                        CountElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        CountElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "countMax":
-                        CountMaxElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        CountMaxElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "duration":
-                        DurationElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        DurationElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "durationMax":
-                        DurationMaxElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        DurationMaxElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "durationUnit":
-                        DurationUnitElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>>();
+                        DurationUnitElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>());
                         return true;
                     case "frequency":
-                        FrequencyElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        FrequencyElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "frequencyMax":
-                        FrequencyMaxElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        FrequencyMaxElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "period":
-                        PeriodElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PeriodElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "periodMax":
-                        PeriodMaxElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PeriodMaxElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "periodUnit":
-                        PeriodUnitElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>>();
+                        PeriodUnitElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UnitsOfTime>());
                         return true;
                     case "dayOfWeek":
-                        DayOfWeekElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>>();
+                        DayOfWeekElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>());
                         return true;
                     case "timeOfDay":
-                        TimeOfDayElement = source.GetList<Hl7.Fhir.Model.Time>();
+                        TimeOfDayElement = source.GetList(() => new Hl7.Fhir.Model.Time());
                         return true;
                     case "when":
-                        WhenElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.EventTiming>>();
+                        WhenElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.EventTiming>());
                         return true;
                     case "offset":
-                        OffsetElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                        OffsetElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                         return true;
                 }
                 return false;
@@ -1114,13 +1114,13 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "event":
-                    EventElement = source.GetList<Hl7.Fhir.Model.FhirDateTime>();
+                    EventElement = source.GetList(() => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "repeat":
-                    Repeat = source.Get<RepeatComponent>();
+                    Repeat = source.Populate(new RepeatComponent());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

@@ -676,75 +676,75 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "partOf":
-                    PartOf = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    PartOf = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.EventStatus>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "modality":
-                    Modality = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Modality = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "view":
-                    View = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    View = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "createdDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Created, "created");
-                    Created = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Created = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "createdPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Created, "created");
-                    Created = source.Get<Hl7.Fhir.Model.Period>();
+                    Created = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "issued":
-                    IssuedElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    IssuedElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "operator":
-                    Operator = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Operator = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "bodySite":
-                    BodySite = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    BodySite = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "deviceName":
-                    DeviceNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DeviceNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "device":
-                    Device = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Device = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "height":
-                    HeightElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    HeightElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "width":
-                    WidthElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    WidthElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "frames":
-                    FramesElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    FramesElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "duration":
-                    DurationElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    DurationElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "content":
-                    Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                    Content = source.Populate(new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

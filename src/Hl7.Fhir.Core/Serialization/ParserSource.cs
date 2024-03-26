@@ -232,20 +232,19 @@ namespace Hl7.Fhir.Serialization
             return GetNonEmptyString();
         }
 
-        public TBase Get<TBase>() where TBase : Base, new()
+        public TBase Populate<TBase>(TBase element) where TBase : Base
         {
-            var result = new TBase();
-            if (PopulateBaseCheckEmpty(result))
+            if (PopulateBaseCheckEmpty(element))
             {
-                return result;
+                return element;
             }
             return null;
         }
 
-        public List<TBase> GetList<TBase>() where TBase : Base, new()
+        public List<TBase> GetList<TBase>(Func<TBase> create) where TBase : Base
         {
             return GetListPrimitive(
-                () => Get<TBase>()
+                () => Populate(create())
             );
         }
 

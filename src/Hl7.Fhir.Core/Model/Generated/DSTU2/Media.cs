@@ -491,40 +491,40 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DigitalMediaType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DigitalMediaType>());
                     return true;
                 case "subtype":
-                    Subtype = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Subtype = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "operator":
-                    Operator = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Operator = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "view":
-                    View = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    View = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "deviceName":
-                    DeviceNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DeviceNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "height":
-                    HeightElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    HeightElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "width":
-                    WidthElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    WidthElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "frames":
-                    FramesElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    FramesElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "duration":
-                    DurationElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                    DurationElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "content":
-                    Content = source.Get<Hl7.Fhir.Model.Attachment>();
+                    Content = source.Populate(new Hl7.Fhir.Model.Attachment());
                     return true;
             }
             return false;

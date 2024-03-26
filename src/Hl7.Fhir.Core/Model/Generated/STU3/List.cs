@@ -173,16 +173,16 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "flag":
-                        Flag = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Flag = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "deleted":
-                        DeletedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        DeletedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "date":
-                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "item":
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -711,43 +711,43 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListStatus>());
                     return true;
                 case "mode":
-                    ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListMode>>();
+                    ModeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ListMode>());
                     return true;
                 case "title":
-                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "source":
-                    Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "orderedBy":
-                    OrderedBy = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    OrderedBy = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "entry":
-                    Entry = source.GetList<EntryComponent>();
+                    Entry = source.GetList(() => new EntryComponent());
                     return true;
                 case "emptyReason":
-                    EmptyReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    EmptyReason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

@@ -220,29 +220,29 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.TriggerType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.TriggerType>());
                     return true;
                 case "eventName":
-                    EventNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    EventNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "eventTimingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.STU3.Timing>(EventTiming, "eventTiming");
-                    EventTiming = source.Get<Hl7.Fhir.Model.STU3.Timing>();
+                    EventTiming = source.Populate(new Hl7.Fhir.Model.STU3.Timing());
                     return true;
                 case "eventTimingReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(EventTiming, "eventTiming");
-                    EventTiming = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    EventTiming = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "eventTimingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(EventTiming, "eventTiming");
-                    EventTiming = source.Get<Hl7.Fhir.Model.Date>();
+                    EventTiming = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "eventTimingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(EventTiming, "eventTiming");
-                    EventTiming = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    EventTiming = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "eventData":
-                    EventData = source.Get<Hl7.Fhir.Model.STU3.DataRequirement>();
+                    EventData = source.Populate(new Hl7.Fhir.Model.STU3.DataRequirement());
                     return true;
             }
             return false;

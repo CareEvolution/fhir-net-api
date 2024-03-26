@@ -462,34 +462,34 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AddressType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AddressType>());
                     return true;
                 case "text":
-                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "line":
-                    LineElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    LineElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "city":
-                    CityElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CityElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "district":
-                    DistrictElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DistrictElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "state":
-                    StateElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    StateElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "postalCode":
-                    PostalCodeElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PostalCodeElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "country":
-                    CountryElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CountryElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;

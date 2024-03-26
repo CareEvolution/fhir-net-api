@@ -146,26 +146,26 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "role":
-                        Role = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "whoUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
-                        Who = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        Who = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "whoReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Who, "who");
-                        Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Who = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onBehalfOfUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(OnBehalfOf, "onBehalfOf");
-                        OnBehalfOf = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        OnBehalfOf = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "onBehalfOfReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(OnBehalfOf, "onBehalfOf");
-                        OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        OnBehalfOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "relatedAgentType":
-                        RelatedAgentType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        RelatedAgentType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -404,22 +404,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "role":
-                        RoleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ProvenanceEntityRole>>();
+                        RoleElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ProvenanceEntityRole>());
                         return true;
                     case "whatUri":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(What, "what");
-                        What = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        What = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "whatReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(What, "what");
-                        What = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        What = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "whatIdentifier":
                         source.CheckDuplicates<Hl7.Fhir.Model.Identifier>(What, "what");
-                        What = source.Get<Hl7.Fhir.Model.Identifier>();
+                        What = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "agent":
-                        Agent = source.GetList<AgentComponent>();
+                        Agent = source.GetList(() => new AgentComponent());
                         return true;
                 }
                 return false;
@@ -863,34 +863,34 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "target":
-                    Target = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Target = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "recorded":
-                    RecordedElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    RecordedElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "policy":
-                    PolicyElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
+                    PolicyElement = source.GetList(() => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reason":
-                    Reason = source.GetList<Hl7.Fhir.Model.Coding>();
+                    Reason = source.GetList(() => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "activity":
-                    Activity = source.Get<Hl7.Fhir.Model.Coding>();
+                    Activity = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "agent":
-                    Agent = source.GetList<AgentComponent>();
+                    Agent = source.GetList(() => new AgentComponent());
                     return true;
                 case "entity":
-                    Entity = source.GetList<EntityComponent>();
+                    Entity = source.GetList(() => new EntityComponent());
                     return true;
                 case "signature":
-                    Signature = source.GetList<Hl7.Fhir.Model.STU3.Signature>();
+                    Signature = source.GetList(() => new Hl7.Fhir.Model.STU3.Signature());
                     return true;
             }
             return false;

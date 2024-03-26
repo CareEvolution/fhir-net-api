@@ -109,10 +109,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "actor":
-                        Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Actor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "role":
-                        Role = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -261,10 +261,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "action":
-                        Action = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Action = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "manipulated":
-                        Manipulated = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Manipulated = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -919,77 +919,77 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureStatus>());
                     return true;
                 case "category":
-                    Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "notPerformed":
-                    NotPerformedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    NotPerformedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "reasonNotPerformed":
-                    ReasonNotPerformed = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonNotPerformed = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "bodySite":
-                    BodySite = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    BodySite = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Reason, "reason");
-                    Reason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reason, "reason");
-                    Reason = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Reason = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    Performer = source.GetList<PerformerComponent>();
+                    Performer = source.GetList(() => new PerformerComponent());
                     return true;
                 case "performedDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Performed, "performed");
-                    Performed = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Performed = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "performedPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Performed, "performed");
-                    Performed = source.Get<Hl7.Fhir.Model.Period>();
+                    Performed = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outcome":
-                    Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Outcome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "report":
-                    Report = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Report = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "complication":
-                    Complication = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Complication = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "followUp":
-                    FollowUp = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    FollowUp = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "request":
-                    Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "notes":
-                    Notes = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Notes = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "focalDevice":
-                    FocalDevice = source.GetList<FocalDeviceComponent>();
+                    FocalDevice = source.GetList(() => new FocalDeviceComponent());
                     return true;
                 case "used":
-                    Used = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Used = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

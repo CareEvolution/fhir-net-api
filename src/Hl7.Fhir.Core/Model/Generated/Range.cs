@@ -158,10 +158,10 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "low":
-                    Low = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                    Low = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
                 case "high":
-                    High = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                    High = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
             }
             return false;

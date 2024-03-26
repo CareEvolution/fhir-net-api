@@ -208,25 +208,25 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.Coding>();
+                        Type = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "request":
-                        Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "responce":
-                        Responce = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Responce = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "submitter":
-                        Submitter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Submitter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "payee":
-                        Payee = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Payee = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "date":
-                        DateElement = source.Get<Hl7.Fhir.Model.Date>();
+                        DateElement = source.Populate(new Hl7.Fhir.Model.Date());
                         return true;
                     case "amount":
-                        Amount = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.DSTU2.Money());
                         return true;
                 }
                 return false;
@@ -436,10 +436,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.Coding>();
+                        Type = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -945,49 +945,49 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "request":
-                    Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outcome":
-                    OutcomeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.RemittanceOutcome>>();
+                    OutcomeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.RemittanceOutcome>());
                     return true;
                 case "disposition":
-                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DispositionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "ruleset":
-                    Ruleset = source.Get<Hl7.Fhir.Model.Coding>();
+                    Ruleset = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "originalRuleset":
-                    OriginalRuleset = source.Get<Hl7.Fhir.Model.Coding>();
+                    OriginalRuleset = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "created":
-                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "organization":
-                    Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Organization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requestProvider":
-                    RequestProvider = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    RequestProvider = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requestOrganization":
-                    RequestOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    RequestOrganization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "detail":
-                    Detail = source.GetList<DetailsComponent>();
+                    Detail = source.GetList(() => new DetailsComponent());
                     return true;
                 case "form":
-                    Form = source.Get<Hl7.Fhir.Model.Coding>();
+                    Form = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "total":
-                    Total = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
+                    Total = source.Populate(new Hl7.Fhir.Model.DSTU2.Money());
                     return true;
                 case "note":
-                    Note = source.GetList<NotesComponent>();
+                    Note = source.GetList(() => new NotesComponent());
                     return true;
             }
             return false;

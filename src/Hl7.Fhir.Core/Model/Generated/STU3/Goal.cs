@@ -125,27 +125,27 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "measure":
-                        Measure = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Measure = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "detailQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Detail, "detail");
-                        Detail = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Detail = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "detailRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Detail, "detail");
-                        Detail = source.Get<Hl7.Fhir.Model.Range>();
+                        Detail = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "detailCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Detail, "detail");
-                        Detail = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Detail = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dueDate":
                         source.CheckDuplicates<Hl7.Fhir.Model.Date>(Due, "due");
-                        Due = source.Get<Hl7.Fhir.Model.Date>();
+                        Due = source.Populate(new Hl7.Fhir.Model.Date());
                         return true;
                     case "dueDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Duration>(Due, "due");
-                        Due = source.Get<Hl7.Fhir.Model.STU3.Duration>();
+                        Due = source.Populate(new Hl7.Fhir.Model.STU3.Duration());
                         return true;
                 }
                 return false;
@@ -704,54 +704,54 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.GoalStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.GoalStatus>());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "priority":
-                    Priority = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Priority = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description":
-                    Description = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Description = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "startDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Start, "start");
-                    Start = source.Get<Hl7.Fhir.Model.Date>();
+                    Start = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "startCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Start, "start");
-                    Start = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Start = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "target":
-                    Target = source.Get<TargetComponent>();
+                    Target = source.Populate(new TargetComponent());
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    StatusDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "statusReason":
-                    StatusReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    StatusReasonElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "expressedBy":
-                    ExpressedBy = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ExpressedBy = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "addresses":
-                    Addresses = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Addresses = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "outcomeCode":
-                    OutcomeCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    OutcomeCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "outcomeReference":
-                    OutcomeReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    OutcomeReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

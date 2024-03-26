@@ -271,22 +271,22 @@ namespace Hl7.Fhir.Model
                 switch (elementName)
                 {
                     case "severity":
-                        SeverityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.IssueSeverity>>();
+                        SeverityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.IssueSeverity>());
                         return true;
                     case "code":
-                        CodeElement = source.Get<Hl7.Fhir.Model.Code>();
+                        CodeElement = source.Populate(new Hl7.Fhir.Model.Code());
                         return true;
                     case "details":
-                        Details = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Details = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "diagnostics":
-                        DiagnosticsElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DiagnosticsElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "location":
-                        LocationElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                        LocationElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "expression" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                        ExpressionElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                        ExpressionElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -527,7 +527,7 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "issue":
-                    Issue = source.GetList<IssueComponent>();
+                    Issue = source.GetList(() => new IssueComponent());
                     return true;
             }
             return false;

@@ -399,40 +399,40 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "organization":
-                    Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Organization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "participatingOrganization":
-                    ParticipatingOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ParticipatingOrganization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "network":
-                    Network = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Network = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "code":
-                    Code = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Specialty = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "location":
-                    Location = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "healthcareService":
-                    HealthcareService = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    HealthcareService = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "endpoint":
-                    Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Endpoint = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

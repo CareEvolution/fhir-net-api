@@ -388,37 +388,37 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "number":
-                        NumberElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                        NumberElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                         return true;
                     case "modality":
-                        Modality = source.Get<Hl7.Fhir.Model.Coding>();
+                        Modality = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "uid":
-                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "numberOfInstances":
-                        NumberOfInstancesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                        NumberOfInstancesElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                         return true;
                     case "availability":
-                        AvailabilityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>>();
+                        AvailabilityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>());
                         return true;
                     case "url":
-                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "bodySite":
-                        BodySite = source.Get<Hl7.Fhir.Model.Coding>();
+                        BodySite = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "laterality":
-                        Laterality = source.Get<Hl7.Fhir.Model.Coding>();
+                        Laterality = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                     case "started":
-                        StartedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        StartedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "instance":
-                        Instance = source.GetList<InstanceComponent>();
+                        Instance = source.GetList(() => new InstanceComponent());
                         return true;
                 }
                 return false;
@@ -837,22 +837,22 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "number":
-                        NumberElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                        NumberElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                         return true;
                     case "uid":
-                        UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "sopClass":
-                        SopClassElement = source.Get<Hl7.Fhir.Model.Oid>();
+                        SopClassElement = source.Populate(new Hl7.Fhir.Model.Oid());
                         return true;
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "title":
-                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "content":
-                        Content = source.GetList<Hl7.Fhir.Model.Attachment>();
+                        Content = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                         return true;
                 }
                 return false;
@@ -1527,52 +1527,52 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "started":
-                    StartedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    StartedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "uid":
-                    UidElement = source.Get<Hl7.Fhir.Model.Oid>();
+                    UidElement = source.Populate(new Hl7.Fhir.Model.Oid());
                     return true;
                 case "accession":
-                    Accession = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Accession = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "order":
-                    Order = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Order = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "modalityList":
-                    ModalityList = source.GetList<Hl7.Fhir.Model.Coding>();
+                    ModalityList = source.GetList(() => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "referrer":
-                    Referrer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Referrer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "availability":
-                    AvailabilityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>>();
+                    AvailabilityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.InstanceAvailability>());
                     return true;
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "numberOfSeries":
-                    NumberOfSeriesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                    NumberOfSeriesElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "numberOfInstances":
-                    NumberOfInstancesElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                    NumberOfInstancesElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "procedure":
-                    Procedure = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Procedure = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "interpreter":
-                    Interpreter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Interpreter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "series":
-                    Series = source.GetList<SeriesComponent>();
+                    Series = source.GetList(() => new SeriesComponent());
                     return true;
             }
             return false;

@@ -313,25 +313,25 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "deviceIdentifier":
-                        DeviceIdentifierElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DeviceIdentifierElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "name":
-                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "jurisdiction":
-                        JurisdictionElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        JurisdictionElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "carrierHRF":
-                        CarrierHRFElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        CarrierHRFElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "carrierAIDC":
-                        CarrierAIDCElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                        CarrierAIDCElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                         return true;
                     case "issuer":
-                        IssuerElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        IssuerElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "entryType":
-                        EntryTypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UDIEntryType>>();
+                        EntryTypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.UDIEntryType>());
                         return true;
                 }
                 return false;
@@ -1019,55 +1019,55 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "udi":
-                    Udi = source.Get<UdiComponent>();
+                    Udi = source.Populate(new UdiComponent());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FHIRDeviceStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FHIRDeviceStatus>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "lotNumber":
-                    LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    LotNumberElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "manufacturer":
-                    ManufacturerElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ManufacturerElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "manufactureDate":
-                    ManufactureDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    ManufactureDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "expirationDate":
-                    ExpirationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    ExpirationDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "model":
-                    ModelElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ModelElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "version":
-                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    VersionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "owner":
-                    Owner = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Owner = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.STU3.ContactPoint());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "safety":
-                    Safety = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Safety = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

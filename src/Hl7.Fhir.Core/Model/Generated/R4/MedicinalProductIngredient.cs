@@ -146,16 +146,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "group":
-                        Group = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Group = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "confidentiality":
-                        Confidentiality = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Confidentiality = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "strength":
-                        Strength = source.GetList<StrengthComponent>();
+                        Strength = source.GetList(() => new StrengthComponent());
                         return true;
                 }
                 return false;
@@ -441,25 +441,25 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "presentation":
-                        Presentation = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Presentation = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "presentationLowLimit":
-                        PresentationLowLimit = source.Get<Hl7.Fhir.Model.Ratio>();
+                        PresentationLowLimit = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "concentration":
-                        Concentration = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Concentration = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "concentrationLowLimit":
-                        ConcentrationLowLimit = source.Get<Hl7.Fhir.Model.Ratio>();
+                        ConcentrationLowLimit = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "measurementPoint":
-                        MeasurementPointElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        MeasurementPointElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "country":
-                        Country = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Country = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "referenceStrength":
-                        ReferenceStrength = source.GetList<ReferenceStrengthComponent>();
+                        ReferenceStrength = source.GetList(() => new ReferenceStrengthComponent());
                         return true;
                 }
                 return false;
@@ -739,19 +739,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "substance":
-                        Substance = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Substance = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "strength":
-                        Strength = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Strength = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "strengthLowLimit":
-                        StrengthLowLimit = source.Get<Hl7.Fhir.Model.Ratio>();
+                        StrengthLowLimit = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "measurementPoint":
-                        MeasurementPointElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        MeasurementPointElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "country":
-                        Country = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Country = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -948,10 +948,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "strength":
-                        Strength = source.GetList<StrengthComponent>();
+                        Strength = source.GetList(() => new StrengthComponent());
                         return true;
                 }
                 return false;
@@ -1257,22 +1257,22 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "role":
-                    Role = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Role = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "allergenicIndicator":
-                    AllergenicIndicatorElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    AllergenicIndicatorElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Manufacturer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "specifiedSubstance":
-                    SpecifiedSubstance = source.GetList<SpecifiedSubstanceComponent>();
+                    SpecifiedSubstance = source.GetList(() => new SpecifiedSubstanceComponent());
                     return true;
                 case "substance":
-                    Substance = source.Get<SubstanceComponent>();
+                    Substance = source.Populate(new SubstanceComponent());
                     return true;
             }
             return false;

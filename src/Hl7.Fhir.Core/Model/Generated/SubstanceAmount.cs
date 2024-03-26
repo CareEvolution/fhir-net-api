@@ -106,10 +106,10 @@ namespace Hl7.Fhir.Model
                 switch (elementName)
                 {
                     case "lowLimit" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                        LowLimit = source.Get<Hl7.Fhir.Model.Quantity>();
+                        LowLimit = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "highLimit" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                        HighLimit = source.Get<Hl7.Fhir.Model.Quantity>();
+                        HighLimit = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                 }
                 return false;
@@ -352,24 +352,24 @@ namespace Hl7.Fhir.Model
             {
                 case "amountQuantity" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Amount, "amount");
-                    Amount = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Amount = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "amountRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Amount, "amount");
-                    Amount = source.Get<Hl7.Fhir.Model.Range>();
+                    Amount = source.Populate(new Hl7.Fhir.Model.Range());
                     return true;
                 case "amountString" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                    Amount = source.Get<Hl7.Fhir.Model.FhirString>();
+                    Amount = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "amountType" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    AmountType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    AmountType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "amountText" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    AmountTextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    AmountTextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "referenceRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    ReferenceRange = source.Get<ReferenceRangeComponent>();
+                    ReferenceRange = source.Populate(new ReferenceRangeComponent());
                     return true;
             }
             return false;

@@ -274,32 +274,32 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.TriggerType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.TriggerType>());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.R4.Timing());
                     return true;
                 case "timingReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "timingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.Date>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "data":
-                    Data = source.GetList<Hl7.Fhir.Model.R4.DataRequirement>();
+                    Data = source.GetList(() => new Hl7.Fhir.Model.R4.DataRequirement());
                     return true;
                 case "condition":
-                    Condition = source.Get<Hl7.Fhir.Model.Expression>();
+                    Condition = source.Populate(new Hl7.Fhir.Model.Expression());
                     return true;
             }
             return false;

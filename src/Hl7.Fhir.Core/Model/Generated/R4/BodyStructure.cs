@@ -310,28 +310,28 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "morphology":
-                    Morphology = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Morphology = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Location = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "locationQualifier":
-                    LocationQualifier = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    LocationQualifier = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "image":
-                    Image = source.GetList<Hl7.Fhir.Model.Attachment>();
+                    Image = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

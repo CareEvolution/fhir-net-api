@@ -140,16 +140,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "purpose":
-                        Purpose = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Purpose = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "name":
-                        Name = source.Get<Hl7.Fhir.Model.R4.HumanName>();
+                        Name = source.Populate(new Hl7.Fhir.Model.R4.HumanName());
                         return true;
                     case "telecom":
-                        Telecom = source.GetList<Hl7.Fhir.Model.R4.ContactPoint>();
+                        Telecom = source.GetList(() => new Hl7.Fhir.Model.R4.ContactPoint());
                         return true;
                     case "address":
-                        Address = source.Get<Hl7.Fhir.Model.Address>();
+                        Address = source.Populate(new Hl7.Fhir.Model.Address());
                         return true;
                 }
                 return false;
@@ -355,13 +355,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "network":
-                        Network = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Network = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "benefit":
-                        Benefit = source.GetList<CoverageBenefitComponent>();
+                        Benefit = source.GetList(() => new CoverageBenefitComponent());
                         return true;
                 }
                 return false;
@@ -573,13 +573,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "requirement":
-                        RequirementElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        RequirementElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "limit":
-                        Limit = source.GetList<LimitComponent>();
+                        Limit = source.GetList(() => new LimitComponent());
                         return true;
                 }
                 return false;
@@ -751,10 +751,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "value":
-                        Value = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -991,22 +991,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "coverageArea":
-                        CoverageArea = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        CoverageArea = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "network":
-                        Network = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Network = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "generalCost":
-                        GeneralCost = source.GetList<GeneralCostComponent>();
+                        GeneralCost = source.GetList(() => new GeneralCostComponent());
                         return true;
                     case "specificCost":
-                        SpecificCost = source.GetList<SpecificCostComponent>();
+                        SpecificCost = source.GetList(() => new SpecificCostComponent());
                         return true;
                 }
                 return false;
@@ -1277,16 +1277,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "groupSize":
-                        GroupSizeElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                        GroupSizeElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "cost":
-                        Cost = source.Get<Hl7.Fhir.Model.R4.Money>();
+                        Cost = source.Populate(new Hl7.Fhir.Model.R4.Money());
                         return true;
                     case "comment":
-                        CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1461,10 +1461,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "category":
-                        Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Category = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "benefit":
-                        Benefit = source.GetList<PlanBenefitComponent>();
+                        Benefit = source.GetList(() => new PlanBenefitComponent());
                         return true;
                 }
                 return false;
@@ -1632,10 +1632,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "cost":
-                        Cost = source.GetList<CostComponent>();
+                        Cost = source.GetList(() => new CostComponent());
                         return true;
                 }
                 return false;
@@ -1831,16 +1831,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "applicability":
-                        Applicability = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Applicability = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "qualifiers":
-                        Qualifiers = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Qualifiers = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "value":
-                        Value = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                 }
                 return false;
@@ -2399,46 +2399,46 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "type":
-                    Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "alias":
-                    AliasElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    AliasElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "ownedBy":
-                    OwnedBy = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    OwnedBy = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "administeredBy":
-                    AdministeredBy = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    AdministeredBy = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "coverageArea":
-                    CoverageArea = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    CoverageArea = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
-                    Contact = source.GetList<ContactComponent>();
+                    Contact = source.GetList(() => new ContactComponent());
                     return true;
                 case "endpoint":
-                    Endpoint = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Endpoint = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "network":
-                    Network = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Network = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "coverage":
-                    Coverage = source.GetList<CoverageComponent>();
+                    Coverage = source.GetList(() => new CoverageComponent());
                     return true;
                 case "plan":
-                    Plan = source.GetList<PlanComponent>();
+                    Plan = source.GetList(() => new PlanComponent());
                     return true;
             }
             return false;

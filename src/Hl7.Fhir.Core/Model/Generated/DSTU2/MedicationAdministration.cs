@@ -189,32 +189,32 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "siteCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Site, "site");
-                        Site = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Site = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "siteReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Site, "site");
-                        Site = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Site = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "route":
-                        Route = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Route = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "method":
-                        Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "rateRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Rate, "rate");
-                        Rate = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Rate = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "rateRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Rate, "rate");
-                        Rate = source.Get<Hl7.Fhir.Model.Range>();
+                        Rate = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                 }
                 return false;
@@ -790,56 +790,56 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MedicationAdministrationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.MedicationAdministrationStatus>());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "practitioner":
-                    Practitioner = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Practitioner = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "prescription":
-                    Prescription = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Prescription = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "wasNotGiven":
-                    WasNotGivenElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    WasNotGivenElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "reasonNotGiven":
-                    ReasonNotGiven = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonNotGiven = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonGiven":
-                    ReasonGiven = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonGiven = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "effectiveTimeDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(EffectiveTime, "effectiveTime");
-                    EffectiveTime = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    EffectiveTime = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "effectiveTimePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(EffectiveTime, "effectiveTime");
-                    EffectiveTime = source.Get<Hl7.Fhir.Model.Period>();
+                    EffectiveTime = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "medicationCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
-                    Medication = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Medication = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "medicationReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Medication, "medication");
-                    Medication = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Medication = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
-                    Device = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Device = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    NoteElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NoteElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "dosage":
-                    Dosage = source.Get<DosageComponent>();
+                    Dosage = source.Populate(new DosageComponent());
                     return true;
             }
             return false;

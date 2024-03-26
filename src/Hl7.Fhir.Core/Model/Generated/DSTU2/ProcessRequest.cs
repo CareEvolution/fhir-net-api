@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "sequenceLinkId":
-                        SequenceLinkIdElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        SequenceLinkIdElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -685,52 +685,52 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "action":
-                    ActionElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionList>>();
+                    ActionElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ActionList>());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "ruleset":
-                    Ruleset = source.Get<Hl7.Fhir.Model.Coding>();
+                    Ruleset = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "originalRuleset":
-                    OriginalRuleset = source.Get<Hl7.Fhir.Model.Coding>();
+                    OriginalRuleset = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "created":
-                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "target":
-                    Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Target = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "provider":
-                    Provider = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Provider = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "organization":
-                    Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Organization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "request":
-                    Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "response":
-                    Response = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Response = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "nullify":
-                    NullifyElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    NullifyElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "reference":
-                    ReferenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ReferenceElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "item":
-                    Item = source.GetList<ItemsComponent>();
+                    Item = source.GetList(() => new ItemsComponent());
                     return true;
                 case "include":
-                    IncludeElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    IncludeElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "exclude":
-                    ExcludeElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    ExcludeElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;

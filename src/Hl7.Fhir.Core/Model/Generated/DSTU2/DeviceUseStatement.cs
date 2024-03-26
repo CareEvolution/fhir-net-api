@@ -299,44 +299,44 @@ namespace Hl7.Fhir.Model.DSTU2
             {
                 case "bodySiteCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(BodySite, "bodySite");
-                    BodySite = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    BodySite = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "bodySiteReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(BodySite, "bodySite");
-                    BodySite = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    BodySite = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "whenUsed":
-                    WhenUsed = source.Get<Hl7.Fhir.Model.Period>();
+                    WhenUsed = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "device":
-                    Device = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Device = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "indication":
-                    Indication = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Indication = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "notes":
-                    NotesElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    NotesElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "recordedOn":
-                    RecordedOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    RecordedOnElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Timing>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.DSTU2.Timing>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.DSTU2.Timing());
                     return true;
                 case "timingPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.Period>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;

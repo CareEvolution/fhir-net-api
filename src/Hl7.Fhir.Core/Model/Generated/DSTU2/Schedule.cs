@@ -231,19 +231,19 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actor":
-                    Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Actor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "planningHorizon":
-                    PlanningHorizon = source.Get<Hl7.Fhir.Model.Period>();
+                    PlanningHorizon = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

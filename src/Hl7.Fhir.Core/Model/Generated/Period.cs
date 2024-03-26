@@ -204,10 +204,10 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "start":
-                    StartElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    StartElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "end":
-                    EndElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    EndElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;

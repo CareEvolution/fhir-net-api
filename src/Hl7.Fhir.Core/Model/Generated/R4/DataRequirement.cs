@@ -199,16 +199,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PathElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "searchParam":
-                        SearchParamElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SearchParamElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueSet":
-                        ValueSetElement = source.Get<Hl7.Fhir.Model.Canonical>();
+                        ValueSetElement = source.Populate(new Hl7.Fhir.Model.Canonical());
                         return true;
                     case "code":
-                        Code = source.GetList<Hl7.Fhir.Model.Coding>();
+                        Code = source.GetList(() => new Hl7.Fhir.Model.Coding());
                         return true;
                 }
                 return false;
@@ -450,22 +450,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PathElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "searchParam":
-                        SearchParamElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SearchParamElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Period>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "valueDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Duration>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.R4.Duration>();
+                        Value = source.Populate(new Hl7.Fhir.Model.R4.Duration());
                         return true;
                 }
                 return false;
@@ -680,10 +680,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PathElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "direction":
-                        DirectionElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SortDirection>>();
+                        DirectionElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SortDirection>());
                         return true;
                 }
                 return false;
@@ -1113,33 +1113,33 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.FHIRAllTypes>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.FHIRAllTypes>());
                     return true;
                 case "profile":
-                    ProfileElement = source.GetList<Hl7.Fhir.Model.Canonical>();
+                    ProfileElement = source.GetList(() => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "subjectCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Subject, "subject");
-                    Subject = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subjectReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Subject, "subject");
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "mustSupport":
-                    MustSupportElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    MustSupportElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "codeFilter":
-                    CodeFilter = source.GetList<CodeFilterComponent>();
+                    CodeFilter = source.GetList(() => new CodeFilterComponent());
                     return true;
                 case "dateFilter":
-                    DateFilter = source.GetList<DateFilterComponent>();
+                    DateFilter = source.GetList(() => new DateFilterComponent());
                     return true;
                 case "limit":
-                    LimitElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    LimitElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "sort":
-                    Sort = source.GetList<SortComponent>();
+                    Sort = source.GetList(() => new SortComponent());
                     return true;
             }
             return false;

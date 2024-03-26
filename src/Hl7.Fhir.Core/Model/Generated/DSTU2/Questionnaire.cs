@@ -305,28 +305,28 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "linkId":
-                        LinkIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        LinkIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "title":
-                        TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "concept":
-                        Concept = source.GetList<Hl7.Fhir.Model.Coding>();
+                        Concept = source.GetList(() => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "required":
-                        RequiredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        RequiredElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "repeats":
-                        RepeatsElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        RepeatsElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "group":
-                        Group = source.GetList<GroupComponent>();
+                        Group = source.GetList(() => new GroupComponent());
                         return true;
                     case "question":
-                        Question = source.GetList<QuestionComponent>();
+                        Question = source.GetList(() => new QuestionComponent());
                         return true;
                 }
                 return false;
@@ -769,31 +769,31 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "linkId":
-                        LinkIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        LinkIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "concept":
-                        Concept = source.GetList<Hl7.Fhir.Model.Coding>();
+                        Concept = source.GetList(() => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AnswerFormat>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.AnswerFormat>());
                         return true;
                     case "required":
-                        RequiredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        RequiredElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "repeats":
-                        RepeatsElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        RepeatsElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "options":
-                        Options = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Options = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "option":
-                        Option = source.GetList<Hl7.Fhir.Model.Coding>();
+                        Option = source.GetList(() => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "group":
-                        Group = source.GetList<GroupComponent>();
+                        Group = source.GetList(() => new GroupComponent());
                         return true;
                 }
                 return false;
@@ -1333,28 +1333,28 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "version":
-                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    VersionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.QuestionnaireStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.QuestionnaireStatus>());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "publisher":
-                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PublisherElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "subjectType":
-                    SubjectTypeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
+                    SubjectTypeElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                     return true;
                 case "group":
-                    Group = source.Get<GroupComponent>();
+                    Group = source.Populate(new GroupComponent());
                     return true;
             }
             return false;
