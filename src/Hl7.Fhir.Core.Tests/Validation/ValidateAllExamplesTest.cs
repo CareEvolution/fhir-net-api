@@ -58,7 +58,7 @@ namespace Hl7.Fhir.Tests.Serialization
                             continue;
 
 
-                        var reader = SerializationUtil.WrapXmlReader(XmlReader.Create(file));
+                        var reader = Fhir.Serialization.SerializationUtil.WrapXmlReader(XmlReader.Create(file));
                         var resource = parser.Parse<Resource>(reader);
 
                         testFileCount++;
@@ -125,7 +125,7 @@ namespace Hl7.Fhir.Tests.Serialization
             var invariantCache = new Dictionary<string, List<ElementDefinitionConstraint>>();
             using (Stream streamOther = File.OpenRead(profiles))
             {
-                otherSDs = new FhirXmlParser(Fhir.Model.Version.DSTU2).Parse<Bundle>(SerializationUtil.XmlReaderFromStream(streamOther));
+                otherSDs = new FhirXmlParser(Fhir.Model.Version.DSTU2).Parse<Bundle>(Fhir.Serialization.SerializationUtil.XmlReaderFromStream(streamOther));
                 foreach (StructureDefinition resource in otherSDs.Entry.Select(e => e.Resource).Where(r => r != null && r is StructureDefinition))
                 {
                     List<ElementDefinitionConstraint> cacheForResource;
@@ -189,7 +189,7 @@ namespace Hl7.Fhir.Tests.Serialization
                         //if (file.EndsWith("valueset-ucum-common(ucum-common).xml"))
                         //    continue;
 
-                        var reader = SerializationUtil.WrapXmlReader(XmlReader.Create(file));
+                        var reader = Fhir.Serialization.SerializationUtil.WrapXmlReader(XmlReader.Create(file));
                         var resource = parser.Parse<Resource>(reader);
 
                         testFileCount++;

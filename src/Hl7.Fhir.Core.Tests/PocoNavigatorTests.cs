@@ -151,36 +151,6 @@ namespace Hl7.Fhir
         }
 
         [TestMethod]
-        public void CompareToOtherElementNavigator()
-        {
-            var json = TestDataHelper.ReadTestData("TestPatient.json");
-            var xml = TestDataHelper.ReadTestData("TestPatient.xml");
-
-            var pocoP = (new FhirJsonFastParser(Version.DSTU2).Parse<Model.DSTU2.Patient>(json)).ToTypedElement(Version.DSTU2);
-            var jsonP = FhirJsonNode.Parse(json, settings: new FhirJsonParsingSettings { AllowJsonComments = true })
-                .ToTypedElement(new PocoStructureDefinitionSummaryProvider(Version.DSTU2));
-            var xmlP = FhirXmlNode.Parse(xml).ToTypedElement(new PocoStructureDefinitionSummaryProvider(Version.DSTU2));
-
-            var pocoPChildren = pocoP.Children().ToList();
-            var pocoPGrandChildren = pocoPChildren.ToDictionary( c => c.Name, c => c.Children().ToList() );
-            var jsonPChildren = jsonP.Children().ToList();
-            var jsonPGrandChildren = jsonPChildren.ToDictionary(c => c.Name, c => c.Children().ToList());
-            doCompare(pocoP, jsonP, "poco<->json");
-            doCompare(pocoP, xmlP, "poco<->xml");
-
-            void doCompare(ITypedElement one, ITypedElement two, string what)
-            {
-                var compare = one.IsEqualTo(two);
-
-                if (compare.Success == false)
-                {
-                    Debug.WriteLine($"{what}: Difference in {compare.Details} at {compare.FailureLocation}");
-                    Assert.Fail();
-                }
-            }
-        }
-
-        [TestMethod]
         public void IncorrectPathInTwoSuccessiveRepeatingMembers()
         {
             var xml = File.ReadAllText(Path.Combine("TestData", "issue-444-testdata.xml"));

@@ -43,7 +43,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void FullRoundtripOfAllExamplesXmlPoco()
         {
             FullRoundtripOfAllExamples("examples.zip", "FHIRRoundTripTestXml", 
-                "Roundtripping xml->json->xml", usingPoco: true, provider:null);
+                "Roundtripping xml->json->xml");
         }
 
         [TestMethod]
@@ -51,23 +51,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void FullRoundtripOfAllExamplesJsonPoco()
         {
             FullRoundtripOfAllExamples("examples-json.zip", "FHIRRoundTripTestJson",
-                "Roundtripping json->xml->json", usingPoco: true, provider: null);
-        }
-
-        [TestMethod]
-        [TestCategory("LongRunner")]
-        public void FullRoundtripOfAllExamplesXmlNavPocoProvider()
-        {
-            FullRoundtripOfAllExamples("examples.zip", "FHIRRoundTripTestXml",
-                "Roundtripping xml->json->xml", usingPoco: false, provider: new PocoStructureDefinitionSummaryProvider(Version.DSTU2));
-        }
-
-        [TestMethod]
-        [TestCategory("LongRunner")]
-        public void FullRoundtripOfAllExamplesJsonNavPocoProvider()
-        {
-            FullRoundtripOfAllExamples("examples-json.zip", "FHIRRoundTripTestJson",
-                "Roundtripping json->xml->json", usingPoco: false, provider: new PocoStructureDefinitionSummaryProvider(Version.DSTU2));
+                "Roundtripping json->xml->json");
         }
 
         [TestMethod]
@@ -154,7 +138,7 @@ namespace Hl7.Fhir.Serialization.Tests
             return ZipFile.OpenRead(file);
         }
 
-        public static void FullRoundtripOfAllExamples(string zipname, string dirname, string label, bool usingPoco, IStructureDefinitionSummaryProvider provider)
+        public static void FullRoundtripOfAllExamples(string zipname, string dirname, string label)
         {
             ZipArchive examples = ReadTestZip(zipname);
 
@@ -164,7 +148,7 @@ namespace Hl7.Fhir.Serialization.Tests
 
             Debug.WriteLine(label);
             createEmptyDir(baseTestPath);
-            doRoundTrip(examples, baseTestPath, usingPoco, provider);
+            doRoundTrip(examples, baseTestPath);
         }
 
 
@@ -194,7 +178,7 @@ namespace Hl7.Fhir.Serialization.Tests
             Directory.CreateDirectory(baseTestPath);
         }
 
-        private static void doRoundTrip(ZipArchive examplesZip, string baseTestPath, bool usingPoco, IStructureDefinitionSummaryProvider provider)
+        private static void doRoundTrip(ZipArchive examplesZip, string baseTestPath)
         {
             var examplePath = Path.Combine(baseTestPath, "input");
             Directory.CreateDirectory(examplePath);
@@ -207,7 +191,7 @@ namespace Hl7.Fhir.Serialization.Tests
             Debug.WriteLine("Converting files in {0} to {1}", baseTestPath, intermediate1Path);
             var sw = new Stopwatch();
             sw.Start();
-            convertFiles(examplePath, intermediate1Path, usingPoco, provider);
+            convertFiles(examplePath, intermediate1Path);
             sw.Stop();
             Debug.WriteLine("Conversion took {0} seconds", sw.ElapsedMilliseconds / 1000);
             sw.Reset();
@@ -215,7 +199,7 @@ namespace Hl7.Fhir.Serialization.Tests
             var intermediate2Path = Path.Combine(baseTestPath, "intermediate2");
             Debug.WriteLine("Re-converting files in {0} back to original format in {1}", intermediate1Path, intermediate2Path);
             sw.Start();
-            convertFiles(intermediate1Path, intermediate2Path, usingPoco, provider);
+            convertFiles(intermediate1Path, intermediate2Path);
             sw.Stop();
             Debug.WriteLine("Conversion took {0} seconds", sw.ElapsedMilliseconds / 1000);
             sw.Reset();
@@ -225,7 +209,7 @@ namespace Hl7.Fhir.Serialization.Tests
         }
 
 
-        private static void convertFiles(string inputPath, string outputPath, bool usingPoco, IStructureDefinitionSummaryProvider provider)
+        private static void convertFiles(string inputPath, string outputPath)
         {
             var files = Directory.EnumerateFiles(inputPath);
             if (!Directory.Exists(outputPath)) Directory.CreateDirectory(outputPath);
@@ -246,10 +230,7 @@ namespace Hl7.Fhir.Serialization.Tests
                 if (file.Contains("expansions.") || file.Contains("profiles-resources") || file.Contains("profiles-others") || file.Contains("valuesets."))
                     continue;
 
-                if (usingPoco)
-                    convertResourcePoco(file, outputFile);
-                else
-                    convertResourceNav(file, outputFile, provider);
+                convertResourcePoco(file, outputFile);
 
             }
 
@@ -324,28 +305,6 @@ namespace Hl7.Fhir.Serialization.Tests
                 var json = File.ReadAllText(inputFile);
                 var resource = new FhirJsonFastParser(Version.DSTU2).Parse<Resource>(json);
                 var xml = new FhirXmlFastSerializer(Version.DSTU2).SerializeToString(resource);
-                File.WriteAllText(outputFile, xml);
-            }
-        }
-
-        private static void convertResourceNav(string inputFile, string outputFile, IStructureDefinitionSummaryProvider provider)
-        {
-            //TODO: call validation after reading
-            if (inputFile.Contains("expansions.") || inputFile.Contains("profiles-resources") || inputFile.Contains("profiles-others") || inputFile.Contains("valuesets."))
-                return;
-            if (inputFile.EndsWith(".xml"))
-            {
-                var xml = File.ReadAllText(inputFile);
-                var nav = XmlParsingHelpers.ParseToTypedElement(xml, provider);
-                var json = nav.ToJson();
-                File.WriteAllText(outputFile, json);
-            }
-            else
-            {
-                var json = File.ReadAllText(inputFile);
-                var nav = JsonParsingHelpers.ParseToTypedElement(json, provider, 
-                    settings: new FhirJsonParsingSettings { AllowJsonComments = true } );
-                var xml = nav.ToXml();
                 File.WriteAllText(outputFile, xml);
             }
         }

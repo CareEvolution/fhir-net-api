@@ -7,11 +7,8 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
-using Hl7.Fhir.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hl7.Fhir.Utility;
 
@@ -26,8 +23,8 @@ namespace Hl7.Fhir.Tests
 
         public static void AreSame(string filename, string expected, string actual, bool ignoreSchemaLocation=false)
         {
-            XDocument exp = SerializationUtil.XDocumentFromXmlText(expected);
-            XDocument act = SerializationUtil.XDocumentFromXmlText(actual);
+            XDocument exp = Fhir.Serialization.SerializationUtil.XDocumentFromXmlText(expected);
+            XDocument act = Fhir.Serialization.SerializationUtil.XDocumentFromXmlText(actual);
 
             AreSame(filename, exp, act, ignoreSchemaLocation);
         }

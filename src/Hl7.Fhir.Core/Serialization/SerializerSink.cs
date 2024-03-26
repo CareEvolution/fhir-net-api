@@ -822,7 +822,7 @@ namespace Hl7.Fhir.Serialization
             }
             var addedRootElement = false;
             var firstElement = true;
-            using (var xmlReader = Utility.SerializationUtil.XmlReaderFromXmlText(value))
+            using (var xmlReader = SerializationUtil.XmlReaderFromXmlText(value))
             {
                     while (xmlReader.Read())
                 {

@@ -114,17 +114,17 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestMethod]
         public void TestProbing()
         {
-            Assert.IsFalse(SerializationUtil.ProbeIsJson("this is nothing"));
-            Assert.IsFalse(SerializationUtil.ProbeIsJson("  crap { "));
-            Assert.IsFalse(SerializationUtil.ProbeIsJson("<element/>"));
-            Assert.IsTrue(SerializationUtil.ProbeIsJson("   { x:5 }"));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsJson("this is nothing"));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsJson("  crap { "));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsJson("<element/>"));
+            Assert.IsTrue(Fhir.Serialization.SerializationUtil.ProbeIsJson("   { x:5 }"));
 
-            Assert.IsFalse(SerializationUtil.ProbeIsXml("this is nothing"));
-            Assert.IsFalse(SerializationUtil.ProbeIsXml("  crap { "));
-            Assert.IsFalse(SerializationUtil.ProbeIsXml(" < crap  "));
-            Assert.IsFalse(SerializationUtil.ProbeIsXml("   { x:5 }"));
-            Assert.IsTrue(SerializationUtil.ProbeIsXml("   <element/>"));
-            Assert.IsTrue(SerializationUtil.ProbeIsXml("<?xml />"));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsXml("this is nothing"));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsXml("  crap { "));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsXml(" < crap  "));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsXml("   { x:5 }"));
+            Assert.IsTrue(Fhir.Serialization.SerializationUtil.ProbeIsXml("   <element/>"));
+            Assert.IsTrue(Fhir.Serialization.SerializationUtil.ProbeIsXml("<?xml />"));
         }
 
         [TestMethod]
@@ -599,7 +599,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             poco.Meta = new Meta();
 
-            var reserialized = poco.ToJson(Fhir.Model.Version.DSTU2);
+            var reserialized = FhirDstu2JsonSerializer.SerializeToString(poco);
 
             var newPoco = fhirJsonParser.Parse<Patient>(reserialized);
 

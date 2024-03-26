@@ -16,13 +16,13 @@ namespace Hl7.Fhir.Serialization
         }
 
         public string SerializeToString(Base instance, Rest.SummaryType summary = Rest.SummaryType.False, string root = null, string[] elements = null) =>
-           Utility.SerializationUtil.WriteXmlToString(xmlWriter => Serialize(instance, xmlWriter, summary, root, elements), Settings.Pretty);
+           SerializationUtil.WriteXmlToString(xmlWriter => Serialize(instance, xmlWriter, summary, root, elements), Settings.Pretty);
 
         public byte[] SerializeToBytes(Base instance, Rest.SummaryType summary = Rest.SummaryType.False, string root = null, string[] elements = null) =>
-           Utility.SerializationUtil.WriteXmlToBytes(xmlWriter => Serialize(instance, xmlWriter, summary, root, elements));
+           SerializationUtil.WriteXmlToBytes(xmlWriter => Serialize(instance, xmlWriter, summary, root, elements));
 
         public XDocument SerializeToDocument(Base instance, Rest.SummaryType summary = Rest.SummaryType.False, string root = null, string[] elements = null) =>
-           Utility.SerializationUtil.WriteXmlToDocument(xmlWriter => Serialize(instance, xmlWriter, summary, root, elements));
+           SerializationUtil.WriteXmlToDocument(xmlWriter => Serialize(instance, xmlWriter, summary, root, elements));
 
         public void Serialize(Base instance, XmlWriter writer, Rest.SummaryType summary = Rest.SummaryType.False, string root = null, string[] elements = null)
         {
