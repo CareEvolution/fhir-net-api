@@ -1,9 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Xml;
 
 namespace Hl7.Fhir.Serialization.Tests
@@ -1032,6 +1035,45 @@ namespace Hl7.Fhir.Serialization.Tests
             var serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
             WriteFilesIfDifferent(json, serializedJson, "idandextension");
             Assert.AreEqual(json, serializedJson);
+        }
+
+        [TestMethod]
+        public void JsonEncoding()
+        {
+            var patient = new Patient
+            {
+                Name = new List<HumanName>()
+                {
+                    new HumanName()
+                    {
+                        Family = new[] { "Hörst" }
+                    }
+                }
+            };
+
+            var serializer = new FhirJsonFastSerializer(Model.Version.DSTU2, unsafeRelaxedJsonEscaping: true);
+            var serializedJson = serializer.SerializeToString(patient);
+            Assert.IsTrue(serializedJson.Contains("Hörst"));
+
+            var destination = new MemoryStream();
+            using (var writer = new Utf8JsonWriter(destination, serializer.CreateJsonWriterOptions()))
+            {
+                serializer.Serialize(patient, writer);
+            }
+            serializedJson = Encoding.UTF8.GetString(destination.ToArray());
+            Assert.IsTrue(serializedJson.Contains("Hörst"));
+
+            serializer = new FhirJsonFastSerializer(Model.Version.DSTU2, unsafeRelaxedJsonEscaping: false);
+            serializedJson = serializer.SerializeToString(patient);
+            Assert.IsTrue(serializedJson.Contains("H\\u00F6rst"), $"Unexpected JSON: <{serializedJson}>");
+ 
+            destination = new MemoryStream();
+            using (var writer = new Utf8JsonWriter(destination, serializer.CreateJsonWriterOptions()))
+            {
+                serializer.Serialize(patient, writer);
+            }
+            serializedJson = Encoding.UTF8.GetString(destination.ToArray());
+            Assert.IsTrue(serializedJson.Contains("H\\u00F6rst"), $"Unexpected JSON: <{serializedJson}>");
         }
 
         private static void WriteFilesIfDifferent(string expected, string actual, string fileName)

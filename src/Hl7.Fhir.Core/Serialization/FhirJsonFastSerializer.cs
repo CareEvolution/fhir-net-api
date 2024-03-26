@@ -9,19 +9,23 @@ namespace Hl7.Fhir.Serialization
 {
     public class FhirJsonFastSerializer : BaseFhirSerializer
     {
-        public FhirJsonFastSerializer(Model.Version version) : base(version)
+        public FhirJsonFastSerializer(Model.Version version, bool unsafeRelaxedJsonEscaping = true) : base(version)
         {
+            UnsafeRelaxedJsonEscaping = unsafeRelaxedJsonEscaping;
         }
 
-        public FhirJsonFastSerializer(SerializerSettings settings) : base(settings)
+        public FhirJsonFastSerializer(SerializerSettings settings, bool unsafeRelaxedJsonEscaping = true) : base(settings)
         {
+            UnsafeRelaxedJsonEscaping = unsafeRelaxedJsonEscaping;
         }
+
+        public bool UnsafeRelaxedJsonEscaping { get; }
 
         public string SerializeToString(Base instance, Rest.SummaryType summary = Rest.SummaryType.False, string[] elements = null) =>
-            WriteJsonToString(jsonWriter => Serialize(instance, jsonWriter, summary, elements), unsafeRelaxedJsonEscaping: true, Settings.Pretty);
+            WriteJsonToString(jsonWriter => Serialize(instance, jsonWriter, summary, elements), UnsafeRelaxedJsonEscaping, Settings.Pretty);
 
         public byte[] SerializeToBytes(Base instance, Rest.SummaryType summary = Rest.SummaryType.False, string[] elements = null) =>
-            WriteJsonToBytes(jsonWriter => Serialize(instance, jsonWriter, summary, elements), unsafeRelaxedJsonEscaping: true);
+            WriteJsonToBytes(jsonWriter => Serialize(instance, jsonWriter, summary, elements), UnsafeRelaxedJsonEscaping);
 
         public void Serialize(Base instance, Utf8JsonWriter writer, Rest.SummaryType summary = Rest.SummaryType.False, string[] elements = null)
         {
@@ -31,6 +35,8 @@ namespace Hl7.Fhir.Serialization
             var serializerSink = new JsonSerializerSink(writer, Settings.Version, summary, elements);
             instance.Serialize(serializerSink);
         }
+
+        public JsonWriterOptions CreateJsonWriterOptions() => CreateJsonWriterOptions(UnsafeRelaxedJsonEscaping, Settings.Pretty);
 
         private static string WriteJsonToString(Action<Utf8JsonWriter> serializer, bool unsafeRelaxedJsonEscaping, bool pretty)
         {
@@ -60,5 +66,14 @@ namespace Hl7.Fhir.Serialization
             }
             return destination;
         }
+
+        private static JsonWriterOptions CreateJsonWriterOptions(bool unsafeRelaxedJsonEscaping, bool pretty) =>
+            new JsonWriterOptions
+            {
+                Indented = pretty,
+                Encoder = unsafeRelaxedJsonEscaping ?
+                    JavaScriptEncoder.UnsafeRelaxedJsonEscaping :
+                    JavaScriptEncoder.Default
+            };
     }
 }

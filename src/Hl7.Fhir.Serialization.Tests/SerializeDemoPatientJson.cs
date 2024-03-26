@@ -4,7 +4,8 @@ using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-using System.Linq;
+using System.Text;
+using System.Text.Json;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
@@ -50,10 +51,24 @@ namespace Hl7.Fhir.Serialization.Tests
         {
             var json = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.json"));
 
-            var p = (new FhirJsonFastParser(Version.DSTU2)).Parse<Model.DSTU2.Patient>(json);
-            var output = (new FhirJsonFastSerializer(new SerializerSettings(Version.DSTU2) { Pretty = false })).SerializeToString(p);
+            var p = new FhirJsonFastParser(Version.DSTU2).Parse<Model.DSTU2.Patient>(json);
+
+            var serializer = new FhirJsonFastSerializer(new SerializerSettings(Version.DSTU2) { Pretty = false });
+            var destination = new MemoryStream();
+            using (var writer = new Utf8JsonWriter(destination, serializer.CreateJsonWriterOptions()))
+            {
+                serializer.Serialize(p, writer);
+            }
+            var output = Encoding.UTF8.GetString(destination.ToArray());
             Assert.IsFalse(output.Substring(0, 20).Contains('\n'));
-            var pretty = (new FhirJsonFastSerializer(new SerializerSettings(Version.DSTU2) { Pretty = true })).SerializeToString(p);
+
+            serializer = new FhirJsonFastSerializer(new SerializerSettings(Version.DSTU2) { Pretty = true });
+            destination = new MemoryStream();
+            using (var writer = new Utf8JsonWriter(destination, serializer.CreateJsonWriterOptions()))
+            {
+                serializer.Serialize(p, writer);
+            }
+            var pretty = Encoding.UTF8.GetString(destination.ToArray());
             Assert.IsTrue(pretty.Substring(0, 20).Contains('\n'));
         }
     }
