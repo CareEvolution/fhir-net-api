@@ -12,32 +12,32 @@ namespace PerfTest
     {
         static void Main()
         {
-            ParseJson();
+            ParseXml(1_000);
         }
 
-        static void ParseJson()
+        static void ParseJson(int count, bool permissiveParsing)
         {
             var json = File.ReadAllText(@"bundle.json");
 
-            const int count = 100;
-
-            JsonSerializer.Deserialize<FhirModel4.Bundle>(json, FhirSerialization.JsonSerializerOptionsExtensions.ForFhir(new JsonSerializerOptions(), FhirModel.Version.R4));
+            var options = FhirSerialization.JsonSerializerOptionsExtensions.ForFhir(
+                new JsonSerializerOptions(),
+                new FhirSerialization.ParserSettings(FhirModel.Version.R4) { PermissiveParsing = permissiveParsing }
+            );
+            JsonSerializer.Deserialize<FhirModel4.Bundle>(json, options);
             var initialMemory = GC.GetAllocatedBytesForCurrentThread();
             var watch = Stopwatch.StartNew();
             for (var i = 0; i < count; i++)
             {
-                JsonSerializer.Deserialize<FhirModel4.Bundle>(json, FhirSerialization.JsonSerializerOptionsExtensions.ForFhir(new JsonSerializerOptions(), FhirModel.Version.R4));
+                JsonSerializer.Deserialize<FhirModel4.Bundle>(json, options);
             }
             watch.Stop();
             var memoryUsed = GC.GetAllocatedBytesForCurrentThread() - initialMemory; 
             Console.WriteLine("JSON fast parse X {1:N0}: {0:N1}ms, {2:N0} bytes", watch.ElapsedMilliseconds, count, memoryUsed);
         }
 
-        static void ParseXml()
+        static void ParseXml(int count)
         {
             var xml = File.ReadAllText(@"bundle.xml");
-
-            const int count = 100;
 
             var xmlParser = new FhirSerialization.FhirXmlParser(FhirModel.Version.R4);
             xmlParser.Parse<FhirModel4.Bundle>(xml);

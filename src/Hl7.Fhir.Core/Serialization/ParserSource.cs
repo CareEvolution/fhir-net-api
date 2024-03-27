@@ -107,8 +107,7 @@ namespace Hl7.Fhir.Serialization
             {
                 return null;
             }
-            if (!SourceHelpers.IsValidDate(value)
-                && !SourceHelpers.TryParseFhirInstant(value, out var _))
+            if (!SourceHelpers.IsValidDateTime(value))
             {
                 ThrowIfStrictParsing($"'{value}' is not a valid date-time");
                 return null;

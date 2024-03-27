@@ -462,8 +462,7 @@ namespace Hl7.Fhir.Serialization
         {
             if (TryGetString(out var value))
             {
-                if (!SourceHelpers.IsValidDate(value)
-                    && !SourceHelpers.TryParseFhirInstant(value, out var _))
+                if (!SourceHelpers.IsValidDateTime(value))
                 {
                     ThrowIfStrictParsing($"'{value}' is not a valid date-time");
                 }
@@ -774,18 +773,16 @@ namespace Hl7.Fhir.Serialization
                 _reader.Skip();
                 return false;
             }
-            var seenProperties = new HashSet<string>();
+            var seenProperties = _settings.PermissiveParsing ?
+                null :
+                new HashSet<string>();
             var state = new State();
             _states.Push(state);
             while (_reader.Read() && _reader.TokenType == JsonTokenType.PropertyName)
             {
                 var jsonPropertyName = _reader.GetString();
                 _reader.Read();
-                if (!seenProperties.Contains(jsonPropertyName))
-                {
-                    seenProperties.Add(jsonPropertyName);
-                }
-                else if (!_settings.PermissiveParsing)
+                if (!_settings.PermissiveParsing && !seenProperties.Add(jsonPropertyName))
                 {
                     var elementName = GetElementName(jsonPropertyName, out var _);
                     throw CreateRepeatedElementException(elementName);
