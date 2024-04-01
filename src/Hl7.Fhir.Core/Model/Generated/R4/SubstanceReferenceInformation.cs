@@ -130,13 +130,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "geneSequenceOrigin":
-                        GeneSequenceOrigin = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        GeneSequenceOrigin = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "gene":
-                        Gene = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Gene = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -151,10 +151,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "geneSequenceOrigin":
-                        GeneSequenceOrigin = source.Populate(GeneSequenceOrigin);
+                        GeneSequenceOrigin = source.Populate(GeneSequenceOrigin, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "gene":
-                        Gene = source.Populate(Gene);
+                        Gene = source.Populate(Gene, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
                         source.SetList(this, jsonPropertyName);
@@ -172,7 +172,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "source":
-                        source.PopulateListItem(Source, index);
+                        source.PopulateListItem(Source, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -329,13 +329,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "element":
-                        Element = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Element = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "source":
-                        Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -350,10 +350,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "element":
-                        Element = source.Populate(Element);
+                        Element = source.Populate(Element, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "source":
                         source.SetList(this, jsonPropertyName);
@@ -371,7 +371,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "source":
-                        source.PopulateListItem(Source, index);
+                        source.PopulateListItem(Source, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -549,16 +549,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "domain":
-                        Domain = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Domain = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "classification":
-                        Classification = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Classification = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "subtype":
-                        Subtype = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Subtype = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -573,10 +573,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "domain":
-                        Domain = source.Populate(Domain);
+                        Domain = source.Populate(Domain, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "classification":
-                        Classification = source.Populate(Classification);
+                        Classification = source.Populate(Classification, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "subtype":
                         source.SetList(this, jsonPropertyName);
@@ -597,10 +597,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "subtype":
-                        source.PopulateListItem(Subtype, index);
+                        source.PopulateListItem(Subtype, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        source.PopulateListItem(Source, index);
+                        source.PopulateListItem(Source, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -774,7 +774,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Amount
             {
                 get { return _Amount; }
-                set { _Amount = value; OnPropertyChanged("Amount"); }
+                set { _Amount = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Amount"); }
             }
             
             private Hl7.Fhir.Model.Element _Amount;
@@ -838,37 +838,37 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "target":
-                        Target = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Target = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "interaction":
-                        Interaction = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Interaction = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "organism":
-                        Organism = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Organism = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "organismType":
-                        OrganismType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        OrganismType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "amountQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Amount, "amount");
-                        Amount = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "amountRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Amount, "amount");
-                        Amount = source.Get<Hl7.Fhir.Model.Range>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "amountString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                        Amount = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "amountType":
-                        AmountType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        AmountType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
-                        Source = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Source = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -883,27 +883,27 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "target":
-                        Target = source.Populate(Target);
+                        Target = source.Populate(Target, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "interaction":
-                        Interaction = source.Populate(Interaction);
+                        Interaction = source.Populate(Interaction, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "organism":
-                        Organism = source.Populate(Organism);
+                        Organism = source.Populate(Organism, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "organismType":
-                        OrganismType = source.Populate(OrganismType);
+                        OrganismType = source.Populate(OrganismType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "amountQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Amount, "amount");
-                        Amount = source.Populate(Amount as Hl7.Fhir.Model.Quantity);
+                        Amount = source.Populate(Amount as Hl7.Fhir.Model.Quantity, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "amountRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Amount, "amount");
-                        Amount = source.Populate(Amount as Hl7.Fhir.Model.Range);
+                        Amount = source.Populate(Amount as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "amountString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
@@ -911,10 +911,10 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_amountString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Amount, "amount");
-                        Amount = source.Populate(Amount as Hl7.Fhir.Model.FhirString);
+                        Amount = source.Populate(Amount as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "amountType":
-                        AmountType = source.Populate(AmountType);
+                        AmountType = source.Populate(AmountType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "source":
                         source.SetList(this, jsonPropertyName);
@@ -932,7 +932,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "source":
-                        source.PopulateListItem(Source, index);
+                        source.PopulateListItem(Source, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -1227,19 +1227,19 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "gene":
-                    Gene = source.GetList<GeneComponent>();
+                    Gene = source.GetList(() => new GeneComponent());
                     return true;
                 case "geneElement":
-                    GeneElement = source.GetList<GeneElementComponent>();
+                    GeneElement = source.GetList(() => new GeneElementComponent());
                     return true;
                 case "classification":
-                    Classification = source.GetList<ClassificationComponent>();
+                    Classification = source.GetList(() => new ClassificationComponent());
                     return true;
                 case "target":
-                    Target = source.GetList<TargetComponent>();
+                    Target = source.GetList(() => new TargetComponent());
                     return true;
             }
             return false;
@@ -1257,7 +1257,7 @@ namespace Hl7.Fhir.Model.R4
                     CommentElement = source.PopulateValue(CommentElement);
                     return true;
                 case "_comment":
-                    CommentElement = source.Populate(CommentElement);
+                    CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "gene":
                     source.SetList(this, jsonPropertyName);
@@ -1284,16 +1284,16 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "gene":
-                    source.PopulateListItem(Gene, index);
+                    source.PopulateListItem(Gene, index, () => new GeneComponent());
                     return true;
                 case "geneElement":
-                    source.PopulateListItem(GeneElement, index);
+                    source.PopulateListItem(GeneElement, index, () => new GeneElementComponent());
                     return true;
                 case "classification":
-                    source.PopulateListItem(Classification, index);
+                    source.PopulateListItem(Classification, index, () => new ClassificationComponent());
                     return true;
                 case "target":
-                    source.PopulateListItem(Target, index);
+                    source.PopulateListItem(Target, index, () => new TargetComponent());
                     return true;
             }
             return false;

@@ -186,10 +186,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "contentType":
-                    ContentTypeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    ContentTypeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "content":
-                    ContentElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                    ContentElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                     return true;
             }
             return false;
@@ -207,13 +207,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     ContentTypeElement = source.PopulateValue(ContentTypeElement);
                     return true;
                 case "_contentType":
-                    ContentTypeElement = source.Populate(ContentTypeElement);
+                    ContentTypeElement = source.Populate(ContentTypeElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "content":
                     ContentElement = source.PopulateValue(ContentElement);
                     return true;
                 case "_content":
-                    ContentElement = source.Populate(ContentElement);
+                    ContentElement = source.Populate(ContentElement, () => new Hl7.Fhir.Model.Base64Binary());
                     return true;
             }
             return false;

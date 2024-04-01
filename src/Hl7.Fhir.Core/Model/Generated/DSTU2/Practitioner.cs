@@ -189,22 +189,22 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "managingOrganization":
-                        ManagingOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        ManagingOrganization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "role":
-                        Role = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "specialty":
-                        Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Specialty = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "period":
-                        Period = source.Get<Hl7.Fhir.Model.Period>();
+                        Period = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "location":
-                        Location = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Location = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "healthcareService":
-                        HealthcareService = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        HealthcareService = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -219,16 +219,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "managingOrganization":
-                        ManagingOrganization = source.Populate(ManagingOrganization);
+                        ManagingOrganization = source.Populate(ManagingOrganization, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "role":
-                        Role = source.Populate(Role);
+                        Role = source.Populate(Role, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "specialty":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "location":
                         source.SetList(this, jsonPropertyName);
@@ -249,13 +249,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "specialty":
-                        source.PopulateListItem(Specialty, index);
+                        source.PopulateListItem(Specialty, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "location":
-                        source.PopulateListItem(Location, index);
+                        source.PopulateListItem(Location, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "healthcareService":
-                        source.PopulateListItem(HealthcareService, index);
+                        source.PopulateListItem(HealthcareService, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -440,16 +440,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "period":
-                        Period = source.Get<Hl7.Fhir.Model.Period>();
+                        Period = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "issuer":
-                        Issuer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Issuer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -467,13 +467,13 @@ namespace Hl7.Fhir.Model.DSTU2
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "period":
-                        Period = source.Populate(Period);
+                        Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "issuer":
-                        Issuer = source.Populate(Issuer);
+                        Issuer = source.Populate(Issuer, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -488,7 +488,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        source.PopulateListItem(Identifier, index);
+                        source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                 }
                 return false;
@@ -929,37 +929,37 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "name":
-                    Name = source.Get<Hl7.Fhir.Model.DSTU2.HumanName>();
+                    Name = source.Populate(new Hl7.Fhir.Model.DSTU2.HumanName());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "address":
-                    Address = source.GetList<Hl7.Fhir.Model.Address>();
+                    Address = source.GetList(() => new Hl7.Fhir.Model.Address());
                     return true;
                 case "gender":
-                    GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
+                    GenderElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                     return true;
                 case "birthDate":
-                    BirthDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    BirthDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "photo":
-                    Photo = source.GetList<Hl7.Fhir.Model.Attachment>();
+                    Photo = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "practitionerRole":
-                    PractitionerRole = source.GetList<PractitionerRoleComponent>();
+                    PractitionerRole = source.GetList(() => new PractitionerRoleComponent());
                     return true;
                 case "qualification":
-                    Qualification = source.GetList<QualificationComponent>();
+                    Qualification = source.GetList(() => new QualificationComponent());
                     return true;
                 case "communication":
-                    Communication = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Communication = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;
@@ -980,10 +980,10 @@ namespace Hl7.Fhir.Model.DSTU2
                     ActiveElement = source.PopulateValue(ActiveElement);
                     return true;
                 case "_active":
-                    ActiveElement = source.Populate(ActiveElement);
+                    ActiveElement = source.Populate(ActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "name":
-                    Name = source.Populate(Name);
+                    Name = source.Populate(Name, () => new Hl7.Fhir.Model.DSTU2.HumanName());
                     return true;
                 case "telecom":
                     source.SetList(this, jsonPropertyName);
@@ -995,13 +995,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     GenderElement = source.PopulateValue(GenderElement);
                     return true;
                 case "_gender":
-                    GenderElement = source.Populate(GenderElement);
+                    GenderElement = source.Populate(GenderElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                     return true;
                 case "birthDate":
                     BirthDateElement = source.PopulateValue(BirthDateElement);
                     return true;
                 case "_birthDate":
-                    BirthDateElement = source.Populate(BirthDateElement);
+                    BirthDateElement = source.Populate(BirthDateElement, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "photo":
                     source.SetList(this, jsonPropertyName);
@@ -1028,25 +1028,25 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "address":
-                    source.PopulateListItem(Address, index);
+                    source.PopulateListItem(Address, index, () => new Hl7.Fhir.Model.Address());
                     return true;
                 case "photo":
-                    source.PopulateListItem(Photo, index);
+                    source.PopulateListItem(Photo, index, () => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "practitionerRole":
-                    source.PopulateListItem(PractitionerRole, index);
+                    source.PopulateListItem(PractitionerRole, index, () => new PractitionerRoleComponent());
                     return true;
                 case "qualification":
-                    source.PopulateListItem(Qualification, index);
+                    source.PopulateListItem(Qualification, index, () => new QualificationComponent());
                     return true;
                 case "communication":
-                    source.PopulateListItem(Communication, index);
+                    source.PopulateListItem(Communication, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

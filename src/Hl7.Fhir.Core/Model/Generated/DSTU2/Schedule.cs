@@ -231,19 +231,19 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    Type = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actor":
-                    Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Actor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "planningHorizon":
-                    PlanningHorizon = source.Get<Hl7.Fhir.Model.Period>();
+                    PlanningHorizon = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -264,16 +264,16 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "actor":
-                    Actor = source.Populate(Actor);
+                    Actor = source.Populate(Actor, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "planningHorizon":
-                    PlanningHorizon = source.Populate(PlanningHorizon);
+                    PlanningHorizon = source.Populate(PlanningHorizon, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "comment":
                     CommentElement = source.PopulateValue(CommentElement);
                     return true;
                 case "_comment":
-                    CommentElement = source.Populate(CommentElement);
+                    CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -288,10 +288,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    source.PopulateListItem(Type, index);
+                    source.PopulateListItem(Type, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

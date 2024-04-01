@@ -309,25 +309,25 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "request":
-                    Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "who":
-                    Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Who = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "orderStatus":
-                    OrderStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.OrderStatus>>();
+                    OrderStatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.OrderStatus>());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "fulfillment":
-                    Fulfillment = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Fulfillment = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -345,28 +345,28 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "request":
-                    Request = source.Populate(Request);
+                    Request = source.Populate(Request, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "who":
-                    Who = source.Populate(Who);
+                    Who = source.Populate(Who, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "orderStatus":
                     OrderStatusElement = source.PopulateValue(OrderStatusElement);
                     return true;
                 case "_orderStatus":
-                    OrderStatusElement = source.Populate(OrderStatusElement);
+                    OrderStatusElement = source.Populate(OrderStatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.OrderStatus>());
                     return true;
                 case "description":
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "fulfillment":
                     source.SetList(this, jsonPropertyName);
@@ -384,10 +384,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "fulfillment":
-                    source.PopulateListItem(Fulfillment, index);
+                    source.PopulateListItem(Fulfillment, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

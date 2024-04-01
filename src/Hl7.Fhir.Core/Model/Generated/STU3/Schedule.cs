@@ -316,28 +316,28 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "serviceCategory":
-                    ServiceCategory = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceCategory = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
-                    ServiceType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Specialty = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actor":
-                    Actor = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Actor = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "planningHorizon":
-                    PlanningHorizon = source.Get<Hl7.Fhir.Model.Period>();
+                    PlanningHorizon = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -358,10 +358,10 @@ namespace Hl7.Fhir.Model.STU3
                     ActiveElement = source.PopulateValue(ActiveElement);
                     return true;
                 case "_active":
-                    ActiveElement = source.Populate(ActiveElement);
+                    ActiveElement = source.Populate(ActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "serviceCategory":
-                    ServiceCategory = source.Populate(ServiceCategory);
+                    ServiceCategory = source.Populate(ServiceCategory, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
                     source.SetList(this, jsonPropertyName);
@@ -373,13 +373,13 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "planningHorizon":
-                    PlanningHorizon = source.Populate(PlanningHorizon);
+                    PlanningHorizon = source.Populate(PlanningHorizon, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "comment":
                     CommentElement = source.PopulateValue(CommentElement);
                     return true;
                 case "_comment":
-                    CommentElement = source.Populate(CommentElement);
+                    CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -394,16 +394,16 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "serviceType":
-                    source.PopulateListItem(ServiceType, index);
+                    source.PopulateListItem(ServiceType, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    source.PopulateListItem(Specialty, index);
+                    source.PopulateListItem(Specialty, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actor":
-                    source.PopulateListItem(Actor, index);
+                    source.PopulateListItem(Actor, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

@@ -261,11 +261,16 @@ using Hl7.Fhir.Utility;
 
     public static IEnumerable<string> RenderSerialize(string type, bool abstractType, bool dataType, IEnumerable<PropertyDetails> properties)
     {
+        var isQuantity = type == "Quantity";
         yield return $"internal override void Serialize(Serialization.SerializerSink sink)";
         yield return $"{{";
         if (!abstractType)
         {
-            if (dataType)
+            if (isQuantity)
+            {
+                yield return $"    sink.BeginDataType(GetSerializeType());";
+            }
+            else if (dataType)
             {
                 yield return $"    sink.BeginDataType(\"{type}\");";
             }
@@ -284,6 +289,14 @@ using Hl7.Fhir.Utility;
             yield return $"    sink.End();";
         }
         yield return $"}}";
+        if (isQuantity)
+        {
+            yield return string.Empty;
+            yield return $"internal virtual string GetSerializeType()";
+            yield return $"{{";
+            yield return $"    return \"{type}\";";
+            yield return $"}}";
+        }
     }
 
     public static IEnumerable<string> RenderPrimitiveSetElementFromSource(string primitiveTypeName)
@@ -1652,6 +1665,14 @@ public class ResourceDetails
                 yield return string.Empty;
                 foreach (var line in StringUtils.RenderChildrenMethods(Properties)) yield return "    " + line;
             }
+            else if (BaseType.EndsWith(".Quantity") && !IsConstraint)
+            {
+                yield return string.Empty;
+                yield return $"    internal override string GetSerializeType()";
+                yield return $"    {{";
+                yield return $"        return \"{FhirName}\";";
+                yield return $"    }}";
+            }
         }
 
         yield return string.Empty;
@@ -2861,10 +2882,12 @@ public class PropertyDetails
         {
             yield return $"[References({ string.Join(",", ReferenceTargets.Select(rt => "\"" + rt + "\"")) })]";
         }
+        var allowedTypes = new HashSet<string>();
         foreach (var pair in AllowedTypesByVersion)
         {
             if (pair.Value.Count > 0)
             {
+                allowedTypes.UnionWith(pair.Value);
                 var types = string.Join(",", pair.Value.Select(at => "typeof(" + at + ")"));
                 if (string.IsNullOrEmpty(pair.Key))
                 {
@@ -2891,7 +2914,16 @@ public class PropertyDetails
         {
             yield return $"    get {{ return _{ Name }; }}";
         }
-        yield return $"    set {{ _{ Name } = value; OnPropertyChanged(\"{ Name }\"); }}";
+        if (allowedTypes.Count == 0
+            || (allowedTypes.Count == 1 && allowedTypes.Single().EndsWith( ".Resource") ) )
+        {
+            yield return $"    set {{ _{Name} = value; OnPropertyChanged(\"{Name}\"); }}";
+        }
+        else
+        {
+            var types = string.Join(", ", allowedTypes.Select(at => "typeof(" + at + ")"));
+            yield return $"    set {{ _{Name} = CheckType(value, {types}); OnPropertyChanged(\"{Name}\"); }}";
+        }
         yield return "}";
         yield return string.Empty;
         yield return $"private { ConvertedPropTypeWithCard() } _{ Name };";
@@ -2976,7 +3008,7 @@ public class PropertyDetails
             }
             else
             {
-                yield return $"    {Name} = source.GetList<{PropType}>();";
+                yield return $"    {Name} = source.GetList(() => new {PropType}());";
             }
             yield return $"    return true;";
         }
@@ -2993,13 +3025,13 @@ public class PropertyDetails
             {
                 foreach (var pair in versionsByAllowedType)
                 {
-                    foreach (var line in RenderSetElementX(pair.Key, pair.Value)) yield return line;
+                    foreach (var line in RenderSetVersionSpecificElement(pair.Key, pair.Value)) yield return line;
                 }
             }
             else
             {
                 yield return $"case \"{FhirName}\"{versionsWhen}:";
-                yield return $"    {Name} = source.Get<{PropType}>();";
+                yield return $"    {Name} = source.Populate(new {PropType}());";
                 yield return $"    return true;";
             }
         }
@@ -3031,13 +3063,13 @@ public class PropertyDetails
             {
                 foreach (var pair in versionsByAllowedType)
                 {
-                    foreach (var line in RenderSetElementXFromJson(pair.Key, pair.Value)) yield return line;
+                    foreach (var line in RenderSetVersionSpecificElementFromJson(pair.Key, pair.Value)) yield return line;
                 }
             }
             else if (NativeType == null)
             {
                 yield return $"case \"{FhirName}\"{versionsWhen}:";
-                yield return $"    {Name} = source.Populate({Name});";
+                yield return $"    {Name} = source.Populate({Name}, () => new {PropType}());";
                 yield return $"    return true;";
             }
             else
@@ -3046,7 +3078,7 @@ public class PropertyDetails
                 yield return $"    {Name} = source.PopulateValue({Name});";
                 yield return $"    return true;";
                 yield return $"case \"_{FhirName}\"{versionsWhen}:";
-                yield return $"    {Name} = source.Populate({Name});";
+                yield return $"    {Name} = source.Populate({Name}, () => new {PropType}());";
                 yield return $"    return true;";
             }
         }
@@ -3088,18 +3120,18 @@ public class PropertyDetails
         return result;
     }
 
-    private IEnumerable<string> RenderSetElementX(string type, HashSet<string> versions)
+    private IEnumerable<string> RenderSetVersionSpecificElement(string type, HashSet<string> versions)
     {
         var versionsWhen = VersionsWhen(versions);
         var fhirType = Globals.FhirDataTypeByCsType[type];
         var propertyName = FhirName + StringUtils.FirstToUpper(fhirType);
         yield return $"case \"{propertyName}\"{versionsWhen}:";
         yield return $"    source.CheckDuplicates<{type}>({Name}, \"{FhirName}\");";
-        yield return $"    {Name} = source.Get<{type}>();";
+        yield return $"    {Name} = source.Populate(new {type}());";
         yield return $"    return true;";
     }
 
-    private IEnumerable<string> RenderSetElementXFromJson(string type, HashSet<string> versions)
+    private IEnumerable<string> RenderSetVersionSpecificElementFromJson(string type, HashSet<string> versions)
     {
         var versionsWhen = VersionsWhen(versions);
         var fhirType = Globals.FhirDataTypeByCsType[type];
@@ -3108,7 +3140,7 @@ public class PropertyDetails
         if (PrimitiveType.Get(fhirType) == null)
         {
             yield return $"    source.CheckDuplicates<{type}>({Name}, \"{FhirName}\");";
-            yield return $"    {Name} = source.Populate({Name} as {type});";
+            yield return $"    {Name} = source.Populate({Name} as {type}, () => new {type}());";
             yield return $"    return true;";
         }
         else
@@ -3118,7 +3150,7 @@ public class PropertyDetails
             yield return $"    return true;";
             yield return $"case \"_{propertyName}\"{versionsWhen}:";
             yield return $"    source.CheckDuplicates<{type}>({Name}, \"{FhirName}\");";
-            yield return $"    {Name} = source.Populate({Name} as {type});";
+            yield return $"    {Name} = source.Populate({Name} as {type}, () => new {type}());";
             yield return $"    return true;";
 
         }
@@ -3130,7 +3162,14 @@ public class PropertyDetails
         yield return $"case \"{FhirName}\"{versionsWhen}:";
         if (NativeType == null)
         {
-            yield return $"    source.PopulateListItem({Name}, index);";
+            if (PropType == "Hl7.Fhir.Model.Resource")
+            {
+                yield return $"    source.PopulateListItem({Name}, index);";
+            }
+            else
+            {
+                yield return $"    source.PopulateListItem({Name}, index, () => new {PropType}());";
+            }
             yield return $"    return true;";
         }
         else
@@ -3138,7 +3177,7 @@ public class PropertyDetails
             yield return $"    source.PopulatePrimitiveListItemValue({Name}, index);";
             yield return $"    return true;";
             yield return $"case \"_{FhirName}\"{versionsWhen}:";
-            yield return $"    source.PopulatePrimitiveListItem({Name}, index);";
+            yield return $"    source.PopulatePrimitiveListItem({Name}, index, () => new {PropType}());";
             yield return $"    return true;";
 
         }

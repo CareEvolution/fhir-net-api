@@ -430,37 +430,37 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "serviceCategory":
-                    ServiceCategory = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceCategory = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
-                    ServiceType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Specialty = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "appointmentType":
-                    AppointmentType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    AppointmentType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "schedule":
-                    Schedule = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Schedule = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SlotStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SlotStatus>());
                     return true;
                 case "start":
-                    StartElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    StartElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "end":
-                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    EndElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "overbooked":
-                    OverbookedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    OverbookedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -487,40 +487,40 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "appointmentType":
-                    AppointmentType = source.Populate(AppointmentType);
+                    AppointmentType = source.Populate(AppointmentType, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "schedule":
-                    Schedule = source.Populate(Schedule);
+                    Schedule = source.Populate(Schedule, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SlotStatus>());
                     return true;
                 case "start":
                     StartElement = source.PopulateValue(StartElement);
                     return true;
                 case "_start":
-                    StartElement = source.Populate(StartElement);
+                    StartElement = source.Populate(StartElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "end":
                     EndElement = source.PopulateValue(EndElement);
                     return true;
                 case "_end":
-                    EndElement = source.Populate(EndElement);
+                    EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "overbooked":
                     OverbookedElement = source.PopulateValue(OverbookedElement);
                     return true;
                 case "_overbooked":
-                    OverbookedElement = source.Populate(OverbookedElement);
+                    OverbookedElement = source.Populate(OverbookedElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "comment":
                     CommentElement = source.PopulateValue(CommentElement);
                     return true;
                 case "_comment":
-                    CommentElement = source.Populate(CommentElement);
+                    CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -535,16 +535,16 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "serviceCategory":
-                    source.PopulateListItem(ServiceCategory, index);
+                    source.PopulateListItem(ServiceCategory, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
-                    source.PopulateListItem(ServiceType, index);
+                    source.PopulateListItem(ServiceType, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialty":
-                    source.PopulateListItem(Specialty, index);
+                    source.PopulateListItem(Specialty, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

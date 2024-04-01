@@ -632,5 +632,22 @@ namespace Hl7.Fhir.Tests.Model
             Assert.IsFalse(ModelInfo.IsCoreModelTypeUri(new Uri("Patient", UriKind.Relative)));
         }
 
+        [TestMethod]
+        public void TestAssignment()
+        {
+            var patient = new Patient();
+
+            patient.Deceased = new FhirBoolean(true);
+            Assert.AreEqual(true, (patient.Deceased as FhirBoolean)?.Value);
+
+            patient.Deceased = new FhirDateTime("2001-07-23");
+            Assert.AreEqual("2001-07-23", (patient.Deceased as FhirDateTime)?.Value);
+
+            var exception = Assert.ThrowsException<InvalidOperationException>(() => patient.Deceased = new Date("2001-07-23"));
+            Assert.AreEqual(
+                "Elements of type Date are not allowed - allowed types: FhirBoolean, FhirDateTime",
+                exception.Message
+            );
+        }
     }
 }

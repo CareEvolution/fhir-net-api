@@ -109,10 +109,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "outerPackaging":
-                        OuterPackaging = source.Get<Hl7.Fhir.Model.Identifier>();
+                        OuterPackaging = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "immediatePackaging":
-                        ImmediatePackaging = source.Get<Hl7.Fhir.Model.Identifier>();
+                        ImmediatePackaging = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                 }
                 return false;
@@ -127,10 +127,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "outerPackaging":
-                        OuterPackaging = source.Populate(OuterPackaging);
+                        OuterPackaging = source.Populate(OuterPackaging, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "immediatePackaging":
-                        ImmediatePackaging = source.Populate(ImmediatePackaging);
+                        ImmediatePackaging = source.Populate(ImmediatePackaging, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                 }
                 return false;
@@ -469,40 +469,40 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "material":
-                        Material = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Material = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "alternateMaterial":
-                        AlternateMaterial = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        AlternateMaterial = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "device":
-                        Device = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Device = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "manufacturedItem":
-                        ManufacturedItem = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        ManufacturedItem = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "packageItem":
-                        PackageItem = source.GetList<PackageItemComponent>();
+                        PackageItem = source.GetList(() => new PackageItemComponent());
                         return true;
                     case "physicalCharacteristics":
-                        PhysicalCharacteristics = source.Get<Hl7.Fhir.Model.ProdCharacteristic>();
+                        PhysicalCharacteristics = source.Populate(new Hl7.Fhir.Model.ProdCharacteristic());
                         return true;
                     case "otherCharacteristics":
-                        OtherCharacteristics = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        OtherCharacteristics = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "shelfLifeStorage":
-                        ShelfLifeStorage = source.GetList<Hl7.Fhir.Model.ProductShelfLife>();
+                        ShelfLifeStorage = source.GetList(() => new Hl7.Fhir.Model.ProductShelfLife());
                         return true;
                     case "manufacturer":
-                        Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Manufacturer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -520,10 +520,10 @@ namespace Hl7.Fhir.Model.R4
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "material":
                         source.SetList(this, jsonPropertyName);
@@ -541,7 +541,7 @@ namespace Hl7.Fhir.Model.R4
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "physicalCharacteristics":
-                        PhysicalCharacteristics = source.Populate(PhysicalCharacteristics);
+                        PhysicalCharacteristics = source.Populate(PhysicalCharacteristics, () => new Hl7.Fhir.Model.ProdCharacteristic());
                         return true;
                     case "otherCharacteristics":
                         source.SetList(this, jsonPropertyName);
@@ -565,31 +565,31 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        source.PopulateListItem(Identifier, index);
+                        source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "material":
-                        source.PopulateListItem(Material, index);
+                        source.PopulateListItem(Material, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "alternateMaterial":
-                        source.PopulateListItem(AlternateMaterial, index);
+                        source.PopulateListItem(AlternateMaterial, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "device":
-                        source.PopulateListItem(Device, index);
+                        source.PopulateListItem(Device, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "manufacturedItem":
-                        source.PopulateListItem(ManufacturedItem, index);
+                        source.PopulateListItem(ManufacturedItem, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "packageItem":
-                        source.PopulateListItem(PackageItem, index);
+                        source.PopulateListItem(PackageItem, index, () => new PackageItemComponent());
                         return true;
                     case "otherCharacteristics":
-                        source.PopulateListItem(OtherCharacteristics, index);
+                        source.PopulateListItem(OtherCharacteristics, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "shelfLifeStorage":
-                        source.PopulateListItem(ShelfLifeStorage, index);
+                        source.PopulateListItem(ShelfLifeStorage, index, () => new Hl7.Fhir.Model.ProductShelfLife());
                         return true;
                     case "manufacturer":
-                        source.PopulateListItem(Manufacturer, index);
+                        source.PopulateListItem(Manufacturer, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -991,31 +991,31 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "legalStatusOfSupply":
-                    LegalStatusOfSupply = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    LegalStatusOfSupply = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "marketingStatus":
-                    MarketingStatus = source.GetList<Hl7.Fhir.Model.MarketingStatus>();
+                    MarketingStatus = source.GetList(() => new Hl7.Fhir.Model.MarketingStatus());
                     return true;
                 case "marketingAuthorization":
-                    MarketingAuthorization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    MarketingAuthorization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Manufacturer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "batchIdentifier":
-                    BatchIdentifier = source.GetList<BatchIdentifierComponent>();
+                    BatchIdentifier = source.GetList(() => new BatchIdentifierComponent());
                     return true;
                 case "packageItem":
-                    PackageItem = source.GetList<PackageItemComponent>();
+                    PackageItem = source.GetList(() => new PackageItemComponent());
                     return true;
             }
             return false;
@@ -1039,16 +1039,16 @@ namespace Hl7.Fhir.Model.R4
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "legalStatusOfSupply":
-                    LegalStatusOfSupply = source.Populate(LegalStatusOfSupply);
+                    LegalStatusOfSupply = source.Populate(LegalStatusOfSupply, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "marketingStatus":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "marketingAuthorization":
-                    MarketingAuthorization = source.Populate(MarketingAuthorization);
+                    MarketingAuthorization = source.Populate(MarketingAuthorization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "manufacturer":
                     source.SetList(this, jsonPropertyName);
@@ -1072,22 +1072,22 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    source.PopulateListItem(Subject, index);
+                    source.PopulateListItem(Subject, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "marketingStatus":
-                    source.PopulateListItem(MarketingStatus, index);
+                    source.PopulateListItem(MarketingStatus, index, () => new Hl7.Fhir.Model.MarketingStatus());
                     return true;
                 case "manufacturer":
-                    source.PopulateListItem(Manufacturer, index);
+                    source.PopulateListItem(Manufacturer, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "batchIdentifier":
-                    source.PopulateListItem(BatchIdentifier, index);
+                    source.PopulateListItem(BatchIdentifier, index, () => new BatchIdentifierComponent());
                     return true;
                 case "packageItem":
-                    source.PopulateListItem(PackageItem, index);
+                    source.PopulateListItem(PackageItem, index, () => new PackageItemComponent());
                     return true;
             }
             return false;

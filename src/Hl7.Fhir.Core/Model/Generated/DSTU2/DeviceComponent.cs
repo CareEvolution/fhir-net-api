@@ -142,13 +142,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "specType":
-                        SpecType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        SpecType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "componentId":
-                        ComponentId = source.Get<Hl7.Fhir.Model.Identifier>();
+                        ComponentId = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "productionSpec":
-                        ProductionSpecElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ProductionSpecElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -163,16 +163,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "specType":
-                        SpecType = source.Populate(SpecType);
+                        SpecType = source.Populate(SpecType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "componentId":
-                        ComponentId = source.Populate(ComponentId);
+                        ComponentId = source.Populate(ComponentId, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "productionSpec":
                         ProductionSpecElement = source.PopulateValue(ProductionSpecElement);
                         return true;
                     case "_productionSpec":
-                        ProductionSpecElement = source.Populate(ProductionSpecElement);
+                        ProductionSpecElement = source.Populate(ProductionSpecElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -547,34 +547,34 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "lastSystemChange":
-                    LastSystemChangeElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    LastSystemChangeElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "source":
-                    Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Parent = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "operationalStatus":
-                    OperationalStatus = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    OperationalStatus = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "parameterGroup":
-                    ParameterGroup = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ParameterGroup = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "measurementPrinciple":
-                    MeasurementPrincipleElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.Measmnt_Principle>>();
+                    MeasurementPrincipleElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.Measmnt_Principle>());
                     return true;
                 case "productionSpecification":
-                    ProductionSpecification = source.GetList<ProductionSpecificationComponent>();
+                    ProductionSpecification = source.GetList(() => new ProductionSpecificationComponent());
                     return true;
                 case "languageCode":
-                    LanguageCode = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    LanguageCode = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;
@@ -589,40 +589,40 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "lastSystemChange":
                     LastSystemChangeElement = source.PopulateValue(LastSystemChangeElement);
                     return true;
                 case "_lastSystemChange":
-                    LastSystemChangeElement = source.Populate(LastSystemChangeElement);
+                    LastSystemChangeElement = source.Populate(LastSystemChangeElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "source":
-                    Source = source.Populate(Source);
+                    Source = source.Populate(Source, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.Populate(Parent);
+                    Parent = source.Populate(Parent, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "operationalStatus":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "parameterGroup":
-                    ParameterGroup = source.Populate(ParameterGroup);
+                    ParameterGroup = source.Populate(ParameterGroup, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "measurementPrinciple":
                     MeasurementPrincipleElement = source.PopulateValue(MeasurementPrincipleElement);
                     return true;
                 case "_measurementPrinciple":
-                    MeasurementPrincipleElement = source.Populate(MeasurementPrincipleElement);
+                    MeasurementPrincipleElement = source.Populate(MeasurementPrincipleElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.Measmnt_Principle>());
                     return true;
                 case "productionSpecification":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "languageCode":
-                    LanguageCode = source.Populate(LanguageCode);
+                    LanguageCode = source.Populate(LanguageCode, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;
@@ -637,10 +637,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "operationalStatus":
-                    source.PopulateListItem(OperationalStatus, index);
+                    source.PopulateListItem(OperationalStatus, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "productionSpecification":
-                    source.PopulateListItem(ProductionSpecification, index);
+                    source.PopulateListItem(ProductionSpecification, index, () => new ProductionSpecificationComponent());
                     return true;
             }
             return false;

@@ -111,10 +111,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "agent":
-                        Agent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Agent = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onBehalfOf":
-                        OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        OnBehalfOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -129,10 +129,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "agent":
-                        Agent = source.Populate(Agent);
+                        Agent = source.Populate(Agent, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "onBehalfOf":
-                        OnBehalfOf = source.Populate(OnBehalfOf);
+                        OnBehalfOf = source.Populate(OnBehalfOf, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -326,19 +326,19 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "validityPeriod":
-                        ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
+                        ValidityPeriod = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "numberOfRepeatsAllowed":
-                        NumberOfRepeatsAllowedElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                        NumberOfRepeatsAllowedElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "quantity":
-                        Quantity = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Quantity = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "expectedSupplyDuration":
-                        ExpectedSupplyDuration = source.Get<Hl7.Fhir.Model.STU3.Duration>();
+                        ExpectedSupplyDuration = source.Populate(new Hl7.Fhir.Model.STU3.Duration());
                         return true;
                     case "performer":
-                        Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Performer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -353,22 +353,22 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "validityPeriod":
-                        ValidityPeriod = source.Populate(ValidityPeriod);
+                        ValidityPeriod = source.Populate(ValidityPeriod, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "numberOfRepeatsAllowed":
                         NumberOfRepeatsAllowedElement = source.PopulateValue(NumberOfRepeatsAllowedElement);
                         return true;
                     case "_numberOfRepeatsAllowed":
-                        NumberOfRepeatsAllowedElement = source.Populate(NumberOfRepeatsAllowedElement);
+                        NumberOfRepeatsAllowedElement = source.Populate(NumberOfRepeatsAllowedElement, () => new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "quantity":
-                        Quantity = source.Populate(Quantity);
+                        Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "expectedSupplyDuration":
-                        ExpectedSupplyDuration = source.Populate(ExpectedSupplyDuration);
+                        ExpectedSupplyDuration = source.Populate(ExpectedSupplyDuration, () => new Hl7.Fhir.Model.STU3.Duration());
                         return true;
                     case "performer":
-                        Performer = source.Populate(Performer);
+                        Performer = source.Populate(Performer, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -531,10 +531,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "allowed":
-                        AllowedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        AllowedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "reason":
-                        Reason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Reason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -552,10 +552,10 @@ namespace Hl7.Fhir.Model.STU3
                         AllowedElement = source.PopulateValue(AllowedElement);
                         return true;
                     case "_allowed":
-                        AllowedElement = source.Populate(AllowedElement);
+                        AllowedElement = source.Populate(AllowedElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "reason":
-                        Reason = source.Populate(Reason);
+                        Reason = source.Populate(Reason, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -825,7 +825,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Medication
         {
             get { return _Medication; }
-            set { _Medication = value; OnPropertyChanged("Medication"); }
+            set { _Medication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Medication"); }
         }
         
         private Hl7.Fhir.Model.Element _Medication;
@@ -1287,81 +1287,81 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "definition":
-                    Definition = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Definition = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "groupIdentifier":
-                    GroupIdentifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    GroupIdentifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestStatus>());
                     return true;
                 case "intent":
-                    IntentElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestIntent>>();
+                    IntentElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestIntent>());
                     return true;
                 case "category":
-                    Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "priority":
-                    PriorityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestPriority>>();
+                    PriorityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestPriority>());
                     return true;
                 case "medicationCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
-                    Medication = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Medication = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "medicationReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Medication, "medication");
-                    Medication = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Medication = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Context = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "supportingInformation":
-                    SupportingInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    SupportingInformation = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authoredOn":
-                    AuthoredOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    AuthoredOnElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "requester":
-                    Requester = source.Get<RequesterComponent>();
+                    Requester = source.Populate(new RequesterComponent());
                     return true;
                 case "recorder":
-                    Recorder = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Recorder = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "dosageInstruction":
-                    DosageInstruction = source.GetList<Hl7.Fhir.Model.STU3.Dosage>();
+                    DosageInstruction = source.GetList(() => new Hl7.Fhir.Model.STU3.Dosage());
                     return true;
                 case "dispenseRequest":
-                    DispenseRequest = source.Get<DispenseRequestComponent>();
+                    DispenseRequest = source.Populate(new DispenseRequestComponent());
                     return true;
                 case "substitution":
-                    Substitution = source.Get<SubstitutionComponent>();
+                    Substitution = source.Populate(new SubstitutionComponent());
                     return true;
                 case "priorPrescription":
-                    PriorPrescription = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    PriorPrescription = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "detectedIssue":
-                    DetectedIssue = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    DetectedIssue = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "eventHistory":
-                    EventHistory = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    EventHistory = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -1385,42 +1385,42 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "groupIdentifier":
-                    GroupIdentifier = source.Populate(GroupIdentifier);
+                    GroupIdentifier = source.Populate(GroupIdentifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestStatus>());
                     return true;
                 case "intent":
                     IntentElement = source.PopulateValue(IntentElement);
                     return true;
                 case "_intent":
-                    IntentElement = source.Populate(IntentElement);
+                    IntentElement = source.Populate(IntentElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestIntent>());
                     return true;
                 case "category":
-                    Category = source.Populate(Category);
+                    Category = source.Populate(Category, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "priority":
                     PriorityElement = source.PopulateValue(PriorityElement);
                     return true;
                 case "_priority":
-                    PriorityElement = source.Populate(PriorityElement);
+                    PriorityElement = source.Populate(PriorityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.MedicationRequestPriority>());
                     return true;
                 case "medicationCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
-                    Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept);
+                    Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "medicationReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Medication, "medication");
-                    Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference);
+                    Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Populate(Context);
+                    Context = source.Populate(Context, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "supportingInformation":
                     source.SetList(this, jsonPropertyName);
@@ -1429,13 +1429,13 @@ namespace Hl7.Fhir.Model.STU3
                     AuthoredOnElement = source.PopulateValue(AuthoredOnElement);
                     return true;
                 case "_authoredOn":
-                    AuthoredOnElement = source.Populate(AuthoredOnElement);
+                    AuthoredOnElement = source.Populate(AuthoredOnElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "requester":
-                    Requester = source.Populate(Requester);
+                    Requester = source.Populate(Requester, () => new RequesterComponent());
                     return true;
                 case "recorder":
-                    Recorder = source.Populate(Recorder);
+                    Recorder = source.Populate(Recorder, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
                     source.SetList(this, jsonPropertyName);
@@ -1450,13 +1450,13 @@ namespace Hl7.Fhir.Model.STU3
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "dispenseRequest":
-                    DispenseRequest = source.Populate(DispenseRequest);
+                    DispenseRequest = source.Populate(DispenseRequest, () => new DispenseRequestComponent());
                     return true;
                 case "substitution":
-                    Substitution = source.Populate(Substitution);
+                    Substitution = source.Populate(Substitution, () => new SubstitutionComponent());
                     return true;
                 case "priorPrescription":
-                    PriorPrescription = source.Populate(PriorPrescription);
+                    PriorPrescription = source.Populate(PriorPrescription, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "detectedIssue":
                     source.SetList(this, jsonPropertyName);
@@ -1477,34 +1477,34 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "definition":
-                    source.PopulateListItem(Definition, index);
+                    source.PopulateListItem(Definition, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "basedOn":
-                    source.PopulateListItem(BasedOn, index);
+                    source.PopulateListItem(BasedOn, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "supportingInformation":
-                    source.PopulateListItem(SupportingInformation, index);
+                    source.PopulateListItem(SupportingInformation, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    source.PopulateListItem(ReasonCode, index);
+                    source.PopulateListItem(ReasonCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    source.PopulateListItem(ReasonReference, index);
+                    source.PopulateListItem(ReasonReference, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
                 case "dosageInstruction":
-                    source.PopulateListItem(DosageInstruction, index);
+                    source.PopulateListItem(DosageInstruction, index, () => new Hl7.Fhir.Model.STU3.Dosage());
                     return true;
                 case "detectedIssue":
-                    source.PopulateListItem(DetectedIssue, index);
+                    source.PopulateListItem(DetectedIssue, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "eventHistory":
-                    source.PopulateListItem(EventHistory, index);
+                    source.PopulateListItem(EventHistory, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

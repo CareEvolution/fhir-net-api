@@ -167,19 +167,19 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "low":
-                        Low = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        Low = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "high":
-                        High = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                        High = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "meaning":
-                        Meaning = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Meaning = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "age":
-                        Age = source.Get<Hl7.Fhir.Model.Range>();
+                        Age = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -194,22 +194,22 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "low":
-                        Low = source.Populate(Low);
+                        Low = source.Populate(Low, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "high":
-                        High = source.Populate(High);
+                        High = source.Populate(High, () => new Hl7.Fhir.Model.SimpleQuantity());
                         return true;
                     case "meaning":
-                        Meaning = source.Populate(Meaning);
+                        Meaning = source.Populate(Meaning, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "age":
-                        Age = source.Populate(Age);
+                        Age = source.Populate(Age, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "text":
                         TextElement = source.PopulateValue(TextElement);
                         return true;
                     case "_text":
-                        TextElement = source.Populate(TextElement);
+                        TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -374,10 +374,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ObservationRelationshipType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ObservationRelationshipType>());
                         return true;
                     case "target":
-                        Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Target = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -395,10 +395,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ObservationRelationshipType>());
                         return true;
                     case "target":
-                        Target = source.Populate(Target);
+                        Target = source.Populate(Target, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -510,7 +510,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Value
             {
                 get { return _Value; }
-                set { _Value = value; OnPropertyChanged("Value"); }
+                set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Value"); }
             }
             
             private Hl7.Fhir.Model.Element _Value;
@@ -567,53 +567,53 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "valueCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Value = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirString>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Range>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "valueRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "valueSampledData":
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.SampledData>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.DSTU2.SampledData>();
+                        Value = source.Populate(new Hl7.Fhir.Model.DSTU2.SampledData());
                         return true;
                     case "valueAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Attachment>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "valueTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Time>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Time());
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Period>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "dataAbsentReason":
-                        DataAbsentReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        DataAbsentReason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "referenceRange":
-                        ReferenceRange = source.GetList<ReferenceRangeComponent>();
+                        ReferenceRange = source.GetList(() => new ReferenceRangeComponent());
                         return true;
                 }
                 return false;
@@ -628,15 +628,15 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueQuantity":
                         source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Quantity);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Quantity, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "valueCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
@@ -644,23 +644,23 @@ namespace Hl7.Fhir.Model.DSTU2
                         return true;
                     case "_valueString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirString);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Range);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "valueRatio":
                         source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Ratio);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Ratio, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                     case "valueSampledData":
                         source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.SampledData>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.SampledData);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.SampledData, () => new Hl7.Fhir.Model.DSTU2.SampledData());
                         return true;
                     case "valueAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Attachment);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Attachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "valueTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
@@ -668,7 +668,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         return true;
                     case "_valueTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Time);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Time, () => new Hl7.Fhir.Model.Time());
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
@@ -676,14 +676,14 @@ namespace Hl7.Fhir.Model.DSTU2
                         return true;
                     case "_valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Period);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "dataAbsentReason":
-                        DataAbsentReason = source.Populate(DataAbsentReason);
+                        DataAbsentReason = source.Populate(DataAbsentReason, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "referenceRange":
                         source.SetList(this, jsonPropertyName);
@@ -701,7 +701,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "referenceRange":
-                        source.PopulateListItem(ReferenceRange, index);
+                        source.PopulateListItem(ReferenceRange, index, () => new ReferenceRangeComponent());
                         return true;
                 }
                 return false;
@@ -910,7 +910,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Effective
         {
             get { return _Effective; }
-            set { _Effective = value; OnPropertyChanged("Effective"); }
+            set { _Effective = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Effective"); }
         }
         
         private Hl7.Fhir.Model.Element _Effective;
@@ -974,7 +974,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Value
         {
             get { return _Value; }
-            set { _Value = value; OnPropertyChanged("Value"); }
+            set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Value"); }
         }
         
         private Hl7.Fhir.Model.Element _Value;
@@ -1331,106 +1331,106 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ObservationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ObservationStatus>());
                     return true;
                 case "category":
-                    Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Effective = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
-                    Effective = source.Get<Hl7.Fhir.Model.Period>();
+                    Effective = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "issued":
-                    IssuedElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    IssuedElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "performer":
-                    Performer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Performer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "valueQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Value = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "valueCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Value = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "valueString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.FhirString>();
+                    Value = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "valueRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.Range>();
+                    Value = source.Populate(new Hl7.Fhir.Model.Range());
                     return true;
                 case "valueRatio":
                     source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.Ratio>();
+                    Value = source.Populate(new Hl7.Fhir.Model.Ratio());
                     return true;
                 case "valueSampledData":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.SampledData>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.DSTU2.SampledData>();
+                    Value = source.Populate(new Hl7.Fhir.Model.DSTU2.SampledData());
                     return true;
                 case "valueAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.Attachment>();
+                    Value = source.Populate(new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "valueTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.Time>();
+                    Value = source.Populate(new Hl7.Fhir.Model.Time());
                     return true;
                 case "valueDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Value = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "valuePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.Period>();
+                    Value = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "dataAbsentReason":
-                    DataAbsentReason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    DataAbsentReason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "interpretation":
-                    Interpretation = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Interpretation = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "comments":
-                    CommentsElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentsElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "bodySite":
-                    BodySite = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    BodySite = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "method":
-                    Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specimen":
-                    Specimen = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Specimen = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
-                    Device = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Device = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "referenceRange":
-                    ReferenceRange = source.GetList<ReferenceRangeComponent>();
+                    ReferenceRange = source.GetList(() => new ReferenceRangeComponent());
                     return true;
                 case "related":
-                    Related = source.GetList<RelatedComponent>();
+                    Related = source.GetList(() => new RelatedComponent());
                     return true;
                 case "component":
-                    Component = source.GetList<ComponentComponent>();
+                    Component = source.GetList(() => new ComponentComponent());
                     return true;
             }
             return false;
@@ -1451,19 +1451,19 @@ namespace Hl7.Fhir.Model.DSTU2
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ObservationStatus>());
                     return true;
                 case "category":
-                    Category = source.Populate(Category);
+                    Category = source.Populate(Category, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
@@ -1471,28 +1471,28 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.Populate(Effective as Hl7.Fhir.Model.FhirDateTime);
+                    Effective = source.Populate(Effective as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
-                    Effective = source.Populate(Effective as Hl7.Fhir.Model.Period);
+                    Effective = source.Populate(Effective as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "issued":
                     IssuedElement = source.PopulateValue(IssuedElement);
                     return true;
                 case "_issued":
-                    IssuedElement = source.Populate(IssuedElement);
+                    IssuedElement = source.Populate(IssuedElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "performer":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "valueQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.Quantity);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.Quantity, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "valueCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "valueString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
@@ -1500,23 +1500,23 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_valueString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.FhirString);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "valueRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.Range);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                     return true;
                 case "valueRatio":
                     source.CheckDuplicates<Hl7.Fhir.Model.Ratio>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.Ratio);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.Ratio, () => new Hl7.Fhir.Model.Ratio());
                     return true;
                 case "valueSampledData":
                     source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.SampledData>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.SampledData);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.DSTU2.SampledData, () => new Hl7.Fhir.Model.DSTU2.SampledData());
                     return true;
                 case "valueAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.Attachment);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.Attachment, () => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "valueTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
@@ -1524,7 +1524,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_valueTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.Time>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.Time);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.Time, () => new Hl7.Fhir.Model.Time());
                     return true;
                 case "valueDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
@@ -1532,35 +1532,35 @@ namespace Hl7.Fhir.Model.DSTU2
                     return true;
                 case "_valueDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "valuePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.Period);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "dataAbsentReason":
-                    DataAbsentReason = source.Populate(DataAbsentReason);
+                    DataAbsentReason = source.Populate(DataAbsentReason, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "interpretation":
-                    Interpretation = source.Populate(Interpretation);
+                    Interpretation = source.Populate(Interpretation, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "comments":
                     CommentsElement = source.PopulateValue(CommentsElement);
                     return true;
                 case "_comments":
-                    CommentsElement = source.Populate(CommentsElement);
+                    CommentsElement = source.Populate(CommentsElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "bodySite":
-                    BodySite = source.Populate(BodySite);
+                    BodySite = source.Populate(BodySite, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "method":
-                    Method = source.Populate(Method);
+                    Method = source.Populate(Method, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specimen":
-                    Specimen = source.Populate(Specimen);
+                    Specimen = source.Populate(Specimen, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
-                    Device = source.Populate(Device);
+                    Device = source.Populate(Device, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "referenceRange":
                     source.SetList(this, jsonPropertyName);
@@ -1584,19 +1584,19 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "performer":
-                    source.PopulateListItem(Performer, index);
+                    source.PopulateListItem(Performer, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "referenceRange":
-                    source.PopulateListItem(ReferenceRange, index);
+                    source.PopulateListItem(ReferenceRange, index, () => new ReferenceRangeComponent());
                     return true;
                 case "related":
-                    source.PopulateListItem(Related, index);
+                    source.PopulateListItem(Related, index, () => new RelatedComponent());
                     return true;
                 case "component":
-                    source.PopulateListItem(Component, index);
+                    source.PopulateListItem(Component, index, () => new ComponentComponent());
                     return true;
             }
             return false;

@@ -148,10 +148,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "relation":
-                        RelationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        RelationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "url":
-                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -169,13 +169,13 @@ namespace Hl7.Fhir.Model.R4
                         RelationElement = source.PopulateValue(RelationElement);
                         return true;
                     case "_relation":
-                        RelationElement = source.Populate(RelationElement);
+                        RelationElement = source.Populate(RelationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "url":
                         UrlElement = source.PopulateValue(UrlElement);
                         return true;
                     case "_url":
-                        UrlElement = source.Populate(UrlElement);
+                        UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                 }
                 return false;
@@ -403,22 +403,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "link":
-                        Link = source.GetList<LinkComponent>();
+                        Link = source.GetList(() => new LinkComponent());
                         return true;
                     case "fullUrl":
-                        FullUrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        FullUrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "resource":
                         Resource = source.GetResource();
                         return true;
                     case "search":
-                        Search = source.Get<SearchComponent>();
+                        Search = source.Populate(new SearchComponent());
                         return true;
                     case "request":
-                        Request = source.Get<RequestComponent>();
+                        Request = source.Populate(new RequestComponent());
                         return true;
                     case "response":
-                        Response = source.Get<ResponseComponent>();
+                        Response = source.Populate(new ResponseComponent());
                         return true;
                 }
                 return false;
@@ -439,19 +439,19 @@ namespace Hl7.Fhir.Model.R4
                         FullUrlElement = source.PopulateValue(FullUrlElement);
                         return true;
                     case "_fullUrl":
-                        FullUrlElement = source.Populate(FullUrlElement);
+                        FullUrlElement = source.Populate(FullUrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "resource":
                         Resource = source.GetResource();
                         return true;
                     case "search":
-                        Search = source.Populate(Search);
+                        Search = source.Populate(Search, () => new SearchComponent());
                         return true;
                     case "request":
-                        Request = source.Populate(Request);
+                        Request = source.Populate(Request, () => new RequestComponent());
                         return true;
                     case "response":
-                        Response = source.Populate(Response);
+                        Response = source.Populate(Response, () => new ResponseComponent());
                         return true;
                 }
                 return false;
@@ -466,7 +466,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "link":
-                        source.PopulateListItem(Link, index);
+                        source.PopulateListItem(Link, index, () => new LinkComponent());
                         return true;
                 }
                 return false;
@@ -654,10 +654,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "mode":
-                        ModeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchEntryMode>>();
+                        ModeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchEntryMode>());
                         return true;
                     case "score":
-                        ScoreElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        ScoreElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                 }
                 return false;
@@ -675,13 +675,13 @@ namespace Hl7.Fhir.Model.R4
                         ModeElement = source.PopulateValue(ModeElement);
                         return true;
                     case "_mode":
-                        ModeElement = source.Populate(ModeElement);
+                        ModeElement = source.Populate(ModeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchEntryMode>());
                         return true;
                     case "score":
                         ScoreElement = source.PopulateValue(ScoreElement);
                         return true;
                     case "_score":
-                        ScoreElement = source.Populate(ScoreElement);
+                        ScoreElement = source.Populate(ScoreElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                 }
                 return false;
@@ -987,22 +987,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "method":
-                        MethodElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.HTTPVerb>>();
+                        MethodElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.HTTPVerb>());
                         return true;
                     case "url":
-                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "ifNoneMatch":
-                        IfNoneMatchElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        IfNoneMatchElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "ifModifiedSince":
-                        IfModifiedSinceElement = source.Get<Hl7.Fhir.Model.Instant>();
+                        IfModifiedSinceElement = source.Populate(new Hl7.Fhir.Model.Instant());
                         return true;
                     case "ifMatch":
-                        IfMatchElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        IfMatchElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "ifNoneExist":
-                        IfNoneExistElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        IfNoneExistElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1020,37 +1020,37 @@ namespace Hl7.Fhir.Model.R4
                         MethodElement = source.PopulateValue(MethodElement);
                         return true;
                     case "_method":
-                        MethodElement = source.Populate(MethodElement);
+                        MethodElement = source.Populate(MethodElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.HTTPVerb>());
                         return true;
                     case "url":
                         UrlElement = source.PopulateValue(UrlElement);
                         return true;
                     case "_url":
-                        UrlElement = source.Populate(UrlElement);
+                        UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "ifNoneMatch":
                         IfNoneMatchElement = source.PopulateValue(IfNoneMatchElement);
                         return true;
                     case "_ifNoneMatch":
-                        IfNoneMatchElement = source.Populate(IfNoneMatchElement);
+                        IfNoneMatchElement = source.Populate(IfNoneMatchElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "ifModifiedSince":
                         IfModifiedSinceElement = source.PopulateValue(IfModifiedSinceElement);
                         return true;
                     case "_ifModifiedSince":
-                        IfModifiedSinceElement = source.Populate(IfModifiedSinceElement);
+                        IfModifiedSinceElement = source.Populate(IfModifiedSinceElement, () => new Hl7.Fhir.Model.Instant());
                         return true;
                     case "ifMatch":
                         IfMatchElement = source.PopulateValue(IfMatchElement);
                         return true;
                     case "_ifMatch":
-                        IfMatchElement = source.Populate(IfMatchElement);
+                        IfMatchElement = source.Populate(IfMatchElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "ifNoneExist":
                         IfNoneExistElement = source.PopulateValue(IfNoneExistElement);
                         return true;
                     case "_ifNoneExist":
-                        IfNoneExistElement = source.Populate(IfNoneExistElement);
+                        IfNoneExistElement = source.Populate(IfNoneExistElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1323,16 +1323,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "status":
-                        StatusElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        StatusElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "location":
-                        LocationElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        LocationElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "etag":
-                        EtagElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        EtagElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "lastModified":
-                        LastModifiedElement = source.Get<Hl7.Fhir.Model.Instant>();
+                        LastModifiedElement = source.Populate(new Hl7.Fhir.Model.Instant());
                         return true;
                     case "outcome":
                         Outcome = source.GetResource();
@@ -1353,25 +1353,25 @@ namespace Hl7.Fhir.Model.R4
                         StatusElement = source.PopulateValue(StatusElement);
                         return true;
                     case "_status":
-                        StatusElement = source.Populate(StatusElement);
+                        StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "location":
                         LocationElement = source.PopulateValue(LocationElement);
                         return true;
                     case "_location":
-                        LocationElement = source.Populate(LocationElement);
+                        LocationElement = source.Populate(LocationElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "etag":
                         EtagElement = source.PopulateValue(EtagElement);
                         return true;
                     case "_etag":
-                        EtagElement = source.Populate(EtagElement);
+                        EtagElement = source.Populate(EtagElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "lastModified":
                         LastModifiedElement = source.PopulateValue(LastModifiedElement);
                         return true;
                     case "_lastModified":
-                        LastModifiedElement = source.Populate(LastModifiedElement);
+                        LastModifiedElement = source.Populate(LastModifiedElement, () => new Hl7.Fhir.Model.Instant());
                         return true;
                     case "outcome":
                         Outcome = source.GetResource();
@@ -1824,25 +1824,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.BundleType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.BundleType>());
                     return true;
                 case "timestamp":
-                    TimestampElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    TimestampElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "total":
-                    TotalElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                    TotalElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "link":
-                    Link = source.GetList<LinkComponent>();
+                    Link = source.GetList(() => new LinkComponent());
                     return true;
                 case "entry":
-                    Entry = source.GetList<EntryComponent>();
+                    Entry = source.GetList(() => new EntryComponent());
                     return true;
                 case "signature":
-                    Signature = source.Get<Hl7.Fhir.Model.R4.Signature>();
+                    Signature = source.Populate(new Hl7.Fhir.Model.R4.Signature());
                     return true;
             }
             return false;
@@ -1857,25 +1857,25 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.BundleType>());
                     return true;
                 case "timestamp":
                     TimestampElement = source.PopulateValue(TimestampElement);
                     return true;
                 case "_timestamp":
-                    TimestampElement = source.Populate(TimestampElement);
+                    TimestampElement = source.Populate(TimestampElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "total":
                     TotalElement = source.PopulateValue(TotalElement);
                     return true;
                 case "_total":
-                    TotalElement = source.Populate(TotalElement);
+                    TotalElement = source.Populate(TotalElement, () => new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "link":
                     source.SetList(this, jsonPropertyName);
@@ -1884,7 +1884,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "signature":
-                    Signature = source.Populate(Signature);
+                    Signature = source.Populate(Signature, () => new Hl7.Fhir.Model.R4.Signature());
                     return true;
             }
             return false;
@@ -1899,10 +1899,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "link":
-                    source.PopulateListItem(Link, index);
+                    source.PopulateListItem(Link, index, () => new LinkComponent());
                     return true;
                 case "entry":
-                    source.PopulateListItem(Entry, index);
+                    source.PopulateListItem(Entry, index, () => new EntryComponent());
                     return true;
             }
             return false;

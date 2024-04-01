@@ -125,10 +125,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "text":
-                        TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -143,13 +143,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "text":
                         TextElement = source.PopulateValue(TextElement);
                         return true;
                     case "_text":
-                        TextElement = source.Populate(TextElement);
+                        TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -592,43 +592,43 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "created":
-                    CreatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "organization":
-                    Organization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Organization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "request":
-                    Request = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outcome":
-                    Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Outcome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "disposition":
-                    DispositionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DispositionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "requestProvider":
-                    RequestProvider = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    RequestProvider = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requestOrganization":
-                    RequestOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    RequestOrganization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "form":
-                    Form = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Form = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "processNote":
-                    ProcessNote = source.GetList<ProcessNoteComponent>();
+                    ProcessNote = source.GetList(() => new ProcessNoteComponent());
                     return true;
                 case "error":
-                    Error = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Error = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "communicationRequest":
-                    CommunicationRequest = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    CommunicationRequest = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -649,37 +649,37 @@ namespace Hl7.Fhir.Model.STU3
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "created":
                     CreatedElement = source.PopulateValue(CreatedElement);
                     return true;
                 case "_created":
-                    CreatedElement = source.Populate(CreatedElement);
+                    CreatedElement = source.Populate(CreatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "organization":
-                    Organization = source.Populate(Organization);
+                    Organization = source.Populate(Organization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "request":
-                    Request = source.Populate(Request);
+                    Request = source.Populate(Request, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "outcome":
-                    Outcome = source.Populate(Outcome);
+                    Outcome = source.Populate(Outcome, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "disposition":
                     DispositionElement = source.PopulateValue(DispositionElement);
                     return true;
                 case "_disposition":
-                    DispositionElement = source.Populate(DispositionElement);
+                    DispositionElement = source.Populate(DispositionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "requestProvider":
-                    RequestProvider = source.Populate(RequestProvider);
+                    RequestProvider = source.Populate(RequestProvider, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "requestOrganization":
-                    RequestOrganization = source.Populate(RequestOrganization);
+                    RequestOrganization = source.Populate(RequestOrganization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "form":
-                    Form = source.Populate(Form);
+                    Form = source.Populate(Form, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "processNote":
                     source.SetList(this, jsonPropertyName);
@@ -703,16 +703,16 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "processNote":
-                    source.PopulateListItem(ProcessNote, index);
+                    source.PopulateListItem(ProcessNote, index, () => new ProcessNoteComponent());
                     return true;
                 case "error":
-                    source.PopulateListItem(Error, index);
+                    source.PopulateListItem(Error, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "communicationRequest":
-                    source.PopulateListItem(CommunicationRequest, index);
+                    source.PopulateListItem(CommunicationRequest, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

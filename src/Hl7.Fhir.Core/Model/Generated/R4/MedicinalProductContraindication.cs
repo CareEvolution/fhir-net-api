@@ -88,7 +88,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Medication
             {
                 get { return _Medication; }
-                set { _Medication = value; OnPropertyChanged("Medication"); }
+                set { _Medication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Medication"); }
             }
             
             private Hl7.Fhir.Model.Element _Medication;
@@ -111,15 +111,15 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "therapyRelationshipType":
-                        TherapyRelationshipType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        TherapyRelationshipType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "medicationCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
-                        Medication = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Medication = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "medicationReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Medication, "medication");
-                        Medication = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Medication = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -134,15 +134,15 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "therapyRelationshipType":
-                        TherapyRelationshipType = source.Populate(TherapyRelationshipType);
+                        TherapyRelationshipType = source.Populate(TherapyRelationshipType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "medicationCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Medication, "medication");
-                        Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept);
+                        Medication = source.Populate(Medication as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "medicationReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Medication, "medication");
-                        Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference);
+                        Medication = source.Populate(Medication as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -432,25 +432,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "subject":
-                    Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "disease":
-                    Disease = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Disease = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "diseaseStatus":
-                    DiseaseStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    DiseaseStatus = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "comorbidity":
-                    Comorbidity = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Comorbidity = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "therapeuticIndication":
-                    TherapeuticIndication = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    TherapeuticIndication = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "otherTherapy":
-                    OtherTherapy = source.GetList<OtherTherapyComponent>();
+                    OtherTherapy = source.GetList(() => new OtherTherapyComponent());
                     return true;
                 case "population":
-                    Population = source.GetList<Hl7.Fhir.Model.Population>();
+                    Population = source.GetList(() => new Hl7.Fhir.Model.Population());
                     return true;
             }
             return false;
@@ -468,10 +468,10 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "disease":
-                    Disease = source.Populate(Disease);
+                    Disease = source.Populate(Disease, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "diseaseStatus":
-                    DiseaseStatus = source.Populate(DiseaseStatus);
+                    DiseaseStatus = source.Populate(DiseaseStatus, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "comorbidity":
                     source.SetList(this, jsonPropertyName);
@@ -498,19 +498,19 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "subject":
-                    source.PopulateListItem(Subject, index);
+                    source.PopulateListItem(Subject, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "comorbidity":
-                    source.PopulateListItem(Comorbidity, index);
+                    source.PopulateListItem(Comorbidity, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "therapeuticIndication":
-                    source.PopulateListItem(TherapeuticIndication, index);
+                    source.PopulateListItem(TherapeuticIndication, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "otherTherapy":
-                    source.PopulateListItem(OtherTherapy, index);
+                    source.PopulateListItem(OtherTherapy, index, () => new OtherTherapyComponent());
                     return true;
                 case "population":
-                    source.PopulateListItem(Population, index);
+                    source.PopulateListItem(Population, index, () => new Hl7.Fhir.Model.Population());
                     return true;
             }
             return false;

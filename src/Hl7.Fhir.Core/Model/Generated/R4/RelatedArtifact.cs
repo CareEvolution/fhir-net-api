@@ -349,25 +349,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RelatedArtifactType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RelatedArtifactType>());
                     return true;
                 case "label":
-                    LabelElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    LabelElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "display":
-                    DisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DisplayElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "citation":
-                    CitationElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    CitationElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.Url>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.Url());
                     return true;
                 case "document":
-                    Document = source.Get<Hl7.Fhir.Model.Attachment>();
+                    Document = source.Populate(new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "resource":
-                    ResourceElement = source.Get<Hl7.Fhir.Model.Canonical>();
+                    ResourceElement = source.Populate(new Hl7.Fhir.Model.Canonical());
                     return true;
             }
             return false;
@@ -385,40 +385,40 @@ namespace Hl7.Fhir.Model.R4
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.RelatedArtifactType>());
                     return true;
                 case "label":
                     LabelElement = source.PopulateValue(LabelElement);
                     return true;
                 case "_label":
-                    LabelElement = source.Populate(LabelElement);
+                    LabelElement = source.Populate(LabelElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "display":
                     DisplayElement = source.PopulateValue(DisplayElement);
                     return true;
                 case "_display":
-                    DisplayElement = source.Populate(DisplayElement);
+                    DisplayElement = source.Populate(DisplayElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "citation":
                     CitationElement = source.PopulateValue(CitationElement);
                     return true;
                 case "_citation":
-                    CitationElement = source.Populate(CitationElement);
+                    CitationElement = source.Populate(CitationElement, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "url":
                     UrlElement = source.PopulateValue(UrlElement);
                     return true;
                 case "_url":
-                    UrlElement = source.Populate(UrlElement);
+                    UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.Url());
                     return true;
                 case "document":
-                    Document = source.Populate(Document);
+                    Document = source.Populate(Document, () => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "resource":
                     ResourceElement = source.PopulateValue(ResourceElement);
                     return true;
                 case "_resource":
-                    ResourceElement = source.Populate(ResourceElement);
+                    ResourceElement = source.Populate(ResourceElement, () => new Hl7.Fhir.Model.Canonical());
                     return true;
             }
             return false;

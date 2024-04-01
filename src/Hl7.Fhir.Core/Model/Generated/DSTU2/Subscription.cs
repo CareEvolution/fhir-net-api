@@ -216,16 +216,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionChannelType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionChannelType>());
                         return true;
                     case "endpoint":
-                        EndpointElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        EndpointElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "payload":
-                        PayloadElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PayloadElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "header":
-                        HeaderElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        HeaderElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -243,25 +243,25 @@ namespace Hl7.Fhir.Model.DSTU2
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionChannelType>());
                         return true;
                     case "endpoint":
                         EndpointElement = source.PopulateValue(EndpointElement);
                         return true;
                     case "_endpoint":
-                        EndpointElement = source.Populate(EndpointElement);
+                        EndpointElement = source.Populate(EndpointElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "payload":
                         PayloadElement = source.PopulateValue(PayloadElement);
                         return true;
                     case "_payload":
-                        PayloadElement = source.Populate(PayloadElement);
+                        PayloadElement = source.Populate(PayloadElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "header":
                         HeaderElement = source.PopulateValue(HeaderElement);
                         return true;
                     case "_header":
-                        HeaderElement = source.Populate(HeaderElement);
+                        HeaderElement = source.Populate(HeaderElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -664,28 +664,28 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "criteria":
-                    CriteriaElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CriteriaElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "reason":
-                    ReasonElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ReasonElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionStatus>());
                     return true;
                 case "error":
-                    ErrorElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ErrorElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "channel":
-                    Channel = source.Get<ChannelComponent>();
+                    Channel = source.Populate(new ChannelComponent());
                     return true;
                 case "end":
-                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    EndElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "tag":
-                    Tag = source.GetList<Hl7.Fhir.Model.Coding>();
+                    Tag = source.GetList(() => new Hl7.Fhir.Model.Coding());
                     return true;
             }
             return false;
@@ -703,7 +703,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     CriteriaElement = source.PopulateValue(CriteriaElement);
                     return true;
                 case "_criteria":
-                    CriteriaElement = source.Populate(CriteriaElement);
+                    CriteriaElement = source.Populate(CriteriaElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
                     source.SetList(this, jsonPropertyName);
@@ -712,28 +712,28 @@ namespace Hl7.Fhir.Model.DSTU2
                     ReasonElement = source.PopulateValue(ReasonElement);
                     return true;
                 case "_reason":
-                    ReasonElement = source.Populate(ReasonElement);
+                    ReasonElement = source.Populate(ReasonElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SubscriptionStatus>());
                     return true;
                 case "error":
                     ErrorElement = source.PopulateValue(ErrorElement);
                     return true;
                 case "_error":
-                    ErrorElement = source.Populate(ErrorElement);
+                    ErrorElement = source.Populate(ErrorElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "channel":
-                    Channel = source.Populate(Channel);
+                    Channel = source.Populate(Channel, () => new ChannelComponent());
                     return true;
                 case "end":
                     EndElement = source.PopulateValue(EndElement);
                     return true;
                 case "_end":
-                    EndElement = source.Populate(EndElement);
+                    EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "tag":
                     source.SetList(this, jsonPropertyName);
@@ -751,10 +751,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "tag":
-                    source.PopulateListItem(Tag, index);
+                    source.PopulateListItem(Tag, index, () => new Hl7.Fhir.Model.Coding());
                     return true;
             }
             return false;

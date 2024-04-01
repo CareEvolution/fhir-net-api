@@ -86,7 +86,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element Probability
             {
                 get { return _Probability; }
-                set { _Probability = value; OnPropertyChanged("Probability"); }
+                set { _Probability = CheckType(value, typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Probability"); }
             }
             
             private Hl7.Fhir.Model.Element _Probability;
@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.DSTU2
             public Hl7.Fhir.Model.Element When
             {
                 get { return _When; }
-                set { _When = value; OnPropertyChanged("When"); }
+                set { _When = CheckType(value, typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("When"); }
             }
             
             private Hl7.Fhir.Model.Element _When;
@@ -191,33 +191,33 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "outcome":
-                        Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Outcome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "probabilityDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Probability, "probability");
-                        Probability = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        Probability = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "probabilityRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Probability, "probability");
-                        Probability = source.Get<Hl7.Fhir.Model.Range>();
+                        Probability = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "probabilityCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Probability, "probability");
-                        Probability = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Probability = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "relativeRisk":
-                        RelativeRiskElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        RelativeRiskElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "whenPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(When, "when");
-                        When = source.Get<Hl7.Fhir.Model.Period>();
+                        When = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "whenRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(When, "when");
-                        When = source.Get<Hl7.Fhir.Model.Range>();
+                        When = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "rationale":
-                        RationaleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        RationaleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -232,7 +232,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "outcome":
-                        Outcome = source.Populate(Outcome);
+                        Outcome = source.Populate(Outcome, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "probabilityDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Probability, "probability");
@@ -240,35 +240,35 @@ namespace Hl7.Fhir.Model.DSTU2
                         return true;
                     case "_probabilityDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Probability, "probability");
-                        Probability = source.Populate(Probability as Hl7.Fhir.Model.FhirDecimal);
+                        Probability = source.Populate(Probability as Hl7.Fhir.Model.FhirDecimal, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "probabilityRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Probability, "probability");
-                        Probability = source.Populate(Probability as Hl7.Fhir.Model.Range);
+                        Probability = source.Populate(Probability as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "probabilityCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Probability, "probability");
-                        Probability = source.Populate(Probability as Hl7.Fhir.Model.CodeableConcept);
+                        Probability = source.Populate(Probability as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "relativeRisk":
                         RelativeRiskElement = source.PopulateValue(RelativeRiskElement);
                         return true;
                     case "_relativeRisk":
-                        RelativeRiskElement = source.Populate(RelativeRiskElement);
+                        RelativeRiskElement = source.Populate(RelativeRiskElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "whenPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(When, "when");
-                        When = source.Populate(When as Hl7.Fhir.Model.Period);
+                        When = source.Populate(When as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "whenRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(When, "when");
-                        When = source.Populate(When as Hl7.Fhir.Model.Range);
+                        When = source.Populate(When as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "rationale":
                         RationaleElement = source.PopulateValue(RationaleElement);
                         return true;
                     case "_rationale":
-                        RationaleElement = source.Populate(RationaleElement);
+                        RationaleElement = source.Populate(RationaleElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -675,34 +675,34 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "condition":
-                    Condition = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Condition = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Performer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "method":
-                    Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "basis":
-                    Basis = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Basis = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "prediction":
-                    Prediction = source.GetList<PredictionComponent>();
+                    Prediction = source.GetList(() => new PredictionComponent());
                     return true;
                 case "mitigation":
-                    MitigationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    MitigationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -717,28 +717,28 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "condition":
-                    Condition = source.Populate(Condition);
+                    Condition = source.Populate(Condition, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    Performer = source.Populate(Performer);
+                    Performer = source.Populate(Performer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "method":
-                    Method = source.Populate(Method);
+                    Method = source.Populate(Method, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "basis":
                     source.SetList(this, jsonPropertyName);
@@ -750,7 +750,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     MitigationElement = source.PopulateValue(MitigationElement);
                     return true;
                 case "_mitigation":
-                    MitigationElement = source.Populate(MitigationElement);
+                    MitigationElement = source.Populate(MitigationElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -765,10 +765,10 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "basis":
-                    source.PopulateListItem(Basis, index);
+                    source.PopulateListItem(Basis, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "prediction":
-                    source.PopulateListItem(Prediction, index);
+                    source.PopulateListItem(Prediction, index, () => new PredictionComponent());
                     return true;
             }
             return false;

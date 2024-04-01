@@ -169,10 +169,10 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "coding":
-                    Coding = source.GetList<Hl7.Fhir.Model.Coding>();
+                    Coding = source.GetList(() => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "text":
-                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -193,7 +193,7 @@ namespace Hl7.Fhir.Model
                     TextElement = source.PopulateValue(TextElement);
                     return true;
                 case "_text":
-                    TextElement = source.Populate(TextElement);
+                    TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -208,7 +208,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "coding":
-                    source.PopulateListItem(Coding, index);
+                    source.PopulateListItem(Coding, index, () => new Hl7.Fhir.Model.Coding());
                     return true;
             }
             return false;

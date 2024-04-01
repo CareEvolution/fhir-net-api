@@ -130,7 +130,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Timing
         {
             get { return _Timing; }
-            set { _Timing = value; OnPropertyChanged("Timing"); }
+            set { _Timing = CheckType(value, typeof(Hl7.Fhir.Model.R4.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("Timing"); }
         }
         
         private Hl7.Fhir.Model.Element _Timing;
@@ -274,32 +274,32 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.TriggerType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.TriggerType>());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.R4.Timing());
                     return true;
                 case "timingReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "timingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.Date>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "data":
-                    Data = source.GetList<Hl7.Fhir.Model.R4.DataRequirement>();
+                    Data = source.GetList(() => new Hl7.Fhir.Model.R4.DataRequirement());
                     return true;
                 case "condition":
-                    Condition = source.Get<Hl7.Fhir.Model.Expression>();
+                    Condition = source.Populate(new Hl7.Fhir.Model.Expression());
                     return true;
             }
             return false;
@@ -317,21 +317,21 @@ namespace Hl7.Fhir.Model.R4
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.TriggerType>());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.R4.Timing);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.R4.Timing, () => new Hl7.Fhir.Model.R4.Timing());
                     return true;
                 case "timingReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.ResourceReference);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "timingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Timing, "timing");
@@ -339,7 +339,7 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_timingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.Date);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.Date, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
@@ -347,13 +347,13 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.FhirDateTime);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "data":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "condition":
-                    Condition = source.Populate(Condition);
+                    Condition = source.Populate(Condition, () => new Hl7.Fhir.Model.Expression());
                     return true;
             }
             return false;
@@ -368,7 +368,7 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "data":
-                    source.PopulateListItem(Data, index);
+                    source.PopulateListItem(Data, index, () => new Hl7.Fhir.Model.R4.DataRequirement());
                     return true;
             }
             return false;

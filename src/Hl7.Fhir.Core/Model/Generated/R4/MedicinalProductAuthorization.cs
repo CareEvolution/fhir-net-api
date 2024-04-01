@@ -165,19 +165,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "country":
-                        Country = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Country = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "jurisdiction":
-                        Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "legalStatusOfSupply":
-                        LegalStatusOfSupply = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        LegalStatusOfSupply = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "validityPeriod":
-                        ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
+                        ValidityPeriod = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -195,16 +195,16 @@ namespace Hl7.Fhir.Model.R4
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "country":
-                        Country = source.Populate(Country);
+                        Country = source.Populate(Country, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "jurisdiction":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "legalStatusOfSupply":
-                        LegalStatusOfSupply = source.Populate(LegalStatusOfSupply);
+                        LegalStatusOfSupply = source.Populate(LegalStatusOfSupply, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "validityPeriod":
-                        ValidityPeriod = source.Populate(ValidityPeriod);
+                        ValidityPeriod = source.Populate(ValidityPeriod, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -219,10 +219,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        source.PopulateListItem(Identifier, index);
+                        source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "jurisdiction":
-                        source.PopulateListItem(Jurisdiction, index);
+                        source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -360,7 +360,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Date
             {
                 get { return _Date; }
-                set { _Date = value; OnPropertyChanged("Date"); }
+                set { _Date = CheckType(value, typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("Date"); }
             }
             
             private Hl7.Fhir.Model.Element _Date;
@@ -405,21 +405,21 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "datePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Date, "date");
-                        Date = source.Get<Hl7.Fhir.Model.Period>();
+                        Date = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "dateDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Date, "date");
-                        Date = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        Date = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "application":
-                        Application = source.GetList<ProcedureComponent>();
+                        Application = source.GetList(() => new ProcedureComponent());
                         return true;
                 }
                 return false;
@@ -434,14 +434,14 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "datePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Date, "date");
-                        Date = source.Populate(Date as Hl7.Fhir.Model.Period);
+                        Date = source.Populate(Date as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "dateDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Date, "date");
@@ -449,7 +449,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_dateDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Date, "date");
-                        Date = source.Populate(Date as Hl7.Fhir.Model.FhirDateTime);
+                        Date = source.Populate(Date as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "application":
                         source.SetList(this, jsonPropertyName);
@@ -467,7 +467,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "application":
-                        source.PopulateListItem(Application, index);
+                        source.PopulateListItem(Application, index, () => new ProcedureComponent());
                         return true;
                 }
                 return false;
@@ -1000,52 +1000,52 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "country":
-                    Country = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Country = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "jurisdiction":
-                    Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    Status = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Status = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "statusDate":
-                    StatusDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    StatusDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "restoreDate":
-                    RestoreDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    RestoreDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "validityPeriod":
-                    ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    ValidityPeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "dataExclusivityPeriod":
-                    DataExclusivityPeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    DataExclusivityPeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "dateOfFirstAuthorization":
-                    DateOfFirstAuthorizationElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateOfFirstAuthorizationElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "internationalBirthDate":
-                    InternationalBirthDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    InternationalBirthDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "legalBasis":
-                    LegalBasis = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    LegalBasis = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "jurisdictionalAuthorization":
-                    JurisdictionalAuthorization = source.GetList<JurisdictionalAuthorizationComponent>();
+                    JurisdictionalAuthorization = source.GetList(() => new JurisdictionalAuthorizationComponent());
                     return true;
                 case "holder":
-                    Holder = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Holder = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "regulator":
-                    Regulator = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Regulator = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "procedure":
-                    Procedure = source.Get<ProcedureComponent>();
+                    Procedure = source.Populate(new ProcedureComponent());
                     return true;
             }
             return false;
@@ -1063,7 +1063,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "country":
                     source.SetList(this, jsonPropertyName);
@@ -1072,52 +1072,52 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "status":
-                    Status = source.Populate(Status);
+                    Status = source.Populate(Status, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "statusDate":
                     StatusDateElement = source.PopulateValue(StatusDateElement);
                     return true;
                 case "_statusDate":
-                    StatusDateElement = source.Populate(StatusDateElement);
+                    StatusDateElement = source.Populate(StatusDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "restoreDate":
                     RestoreDateElement = source.PopulateValue(RestoreDateElement);
                     return true;
                 case "_restoreDate":
-                    RestoreDateElement = source.Populate(RestoreDateElement);
+                    RestoreDateElement = source.Populate(RestoreDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "validityPeriod":
-                    ValidityPeriod = source.Populate(ValidityPeriod);
+                    ValidityPeriod = source.Populate(ValidityPeriod, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "dataExclusivityPeriod":
-                    DataExclusivityPeriod = source.Populate(DataExclusivityPeriod);
+                    DataExclusivityPeriod = source.Populate(DataExclusivityPeriod, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "dateOfFirstAuthorization":
                     DateOfFirstAuthorizationElement = source.PopulateValue(DateOfFirstAuthorizationElement);
                     return true;
                 case "_dateOfFirstAuthorization":
-                    DateOfFirstAuthorizationElement = source.Populate(DateOfFirstAuthorizationElement);
+                    DateOfFirstAuthorizationElement = source.Populate(DateOfFirstAuthorizationElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "internationalBirthDate":
                     InternationalBirthDateElement = source.PopulateValue(InternationalBirthDateElement);
                     return true;
                 case "_internationalBirthDate":
-                    InternationalBirthDateElement = source.Populate(InternationalBirthDateElement);
+                    InternationalBirthDateElement = source.Populate(InternationalBirthDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "legalBasis":
-                    LegalBasis = source.Populate(LegalBasis);
+                    LegalBasis = source.Populate(LegalBasis, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "jurisdictionalAuthorization":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "holder":
-                    Holder = source.Populate(Holder);
+                    Holder = source.Populate(Holder, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "regulator":
-                    Regulator = source.Populate(Regulator);
+                    Regulator = source.Populate(Regulator, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "procedure":
-                    Procedure = source.Populate(Procedure);
+                    Procedure = source.Populate(Procedure, () => new ProcedureComponent());
                     return true;
             }
             return false;
@@ -1132,16 +1132,16 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "country":
-                    source.PopulateListItem(Country, index);
+                    source.PopulateListItem(Country, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "jurisdiction":
-                    source.PopulateListItem(Jurisdiction, index);
+                    source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "jurisdictionalAuthorization":
-                    source.PopulateListItem(JurisdictionalAuthorization, index);
+                    source.PopulateListItem(JurisdictionalAuthorization, index, () => new JurisdictionalAuthorizationComponent());
                     return true;
             }
             return false;

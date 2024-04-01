@@ -108,10 +108,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "schedule":
-                        Schedule = source.Get<Hl7.Fhir.Model.DSTU2.Timing>();
+                        Schedule = source.Populate(new Hl7.Fhir.Model.DSTU2.Timing());
                         return true;
                 }
                 return false;
@@ -126,10 +126,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "schedule":
-                        Schedule = source.Populate(Schedule);
+                        Schedule = source.Populate(Schedule, () => new Hl7.Fhir.Model.DSTU2.Timing());
                         return true;
                 }
                 return false;
@@ -371,7 +371,7 @@ namespace Hl7.Fhir.Model.DSTU2
         public Hl7.Fhir.Model.Element Reason
         {
             get { return _Reason; }
-            set { _Reason = value; OnPropertyChanged("Reason"); }
+            set { _Reason = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Reason"); }
         }
         
         private Hl7.Fhir.Model.Element _Reason;
@@ -490,39 +490,39 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "source":
-                    Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SupplyRequestStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SupplyRequestStatus>());
                     return true;
                 case "kind":
-                    Kind = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Kind = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "orderedItem":
-                    OrderedItem = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    OrderedItem = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "supplier":
-                    Supplier = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Supplier = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Reason, "reason");
-                    Reason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reason, "reason");
-                    Reason = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Reason = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "when":
-                    When = source.Get<WhenComponent>();
+                    When = source.Populate(new WhenComponent());
                     return true;
             }
             return false;
@@ -537,45 +537,45 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "source":
-                    Source = source.Populate(Source);
+                    Source = source.Populate(Source, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.SupplyRequestStatus>());
                     return true;
                 case "kind":
-                    Kind = source.Populate(Kind);
+                    Kind = source.Populate(Kind, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "orderedItem":
-                    OrderedItem = source.Populate(OrderedItem);
+                    OrderedItem = source.Populate(OrderedItem, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "supplier":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "reasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Reason, "reason");
-                    Reason = source.Populate(Reason as Hl7.Fhir.Model.CodeableConcept);
+                    Reason = source.Populate(Reason as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reason, "reason");
-                    Reason = source.Populate(Reason as Hl7.Fhir.Model.ResourceReference);
+                    Reason = source.Populate(Reason as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "when":
-                    When = source.Populate(When);
+                    When = source.Populate(When, () => new WhenComponent());
                     return true;
             }
             return false;
@@ -590,7 +590,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "supplier":
-                    source.PopulateListItem(Supplier, index);
+                    source.PopulateListItem(Supplier, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

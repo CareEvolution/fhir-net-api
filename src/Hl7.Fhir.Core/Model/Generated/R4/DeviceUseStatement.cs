@@ -162,7 +162,7 @@ namespace Hl7.Fhir.Model.R4
         public Hl7.Fhir.Model.Element Timing
         {
             get { return _Timing; }
-            set { _Timing = value; OnPropertyChanged("Timing"); }
+            set { _Timing = CheckType(value, typeof(Hl7.Fhir.Model.R4.Timing), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("Timing"); }
         }
         
         private Hl7.Fhir.Model.Element _Timing;
@@ -427,52 +427,52 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceUseStatementStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceUseStatementStatus>());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "derivedFrom":
-                    DerivedFrom = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    DerivedFrom = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.R4.Timing>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.R4.Timing());
                     return true;
                 case "timingPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.Period>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Timing = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recordedOn":
-                    RecordedOnElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    RecordedOnElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "source":
-                    Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
-                    Device = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Device = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    ReasonCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReasonCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    ReasonReference = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "bodySite":
-                    BodySite = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    BodySite = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
-                    Note = source.GetList<Hl7.Fhir.Model.Annotation>();
+                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;
@@ -496,21 +496,21 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceUseStatementStatus>());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "derivedFrom":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "timingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.R4.Timing>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.R4.Timing);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.R4.Timing, () => new Hl7.Fhir.Model.R4.Timing());
                     return true;
                 case "timingPeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.Period);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
@@ -518,19 +518,19 @@ namespace Hl7.Fhir.Model.R4
                     return true;
                 case "_timingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Timing, "timing");
-                    Timing = source.Populate(Timing as Hl7.Fhir.Model.FhirDateTime);
+                    Timing = source.Populate(Timing as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recordedOn":
                     RecordedOnElement = source.PopulateValue(RecordedOnElement);
                     return true;
                 case "_recordedOn":
-                    RecordedOnElement = source.Populate(RecordedOnElement);
+                    RecordedOnElement = source.Populate(RecordedOnElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "source":
-                    Source = source.Populate(Source);
+                    Source = source.Populate(Source, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
-                    Device = source.Populate(Device);
+                    Device = source.Populate(Device, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
                     source.SetList(this, jsonPropertyName);
@@ -539,7 +539,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "bodySite":
-                    BodySite = source.Populate(BodySite);
+                    BodySite = source.Populate(BodySite, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
                     source.SetList(this, jsonPropertyName);
@@ -557,22 +557,22 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    source.PopulateListItem(BasedOn, index);
+                    source.PopulateListItem(BasedOn, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "derivedFrom":
-                    source.PopulateListItem(DerivedFrom, index);
+                    source.PopulateListItem(DerivedFrom, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCode":
-                    source.PopulateListItem(ReasonCode, index);
+                    source.PopulateListItem(ReasonCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
-                    source.PopulateListItem(ReasonReference, index);
+                    source.PopulateListItem(ReasonReference, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index);
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
                     return true;
             }
             return false;

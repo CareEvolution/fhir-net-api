@@ -360,25 +360,25 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.NameUse>>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.NameUse>());
                     return true;
                 case "text":
-                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "family":
-                    FamilyElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    FamilyElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "given":
-                    GivenElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    GivenElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "prefix":
-                    PrefixElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    PrefixElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "suffix":
-                    SuffixElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    SuffixElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;
@@ -396,13 +396,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     UseElement = source.PopulateValue(UseElement);
                     return true;
                 case "_use":
-                    UseElement = source.Populate(UseElement);
+                    UseElement = source.Populate(UseElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.NameUse>());
                     return true;
                 case "text":
                     TextElement = source.PopulateValue(TextElement);
                     return true;
                 case "_text":
-                    TextElement = source.Populate(TextElement);
+                    TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "family":
                 case "_family":
@@ -421,7 +421,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;
@@ -439,25 +439,25 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.PopulatePrimitiveListItemValue(FamilyElement, index);
                     return true;
                 case "_family":
-                    source.PopulatePrimitiveListItem(FamilyElement, index);
+                    source.PopulatePrimitiveListItem(FamilyElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "given":
                     source.PopulatePrimitiveListItemValue(GivenElement, index);
                     return true;
                 case "_given":
-                    source.PopulatePrimitiveListItem(GivenElement, index);
+                    source.PopulatePrimitiveListItem(GivenElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "prefix":
                     source.PopulatePrimitiveListItemValue(PrefixElement, index);
                     return true;
                 case "_prefix":
-                    source.PopulatePrimitiveListItem(PrefixElement, index);
+                    source.PopulatePrimitiveListItem(PrefixElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "suffix":
                     source.PopulatePrimitiveListItemValue(SuffixElement, index);
                     return true;
                 case "_suffix":
-                    source.PopulatePrimitiveListItem(SuffixElement, index);
+                    source.PopulatePrimitiveListItem(SuffixElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

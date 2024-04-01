@@ -293,28 +293,28 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "subunit":
-                        SubunitElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        SubunitElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "sequence":
-                        SequenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SequenceElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "length":
-                        LengthElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        LengthElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "sequenceAttachment":
-                        SequenceAttachment = source.Get<Hl7.Fhir.Model.Attachment>();
+                        SequenceAttachment = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "nTerminalModificationId":
-                        NTerminalModificationId = source.Get<Hl7.Fhir.Model.Identifier>();
+                        NTerminalModificationId = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "nTerminalModification":
-                        NTerminalModificationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NTerminalModificationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "cTerminalModificationId":
-                        CTerminalModificationId = source.Get<Hl7.Fhir.Model.Identifier>();
+                        CTerminalModificationId = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "cTerminalModification":
-                        CTerminalModificationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        CTerminalModificationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -332,40 +332,40 @@ namespace Hl7.Fhir.Model.R4
                         SubunitElement = source.PopulateValue(SubunitElement);
                         return true;
                     case "_subunit":
-                        SubunitElement = source.Populate(SubunitElement);
+                        SubunitElement = source.Populate(SubunitElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "sequence":
                         SequenceElement = source.PopulateValue(SequenceElement);
                         return true;
                     case "_sequence":
-                        SequenceElement = source.Populate(SequenceElement);
+                        SequenceElement = source.Populate(SequenceElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "length":
                         LengthElement = source.PopulateValue(LengthElement);
                         return true;
                     case "_length":
-                        LengthElement = source.Populate(LengthElement);
+                        LengthElement = source.Populate(LengthElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "sequenceAttachment":
-                        SequenceAttachment = source.Populate(SequenceAttachment);
+                        SequenceAttachment = source.Populate(SequenceAttachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "nTerminalModificationId":
-                        NTerminalModificationId = source.Populate(NTerminalModificationId);
+                        NTerminalModificationId = source.Populate(NTerminalModificationId, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "nTerminalModification":
                         NTerminalModificationElement = source.PopulateValue(NTerminalModificationElement);
                         return true;
                     case "_nTerminalModification":
-                        NTerminalModificationElement = source.Populate(NTerminalModificationElement);
+                        NTerminalModificationElement = source.Populate(NTerminalModificationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "cTerminalModificationId":
-                        CTerminalModificationId = source.Populate(CTerminalModificationId);
+                        CTerminalModificationId = source.Populate(CTerminalModificationId, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "cTerminalModification":
                         CTerminalModificationElement = source.PopulateValue(CTerminalModificationElement);
                         return true;
                     case "_cTerminalModification":
-                        CTerminalModificationElement = source.Populate(CTerminalModificationElement);
+                        CTerminalModificationElement = source.Populate(CTerminalModificationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -646,16 +646,16 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "sequenceType":
-                    SequenceType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    SequenceType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "numberOfSubunits":
-                    NumberOfSubunitsElement = source.Get<Hl7.Fhir.Model.Integer>();
+                    NumberOfSubunitsElement = source.Populate(new Hl7.Fhir.Model.Integer());
                     return true;
                 case "disulfideLinkage":
-                    DisulfideLinkageElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    DisulfideLinkageElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subunit":
-                    Subunit = source.GetList<SubunitComponent>();
+                    Subunit = source.GetList(() => new SubunitComponent());
                     return true;
             }
             return false;
@@ -670,13 +670,13 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "sequenceType":
-                    SequenceType = source.Populate(SequenceType);
+                    SequenceType = source.Populate(SequenceType, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "numberOfSubunits":
                     NumberOfSubunitsElement = source.PopulateValue(NumberOfSubunitsElement);
                     return true;
                 case "_numberOfSubunits":
-                    NumberOfSubunitsElement = source.Populate(NumberOfSubunitsElement);
+                    NumberOfSubunitsElement = source.Populate(NumberOfSubunitsElement, () => new Hl7.Fhir.Model.Integer());
                     return true;
                 case "disulfideLinkage":
                 case "_disulfideLinkage":
@@ -701,10 +701,10 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulatePrimitiveListItemValue(DisulfideLinkageElement, index);
                     return true;
                 case "_disulfideLinkage":
-                    source.PopulatePrimitiveListItem(DisulfideLinkageElement, index);
+                    source.PopulatePrimitiveListItem(DisulfideLinkageElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "subunit":
-                    source.PopulateListItem(Subunit, index);
+                    source.PopulateListItem(Subunit, index, () => new SubunitComponent());
                     return true;
             }
             return false;

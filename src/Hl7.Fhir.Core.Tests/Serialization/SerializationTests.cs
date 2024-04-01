@@ -12,7 +12,6 @@ using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 using Hl7.Fhir.Introspection;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -66,8 +65,8 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(((Patient)poco).ManagingOrganization.Reference, "Organization/1");
         }
 
-        internal FhirXmlSerializer FhirDstu2XmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.DSTU2);
-        internal FhirJsonSerializer FhirDstu2JsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.DSTU2);
+        internal FhirXmlFastSerializer FhirDstu2XmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.DSTU2);
+        internal FhirJsonFastSerializer FhirDstu2JsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.DSTU2);
 
         [TestMethod]
         public void ParseMetaJson()
@@ -115,17 +114,19 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestMethod]
         public void TestProbing()
         {
-            Assert.IsFalse(SerializationUtil.ProbeIsJson("this is nothing"));
-            Assert.IsFalse(SerializationUtil.ProbeIsJson("  crap { "));
-            Assert.IsFalse(SerializationUtil.ProbeIsJson("<element/>"));
-            Assert.IsTrue(SerializationUtil.ProbeIsJson("   { x:5 }"));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsJson("this is nothing"));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsJson("  crap { "));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsJson("<element/>"));
+            Assert.IsTrue(Fhir.Serialization.SerializationUtil.ProbeIsJson("   { x:5 }"));
+            Assert.IsTrue(Fhir.Serialization.SerializationUtil.ProbeIsJson("\r\n\t{ x:5 }"));
 
-            Assert.IsFalse(SerializationUtil.ProbeIsXml("this is nothing"));
-            Assert.IsFalse(SerializationUtil.ProbeIsXml("  crap { "));
-            Assert.IsFalse(SerializationUtil.ProbeIsXml(" < crap  "));
-            Assert.IsFalse(SerializationUtil.ProbeIsXml("   { x:5 }"));
-            Assert.IsTrue(SerializationUtil.ProbeIsXml("   <element/>"));
-            Assert.IsTrue(SerializationUtil.ProbeIsXml("<?xml />"));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsXml("this is nothing"));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsXml("  crap { "));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsXml(" < crap  "));
+            Assert.IsFalse(Fhir.Serialization.SerializationUtil.ProbeIsXml("   { x:5 }"));
+            Assert.IsTrue(Fhir.Serialization.SerializationUtil.ProbeIsXml("   <element/>"));
+            Assert.IsTrue(Fhir.Serialization.SerializationUtil.ProbeIsXml("<?xml />"));
+            Assert.IsTrue(Fhir.Serialization.SerializationUtil.ProbeIsXml("\n\t<?xml />"));
         }
 
         [TestMethod]
@@ -171,7 +172,7 @@ namespace Hl7.Fhir.Tests.Serialization
         }
 
         private FhirXmlParser FhirDstu2XmlParser = new FhirXmlParser(Fhir.Model.Version.DSTU2);
-        private FhirJsonParser FhirDstu2JsonParser = new FhirJsonParser(Fhir.Model.Version.DSTU2);
+        private FhirJsonFastParser FhirDstu2JsonParser = new FhirJsonFastParser(Fhir.Model.Version.DSTU2);
 
         [TestMethod]
         public void TestBundleSummary()
@@ -298,16 +299,16 @@ namespace Hl7.Fhir.Tests.Serialization
                     }
                 }
             };
-            var completeR4Data = new FhirXmlSerializer(Fhir.Model.Version.R4).SerializeToString(p, Fhir.Rest.SummaryType.False);
+            var completeR4Data = new FhirXmlFastSerializer(Fhir.Model.Version.R4).SerializeToString(p, Fhir.Rest.SummaryType.False);
             Assert.IsTrue(completeR4Data.Contains("<name value=\"N\""));
             Assert.IsTrue(completeR4Data.Contains("<valueString value=\"V\""));
-            var summaryR4Data = new FhirXmlSerializer(Fhir.Model.Version.R4).SerializeToString(p, Fhir.Rest.SummaryType.True);
+            var summaryR4Data = new FhirXmlFastSerializer(Fhir.Model.Version.R4).SerializeToString(p, Fhir.Rest.SummaryType.True);
             Assert.IsTrue(summaryR4Data.Contains("<name value=\"N\""));
             Assert.IsTrue(summaryR4Data.Contains("<valueString value=\"V\""));
-            var completeStu3Data = new FhirXmlSerializer(Fhir.Model.Version.STU3).SerializeToString(p, Fhir.Rest.SummaryType.False);
+            var completeStu3Data = new FhirXmlFastSerializer(Fhir.Model.Version.STU3).SerializeToString(p, Fhir.Rest.SummaryType.False);
             Assert.IsTrue(completeStu3Data.Contains("<name value=\"N\""));
             Assert.IsTrue(completeStu3Data.Contains("<valueString value=\"V\""));
-            var summaryStu3Data = new FhirXmlSerializer(Fhir.Model.Version.STU3).SerializeToString(p, Fhir.Rest.SummaryType.True);
+            var summaryStu3Data = new FhirXmlFastSerializer(Fhir.Model.Version.STU3).SerializeToString(p, Fhir.Rest.SummaryType.True);
             Assert.IsTrue(summaryStu3Data.Contains("<name value=\"N\""));
             Assert.IsTrue(summaryStu3Data.Contains("<valueString value=\"V\""));
             var completeDstu2Data = FhirDstu2XmlSerializer.SerializeToString(p, Fhir.Rest.SummaryType.False);
@@ -359,19 +360,9 @@ namespace Hl7.Fhir.Tests.Serialization
         [TestMethod]
         public void TestParseUnkownPolymorphPropertyInJson()
         {
-            var dec6 = 6m;
-            var ext = new FhirDecimal(dec6);
-            var obs = new Observation{ Value = new FhirDecimal(dec6) };
-            var json = FhirDstu2JsonSerializer.SerializeToString(obs);
-            try
-            {
-                var obs2 = FhirDstu2JsonParser.Parse<Observation>(json);
-                Assert.Fail("valueDecimal is not a known type for Observation");
-            }
-            catch (FormatException)
-            {
-
-            }
+            var json = @"{""resourceType"":""Observation"", ""valueDecimal"": 6}";
+            var formatException = Assert.ThrowsException<FormatException>(() => FhirDstu2JsonParser.Parse<Observation>(json));
+            Assert.IsTrue(formatException.Message.Contains("Unrecognized element 'valueDecimal'"), $"Unexpected message<{formatException.Message}>");
         }
 
         [TestMethod]
@@ -475,7 +466,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             string json = TestDataHelper.ReadTestData(@"valueset-v2-0717.json");
             Assert.IsNotNull(json);
-            var parser = new FhirJsonParser(Fhir.Model.Version.DSTU2) { Settings = { PermissiveParsing = true} };
+            var parser = new FhirJsonFastParser(Fhir.Model.Version.DSTU2) { Settings = { PermissiveParsing = true} };
             var vs = parser.Parse<ValueSet>(json);
             Assert.IsNotNull(vs);
 
@@ -536,98 +527,6 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(7, root.Elements().Count());
         }
         // #endif
-
-        // [WMR 20180409] NEW: Serialize to JObject
-        [TestMethod]
-        public void TestSerializeToJsonDocument()
-        {
-            // Note: output order is defined by core resource/datatype definitions!
-
-            var patientOne = new Patient
-            {
-                Id = "patient-one",
-                Meta = new Meta { ElementId = "eric-clapton", VersionId = "1234" },
-                Text = new Narrative { Status = Narrative.NarrativeStatus.Generated, Div = "<div>A great blues player</div>" },
-                Active = true,
-                Name = new List<HumanName> { new HumanName { Use = NameUse.Official, Family = new[] { "Clapton" } } },
-                Gender = AdministrativeGender.Male,
-                BirthDate = "2015-07-09",
-            };
-
-            var serializer = FhirDstu2JsonSerializer;
-            var jsonText = serializer.SerializeToString(patientOne);
-            Assert.IsNotNull(jsonText);
-
-            var doc = JObject.Parse(jsonText);
-            Assert.AreEqual(8, doc.Count); // Including resourceType
-
-            JToken assertProperty(JToken t, string expectedName)
-            {
-                Assert.AreEqual(JTokenType.Property, t.Type);
-                var p = t as JProperty;
-                Assert.IsNotNull(p);
-                Assert.AreEqual(expectedName, p.Name);
-                return t;
-            }
-
-            JToken assertValue(JToken t, JTokenType expectedType, object expectedValue)
-            {
-                Assert.AreEqual(expectedType, t.Type);
-                var v = t as JValue;
-                Assert.IsNotNull(v);
-                Assert.AreEqual(expectedValue, v.Value);
-                return t;
-            }
-
-            JToken assertPrimitiveProperty(JToken t, string expectedName, JTokenType expectedType, object expectedValue)
-            {
-                var p = t as JProperty;
-                Assert.IsNotNull(p);
-                Assert.AreEqual(expectedName, p.Name);
-                Assert.AreEqual(expectedType, p.Value.Type);
-                var v = p.Value as JValue;
-                Assert.IsNotNull(v);
-                Assert.AreEqual(expectedValue, v.Value);
-                return t;
-            }
-
-            JToken assertStringProperty(JToken t, string expectedName, object expectedValue)
-                => assertPrimitiveProperty(t, expectedName, JTokenType.String, expectedValue);
-
-            Assert.AreEqual(JTokenType.Property, doc.First.Type);
-            var token = assertStringProperty(doc.First, "resourceType", "Patient");
-            token = assertStringProperty(token.Next, "id", patientOne.Id);
-
-            token = assertProperty(token.Next, "meta");
-            Assert.IsTrue(token.HasValues);
-            var childToken = assertStringProperty(token.Values().First(), "id", patientOne.Meta.ElementId);
-            childToken = assertStringProperty(childToken.Next, "versionId", patientOne.Meta.VersionId);
-
-            token = assertProperty(token.Next, "text");
-            Assert.IsTrue(token.HasValues);
-            childToken = assertStringProperty(token.Values().First(), "status", patientOne.Text.Status.GetLiteral());
-            childToken = assertStringProperty(childToken.Next, "div", patientOne.Text.Div);
-
-            token = assertPrimitiveProperty(token.Next, "active", JTokenType.Boolean, patientOne.Active);
-
-            token = assertProperty(token.Next, "name");
-            var values = token.First;
-            Assert.IsNotNull(values);
-            Assert.AreEqual(JTokenType.Array, values.Type);
-            childToken = values.First;
-            var grandChildToken = assertStringProperty(childToken.First, "use", patientOne.Name[0].Use.GetLiteral());
-
-            grandChildToken = assertProperty(grandChildToken.Next, "family");
-            values = grandChildToken.First;
-            Assert.IsNotNull(values);
-            Assert.AreEqual(JTokenType.Array, values.Type);
-            assertValue(values.First, JTokenType.String, "Clapton");
-
-            token = assertStringProperty(token.Next, "gender", patientOne.Gender.GetLiteral());
-
-            token = assertStringProperty(token.Next, "birthDate", patientOne.BirthDate);
-
-        }
 
         /// <summary>
         /// This test proves issue 583: https://github.com/FirelyTeam/fhir-net-api/issues/583
@@ -692,7 +591,7 @@ namespace Hl7.Fhir.Tests.Serialization
 
             poco.Meta = new Meta();
 
-            var reserialized = poco.ToJson(Fhir.Model.Version.DSTU2);
+            var reserialized = FhirDstu2JsonSerializer.SerializeToString(poco);
 
             var newPoco = fhirJsonParser.Parse<Patient>(reserialized);
 
@@ -703,7 +602,7 @@ namespace Hl7.Fhir.Tests.Serialization
         public void MultiVersionXmlSerialization()
         {
             var r4bundle = new Fhir.Model.R4.Bundle { Id = "101" };
-            var fhirR4XmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.R4);
+            var fhirR4XmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.R4);
             var xml = fhirR4XmlSerializer.SerializeToString(r4bundle);
             var fhirR4XmlParser = new FhirXmlParser(Fhir.Model.Version.R4);
             var deserializedR4bundle = fhirR4XmlParser.Parse<Resource>(xml) as Fhir.Model.R4.Bundle;
@@ -711,7 +610,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(r4bundle.Id, deserializedR4bundle.Id);
 
             var stu3bundle = new Fhir.Model.STU3.Bundle { Id = "101" };
-            var fhirStu3XmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.STU3);
+            var fhirStu3XmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.STU3);
             xml = fhirStu3XmlSerializer.SerializeToString(stu3bundle);
             var fhirStu3XmlParser = new FhirXmlParser(Fhir.Model.Version.STU3);
             var deserializedStu3bundle = fhirStu3XmlParser.Parse<Resource>(xml) as Fhir.Model.STU3.Bundle;
@@ -729,17 +628,17 @@ namespace Hl7.Fhir.Tests.Serialization
         public void MultiVersionJsonSerialization()
         {
             var r4bundle = new Fhir.Model.R4.Bundle { Id = "101" };
-            var fhirR4JsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.R4);
+            var fhirR4JsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.R4);
             var json = fhirR4JsonSerializer.SerializeToString(r4bundle);
-            var fhirR4JsonParser = new FhirJsonParser(Fhir.Model.Version.R4);
+            var fhirR4JsonParser = new FhirJsonFastParser(Fhir.Model.Version.R4);
             var deserializedR4bundle = fhirR4JsonParser.Parse<Resource>(json) as Fhir.Model.R4.Bundle;
             Assert.IsNotNull(deserializedR4bundle);
             Assert.AreEqual(r4bundle.Id, deserializedR4bundle.Id);
 
             var stu3bundle = new Fhir.Model.STU3.Bundle { Id = "101" };
-            var fhirStu3JsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.STU3);
+            var fhirStu3JsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.STU3);
             json = fhirStu3JsonSerializer.SerializeToString(stu3bundle);
-            var fhirStu3JsonParser = new FhirJsonParser(Fhir.Model.Version.STU3);
+            var fhirStu3JsonParser = new FhirJsonFastParser(Fhir.Model.Version.STU3);
             var deserializedStu3bundle = fhirStu3JsonParser.Parse<Resource>(json) as Fhir.Model.STU3.Bundle;
             Assert.IsNotNull(deserializedStu3bundle);
             Assert.AreEqual(stu3bundle.Id, deserializedStu3bundle.Id);
@@ -786,7 +685,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(outcomeIssue.Severity, dstu2outcomeIssue.Severity);
             Assert.IsFalse(dstu2outcomeIssue.Expression.Any());
 
-            var fhirStu3XmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.STU3);
+            var fhirStu3XmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.STU3);
             var fhirStu3XmlParser = new FhirXmlParser(Fhir.Model.Version.STU3);
 
             xml = fhirStu3XmlSerializer.SerializeToString(outcome);
@@ -804,7 +703,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(outcomeIssue.Severity, stu3outcomeIssue.Severity);
             Assert.IsTrue(Enumerable.SequenceEqual(outcomeIssue.Expression, stu3outcomeIssue.Expression));
 
-            var fhirR4XmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.R4);
+            var fhirR4XmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.R4);
             var fhirR4XmlParser = new FhirXmlParser(Fhir.Model.Version.R4);
 
             xml = fhirR4XmlSerializer.SerializeToString(outcome);
@@ -861,8 +760,8 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(outcomeIssue.Severity, dstu2outcomeIssue.Severity);
             Assert.IsFalse(dstu2outcomeIssue.Expression.Any());
 
-            var fhirStu3JsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.STU3);
-            var fhirStu3JsonParser = new FhirJsonParser(Fhir.Model.Version.STU3);
+            var fhirStu3JsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.STU3);
+            var fhirStu3JsonParser = new FhirJsonFastParser(Fhir.Model.Version.STU3);
             json = fhirStu3JsonSerializer.SerializeToString(outcome);
             var stu3outcome = fhirStu3JsonParser.Parse<OperationOutcome>(json);
             Assert.AreEqual(outcome.Text.Div, stu3outcome.Text.Div);
@@ -878,8 +777,8 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual(outcomeIssue.Severity, stu3outcomeIssue.Severity);
             Assert.IsTrue(Enumerable.SequenceEqual(outcomeIssue.Expression, stu3outcomeIssue.Expression));
 
-            var fhirR4JsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.R4);
-            var fhirR4JsonParser = new FhirJsonParser(Fhir.Model.Version.R4);
+            var fhirR4JsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.R4);
+            var fhirR4JsonParser = new FhirJsonFastParser(Fhir.Model.Version.R4);
             json = fhirR4JsonSerializer.SerializeToString(outcome);
             var r4outcome = fhirR4JsonParser.Parse<OperationOutcome>(json);
             Assert.AreEqual(outcome.Text.Div, r4outcome.Text.Div);
@@ -896,7 +795,7 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsTrue(Enumerable.SequenceEqual(outcomeIssue.Expression, r4outcomeIssue.Expression));
 
             var exception = Assert.ThrowsException<FormatException>(() => FhirDstu2JsonParser.Parse<OperationOutcome>(json));
-            Assert.IsTrue(exception.Message.Contains("Encountered unknown element 'expression'"));
+            Assert.IsTrue(exception.Message.Contains("Unrecognized element 'expression'"));
         }
     }
 }

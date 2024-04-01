@@ -63,7 +63,7 @@ namespace Hl7.Fhir.Model
         public Hl7.Fhir.Model.Element Author
         {
             get { return _Author; }
-            set { _Author = value; OnPropertyChanged("Author"); }
+            set { _Author = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("Author"); }
         }
         
         private Hl7.Fhir.Model.Element _Author;
@@ -203,17 +203,17 @@ namespace Hl7.Fhir.Model
             {
                 case "authorReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Author, "author");
-                    Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Author = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authorString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Author, "author");
-                    Author = source.Get<Hl7.Fhir.Model.FhirString>();
+                    Author = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "time":
-                    TimeElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    TimeElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "text":
-                    TextElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    TextElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
             }
             return false;
@@ -229,7 +229,7 @@ namespace Hl7.Fhir.Model
             {
                 case "authorReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Author, "author");
-                    Author = source.Populate(Author as Hl7.Fhir.Model.ResourceReference);
+                    Author = source.Populate(Author as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "authorString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Author, "author");
@@ -237,19 +237,19 @@ namespace Hl7.Fhir.Model
                     return true;
                 case "_authorString":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(Author, "author");
-                    Author = source.Populate(Author as Hl7.Fhir.Model.FhirString);
+                    Author = source.Populate(Author as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "time":
                     TimeElement = source.PopulateValue(TimeElement);
                     return true;
                 case "_time":
-                    TimeElement = source.Populate(TimeElement);
+                    TimeElement = source.Populate(TimeElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "text":
                     TextElement = source.PopulateValue(TextElement);
                     return true;
                 case "_text":
-                    TextElement = source.Populate(TextElement);
+                    TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.Markdown());
                     return true;
             }
             return false;

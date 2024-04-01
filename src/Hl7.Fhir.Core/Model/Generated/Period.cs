@@ -204,10 +204,10 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "start":
-                    StartElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    StartElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "end":
-                    EndElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    EndElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;
@@ -225,13 +225,13 @@ namespace Hl7.Fhir.Model
                     StartElement = source.PopulateValue(StartElement);
                     return true;
                 case "_start":
-                    StartElement = source.Populate(StartElement);
+                    StartElement = source.Populate(StartElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "end":
                     EndElement = source.PopulateValue(EndElement);
                     return true;
                 case "_end":
-                    EndElement = source.Populate(EndElement);
+                    EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;

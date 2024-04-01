@@ -146,10 +146,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "definition":
-                        DefinitionElement = source.Get<Hl7.Fhir.Model.Canonical>();
+                        DefinitionElement = source.Populate(new Hl7.Fhir.Model.Canonical());
                         return true;
                     case "expression":
-                        ExpressionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ExpressionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -167,13 +167,13 @@ namespace Hl7.Fhir.Model.R4
                         DefinitionElement = source.PopulateValue(DefinitionElement);
                         return true;
                     case "_definition":
-                        DefinitionElement = source.Populate(DefinitionElement);
+                        DefinitionElement = source.Populate(DefinitionElement, () => new Hl7.Fhir.Model.Canonical());
                         return true;
                     case "expression":
                         ExpressionElement = source.PopulateValue(ExpressionElement);
                         return true;
                     case "_expression":
-                        ExpressionElement = source.Populate(ExpressionElement);
+                        ExpressionElement = source.Populate(ExpressionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1258,82 +1258,82 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "version":
-                    VersionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    VersionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "derivedFrom":
-                    DerivedFromElement = source.Get<Hl7.Fhir.Model.Canonical>();
+                    DerivedFromElement = source.Populate(new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "experimental":
-                    ExperimentalElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ExperimentalElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "publisher":
-                    PublisherElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PublisherElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.R4.ContactDetail>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList<Hl7.Fhir.Model.UsageContext>();
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
                     return true;
                 case "jurisdiction":
-                    Jurisdiction = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "purpose":
-                    PurposeElement = source.Get<Hl7.Fhir.Model.Markdown>();
+                    PurposeElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "code":
-                    CodeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    CodeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "base":
-                    BaseElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
+                    BaseElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>());
                     return true;
                 case "expression":
-                    ExpressionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ExpressionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "xpath":
-                    XpathElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    XpathElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "xpathUsage":
-                    XpathUsageElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.XPathUsageType>>();
+                    XpathUsageElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.XPathUsageType>());
                     return true;
                 case "target":
-                    TargetElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>>();
+                    TargetElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                     return true;
                 case "multipleOr":
-                    MultipleOrElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    MultipleOrElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "multipleAnd":
-                    MultipleAndElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    MultipleAndElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "comparator":
-                    ComparatorElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchComparator>>();
+                    ComparatorElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchComparator>());
                     return true;
                 case "modifier":
-                    ModifierElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SearchModifierCode>>();
+                    ModifierElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SearchModifierCode>());
                     return true;
                 case "chain":
-                    ChainElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    ChainElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "component":
-                    Component = source.GetList<ComponentComponent>();
+                    Component = source.GetList(() => new ComponentComponent());
                     return true;
             }
             return false;
@@ -1351,49 +1351,49 @@ namespace Hl7.Fhir.Model.R4
                     UrlElement = source.PopulateValue(UrlElement);
                     return true;
                 case "_url":
-                    UrlElement = source.Populate(UrlElement);
+                    UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "version":
                     VersionElement = source.PopulateValue(VersionElement);
                     return true;
                 case "_version":
-                    VersionElement = source.Populate(VersionElement);
+                    VersionElement = source.Populate(VersionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "name":
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "derivedFrom":
                     DerivedFromElement = source.PopulateValue(DerivedFromElement);
                     return true;
                 case "_derivedFrom":
-                    DerivedFromElement = source.Populate(DerivedFromElement);
+                    DerivedFromElement = source.Populate(DerivedFromElement, () => new Hl7.Fhir.Model.Canonical());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "experimental":
                     ExperimentalElement = source.PopulateValue(ExperimentalElement);
                     return true;
                 case "_experimental":
-                    ExperimentalElement = source.Populate(ExperimentalElement);
+                    ExperimentalElement = source.Populate(ExperimentalElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "publisher":
                     PublisherElement = source.PopulateValue(PublisherElement);
                     return true;
                 case "_publisher":
-                    PublisherElement = source.Populate(PublisherElement);
+                    PublisherElement = source.Populate(PublisherElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contact":
                     source.SetList(this, jsonPropertyName);
@@ -1402,7 +1402,7 @@ namespace Hl7.Fhir.Model.R4
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "useContext":
                     source.SetList(this, jsonPropertyName);
@@ -1414,13 +1414,13 @@ namespace Hl7.Fhir.Model.R4
                     PurposeElement = source.PopulateValue(PurposeElement);
                     return true;
                 case "_purpose":
-                    PurposeElement = source.Populate(PurposeElement);
+                    PurposeElement = source.Populate(PurposeElement, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "code":
                     CodeElement = source.PopulateValue(CodeElement);
                     return true;
                 case "_code":
-                    CodeElement = source.Populate(CodeElement);
+                    CodeElement = source.Populate(CodeElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "base":
                 case "_base":
@@ -1430,25 +1430,25 @@ namespace Hl7.Fhir.Model.R4
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchParamType>());
                     return true;
                 case "expression":
                     ExpressionElement = source.PopulateValue(ExpressionElement);
                     return true;
                 case "_expression":
-                    ExpressionElement = source.Populate(ExpressionElement);
+                    ExpressionElement = source.Populate(ExpressionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "xpath":
                     XpathElement = source.PopulateValue(XpathElement);
                     return true;
                 case "_xpath":
-                    XpathElement = source.Populate(XpathElement);
+                    XpathElement = source.Populate(XpathElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "xpathUsage":
                     XpathUsageElement = source.PopulateValue(XpathUsageElement);
                     return true;
                 case "_xpathUsage":
-                    XpathUsageElement = source.Populate(XpathUsageElement);
+                    XpathUsageElement = source.Populate(XpathUsageElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.XPathUsageType>());
                     return true;
                 case "target":
                 case "_target":
@@ -1458,13 +1458,13 @@ namespace Hl7.Fhir.Model.R4
                     MultipleOrElement = source.PopulateValue(MultipleOrElement);
                     return true;
                 case "_multipleOr":
-                    MultipleOrElement = source.Populate(MultipleOrElement);
+                    MultipleOrElement = source.Populate(MultipleOrElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "multipleAnd":
                     MultipleAndElement = source.PopulateValue(MultipleAndElement);
                     return true;
                 case "_multipleAnd":
-                    MultipleAndElement = source.Populate(MultipleAndElement);
+                    MultipleAndElement = source.Populate(MultipleAndElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "comparator":
                 case "_comparator":
@@ -1494,46 +1494,46 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "useContext":
-                    source.PopulateListItem(UseContext, index);
+                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.UsageContext());
                     return true;
                 case "jurisdiction":
-                    source.PopulateListItem(Jurisdiction, index);
+                    source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "base":
                     source.PopulatePrimitiveListItemValue(BaseElement, index);
                     return true;
                 case "_base":
-                    source.PopulatePrimitiveListItem(BaseElement, index);
+                    source.PopulatePrimitiveListItem(BaseElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                     return true;
                 case "target":
                     source.PopulatePrimitiveListItemValue(TargetElement, index);
                     return true;
                 case "_target":
-                    source.PopulatePrimitiveListItem(TargetElement, index);
+                    source.PopulatePrimitiveListItem(TargetElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ResourceType>());
                     return true;
                 case "comparator":
                     source.PopulatePrimitiveListItemValue(ComparatorElement, index);
                     return true;
                 case "_comparator":
-                    source.PopulatePrimitiveListItem(ComparatorElement, index);
+                    source.PopulatePrimitiveListItem(ComparatorElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.SearchComparator>());
                     return true;
                 case "modifier":
                     source.PopulatePrimitiveListItemValue(ModifierElement, index);
                     return true;
                 case "_modifier":
-                    source.PopulatePrimitiveListItem(ModifierElement, index);
+                    source.PopulatePrimitiveListItem(ModifierElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.SearchModifierCode>());
                     return true;
                 case "chain":
                     source.PopulatePrimitiveListItemValue(ChainElement, index);
                     return true;
                 case "_chain":
-                    source.PopulatePrimitiveListItem(ChainElement, index);
+                    source.PopulatePrimitiveListItem(ChainElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "component":
-                    source.PopulateListItem(Component, index);
+                    source.PopulateListItem(Component, index, () => new ComponentComponent());
                     return true;
             }
             return false;

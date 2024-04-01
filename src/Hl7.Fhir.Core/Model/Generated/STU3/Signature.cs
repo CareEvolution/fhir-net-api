@@ -113,7 +113,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Who
         {
             get { return _Who; }
-            set { _Who = value; OnPropertyChanged("Who"); }
+            set { _Who = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Who"); }
         }
         
         private Hl7.Fhir.Model.Element _Who;
@@ -128,7 +128,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element OnBehalfOf
         {
             get { return _OnBehalfOf; }
-            set { _OnBehalfOf = value; OnPropertyChanged("OnBehalfOf"); }
+            set { _OnBehalfOf = CheckType(value, typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("OnBehalfOf"); }
         }
         
         private Hl7.Fhir.Model.Element _OnBehalfOf;
@@ -282,32 +282,32 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "type":
-                    Type = source.GetList<Hl7.Fhir.Model.Coding>();
+                    Type = source.GetList(() => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "when":
-                    WhenElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    WhenElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "whoUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
-                    Who = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    Who = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "whoReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Who, "who");
-                    Who = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Who = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "onBehalfOfUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(OnBehalfOf, "onBehalfOf");
-                    OnBehalfOf = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    OnBehalfOf = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "onBehalfOfReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(OnBehalfOf, "onBehalfOf");
-                    OnBehalfOf = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    OnBehalfOf = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contentType":
-                    ContentTypeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    ContentTypeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "blob":
-                    BlobElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                    BlobElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                     return true;
             }
             return false;
@@ -328,7 +328,7 @@ namespace Hl7.Fhir.Model.STU3
                     WhenElement = source.PopulateValue(WhenElement);
                     return true;
                 case "_when":
-                    WhenElement = source.Populate(WhenElement);
+                    WhenElement = source.Populate(WhenElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "whoUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
@@ -336,11 +336,11 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "_whoUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(Who, "who");
-                    Who = source.Populate(Who as Hl7.Fhir.Model.FhirUri);
+                    Who = source.Populate(Who as Hl7.Fhir.Model.FhirUri, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "whoReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Who, "who");
-                    Who = source.Populate(Who as Hl7.Fhir.Model.ResourceReference);
+                    Who = source.Populate(Who as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "onBehalfOfUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(OnBehalfOf, "onBehalfOf");
@@ -348,23 +348,23 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "_onBehalfOfUri":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirUri>(OnBehalfOf, "onBehalfOf");
-                    OnBehalfOf = source.Populate(OnBehalfOf as Hl7.Fhir.Model.FhirUri);
+                    OnBehalfOf = source.Populate(OnBehalfOf as Hl7.Fhir.Model.FhirUri, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "onBehalfOfReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(OnBehalfOf, "onBehalfOf");
-                    OnBehalfOf = source.Populate(OnBehalfOf as Hl7.Fhir.Model.ResourceReference);
+                    OnBehalfOf = source.Populate(OnBehalfOf as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contentType":
                     ContentTypeElement = source.PopulateValue(ContentTypeElement);
                     return true;
                 case "_contentType":
-                    ContentTypeElement = source.Populate(ContentTypeElement);
+                    ContentTypeElement = source.Populate(ContentTypeElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "blob":
                     BlobElement = source.PopulateValue(BlobElement);
                     return true;
                 case "_blob":
-                    BlobElement = source.Populate(BlobElement);
+                    BlobElement = source.Populate(BlobElement, () => new Hl7.Fhir.Model.Base64Binary());
                     return true;
             }
             return false;
@@ -379,7 +379,7 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "type":
-                    source.PopulateListItem(Type, index);
+                    source.PopulateListItem(Type, index, () => new Hl7.Fhir.Model.Coding());
                     return true;
             }
             return false;

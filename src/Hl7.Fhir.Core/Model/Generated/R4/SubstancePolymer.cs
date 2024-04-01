@@ -114,10 +114,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "ratioType":
-                        RatioType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        RatioType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "startingMaterial":
-                        StartingMaterial = source.GetList<StartingMaterialComponent>();
+                        StartingMaterial = source.GetList(() => new StartingMaterialComponent());
                         return true;
                 }
                 return false;
@@ -132,7 +132,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "ratioType":
-                        RatioType = source.Populate(RatioType);
+                        RatioType = source.Populate(RatioType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "startingMaterial":
                         source.SetList(this, jsonPropertyName);
@@ -150,7 +150,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "startingMaterial":
-                        source.PopulateListItem(StartingMaterial, index);
+                        source.PopulateListItem(StartingMaterial, index, () => new StartingMaterialComponent());
                         return true;
                 }
                 return false;
@@ -329,16 +329,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "material":
-                        Material = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Material = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "isDefining":
-                        IsDefiningElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        IsDefiningElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "amount":
-                        Amount = source.Get<Hl7.Fhir.Model.SubstanceAmount>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.SubstanceAmount());
                         return true;
                 }
                 return false;
@@ -353,19 +353,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "material":
-                        Material = source.Populate(Material);
+                        Material = source.Populate(Material, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "isDefining":
                         IsDefiningElement = source.PopulateValue(IsDefiningElement);
                         return true;
                     case "_isDefining":
-                        IsDefiningElement = source.Populate(IsDefiningElement);
+                        IsDefiningElement = source.Populate(IsDefiningElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "amount":
-                        Amount = source.Populate(Amount);
+                        Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.SubstanceAmount());
                         return true;
                 }
                 return false;
@@ -579,16 +579,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "numberOfUnits":
-                        NumberOfUnitsElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        NumberOfUnitsElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "averageMolecularFormula":
-                        AverageMolecularFormulaElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        AverageMolecularFormulaElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "repeatUnitAmountType":
-                        RepeatUnitAmountType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        RepeatUnitAmountType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "repeatUnit":
-                        RepeatUnit = source.GetList<RepeatUnitComponent>();
+                        RepeatUnit = source.GetList(() => new RepeatUnitComponent());
                         return true;
                 }
                 return false;
@@ -606,16 +606,16 @@ namespace Hl7.Fhir.Model.R4
                         NumberOfUnitsElement = source.PopulateValue(NumberOfUnitsElement);
                         return true;
                     case "_numberOfUnits":
-                        NumberOfUnitsElement = source.Populate(NumberOfUnitsElement);
+                        NumberOfUnitsElement = source.Populate(NumberOfUnitsElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "averageMolecularFormula":
                         AverageMolecularFormulaElement = source.PopulateValue(AverageMolecularFormulaElement);
                         return true;
                     case "_averageMolecularFormula":
-                        AverageMolecularFormulaElement = source.Populate(AverageMolecularFormulaElement);
+                        AverageMolecularFormulaElement = source.Populate(AverageMolecularFormulaElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "repeatUnitAmountType":
-                        RepeatUnitAmountType = source.Populate(RepeatUnitAmountType);
+                        RepeatUnitAmountType = source.Populate(RepeatUnitAmountType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "repeatUnit":
                         source.SetList(this, jsonPropertyName);
@@ -633,7 +633,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "repeatUnit":
-                        source.PopulateListItem(RepeatUnit, index);
+                        source.PopulateListItem(RepeatUnit, index, () => new RepeatUnitComponent());
                         return true;
                 }
                 return false;
@@ -849,19 +849,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "orientationOfPolymerisation":
-                        OrientationOfPolymerisation = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        OrientationOfPolymerisation = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "repeatUnit":
-                        RepeatUnitElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        RepeatUnitElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "amount":
-                        Amount = source.Get<Hl7.Fhir.Model.SubstanceAmount>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.SubstanceAmount());
                         return true;
                     case "degreeOfPolymerisation":
-                        DegreeOfPolymerisation = source.GetList<DegreeOfPolymerisationComponent>();
+                        DegreeOfPolymerisation = source.GetList(() => new DegreeOfPolymerisationComponent());
                         return true;
                     case "structuralRepresentation":
-                        StructuralRepresentation = source.GetList<StructuralRepresentationComponent>();
+                        StructuralRepresentation = source.GetList(() => new StructuralRepresentationComponent());
                         return true;
                 }
                 return false;
@@ -876,16 +876,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "orientationOfPolymerisation":
-                        OrientationOfPolymerisation = source.Populate(OrientationOfPolymerisation);
+                        OrientationOfPolymerisation = source.Populate(OrientationOfPolymerisation, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "repeatUnit":
                         RepeatUnitElement = source.PopulateValue(RepeatUnitElement);
                         return true;
                     case "_repeatUnit":
-                        RepeatUnitElement = source.Populate(RepeatUnitElement);
+                        RepeatUnitElement = source.Populate(RepeatUnitElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "amount":
-                        Amount = source.Populate(Amount);
+                        Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.SubstanceAmount());
                         return true;
                     case "degreeOfPolymerisation":
                         source.SetList(this, jsonPropertyName);
@@ -906,10 +906,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "degreeOfPolymerisation":
-                        source.PopulateListItem(DegreeOfPolymerisation, index);
+                        source.PopulateListItem(DegreeOfPolymerisation, index, () => new DegreeOfPolymerisationComponent());
                         return true;
                     case "structuralRepresentation":
-                        source.PopulateListItem(StructuralRepresentation, index);
+                        source.PopulateListItem(StructuralRepresentation, index, () => new StructuralRepresentationComponent());
                         return true;
                 }
                 return false;
@@ -1054,10 +1054,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "degree":
-                        Degree = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Degree = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "amount":
-                        Amount = source.Get<Hl7.Fhir.Model.SubstanceAmount>();
+                        Amount = source.Populate(new Hl7.Fhir.Model.SubstanceAmount());
                         return true;
                 }
                 return false;
@@ -1072,10 +1072,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "degree":
-                        Degree = source.Populate(Degree);
+                        Degree = source.Populate(Degree, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "amount":
-                        Amount = source.Populate(Amount);
+                        Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.SubstanceAmount());
                         return true;
                 }
                 return false;
@@ -1239,13 +1239,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "representation":
-                        RepresentationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        RepresentationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "attachment":
-                        Attachment = source.Get<Hl7.Fhir.Model.Attachment>();
+                        Attachment = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                 }
                 return false;
@@ -1260,16 +1260,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "representation":
                         RepresentationElement = source.PopulateValue(RepresentationElement);
                         return true;
                     case "_representation":
-                        RepresentationElement = source.Populate(RepresentationElement);
+                        RepresentationElement = source.Populate(RepresentationElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "attachment":
-                        Attachment = source.Populate(Attachment);
+                        Attachment = source.Populate(Attachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                 }
                 return false;
@@ -1554,22 +1554,22 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "class":
-                    Class = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Class = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "geometry":
-                    Geometry = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Geometry = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "copolymerConnectivity":
-                    CopolymerConnectivity = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    CopolymerConnectivity = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "modification":
-                    ModificationElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    ModificationElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "monomerSet":
-                    MonomerSet = source.GetList<MonomerSetComponent>();
+                    MonomerSet = source.GetList(() => new MonomerSetComponent());
                     return true;
                 case "repeat":
-                    Repeat = source.GetList<RepeatComponent>();
+                    Repeat = source.GetList(() => new RepeatComponent());
                     return true;
             }
             return false;
@@ -1584,10 +1584,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "class":
-                    Class = source.Populate(Class);
+                    Class = source.Populate(Class, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "geometry":
-                    Geometry = source.Populate(Geometry);
+                    Geometry = source.Populate(Geometry, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "copolymerConnectivity":
                     source.SetList(this, jsonPropertyName);
@@ -1615,19 +1615,19 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "copolymerConnectivity":
-                    source.PopulateListItem(CopolymerConnectivity, index);
+                    source.PopulateListItem(CopolymerConnectivity, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "modification":
                     source.PopulatePrimitiveListItemValue(ModificationElement, index);
                     return true;
                 case "_modification":
-                    source.PopulatePrimitiveListItem(ModificationElement, index);
+                    source.PopulatePrimitiveListItem(ModificationElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "monomerSet":
-                    source.PopulateListItem(MonomerSet, index);
+                    source.PopulateListItem(MonomerSet, index, () => new MonomerSetComponent());
                     return true;
                 case "repeat":
-                    source.PopulateListItem(Repeat, index);
+                    source.PopulateListItem(Repeat, index, () => new RepeatComponent());
                     return true;
             }
             return false;

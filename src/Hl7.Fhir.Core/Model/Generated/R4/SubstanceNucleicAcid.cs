@@ -267,28 +267,28 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "subunit":
-                        SubunitElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        SubunitElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "sequence":
-                        SequenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SequenceElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "length":
-                        LengthElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        LengthElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "sequenceAttachment":
-                        SequenceAttachment = source.Get<Hl7.Fhir.Model.Attachment>();
+                        SequenceAttachment = source.Populate(new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "fivePrime":
-                        FivePrime = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        FivePrime = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "threePrime":
-                        ThreePrime = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        ThreePrime = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "linkage":
-                        Linkage = source.GetList<LinkageComponent>();
+                        Linkage = source.GetList(() => new LinkageComponent());
                         return true;
                     case "sugar":
-                        Sugar = source.GetList<SugarComponent>();
+                        Sugar = source.GetList(() => new SugarComponent());
                         return true;
                 }
                 return false;
@@ -306,28 +306,28 @@ namespace Hl7.Fhir.Model.R4
                         SubunitElement = source.PopulateValue(SubunitElement);
                         return true;
                     case "_subunit":
-                        SubunitElement = source.Populate(SubunitElement);
+                        SubunitElement = source.Populate(SubunitElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "sequence":
                         SequenceElement = source.PopulateValue(SequenceElement);
                         return true;
                     case "_sequence":
-                        SequenceElement = source.Populate(SequenceElement);
+                        SequenceElement = source.Populate(SequenceElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "length":
                         LengthElement = source.PopulateValue(LengthElement);
                         return true;
                     case "_length":
-                        LengthElement = source.Populate(LengthElement);
+                        LengthElement = source.Populate(LengthElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "sequenceAttachment":
-                        SequenceAttachment = source.Populate(SequenceAttachment);
+                        SequenceAttachment = source.Populate(SequenceAttachment, () => new Hl7.Fhir.Model.Attachment());
                         return true;
                     case "fivePrime":
-                        FivePrime = source.Populate(FivePrime);
+                        FivePrime = source.Populate(FivePrime, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "threePrime":
-                        ThreePrime = source.Populate(ThreePrime);
+                        ThreePrime = source.Populate(ThreePrime, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "linkage":
                         source.SetList(this, jsonPropertyName);
@@ -348,10 +348,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "linkage":
-                        source.PopulateListItem(Linkage, index);
+                        source.PopulateListItem(Linkage, index, () => new LinkageComponent());
                         return true;
                     case "sugar":
-                        source.PopulateListItem(Sugar, index);
+                        source.PopulateListItem(Sugar, index, () => new SugarComponent());
                         return true;
                 }
                 return false;
@@ -598,16 +598,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "connectivity":
-                        ConnectivityElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ConnectivityElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "identifier":
-                        Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "name":
-                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "residueSite":
-                        ResidueSiteElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ResidueSiteElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -625,22 +625,22 @@ namespace Hl7.Fhir.Model.R4
                         ConnectivityElement = source.PopulateValue(ConnectivityElement);
                         return true;
                     case "_connectivity":
-                        ConnectivityElement = source.Populate(ConnectivityElement);
+                        ConnectivityElement = source.Populate(ConnectivityElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "name":
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "residueSite":
                         ResidueSiteElement = source.PopulateValue(ResidueSiteElement);
                         return true;
                     case "_residueSite":
-                        ResidueSiteElement = source.Populate(ResidueSiteElement);
+                        ResidueSiteElement = source.Populate(ResidueSiteElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -833,13 +833,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "name":
-                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "residueSite":
-                        ResidueSiteElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ResidueSiteElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -854,19 +854,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        Identifier = source.Populate(Identifier);
+                        Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "name":
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "residueSite":
                         ResidueSiteElement = source.PopulateValue(ResidueSiteElement);
                         return true;
                     case "_residueSite":
-                        ResidueSiteElement = source.Populate(ResidueSiteElement);
+                        ResidueSiteElement = source.Populate(ResidueSiteElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1137,19 +1137,19 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "sequenceType":
-                    SequenceType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    SequenceType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "numberOfSubunits":
-                    NumberOfSubunitsElement = source.Get<Hl7.Fhir.Model.Integer>();
+                    NumberOfSubunitsElement = source.Populate(new Hl7.Fhir.Model.Integer());
                     return true;
                 case "areaOfHybridisation":
-                    AreaOfHybridisationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    AreaOfHybridisationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "oligoNucleotideType":
-                    OligoNucleotideType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    OligoNucleotideType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subunit":
-                    Subunit = source.GetList<SubunitComponent>();
+                    Subunit = source.GetList(() => new SubunitComponent());
                     return true;
             }
             return false;
@@ -1164,22 +1164,22 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "sequenceType":
-                    SequenceType = source.Populate(SequenceType);
+                    SequenceType = source.Populate(SequenceType, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "numberOfSubunits":
                     NumberOfSubunitsElement = source.PopulateValue(NumberOfSubunitsElement);
                     return true;
                 case "_numberOfSubunits":
-                    NumberOfSubunitsElement = source.Populate(NumberOfSubunitsElement);
+                    NumberOfSubunitsElement = source.Populate(NumberOfSubunitsElement, () => new Hl7.Fhir.Model.Integer());
                     return true;
                 case "areaOfHybridisation":
                     AreaOfHybridisationElement = source.PopulateValue(AreaOfHybridisationElement);
                     return true;
                 case "_areaOfHybridisation":
-                    AreaOfHybridisationElement = source.Populate(AreaOfHybridisationElement);
+                    AreaOfHybridisationElement = source.Populate(AreaOfHybridisationElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "oligoNucleotideType":
-                    OligoNucleotideType = source.Populate(OligoNucleotideType);
+                    OligoNucleotideType = source.Populate(OligoNucleotideType, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subunit":
                     source.SetList(this, jsonPropertyName);
@@ -1197,7 +1197,7 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "subunit":
-                    source.PopulateListItem(Subunit, index);
+                    source.PopulateListItem(Subunit, index, () => new SubunitComponent());
                     return true;
             }
             return false;

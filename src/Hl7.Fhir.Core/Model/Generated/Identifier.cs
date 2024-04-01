@@ -274,22 +274,22 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "system":
-                    SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    SystemElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "value":
-                    ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ValueElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "assigner":
-                    Assigner = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Assigner = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -307,28 +307,28 @@ namespace Hl7.Fhir.Model
                     UseElement = source.PopulateValue(UseElement);
                     return true;
                 case "_use":
-                    UseElement = source.Populate(UseElement);
+                    UseElement = source.Populate(UseElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "system":
                     SystemElement = source.PopulateValue(SystemElement);
                     return true;
                 case "_system":
-                    SystemElement = source.Populate(SystemElement);
+                    SystemElement = source.Populate(SystemElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "value":
                     ValueElement = source.PopulateValue(ValueElement);
                     return true;
                 case "_value":
-                    ValueElement = source.Populate(ValueElement);
+                    ValueElement = source.Populate(ValueElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "assigner":
-                    Assigner = source.Populate(Assigner);
+                    Assigner = source.Populate(Assigner, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

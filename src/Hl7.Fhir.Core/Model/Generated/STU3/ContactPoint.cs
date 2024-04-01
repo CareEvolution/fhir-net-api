@@ -288,19 +288,19 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "system":
-                    SystemElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ContactPointSystem>>();
+                    SystemElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ContactPointSystem>());
                     return true;
                 case "value":
-                    ValueElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ValueElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContactPointUse>>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContactPointUse>());
                     return true;
                 case "rank":
-                    RankElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    RankElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;
@@ -318,28 +318,28 @@ namespace Hl7.Fhir.Model.STU3
                     SystemElement = source.PopulateValue(SystemElement);
                     return true;
                 case "_system":
-                    SystemElement = source.Populate(SystemElement);
+                    SystemElement = source.Populate(SystemElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ContactPointSystem>());
                     return true;
                 case "value":
                     ValueElement = source.PopulateValue(ValueElement);
                     return true;
                 case "_value":
-                    ValueElement = source.Populate(ValueElement);
+                    ValueElement = source.Populate(ValueElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "use":
                     UseElement = source.PopulateValue(UseElement);
                     return true;
                 case "_use":
-                    UseElement = source.Populate(UseElement);
+                    UseElement = source.Populate(UseElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ContactPointUse>());
                     return true;
                 case "rank":
                     RankElement = source.PopulateValue(RankElement);
                     return true;
                 case "_rank":
-                    RankElement = source.Populate(RankElement);
+                    RankElement = source.Populate(RankElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;

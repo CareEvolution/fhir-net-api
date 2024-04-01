@@ -104,7 +104,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element ValueSet
             {
                 get { return _ValueSet; }
-                set { _ValueSet = value; OnPropertyChanged("ValueSet"); }
+                set { _ValueSet = CheckType(value, typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("ValueSet"); }
             }
             
             private Hl7.Fhir.Model.Element _ValueSet;
@@ -206,24 +206,24 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PathElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueSetString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(ValueSet, "valueSet");
-                        ValueSet = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ValueSet = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueSetReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(ValueSet, "valueSet");
-                        ValueSet = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        ValueSet = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "valueCode":
-                        ValueCodeElement = source.GetList<Hl7.Fhir.Model.Code>();
+                        ValueCodeElement = source.GetList(() => new Hl7.Fhir.Model.Code());
                         return true;
                     case "valueCoding":
-                        ValueCoding = source.GetList<Hl7.Fhir.Model.Coding>();
+                        ValueCoding = source.GetList(() => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "valueCodeableConcept":
-                        ValueCodeableConcept = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        ValueCodeableConcept = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -241,7 +241,7 @@ namespace Hl7.Fhir.Model.STU3
                         PathElement = source.PopulateValue(PathElement);
                         return true;
                     case "_path":
-                        PathElement = source.Populate(PathElement);
+                        PathElement = source.Populate(PathElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueSetString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(ValueSet, "valueSet");
@@ -249,11 +249,11 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_valueSetString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(ValueSet, "valueSet");
-                        ValueSet = source.Populate(ValueSet as Hl7.Fhir.Model.FhirString);
+                        ValueSet = source.Populate(ValueSet as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueSetReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(ValueSet, "valueSet");
-                        ValueSet = source.Populate(ValueSet as Hl7.Fhir.Model.ResourceReference);
+                        ValueSet = source.Populate(ValueSet as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "valueCode":
                     case "_valueCode":
@@ -281,13 +281,13 @@ namespace Hl7.Fhir.Model.STU3
                         source.PopulatePrimitiveListItemValue(ValueCodeElement, index);
                         return true;
                     case "_valueCode":
-                        source.PopulatePrimitiveListItem(ValueCodeElement, index);
+                        source.PopulatePrimitiveListItem(ValueCodeElement, index, () => new Hl7.Fhir.Model.Code());
                         return true;
                     case "valueCoding":
-                        source.PopulateListItem(ValueCoding, index);
+                        source.PopulateListItem(ValueCoding, index, () => new Hl7.Fhir.Model.Coding());
                         return true;
                     case "valueCodeableConcept":
-                        source.PopulateListItem(ValueCodeableConcept, index);
+                        source.PopulateListItem(ValueCodeableConcept, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -430,7 +430,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Value
             {
                 get { return _Value; }
-                set { _Value = value; OnPropertyChanged("Value"); }
+                set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.STU3.Duration)); OnPropertyChanged("Value"); }
             }
             
             private Hl7.Fhir.Model.Element _Value;
@@ -453,19 +453,19 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "path":
-                        PathElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PathElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        Value = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.Period>();
+                        Value = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "valueDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Duration>(Value, "value");
-                        Value = source.Get<Hl7.Fhir.Model.STU3.Duration>();
+                        Value = source.Populate(new Hl7.Fhir.Model.STU3.Duration());
                         return true;
                 }
                 return false;
@@ -483,7 +483,7 @@ namespace Hl7.Fhir.Model.STU3
                         PathElement = source.PopulateValue(PathElement);
                         return true;
                     case "_path":
-                        PathElement = source.Populate(PathElement);
+                        PathElement = source.Populate(PathElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
@@ -491,15 +491,15 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_valueDateTime":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "valuePeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.Period);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "valueDuration":
                         source.CheckDuplicates<Hl7.Fhir.Model.STU3.Duration>(Value, "value");
-                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Duration);
+                        Value = source.Populate(Value as Hl7.Fhir.Model.STU3.Duration, () => new Hl7.Fhir.Model.STU3.Duration());
                         return true;
                 }
                 return false;
@@ -803,19 +803,19 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>());
                     return true;
                 case "profile":
-                    ProfileElement = source.GetList<Hl7.Fhir.Model.FhirUri>();
+                    ProfileElement = source.GetList(() => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "mustSupport":
-                    MustSupportElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    MustSupportElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "codeFilter":
-                    CodeFilter = source.GetList<CodeFilterComponent>();
+                    CodeFilter = source.GetList(() => new CodeFilterComponent());
                     return true;
                 case "dateFilter":
-                    DateFilter = source.GetList<DateFilterComponent>();
+                    DateFilter = source.GetList(() => new DateFilterComponent());
                     return true;
             }
             return false;
@@ -833,7 +833,7 @@ namespace Hl7.Fhir.Model.STU3
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.FHIRAllTypes>());
                     return true;
                 case "profile":
                 case "_profile":
@@ -865,19 +865,19 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulatePrimitiveListItemValue(ProfileElement, index);
                     return true;
                 case "_profile":
-                    source.PopulatePrimitiveListItem(ProfileElement, index);
+                    source.PopulatePrimitiveListItem(ProfileElement, index, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "mustSupport":
                     source.PopulatePrimitiveListItemValue(MustSupportElement, index);
                     return true;
                 case "_mustSupport":
-                    source.PopulatePrimitiveListItem(MustSupportElement, index);
+                    source.PopulatePrimitiveListItem(MustSupportElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "codeFilter":
-                    source.PopulateListItem(CodeFilter, index);
+                    source.PopulateListItem(CodeFilter, index, () => new CodeFilterComponent());
                     return true;
                 case "dateFilter":
-                    source.PopulateListItem(DateFilter, index);
+                    source.PopulateListItem(DateFilter, index, () => new DateFilterComponent());
                     return true;
             }
             return false;

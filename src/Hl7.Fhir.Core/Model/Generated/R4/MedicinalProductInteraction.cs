@@ -73,7 +73,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Item
             {
                 get { return _Item; }
-                set { _Item = value; OnPropertyChanged("Item"); }
+                set { _Item = CheckType(value, typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.CodeableConcept)); OnPropertyChanged("Item"); }
             }
             
             private Hl7.Fhir.Model.Element _Item;
@@ -96,11 +96,11 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Item = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -116,11 +116,11 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Populate(Item as Hl7.Fhir.Model.ResourceReference);
+                        Item = source.Populate(Item as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Populate(Item as Hl7.Fhir.Model.CodeableConcept);
+                        Item = source.Populate(Item as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -405,25 +405,25 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "subject":
-                    Subject = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "interactant":
-                    Interactant = source.GetList<InteractantComponent>();
+                    Interactant = source.GetList(() => new InteractantComponent());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "effect":
-                    Effect = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Effect = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "incidence":
-                    Incidence = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Incidence = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "management":
-                    Management = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Management = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;
@@ -444,22 +444,22 @@ namespace Hl7.Fhir.Model.R4
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "interactant":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "effect":
-                    Effect = source.Populate(Effect);
+                    Effect = source.Populate(Effect, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "incidence":
-                    Incidence = source.Populate(Incidence);
+                    Incidence = source.Populate(Incidence, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "management":
-                    Management = source.Populate(Management);
+                    Management = source.Populate(Management, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;
@@ -474,10 +474,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "subject":
-                    source.PopulateListItem(Subject, index);
+                    source.PopulateListItem(Subject, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "interactant":
-                    source.PopulateListItem(Interactant, index);
+                    source.PopulateListItem(Interactant, index, () => new InteractantComponent());
                     return true;
             }
             return false;

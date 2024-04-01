@@ -36,8 +36,6 @@ using Hl7.Fhir.Rest;
 using Hl7.FhirPath;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Utility;
-using Hl7.Fhir.FhirPath;
-using System.Linq;
 using Hl7.Fhir.Serialization;
 
 namespace Hl7.Fhir.Model
@@ -280,16 +278,16 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "id":
-                    IdElement = source.Get<Id>();
+                    IdElement = source.Populate(new Id());
                     return true;
                 case "meta":
-                    Meta = source.Get<Meta>();
+                    Meta = source.Populate(new Meta());
                     return true;
                 case "implicitRules":
-                    ImplicitRulesElement = source.Get<FhirUri>();
+                    ImplicitRulesElement = source.Populate(new FhirUri());
                     return true;
                 case "language":
-                    LanguageElement = source.Get<Code>();
+                    LanguageElement = source.Populate(new Code());
                     return true;
             }
             return false;
@@ -310,22 +308,22 @@ namespace Hl7.Fhir.Model
                     IdElement = source.PopulateValue(IdElement);
                     return true;
                 case "_id":
-                    IdElement = source.Populate(IdElement);
+                    IdElement = source.Populate(IdElement, () => new Id());
                     return true;
                 case "meta":
-                    Meta = source.Populate(Meta);
+                    Meta = source.Populate(Meta, () => new Meta());
                     return true;
                 case "implicitRules":
                     ImplicitRulesElement = source.PopulateValue(ImplicitRulesElement);
                     return true;
                 case "_implicitRules":
-                    ImplicitRulesElement = source.Populate(ImplicitRulesElement);
+                    ImplicitRulesElement = source.Populate(ImplicitRulesElement, () => new FhirUri());
                     return true;
                 case "language":
                     LanguageElement = source.PopulateValue(LanguageElement);
                     return true;
                 case "_language":
-                    LanguageElement = source.Populate(LanguageElement);
+                    LanguageElement = source.Populate(LanguageElement, () => new Code());
                     return true;
             }
             return false;

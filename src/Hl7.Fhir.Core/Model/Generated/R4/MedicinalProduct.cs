@@ -155,13 +155,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "productName":
-                        ProductNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ProductNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "namePart":
-                        NamePart = source.GetList<NamePartComponent>();
+                        NamePart = source.GetList(() => new NamePartComponent());
                         return true;
                     case "countryLanguage":
-                        CountryLanguage = source.GetList<CountryLanguageComponent>();
+                        CountryLanguage = source.GetList(() => new CountryLanguageComponent());
                         return true;
                 }
                 return false;
@@ -179,7 +179,7 @@ namespace Hl7.Fhir.Model.R4
                         ProductNameElement = source.PopulateValue(ProductNameElement);
                         return true;
                     case "_productName":
-                        ProductNameElement = source.Populate(ProductNameElement);
+                        ProductNameElement = source.Populate(ProductNameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "namePart":
                         source.SetList(this, jsonPropertyName);
@@ -200,10 +200,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "namePart":
-                        source.PopulateListItem(NamePart, index);
+                        source.PopulateListItem(NamePart, index, () => new NamePartComponent());
                         return true;
                     case "countryLanguage":
-                        source.PopulateListItem(CountryLanguage, index);
+                        source.PopulateListItem(CountryLanguage, index, () => new CountryLanguageComponent());
                         return true;
                 }
                 return false;
@@ -359,10 +359,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "part":
-                        PartElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PartElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.Coding>();
+                        Type = source.Populate(new Hl7.Fhir.Model.Coding());
                         return true;
                 }
                 return false;
@@ -380,10 +380,10 @@ namespace Hl7.Fhir.Model.R4
                         PartElement = source.PopulateValue(PartElement);
                         return true;
                     case "_part":
-                        PartElement = source.Populate(PartElement);
+                        PartElement = source.Populate(PartElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.Coding());
                         return true;
                 }
                 return false;
@@ -530,13 +530,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "country":
-                        Country = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Country = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "jurisdiction":
-                        Jurisdiction = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Jurisdiction = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "language":
-                        Language = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Language = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -551,13 +551,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "country":
-                        Country = source.Populate(Country);
+                        Country = source.Populate(Country, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "jurisdiction":
-                        Jurisdiction = source.Populate(Jurisdiction);
+                        Jurisdiction = source.Populate(Jurisdiction, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "language":
-                        Language = source.Populate(Language);
+                        Language = source.Populate(Language, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -779,22 +779,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "operationType":
-                        OperationType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        OperationType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "authorisationReferenceNumber":
-                        AuthorisationReferenceNumber = source.Get<Hl7.Fhir.Model.Identifier>();
+                        AuthorisationReferenceNumber = source.Populate(new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "effectiveDate":
-                        EffectiveDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        EffectiveDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "confidentialityIndicator":
-                        ConfidentialityIndicator = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        ConfidentialityIndicator = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "manufacturer":
-                        Manufacturer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        Manufacturer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "regulator":
-                        Regulator = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Regulator = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -809,25 +809,25 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "operationType":
-                        OperationType = source.Populate(OperationType);
+                        OperationType = source.Populate(OperationType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "authorisationReferenceNumber":
-                        AuthorisationReferenceNumber = source.Populate(AuthorisationReferenceNumber);
+                        AuthorisationReferenceNumber = source.Populate(AuthorisationReferenceNumber, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "effectiveDate":
                         EffectiveDateElement = source.PopulateValue(EffectiveDateElement);
                         return true;
                     case "_effectiveDate":
-                        EffectiveDateElement = source.Populate(EffectiveDateElement);
+                        EffectiveDateElement = source.Populate(EffectiveDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "confidentialityIndicator":
-                        ConfidentialityIndicator = source.Populate(ConfidentialityIndicator);
+                        ConfidentialityIndicator = source.Populate(ConfidentialityIndicator, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "manufacturer":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "regulator":
-                        Regulator = source.Populate(Regulator);
+                        Regulator = source.Populate(Regulator, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -842,7 +842,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "manufacturer":
-                        source.PopulateListItem(Manufacturer, index);
+                        source.PopulateListItem(Manufacturer, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -999,7 +999,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Indication
             {
                 get { return _Indication; }
-                set { _Indication = value; OnPropertyChanged("Indication"); }
+                set { _Indication = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Indication"); }
             }
             
             private Hl7.Fhir.Model.Element _Indication;
@@ -1093,30 +1093,30 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "identifier":
-                        Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                        Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                         return true;
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "intendedUse":
-                        IntendedUse = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        IntendedUse = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "indicationCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Indication, "indication");
-                        Indication = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Indication = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "indicationReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Indication, "indication");
-                        Indication = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Indication = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "status":
-                        Status = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Status = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "date":
-                        DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "species":
-                        Species = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Species = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1134,30 +1134,30 @@ namespace Hl7.Fhir.Model.R4
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "intendedUse":
-                        IntendedUse = source.Populate(IntendedUse);
+                        IntendedUse = source.Populate(IntendedUse, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "indicationCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Indication, "indication");
-                        Indication = source.Populate(Indication as Hl7.Fhir.Model.CodeableConcept);
+                        Indication = source.Populate(Indication as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "indicationReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Indication, "indication");
-                        Indication = source.Populate(Indication as Hl7.Fhir.Model.ResourceReference);
+                        Indication = source.Populate(Indication as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "status":
-                        Status = source.Populate(Status);
+                        Status = source.Populate(Status, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "date":
                         DateElement = source.PopulateValue(DateElement);
                         return true;
                     case "_date":
-                        DateElement = source.Populate(DateElement);
+                        DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                     case "species":
-                        Species = source.Populate(Species);
+                        Species = source.Populate(Species, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1172,7 +1172,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "identifier":
-                        source.PopulateListItem(Identifier, index);
+                        source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                         return true;
                 }
                 return false;
@@ -1795,64 +1795,64 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "domain":
-                    Domain = source.Get<Hl7.Fhir.Model.Coding>();
+                    Domain = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "combinedPharmaceuticalDoseForm":
-                    CombinedPharmaceuticalDoseForm = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    CombinedPharmaceuticalDoseForm = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "legalStatusOfSupply":
-                    LegalStatusOfSupply = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    LegalStatusOfSupply = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "additionalMonitoringIndicator":
-                    AdditionalMonitoringIndicator = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    AdditionalMonitoringIndicator = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialMeasures":
-                    SpecialMeasuresElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    SpecialMeasuresElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "paediatricUseIndicator":
-                    PaediatricUseIndicator = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    PaediatricUseIndicator = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "productClassification":
-                    ProductClassification = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ProductClassification = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "marketingStatus":
-                    MarketingStatus = source.GetList<Hl7.Fhir.Model.MarketingStatus>();
+                    MarketingStatus = source.GetList(() => new Hl7.Fhir.Model.MarketingStatus());
                     return true;
                 case "pharmaceuticalProduct":
-                    PharmaceuticalProduct = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    PharmaceuticalProduct = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "packagedMedicinalProduct":
-                    PackagedMedicinalProduct = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    PackagedMedicinalProduct = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "attachedDocument":
-                    AttachedDocument = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    AttachedDocument = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "masterFile":
-                    MasterFile = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    MasterFile = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
-                    Contact = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Contact = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "clinicalTrial":
-                    ClinicalTrial = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ClinicalTrial = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "name":
-                    Name = source.GetList<NameComponent>();
+                    Name = source.GetList(() => new NameComponent());
                     return true;
                 case "crossReference":
-                    CrossReference = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    CrossReference = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "manufacturingBusinessOperation":
-                    ManufacturingBusinessOperation = source.GetList<ManufacturingBusinessOperationComponent>();
+                    ManufacturingBusinessOperation = source.GetList(() => new ManufacturingBusinessOperationComponent());
                     return true;
                 case "specialDesignation":
-                    SpecialDesignation = source.GetList<SpecialDesignationComponent>();
+                    SpecialDesignation = source.GetList(() => new SpecialDesignationComponent());
                     return true;
             }
             return false;
@@ -1870,26 +1870,26 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "domain":
-                    Domain = source.Populate(Domain);
+                    Domain = source.Populate(Domain, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "combinedPharmaceuticalDoseForm":
-                    CombinedPharmaceuticalDoseForm = source.Populate(CombinedPharmaceuticalDoseForm);
+                    CombinedPharmaceuticalDoseForm = source.Populate(CombinedPharmaceuticalDoseForm, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "legalStatusOfSupply":
-                    LegalStatusOfSupply = source.Populate(LegalStatusOfSupply);
+                    LegalStatusOfSupply = source.Populate(LegalStatusOfSupply, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "additionalMonitoringIndicator":
-                    AdditionalMonitoringIndicator = source.Populate(AdditionalMonitoringIndicator);
+                    AdditionalMonitoringIndicator = source.Populate(AdditionalMonitoringIndicator, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "specialMeasures":
                 case "_specialMeasures":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "paediatricUseIndicator":
-                    PaediatricUseIndicator = source.Populate(PaediatricUseIndicator);
+                    PaediatricUseIndicator = source.Populate(PaediatricUseIndicator, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "productClassification":
                     source.SetList(this, jsonPropertyName);
@@ -1940,49 +1940,49 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "specialMeasures":
                     source.PopulatePrimitiveListItemValue(SpecialMeasuresElement, index);
                     return true;
                 case "_specialMeasures":
-                    source.PopulatePrimitiveListItem(SpecialMeasuresElement, index);
+                    source.PopulatePrimitiveListItem(SpecialMeasuresElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "productClassification":
-                    source.PopulateListItem(ProductClassification, index);
+                    source.PopulateListItem(ProductClassification, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "marketingStatus":
-                    source.PopulateListItem(MarketingStatus, index);
+                    source.PopulateListItem(MarketingStatus, index, () => new Hl7.Fhir.Model.MarketingStatus());
                     return true;
                 case "pharmaceuticalProduct":
-                    source.PopulateListItem(PharmaceuticalProduct, index);
+                    source.PopulateListItem(PharmaceuticalProduct, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "packagedMedicinalProduct":
-                    source.PopulateListItem(PackagedMedicinalProduct, index);
+                    source.PopulateListItem(PackagedMedicinalProduct, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "attachedDocument":
-                    source.PopulateListItem(AttachedDocument, index);
+                    source.PopulateListItem(AttachedDocument, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "masterFile":
-                    source.PopulateListItem(MasterFile, index);
+                    source.PopulateListItem(MasterFile, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contact":
-                    source.PopulateListItem(Contact, index);
+                    source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "clinicalTrial":
-                    source.PopulateListItem(ClinicalTrial, index);
+                    source.PopulateListItem(ClinicalTrial, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "name":
-                    source.PopulateListItem(Name, index);
+                    source.PopulateListItem(Name, index, () => new NameComponent());
                     return true;
                 case "crossReference":
-                    source.PopulateListItem(CrossReference, index);
+                    source.PopulateListItem(CrossReference, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "manufacturingBusinessOperation":
-                    source.PopulateListItem(ManufacturingBusinessOperation, index);
+                    source.PopulateListItem(ManufacturingBusinessOperation, index, () => new ManufacturingBusinessOperationComponent());
                     return true;
                 case "specialDesignation":
-                    source.PopulateListItem(SpecialDesignation, index);
+                    source.PopulateListItem(SpecialDesignation, index, () => new SpecialDesignationComponent());
                     return true;
             }
             return false;

@@ -1,18 +1,15 @@
 ﻿using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model.Primitives;
-using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Tests;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Xml;
 
 namespace Hl7.Fhir.Serialization.Tests
 {
@@ -102,77 +99,6 @@ namespace Hl7.Fhir.Serialization.Tests
             var entryNav = node.Select("entry.resource").First();
             var id = entryNav.Scalar("id");
             Assert.IsNotNull(id);
-        }
-
-        public static void RoundtripXml(Func<string, object> navCreator)
-        {
-            var tp = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.xml"));
-
-            // will allow whitespace and comments to come through      
-            var nav = navCreator(tp);
-
-            var outputBuilder = new StringBuilder();
-            IElementDefinitionSummary serInfo = null;
-
-            switch (nav)
-            {
-                case ISourceNode isn:
-                    serInfo = null;
-                    break;
-                case ITypedElement ien:
-                    serInfo = ien.Definition;
-                    break;
-                default:
-                    throw Error.InvalidOperation("Fix unit test");
-            }
-
-            string output = null;
-
-            if (nav is ISourceNode isn2) output = isn2.ToXml();
-            else if (nav is ITypedElement ien2) output = ien2.ToXml();
-            else
-                throw Error.InvalidOperation("Fix unit test");
-
-            XmlAssert.AreSame("fp-test-patient.xml", tp, output);
-        }
-
-
-        public static void RoundtripJson(Func<string, object> navCreator)
-        {
-            //var tp = File.ReadAllText(Path.Combine("TestData", "fp-test-patient.json"));
-            //compareJson(navCreator, tp);
-
-            var tp = File.ReadAllText(Path.Combine("TestData", "json-edge-cases.json"));
-            compareJson(navCreator, tp);
-        }
-
-        private static void compareJson(Func<string, object> navCreator, string expected)
-        {
-            var nav = navCreator(expected);
-
-            var outputBuilder = new StringBuilder();
-            IElementDefinitionSummary serInfo = null;
-
-            switch (nav)
-            {
-                case ISourceNode isn:
-                    serInfo = null;
-                    break;
-                case ITypedElement ien:
-                    serInfo = ien.Definition;
-                    break;
-                default:
-                    throw Error.InvalidOperation("Fix unit test");
-            }
-
-            string output = null;
-
-            if (nav is ISourceNode isn2) output = isn2.ToJson();
-            else if (nav is ITypedElement ien2) output = ien2.ToJson();
-            else
-                throw Error.InvalidOperation("Fix unit test");
-            
-            JsonAssert.AreSame(expected, output);
         }
 
         public static void CanReadThroughNavigator(ITypedElement n, bool typed)

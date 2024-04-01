@@ -166,10 +166,10 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "numerator":
-                    Numerator = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Numerator = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "denominator":
-                    Denominator = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Denominator = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
             }
             return false;
@@ -184,10 +184,10 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "numerator":
-                    Numerator = source.Populate(Numerator);
+                    Numerator = source.Populate(Numerator, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "denominator":
-                    Denominator = source.Populate(Denominator);
+                    Denominator = source.Populate(Denominator, () => new Hl7.Fhir.Model.Quantity());
                     return true;
             }
             return false;

@@ -462,34 +462,34 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "use":
-                    UseElement = source.Get<Hl7.Fhir.Model.Code>();
+                    UseElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AddressType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AddressType>());
                     return true;
                 case "text":
-                    TextElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TextElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "line":
-                    LineElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    LineElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "city":
-                    CityElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CityElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "district":
-                    DistrictElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DistrictElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "state":
-                    StateElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    StateElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "postalCode":
-                    PostalCodeElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PostalCodeElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "country":
-                    CountryElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CountryElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;
@@ -507,19 +507,19 @@ namespace Hl7.Fhir.Model
                     UseElement = source.PopulateValue(UseElement);
                     return true;
                 case "_use":
-                    UseElement = source.Populate(UseElement);
+                    UseElement = source.Populate(UseElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "type":
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AddressType>());
                     return true;
                 case "text":
                     TextElement = source.PopulateValue(TextElement);
                     return true;
                 case "_text":
-                    TextElement = source.Populate(TextElement);
+                    TextElement = source.Populate(TextElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "line":
                 case "_line":
@@ -529,34 +529,34 @@ namespace Hl7.Fhir.Model
                     CityElement = source.PopulateValue(CityElement);
                     return true;
                 case "_city":
-                    CityElement = source.Populate(CityElement);
+                    CityElement = source.Populate(CityElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "district":
                     DistrictElement = source.PopulateValue(DistrictElement);
                     return true;
                 case "_district":
-                    DistrictElement = source.Populate(DistrictElement);
+                    DistrictElement = source.Populate(DistrictElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "state":
                     StateElement = source.PopulateValue(StateElement);
                     return true;
                 case "_state":
-                    StateElement = source.Populate(StateElement);
+                    StateElement = source.Populate(StateElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "postalCode":
                     PostalCodeElement = source.PopulateValue(PostalCodeElement);
                     return true;
                 case "_postalCode":
-                    PostalCodeElement = source.Populate(PostalCodeElement);
+                    PostalCodeElement = source.Populate(PostalCodeElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "country":
                     CountryElement = source.PopulateValue(CountryElement);
                     return true;
                 case "_country":
-                    CountryElement = source.Populate(CountryElement);
+                    CountryElement = source.Populate(CountryElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
             }
             return false;
@@ -574,7 +574,7 @@ namespace Hl7.Fhir.Model
                     source.PopulatePrimitiveListItemValue(LineElement, index);
                     return true;
                 case "_line":
-                    source.PopulatePrimitiveListItem(LineElement, index);
+                    source.PopulatePrimitiveListItem(LineElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

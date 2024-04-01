@@ -32,6 +32,18 @@ namespace Hl7.Fhir.Serialization.Tests
             );
 
             AssertSuccess(
+                @"{
+                    ""resourceType"":""Patient"",
+                    ""_active"": {
+                        ""id"": ""ACT-1""
+                    },
+                    ""active"": false,
+                    ""birthDate"": ""1986-08-27""
+                }",
+                false, "ACT-1"
+            );
+
+            AssertSuccess(
                 "{\"resourceType\":\"Patient\", \"birthDate\": \"1986-08-27\"}",
                 null, null
             );
@@ -1924,7 +1936,7 @@ namespace Hl7.Fhir.Serialization.Tests
             );
 
             AssertErrorAndSuccess(
-                "{\"resourceType\":\"Patient\",\"_gender\":{},\"birthDate\":\"1976-08-12\"}",
+                "{\"resourceType\":\"Patient\",\"birthDate\":\"1976-08-12\",\"maritalStatus\":{}}",
                 "Empty objects are not allowed"
             );
 
@@ -2016,6 +2028,47 @@ namespace Hl7.Fhir.Serialization.Tests
                 new JsonSerializerOptions().ForFhir(new ParserSettings(Model.Version.R4) { PermissiveParsing = true })
             );
             Assert.AreEqual("2001-07-26", IsType<FhirDateTime>(patient.Deceased).Value);
+        }
+
+        [TestMethod]
+        public void PrimitiveEmptyTest()
+        {
+            var patientJson = "{\"resourceType\":\"Patient\",\"_gender\":{}}";
+            Throws(
+                () => JsonSerializer.Deserialize<Model.R4.Patient>(
+                    patientJson,
+                    new JsonSerializerOptions().ForFhir(Model.Version.R4)
+                ),
+                "Empty objects are not allowed"
+            );
+
+            var patient = JsonSerializer.Deserialize<Model.R4.Patient>(
+                patientJson,
+                new JsonSerializerOptions().ForFhir(new ParserSettings(Model.Version.R4) { PermissiveParsing = true })
+            );
+            Assert.IsNull(patient.Gender);
+
+            var patientWithGenderJson = "{\"resourceType\":\"Patient\",\"gender\":\"male\",\"_gender\":{}}";
+            var patientWithGender = JsonSerializer.Deserialize<Model.R4.Patient>(
+                patientWithGenderJson,
+                new JsonSerializerOptions().ForFhir(Model.Version.R4)
+            );
+            Assert.AreEqual(AdministrativeGender.Male, patientWithGender.Gender);
+
+            patientWithGender = JsonSerializer.Deserialize<Model.R4.Patient>(
+                patientWithGenderJson,
+                new JsonSerializerOptions().ForFhir(new ParserSettings(Model.Version.R4) { PermissiveParsing = true })
+            );
+            Assert.AreEqual(AdministrativeGender.Male, patientWithGender.Gender);
+
+            // We do not handle this case correctly - it should not throw but it does - hard to fix and a corner case
+            //
+            //var patientWithGenderAfterJson = "{\"resourceType\":\"Patient\",\"_gender\":{},\"gender\":\"male\"}";
+            //var patientWithGenderAfter = JsonSerializer.Deserialize<Model.R4.Patient>(
+            //    patientWithGenderAfterJson,
+            //    new JsonSerializerOptions().ForFhir(Model.Version.R4)
+            //);
+            //Assert.AreEqual(AdministrativeGender.Male, patientWithGenderAfter.Gender);
         }
 
         [TestMethod]
@@ -2303,7 +2356,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void RoundTripR4BundleJson()
         {
             var bundleJson = File.ReadAllText(GetFullPathForExample("bundle.json"));
-            var bundleOldParser = new FhirJsonParser(Model.Version.R4).Parse<Resource>(bundleJson);
+            var bundleOldParser = new FhirJsonFastParser(Model.Version.R4).Parse<Resource>(bundleJson);
             var bundleNewParsr = JsonSerializer.Deserialize<Resource>(bundleJson, new JsonSerializerOptions().ForFhir(Model.Version.R4));
             Assert.IsTrue(bundleOldParser.IsExactly(bundleNewParsr));
         }
@@ -2389,7 +2442,7 @@ This is a list
 
             var t = new FhirXmlParser(version).Parse<Resource>(original);
 
-            var outputJson = new FhirJsonSerializer(version).SerializeToString(t);
+            var outputJson = new FhirJsonFastSerializer(version).SerializeToString(t);
             var t2 = JsonSerializer.Deserialize<Resource>(outputJson, new JsonSerializerOptions().ForFhir(version));
             Assert.IsTrue(t.IsExactly(t2));
         }

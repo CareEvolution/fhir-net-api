@@ -80,7 +80,7 @@ namespace Hl7.Fhir.Model
         public Hl7.Fhir.Model.Element Value
         {
             get { return _Value; }
-            set { _Value = value; OnPropertyChanged("Value"); }
+            set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Value"); }
         }
         
         private Hl7.Fhir.Model.Element _Value;
@@ -148,23 +148,23 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "code" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    Code = source.Get<Hl7.Fhir.Model.Coding>();
+                    Code = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "valueCodeableConcept" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Value = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "valueQuantity" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Value = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "valueRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.Range>();
+                    Value = source.Populate(new Hl7.Fhir.Model.Range());
                     return true;
                 case "valueReference" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Value, "value");
-                    Value = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Value = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -179,23 +179,23 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "code" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "valueCodeableConcept" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "valueQuantity" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.Quantity);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.Quantity, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "valueRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.Range);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                     return true;
                 case "valueReference" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.ResourceReference);
+                    Value = source.Populate(Value as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

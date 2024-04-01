@@ -1,8 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.DSTU2;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Xml;
 
 namespace Hl7.Fhir.Serialization.Tests
@@ -15,7 +19,7 @@ namespace Hl7.Fhir.Serialization.Tests
         {
             var json = File.ReadAllText(Path.Combine("TestData", "patient.json"), Encoding.UTF8);
 
-            var jsonParser = new FhirJsonParser(Model.Version.DSTU2);
+            var jsonParser = new FhirJsonFastParser(Model.Version.DSTU2);
             var patient = jsonParser.Parse<Model.DSTU2.Patient>(json);
 
             var serializedJson = FastSerializeToJsonString(patient);
@@ -731,7 +735,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void XmlBytes()
         {
             var codeableConcept = new Model.CodeableConcept("http://loinc.org", "11050-2", "Lab result");
-            var expectedBytes = new FhirXmlSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
+            var expectedBytes = new FhirXmlFastSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
             var actualBytes = new FhirXmlFastSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
             Assert.AreEqual(Encoding.UTF8.GetString(expectedBytes), Encoding.UTF8.GetString(actualBytes));
         }
@@ -740,7 +744,7 @@ namespace Hl7.Fhir.Serialization.Tests
         public void JsonBytes()
         {
             var codeableConcept = new Model.CodeableConcept("http://loinc.org", "11050-2", "Lab result");
-            var expectedBytes = new FhirJsonSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
+            var expectedBytes = new FhirJsonFastSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
             var actualBytes = new FhirJsonFastSerializer(Model.Version.STU3).SerializeToBytes(codeableConcept);
             Assert.AreEqual(Encoding.UTF8.GetString(expectedBytes), Encoding.UTF8.GetString(actualBytes));
         }
@@ -788,29 +792,66 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void JsonInstant()
         {
-            var observation = new Model.R4.Observation
+            var diagnosticReport = new Model.R4.DiagnosticReport
             {
-                Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
+                IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
             };
 
             var json = @"{
-  ""resourceType"": ""Observation"",
-  ""valueInstant"": ""2019-11-21T13:45:06.567+00:00""
+  ""resourceType"": ""DiagnosticReport"",
+  ""issued"": ""2019-11-21T13:45:06.567+00:00""
 }";
-            var serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
+            var serializedJson = FastSerializeToJsonString(diagnosticReport, Model.Version.R4);
             Assert.AreEqual(json, serializedJson);
 
-            observation = new Model.R4.Observation
+            diagnosticReport = new Model.R4.DiagnosticReport
             {
-                Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
+                IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
             };
 
             json = @"{
-  ""resourceType"": ""Observation"",
-  ""valueInstant"": ""2019-11-21T13:45:06-04:00""
+  ""resourceType"": ""DiagnosticReport"",
+  ""issued"": ""2019-11-21T13:45:06-04:00""
 }";
-            serializedJson = FastSerializeToJsonString(observation, Model.Version.R4);
+            serializedJson = FastSerializeToJsonString(diagnosticReport, Model.Version.R4);
             Assert.AreEqual(json, serializedJson);
+        }
+
+        [TestMethod]
+        public void JsonInstant_DifferentLocale()
+        {
+            var savedCulture = CultureInfo.CurrentCulture;
+            CultureInfo.CurrentCulture = new CultureInfo("da"); // Use '.' as the time separator
+            try
+            {
+                var diagnosticReport = new Model.R4.DiagnosticReport
+                {
+                    IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
+                };
+
+                var json = @"{
+  ""resourceType"": ""DiagnosticReport"",
+  ""issued"": ""2019-11-21T13:45:06.567+00:00""
+}";
+                var serializedJson = FastSerializeToJsonString(diagnosticReport, Model.Version.R4);
+                Assert.AreEqual(json, serializedJson);
+
+                diagnosticReport = new Model.R4.DiagnosticReport
+                {
+                    IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
+                };
+
+                json = @"{
+  ""resourceType"": ""DiagnosticReport"",
+  ""issued"": ""2019-11-21T13:45:06-04:00""
+}";
+                serializedJson = FastSerializeToJsonString(diagnosticReport, Model.Version.R4);
+                Assert.AreEqual(json, serializedJson);
+            }
+            finally
+            {
+                CultureInfo.CurrentCulture = savedCulture;
+            }
         }
 
         [TestMethod]
@@ -850,26 +891,26 @@ namespace Hl7.Fhir.Serialization.Tests
         [TestMethod]
         public void XmlInstant()
         {
-            var observation = new Model.R4.Observation
+            var diagnosticReport = new Model.R4.DiagnosticReport
             {
-                Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
+                IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, 567, TimeSpan.Zero))
             };
 
-            var xml = @"<Observation xmlns=""http://hl7.org/fhir"">
-  <valueInstant value=""2019-11-21T13:45:06.567Z"" />
-</Observation>";
-            var serializedXml = FastSerializeToXmlString(observation, Model.Version.R4);
+            var xml = @"<DiagnosticReport xmlns=""http://hl7.org/fhir"">
+  <issued value=""2019-11-21T13:45:06.567Z"" />
+</DiagnosticReport>";
+            var serializedXml = FastSerializeToXmlString(diagnosticReport, Model.Version.R4);
             Assert.AreEqual(xml, serializedXml);
 
-            observation = new Model.R4.Observation
+            diagnosticReport = new Model.R4.DiagnosticReport
             {
-                Value = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
+                IssuedElement = new Model.Instant(new DateTimeOffset(2019, 11, 21, 13, 45, 6, new TimeSpan(-4, 0, 0)))
             };
 
-            xml = @"<Observation xmlns=""http://hl7.org/fhir"">
-  <valueInstant value=""2019-11-21T13:45:06-04:00"" />
-</Observation>";
-            serializedXml = FastSerializeToXmlString(observation, Model.Version.R4);
+            xml = @"<DiagnosticReport xmlns=""http://hl7.org/fhir"">
+  <issued value=""2019-11-21T13:45:06-04:00"" />
+</DiagnosticReport>";
+            serializedXml = FastSerializeToXmlString(diagnosticReport, Model.Version.R4);
             Assert.AreEqual(xml, serializedXml);
         }
 
@@ -996,6 +1037,45 @@ namespace Hl7.Fhir.Serialization.Tests
             Assert.AreEqual(json, serializedJson);
         }
 
+        [TestMethod]
+        public void JsonEncoding()
+        {
+            var patient = new Patient
+            {
+                Name = new List<HumanName>()
+                {
+                    new HumanName()
+                    {
+                        Family = new[] { "Hörst" }
+                    }
+                }
+            };
+
+            var serializer = new FhirJsonFastSerializer(Model.Version.DSTU2, unsafeRelaxedJsonEscaping: true);
+            var serializedJson = serializer.SerializeToString(patient);
+            Assert.IsTrue(serializedJson.Contains("Hörst"));
+
+            var destination = new MemoryStream();
+            using (var writer = new Utf8JsonWriter(destination, serializer.CreateJsonWriterOptions()))
+            {
+                serializer.Serialize(patient, writer);
+            }
+            serializedJson = Encoding.UTF8.GetString(destination.ToArray());
+            Assert.IsTrue(serializedJson.Contains("Hörst"));
+
+            serializer = new FhirJsonFastSerializer(Model.Version.DSTU2, unsafeRelaxedJsonEscaping: false);
+            serializedJson = serializer.SerializeToString(patient);
+            Assert.IsTrue(serializedJson.Contains("H\\u00F6rst"), $"Unexpected JSON: <{serializedJson}>");
+ 
+            destination = new MemoryStream();
+            using (var writer = new Utf8JsonWriter(destination, serializer.CreateJsonWriterOptions()))
+            {
+                serializer.Serialize(patient, writer);
+            }
+            serializedJson = Encoding.UTF8.GetString(destination.ToArray());
+            Assert.IsTrue(serializedJson.Contains("H\\u00F6rst"), $"Unexpected JSON: <{serializedJson}>");
+        }
+
         private static void WriteFilesIfDifferent(string expected, string actual, string fileName)
         {
             if (expected != actual)
@@ -1027,13 +1107,13 @@ namespace Hl7.Fhir.Serialization.Tests
 
         private static string SerializeToJsonString(Model.Base @base, Rest.SummaryType summary = Rest.SummaryType.False, string[] elements = null)
         {
-            var serializer = new FhirJsonSerializer(new SerializerSettings(Model.Version.DSTU2) { Pretty = true });
+            var serializer = new FhirJsonFastSerializer(new SerializerSettings(Model.Version.DSTU2) { Pretty = true });
             return serializer.SerializeToString(@base, summary, elements);
         }
 
         private static string SerializeToXmlString(Model.Base @base, Model.Version version = Model.Version.DSTU2, Rest.SummaryType summary = Rest.SummaryType.False, string root = null, string[] elements = null)
         {
-            var serializer = new FhirXmlSerializer(new SerializerSettings(version) { Pretty = true });
+            var serializer = new FhirXmlFastSerializer(new SerializerSettings(version) { Pretty = true });
             return serializer.SerializeToString(@base, summary, root, elements);
         }
     }

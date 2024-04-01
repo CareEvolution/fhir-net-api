@@ -110,10 +110,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "role":
-                        Role = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Role = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "actor":
-                        Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Actor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -128,10 +128,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "role":
-                        Role = source.Populate(Role);
+                        Role = source.Populate(Role, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "actor":
-                        Actor = source.Populate(Actor);
+                        Actor = source.Populate(Actor, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -281,10 +281,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "comment":
-                        CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "link":
-                        Link = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Link = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -302,10 +302,10 @@ namespace Hl7.Fhir.Model.STU3
                         CommentElement = source.PopulateValue(CommentElement);
                         return true;
                     case "_comment":
-                        CommentElement = source.Populate(CommentElement);
+                        CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "link":
-                        Link = source.Populate(Link);
+                        Link = source.Populate(Link, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -516,7 +516,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Effective
         {
             get { return _Effective; }
-            set { _Effective = value; OnPropertyChanged("Effective"); }
+            set { _Effective = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Effective"); }
         }
         
         private Hl7.Fhir.Model.Element _Effective;
@@ -860,60 +860,60 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    BasedOn = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.DiagnosticReportStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.DiagnosticReportStatus>());
                     return true;
                 case "category":
-                    Category = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Context = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Effective = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
-                    Effective = source.Get<Hl7.Fhir.Model.Period>();
+                    Effective = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "issued":
-                    IssuedElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    IssuedElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "performer":
-                    Performer = source.GetList<PerformerComponent>();
+                    Performer = source.GetList(() => new PerformerComponent());
                     return true;
                 case "specimen":
-                    Specimen = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Specimen = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "result":
-                    Result = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Result = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "imagingStudy":
-                    ImagingStudy = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ImagingStudy = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "image":
-                    Image = source.GetList<ImageComponent>();
+                    Image = source.GetList(() => new ImageComponent());
                     return true;
                 case "conclusion":
-                    ConclusionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ConclusionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "codedDiagnosis":
-                    CodedDiagnosis = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    CodedDiagnosis = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "presentedForm":
-                    PresentedForm = source.GetList<Hl7.Fhir.Model.Attachment>();
+                    PresentedForm = source.GetList(() => new Hl7.Fhir.Model.Attachment());
                     return true;
             }
             return false;
@@ -937,19 +937,19 @@ namespace Hl7.Fhir.Model.STU3
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.DiagnosticReportStatus>());
                     return true;
                 case "category":
-                    Category = source.Populate(Category);
+                    Category = source.Populate(Category, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Populate(Context);
+                    Context = source.Populate(Context, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
@@ -957,17 +957,17 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "_effectiveDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Effective, "effective");
-                    Effective = source.Populate(Effective as Hl7.Fhir.Model.FhirDateTime);
+                    Effective = source.Populate(Effective as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "effectivePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Effective, "effective");
-                    Effective = source.Populate(Effective as Hl7.Fhir.Model.Period);
+                    Effective = source.Populate(Effective as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "issued":
                     IssuedElement = source.PopulateValue(IssuedElement);
                     return true;
                 case "_issued":
-                    IssuedElement = source.Populate(IssuedElement);
+                    IssuedElement = source.Populate(IssuedElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "performer":
                     source.SetList(this, jsonPropertyName);
@@ -988,7 +988,7 @@ namespace Hl7.Fhir.Model.STU3
                     ConclusionElement = source.PopulateValue(ConclusionElement);
                     return true;
                 case "_conclusion":
-                    ConclusionElement = source.Populate(ConclusionElement);
+                    ConclusionElement = source.Populate(ConclusionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "codedDiagnosis":
                     source.SetList(this, jsonPropertyName);
@@ -1009,31 +1009,31 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    source.PopulateListItem(BasedOn, index);
+                    source.PopulateListItem(BasedOn, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    source.PopulateListItem(Performer, index);
+                    source.PopulateListItem(Performer, index, () => new PerformerComponent());
                     return true;
                 case "specimen":
-                    source.PopulateListItem(Specimen, index);
+                    source.PopulateListItem(Specimen, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "result":
-                    source.PopulateListItem(Result, index);
+                    source.PopulateListItem(Result, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "imagingStudy":
-                    source.PopulateListItem(ImagingStudy, index);
+                    source.PopulateListItem(ImagingStudy, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "image":
-                    source.PopulateListItem(Image, index);
+                    source.PopulateListItem(Image, index, () => new ImageComponent());
                     return true;
                 case "codedDiagnosis":
-                    source.PopulateListItem(CodedDiagnosis, index);
+                    source.PopulateListItem(CodedDiagnosis, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "presentedForm":
-                    source.PopulateListItem(PresentedForm, index);
+                    source.PopulateListItem(PresentedForm, index, () => new Hl7.Fhir.Model.Attachment());
                     return true;
             }
             return false;

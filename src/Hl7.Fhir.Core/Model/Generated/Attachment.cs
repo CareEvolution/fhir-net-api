@@ -434,28 +434,28 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "contentType":
-                    ContentTypeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    ContentTypeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "language":
-                    LanguageElement = source.Get<Hl7.Fhir.Model.Code>();
+                    LanguageElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "data":
-                    DataElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                    DataElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                     return true;
                 case "url":
-                    UrlElement = source.Get<Hl7.Fhir.Model.Url>();
+                    UrlElement = source.Populate(new Hl7.Fhir.Model.Url());
                     return true;
                 case "size":
-                    SizeElement = source.Get<Hl7.Fhir.Model.UnsignedInt>();
+                    SizeElement = source.Populate(new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "hash":
-                    HashElement = source.Get<Hl7.Fhir.Model.Base64Binary>();
+                    HashElement = source.Populate(new Hl7.Fhir.Model.Base64Binary());
                     return true;
                 case "title":
-                    TitleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    TitleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "creation":
-                    CreationElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    CreationElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;
@@ -473,49 +473,49 @@ namespace Hl7.Fhir.Model
                     ContentTypeElement = source.PopulateValue(ContentTypeElement);
                     return true;
                 case "_contentType":
-                    ContentTypeElement = source.Populate(ContentTypeElement);
+                    ContentTypeElement = source.Populate(ContentTypeElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "language":
                     LanguageElement = source.PopulateValue(LanguageElement);
                     return true;
                 case "_language":
-                    LanguageElement = source.Populate(LanguageElement);
+                    LanguageElement = source.Populate(LanguageElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "data":
                     DataElement = source.PopulateValue(DataElement);
                     return true;
                 case "_data":
-                    DataElement = source.Populate(DataElement);
+                    DataElement = source.Populate(DataElement, () => new Hl7.Fhir.Model.Base64Binary());
                     return true;
                 case "url":
                     UrlElement = source.PopulateValue(UrlElement);
                     return true;
                 case "_url":
-                    UrlElement = source.Populate(UrlElement);
+                    UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.Url());
                     return true;
                 case "size":
                     SizeElement = source.PopulateValue(SizeElement);
                     return true;
                 case "_size":
-                    SizeElement = source.Populate(SizeElement);
+                    SizeElement = source.Populate(SizeElement, () => new Hl7.Fhir.Model.UnsignedInt());
                     return true;
                 case "hash":
                     HashElement = source.PopulateValue(HashElement);
                     return true;
                 case "_hash":
-                    HashElement = source.Populate(HashElement);
+                    HashElement = source.Populate(HashElement, () => new Hl7.Fhir.Model.Base64Binary());
                     return true;
                 case "title":
                     TitleElement = source.PopulateValue(TitleElement);
                     return true;
                 case "_title":
-                    TitleElement = source.Populate(TitleElement);
+                    TitleElement = source.Populate(TitleElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "creation":
                     CreationElement = source.PopulateValue(CreationElement);
                     return true;
                 case "_creation":
-                    CreationElement = source.Populate(CreationElement);
+                    CreationElement = source.Populate(CreationElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
             }
             return false;

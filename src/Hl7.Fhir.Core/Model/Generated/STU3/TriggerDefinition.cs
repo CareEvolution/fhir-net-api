@@ -130,7 +130,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element EventTiming
         {
             get { return _EventTiming; }
-            set { _EventTiming = value; OnPropertyChanged("EventTiming"); }
+            set { _EventTiming = CheckType(value, typeof(Hl7.Fhir.Model.STU3.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime)); OnPropertyChanged("EventTiming"); }
         }
         
         private Hl7.Fhir.Model.Element _EventTiming;
@@ -220,29 +220,29 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.TriggerType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.TriggerType>());
                     return true;
                 case "eventName":
-                    EventNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    EventNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "eventTimingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.STU3.Timing>(EventTiming, "eventTiming");
-                    EventTiming = source.Get<Hl7.Fhir.Model.STU3.Timing>();
+                    EventTiming = source.Populate(new Hl7.Fhir.Model.STU3.Timing());
                     return true;
                 case "eventTimingReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(EventTiming, "eventTiming");
-                    EventTiming = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    EventTiming = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "eventTimingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(EventTiming, "eventTiming");
-                    EventTiming = source.Get<Hl7.Fhir.Model.Date>();
+                    EventTiming = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "eventTimingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(EventTiming, "eventTiming");
-                    EventTiming = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    EventTiming = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "eventData":
-                    EventData = source.Get<Hl7.Fhir.Model.STU3.DataRequirement>();
+                    EventData = source.Populate(new Hl7.Fhir.Model.STU3.DataRequirement());
                     return true;
             }
             return false;
@@ -260,21 +260,21 @@ namespace Hl7.Fhir.Model.STU3
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.TriggerType>());
                     return true;
                 case "eventName":
                     EventNameElement = source.PopulateValue(EventNameElement);
                     return true;
                 case "_eventName":
-                    EventNameElement = source.Populate(EventNameElement);
+                    EventNameElement = source.Populate(EventNameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "eventTimingTiming":
                     source.CheckDuplicates<Hl7.Fhir.Model.STU3.Timing>(EventTiming, "eventTiming");
-                    EventTiming = source.Populate(EventTiming as Hl7.Fhir.Model.STU3.Timing);
+                    EventTiming = source.Populate(EventTiming as Hl7.Fhir.Model.STU3.Timing, () => new Hl7.Fhir.Model.STU3.Timing());
                     return true;
                 case "eventTimingReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(EventTiming, "eventTiming");
-                    EventTiming = source.Populate(EventTiming as Hl7.Fhir.Model.ResourceReference);
+                    EventTiming = source.Populate(EventTiming as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "eventTimingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(EventTiming, "eventTiming");
@@ -282,7 +282,7 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "_eventTimingDate":
                     source.CheckDuplicates<Hl7.Fhir.Model.Date>(EventTiming, "eventTiming");
-                    EventTiming = source.Populate(EventTiming as Hl7.Fhir.Model.Date);
+                    EventTiming = source.Populate(EventTiming as Hl7.Fhir.Model.Date, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "eventTimingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(EventTiming, "eventTiming");
@@ -290,10 +290,10 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "_eventTimingDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(EventTiming, "eventTiming");
-                    EventTiming = source.Populate(EventTiming as Hl7.Fhir.Model.FhirDateTime);
+                    EventTiming = source.Populate(EventTiming as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "eventData":
-                    EventData = source.Populate(EventData);
+                    EventData = source.Populate(EventData, () => new Hl7.Fhir.Model.STU3.DataRequirement());
                     return true;
             }
             return false;

@@ -166,9 +166,9 @@ namespace Hl7.Fhir.Tests.Serialization
         }
 
         internal FhirXmlParser FhirDstu2XmlParser = new FhirXmlParser(Fhir.Model.Version.DSTU2);
-        internal FhirJsonParser FhirDstu2JsonParser = new FhirJsonParser(Fhir.Model.Version.DSTU2);
-        internal FhirXmlSerializer FhirDstu2XmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.DSTU2);
-        internal FhirJsonSerializer FhirDstu2JsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.DSTU2);
+        internal FhirJsonFastParser FhirDstu2JsonParser = new FhirJsonFastParser(Fhir.Model.Version.DSTU2);
+        internal FhirXmlFastSerializer FhirDstu2XmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.DSTU2);
+        internal FhirJsonFastSerializer FhirDstu2JsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.DSTU2);
 
         [TestMethod]
         public void ParsePerfJson()
@@ -206,7 +206,7 @@ namespace Hl7.Fhir.Tests.Serialization
         public void AcceptUnknownEnums()
         {
             string json = TestDataHelper.ReadTestData("TestPatient.json");
-            var pser = new FhirJsonParser(Fhir.Model.Version.DSTU2);
+            var pser = new FhirJsonFastParser(Fhir.Model.Version.DSTU2);
 
             // Assume that we can happily read the patient gender when enums are enforced
             var p = pser.Parse<Patient>(json);
@@ -277,12 +277,12 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual("Chalmers", dstu2Patient.Name.SingleOrDefault()?.Family?.SingleOrDefault());
 
             var patientWithCommentJson = "{\"resourceType\":\"Patient\",\"name\":[{\"fhir_comments\":[\"Peter James Chalmers, but called Jim\"],\"family\":\"Chalmers\",\"given\":[\"Peter\",\"James\"]}],\"gender\":\"male\",\"birthDate\": \"1974-12-25\"}";
-            var fhirStu3JsonParser = new FhirJsonParser(Fhir.Model.Version.STU3);
+            var fhirStu3JsonParser = new FhirJsonFastParser(Fhir.Model.Version.STU3);
             var exception = Assert.ThrowsException<FormatException>(() => fhirStu3JsonParser.Parse<Fhir.Model.STU3.Patient>(patientWithCommentJson));
-            Assert.IsTrue(exception.Message.Contains("The 'fhir_comments' feature is disabled."));
-            var fhirR4JsonParser = new FhirJsonParser(Fhir.Model.Version.R4);
+            Assert.IsTrue(exception.Message.Contains("The 'fhir_comments' feature is disabled"));
+            var fhirR4JsonParser = new FhirJsonFastParser(Fhir.Model.Version.R4);
             exception = Assert.ThrowsException<FormatException>(() => fhirR4JsonParser.Parse<Fhir.Model.STU3.Patient>(patientWithCommentJson));
-            Assert.IsTrue(exception.Message.Contains("The 'fhir_comments' feature is disabled."));
+            Assert.IsTrue(exception.Message.Contains("The 'fhir_comments' feature is disabled"));
         }
 
         [TestMethod]
@@ -397,7 +397,7 @@ namespace Hl7.Fhir.Tests.Serialization
                 new Extension( "Quantity", new Quantity { Code = "mol/s", Value = 3 } )
             };
 
-            var xmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.STU3);
+            var xmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.STU3);
             var xml = xmlSerializer.SerializeToString(p);
             var xmlParser = new FhirXmlParser(Fhir.Model.Version.STU3);
             var patientFromXml = xmlParser.Parse<Fhir.Model.STU3.Patient>(xml);
@@ -426,9 +426,9 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual("mol/s", ((Quantity)patientFromXml.Extension[6].Value).Code);
             Assert.AreEqual(3, ((Quantity)patientFromXml.Extension[6].Value).Value);
 
-            var jsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.STU3);
+            var jsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.STU3);
             var json = jsonSerializer.SerializeToString(p);
-            var jsonParser = new FhirJsonParser(Fhir.Model.Version.STU3);
+            var jsonParser = new FhirJsonFastParser(Fhir.Model.Version.STU3);
             var patientFromJson = jsonParser.Parse<Fhir.Model.STU3.Patient>(json);
 
             Assert.IsInstanceOfType(patientFromJson.Extension[0].Value, typeof(Fhir.Model.STU3.Age));
@@ -469,7 +469,7 @@ namespace Hl7.Fhir.Tests.Serialization
                 new Extension( "Quantity", new Quantity { Code = "mol/s", Value = 3 } )
             };
 
-            var xmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.R4);
+            var xmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.R4);
             var xml = xmlSerializer.SerializeToString(p);
             var xmlParser = new FhirXmlParser(Fhir.Model.Version.R4);
             var patientFromXml = xmlParser.Parse<Fhir.Model.R4.Patient>(xml);
@@ -499,9 +499,9 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.AreEqual("mol/s", ((Quantity)patientFromXml.Extension[6].Value).Code);
             Assert.AreEqual(3, ((Quantity)patientFromXml.Extension[6].Value).Value);
 
-            var jsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.R4);
+            var jsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.R4);
             var json = jsonSerializer.SerializeToString(p);
-            var jsonParser = new FhirJsonParser(Fhir.Model.Version.R4);
+            var jsonParser = new FhirJsonFastParser(Fhir.Model.Version.R4);
             var patientFromJson = jsonParser.Parse<Fhir.Model.R4.Patient>(json);
 
             Assert.IsInstanceOfType(patientFromJson.Extension[0].Value, typeof(Fhir.Model.R4.Age));
@@ -583,7 +583,7 @@ namespace Hl7.Fhir.Tests.Serialization
             {
                 var json =
                     "{\"resourceType\": \"Patient\", \"text\": {\"status\": \"generated\", \"div\": \"text without div\" } }";
-                var patient = new FhirJsonParser(new ParserSettings(Fhir.Model.Version.DSTU2) { PermissiveParsing = false }).Parse<Patient>(json);
+                var patient = new FhirJsonFastParser(new ParserSettings(Fhir.Model.Version.DSTU2) { PermissiveParsing = false }).Parse<Patient>(json);
 
                 Assert.Fail("Should have thrown on invalid Div format");
             }

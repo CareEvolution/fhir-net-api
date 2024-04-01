@@ -170,7 +170,7 @@ namespace Hl7.Fhir.Model
                     ElementId = source.GetElementId();
                     return true;
                 case "extension":
-                    Extension = source.GetList<Extension>();
+                    Extension = source.GetList(() => new Extension());
                     return true;
             }
             return false;
@@ -203,7 +203,7 @@ namespace Hl7.Fhir.Model
             switch (jsonPropertyName)
             {
                 case "extension":
-                    source.PopulateListItem(Extension, index);
+                    source.PopulateListItem(Extension, index, () => new Extension());
                     return true;
             }
             return false;

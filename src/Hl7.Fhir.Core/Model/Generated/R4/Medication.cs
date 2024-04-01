@@ -73,7 +73,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element Item
             {
                 get { return _Item; }
-                set { _Item = value; OnPropertyChanged("Item"); }
+                set { _Item = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Item"); }
             }
             
             private Hl7.Fhir.Model.Element _Item;
@@ -143,17 +143,17 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Item = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "isActive":
-                        IsActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        IsActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "strength":
-                        Strength = source.Get<Hl7.Fhir.Model.Ratio>();
+                        Strength = source.Populate(new Hl7.Fhir.Model.Ratio());
                         return true;
                 }
                 return false;
@@ -169,20 +169,20 @@ namespace Hl7.Fhir.Model.R4
                 {
                     case "itemCodeableConcept":
                         source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Item, "item");
-                        Item = source.Populate(Item as Hl7.Fhir.Model.CodeableConcept);
+                        Item = source.Populate(Item as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "itemReference":
                         source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Item, "item");
-                        Item = source.Populate(Item as Hl7.Fhir.Model.ResourceReference);
+                        Item = source.Populate(Item as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "isActive":
                         IsActiveElement = source.PopulateValue(IsActiveElement);
                         return true;
                     case "_isActive":
-                        IsActiveElement = source.Populate(IsActiveElement);
+                        IsActiveElement = source.Populate(IsActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "strength":
-                        Strength = source.Populate(Strength);
+                        Strength = source.Populate(Strength, () => new Hl7.Fhir.Model.Ratio());
                         return true;
                 }
                 return false;
@@ -353,10 +353,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "lotNumber":
-                        LotNumberElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        LotNumberElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "expirationDate":
-                        ExpirationDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        ExpirationDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                 }
                 return false;
@@ -374,13 +374,13 @@ namespace Hl7.Fhir.Model.R4
                         LotNumberElement = source.PopulateValue(LotNumberElement);
                         return true;
                     case "_lotNumber":
-                        LotNumberElement = source.Populate(LotNumberElement);
+                        LotNumberElement = source.Populate(LotNumberElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "expirationDate":
                         ExpirationDateElement = source.PopulateValue(ExpirationDateElement);
                         return true;
                     case "_expirationDate":
-                        ExpirationDateElement = source.Populate(ExpirationDateElement);
+                        ExpirationDateElement = source.Populate(ExpirationDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                 }
                 return false;
@@ -685,28 +685,28 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationStatusCodes>());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Manufacturer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "form":
-                    Form = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Form = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "amount":
-                    Amount = source.Get<Hl7.Fhir.Model.Ratio>();
+                    Amount = source.Populate(new Hl7.Fhir.Model.Ratio());
                     return true;
                 case "ingredient":
-                    Ingredient = source.GetList<IngredientComponent>();
+                    Ingredient = source.GetList(() => new IngredientComponent());
                     return true;
                 case "batch":
-                    Batch = source.Get<BatchComponent>();
+                    Batch = source.Populate(new BatchComponent());
                     return true;
             }
             return false;
@@ -724,28 +724,28 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.MedicationStatusCodes>());
                     return true;
                 case "manufacturer":
-                    Manufacturer = source.Populate(Manufacturer);
+                    Manufacturer = source.Populate(Manufacturer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "form":
-                    Form = source.Populate(Form);
+                    Form = source.Populate(Form, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "amount":
-                    Amount = source.Populate(Amount);
+                    Amount = source.Populate(Amount, () => new Hl7.Fhir.Model.Ratio());
                     return true;
                 case "ingredient":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "batch":
-                    Batch = source.Populate(Batch);
+                    Batch = source.Populate(Batch, () => new BatchComponent());
                     return true;
             }
             return false;
@@ -760,10 +760,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "ingredient":
-                    source.PopulateListItem(Ingredient, index);
+                    source.PopulateListItem(Ingredient, index, () => new IngredientComponent());
                     return true;
             }
             return false;

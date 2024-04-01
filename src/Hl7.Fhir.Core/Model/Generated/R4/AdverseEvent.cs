@@ -116,10 +116,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "instance":
-                        Instance = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Instance = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "causality":
-                        Causality = source.GetList<CausalityComponent>();
+                        Causality = source.GetList(() => new CausalityComponent());
                         return true;
                 }
                 return false;
@@ -134,7 +134,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "instance":
-                        Instance = source.Populate(Instance);
+                        Instance = source.Populate(Instance, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "causality":
                         source.SetList(this, jsonPropertyName);
@@ -152,7 +152,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "causality":
-                        source.PopulateListItem(Causality, index);
+                        source.PopulateListItem(Causality, index, () => new CausalityComponent());
                         return true;
                 }
                 return false;
@@ -332,16 +332,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "assessment":
-                        Assessment = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Assessment = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "productRelatedness":
-                        ProductRelatednessElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ProductRelatednessElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "author":
-                        Author = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Author = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "method":
-                        Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -356,19 +356,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "assessment":
-                        Assessment = source.Populate(Assessment);
+                        Assessment = source.Populate(Assessment, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "productRelatedness":
                         ProductRelatednessElement = source.PopulateValue(ProductRelatednessElement);
                         return true;
                     case "_productRelatedness":
-                        ProductRelatednessElement = source.Populate(ProductRelatednessElement);
+                        ProductRelatednessElement = source.Populate(ProductRelatednessElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "author":
-                        Author = source.Populate(Author);
+                        Author = source.Populate(Author, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "method":
-                        Method = source.Populate(Method);
+                        Method = source.Populate(Method, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1002,64 +1002,64 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "actuality":
-                    ActualityElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AdverseEventActuality>>();
+                    ActualityElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AdverseEventActuality>());
                     return true;
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "event":
-                    Event = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Event = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Encounter = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "detected":
-                    DetectedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DetectedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recordedDate":
-                    RecordedDateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    RecordedDateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "resultingCondition":
-                    ResultingCondition = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ResultingCondition = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "seriousness":
-                    Seriousness = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Seriousness = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "severity":
-                    Severity = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Severity = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "outcome":
-                    Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Outcome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "recorder":
-                    Recorder = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Recorder = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contributor":
-                    Contributor = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Contributor = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "suspectEntity":
-                    SuspectEntity = source.GetList<SuspectEntityComponent>();
+                    SuspectEntity = source.GetList(() => new SuspectEntityComponent());
                     return true;
                 case "subjectMedicalHistory":
-                    SubjectMedicalHistory = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    SubjectMedicalHistory = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "referenceDocument":
-                    ReferenceDocument = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    ReferenceDocument = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "study":
-                    Study = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Study = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -1074,61 +1074,61 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "actuality":
                     ActualityElement = source.PopulateValue(ActualityElement);
                     return true;
                 case "_actuality":
-                    ActualityElement = source.Populate(ActualityElement);
+                    ActualityElement = source.Populate(ActualityElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.AdverseEventActuality>());
                     return true;
                 case "category":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "event":
-                    Event = source.Populate(Event);
+                    Event = source.Populate(Event, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "encounter":
-                    Encounter = source.Populate(Encounter);
+                    Encounter = source.Populate(Encounter, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "detected":
                     DetectedElement = source.PopulateValue(DetectedElement);
                     return true;
                 case "_detected":
-                    DetectedElement = source.Populate(DetectedElement);
+                    DetectedElement = source.Populate(DetectedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "recordedDate":
                     RecordedDateElement = source.PopulateValue(RecordedDateElement);
                     return true;
                 case "_recordedDate":
-                    RecordedDateElement = source.Populate(RecordedDateElement);
+                    RecordedDateElement = source.Populate(RecordedDateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "resultingCondition":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "location":
-                    Location = source.Populate(Location);
+                    Location = source.Populate(Location, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "seriousness":
-                    Seriousness = source.Populate(Seriousness);
+                    Seriousness = source.Populate(Seriousness, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "severity":
-                    Severity = source.Populate(Severity);
+                    Severity = source.Populate(Severity, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "outcome":
-                    Outcome = source.Populate(Outcome);
+                    Outcome = source.Populate(Outcome, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "recorder":
-                    Recorder = source.Populate(Recorder);
+                    Recorder = source.Populate(Recorder, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contributor":
                     source.SetList(this, jsonPropertyName);
@@ -1158,25 +1158,25 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "category":
-                    source.PopulateListItem(Category, index);
+                    source.PopulateListItem(Category, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "resultingCondition":
-                    source.PopulateListItem(ResultingCondition, index);
+                    source.PopulateListItem(ResultingCondition, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contributor":
-                    source.PopulateListItem(Contributor, index);
+                    source.PopulateListItem(Contributor, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "suspectEntity":
-                    source.PopulateListItem(SuspectEntity, index);
+                    source.PopulateListItem(SuspectEntity, index, () => new SuspectEntityComponent());
                     return true;
                 case "subjectMedicalHistory":
-                    source.PopulateListItem(SubjectMedicalHistory, index);
+                    source.PopulateListItem(SubjectMedicalHistory, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "referenceDocument":
-                    source.PopulateListItem(ReferenceDocument, index);
+                    source.PopulateListItem(ReferenceDocument, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "study":
-                    source.PopulateListItem(Study, index);
+                    source.PopulateListItem(Study, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

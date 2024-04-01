@@ -227,7 +227,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element DoseNumber
             {
                 get { return _DoseNumber; }
-                set { _DoseNumber = value; OnPropertyChanged("DoseNumber"); }
+                set { _DoseNumber = CheckType(value, typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("DoseNumber"); }
             }
             
             private Hl7.Fhir.Model.Element _DoseNumber;
@@ -242,7 +242,7 @@ namespace Hl7.Fhir.Model.R4
             public Hl7.Fhir.Model.Element SeriesDoses
             {
                 get { return _SeriesDoses; }
-                set { _SeriesDoses = value; OnPropertyChanged("SeriesDoses"); }
+                set { _SeriesDoses = CheckType(value, typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.FhirString)); OnPropertyChanged("SeriesDoses"); }
             }
             
             private Hl7.Fhir.Model.Element _SeriesDoses;
@@ -335,50 +335,50 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "vaccineCode":
-                        VaccineCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        VaccineCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "targetDisease":
-                        TargetDisease = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        TargetDisease = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "contraindicatedVaccineCode":
-                        ContraindicatedVaccineCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        ContraindicatedVaccineCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "forecastStatus":
-                        ForecastStatus = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        ForecastStatus = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "forecastReason":
-                        ForecastReason = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        ForecastReason = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dateCriterion":
-                        DateCriterion = source.GetList<DateCriterionComponent>();
+                        DateCriterion = source.GetList(() => new DateCriterionComponent());
                         return true;
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "series":
-                        SeriesElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SeriesElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "doseNumberPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
-                        DoseNumber = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                        DoseNumber = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "doseNumberString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
-                        DoseNumber = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DoseNumber = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "seriesDosesPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
-                        SeriesDoses = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                        SeriesDoses = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "seriesDosesString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
-                        SeriesDoses = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SeriesDoses = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "supportingImmunization":
-                        SupportingImmunization = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        SupportingImmunization = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "supportingPatientInformation":
-                        SupportingPatientInformation = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                        SupportingPatientInformation = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -396,13 +396,13 @@ namespace Hl7.Fhir.Model.R4
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "targetDisease":
-                        TargetDisease = source.Populate(TargetDisease);
+                        TargetDisease = source.Populate(TargetDisease, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "contraindicatedVaccineCode":
                         source.SetList(this, jsonPropertyName);
                         return true;
                     case "forecastStatus":
-                        ForecastStatus = source.Populate(ForecastStatus);
+                        ForecastStatus = source.Populate(ForecastStatus, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "forecastReason":
                         source.SetList(this, jsonPropertyName);
@@ -414,13 +414,13 @@ namespace Hl7.Fhir.Model.R4
                         DescriptionElement = source.PopulateValue(DescriptionElement);
                         return true;
                     case "_description":
-                        DescriptionElement = source.Populate(DescriptionElement);
+                        DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "series":
                         SeriesElement = source.PopulateValue(SeriesElement);
                         return true;
                     case "_series":
-                        SeriesElement = source.Populate(SeriesElement);
+                        SeriesElement = source.Populate(SeriesElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "doseNumberPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
@@ -428,7 +428,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_doseNumberPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(DoseNumber, "doseNumber");
-                        DoseNumber = source.Populate(DoseNumber as Hl7.Fhir.Model.PositiveInt);
+                        DoseNumber = source.Populate(DoseNumber as Hl7.Fhir.Model.PositiveInt, () => new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "doseNumberString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
@@ -436,7 +436,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_doseNumberString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(DoseNumber, "doseNumber");
-                        DoseNumber = source.Populate(DoseNumber as Hl7.Fhir.Model.FhirString);
+                        DoseNumber = source.Populate(DoseNumber as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "seriesDosesPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
@@ -444,7 +444,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_seriesDosesPositiveInt":
                         source.CheckDuplicates<Hl7.Fhir.Model.PositiveInt>(SeriesDoses, "seriesDoses");
-                        SeriesDoses = source.Populate(SeriesDoses as Hl7.Fhir.Model.PositiveInt);
+                        SeriesDoses = source.Populate(SeriesDoses as Hl7.Fhir.Model.PositiveInt, () => new Hl7.Fhir.Model.PositiveInt());
                         return true;
                     case "seriesDosesString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
@@ -452,7 +452,7 @@ namespace Hl7.Fhir.Model.R4
                         return true;
                     case "_seriesDosesString":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirString>(SeriesDoses, "seriesDoses");
-                        SeriesDoses = source.Populate(SeriesDoses as Hl7.Fhir.Model.FhirString);
+                        SeriesDoses = source.Populate(SeriesDoses as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "supportingImmunization":
                         source.SetList(this, jsonPropertyName);
@@ -473,22 +473,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "vaccineCode":
-                        source.PopulateListItem(VaccineCode, index);
+                        source.PopulateListItem(VaccineCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "contraindicatedVaccineCode":
-                        source.PopulateListItem(ContraindicatedVaccineCode, index);
+                        source.PopulateListItem(ContraindicatedVaccineCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "forecastReason":
-                        source.PopulateListItem(ForecastReason, index);
+                        source.PopulateListItem(ForecastReason, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "dateCriterion":
-                        source.PopulateListItem(DateCriterion, index);
+                        source.PopulateListItem(DateCriterion, index, () => new DateCriterionComponent());
                         return true;
                     case "supportingImmunization":
-                        source.PopulateListItem(SupportingImmunization, index);
+                        source.PopulateListItem(SupportingImmunization, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "supportingPatientInformation":
-                        source.PopulateListItem(SupportingPatientInformation, index);
+                        source.PopulateListItem(SupportingPatientInformation, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -687,10 +687,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "code":
-                        Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "value":
-                        ValueElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                        ValueElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                 }
                 return false;
@@ -705,13 +705,13 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "code":
-                        Code = source.Populate(Code);
+                        Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "value":
                         ValueElement = source.PopulateValue(ValueElement);
                         return true;
                     case "_value":
-                        ValueElement = source.Populate(ValueElement);
+                        ValueElement = source.Populate(ValueElement, () => new Hl7.Fhir.Model.FhirDateTime());
                         return true;
                 }
                 return false;
@@ -989,19 +989,19 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
-                    DateElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    DateElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "authority":
-                    Authority = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Authority = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "recommendation":
-                    Recommendation = source.GetList<RecommendationComponent>();
+                    Recommendation = source.GetList(() => new RecommendationComponent());
                     return true;
             }
             return false;
@@ -1019,16 +1019,16 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "date":
                     DateElement = source.PopulateValue(DateElement);
                     return true;
                 case "_date":
-                    DateElement = source.Populate(DateElement);
+                    DateElement = source.Populate(DateElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "authority":
-                    Authority = source.Populate(Authority);
+                    Authority = source.Populate(Authority, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "recommendation":
                     source.SetList(this, jsonPropertyName);
@@ -1046,10 +1046,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "recommendation":
-                    source.PopulateListItem(Recommendation, index);
+                    source.PopulateListItem(Recommendation, index, () => new RecommendationComponent());
                     return true;
             }
             return false;

@@ -115,10 +115,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "specialty":
-                        Specialty = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        Specialty = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -133,7 +133,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "type":
-                        Type = source.Populate(Type);
+                        Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "specialty":
                         source.SetList(this, jsonPropertyName);
@@ -151,7 +151,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (jsonPropertyName)
                 {
                     case "specialty":
-                        source.PopulateListItem(Specialty, index);
+                        source.PopulateListItem(Specialty, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -386,16 +386,16 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "daysOfWeek":
-                        DaysOfWeekElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>>();
+                        DaysOfWeekElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>());
                         return true;
                     case "allDay":
-                        AllDayElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        AllDayElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "availableStartTime":
-                        AvailableStartTimeElement = source.Get<Hl7.Fhir.Model.Time>();
+                        AvailableStartTimeElement = source.Populate(new Hl7.Fhir.Model.Time());
                         return true;
                     case "availableEndTime":
-                        AvailableEndTimeElement = source.Get<Hl7.Fhir.Model.Time>();
+                        AvailableEndTimeElement = source.Populate(new Hl7.Fhir.Model.Time());
                         return true;
                 }
                 return false;
@@ -417,19 +417,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         AllDayElement = source.PopulateValue(AllDayElement);
                         return true;
                     case "_allDay":
-                        AllDayElement = source.Populate(AllDayElement);
+                        AllDayElement = source.Populate(AllDayElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "availableStartTime":
                         AvailableStartTimeElement = source.PopulateValue(AvailableStartTimeElement);
                         return true;
                     case "_availableStartTime":
-                        AvailableStartTimeElement = source.Populate(AvailableStartTimeElement);
+                        AvailableStartTimeElement = source.Populate(AvailableStartTimeElement, () => new Hl7.Fhir.Model.Time());
                         return true;
                     case "availableEndTime":
                         AvailableEndTimeElement = source.PopulateValue(AvailableEndTimeElement);
                         return true;
                     case "_availableEndTime":
-                        AvailableEndTimeElement = source.Populate(AvailableEndTimeElement);
+                        AvailableEndTimeElement = source.Populate(AvailableEndTimeElement, () => new Hl7.Fhir.Model.Time());
                         return true;
                 }
                 return false;
@@ -447,7 +447,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         source.PopulatePrimitiveListItemValue(DaysOfWeekElement, index);
                         return true;
                     case "_daysOfWeek":
-                        source.PopulatePrimitiveListItem(DaysOfWeekElement, index);
+                        source.PopulatePrimitiveListItem(DaysOfWeekElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DaysOfWeek>());
                         return true;
                 }
                 return false;
@@ -605,10 +605,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "description":
-                        DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "during":
-                        During = source.Get<Hl7.Fhir.Model.Period>();
+                        During = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -626,10 +626,10 @@ namespace Hl7.Fhir.Model.DSTU2
                         DescriptionElement = source.PopulateValue(DescriptionElement);
                         return true;
                     case "_description":
-                        DescriptionElement = source.Populate(DescriptionElement);
+                        DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "during":
-                        During = source.Populate(During);
+                        During = source.Populate(During, () => new Hl7.Fhir.Model.Period());
                         return true;
                 }
                 return false;
@@ -1366,70 +1366,70 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "providedBy":
-                    ProvidedBy = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ProvidedBy = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "serviceCategory":
-                    ServiceCategory = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceCategory = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
-                    ServiceType = source.GetList<ServiceTypeComponent>();
+                    ServiceType = source.GetList(() => new ServiceTypeComponent());
                     return true;
                 case "location":
-                    Location = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Location = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "serviceName":
-                    ServiceNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ServiceNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "extraDetails":
-                    ExtraDetailsElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ExtraDetailsElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "photo":
-                    Photo = source.Get<Hl7.Fhir.Model.Attachment>();
+                    Photo = source.Populate(new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.DSTU2.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "coverageArea":
-                    CoverageArea = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    CoverageArea = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "serviceProvisionCode":
-                    ServiceProvisionCode = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ServiceProvisionCode = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "eligibility":
-                    Eligibility = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Eligibility = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "eligibilityNote":
-                    EligibilityNoteElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    EligibilityNoteElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "programName":
-                    ProgramNameElement = source.GetList<Hl7.Fhir.Model.FhirString>();
+                    ProgramNameElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "characteristic":
-                    Characteristic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Characteristic = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "referralMethod":
-                    ReferralMethod = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ReferralMethod = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "publicKey":
-                    PublicKeyElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PublicKeyElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "appointmentRequired":
-                    AppointmentRequiredElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    AppointmentRequiredElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "availableTime":
-                    AvailableTime = source.GetList<AvailableTimeComponent>();
+                    AvailableTime = source.GetList(() => new AvailableTimeComponent());
                     return true;
                 case "notAvailable":
-                    NotAvailable = source.GetList<NotAvailableComponent>();
+                    NotAvailable = source.GetList(() => new NotAvailableComponent());
                     return true;
                 case "availabilityExceptions":
-                    AvailabilityExceptionsElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    AvailabilityExceptionsElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -1447,37 +1447,37 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "providedBy":
-                    ProvidedBy = source.Populate(ProvidedBy);
+                    ProvidedBy = source.Populate(ProvidedBy, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "serviceCategory":
-                    ServiceCategory = source.Populate(ServiceCategory);
+                    ServiceCategory = source.Populate(ServiceCategory, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "serviceType":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "location":
-                    Location = source.Populate(Location);
+                    Location = source.Populate(Location, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "serviceName":
                     ServiceNameElement = source.PopulateValue(ServiceNameElement);
                     return true;
                 case "_serviceName":
-                    ServiceNameElement = source.Populate(ServiceNameElement);
+                    ServiceNameElement = source.Populate(ServiceNameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "comment":
                     CommentElement = source.PopulateValue(CommentElement);
                     return true;
                 case "_comment":
-                    CommentElement = source.Populate(CommentElement);
+                    CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "extraDetails":
                     ExtraDetailsElement = source.PopulateValue(ExtraDetailsElement);
                     return true;
                 case "_extraDetails":
-                    ExtraDetailsElement = source.Populate(ExtraDetailsElement);
+                    ExtraDetailsElement = source.Populate(ExtraDetailsElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "photo":
-                    Photo = source.Populate(Photo);
+                    Photo = source.Populate(Photo, () => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "telecom":
                     source.SetList(this, jsonPropertyName);
@@ -1489,13 +1489,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "eligibility":
-                    Eligibility = source.Populate(Eligibility);
+                    Eligibility = source.Populate(Eligibility, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "eligibilityNote":
                     EligibilityNoteElement = source.PopulateValue(EligibilityNoteElement);
                     return true;
                 case "_eligibilityNote":
-                    EligibilityNoteElement = source.Populate(EligibilityNoteElement);
+                    EligibilityNoteElement = source.Populate(EligibilityNoteElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "programName":
                 case "_programName":
@@ -1511,13 +1511,13 @@ namespace Hl7.Fhir.Model.DSTU2
                     PublicKeyElement = source.PopulateValue(PublicKeyElement);
                     return true;
                 case "_publicKey":
-                    PublicKeyElement = source.Populate(PublicKeyElement);
+                    PublicKeyElement = source.Populate(PublicKeyElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "appointmentRequired":
                     AppointmentRequiredElement = source.PopulateValue(AppointmentRequiredElement);
                     return true;
                 case "_appointmentRequired":
-                    AppointmentRequiredElement = source.Populate(AppointmentRequiredElement);
+                    AppointmentRequiredElement = source.Populate(AppointmentRequiredElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "availableTime":
                     source.SetList(this, jsonPropertyName);
@@ -1529,7 +1529,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     AvailabilityExceptionsElement = source.PopulateValue(AvailabilityExceptionsElement);
                     return true;
                 case "_availabilityExceptions":
-                    AvailabilityExceptionsElement = source.Populate(AvailabilityExceptionsElement);
+                    AvailabilityExceptionsElement = source.Populate(AvailabilityExceptionsElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -1544,37 +1544,37 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "serviceType":
-                    source.PopulateListItem(ServiceType, index);
+                    source.PopulateListItem(ServiceType, index, () => new ServiceTypeComponent());
                     return true;
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());
                     return true;
                 case "coverageArea":
-                    source.PopulateListItem(CoverageArea, index);
+                    source.PopulateListItem(CoverageArea, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "serviceProvisionCode":
-                    source.PopulateListItem(ServiceProvisionCode, index);
+                    source.PopulateListItem(ServiceProvisionCode, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "programName":
                     source.PopulatePrimitiveListItemValue(ProgramNameElement, index);
                     return true;
                 case "_programName":
-                    source.PopulatePrimitiveListItem(ProgramNameElement, index);
+                    source.PopulatePrimitiveListItem(ProgramNameElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "characteristic":
-                    source.PopulateListItem(Characteristic, index);
+                    source.PopulateListItem(Characteristic, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "referralMethod":
-                    source.PopulateListItem(ReferralMethod, index);
+                    source.PopulateListItem(ReferralMethod, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "availableTime":
-                    source.PopulateListItem(AvailableTime, index);
+                    source.PopulateListItem(AvailableTime, index, () => new AvailableTimeComponent());
                     return true;
                 case "notAvailable":
-                    source.PopulateListItem(NotAvailable, index);
+                    source.PopulateListItem(NotAvailable, index, () => new NotAvailableComponent());
                     return true;
             }
             return false;

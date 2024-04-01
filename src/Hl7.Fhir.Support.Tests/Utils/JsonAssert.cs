@@ -8,9 +8,7 @@
 
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hl7.Fhir.Utility;
-using Newtonsoft.Json.Linq;
-using System;
+using System.Text.Json;
 
 namespace Hl7.Fhir.Tests
 {
@@ -18,73 +16,75 @@ namespace Hl7.Fhir.Tests
     {
         public static void AreSame(string expected, string actual)
         {
-            var exp = SerializationUtil.JObjectFromJsonText(expected);
-            var act = SerializationUtil.JObjectFromJsonText(actual);
+            var exp = JsonDocument.Parse(expected);
+            var act = JsonDocument.Parse(actual);
 
-            AreSame(exp, act);
+            AreSame(exp.RootElement, act.RootElement);
         }
 
-        public static void AreSame(JToken expected, JToken actual)
+        public static void AreSame(JsonElement expected, JsonElement actual)
         {
-            if (expected.Type != actual.Type)
-                throw new AssertFailedException($"Token types are not the same at {actual.Path} (actual: {actual.Type}, expected: {expected.Type})");
+            if (expected.ValueKind != actual.ValueKind)
+                throw new AssertFailedException($"Token types are not the same (actual: {actual.ValueKind}, expected: {expected.ValueKind})");
 
-            switch (expected)
+            switch (expected.ValueKind)
             {
-                case JValue exV:
+                case JsonValueKind.Object:
+                    areSameObject(expected, actual);
+                    break;
+                case JsonValueKind.Array:
+                    areSameArray(expected, actual);
+                    break;
+                case JsonValueKind.String:
+                    compareStringValues(expected.GetString(), actual.GetString());
+                    break;
+                case JsonValueKind.Number:
+                    if (expected.GetDecimal() != actual.GetDecimal())
                     {
-                        JValue acV = (JValue)actual;
-                        compareValues(exV.Value, acV.Value, expected.Path);
-                        return;
+                        throw new AssertFailedException($"Values are not equal, expected '{expected.GetDecimal()}', actual '{actual.GetDecimal()}'");
                     }
-                case JProperty exP:
-                    {
-                        JProperty acP = (JProperty)actual;
-                        if (exP.Name != acP.Name)
-                            throw new AssertFailedException($"Expected element '{exP.Name}', actual '{acP.Name}' at '{exP.Path}'");
-                        AreSame(exP.Value, acP.Value);
-                        return;
-                    }             
-                case JContainer exC:
-                    {
-                        JContainer acC = (JContainer)actual;
-                        areSame(exC, acC);
-                        return;
-                    }
+                    break;
             }
         }
 
-        private static void areSame(JContainer expected, JContainer actual)
+        private static void areSameObject(JsonElement expected, JsonElement actual)
         {
-            bool isRelevant(JToken t)
+            bool isRelevant(JsonProperty t)
             {
-                if (t is JProperty p)
+                if (t.Name == "fhir_comments") return false;
+                if(t.Name.StartsWith("_") && t.Value.ValueKind == JsonValueKind.Object)
                 {
-                    if (p.Name == "fhir_comments") return false;
-                    if(p.Name.StartsWith("_") && p.Value is JObject jo)
-                    {
-                        if (jo.Count == 1 && jo.ContainsKey("fhir_comments")) return false;
-                    }
-                    return true;
+                    var children = t.Value.EnumerateObject().ToList();
+                    if (children.Count == 1 && children.Any(p => p.Name == "fhir_comments")) return false;
                 }
-                else
-                    return true;
+                return true;
             }
 
-            var expecteds = expected.Children().Where(c => isRelevant(c));
-            var actuals = actual.Children().Where(c => isRelevant(c));
+            var expecteds = expected.EnumerateObject().Where(c => isRelevant(c));
+            var actuals = actual.EnumerateObject().Where(c => isRelevant(c));
 
-            if(expecteds.First().Type == JTokenType.Property)
-            {
-                expecteds = expecteds.OrderBy(p => ((JProperty)p).Name);
-                actuals = actuals.Cast<JProperty>().OrderBy(p => p.Name);
-            }
-
-            var expectedList = expecteds.ToList();
-            var actualList = actuals.ToList();
+            var expectedList = expecteds.OrderBy(t => t.Name).ToList();
+            var actualList = actuals.OrderBy(t => t.Name).ToList();
 
             if (expectedList.Count != actualList.Count)
-                throw new AssertFailedException($"Number of elements are not the same in container {expected.Path ?? actual.Path}: expected <{expectedList.Count}>, actual <{actualList.Count}>");
+                throw new AssertFailedException($"Number of elements are not the same: expected <{expectedList.Count}>, actual <{actualList.Count}>");
+
+            for (int elemNr = 0; elemNr < expectedList.Count; elemNr++)
+            {
+                var ex = expectedList[elemNr];
+                var ac = actualList[elemNr];
+
+                AreSame(ex.Value, ac.Value);
+            }
+        }
+
+        private static void areSameArray(JsonElement expected, JsonElement actual)
+        {
+            var expectedList = expected.EnumerateArray().ToList();
+            var actualList = actual.EnumerateArray().ToList();
+
+            if (expectedList.Count != actualList.Count)
+                throw new AssertFailedException($"Number of elements are not the same: expected <{expectedList.Count}>, actual <{actualList.Count}>");
 
             for (int elemNr = 0; elemNr < expectedList.Count(); elemNr++)
             {
@@ -95,50 +95,32 @@ namespace Hl7.Fhir.Tests
             }
         }
 
-        public static void compareValues(object exp, object act, string path)
+        public static void compareStringValues(string expS, string actS)
         {
-            if (exp == null && act == null) return;
-            else if (exp != null && act != null)
+            if (expS.TrimStart().StartsWith("<div"))
             {
-                if(exp.GetType() != act.GetType())
-                    throw new AssertFailedException($"The types of the values are not the same at '{path}'");
-
-                object expected = exp;
-                object actual = act;
-
-                if (exp is string expS)
-                {
-                    if (expS.TrimStart().StartsWith("<div"))
-                    {
-                        // Don't check the narrative, namespaces are not correctly generated in DSTU2
-                        return;
-                    }
-
-                        var actS = (string)act;
-                    // Hack for timestamps, binaries and narrative html
-                    if (expS.EndsWith("+00:00")) expS = expS.Replace("+00:00", "Z");
-                    if (actS.EndsWith("+00:00")) actS = actS.Replace("+00:00", "Z");
-                    if (expS.Contains(".000+")) expS = expS.Replace(".000+", "+");
-                    if (actS.Contains(".000+")) actS = actS.Replace(".000+", "+");
-                    if (expS.Contains(".000Z")) expS = expS.Replace(".000Z", "Z");
-                    if (actS.Contains(".000Z")) actS = actS.Replace(".000Z", "Z");
-                    actS = actS.Replace("\n", "");
-                    actS = actS.Replace("\r", "");
-                    expS = expS.Replace("\n", "");
-                    expS = expS.Replace("\r", "");
-
-                    expected = expS.Trim();
-                    actual = actS.Trim();
-                }
-
-                if (!Object.Equals(expected,actual))
-                {
-                    throw new AssertFailedException($"Values are not equal at '{path}', expected '{expected}', actual '{actual}'");
-                }
+                // Don't check the narrative, namespaces are not correctly generated in DSTU2
+                return;
             }
-            else
+
+            // Hack for timestamps, binaries and narrative html
+            if (expS.EndsWith("+00:00")) expS = expS.Replace("+00:00", "Z");
+            if (actS.EndsWith("+00:00")) actS = actS.Replace("+00:00", "Z");
+            if (expS.Contains(".000+")) expS = expS.Replace(".000+", "+");
+            if (actS.Contains(".000+")) actS = actS.Replace(".000+", "+");
+            if (expS.Contains(".000Z")) expS = expS.Replace(".000Z", "Z");
+            if (actS.Contains(".000Z")) actS = actS.Replace(".000Z", "Z");
+            actS = actS.Replace("\n", "");
+            actS = actS.Replace("\r", "");
+            expS = expS.Replace("\n", "");
+            expS = expS.Replace("\r", "");
+
+            expS = expS.Trim();
+            actS = actS.Trim();
+
+            if (expS != actS)
             {
-                throw new AssertFailedException($"One of the values (but not both) are null at '{path}'");
+                throw new AssertFailedException($"Values are not equal, expected '{expS}', actual '{actS}'");
             }
         }
     }

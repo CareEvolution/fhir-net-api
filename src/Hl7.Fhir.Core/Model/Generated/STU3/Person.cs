@@ -128,10 +128,10 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "target":
-                        Target = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Target = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "assurance":
-                        AssuranceElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.IdentityAssuranceLevel>>();
+                        AssuranceElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.IdentityAssuranceLevel>());
                         return true;
                 }
                 return false;
@@ -146,13 +146,13 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "target":
-                        Target = source.Populate(Target);
+                        Target = source.Populate(Target, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "assurance":
                         AssuranceElement = source.PopulateValue(AssuranceElement);
                         return true;
                     case "_assurance":
-                        AssuranceElement = source.Populate(AssuranceElement);
+                        AssuranceElement = source.Populate(AssuranceElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.IdentityAssuranceLevel>());
                         return true;
                 }
                 return false;
@@ -557,34 +557,34 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "name":
-                    Name = source.GetList<Hl7.Fhir.Model.STU3.HumanName>();
+                    Name = source.GetList(() => new Hl7.Fhir.Model.STU3.HumanName());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.STU3.ContactPoint());
                     return true;
                 case "gender":
-                    GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
+                    GenderElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                     return true;
                 case "birthDate":
-                    BirthDateElement = source.Get<Hl7.Fhir.Model.Date>();
+                    BirthDateElement = source.Populate(new Hl7.Fhir.Model.Date());
                     return true;
                 case "address":
-                    Address = source.GetList<Hl7.Fhir.Model.Address>();
+                    Address = source.GetList(() => new Hl7.Fhir.Model.Address());
                     return true;
                 case "photo":
-                    Photo = source.Get<Hl7.Fhir.Model.Attachment>();
+                    Photo = source.Populate(new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "managingOrganization":
-                    ManagingOrganization = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ManagingOrganization = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "active":
-                    ActiveElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    ActiveElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "link":
-                    Link = source.GetList<LinkComponent>();
+                    Link = source.GetList(() => new LinkComponent());
                     return true;
             }
             return false;
@@ -611,28 +611,28 @@ namespace Hl7.Fhir.Model.STU3
                     GenderElement = source.PopulateValue(GenderElement);
                     return true;
                 case "_gender":
-                    GenderElement = source.Populate(GenderElement);
+                    GenderElement = source.Populate(GenderElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                     return true;
                 case "birthDate":
                     BirthDateElement = source.PopulateValue(BirthDateElement);
                     return true;
                 case "_birthDate":
-                    BirthDateElement = source.Populate(BirthDateElement);
+                    BirthDateElement = source.Populate(BirthDateElement, () => new Hl7.Fhir.Model.Date());
                     return true;
                 case "address":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "photo":
-                    Photo = source.Populate(Photo);
+                    Photo = source.Populate(Photo, () => new Hl7.Fhir.Model.Attachment());
                     return true;
                 case "managingOrganization":
-                    ManagingOrganization = source.Populate(ManagingOrganization);
+                    ManagingOrganization = source.Populate(ManagingOrganization, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "active":
                     ActiveElement = source.PopulateValue(ActiveElement);
                     return true;
                 case "_active":
-                    ActiveElement = source.Populate(ActiveElement);
+                    ActiveElement = source.Populate(ActiveElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "link":
                     source.SetList(this, jsonPropertyName);
@@ -650,19 +650,19 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "name":
-                    source.PopulateListItem(Name, index);
+                    source.PopulateListItem(Name, index, () => new Hl7.Fhir.Model.STU3.HumanName());
                     return true;
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.STU3.ContactPoint());
                     return true;
                 case "address":
-                    source.PopulateListItem(Address, index);
+                    source.PopulateListItem(Address, index, () => new Hl7.Fhir.Model.Address());
                     return true;
                 case "link":
-                    source.PopulateListItem(Link, index);
+                    source.PopulateListItem(Link, index, () => new LinkComponent());
                     return true;
             }
             return false;

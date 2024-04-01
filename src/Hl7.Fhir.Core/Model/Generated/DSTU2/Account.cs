@@ -370,37 +370,37 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
                 case "activePeriod":
-                    ActivePeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    ActivePeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "currency":
-                    Currency = source.Get<Hl7.Fhir.Model.Coding>();
+                    Currency = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
                 case "balance":
-                    Balance = source.Get<Hl7.Fhir.Model.DSTU2.Money>();
+                    Balance = source.Populate(new Hl7.Fhir.Model.DSTU2.Money());
                     return true;
                 case "coveragePeriod":
-                    CoveragePeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    CoveragePeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "owner":
-                    Owner = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Owner = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
-                    DescriptionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DescriptionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -421,40 +421,40 @@ namespace Hl7.Fhir.Model.DSTU2
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code());
                     return true;
                 case "activePeriod":
-                    ActivePeriod = source.Populate(ActivePeriod);
+                    ActivePeriod = source.Populate(ActivePeriod, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "currency":
-                    Currency = source.Populate(Currency);
+                    Currency = source.Populate(Currency, () => new Hl7.Fhir.Model.Coding());
                     return true;
                 case "balance":
-                    Balance = source.Populate(Balance);
+                    Balance = source.Populate(Balance, () => new Hl7.Fhir.Model.DSTU2.Money());
                     return true;
                 case "coveragePeriod":
-                    CoveragePeriod = source.Populate(CoveragePeriod);
+                    CoveragePeriod = source.Populate(CoveragePeriod, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "owner":
-                    Owner = source.Populate(Owner);
+                    Owner = source.Populate(Owner, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "description":
                     DescriptionElement = source.PopulateValue(DescriptionElement);
                     return true;
                 case "_description":
-                    DescriptionElement = source.Populate(DescriptionElement);
+                    DescriptionElement = source.Populate(DescriptionElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -469,7 +469,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
             }
             return false;

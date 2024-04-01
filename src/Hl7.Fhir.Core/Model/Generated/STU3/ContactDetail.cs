@@ -172,10 +172,10 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "name":
-                    NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "telecom":
-                    Telecom = source.GetList<Hl7.Fhir.Model.STU3.ContactPoint>();
+                    Telecom = source.GetList(() => new Hl7.Fhir.Model.STU3.ContactPoint());
                     return true;
             }
             return false;
@@ -193,7 +193,7 @@ namespace Hl7.Fhir.Model.STU3
                     NameElement = source.PopulateValue(NameElement);
                     return true;
                 case "_name":
-                    NameElement = source.Populate(NameElement);
+                    NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "telecom":
                     source.SetList(this, jsonPropertyName);
@@ -211,7 +211,7 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "telecom":
-                    source.PopulateListItem(Telecom, index);
+                    source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.STU3.ContactPoint());
                     return true;
             }
             return false;

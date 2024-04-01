@@ -296,7 +296,7 @@ namespace Hl7.Fhir.Model
     
         internal override void Serialize(Serialization.SerializerSink sink)
         {
-            sink.BeginDataType("Quantity");
+            sink.BeginDataType(GetSerializeType());
             base.Serialize(sink);
             sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ValueElement?.Serialize(sink);
             sink.Element("comparator", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ComparatorElement?.Serialize(sink);
@@ -304,6 +304,11 @@ namespace Hl7.Fhir.Model
             sink.Element("system", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SystemElement?.Serialize(sink);
             sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CodeElement?.Serialize(sink);
             sink.End();
+        }
+        
+        internal virtual string GetSerializeType()
+        {
+            return "Quantity";
         }
     
         internal override bool SetElementFromSource(string elementName, Serialization.ParserSource source)
@@ -315,19 +320,19 @@ namespace Hl7.Fhir.Model
             switch (elementName)
             {
                 case "value":
-                    ValueElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    ValueElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "comparator":
-                    ComparatorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuantityComparator>>();
+                    ComparatorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuantityComparator>());
                     return true;
                 case "unit":
-                    UnitElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    UnitElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "system":
-                    SystemElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                    SystemElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "code":
-                    CodeElement = source.Get<Hl7.Fhir.Model.Code>();
+                    CodeElement = source.Populate(new Hl7.Fhir.Model.Code());
                     return true;
             }
             return false;
@@ -345,31 +350,31 @@ namespace Hl7.Fhir.Model
                     ValueElement = source.PopulateValue(ValueElement);
                     return true;
                 case "_value":
-                    ValueElement = source.Populate(ValueElement);
+                    ValueElement = source.Populate(ValueElement, () => new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "comparator":
                     ComparatorElement = source.PopulateValue(ComparatorElement);
                     return true;
                 case "_comparator":
-                    ComparatorElement = source.Populate(ComparatorElement);
+                    ComparatorElement = source.Populate(ComparatorElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.QuantityComparator>());
                     return true;
                 case "unit":
                     UnitElement = source.PopulateValue(UnitElement);
                     return true;
                 case "_unit":
-                    UnitElement = source.Populate(UnitElement);
+                    UnitElement = source.Populate(UnitElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "system":
                     SystemElement = source.PopulateValue(SystemElement);
                     return true;
                 case "_system":
-                    SystemElement = source.Populate(SystemElement);
+                    SystemElement = source.Populate(SystemElement, () => new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "code":
                     CodeElement = source.PopulateValue(CodeElement);
                     return true;
                 case "_code":
-                    CodeElement = source.Populate(CodeElement);
+                    CodeElement = source.Populate(CodeElement, () => new Hl7.Fhir.Model.Code());
                     return true;
             }
             return false;

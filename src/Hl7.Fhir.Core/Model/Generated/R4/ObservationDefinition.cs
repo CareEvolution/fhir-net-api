@@ -172,16 +172,16 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "customaryUnit":
-                        CustomaryUnit = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        CustomaryUnit = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "unit":
-                        Unit = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Unit = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "conversionFactor":
-                        ConversionFactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        ConversionFactorElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "decimalPrecision":
-                        DecimalPrecisionElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        DecimalPrecisionElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -196,22 +196,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "customaryUnit":
-                        CustomaryUnit = source.Populate(CustomaryUnit);
+                        CustomaryUnit = source.Populate(CustomaryUnit, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "unit":
-                        Unit = source.Populate(Unit);
+                        Unit = source.Populate(Unit, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "conversionFactor":
                         ConversionFactorElement = source.PopulateValue(ConversionFactorElement);
                         return true;
                     case "_conversionFactor":
-                        ConversionFactorElement = source.Populate(ConversionFactorElement);
+                        ConversionFactorElement = source.Populate(ConversionFactorElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "decimalPrecision":
                         DecimalPrecisionElement = source.PopulateValue(DecimalPrecisionElement);
                         return true;
                     case "_decimalPrecision":
-                        DecimalPrecisionElement = source.Populate(DecimalPrecisionElement);
+                        DecimalPrecisionElement = source.Populate(DecimalPrecisionElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -496,28 +496,28 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "category":
-                        CategoryElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationRangeCategory>>();
+                        CategoryElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationRangeCategory>());
                         return true;
                     case "range":
-                        Range = source.Get<Hl7.Fhir.Model.Range>();
+                        Range = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "context":
-                        Context = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Context = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "appliesTo":
-                        AppliesTo = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                        AppliesTo = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "gender":
-                        GenderElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>>();
+                        GenderElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                         return true;
                     case "age":
-                        Age = source.Get<Hl7.Fhir.Model.Range>();
+                        Age = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "gestationalAge":
-                        GestationalAge = source.Get<Hl7.Fhir.Model.Range>();
+                        GestationalAge = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "condition":
-                        ConditionElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ConditionElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -535,13 +535,13 @@ namespace Hl7.Fhir.Model.R4
                         CategoryElement = source.PopulateValue(CategoryElement);
                         return true;
                     case "_category":
-                        CategoryElement = source.Populate(CategoryElement);
+                        CategoryElement = source.Populate(CategoryElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationRangeCategory>());
                         return true;
                     case "range":
-                        Range = source.Populate(Range);
+                        Range = source.Populate(Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "context":
-                        Context = source.Populate(Context);
+                        Context = source.Populate(Context, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "appliesTo":
                         source.SetList(this, jsonPropertyName);
@@ -550,19 +550,19 @@ namespace Hl7.Fhir.Model.R4
                         GenderElement = source.PopulateValue(GenderElement);
                         return true;
                     case "_gender":
-                        GenderElement = source.Populate(GenderElement);
+                        GenderElement = source.Populate(GenderElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.AdministrativeGender>());
                         return true;
                     case "age":
-                        Age = source.Populate(Age);
+                        Age = source.Populate(Age, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "gestationalAge":
-                        GestationalAge = source.Populate(GestationalAge);
+                        GestationalAge = source.Populate(GestationalAge, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "condition":
                         ConditionElement = source.PopulateValue(ConditionElement);
                         return true;
                     case "_condition":
-                        ConditionElement = source.Populate(ConditionElement);
+                        ConditionElement = source.Populate(ConditionElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -577,7 +577,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "appliesTo":
-                        source.PopulateListItem(AppliesTo, index);
+                        source.PopulateListItem(AppliesTo, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                 }
                 return false;
@@ -1050,43 +1050,43 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "category":
-                    Category = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Category = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "permittedDataType":
-                    PermittedDataTypeElement = source.GetList<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationDataType>>();
+                    PermittedDataTypeElement = source.GetList(() => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationDataType>());
                     return true;
                 case "multipleResultsAllowed":
-                    MultipleResultsAllowedElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    MultipleResultsAllowedElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "method":
-                    Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "preferredReportName":
-                    PreferredReportNameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    PreferredReportNameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "quantitativeDetails":
-                    QuantitativeDetails = source.Get<QuantitativeDetailsComponent>();
+                    QuantitativeDetails = source.Populate(new QuantitativeDetailsComponent());
                     return true;
                 case "qualifiedInterval":
-                    QualifiedInterval = source.GetList<QualifiedIntervalComponent>();
+                    QualifiedInterval = source.GetList(() => new QualifiedIntervalComponent());
                     return true;
                 case "validCodedValueSet":
-                    ValidCodedValueSet = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ValidCodedValueSet = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "normalCodedValueSet":
-                    NormalCodedValueSet = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    NormalCodedValueSet = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "abnormalCodedValueSet":
-                    AbnormalCodedValueSet = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    AbnormalCodedValueSet = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "criticalCodedValueSet":
-                    CriticalCodedValueSet = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    CriticalCodedValueSet = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -1104,7 +1104,7 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
                     source.SetList(this, jsonPropertyName);
@@ -1117,34 +1117,34 @@ namespace Hl7.Fhir.Model.R4
                     MultipleResultsAllowedElement = source.PopulateValue(MultipleResultsAllowedElement);
                     return true;
                 case "_multipleResultsAllowed":
-                    MultipleResultsAllowedElement = source.Populate(MultipleResultsAllowedElement);
+                    MultipleResultsAllowedElement = source.Populate(MultipleResultsAllowedElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "method":
-                    Method = source.Populate(Method);
+                    Method = source.Populate(Method, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "preferredReportName":
                     PreferredReportNameElement = source.PopulateValue(PreferredReportNameElement);
                     return true;
                 case "_preferredReportName":
-                    PreferredReportNameElement = source.Populate(PreferredReportNameElement);
+                    PreferredReportNameElement = source.Populate(PreferredReportNameElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "quantitativeDetails":
-                    QuantitativeDetails = source.Populate(QuantitativeDetails);
+                    QuantitativeDetails = source.Populate(QuantitativeDetails, () => new QuantitativeDetailsComponent());
                     return true;
                 case "qualifiedInterval":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "validCodedValueSet":
-                    ValidCodedValueSet = source.Populate(ValidCodedValueSet);
+                    ValidCodedValueSet = source.Populate(ValidCodedValueSet, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "normalCodedValueSet":
-                    NormalCodedValueSet = source.Populate(NormalCodedValueSet);
+                    NormalCodedValueSet = source.Populate(NormalCodedValueSet, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "abnormalCodedValueSet":
-                    AbnormalCodedValueSet = source.Populate(AbnormalCodedValueSet);
+                    AbnormalCodedValueSet = source.Populate(AbnormalCodedValueSet, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "criticalCodedValueSet":
-                    CriticalCodedValueSet = source.Populate(CriticalCodedValueSet);
+                    CriticalCodedValueSet = source.Populate(CriticalCodedValueSet, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -1159,19 +1159,19 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "category":
-                    source.PopulateListItem(Category, index);
+                    source.PopulateListItem(Category, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "permittedDataType":
                     source.PopulatePrimitiveListItemValue(PermittedDataTypeElement, index);
                     return true;
                 case "_permittedDataType":
-                    source.PopulatePrimitiveListItem(PermittedDataTypeElement, index);
+                    source.PopulatePrimitiveListItem(PermittedDataTypeElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.ObservationDataType>());
                     return true;
                 case "qualifiedInterval":
-                    source.PopulateListItem(QualifiedInterval, index);
+                    source.PopulateListItem(QualifiedInterval, index, () => new QualifiedIntervalComponent());
                     return true;
             }
             return false;

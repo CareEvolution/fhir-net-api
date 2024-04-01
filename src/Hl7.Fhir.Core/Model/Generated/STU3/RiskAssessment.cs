@@ -86,7 +86,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element Probability
             {
                 get { return _Probability; }
-                set { _Probability = value; OnPropertyChanged("Probability"); }
+                set { _Probability = CheckType(value, typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Probability"); }
             }
             
             private Hl7.Fhir.Model.Element _Probability;
@@ -146,7 +146,7 @@ namespace Hl7.Fhir.Model.STU3
             public Hl7.Fhir.Model.Element When
             {
                 get { return _When; }
-                set { _When = value; OnPropertyChanged("When"); }
+                set { _When = CheckType(value, typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("When"); }
             }
             
             private Hl7.Fhir.Model.Element _When;
@@ -205,32 +205,32 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "outcome":
-                        Outcome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Outcome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "probabilityDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Probability, "probability");
-                        Probability = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        Probability = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "probabilityRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Probability, "probability");
-                        Probability = source.Get<Hl7.Fhir.Model.Range>();
+                        Probability = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "qualitativeRisk":
-                        QualitativeRisk = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        QualitativeRisk = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "relativeRisk":
-                        RelativeRiskElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        RelativeRiskElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "whenPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(When, "when");
-                        When = source.Get<Hl7.Fhir.Model.Period>();
+                        When = source.Populate(new Hl7.Fhir.Model.Period());
                         return true;
                     case "whenRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(When, "when");
-                        When = source.Get<Hl7.Fhir.Model.Range>();
+                        When = source.Populate(new Hl7.Fhir.Model.Range());
                         return true;
                     case "rationale":
-                        RationaleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        RationaleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -245,7 +245,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "outcome":
-                        Outcome = source.Populate(Outcome);
+                        Outcome = source.Populate(Outcome, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "probabilityDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Probability, "probability");
@@ -253,34 +253,34 @@ namespace Hl7.Fhir.Model.STU3
                         return true;
                     case "_probabilityDecimal":
                         source.CheckDuplicates<Hl7.Fhir.Model.FhirDecimal>(Probability, "probability");
-                        Probability = source.Populate(Probability as Hl7.Fhir.Model.FhirDecimal);
+                        Probability = source.Populate(Probability as Hl7.Fhir.Model.FhirDecimal, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "probabilityRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(Probability, "probability");
-                        Probability = source.Populate(Probability as Hl7.Fhir.Model.Range);
+                        Probability = source.Populate(Probability as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "qualitativeRisk":
-                        QualitativeRisk = source.Populate(QualitativeRisk);
+                        QualitativeRisk = source.Populate(QualitativeRisk, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "relativeRisk":
                         RelativeRiskElement = source.PopulateValue(RelativeRiskElement);
                         return true;
                     case "_relativeRisk":
-                        RelativeRiskElement = source.Populate(RelativeRiskElement);
+                        RelativeRiskElement = source.Populate(RelativeRiskElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "whenPeriod":
                         source.CheckDuplicates<Hl7.Fhir.Model.Period>(When, "when");
-                        When = source.Populate(When as Hl7.Fhir.Model.Period);
+                        When = source.Populate(When as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                         return true;
                     case "whenRange":
                         source.CheckDuplicates<Hl7.Fhir.Model.Range>(When, "when");
-                        When = source.Populate(When as Hl7.Fhir.Model.Range);
+                        When = source.Populate(When as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
                         return true;
                     case "rationale":
                         RationaleElement = source.PopulateValue(RationaleElement);
                         return true;
                     case "_rationale":
-                        RationaleElement = source.Populate(RationaleElement);
+                        RationaleElement = source.Populate(RationaleElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -521,7 +521,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Occurrence
         {
             get { return _Occurrence; }
-            set { _Occurrence = value; OnPropertyChanged("Occurrence"); }
+            set { _Occurrence = CheckType(value, typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Period)); OnPropertyChanged("Occurrence"); }
         }
         
         private Hl7.Fhir.Model.Element _Occurrence;
@@ -566,7 +566,7 @@ namespace Hl7.Fhir.Model.STU3
         public Hl7.Fhir.Model.Element Reason
         {
             get { return _Reason; }
-            set { _Reason = value; OnPropertyChanged("Reason"); }
+            set { _Reason = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Reason"); }
         }
         
         private Hl7.Fhir.Model.Element _Reason;
@@ -818,62 +818,62 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    BasedOn = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    BasedOn = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Parent = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ObservationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ObservationStatus>());
                     return true;
                 case "method":
-                    Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Code = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subject = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Context = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
-                    Occurrence = source.Get<Hl7.Fhir.Model.Period>();
+                    Occurrence = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "condition":
-                    Condition = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Condition = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Performer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Reason, "reason");
-                    Reason = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Reason = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reason, "reason");
-                    Reason = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Reason = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "basis":
-                    Basis = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Basis = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "prediction":
-                    Prediction = source.GetList<PredictionComponent>();
+                    Prediction = source.GetList(() => new PredictionComponent());
                     return true;
                 case "mitigation":
-                    MitigationElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    MitigationElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -888,31 +888,31 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "basedOn":
-                    BasedOn = source.Populate(BasedOn);
+                    BasedOn = source.Populate(BasedOn, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.Populate(Parent);
+                    Parent = source.Populate(Parent, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "status":
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.ObservationStatus>());
                     return true;
                 case "method":
-                    Method = source.Populate(Method);
+                    Method = source.Populate(Method, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "code":
-                    Code = source.Populate(Code);
+                    Code = source.Populate(Code, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "subject":
-                    Subject = source.Populate(Subject);
+                    Subject = source.Populate(Subject, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "context":
-                    Context = source.Populate(Context);
+                    Context = source.Populate(Context, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
@@ -920,25 +920,25 @@ namespace Hl7.Fhir.Model.STU3
                     return true;
                 case "_occurrenceDateTime":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirDateTime>(Occurrence, "occurrence");
-                    Occurrence = source.Populate(Occurrence as Hl7.Fhir.Model.FhirDateTime);
+                    Occurrence = source.Populate(Occurrence as Hl7.Fhir.Model.FhirDateTime, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "occurrencePeriod":
                     source.CheckDuplicates<Hl7.Fhir.Model.Period>(Occurrence, "occurrence");
-                    Occurrence = source.Populate(Occurrence as Hl7.Fhir.Model.Period);
+                    Occurrence = source.Populate(Occurrence as Hl7.Fhir.Model.Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "condition":
-                    Condition = source.Populate(Condition);
+                    Condition = source.Populate(Condition, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    Performer = source.Populate(Performer);
+                    Performer = source.Populate(Performer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "reasonCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Reason, "reason");
-                    Reason = source.Populate(Reason as Hl7.Fhir.Model.CodeableConcept);
+                    Reason = source.Populate(Reason as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "reasonReference":
                     source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Reason, "reason");
-                    Reason = source.Populate(Reason as Hl7.Fhir.Model.ResourceReference);
+                    Reason = source.Populate(Reason as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "basis":
                     source.SetList(this, jsonPropertyName);
@@ -950,13 +950,13 @@ namespace Hl7.Fhir.Model.STU3
                     MitigationElement = source.PopulateValue(MitigationElement);
                     return true;
                 case "_mitigation":
-                    MitigationElement = source.Populate(MitigationElement);
+                    MitigationElement = source.Populate(MitigationElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "comment":
                     CommentElement = source.PopulateValue(CommentElement);
                     return true;
                 case "_comment":
-                    CommentElement = source.Populate(CommentElement);
+                    CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -971,10 +971,10 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "basis":
-                    source.PopulateListItem(Basis, index);
+                    source.PopulateListItem(Basis, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "prediction":
-                    source.PopulateListItem(Prediction, index);
+                    source.PopulateListItem(Prediction, index, () => new PredictionComponent());
                     return true;
             }
             return false;

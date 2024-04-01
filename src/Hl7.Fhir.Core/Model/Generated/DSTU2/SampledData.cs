@@ -352,25 +352,25 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "origin":
-                    Origin = source.Get<Hl7.Fhir.Model.SimpleQuantity>();
+                    Origin = source.Populate(new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
                 case "period":
-                    PeriodElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    PeriodElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "factor":
-                    FactorElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    FactorElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "lowerLimit":
-                    LowerLimitElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    LowerLimitElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "upperLimit":
-                    UpperLimitElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                    UpperLimitElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "dimensions":
-                    DimensionsElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    DimensionsElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "data":
-                    DataElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DataElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -385,43 +385,43 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "origin":
-                    Origin = source.Populate(Origin);
+                    Origin = source.Populate(Origin, () => new Hl7.Fhir.Model.SimpleQuantity());
                     return true;
                 case "period":
                     PeriodElement = source.PopulateValue(PeriodElement);
                     return true;
                 case "_period":
-                    PeriodElement = source.Populate(PeriodElement);
+                    PeriodElement = source.Populate(PeriodElement, () => new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "factor":
                     FactorElement = source.PopulateValue(FactorElement);
                     return true;
                 case "_factor":
-                    FactorElement = source.Populate(FactorElement);
+                    FactorElement = source.Populate(FactorElement, () => new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "lowerLimit":
                     LowerLimitElement = source.PopulateValue(LowerLimitElement);
                     return true;
                 case "_lowerLimit":
-                    LowerLimitElement = source.Populate(LowerLimitElement);
+                    LowerLimitElement = source.Populate(LowerLimitElement, () => new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "upperLimit":
                     UpperLimitElement = source.PopulateValue(UpperLimitElement);
                     return true;
                 case "_upperLimit":
-                    UpperLimitElement = source.Populate(UpperLimitElement);
+                    UpperLimitElement = source.Populate(UpperLimitElement, () => new Hl7.Fhir.Model.FhirDecimal());
                     return true;
                 case "dimensions":
                     DimensionsElement = source.PopulateValue(DimensionsElement);
                     return true;
                 case "_dimensions":
-                    DimensionsElement = source.Populate(DimensionsElement);
+                    DimensionsElement = source.Populate(DimensionsElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "data":
                     DataElement = source.PopulateValue(DataElement);
                     return true;
                 case "_data":
-                    DataElement = source.Populate(DataElement);
+                    DataElement = source.Populate(DataElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;

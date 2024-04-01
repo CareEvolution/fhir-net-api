@@ -361,28 +361,28 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "appointment":
-                    Appointment = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Appointment = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "start":
-                    StartElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    StartElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "end":
-                    EndElement = source.Get<Hl7.Fhir.Model.Instant>();
+                    EndElement = source.Populate(new Hl7.Fhir.Model.Instant());
                     return true;
                 case "participantType":
-                    ParticipantType = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    ParticipantType = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "actor":
-                    Actor = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Actor = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "participantStatus":
-                    ParticipantStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>>();
+                    ParticipantStatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>());
                     return true;
                 case "comment":
-                    CommentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    CommentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -400,37 +400,37 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "appointment":
-                    Appointment = source.Populate(Appointment);
+                    Appointment = source.Populate(Appointment, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "start":
                     StartElement = source.PopulateValue(StartElement);
                     return true;
                 case "_start":
-                    StartElement = source.Populate(StartElement);
+                    StartElement = source.Populate(StartElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "end":
                     EndElement = source.PopulateValue(EndElement);
                     return true;
                 case "_end":
-                    EndElement = source.Populate(EndElement);
+                    EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.Instant());
                     return true;
                 case "participantType":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "actor":
-                    Actor = source.Populate(Actor);
+                    Actor = source.Populate(Actor, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "participantStatus":
                     ParticipantStatusElement = source.PopulateValue(ParticipantStatusElement);
                     return true;
                 case "_participantStatus":
-                    ParticipantStatusElement = source.Populate(ParticipantStatusElement);
+                    ParticipantStatusElement = source.Populate(ParticipantStatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.ParticipationStatus>());
                     return true;
                 case "comment":
                     CommentElement = source.PopulateValue(CommentElement);
                     return true;
                 case "_comment":
-                    CommentElement = source.Populate(CommentElement);
+                    CommentElement = source.Populate(CommentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
             }
             return false;
@@ -445,10 +445,10 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "participantType":
-                    source.PopulateListItem(ParticipantType, index);
+                    source.PopulateListItem(ParticipantType, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
             }
             return false;

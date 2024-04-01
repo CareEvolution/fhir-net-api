@@ -106,6 +106,11 @@ namespace Hl7.Fhir.Model.R4
             return true;
         }
     
+        internal override string GetSerializeType()
+        {
+            return "Distance";
+        }
+    
     }
 
 }

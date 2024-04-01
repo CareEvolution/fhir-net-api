@@ -486,40 +486,40 @@ namespace Hl7.Fhir.Model.STU3
                 switch (elementName)
                 {
                     case "group":
-                        GroupElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        GroupElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "groupDisplay":
-                        GroupDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        GroupDisplayElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subGroup":
-                        SubGroupElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SubGroupElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subGroupDisplay":
-                        SubGroupDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SubGroupDisplayElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "plan":
-                        PlanElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PlanElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "planDisplay":
-                        PlanDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        PlanDisplayElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subPlan":
-                        SubPlanElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SubPlanElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subPlanDisplay":
-                        SubPlanDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SubPlanDisplayElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "class":
-                        ClassElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ClassElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "classDisplay":
-                        ClassDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ClassDisplayElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subClass":
-                        SubClassElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SubClassElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subClassDisplay":
-                        SubClassDisplayElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        SubClassDisplayElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -537,73 +537,73 @@ namespace Hl7.Fhir.Model.STU3
                         GroupElement = source.PopulateValue(GroupElement);
                         return true;
                     case "_group":
-                        GroupElement = source.Populate(GroupElement);
+                        GroupElement = source.Populate(GroupElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "groupDisplay":
                         GroupDisplayElement = source.PopulateValue(GroupDisplayElement);
                         return true;
                     case "_groupDisplay":
-                        GroupDisplayElement = source.Populate(GroupDisplayElement);
+                        GroupDisplayElement = source.Populate(GroupDisplayElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subGroup":
                         SubGroupElement = source.PopulateValue(SubGroupElement);
                         return true;
                     case "_subGroup":
-                        SubGroupElement = source.Populate(SubGroupElement);
+                        SubGroupElement = source.Populate(SubGroupElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subGroupDisplay":
                         SubGroupDisplayElement = source.PopulateValue(SubGroupDisplayElement);
                         return true;
                     case "_subGroupDisplay":
-                        SubGroupDisplayElement = source.Populate(SubGroupDisplayElement);
+                        SubGroupDisplayElement = source.Populate(SubGroupDisplayElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "plan":
                         PlanElement = source.PopulateValue(PlanElement);
                         return true;
                     case "_plan":
-                        PlanElement = source.Populate(PlanElement);
+                        PlanElement = source.Populate(PlanElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "planDisplay":
                         PlanDisplayElement = source.PopulateValue(PlanDisplayElement);
                         return true;
                     case "_planDisplay":
-                        PlanDisplayElement = source.Populate(PlanDisplayElement);
+                        PlanDisplayElement = source.Populate(PlanDisplayElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subPlan":
                         SubPlanElement = source.PopulateValue(SubPlanElement);
                         return true;
                     case "_subPlan":
-                        SubPlanElement = source.Populate(SubPlanElement);
+                        SubPlanElement = source.Populate(SubPlanElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subPlanDisplay":
                         SubPlanDisplayElement = source.PopulateValue(SubPlanDisplayElement);
                         return true;
                     case "_subPlanDisplay":
-                        SubPlanDisplayElement = source.Populate(SubPlanDisplayElement);
+                        SubPlanDisplayElement = source.Populate(SubPlanDisplayElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "class":
                         ClassElement = source.PopulateValue(ClassElement);
                         return true;
                     case "_class":
-                        ClassElement = source.Populate(ClassElement);
+                        ClassElement = source.Populate(ClassElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "classDisplay":
                         ClassDisplayElement = source.PopulateValue(ClassDisplayElement);
                         return true;
                     case "_classDisplay":
-                        ClassDisplayElement = source.Populate(ClassDisplayElement);
+                        ClassDisplayElement = source.Populate(ClassDisplayElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subClass":
                         SubClassElement = source.PopulateValue(SubClassElement);
                         return true;
                     case "_subClass":
-                        SubClassElement = source.Populate(SubClassElement);
+                        SubClassElement = source.Populate(SubClassElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "subClassDisplay":
                         SubClassDisplayElement = source.PopulateValue(SubClassDisplayElement);
                         return true;
                     case "_subClassDisplay":
-                        SubClassDisplayElement = source.Populate(SubClassDisplayElement);
+                        SubClassDisplayElement = source.Populate(SubClassDisplayElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -1208,52 +1208,52 @@ namespace Hl7.Fhir.Model.STU3
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "policyHolder":
-                    PolicyHolder = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    PolicyHolder = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subscriber":
-                    Subscriber = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Subscriber = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subscriberId":
-                    SubscriberIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    SubscriberIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "beneficiary":
-                    Beneficiary = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Beneficiary = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relationship":
-                    Relationship = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Relationship = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "period":
-                    Period = source.Get<Hl7.Fhir.Model.Period>();
+                    Period = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "payor":
-                    Payor = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Payor = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "grouping":
-                    Grouping = source.Get<GroupComponent>();
+                    Grouping = source.Populate(new GroupComponent());
                     return true;
                 case "dependent":
-                    DependentElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    DependentElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "sequence":
-                    SequenceElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    SequenceElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "order":
-                    OrderElement = source.Get<Hl7.Fhir.Model.PositiveInt>();
+                    OrderElement = source.Populate(new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "network":
-                    NetworkElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    NetworkElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contract":
-                    Contract = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Contract = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -1274,61 +1274,61 @@ namespace Hl7.Fhir.Model.STU3
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.FinancialResourceStatusCodes>());
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "policyHolder":
-                    PolicyHolder = source.Populate(PolicyHolder);
+                    PolicyHolder = source.Populate(PolicyHolder, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subscriber":
-                    Subscriber = source.Populate(Subscriber);
+                    Subscriber = source.Populate(Subscriber, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "subscriberId":
                     SubscriberIdElement = source.PopulateValue(SubscriberIdElement);
                     return true;
                 case "_subscriberId":
-                    SubscriberIdElement = source.Populate(SubscriberIdElement);
+                    SubscriberIdElement = source.Populate(SubscriberIdElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "beneficiary":
-                    Beneficiary = source.Populate(Beneficiary);
+                    Beneficiary = source.Populate(Beneficiary, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "relationship":
-                    Relationship = source.Populate(Relationship);
+                    Relationship = source.Populate(Relationship, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "period":
-                    Period = source.Populate(Period);
+                    Period = source.Populate(Period, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "payor":
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "grouping":
-                    Grouping = source.Populate(Grouping);
+                    Grouping = source.Populate(Grouping, () => new GroupComponent());
                     return true;
                 case "dependent":
                     DependentElement = source.PopulateValue(DependentElement);
                     return true;
                 case "_dependent":
-                    DependentElement = source.Populate(DependentElement);
+                    DependentElement = source.Populate(DependentElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "sequence":
                     SequenceElement = source.PopulateValue(SequenceElement);
                     return true;
                 case "_sequence":
-                    SequenceElement = source.Populate(SequenceElement);
+                    SequenceElement = source.Populate(SequenceElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "order":
                     OrderElement = source.PopulateValue(OrderElement);
                     return true;
                 case "_order":
-                    OrderElement = source.Populate(OrderElement);
+                    OrderElement = source.Populate(OrderElement, () => new Hl7.Fhir.Model.PositiveInt());
                     return true;
                 case "network":
                     NetworkElement = source.PopulateValue(NetworkElement);
                     return true;
                 case "_network":
-                    NetworkElement = source.Populate(NetworkElement);
+                    NetworkElement = source.Populate(NetworkElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "contract":
                     source.SetList(this, jsonPropertyName);
@@ -1346,13 +1346,13 @@ namespace Hl7.Fhir.Model.STU3
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "payor":
-                    source.PopulateListItem(Payor, index);
+                    source.PopulateListItem(Payor, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "contract":
-                    source.PopulateListItem(Contract, index);
+                    source.PopulateListItem(Contract, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

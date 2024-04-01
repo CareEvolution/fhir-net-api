@@ -22,8 +22,8 @@ namespace Hl7.Fhir.Tests.Serialization
     [TestClass]
     public class SummarySerializationTests
     {
-        private readonly FhirXmlSerializer FhirXmlSerializer = new FhirXmlSerializer(Fhir.Model.Version.R4);
-        private readonly FhirJsonSerializer FhirJsonSerializer = new FhirJsonSerializer(Fhir.Model.Version.R4);
+        private readonly FhirXmlFastSerializer FhirXmlSerializer = new FhirXmlFastSerializer(Fhir.Model.Version.R4);
+        private readonly FhirJsonFastSerializer FhirJsonSerializer = new FhirJsonFastSerializer(Fhir.Model.Version.R4);
         private readonly FhirXmlParser FhirXmlParser = new FhirXmlParser(Fhir.Model.Version.R4);
 
         [TestMethod] // Old tests, I'm note sure we need them anymore
@@ -101,14 +101,10 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsFalse(qText.Contains("<date value=\"2015-09-27\""));
             Assert.IsFalse(qText.Contains("<title value=\"TITLE\""));
             Assert.IsFalse(qText.Contains("<linkId value=\"linkid\""));
-            Assert.AreEqual(0, q.Meta.Tag.Where(t => t.System == "http://hl7.org/fhir/v3/ObservationValue" && t.Code == "SUBSETTED").Count(), "Subsetted Tag should not still be there.");
+            Assert.AreEqual(0, q.Meta.Tag.Where(t => t.System == "http://terminology.hl7.org/CodeSystem/v3-ObservationValue" && t.Code == "SUBSETTED").Count(), "Subsetted Tag should not still be there.");
 
-            // Verify that reloading the content into an object...
-            // make sure we accept the crappy output with empty groups
-            var nav = FhirXmlNode.Parse(qText, new FhirXmlParsingSettings { PermissiveParsing = true });
-
-            var qInflate = FhirXmlParser.Parse<Questionnaire>(nav);
-            Assert.AreEqual(1, qInflate.Meta.Tag.Where(t => t.System == "http://hl7.org/fhir/v3/ObservationValue" && t.Code == "SUBSETTED").Count(), "Subsetted Tag should not still be there.");
+            var qInflate = new FhirXmlParser(new ParserSettings(Fhir.Model.Version.R4) { PermissiveParsing = true } ).Parse<Questionnaire>(qText);
+            Assert.AreEqual(1, qInflate.Meta.Tag.Where(t => t.System == "http://terminology.hl7.org/CodeSystem/v3-ObservationValue" && t.Code == "SUBSETTED").Count(), "Subsetted Tag should still be there.");
         }
 
         [TestMethod]
@@ -123,39 +119,6 @@ namespace Hl7.Fhir.Tests.Serialization
             Assert.IsFalse(summaryElements.Contains("<language"));
             Assert.IsTrue(summaryElements.Contains("<type>"));
             Assert.IsTrue(summaryElements.Contains("<id value=\"testId\""));
-            
-            var customMaskingNode = new MaskingNode(new ScopedNode(l.ToTypedElement(Fhir.Model.Version.R4)), new MaskingNodeSettings
-            {
-                IncludeMandatory = true,
-                PreserveBundle = MaskingNodeSettings.PreserveBundleMode.All
-            });
-
-            var result = customMaskingNode.ToXml(settings: new FhirXmlSerializationSettings());
-
-            Assert.IsFalse(result.Contains("<language>"));
-            Assert.IsTrue(result.Contains("<type>"));
-            Assert.IsFalse(result.Contains("<id value=\"testId\""));
-
-            var b = new Bundle
-            {
-                TypeElement = new Code<BundleType> { Value = BundleType.Collection },
-                Entry = new List<Bundle.EntryComponent>()
-                {
-                    new Bundle.EntryComponent { Resource = l }
-                },
-                Id = "bundle-id"
-            };
-
-            var customMaskingNodeForBundle = new MaskingNode(new ScopedNode(b.ToTypedElement(Fhir.Model.Version.R4)), new MaskingNodeSettings
-            {
-                IncludeMandatory = true,
-                PreserveBundle = MaskingNodeSettings.PreserveBundleMode.None
-            });
-
-            result = customMaskingNodeForBundle.ToXml(settings: new FhirXmlSerializationSettings());
-            
-            Assert.IsTrue(result.Contains("<type value=\"collection\""));
-            Assert.IsFalse(result.Contains("<id value=\"bundle-id\""));
         }
 
         [TestMethod]
@@ -252,7 +215,7 @@ namespace Hl7.Fhir.Tests.Serialization
         }
 
         [TestMethod]
-        public void TestBundleWithSummaryJson()
+        public void TestBundleWithSummary()
         {
             Dictionary<string, SummaryType> data = new Dictionary<string, SummaryType>
             {
@@ -311,7 +274,15 @@ namespace Hl7.Fhir.Tests.Serialization
                 var actualData = inJson ? FhirJsonSerializer.SerializeToString(bundle, mode) :
                                     FhirXmlSerializer.SerializeToString(bundle, mode);
                 var expectedData = TestDataHelper.ReadTestData(expectedFile);
-                Assert.AreEqual(actualData, expectedData);
+                if (expectedData != actualData)
+                {
+                    var expectedFilePath = Path.Combine(Path.GetTempPath(), inJson ? "expected.json" : "expected.xml");
+                    File.WriteAllText(expectedFilePath, expectedData);
+                    var actualFilePath = Path.Combine(Path.GetTempPath(), inJson ? "actual.json" : "actual.xml");
+                    File.WriteAllText(actualFilePath, actualData);
+                    Console.WriteLine( "Mode {0} failed, see {1}, {2}", mode, expectedFilePath, actualFilePath );
+                }
+                Assert.AreEqual(expectedData, actualData);
             }
         }
 
@@ -354,6 +325,14 @@ namespace Hl7.Fhir.Tests.Serialization
                 var actualData = inJson ? FhirJsonSerializer.SerializeToString(patientOne, mode) :
                                     FhirXmlSerializer.SerializeToString(patientOne, mode);
                 var expectedData = TestDataHelper.ReadTestData(expectedFile);
+                if (expectedData != actualData)
+                {
+                    var expectedFilePath = Path.Combine(Path.GetTempPath(), inJson ? "expected.json" : "expected.xml");
+                    File.WriteAllText(expectedFilePath, expectedData);
+                    var actualFilePath = Path.Combine(Path.GetTempPath(), inJson ? "actual.json" : "actual.xml");
+                    File.WriteAllText(actualFilePath, actualData);
+                    Console.WriteLine("Mode {0} failed, see {1}, {2}", mode, expectedFilePath, actualFilePath);
+                }
                 Assert.AreEqual(expectedData, actualData);
             }
         }

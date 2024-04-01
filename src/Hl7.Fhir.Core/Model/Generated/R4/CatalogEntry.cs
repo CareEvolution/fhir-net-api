@@ -129,10 +129,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "relationtype":
-                        RelationtypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CatalogEntryRelationType>>();
+                        RelationtypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CatalogEntryRelationType>());
                         return true;
                     case "item":
-                        Item = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        Item = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -150,10 +150,10 @@ namespace Hl7.Fhir.Model.R4
                         RelationtypeElement = source.PopulateValue(RelationtypeElement);
                         return true;
                     case "_relationtype":
-                        RelationtypeElement = source.Populate(RelationtypeElement);
+                        RelationtypeElement = source.Populate(RelationtypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.CatalogEntryRelationType>());
                         return true;
                     case "item":
-                        Item = source.Populate(Item);
+                        Item = source.Populate(Item, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -624,43 +624,43 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "orderable":
-                    OrderableElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                    OrderableElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "referencedItem":
-                    ReferencedItem = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    ReferencedItem = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "additionalIdentifier":
-                    AdditionalIdentifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    AdditionalIdentifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "classification":
-                    Classification = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    Classification = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "status":
-                    StatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>>();
+                    StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "validityPeriod":
-                    ValidityPeriod = source.Get<Hl7.Fhir.Model.Period>();
+                    ValidityPeriod = source.Populate(new Hl7.Fhir.Model.Period());
                     return true;
                 case "validTo":
-                    ValidToElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    ValidToElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "lastUpdated":
-                    LastUpdatedElement = source.Get<Hl7.Fhir.Model.FhirDateTime>();
+                    LastUpdatedElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "additionalCharacteristic":
-                    AdditionalCharacteristic = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    AdditionalCharacteristic = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "additionalClassification":
-                    AdditionalClassification = source.GetList<Hl7.Fhir.Model.CodeableConcept>();
+                    AdditionalClassification = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "relatedEntry":
-                    RelatedEntry = source.GetList<RelatedEntryComponent>();
+                    RelatedEntry = source.GetList(() => new RelatedEntryComponent());
                     return true;
             }
             return false;
@@ -678,16 +678,16 @@ namespace Hl7.Fhir.Model.R4
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "orderable":
                     OrderableElement = source.PopulateValue(OrderableElement);
                     return true;
                 case "_orderable":
-                    OrderableElement = source.Populate(OrderableElement);
+                    OrderableElement = source.Populate(OrderableElement, () => new Hl7.Fhir.Model.FhirBoolean());
                     return true;
                 case "referencedItem":
-                    ReferencedItem = source.Populate(ReferencedItem);
+                    ReferencedItem = source.Populate(ReferencedItem, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "additionalIdentifier":
                     source.SetList(this, jsonPropertyName);
@@ -699,22 +699,22 @@ namespace Hl7.Fhir.Model.R4
                     StatusElement = source.PopulateValue(StatusElement);
                     return true;
                 case "_status":
-                    StatusElement = source.Populate(StatusElement);
+                    StatusElement = source.Populate(StatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.PublicationStatus>());
                     return true;
                 case "validityPeriod":
-                    ValidityPeriod = source.Populate(ValidityPeriod);
+                    ValidityPeriod = source.Populate(ValidityPeriod, () => new Hl7.Fhir.Model.Period());
                     return true;
                 case "validTo":
                     ValidToElement = source.PopulateValue(ValidToElement);
                     return true;
                 case "_validTo":
-                    ValidToElement = source.Populate(ValidToElement);
+                    ValidToElement = source.Populate(ValidToElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "lastUpdated":
                     LastUpdatedElement = source.PopulateValue(LastUpdatedElement);
                     return true;
                 case "_lastUpdated":
-                    LastUpdatedElement = source.Populate(LastUpdatedElement);
+                    LastUpdatedElement = source.Populate(LastUpdatedElement, () => new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "additionalCharacteristic":
                     source.SetList(this, jsonPropertyName);
@@ -738,22 +738,22 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "additionalIdentifier":
-                    source.PopulateListItem(AdditionalIdentifier, index);
+                    source.PopulateListItem(AdditionalIdentifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "classification":
-                    source.PopulateListItem(Classification, index);
+                    source.PopulateListItem(Classification, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "additionalCharacteristic":
-                    source.PopulateListItem(AdditionalCharacteristic, index);
+                    source.PopulateListItem(AdditionalCharacteristic, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "additionalClassification":
-                    source.PopulateListItem(AdditionalClassification, index);
+                    source.PopulateListItem(AdditionalClassification, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "relatedEntry":
-                    source.PopulateListItem(RelatedEntry, index);
+                    source.PopulateListItem(RelatedEntry, index, () => new RelatedEntryComponent());
                     return true;
             }
             return false;

@@ -180,13 +180,13 @@ namespace Hl7.Fhir.Model.DSTU2
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationType>());
                         return true;
                     case "state":
-                        StateElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationState>>();
+                        StateElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationState>());
                         return true;
                     case "time":
-                        TimeElement = source.Get<Hl7.Fhir.Model.Instant>();
+                        TimeElement = source.Populate(new Hl7.Fhir.Model.Instant());
                         return true;
                 }
                 return false;
@@ -204,19 +204,19 @@ namespace Hl7.Fhir.Model.DSTU2
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationType>());
                         return true;
                     case "state":
                         StateElement = source.PopulateValue(StateElement);
                         return true;
                     case "_state":
-                        StateElement = source.Populate(StateElement);
+                        StateElement = source.Populate(StateElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCalibrationState>());
                         return true;
                     case "time":
                         TimeElement = source.PopulateValue(TimeElement);
                         return true;
                     case "_time":
-                        TimeElement = source.Populate(TimeElement);
+                        TimeElement = source.Populate(TimeElement, () => new Hl7.Fhir.Model.Instant());
                         return true;
                 }
                 return false;
@@ -607,34 +607,34 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (elementName)
             {
                 case "type":
-                    Type = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    Identifier = source.Get<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.Populate(new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "unit":
-                    Unit = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                    Unit = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "source":
-                    Source = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Source = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Parent = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "operationalStatus":
-                    OperationalStatusElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceMetricOperationalStatus>>();
+                    OperationalStatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceMetricOperationalStatus>());
                     return true;
                 case "color":
-                    ColorElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricColor>>();
+                    ColorElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricColor>());
                     return true;
                 case "category":
-                    CategoryElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCategory>>();
+                    CategoryElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCategory>());
                     return true;
                 case "measurementPeriod":
-                    MeasurementPeriod = source.Get<Hl7.Fhir.Model.DSTU2.Timing>();
+                    MeasurementPeriod = source.Populate(new Hl7.Fhir.Model.DSTU2.Timing());
                     return true;
                 case "calibration":
-                    Calibration = source.GetList<CalibrationComponent>();
+                    Calibration = source.GetList(() => new CalibrationComponent());
                     return true;
             }
             return false;
@@ -649,40 +649,40 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "type":
-                    Type = source.Populate(Type);
+                    Type = source.Populate(Type, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "identifier":
-                    Identifier = source.Populate(Identifier);
+                    Identifier = source.Populate(Identifier, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "unit":
-                    Unit = source.Populate(Unit);
+                    Unit = source.Populate(Unit, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "source":
-                    Source = source.Populate(Source);
+                    Source = source.Populate(Source, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "parent":
-                    Parent = source.Populate(Parent);
+                    Parent = source.Populate(Parent, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "operationalStatus":
                     OperationalStatusElement = source.PopulateValue(OperationalStatusElement);
                     return true;
                 case "_operationalStatus":
-                    OperationalStatusElement = source.Populate(OperationalStatusElement);
+                    OperationalStatusElement = source.Populate(OperationalStatusElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceMetricOperationalStatus>());
                     return true;
                 case "color":
                     ColorElement = source.PopulateValue(ColorElement);
                     return true;
                 case "_color":
-                    ColorElement = source.Populate(ColorElement);
+                    ColorElement = source.Populate(ColorElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricColor>());
                     return true;
                 case "category":
                     CategoryElement = source.PopulateValue(CategoryElement);
                     return true;
                 case "_category":
-                    CategoryElement = source.Populate(CategoryElement);
+                    CategoryElement = source.Populate(CategoryElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DeviceMetricCategory>());
                     return true;
                 case "measurementPeriod":
-                    MeasurementPeriod = source.Populate(MeasurementPeriod);
+                    MeasurementPeriod = source.Populate(MeasurementPeriod, () => new Hl7.Fhir.Model.DSTU2.Timing());
                     return true;
                 case "calibration":
                     source.SetList(this, jsonPropertyName);
@@ -700,7 +700,7 @@ namespace Hl7.Fhir.Model.DSTU2
             switch (jsonPropertyName)
             {
                 case "calibration":
-                    source.PopulateListItem(Calibration, index);
+                    source.PopulateListItem(Calibration, index, () => new CalibrationComponent());
                     return true;
             }
             return false;

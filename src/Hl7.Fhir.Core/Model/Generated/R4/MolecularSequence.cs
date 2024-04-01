@@ -328,31 +328,31 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "chromosome":
-                        Chromosome = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Chromosome = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "genomeBuild":
-                        GenomeBuildElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        GenomeBuildElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "orientation":
-                        OrientationElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.orientationType>>();
+                        OrientationElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.orientationType>());
                         return true;
                     case "referenceSeqId":
-                        ReferenceSeqId = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        ReferenceSeqId = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "referenceSeqPointer":
-                        ReferenceSeqPointer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        ReferenceSeqPointer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "referenceSeqString":
-                        ReferenceSeqStringElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ReferenceSeqStringElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "strand":
-                        StrandElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.strandType>>();
+                        StrandElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.strandType>());
                         return true;
                     case "windowStart":
-                        WindowStartElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        WindowStartElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "windowEnd":
-                        WindowEndElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        WindowEndElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -367,49 +367,49 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "chromosome":
-                        Chromosome = source.Populate(Chromosome);
+                        Chromosome = source.Populate(Chromosome, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "genomeBuild":
                         GenomeBuildElement = source.PopulateValue(GenomeBuildElement);
                         return true;
                     case "_genomeBuild":
-                        GenomeBuildElement = source.Populate(GenomeBuildElement);
+                        GenomeBuildElement = source.Populate(GenomeBuildElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "orientation":
                         OrientationElement = source.PopulateValue(OrientationElement);
                         return true;
                     case "_orientation":
-                        OrientationElement = source.Populate(OrientationElement);
+                        OrientationElement = source.Populate(OrientationElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.orientationType>());
                         return true;
                     case "referenceSeqId":
-                        ReferenceSeqId = source.Populate(ReferenceSeqId);
+                        ReferenceSeqId = source.Populate(ReferenceSeqId, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "referenceSeqPointer":
-                        ReferenceSeqPointer = source.Populate(ReferenceSeqPointer);
+                        ReferenceSeqPointer = source.Populate(ReferenceSeqPointer, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "referenceSeqString":
                         ReferenceSeqStringElement = source.PopulateValue(ReferenceSeqStringElement);
                         return true;
                     case "_referenceSeqString":
-                        ReferenceSeqStringElement = source.Populate(ReferenceSeqStringElement);
+                        ReferenceSeqStringElement = source.Populate(ReferenceSeqStringElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "strand":
                         StrandElement = source.PopulateValue(StrandElement);
                         return true;
                     case "_strand":
-                        StrandElement = source.Populate(StrandElement);
+                        StrandElement = source.Populate(StrandElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.strandType>());
                         return true;
                     case "windowStart":
                         WindowStartElement = source.PopulateValue(WindowStartElement);
                         return true;
                     case "_windowStart":
-                        WindowStartElement = source.Populate(WindowStartElement);
+                        WindowStartElement = source.Populate(WindowStartElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "windowEnd":
                         WindowEndElement = source.PopulateValue(WindowEndElement);
                         return true;
                     case "_windowEnd":
-                        WindowEndElement = source.Populate(WindowEndElement);
+                        WindowEndElement = source.Populate(WindowEndElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -730,22 +730,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "start":
-                        StartElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        StartElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "end":
-                        EndElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        EndElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "observedAllele":
-                        ObservedAlleleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ObservedAlleleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "referenceAllele":
-                        ReferenceAlleleElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ReferenceAlleleElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "cigar":
-                        CigarElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        CigarElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "variantPointer":
-                        VariantPointer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                        VariantPointer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -763,34 +763,34 @@ namespace Hl7.Fhir.Model.R4
                         StartElement = source.PopulateValue(StartElement);
                         return true;
                     case "_start":
-                        StartElement = source.Populate(StartElement);
+                        StartElement = source.Populate(StartElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "end":
                         EndElement = source.PopulateValue(EndElement);
                         return true;
                     case "_end":
-                        EndElement = source.Populate(EndElement);
+                        EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "observedAllele":
                         ObservedAlleleElement = source.PopulateValue(ObservedAlleleElement);
                         return true;
                     case "_observedAllele":
-                        ObservedAlleleElement = source.Populate(ObservedAlleleElement);
+                        ObservedAlleleElement = source.Populate(ObservedAlleleElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "referenceAllele":
                         ReferenceAlleleElement = source.PopulateValue(ReferenceAlleleElement);
                         return true;
                     case "_referenceAllele":
-                        ReferenceAlleleElement = source.Populate(ReferenceAlleleElement);
+                        ReferenceAlleleElement = source.Populate(ReferenceAlleleElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "cigar":
                         CigarElement = source.PopulateValue(CigarElement);
                         return true;
                     case "_cigar":
-                        CigarElement = source.Populate(CigarElement);
+                        CigarElement = source.Populate(CigarElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "variantPointer":
-                        VariantPointer = source.Populate(VariantPointer);
+                        VariantPointer = source.Populate(VariantPointer, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                 }
                 return false;
@@ -1345,49 +1345,49 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.qualityType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.qualityType>());
                         return true;
                     case "standardSequence":
-                        StandardSequence = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        StandardSequence = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "start":
-                        StartElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        StartElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "end":
-                        EndElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        EndElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "score":
-                        Score = source.Get<Hl7.Fhir.Model.Quantity>();
+                        Score = source.Populate(new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "method":
-                        Method = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        Method = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "truthTP":
-                        TruthTPElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        TruthTPElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "queryTP":
-                        QueryTPElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        QueryTPElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "truthFN":
-                        TruthFNElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        TruthFNElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "queryFP":
-                        QueryFPElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        QueryFPElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "gtFP":
-                        GtFPElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        GtFPElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "precision":
-                        PrecisionElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        PrecisionElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "recall":
-                        RecallElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        RecallElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "fScore":
-                        FScoreElement = source.Get<Hl7.Fhir.Model.FhirDecimal>();
+                        FScoreElement = source.Populate(new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "roc":
-                        Roc = source.Get<RocComponent>();
+                        Roc = source.Populate(new RocComponent());
                         return true;
                 }
                 return false;
@@ -1405,79 +1405,79 @@ namespace Hl7.Fhir.Model.R4
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.qualityType>());
                         return true;
                     case "standardSequence":
-                        StandardSequence = source.Populate(StandardSequence);
+                        StandardSequence = source.Populate(StandardSequence, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "start":
                         StartElement = source.PopulateValue(StartElement);
                         return true;
                     case "_start":
-                        StartElement = source.Populate(StartElement);
+                        StartElement = source.Populate(StartElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "end":
                         EndElement = source.PopulateValue(EndElement);
                         return true;
                     case "_end":
-                        EndElement = source.Populate(EndElement);
+                        EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "score":
-                        Score = source.Populate(Score);
+                        Score = source.Populate(Score, () => new Hl7.Fhir.Model.Quantity());
                         return true;
                     case "method":
-                        Method = source.Populate(Method);
+                        Method = source.Populate(Method, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "truthTP":
                         TruthTPElement = source.PopulateValue(TruthTPElement);
                         return true;
                     case "_truthTP":
-                        TruthTPElement = source.Populate(TruthTPElement);
+                        TruthTPElement = source.Populate(TruthTPElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "queryTP":
                         QueryTPElement = source.PopulateValue(QueryTPElement);
                         return true;
                     case "_queryTP":
-                        QueryTPElement = source.Populate(QueryTPElement);
+                        QueryTPElement = source.Populate(QueryTPElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "truthFN":
                         TruthFNElement = source.PopulateValue(TruthFNElement);
                         return true;
                     case "_truthFN":
-                        TruthFNElement = source.Populate(TruthFNElement);
+                        TruthFNElement = source.Populate(TruthFNElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "queryFP":
                         QueryFPElement = source.PopulateValue(QueryFPElement);
                         return true;
                     case "_queryFP":
-                        QueryFPElement = source.Populate(QueryFPElement);
+                        QueryFPElement = source.Populate(QueryFPElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "gtFP":
                         GtFPElement = source.PopulateValue(GtFPElement);
                         return true;
                     case "_gtFP":
-                        GtFPElement = source.Populate(GtFPElement);
+                        GtFPElement = source.Populate(GtFPElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "precision":
                         PrecisionElement = source.PopulateValue(PrecisionElement);
                         return true;
                     case "_precision":
-                        PrecisionElement = source.Populate(PrecisionElement);
+                        PrecisionElement = source.Populate(PrecisionElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "recall":
                         RecallElement = source.PopulateValue(RecallElement);
                         return true;
                     case "_recall":
-                        RecallElement = source.Populate(RecallElement);
+                        RecallElement = source.Populate(RecallElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "fScore":
                         FScoreElement = source.PopulateValue(FScoreElement);
                         return true;
                     case "_fScore":
-                        FScoreElement = source.Populate(FScoreElement);
+                        FScoreElement = source.Populate(FScoreElement, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "roc":
-                        Roc = source.Populate(Roc);
+                        Roc = source.Populate(Roc, () => new RocComponent());
                         return true;
                 }
                 return false;
@@ -1901,25 +1901,25 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "score":
-                        ScoreElement = source.GetList<Hl7.Fhir.Model.Integer>();
+                        ScoreElement = source.GetList(() => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "numTP":
-                        NumTPElement = source.GetList<Hl7.Fhir.Model.Integer>();
+                        NumTPElement = source.GetList(() => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "numFP":
-                        NumFPElement = source.GetList<Hl7.Fhir.Model.Integer>();
+                        NumFPElement = source.GetList(() => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "numFN":
-                        NumFNElement = source.GetList<Hl7.Fhir.Model.Integer>();
+                        NumFNElement = source.GetList(() => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "precision":
-                        PrecisionElement = source.GetList<Hl7.Fhir.Model.FhirDecimal>();
+                        PrecisionElement = source.GetList(() => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "sensitivity":
-                        SensitivityElement = source.GetList<Hl7.Fhir.Model.FhirDecimal>();
+                        SensitivityElement = source.GetList(() => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "fMeasure":
-                        FMeasureElement = source.GetList<Hl7.Fhir.Model.FhirDecimal>();
+                        FMeasureElement = source.GetList(() => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                 }
                 return false;
@@ -1977,43 +1977,43 @@ namespace Hl7.Fhir.Model.R4
                         source.PopulatePrimitiveListItemValue(ScoreElement, index);
                         return true;
                     case "_score":
-                        source.PopulatePrimitiveListItem(ScoreElement, index);
+                        source.PopulatePrimitiveListItem(ScoreElement, index, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "numTP":
                         source.PopulatePrimitiveListItemValue(NumTPElement, index);
                         return true;
                     case "_numTP":
-                        source.PopulatePrimitiveListItem(NumTPElement, index);
+                        source.PopulatePrimitiveListItem(NumTPElement, index, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "numFP":
                         source.PopulatePrimitiveListItemValue(NumFPElement, index);
                         return true;
                     case "_numFP":
-                        source.PopulatePrimitiveListItem(NumFPElement, index);
+                        source.PopulatePrimitiveListItem(NumFPElement, index, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "numFN":
                         source.PopulatePrimitiveListItemValue(NumFNElement, index);
                         return true;
                     case "_numFN":
-                        source.PopulatePrimitiveListItem(NumFNElement, index);
+                        source.PopulatePrimitiveListItem(NumFNElement, index, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "precision":
                         source.PopulatePrimitiveListItemValue(PrecisionElement, index);
                         return true;
                     case "_precision":
-                        source.PopulatePrimitiveListItem(PrecisionElement, index);
+                        source.PopulatePrimitiveListItem(PrecisionElement, index, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "sensitivity":
                         source.PopulatePrimitiveListItemValue(SensitivityElement, index);
                         return true;
                     case "_sensitivity":
-                        source.PopulatePrimitiveListItem(SensitivityElement, index);
+                        source.PopulatePrimitiveListItem(SensitivityElement, index, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                     case "fMeasure":
                         source.PopulatePrimitiveListItemValue(FMeasureElement, index);
                         return true;
                     case "_fMeasure":
-                        source.PopulatePrimitiveListItem(FMeasureElement, index);
+                        source.PopulatePrimitiveListItem(FMeasureElement, index, () => new Hl7.Fhir.Model.FhirDecimal());
                         return true;
                 }
                 return false;
@@ -2343,22 +2343,22 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "type":
-                        TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.repositoryType>>();
+                        TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.repositoryType>());
                         return true;
                     case "url":
-                        UrlElement = source.Get<Hl7.Fhir.Model.FhirUri>();
+                        UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "name":
-                        NameElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        NameElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "datasetId":
-                        DatasetIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        DatasetIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "variantsetId":
-                        VariantsetIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        VariantsetIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "readsetId":
-                        ReadsetIdElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                        ReadsetIdElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -2376,37 +2376,37 @@ namespace Hl7.Fhir.Model.R4
                         TypeElement = source.PopulateValue(TypeElement);
                         return true;
                     case "_type":
-                        TypeElement = source.Populate(TypeElement);
+                        TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.repositoryType>());
                         return true;
                     case "url":
                         UrlElement = source.PopulateValue(UrlElement);
                         return true;
                     case "_url":
-                        UrlElement = source.Populate(UrlElement);
+                        UrlElement = source.Populate(UrlElement, () => new Hl7.Fhir.Model.FhirUri());
                         return true;
                     case "name":
                         NameElement = source.PopulateValue(NameElement);
                         return true;
                     case "_name":
-                        NameElement = source.Populate(NameElement);
+                        NameElement = source.Populate(NameElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "datasetId":
                         DatasetIdElement = source.PopulateValue(DatasetIdElement);
                         return true;
                     case "_datasetId":
-                        DatasetIdElement = source.Populate(DatasetIdElement);
+                        DatasetIdElement = source.Populate(DatasetIdElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "variantsetId":
                         VariantsetIdElement = source.PopulateValue(VariantsetIdElement);
                         return true;
                     case "_variantsetId":
-                        VariantsetIdElement = source.Populate(VariantsetIdElement);
+                        VariantsetIdElement = source.Populate(VariantsetIdElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "readsetId":
                         ReadsetIdElement = source.PopulateValue(ReadsetIdElement);
                         return true;
                     case "_readsetId":
-                        ReadsetIdElement = source.Populate(ReadsetIdElement);
+                        ReadsetIdElement = source.Populate(ReadsetIdElement, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                 }
                 return false;
@@ -2639,19 +2639,19 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "variantType":
-                        VariantType = source.Get<Hl7.Fhir.Model.CodeableConcept>();
+                        VariantType = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "exact":
-                        ExactElement = source.Get<Hl7.Fhir.Model.FhirBoolean>();
+                        ExactElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "length":
-                        LengthElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        LengthElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "outer":
-                        Outer = source.Get<OuterComponent>();
+                        Outer = source.Populate(new OuterComponent());
                         return true;
                     case "inner":
-                        Inner = source.Get<InnerComponent>();
+                        Inner = source.Populate(new InnerComponent());
                         return true;
                 }
                 return false;
@@ -2666,25 +2666,25 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "variantType":
-                        VariantType = source.Populate(VariantType);
+                        VariantType = source.Populate(VariantType, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "exact":
                         ExactElement = source.PopulateValue(ExactElement);
                         return true;
                     case "_exact":
-                        ExactElement = source.Populate(ExactElement);
+                        ExactElement = source.Populate(ExactElement, () => new Hl7.Fhir.Model.FhirBoolean());
                         return true;
                     case "length":
                         LengthElement = source.PopulateValue(LengthElement);
                         return true;
                     case "_length":
-                        LengthElement = source.Populate(LengthElement);
+                        LengthElement = source.Populate(LengthElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "outer":
-                        Outer = source.Populate(Outer);
+                        Outer = source.Populate(Outer, () => new OuterComponent());
                         return true;
                     case "inner":
-                        Inner = source.Populate(Inner);
+                        Inner = source.Populate(Inner, () => new InnerComponent());
                         return true;
                 }
                 return false;
@@ -2867,10 +2867,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "start":
-                        StartElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        StartElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "end":
-                        EndElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        EndElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -2888,13 +2888,13 @@ namespace Hl7.Fhir.Model.R4
                         StartElement = source.PopulateValue(StartElement);
                         return true;
                     case "_start":
-                        StartElement = source.Populate(StartElement);
+                        StartElement = source.Populate(StartElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "end":
                         EndElement = source.PopulateValue(EndElement);
                         return true;
                     case "_end":
-                        EndElement = source.Populate(EndElement);
+                        EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -3062,10 +3062,10 @@ namespace Hl7.Fhir.Model.R4
                 switch (elementName)
                 {
                     case "start":
-                        StartElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        StartElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                     case "end":
-                        EndElement = source.Get<Hl7.Fhir.Model.Integer>();
+                        EndElement = source.Populate(new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -3083,13 +3083,13 @@ namespace Hl7.Fhir.Model.R4
                         StartElement = source.PopulateValue(StartElement);
                         return true;
                     case "_start":
-                        StartElement = source.Populate(StartElement);
+                        StartElement = source.Populate(StartElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                     case "end":
                         EndElement = source.PopulateValue(EndElement);
                         return true;
                     case "_end":
-                        EndElement = source.Populate(EndElement);
+                        EndElement = source.Populate(EndElement, () => new Hl7.Fhir.Model.Integer());
                         return true;
                 }
                 return false;
@@ -3661,52 +3661,52 @@ namespace Hl7.Fhir.Model.R4
             switch (elementName)
             {
                 case "identifier":
-                    Identifier = source.GetList<Hl7.Fhir.Model.Identifier>();
+                    Identifier = source.GetList(() => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "type":
-                    TypeElement = source.Get<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.sequenceType>>();
+                    TypeElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.sequenceType>());
                     return true;
                 case "coordinateSystem":
-                    CoordinateSystemElement = source.Get<Hl7.Fhir.Model.Integer>();
+                    CoordinateSystemElement = source.Populate(new Hl7.Fhir.Model.Integer());
                     return true;
                 case "patient":
-                    Patient = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Patient = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "specimen":
-                    Specimen = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Specimen = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
-                    Device = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Device = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    Performer = source.Get<Hl7.Fhir.Model.ResourceReference>();
+                    Performer = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "quantity":
-                    Quantity = source.Get<Hl7.Fhir.Model.Quantity>();
+                    Quantity = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "referenceSeq":
-                    ReferenceSeq = source.Get<ReferenceSeqComponent>();
+                    ReferenceSeq = source.Populate(new ReferenceSeqComponent());
                     return true;
                 case "variant":
-                    Variant = source.GetList<VariantComponent>();
+                    Variant = source.GetList(() => new VariantComponent());
                     return true;
                 case "observedSeq":
-                    ObservedSeqElement = source.Get<Hl7.Fhir.Model.FhirString>();
+                    ObservedSeqElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "quality":
-                    Quality = source.GetList<QualityComponent>();
+                    Quality = source.GetList(() => new QualityComponent());
                     return true;
                 case "readCoverage":
-                    ReadCoverageElement = source.Get<Hl7.Fhir.Model.Integer>();
+                    ReadCoverageElement = source.Populate(new Hl7.Fhir.Model.Integer());
                     return true;
                 case "repository":
-                    Repository = source.GetList<RepositoryComponent>();
+                    Repository = source.GetList(() => new RepositoryComponent());
                     return true;
                 case "pointer":
-                    Pointer = source.GetList<Hl7.Fhir.Model.ResourceReference>();
+                    Pointer = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "structureVariant":
-                    StructureVariant = source.GetList<StructureVariantComponent>();
+                    StructureVariant = source.GetList(() => new StructureVariantComponent());
                     return true;
             }
             return false;
@@ -3727,31 +3727,31 @@ namespace Hl7.Fhir.Model.R4
                     TypeElement = source.PopulateValue(TypeElement);
                     return true;
                 case "_type":
-                    TypeElement = source.Populate(TypeElement);
+                    TypeElement = source.Populate(TypeElement, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.R4.sequenceType>());
                     return true;
                 case "coordinateSystem":
                     CoordinateSystemElement = source.PopulateValue(CoordinateSystemElement);
                     return true;
                 case "_coordinateSystem":
-                    CoordinateSystemElement = source.Populate(CoordinateSystemElement);
+                    CoordinateSystemElement = source.Populate(CoordinateSystemElement, () => new Hl7.Fhir.Model.Integer());
                     return true;
                 case "patient":
-                    Patient = source.Populate(Patient);
+                    Patient = source.Populate(Patient, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "specimen":
-                    Specimen = source.Populate(Specimen);
+                    Specimen = source.Populate(Specimen, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "device":
-                    Device = source.Populate(Device);
+                    Device = source.Populate(Device, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "performer":
-                    Performer = source.Populate(Performer);
+                    Performer = source.Populate(Performer, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "quantity":
-                    Quantity = source.Populate(Quantity);
+                    Quantity = source.Populate(Quantity, () => new Hl7.Fhir.Model.Quantity());
                     return true;
                 case "referenceSeq":
-                    ReferenceSeq = source.Populate(ReferenceSeq);
+                    ReferenceSeq = source.Populate(ReferenceSeq, () => new ReferenceSeqComponent());
                     return true;
                 case "variant":
                     source.SetList(this, jsonPropertyName);
@@ -3760,7 +3760,7 @@ namespace Hl7.Fhir.Model.R4
                     ObservedSeqElement = source.PopulateValue(ObservedSeqElement);
                     return true;
                 case "_observedSeq":
-                    ObservedSeqElement = source.Populate(ObservedSeqElement);
+                    ObservedSeqElement = source.Populate(ObservedSeqElement, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "quality":
                     source.SetList(this, jsonPropertyName);
@@ -3769,7 +3769,7 @@ namespace Hl7.Fhir.Model.R4
                     ReadCoverageElement = source.PopulateValue(ReadCoverageElement);
                     return true;
                 case "_readCoverage":
-                    ReadCoverageElement = source.Populate(ReadCoverageElement);
+                    ReadCoverageElement = source.Populate(ReadCoverageElement, () => new Hl7.Fhir.Model.Integer());
                     return true;
                 case "repository":
                     source.SetList(this, jsonPropertyName);
@@ -3793,22 +3793,22 @@ namespace Hl7.Fhir.Model.R4
             switch (jsonPropertyName)
             {
                 case "identifier":
-                    source.PopulateListItem(Identifier, index);
+                    source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "variant":
-                    source.PopulateListItem(Variant, index);
+                    source.PopulateListItem(Variant, index, () => new VariantComponent());
                     return true;
                 case "quality":
-                    source.PopulateListItem(Quality, index);
+                    source.PopulateListItem(Quality, index, () => new QualityComponent());
                     return true;
                 case "repository":
-                    source.PopulateListItem(Repository, index);
+                    source.PopulateListItem(Repository, index, () => new RepositoryComponent());
                     return true;
                 case "pointer":
-                    source.PopulateListItem(Pointer, index);
+                    source.PopulateListItem(Pointer, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "structureVariant":
-                    source.PopulateListItem(StructureVariant, index);
+                    source.PopulateListItem(StructureVariant, index, () => new StructureVariantComponent());
                     return true;
             }
             return false;

@@ -37,7 +37,12 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Serialization\FhirJsonFastParser.cs" />
+    <None Remove="xhtml\fhir-xhtml.xsd" />
+    <None Remove="xhtml\xml.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="xhtml\fhir-xhtml.xsd" />
+    <EmbeddedResource Include="xhtml\xml.xsd" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,7 +60,6 @@
     <None Include="Model\Source-STU3\search-parameters.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Hl7.Fhir.Serialization" Version="1.5.0" />
     <PackageReference Include="Hl7.Fhir.Support" Version="1.5.0" />
     <PackageReference Include="Hl7.FhirPath" Version="1.5.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
