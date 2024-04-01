@@ -219,7 +219,7 @@ namespace Hl7.Fhir.Serialization
                 hour = 0;
                 minute = 0;
 
-                if (_position >= _dateTimeString.Length)
+                if (AtEnd())
                 {
                     return false;
                 }
@@ -275,7 +275,7 @@ namespace Hl7.Fhir.Serialization
 
             private bool TrySkipCharacter(char character)
             {
-                if (_position >= _dateTimeString.Length || _dateTimeString[_position] != character)
+                if (AtEnd() || _dateTimeString[_position] != character)
                 {
                     return false;
                 }
@@ -298,7 +298,7 @@ namespace Hl7.Fhir.Serialization
             private bool TryGetDay(int year, int month, out int day)
             {
                 return TryGetFixedNumber(2, out day)
-                    && 1 <= day && day <= GetMonthDays(year, month);
+                    && 1 <= day && day <= DateTime.DaysInMonth(year, month);
             }
 
             private bool TryGetFixedNumber(int numberOfDigits, out int value)
@@ -320,26 +320,6 @@ namespace Hl7.Fhir.Serialization
                 numberOfDigits = _position - startPosition;
                 return _position > startPosition;
             }
-
-            private static int GetMonthDays(int year, int month)
-            {
-                var isFebruary = month == 2;
-                if (!isFebruary)
-                {
-                    return _monthDays[month - 1];
-                }
-
-                var isLeap = year % 4 == 0
-                    && (year % 100 != 0 || year % 400 == 0);
-                return isLeap ?
-                    29 :
-                    28;
-            }
-
-            private static readonly int[] _monthDays = new[]
-            {
-                31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-            };
 
             private readonly string _dateTimeString;
             private int _position;
