@@ -281,7 +281,7 @@ namespace Hl7.Fhir.Tests.Serialization
             var exception = Assert.ThrowsException<FormatException>(() => fhirStu3JsonParser.Parse<Fhir.Model.STU3.Patient>(patientWithCommentJson));
             Assert.IsTrue(exception.Message.Contains("The 'fhir_comments' feature is disabled"));
             var fhirR4JsonParser = new FhirJsonFastParser(Fhir.Model.Version.R4);
-            exception = Assert.ThrowsException<FormatException>(() => fhirR4JsonParser.Parse<Fhir.Model.STU3.Patient>(patientWithCommentJson));
+            exception = Assert.ThrowsException<FormatException>(() => fhirR4JsonParser.Parse<Fhir.Model.R4.Patient>(patientWithCommentJson));
             Assert.IsTrue(exception.Message.Contains("The 'fhir_comments' feature is disabled"));
         }
 
