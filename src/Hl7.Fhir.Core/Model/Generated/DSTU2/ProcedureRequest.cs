@@ -121,6 +121,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("reason", InSummary=Hl7.Fhir.Model.Version.All, Order=130, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Condition")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Reason
@@ -216,13 +217,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Notes
+        public List<Hl7.Fhir.Model.DSTU2.Annotation> Notes
         {
-            get { if(_Notes==null) _Notes = new List<Hl7.Fhir.Model.Annotation>(); return _Notes; }
+            get { if(_Notes==null) _Notes = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Notes; }
             set { _Notes = value; OnPropertyChanged("Notes"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Notes;
+        private List<Hl7.Fhir.Model.DSTU2.Annotation> _Notes;
         
         /// <summary>
         /// Preconditions for procedure
@@ -337,7 +338,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Encounter != null) dest.Encounter = (Hl7.Fhir.Model.ResourceReference)Encounter.DeepCopy();
                 if(Performer != null) dest.Performer = (Hl7.Fhir.Model.ResourceReference)Performer.DeepCopy();
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestStatus>)StatusElement.DeepCopy();
-                if(Notes != null) dest.Notes = new List<Hl7.Fhir.Model.Annotation>(Notes.DeepCopy());
+                if(Notes != null) dest.Notes = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Notes.DeepCopy());
                 if(AsNeeded != null) dest.AsNeeded = (Hl7.Fhir.Model.Element)AsNeeded.DeepCopy();
                 if(OrderedOnElement != null) dest.OrderedOnElement = (Hl7.Fhir.Model.FhirDateTime)OrderedOnElement.DeepCopy();
                 if(Orderer != null) dest.Orderer = (Hl7.Fhir.Model.ResourceReference)Orderer.DeepCopy();
@@ -487,7 +488,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.ProcedureRequestStatus>());
                     return true;
                 case "notes":
-                    Notes = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Notes = source.GetList(() => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "asNeededBoolean":
                     source.CheckDuplicates<Hl7.Fhir.Model.FhirBoolean>(AsNeeded, "asNeeded");
@@ -615,7 +616,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.PopulateListItem(BodySite, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "notes":
-                    source.PopulateListItem(Notes, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Notes, index, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
             }
             return false;

@@ -623,6 +623,7 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("medication", InSummary=Hl7.Fhir.Model.Version.All, Order=150, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Medication")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -777,13 +778,13 @@ namespace Hl7.Fhir.Model.R4
         [FhirElement("note", Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.R4.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.R4.Annotation> _Note;
         
         /// <summary>
         /// Details of how medication was taken
@@ -856,7 +857,7 @@ namespace Hl7.Fhir.Model.R4
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.ResourceReference>(ReasonReference.DeepCopy());
                 if(Request != null) dest.Request = (Hl7.Fhir.Model.ResourceReference)Request.DeepCopy();
                 if(Device != null) dest.Device = new List<Hl7.Fhir.Model.ResourceReference>(Device.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                 if(Dosage != null) dest.Dosage = (DosageComponent)Dosage.DeepCopy();
                 if(EventHistory != null) dest.EventHistory = new List<Hl7.Fhir.Model.ResourceReference>(EventHistory.DeepCopy());
                 return dest;
@@ -1073,7 +1074,7 @@ namespace Hl7.Fhir.Model.R4
                     Device = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "dosage":
                     Dosage = source.Populate(new DosageComponent());
@@ -1211,7 +1212,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulateListItem(Device, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "eventHistory":
                     source.PopulateListItem(EventHistory, index, () => new Hl7.Fhir.Model.ResourceReference());

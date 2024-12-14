@@ -208,6 +208,9 @@ namespace Hl7.Fhir.Model.R4
         
         [NotMapped]
         Hl7.Fhir.Model.IMoney Hl7.Fhir.Model.IChargeItem.PriceOverride { get { return PriceOverride; } }
+        
+        [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.IChargeItem.Note { get { return Note; } }
     
         
         /// <summary>
@@ -650,6 +653,7 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("product", Order=310, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Device","Medication","Substance")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.CodeableConcept))]
         [DataMember]
         public Hl7.Fhir.Model.Element Product
@@ -682,13 +686,13 @@ namespace Hl7.Fhir.Model.R4
         [FhirElement("note", Order=330)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.R4.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.R4.Annotation> _Note;
         
         /// <summary>
         /// Further information supporting this charge
@@ -736,7 +740,7 @@ namespace Hl7.Fhir.Model.R4
                 if(Service != null) dest.Service = new List<Hl7.Fhir.Model.ResourceReference>(Service.DeepCopy());
                 if(Product != null) dest.Product = (Hl7.Fhir.Model.Element)Product.DeepCopy();
                 if(Account != null) dest.Account = new List<Hl7.Fhir.Model.ResourceReference>(Account.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                 if(SupportingInformation != null) dest.SupportingInformation = new List<Hl7.Fhir.Model.ResourceReference>(SupportingInformation.DeepCopy());
                 return dest;
             }
@@ -998,7 +1002,7 @@ namespace Hl7.Fhir.Model.R4
                     Account = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "supportingInformation":
                     SupportingInformation = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
@@ -1171,7 +1175,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulateListItem(Account, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "supportingInformation":
                     source.PopulateListItem(SupportingInformation, index, () => new Hl7.Fhir.Model.ResourceReference());

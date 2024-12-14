@@ -1486,6 +1486,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("source", InSummary=Hl7.Fhir.Model.Version.All, Order=220, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("ValueSet","StructureDefinition")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.ResourceReference))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -1502,6 +1503,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("target", InSummary=Hl7.Fhir.Model.Version.All, Order=230, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("ValueSet","StructureDefinition")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.ResourceReference))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]

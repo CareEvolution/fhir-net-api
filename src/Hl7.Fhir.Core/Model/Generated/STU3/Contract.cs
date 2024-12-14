@@ -1923,6 +1923,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Composition","DocumentReference","QuestionnaireResponse")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -2060,6 +2061,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Composition","DocumentReference","QuestionnaireResponse")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -2197,6 +2199,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("DocumentReference")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -2652,6 +2655,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("binding", Order=280, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Composition","DocumentReference","QuestionnaireResponse")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Binding

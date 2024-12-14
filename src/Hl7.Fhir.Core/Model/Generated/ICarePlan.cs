@@ -102,7 +102,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Comments about the activity status/progress
         /// </summary>
-        List<Hl7.Fhir.Model.Annotation> Progress { get; set; }
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Progress { get; }
     
         /// <summary>
         /// Activity details defined in specific resource

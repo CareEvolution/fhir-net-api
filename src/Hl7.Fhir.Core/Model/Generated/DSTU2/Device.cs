@@ -55,6 +55,9 @@ namespace Hl7.Fhir.Model.DSTU2
         public override string TypeName { get { return "Device"; } }
         
         [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.IDevice.Note { get { return Note; } }
+        
+        [NotMapped]
         IEnumerable<Hl7.Fhir.Model.IContactPoint> Hl7.Fhir.Model.IDevice.Contact { get { return Contact; } }
     
         
@@ -92,13 +95,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("note", Order=110)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.DSTU2.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.DSTU2.Annotation> _Note;
         
         /// <summary>
         /// available | not-available | entered-in-error
@@ -458,7 +461,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.CopyTo(dest);
                 if(Identifier != null) dest.Identifier = new List<Hl7.Fhir.Model.Identifier>(Identifier.DeepCopy());
                 if(Type != null) dest.Type = (Hl7.Fhir.Model.CodeableConcept)Type.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Note.DeepCopy());
                 if(StatusElement != null) dest.StatusElement = (Code<Hl7.Fhir.Model.DSTU2.DeviceStatus>)StatusElement.DeepCopy();
                 if(ManufacturerElement != null) dest.ManufacturerElement = (Hl7.Fhir.Model.FhirString)ManufacturerElement.DeepCopy();
                 if(ModelElement != null) dest.ModelElement = (Hl7.Fhir.Model.FhirString)ModelElement.DeepCopy();
@@ -588,7 +591,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Type = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "status":
                     StatusElement = source.Populate(new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.DSTU2.DeviceStatus>());
@@ -732,7 +735,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "contact":
                     source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.DSTU2.ContactPoint());

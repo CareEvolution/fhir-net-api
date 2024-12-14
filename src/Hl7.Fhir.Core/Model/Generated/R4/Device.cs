@@ -1209,6 +1209,9 @@ namespace Hl7.Fhir.Model.R4
         
         [NotMapped]
         IEnumerable<Hl7.Fhir.Model.IContactPoint> Hl7.Fhir.Model.IDevice.Contact { get { return Contact; } }
+        
+        [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.IDevice.Note { get { return Note; } }
     
         
         /// <summary>
@@ -1724,13 +1727,13 @@ namespace Hl7.Fhir.Model.R4
         [FhirElement("note", Order=320)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.R4.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.R4.Annotation> _Note;
         
         /// <summary>
         /// Safety Characteristics of Device
@@ -1793,7 +1796,7 @@ namespace Hl7.Fhir.Model.R4
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.R4.ContactPoint>(Contact.DeepCopy());
                 if(Location != null) dest.Location = (Hl7.Fhir.Model.ResourceReference)Location.DeepCopy();
                 if(UrlElement != null) dest.UrlElement = (Hl7.Fhir.Model.FhirUri)UrlElement.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                 if(Safety != null) dest.Safety = new List<Hl7.Fhir.Model.CodeableConcept>(Safety.DeepCopy());
                 if(Parent != null) dest.Parent = (Hl7.Fhir.Model.ResourceReference)Parent.DeepCopy();
                 return dest;
@@ -2040,7 +2043,7 @@ namespace Hl7.Fhir.Model.R4
                     UrlElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "safety":
                     Safety = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
@@ -2205,7 +2208,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "safety":
                     source.PopulateListItem(Safety, index, () => new Hl7.Fhir.Model.CodeableConcept());

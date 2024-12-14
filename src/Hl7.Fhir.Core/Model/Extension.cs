@@ -103,7 +103,7 @@ namespace Hl7.Fhir.Model
                 typeof(UnsignedInt),
                 typeof(PositiveInt),
                 typeof(Markdown),
-                typeof(Annotation),
+                typeof(DSTU2.Annotation),
                 typeof(Attachment),
                 typeof(Identifier),
                 typeof(CodeableConcept),
@@ -144,7 +144,7 @@ namespace Hl7.Fhir.Model
                 typeof(FhirUri),
                 typeof(Address),
                 typeof(STU3.Age),
-                typeof(Annotation),
+                typeof(STU3.Annotation),
                 typeof(Attachment),
                 typeof(CodeableConcept),
                 typeof(Coding),
@@ -191,7 +191,7 @@ namespace Hl7.Fhir.Model
                 typeof(Uuid),
                 typeof(Address),
                 typeof(R4.Age),
-                typeof(Annotation),
+                typeof(R4.Annotation),
                 typeof(Attachment),
                 typeof(CodeableConcept),
                 typeof(Coding),
@@ -217,7 +217,7 @@ namespace Hl7.Fhir.Model
                 typeof(R4.ParameterDefinition),
                 typeof(R4.RelatedArtifact),
                 typeof(R4.TriggerDefinition),
-                typeof(UsageContext),
+                typeof(R4.UsageContext),
                 typeof(R4.Dosage)
             }
         )]
@@ -380,9 +380,17 @@ namespace Hl7.Fhir.Model
                     source.CheckDuplicates<Markdown>(Value, "value");
                     Value = source.Populate(new Markdown());
                     return true;
-                case "valueAnnotation":
-                    source.CheckDuplicates<Annotation>(Value, "value");
-                    Value = source.Populate(new Annotation());
+                case "valueAnnotation" when source.IsVersion(Version.DSTU2):
+                    source.CheckDuplicates<DSTU2.Annotation>(Value, "value");
+                    Value = source.Populate(new DSTU2.Annotation());
+                    return true;
+                case "valueAnnotation" when source.IsVersion(Version.STU3):
+                    source.CheckDuplicates<STU3.Annotation>(Value, "value");
+                    Value = source.Populate(new STU3.Annotation());
+                    return true;
+                case "valueAnnotation" when source.IsVersion(Version.R4):
+                    source.CheckDuplicates<R4.Annotation>(Value, "value");
+                    Value = source.Populate(new R4.Annotation());
                     return true;
                 case "valueAttachment":
                     source.CheckDuplicates<Attachment>(Value, "value");
@@ -529,8 +537,8 @@ namespace Hl7.Fhir.Model
                     Value = source.Populate(new R4.TriggerDefinition());
                     return true;
                 case "valueUsageContext" when source.IsVersion(Version.R4):
-                    source.CheckDuplicates<UsageContext>(Value, "value");
-                    Value = source.Populate(new UsageContext());
+                    source.CheckDuplicates<R4.UsageContext>(Value, "value");
+                    Value = source.Populate(new R4.UsageContext());
                     return true;
                 case "valueDosage" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Dosage>(Value, "value");
@@ -719,9 +727,17 @@ namespace Hl7.Fhir.Model
                     source.CheckDuplicates<Markdown>(Value, "value");
                     Value = source.Populate(Value as Markdown, () => new Markdown());
                     return true;
-                case "valueAnnotation":
-                    source.CheckDuplicates<Annotation>(Value, "value");
-                    Value = source.Populate(Value as Annotation, () => new Annotation());
+                case "valueAnnotation" when source.IsVersion(Version.DSTU2):
+                    source.CheckDuplicates<DSTU2.Annotation>(Value, "value");
+                    Value = source.Populate(Value as DSTU2.Annotation, () => new DSTU2.Annotation());
+                    return true;
+                case "valueAnnotation" when source.IsVersion(Version.STU3):
+                    source.CheckDuplicates<STU3.Annotation>(Value, "value");
+                    Value = source.Populate(Value as STU3.Annotation, () => new STU3.Annotation());
+                    return true;
+                case "valueAnnotation" when source.IsVersion(Version.R4):
+                    source.CheckDuplicates<R4.Annotation>(Value, "value");
+                    Value = source.Populate(Value as R4.Annotation, () => new R4.Annotation());
                     return true;
                 case "valueAttachment":
                     source.CheckDuplicates<Attachment>(Value, "value");
@@ -880,8 +896,8 @@ namespace Hl7.Fhir.Model
                     Value = source.Populate(Value as R4.TriggerDefinition, () => new R4.TriggerDefinition());
                     return true;
                 case "valueUsageContext" when source.IsVersion(Version.R4):
-                    source.CheckDuplicates<UsageContext>(Value, "value");
-                    Value = source.Populate(Value as UsageContext, () => new UsageContext());
+                    source.CheckDuplicates<R4.UsageContext>(Value, "value");
+                    Value = source.Populate(Value as R4.UsageContext, () => new R4.UsageContext());
                     return true;
                 case "valueDosage" when source.IsVersion(Version.R4):
                     source.CheckDuplicates<R4.Dosage>(Value, "value");

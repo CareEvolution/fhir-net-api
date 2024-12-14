@@ -281,6 +281,9 @@ namespace Hl7.Fhir.Model.R4
         
         [NotMapped]
         IEnumerable<Hl7.Fhir.Model.ICareTeamParticipantComponent> Hl7.Fhir.Model.ICareTeam.Participant { get { return Participant; } }
+        
+        [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.ICareTeam.Note { get { return Note; } }
     
         
         /// <summary>
@@ -503,13 +506,13 @@ namespace Hl7.Fhir.Model.R4
         [FhirElement("note", Order=210)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.R4.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.R4.Annotation> _Note;
     
     
         public static ElementDefinitionConstraint[] CareTeam_Constraints =
@@ -549,7 +552,7 @@ namespace Hl7.Fhir.Model.R4
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.ResourceReference>(ReasonReference.DeepCopy());
                 if(ManagingOrganization != null) dest.ManagingOrganization = new List<Hl7.Fhir.Model.ResourceReference>(ManagingOrganization.DeepCopy());
                 if(Telecom != null) dest.Telecom = new List<Hl7.Fhir.Model.R4.ContactPoint>(Telecom.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                 return dest;
             }
             else
@@ -712,7 +715,7 @@ namespace Hl7.Fhir.Model.R4
                     Telecom = source.GetList(() => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
             }
             return false;
@@ -805,7 +808,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulateListItem(Telecom, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
             }
             return false;

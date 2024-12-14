@@ -142,13 +142,13 @@ namespace Hl7.Fhir.Model.R4
             [FhirElement("note", Order=80)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Annotation> Note
+            public List<Hl7.Fhir.Model.R4.Annotation> Note
             {
-                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
                 set { _Note = value; OnPropertyChanged("Note"); }
             }
             
-            private List<Hl7.Fhir.Model.Annotation> _Note;
+            private List<Hl7.Fhir.Model.R4.Annotation> _Note;
         
             internal override void Serialize(Serialization.SerializerSink sink)
             {
@@ -201,7 +201,7 @@ namespace Hl7.Fhir.Model.R4
                         Onset = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                        Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                         return true;
                 }
                 return false;
@@ -263,7 +263,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "note":
-                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                         return true;
                 }
                 return false;
@@ -280,7 +280,7 @@ namespace Hl7.Fhir.Model.R4
                     if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
                     if(ContributedToDeathElement != null) dest.ContributedToDeathElement = (Hl7.Fhir.Model.FhirBoolean)ContributedToDeathElement.DeepCopy();
                     if(Onset != null) dest.Onset = (Hl7.Fhir.Model.Element)Onset.DeepCopy();
-                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                     return dest;
                 }
                 else
@@ -715,13 +715,13 @@ namespace Hl7.Fhir.Model.R4
         [FhirElement("note", Order=250)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.R4.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.R4.Annotation> _Note;
         
         /// <summary>
         /// Condition that the related person had
@@ -787,7 +787,7 @@ namespace Hl7.Fhir.Model.R4
                 if(Deceased != null) dest.Deceased = (Hl7.Fhir.Model.Element)Deceased.DeepCopy();
                 if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.ResourceReference>(ReasonReference.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                 if(Condition != null) dest.Condition = new List<ConditionComponent>(Condition.DeepCopy());
                 return dest;
             }
@@ -1002,7 +1002,7 @@ namespace Hl7.Fhir.Model.R4
                     ReasonReference = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "condition":
                     Condition = source.GetList(() => new ConditionComponent());
@@ -1180,7 +1180,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulateListItem(ReasonReference, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "condition":
                     source.PopulateListItem(Condition, index, () => new ConditionComponent());

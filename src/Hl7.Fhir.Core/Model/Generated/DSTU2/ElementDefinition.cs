@@ -1302,6 +1302,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("valueSet", InSummary=Hl7.Fhir.Model.Version.All, Order=60, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("ValueSet")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element ValueSet
@@ -2182,12 +2183,12 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("defaultValue", InSummary=Hl7.Fhir.Model.Version.All, Order=190, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.DSTU2.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
         [DataMember]
         public Hl7.Fhir.Model.Element DefaultValue
         {
             get { return _DefaultValue; }
-            set { _DefaultValue = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("DefaultValue"); }
+            set { _DefaultValue = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.DSTU2.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("DefaultValue"); }
         }
         
         private Hl7.Fhir.Model.Element _DefaultValue;
@@ -2230,12 +2231,12 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("fixed", InSummary=Hl7.Fhir.Model.Version.All, Order=210, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.DSTU2.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
         [DataMember]
         public Hl7.Fhir.Model.Element Fixed
         {
             get { return _Fixed; }
-            set { _Fixed = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("Fixed"); }
+            set { _Fixed = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.DSTU2.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("Fixed"); }
         }
         
         private Hl7.Fhir.Model.Element _Fixed;
@@ -2245,12 +2246,12 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("pattern", InSummary=Hl7.Fhir.Model.Version.All, Order=220, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.DSTU2.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
         [DataMember]
         public Hl7.Fhir.Model.Element Pattern
         {
             get { return _Pattern; }
-            set { _Pattern = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("Pattern"); }
+            set { _Pattern = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.DSTU2.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("Pattern"); }
         }
         
         private Hl7.Fhir.Model.Element _Pattern;
@@ -2260,12 +2261,12 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("example", InSummary=Hl7.Fhir.Model.Version.All, Order=230, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.DSTU2.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
         [DataMember]
         public Hl7.Fhir.Model.Element Example
         {
             get { return _Example; }
-            set { _Example = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("Example"); }
+            set { _Example = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.DSTU2.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("Example"); }
         }
         
         private Hl7.Fhir.Model.Element _Example;
@@ -2275,12 +2276,12 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("minValue", InSummary=Hl7.Fhir.Model.Version.All, Order=240, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.DSTU2.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
         [DataMember]
         public Hl7.Fhir.Model.Element MinValue
         {
             get { return _MinValue; }
-            set { _MinValue = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("MinValue"); }
+            set { _MinValue = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.DSTU2.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("MinValue"); }
         }
         
         private Hl7.Fhir.Model.Element _MinValue;
@@ -2290,12 +2291,12 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("maxValue", InSummary=Hl7.Fhir.Model.Version.All, Order=250, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.DSTU2.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.DSTU2.SampledData),typeof(Hl7.Fhir.Model.DSTU2.Signature),typeof(Hl7.Fhir.Model.DSTU2.HumanName),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.DSTU2.ContactPoint),typeof(Hl7.Fhir.Model.DSTU2.Timing),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.Meta))]
         [DataMember]
         public Hl7.Fhir.Model.Element MaxValue
         {
             get { return _MaxValue; }
-            set { _MaxValue = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("MaxValue"); }
+            set { _MaxValue = CheckType(value, typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.DSTU2.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.DSTU2.SampledData), typeof(Hl7.Fhir.Model.DSTU2.Signature), typeof(Hl7.Fhir.Model.DSTU2.HumanName), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.DSTU2.ContactPoint), typeof(Hl7.Fhir.Model.DSTU2.Timing), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("MaxValue"); }
         }
         
         private Hl7.Fhir.Model.Element _MaxValue;
@@ -2945,8 +2946,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     DefaultValue = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "defaultValueAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(DefaultValue, "defaultValue");
-                    DefaultValue = source.Populate(new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(DefaultValue, "defaultValue");
+                    DefaultValue = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "defaultValueAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(DefaultValue, "defaultValue");
@@ -3080,8 +3081,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     Fixed = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "fixedAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Fixed, "fixed");
-                    Fixed = source.Populate(new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(Fixed, "fixed");
+                    Fixed = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "fixedAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Fixed, "fixed");
@@ -3212,8 +3213,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     Pattern = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "patternAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Pattern, "pattern");
-                    Pattern = source.Populate(new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(Pattern, "pattern");
+                    Pattern = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "patternAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Pattern, "pattern");
@@ -3344,8 +3345,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     Example = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "exampleAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Example, "example");
-                    Example = source.Populate(new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(Example, "example");
+                    Example = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "exampleAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Example, "example");
@@ -3476,8 +3477,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     MinValue = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "minValueAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(MinValue, "minValue");
-                    MinValue = source.Populate(new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(MinValue, "minValue");
+                    MinValue = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "minValueAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(MinValue, "minValue");
@@ -3608,8 +3609,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     MaxValue = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "maxValueAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(MaxValue, "maxValue");
-                    MaxValue = source.Populate(new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(MaxValue, "maxValue");
+                    MaxValue = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "maxValueAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(MaxValue, "maxValue");
@@ -3920,8 +3921,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.Markdown, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "defaultValueAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(DefaultValue, "defaultValue");
-                    DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.Annotation, () => new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(DefaultValue, "defaultValue");
+                    DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.DSTU2.Annotation, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "defaultValueAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(DefaultValue, "defaultValue");
@@ -4122,8 +4123,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     Fixed = source.Populate(Fixed as Hl7.Fhir.Model.Markdown, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "fixedAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Fixed, "fixed");
-                    Fixed = source.Populate(Fixed as Hl7.Fhir.Model.Annotation, () => new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(Fixed, "fixed");
+                    Fixed = source.Populate(Fixed as Hl7.Fhir.Model.DSTU2.Annotation, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "fixedAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Fixed, "fixed");
@@ -4318,8 +4319,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     Pattern = source.Populate(Pattern as Hl7.Fhir.Model.Markdown, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "patternAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Pattern, "pattern");
-                    Pattern = source.Populate(Pattern as Hl7.Fhir.Model.Annotation, () => new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(Pattern, "pattern");
+                    Pattern = source.Populate(Pattern as Hl7.Fhir.Model.DSTU2.Annotation, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "patternAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Pattern, "pattern");
@@ -4514,8 +4515,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     Example = source.Populate(Example as Hl7.Fhir.Model.Markdown, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "exampleAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(Example, "example");
-                    Example = source.Populate(Example as Hl7.Fhir.Model.Annotation, () => new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(Example, "example");
+                    Example = source.Populate(Example as Hl7.Fhir.Model.DSTU2.Annotation, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "exampleAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(Example, "example");
@@ -4710,8 +4711,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     MinValue = source.Populate(MinValue as Hl7.Fhir.Model.Markdown, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "minValueAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(MinValue, "minValue");
-                    MinValue = source.Populate(MinValue as Hl7.Fhir.Model.Annotation, () => new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(MinValue, "minValue");
+                    MinValue = source.Populate(MinValue as Hl7.Fhir.Model.DSTU2.Annotation, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "minValueAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(MinValue, "minValue");
@@ -4906,8 +4907,8 @@ namespace Hl7.Fhir.Model.DSTU2
                     MaxValue = source.Populate(MaxValue as Hl7.Fhir.Model.Markdown, () => new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "maxValueAnnotation":
-                    source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(MaxValue, "maxValue");
-                    MaxValue = source.Populate(MaxValue as Hl7.Fhir.Model.Annotation, () => new Hl7.Fhir.Model.Annotation());
+                    source.CheckDuplicates<Hl7.Fhir.Model.DSTU2.Annotation>(MaxValue, "maxValue");
+                    MaxValue = source.Populate(MaxValue as Hl7.Fhir.Model.DSTU2.Annotation, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "maxValueAttachment":
                     source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(MaxValue, "maxValue");

@@ -3436,7 +3436,7 @@ public class PropertyDetails
             }
         }
 
-        if (result.PropType == "Hl7.Fhir.Model.ResourceReference")
+        if (result.PropType == "Hl7.Fhir.Model.ResourceReference" || result.PropType == "Hl7.Fhir.Model.Element")
         {
             result.ReferenceTargets = GetPossibleReferenceTargets(element, ns);
         }

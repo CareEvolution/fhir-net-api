@@ -432,13 +432,13 @@ namespace Hl7.Fhir.Model.R4
             [FhirElement("note", Order=170)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Annotation> Note
+            public List<Hl7.Fhir.Model.R4.Annotation> Note
             {
-                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
                 set { _Note = value; OnPropertyChanged("Note"); }
             }
             
-            private List<Hl7.Fhir.Model.Annotation> _Note;
+            private List<Hl7.Fhir.Model.R4.Annotation> _Note;
         
             internal override void Serialize(Serialization.SerializerSink sink)
             {
@@ -519,7 +519,7 @@ namespace Hl7.Fhir.Model.R4
                         BrandElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                        Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                         return true;
                 }
                 return false;
@@ -621,7 +621,7 @@ namespace Hl7.Fhir.Model.R4
                         source.PopulateListItem(Prism, index, () => new PrismComponent());
                         return true;
                     case "note":
-                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                         return true;
                 }
                 return false;
@@ -647,7 +647,7 @@ namespace Hl7.Fhir.Model.R4
                     if(Duration != null) dest.Duration = (Hl7.Fhir.Model.SimpleQuantity)Duration.DeepCopy();
                     if(ColorElement != null) dest.ColorElement = (Hl7.Fhir.Model.FhirString)ColorElement.DeepCopy();
                     if(BrandElement != null) dest.BrandElement = (Hl7.Fhir.Model.FhirString)BrandElement.DeepCopy();
-                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                     return dest;
                 }
                 else

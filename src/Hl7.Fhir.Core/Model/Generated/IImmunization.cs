@@ -118,7 +118,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Vaccination notes
         /// </summary>
-        List<Hl7.Fhir.Model.Annotation> Note { get; set; }
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Note { get; }
     
         /// <summary>
         /// Details of a reaction that follows immunization

@@ -1046,6 +1046,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("diagnosis", Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Condition")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -1334,6 +1335,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("procedure", Order=60, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Procedure")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -1914,6 +1916,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("location", Order=60, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Location")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Location
@@ -2324,6 +2327,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("location", Order=150, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Location")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Location

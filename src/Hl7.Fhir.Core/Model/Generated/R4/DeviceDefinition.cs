@@ -1315,6 +1315,7 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("manufacturer", Order=110, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Organization")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Manufacturer
@@ -1614,13 +1615,13 @@ namespace Hl7.Fhir.Model.R4
         [FhirElement("note", Order=270)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.R4.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.R4.Annotation> _Note;
         
         /// <summary>
         /// The quantity of the device present in the packaging (e.g. the number of devices present in a pack, or the number of devices in the same package of the medicinal product)
@@ -1690,7 +1691,7 @@ namespace Hl7.Fhir.Model.R4
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.R4.ContactPoint>(Contact.DeepCopy());
                 if(UrlElement != null) dest.UrlElement = (Hl7.Fhir.Model.FhirUri)UrlElement.DeepCopy();
                 if(OnlineInformationElement != null) dest.OnlineInformationElement = (Hl7.Fhir.Model.FhirUri)OnlineInformationElement.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                 if(Quantity != null) dest.Quantity = (Hl7.Fhir.Model.Quantity)Quantity.DeepCopy();
                 if(ParentDevice != null) dest.ParentDevice = (Hl7.Fhir.Model.ResourceReference)ParentDevice.DeepCopy();
                 if(Material != null) dest.Material = new List<MaterialComponent>(Material.DeepCopy());
@@ -1928,7 +1929,7 @@ namespace Hl7.Fhir.Model.R4
                     OnlineInformationElement = source.Populate(new Hl7.Fhir.Model.FhirUri());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "quantity":
                     Quantity = source.Populate(new Hl7.Fhir.Model.Quantity());
@@ -2085,7 +2086,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.R4.ContactPoint());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
                 case "material":
                     source.PopulateListItem(Material, index, () => new MaterialComponent());

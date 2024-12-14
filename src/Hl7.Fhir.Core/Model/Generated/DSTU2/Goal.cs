@@ -67,6 +67,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("result", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Observation")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Result
@@ -189,6 +190,9 @@ namespace Hl7.Fhir.Model.DSTU2
         
         
         }
+        
+        [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.IGoal.Note { get { return Note; } }
     
         
         /// <summary>
@@ -430,13 +434,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("note", Order=210)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.DSTU2.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.DSTU2.Annotation> _Note;
         
         /// <summary>
         /// What was end result of goal?
@@ -472,7 +476,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Author != null) dest.Author = (Hl7.Fhir.Model.ResourceReference)Author.DeepCopy();
                 if(Priority != null) dest.Priority = (Hl7.Fhir.Model.CodeableConcept)Priority.DeepCopy();
                 if(Addresses != null) dest.Addresses = new List<Hl7.Fhir.Model.ResourceReference>(Addresses.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Note.DeepCopy());
                 if(Outcome != null) dest.Outcome = new List<OutcomeComponent>(Outcome.DeepCopy());
                 return dest;
             }
@@ -634,7 +638,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Addresses = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "outcome":
                     Outcome = source.GetList(() => new OutcomeComponent());
@@ -742,7 +746,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.PopulateListItem(Addresses, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "outcome":
                     source.PopulateListItem(Outcome, index, () => new OutcomeComponent());

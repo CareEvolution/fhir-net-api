@@ -160,7 +160,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// The context that the content is intended to support
         /// </summary>
-        List<Hl7.Fhir.Model.UsageContext> UseContext { get; set; }
+        IEnumerable<Hl7.Fhir.Model.IUsageContext> UseContext { get; }
     
         /// <summary>
         /// Intended jurisdiction for structure map (if applicable)

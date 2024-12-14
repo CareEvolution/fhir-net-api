@@ -38,7 +38,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
@@ -72,7 +72,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
@@ -107,7 +107,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
@@ -142,7 +142,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
@@ -182,7 +182,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
@@ -222,7 +222,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
@@ -250,7 +250,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
@@ -278,7 +278,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 result1 = client.Continue(result1, PageDirection.Next);
             }
@@ -306,7 +306,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 Console.WriteLine("Fetching more results...");
                 result1 = await client.ContinueAsync(result1);
@@ -335,7 +335,7 @@ namespace Hl7.Fhir.Core.AsyncTests
                 {
                     Patient p = (Patient)e.Resource;
                     Console.WriteLine(
-                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family.FirstOrDefault()}");
+                        $"NAME: {p.Name[0].Given.FirstOrDefault()} {p.Name[0].Family}");
                 }
                 Console.WriteLine("Fetching more results...");
                 result1 = await client.ContinueAsync(result1);

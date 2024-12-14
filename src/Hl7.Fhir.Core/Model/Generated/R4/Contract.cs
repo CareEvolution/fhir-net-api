@@ -3998,13 +3998,13 @@ namespace Hl7.Fhir.Model.R4
             [FhirElement("note", Order=230)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Annotation> Note
+            public List<Hl7.Fhir.Model.R4.Annotation> Note
             {
-                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
                 set { _Note = value; OnPropertyChanged("Note"); }
             }
             
-            private List<Hl7.Fhir.Model.Annotation> _Note;
+            private List<Hl7.Fhir.Model.R4.Annotation> _Note;
             
             /// <summary>
             /// Action restriction numbers
@@ -4186,7 +4186,7 @@ namespace Hl7.Fhir.Model.R4
                         ReasonLinkIdElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                        Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                         return true;
                     case "securityLabelNumber":
                         SecurityLabelNumberElement = source.GetList(() => new Hl7.Fhir.Model.UnsignedInt());
@@ -4353,7 +4353,7 @@ namespace Hl7.Fhir.Model.R4
                         source.PopulatePrimitiveListItem(ReasonLinkIdElement, index, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                         return true;
                     case "securityLabelNumber":
                         source.PopulatePrimitiveListItemValue(SecurityLabelNumberElement, index);
@@ -4391,7 +4391,7 @@ namespace Hl7.Fhir.Model.R4
                     if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.ResourceReference>(ReasonReference.DeepCopy());
                     if(ReasonElement != null) dest.ReasonElement = new List<Hl7.Fhir.Model.FhirString>(ReasonElement.DeepCopy());
                     if(ReasonLinkIdElement != null) dest.ReasonLinkIdElement = new List<Hl7.Fhir.Model.FhirString>(ReasonLinkIdElement.DeepCopy());
-                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                     if(SecurityLabelNumberElement != null) dest.SecurityLabelNumberElement = new List<Hl7.Fhir.Model.UnsignedInt>(SecurityLabelNumberElement.DeepCopy());
                     return dest;
                 }
@@ -4914,6 +4914,7 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Composition","DocumentReference","QuestionnaireResponse")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -5051,6 +5052,7 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Composition","DocumentReference","QuestionnaireResponse")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -5188,6 +5190,7 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("content", Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("DocumentReference")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -5958,6 +5961,7 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("legallyBinding", Order=410, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Composition","DocumentReference","QuestionnaireResponse","Contract")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element LegallyBinding

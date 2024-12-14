@@ -929,6 +929,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("reason", InSummary=Hl7.Fhir.Model.Version.All, Order=140, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Condition")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Reason

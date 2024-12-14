@@ -1018,6 +1018,9 @@ namespace Hl7.Fhir.Model.STU3
         }
         
         [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.IImmunization.Note { get { return Note; } }
+        
+        [NotMapped]
         IEnumerable<Hl7.Fhir.Model.IImmunizationReactionComponent> Hl7.Fhir.Model.IImmunization.Reaction { get { return Reaction; } }
     
         
@@ -1381,13 +1384,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Administration/non-administration reasons
@@ -1481,7 +1484,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(Route != null) dest.Route = (Hl7.Fhir.Model.CodeableConcept)Route.DeepCopy();
                 if(DoseQuantity != null) dest.DoseQuantity = (Hl7.Fhir.Model.SimpleQuantity)DoseQuantity.DeepCopy();
                 if(Practitioner != null) dest.Practitioner = new List<PractitionerComponent>(Practitioner.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Explanation != null) dest.Explanation = (ExplanationComponent)Explanation.DeepCopy();
                 if(Reaction != null) dest.Reaction = new List<ReactionComponent>(Reaction.DeepCopy());
                 if(VaccinationProtocol != null) dest.VaccinationProtocol = new List<VaccinationProtocolComponent>(VaccinationProtocol.DeepCopy());
@@ -1671,7 +1674,7 @@ namespace Hl7.Fhir.Model.STU3
                     Practitioner = source.GetList(() => new PractitionerComponent());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "explanation":
                     Explanation = source.Populate(new ExplanationComponent());
@@ -1794,7 +1797,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulateListItem(Practitioner, index, () => new PractitionerComponent());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "reaction":
                     source.PopulateListItem(Reaction, index, () => new ReactionComponent());

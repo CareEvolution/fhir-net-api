@@ -655,6 +655,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("additive", Order=90, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Substance")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Additive
@@ -1072,13 +1073,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=200)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -1099,7 +1100,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(Collection != null) dest.Collection = (CollectionComponent)Collection.DeepCopy();
                 if(Processing != null) dest.Processing = new List<ProcessingComponent>(Processing.DeepCopy());
                 if(Container != null) dest.Container = new List<ContainerComponent>(Container.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 return dest;
             }
             else
@@ -1246,7 +1247,7 @@ namespace Hl7.Fhir.Model.STU3
                     Container = source.GetList(() => new ContainerComponent());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
             }
             return false;
@@ -1330,7 +1331,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulateListItem(Container, index, () => new ContainerComponent());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
             }
             return false;

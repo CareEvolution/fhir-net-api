@@ -342,6 +342,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("target", InSummary=Hl7.Fhir.Model.Version.All, Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Composition")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.ResourceReference))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]

@@ -1444,6 +1444,9 @@ namespace Hl7.Fhir.Model.STU3
         }
         
         [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.IRequestGroup.Note { get { return Note; } }
+        
+        [NotMapped]
         IEnumerable<Hl7.Fhir.Model.IRequestGroupActionComponent> Hl7.Fhir.Model.IRequestGroup.Action { get { return Action; } }
     
         
@@ -1717,13 +1720,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Proposed actions, if any
@@ -1778,7 +1781,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(AuthoredOnElement != null) dest.AuthoredOnElement = (Hl7.Fhir.Model.FhirDateTime)AuthoredOnElement.DeepCopy();
                 if(Author != null) dest.Author = (Hl7.Fhir.Model.ResourceReference)Author.DeepCopy();
                 if(Reason != null) dest.Reason = (Hl7.Fhir.Model.Element)Reason.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Action != null) dest.Action = new List<ActionComponent>(Action.DeepCopy());
                 return dest;
             }
@@ -1946,7 +1949,7 @@ namespace Hl7.Fhir.Model.STU3
                     Reason = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "action":
                     Action = source.GetList(() => new ActionComponent());
@@ -2050,7 +2053,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulateListItem(Replaces, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "action":
                     source.PopulateListItem(Action, index, () => new ActionComponent());

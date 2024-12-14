@@ -38,16 +38,16 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v1.0.2, v4.0.1, v3.0.1
+// Generated for FHIR v3.0.1
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     /// <summary>
     /// Text node with attribution
     /// </summary>
-    [FhirType(Hl7.Fhir.Model.Version.All, "Annotation")]
+    [FhirType(Hl7.Fhir.Model.Version.STU3, "Annotation")]
     [DataContract]
-    public partial class Annotation : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class Annotation : Hl7.Fhir.Model.Element, Hl7.Fhir.Model.IAnnotation, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override string TypeName { get { return "Annotation"; } }
@@ -58,6 +58,7 @@ namespace Hl7.Fhir.Model
         /// </summary>
         [FhirElement("author", InSummary=Hl7.Fhir.Model.Version.All, Order=30, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Practitioner","Patient","RelatedPerson")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.FhirString))]
         [DataMember]
         public Hl7.Fhir.Model.Element Author
@@ -104,8 +105,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// The annotation  - text content
         /// </summary>
-        [FhirElement("text", InSummary=Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.R4, Order=50)]
-        [CLSCompliant(false)]
+        [FhirElement("text", Order=50)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Markdown TextElement
@@ -189,7 +189,7 @@ namespace Hl7.Fhir.Model
             base.Serialize(sink);
             sink.Element("author", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Author?.Serialize(sink);
             sink.Element("time", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TimeElement?.Serialize(sink);
-            sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.R4, true, false); TextElement?.Serialize(sink);
+            sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); TextElement?.Serialize(sink);
             sink.End();
         }
     

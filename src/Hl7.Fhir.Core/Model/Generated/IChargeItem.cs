@@ -165,7 +165,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Comments made about the ChargeItem
         /// </summary>
-        List<Hl7.Fhir.Model.Annotation> Note { get; set; }
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Note { get; }
     
         /// <summary>
         /// Further information supporting this charge

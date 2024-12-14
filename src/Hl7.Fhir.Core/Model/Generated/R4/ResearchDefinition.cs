@@ -338,6 +338,7 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("subject", Order=180, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Group")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Subject
@@ -502,13 +503,13 @@ namespace Hl7.Fhir.Model.R4
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.UsageContext> UseContext
+        public List<Hl7.Fhir.Model.R4.UsageContext> UseContext
         {
-            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.UsageContext>(); return _UseContext; }
+            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.R4.UsageContext>(); return _UseContext; }
             set { _UseContext = value; OnPropertyChanged("UseContext"); }
         }
         
-        private List<Hl7.Fhir.Model.UsageContext> _UseContext;
+        private List<Hl7.Fhir.Model.R4.UsageContext> _UseContext;
         
         /// <summary>
         /// Intended jurisdiction for research definition (if applicable)
@@ -918,7 +919,7 @@ namespace Hl7.Fhir.Model.R4
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.R4.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(CommentElement != null) dest.CommentElement = new List<Hl7.Fhir.Model.FhirString>(CommentElement.DeepCopy());
-                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.UsageContext>(UseContext.DeepCopy());
+                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.R4.UsageContext>(UseContext.DeepCopy());
                 if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
                 if(UsageElement != null) dest.UsageElement = (Hl7.Fhir.Model.FhirString)UsageElement.DeepCopy();
@@ -1190,7 +1191,7 @@ namespace Hl7.Fhir.Model.R4
                     CommentElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.R4.UsageContext());
                     return true;
                 case "jurisdiction":
                     Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
@@ -1440,7 +1441,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulatePrimitiveListItem(CommentElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "useContext":
-                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.UsageContext());
+                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.R4.UsageContext());
                     return true;
                 case "jurisdiction":
                     source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());

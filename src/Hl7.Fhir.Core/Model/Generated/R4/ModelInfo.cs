@@ -211,7 +211,7 @@ namespace Hl7.Fhir.Model.R4
             {
                 { "Address", typeof(Hl7.Fhir.Model.Address) },
                 { "Age", typeof(Hl7.Fhir.Model.R4.Age) },
-                { "Annotation", typeof(Hl7.Fhir.Model.Annotation) },
+                { "Annotation", typeof(Hl7.Fhir.Model.R4.Annotation) },
                 { "Attachment", typeof(Hl7.Fhir.Model.Attachment) },
                 { "BackboneElement", typeof(Hl7.Fhir.Model.BackboneElement) },
                 { "base64Binary", typeof(Hl7.Fhir.Model.Base64Binary) },
@@ -269,7 +269,7 @@ namespace Hl7.Fhir.Model.R4
                 { "unsignedInt", typeof(Hl7.Fhir.Model.UnsignedInt) },
                 { "uri", typeof(Hl7.Fhir.Model.FhirUri) },
                 { "url", typeof(Hl7.Fhir.Model.Url) },
-                { "UsageContext", typeof(Hl7.Fhir.Model.UsageContext) },
+                { "UsageContext", typeof(Hl7.Fhir.Model.R4.UsageContext) },
                 { "uuid", typeof(Hl7.Fhir.Model.Uuid) },
                 { "xhtml", typeof(Hl7.Fhir.Model.XHtml) },
         
@@ -430,7 +430,7 @@ namespace Hl7.Fhir.Model.R4
             {
                 { typeof(Hl7.Fhir.Model.Address), "Address" },
                 { typeof(Hl7.Fhir.Model.R4.Age), "Age" },
-                { typeof(Hl7.Fhir.Model.Annotation), "Annotation" },
+                { typeof(Hl7.Fhir.Model.R4.Annotation), "Annotation" },
                 { typeof(Hl7.Fhir.Model.Attachment), "Attachment" },
                 { typeof(Hl7.Fhir.Model.BackboneElement), "BackboneElement" },
                 { typeof(Hl7.Fhir.Model.Base64Binary), "base64Binary" },
@@ -488,7 +488,7 @@ namespace Hl7.Fhir.Model.R4
                 { typeof(Hl7.Fhir.Model.UnsignedInt), "unsignedInt" },
                 { typeof(Hl7.Fhir.Model.FhirUri), "uri" },
                 { typeof(Hl7.Fhir.Model.Url), "url" },
-                { typeof(Hl7.Fhir.Model.UsageContext), "UsageContext" },
+                { typeof(Hl7.Fhir.Model.R4.UsageContext), "UsageContext" },
                 { typeof(Hl7.Fhir.Model.Uuid), "uuid" },
                 { typeof(Hl7.Fhir.Model.XHtml), "xhtml" },
         

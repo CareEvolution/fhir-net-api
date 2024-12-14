@@ -528,13 +528,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=190)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Entries in the list
@@ -607,7 +607,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(DateElement != null) dest.DateElement = (Hl7.Fhir.Model.FhirDateTime)DateElement.DeepCopy();
                 if(Source != null) dest.Source = (Hl7.Fhir.Model.ResourceReference)Source.DeepCopy();
                 if(OrderedBy != null) dest.OrderedBy = (Hl7.Fhir.Model.CodeableConcept)OrderedBy.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Entry != null) dest.Entry = new List<EntryComponent>(Entry.DeepCopy());
                 if(EmptyReason != null) dest.EmptyReason = (Hl7.Fhir.Model.CodeableConcept)EmptyReason.DeepCopy();
                 return dest;
@@ -741,7 +741,7 @@ namespace Hl7.Fhir.Model.STU3
                     OrderedBy = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "entry":
                     Entry = source.GetList(() => new EntryComponent());
@@ -828,7 +828,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulateListItem(Identifier, index, () => new Hl7.Fhir.Model.Identifier());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "entry":
                     source.PopulateListItem(Entry, index, () => new EntryComponent());
