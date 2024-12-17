@@ -260,6 +260,9 @@ namespace Hl7.Fhir.Model.STU3
         
         [NotMapped]
         IEnumerable<Hl7.Fhir.Model.ICareTeamParticipantComponent> Hl7.Fhir.Model.ICareTeam.Participant { get { return Participant; } }
+        
+        [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.ICareTeam.Note { get { return Note; } }
     
         
         /// <summary>
@@ -468,13 +471,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=200)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
     
     
         public static ElementDefinitionConstraint[] CareTeam_Constraints =
@@ -513,7 +516,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(ReasonCode != null) dest.ReasonCode = new List<Hl7.Fhir.Model.CodeableConcept>(ReasonCode.DeepCopy());
                 if(ReasonReference != null) dest.ReasonReference = new List<Hl7.Fhir.Model.ResourceReference>(ReasonReference.DeepCopy());
                 if(ManagingOrganization != null) dest.ManagingOrganization = new List<Hl7.Fhir.Model.ResourceReference>(ManagingOrganization.DeepCopy());
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 return dest;
             }
             else
@@ -665,7 +668,7 @@ namespace Hl7.Fhir.Model.STU3
                     ManagingOrganization = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
             }
             return false;
@@ -752,7 +755,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulateListItem(ManagingOrganization, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
             }
             return false;

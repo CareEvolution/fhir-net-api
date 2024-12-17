@@ -67,6 +67,7 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("item", InSummary=Hl7.Fhir.Model.Version.All, Order=40, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("MedicinalProduct","Medication","Substance","ObservationDefinition")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.CodeableConcept))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]

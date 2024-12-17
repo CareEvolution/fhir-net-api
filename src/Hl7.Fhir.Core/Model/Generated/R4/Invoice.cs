@@ -251,6 +251,7 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("chargeItem", Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("ChargeItem")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.CodeableConcept))]
             [Cardinality(Min=1,Max=1)]
             [DataMember]
@@ -977,13 +978,13 @@ namespace Hl7.Fhir.Model.R4
         [FhirElement("note", Order=240)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.R4.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.R4.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.R4.Annotation> _Note;
     
     
         public override IDeepCopyable CopyTo(IDeepCopyable other)
@@ -1008,7 +1009,7 @@ namespace Hl7.Fhir.Model.R4
                 if(TotalNet != null) dest.TotalNet = (Hl7.Fhir.Model.R4.Money)TotalNet.DeepCopy();
                 if(TotalGross != null) dest.TotalGross = (Hl7.Fhir.Model.R4.Money)TotalGross.DeepCopy();
                 if(PaymentTermsElement != null) dest.PaymentTermsElement = (Hl7.Fhir.Model.Markdown)PaymentTermsElement.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.R4.Annotation>(Note.DeepCopy());
                 return dest;
             }
             else
@@ -1174,7 +1175,7 @@ namespace Hl7.Fhir.Model.R4
                     PaymentTermsElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
             }
             return false;
@@ -1273,7 +1274,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulateListItem(TotalPriceComponent, index, () => new PriceComponentComponent());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.R4.Annotation());
                     return true;
             }
             return false;

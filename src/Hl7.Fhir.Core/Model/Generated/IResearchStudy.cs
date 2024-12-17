@@ -143,7 +143,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Comments made about the study
         /// </summary>
-        List<Hl7.Fhir.Model.Annotation> Note { get; set; }
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Note { get; }
     
         /// <summary>
         /// Defined path through the study for a subject

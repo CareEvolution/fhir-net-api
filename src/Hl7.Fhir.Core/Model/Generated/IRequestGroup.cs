@@ -103,7 +103,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Additional notes about the response
         /// </summary>
-        List<Hl7.Fhir.Model.Annotation> Note { get; set; }
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Note { get; }
     
         /// <summary>
         /// Proposed actions, if any

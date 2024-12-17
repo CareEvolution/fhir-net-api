@@ -478,13 +478,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("note", Order=180)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Annotation> Note
+            public List<Hl7.Fhir.Model.STU3.Annotation> Note
             {
-                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
                 set { _Note = value; OnPropertyChanged("Note"); }
             }
             
-            private List<Hl7.Fhir.Model.Annotation> _Note;
+            private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
             internal override void Serialize(Serialization.SerializerSink sink)
             {
@@ -564,7 +564,7 @@ namespace Hl7.Fhir.Model.STU3
                         BrandElement = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                        Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                         return true;
                 }
                 return false;
@@ -672,7 +672,7 @@ namespace Hl7.Fhir.Model.STU3
                 switch (jsonPropertyName)
                 {
                     case "note":
-                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                         return true;
                 }
                 return false;
@@ -699,7 +699,7 @@ namespace Hl7.Fhir.Model.STU3
                     if(Duration != null) dest.Duration = (Hl7.Fhir.Model.SimpleQuantity)Duration.DeepCopy();
                     if(ColorElement != null) dest.ColorElement = (Hl7.Fhir.Model.FhirString)ColorElement.DeepCopy();
                     if(BrandElement != null) dest.BrandElement = (Hl7.Fhir.Model.FhirString)BrandElement.DeepCopy();
-                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                     return dest;
                 }
                 else
@@ -943,6 +943,7 @@ namespace Hl7.Fhir.Model.STU3
         /// </summary>
         [FhirElement("reason", Order=150, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Condition")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Reason

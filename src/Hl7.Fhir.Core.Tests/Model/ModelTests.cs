@@ -649,5 +649,21 @@ namespace Hl7.Fhir.Tests.Model
                 exception.Message
             );
         }
+
+        [TestMethod]
+        public void TestDerivedTypeAssignment()
+        {
+            var observation = new Observation
+            {
+                Value = new SimpleQuantity { Value = 3.1415926M }
+            };
+            Assert.AreEqual(3.1415926M, (observation.Value as SimpleQuantity).Value);
+
+            var exception = Assert.ThrowsException<InvalidOperationException>(() => observation.Value = new Instant( DateTimeOffset.Now ));
+            Assert.AreEqual(
+                "Elements of type Instant are not allowed - allowed types: Quantity, CodeableConcept, FhirString, Range, Ratio, SampledData, Attachment, Time, FhirDateTime, Period",
+                exception.Message
+            );
+        }
     }
 }

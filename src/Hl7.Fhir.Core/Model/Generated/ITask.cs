@@ -166,7 +166,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Comments made about the task
         /// </summary>
-        List<Hl7.Fhir.Model.Annotation> Note { get; set; }
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Note { get; }
     
         /// <summary>
         /// Key events in history of the Task

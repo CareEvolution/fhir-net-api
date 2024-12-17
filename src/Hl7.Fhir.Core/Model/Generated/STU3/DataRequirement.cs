@@ -99,6 +99,7 @@ namespace Hl7.Fhir.Model.STU3
             /// </summary>
             [FhirElement("valueSet", InSummary=Hl7.Fhir.Model.Version.All, Order=50, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("ValueSet")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element ValueSet

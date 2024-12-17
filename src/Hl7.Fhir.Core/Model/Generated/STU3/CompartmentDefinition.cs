@@ -320,6 +320,9 @@ namespace Hl7.Fhir.Model.STU3
         IEnumerable<Hl7.Fhir.Model.IContactDetail> Hl7.Fhir.Model.ICompartmentDefinition.Contact { get { return Contact; } }
         
         [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IUsageContext> Hl7.Fhir.Model.ICompartmentDefinition.UseContext { get { return UseContext; } }
+        
+        [NotMapped]
         IEnumerable<Hl7.Fhir.Model.ICompartmentDefinitionResourceComponent> Hl7.Fhir.Model.ICompartmentDefinition.Resource { get { return Resource; } }
     
         
@@ -643,13 +646,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.UsageContext> UseContext
+        public List<Hl7.Fhir.Model.STU3.UsageContext> UseContext
         {
-            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.UsageContext>(); return _UseContext; }
+            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(); return _UseContext; }
             set { _UseContext = value; OnPropertyChanged("UseContext"); }
         }
         
-        private List<Hl7.Fhir.Model.UsageContext> _UseContext;
+        private List<Hl7.Fhir.Model.STU3.UsageContext> _UseContext;
         
         /// <summary>
         /// Intended jurisdiction for compartment definition (if applicable)
@@ -767,7 +770,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
-                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.UsageContext>(UseContext.DeepCopy());
+                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(UseContext.DeepCopy());
                 if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(CodeElement != null) dest.CodeElement = (Code<Hl7.Fhir.Model.CompartmentType>)CodeElement.DeepCopy();
                 if(SearchElement != null) dest.SearchElement = (Hl7.Fhir.Model.FhirBoolean)SearchElement.DeepCopy();
@@ -914,7 +917,7 @@ namespace Hl7.Fhir.Model.STU3
                     PurposeElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.STU3.UsageContext());
                     return true;
                 case "jurisdiction":
                     Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
@@ -1034,7 +1037,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.STU3.ContactDetail());
                     return true;
                 case "useContext":
-                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.UsageContext());
+                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.STU3.UsageContext());
                     return true;
                 case "jurisdiction":
                     source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());

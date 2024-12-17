@@ -1524,12 +1524,12 @@ namespace Hl7.Fhir.Model.R4
             /// </summary>
             [FhirElement("defaultValue", InSummary=Hl7.Fhir.Model.Version.All, Order=80, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
-            [AllowedTypes(typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Canonical),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Url),typeof(Hl7.Fhir.Model.Uuid),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.R4.Age),typeof(Hl7.Fhir.Model.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.R4.ContactPoint),typeof(Hl7.Fhir.Model.R4.Count),typeof(Hl7.Fhir.Model.R4.Distance),typeof(Hl7.Fhir.Model.R4.Duration),typeof(Hl7.Fhir.Model.R4.HumanName),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.R4.Money),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.R4.SampledData),typeof(Hl7.Fhir.Model.R4.Signature),typeof(Hl7.Fhir.Model.R4.Timing),typeof(Hl7.Fhir.Model.R4.ContactDetail),typeof(Hl7.Fhir.Model.R4.Contributor),typeof(Hl7.Fhir.Model.R4.DataRequirement),typeof(Hl7.Fhir.Model.Expression),typeof(Hl7.Fhir.Model.R4.ParameterDefinition),typeof(Hl7.Fhir.Model.R4.RelatedArtifact),typeof(Hl7.Fhir.Model.R4.TriggerDefinition),typeof(Hl7.Fhir.Model.UsageContext),typeof(Hl7.Fhir.Model.R4.Dosage),typeof(Hl7.Fhir.Model.Meta))]
+            [AllowedTypes(typeof(Hl7.Fhir.Model.Base64Binary),typeof(Hl7.Fhir.Model.FhirBoolean),typeof(Hl7.Fhir.Model.Canonical),typeof(Hl7.Fhir.Model.Code),typeof(Hl7.Fhir.Model.Date),typeof(Hl7.Fhir.Model.FhirDateTime),typeof(Hl7.Fhir.Model.FhirDecimal),typeof(Hl7.Fhir.Model.Id),typeof(Hl7.Fhir.Model.Instant),typeof(Hl7.Fhir.Model.Integer),typeof(Hl7.Fhir.Model.Markdown),typeof(Hl7.Fhir.Model.Oid),typeof(Hl7.Fhir.Model.PositiveInt),typeof(Hl7.Fhir.Model.FhirString),typeof(Hl7.Fhir.Model.Time),typeof(Hl7.Fhir.Model.UnsignedInt),typeof(Hl7.Fhir.Model.FhirUri),typeof(Hl7.Fhir.Model.Url),typeof(Hl7.Fhir.Model.Uuid),typeof(Hl7.Fhir.Model.Address),typeof(Hl7.Fhir.Model.R4.Age),typeof(Hl7.Fhir.Model.R4.Annotation),typeof(Hl7.Fhir.Model.Attachment),typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Coding),typeof(Hl7.Fhir.Model.R4.ContactPoint),typeof(Hl7.Fhir.Model.R4.Count),typeof(Hl7.Fhir.Model.R4.Distance),typeof(Hl7.Fhir.Model.R4.Duration),typeof(Hl7.Fhir.Model.R4.HumanName),typeof(Hl7.Fhir.Model.Identifier),typeof(Hl7.Fhir.Model.R4.Money),typeof(Hl7.Fhir.Model.Period),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.Ratio),typeof(Hl7.Fhir.Model.ResourceReference),typeof(Hl7.Fhir.Model.R4.SampledData),typeof(Hl7.Fhir.Model.R4.Signature),typeof(Hl7.Fhir.Model.R4.Timing),typeof(Hl7.Fhir.Model.R4.ContactDetail),typeof(Hl7.Fhir.Model.R4.Contributor),typeof(Hl7.Fhir.Model.R4.DataRequirement),typeof(Hl7.Fhir.Model.Expression),typeof(Hl7.Fhir.Model.R4.ParameterDefinition),typeof(Hl7.Fhir.Model.R4.RelatedArtifact),typeof(Hl7.Fhir.Model.R4.TriggerDefinition),typeof(Hl7.Fhir.Model.R4.UsageContext),typeof(Hl7.Fhir.Model.R4.Dosage),typeof(Hl7.Fhir.Model.Meta))]
             [DataMember]
             public Hl7.Fhir.Model.Element DefaultValue
             {
                 get { return _DefaultValue; }
-                set { _DefaultValue = CheckType(value, typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Canonical), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Url), typeof(Hl7.Fhir.Model.Uuid), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.R4.Age), typeof(Hl7.Fhir.Model.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.R4.ContactPoint), typeof(Hl7.Fhir.Model.R4.Count), typeof(Hl7.Fhir.Model.R4.Distance), typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.R4.HumanName), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.R4.Money), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.R4.SampledData), typeof(Hl7.Fhir.Model.R4.Signature), typeof(Hl7.Fhir.Model.R4.Timing), typeof(Hl7.Fhir.Model.R4.ContactDetail), typeof(Hl7.Fhir.Model.R4.Contributor), typeof(Hl7.Fhir.Model.R4.DataRequirement), typeof(Hl7.Fhir.Model.Expression), typeof(Hl7.Fhir.Model.R4.ParameterDefinition), typeof(Hl7.Fhir.Model.R4.RelatedArtifact), typeof(Hl7.Fhir.Model.R4.TriggerDefinition), typeof(Hl7.Fhir.Model.UsageContext), typeof(Hl7.Fhir.Model.R4.Dosage), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("DefaultValue"); }
+                set { _DefaultValue = CheckType(value, typeof(Hl7.Fhir.Model.Base64Binary), typeof(Hl7.Fhir.Model.FhirBoolean), typeof(Hl7.Fhir.Model.Canonical), typeof(Hl7.Fhir.Model.Code), typeof(Hl7.Fhir.Model.Date), typeof(Hl7.Fhir.Model.FhirDateTime), typeof(Hl7.Fhir.Model.FhirDecimal), typeof(Hl7.Fhir.Model.Id), typeof(Hl7.Fhir.Model.Instant), typeof(Hl7.Fhir.Model.Integer), typeof(Hl7.Fhir.Model.Markdown), typeof(Hl7.Fhir.Model.Oid), typeof(Hl7.Fhir.Model.PositiveInt), typeof(Hl7.Fhir.Model.FhirString), typeof(Hl7.Fhir.Model.Time), typeof(Hl7.Fhir.Model.UnsignedInt), typeof(Hl7.Fhir.Model.FhirUri), typeof(Hl7.Fhir.Model.Url), typeof(Hl7.Fhir.Model.Uuid), typeof(Hl7.Fhir.Model.Address), typeof(Hl7.Fhir.Model.R4.Age), typeof(Hl7.Fhir.Model.R4.Annotation), typeof(Hl7.Fhir.Model.Attachment), typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Coding), typeof(Hl7.Fhir.Model.R4.ContactPoint), typeof(Hl7.Fhir.Model.R4.Count), typeof(Hl7.Fhir.Model.R4.Distance), typeof(Hl7.Fhir.Model.R4.Duration), typeof(Hl7.Fhir.Model.R4.HumanName), typeof(Hl7.Fhir.Model.Identifier), typeof(Hl7.Fhir.Model.R4.Money), typeof(Hl7.Fhir.Model.Period), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.Ratio), typeof(Hl7.Fhir.Model.ResourceReference), typeof(Hl7.Fhir.Model.R4.SampledData), typeof(Hl7.Fhir.Model.R4.Signature), typeof(Hl7.Fhir.Model.R4.Timing), typeof(Hl7.Fhir.Model.R4.ContactDetail), typeof(Hl7.Fhir.Model.R4.Contributor), typeof(Hl7.Fhir.Model.R4.DataRequirement), typeof(Hl7.Fhir.Model.Expression), typeof(Hl7.Fhir.Model.R4.ParameterDefinition), typeof(Hl7.Fhir.Model.R4.RelatedArtifact), typeof(Hl7.Fhir.Model.R4.TriggerDefinition), typeof(Hl7.Fhir.Model.R4.UsageContext), typeof(Hl7.Fhir.Model.R4.Dosage), typeof(Hl7.Fhir.Model.Meta)); OnPropertyChanged("DefaultValue"); }
             }
             
             private Hl7.Fhir.Model.Element _DefaultValue;
@@ -1855,8 +1855,8 @@ namespace Hl7.Fhir.Model.R4
                         DefaultValue = source.Populate(new Hl7.Fhir.Model.R4.Age());
                         return true;
                     case "defaultValueAnnotation":
-                        source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(DefaultValue, "defaultValue");
-                        DefaultValue = source.Populate(new Hl7.Fhir.Model.Annotation());
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.Annotation>(DefaultValue, "defaultValue");
+                        DefaultValue = source.Populate(new Hl7.Fhir.Model.R4.Annotation());
                         return true;
                     case "defaultValueAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(DefaultValue, "defaultValue");
@@ -1959,8 +1959,8 @@ namespace Hl7.Fhir.Model.R4
                         DefaultValue = source.Populate(new Hl7.Fhir.Model.R4.TriggerDefinition());
                         return true;
                     case "defaultValueUsageContext":
-                        source.CheckDuplicates<Hl7.Fhir.Model.UsageContext>(DefaultValue, "defaultValue");
-                        DefaultValue = source.Populate(new Hl7.Fhir.Model.UsageContext());
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.UsageContext>(DefaultValue, "defaultValue");
+                        DefaultValue = source.Populate(new Hl7.Fhir.Model.R4.UsageContext());
                         return true;
                     case "defaultValueDosage":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Dosage>(DefaultValue, "defaultValue");
@@ -2185,8 +2185,8 @@ namespace Hl7.Fhir.Model.R4
                         DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.R4.Age, () => new Hl7.Fhir.Model.R4.Age());
                         return true;
                     case "defaultValueAnnotation":
-                        source.CheckDuplicates<Hl7.Fhir.Model.Annotation>(DefaultValue, "defaultValue");
-                        DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.Annotation, () => new Hl7.Fhir.Model.Annotation());
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.Annotation>(DefaultValue, "defaultValue");
+                        DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.R4.Annotation, () => new Hl7.Fhir.Model.R4.Annotation());
                         return true;
                     case "defaultValueAttachment":
                         source.CheckDuplicates<Hl7.Fhir.Model.Attachment>(DefaultValue, "defaultValue");
@@ -2289,8 +2289,8 @@ namespace Hl7.Fhir.Model.R4
                         DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.R4.TriggerDefinition, () => new Hl7.Fhir.Model.R4.TriggerDefinition());
                         return true;
                     case "defaultValueUsageContext":
-                        source.CheckDuplicates<Hl7.Fhir.Model.UsageContext>(DefaultValue, "defaultValue");
-                        DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.UsageContext, () => new Hl7.Fhir.Model.UsageContext());
+                        source.CheckDuplicates<Hl7.Fhir.Model.R4.UsageContext>(DefaultValue, "defaultValue");
+                        DefaultValue = source.Populate(DefaultValue as Hl7.Fhir.Model.R4.UsageContext, () => new Hl7.Fhir.Model.R4.UsageContext());
                         return true;
                     case "defaultValueDosage":
                         source.CheckDuplicates<Hl7.Fhir.Model.R4.Dosage>(DefaultValue, "defaultValue");
@@ -3347,6 +3347,9 @@ namespace Hl7.Fhir.Model.R4
         IEnumerable<Hl7.Fhir.Model.IContactDetail> Hl7.Fhir.Model.IStructureMap.Contact { get { return Contact; } }
         
         [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IUsageContext> Hl7.Fhir.Model.IStructureMap.UseContext { get { return UseContext; } }
+        
+        [NotMapped]
         IEnumerable<Hl7.Fhir.Model.IStructureMapStructureComponent> Hl7.Fhir.Model.IStructureMap.Structure { get { return Structure; } }
         
         [NotMapped]
@@ -3689,13 +3692,13 @@ namespace Hl7.Fhir.Model.R4
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.UsageContext> UseContext
+        public List<Hl7.Fhir.Model.R4.UsageContext> UseContext
         {
-            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.UsageContext>(); return _UseContext; }
+            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.R4.UsageContext>(); return _UseContext; }
             set { _UseContext = value; OnPropertyChanged("UseContext"); }
         }
         
-        private List<Hl7.Fhir.Model.UsageContext> _UseContext;
+        private List<Hl7.Fhir.Model.R4.UsageContext> _UseContext;
         
         /// <summary>
         /// Intended jurisdiction for structure map (if applicable)
@@ -3893,7 +3896,7 @@ namespace Hl7.Fhir.Model.R4
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.R4.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
-                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.UsageContext>(UseContext.DeepCopy());
+                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.R4.UsageContext>(UseContext.DeepCopy());
                 if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
                 if(CopyrightElement != null) dest.CopyrightElement = (Hl7.Fhir.Model.Markdown)CopyrightElement.DeepCopy();
@@ -4066,7 +4069,7 @@ namespace Hl7.Fhir.Model.R4
                     DescriptionElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.R4.UsageContext());
                     return true;
                 case "jurisdiction":
                     Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
@@ -4205,7 +4208,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.R4.ContactDetail());
                     return true;
                 case "useContext":
-                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.UsageContext());
+                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.R4.UsageContext());
                     return true;
                 case "jurisdiction":
                     source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());

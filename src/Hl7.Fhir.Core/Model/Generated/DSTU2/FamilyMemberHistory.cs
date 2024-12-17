@@ -109,13 +109,13 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("note", Order=70)]
             [DataMember]
-            public Hl7.Fhir.Model.Annotation Note
+            public Hl7.Fhir.Model.DSTU2.Annotation Note
             {
                 get { return _Note; }
                 set { _Note = value; OnPropertyChanged("Note"); }
             }
             
-            private Hl7.Fhir.Model.Annotation _Note;
+            private Hl7.Fhir.Model.DSTU2.Annotation _Note;
         
             internal override void Serialize(Serialization.SerializerSink sink)
             {
@@ -159,7 +159,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Onset = source.Populate(new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        Note = source.Populate(new Hl7.Fhir.Model.Annotation());
+                        Note = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                         return true;
                 }
                 return false;
@@ -200,7 +200,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         Onset = source.Populate(Onset as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                         return true;
                     case "note":
-                        Note = source.Populate(Note, () => new Hl7.Fhir.Model.Annotation());
+                        Note = source.Populate(Note, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                         return true;
                 }
                 return false;
@@ -216,7 +216,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     if(Code != null) dest.Code = (Hl7.Fhir.Model.CodeableConcept)Code.DeepCopy();
                     if(Outcome != null) dest.Outcome = (Hl7.Fhir.Model.CodeableConcept)Outcome.DeepCopy();
                     if(Onset != null) dest.Onset = (Hl7.Fhir.Model.Element)Onset.DeepCopy();
-                    if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
+                    if(Note != null) dest.Note = (Hl7.Fhir.Model.DSTU2.Annotation)Note.DeepCopy();
                     return dest;
                 }
                 else
@@ -518,13 +518,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("note", Order=190)]
         [DataMember]
-        public Hl7.Fhir.Model.Annotation Note
+        public Hl7.Fhir.Model.DSTU2.Annotation Note
         {
             get { return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private Hl7.Fhir.Model.Annotation _Note;
+        private Hl7.Fhir.Model.DSTU2.Annotation _Note;
         
         /// <summary>
         /// Condition that the related person had
@@ -576,7 +576,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Born != null) dest.Born = (Hl7.Fhir.Model.Element)Born.DeepCopy();
                 if(Age != null) dest.Age = (Hl7.Fhir.Model.Element)Age.DeepCopy();
                 if(Deceased != null) dest.Deceased = (Hl7.Fhir.Model.Element)Deceased.DeepCopy();
-                if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
+                if(Note != null) dest.Note = (Hl7.Fhir.Model.DSTU2.Annotation)Note.DeepCopy();
                 if(Condition != null) dest.Condition = new List<ConditionComponent>(Condition.DeepCopy());
                 return dest;
             }
@@ -736,7 +736,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Deceased = source.Populate(new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "note":
-                    Note = source.Populate(new Hl7.Fhir.Model.Annotation());
+                    Note = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "condition":
                     Condition = source.GetList(() => new ConditionComponent());
@@ -855,7 +855,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Deceased = source.Populate(Deceased as Hl7.Fhir.Model.FhirString, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "note":
-                    Note = source.Populate(Note, () => new Hl7.Fhir.Model.Annotation());
+                    Note = source.Populate(Note, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "condition":
                     source.SetList(this, jsonPropertyName);

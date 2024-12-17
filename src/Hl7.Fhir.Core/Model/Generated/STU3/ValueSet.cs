@@ -2801,13 +2801,13 @@ namespace Hl7.Fhir.Model.STU3
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.UsageContext> UseContext
+        public List<Hl7.Fhir.Model.STU3.UsageContext> UseContext
         {
-            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.UsageContext>(); return _UseContext; }
+            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(); return _UseContext; }
             set { _UseContext = value; OnPropertyChanged("UseContext"); }
         }
         
-        private List<Hl7.Fhir.Model.UsageContext> _UseContext;
+        private List<Hl7.Fhir.Model.STU3.UsageContext> _UseContext;
         
         /// <summary>
         /// Intended jurisdiction for value set (if applicable)
@@ -3065,7 +3065,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(PublisherElement != null) dest.PublisherElement = (Hl7.Fhir.Model.FhirString)PublisherElement.DeepCopy();
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.STU3.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
-                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.UsageContext>(UseContext.DeepCopy());
+                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.STU3.UsageContext>(UseContext.DeepCopy());
                 if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(ImmutableElement != null) dest.ImmutableElement = (Hl7.Fhir.Model.FhirBoolean)ImmutableElement.DeepCopy();
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
@@ -3230,7 +3230,7 @@ namespace Hl7.Fhir.Model.STU3
                     DescriptionElement = source.Populate(new Hl7.Fhir.Model.Markdown());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.STU3.UsageContext());
                     return true;
                 case "jurisdiction":
                     Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
@@ -3380,7 +3380,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulateListItem(Contact, index, () => new Hl7.Fhir.Model.STU3.ContactDetail());
                     return true;
                 case "useContext":
-                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.UsageContext());
+                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.STU3.UsageContext());
                     return true;
                 case "jurisdiction":
                     source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());

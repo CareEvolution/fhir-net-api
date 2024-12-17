@@ -1004,6 +1004,32 @@ namespace Hl7.Fhir.Serialization.Tests
         }
 
         [TestMethod]
+        public void ExtensionAnnotationTest()
+        {
+            var patientJson = "{\"resourceType\":\"Patient\",\"extension\": [{\"url\": \"http://mydomain.com/extension/annnotation\",\"valueAnnotation\":{\"text\":\"test\"}}]}";
+            var patient = JsonSerializer.Deserialize<Model.R4.Patient>(
+                patientJson,
+                new JsonSerializerOptions().ForFhir(new ParserSettings(Model.Version.R4) { PermissiveParsing = true })
+            );
+            var extension = Single(patient.Extension);
+            Assert.AreEqual("http://mydomain.com/extension/annnotation", extension.Url);
+            Assert.AreEqual("test", IsType<Model.R4.Annotation>(extension.Value).Text);
+        }
+
+        [TestMethod]
+        public void ExtensionUsageContextText()
+        {
+            var patientJson = "{\"resourceType\":\"Patient\",\"extension\": [{\"url\": \"http://mydomain.com/extension/usage\",\"valueUsageContext\":{\"code\":{\"display\":\"test\"}}}]}";
+            var patient = JsonSerializer.Deserialize<Model.R4.Patient>(
+                patientJson,
+                new JsonSerializerOptions().ForFhir(new ParserSettings(Model.Version.R4) { PermissiveParsing = true })
+            );
+            var extension = Single(patient.Extension);
+            Assert.AreEqual("http://mydomain.com/extension/usage", extension.Url);
+            Assert.AreEqual("test", IsType<Model.R4.UsageContext>(extension.Value).Code.Display);
+        }
+
+        [TestMethod]
         public void XHtmlTest()
         {
             AssertSuccess(

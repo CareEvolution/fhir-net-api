@@ -280,6 +280,9 @@ namespace Hl7.Fhir.Model.STU3
         IEnumerable<Hl7.Fhir.Model.IRelatedArtifact> Hl7.Fhir.Model.IResearchStudy.RelatedArtifact { get { return RelatedArtifact; } }
         
         [NotMapped]
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.IResearchStudy.Note { get { return Note; } }
+        
+        [NotMapped]
         IEnumerable<Hl7.Fhir.Model.IResearchStudyArmComponent> Hl7.Fhir.Model.IResearchStudy.Arm { get { return Arm; } }
     
         
@@ -614,13 +617,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=270)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Defined path through the study for a subject
@@ -662,7 +665,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(PrincipalInvestigator != null) dest.PrincipalInvestigator = (Hl7.Fhir.Model.ResourceReference)PrincipalInvestigator.DeepCopy();
                 if(Site != null) dest.Site = new List<Hl7.Fhir.Model.ResourceReference>(Site.DeepCopy());
                 if(ReasonStopped != null) dest.ReasonStopped = (Hl7.Fhir.Model.CodeableConcept)ReasonStopped.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Arm != null) dest.Arm = new List<ArmComponent>(Arm.DeepCopy());
                 return dest;
             }
@@ -890,7 +893,7 @@ namespace Hl7.Fhir.Model.STU3
                     ReasonStopped = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "arm":
                     Arm = source.GetList(() => new ArmComponent());
@@ -1022,7 +1025,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulateListItem(Site, index, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "arm":
                     source.PopulateListItem(Arm, index, () => new ArmComponent());

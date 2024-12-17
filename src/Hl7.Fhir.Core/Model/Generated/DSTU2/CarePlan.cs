@@ -388,6 +388,9 @@ namespace Hl7.Fhir.Model.DSTU2
             public override string TypeName { get { return "ActivityComponent"; } }
             
             [NotMapped]
+            IEnumerable<Hl7.Fhir.Model.IAnnotation> Hl7.Fhir.Model.ICarePlanActivityComponent.Progress { get { return Progress; } }
+            
+            [NotMapped]
             Hl7.Fhir.Model.ICarePlanDetailComponent Hl7.Fhir.Model.ICarePlanActivityComponent.Detail { get { return Detail; } }
             
             /// <summary>
@@ -410,13 +413,13 @@ namespace Hl7.Fhir.Model.DSTU2
             [FhirElement("progress", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Annotation> Progress
+            public List<Hl7.Fhir.Model.DSTU2.Annotation> Progress
             {
-                get { if(_Progress==null) _Progress = new List<Hl7.Fhir.Model.Annotation>(); return _Progress; }
+                get { if(_Progress==null) _Progress = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Progress; }
                 set { _Progress = value; OnPropertyChanged("Progress"); }
             }
             
-            private List<Hl7.Fhir.Model.Annotation> _Progress;
+            private List<Hl7.Fhir.Model.DSTU2.Annotation> _Progress;
             
             /// <summary>
             /// Activity details defined in specific resource
@@ -479,7 +482,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         ActionResulting = source.GetList(() => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "progress":
-                        Progress = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                        Progress = source.GetList(() => new Hl7.Fhir.Model.DSTU2.Annotation());
                         return true;
                     case "reference":
                         Reference = source.Populate(new Hl7.Fhir.Model.ResourceReference());
@@ -527,7 +530,7 @@ namespace Hl7.Fhir.Model.DSTU2
                         source.PopulateListItem(ActionResulting, index, () => new Hl7.Fhir.Model.ResourceReference());
                         return true;
                     case "progress":
-                        source.PopulateListItem(Progress, index, () => new Hl7.Fhir.Model.Annotation());
+                        source.PopulateListItem(Progress, index, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                         return true;
                 }
                 return false;
@@ -541,7 +544,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 {
                     base.CopyTo(dest);
                     if(ActionResulting != null) dest.ActionResulting = new List<Hl7.Fhir.Model.ResourceReference>(ActionResulting.DeepCopy());
-                    if(Progress != null) dest.Progress = new List<Hl7.Fhir.Model.Annotation>(Progress.DeepCopy());
+                    if(Progress != null) dest.Progress = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Progress.DeepCopy());
                     if(Reference != null) dest.Reference = (Hl7.Fhir.Model.ResourceReference)Reference.DeepCopy();
                     if(Detail != null) dest.Detail = (DetailComponent)Detail.DeepCopy();
                     return dest;
@@ -822,6 +825,7 @@ namespace Hl7.Fhir.Model.DSTU2
             /// </summary>
             [FhirElement("product", Order=150, Choice=ChoiceType.DatatypeChoice)]
             [CLSCompliant(false)]
+            [References("Medication","Substance")]
             [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
             [DataMember]
             public Hl7.Fhir.Model.Element Product
@@ -1533,13 +1537,13 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("note", Order=240)]
         [DataMember]
-        public Hl7.Fhir.Model.Annotation Note
+        public Hl7.Fhir.Model.DSTU2.Annotation Note
         {
             get { return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private Hl7.Fhir.Model.Annotation _Note;
+        private Hl7.Fhir.Model.DSTU2.Annotation _Note;
     
     
         public static ElementDefinitionConstraint[] CarePlan_Constraints =
@@ -1582,7 +1586,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Participant != null) dest.Participant = new List<ParticipantComponent>(Participant.DeepCopy());
                 if(Goal != null) dest.Goal = new List<Hl7.Fhir.Model.ResourceReference>(Goal.DeepCopy());
                 if(Activity != null) dest.Activity = new List<ActivityComponent>(Activity.DeepCopy());
-                if(Note != null) dest.Note = (Hl7.Fhir.Model.Annotation)Note.DeepCopy();
+                if(Note != null) dest.Note = (Hl7.Fhir.Model.DSTU2.Annotation)Note.DeepCopy();
                 return dest;
             }
             else
@@ -1768,7 +1772,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Activity = source.GetList(() => new ActivityComponent());
                     return true;
                 case "note":
-                    Note = source.Populate(new Hl7.Fhir.Model.Annotation());
+                    Note = source.Populate(new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
             }
             return false;
@@ -1837,7 +1841,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.SetList(this, jsonPropertyName);
                     return true;
                 case "note":
-                    Note = source.Populate(Note, () => new Hl7.Fhir.Model.Annotation());
+                    Note = source.Populate(Note, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
             }
             return false;

@@ -92,7 +92,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Comments about the goal
         /// </summary>
-        List<Hl7.Fhir.Model.Annotation> Note { get; set; }
+        IEnumerable<Hl7.Fhir.Model.IAnnotation> Note { get; }
     
     }
 

@@ -84,13 +84,13 @@ namespace Hl7.Fhir.Model.R4
             [FhirElement("usageContext", Order=50)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.UsageContext> UsageContext
+            public List<Hl7.Fhir.Model.R4.UsageContext> UsageContext
             {
-                get { if(_UsageContext==null) _UsageContext = new List<Hl7.Fhir.Model.UsageContext>(); return _UsageContext; }
+                get { if(_UsageContext==null) _UsageContext = new List<Hl7.Fhir.Model.R4.UsageContext>(); return _UsageContext; }
                 set { _UsageContext = value; OnPropertyChanged("UsageContext"); }
             }
             
-            private List<Hl7.Fhir.Model.UsageContext> _UsageContext;
+            private List<Hl7.Fhir.Model.R4.UsageContext> _UsageContext;
             
             /// <summary>
             /// Whether the characteristic includes or excludes members
@@ -370,7 +370,7 @@ namespace Hl7.Fhir.Model.R4
                         Definition = source.Populate(new Hl7.Fhir.Model.R4.DataRequirement());
                         return true;
                     case "usageContext":
-                        UsageContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
+                        UsageContext = source.GetList(() => new Hl7.Fhir.Model.R4.UsageContext());
                         return true;
                     case "exclude":
                         ExcludeElement = source.Populate(new Hl7.Fhir.Model.FhirBoolean());
@@ -555,7 +555,7 @@ namespace Hl7.Fhir.Model.R4
                 switch (jsonPropertyName)
                 {
                     case "usageContext":
-                        source.PopulateListItem(UsageContext, index, () => new Hl7.Fhir.Model.UsageContext());
+                        source.PopulateListItem(UsageContext, index, () => new Hl7.Fhir.Model.R4.UsageContext());
                         return true;
                 }
                 return false;
@@ -569,7 +569,7 @@ namespace Hl7.Fhir.Model.R4
                 {
                     base.CopyTo(dest);
                     if(Definition != null) dest.Definition = (Hl7.Fhir.Model.Element)Definition.DeepCopy();
-                    if(UsageContext != null) dest.UsageContext = new List<Hl7.Fhir.Model.UsageContext>(UsageContext.DeepCopy());
+                    if(UsageContext != null) dest.UsageContext = new List<Hl7.Fhir.Model.R4.UsageContext>(UsageContext.DeepCopy());
                     if(ExcludeElement != null) dest.ExcludeElement = (Hl7.Fhir.Model.FhirBoolean)ExcludeElement.DeepCopy();
                     if(UnitOfMeasure != null) dest.UnitOfMeasure = (Hl7.Fhir.Model.CodeableConcept)UnitOfMeasure.DeepCopy();
                     if(StudyEffectiveDescriptionElement != null) dest.StudyEffectiveDescriptionElement = (Hl7.Fhir.Model.FhirString)StudyEffectiveDescriptionElement.DeepCopy();
@@ -966,6 +966,7 @@ namespace Hl7.Fhir.Model.R4
         /// </summary>
         [FhirElement("subject", Order=180, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Group")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Subject
@@ -1130,13 +1131,13 @@ namespace Hl7.Fhir.Model.R4
         [CLSCompliant(false)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.UsageContext> UseContext
+        public List<Hl7.Fhir.Model.R4.UsageContext> UseContext
         {
-            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.UsageContext>(); return _UseContext; }
+            get { if(_UseContext==null) _UseContext = new List<Hl7.Fhir.Model.R4.UsageContext>(); return _UseContext; }
             set { _UseContext = value; OnPropertyChanged("UseContext"); }
         }
         
-        private List<Hl7.Fhir.Model.UsageContext> _UseContext;
+        private List<Hl7.Fhir.Model.R4.UsageContext> _UseContext;
         
         /// <summary>
         /// Intended jurisdiction for research element definition (if applicable)
@@ -1566,7 +1567,7 @@ namespace Hl7.Fhir.Model.R4
                 if(Contact != null) dest.Contact = new List<Hl7.Fhir.Model.R4.ContactDetail>(Contact.DeepCopy());
                 if(DescriptionElement != null) dest.DescriptionElement = (Hl7.Fhir.Model.Markdown)DescriptionElement.DeepCopy();
                 if(CommentElement != null) dest.CommentElement = new List<Hl7.Fhir.Model.FhirString>(CommentElement.DeepCopy());
-                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.UsageContext>(UseContext.DeepCopy());
+                if(UseContext != null) dest.UseContext = new List<Hl7.Fhir.Model.R4.UsageContext>(UseContext.DeepCopy());
                 if(Jurisdiction != null) dest.Jurisdiction = new List<Hl7.Fhir.Model.CodeableConcept>(Jurisdiction.DeepCopy());
                 if(PurposeElement != null) dest.PurposeElement = (Hl7.Fhir.Model.Markdown)PurposeElement.DeepCopy();
                 if(UsageElement != null) dest.UsageElement = (Hl7.Fhir.Model.FhirString)UsageElement.DeepCopy();
@@ -1839,7 +1840,7 @@ namespace Hl7.Fhir.Model.R4
                     CommentElement = source.GetList(() => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "useContext":
-                    UseContext = source.GetList(() => new Hl7.Fhir.Model.UsageContext());
+                    UseContext = source.GetList(() => new Hl7.Fhir.Model.R4.UsageContext());
                     return true;
                 case "jurisdiction":
                     Jurisdiction = source.GetList(() => new Hl7.Fhir.Model.CodeableConcept());
@@ -2089,7 +2090,7 @@ namespace Hl7.Fhir.Model.R4
                     source.PopulatePrimitiveListItem(CommentElement, index, () => new Hl7.Fhir.Model.FhirString());
                     return true;
                 case "useContext":
-                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.UsageContext());
+                    source.PopulateListItem(UseContext, index, () => new Hl7.Fhir.Model.R4.UsageContext());
                     return true;
                 case "jurisdiction":
                     source.PopulateListItem(Jurisdiction, index, () => new Hl7.Fhir.Model.CodeableConcept());

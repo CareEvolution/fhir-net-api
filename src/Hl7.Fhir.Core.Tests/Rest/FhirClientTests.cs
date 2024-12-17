@@ -1276,7 +1276,7 @@ namespace Hl7.Fhir.Tests.Rest
             client.ParserSettings.PermissiveParsing = true;
             client.ParserSettings.AllowUnrecognizedEnums = true;
             var conformance = client.Metadata();
-            Assert.AreEqual("5.0.0.195", conformance.Version);
+            Assert.AreEqual("5.0.1.428", conformance.Version);
         }
     }
 

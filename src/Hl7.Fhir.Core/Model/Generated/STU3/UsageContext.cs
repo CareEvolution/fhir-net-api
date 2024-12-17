@@ -38,16 +38,16 @@ using Hl7.Fhir.Utility;
 #pragma warning disable 1591 // suppress XML summary warnings
 
 //
-// Generated for FHIR v4.0.1, v3.0.1
+// Generated for FHIR v3.0.1
 //
-namespace Hl7.Fhir.Model
+namespace Hl7.Fhir.Model.STU3
 {
     /// <summary>
     /// Describes the context of use for a conformance or knowledge resource
     /// </summary>
-    [FhirType(Hl7.Fhir.Model.Version.All, "UsageContext")]
+    [FhirType(Hl7.Fhir.Model.Version.STU3, "UsageContext")]
     [DataContract]
-    public partial class UsageContext : Hl7.Fhir.Model.Element, System.ComponentModel.INotifyPropertyChanged
+    public partial class UsageContext : Hl7.Fhir.Model.Element, Hl7.Fhir.Model.IUsageContext, System.ComponentModel.INotifyPropertyChanged
     {
         [NotMapped]
         public override string TypeName { get { return "UsageContext"; } }
@@ -56,7 +56,7 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Type of context being specified
         /// </summary>
-        [FhirElement("code", Versions=Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, InSummary=Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, Order=30)]
+        [FhirElement("code", InSummary=Hl7.Fhir.Model.Version.All, Order=30)]
         [CLSCompliant(false)]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
@@ -71,16 +71,15 @@ namespace Hl7.Fhir.Model
         /// <summary>
         /// Value that defines the context
         /// </summary>
-        [FhirElement("value", Versions=Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, InSummary=Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, Order=40, Choice=ChoiceType.DatatypeChoice)]
+        [FhirElement("value", InSummary=Hl7.Fhir.Model.Version.All, Order=40, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
-        [AllowedTypes(Version=Version.R4, Types=new[]{typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range),typeof(Hl7.Fhir.Model.ResourceReference)})]
-        [AllowedTypes(Version=Version.STU3, Types=new[]{typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range)})]
+        [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.Quantity),typeof(Hl7.Fhir.Model.Range))]
         [Cardinality(Min=1,Max=1)]
         [DataMember]
         public Hl7.Fhir.Model.Element Value
         {
             get { return _Value; }
-            set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range), typeof(Hl7.Fhir.Model.ResourceReference)); OnPropertyChanged("Value"); }
+            set { _Value = CheckType(value, typeof(Hl7.Fhir.Model.CodeableConcept), typeof(Hl7.Fhir.Model.Quantity), typeof(Hl7.Fhir.Model.Range)); OnPropertyChanged("Value"); }
         }
         
         private Hl7.Fhir.Model.Element _Value;
@@ -134,8 +133,8 @@ namespace Hl7.Fhir.Model
         {
             sink.BeginDataType("UsageContext");
             base.Serialize(sink);
-            sink.Element("code", Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, true, false); Code?.Serialize(sink);
-            sink.Element("value", Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, true, true); Value?.Serialize(sink);
+            sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Code?.Serialize(sink);
+            sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, true); Value?.Serialize(sink);
             sink.End();
         }
     
@@ -147,24 +146,20 @@ namespace Hl7.Fhir.Model
             }
             switch (elementName)
             {
-                case "code" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
+                case "code":
                     Code = source.Populate(new Hl7.Fhir.Model.Coding());
                     return true;
-                case "valueCodeableConcept" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
+                case "valueCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
                     Value = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                     return true;
-                case "valueQuantity" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
+                case "valueQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
                     Value = source.Populate(new Hl7.Fhir.Model.Quantity());
                     return true;
-                case "valueRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
+                case "valueRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
                     Value = source.Populate(new Hl7.Fhir.Model.Range());
-                    return true;
-                case "valueReference" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Value, "value");
-                    Value = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;
@@ -178,24 +173,20 @@ namespace Hl7.Fhir.Model
             }
             switch (jsonPropertyName)
             {
-                case "code" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
+                case "code":
                     Code = source.Populate(Code, () => new Hl7.Fhir.Model.Coding());
                     return true;
-                case "valueCodeableConcept" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
+                case "valueCodeableConcept":
                     source.CheckDuplicates<Hl7.Fhir.Model.CodeableConcept>(Value, "value");
                     Value = source.Populate(Value as Hl7.Fhir.Model.CodeableConcept, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
-                case "valueQuantity" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
+                case "valueQuantity":
                     source.CheckDuplicates<Hl7.Fhir.Model.Quantity>(Value, "value");
                     Value = source.Populate(Value as Hl7.Fhir.Model.Quantity, () => new Hl7.Fhir.Model.Quantity());
                     return true;
-                case "valueRange" when source.IsVersion(Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3):
+                case "valueRange":
                     source.CheckDuplicates<Hl7.Fhir.Model.Range>(Value, "value");
                     Value = source.Populate(Value as Hl7.Fhir.Model.Range, () => new Hl7.Fhir.Model.Range());
-                    return true;
-                case "valueReference" when source.IsVersion(Hl7.Fhir.Model.Version.R4):
-                    source.CheckDuplicates<Hl7.Fhir.Model.ResourceReference>(Value, "value");
-                    Value = source.Populate(Value as Hl7.Fhir.Model.ResourceReference, () => new Hl7.Fhir.Model.ResourceReference());
                     return true;
             }
             return false;

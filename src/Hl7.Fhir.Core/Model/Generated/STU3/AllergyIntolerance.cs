@@ -204,13 +204,13 @@ namespace Hl7.Fhir.Model.STU3
             [FhirElement("note", Order=100)]
             [Cardinality(Min=0,Max=-1)]
             [DataMember]
-            public List<Hl7.Fhir.Model.Annotation> Note
+            public List<Hl7.Fhir.Model.STU3.Annotation> Note
             {
-                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+                get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
                 set { _Note = value; OnPropertyChanged("Note"); }
             }
             
-            private List<Hl7.Fhir.Model.Annotation> _Note;
+            private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
             internal override void Serialize(Serialization.SerializerSink sink)
             {
@@ -263,7 +263,7 @@ namespace Hl7.Fhir.Model.STU3
                         ExposureRoute = source.Populate(new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "note":
-                        Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                        Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                         return true;
                 }
                 return false;
@@ -323,7 +323,7 @@ namespace Hl7.Fhir.Model.STU3
                         source.PopulateListItem(Manifestation, index, () => new Hl7.Fhir.Model.CodeableConcept());
                         return true;
                     case "note":
-                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                        source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                         return true;
                 }
                 return false;
@@ -342,7 +342,7 @@ namespace Hl7.Fhir.Model.STU3
                     if(OnsetElement != null) dest.OnsetElement = (Hl7.Fhir.Model.FhirDateTime)OnsetElement.DeepCopy();
                     if(SeverityElement != null) dest.SeverityElement = (Code<Hl7.Fhir.Model.AllergyIntoleranceSeverity>)SeverityElement.DeepCopy();
                     if(ExposureRoute != null) dest.ExposureRoute = (Hl7.Fhir.Model.CodeableConcept)ExposureRoute.DeepCopy();
-                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                    if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                     return dest;
                 }
                 else
@@ -755,13 +755,13 @@ namespace Hl7.Fhir.Model.STU3
         [FhirElement("note", Order=220)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Note
+        public List<Hl7.Fhir.Model.STU3.Annotation> Note
         {
-            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.Annotation>(); return _Note; }
+            get { if(_Note==null) _Note = new List<Hl7.Fhir.Model.STU3.Annotation>(); return _Note; }
             set { _Note = value; OnPropertyChanged("Note"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Note;
+        private List<Hl7.Fhir.Model.STU3.Annotation> _Note;
         
         /// <summary>
         /// Adverse Reaction Events linked to exposure to substance
@@ -824,7 +824,7 @@ namespace Hl7.Fhir.Model.STU3
                 if(Recorder != null) dest.Recorder = (Hl7.Fhir.Model.ResourceReference)Recorder.DeepCopy();
                 if(Asserter != null) dest.Asserter = (Hl7.Fhir.Model.ResourceReference)Asserter.DeepCopy();
                 if(LastOccurrenceElement != null) dest.LastOccurrenceElement = (Hl7.Fhir.Model.FhirDateTime)LastOccurrenceElement.DeepCopy();
-                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.Annotation>(Note.DeepCopy());
+                if(Note != null) dest.Note = new List<Hl7.Fhir.Model.STU3.Annotation>(Note.DeepCopy());
                 if(Reaction != null) dest.Reaction = new List<ReactionComponent>(Reaction.DeepCopy());
                 return dest;
             }
@@ -991,7 +991,7 @@ namespace Hl7.Fhir.Model.STU3
                     LastOccurrenceElement = source.Populate(new Hl7.Fhir.Model.FhirDateTime());
                     return true;
                 case "note":
-                    Note = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Note = source.GetList(() => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "reaction":
                     Reaction = source.GetList(() => new ReactionComponent());
@@ -1119,7 +1119,7 @@ namespace Hl7.Fhir.Model.STU3
                     source.PopulatePrimitiveListItem(CategoryElement, index, () => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.STU3.AllergyIntoleranceCategory>());
                     return true;
                 case "note":
-                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Note, index, () => new Hl7.Fhir.Model.STU3.Annotation());
                     return true;
                 case "reaction":
                     source.PopulateListItem(Reaction, index, () => new ReactionComponent());

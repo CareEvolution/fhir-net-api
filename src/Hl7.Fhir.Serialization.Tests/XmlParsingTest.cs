@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
 using Hl7.Fhir.Utility;
@@ -576,6 +577,32 @@ namespace Hl7.Fhir.Serialization.Tests
                     Assert.AreEqual(expectedCode, IsType<Code>(extension.Value).Value);
                 }
             }
+        }
+
+        [TestMethod]
+        public void ExtensionAnnotation()
+        {
+            var patientXml = "<Patient xmlns='http://hl7.org/fhir'><extension url='http://mydomain.com/extension/annnotation'><valueAnnotation><text value='test'/></valueAnnotation></extension></Patient>";
+            var patient = Parse<Model.R4.Patient>(
+                patientXml,
+                Model.Version.R4
+            );
+            var extension = Single(patient.Extension);
+            Assert.AreEqual("http://mydomain.com/extension/annnotation", extension.Url);
+            Assert.AreEqual("test", IsType<Model.R4.Annotation>(extension.Value).Text);
+        }
+
+        [TestMethod]
+        public void ExtensionUsageContext()
+        {
+            var patientXml = "<Patient xmlns='http://hl7.org/fhir'><extension url='http://mydomain.com/extension/usage'><valueUsageContext><code><display value='test'/></code></valueUsageContext></extension></Patient>";
+            var patient = Parse<Model.R4.Patient>(
+                patientXml,
+                Model.Version.R4
+            );
+            var extension = Single(patient.Extension);
+            Assert.AreEqual("http://mydomain.com/extension/usage", extension.Url);
+            Assert.AreEqual("test", IsType<Model.R4.UsageContext>(extension.Value).Code.Display);
         }
 
         [TestMethod]

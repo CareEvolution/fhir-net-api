@@ -525,6 +525,7 @@ namespace Hl7.Fhir.Model.DSTU2
         /// </summary>
         [FhirElement("reason", InSummary=Hl7.Fhir.Model.Version.All, Order=170, Choice=ChoiceType.DatatypeChoice)]
         [CLSCompliant(false)]
+        [References("Condition")]
         [AllowedTypes(typeof(Hl7.Fhir.Model.CodeableConcept),typeof(Hl7.Fhir.Model.ResourceReference))]
         [DataMember]
         public Hl7.Fhir.Model.Element Reason
@@ -674,13 +675,13 @@ namespace Hl7.Fhir.Model.DSTU2
         [FhirElement("notes", Order=270)]
         [Cardinality(Min=0,Max=-1)]
         [DataMember]
-        public List<Hl7.Fhir.Model.Annotation> Notes
+        public List<Hl7.Fhir.Model.DSTU2.Annotation> Notes
         {
-            get { if(_Notes==null) _Notes = new List<Hl7.Fhir.Model.Annotation>(); return _Notes; }
+            get { if(_Notes==null) _Notes = new List<Hl7.Fhir.Model.DSTU2.Annotation>(); return _Notes; }
             set { _Notes = value; OnPropertyChanged("Notes"); }
         }
         
-        private List<Hl7.Fhir.Model.Annotation> _Notes;
+        private List<Hl7.Fhir.Model.DSTU2.Annotation> _Notes;
         
         /// <summary>
         /// Device changed in procedure
@@ -756,7 +757,7 @@ namespace Hl7.Fhir.Model.DSTU2
                 if(Complication != null) dest.Complication = new List<Hl7.Fhir.Model.CodeableConcept>(Complication.DeepCopy());
                 if(FollowUp != null) dest.FollowUp = new List<Hl7.Fhir.Model.CodeableConcept>(FollowUp.DeepCopy());
                 if(Request != null) dest.Request = (Hl7.Fhir.Model.ResourceReference)Request.DeepCopy();
-                if(Notes != null) dest.Notes = new List<Hl7.Fhir.Model.Annotation>(Notes.DeepCopy());
+                if(Notes != null) dest.Notes = new List<Hl7.Fhir.Model.DSTU2.Annotation>(Notes.DeepCopy());
                 if(FocalDevice != null) dest.FocalDevice = new List<FocalDeviceComponent>(FocalDevice.DeepCopy());
                 if(Used != null) dest.Used = new List<Hl7.Fhir.Model.ResourceReference>(Used.DeepCopy());
                 return dest;
@@ -983,7 +984,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     Request = source.Populate(new Hl7.Fhir.Model.ResourceReference());
                     return true;
                 case "notes":
-                    Notes = source.GetList(() => new Hl7.Fhir.Model.Annotation());
+                    Notes = source.GetList(() => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "focalDevice":
                     FocalDevice = source.GetList(() => new FocalDeviceComponent());
@@ -1120,7 +1121,7 @@ namespace Hl7.Fhir.Model.DSTU2
                     source.PopulateListItem(FollowUp, index, () => new Hl7.Fhir.Model.CodeableConcept());
                     return true;
                 case "notes":
-                    source.PopulateListItem(Notes, index, () => new Hl7.Fhir.Model.Annotation());
+                    source.PopulateListItem(Notes, index, () => new Hl7.Fhir.Model.DSTU2.Annotation());
                     return true;
                 case "focalDevice":
                     source.PopulateListItem(FocalDevice, index, () => new FocalDeviceComponent());
