@@ -97,6 +97,7 @@ namespace Hl7.Fhir.Tests.Rest
 
         [TestMethod]
         [TestCategory("IntegrationTest")]
+        [Ignore("Data changed")]
         public async Task InvokeValidateCodeById()
         {
             var client = new FhirDstu2Client(FhirClientTests.TerminologyEndpoint);
@@ -159,6 +160,7 @@ namespace Hl7.Fhir.Tests.Rest
 
         [TestMethod]
         [TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public async Task InvokeTestPatientGetEverythingAsync()
         {
             string _endpoint = "https://api.hspconsortium.org/rpineda/open";
