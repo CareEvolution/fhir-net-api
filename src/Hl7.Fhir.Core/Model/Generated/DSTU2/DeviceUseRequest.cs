@@ -431,24 +431,36 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("device", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Device?.Serialize(sink);
             sink.Element("encounter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Encounter?.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("indication", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Indication)
+            if(_Indication != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Indication)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("notes", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(NotesElement);
+            if(_NotesElement != null)
+            {
+                sink.Serialize(_NotesElement);
+            }
             sink.End();
             sink.BeginList("prnReason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in PrnReason)
+            if(_PrnReason != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _PrnReason)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("orderedOn", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OrderedOnElement?.Serialize(sink);

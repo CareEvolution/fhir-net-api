@@ -520,17 +520,23 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("source", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Source?.Serialize(sink);
             sink.Element("parent", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Parent?.Serialize(sink);
             sink.BeginList("operationalStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in OperationalStatus)
+            if(_OperationalStatus != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _OperationalStatus)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("parameterGroup", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ParameterGroup?.Serialize(sink);
             sink.Element("measurementPrinciple", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MeasurementPrincipleElement?.Serialize(sink);
             sink.BeginList("productionSpecification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ProductionSpecification)
+            if(_ProductionSpecification != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ProductionSpecification)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("languageCode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LanguageCode?.Serialize(sink);

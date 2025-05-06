@@ -98,9 +98,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.Serialize(sink);
                 sink.Element("summary", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Summary?.Serialize(sink);
                 sink.BeginList("assessment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Assessment)
+                if(_Assessment != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Assessment)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -270,9 +273,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.Serialize(sink);
                 sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Code?.Serialize(sink);
                 sink.BeginList("detail", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Detail)
+                if(_Detail != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Detail)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -832,9 +838,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("Condition");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("patient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Patient?.Serialize(sink);
@@ -850,15 +859,21 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("abatement", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Abatement?.Serialize(sink);
             sink.Element("stage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Stage?.Serialize(sink);
             sink.BeginList("evidence", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Evidence)
+            if(_Evidence != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Evidence)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("bodySite", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in BodySite)
+            if(_BodySite != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _BodySite)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("notes", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NotesElement?.Serialize(sink);

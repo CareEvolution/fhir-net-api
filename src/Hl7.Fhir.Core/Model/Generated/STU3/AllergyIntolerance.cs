@@ -218,9 +218,12 @@ namespace Hl7.Fhir.Model.STU3
                 base.Serialize(sink);
                 sink.Element("substance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Substance?.Serialize(sink);
                 sink.BeginList("manifestation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true);
-                foreach(var item in Manifestation)
+                if(_Manifestation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Manifestation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);
@@ -228,9 +231,12 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("severity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); SeverityElement?.Serialize(sink);
                 sink.Element("exposureRoute", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ExposureRoute?.Serialize(sink);
                 sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Note)
+                if(_Note != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Note)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -892,16 +898,22 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("AllergyIntolerance");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("clinicalStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ClinicalStatusElement?.Serialize(sink);
             sink.Element("verificationStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); VerificationStatusElement?.Serialize(sink);
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TypeElement?.Serialize(sink);
             sink.BeginList("category", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(CategoryElement);
+            if(_CategoryElement != null)
+            {
+                sink.Serialize(_CategoryElement);
+            }
             sink.End();
             sink.Element("criticality", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CriticalityElement?.Serialize(sink);
             sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Code?.Serialize(sink);
@@ -912,15 +924,21 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("asserter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Asserter?.Serialize(sink);
             sink.Element("lastOccurrence", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); LastOccurrenceElement?.Serialize(sink);
             sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Note)
+            if(_Note != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Note)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("reaction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Reaction)
+            if(_Reaction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Reaction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

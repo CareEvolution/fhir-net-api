@@ -1110,9 +1110,12 @@ namespace Hl7.Fhir.Model.STU3
             base.Serialize(sink);
             sink.Element("event", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Event?.Serialize(sink);
             sink.BeginList("destination", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Destination)
+            if(_Destination != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Destination)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("receiver", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Receiver?.Serialize(sink);
@@ -1125,9 +1128,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Reason?.Serialize(sink);
             sink.Element("response", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Response?.Serialize(sink);
             sink.BeginList("focus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Focus)
+            if(_Focus != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Focus)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

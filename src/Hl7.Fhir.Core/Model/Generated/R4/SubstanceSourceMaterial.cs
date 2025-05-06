@@ -377,9 +377,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("intraspecificType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); IntraspecificType?.Serialize(sink);
                 sink.Element("intraspecificDescription", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); IntraspecificDescriptionElement?.Serialize(sink);
                 sink.BeginList("author", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Author)
+                if(_Author != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Author)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("hybrid", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Hybrid?.Serialize(sink);
@@ -1755,35 +1758,53 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("organismId", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OrganismId?.Serialize(sink);
             sink.Element("organismName", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OrganismNameElement?.Serialize(sink);
             sink.BeginList("parentSubstanceId", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ParentSubstanceId)
+            if(_ParentSubstanceId != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ParentSubstanceId)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("parentSubstanceName", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ParentSubstanceNameElement);
+            if(_ParentSubstanceNameElement != null)
+            {
+                sink.Serialize(_ParentSubstanceNameElement);
+            }
             sink.End();
             sink.BeginList("countryOfOrigin", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in CountryOfOrigin)
+            if(_CountryOfOrigin != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _CountryOfOrigin)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("geographicalLocation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(GeographicalLocationElement);
+            if(_GeographicalLocationElement != null)
+            {
+                sink.Serialize(_GeographicalLocationElement);
+            }
             sink.End();
             sink.Element("developmentStage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DevelopmentStage?.Serialize(sink);
             sink.BeginList("fractionDescription", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in FractionDescription)
+            if(_FractionDescription != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _FractionDescription)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("organism", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Organism?.Serialize(sink);
             sink.BeginList("partDescription", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in PartDescription)
+            if(_PartDescription != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _PartDescription)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

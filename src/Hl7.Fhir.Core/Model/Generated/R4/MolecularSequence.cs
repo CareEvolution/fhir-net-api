@@ -1869,25 +1869,46 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("RocComponent");
                 base.Serialize(sink);
                 sink.BeginList("score", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(ScoreElement);
+                if(_ScoreElement != null)
+                {
+                    sink.Serialize(_ScoreElement);
+                }
                 sink.End();
                 sink.BeginList("numTP", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(NumTPElement);
+                if(_NumTPElement != null)
+                {
+                    sink.Serialize(_NumTPElement);
+                }
                 sink.End();
                 sink.BeginList("numFP", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(NumFPElement);
+                if(_NumFPElement != null)
+                {
+                    sink.Serialize(_NumFPElement);
+                }
                 sink.End();
                 sink.BeginList("numFN", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(NumFNElement);
+                if(_NumFNElement != null)
+                {
+                    sink.Serialize(_NumFNElement);
+                }
                 sink.End();
                 sink.BeginList("precision", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(PrecisionElement);
+                if(_PrecisionElement != null)
+                {
+                    sink.Serialize(_PrecisionElement);
+                }
                 sink.End();
                 sink.BeginList("sensitivity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(SensitivityElement);
+                if(_SensitivityElement != null)
+                {
+                    sink.Serialize(_SensitivityElement);
+                }
                 sink.End();
                 sink.BeginList("fMeasure", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(FMeasureElement);
+                if(_FMeasureElement != null)
+                {
+                    sink.Serialize(_FMeasureElement);
+                }
                 sink.End();
                 sink.End();
             }
@@ -3604,9 +3625,12 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("MolecularSequence");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TypeElement?.Serialize(sink);
@@ -3618,35 +3642,50 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("quantity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Quantity?.Serialize(sink);
             sink.Element("referenceSeq", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ReferenceSeq?.Serialize(sink);
             sink.BeginList("variant", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Variant)
+            if(_Variant != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Variant)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("observedSeq", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ObservedSeqElement?.Serialize(sink);
             sink.BeginList("quality", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Quality)
+            if(_Quality != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Quality)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("readCoverage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ReadCoverageElement?.Serialize(sink);
             sink.BeginList("repository", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Repository)
+            if(_Repository != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Repository)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("pointer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Pointer)
+            if(_Pointer != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Pointer)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("structureVariant", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in StructureVariant)
+            if(_StructureVariant != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _StructureVariant)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

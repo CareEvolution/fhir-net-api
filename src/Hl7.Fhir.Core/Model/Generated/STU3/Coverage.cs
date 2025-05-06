@@ -1166,9 +1166,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("Coverage");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
@@ -1180,9 +1183,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("relationship", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Relationship?.Serialize(sink);
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.BeginList("payor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Payor)
+            if(_Payor != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Payor)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("grouping", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Grouping?.Serialize(sink);
@@ -1191,9 +1197,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("order", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OrderElement?.Serialize(sink);
             sink.Element("network", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NetworkElement?.Serialize(sink);
             sink.BeginList("contract", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Contract)
+            if(_Contract != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contract)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

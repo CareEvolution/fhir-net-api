@@ -472,9 +472,12 @@ namespace Hl7.Fhir.Model
             sink.BeginResource("EligibilityRequest");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.DSTU2, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("ruleset", Hl7.Fhir.Model.Version.DSTU2, Hl7.Fhir.Model.Version.DSTU2, false, false); Ruleset?.Serialize(sink);

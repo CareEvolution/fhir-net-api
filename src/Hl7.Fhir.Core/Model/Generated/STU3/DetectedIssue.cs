@@ -592,17 +592,23 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("date", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateElement?.Serialize(sink);
             sink.Element("author", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Author?.Serialize(sink);
             sink.BeginList("implicated", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Implicated)
+            if(_Implicated != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Implicated)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("detail", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DetailElement?.Serialize(sink);
             sink.Element("reference", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ReferenceElement?.Serialize(sink);
             sink.BeginList("mitigation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Mitigation)
+            if(_Mitigation != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Mitigation)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

@@ -336,13 +336,22 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TextElement?.Serialize(sink);
             sink.Element("family", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); FamilyElement?.Serialize(sink);
             sink.BeginList("given", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(GivenElement);
+            if(_GivenElement != null)
+            {
+                sink.Serialize(_GivenElement);
+            }
             sink.End();
             sink.BeginList("prefix", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(PrefixElement);
+            if(_PrefixElement != null)
+            {
+                sink.Serialize(_PrefixElement);
+            }
             sink.End();
             sink.BeginList("suffix", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(SuffixElement);
+            if(_SuffixElement != null)
+            {
+                sink.Serialize(_SuffixElement);
+            }
             sink.End();
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.End();

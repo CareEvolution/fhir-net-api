@@ -714,17 +714,23 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("Goal");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("lifecycleStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); LifecycleStatusElement?.Serialize(sink);
             sink.Element("achievementStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); AchievementStatus?.Serialize(sink);
             sink.BeginList("category", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Category)
+            if(_Category != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Category)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("priority", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Priority?.Serialize(sink);
@@ -732,36 +738,51 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("subject", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Subject?.Serialize(sink);
             sink.Element("start", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Start?.Serialize(sink);
             sink.BeginList("target", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Target)
+            if(_Target != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Target)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("statusDate", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusDateElement?.Serialize(sink);
             sink.Element("statusReason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); StatusReasonElement?.Serialize(sink);
             sink.Element("expressedBy", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ExpressedBy?.Serialize(sink);
             sink.BeginList("addresses", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Addresses)
+            if(_Addresses != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Addresses)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Note)
+            if(_Note != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Note)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("outcomeCode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in OutcomeCode)
+            if(_OutcomeCode != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _OutcomeCode)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("outcomeReference", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in OutcomeReference)
+            if(_OutcomeReference != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _OutcomeReference)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

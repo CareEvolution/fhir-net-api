@@ -645,9 +645,12 @@ namespace Hl7.Fhir.Model.DSTU2
             base.Serialize(sink);
             sink.Element("action", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); ActionElement?.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("ruleset", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Ruleset?.Serialize(sink);
@@ -661,16 +664,25 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("nullify", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NullifyElement?.Serialize(sink);
             sink.Element("reference", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ReferenceElement?.Serialize(sink);
             sink.BeginList("item", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Item)
+            if(_Item != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Item)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("include", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(IncludeElement);
+            if(_IncludeElement != null)
+            {
+                sink.Serialize(_IncludeElement);
+            }
             sink.End();
             sink.BeginList("exclude", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ExcludeElement);
+            if(_ExcludeElement != null)
+            {
+                sink.Serialize(_ExcludeElement);
+            }
             sink.End();
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.End();

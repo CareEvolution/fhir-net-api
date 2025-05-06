@@ -336,9 +336,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Type?.Serialize(sink);
                 sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, true); Value?.Serialize(sink);
                 sink.BeginList("exception", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Exception)
+                if(_Exception != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Exception)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1094,9 +1097,12 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("Coverage");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
@@ -1109,30 +1115,42 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("relationship", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Relationship?.Serialize(sink);
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.BeginList("payor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in Payor)
+            if(_Payor != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Payor)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("class", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Class)
+            if(_Class != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Class)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("order", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OrderElement?.Serialize(sink);
             sink.Element("network", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NetworkElement?.Serialize(sink);
             sink.BeginList("costToBeneficiary", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in CostToBeneficiary)
+            if(_CostToBeneficiary != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _CostToBeneficiary)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("subrogation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); SubrogationElement?.Serialize(sink);
             sink.BeginList("contract", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Contract)
+            if(_Contract != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contract)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

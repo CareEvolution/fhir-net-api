@@ -737,9 +737,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("Account");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
@@ -750,17 +753,23 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("active", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Active?.Serialize(sink);
             sink.Element("balance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Balance?.Serialize(sink);
             sink.BeginList("coverage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Coverage)
+            if(_Coverage != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Coverage)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("owner", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Owner?.Serialize(sink);
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("guarantor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Guarantor)
+            if(_Guarantor != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Guarantor)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

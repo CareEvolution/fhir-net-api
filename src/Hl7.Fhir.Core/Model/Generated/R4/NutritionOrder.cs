@@ -180,33 +180,48 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("OralDietComponent");
                 base.Serialize(sink);
                 sink.BeginList("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Type)
+                if(_Type != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Type)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("schedule", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Schedule)
+                if(_Schedule != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Schedule)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("nutrient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Nutrient)
+                if(_Nutrient != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Nutrient)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("texture", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Texture)
+                if(_Texture != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Texture)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("fluidConsistencyType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in FluidConsistencyType)
+                if(_FluidConsistencyType != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _FluidConsistencyType)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("instruction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); InstructionElement?.Serialize(sink);
@@ -815,9 +830,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Type?.Serialize(sink);
                 sink.Element("productName", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ProductNameElement?.Serialize(sink);
                 sink.BeginList("schedule", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Schedule)
+                if(_Schedule != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Schedule)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("quantity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Quantity?.Serialize(sink);
@@ -1184,9 +1202,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("caloricDensity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); CaloricDensity?.Serialize(sink);
                 sink.Element("routeofAdministration", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); RouteofAdministration?.Serialize(sink);
                 sink.BeginList("administration", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Administration)
+                if(_Administration != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Administration)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("maxVolumeToDeliver", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); MaxVolumeToDeliver?.Serialize(sink);
@@ -2074,19 +2095,31 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("NutritionOrder");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("instantiatesCanonical", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(InstantiatesCanonicalElement);
+            if(_InstantiatesCanonicalElement != null)
+            {
+                sink.Serialize(_InstantiatesCanonicalElement);
+            }
             sink.End();
             sink.BeginList("instantiatesUri", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(InstantiatesUriElement);
+            if(_InstantiatesUriElement != null)
+            {
+                sink.Serialize(_InstantiatesUriElement);
+            }
             sink.End();
             sink.BeginList("instantiates", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            sink.Serialize(InstantiatesElement);
+            if(_InstantiatesElement != null)
+            {
+                sink.Serialize(_InstantiatesElement);
+            }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
             sink.Element("intent", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); IntentElement?.Serialize(sink);
@@ -2095,35 +2128,50 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("dateTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); DateTimeElement?.Serialize(sink);
             sink.Element("orderer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Orderer?.Serialize(sink);
             sink.BeginList("allergyIntolerance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in AllergyIntolerance)
+            if(_AllergyIntolerance != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AllergyIntolerance)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("foodPreferenceModifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in FoodPreferenceModifier)
+            if(_FoodPreferenceModifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _FoodPreferenceModifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("excludeFoodModifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ExcludeFoodModifier)
+            if(_ExcludeFoodModifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ExcludeFoodModifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("oralDiet", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); OralDiet?.Serialize(sink);
             sink.BeginList("supplement", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Supplement)
+            if(_Supplement != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Supplement)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("enteralFormula", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); EnteralFormula?.Serialize(sink);
             sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Note)
+            if(_Note != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Note)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

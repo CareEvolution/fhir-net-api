@@ -505,9 +505,12 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("color", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ColorElement?.Serialize(sink);
                 sink.Element("brand", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); BrandElement?.Serialize(sink);
                 sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Note)
+                if(_Note != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Note)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1036,9 +1039,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("VisionPrescription");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
@@ -1048,9 +1054,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("prescriber", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Prescriber?.Serialize(sink);
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Reason?.Serialize(sink);
             sink.BeginList("dispense", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Dispense)
+            if(_Dispense != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Dispense)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

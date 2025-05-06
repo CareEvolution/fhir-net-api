@@ -108,9 +108,12 @@ namespace Hl7.Fhir.Model
         {
             base.Serialize(sink);
             sink.BeginList("modifierExtension", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ModifierExtension)
+            if(_ModifierExtension != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ModifierExtension)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
         }

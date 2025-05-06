@@ -429,9 +429,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("Order");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("date", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateElement?.Serialize(sink);
@@ -441,9 +444,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Reason?.Serialize(sink);
             sink.Element("when", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); When?.Serialize(sink);
             sink.BeginList("detail", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in Detail)
+            if(_Detail != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Detail)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

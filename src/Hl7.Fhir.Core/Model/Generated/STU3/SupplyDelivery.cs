@@ -475,15 +475,21 @@ namespace Hl7.Fhir.Model.STU3
             base.Serialize(sink);
             sink.Element("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Identifier?.Serialize(sink);
             sink.BeginList("basedOn", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in BasedOn)
+            if(_BasedOn != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _BasedOn)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("partOf", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in PartOf)
+            if(_PartOf != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _PartOf)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
@@ -494,9 +500,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("supplier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Supplier?.Serialize(sink);
             sink.Element("destination", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Destination?.Serialize(sink);
             sink.BeginList("receiver", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Receiver)
+            if(_Receiver != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Receiver)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

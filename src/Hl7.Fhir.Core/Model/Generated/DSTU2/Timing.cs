@@ -857,7 +857,10 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginDataType("Timing");
             base.Serialize(sink);
             sink.BeginList("event", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(EventElement);
+            if(_EventElement != null)
+            {
+                sink.Serialize(_EventElement);
+            }
             sink.End();
             sink.Element("repeat", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Repeat?.Serialize(sink);
             sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Code?.Serialize(sink);

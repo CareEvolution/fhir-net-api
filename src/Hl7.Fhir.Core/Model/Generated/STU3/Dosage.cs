@@ -401,9 +401,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("sequence", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SequenceElement?.Serialize(sink);
             sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TextElement?.Serialize(sink);
             sink.BeginList("additionalInstruction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in AdditionalInstruction)
+            if(_AdditionalInstruction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AdditionalInstruction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("patientInstruction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PatientInstructionElement?.Serialize(sink);

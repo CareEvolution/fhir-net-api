@@ -424,37 +424,52 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("MedicinalProductIndication");
             base.Serialize(sink);
             sink.BeginList("subject", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Subject)
+            if(_Subject != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Subject)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("diseaseSymptomProcedure", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DiseaseSymptomProcedure?.Serialize(sink);
             sink.Element("diseaseStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DiseaseStatus?.Serialize(sink);
             sink.BeginList("comorbidity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Comorbidity)
+            if(_Comorbidity != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Comorbidity)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("intendedEffect", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); IntendedEffect?.Serialize(sink);
             sink.Element("duration", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Duration?.Serialize(sink);
             sink.BeginList("otherTherapy", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in OtherTherapy)
+            if(_OtherTherapy != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _OtherTherapy)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("undesirableEffect", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in UndesirableEffect)
+            if(_UndesirableEffect != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _UndesirableEffect)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("population", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Population)
+            if(_Population != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Population)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

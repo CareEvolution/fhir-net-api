@@ -381,9 +381,12 @@ namespace Hl7.Fhir.Model.STU3
                 sink.BeginDataType("EntryComponent");
                 base.Serialize(sink);
                 sink.BeginList("link", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Link)
+                if(_Link != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Link)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("fullUrl", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); FullUrlElement?.Serialize(sink);
@@ -1739,15 +1742,21 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); TypeElement?.Serialize(sink);
             sink.Element("total", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TotalElement?.Serialize(sink);
             sink.BeginList("link", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Link)
+            if(_Link != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Link)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("entry", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Entry)
+            if(_Entry != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Entry)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("signature", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Signature?.Serialize(sink);

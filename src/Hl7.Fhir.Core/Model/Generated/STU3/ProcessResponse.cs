@@ -548,9 +548,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("ProcessResponse");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
@@ -563,21 +566,30 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("requestOrganization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); RequestOrganization?.Serialize(sink);
             sink.Element("form", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Form?.Serialize(sink);
             sink.BeginList("processNote", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ProcessNote)
+            if(_ProcessNote != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ProcessNote)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("error", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Error)
+            if(_Error != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Error)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("communicationRequest", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in CommunicationRequest)
+            if(_CommunicationRequest != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _CommunicationRequest)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

@@ -181,18 +181,27 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("path", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); PathElement?.Serialize(sink);
                 sink.Element("valueSet", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); ValueSet?.Serialize(sink);
                 sink.BeginList("valueCode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(ValueCodeElement);
+                if(_ValueCodeElement != null)
+                {
+                    sink.Serialize(_ValueCodeElement);
+                }
                 sink.End();
                 sink.BeginList("valueCoding", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in ValueCoding)
+                if(_ValueCoding != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _ValueCoding)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("valueCodeableConcept", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in ValueCodeableConcept)
+                if(_ValueCodeableConcept != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _ValueCodeableConcept)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -775,21 +784,33 @@ namespace Hl7.Fhir.Model.STU3
             base.Serialize(sink);
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); TypeElement?.Serialize(sink);
             sink.BeginList("profile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ProfileElement);
+            if(_ProfileElement != null)
+            {
+                sink.Serialize(_ProfileElement);
+            }
             sink.End();
             sink.BeginList("mustSupport", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(MustSupportElement);
+            if(_MustSupportElement != null)
+            {
+                sink.Serialize(_MustSupportElement);
+            }
             sink.End();
             sink.BeginList("codeFilter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in CodeFilter)
+            if(_CodeFilter != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _CodeFilter)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("dateFilter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in DateFilter)
+            if(_DateFilter != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _DateFilter)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

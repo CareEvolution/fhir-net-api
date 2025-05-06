@@ -870,9 +870,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("PaymentReconciliation");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
@@ -885,17 +888,23 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("requestProvider", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); RequestProvider?.Serialize(sink);
             sink.Element("requestOrganization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); RequestOrganization?.Serialize(sink);
             sink.BeginList("detail", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Detail)
+            if(_Detail != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Detail)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("form", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Form?.Serialize(sink);
             sink.Element("total", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Total?.Serialize(sink);
             sink.BeginList("processNote", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ProcessNote)
+            if(_ProcessNote != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ProcessNote)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

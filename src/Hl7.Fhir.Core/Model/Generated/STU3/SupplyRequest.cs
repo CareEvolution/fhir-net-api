@@ -692,9 +692,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("authoredOn", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); AuthoredOnElement?.Serialize(sink);
             sink.Element("requester", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Requester?.Serialize(sink);
             sink.BeginList("supplier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Supplier)
+            if(_Supplier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Supplier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Reason?.Serialize(sink);

@@ -280,30 +280,42 @@ namespace Hl7.Fhir.Model
             base.Serialize(sink);
             sink.Element("patient", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, true, false); Patient?.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("code", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, false, false); Code?.Serialize(sink);
             sink.BeginList("modifier", Hl7.Fhir.Model.Version.DSTU2, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Modifier)
+            if(_Modifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Modifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("description", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("image", Hl7.Fhir.Model.Version.DSTU2|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Image)
+            if(_Image != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Image)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("active", Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.STU3, false, false); ActiveElement?.Serialize(sink);
             sink.BeginList("qualifier", Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Qualifier)
+            if(_Qualifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Qualifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

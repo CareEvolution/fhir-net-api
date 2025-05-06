@@ -244,22 +244,31 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("doseNumber", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DoseNumberElement?.Serialize(sink);
                 sink.Element("forecastStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); ForecastStatus?.Serialize(sink);
                 sink.BeginList("dateCriterion", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in DateCriterion)
+                if(_DateCriterion != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _DateCriterion)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("protocol", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Protocol?.Serialize(sink);
                 sink.BeginList("supportingImmunization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in SupportingImmunization)
+                if(_SupportingImmunization != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _SupportingImmunization)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("supportingPatientInformation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in SupportingPatientInformation)
+                if(_SupportingPatientInformation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _SupportingPatientInformation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1036,16 +1045,22 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("ImmunizationRecommendation");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("patient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Patient?.Serialize(sink);
             sink.BeginList("recommendation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in Recommendation)
+            if(_Recommendation != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Recommendation)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

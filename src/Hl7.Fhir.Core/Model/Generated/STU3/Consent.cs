@@ -757,46 +757,67 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); TypeElement?.Serialize(sink);
                 sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
                 sink.BeginList("actor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Actor)
+                if(_Actor != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Actor)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("action", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Action)
+                if(_Action != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Action)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("securityLabel", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in SecurityLabel)
+                if(_SecurityLabel != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _SecurityLabel)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("purpose", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Purpose)
+                if(_Purpose != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Purpose)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("class", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Class)
+                if(_Class != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Class)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Code)
+                if(_Code != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Code)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("dataPeriod", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DataPeriod?.Serialize(sink);
                 sink.BeginList("data", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Data)
+                if(_Data != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Data)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1807,69 +1828,99 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Identifier?.Serialize(sink);
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
             sink.BeginList("category", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Category)
+            if(_Category != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Category)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("patient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Patient?.Serialize(sink);
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.Element("dateTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateTimeElement?.Serialize(sink);
             sink.BeginList("consentingParty", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ConsentingParty)
+            if(_ConsentingParty != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ConsentingParty)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("actor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Actor)
+            if(_Actor != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Actor)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("action", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Action)
+            if(_Action != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Action)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("organization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Organization)
+            if(_Organization != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Organization)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("source", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Source?.Serialize(sink);
             sink.BeginList("policy", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Policy)
+            if(_Policy != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Policy)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("policyRule", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PolicyRuleElement?.Serialize(sink);
             sink.BeginList("securityLabel", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in SecurityLabel)
+            if(_SecurityLabel != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _SecurityLabel)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("purpose", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Purpose)
+            if(_Purpose != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Purpose)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("dataPeriod", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DataPeriod?.Serialize(sink);
             sink.BeginList("data", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Data)
+            if(_Data != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Data)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("except", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Except)
+            if(_Except != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Except)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

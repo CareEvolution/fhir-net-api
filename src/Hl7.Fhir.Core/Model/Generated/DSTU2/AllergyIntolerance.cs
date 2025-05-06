@@ -256,9 +256,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("substance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Substance?.Serialize(sink);
                 sink.Element("certainty", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CertaintyElement?.Serialize(sink);
                 sink.BeginList("manifestation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-                foreach(var item in Manifestation)
+                if(_Manifestation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Manifestation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);
@@ -892,9 +895,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("AllergyIntolerance");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("onset", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OnsetElement?.Serialize(sink);
@@ -910,9 +916,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("lastOccurence", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LastOccurenceElement?.Serialize(sink);
             sink.Element("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Note?.Serialize(sink);
             sink.BeginList("reaction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Reaction)
+            if(_Reaction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Reaction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

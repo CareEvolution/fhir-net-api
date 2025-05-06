@@ -97,9 +97,12 @@ namespace Hl7.Fhir.Model.R4
                 base.Serialize(sink);
                 sink.Element("ratioType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); RatioType?.Serialize(sink);
                 sink.BeginList("startingMaterial", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in StartingMaterial)
+                if(_StartingMaterial != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _StartingMaterial)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -562,9 +565,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("averageMolecularFormula", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); AverageMolecularFormulaElement?.Serialize(sink);
                 sink.Element("repeatUnitAmountType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); RepeatUnitAmountType?.Serialize(sink);
                 sink.BeginList("repeatUnit", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in RepeatUnit)
+                if(_RepeatUnit != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _RepeatUnit)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -826,15 +832,21 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("repeatUnit", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); RepeatUnitElement?.Serialize(sink);
                 sink.Element("amount", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Amount?.Serialize(sink);
                 sink.BeginList("degreeOfPolymerisation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in DegreeOfPolymerisation)
+                if(_DegreeOfPolymerisation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _DegreeOfPolymerisation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("structuralRepresentation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in StructuralRepresentation)
+                if(_StructuralRepresentation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _StructuralRepresentation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1522,24 +1534,36 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("class", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Class?.Serialize(sink);
             sink.Element("geometry", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Geometry?.Serialize(sink);
             sink.BeginList("copolymerConnectivity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in CopolymerConnectivity)
+            if(_CopolymerConnectivity != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _CopolymerConnectivity)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("modification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ModificationElement);
+            if(_ModificationElement != null)
+            {
+                sink.Serialize(_ModificationElement);
+            }
             sink.End();
             sink.BeginList("monomerSet", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in MonomerSet)
+            if(_MonomerSet != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _MonomerSet)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("repeat", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Repeat)
+            if(_Repeat != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Repeat)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

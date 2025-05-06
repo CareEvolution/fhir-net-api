@@ -450,9 +450,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("cylinder", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); CylinderElement?.Serialize(sink);
                 sink.Element("axis", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AxisElement?.Serialize(sink);
                 sink.BeginList("prism", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Prism)
+                if(_Prism != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Prism)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("add", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AddElement?.Serialize(sink);
@@ -463,9 +466,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("color", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ColorElement?.Serialize(sink);
                 sink.Element("brand", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); BrandElement?.Serialize(sink);
                 sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Note)
+                if(_Note != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Note)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1199,9 +1205,12 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("VisionPrescription");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
@@ -1211,9 +1220,12 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("dateWritten", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); DateWrittenElement?.Serialize(sink);
             sink.Element("prescriber", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Prescriber?.Serialize(sink);
             sink.BeginList("lensSpecification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in LensSpecification)
+            if(_LensSpecification != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _LensSpecification)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

@@ -471,9 +471,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("kind", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Kind?.Serialize(sink);
             sink.Element("orderedItem", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OrderedItem?.Serialize(sink);
             sink.BeginList("supplier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Supplier)
+            if(_Supplier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Supplier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Reason?.Serialize(sink);

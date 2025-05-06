@@ -171,9 +171,12 @@ namespace Hl7.Fhir.Model
             sink.Element("type", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, true, false); Type?.Serialize(sink);
             sink.Element("period", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, true, false); Period?.Serialize(sink);
             sink.BeginList("specialPrecautionsForStorage", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false);
-            foreach(var item in SpecialPrecautionsForStorage)
+            if(_SpecialPrecautionsForStorage != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _SpecialPrecautionsForStorage)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

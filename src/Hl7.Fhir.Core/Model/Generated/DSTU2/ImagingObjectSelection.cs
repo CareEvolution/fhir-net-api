@@ -167,9 +167,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("url", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); UrlElement?.Serialize(sink);
                 sink.Element("imagingStudy", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ImagingStudy?.Serialize(sink);
                 sink.BeginList("series", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-                foreach(var item in Series)
+                if(_Series != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Series)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -420,9 +423,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("uid", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); UidElement?.Serialize(sink);
                 sink.Element("url", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); UrlElement?.Serialize(sink);
                 sink.BeginList("instance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-                foreach(var item in Instance)
+                if(_Instance != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Instance)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -699,9 +705,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("uid", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); UidElement?.Serialize(sink);
                 sink.Element("url", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); UrlElement?.Serialize(sink);
                 sink.BeginList("frames", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Frames)
+                if(_Frames != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Frames)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -940,7 +949,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.BeginDataType("FramesComponent");
                 base.Serialize(sink);
                 sink.BeginList("frameNumbers", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-                sink.Serialize(FrameNumbersElement);
+                if(_FrameNumbersElement != null)
+                {
+                    sink.Serialize(_FrameNumbersElement);
+                }
                 sink.End();
                 sink.Element("url", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); UrlElement?.Serialize(sink);
                 sink.End();
@@ -1307,9 +1319,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("author", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Author?.Serialize(sink);
             sink.Element("authoringTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); AuthoringTimeElement?.Serialize(sink);
             sink.BeginList("study", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in Study)
+            if(_Study != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Study)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

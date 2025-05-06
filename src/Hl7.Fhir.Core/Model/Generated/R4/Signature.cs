@@ -294,9 +294,12 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginDataType("Signature");
             base.Serialize(sink);
             sink.BeginList("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in Type)
+            if(_Type != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Type)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("when", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); WhenElement?.Serialize(sink);

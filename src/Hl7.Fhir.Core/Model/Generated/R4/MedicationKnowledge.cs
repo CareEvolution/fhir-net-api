@@ -98,9 +98,12 @@ namespace Hl7.Fhir.Model.R4
                 base.Serialize(sink);
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Type?.Serialize(sink);
                 sink.BeginList("reference", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true);
-                foreach(var item in Reference)
+                if(_Reference != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Reference)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1014,16 +1017,22 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("AdministrationGuidelinesComponent");
                 base.Serialize(sink);
                 sink.BeginList("dosage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Dosage)
+                if(_Dosage != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Dosage)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("indication", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Indication?.Serialize(sink);
                 sink.BeginList("patientCharacteristics", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in PatientCharacteristics)
+                if(_PatientCharacteristics != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _PatientCharacteristics)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1216,9 +1225,12 @@ namespace Hl7.Fhir.Model.R4
                 base.Serialize(sink);
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Type?.Serialize(sink);
                 sink.BeginList("dosage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true);
-                foreach(var item in Dosage)
+                if(_Dosage != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Dosage)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1408,7 +1420,10 @@ namespace Hl7.Fhir.Model.R4
                 base.Serialize(sink);
                 sink.Element("characteristic", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, true); Characteristic?.Serialize(sink);
                 sink.BeginList("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                sink.Serialize(ValueElement);
+                if(_ValueElement != null)
+                {
+                    sink.Serialize(_ValueElement);
+                }
                 sink.End();
                 sink.End();
             }
@@ -1590,9 +1605,12 @@ namespace Hl7.Fhir.Model.R4
                 base.Serialize(sink);
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Type?.Serialize(sink);
                 sink.BeginList("classification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Classification)
+                if(_Classification != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Classification)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -2124,15 +2142,21 @@ namespace Hl7.Fhir.Model.R4
                 base.Serialize(sink);
                 sink.Element("regulatoryAuthority", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); RegulatoryAuthority?.Serialize(sink);
                 sink.BeginList("substitution", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Substitution)
+                if(_Substitution != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Substitution)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("schedule", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Schedule)
+                if(_Schedule != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Schedule)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("maxDispense", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); MaxDispense?.Serialize(sink);
@@ -2787,15 +2811,21 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("KineticsComponent");
                 base.Serialize(sink);
                 sink.BeginList("areaUnderCurve", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in AreaUnderCurve)
+                if(_AreaUnderCurve != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _AreaUnderCurve)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("lethalDose50", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in LethalDose50)
+                if(_LethalDose50 != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _LethalDose50)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("halfLifePeriod", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); HalfLifePeriod?.Serialize(sink);
@@ -3421,92 +3451,137 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("doseForm", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DoseForm?.Serialize(sink);
             sink.Element("amount", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Amount?.Serialize(sink);
             sink.BeginList("synonym", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(SynonymElement);
+            if(_SynonymElement != null)
+            {
+                sink.Serialize(_SynonymElement);
+            }
             sink.End();
             sink.BeginList("relatedMedicationKnowledge", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in RelatedMedicationKnowledge)
+            if(_RelatedMedicationKnowledge != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _RelatedMedicationKnowledge)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("associatedMedication", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in AssociatedMedication)
+            if(_AssociatedMedication != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AssociatedMedication)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("productType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ProductType)
+            if(_ProductType != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ProductType)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("monograph", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Monograph)
+            if(_Monograph != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Monograph)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("ingredient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Ingredient)
+            if(_Ingredient != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Ingredient)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("preparationInstruction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PreparationInstructionElement?.Serialize(sink);
             sink.BeginList("intendedRoute", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in IntendedRoute)
+            if(_IntendedRoute != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _IntendedRoute)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("cost", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Cost)
+            if(_Cost != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Cost)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("monitoringProgram", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in MonitoringProgram)
+            if(_MonitoringProgram != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _MonitoringProgram)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("administrationGuidelines", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in AdministrationGuidelines)
+            if(_AdministrationGuidelines != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AdministrationGuidelines)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("medicineClassification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in MedicineClassification)
+            if(_MedicineClassification != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _MedicineClassification)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("packaging", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Packaging?.Serialize(sink);
             sink.BeginList("drugCharacteristic", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in DrugCharacteristic)
+            if(_DrugCharacteristic != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _DrugCharacteristic)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("contraindication", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Contraindication)
+            if(_Contraindication != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contraindication)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("regulatory", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Regulatory)
+            if(_Regulatory != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Regulatory)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("kinetics", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Kinetics)
+            if(_Kinetics != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Kinetics)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

@@ -113,9 +113,12 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("coverage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Coverage?.Serialize(sink);
                 sink.Element("contract", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Contract?.Serialize(sink);
                 sink.BeginList("benefitBalance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in BenefitBalance)
+                if(_BenefitBalance != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _BenefitBalance)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -450,9 +453,12 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("unit", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Unit?.Serialize(sink);
                 sink.Element("term", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Term?.Serialize(sink);
                 sink.BeginList("financial", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Financial)
+                if(_Financial != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Financial)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1350,9 +1356,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("EligibilityResponse");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
@@ -1365,16 +1374,22 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("insurer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Insurer?.Serialize(sink);
             sink.Element("inforce", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); InforceElement?.Serialize(sink);
             sink.BeginList("insurance", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Insurance)
+            if(_Insurance != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Insurance)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("form", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Form?.Serialize(sink);
             sink.BeginList("error", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Error)
+            if(_Error != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Error)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

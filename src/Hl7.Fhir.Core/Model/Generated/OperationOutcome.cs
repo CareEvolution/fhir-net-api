@@ -254,10 +254,16 @@ namespace Hl7.Fhir.Model
                 sink.Element("details", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Details?.Serialize(sink);
                 sink.Element("diagnostics", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DiagnosticsElement?.Serialize(sink);
                 sink.BeginList("location", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(LocationElement);
+                if(_LocationElement != null)
+                {
+                    sink.Serialize(_LocationElement);
+                }
                 sink.End();
                 sink.BeginList("expression", Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, false);
-                sink.Serialize(ExpressionElement);
+                if(_ExpressionElement != null)
+                {
+                    sink.Serialize(_ExpressionElement);
+                }
                 sink.End();
                 sink.End();
             }
@@ -510,9 +516,12 @@ namespace Hl7.Fhir.Model
             sink.BeginResource("OperationOutcome");
             base.Serialize(sink);
             sink.BeginList("issue", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in Issue)
+            if(_Issue != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Issue)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

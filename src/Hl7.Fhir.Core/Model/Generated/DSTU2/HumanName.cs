@@ -336,16 +336,28 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("use", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); UseElement?.Serialize(sink);
             sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TextElement?.Serialize(sink);
             sink.BeginList("family", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(FamilyElement);
+            if(_FamilyElement != null)
+            {
+                sink.Serialize(_FamilyElement);
+            }
             sink.End();
             sink.BeginList("given", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(GivenElement);
+            if(_GivenElement != null)
+            {
+                sink.Serialize(_GivenElement);
+            }
             sink.End();
             sink.BeginList("prefix", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(PrefixElement);
+            if(_PrefixElement != null)
+            {
+                sink.Serialize(_PrefixElement);
+            }
             sink.End();
             sink.BeginList("suffix", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(SuffixElement);
+            if(_SuffixElement != null)
+            {
+                sink.Serialize(_SuffixElement);
+            }
             sink.End();
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.End();

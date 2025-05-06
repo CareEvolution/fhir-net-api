@@ -793,15 +793,21 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("performer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Performer?.Serialize(sink);
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Reason?.Serialize(sink);
             sink.BeginList("basis", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Basis)
+            if(_Basis != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Basis)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("prediction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Prediction)
+            if(_Prediction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Prediction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("mitigation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); MitigationElement?.Serialize(sink);
