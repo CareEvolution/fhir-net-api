@@ -81,7 +81,7 @@ namespace Hl7.Fhir.Model
             if (other is Base dest)
             {
                 // if (UserData != null) dest.UserData = new Dictionary<string, object>(UserData);
-                if (_annotations.IsValueCreated)
+                if (_annotations != null)
                 {
                     dest.annotations.Clear();
                     dest.annotations.AddRange(annotations);
@@ -102,8 +102,18 @@ namespace Hl7.Fhir.Model
         }
 
 #region << Annotations and UserData >>
-        private Lazy<List<object>> _annotations = new Lazy<List<object>>(() => new List<object>());
-        private List<object> annotations { get { return _annotations.Value; } }
+        private List<object> _annotations = null;
+        private List<object> annotations
+        {
+            get
+            {
+                if ( _annotations == null )
+                {
+                    _annotations = new List<object>();
+                }
+                return _annotations;
+            }
+        }
 
         public IEnumerable<object> Annotations(Type type)
         {
