@@ -3,16 +3,16 @@ Snapdragon X 12-core X1E80100 3.40 GHz, 1 CPU, 12 logical and 12 physical cores
   [Host]     : .NET Framework 4.8.1 (4.8.9300.0), X86 LegacyJIT
   DefaultJob : .NET Framework 4.8.1 (4.8.9300.0), X86 LegacyJIT
 
-| Method              | Mean     | Error   | StdDev  | Gen0       | Gen1      | Gen2      | Allocated |
-|-------------------- |---------:|--------:|--------:|-----------:|----------:|----------:|----------:|
-| ParseJsonPermissive | 372.0 ms | 3.69 ms | 3.46 ms | 15000.0000 | 5000.0000 | 1000.0000 |  84.13 MB |
-| ParseJsonStrict     | 405.1 ms | 6.07 ms | 5.38 ms | 19000.0000 | 6000.0000 | 1000.0000 | 111.37 MB |
-| ParseXml            | 527.8 ms | 8.16 ms | 7.63 ms | 16000.0000 | 6000.0000 | 1000.0000 | 179.59 MB |
+| Method              | Mean     | Error   | StdDev   | Gen0       | Gen1      | Gen2      | Allocated |
+|-------------------- |---------:|--------:|---------:|-----------:|----------:|----------:|----------:|
+| ParseJsonPermissive | 381.6 ms | 7.51 ms | 14.11 ms | 15000.0000 | 5000.0000 | 1000.0000 |  84.13 MB |
+| ParseJsonStrict     | 413.2 ms | 8.20 ms |  8.05 ms | 19000.0000 | 6000.0000 | 1000.0000 | 111.37 MB |
+| ParseXml            | 516.9 ms | 4.45 ms |  3.95 ms | 16000.0000 | 6000.0000 | 1000.0000 | 179.59 MB |
 
-| Method          | Mean     | Error   | StdDev  | Gen0        | Gen1      | Gen2      | Allocated |
-|---------------- |---------:|--------:|--------:|------------:|----------:|----------:|----------:|
-| SerializeToJson | 320.9 ms | 3.26 ms | 2.89 ms | 192000.0000 |         - |         - |  64.12 MB |
-| SerializeToXml  | 369.2 ms | 1.67 ms | 1.31 ms | 308000.0000 | 1000.0000 | 1000.0000 |  113.3 MB |
+| Method          | Mean     | Error   | StdDev  | Gen0        | Gen1     | Gen2     | Allocated |
+|---------------- |---------:|--------:|--------:|------------:|---------:|---------:|----------:|
+| SerializeToJson | 242.6 ms | 4.69 ms | 4.39 ms |   1000.0000 | 666.6667 | 666.6667 |  33.12 MB |
+| SerializeToXml  | 270.9 ms | 3.99 ms | 3.73 ms | 165000.0000 | 500.0000 | 500.0000 |     43 MB |
 
 Mean: Arithmetic mean of all measurements
   Error     : Half of 99.9% confidence interval

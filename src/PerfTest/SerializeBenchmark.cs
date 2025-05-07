@@ -1,5 +1,4 @@
 ﻿using BenchmarkDotNet.Attributes;
-using Microsoft.VSDiagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Xml;
@@ -10,7 +9,6 @@ using FhirSerialization = Hl7.Fhir.Serialization;
 namespace PerfTest
 {
     [MemoryDiagnoser]
-    [CPUUsageDiagnoser]
     public class SerializeBenchmark
     {
         [GlobalSetup]
@@ -32,7 +30,7 @@ namespace PerfTest
         [Benchmark]
         public void SerializeToXml()
         {
-            SerializeToXml(new MemoryStream());
+            SerializeToXml(new MemoryStream(18_000_000));
         }
 
         private void SerializeToXml( Stream destination )

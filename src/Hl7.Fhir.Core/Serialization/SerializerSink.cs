@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text.Json;
 using System.Xml;
@@ -34,9 +34,9 @@ namespace Hl7.Fhir.Serialization
         {
             var isSubsetted = _summary != Rest.SummaryType.False
                 || _elements != null;
-            var isBundleRoot = _states.Count == 1 
-                && _states.Last.Value is DataTypeState dataTypeState 
-                && dataTypeState.Type == "Bundle";
+            var isBundleRoot = _currentStateIndex == 0 
+                && _states[0].Kind == StateKind.DataType 
+                && _states[0].Type == "Bundle";
             if (!isSubsetted || isBundleRoot)
             {
                 meta?.Serialize(this);
@@ -70,18 +70,18 @@ namespace Hl7.Fhir.Serialization
         /// Note that is such cases the name is just the prefix part - eg value</param>
         public void Element(string name, Model.Version elementVersions = Model.Version.All, Model.Version summaryVersions = Model.Version.All, bool isRequired = false, bool isChoice = false)
         {
-            var currentState = GetCurrentState();
-            if (currentState == null)
+            ref var currentState = ref GetCurrentState();
+            if (currentState.Kind == StateKind.None)
             {
-                throw new SerializerSinkException("Misssing call to BeginResource(), BeginDataType() or BeginList()");
+                throw new SerializerSinkException("Missing call to BeginResource(), BeginDataType() or BeginList()");
             }
             if (ShouldSkip(name, elementVersions, summaryVersions, isRequired))
             {
-                currentState.SetElement( new SkipElement() );
+                currentState.SetSkipElement();
             }
             else
             {
-                currentState.SetElement( new ActualElement { Name = name, IsChoice = isChoice } );
+                currentState.SetActualElement( name, isChoice );
             }
         }
 
@@ -100,21 +100,21 @@ namespace Hl7.Fhir.Serialization
         /// <param name="type">The resource type</param>
         public void BeginResource(string type)
         {
-            var currentState = GetCurrentState();
-            if (currentState == null)
+            ref var currentState = ref GetCurrentState();
+            if (currentState.Kind == StateKind.None)
             {
-                PushState(new DataTypeState(type, name: null));
+                PushState().DataTypeState(type, name: null);
             }
             else
             {
                 var elementName = currentState.GetElementName(type, isResource: true);
                 if (elementName == null)
                 {
-                    PushState(new SkipState());
+                    PushState().SkipState();
                 }
                 else
                 {
-                    PushState(new DataTypeState(type, elementName));
+                    PushState().DataTypeState(type, elementName);
                 }
             }
         }
@@ -130,11 +130,11 @@ namespace Hl7.Fhir.Serialization
         {
             if (IsSkipping() || ShouldSkip(name, elementVersions, summaryVersions, isRequired))
             {
-                PushState(new SkipState());
+                PushState().SkipState();
             }
             else
             {
-                PushState(new ListState(name));
+                PushState().ListState(name);
             }
         }
 
@@ -169,80 +169,90 @@ namespace Hl7.Fhir.Serialization
         /// handled specially in JSON so it requires it own separate method instead of simply calling Serialize(Primitive) in a loop
         /// </summary>
         /// <param name="primitives">The primitive data type values</param>
-        public abstract void Serialize(IEnumerable<Primitive> primitives);
+        public abstract void Serialize(IReadOnlyList<Primitive> primitives);
 
         /// <summary>
         /// End of a resource, data type or list
         /// </summary>
         public void End()
         {
-            if (_states.Count == 0)
+            if (_currentStateIndex < 0)
             {
-                throw new SerializerSinkException("Misssing call to BeginResource(), BeginDataType() or BeginList()");
+                throw new SerializerSinkException("Missing call to BeginResource(), BeginDataType() or BeginList()");
             }
 
-            if (_states.Count == 1 && _notRenderedNode != null)
+            if (_currentStateIndex == 0 && _notRenderedStateIndex >= 0)
             {
                 // No empty output
                 RenderStates();
             }
 
-            var renderedState = _notRenderedNode == null ?
-                _states.Last.Value :
-                null;
-            if (_notRenderedNode == _states.Last)
+            var renderedState = _notRenderedStateIndex == -1 ?
+                ref _states[ _currentStateIndex ] :
+                ref _noneState;
+            if (_notRenderedStateIndex == _currentStateIndex)
             {
-                _notRenderedNode = null;
+                _notRenderedStateIndex = -1;
             }
-            _states.RemoveLast();
+            _currentStateIndex--;
 
-            if (renderedState != null)
+            if (renderedState.Kind != StateKind.None)
             {
-                RenderEndState(renderedState);
+                RenderEndState(ref renderedState);
             }
         }
 
         protected bool BeginDataTypePrimitive(string type, bool isPrimitiveType)
         {
-            var currentState = GetCurrentState();
-            if (currentState == null)
+            ref var currentState = ref GetCurrentState();
+            if (currentState.Kind == StateKind.None)
             {
                 if (isPrimitiveType)
                 {
                     throw new SerializerSinkException("Primitive data type cannot be the root");
                 }
                 // Special case: a data type as the root - we use the type as the element name
-                PushState(new DataTypeState(type, isPrimitiveType: false));
+                PushState().DataTypeState(type, isPrimitiveType: false);
                 return true;
             }
 
             var elementName = currentState.GetElementName(type, isResource: false);
             if (elementName == null)
             {
-                PushState(new SkipState());
+                PushState().SkipState();
                 return false;
             }
 
-            PushState(new DataTypeState(elementName, isPrimitiveType));
+            PushState().DataTypeState(elementName, isPrimitiveType);
             return true;
         }
 
         protected void RenderStates()
         {
-            while (_notRenderedNode != null)
+            while (_notRenderedStateIndex >= 0)
             {
-                RenderBeginState(_notRenderedNode.Value, _notRenderedNode.Previous?.Value);
-                _notRenderedNode = _notRenderedNode.Next;
+                RenderBeginState(
+                    ref _states[_notRenderedStateIndex],
+                    ref _notRenderedStateIndex > 0 ?
+                        ref _states[_notRenderedStateIndex - 1] :
+                        ref _noneState
+                );
+                _notRenderedStateIndex++;
+                if (_notRenderedStateIndex > _currentStateIndex)
+                {
+                    _notRenderedStateIndex = -1;
+                }
             }
         }
 
-        protected abstract void RenderBeginState(IState state, IState previousState);
+        protected abstract void RenderBeginState(ref State state, ref State previousState);
 
-        protected abstract void RenderEndState(IState renderedState);
+        protected abstract void RenderEndState(ref State renderedState);
 
         protected bool IsSkipping()
         {
-            return _states.Last?.Value is SkipState;
+            ref var currentState = ref GetCurrentState();
+            return currentState.Kind == StateKind.Skip;
         }
 
         /// <summary>
@@ -285,20 +295,29 @@ namespace Hl7.Fhir.Serialization
                     throw new InvalidOperationException($"Unknown or not supported summary type '{_summary}'");
             }
 
-            bool IsResourceElement() =>
-                _states.Last?.Value is DataTypeState dataTypeState
-                && dataTypeState.Type != null;
+            bool IsResourceElement()
+            {
+                ref var currentState = ref GetCurrentState();
+                return currentState.Kind == StateKind.DataType && currentState.Type != null;
+            }
 
             bool IsNonBundleResourceElement()
             {
-                var resourceOrDataElementType = (_states.Last?.Value as DataTypeState)?.Type;
+                var resourceOrDataElementType = GetCurrentResourceOrDataElementType();
                 return resourceOrDataElementType != null && resourceOrDataElementType != "Bundle";
             }
 
             bool IsBundleElement()
             {
-                var resourceOrDataElementType = (_states.Last?.Value as DataTypeState)?.Type;
-                return resourceOrDataElementType == "Bundle";
+                return GetCurrentResourceOrDataElementType() == "Bundle";
+            }
+
+            string GetCurrentResourceOrDataElementType()
+            {
+                ref var currentState = ref GetCurrentState();
+                return currentState.Kind == StateKind.DataType ?
+                    currentState.Type :
+                    null;
             }
         }
 
@@ -321,143 +340,210 @@ namespace Hl7.Fhir.Serialization
             return value;
         }
 
-        protected IState GetCurrentState()
+        protected ref State GetCurrentState()
         {
-            return _states.Last?.Value;
-        }
-
-        private void PushState(IState state)
-        {
-            _states.AddLast(state);
-            if (_notRenderedNode == null)
+            if ( _currentStateIndex >= 0 )
             {
-                _notRenderedNode = _states.Last;
+                return ref _states[_currentStateIndex];
             }
+            return ref _noneState;
         }
 
-        protected interface IState
+        private ref State PushState()
         {
-            string Name { get; }
-            string GetElementName(string type, bool isResource);
-            void SetElement(IElement element);
-        }
-
-        /// <summary>
-        /// We are in an element that is being skipped 
-        /// (either because belongs to a diffrent FHIR version or is being removed due to summarization)
-        /// </summary>
-        protected class SkipState : IState
-        {
-            public string Name => null;
-
-            public string GetElementName(string type, bool isResource) => null;
-
-            public void SetElement(IElement element)
+            _currentStateIndex++;
+            if (_currentStateIndex >= _states.Length)
             {
-                // Do nothing - we are already skipping
+                var newStates = new State[_states.Length * 2];
+                Array.Copy(_states, newStates, _states.Length);
+                _states = newStates;
             }
+            if (_notRenderedStateIndex == -1)
+            {
+                _notRenderedStateIndex = _currentStateIndex;
+            }
+            return ref _states[_currentStateIndex];
+        }
+        
+        private delegate void SetState(ref State state);
+
+        protected enum StateKind
+        {
+            None = 0,
+
+            /// <summary>
+            /// We are in an element that is being skipped 
+            /// (either because belongs to a different FHIR version or is being removed due to summarization)
+            /// </summary>
+            Skip = 1,
+
+            /// <summary>
+            /// We are in a list - ie element with max cardinality > 1
+            /// </summary>
+            List = 2,
+
+            /// <summary>
+            /// We are in a resource or data type
+            /// </summary>
+            DataType = 3,
         }
 
-        /// <summary>
-        /// We are in a list - ie element with max cardinality > 1
-        /// </summary>
-        protected class ListState : IState
+        protected struct State
         {
-            public ListState(string name)
+            public StateKind Kind { get; private set; }
+            public string Name { get; private set; }
+
+            public string Type
             {
+                get
+                {
+                    if (Kind != StateKind.DataType) throw new InvalidOperationException($"Unexpected state {Kind}");
+                    return _type;
+                }
+            }
+
+            public bool IsPrimitiveType
+            {
+                get
+                {
+                    if (Kind != StateKind.DataType) throw new InvalidOperationException( $"Unexpected state {Kind}");
+                    return _isPrimitiveType;
+                }
+            }
+
+            public void SkipState()
+            {
+                Kind = StateKind.Skip;
+                Name = null;
+            }
+
+            public void ListState(string name)
+            {
+                Kind = StateKind.List;
                 Name = name ?? throw new ArgumentNullException(nameof(name));
             }
 
-            public string Name { get; }
-
-            public string GetElementName(string type, bool isResource) => Name;
-
-            public void SetElement(IElement element)
-            {
-                throw new SerializerSinkException("Misssing call to BeginResource() or BeginDataType()");
-            }
-        }
-
-        /// <summary>
-        /// We are in a resource or data type
-        /// </summary>
-        protected class DataTypeState : IState
-        {
             /// <summary>
             /// A resource
             /// </summary>
             /// <param name="type">The resource type</param>
-            /// <param name="name">The name of the (optional) element containing the resoure - eg set to 'resource' in a Bundle.entry. 
+            /// <param name="name">The name of the (optional) element containing the resource - eg set to 'resource' in a Bundle.entry. 
             /// Null if the resource is at the root or in a list (eg DomainResource.contained)</param>
-            public DataTypeState(string type, string name)
+            public void DataTypeState(string type, string name)
             {
-                Type = type ?? throw new ArgumentNullException(nameof(type));
+                Kind = StateKind.DataType;
                 Name = name;
-                IsPrimitiveType = false;
+                _type = type ?? throw new ArgumentNullException(nameof(type));
+                _isPrimitiveType = false;
             }
 
             /// <summary>
             /// A data type
             /// </summary>
-            /// <param name="name">The name of the element containng the data type</param>
+            /// <param name="name">The name of the element containing the data type</param>
             /// <param name="isPrimitiveType">True if it is a primitive data type</param>
-            public DataTypeState(string name, bool isPrimitiveType)
+            public void DataTypeState(string name, bool isPrimitiveType)
             {
-                Type = null;
+                Kind = StateKind.DataType;
                 Name = name ?? throw new ArgumentNullException(nameof(name));
-                IsPrimitiveType = isPrimitiveType;
+                _type = null;
+                _isPrimitiveType = isPrimitiveType;
             }
-
-            public string Name { get; }
-            public string Type { get; }
-            public bool IsPrimitiveType { get; }
 
             public string GetElementName(string type, bool isResource)
             {
-                if (_element is SkipElement) return null;
-
-                if (_element is ActualElement actual)
+                switch (Kind)
                 {
-                    if (isResource)
-                    {
-                        if (actual.IsChoice)
+                    case StateKind.Skip:
+                        return null;
+                    case StateKind.List:
+                        return Name;
+                    case StateKind.DataType:
+                        switch (_elementKind)
                         {
-                            throw new SerializerSinkException("Choice elements cannot be followed by BeginResource()");
+                            case ElementKind.Skip:
+                                return null;
+                            case ElementKind.Actual:
+                                if (isResource)
+                                {
+                                    if (_elementIsChoice)
+                                    {
+                                        throw new SerializerSinkException("Choice elements cannot be followed by BeginResource()");
+                                    }
+                                    return _elementName;
+                                }
+                                return GetElementName(type);
+                            default:
+                                throw new SerializerSinkException($"Unexpected element {_elementKind}");
                         }
-                        return actual.Name;
-                    }
-                    return actual.GetElementName(type);
+                    default:
+                        throw new SerializerSinkException($"Unexpected state {Kind}");
+                }
+            }
+
+            public void SetSkipElement()
+            {
+                switch (Kind)
+                {
+                    case StateKind.Skip:
+                        // Do nothing - we are already skipping
+                        break;
+                    case StateKind.List:
+                        throw new SerializerSinkException("Missing call to BeginResource() or BeginDataType()");
+                    case StateKind.DataType:
+                        _elementKind = ElementKind.Skip;
+                        break;
+                    default:
+                        throw new SerializerSinkException($"Unexpected state {Kind}");
+                }
+            }
+
+            public void SetActualElement(string name, bool isChoice)
+            {
+                switch (Kind)
+                {
+                    case StateKind.Skip:
+                        // Do nothing - we are already skipping
+                        break;
+                    case StateKind.List:
+                        throw new SerializerSinkException("Missing call to BeginResource() or BeginDataType()");
+                    case StateKind.DataType:
+                        _elementKind = ElementKind.Actual;
+                        _elementName = name ?? throw new ArgumentNullException(nameof(name));
+                        _elementIsChoice = isChoice;
+                        break;
+                    default:
+                        throw new SerializerSinkException($"Unexpected state {Kind}");
                 }
 
-                throw new SerializerSinkException($"Unexpected element {_element?.GetType()}");
             }
 
-            public void SetElement(IElement element)
+            private string GetElementName(string type)
             {
-                _element = element ?? throw new ArgumentNullException(nameof(element));
+                return _elementIsChoice ?
+                    _choiceElementName.GetOrAdd( (_elementName, type), tuple => CreateChoiceElementName( tuple.Item1, tuple.Item2 ) ) : 
+                    _elementName;
             }
 
-            private IElement _element;
-        }
-
-        protected interface IElement
-        {
-        }
-
-        protected class SkipElement : IElement
-        {
-        }
-
-        protected class ActualElement : IElement
-        {
-            public string Name { get; set; }
-            public bool IsChoice { get; set; }
-
-            public string GetElementName(string type)
+            private static string CreateChoiceElementName(string elementName, string type)
             {
-                if (IsChoice) return Name + type.Substring(0, 1).ToUpperInvariant() + type.Substring(1);
-                return Name;
+                return elementName + type.Substring(0, 1).ToUpperInvariant() + type.Substring(1);
             }
+
+            private static readonly ConcurrentDictionary<(string, string), string> _choiceElementName = new ConcurrentDictionary<(string, string), string>();
+
+            private string _type;               // Valid only when Kind = DataType
+            private bool _isPrimitiveType;      // Valid only when Kind = DataType
+            private ElementKind _elementKind;   // Valid only when Kind = DataType
+            private string _elementName;        // Valid only when Kind = DataType and _elementKind = Actual
+            private bool _elementIsChoice;      // Valid only when Kind = DataType and _elementKind = Actual
+        }
+
+        protected enum ElementKind
+        {
+            None = 0,
+            Skip = 1,
+            Actual = 2,
         }
 
         private const string OldObservationValueSystem = "http://hl7.org/fhir/v3/ObservationValue";
@@ -468,8 +554,11 @@ namespace Hl7.Fhir.Serialization
         private readonly Rest.SummaryType _summary;
         private readonly HashSet<string> _elements;
 
-        private readonly LinkedList<IState> _states = new LinkedList<IState>();
-        private LinkedListNode<IState> _notRenderedNode = null;
+        private static State _noneState = new State();
+
+        private State[] _states = new State[ 16 ];
+        private int _currentStateIndex = -1;
+        private int _notRenderedStateIndex = -1;
     }
 
     /// <summary>
@@ -496,13 +585,14 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        public override void Serialize(IEnumerable<Primitive> primitives)
+        public override void Serialize(IReadOnlyList<Primitive> primitives)
         {
             if (primitives != null)
             {
-                foreach (var primitive in primitives)
+                // We do not use foreach to avoid allocating the enumerator
+                for (var i=0; i<primitives.Count; i++)
                 {
-                    Serialize(primitive);
+                    Serialize(primitives[i]);
                 }
             }
         }
@@ -520,12 +610,12 @@ namespace Hl7.Fhir.Serialization
             StringValue(name, value, elementVersions, summaryVersions, isRequired);
         }
 
-        protected override void RenderBeginState(IState state, IState previousState)
+        protected override void RenderBeginState(ref State state, ref State previousState)
         {
             // Nothing to do
         }
 
-        protected override void RenderEndState(IState renderedState)
+        protected override void RenderEndState(ref State renderedState)
         {
             // Nothing to do
         }
@@ -547,10 +637,10 @@ namespace Hl7.Fhir.Serialization
         {
             if (primitive != null)
             {
-                var currentState = GetCurrentState();
-                if (currentState == null)
+                ref var currentState = ref GetCurrentState();
+                if (currentState.Kind == StateKind.None)
                 {
-                    throw new SerializerSinkException("Misssing call to BeginResource(), BeginDataType() or BeginList()");
+                    throw new SerializerSinkException("Missing call to BeginResource(), BeginDataType() or BeginList()");
                 }
                 var elementName = currentState.GetElementName(primitive.TypeName, isResource: false);
                 if (elementName != null)
@@ -563,19 +653,24 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        public override void Serialize(IEnumerable<Primitive> primitives)
+        public override void Serialize(IReadOnlyList<Primitive> primitives)
         {
-            if (primitives != null && !IsSkipping())
+            if (primitives != null && primitives.Count > 0 && !IsSkipping())
             {
                 var anyNonEmpty = false;
-                var elements = new List<ElementHandling>();
-                foreach (var primitive in primitives)
+                if (_elements.Length < primitives.Count)
                 {
+                    _elements = new ElementHandling[Math.Max(primitives.Count, _elements.Length * 2)];
+                }
+                // We do not use foreach to avoid allocating the enumerator
+                for (var i = 0; i < primitives.Count; i++)
+                {
+                    var primitive = primitives[i];
                     var objectValue = ValueToWrite(primitive.ObjectValue);
                     var noElement = !HasElement(primitive);
                     if (objectValue == null && noElement)
                     {
-                        elements.Add(ElementHandling.Skip);
+                        _elements[i] = ElementHandling.Skip;
                     }
                     else
                     {
@@ -590,25 +685,26 @@ namespace Hl7.Fhir.Serialization
                         }
                         if (noElement)
                         {
-                            elements.Add(ElementHandling.Null);
+                            _elements[i] = ElementHandling.Null;
                         }
                         else
                         {
                             anyNonEmpty = true;
-                            elements.Add(ElementHandling.Serialize);
+                            _elements[i] = ElementHandling.Serialize;
                         }
                     }
                 }
                 if (anyNonEmpty)
                 {
+                    ref var currentState = ref GetCurrentState();
                     _writer.WriteEndArray();
-                    _writer.WritePropertyName(PropertyName(GetCurrentState().Name, isExtension: true));
+                    _writer.WritePropertyName(PropertyName(currentState.Name, isExtension: true));
                     _writer.WriteStartArray();
 
-                    var index = 0;
-                    foreach (var primitive in primitives)
+                    for (var i = 0; i < primitives.Count; i++)
                     {
-                        var element = elements[index++];
+                        var element = _elements[i];
+                        var primitive = primitives[i];
                         switch (element)
                         {
                             case ElementHandling.Null:
@@ -642,24 +738,24 @@ namespace Hl7.Fhir.Serialization
             StringValue(name, value, elementVersions, summaryVersions, isRequired);
         }
 
-        protected override void RenderBeginState(IState state, IState previousState)
+        protected override void RenderBeginState(ref State state, ref State previousState)
         {
-            if (state is DataTypeState dataTypeState)
+            if (state.Kind == StateKind.DataType)
             {
-                if (previousState != null && !(previousState is ListState) && dataTypeState.Name != null)
+                if (previousState.Kind != StateKind.None && previousState.Kind != StateKind.List && state.Name != null)
                 {
-                    _writer.WritePropertyName(PropertyName(dataTypeState.Name, dataTypeState.IsPrimitiveType));
+                    _writer.WritePropertyName(PropertyName(state.Name, state.IsPrimitiveType));
                 }
                 _writer.WriteStartObject();
-                if (dataTypeState.Type != null)
+                if (state.Type != null)
                 {
                     _writer.WritePropertyName("resourceType");
-                    _writer.WriteStringValue(dataTypeState.Type);
+                    _writer.WriteStringValue(state.Type);
                 }
             }
-            else if (state is ListState listState)
+            else if (state.Kind == StateKind.List)
             {
-                _writer.WritePropertyName(listState.Name);
+                _writer.WritePropertyName(state.Name);
                 _writer.WriteStartArray();
             }
             else
@@ -668,9 +764,9 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        protected override void RenderEndState(IState renderedState)
+        protected override void RenderEndState(ref State renderedState)
         {
-            if (renderedState is ListState)
+            if (renderedState.Kind == StateKind.List)
             {
                 _writer.WriteEndArray();
             }
@@ -692,11 +788,19 @@ namespace Hl7.Fhir.Serialization
             return _nullSink.IsDirty;
         }
 
-        private string PropertyName(string name, bool isExtension)
+        private ReadOnlySpan<char> PropertyName(string name, bool isExtension)
         {
-            return isExtension ?
-                "_" + name :
-                name;
+            if ( !isExtension )
+            {
+                return name.AsSpan();
+            }
+            if (_extensionPropertyName.Length <= name.Length)
+            {
+                _extensionPropertyName = new char[Math.Max(name.Length+1, _extensionPropertyName.Length*2)];
+                _extensionPropertyName[0] = '_';
+            }
+            name.CopyTo(0, _extensionPropertyName, 1, name.Length);
+            return new ReadOnlySpan<char>( _extensionPropertyName, 0, name.Length + 1 );
         }
 
         private void ValuePrimitive(string propertyName, object value)
@@ -746,7 +850,7 @@ namespace Hl7.Fhir.Serialization
                     _writer.WriteBase64StringValue(bytesToWrite);
                     break;
                 case DateTimeOffset dateTimeOffsetToWrite:
-                    _writer.WriteStringValue(dateTimeOffsetToWrite.ToString("yyyy-MM-ddTHH:mm:ss.FFFFFFFzzz", CultureInfo.InvariantCulture));
+                    _writer.WriteStringValue(dateTimeOffsetToWrite);
                     break;
                 default:
                     throw new SerializerSinkException($"Not supported primitive value type {valueToWrite.GetType()}");
@@ -760,6 +864,8 @@ namespace Hl7.Fhir.Serialization
             Serialize
         }
 
+        private ElementHandling[] _elements = new ElementHandling[16];
+        private char[] _extensionPropertyName = new char[0];
         private readonly Utf8JsonWriter _writer;
         private readonly NullSerializerSink _nullSink;
     }
@@ -985,13 +1091,14 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        public override void Serialize(IEnumerable<Primitive> primitives)
+        public override void Serialize(IReadOnlyList<Primitive> primitives)
         {
             if (primitives != null)
             {
-                foreach (var primitive in primitives)
+                // We do not use foreach to avoid allocating the enumerator
+                for (var i = 0; i < primitives.Count; i++)
                 {
-                    Serialize(primitive);
+                    Serialize(primitives[i]);
                 }
             }
         }
@@ -1014,9 +1121,9 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        protected override void RenderBeginState(IState state, IState previousState)
+        protected override void RenderBeginState(ref State state, ref State previousState)
         {
-            if (state is ListState)
+            if (state.Kind == StateKind.List)
             {
                 if (state.Name == null)
                 {
@@ -1024,9 +1131,9 @@ namespace Hl7.Fhir.Serialization
                 }
                 _target.BeginList(state.Name);
             }
-            else if (state is DataTypeState dataTypeState)
+            else if (state.Kind == StateKind.DataType)
             {
-                _target.BeginObject(dataTypeState.Name, dataTypeState.Type);
+                _target.BeginObject(state.Name, state.Type);
             }
             else
             {
@@ -1034,15 +1141,15 @@ namespace Hl7.Fhir.Serialization
             }
         }
 
-        protected override void RenderEndState(IState renderedState)
+        protected override void RenderEndState(ref State renderedState)
         {
-            if (renderedState is ListState listState)
+            if (renderedState.Kind == StateKind.List)
             {
-                _target.EndList(listState.Name);
+                _target.EndList(renderedState.Name);
             }
-            else if (renderedState is DataTypeState dataTypeState)
+            else if (renderedState.Kind == StateKind.DataType)
             {
-                _target.EndObject(dataTypeState.Name, dataTypeState.Type);
+                _target.EndObject(renderedState.Name, renderedState.Type);
             }
             else
             {

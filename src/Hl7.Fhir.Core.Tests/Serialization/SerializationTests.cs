@@ -568,15 +568,35 @@ namespace Hl7.Fhir.Tests.Serialization
             var json2 = FhirDstu2JsonSerializer.SerializeToString(patient);
             Assert.AreEqual(json, json2, "3");
 
-            // Is the parsing still correct with a few milliseconds and TimeZone?
+            // Is the parsing still correct with a few milliseconds and TimeZone 0?
             patient = new Patient { Meta = new Meta { LastUpdated = new DateTimeOffset(2018, 8, 13, 13, 41, 56, 12, TimeSpan.Zero) } };
             json = "{\"resourceType\":\"Patient\",\"meta\":{\"lastUpdated\":\"2018-08-13T13:41:56.012+00:00\"}}";
             res = FhirDstu2JsonParser.Parse<Patient>(json);
             Assert.IsTrue(patient.IsExactly(res), "4");
 
-            // Is the serialization still correct with a few milliseconds?
+            // Is the serialization still correct with a few milliseconds and TimeZone 0?
             json2 = FhirDstu2JsonSerializer.SerializeToString(patient);
             Assert.AreEqual(json, json2, "5");
+
+            // Is the parsing still correct with a few milliseconds and TimeZone +?
+            patient = new Patient { Meta = new Meta { LastUpdated = new DateTimeOffset(2018, 8, 13, 13, 41, 56, 345, TimeSpan.FromHours( 1 ) ) } };
+            json = "{\"resourceType\":\"Patient\",\"meta\":{\"lastUpdated\":\"2018-08-13T13:41:56.345+01:00\"}}";
+            res = FhirDstu2JsonParser.Parse<Patient>(json);
+            Assert.IsTrue(patient.IsExactly(res), "6");
+
+            // Is the serialization still correct with a few milliseconds and TimeZone +?
+            json2 = FhirDstu2JsonSerializer.SerializeToString(patient);
+            Assert.AreEqual(json, json2, "7");
+
+            // Is the parsing still correct with a few milliseconds and TimeZone -?
+            patient = new Patient { Meta = new Meta { LastUpdated = new DateTimeOffset(2018, 8, 13, 13, 41, 56, 3, TimeSpan.FromMinutes(-150)) } };
+            json = "{\"resourceType\":\"Patient\",\"meta\":{\"lastUpdated\":\"2018-08-13T13:41:56.003-02:30\"}}";
+            res = FhirDstu2JsonParser.Parse<Patient>(json);
+            Assert.IsTrue(patient.IsExactly(res), "8");
+
+            // Is the serialization still correct with a few milliseconds and TimeZone +?
+            json2 = FhirDstu2JsonSerializer.SerializeToString(patient);
+            Assert.AreEqual(json, json2, "9");
         }
 
         [TestMethod]
