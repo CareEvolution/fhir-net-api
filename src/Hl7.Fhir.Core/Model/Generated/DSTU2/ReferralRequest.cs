@@ -454,9 +454,12 @@ namespace Hl7.Fhir.Model.DSTU2
             base.Serialize(sink);
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("date", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateElement?.Serialize(sink);
@@ -466,9 +469,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("patient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Patient?.Serialize(sink);
             sink.Element("requester", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Requester?.Serialize(sink);
             sink.BeginList("recipient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Recipient)
+            if(_Recipient != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Recipient)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("encounter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Encounter?.Serialize(sink);
@@ -476,15 +482,21 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Reason?.Serialize(sink);
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("serviceRequested", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ServiceRequested)
+            if(_ServiceRequested != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ServiceRequested)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("supportingInformation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in SupportingInformation)
+            if(_SupportingInformation != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _SupportingInformation)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("fulfillmentTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); FulfillmentTime?.Serialize(sink);

@@ -626,12 +626,18 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("sequenceType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SequenceType?.Serialize(sink);
             sink.Element("numberOfSubunits", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NumberOfSubunitsElement?.Serialize(sink);
             sink.BeginList("disulfideLinkage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(DisulfideLinkageElement);
+            if(_DisulfideLinkageElement != null)
+            {
+                sink.Serialize(_DisulfideLinkageElement);
+            }
             sink.End();
             sink.BeginList("subunit", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Subunit)
+            if(_Subunit != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Subunit)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

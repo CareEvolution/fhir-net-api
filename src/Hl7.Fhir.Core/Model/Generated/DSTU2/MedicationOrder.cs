@@ -1286,9 +1286,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("MedicationOrder");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("dateWritten", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateWrittenElement?.Serialize(sink);
@@ -1302,9 +1305,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NoteElement?.Serialize(sink);
             sink.Element("medication", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, true); Medication?.Serialize(sink);
             sink.BeginList("dosageInstruction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in DosageInstruction)
+            if(_DosageInstruction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _DosageInstruction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("dispenseRequest", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DispenseRequest?.Serialize(sink);

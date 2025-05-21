@@ -351,15 +351,24 @@ namespace Hl7.Fhir.Model
             sink.Element("externalDiameter", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); ExternalDiameter?.Serialize(sink);
             sink.Element("shape", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); ShapeElement?.Serialize(sink);
             sink.BeginList("color", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false);
-            sink.Serialize(ColorElement);
+            if(_ColorElement != null)
+            {
+                sink.Serialize(_ColorElement);
+            }
             sink.End();
             sink.BeginList("imprint", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false);
-            sink.Serialize(ImprintElement);
+            if(_ImprintElement != null)
+            {
+                sink.Serialize(_ImprintElement);
+            }
             sink.End();
             sink.BeginList("image", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false);
-            foreach(var item in Image)
+            if(_Image != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Image)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("scoring", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); Scoring?.Serialize(sink);

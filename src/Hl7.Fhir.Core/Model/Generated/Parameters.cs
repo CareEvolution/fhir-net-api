@@ -151,9 +151,12 @@ namespace Hl7.Fhir.Model
                 sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, false, true); Value?.Serialize(sink);
                 sink.Element("resource", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, false, false); Resource?.Serialize(sink);
                 sink.BeginList("part", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, false);
-                foreach(var item in Part)
+                if(_Part != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Part)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1008,9 +1011,12 @@ namespace Hl7.Fhir.Model
             sink.BeginResource("Parameters");
             base.Serialize(sink);
             sink.BeginList("parameter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.R4|Hl7.Fhir.Model.Version.STU3, false);
-            foreach(var item in Parameter)
+            if(_Parameter != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Parameter)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

@@ -281,9 +281,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("OrderResponse");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("request", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Request?.Serialize(sink);
@@ -292,9 +295,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("orderStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); OrderStatusElement?.Serialize(sink);
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("fulfillment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Fulfillment)
+            if(_Fulfillment != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Fulfillment)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

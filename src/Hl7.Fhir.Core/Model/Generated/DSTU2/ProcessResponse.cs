@@ -537,9 +537,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("ProcessResponse");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("request", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Request?.Serialize(sink);
@@ -553,15 +556,21 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("requestOrganization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); RequestOrganization?.Serialize(sink);
             sink.Element("form", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Form?.Serialize(sink);
             sink.BeginList("notes", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Notes)
+            if(_Notes != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Notes)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("error", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Error)
+            if(_Error != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Error)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

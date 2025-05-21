@@ -723,31 +723,46 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("documentation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DocumentationElement?.Serialize(sink);
                 sink.Element("security", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Security?.Serialize(sink);
                 sink.BeginList("resource", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Resource)
+                if(_Resource != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Resource)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("interaction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Interaction)
+                if(_Interaction != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Interaction)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("searchParam", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in SearchParam)
+                if(_SearchParam != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _SearchParam)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("operation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Operation)
+                if(_Operation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Operation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("compartment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                sink.Serialize(CompartmentElement);
+                if(_CompartmentElement != null)
+                {
+                    sink.Serialize(_CompartmentElement);
+                }
                 sink.End();
                 sink.End();
             }
@@ -1055,9 +1070,12 @@ namespace Hl7.Fhir.Model.R4
                 base.Serialize(sink);
                 sink.Element("cors", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CorsElement?.Serialize(sink);
                 sink.BeginList("service", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Service)
+                if(_Service != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Service)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);
@@ -1722,13 +1740,19 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); TypeElement?.Serialize(sink);
                 sink.Element("profile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ProfileElement?.Serialize(sink);
                 sink.BeginList("supportedProfile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(SupportedProfileElement);
+                if(_SupportedProfileElement != null)
+                {
+                    sink.Serialize(_SupportedProfileElement);
+                }
                 sink.End();
                 sink.Element("documentation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DocumentationElement?.Serialize(sink);
                 sink.BeginList("interaction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Interaction)
+                if(_Interaction != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Interaction)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("versioning", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); VersioningElement?.Serialize(sink);
@@ -1739,24 +1763,39 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("conditionalUpdate", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ConditionalUpdateElement?.Serialize(sink);
                 sink.Element("conditionalDelete", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ConditionalDeleteElement?.Serialize(sink);
                 sink.BeginList("referencePolicy", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                sink.Serialize(ReferencePolicyElement);
+                if(_ReferencePolicyElement != null)
+                {
+                    sink.Serialize(_ReferencePolicyElement);
+                }
                 sink.End();
                 sink.BeginList("searchInclude", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                sink.Serialize(SearchIncludeElement);
+                if(_SearchIncludeElement != null)
+                {
+                    sink.Serialize(_SearchIncludeElement);
+                }
                 sink.End();
                 sink.BeginList("searchRevInclude", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                sink.Serialize(SearchRevIncludeElement);
+                if(_SearchRevIncludeElement != null)
+                {
+                    sink.Serialize(_SearchRevIncludeElement);
+                }
                 sink.End();
                 sink.BeginList("searchParam", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in SearchParam)
+                if(_SearchParam != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _SearchParam)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("operation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Operation)
+                if(_Operation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Operation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -3145,17 +3184,23 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("MessagingComponent");
                 base.Serialize(sink);
                 sink.BeginList("endpoint", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Endpoint)
+                if(_Endpoint != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Endpoint)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("reliableCache", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ReliableCacheElement?.Serialize(sink);
                 sink.Element("documentation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DocumentationElement?.Serialize(sink);
                 sink.BeginList("supportedMessage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in SupportedMessage)
+                if(_SupportedMessage != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _SupportedMessage)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -4887,61 +4932,94 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("date", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); DateElement?.Serialize(sink);
             sink.Element("publisher", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PublisherElement?.Serialize(sink);
             sink.BeginList("contact", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Contact)
+            if(_Contact != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contact)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("useContext", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in UseContext)
+            if(_UseContext != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _UseContext)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("jurisdiction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Jurisdiction)
+            if(_Jurisdiction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Jurisdiction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("purpose", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PurposeElement?.Serialize(sink);
             sink.Element("copyright", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); CopyrightElement?.Serialize(sink);
             sink.Element("kind", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); KindElement?.Serialize(sink);
             sink.BeginList("instantiates", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(InstantiatesElement);
+            if(_InstantiatesElement != null)
+            {
+                sink.Serialize(_InstantiatesElement);
+            }
             sink.End();
             sink.BeginList("imports", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ImportsElement);
+            if(_ImportsElement != null)
+            {
+                sink.Serialize(_ImportsElement);
+            }
             sink.End();
             sink.Element("software", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Software?.Serialize(sink);
             sink.Element("implementation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Implementation?.Serialize(sink);
             sink.Element("fhirVersion", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); FhirVersionElement?.Serialize(sink);
             sink.BeginList("format", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            sink.Serialize(FormatElement);
+            if(_FormatElement != null)
+            {
+                sink.Serialize(_FormatElement);
+            }
             sink.End();
             sink.BeginList("patchFormat", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(PatchFormatElement);
+            if(_PatchFormatElement != null)
+            {
+                sink.Serialize(_PatchFormatElement);
+            }
             sink.End();
             sink.BeginList("implementationGuide", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ImplementationGuideElement);
+            if(_ImplementationGuideElement != null)
+            {
+                sink.Serialize(_ImplementationGuideElement);
+            }
             sink.End();
             sink.BeginList("rest", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Rest)
+            if(_Rest != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Rest)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("messaging", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Messaging)
+            if(_Messaging != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Messaging)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("document", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Document)
+            if(_Document != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Document)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

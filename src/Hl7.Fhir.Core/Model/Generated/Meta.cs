@@ -280,18 +280,27 @@ namespace Hl7.Fhir.Model
             sink.Element("versionId", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); VersionIdElement?.Serialize(sink);
             sink.Element("lastUpdated", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LastUpdatedElement?.Serialize(sink);
             sink.BeginList("profile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ProfileElement);
+            if(_ProfileElement != null)
+            {
+                sink.Serialize(_ProfileElement);
+            }
             sink.End();
             sink.BeginList("security", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Security)
+            if(_Security != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Security)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("tag", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Tag)
+            if(_Tag != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Tag)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("source", Hl7.Fhir.Model.Version.R4, Hl7.Fhir.Model.Version.R4, false, false); SourceElement?.Serialize(sink);

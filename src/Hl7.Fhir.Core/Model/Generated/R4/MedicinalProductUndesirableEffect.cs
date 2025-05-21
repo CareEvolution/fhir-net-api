@@ -187,18 +187,24 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("MedicinalProductUndesirableEffect");
             base.Serialize(sink);
             sink.BeginList("subject", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Subject)
+            if(_Subject != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Subject)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("symptomConditionEffect", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SymptomConditionEffect?.Serialize(sink);
             sink.Element("classification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Classification?.Serialize(sink);
             sink.Element("frequencyOfOccurrence", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); FrequencyOfOccurrence?.Serialize(sink);
             sink.BeginList("population", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Population)
+            if(_Population != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Population)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

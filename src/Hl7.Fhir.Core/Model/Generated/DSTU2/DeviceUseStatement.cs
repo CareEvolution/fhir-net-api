@@ -270,19 +270,28 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("whenUsed", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); WhenUsed?.Serialize(sink);
             sink.Element("device", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Device?.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("indication", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Indication)
+            if(_Indication != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Indication)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("notes", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(NotesElement);
+            if(_NotesElement != null)
+            {
+                sink.Serialize(_NotesElement);
+            }
             sink.End();
             sink.Element("recordedOn", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); RecordedOnElement?.Serialize(sink);
             sink.Element("subject", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Subject?.Serialize(sink);

@@ -419,23 +419,32 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("performer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Performer?.Serialize(sink);
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Reason?.Serialize(sink);
             sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Note)
+            if(_Note != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Note)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("evaluationMessage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in EvaluationMessage)
+            if(_EvaluationMessage != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _EvaluationMessage)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("outputParameters", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); OutputParameters?.Serialize(sink);
             sink.Element("result", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Result?.Serialize(sink);
             sink.BeginList("dataRequirement", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in DataRequirement)
+            if(_DataRequirement != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _DataRequirement)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

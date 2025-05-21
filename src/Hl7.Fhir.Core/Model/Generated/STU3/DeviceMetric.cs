@@ -590,9 +590,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("category", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); CategoryElement?.Serialize(sink);
             sink.Element("measurementPeriod", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MeasurementPeriod?.Serialize(sink);
             sink.BeginList("calibration", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Calibration)
+            if(_Calibration != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Calibration)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

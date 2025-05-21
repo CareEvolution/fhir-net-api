@@ -1020,9 +1020,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("VisionPrescription");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("dateWritten", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateWrittenElement?.Serialize(sink);
@@ -1031,9 +1034,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("encounter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Encounter?.Serialize(sink);
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Reason?.Serialize(sink);
             sink.BeginList("dispense", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Dispense)
+            if(_Dispense != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Dispense)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

@@ -151,9 +151,12 @@ namespace Hl7.Fhir.Model
             sink.StringValue("id", ElementId, summaryVersions: Version.All);
             base.Serialize(sink);
             sink.BeginList("extension", summaryVersions: Version.None);
-            foreach (var extension in Extension)
+            if (_Extension != null)
             {
-                extension.Serialize(sink);
+                foreach (var extension in _Extension)
+                {
+                    extension.Serialize(sink);
+                }
             }
             sink.End();
         }

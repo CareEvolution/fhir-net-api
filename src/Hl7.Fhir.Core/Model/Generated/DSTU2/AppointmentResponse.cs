@@ -332,18 +332,24 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("AppointmentResponse");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("appointment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Appointment?.Serialize(sink);
             sink.Element("start", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); StartElement?.Serialize(sink);
             sink.Element("end", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); EndElement?.Serialize(sink);
             sink.BeginList("participantType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ParticipantType)
+            if(_ParticipantType != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ParticipantType)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("actor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Actor?.Serialize(sink);

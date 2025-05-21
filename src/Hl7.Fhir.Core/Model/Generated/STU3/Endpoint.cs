@@ -391,9 +391,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("Endpoint");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
@@ -401,24 +404,36 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("name", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NameElement?.Serialize(sink);
             sink.Element("managingOrganization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ManagingOrganization?.Serialize(sink);
             sink.BeginList("contact", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Contact)
+            if(_Contact != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contact)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.BeginList("payloadType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in PayloadType)
+            if(_PayloadType != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _PayloadType)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("payloadMimeType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(PayloadMimeTypeElement);
+            if(_PayloadMimeTypeElement != null)
+            {
+                sink.Serialize(_PayloadMimeTypeElement);
+            }
             sink.End();
             sink.Element("address", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); AddressElement?.Serialize(sink);
             sink.BeginList("header", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            sink.Serialize(HeaderElement);
+            if(_HeaderElement != null)
+            {
+                sink.Serialize(_HeaderElement);
+            }
             sink.End();
             sink.End();
         }

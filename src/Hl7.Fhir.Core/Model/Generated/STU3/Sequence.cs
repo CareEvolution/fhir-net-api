@@ -2363,9 +2363,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("Sequence");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TypeElement?.Serialize(sink);
@@ -2377,29 +2380,41 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("quantity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Quantity?.Serialize(sink);
             sink.Element("referenceSeq", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ReferenceSeq?.Serialize(sink);
             sink.BeginList("variant", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Variant)
+            if(_Variant != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Variant)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("observedSeq", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ObservedSeqElement?.Serialize(sink);
             sink.BeginList("quality", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Quality)
+            if(_Quality != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Quality)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("readCoverage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ReadCoverageElement?.Serialize(sink);
             sink.BeginList("repository", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Repository)
+            if(_Repository != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Repository)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("pointer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Pointer)
+            if(_Pointer != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Pointer)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

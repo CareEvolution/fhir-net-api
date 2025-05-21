@@ -204,7 +204,10 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("endpoint", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); EndpointElement?.Serialize(sink);
                 sink.Element("payload", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PayloadElement?.Serialize(sink);
                 sink.BeginList("header", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(HeaderElement);
+                if(_HeaderElement != null)
+                {
+                    sink.Serialize(_HeaderElement);
+                }
                 sink.End();
                 sink.End();
             }
@@ -654,9 +657,12 @@ namespace Hl7.Fhir.Model.STU3
             base.Serialize(sink);
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
             sink.BeginList("contact", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Contact)
+            if(_Contact != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contact)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("end", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); EndElement?.Serialize(sink);
@@ -665,9 +671,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("error", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ErrorElement?.Serialize(sink);
             sink.Element("channel", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Channel?.Serialize(sink);
             sink.BeginList("tag", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Tag)
+            if(_Tag != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Tag)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

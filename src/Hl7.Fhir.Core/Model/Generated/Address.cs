@@ -442,7 +442,10 @@ namespace Hl7.Fhir.Model
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TypeElement?.Serialize(sink);
             sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TextElement?.Serialize(sink);
             sink.BeginList("line", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(LineElement);
+            if(_LineElement != null)
+            {
+                sink.Serialize(_LineElement);
+            }
             sink.End();
             sink.Element("city", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CityElement?.Serialize(sink);
             sink.Element("district", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DistrictElement?.Serialize(sink);

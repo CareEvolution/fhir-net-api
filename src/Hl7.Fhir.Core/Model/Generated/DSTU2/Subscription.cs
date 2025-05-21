@@ -636,9 +636,12 @@ namespace Hl7.Fhir.Model.DSTU2
             base.Serialize(sink);
             sink.Element("criteria", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); CriteriaElement?.Serialize(sink);
             sink.BeginList("contact", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Contact)
+            if(_Contact != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contact)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); ReasonElement?.Serialize(sink);
@@ -647,9 +650,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("channel", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Channel?.Serialize(sink);
             sink.Element("end", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); EndElement?.Serialize(sink);
             sink.BeginList("tag", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Tag)
+            if(_Tag != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Tag)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

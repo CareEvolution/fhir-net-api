@@ -475,9 +475,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("range", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Range?.Serialize(sink);
                 sink.Element("context", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Context?.Serialize(sink);
                 sink.BeginList("appliesTo", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in AppliesTo)
+                if(_AppliesTo != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _AppliesTo)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("gender", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); GenderElement?.Serialize(sink);
@@ -1009,29 +1012,41 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("ObservationDefinition");
             base.Serialize(sink);
             sink.BeginList("category", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Category)
+            if(_Category != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Category)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Code?.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("permittedDataType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            sink.Serialize(PermittedDataTypeElement);
+            if(_PermittedDataTypeElement != null)
+            {
+                sink.Serialize(_PermittedDataTypeElement);
+            }
             sink.End();
             sink.Element("multipleResultsAllowed", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); MultipleResultsAllowedElement?.Serialize(sink);
             sink.Element("method", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Method?.Serialize(sink);
             sink.Element("preferredReportName", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PreferredReportNameElement?.Serialize(sink);
             sink.Element("quantitativeDetails", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); QuantitativeDetails?.Serialize(sink);
             sink.BeginList("qualifiedInterval", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in QualifiedInterval)
+            if(_QualifiedInterval != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _QualifiedInterval)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("validCodedValueSet", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ValidCodedValueSet?.Serialize(sink);

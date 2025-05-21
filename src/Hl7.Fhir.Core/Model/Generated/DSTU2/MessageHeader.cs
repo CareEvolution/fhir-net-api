@@ -1095,9 +1095,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("response", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Response?.Serialize(sink);
             sink.Element("source", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Source?.Serialize(sink);
             sink.BeginList("destination", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Destination)
+            if(_Destination != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Destination)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("enterer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Enterer?.Serialize(sink);
@@ -1106,9 +1109,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("responsible", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Responsible?.Serialize(sink);
             sink.Element("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Reason?.Serialize(sink);
             sink.BeginList("data", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Data)
+            if(_Data != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Data)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

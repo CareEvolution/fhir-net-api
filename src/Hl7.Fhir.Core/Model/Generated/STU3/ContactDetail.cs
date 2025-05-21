@@ -155,9 +155,12 @@ namespace Hl7.Fhir.Model.STU3
             base.Serialize(sink);
             sink.Element("name", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NameElement?.Serialize(sink);
             sink.BeginList("telecom", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Telecom)
+            if(_Telecom != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Telecom)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

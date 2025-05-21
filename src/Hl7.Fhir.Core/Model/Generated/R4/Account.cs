@@ -724,33 +724,45 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("Account");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Type?.Serialize(sink);
             sink.Element("name", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NameElement?.Serialize(sink);
             sink.BeginList("subject", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Subject)
+            if(_Subject != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Subject)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("servicePeriod", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ServicePeriod?.Serialize(sink);
             sink.BeginList("coverage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Coverage)
+            if(_Coverage != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Coverage)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("owner", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Owner?.Serialize(sink);
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("guarantor", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Guarantor)
+            if(_Guarantor != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Guarantor)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("partOf", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PartOf?.Serialize(sink);

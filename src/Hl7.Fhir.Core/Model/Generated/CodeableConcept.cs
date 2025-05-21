@@ -151,9 +151,12 @@ namespace Hl7.Fhir.Model
             sink.BeginDataType("CodeableConcept");
             base.Serialize(sink);
             sink.BeginList("coding", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Coding)
+            if(_Coding != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Coding)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TextElement?.Serialize(sink);

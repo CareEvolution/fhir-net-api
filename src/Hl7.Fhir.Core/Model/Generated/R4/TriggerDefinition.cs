@@ -257,9 +257,12 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("name", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NameElement?.Serialize(sink);
             sink.Element("timing", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Timing?.Serialize(sink);
             sink.BeginList("data", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Data)
+            if(_Data != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Data)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("condition", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Condition?.Serialize(sink);

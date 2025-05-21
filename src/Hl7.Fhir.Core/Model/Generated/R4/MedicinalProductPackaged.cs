@@ -401,60 +401,87 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("PackageItemComponent");
                 base.Serialize(sink);
                 sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Identifier)
+                if(_Identifier != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Identifier)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Type?.Serialize(sink);
                 sink.Element("quantity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Quantity?.Serialize(sink);
                 sink.BeginList("material", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Material)
+                if(_Material != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Material)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("alternateMaterial", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in AlternateMaterial)
+                if(_AlternateMaterial != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _AlternateMaterial)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("device", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Device)
+                if(_Device != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Device)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("manufacturedItem", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in ManufacturedItem)
+                if(_ManufacturedItem != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _ManufacturedItem)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("packageItem", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in PackageItem)
+                if(_PackageItem != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _PackageItem)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("physicalCharacteristics", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PhysicalCharacteristics?.Serialize(sink);
                 sink.BeginList("otherCharacteristics", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in OtherCharacteristics)
+                if(_OtherCharacteristics != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _OtherCharacteristics)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("shelfLifeStorage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in ShelfLifeStorage)
+                if(_ShelfLifeStorage != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _ShelfLifeStorage)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("manufacturer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Manufacturer)
+                if(_Manufacturer != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Manufacturer)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -941,42 +968,60 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("MedicinalProductPackaged");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("subject", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Subject)
+            if(_Subject != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Subject)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DescriptionElement?.Serialize(sink);
             sink.Element("legalStatusOfSupply", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LegalStatusOfSupply?.Serialize(sink);
             sink.BeginList("marketingStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in MarketingStatus)
+            if(_MarketingStatus != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _MarketingStatus)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("marketingAuthorization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MarketingAuthorization?.Serialize(sink);
             sink.BeginList("manufacturer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Manufacturer)
+            if(_Manufacturer != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Manufacturer)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("batchIdentifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in BatchIdentifier)
+            if(_BatchIdentifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _BatchIdentifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("packageItem", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true);
-            foreach(var item in PackageItem)
+            if(_PackageItem != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _PackageItem)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

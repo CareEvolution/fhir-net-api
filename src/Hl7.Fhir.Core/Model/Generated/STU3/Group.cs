@@ -829,9 +829,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginResource("Group");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("active", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ActiveElement?.Serialize(sink);
@@ -841,15 +844,21 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("name", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NameElement?.Serialize(sink);
             sink.Element("quantity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); QuantityElement?.Serialize(sink);
             sink.BeginList("characteristic", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Characteristic)
+            if(_Characteristic != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Characteristic)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("member", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Member)
+            if(_Member != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Member)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

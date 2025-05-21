@@ -628,9 +628,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("Location");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
@@ -639,9 +642,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("mode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ModeElement?.Serialize(sink);
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Type?.Serialize(sink);
             sink.BeginList("telecom", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Telecom)
+            if(_Telecom != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Telecom)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("address", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Address?.Serialize(sink);

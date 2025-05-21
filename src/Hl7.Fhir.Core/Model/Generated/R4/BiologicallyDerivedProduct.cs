@@ -1227,39 +1227,54 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("BiologicallyDerivedProduct");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("productCategory", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ProductCategoryElement?.Serialize(sink);
             sink.Element("productCode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ProductCode?.Serialize(sink);
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); StatusElement?.Serialize(sink);
             sink.BeginList("request", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Request)
+            if(_Request != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Request)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("quantity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); QuantityElement?.Serialize(sink);
             sink.BeginList("parent", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Parent)
+            if(_Parent != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Parent)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("collection", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Collection?.Serialize(sink);
             sink.BeginList("processing", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Processing)
+            if(_Processing != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Processing)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("manipulation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Manipulation?.Serialize(sink);
             sink.BeginList("storage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Storage)
+            if(_Storage != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Storage)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

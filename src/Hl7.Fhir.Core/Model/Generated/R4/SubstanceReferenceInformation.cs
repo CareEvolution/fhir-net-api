@@ -113,9 +113,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("geneSequenceOrigin", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); GeneSequenceOrigin?.Serialize(sink);
                 sink.Element("gene", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Gene?.Serialize(sink);
                 sink.BeginList("source", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Source)
+                if(_Source != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Source)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -312,9 +315,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Type?.Serialize(sink);
                 sink.Element("element", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Element?.Serialize(sink);
                 sink.BeginList("source", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Source)
+                if(_Source != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Source)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -526,15 +532,21 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("domain", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Domain?.Serialize(sink);
                 sink.Element("classification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Classification?.Serialize(sink);
                 sink.BeginList("subtype", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Subtype)
+                if(_Subtype != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Subtype)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("source", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Source)
+                if(_Source != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Source)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -821,9 +833,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("amount", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Amount?.Serialize(sink);
                 sink.Element("amountType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); AmountType?.Serialize(sink);
                 sink.BeginList("source", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Source)
+                if(_Source != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Source)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1192,27 +1207,39 @@ namespace Hl7.Fhir.Model.R4
             base.Serialize(sink);
             sink.Element("comment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CommentElement?.Serialize(sink);
             sink.BeginList("gene", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Gene)
+            if(_Gene != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Gene)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("geneElement", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in GeneElement)
+            if(_GeneElement != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _GeneElement)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("classification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Classification)
+            if(_Classification != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Classification)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("target", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Target)
+            if(_Target != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Target)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

@@ -551,9 +551,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("category", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Category?.Serialize(sink);
             sink.Element("severity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SeverityElement?.Serialize(sink);
             sink.BeginList("implicated", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Implicated)
+            if(_Implicated != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Implicated)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("detail", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DetailElement?.Serialize(sink);
@@ -562,9 +565,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Identifier?.Serialize(sink);
             sink.Element("reference", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ReferenceElement?.Serialize(sink);
             sink.BeginList("mitigation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Mitigation)
+            if(_Mitigation != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Mitigation)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

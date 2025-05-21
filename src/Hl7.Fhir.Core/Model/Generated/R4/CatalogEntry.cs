@@ -570,24 +570,33 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("CatalogEntry");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Type?.Serialize(sink);
             sink.Element("orderable", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); OrderableElement?.Serialize(sink);
             sink.Element("referencedItem", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); ReferencedItem?.Serialize(sink);
             sink.BeginList("additionalIdentifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in AdditionalIdentifier)
+            if(_AdditionalIdentifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AdditionalIdentifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("classification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Classification)
+            if(_Classification != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Classification)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); StatusElement?.Serialize(sink);
@@ -595,21 +604,30 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("validTo", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ValidToElement?.Serialize(sink);
             sink.Element("lastUpdated", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); LastUpdatedElement?.Serialize(sink);
             sink.BeginList("additionalCharacteristic", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in AdditionalCharacteristic)
+            if(_AdditionalCharacteristic != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AdditionalCharacteristic)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("additionalClassification", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in AdditionalClassification)
+            if(_AdditionalClassification != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AdditionalClassification)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("relatedEntry", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in RelatedEntry)
+            if(_RelatedEntry != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _RelatedEntry)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

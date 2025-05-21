@@ -125,9 +125,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("ParticipantComponent");
                 base.Serialize(sink);
                 sink.BeginList("role", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Role)
+                if(_Role != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Role)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("member", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Member?.Serialize(sink);
@@ -615,16 +618,22 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("CareTeam");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusElement?.Serialize(sink);
             sink.BeginList("category", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Category)
+            if(_Category != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Category)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("name", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NameElement?.Serialize(sink);
@@ -632,39 +641,57 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("encounter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Encounter?.Serialize(sink);
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Period?.Serialize(sink);
             sink.BeginList("participant", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Participant)
+            if(_Participant != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Participant)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("reasonCode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ReasonCode)
+            if(_ReasonCode != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ReasonCode)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("reasonReference", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ReasonReference)
+            if(_ReasonReference != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ReasonReference)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("managingOrganization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ManagingOrganization)
+            if(_ManagingOrganization != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ManagingOrganization)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("telecom", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Telecom)
+            if(_Telecom != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Telecom)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Note)
+            if(_Note != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Note)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

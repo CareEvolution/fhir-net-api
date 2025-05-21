@@ -139,16 +139,22 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("JurisdictionalAuthorizationComponent");
                 base.Serialize(sink);
                 sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Identifier)
+                if(_Identifier != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Identifier)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("country", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Country?.Serialize(sink);
                 sink.BeginList("jurisdiction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Jurisdiction)
+                if(_Jurisdiction != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Jurisdiction)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("legalStatusOfSupply", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LegalStatusOfSupply?.Serialize(sink);
@@ -388,9 +394,12 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Type?.Serialize(sink);
                 sink.Element("date", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Date?.Serialize(sink);
                 sink.BeginList("application", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Application)
+                if(_Application != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Application)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -953,22 +962,31 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("MedicinalProductAuthorization");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("subject", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Subject?.Serialize(sink);
             sink.BeginList("country", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Country)
+            if(_Country != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Country)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("jurisdiction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Jurisdiction)
+            if(_Jurisdiction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Jurisdiction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Status?.Serialize(sink);
@@ -980,9 +998,12 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("internationalBirthDate", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); InternationalBirthDateElement?.Serialize(sink);
             sink.Element("legalBasis", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LegalBasis?.Serialize(sink);
             sink.BeginList("jurisdictionalAuthorization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in JurisdictionalAuthorization)
+            if(_JurisdictionalAuthorization != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _JurisdictionalAuthorization)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("holder", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Holder?.Serialize(sink);

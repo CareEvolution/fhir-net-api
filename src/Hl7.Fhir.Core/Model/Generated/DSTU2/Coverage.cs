@@ -441,9 +441,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Type?.Serialize(sink);
             sink.Element("subscriberId", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SubscriberId?.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("group", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); GroupElement?.Serialize(sink);
@@ -454,9 +457,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("subscriber", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Subscriber?.Serialize(sink);
             sink.Element("network", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Network?.Serialize(sink);
             sink.BeginList("contract", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Contract)
+            if(_Contract != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contract)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

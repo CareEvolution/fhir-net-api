@@ -834,9 +834,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("MedicationStatement");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("patient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Patient?.Serialize(sink);
@@ -845,25 +848,34 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
             sink.Element("wasNotTaken", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); WasNotTakenElement?.Serialize(sink);
             sink.BeginList("reasonNotTaken", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ReasonNotTaken)
+            if(_ReasonNotTaken != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ReasonNotTaken)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("reasonForUse", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); ReasonForUse?.Serialize(sink);
             sink.Element("effective", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Effective?.Serialize(sink);
             sink.Element("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NoteElement?.Serialize(sink);
             sink.BeginList("supportingInformation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in SupportingInformation)
+            if(_SupportingInformation != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _SupportingInformation)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("medication", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, true); Medication?.Serialize(sink);
             sink.BeginList("dosage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Dosage)
+            if(_Dosage != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Dosage)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

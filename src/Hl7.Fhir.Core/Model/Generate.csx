@@ -2981,17 +2981,20 @@ public class PropertyDetails
         else
         {
             yield return $"sink.BeginList({elementDescription});";
+            yield return $"if(_{Name} != null)";
+            yield return $"{{";
             if (!string.IsNullOrEmpty(NativeName))
             {
-                yield return $"sink.Serialize({Name});";
+                yield return $"    sink.Serialize(_{Name});";
             }
             else
             {
-                yield return $"foreach(var item in {Name})";
-                yield return $"{{";
-                yield return $"    item?.Serialize(sink);";
-                yield return $"}}";
+                yield return $"    foreach(var item in _{Name})";
+                yield return $"    {{";
+                yield return $"        item?.Serialize(sink);";
+                yield return $"    }}";
             }
+            yield return $"}}";
             yield return $"sink.End();";
         }
     }

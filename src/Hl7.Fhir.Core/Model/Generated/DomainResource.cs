@@ -228,21 +228,30 @@ namespace Hl7.Fhir.Model
             base.Serialize(sink);
             sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Text?.Serialize(sink);
             sink.BeginList("contained", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Contained)
+            if(_Contained != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contained)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("extension", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Extension)
+            if(_Extension != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Extension)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("modifierExtension", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ModifierExtension)
+            if(_ModifierExtension != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ModifierExtension)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
         }

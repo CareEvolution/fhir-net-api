@@ -675,9 +675,12 @@ namespace Hl7.Fhir.Model.STU3
                 sink.BeginDataType("DesignationIncludeComponent");
                 base.Serialize(sink);
                 sink.BeginList("designation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Designation)
+                if(_Designation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Designation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -994,9 +997,12 @@ namespace Hl7.Fhir.Model.STU3
                 sink.BeginDataType("DesignationExcludeComponent");
                 base.Serialize(sink);
                 sink.BeginList("designation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Designation)
+                if(_Designation != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Designation)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -2063,28 +2069,40 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("date", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateElement?.Serialize(sink);
             sink.Element("publisher", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PublisherElement?.Serialize(sink);
             sink.BeginList("contact", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Contact)
+            if(_Contact != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contact)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("useContext", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in UseContext)
+            if(_UseContext != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _UseContext)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("jurisdiction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Jurisdiction)
+            if(_Jurisdiction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Jurisdiction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("fixedVersion", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in FixedVersion)
+            if(_FixedVersion != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _FixedVersion)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("excludedSystem", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ExcludedSystem?.Serialize(sink);

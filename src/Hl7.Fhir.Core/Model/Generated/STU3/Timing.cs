@@ -556,13 +556,22 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("periodMax", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PeriodMaxElement?.Serialize(sink);
                 sink.Element("periodUnit", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PeriodUnitElement?.Serialize(sink);
                 sink.BeginList("dayOfWeek", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(DayOfWeekElement);
+                if(_DayOfWeekElement != null)
+                {
+                    sink.Serialize(_DayOfWeekElement);
+                }
                 sink.End();
                 sink.BeginList("timeOfDay", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(TimeOfDayElement);
+                if(_TimeOfDayElement != null)
+                {
+                    sink.Serialize(_TimeOfDayElement);
+                }
                 sink.End();
                 sink.BeginList("when", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(WhenElement);
+                if(_WhenElement != null)
+                {
+                    sink.Serialize(_WhenElement);
+                }
                 sink.End();
                 sink.Element("offset", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OffsetElement?.Serialize(sink);
                 sink.End();
@@ -1098,7 +1107,10 @@ namespace Hl7.Fhir.Model.STU3
             sink.BeginDataType("Timing");
             base.Serialize(sink);
             sink.BeginList("event", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(EventElement);
+            if(_EventElement != null)
+            {
+                sink.Serialize(_EventElement);
+            }
             sink.End();
             sink.Element("repeat", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Repeat?.Serialize(sink);
             sink.Element("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Code?.Serialize(sink);

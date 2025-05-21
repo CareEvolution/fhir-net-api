@@ -381,20 +381,29 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("documentation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DocumentationElement?.Serialize(sink);
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); TypeElement?.Serialize(sink);
                 sink.BeginList("targetProfile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                sink.Serialize(TargetProfileElement);
+                if(_TargetProfileElement != null)
+                {
+                    sink.Serialize(_TargetProfileElement);
+                }
                 sink.End();
                 sink.Element("searchType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); SearchTypeElement?.Serialize(sink);
                 sink.Element("binding", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Binding?.Serialize(sink);
                 sink.BeginList("referencedFrom", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in ReferencedFrom)
+                if(_ReferencedFrom != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _ReferencedFrom)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("part", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Part)
+                if(_Part != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Part)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1118,7 +1127,10 @@ namespace Hl7.Fhir.Model.R4
                 sink.BeginDataType("OverloadComponent");
                 base.Serialize(sink);
                 sink.BeginList("parameterName", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                sink.Serialize(ParameterNameElement);
+                if(_ParameterNameElement != null)
+                {
+                    sink.Serialize(_ParameterNameElement);
+                }
                 sink.End();
                 sink.Element("comment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); CommentElement?.Serialize(sink);
                 sink.End();
@@ -2198,22 +2210,31 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("date", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateElement?.Serialize(sink);
             sink.Element("publisher", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PublisherElement?.Serialize(sink);
             sink.BeginList("contact", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Contact)
+            if(_Contact != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contact)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("useContext", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in UseContext)
+            if(_UseContext != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _UseContext)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("jurisdiction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Jurisdiction)
+            if(_Jurisdiction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Jurisdiction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("purpose", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PurposeElement?.Serialize(sink);
@@ -2222,7 +2243,10 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("comment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); CommentElement?.Serialize(sink);
             sink.Element("base", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); BaseElement?.Serialize(sink);
             sink.BeginList("resource", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ResourceElement);
+            if(_ResourceElement != null)
+            {
+                sink.Serialize(_ResourceElement);
+            }
             sink.End();
             sink.Element("system", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); SystemElement?.Serialize(sink);
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); TypeElement?.Serialize(sink);
@@ -2230,15 +2254,21 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("inputProfile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); InputProfileElement?.Serialize(sink);
             sink.Element("outputProfile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); OutputProfileElement?.Serialize(sink);
             sink.BeginList("parameter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Parameter)
+            if(_Parameter != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Parameter)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("overload", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Overload)
+            if(_Overload != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Overload)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

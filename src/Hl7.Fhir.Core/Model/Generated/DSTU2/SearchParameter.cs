@@ -116,9 +116,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.Serialize(sink);
                 sink.Element("name", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NameElement?.Serialize(sink);
                 sink.BeginList("telecom", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Telecom)
+                if(_Telecom != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Telecom)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -841,9 +844,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("experimental", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ExperimentalElement?.Serialize(sink);
             sink.Element("publisher", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PublisherElement?.Serialize(sink);
             sink.BeginList("contact", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Contact)
+            if(_Contact != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Contact)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("date", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DateElement?.Serialize(sink);
@@ -855,7 +861,10 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("xpath", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); XpathElement?.Serialize(sink);
             sink.Element("xpathUsage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); XpathUsageElement?.Serialize(sink);
             sink.BeginList("target", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            sink.Serialize(TargetElement);
+            if(_TargetElement != null)
+            {
+                sink.Serialize(_TargetElement);
+            }
             sink.End();
             sink.End();
         }

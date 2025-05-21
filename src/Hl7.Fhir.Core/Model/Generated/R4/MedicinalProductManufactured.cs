@@ -228,22 +228,31 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("unitOfPresentation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); UnitOfPresentation?.Serialize(sink);
             sink.Element("quantity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Quantity?.Serialize(sink);
             sink.BeginList("manufacturer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Manufacturer)
+            if(_Manufacturer != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Manufacturer)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("ingredient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Ingredient)
+            if(_Ingredient != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Ingredient)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("physicalCharacteristics", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); PhysicalCharacteristics?.Serialize(sink);
             sink.BeginList("otherCharacteristics", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in OtherCharacteristics)
+            if(_OtherCharacteristics != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _OtherCharacteristics)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

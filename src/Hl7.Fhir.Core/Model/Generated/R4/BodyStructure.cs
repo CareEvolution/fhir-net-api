@@ -276,25 +276,34 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("BodyStructure");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("active", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ActiveElement?.Serialize(sink);
             sink.Element("morphology", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Morphology?.Serialize(sink);
             sink.Element("location", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Location?.Serialize(sink);
             sink.BeginList("locationQualifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in LocationQualifier)
+            if(_LocationQualifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _LocationQualifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DescriptionElement?.Serialize(sink);
             sink.BeginList("image", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Image)
+            if(_Image != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Image)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("patient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Patient?.Serialize(sink);

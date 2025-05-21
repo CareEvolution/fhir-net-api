@@ -149,16 +149,22 @@ namespace Hl7.Fhir.Model.STU3
                 base.Serialize(sink);
                 sink.Element("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); Identifier?.Serialize(sink);
                 sink.BeginList("population", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Population)
+                if(_Population != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Population)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("measureScore", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MeasureScoreElement?.Serialize(sink);
                 sink.BeginList("stratifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Stratifier)
+                if(_Stratifier != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Stratifier)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -582,9 +588,12 @@ namespace Hl7.Fhir.Model.STU3
                 base.Serialize(sink);
                 sink.Element("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Identifier?.Serialize(sink);
                 sink.BeginList("stratum", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Stratum)
+                if(_Stratum != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Stratum)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -808,9 +817,12 @@ namespace Hl7.Fhir.Model.STU3
                 base.Serialize(sink);
                 sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); ValueElement?.Serialize(sink);
                 sink.BeginList("population", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Population)
+                if(_Population != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Population)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("measureScore", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MeasureScoreElement?.Serialize(sink);
@@ -1471,9 +1483,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("reportingOrganization", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ReportingOrganization?.Serialize(sink);
             sink.Element("period", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Period?.Serialize(sink);
             sink.BeginList("group", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Group)
+            if(_Group != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Group)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("evaluatedResources", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); EvaluatedResources?.Serialize(sink);

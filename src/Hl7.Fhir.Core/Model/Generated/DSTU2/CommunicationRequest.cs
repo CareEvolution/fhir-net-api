@@ -538,29 +538,41 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("CommunicationRequest");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("category", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Category?.Serialize(sink);
             sink.Element("sender", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Sender?.Serialize(sink);
             sink.BeginList("recipient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Recipient)
+            if(_Recipient != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Recipient)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("payload", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Payload)
+            if(_Payload != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Payload)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("medium", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Medium)
+            if(_Medium != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Medium)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("requester", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Requester?.Serialize(sink);
@@ -568,9 +580,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("encounter", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Encounter?.Serialize(sink);
             sink.Element("scheduled", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Scheduled?.Serialize(sink);
             sink.BeginList("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Reason)
+            if(_Reason != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Reason)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("requestedOn", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); RequestedOnElement?.Serialize(sink);

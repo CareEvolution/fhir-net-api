@@ -98,9 +98,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.Serialize(sink);
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Type?.Serialize(sink);
                 sink.BeginList("specialty", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Specialty)
+                if(_Specialty != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Specialty)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -369,7 +372,10 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.BeginDataType("AvailableTimeComponent");
                 base.Serialize(sink);
                 sink.BeginList("daysOfWeek", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                sink.Serialize(DaysOfWeekElement);
+                if(_DaysOfWeekElement != null)
+                {
+                    sink.Serialize(_DaysOfWeekElement);
+                }
                 sink.End();
                 sink.Element("allDay", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AllDayElement?.Serialize(sink);
                 sink.Element("availableStartTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AvailableStartTimeElement?.Serialize(sink);
@@ -1286,17 +1292,23 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("HealthcareService");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("providedBy", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ProvidedBy?.Serialize(sink);
             sink.Element("serviceCategory", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ServiceCategory?.Serialize(sink);
             sink.BeginList("serviceType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ServiceType)
+            if(_ServiceType != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ServiceType)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("location", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Location?.Serialize(sink);
@@ -1305,52 +1317,76 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("extraDetails", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ExtraDetailsElement?.Serialize(sink);
             sink.Element("photo", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Photo?.Serialize(sink);
             sink.BeginList("telecom", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Telecom)
+            if(_Telecom != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Telecom)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("coverageArea", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in CoverageArea)
+            if(_CoverageArea != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _CoverageArea)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("serviceProvisionCode", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ServiceProvisionCode)
+            if(_ServiceProvisionCode != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ServiceProvisionCode)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("eligibility", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Eligibility?.Serialize(sink);
             sink.Element("eligibilityNote", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); EligibilityNoteElement?.Serialize(sink);
             sink.BeginList("programName", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            sink.Serialize(ProgramNameElement);
+            if(_ProgramNameElement != null)
+            {
+                sink.Serialize(_ProgramNameElement);
+            }
             sink.End();
             sink.BeginList("characteristic", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Characteristic)
+            if(_Characteristic != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Characteristic)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("referralMethod", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in ReferralMethod)
+            if(_ReferralMethod != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ReferralMethod)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("publicKey", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); PublicKeyElement?.Serialize(sink);
             sink.Element("appointmentRequired", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AppointmentRequiredElement?.Serialize(sink);
             sink.BeginList("availableTime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in AvailableTime)
+            if(_AvailableTime != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AvailableTime)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("notAvailable", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in NotAvailable)
+            if(_NotAvailable != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _NotAvailable)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("availabilityExceptions", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); AvailabilityExceptionsElement?.Serialize(sink);

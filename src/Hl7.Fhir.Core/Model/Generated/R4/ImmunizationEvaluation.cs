@@ -403,9 +403,12 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("ImmunizationEvaluation");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
@@ -416,9 +419,12 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("immunizationEvent", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); ImmunizationEvent?.Serialize(sink);
             sink.Element("doseStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); DoseStatus?.Serialize(sink);
             sink.BeginList("doseStatusReason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in DoseStatusReason)
+            if(_DoseStatusReason != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _DoseStatusReason)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DescriptionElement?.Serialize(sink);

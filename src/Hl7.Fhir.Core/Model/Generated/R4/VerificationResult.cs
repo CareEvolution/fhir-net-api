@@ -186,24 +186,33 @@ namespace Hl7.Fhir.Model.R4
                 base.Serialize(sink);
                 sink.Element("who", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Who?.Serialize(sink);
                 sink.BeginList("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Type)
+                if(_Type != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Type)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("communicationMethod", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in CommunicationMethod)
+                if(_CommunicationMethod != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _CommunicationMethod)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("validationStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ValidationStatus?.Serialize(sink);
                 sink.Element("validationDate", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); ValidationDateElement?.Serialize(sink);
                 sink.Element("canPushUpdates", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CanPushUpdates?.Serialize(sink);
                 sink.BeginList("pushTypeAvailable", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in PushTypeAvailable)
+                if(_PushTypeAvailable != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _PushTypeAvailable)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1342,22 +1351,31 @@ namespace Hl7.Fhir.Model.R4
             sink.BeginResource("VerificationResult");
             base.Serialize(sink);
             sink.BeginList("target", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Target)
+            if(_Target != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Target)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("targetLocation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(TargetLocationElement);
+            if(_TargetLocationElement != null)
+            {
+                sink.Serialize(_TargetLocationElement);
+            }
             sink.End();
             sink.Element("need", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Need?.Serialize(sink);
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
             sink.Element("statusDate", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); StatusDateElement?.Serialize(sink);
             sink.Element("validationType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ValidationType?.Serialize(sink);
             sink.BeginList("validationProcess", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in ValidationProcess)
+            if(_ValidationProcess != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _ValidationProcess)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("frequency", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Frequency?.Serialize(sink);
@@ -1365,16 +1383,22 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("nextScheduled", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); NextScheduledElement?.Serialize(sink);
             sink.Element("failureAction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); FailureAction?.Serialize(sink);
             sink.BeginList("primarySource", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in PrimarySource)
+            if(_PrimarySource != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _PrimarySource)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("attestation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Attestation?.Serialize(sink);
             sink.BeginList("validator", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Validator)
+            if(_Validator != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Validator)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

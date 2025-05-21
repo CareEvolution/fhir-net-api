@@ -340,9 +340,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("time", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TimeElement?.Serialize(sink);
             sink.Element("destination", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Destination?.Serialize(sink);
             sink.BeginList("receiver", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Receiver)
+            if(_Receiver != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Receiver)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

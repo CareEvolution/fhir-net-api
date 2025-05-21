@@ -95,15 +95,21 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.BeginDataType("ExplanationComponent");
                 base.Serialize(sink);
                 sink.BeginList("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Reason)
+                if(_Reason != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Reason)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("reasonNotGiven", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in ReasonNotGiven)
+                if(_ReasonNotGiven != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _ReasonNotGiven)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -656,9 +662,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("series", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); SeriesElement?.Serialize(sink);
                 sink.Element("seriesDoses", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); SeriesDosesElement?.Serialize(sink);
                 sink.BeginList("targetDisease", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true);
-                foreach(var item in TargetDisease)
+                if(_TargetDisease != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _TargetDisease)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("doseStatus", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, true, false); DoseStatus?.Serialize(sink);
@@ -1415,9 +1424,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.BeginResource("Immunization");
             base.Serialize(sink);
             sink.BeginList("identifier", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Identifier)
+            if(_Identifier != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Identifier)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("status", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); StatusElement?.Serialize(sink);
@@ -1437,22 +1449,31 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("route", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Route?.Serialize(sink);
             sink.Element("doseQuantity", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); DoseQuantity?.Serialize(sink);
             sink.BeginList("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Note)
+            if(_Note != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Note)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("explanation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Explanation?.Serialize(sink);
             sink.BeginList("reaction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in Reaction)
+            if(_Reaction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Reaction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.BeginList("vaccinationProtocol", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-            foreach(var item in VaccinationProtocol)
+            if(_VaccinationProtocol != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _VaccinationProtocol)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

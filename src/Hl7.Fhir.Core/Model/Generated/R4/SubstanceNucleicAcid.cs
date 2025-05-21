@@ -244,15 +244,21 @@ namespace Hl7.Fhir.Model.R4
                 sink.Element("fivePrime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); FivePrime?.Serialize(sink);
                 sink.Element("threePrime", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ThreePrime?.Serialize(sink);
                 sink.BeginList("linkage", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Linkage)
+                if(_Linkage != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Linkage)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("sugar", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Sugar)
+                if(_Sugar != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Sugar)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1120,9 +1126,12 @@ namespace Hl7.Fhir.Model.R4
             sink.Element("areaOfHybridisation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); AreaOfHybridisationElement?.Serialize(sink);
             sink.Element("oligoNucleotideType", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); OligoNucleotideType?.Serialize(sink);
             sink.BeginList("subunit", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Subunit)
+            if(_Subunit != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Subunit)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

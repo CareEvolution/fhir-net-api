@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 
@@ -14,7 +13,8 @@ namespace Hl7.Fhir.Serialization
             _origin.SetErrorHandler(ErrorHandler);
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));
             _model = ModelInfos.Get(_settings.Version);
-            _states = new Stack<State>();
+            _states = new State[ 16 ];
+            _currentStateIndex = -1;
         }
 
         public bool IsVersion(Model.Version versions)
@@ -346,9 +346,9 @@ namespace Hl7.Fhir.Serialization
         private List<TBase> GetListPrimitive<TBase>(Func<TBase> get) where TBase : Base
         {
             var result = new List<TBase>();
-            var currentState = _states.Peek();
             foreach (var index in _origin.EnumerateList())
             {
+                ref var currentState = ref _states[_currentStateIndex];
                 currentState.CurrentListIndex = index;
                 var item = get();
                 if (item != null)
@@ -372,8 +372,17 @@ namespace Hl7.Fhir.Serialization
 
         private bool PopulateBase(Base element)
         {
-            var state = new State();
-            _states.Push(state);
+            _currentStateIndex++;
+            if ( _currentStateIndex >= _states.Length )
+            {
+                var newStates = new State[_states.Length * 2];
+                Array.Copy( _states, newStates, _states.Length );
+                _states = newStates;
+            }
+            ref var state = ref _states[_currentStateIndex];
+            state.CurrentElementName = null;
+            state.CurrentListIndex = null;
+            state.HasNonEmptyElements = false;
             foreach (var attributeName in _origin.EnumerateAttributes())
             {
                 var elementName = $"@{attributeName}";
@@ -397,12 +406,15 @@ namespace Hl7.Fhir.Serialization
                     _origin.Skip();
                 }
             }
-            _states.Pop();
-            return state.HasNonEmptyElements;
+            state = ref _states[_currentStateIndex];
+            var result = state.HasNonEmptyElements;
+            _currentStateIndex--;
+            return result;
 
             bool SetElementFromSource(string elementName)
             {
-                state.CurrentElementName = elementName;
+                ref var localState = ref _states[_currentStateIndex];
+                localState.CurrentElementName = elementName;
                 return element.SetElementFromSource(elementName, this);
             }
         }
@@ -452,14 +464,16 @@ namespace Hl7.Fhir.Serialization
 
         private void SetHasNonEmptyElements()
         {
-            _states.Peek().HasNonEmptyElements = true;
+            ref var currentState = ref _states[_currentStateIndex];
+            currentState.HasNonEmptyElements = true;
         }
 
         private string GetCurrentPath()
         {
             var result = string.Empty;
-            foreach (var state in _states.Reverse())
+            for (var stateIndex = 0; stateIndex <= _currentStateIndex; stateIndex++)
             {
+                ref var state = ref _states[stateIndex];
                 if (state.CurrentElementName != null)
                 {
                     if (result.Length > 0)
@@ -476,18 +490,19 @@ namespace Hl7.Fhir.Serialization
             return result;
         }
 
-        private class State
+        private struct State
         {
-            public string CurrentElementName { get; set; } = null;
+            public string CurrentElementName { get; set; }
 
-            public int? CurrentListIndex { get; set; } = null;
+            public int? CurrentListIndex { get; set; }
 
-            public bool HasNonEmptyElements { get; set; } = false;
+            public bool HasNonEmptyElements { get; set; }
         }
 
         private readonly IParserOrigin _origin;
         private readonly ParserSettings _settings;
         private readonly IModelInfo _model;
-        private readonly Stack<State> _states;
+        private State[] _states;
+        private int _currentStateIndex;
     }
 }

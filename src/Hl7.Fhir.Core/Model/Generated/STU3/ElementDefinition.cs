@@ -180,9 +180,12 @@ namespace Hl7.Fhir.Model.STU3
                 sink.BeginDataType("SlicingComponent");
                 base.Serialize(sink);
                 sink.BeginList("discriminator", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Discriminator)
+                if(_Discriminator != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Discriminator)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.Element("description", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); DescriptionElement?.Serialize(sink);
@@ -969,7 +972,10 @@ namespace Hl7.Fhir.Model.STU3
                 sink.Element("profile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ProfileElement?.Serialize(sink);
                 sink.Element("targetProfile", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); TargetProfileElement?.Serialize(sink);
                 sink.BeginList("aggregation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                sink.Serialize(AggregationElement);
+                if(_AggregationElement != null)
+                {
+                    sink.Serialize(_AggregationElement);
+                }
                 sink.End();
                 sink.Element("versioning", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); VersioningElement?.Serialize(sink);
                 sink.End();
@@ -3759,14 +3765,20 @@ namespace Hl7.Fhir.Model.STU3
             base.Serialize(sink);
             sink.Element("path", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); PathElement?.Serialize(sink);
             sink.BeginList("representation", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(RepresentationElement);
+            if(_RepresentationElement != null)
+            {
+                sink.Serialize(_RepresentationElement);
+            }
             sink.End();
             sink.Element("sliceName", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); SliceNameElement?.Serialize(sink);
             sink.Element("label", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); LabelElement?.Serialize(sink);
             sink.BeginList("code", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Code)
+            if(_Code != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Code)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("slicing", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Slicing?.Serialize(sink);
@@ -3775,16 +3787,22 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("comment", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); CommentElement?.Serialize(sink);
             sink.Element("requirements", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); RequirementsElement?.Serialize(sink);
             sink.BeginList("alias", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(AliasElement);
+            if(_AliasElement != null)
+            {
+                sink.Serialize(_AliasElement);
+            }
             sink.End();
             sink.Element("min", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MinElement?.Serialize(sink);
             sink.Element("max", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MaxElement?.Serialize(sink);
             sink.Element("base", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Base?.Serialize(sink);
             sink.Element("contentReference", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); ContentReferenceElement?.Serialize(sink);
             sink.BeginList("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Type)
+            if(_Type != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Type)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("defaultValue", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); DefaultValue?.Serialize(sink);
@@ -3793,21 +3811,30 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("fixed", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Fixed?.Serialize(sink);
             sink.Element("pattern", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); Pattern?.Serialize(sink);
             sink.BeginList("example", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Example)
+            if(_Example != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Example)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("minValue", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); MinValue?.Serialize(sink);
             sink.Element("maxValue", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, true); MaxValue?.Serialize(sink);
             sink.Element("maxLength", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MaxLengthElement?.Serialize(sink);
             sink.BeginList("condition", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            sink.Serialize(ConditionElement);
+            if(_ConditionElement != null)
+            {
+                sink.Serialize(_ConditionElement);
+            }
             sink.End();
             sink.BeginList("constraint", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Constraint)
+            if(_Constraint != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Constraint)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("mustSupport", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); MustSupportElement?.Serialize(sink);
@@ -3815,9 +3842,12 @@ namespace Hl7.Fhir.Model.STU3
             sink.Element("isSummary", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); IsSummaryElement?.Serialize(sink);
             sink.Element("binding", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Binding?.Serialize(sink);
             sink.BeginList("mapping", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Mapping)
+            if(_Mapping != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Mapping)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.End();

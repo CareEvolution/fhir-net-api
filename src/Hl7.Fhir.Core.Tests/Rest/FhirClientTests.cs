@@ -82,6 +82,7 @@ namespace Hl7.Fhir.Tests.Rest
         }
 
         [TestMethod, TestCategory("FhirClient"), TestCategory("IntegrationTest")]
+        [Ignore("Data changed")]
         public void HapiDstu2Search()
         {
             var client = new FhirDstu2Client("http://hapi.fhir.org/baseDstu2");
@@ -102,6 +103,7 @@ namespace Hl7.Fhir.Tests.Rest
         }
 
         [TestMethod, TestCategory("FhirClient"), TestCategory("IntegrationTest")]
+        [Ignore("Data changed")]
         public void HapiR4Search()
         {
             var client = new FhirR4Client("http://hapi.fhir.org/baseR4");
@@ -138,6 +140,7 @@ namespace Hl7.Fhir.Tests.Rest
         }
 
         [TestMethod, TestCategory("FhirClient"), TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public void FetchConformance()
         {
             var client = new FhirDstu2Client(testEndpoint);
@@ -303,6 +306,7 @@ namespace Hl7.Fhir.Tests.Rest
         }
 
         [TestMethod, TestCategory("FhirClient"), TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public void Search()
         {
             // an endpoint that is known to support compression
@@ -571,6 +575,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestMethod]
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
         //Test for github issue https://github.com/FirelyTeam/fhir-net-api/issues/145
+        [Ignore("Server no longer exist")]
         public void Create_ObservationWithValueAsSimpleQuantity_ReadReturnsValueAsQuantity()
         {
             var client = new FhirDstu2Client(testEndpoint);
@@ -853,6 +858,7 @@ namespace Hl7.Fhir.Tests.Rest
 
         [TestMethod]
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public void TestSearchUsingPostByPersonaCode()
         {
             var client = new FhirDstu2Client(_endpointSupportingSearchUsingPost);
@@ -1014,6 +1020,7 @@ namespace Hl7.Fhir.Tests.Rest
 
         [TestMethod]
         [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public void TestReceiveErrorStatusWithHtmlIsHandled()
         {
             var client = new FhirDstu2Client("http://spark.furore.com/");        // an address that returns Status 500 with HTML in its body
@@ -1154,6 +1161,7 @@ namespace Hl7.Fhir.Tests.Rest
         }
 
         [TestMethod, TestCategory("IntegrationTest"), TestCategory("FhirClient")]
+        [Ignore("Server no longer exist")]
         public void TestAuthenticationOnBefore()
         {
             var validationFhirClient = new FhirDstu2Client("https://sqlonfhir.azurewebsites.net/fhir");
@@ -1176,6 +1184,7 @@ namespace Hl7.Fhir.Tests.Rest
         /// Test for showing issue https://github.com/FirelyTeam/fhir-net-api/issues/128
         /// </summary>
         [TestMethod, TestCategory("IntegrationTest"), TestCategory("FhirClient")]
+        [Ignore("Server no longer exist")]
         public void TestCreatingBinaryResource()
         {
             Image img = Image.FromFile(TestDataHelper.GetFullPathForExample(@"fhir-logo.png"));

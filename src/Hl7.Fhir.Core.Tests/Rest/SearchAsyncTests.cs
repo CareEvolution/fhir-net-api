@@ -48,6 +48,7 @@ namespace Hl7.Fhir.Core.AsyncTests
 
         [TestMethod]
         [TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public async Task SearchUsingPost_UsingSearchParams_SearchReturned()
         {
             var client = new FhirR4Client(_endpoint)
@@ -117,6 +118,7 @@ namespace Hl7.Fhir.Core.AsyncTests
 
         [TestMethod]
         [TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public void SearchUsingPostSync_UsingSearchParams_SearchReturned()
         {
             var client = new FhirR4Client(_endpoint)
@@ -192,6 +194,7 @@ namespace Hl7.Fhir.Core.AsyncTests
 
         [TestMethod]
         [TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public async Task SearchUsingPostMultiple_UsingSearchParams_SearchReturned()
         {
             var client = new FhirR4Client(_endpoint)
@@ -260,6 +263,7 @@ namespace Hl7.Fhir.Core.AsyncTests
 
         [TestMethod]
         [TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public async Task SearchUsingPostWithCriteria_SyncContinue_SearchReturned()
         {
             var client = new FhirR4Client(_endpoint)
@@ -288,6 +292,7 @@ namespace Hl7.Fhir.Core.AsyncTests
 
         [TestMethod]
         [TestCategory("IntegrationTest")]
+        [Ignore("Server no longer exist")]
         public async Task SearchWithCriteria_AsyncContinue_SearchReturned()
         {
             var client = new FhirR4Client(_endpoint)

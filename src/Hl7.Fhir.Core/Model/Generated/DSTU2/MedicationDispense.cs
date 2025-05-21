@@ -544,15 +544,21 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.Serialize(sink);
                 sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, true, false); Type?.Serialize(sink);
                 sink.BeginList("reason", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in Reason)
+                if(_Reason != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Reason)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("responsibleParty", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-                foreach(var item in ResponsibleParty)
+                if(_ResponsibleParty != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _ResponsibleParty)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -1122,9 +1128,12 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("patient", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Patient?.Serialize(sink);
             sink.Element("dispenser", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Dispenser?.Serialize(sink);
             sink.BeginList("authorizingPrescription", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in AuthorizingPrescription)
+            if(_AuthorizingPrescription != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _AuthorizingPrescription)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("type", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Type?.Serialize(sink);
@@ -1135,16 +1144,22 @@ namespace Hl7.Fhir.Model.DSTU2
             sink.Element("whenHandedOver", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); WhenHandedOverElement?.Serialize(sink);
             sink.Element("destination", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Destination?.Serialize(sink);
             sink.BeginList("receiver", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in Receiver)
+            if(_Receiver != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _Receiver)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("note", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); NoteElement?.Serialize(sink);
             sink.BeginList("dosageInstruction", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false);
-            foreach(var item in DosageInstruction)
+            if(_DosageInstruction != null)
             {
-                item?.Serialize(sink);
+                foreach(var item in _DosageInstruction)
+                {
+                    item?.Serialize(sink);
+                }
             }
             sink.End();
             sink.Element("substitution", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.All, false, false); Substitution?.Serialize(sink);

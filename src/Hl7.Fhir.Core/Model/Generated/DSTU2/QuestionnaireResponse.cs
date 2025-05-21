@@ -208,15 +208,21 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); TextElement?.Serialize(sink);
                 sink.Element("subject", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); Subject?.Serialize(sink);
                 sink.BeginList("group", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Group)
+                if(_Group != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Group)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.BeginList("question", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Question)
+                if(_Question != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Question)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -492,9 +498,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 sink.Element("linkId", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); LinkIdElement?.Serialize(sink);
                 sink.Element("text", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, false); TextElement?.Serialize(sink);
                 sink.BeginList("answer", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Answer)
+                if(_Answer != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Answer)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
@@ -681,9 +690,12 @@ namespace Hl7.Fhir.Model.DSTU2
                 base.Serialize(sink);
                 sink.Element("value", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false, true); Value?.Serialize(sink);
                 sink.BeginList("group", Hl7.Fhir.Model.Version.All, Hl7.Fhir.Model.Version.None, false);
-                foreach(var item in Group)
+                if(_Group != null)
                 {
-                    item?.Serialize(sink);
+                    foreach(var item in _Group)
+                    {
+                        item?.Serialize(sink);
+                    }
                 }
                 sink.End();
                 sink.End();
