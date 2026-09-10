@@ -985,7 +985,8 @@ namespace Hl7.Fhir.Tests.Rest
         }
 
         [TestMethod]
-        [TestCategory("FhirClient"), TestCategory("IntegrationTest")]   // Currently ignoring, as spark.furore.com returns Status 500.
+        [TestCategory("FhirClient"), TestCategory("IntegrationTest")]
+        [Ignore]// Currently ignoring, as spark.furore.com returns Status 500.
         public void TestReceiveHtmlIsHandled()
         {
             var client = new FhirDstu2Client("http://spark.furore.com/");        // an address that returns html
@@ -1276,7 +1277,7 @@ namespace Hl7.Fhir.Tests.Rest
         [TestMethod, TestCategory("IntegrationTest"), TestCategory("FhirClient")]
         public void TestNextGenMetadata()
         {
-            var client = new FhirDstu2Client("https://fhir.nextgen.com/nge/prod/fhir-api/fhir/dstu2/")
+            var client = new FhirR4Client("https://fhir.nextgen.com/nge/prod/fhir-api/fhir/r4/")
             {
                 PreferredFormat = ResourceFormat.Json,
                 Timeout = 120_000,
@@ -1285,7 +1286,7 @@ namespace Hl7.Fhir.Tests.Rest
             client.ParserSettings.PermissiveParsing = true;
             client.ParserSettings.AllowUnrecognizedEnums = true;
             var conformance = client.Metadata();
-            Assert.AreEqual("5.0.1.428", conformance.Version);
+            Assert.AreEqual("5.0.1.698", conformance.Version);
         }
     }
 

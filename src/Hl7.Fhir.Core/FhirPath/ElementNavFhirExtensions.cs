@@ -11,10 +11,10 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath;
 using Hl7.FhirPath.Expressions;
+using P = Hl7.Fhir.ElementModel.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Hl7.Fhir.FhirPath
 {
@@ -125,9 +125,9 @@ namespace Hl7.Fhir.FhirPath
                 {
                     return new FhirString((string)result);
                 }
-                if (result is Model.Primitives.PartialDateTime dt)
+                if (result is P.DateTime dt)
                 {
-                    return new FhirDateTime(dt.ToUniversalTime());
+                    return new FhirDateTime(dt.ToDateTimeOffset(TimeSpan.Zero));
                 }
                 else
                 {
@@ -163,19 +163,6 @@ namespace Hl7.Fhir.FhirPath
         }
 
         #region Obsolete members
-        [Obsolete("Use HasValue(this ITypedElement focus) instead. Obsolete since 2018-10-17")]
-        public static bool HasValue(this IElementNavigator focus)
-            => focus.ToTypedElement().HasValue();
-
-        [Obsolete("Use HtmlChecks(this ITypedElement focus) instead. Obsolete since 2018-10-17")]
-        public static bool HtmlChecks(this IElementNavigator focus) 
-            => focus.ToTypedElement().HtmlChecks();
-
-        [Obsolete("Use ToFhirValues(this IEnumerable<ITypedElement> results) instead. Obsolete since 2018-10-17")]
-        public static IEnumerable<Base> ToFhirValues(this IEnumerable<IElementNavigator> results)
-        {
-            return ToFhirValues(results.Select(r => r.ToTypedElement()));
-        }
 
         [Obsolete("Replace with the overload taking an FhirEvaluationContext, initialized with the resource parameter. Obsolete since 2018-10-17")]
         public static IEnumerable<Base> Select(this Base input, Model.Version version, string expression, Resource resource)

@@ -197,6 +197,8 @@ namespace Hl7.Fhir.Specification
             }
         }
 
+        public string DefaultTypeName => null;
+
         public string NonDefaultNamespace => null;
     }
 }
