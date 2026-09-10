@@ -31,21 +31,18 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml;
+using P = Hl7.Fhir.ElementModel.Types;
 
 namespace Hl7.Fhir.Model
 {
     [System.Diagnostics.DebuggerDisplay(@"\{{Value}}")]
     public partial class Time : IStringValue
     {
-        public Primitives.PartialTime? ToTime()
+        public P.Time ToTime()
         {
             if (Value != null)
-                return Primitives.PartialTime.Parse(Value);
+                return P.Time.Parse(Value);
             else
                 return null;
         }
@@ -66,7 +63,7 @@ namespace Hl7.Fhir.Model
             if (aValue == null) return bValue == null;
             if (bValue == null) return false;
 
-            return Primitives.PartialTime.Parse(a.Value) > Primitives.PartialTime.Parse(b.Value);
+            return P.Time.Parse(a.Value) > P.Time.Parse(b.Value);
         }
 
         public static bool operator >=(Time a, Time b)
@@ -77,7 +74,7 @@ namespace Hl7.Fhir.Model
             if (aValue == null) return bValue == null;
             if (bValue == null) return false;
 
-            return Primitives.PartialTime.Parse(a.Value) >= Primitives.PartialTime.Parse(b.Value);
+            return P.Time.Parse(a.Value) >= P.Time.Parse(b.Value);
         }
 
         public static bool operator <(Time a, Time b)
@@ -88,7 +85,7 @@ namespace Hl7.Fhir.Model
             if (aValue == null) return bValue == null;
             if (bValue == null) return false;
 
-            return Primitives.PartialTime.Parse(a.Value) < Primitives.PartialTime.Parse(b.Value);
+            return P.Time.Parse(a.Value) < P.Time.Parse(b.Value);
         }
 
         public static bool operator <=(Time a, Time b)
@@ -99,7 +96,7 @@ namespace Hl7.Fhir.Model
             if (aValue == null) return bValue == null;
             if (bValue == null) return false;
 
-            return Primitives.PartialTime.Parse(a.Value) <= Primitives.PartialTime.Parse(b.Value);
+            return P.Time.Parse(a.Value) <= P.Time.Parse(b.Value);
         }
 
         /// <summary>
@@ -136,8 +133,8 @@ namespace Hl7.Fhir.Model
 
                 if (this.Value == otherValue) return true; // Default reference/string comparison works in most cases
 
-                var left = Primitives.PartialTime.Parse(Value);
-                var right = Primitives.PartialTime.Parse(otherValue);
+                var left = P.Time.Parse(Value);
+                var right = P.Time.Parse(otherValue);
 
                 return left == right;
             }

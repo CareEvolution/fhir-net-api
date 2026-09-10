@@ -197,7 +197,7 @@ namespace Hl7.Fhir.Serialization
         {
             var result = new List<string>();
 
-            if (!doc.Root.AtXhtmlDiv())
+            if (doc.Root?.Name != XmlNs.XHTMLDIV)
                 return new[] { $"Root element of XHTML is not a <div> from the XHTML namespace ({XmlNs.XHTML})." };
 
             doc.Validate(_xhtmlSchemaSet.Value, (s, a) => result.Add(a.Message));
