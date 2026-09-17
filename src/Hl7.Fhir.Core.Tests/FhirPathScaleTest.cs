@@ -5,13 +5,11 @@ using Hl7.Fhir.Utility;
 using Hl7.Fhir.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Hl7.FhirPath;
-using Hl7.Fhir.Model.Primitives;
 using Hl7.FhirPath.Expressions;
 using Hl7.Fhir.ElementModel;
+using P = Hl7.Fhir.ElementModel.Types;
 
 namespace Hl7.Fhir
 {
@@ -27,9 +25,9 @@ namespace Hl7.Fhir
 
             var trace = Hl7.FhirPath.FhirPathCompiler.DefaultSymbolTable.Filter("trace", 2);
             SymbolTableExtensions.Add(Hl7.FhirPath.FhirPathCompiler.DefaultSymbolTable, "dateadd",
-                (PartialDateTime f, string field, long amount) =>
+                (P.Date f, string field, long amount) =>
                 {
-                    DateTimeOffset dto = f.ToUniversalTime();
+                    DateTimeOffset dto = f.ToDateTimeOffset(0, 0, 0, TimeSpan.Zero);
                     int value = (int)amount;
 
                     // Need to convert the amount and field to compensate for partials
@@ -44,7 +42,7 @@ namespace Hl7.Fhir
                         case "mi": dto = dto.AddMinutes(value); break;
                         case "ss": dto = dto.AddSeconds(value); break;
                     }
-                    PartialDateTime changedDate = PartialDateTime.Parse(PartialDateTime.FromDateTime(dto).ToString().Substring(0, f.ToString().Length));
+                    var changedDate = P.DateTime.Parse(P.DateTime.FromDateTimeOffset(dto).ToString().Substring(0, f.ToString().Length));
                     return changedDate;
                 });
 

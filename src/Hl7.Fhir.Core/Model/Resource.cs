@@ -252,14 +252,6 @@ namespace Hl7.Fhir.Model
         [NotMapped]
         public bool HasVersionId => Meta?.VersionId != null;
 
-        #region Obsolete members
-        [Obsolete("Use ValidateInvariantRule(ValidationContext context, ElementDefinition.ConstraintComponent invariantRule, ITypedElement model, OperationOutcome result) instead. Obsolete since 2018-10-17")]
-        public static bool ValidateInvariantRule(ValidationContext context, ElementDefinitionConstraint invariantRule, IElementNavigator model, OperationOutcome result)
-        {
-            return ValidateInvariantRule(context, invariantRule, model.ToTypedElement(), result);
-        }
-        #endregion
-
         internal override void Serialize(SerializerSink sink)
         {
             base.Serialize(sink);

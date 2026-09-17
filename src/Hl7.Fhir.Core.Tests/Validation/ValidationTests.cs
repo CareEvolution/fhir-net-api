@@ -15,8 +15,10 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.DSTU2;
 using System.Xml.Linq;
 using System.ComponentModel.DataAnnotations;
+using Hl7.Fhir.FhirPath;
 using Hl7.Fhir.Validation;
 using Hl7.Fhir.Utility;
+using Hl7.Fhir.Rest;
 
 namespace Hl7.Fhir.Tests.Validation
 {
@@ -199,6 +201,24 @@ namespace Hl7.Fhir.Tests.Validation
             };
             validateErrorOrFail(p, true);
             DotNetAttributeValidation.Validate(Fhir.Model.Version.STU3, p, true);
+        }
+
+        [TestMethod]
+        public void Predicate()
+        {
+            var observation = new Fhir.Model.R4.Observation
+            {
+                Status = Fhir.Model.R4.ObservationStatus.Final,
+                Category = new List<CodeableConcept>
+                {
+                    new CodeableConcept( "http://terminology.hl7.org/CodeSystem/observation-category", "laboratory" ),
+                },
+                Code = new CodeableConcept("http://loinc.org", "1751-7"),
+                Subject = new ResourceReference("Patient/patient-1"),
+                Value = new Quantity(4.2M, "g/dL"),
+            };
+            var result = observation.Predicate(Fhir.Model.Version.R4, "value.ofType(Quantity).system.empty() or value.ofType(Quantity).system = 'http://unitsofmeasure.org'");
+            Assert.IsTrue( result );
         }
     }
 }

@@ -8,10 +8,9 @@
 
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Introspection;
-using Hl7.Fhir.Model.Primitives;
 using Hl7.Fhir.Utility;
+using P = Hl7.Fhir.ElementModel.Types;
 using System;
-using System.Diagnostics;
 
 namespace Hl7.Fhir.Serialization
 {
@@ -38,8 +37,8 @@ namespace Hl7.Fhir.Serialization
 
             try
             {
-                if (primitiveValue is PartialDateTime || primitiveValue is PartialTime)
-                    return PrimitiveTypeConverter.ConvertTo(primitiveValue.ToString(), nativeType);                    
+                if (primitiveValue is P.DateTime || primitiveValue is P.Time)
+                    return PrimitiveTypeConverter.ConvertTo(primitiveValue.ToString(), nativeType);
                 else
                     return PrimitiveTypeConverter.ConvertTo(primitiveValue, nativeType);
             }
